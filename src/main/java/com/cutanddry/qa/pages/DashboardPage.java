@@ -4,13 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class DashboardPage extends LoginPage{
-    By txt_dashboard = By.xpath("//h3[text()='Dashboard']");
+    By txt_dashboard = By.xpath("//li[contains(text(),'Dashboard')]");
     By btn_customers = By.xpath("//a[@data-tip='Customers']");
 
 
     public boolean isDashboardTextDisplayed(){
         try {
-            wait.until(ExpectedConditions.elementToBeClickable(txt_dashboard));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(txt_dashboard));
         } catch (Exception e){
             return false;
         }
