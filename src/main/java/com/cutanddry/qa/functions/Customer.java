@@ -74,7 +74,7 @@ public class Customer {
     public static void increaseQtyByOneCatalogSearchValueTwo(){
         customersPage.clickPlusQryCatalogSearchValueOne();
     }
-    public static void decreaseQtyByOneCatalogSearchValueOne(){
+    public static void decreaseQtyByOneCatalogSearchValueOne() throws InterruptedException {
         customersPage.clickMinusQryCatalogSearchValueOne();
     }
     public static void decreaseQtyByOneCatalogSearchValueTwo(){
@@ -89,7 +89,7 @@ public class Customer {
         customersPage.clickPlusQryCatalogSearchValueTwo();
         Thread.sleep(4000);
     }
-    public static void decreaseQtyByThreeCatalogSearch(){
+    public static void decreaseQtyByThreeCatalogSearch() throws InterruptedException {
         customersPage.clickMinusQryCatalogSearchValueThree();
         customersPage.clickMinusQryCatalogSearchValueTwo();
         customersPage.clickMinusQryCatalogSearchValueOne();
