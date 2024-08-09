@@ -15,7 +15,7 @@ public class CustomersPage extends LoginPage {
     By btn_decreaseQtyFirstRow = By.xpath("//tr[1]/td[8]/div/div/div/div[1]");
     By btn_increaseQtySecondRow = By.xpath("//tr[2]/td[8]/div/div/div/div[3]");
     By btn_decreaseQtySecondRow = By.xpath("//tr[2]/td[8]/div/div/div/div[1]");
-    By btn_checkout = By.xpath("//button[@data-for='cartCheckoutButton']");
+    By btn_checkout = By.xpath("//button[text()='$']/../button[2]");
     By btn_catalog = By.xpath("//div[text()='Catalog']");
     By tbx_catalogSearch = By.xpath("//input[@placeholder='Search catalog...']");
     By lbl_catalogSearchItemList = By.xpath("//div[contains(text(), 'Artichoke')]");
@@ -93,6 +93,7 @@ public class CustomersPage extends LoginPage {
         return Double.valueOf(driver.findElement(lbl_itemPriceFirstRow).getText().replace("$",""));
     }
     public Double getItemPriceOnCheckoutButton(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(btn_checkout));
         return Double.valueOf(driver.findElement(btn_checkout).getText().replace("$",""));
     }
     public void clickPlusQryCatalogSearchValueOne(){

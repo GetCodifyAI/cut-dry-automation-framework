@@ -5,11 +5,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
+import com.cutanddry.qa.common.Constants;
 import org.json.JSONObject;
 
 public class SlackNotifier {
-    private static final String WEBHOOK_URL = "https://hooks.slack.com/services/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";
-    //https://hooks.slack.com/services/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
+    private static final String WEBHOOK_URL = Constants.SLACK_WEBHOOK;
+  //  https://hooks.slack.com/services/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 //group - test-alerts
+  //  https://hooks.slack.com/services/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 //group - ui-automation-tests
 
     // Update this with the actual URL where the report is hosted
     private static final String REPORT_URL = "https://app.circleci.com/pipelines/github/GetCodifyAI/cut-and-dry?branch=master";
