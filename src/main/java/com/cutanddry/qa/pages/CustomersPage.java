@@ -63,9 +63,11 @@ public class CustomersPage extends LoginPage {
     public void clickPlusQrySecondRow(){
         distributorUI.click(btn_increaseQtySecondRow);
     }
-    public void clickOnCheckoutButton(){
-        distributorUI.waitForClickability(btn_checkout);
+    public void clickOnCheckoutButton() throws InterruptedException {
+        distributorUI.waitForCustom(4000);
+        distributorUI.waitForElementEnabledState(btn_checkout,true);
         distributorUI.click(btn_checkout);
+        distributorUI.waitForCustom(4000);
     }
     public void clickOnCatalogButton(){
         distributorUI.click(btn_catalog);
@@ -76,10 +78,11 @@ public class CustomersPage extends LoginPage {
     public String getFirstItemNameFrmSearchResults(){
         return distributorUI.getText(lbl_catalogSearchItemList, 0);
     }
-    public void clickAddToCartCatalog(){
+    public void clickAddToCartCatalog() throws InterruptedException {
         distributorUI.waitForClickability(btn_addToCart);
         distributorUI.click(btn_addToCart);
-        distributorUI.waitForClickability(btn_checkout);
+        distributorUI.waitForCustom(4000);
+        distributorUI.waitForElementEnabledState(btn_checkout,true);
     }
     public String getItemQtyFirstRow(){
         return distributorUI.getText(tbx_itemQuantityFirstRow, "value");
@@ -95,9 +98,11 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_increaseQtyCatalogSearchValueOne);
         distributorUI.waitForClickability(btn_checkout);
     }
-    public void clickPlusQryCatalogSearchValueTwo(){
+    public void clickPlusQryCatalogSearchValueTwo() throws InterruptedException {
         distributorUI.click(btn_increaseQtyCatalogSearchValueTwo);
+        distributorUI.waitForCustom(2000);
         distributorUI.waitForClickability(btn_checkout);
+        distributorUI.waitForCustom(4000);
     }
     public void clickMinusQryCatalogSearchValueOne(){
         distributorUI.click(btn_decreaseQtyCatalogSearchValueOne);
@@ -128,6 +133,7 @@ public class CustomersPage extends LoginPage {
         return Double.valueOf(distributorUI.getText(lbl_itemPriceCartRowOne).split("\\$")[1]);
     }
     public Double getTotalPriceCart(){
+        distributorUI.waitForVisibility(lbl_cartTotal);
         return Double.valueOf(distributorUI.getText(lbl_cartTotal).split("\\$")[1]);
     }
     public void submitOrder(){

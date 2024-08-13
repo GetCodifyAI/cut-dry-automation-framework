@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.util.List;
 
 
@@ -177,6 +178,11 @@ public class KeywordBase {
         } catch (Exception e) {
             logger.error("Failed to wait for invisibility of element: {}", by, e);
         }
+        return this;
+    }
+
+    public KeywordBase waitForCustom(long time) throws InterruptedException {
+        Thread.sleep(time);
         return this;
     }
 
