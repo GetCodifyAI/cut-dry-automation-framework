@@ -6,6 +6,7 @@ import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -15,6 +16,7 @@ public class AddProductsFrmCatalogTest extends TestBase {
     static User user;
     static String customerId = "16579";
     static String itemName = "Artichoke";
+
 
     @BeforeMethod
     public void setUp(){
