@@ -80,6 +80,7 @@ public class CustomersPage extends LoginPage {
     }
     public void clickAddToCartCatalog() throws InterruptedException {
         distributorUI.waitForClickability(btn_addToCart);
+        distributorUI.waitForCustom(4000);
         distributorUI.click(btn_addToCart);
         distributorUI.waitForCustom(4000);
         distributorUI.waitForElementEnabledState(btn_checkout,true);
