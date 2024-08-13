@@ -22,7 +22,7 @@ public class AddProductsFrmOrderGuideTest extends TestBase {
     }
 
     @Test
-    public void addProductsFrmOrderGuide() {
+    public void addProductsFrmOrderGuide() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());

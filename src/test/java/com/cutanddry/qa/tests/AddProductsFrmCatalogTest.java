@@ -25,7 +25,7 @@ public class AddProductsFrmCatalogTest extends TestBase {
     }
 
     @Test
-    public void addProductsFrmCatalog() {
+    public void addProductsFrmCatalog() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();

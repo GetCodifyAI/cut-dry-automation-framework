@@ -44,7 +44,7 @@ public class Customer {
     public static String getItemNameSecondRow(){
         return customersPage.getItemNameSecondRow();
     }
-    public static void checkoutItems(){
+    public static void checkoutItems() throws InterruptedException {
         customersPage.clickOnCheckoutButton();
     }
     public static void goToCatalog(){
@@ -56,7 +56,7 @@ public class Customer {
     public static String getFirstElementFrmSearchResults(){
        return customersPage.getFirstItemNameFrmSearchResults();
     }
-    public static void addItemToCartCatalog(){
+    public static void addItemToCartCatalog() throws InterruptedException {
         customersPage.clickAddToCartCatalog();
     }
     public static String getItemQtyFirstRow(){
@@ -83,11 +83,10 @@ public class Customer {
     public static void decreaseQtyByOneCatalogSearchValueThree(){
         customersPage.clickMinusQryCatalogSearchValueThree();
     }
-    @SneakyThrows
-    public static void increaseQtyUpToThreeCatalogSearch(){
+
+    public static void increaseQtyUpToThreeCatalogSearch() throws InterruptedException {
         customersPage.clickPlusQryCatalogSearchValueOne();
         customersPage.clickPlusQryCatalogSearchValueTwo();
-        Thread.sleep(4000);
     }
     public static void decreaseQtyByThreeCatalogSearch() throws InterruptedException {
         customersPage.clickMinusQryCatalogSearchValueThree();

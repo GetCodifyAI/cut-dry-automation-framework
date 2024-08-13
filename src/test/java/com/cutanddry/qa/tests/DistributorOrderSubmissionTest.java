@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class DistributorOrderSubmissionTest extends TestBase {
+public class    DistributorOrderSubmissionTest extends TestBase {
     static User user;
     static String customerId = "16579";
 
@@ -22,7 +22,7 @@ public class DistributorOrderSubmissionTest extends TestBase {
     }
 
     @Test
-    public void distributorOrderSubmission() {
+    public void distributorOrderSubmission() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
