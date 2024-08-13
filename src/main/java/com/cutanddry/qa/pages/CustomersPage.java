@@ -90,8 +90,9 @@ public class CustomersPage extends LoginPage {
     public Double getItemPriceFirstRow(){
         return Double.valueOf(distributorUI.getText(lbl_itemPriceFirstRow).replace("$",""));
     }
-    public Double getItemPriceOnCheckoutButton(){
+    public Double getItemPriceOnCheckoutButton() throws InterruptedException {
         distributorUI.waitForVisibility(btn_checkout);
+        distributorUI.waitForCustom(4000);
         return Double.valueOf(distributorUI.getText(btn_checkout).replace("$",""));
     }
     public void clickPlusQryCatalogSearchValueOne(){
