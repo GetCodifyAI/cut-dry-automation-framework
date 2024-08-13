@@ -474,7 +474,7 @@ public class KeywordBase {
             // Cast driver to TakesScreenshot
             File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             // Define the destination path
-            File destFile = new File("target/screenshots/" + testName + "_" + timestamp + ".png");
+            File destFile = new File("target/surefire-reports/screenshots/" + testName + "_" + timestamp + ".png");
             // Copy the screenshot to the destination
             FileUtils.copyFile(srcFile, destFile);
             logger.info("Screenshot taken for test: " + testName + " at " + timestamp);
