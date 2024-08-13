@@ -65,7 +65,7 @@ public class Customer {
     public static double getItemPriceFirstRow(){
         return customersPage.getItemPriceFirstRow();
     }
-    public static double getItemPriceOnCheckoutButton(){
+    public static double getItemPriceOnCheckoutButton() throws InterruptedException {
         return customersPage.getItemPriceOnCheckoutButton();
     }
     public static void increaseQtyByOneCatalogSearchValueOne(){

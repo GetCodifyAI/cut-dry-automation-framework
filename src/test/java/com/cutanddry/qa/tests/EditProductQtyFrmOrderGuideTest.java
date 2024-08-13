@@ -25,7 +25,7 @@ public class EditProductQtyFrmOrderGuideTest extends TestBase {
     }
 
     @Test
-    public void editProductQtyFrmOrderGuide() {
+    public void editProductQtyFrmOrderGuide() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
