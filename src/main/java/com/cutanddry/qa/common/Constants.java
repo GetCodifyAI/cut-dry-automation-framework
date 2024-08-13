@@ -2,7 +2,7 @@ package com.cutanddry.qa.common;
 
 public class Constants {
     public static String BROWSER_NAME = System.getProperty("test.browser", "chrome");
-    public static boolean RUN_HEADLESS = Boolean.parseBoolean(System.getProperty("run.headless", "false"));
+    public static boolean RUN_HEADLESS = Boolean.parseBoolean(System.getProperty("run.headless", "true"));
     public static String TEST_ENV = System.getProperty("test.env", "uat");
     public static String MAIN_URL = baseDomain();
     public static String SLACK_WEBHOOK = "https://hooks.slack.com/services/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";
