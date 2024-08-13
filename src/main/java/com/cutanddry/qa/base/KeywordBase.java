@@ -1,10 +1,6 @@
 package com.cutanddry.qa.base;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,7 +8,11 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import org.apache.commons.io.FileUtils;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -464,5 +464,22 @@ public class KeywordBase {
             logger.error("Failed to quit the browser", e);
         }
         return this;
+    }
+
+    // Method to capture a screenshot
+    public void captureScreenshot(String testName) {
+        try {
+            // Generate a timestamp to make the filename unique
+            String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+            // Cast driver to TakesScreenshot
+            File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            // Define the destination path
+            File destFile = new File("target/screenshots/" + testName + "_" + timestamp + ".png");
+            // Copy the screenshot to the destination
+            FileUtils.copyFile(srcFile, destFile);
+            logger.info("Screenshot taken for test: " + testName + " at " + timestamp);
+        } catch (IOException e) {
+            logger.error("Failed to take screenshot for test: " + testName, e);
+        }
     }
 }

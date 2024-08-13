@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestResult;
 
 import java.time.Duration;
 import java.util.logging.Level;
@@ -46,11 +47,19 @@ public class TestBase {
     }
 
     // Method to close the browser and clean up resources
-    public static synchronized void closeAllBrowsers() {
+    public static void closeAllBrowsers() {
         if (driver != null) {
             driver.close();
             driver = null;  // Reset the driver to allow re-initialization in future tests
             LOGGER.info("All browsers are closed.");
         }
     }
+
+    public static void takeScreenshotOnFailure(ITestResult result) {
+        if (ITestResult.FAILURE == result.getStatus()) {
+            String testName = result.getName();
+            distributorUI.captureScreenshot(testName);
+        }
+    }
+
 }
