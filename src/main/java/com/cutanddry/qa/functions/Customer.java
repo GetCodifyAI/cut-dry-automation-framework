@@ -10,7 +10,7 @@ public class Customer {
         customersPage.clickOnSearchCustomers();
         customersPage.typeOnSearchCustomers(code);
     }
-    public static boolean isCustomerSearchResultByCodeDisplayed(String code){
+    public static boolean isCustomerSearchResultByCodeDisplayed(String code) throws InterruptedException {
         return customersPage.isCustomerSearchResultByCodeDisplayed(code);
     }
     public static void clickOnOrderGuide(String code){
@@ -38,7 +38,7 @@ public class Customer {
     public static void decreaseSecondRowQtyByOne(){
         customersPage.clickMinusQrySecondRow();
     }
-    public static String getItemNameFirstRow(){
+    public static String getItemNameFirstRow() throws InterruptedException {
         return customersPage.getItemNameFirstRow();
     }
     public static String getItemNameSecondRow(){
