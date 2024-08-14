@@ -39,13 +39,17 @@ public class CustomersPage extends LoginPage {
     public void typeOnSearchCustomers(String code){
         distributorUI.sendKeys(tbx_searchCustomers, code);
     }
-    public boolean isCustomerSearchResultByCodeDisplayed(String code){
+    public boolean isCustomerSearchResultByCodeDisplayed(String code) throws InterruptedException {
+        distributorUI.waitForElementEnabledState(By.xpath(btnOrderGuide.replace("CODE", code)), true);
+        distributorUI.waitForCustom(4000);
         return distributorUI.isDisplayed(By.xpath(btnOrderGuide.replace("CODE", code)));
     }
     public void clickOnOrderGuide(String code) {
         distributorUI.click(By.xpath(btnOrderGuide.replace("CODE", code)));
     }
-    public String getItemNameFirstRow(){
+    public String getItemNameFirstRow() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(lbl_itemNameList,true);
+        distributorUI.waitForCustom(2000);
         return distributorUI.getText(lbl_itemNameList);
     }
     public void clickPlusQryFirstRow(){
