@@ -19,6 +19,11 @@ public class Customer {
     public static void increaseFirstRowQtyByOne(){
         customersPage.clickPlusQryFirstRow();
     }
+    public static void increaseFirstRowQtyCustom(int count){
+        for (int i=0; i<count;i++){
+            customersPage.clickPlusQryFirstRow();
+        }
+    }
     public static void decreaseFirstRowQtyByOne(){
         customersPage.clickMinusQryFirstRow();
     }
