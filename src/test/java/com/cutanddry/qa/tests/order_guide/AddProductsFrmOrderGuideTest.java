@@ -1,4 +1,4 @@
-package com.cutanddry.qa.tests;
+package com.cutanddry.qa.tests.order_guide;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
@@ -7,12 +7,12 @@ import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
-public class EditProductQtyFrmReviewCartTest extends TestBase {
+import java.io.IOException;
+
+public class AddProductsFrmOrderGuideTest extends TestBase {
     static User user;
     static String customerId = "16579";
 
@@ -23,7 +23,7 @@ public class EditProductQtyFrmReviewCartTest extends TestBase {
     }
 
     @Test
-    public void editProductQtyFrmReviewCart() throws InterruptedException {
+    public void addProductsFrmOrderGuide() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
@@ -37,10 +37,6 @@ public class EditProductQtyFrmReviewCartTest extends TestBase {
         Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItems();
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
-        Customer.increaseQtyUpToThreeFirstRowCart();
-        softAssert.assertEquals(Customer.getTotalPriceCart(),Customer.getUnitPriceFirstRowCart()*3,"error in total - after increase");
-        Customer.decreaseQtyUpToZeroFirstRowCart();
-        softAssert.assertEquals(Customer.getTotalPriceCart(),0.0,"error in total - after decrease");
         softAssert.assertAll();
     }
 
@@ -49,4 +45,5 @@ public class EditProductQtyFrmReviewCartTest extends TestBase {
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }
+
 }

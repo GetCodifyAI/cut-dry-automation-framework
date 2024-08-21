@@ -1,4 +1,4 @@
-package com.cutanddry.qa.tests;
+package com.cutanddry.qa.tests.order_guide;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
@@ -12,9 +12,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class    DistributorOrderSubmissionTest extends TestBase {
+public class EditProductQtyFrmCatalogTest extends TestBase {
     static User user;
     static String customerId = "16579";
+    static String itemName = "Artichoke";
 
     @BeforeMethod
     public void setUp(){
@@ -23,8 +24,7 @@ public class    DistributorOrderSubmissionTest extends TestBase {
     }
 
     @Test
-    public void distributorOrderSubmission() throws InterruptedException {
-        String itemName;
+    public void editProductQtyFrmCatalog() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -33,12 +33,14 @@ public class    DistributorOrderSubmissionTest extends TestBase {
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
-        itemName = Customer.getItemNameFirstRow();
-        Customer.increaseFirstRowQtyCustom(8);
-        Customer.checkoutItems();
-        softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
-        Customer.submitOrder();
-        softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(),"order not completed");
+        Customer.goToCatalog();
+        Customer.searchItemOnCatalog(itemName);
+        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults().contains(itemName), "item not found");
+        Customer.addItemToCartCatalog();
+        Customer.increaseQtyUpToThreeCatalogSearch();
+        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),Customer.getItemPriceCatalogSearch()*3, "price error-after increase");
+        Customer.decreaseQtyByThreeCatalogSearch();
+        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),0.0, "price error-after decrease");
         softAssert.assertAll();
     }
 

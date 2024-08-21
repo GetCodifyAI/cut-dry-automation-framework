@@ -6,13 +6,13 @@
     </listeners>
     <test name="distributor tests">
         <classes>
-            <class name="com.cutanddry.qa.tests.DistributorLoginTest" />
-            <class name="com.cutanddry.qa.tests.AddProductsFrmOrderGuideTest" />
-            <class name="com.cutanddry.qa.tests.AddProductsFrmCatalogTest" />
-            <class name="com.cutanddry.qa.tests.EditProductQtyFrmOrderGuideTest" />
-            <class name="com.cutanddry.qa.tests.EditProductQtyFrmCatalogTest" />
-            <class name="com.cutanddry.qa.tests.EditProductQtyFrmReviewCartTest" />
-            <class name="com.cutanddry.qa.tests.DistributorOrderSubmissionTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.DistributorLoginTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.DistributorOrderSubmissionTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.AddProductsFrmOrderGuideTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.AddProductsFrmCatalogTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmOrderGuideTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmCatalogTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmReviewCartTest" />
         </classes>
     </test>
 </suite>

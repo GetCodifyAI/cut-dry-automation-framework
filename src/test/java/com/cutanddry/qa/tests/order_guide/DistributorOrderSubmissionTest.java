@@ -1,4 +1,4 @@
-package com.cutanddry.qa.tests;
+package com.cutanddry.qa.tests.order_guide;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
@@ -7,12 +7,12 @@ import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import java.io.IOException;
-
-public class AddProductsFrmOrderGuideTest extends TestBase {
+public class    DistributorOrderSubmissionTest extends TestBase {
     static User user;
     static String customerId = "16579";
 
@@ -23,7 +23,7 @@ public class AddProductsFrmOrderGuideTest extends TestBase {
     }
 
     @Test
-    public void addProductsFrmOrderGuide() throws InterruptedException {
+    public void distributorOrderSubmission() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
@@ -34,9 +34,11 @@ public class AddProductsFrmOrderGuideTest extends TestBase {
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
         itemName = Customer.getItemNameFirstRow();
-        Customer.increaseFirstRowQtyByOne();
+        Customer.increaseFirstRowQtyCustom(8);
         Customer.checkoutItems();
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
+        Customer.submitOrder();
+        softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(),"order not completed");
         softAssert.assertAll();
     }
 
@@ -45,5 +47,4 @@ public class AddProductsFrmOrderGuideTest extends TestBase {
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }
-
 }
