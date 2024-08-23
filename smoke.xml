@@ -3,6 +3,7 @@
     <listeners>
         <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
         <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
     </listeners>
     <test name="distributor tests">
         <classes>

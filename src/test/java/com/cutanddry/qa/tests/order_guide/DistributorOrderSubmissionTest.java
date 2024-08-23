@@ -22,7 +22,7 @@ public class    DistributorOrderSubmissionTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test
+    @Test(groups = "DOT-TC-34")
     public void distributorOrderSubmission() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();
