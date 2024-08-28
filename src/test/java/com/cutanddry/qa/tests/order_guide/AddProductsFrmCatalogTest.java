@@ -1,4 +1,4 @@
-package com.cutanddry.qa.tests;
+package com.cutanddry.qa.tests.order_guide;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
@@ -6,15 +6,18 @@ import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class EditProductQtyFrmReviewCartTest extends TestBase {
+public class AddProductsFrmCatalogTest extends TestBase {
     static User user;
     static String customerId = "16579";
+    static String itemName = "Artichoke";
+
 
     @BeforeMethod
     public void setUp(){
@@ -22,9 +25,8 @@ public class EditProductQtyFrmReviewCartTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test
-    public void editProductQtyFrmReviewCart() throws InterruptedException {
-        String itemName;
+    @Test(groups = "DOT-TC-30")
+    public void addProductsFrmCatalog() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -33,14 +35,12 @@ public class EditProductQtyFrmReviewCartTest extends TestBase {
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
-        itemName = Customer.getItemNameFirstRow();
-        Customer.increaseFirstRowQtyByOne();
+        Customer.goToCatalog();
+        Customer.searchItemOnCatalog(itemName);
+        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults().contains(itemName), "item not found");
+        Customer.addItemToCartCatalog();
         Customer.checkoutItems();
-        softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
-        Customer.increaseQtyUpToThreeFirstRowCart();
-        softAssert.assertEquals(Customer.getTotalPriceCart(),Customer.getUnitPriceFirstRowCart()*3,"error in total - after increase");
-        Customer.decreaseQtyUpToZeroFirstRowCart();
-        softAssert.assertEquals(Customer.getTotalPriceCart(),0.0,"error in total - after decrease");
+        softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         softAssert.assertAll();
     }
 
