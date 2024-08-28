@@ -24,7 +24,7 @@ public class EditProductQtyFrmOrderGuideTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test
+    @Test(groups = "DOT-TC-31")
     public void editProductQtyFrmOrderGuide() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();

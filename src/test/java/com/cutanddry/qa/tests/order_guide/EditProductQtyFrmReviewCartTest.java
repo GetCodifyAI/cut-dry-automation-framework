@@ -22,7 +22,7 @@ public class EditProductQtyFrmReviewCartTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test
+    @Test(groups = "DOT-TC-33")
     public void editProductQtyFrmReviewCart() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();
