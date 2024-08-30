@@ -14,6 +14,9 @@
             <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmOrderGuideTest" />
             <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmCatalogTest" />
             <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmReviewCartTest" />
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordValidTest" />
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordInvalidTest" />
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />
         </classes>
     </test>
 </suite>
