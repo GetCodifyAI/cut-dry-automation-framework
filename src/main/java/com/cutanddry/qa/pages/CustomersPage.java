@@ -23,7 +23,7 @@ public class CustomersPage extends LoginPage {
     By btn_decreaseQtyCatalogSearchValueTwo = By.xpath("//input[@type='number' and @value='2']/../preceding-sibling::div");
     By btn_decreaseQtyCatalogSearchValueThree = By.xpath("//input[@type='number' and @value='3']/../preceding-sibling::div");
     By tbx_itemQuantityCatalogSearch = By.xpath("//input[@type='number']");
-    By lbl_itemPriceSearchCatalogList = By.xpath("//span[contains(text(),'$') and not(contains(text(),' '))]");
+    By lbl_itemPriceSearchCatalogList = By.xpath("//span[contains(text(),'$') and not(contains(text(),' ')) and not(@class='text-muted')]");
     By btn_decreaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../preceding-sibling::div");
     By btn_increaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../following-sibling::div");
     By tbx_itemQuantityCartRowOne = By.xpath("//tr[2]/td//input/");
@@ -127,7 +127,7 @@ public class CustomersPage extends LoginPage {
     }
     public Double getItemPriceCatalogSearch() {
         //driver.findElements(lbl_itemPriceSearchCatalogList).get(2).getText()
-        return Double.parseDouble(distributorUI.getText(lbl_itemPriceSearchCatalogList,2).split(" ")[0].replace("$", ""));
+        return Double.parseDouble(distributorUI.getText(lbl_itemPriceSearchCatalogList,0).replace("$", ""));
     }
     public void clickMinusQryCartRowOne(){
         distributorUI.click(btn_decreaseQtyCartRowOne);
