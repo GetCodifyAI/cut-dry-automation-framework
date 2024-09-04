@@ -125,4 +125,14 @@ public class Boost {
     public static boolean isDontForgetPopupDisplayed(){
         return boostPage.isDontForgetPopupDisplayed();
     }
+    public static void clickMoreFromThisConfig(){
+        boostPage.clickMoreFromThisConfig();
+    }
+    public static boolean isMoreFromThisPopupDisplayed(){
+        return boostPage.isMoreFromThisPopupDisplayed();
+    }
+    public static boolean checkToggleState(String type){
+        return boostPage.checkInactive(type);
+    }
+
 }

@@ -13,18 +13,18 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyRecommendedForCustomerTest extends TestBase {
+public class VerifyMoreFromThisBrandTest extends TestBase {
     static User user;
     static String customerId = "16579";
+    static String itemCode = "17859";
 
     @BeforeMethod
     public void setUp(){
         initialization();
         user = JsonUtil.readUserLogin();
     }
-    @Test(groups = "DOT-TC-38")
-    public void verifyRecommendedForCustomer() throws InterruptedException {
-        String itemName;
+    @Test(groups = "DOT-TC-41")
+    public void verifyMoreFromThisBrand() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -33,27 +33,26 @@ public class VerifyRecommendedForCustomerTest extends TestBase {
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickSuggestiveSales();
         softAssert.assertTrue(Boost.isSuggestiveTabDisplayed(),"navigate to suggestive sales error");
-        Boost.clickRecommendForCustomerConfig();
-        softAssert.assertTrue(Boost.isRecommendForCustomerPopupDisplayed(),"recommend for customer popup error");
-        Boost.clickAddItems();
-        Boost.addItem();
-        softAssert.assertTrue(Boost.isItemAdded(),"item adding error");
+        Boost.clickMoreFromThisConfig();
+        softAssert.assertTrue(Boost.isMoreFromThisPopupDisplayed(),"more from this brand popup error");
+        Boost.toggleCarouselDisplayStatus(); // assuming default inactive
         Boost.clickClose();
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
-        Customer.increaseFirstRowQtyByOne();
-        Customer.checkoutItems();
-        softAssert.assertTrue(Customer.isRecommendedForYouItemDisplayed(),"recommended for you item missing error");
+        Customer.goToCatalog();
+        Customer.searchItemOnCatalog(itemCode);
+        Customer.selectSearchedCatalogItem(itemCode);
+        softAssert.assertTrue(Customer.isSelectedItemDisplayed(),"navigation error");
+        softAssert.assertTrue(Customer.isMoreFromThisBrandDisplayed(), "more from this brand missing error");
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickSuggestiveSales();
         softAssert.assertTrue(Boost.isSuggestiveTabDisplayed(),"navigate to suggestive sales error");
-        Boost.clickRecommendForCustomerConfig();
-        softAssert.assertTrue(Boost.isRecommendForCustomerPopupDisplayed(),"recommend for customer popup error");
-        Boost.removeItem();
-        softAssert.assertFalse(Boost.isItemInCarouselPreview(),"item remove error");
+        Boost.clickMoreFromThisConfig();
+        softAssert.assertTrue(Boost.isMoreFromThisPopupDisplayed(),"more from this brand popup error");
+        Boost.toggleCarouselDisplayStatus();
         softAssert.assertAll();
     }
     @AfterMethod

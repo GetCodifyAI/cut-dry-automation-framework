@@ -38,9 +38,10 @@ public class CustomersPage extends LoginPage {
     By lbl_itemAdded = By.xpath("//div[text()='Top Category Picks']//following-sibling::div//div[text()='#00475']");
     String lbl_searchedItem = "//div[text()='CODE']";
     By section_compareSimilar = By.xpath("//div[text()='Compare Similar Items']");
-    By lbl_recommendedForYouItem = By.xpath("//div[text()='Recommended by You']//following-sibling::div//div[text()='#00475']");
+    By lbl_recommendedForYouItem = By.xpath("//div[text()='Recommended for You']//following-sibling::div//div[text()='#00475']");
     By lbl_recommendedBySalesRep = By.xpath("//div[text()='Recommended by Steve O']//following-sibling::div//div[text()='#00475']");
     By section_dontForget = By.xpath("//div[text()=\"Don't Forget to Order\"]");
+    By section_moreFromThisBrand = By.xpath("//div[text()='More From Dole']");
 
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
@@ -207,5 +208,8 @@ public class CustomersPage extends LoginPage {
     }
     public boolean isDontForgetToOrderDisplayed(){
         return distributorUI.isDisplayed(section_dontForget);
+    }
+    public boolean isMoreFromThisBrandDisplayed(){
+        return distributorUI.isDisplayed(section_moreFromThisBrand);
     }
 }

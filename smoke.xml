@@ -23,6 +23,7 @@
             <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedForCustomerTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedBySalesRepTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyDontForgetToOrderTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyMoreFromThisBrandTest" />
         </classes>
     </test>
 </suite>

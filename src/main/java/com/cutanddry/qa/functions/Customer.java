@@ -160,4 +160,7 @@ public class Customer {
     public static boolean isDontForgetToOrderDisplayed(){
         return customersPage.isDontForgetToOrderDisplayed();
     }
+    public static boolean isMoreFromThisBrandDisplayed(){
+        return customersPage.isMoreFromThisBrandDisplayed();
+    }
 }

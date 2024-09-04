@@ -26,28 +26,31 @@ public class BoostPage extends LoginPage {
     By txt_deactivated = By.xpath("//h2[text()='Deactivated']");
     By tab_suggestiveSales = By.xpath("//a[text()='Suggestive Sales']");
     By txt_topCategoryPicks = By.xpath("//td[text()='Top Category Picks']");
-    By btn_tcp_config = By.xpath("//tr[td[contains(text(), 'Top Category Picks')]]//button[contains(text(), 'View & Configure')]");
+    By btn_topPicks_config = By.xpath("//tr[td[contains(text(), 'Top Category Picks')]]//button[contains(text(), 'View & Configure')]");
     By txt_popupTopCategoryPick = By.xpath("//div[text()='Select a category to configure']");
     By btn_allItemConfig = By.xpath("//tr[td[text()='All Items']]//button[contains(text(), 'Configure')]");
     By btn_addItems = By.xpath("//button[text()='Add Items']");
     By input_addItem = By.xpath("//div[text()='Search items by name or code']/following-sibling::div//input");
-    By txt_itemOrange = By.xpath("//div[text()='00475 : Orange - Valencia']");
+    By txt_itemAdded = By.xpath("//div[text()='00475 : Orange - Valencia']");
     By btn_add = By.xpath("//button[text()='Add']");
     By btn_close = By.xpath("//button[@class='close']");
     By txt_itemOrangeAdded = By.xpath("//td[text()='00475']");
     By btn_removeItem = By.xpath("//tr[td[text()='00475']]//button[text()='Remove']");
     By txt_itemPreview = By.xpath("//div[text()='orange - valencia']");
-    By btn_cmi_config = By.xpath("//tr[td[contains(text(), 'Compare Similar Items')]]//button[contains(text(), 'View & Configure')]");
+    By btn_similar_config = By.xpath("//tr[td[contains(text(), 'Compare Similar Items')]]//button[contains(text(), 'View & Configure')]");
     By txt_popupCompareSimilarItems = By.xpath("//div[text()='Configure item recommendation carousel']");
     By toggle_carouselDisplayStatus = By.xpath("//div[@class='react-switch-handle']");
-    By btn_rfc_config = By.xpath("//tr[td[contains(text(), 'Recommended for Customer')]]//button[contains(text(), 'View & Configure')]");
+    By btn_recCustomer_config = By.xpath("//tr[td[contains(text(), 'Recommended for Customer')]]//button[contains(text(), 'View & Configure')]");
     By txt_popupRecommendForCustomer = By.xpath("//div[text()='Configure item recommendation carousel']");
-    By btn_rbsr_config = By.xpath("//tr[td[contains(text(), 'Recommended by Sales Rep')]]//button[contains(text(), 'View & Configure')]");
+    By btn_recSales_config = By.xpath("//tr[td[contains(text(), 'Recommended by Sales Rep')]]//button[contains(text(), 'View & Configure')]");
     By txt_popupRecommendedBySalesRep = By.xpath("//div[text()='Select a sales rep to configure']");
     By btn_salesRepConfig = By.xpath("//tr[td[text()='Steve O']]//button[text()='Configure']");
     By txt_popupSalesRepConfig = By.xpath("//div[text()='Configure item recommendation carousel']");
-    By btn_dfto_config = By.xpath("//tr[td[contains(text(), \"Don't Forget to Order\")]]//button[contains(text(), \"View & Configure\")]");
+    By btn_dontforget_config = By.xpath("//tr[td[contains(text(), \"Don't Forget to Order\")]]//button[contains(text(), \"View & Configure\")]");
     By txt_popupDontForgetToOrder = By.xpath("//div[text()='Configure item recommendation carousel']");
+    By btn_morefrom_config = By.xpath("//tr[td[contains(text(), 'More from this Brand')]]//button[contains(text(), 'View & Configure')]");
+    By txt_popupMoreFromThis = By.xpath("//div[text()='Configure item recommendation carousel']");
+    String txt_inactive_state =  "//tr[td[contains(text(), 'Type')] and td[contains(text(), 'Inactive')]]";
 
 
     public boolean isBoostTextDisplayed() {
@@ -125,7 +128,7 @@ public class BoostPage extends LoginPage {
         return distributorUI.isDisplayed(txt_topCategoryPicks);
     }
     public void clickTopCategoryPicksConfig() {
-        distributorUI.click(btn_tcp_config);
+        distributorUI.click(btn_topPicks_config);
     }
     public boolean isTopCategoryPopupDisplayed() {
         return distributorUI.isDisplayed(txt_popupTopCategoryPick);
@@ -140,7 +143,7 @@ public class BoostPage extends LoginPage {
     public void addItem() {
         distributorUI.waitForVisibility(input_addItem);
         distributorUI.sendKeys(input_addItem, "00475");
-        distributorUI.click(txt_itemOrange);
+        distributorUI.click(txt_itemAdded);
     }
     public void clickAdd() {
         distributorUI.waitForVisibility(btn_add);
@@ -159,7 +162,7 @@ public class BoostPage extends LoginPage {
         return distributorUI.isDisplayed(txt_itemPreview);
     }
     public void clickCompareSimilarItemsConfig() {
-        distributorUI.click(btn_cmi_config);
+        distributorUI.click(btn_similar_config);
     }
     public boolean isCompareSimilarPopupDisplayed() {
         return distributorUI.isDisplayed(txt_popupCompareSimilarItems);
@@ -168,13 +171,13 @@ public class BoostPage extends LoginPage {
         distributorUI.click(toggle_carouselDisplayStatus);
     }
     public void clickRecommendForCustomerConfig() {
-        distributorUI.click(btn_rfc_config);
+        distributorUI.click(btn_recCustomer_config);
     }
     public boolean isRecommendForCustomerPopupDisplayed() {
         return distributorUI.isDisplayed(txt_popupRecommendForCustomer);
     }
     public void clickRecommendBySalesRepConfig() {
-        distributorUI.click(btn_rbsr_config);
+        distributorUI.click(btn_recSales_config);
     }
     public boolean isRecommendBySalesRepPopupDisplayed() {
         return distributorUI.isDisplayed(txt_popupRecommendedBySalesRep);
@@ -187,9 +190,18 @@ public class BoostPage extends LoginPage {
         return distributorUI.isDisplayed(txt_popupSalesRepConfig);
     }
     public void clickDontForgetToOrderConfig() {
-        distributorUI.click(btn_dfto_config);
+        distributorUI.click(btn_dontforget_config);
     }
     public boolean isDontForgetPopupDisplayed() {
         return distributorUI.isDisplayed(txt_popupDontForgetToOrder);
+    }
+    public void clickMoreFromThisConfig() {
+        distributorUI.click(btn_morefrom_config);
+    }
+    public boolean isMoreFromThisPopupDisplayed() {
+        return distributorUI.isDisplayed(txt_popupMoreFromThis);
+    }
+    public boolean checkInactive(String type) {
+        return distributorUI.isDisplayed(By.xpath(txt_inactive_state.replace("Type", type)));
     }
 }
