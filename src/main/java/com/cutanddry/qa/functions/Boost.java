@@ -83,7 +83,7 @@ public class Boost {
     public static boolean isItemAdded(){
         return boostPage.isItemAdded();
     }
-    public static void clickClose(){
+    public static void clickClose() throws InterruptedException {
         boostPage.clickClose();
     }
     public static void removeItem(){
@@ -134,7 +134,7 @@ public class Boost {
     public static boolean isMoreFromThisPopupDisplayed(){
         return boostPage.isMoreFromThisPopupDisplayed();
     }
-    public static boolean checkInactiveState(String type){
+    public static boolean checkInactiveState(String type) throws InterruptedException {
         return boostPage.checkInactive(type);
     }
 

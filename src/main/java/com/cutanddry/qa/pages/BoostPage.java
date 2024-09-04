@@ -152,8 +152,9 @@ public class BoostPage extends LoginPage {
     public boolean isItemAdded() {
         return distributorUI.isDisplayed(txt_itemOrangeAdded);
     }
-    public void clickClose() {
+    public void clickClose() throws InterruptedException {
         distributorUI.click(btn_close);
+        distributorUI.waitForCustom(2000);
     }
     public void removeItem() {
         distributorUI.click(btn_removeItem);
@@ -206,7 +207,8 @@ public class BoostPage extends LoginPage {
     public boolean isMoreFromThisPopupDisplayed() {
         return distributorUI.isDisplayed(txt_popupMoreFromThis);
     }
-    public boolean checkInactive(String type) {
+    public boolean checkInactive(String type) throws InterruptedException {
+        distributorUI.waitForCustom(2000);
         return distributorUI.isDisplayed(By.xpath(txt_inactive_state.replace("Type", type)));
     }
 }
