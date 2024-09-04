@@ -101,5 +101,10 @@ public class Boost {
     public static void toggleCarouselDisplayStatus(){
         boostPage.toggleCarouselDisplayStatus();
     }
-
+    public static void clickRecommendForCustomerConfig(){
+        boostPage.clickRecommendForCustomerConfig();
+    }
+    public static boolean isRecommendForCustomerPopupDisplayed(){
+        return boostPage.isRecommendForCustomerPopupDisplayed();
+    }
 }

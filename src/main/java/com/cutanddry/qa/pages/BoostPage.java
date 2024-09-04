@@ -40,6 +40,9 @@ public class BoostPage extends LoginPage{
     By btn_cmi_config = By.xpath("//tr[td[contains(text(), 'Compare Similar Items')]]//button[contains(text(), 'View & Configure')]");
     By txt_popupCompareSimilarItems = By.xpath("//div[text()='Configure item recommendation carousel']");
     By toggle_carouselDisplayStatus = By.xpath("//input[@type='checkbox' and @role='switch']");
+    By btn_rfc_config = By.xpath("//tr[td[contains(text(), 'Recommend for Customer')]]//button[contains(text(), 'View & Configure')]");
+    By txt_popupRecommendForCustomer = By.xpath("//div[text()='Configure item recommendation carousel']");
+
 
     public boolean isBoostTextDisplayed(){
         try {
@@ -157,5 +160,11 @@ public class BoostPage extends LoginPage{
     }
     public void toggleCarouselDisplayStatus() {
         distributorUI.click(toggle_carouselDisplayStatus);
+    }
+    public void clickRecommendForCustomerConfig() {
+        distributorUI.click(btn_rfc_config);
+    }
+    public boolean isRecommendForCustomerPopupDisplayed() {
+        return distributorUI.isDisplayed(txt_popupRecommendForCustomer);
     }
 }
