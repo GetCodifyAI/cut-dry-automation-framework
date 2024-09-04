@@ -40,7 +40,7 @@ public class CustomersPage extends LoginPage {
     By section_compareSimilar = By.xpath("//div[text()='Compare Similar Items']");
     By lbl_recommendedForYouItem = By.xpath("//div[text()='Recommended by You']//following-sibling::div//div[text()='#00475']");
     By lbl_recommendedBySalesRep = By.xpath("//div[text()='Recommended by Steve O']//following-sibling::div//div[text()='#00475']");
-
+    By section_dontForget = By.xpath("//div[text()=\"Don't Forget to Order\"]");
 
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
@@ -204,5 +204,8 @@ public class CustomersPage extends LoginPage {
     }
     public boolean isRecommendedBySalesRepDisplayed() {
         return distributorUI.isDisplayed(lbl_recommendedBySalesRep);
+    }
+    public boolean isDontForgetToOrderDisplayed(){
+        return distributorUI.isDisplayed(section_dontForget);
     }
 }
