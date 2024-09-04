@@ -46,7 +46,7 @@ public class BoostPage extends LoginPage {
     By txt_popupRecommendedBySalesRep = By.xpath("//div[text()='Select a sales rep to configure']");
     By btn_salesRepConfig = By.xpath("//tr[td[text()='Steve O']]//button[text()='Configure']");
     By txt_popupSalesRepConfig = By.xpath("//div[text()='Configure item recommendation carousel']");
-    By btn_dfto_config = By.xpath("//tr[td[contains(text(), 'Don't Forget to Order')]]//button[contains(text(), 'View & Configure')]");
+    By btn_dfto_config = By.xpath("//tr[td[contains(text(), \"Don't Forget to Order\")]]//button[contains(text(), \"View & Configure\")]");
     By txt_popupDontForgetToOrder = By.xpath("//div[text()='Configure item recommendation carousel']");
 
 
@@ -187,7 +187,7 @@ public class BoostPage extends LoginPage {
         return distributorUI.isDisplayed(txt_popupSalesRepConfig);
     }
     public void clickDontForgetToOrderConfig() {
-        distributorUI.click(btn_cmi_config);
+        distributorUI.click(btn_dfto_config);
     }
     public boolean isDontForgetPopupDisplayed() {
         return distributorUI.isDisplayed(txt_popupDontForgetToOrder);
