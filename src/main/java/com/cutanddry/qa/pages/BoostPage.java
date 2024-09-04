@@ -21,9 +21,8 @@ public class BoostPage extends LoginPage {
     By btn_clear = By.xpath("//div[contains(@class, 'themed_select__clear-indicator')]");
     By txt_broadcastSuccess = By.xpath("//div[text()='Broadcast message created successfully']");
     By btn_ok = By.xpath("//button[text()='OK']");
-    By btn_X = By.xpath("//button//*[@data-icon='times-circle']");
+    By btn_X = By.xpath("//tr[td[contains(text(),'Test Broadcast Message')]]//button//*[name()='svg' and @data-icon='times-circle']");
     By btn_yes = By.xpath("//button[text()='Yes']");
-    By txt_deactivated = By.xpath("//h2[text()='Deactivated']");
     By tab_suggestiveSales = By.xpath("//a[text()='Suggestive Sales']");
     By txt_topCategoryPicks = By.xpath("//td[text()='Top Category Picks']");
     By btn_topPicks_config = By.xpath("//tr[td[contains(text(), 'Top Category Picks')]]//button[contains(text(), 'View & Configure')]");
@@ -118,8 +117,9 @@ public class BoostPage extends LoginPage {
     public void clickYes() {
         distributorUI.click(btn_yes);
     }
-    public boolean isDeactivatedDisplayed() {
-        return distributorUI.isDisplayed(txt_deactivated);
+    public boolean isDeactivated() {
+        distributorUI.waitForInvisibility(btn_X);
+        return distributorUI.isDisplayed(btn_X);
     }
     public void clickSuggestiveSales() {
         distributorUI.click(tab_suggestiveSales);

@@ -53,7 +53,7 @@ public class VerifyBroadcastMessageTest extends TestBase {
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickXButton();
         Boost.clickYes();
-        softAssert.assertTrue(Boost.isDeactivatedDisplayed(),"deactivate error");
+        softAssert.assertFalse(Boost.isDeactivated(),"deactivate error");
         softAssert.assertAll();
     }
 

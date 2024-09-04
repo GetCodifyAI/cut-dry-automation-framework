@@ -55,8 +55,8 @@ public class Boost {
     public static void clickYes(){
         boostPage.clickYes();
     }
-    public static boolean isDeactivatedDisplayed(){
-        return boostPage.isDeactivatedDisplayed();
+    public static boolean isDeactivated(){
+        return boostPage.isDeactivated();
     }
     public static void clickSuggestiveSales(){
         boostPage.clickSuggestiveSales();
