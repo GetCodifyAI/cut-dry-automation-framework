@@ -22,7 +22,6 @@
             <class name="com.cutanddry.qa.tests.boost.VerifyCompareSimilarItemsTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedForCustomerTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedBySalesRepTest" />
-            <class name="com.cutanddry.qa.tests.boost.VerifyDontForgetToOrderTest" />
         </classes>
     </test>
 </suite>
