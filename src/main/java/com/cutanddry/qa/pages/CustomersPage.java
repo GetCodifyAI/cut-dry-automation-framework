@@ -38,7 +38,8 @@ public class CustomersPage extends LoginPage {
     By lbl_itemAdded = By.xpath("//div[text()='Top Category Picks']//following-sibling::div//div[text()='#00475']");
     String lbl_searchedItem = "//div[text()='CODE']";
     By section_compareSimilar = By.xpath("//div[text()='Compare Similar Items']");
-    By lbl_recommendedForYouItem = By.xpath("//div[text()='Recommended for You']//following-sibling::div//div[text()='#00475']");
+    By lbl_recommendedForYouItem = By.xpath("//div[text()='Recommended by You']//following-sibling::div//div[text()='#00475']");
+    By lbl_recommendedBySalesRep = By.xpath("//div[text()='Recommended by Steve O']//following-sibling::div//div[text()='#00475']");
 
 
     public void clickOnSearchCustomers(){
@@ -201,5 +202,7 @@ public class CustomersPage extends LoginPage {
     public boolean isRecommendedForYouItemDisplayed(){
         return distributorUI.isDisplayed(lbl_recommendedForYouItem);
     }
-
+    public boolean isRecommendedBySalesRepDisplayed() {
+        return distributorUI.isDisplayed(lbl_recommendedBySalesRep);
+    }
 }

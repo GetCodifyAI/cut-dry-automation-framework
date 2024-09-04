@@ -2,7 +2,7 @@ package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
 
-public class BoostPage extends LoginPage{
+public class BoostPage extends LoginPage {
     By txt_boost = By.xpath("//li[contains(text(),'Boost')]");
     By btn_addMessage = By.xpath("//button[text()='Add Message']");
     By txt_step1 = By.xpath("//div[text()='Step 1 - Select your message recepients']");
@@ -42,74 +42,77 @@ public class BoostPage extends LoginPage{
     By toggle_carouselDisplayStatus = By.xpath("//div[@class='react-switch-handle']");
     By btn_rfc_config = By.xpath("//tr[td[contains(text(), 'Recommended for Customer')]]//button[contains(text(), 'View & Configure')]");
     By txt_popupRecommendForCustomer = By.xpath("//div[text()='Configure item recommendation carousel']");
+    By btn_rbsr_config = By.xpath("//tr[td[contains(text(), 'Recommended by Sales Rep')]]//button[contains(text(), 'View & Configure')]");
+    By txt_popupRecommendedBySalesRep = By.xpath("//div[text()='Select a sales rep to configure']");
+    By btn_salesRepConfig = By.xpath("//tr[td[text()='Steve O']]//button[text()='Configure']");
+    By txt_popupSalesRepConfig = By.xpath("//div[text()='Configure item recommendation carousel']");
 
-
-    public boolean isBoostTextDisplayed(){
+    public boolean isBoostTextDisplayed() {
         try {
             distributorUI.waitForVisibility(txt_boost);
-        } catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
         return distributorUI.isDisplayed(txt_boost);
     }
-    public void clickAddMessage(){
+    public void clickAddMessage() {
         distributorUI.click(btn_addMessage);
     }
-    public boolean isStepOneDisplayed(){
+    public boolean isStepOneDisplayed() {
         distributorUI.waitForClickability(btn_continue);
         return distributorUI.isDisplayed(txt_step1);
     }
-    public void clickCustomersDropdown(){
+    public void clickCustomersDropdown() {
         distributorUI.click(dropdown_customers);
     }
     public void selectCustomList() {
         distributorUI.click(option_customList);
     }
-    public boolean isSelectCustomersDisplayed(){
+    public boolean isSelectCustomersDisplayed() {
         return distributorUI.isDisplayed(txt_selectCustomers);
     }
-    public void clickSelectCustomersDropdown(){
+    public void clickSelectCustomersDropdown() {
         distributorUI.click(dropdown_customList);
     }
-    public void selectCustomer(){
+    public void selectCustomer() {
         distributorUI.sendKeys(dropdown_search, "Kafe Layers #3 Test - San Francisco");
         distributorUI.click(txt_KafeLayers);
     }
-    public boolean isSelectionCountDisplayed(){
+    public boolean isSelectionCountDisplayed() {
         return distributorUI.isDisplayed(txt_selectionCount);
     }
-    public void clickContinue(){
+    public void clickContinue() {
         distributorUI.click(btn_continue);
     }
-    public boolean isStepTwoDisplayed(){
+    public boolean isStepTwoDisplayed() {
         distributorUI.waitForClickability(btn_submit);
         return distributorUI.isDisplayed(txt_step2);
     }
-    public void typeMessage(){
+    public void typeMessage() {
         distributorUI.sendKeys(type_message, "Test Broadcast Message");
     }
-    public void addURL(){
+    public void addURL() {
         distributorUI.sendKeys(add_url, "https://supplier-uat.staging.cutanddry.com/customers/place_order/103430775/103430778/212522808/103430762/quantities?origin=order_guide&catalog=true&categoryId=1&page=1&canonicalProduct=46056522&srcPge=Order+Guide&srcLoc=General&verifiedVendorId=46017666&ogSortView=custom_view&landing=true (Link: https://supplier-uat.staging.cutanddry.com/customers/place_order/103430775/103430778/212522808/103430762/quantities?origin=order_guide&catalog=true&categoryId=1&page=1&canonicalProduct=46056522&srcPge=Order+Guide&srcLoc=General&verifiedVendorId=46017666&ogSortView=custom_view&landing=true )");
     }
-    public void removeNotifications(){
+    public void removeNotifications() {
         distributorUI.click(btn_clear);
     }
-    public void clickSubmitButton(){
+    public void clickSubmitButton() {
         distributorUI.click(btn_submit);
     }
-    public boolean isBroadcastSuccess(){
+    public boolean isBroadcastSuccess() {
         return distributorUI.isDisplayed(txt_broadcastSuccess);
     }
-    public void clickOkButton(){
+    public void clickOkButton() {
         distributorUI.click(btn_ok);
     }
-    public void clickXButton(){
+    public void clickXButton() {
         distributorUI.click(btn_X);
     }
-    public void clickYes(){
+    public void clickYes() {
         distributorUI.click(btn_yes);
     }
-    public boolean isDeactivatedDisplayed(){
+    public boolean isDeactivatedDisplayed() {
         return distributorUI.isDisplayed(txt_deactivated);
     }
     public void clickSuggestiveSales() {
@@ -133,7 +136,7 @@ public class BoostPage extends LoginPage{
     }
     public void addItem() {
         distributorUI.waitForVisibility(input_addItem);
-        distributorUI.sendKeys(input_addItem,"00475");
+        distributorUI.sendKeys(input_addItem, "00475");
         distributorUI.click(txt_itemOrange);
     }
     public void clickAdd() {
@@ -166,5 +169,18 @@ public class BoostPage extends LoginPage{
     }
     public boolean isRecommendForCustomerPopupDisplayed() {
         return distributorUI.isDisplayed(txt_popupRecommendForCustomer);
+    }
+    public void clickRecommendBySalesRepConfig() {
+        distributorUI.click(btn_rbsr_config);
+    }
+    public boolean isRecommendBySalesRepPopupDisplayed() {
+        return distributorUI.isDisplayed(txt_popupRecommendedBySalesRep);
+    }
+    public void clickSalesRepConfig() {
+        distributorUI.waitForVisibility(btn_salesRepConfig);
+        distributorUI.click(btn_salesRepConfig);
+    }
+    public boolean isSalesRepConfigPopupDisplayed() {
+        return distributorUI.isDisplayed(txt_popupSalesRepConfig);
     }
 }

@@ -21,6 +21,7 @@
             <class name="com.cutanddry.qa.tests.boost.VerifyTopCategoryPicksTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyCompareSimilarItemsTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedForCustomerTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedBySalesRepTest" />
         </classes>
     </test>
 </suite>

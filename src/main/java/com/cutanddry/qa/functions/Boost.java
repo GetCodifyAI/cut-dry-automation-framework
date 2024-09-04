@@ -107,4 +107,16 @@ public class Boost {
     public static boolean isRecommendForCustomerPopupDisplayed(){
         return boostPage.isRecommendForCustomerPopupDisplayed();
     }
+    public static void clickRecommendBySalesRepConfig(){
+        boostPage.clickRecommendBySalesRepConfig();
+    }
+    public static boolean isRecommendBySalesRepPopupDisplayed(){
+        return boostPage.isRecommendBySalesRepPopupDisplayed();
+    }
+    public static void clickSalesRepConfig(){
+        boostPage.clickSalesRepConfig();
+    }
+    public static boolean isSalesRepConfigPopupDisplayed(){
+        return boostPage.isSalesRepConfigPopupDisplayed();
+    }
 }
