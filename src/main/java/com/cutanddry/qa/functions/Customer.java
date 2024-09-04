@@ -1,7 +1,6 @@
 package com.cutanddry.qa.functions;
 
 import com.cutanddry.qa.pages.CustomersPage;
-import lombok.SneakyThrows;
 
 public class Customer {
     static CustomersPage customersPage = new CustomersPage();
@@ -143,13 +142,16 @@ public class Customer {
     public static boolean isItemInTopCategoryPicks(){
         return customersPage.isItemInTopCategoryPicks();
     }
-    public static void selectSearchedItem() {
-        customersPage.clickSearchedItem();
+    public static void selectSearchedCatalogItem(String code) {
+        customersPage.clickSearchedItem(code);
     }
     public static boolean isSelectedItemDisplayed(){
         return customersPage.isSelectedItemDisplayed();
     }
     public static boolean isCompareSimilarItemsDisplayed(){
         return customersPage.isCompareSimilarItemsDisplayed();
+    }
+    public static boolean isRecommendedForYouItemDisplayed(){
+        return customersPage.isRecommendedForYouItemDisplayed();
     }
 }

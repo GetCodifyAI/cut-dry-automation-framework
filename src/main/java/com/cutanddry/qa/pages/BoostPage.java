@@ -39,8 +39,8 @@ public class BoostPage extends LoginPage{
     By txt_itemPreview = By.xpath("//div[text()='orange - valencia']");
     By btn_cmi_config = By.xpath("//tr[td[contains(text(), 'Compare Similar Items')]]//button[contains(text(), 'View & Configure')]");
     By txt_popupCompareSimilarItems = By.xpath("//div[text()='Configure item recommendation carousel']");
-    By toggle_carouselDisplayStatus = By.xpath("//input[@type='checkbox' and @role='switch']");
-    By btn_rfc_config = By.xpath("//tr[td[contains(text(), 'Recommend for Customer')]]//button[contains(text(), 'View & Configure')]");
+    By toggle_carouselDisplayStatus = By.xpath("//div[@class='react-switch-handle']");
+    By btn_rfc_config = By.xpath("//tr[td[contains(text(), 'Recommended for Customer')]]//button[contains(text(), 'View & Configure')]");
     By txt_popupRecommendForCustomer = By.xpath("//div[text()='Configure item recommendation carousel']");
 
 

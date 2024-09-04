@@ -33,11 +33,12 @@ public class CustomersPage extends LoginPage {
     By btn_duplicateOrderYes = By.xpath("//h2[contains(text(),'Duplicate Order')]/../..//button[text()='Yes']");
     By lbl_thankYouForOrder = By.xpath("//*[contains(text(),'Thank you for your order!')]");
     By msg_banner = By.xpath("//span[text()='Test Broadcast Message']");
-    By txt_productDetails = By.xpath("//span[text()='Product Details']");
-    By txt_topCategoryPicks = By.xpath("//div[text()='Top Category Picks']");
-    By txt_itemAdded = By.xpath("//div[text()='Top Category Picks']//following-sibling::div//div[text()='#00475']");
-    By lbl_searchedItem = By.xpath("//div[text()='#00529']");
+    By lbl_productDetails = By.xpath("//span[text()='Product Details']");
+    By lbl_topCategoryPicks = By.xpath("//div[text()='Top Category Picks']");
+    By lbl_itemAdded = By.xpath("//div[text()='Top Category Picks']//following-sibling::div//div[text()='#00475']");
+    String lbl_searchedItem = "//div[text()='CODE']";
     By section_compareSimilar = By.xpath("//div[text()='Compare Similar Items']");
+    By lbl_recommendedForYouItem = By.xpath("//div[text()='Recommended for You']//following-sibling::div//div[text()='#00475']");
 
 
     public void clickOnSearchCustomers(){
@@ -180,22 +181,25 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(msg_banner);
     }
     public boolean isProductDetailsDisplayed(){
-        return distributorUI.isDisplayed(txt_productDetails);
+        return distributorUI.isDisplayed(lbl_productDetails);
     }
     public boolean isTopCategoryPicksDisplayed(){
-        return distributorUI.isDisplayed(txt_topCategoryPicks);
+        return distributorUI.isDisplayed(lbl_topCategoryPicks);
     }
     public boolean isItemInTopCategoryPicks(){
-        return distributorUI.isDisplayed(txt_itemAdded);
+        return distributorUI.isDisplayed(lbl_itemAdded);
     }
-    public void clickSearchedItem(){
-        distributorUI.click(lbl_searchedItem);
+    public void clickSearchedItem(String code){
+        distributorUI.click((By.xpath(lbl_searchedItem.replace("CODE", '#'+code))));
     }
     public boolean isSelectedItemDisplayed(){
-        return distributorUI.isDisplayed(txt_productDetails);
+        return distributorUI.isDisplayed(lbl_productDetails);
     }
     public boolean isCompareSimilarItemsDisplayed(){
         return distributorUI.isDisplayed(section_compareSimilar);
+    }
+    public boolean isRecommendedForYouItemDisplayed(){
+        return distributorUI.isDisplayed(lbl_recommendedForYouItem);
     }
 
 }
