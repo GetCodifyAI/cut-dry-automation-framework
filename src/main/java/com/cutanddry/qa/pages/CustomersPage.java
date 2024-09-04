@@ -32,6 +32,13 @@ public class CustomersPage extends LoginPage {
     By btn_submitOrder = By.xpath("//button[contains(text(),'Submit Order')]");
     By btn_duplicateOrderYes = By.xpath("//h2[contains(text(),'Duplicate Order')]/../..//button[text()='Yes']");
     By lbl_thankYouForOrder = By.xpath("//*[contains(text(),'Thank you for your order!')]");
+    By msg_banner = By.xpath("//span[text()='Test Broadcast Message']");
+    By txt_productDetails = By.xpath("//span[text()='Product Details']");
+    By txt_topCategoryPicks = By.xpath("//div[text()='Top Category Picks']");
+    By txt_itemAdded = By.xpath("//div[text()='Top Category Picks']//following-sibling::div//div[text()='#00475']");
+    By lbl_searchedItem = By.xpath("//div[text()='#00529']");
+    By section_compareSimilar = By.xpath("//div[text()='Compare Similar Items']");
+
 
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
@@ -166,4 +173,29 @@ public class CustomersPage extends LoginPage {
             return false;
         }
     }
+    public boolean isBroadcastMessageDisplayed() {
+        return distributorUI.isDisplayed(msg_banner);
+    }
+    public void clickMessage(){
+        distributorUI.click(msg_banner);
+    }
+    public boolean isProductDetailsDisplayed(){
+        return distributorUI.isDisplayed(txt_productDetails);
+    }
+    public boolean isTopCategoryPicksDisplayed(){
+        return distributorUI.isDisplayed(txt_topCategoryPicks);
+    }
+    public boolean isItemInTopCategoryPicks(){
+        return distributorUI.isDisplayed(txt_itemAdded);
+    }
+    public void clickSearchedItem(){
+        distributorUI.click(lbl_searchedItem);
+    }
+    public boolean isSelectedItemDisplayed(){
+        return distributorUI.isDisplayed(txt_productDetails);
+    }
+    public boolean isCompareSimilarItemsDisplayed(){
+        return distributorUI.isDisplayed(section_compareSimilar);
+    }
+
 }

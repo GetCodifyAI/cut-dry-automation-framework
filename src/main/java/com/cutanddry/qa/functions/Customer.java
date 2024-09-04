@@ -128,4 +128,28 @@ public class Customer {
     public static boolean isThankingForOrderPopupDisplayed(){
         return customersPage.isThankingForOrderPopupDisplayed();
     }
+    public static boolean isBroadcastMessageDisplayed() {
+        return customersPage.isBroadcastMessageDisplayed();
+    }
+    public static void clickMessage() {
+        customersPage.clickMessage();
+    }
+    public static boolean isProductDetailsDisplayed(){
+        return customersPage.isProductDetailsDisplayed();
+    }
+    public static boolean isTopCategoryPicksDisplayed(){
+        return customersPage.isTopCategoryPicksDisplayed();
+    }
+    public static boolean isItemInTopCategoryPicks(){
+        return customersPage.isItemInTopCategoryPicks();
+    }
+    public static void selectSearchedItem() {
+        customersPage.clickSearchedItem();
+    }
+    public static boolean isSelectedItemDisplayed(){
+        return customersPage.isSelectedItemDisplayed();
+    }
+    public static boolean isCompareSimilarItemsDisplayed(){
+        return customersPage.isCompareSimilarItemsDisplayed();
+    }
 }
