@@ -24,7 +24,7 @@ public class VerifyDontForgetToOrderTest extends TestBase {
     }
     @Test(groups = "DOT-TC-40")
     public void verifyDontForgetToOrder() throws InterruptedException {
-        String itemName;
+        boolean inactiveState;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -33,9 +33,10 @@ public class VerifyDontForgetToOrderTest extends TestBase {
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickSuggestiveSales();
         softAssert.assertTrue(Boost.isSuggestiveTabDisplayed(),"navigate to suggestive sales error");
+        inactiveState = Boost.checkInactiveState("Don't Forget to Order");
         Boost.clickDontForgetToOrderConfig();
         softAssert.assertTrue(Boost.isDontForgetPopupDisplayed(),"don't forget popup error");
-        Boost.toggleCarouselDisplayStatus(); //assuming default inactive
+        Boost.toggleOnCarouselDisplayStatus(inactiveState); //assuming default inactive
         Boost.clickClose();
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
@@ -50,7 +51,7 @@ public class VerifyDontForgetToOrderTest extends TestBase {
         softAssert.assertTrue(Boost.isSuggestiveTabDisplayed(),"navigate to suggestive sales error");
         Boost.clickDontForgetToOrderConfig();
         softAssert.assertTrue(Boost.isDontForgetPopupDisplayed(),"don't forget popup error");
-        Boost.toggleCarouselDisplayStatus();
+        Boost.toggleOffCarouselDisplayStatus();
         softAssert.assertAll();
     }
     @AfterMethod

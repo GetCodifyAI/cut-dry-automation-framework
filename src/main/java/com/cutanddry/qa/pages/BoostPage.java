@@ -167,8 +167,13 @@ public class BoostPage extends LoginPage {
     public boolean isCompareSimilarPopupDisplayed() {
         return distributorUI.isDisplayed(txt_popupCompareSimilarItems);
     }
-    public void toggleCarouselDisplayStatus() {
-        distributorUI.click(toggle_carouselDisplayStatus);
+    public void toggleOnCarouselDisplayStatus(boolean inactive) {
+        if (inactive){
+            distributorUI.click(toggle_carouselDisplayStatus);
+        }
+    }
+    public void toggleOffCarouselDisplayStatus() {
+            distributorUI.click(toggle_carouselDisplayStatus);
     }
     public void clickRecommendForCustomerConfig() {
         distributorUI.click(btn_recCustomer_config);

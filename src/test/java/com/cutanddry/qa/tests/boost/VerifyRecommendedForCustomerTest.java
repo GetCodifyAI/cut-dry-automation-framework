@@ -24,7 +24,7 @@ public class VerifyRecommendedForCustomerTest extends TestBase {
     }
     @Test(groups = "DOT-TC-38")
     public void verifyRecommendedForCustomer() throws InterruptedException {
-        String itemName;
+        boolean inactiveState;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -33,8 +33,10 @@ public class VerifyRecommendedForCustomerTest extends TestBase {
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickSuggestiveSales();
         softAssert.assertTrue(Boost.isSuggestiveTabDisplayed(),"navigate to suggestive sales error");
+        inactiveState = Boost.checkInactiveState("Recommended for Customer");
         Boost.clickRecommendForCustomerConfig();
         softAssert.assertTrue(Boost.isRecommendForCustomerPopupDisplayed(),"recommend for customer popup error");
+        Boost.toggleOnCarouselDisplayStatus(inactiveState);
         Boost.clickAddItems();
         Boost.addItem();
         softAssert.assertTrue(Boost.isItemAdded(),"item adding error");

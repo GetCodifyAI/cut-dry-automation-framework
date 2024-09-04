@@ -25,6 +25,7 @@ public class VerifyCompareSimilarItemsTest extends TestBase{
     }
     @Test(groups = "DOT-TC-37")
     public void verifyCompareSimilarItems() throws InterruptedException {
+        boolean inactiveState;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -33,9 +34,10 @@ public class VerifyCompareSimilarItemsTest extends TestBase{
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickSuggestiveSales();
         softAssert.assertTrue(Boost.isSuggestiveTabDisplayed(),"navigate to suggestive sales error");
+        inactiveState = Boost.checkInactiveState("Compare Similar Items");
         Boost.clickCompareSimilarItemsConfig();
         softAssert.assertTrue(Boost.isCompareSimilarPopupDisplayed(),"compare similar items popup error");
-        Boost.toggleCarouselDisplayStatus(); // assuming default inactive
+        Boost.toggleOnCarouselDisplayStatus(inactiveState);
         Boost.clickClose();
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
@@ -52,7 +54,7 @@ public class VerifyCompareSimilarItemsTest extends TestBase{
         softAssert.assertTrue(Boost.isSuggestiveTabDisplayed(),"navigate to suggestive sales error");
         Boost.clickCompareSimilarItemsConfig();
         softAssert.assertTrue(Boost.isCompareSimilarPopupDisplayed(),"compare similar items popup error");
-        Boost.toggleCarouselDisplayStatus();
+        Boost.toggleOffCarouselDisplayStatus();
         softAssert.assertAll();
     }
     @AfterMethod

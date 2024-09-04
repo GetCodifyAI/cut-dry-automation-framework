@@ -98,8 +98,11 @@ public class Boost {
     public static boolean isCompareSimilarPopupDisplayed(){
         return boostPage.isCompareSimilarPopupDisplayed();
     }
-    public static void toggleCarouselDisplayStatus(){
-        boostPage.toggleCarouselDisplayStatus();
+    public static void toggleOnCarouselDisplayStatus(boolean inactive){
+        boostPage.toggleOnCarouselDisplayStatus(inactive);
+    }
+    public static void toggleOffCarouselDisplayStatus(){
+        boostPage.toggleOffCarouselDisplayStatus();
     }
     public static void clickRecommendForCustomerConfig(){
         boostPage.clickRecommendForCustomerConfig();
@@ -131,7 +134,7 @@ public class Boost {
     public static boolean isMoreFromThisPopupDisplayed(){
         return boostPage.isMoreFromThisPopupDisplayed();
     }
-    public static boolean checkToggleState(String type){
+    public static boolean checkInactiveState(String type){
         return boostPage.checkInactive(type);
     }
 
