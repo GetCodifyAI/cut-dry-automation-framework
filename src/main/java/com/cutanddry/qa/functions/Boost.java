@@ -119,4 +119,10 @@ public class Boost {
     public static boolean isSalesRepConfigPopupDisplayed(){
         return boostPage.isSalesRepConfigPopupDisplayed();
     }
+    public static void clickDontForgetToOrderConfig(){
+        boostPage.clickDontForgetToOrderConfig();
+    }
+    public static boolean isDontForgetPopupDisplayed(){
+        return boostPage.isDontForgetPopupDisplayed();
+    }
 }

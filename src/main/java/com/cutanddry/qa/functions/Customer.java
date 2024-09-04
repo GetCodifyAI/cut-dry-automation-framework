@@ -157,4 +157,7 @@ public class Customer {
     public static boolean isRecommendedBySalesRepDisplayed(){
         return customersPage.isRecommendedBySalesRepDisplayed();
     }
+    public static boolean isDontForgetToOrderDisplayed(){
+        return customersPage.isDontForgetToOrderDisplayed();
+    }
 }
