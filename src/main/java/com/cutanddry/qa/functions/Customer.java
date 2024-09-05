@@ -3,6 +3,8 @@ package com.cutanddry.qa.functions;
 import com.cutanddry.qa.pages.CustomersPage;
 import lombok.SneakyThrows;
 
+import static com.cutanddry.qa.functions.Dashboard.dashboardPage;
+
 public class Customer {
     static CustomersPage customersPage = new CustomersPage();
 
@@ -139,5 +141,27 @@ public class Customer {
     }
     public static void searchItemOnOrderGuide(String item) {
         customersPage.typeToSearchOnOrderGuide(item);
+    }
+    public static void goToCreatePopup(){
+        customersPage.clickOnCreate();
+    }
+    public static void createOrderGuide(String orderGuideName){
+        customersPage.typeOrderGuideName(orderGuideName);
+        customersPage.clickSubmitOrderGuide();
+    }
+    public static void createOrderFromCatalog(){
+        customersPage.clickOnAddFromCatalog();
+    }
+    public static void addItemFromCatalog(){
+        customersPage.clickOnAddTOOrderGuide();
+    }
+    public static void closeEditor(){
+        customersPage.clickOnCloseEditor();
+        if (dashboardPage.isDraftOrderPopUpDisplayed()){
+            dashboardPage.clickOnNoDraftOrder();
+        }
+    }
+    public static void removeItemFromCatalog(){
+        customersPage.clickOnRemoveFromOrderGuide();
     }
 }

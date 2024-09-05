@@ -18,6 +18,8 @@
             <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordInvalidTest" />
             <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyThePrintFeatureTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheSearchTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersWithCatalogItemsTest" />
         </classes>
     </test>
 </suite>

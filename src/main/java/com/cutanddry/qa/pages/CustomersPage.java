@@ -36,6 +36,14 @@ public class CustomersPage extends LoginPage {
     By lbl_printFriendlyOrderGuide = By.xpath("//h5[contains(text(), 'Print-Friendly Order Guide')]");
     By btn_downloadOrderGuide = By.xpath("//button[contains(text(), 'Download Order Guide')]");
     By tbx_orderGuideSearch = By.xpath("//input[@placeholder='Search order guide...']");
+    By btn_create = By.xpath("//button[contains(text(), 'Create')]");
+    By tbx_OrderGuideName = By.xpath("//input[@placeholder='Enter Name']");
+    By btn_submitOrderGuide = By.xpath("//button[contains(text(), 'Submit')]");
+    By btn_addFromCatalog = By.xpath("//div[contains(text(), 'Add from Catalog')]");
+    By btn_addToOrderGuide = By.xpath("//button[@data-tip='Add to Order Guide']");
+    By btn_closeEditor = By.xpath("//button[contains(text(), 'Close Editor')]");
+    By btn_removeFromOrderGuide = By.xpath("//button[@data-tip='Remove from Order Guide']");
+
 
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
@@ -53,7 +61,7 @@ public class CustomersPage extends LoginPage {
     }
     public String getItemNameFirstRow() throws InterruptedException {
         distributorUI.waitForElementEnabledState(lbl_itemNameList,true);
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(3000);
         return distributorUI.getText(lbl_itemNameList);
     }
     public void clickPlusQryFirstRow(){
@@ -183,5 +191,31 @@ public class CustomersPage extends LoginPage {
     }
     public void typeToSearchOnOrderGuide(String item){
         distributorUI.sendKeys(tbx_orderGuideSearch,item);
+    }
+    public void clickOnCreate(){
+        distributorUI.waitForClickability(btn_create);
+        distributorUI.click(btn_create);
+    }
+    public void typeOrderGuideName(String orderGuideName){
+        distributorUI.sendKeys(tbx_OrderGuideName,orderGuideName);
+    }
+    public void clickSubmitOrderGuide(){
+        distributorUI.waitForClickability(btn_submitOrderGuide);
+        distributorUI.click(btn_submitOrderGuide);
+    }
+    public void clickOnAddFromCatalog(){
+        distributorUI.waitForVisibility(btn_addFromCatalog);
+        distributorUI.click(btn_addFromCatalog);
+    }
+    public void clickOnAddTOOrderGuide(){
+        distributorUI.waitForVisibility(btn_addToOrderGuide);
+        distributorUI.click(btn_addToOrderGuide);
+    }
+    public void clickOnCloseEditor(){
+        distributorUI.click(btn_closeEditor);
+    }
+    public void clickOnRemoveFromOrderGuide(){
+        distributorUI.waitForVisibility(btn_removeFromOrderGuide);
+        distributorUI.click(btn_removeFromOrderGuide);
     }
 }
