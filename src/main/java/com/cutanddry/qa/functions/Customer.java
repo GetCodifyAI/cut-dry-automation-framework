@@ -1,7 +1,6 @@
 package com.cutanddry.qa.functions;
 
 import com.cutanddry.qa.pages.CustomersPage;
-import lombok.SneakyThrows;
 
 public class Customer {
     static CustomersPage customersPage = new CustomersPage();
@@ -127,5 +126,41 @@ public class Customer {
     }
     public static boolean isThankingForOrderPopupDisplayed(){
         return customersPage.isThankingForOrderPopupDisplayed();
+    }
+    public static boolean isBroadcastMessageDisplayed() {
+        return customersPage.isBroadcastMessageDisplayed();
+    }
+    public static void clickMessage() {
+        customersPage.clickMessage();
+    }
+    public static boolean isProductDetailsDisplayed(){
+        return customersPage.isProductDetailsDisplayed();
+    }
+    public static boolean isTopCategoryPicksDisplayed(){
+        return customersPage.isTopCategoryPicksDisplayed();
+    }
+    public static boolean isItemInTopCategoryPicks(){
+        return customersPage.isItemInTopCategoryPicks();
+    }
+    public static void selectSearchedCatalogItem(String code) {
+        customersPage.clickSearchedItem(code);
+    }
+    public static boolean isSelectedItemDisplayed(){
+        return customersPage.isSelectedItemDisplayed();
+    }
+    public static boolean isCompareSimilarItemsDisplayed(){
+        return customersPage.isCompareSimilarItemsDisplayed();
+    }
+    public static boolean isRecommendedForYouItemDisplayed(){
+        return customersPage.isRecommendedForYouItemDisplayed();
+    }
+    public static boolean isRecommendedBySalesRepDisplayed(){
+        return customersPage.isRecommendedBySalesRepDisplayed();
+    }
+    public static boolean isDontForgetToOrderDisplayed(){
+        return customersPage.isDontForgetToOrderDisplayed();
+    }
+    public static boolean isMoreFromThisBrandDisplayed(){
+        return customersPage.isMoreFromThisBrandDisplayed();
     }
 }

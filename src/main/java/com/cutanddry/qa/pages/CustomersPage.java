@@ -32,6 +32,16 @@ public class CustomersPage extends LoginPage {
     By btn_submitOrder = By.xpath("//button[contains(text(),'Submit Order')]");
     By btn_duplicateOrderYes = By.xpath("//h2[contains(text(),'Duplicate Order')]/../..//button[text()='Yes']");
     By lbl_thankYouForOrder = By.xpath("//*[contains(text(),'Thank you for your order!')]");
+    By msg_banner = By.xpath("//span[text()='Test Broadcast Message']");
+    By lbl_productDetails = By.xpath("//span[text()='Product Details']");
+    By lbl_topCategoryPicks = By.xpath("//div[text()='Top Category Picks']");
+    By lbl_itemAdded = By.xpath("//div[text()='Top Category Picks']//following-sibling::div//div[text()='#00475']");
+    String lbl_searchedItem = "//div[text()='CODE']";
+    By section_compareSimilar = By.xpath("//div[text()='Compare Similar Items']");
+    By lbl_recommendedForYouItem = By.xpath("//div[text()='Recommended for You']//following-sibling::div//div[text()='#00475']");
+    By lbl_recommendedBySalesRep = By.xpath("//div[text()='Recommended by Steve O']//following-sibling::div//div[text()='#00475']");
+    By section_dontForget = By.xpath("//div[text()=\"Don't Forget to Order\"]");
+    By section_moreFromThisBrand = By.xpath("//div[text()='More From Dole']");
 
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
@@ -165,5 +175,41 @@ public class CustomersPage extends LoginPage {
         } catch (Exception e){
             return false;
         }
+    }
+    public boolean isBroadcastMessageDisplayed() {
+        return distributorUI.isDisplayed(msg_banner);
+    }
+    public void clickMessage(){
+        distributorUI.click(msg_banner);
+    }
+    public boolean isProductDetailsDisplayed(){
+        return distributorUI.isDisplayed(lbl_productDetails);
+    }
+    public boolean isTopCategoryPicksDisplayed(){
+        return distributorUI.isDisplayed(lbl_topCategoryPicks);
+    }
+    public boolean isItemInTopCategoryPicks(){
+        return distributorUI.isDisplayed(lbl_itemAdded);
+    }
+    public void clickSearchedItem(String code){
+        distributorUI.click((By.xpath(lbl_searchedItem.replace("CODE", '#'+code))));
+    }
+    public boolean isSelectedItemDisplayed(){
+        return distributorUI.isDisplayed(lbl_productDetails);
+    }
+    public boolean isCompareSimilarItemsDisplayed(){
+        return distributorUI.isDisplayed(section_compareSimilar);
+    }
+    public boolean isRecommendedForYouItemDisplayed(){
+        return distributorUI.isDisplayed(lbl_recommendedForYouItem);
+    }
+    public boolean isRecommendedBySalesRepDisplayed() {
+        return distributorUI.isDisplayed(lbl_recommendedBySalesRep);
+    }
+    public boolean isDontForgetToOrderDisplayed(){
+        return distributorUI.isDisplayed(section_dontForget);
+    }
+    public boolean isMoreFromThisBrandDisplayed(){
+        return distributorUI.isDisplayed(section_moreFromThisBrand);
     }
 }

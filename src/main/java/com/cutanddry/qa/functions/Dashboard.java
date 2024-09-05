@@ -12,5 +12,8 @@ public class Dashboard {
     public static void navigateToCustomers() {
         dashboardPage.clickOnCustomers();
     }
+    public static void navigateToBoost() {
+        dashboardPage.clickOnBoost();
+    }
 
 }
