@@ -1,5 +1,8 @@
 package com.cutanddry.qa.pages;
 
+import com.cutanddry.qa.data.models.Broadcast;
+import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.utils.JsonUtil;
 import org.openqa.selenium.By;
 
 public class BoostPage extends LoginPage {
@@ -97,7 +100,8 @@ public class BoostPage extends LoginPage {
         distributorUI.sendKeys(type_message, "Test Broadcast Message");
     }
     public void addURL() {
-        distributorUI.sendKeys(add_url, "https://supplier-uat.staging.cutanddry.com/customers/place_order/103430775/103430778/212522808/103430762/quantities?origin=order_guide&catalog=true&categoryId=1&page=1&canonicalProduct=46056522&srcPge=Order+Guide&srcLoc=General&verifiedVendorId=46017666&ogSortView=custom_view&landing=true (Link: https://supplier-uat.staging.cutanddry.com/customers/place_order/103430775/103430778/212522808/103430762/quantities?origin=order_guide&catalog=true&categoryId=1&page=1&canonicalProduct=46056522&srcPge=Order+Guide&srcLoc=General&verifiedVendorId=46017666&ogSortView=custom_view&landing=true )");
+        Broadcast url = JsonUtil.readUrl();
+        distributorUI.sendKeys(add_url, url.getUrl());
     }
     public void removeNotifications() {
         distributorUI.click(btn_clear);
