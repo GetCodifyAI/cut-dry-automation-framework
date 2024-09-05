@@ -49,7 +49,7 @@ public class BoostPage extends LoginPage {
     By txt_popupDontForgetToOrder = By.xpath("//div[text()='Configure item recommendation carousel']");
     By btn_morefrom_config = By.xpath("//tr[td[contains(text(), 'More from this Brand')]]//button[contains(text(), 'View & Configure')]");
     By txt_popupMoreFromThis = By.xpath("//div[text()='Configure item recommendation carousel']");
-    String txt_inactive_state =  "//tr[td[contains(text(), 'Type')] and td[contains(text(), 'Inactive')]]";
+    String txt_inactive_state =  "//tr[td[contains(text(), \"Type\")] and td[contains(text(), 'Inactive')]]";
 
 
     public boolean isBoostTextDisplayed() {
@@ -168,10 +168,11 @@ public class BoostPage extends LoginPage {
     public boolean isCompareSimilarPopupDisplayed() {
         return distributorUI.isDisplayed(txt_popupCompareSimilarItems);
     }
-    public void toggleOnCarouselDisplayStatus(boolean inactive) {
+    public void toggleOnCarouselDisplayStatus(boolean inactive) throws InterruptedException {
         if (inactive){
             distributorUI.click(toggle_carouselDisplayStatus);
         }
+        distributorUI.waitForCustom(1000);
     }
     public void toggleOffCarouselDisplayStatus() {
             distributorUI.click(toggle_carouselDisplayStatus);
@@ -208,7 +209,7 @@ public class BoostPage extends LoginPage {
         return distributorUI.isDisplayed(txt_popupMoreFromThis);
     }
     public boolean checkInactive(String type) throws InterruptedException {
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(1000);
         return distributorUI.isDisplayed(By.xpath(txt_inactive_state.replace("Type", type)));
     }
 }

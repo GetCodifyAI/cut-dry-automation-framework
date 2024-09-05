@@ -98,7 +98,7 @@ public class Boost {
     public static boolean isCompareSimilarPopupDisplayed(){
         return boostPage.isCompareSimilarPopupDisplayed();
     }
-    public static void toggleOnCarouselDisplayStatus(boolean inactive){
+    public static void toggleOnCarouselDisplayStatus(boolean inactive) throws InterruptedException {
         boostPage.toggleOnCarouselDisplayStatus(inactive);
     }
     public static void toggleOffCarouselDisplayStatus(){

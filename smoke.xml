@@ -7,23 +7,23 @@
     </listeners>
     <test name="distributor tests">
         <classes>
-<!--            <class name="com.cutanddry.qa.tests.order_guide.DistributorLoginTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.DistributorOrderSubmissionTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.AddProductsFrmOrderGuideTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.AddProductsFrmCatalogTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmOrderGuideTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmCatalogTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmReviewCartTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordValidTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordInvalidTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.boost.VerifyBroadcastMessageTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.boost.VerifyTopCategoryPicksTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.boost.VerifyCompareSimilarItemsTest" />-->
+            <class name="com.cutanddry.qa.tests.order_guide.DistributorLoginTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.DistributorOrderSubmissionTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.AddProductsFrmOrderGuideTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.AddProductsFrmCatalogTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmOrderGuideTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmCatalogTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmReviewCartTest" />
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordValidTest" />
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordInvalidTest" />
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyBroadcastMessageTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTopCategoryPicksTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyCompareSimilarItemsTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedForCustomerTest" />
-<!--            <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedBySalesRepTest" />-->
+            <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedBySalesRepTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyDontForgetToOrderTest" />
-<!--            <class name="com.cutanddry.qa.tests.boost.VerifyMoreFromThisBrandTest" />-->
+            <class name="com.cutanddry.qa.tests.boost.VerifyMoreFromThisBrandTest" />
         </classes>
     </test>
 </suite>
