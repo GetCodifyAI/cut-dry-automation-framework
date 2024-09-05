@@ -1,5 +1,6 @@
 package com.cutanddry.qa.utils;
 
+import com.cutanddry.qa.data.models.Broadcast;
 import com.cutanddry.qa.data.models.ForgotPasswordUser;
 import com.cutanddry.qa.data.models.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,6 +12,7 @@ public class JsonUtil {
     private static final ObjectMapper objectMapper = new ObjectMapper();
     private static final String USER_LOGIN_JSON_PATH = "src/main/resources/userlogin.json";
     private static final String FORGOT_PASSWORD_USER_LOGIN_JSON_PATH = "src/main/resources/forgotpassworduserlogin.json";
+    private static final String BROADCAST_URL_JSON_PATH = "src/main/resources/broadcast_url.json";
 
     public static <T> T readJson(String filePath, Class<T> clazz) {
         try {
@@ -28,6 +30,7 @@ public class JsonUtil {
     public static ForgotPasswordUser readForgotPasswordUserLogin() {
         return readJson(FORGOT_PASSWORD_USER_LOGIN_JSON_PATH, ForgotPasswordUser.class);
     }
-
-
+    public static Broadcast readUrl() {
+        return readJson(BROADCAST_URL_JSON_PATH, Broadcast.class);
+    }
 }
