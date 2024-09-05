@@ -35,7 +35,7 @@ public class CustomersPage extends LoginPage {
     By btn_print = By.xpath("//button[contains(text(), 'Print')]");
     By lbl_printFriendlyOrderGuide = By.xpath("//h5[contains(text(), 'Print-Friendly Order Guide')]");
     By btn_downloadOrderGuide = By.xpath("//button[contains(text(), 'Download Order Guide')]");
-
+    By tbx_orderGuideSearch = By.xpath("//input[@placeholder='Search order guide...']");
 
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
@@ -180,5 +180,8 @@ public class CustomersPage extends LoginPage {
     public void clickOnDownloadOrderGuide(){
         distributorUI.waitForClickability(btn_downloadOrderGuide);
         distributorUI.click(btn_downloadOrderGuide);
+    }
+    public void typeToSearchOnOrderGuide(String item){
+        distributorUI.sendKeys(tbx_orderGuideSearch,item);
     }
 }

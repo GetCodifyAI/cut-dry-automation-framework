@@ -137,4 +137,7 @@ public class Customer {
     public static void printOrderGuide(){
         customersPage.clickOnDownloadOrderGuide();
     }
+    public static void searchItemOnOrderGuide(String item) {
+        customersPage.typeToSearchOnOrderGuide(item);
+    }
 }
