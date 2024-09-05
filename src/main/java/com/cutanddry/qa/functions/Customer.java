@@ -188,13 +188,30 @@ public class Customer {
         customersPage.clickOnAddFromCatalog();
     }
     public static void addItemFromCatalog(){
-        customersPage.clickOnAddTOOrderGuide();
+        customersPage.clickOnAddToOrderGuide();
     }
     public static void closeEditor(){
         customersPage.clickOnCloseEditor();
         if (dashboardPage.isDraftOrderPopUpDisplayed()){
             dashboardPage.clickOnNoDraftOrder();
         }
+    }
+    public static void createOrderByUploading(){
+        customersPage.clickUploadAList();
+    }
+    public static void uploadFile(String path){
+        customersPage.giveFilePath(path);
+        customersPage.clickNext();
+        customersPage.clickConfirm();
+    }
+    public static boolean isOrderGuideCreateSuccessPopupDisplayed(){
+        return customersPage.isOrderGuideCreateSuccessPopupDisplayed();
+    }
+    public static void clickOK(){
+        customersPage.clickOK();
+    }
+    public static void CloseEditorForUpload(){
+        customersPage.clickCloseEditorForUpload();
     }
     public static void removeItemFromCatalog(){
         customersPage.clickOnRemoveFromOrderGuide();

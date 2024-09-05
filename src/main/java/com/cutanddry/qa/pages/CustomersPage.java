@@ -40,10 +40,16 @@ public class CustomersPage extends LoginPage {
     By tbx_OrderGuideName = By.xpath("//input[@placeholder='Enter Name']");
     By btn_submitOrderGuide = By.xpath("//button[contains(text(), 'Submit')]");
     By btn_addFromCatalog = By.xpath("//div[contains(text(), 'Add from Catalog')]");
+    By btn_uploadFile = By.xpath("//button[contains(text(), 'Upload File')]");
     By btn_addToOrderGuide = By.xpath("//button[@data-tip='Add to Order Guide']");
     By btn_closeEditor = By.xpath("//button[contains(text(), 'Close Editor')]");
+    By btn_closeEditorForUpload = By.xpath("//a[contains(text(), 'Close Editor')]");
     By btn_removeFromOrderGuide = By.xpath("//button[@data-tip='Remove from Order Guide']");
-
+    By upload_file = By.xpath("//input[@type='file']");
+    By btn_next = By.xpath("//button[text()='Next']");
+    By btn_confirm = By.xpath("//button[text()='Confirm']");
+    By txt_orderGuideCreateSuccess = By.xpath("//h2[contains(text(), 'Order guide updated successfully')]");
+    By btn_OK = By.xpath("//button[text()='OK']");
     By msg_banner = By.xpath("//span[text()='Test Broadcast Message']");
     By lbl_productDetails = By.xpath("//span[text()='Product Details']");
     By lbl_topCategoryPicks = By.xpath("//div[text()='Top Category Picks']");
@@ -217,9 +223,16 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForVisibility(btn_addFromCatalog);
         distributorUI.click(btn_addFromCatalog);
     }
-    public void clickOnAddTOOrderGuide(){
+    public void clickUploadAList(){
+        distributorUI.waitForVisibility(btn_uploadFile);
+        distributorUI.click(btn_uploadFile);
+    }
+    public void clickOnAddToOrderGuide(){
         distributorUI.waitForVisibility(btn_addToOrderGuide);
         distributorUI.click(btn_addToOrderGuide);
+    }
+    public void giveFilePath(String path){
+        distributorUI.sendKeysToHiddenElements(upload_file, path);
     }
     public void clickOnCloseEditor(){
         distributorUI.click(btn_closeEditor);
@@ -263,5 +276,24 @@ public class CustomersPage extends LoginPage {
     }
     public boolean isMoreFromThisBrandDisplayed(){
         return distributorUI.isDisplayed(section_moreFromThisBrand);
+    }
+    public void clickNext(){
+        distributorUI.waitForClickability(btn_next);
+        distributorUI.click(btn_next);
+    }
+    public void clickConfirm(){
+        distributorUI.waitForClickability(btn_confirm);
+        distributorUI.click(btn_confirm);
+    }
+    public void clickOK(){
+        distributorUI.waitForClickability(btn_OK);
+        distributorUI.click(btn_OK);
+    }
+    public void clickCloseEditorForUpload(){
+        distributorUI.waitForClickability(btn_closeEditorForUpload);
+        distributorUI.click(btn_closeEditorForUpload);
+    }
+    public boolean isOrderGuideCreateSuccessPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_orderGuideCreateSuccess);
     }
 }
