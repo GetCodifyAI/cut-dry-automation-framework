@@ -32,6 +32,10 @@ public class CustomersPage extends LoginPage {
     By btn_submitOrder = By.xpath("//button[contains(text(),'Submit Order')]");
     By btn_duplicateOrderYes = By.xpath("//h2[contains(text(),'Duplicate Order')]/../..//button[text()='Yes']");
     By lbl_thankYouForOrder = By.xpath("//*[contains(text(),'Thank you for your order!')]");
+    By btn_print = By.xpath("//button[contains(text(), 'Print')]");
+    By lbl_printFriendlyOrderGuide = By.xpath("//h5[contains(text(), 'Print-Friendly Order Guide')]");
+    By btn_downloadOrderGuide = By.xpath("//button[contains(text(), 'Download Order Guide')]");
+
 
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
@@ -165,5 +169,16 @@ public class CustomersPage extends LoginPage {
         } catch (Exception e){
             return false;
         }
+    }
+    public void clickOnPrint(){
+        distributorUI.waitForClickability(btn_print);
+        distributorUI.click(btn_print);
+    }
+    public boolean isPrintFriendlyPopupDisplayed(){
+        return distributorUI.isDisplayed(lbl_printFriendlyOrderGuide);
+    }
+    public void clickOnDownloadOrderGuide(){
+        distributorUI.waitForClickability(btn_downloadOrderGuide);
+        distributorUI.click(btn_downloadOrderGuide);
     }
 }

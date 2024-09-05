@@ -128,4 +128,13 @@ public class Customer {
     public static boolean isThankingForOrderPopupDisplayed(){
         return customersPage.isThankingForOrderPopupDisplayed();
     }
+    public static void clickOnPrint(){
+        customersPage.clickOnPrint();
+    }
+    public static boolean isPrintFriendlyPopupDisplayed(){
+        return customersPage.isPrintFriendlyPopupDisplayed();
+    }
+    public static void printOrderGuide(){
+        customersPage.clickOnDownloadOrderGuide();
+    }
 }
