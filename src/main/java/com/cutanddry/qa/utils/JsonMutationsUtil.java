@@ -2,15 +2,15 @@ package com.cutanddry.qa.utils;
 
 import com.cutanddry.qa.data.models.ForgotPasswordUser;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.models.api.LoginUser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
 
-public class JsonUtil {
+public class JsonMutationsUtil {
     private static final ObjectMapper objectMapper = new ObjectMapper();
-    private static final String USER_LOGIN_JSON_PATH = "src/main/resources/userlogin.json";
-    private static final String FORGOT_PASSWORD_USER_LOGIN_JSON_PATH = "src/main/resources/forgotpassworduserlogin.json";
+    private static final String USER_LOGIN_MUTATION_JSON_PATH = "src/main/resources/api/loginMutation.json";
 
     public static <T> T readJson(String filePath, Class<T> clazz) {
         try {
@@ -22,10 +22,8 @@ public class JsonUtil {
         }
     }
 
-    public static User readUserLogin() {
-        return readJson(USER_LOGIN_JSON_PATH, User.class);
+    public static LoginUser readUserLogin() {
+        return readJson(USER_LOGIN_MUTATION_JSON_PATH, LoginUser.class);
     }
-    public static ForgotPasswordUser readForgotPasswordUserLogin() {
-        return readJson(FORGOT_PASSWORD_USER_LOGIN_JSON_PATH, ForgotPasswordUser.class);
-    }
+
 }
