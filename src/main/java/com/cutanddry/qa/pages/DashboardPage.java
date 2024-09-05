@@ -7,6 +7,7 @@ public class DashboardPage extends LoginPage{
     By btn_customers = By.xpath("//a[@data-tip='Customers']");
     By txt_draftOrder = By.xpath("//div[contains(text(), 'Do you want to continue your previous draft order?')]");
     By btn_noDraftOrder = By.xpath("//div[contains(text(), 'No')]");
+    By btn_boost = By.xpath("//a[@data-tip='Boost']");
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -18,6 +19,9 @@ public class DashboardPage extends LoginPage{
     }
     public void clickOnCustomers(){
         distributorUI.click(btn_customers);
+    }
+    public void clickOnBoost(){
+        distributorUI.click(btn_boost);
     }
     public boolean isDraftOrderPopUpDisplayed(){
         try {
