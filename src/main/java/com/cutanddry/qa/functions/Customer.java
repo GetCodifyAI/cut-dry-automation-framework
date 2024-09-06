@@ -228,4 +228,10 @@ public class Customer {
     public static boolean isEditOrderGuideTextDisplayed(){
         return customersPage.isEditOrderGuideTextDisplayed();
     }
+    public static void expandMoreOptionsDropdown(){
+        customersPage.clickOnMoreOptions();
+    }
+    public static void exportOrderGuide(){
+        customersPage.clickOnExportOrderGuide();
+    }
 }

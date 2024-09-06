@@ -12,9 +12,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyEditingOrderGuideWithCatalogItemsTest extends TestBase {
+public class VerifyExportingOrderGuideEditTest extends TestBase {
     static User user;
-    static String itemName = "Beef Flank Steaks";
     static String customerId = "16579";
 
     @BeforeMethod
@@ -23,8 +22,8 @@ public class VerifyEditingOrderGuideWithCatalogItemsTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-51")
-    public void verifyEditingOrderGuideWithCatalogItems() throws InterruptedException {
+    @Test(groups = "DOT-TC-54")
+    public void verifyExportingOrderGuideEditFeature() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -35,13 +34,8 @@ public class VerifyEditingOrderGuideWithCatalogItemsTest extends TestBase {
         Customer.clickOnOrderGuide(customerId);
         Customer.goToEdit();
         softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
-        Customer.createOrderFromCatalog();
-        Customer.searchItemOnCatalog(itemName);
-        Customer.addItemFromCatalog();
-        Customer.closeEditorCatalog();
-        Customer.searchItemOnOrderGuide(itemName);
-        Customer.goToCatalog();
-        Customer.removeItemFromCatalog();
+        Customer.expandMoreOptionsDropdown();
+        Customer.exportOrderGuide();
         softAssert.assertAll();
     }
 
@@ -50,4 +44,5 @@ public class VerifyEditingOrderGuideWithCatalogItemsTest extends TestBase {
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }
+
 }

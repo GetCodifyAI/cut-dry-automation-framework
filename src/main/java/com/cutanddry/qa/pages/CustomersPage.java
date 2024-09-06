@@ -64,7 +64,8 @@ public class CustomersPage extends LoginPage {
     By txt_companyDropdownText = By.xpath("//a[contains(text(), 'Independent Foods Co')]");
     By btn_edit = By.xpath("//button[contains(., 'Edit')]");
     By txt_editOrderGuide= By.xpath("//span[contains(text(), 'Edit Order Guide')]");
-
+    By btn_moreOptions = By.xpath("//span[contains(text(), 'More Options')]");
+    By btn_exportOrderGuide = By.xpath("//a[contains(text(), 'Export Order Guide (XLSX)')]");
 
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
@@ -319,5 +320,13 @@ public class CustomersPage extends LoginPage {
             return false;
         }
         return distributorUI.isDisplayed(txt_editOrderGuide);
+    }
+    public void clickOnMoreOptions(){
+        distributorUI.waitForClickability(btn_moreOptions);
+        distributorUI.click(btn_moreOptions);
+    }
+    public void clickOnExportOrderGuide(){
+        distributorUI.waitForClickability(btn_exportOrderGuide);
+        distributorUI.click(btn_exportOrderGuide);
     }
 }
