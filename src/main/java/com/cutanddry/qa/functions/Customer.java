@@ -216,4 +216,10 @@ public class Customer {
     public static void removeItemFromCatalog(){
         customersPage.clickOnRemoveFromOrderGuide();
     }
+    public static void clickCompanyDropdown(){
+        customersPage.clickCompanyDropdown();
+    }
+    public static boolean isCompanyDropdownTextDisplayed(){
+        return customersPage.isCompanyDropdownTextDisplayed();
+    }
 }

@@ -60,6 +60,8 @@ public class CustomersPage extends LoginPage {
     By lbl_recommendedBySalesRep = By.xpath("//div[text()='Recommended by Steve O']//following-sibling::div//div[text()='#00475']");
     By section_dontForget = By.xpath("//div[text()=\"Don't Forget to Order\"]");
     By section_moreFromThisBrand = By.xpath("//div[text()='More From Dole']");
+    By btn_companyDropdown = By.xpath("//button[.//span[text()='Company:']]");
+    By txt_companyDropdownText = By.xpath("//a[contains(text(), 'Independent Foods Co')]");
 
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
@@ -296,4 +298,10 @@ public class CustomersPage extends LoginPage {
     public boolean isOrderGuideCreateSuccessPopupDisplayed(){
         return distributorUI.isDisplayed(txt_orderGuideCreateSuccess);
     }
+    public void clickCompanyDropdown(){
+        distributorUI.waitForClickability(btn_companyDropdown);
+        distributorUI.click(btn_companyDropdown);
+    }
+    public boolean isCompanyDropdownTextDisplayed(){
+        return distributorUI.isDisplayed(txt_companyDropdownText);}
 }
