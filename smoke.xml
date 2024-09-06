@@ -29,6 +29,7 @@
             <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersWithCatalogItemsTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersUploadingExcelFileTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyCompanyDropdownTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrderGuideWithCatalogItemsTest" />
         </classes>
     </test>
 </suite>

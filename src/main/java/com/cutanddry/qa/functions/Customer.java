@@ -190,8 +190,8 @@ public class Customer {
     public static void addItemFromCatalog(){
         customersPage.clickOnAddToOrderGuide();
     }
-    public static void closeEditor(){
-        customersPage.clickOnCloseEditor();
+    public static void closeEditorCatalog(){
+        customersPage.clickOnCloseEditorCatalog();
         if (dashboardPage.isDraftOrderPopUpDisplayed()){
             dashboardPage.clickOnNoDraftOrder();
         }
@@ -210,8 +210,8 @@ public class Customer {
     public static void clickOK(){
         customersPage.clickOK();
     }
-    public static void CloseEditorForUpload(){
-        customersPage.clickCloseEditorForUpload();
+    public static void closeEditor(){
+        customersPage.closeEditor();
     }
     public static void removeItemFromCatalog(){
         customersPage.clickOnRemoveFromOrderGuide();
@@ -221,5 +221,11 @@ public class Customer {
     }
     public static boolean isCompanyDropdownTextDisplayed(){
         return customersPage.isCompanyDropdownTextDisplayed();
+    }
+    public static void goToEdit(){
+        customersPage.clickOnEdit();
+    }
+    public static boolean isEditOrderGuideTextDisplayed(){
+        return customersPage.isEditOrderGuideTextDisplayed();
     }
 }

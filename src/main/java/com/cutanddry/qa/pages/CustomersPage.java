@@ -43,7 +43,7 @@ public class CustomersPage extends LoginPage {
     By btn_uploadFile = By.xpath("//button[contains(text(), 'Upload File')]");
     By btn_addToOrderGuide = By.xpath("//button[@data-tip='Add to Order Guide']");
     By btn_closeEditor = By.xpath("//button[contains(text(), 'Close Editor')]");
-    By btn_closeEditorForUpload = By.xpath("//a[contains(text(), 'Close Editor')]");
+    By btn_closeEditor_ = By.xpath("//a[contains(text(), 'Close Editor')]");
     By btn_removeFromOrderGuide = By.xpath("//button[@data-tip='Remove from Order Guide']");
     By upload_file = By.xpath("//input[@type='file']");
     By btn_next = By.xpath("//button[text()='Next']");
@@ -62,6 +62,9 @@ public class CustomersPage extends LoginPage {
     By section_moreFromThisBrand = By.xpath("//div[text()='More From Dole']");
     By btn_companyDropdown = By.xpath("//button[.//span[text()='Company:']]");
     By txt_companyDropdownText = By.xpath("//a[contains(text(), 'Independent Foods Co')]");
+    By btn_edit = By.xpath("//button[contains(., 'Edit')]");
+    By txt_editOrderGuide= By.xpath("//span[contains(text(), 'Edit Order Guide')]");
+
 
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
@@ -236,7 +239,7 @@ public class CustomersPage extends LoginPage {
     public void giveFilePath(String path){
         distributorUI.sendKeysToHiddenElements(upload_file, path);
     }
-    public void clickOnCloseEditor(){
+    public void clickOnCloseEditorCatalog(){
         distributorUI.click(btn_closeEditor);
     }
     public void clickOnRemoveFromOrderGuide(){
@@ -291,9 +294,9 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForClickability(btn_OK);
         distributorUI.click(btn_OK);
     }
-    public void clickCloseEditorForUpload(){
-        distributorUI.waitForClickability(btn_closeEditorForUpload);
-        distributorUI.click(btn_closeEditorForUpload);
+    public void closeEditor(){
+        distributorUI.waitForClickability(btn_closeEditor_);
+        distributorUI.click(btn_closeEditor_);
     }
     public boolean isOrderGuideCreateSuccessPopupDisplayed(){
         return distributorUI.isDisplayed(txt_orderGuideCreateSuccess);
@@ -303,5 +306,18 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_companyDropdown);
     }
     public boolean isCompanyDropdownTextDisplayed(){
-        return distributorUI.isDisplayed(txt_companyDropdownText);}
+        return distributorUI.isDisplayed(txt_companyDropdownText);
+    }
+    public void clickOnEdit(){
+        distributorUI.waitForClickability(btn_edit);
+        distributorUI.click(btn_edit);
+    }
+    public boolean isEditOrderGuideTextDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_editOrderGuide);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_editOrderGuide);
+    }
 }
