@@ -16,21 +16,21 @@
             <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmReviewCartTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyThePrintFeatureTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheSearchTest" />
-<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersWithCatalogItemsTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersUploadingExcelFileTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyCompanyDropdownTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrderGuideWithCatalogItemsTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyExportingOrderGuideEditTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordValidTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordInvalidTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.boost.VerifyBroadcastMessageTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.boost.VerifyTopCategoryPicksTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.boost.VerifyCompareSimilarItemsTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedForCustomerTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedBySalesRepTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.boost.VerifyDontForgetToOrderTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.boost.VerifyMoreFromThisBrandTest" />-->
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersWithCatalogItemsTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersUploadingExcelFileTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyCompanyDropdownTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrderGuideWithCatalogItemsTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyExportingOrderGuideEditTest" />
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordValidTest" />
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordInvalidTest" />
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyBroadcastMessageTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTopCategoryPicksTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyCompareSimilarItemsTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedForCustomerTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedBySalesRepTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyDontForgetToOrderTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyMoreFromThisBrandTest" />
         </classes>
     </test>
 </suite>
