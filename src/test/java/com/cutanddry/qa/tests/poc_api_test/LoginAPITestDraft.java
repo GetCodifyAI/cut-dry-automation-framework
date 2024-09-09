@@ -4,10 +4,12 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
+import java.util.logging.Logger;
+
 import static org.hamcrest.Matchers.equalTo;
 import static io.restassured.RestAssured.given;
 
-public class LoginAPITest   {
+public class LoginAPITestDraft {
 
     @Test
     public void loginAPI(){
