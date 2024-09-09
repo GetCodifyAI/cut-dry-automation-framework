@@ -177,10 +177,10 @@ public class Customer {
     public static void searchItemOnOrderGuide(String item) throws InterruptedException {
         customersPage.typeToSearchOnOrderGuide(item);
     }
-    public static void goToCreatePopup(){
+    public static void goToCreatePopup() throws InterruptedException {
         customersPage.clickOnCreate();
     }
-    public static void createOrderGuide(String orderGuideName){
+    public static void createOrderGuide(String orderGuideName) throws InterruptedException {
         customersPage.typeOrderGuideName(orderGuideName);
         customersPage.clickSubmitOrderGuide();
     }

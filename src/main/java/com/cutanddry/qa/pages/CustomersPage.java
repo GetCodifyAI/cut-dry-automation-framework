@@ -234,11 +234,14 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(tbx_orderGuideSearch,item);
     }
-    public void clickOnCreate(){
+    public void clickOnCreate() throws InterruptedException {
+        distributorUI.waitForCustom(1000);
         distributorUI.waitForClickability(btn_create);
         distributorUI.click(btn_create);
     }
-    public void typeOrderGuideName(String orderGuideName){
+    public void typeOrderGuideName(String orderGuideName) throws InterruptedException {
+        distributorUI.clear(tbx_orderGuideSearch);
+        distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(tbx_OrderGuideName,orderGuideName);
     }
     public void clickSubmitOrderGuide(){
