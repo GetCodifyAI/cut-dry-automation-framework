@@ -69,6 +69,8 @@ public class CustomersPage extends LoginPage {
     By btn_importOrderGuide = By.xpath("//a[contains(text(), 'Import Order Guide (XLSX)')]");
     By btn_uploadToOrder = By.xpath("//a[contains(text(), 'Upload to Order')]");
     By txt_reviewOrder= By.xpath("//div[text()='Review Order']");
+    By txt_orderGuideUpdated= By.xpath("//h2[text()='Order guide updated successfully']");
+
 
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
@@ -342,7 +344,11 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_uploadToOrder);
     }
     public boolean isReviewOrderTextDisplayed(){
-        distributorUI.waitForVisibility(txt_editOrderGuide);
-        return distributorUI.isDisplayed(txt_editOrderGuide);
+        distributorUI.waitForVisibility(txt_reviewOrder);
+        return distributorUI.isDisplayed(txt_reviewOrder);
+    }
+    public boolean isOrderGuideUpdatedTextDisplayed(){
+        distributorUI.waitForVisibility(txt_orderGuideUpdated);
+        return distributorUI.isDisplayed(txt_orderGuideUpdated);
     }
 }

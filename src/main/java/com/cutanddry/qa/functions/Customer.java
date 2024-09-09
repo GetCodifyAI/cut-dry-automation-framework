@@ -243,4 +243,7 @@ public class Customer {
     public static boolean isReviewOrderTextDisplayed(){
         return customersPage.isReviewOrderTextDisplayed();
     }
+    public static boolean isOrderGuideUpdatedTextDisplayed(){
+        return customersPage.isOrderGuideUpdatedTextDisplayed();
+    }
 }

@@ -91,6 +91,7 @@ public class BoostPage extends LoginPage {
         return distributorUI.isDisplayed(txt_selectionCount);
     }
     public void clickContinue() {
+        distributorUI.waitForClickability(btn_continue);
         distributorUI.click(btn_continue);
     }
     public boolean isStepTwoDisplayed() {
@@ -98,6 +99,7 @@ public class BoostPage extends LoginPage {
         return distributorUI.isDisplayed(txt_step2);
     }
     public void typeMessage() {
+        distributorUI.waitForVisibility(type_message);
         distributorUI.sendKeys(type_message, "Test Broadcast Message");
     }
     public void addURL() {
@@ -111,6 +113,7 @@ public class BoostPage extends LoginPage {
         distributorUI.click(btn_submit);
     }
     public boolean isBroadcastSuccess() {
+        distributorUI.waitForVisibility(txt_broadcastSuccess);
         return distributorUI.isDisplayed(txt_broadcastSuccess);
     }
     public void clickOkButton() {
