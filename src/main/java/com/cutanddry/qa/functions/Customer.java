@@ -117,7 +117,7 @@ public class Customer {
     public static double getUnitPriceFirstRowCart(){
         return customersPage.getUnitPriceFirstRowCart();
     }
-    public static double getTotalPriceCart(){
+    public static double getTotalPriceCart() throws InterruptedException {
         return customersPage.getTotalPriceCart();
     }
     public static void submitOrder(){
@@ -233,5 +233,14 @@ public class Customer {
     }
     public static void exportOrderGuide(){
         customersPage.clickOnExportOrderGuide();
+    }
+    public static void importOrderGuide(){
+        customersPage.clickOnImportOrderGuide();
+    }
+    public static void uploadToOrder(){
+        customersPage.clickOnUploadToOrder();
+    }
+    public static boolean isReviewOrderTextDisplayed(){
+        return customersPage.isReviewOrderTextDisplayed();
     }
 }

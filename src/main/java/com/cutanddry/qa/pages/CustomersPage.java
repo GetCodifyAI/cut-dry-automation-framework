@@ -66,6 +66,9 @@ public class CustomersPage extends LoginPage {
     By txt_editOrderGuide= By.xpath("//span[contains(text(), 'Edit Order Guide')]");
     By btn_moreOptions = By.xpath("//span[contains(text(), 'More Options')]");
     By btn_exportOrderGuide = By.xpath("//a[contains(text(), 'Export Order Guide (XLSX)')]");
+    By btn_importOrderGuide = By.xpath("//a[contains(text(), 'Import Order Guide (XLSX)')]");
+    By btn_uploadToOrder = By.xpath("//a[contains(text(), 'Upload to Order')]");
+    By txt_reviewOrder= By.xpath("//div[text()='Review Order']");
 
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
@@ -172,8 +175,9 @@ public class CustomersPage extends LoginPage {
     public Double getUnitPriceFirstRowCart(){
         return Double.valueOf(distributorUI.getText(lbl_itemPriceCartRowOne).split("\\$")[1]);
     }
-    public Double getTotalPriceCart(){
+    public Double getTotalPriceCart() throws InterruptedException {
         distributorUI.waitForVisibility(lbl_cartTotal);
+        distributorUI.waitForCustom(3000);
         return Double.valueOf(distributorUI.getText(lbl_cartTotal).split("\\$")[1]);
     }
     public void submitOrder(){
@@ -328,5 +332,17 @@ public class CustomersPage extends LoginPage {
     public void clickOnExportOrderGuide(){
         distributorUI.waitForClickability(btn_exportOrderGuide);
         distributorUI.click(btn_exportOrderGuide);
+    }
+    public void clickOnImportOrderGuide(){
+        distributorUI.waitForClickability(btn_importOrderGuide);
+        distributorUI.click(btn_importOrderGuide);
+    }
+    public void clickOnUploadToOrder(){
+        distributorUI.waitForClickability(btn_uploadToOrder);
+        distributorUI.click(btn_uploadToOrder);
+    }
+    public boolean isReviewOrderTextDisplayed(){
+        distributorUI.waitForVisibility(txt_editOrderGuide);
+        return distributorUI.isDisplayed(txt_editOrderGuide);
     }
 }
