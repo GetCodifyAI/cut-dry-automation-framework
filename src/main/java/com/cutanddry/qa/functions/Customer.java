@@ -192,9 +192,9 @@ public class Customer {
     }
     public static void closeEditorCatalog(){
         customersPage.clickOnCloseEditorCatalog();
-        if (dashboardPage.isDraftOrderPopUpDisplayed()){
-            dashboardPage.clickOnNoDraftOrder();
-        }
+//        if (dashboardPage.isDraftOrderPopUpDisplayed()){
+//            dashboardPage.clickOnNoDraftOrder();
+//        }
     }
     public static void createOrderByUploading(){
         customersPage.clickUploadAList();
@@ -212,6 +212,9 @@ public class Customer {
     }
     public static void closeEditor(){
         customersPage.closeEditor();
+//        if (dashboardPage.isDraftOrderPopUpDisplayed()){
+//            dashboardPage.clickOnNoDraftOrder();
+//        }
     }
     public static void removeItemFromCatalog(){
         customersPage.clickOnRemoveFromOrderGuide();

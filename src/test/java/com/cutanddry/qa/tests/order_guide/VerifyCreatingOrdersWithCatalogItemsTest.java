@@ -43,7 +43,6 @@ public class VerifyCreatingOrdersWithCatalogItemsTest extends TestBase {
         Customer.searchItemOnOrderGuide(itemName);
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         softAssert.assertAll();
-
     }
 
     @AfterMethod

@@ -42,8 +42,8 @@ public class CustomersPage extends LoginPage {
     By btn_addFromCatalog = By.xpath("//div[contains(text(), 'Add from Catalog')]");
     By btn_uploadFile = By.xpath("//button[contains(text(), 'Upload File')]");
     By btn_addToOrderGuide = By.xpath("//button[@data-tip='Add to Order Guide']");
-    By btn_closeEditor = By.xpath("//button[contains(text(), 'Close Editor')]");
-    By btn_closeEditor_ = By.xpath("//a[contains(text(), 'Close Editor')]");
+    By btn_closeEditorCatalog = By.xpath("//button[contains(text(), 'Close Editor')]");
+    By btn_closeEditor = By.xpath("//a[contains(text(), 'Close Editor')]");
     By btn_removeFromOrderGuide = By.xpath("//button[@data-tip='Remove from Order Guide']");
     By upload_file = By.xpath("//input[@type='file']");
     By btn_next = By.xpath("//button[text()='Next']");
@@ -254,14 +254,15 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_uploadFile);
     }
     public void clickOnAddToOrderGuide(){
-        distributorUI.waitForVisibility(btn_addToOrderGuide);
+        distributorUI.waitForClickability(btn_addToOrderGuide);
         distributorUI.click(btn_addToOrderGuide);
     }
     public void giveFilePath(String path){
         distributorUI.sendKeysToHiddenElements(upload_file, path);
     }
     public void clickOnCloseEditorCatalog(){
-        distributorUI.click(btn_closeEditor);
+        distributorUI.waitForClickability(btn_closeEditorCatalog);
+        distributorUI.click(btn_closeEditorCatalog);
     }
     public void clickOnRemoveFromOrderGuide(){
         distributorUI.waitForVisibility(btn_removeFromOrderGuide);
@@ -316,8 +317,8 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_OK);
     }
     public void closeEditor(){
-        distributorUI.waitForClickability(btn_closeEditor_);
-        distributorUI.click(btn_closeEditor_);
+        distributorUI.waitForClickability(btn_closeEditor);
+        distributorUI.click(btn_closeEditor);
     }
     public boolean isOrderGuideCreateSuccessPopupDisplayed(){
         return distributorUI.isDisplayed(txt_orderGuideCreateSuccess);
