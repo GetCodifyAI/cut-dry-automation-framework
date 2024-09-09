@@ -117,9 +117,11 @@ public class BoostPage extends LoginPage {
         distributorUI.click(btn_ok);
     }
     public void clickXButton() {
+        distributorUI.waitForVisibility(btn_X);
         distributorUI.click(btn_X);
     }
     public void clickYes() {
+        distributorUI.waitForVisibility(btn_yes);
         distributorUI.click(btn_yes);
     }
     public boolean isDeactivated() {
