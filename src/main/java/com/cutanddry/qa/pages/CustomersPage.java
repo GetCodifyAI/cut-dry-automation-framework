@@ -217,7 +217,9 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForClickability(btn_downloadOrderGuide);
         distributorUI.click(btn_downloadOrderGuide);
     }
-    public void typeToSearchOnOrderGuide(String item){
+    public void typeToSearchOnOrderGuide(String item) throws InterruptedException {
+        distributorUI.clear(tbx_orderGuideSearch);
+        distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(tbx_orderGuideSearch,item);
     }
     public void clickOnCreate(){

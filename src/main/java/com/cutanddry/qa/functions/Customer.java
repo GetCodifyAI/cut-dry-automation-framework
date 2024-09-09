@@ -174,7 +174,7 @@ public class Customer {
     public static void printOrderGuide(){
         customersPage.clickOnDownloadOrderGuide();
     }
-    public static void searchItemOnOrderGuide(String item) {
+    public static void searchItemOnOrderGuide(String item) throws InterruptedException {
         customersPage.typeToSearchOnOrderGuide(item);
     }
     public static void goToCreatePopup(){
