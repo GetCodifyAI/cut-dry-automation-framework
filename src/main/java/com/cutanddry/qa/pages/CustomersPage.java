@@ -177,9 +177,8 @@ public class CustomersPage extends LoginPage {
     public Double getUnitPriceFirstRowCart(){
         return Double.valueOf(distributorUI.getText(lbl_itemPriceCartRowOne).split("\\$")[1]);
     }
-    public Double getTotalPriceCart() throws InterruptedException {
+    public Double getTotalPriceCart(){
         distributorUI.waitForVisibility(lbl_cartTotal);
-        distributorUI.waitForCustom(3000);
         return Double.valueOf(distributorUI.getText(lbl_cartTotal).split("\\$")[1]);
     }
     public void submitOrder(){
