@@ -7,7 +7,7 @@ import static com.cutanddry.qa.functions.Dashboard.dashboardPage;
 public class Customer {
     static CustomersPage customersPage = new CustomersPage();
 
-    public static void searchCustomerByCode(String code){
+    public static void searchCustomerByCode(String code) throws InterruptedException {
         customersPage.clickOnSearchCustomers();
         customersPage.typeOnSearchCustomers(code);
     }
@@ -56,7 +56,7 @@ public class Customer {
     public static void goToCatalog(){
         customersPage.clickOnCatalogButton();
     }
-    public static void searchItemOnCatalog(String item){
+    public static void searchItemOnCatalog(String item) throws InterruptedException {
         customersPage.typeToSearchOnCatalog(item);
     }
     public static String getFirstElementFrmSearchResults(){
@@ -245,5 +245,29 @@ public class Customer {
     }
     public static boolean isOrderGuideUpdatedTextDisplayed(){
         return customersPage.isOrderGuideUpdatedTextDisplayed();
+    }
+    public static void clickSortOptionsDropdown(){
+        customersPage.selectSortOptions();
+    }
+    public static void selectItemCategoriesSort(){
+        customersPage.selectItemCategories();
+    }
+    public static void selectAlphabeticalSort(){
+        customersPage.selectAlphabetical();
+    }
+    public static void selectCustomOrderSort(){
+        customersPage.selectCustomOrder();
+    }
+    public static void selectLastOrderedSort(){
+        customersPage.selectLastOrdered();
+    }
+    public static boolean isProduceTextDisplayed(){
+        return customersPage.isProduceTextDisplayed();
+    }
+    public static boolean isFirstAlphabeticalItemDisplayed(){
+        return customersPage.isFirstAlphabeticalItemDisplayed();
+    }
+    public static boolean isFirstCustomItemDisplayed(){
+        return customersPage.isFirstCustomItemDisplayed();
     }
 }

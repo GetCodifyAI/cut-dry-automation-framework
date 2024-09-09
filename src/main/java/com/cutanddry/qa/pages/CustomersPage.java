@@ -68,14 +68,23 @@ public class CustomersPage extends LoginPage {
     By btn_exportOrderGuide = By.xpath("//a[contains(text(), 'Export Order Guide (XLSX)')]");
     By btn_importOrderGuide = By.xpath("//a[contains(text(), 'Import Order Guide (XLSX)')]");
     By btn_uploadToOrder = By.xpath("//a[contains(text(), 'Upload to Order')]");
-    By txt_reviewOrder= By.xpath("//div[text()='Review Order']");
-    By txt_orderGuideUpdated= By.xpath("//h2[text()='Order guide updated successfully']");
+    By txt_reviewOrder = By.xpath("//div[text()='Review Order']");
+    By txt_orderGuideUpdated = By.xpath("//h2[text()='Order guide updated successfully']");
+    By dropdown_SortOptions = By.xpath("//div[text()='Sort Items By:']/following::div[contains(@class, 'cd_themed_select__control')][1]");
+    By dropdown_customOrder =  By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Custom Order')]");
+    By dropdown_lastOrdered = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Last Ordered')]");
+    By dropdown_alphabetical = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Alphabetical (A-Z)')]");
+    By dropdown_itemCategories = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Item Categories')]");
+    By txt_produce = By.xpath("//div[text()='produce']");
+    By txt_firstItem = By.xpath("//div[text()='artichoke -24ct']");
 
 
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
     }
-    public void typeOnSearchCustomers(String code){
+    public void typeOnSearchCustomers(String code) throws InterruptedException {
+        distributorUI.clear(tbx_searchCustomers);
+        distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(tbx_searchCustomers, code);
     }
     public boolean isCustomerSearchResultByCodeDisplayed(String code) throws InterruptedException {
@@ -113,9 +122,12 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForCustom(4000);
     }
     public void clickOnCatalogButton(){
+        distributorUI.waitForClickability(btn_catalog);
         distributorUI.click(btn_catalog);
     }
-    public void typeToSearchOnCatalog(String item){
+    public void typeToSearchOnCatalog(String item) throws InterruptedException {
+        distributorUI.clear(tbx_catalogSearch);
+        distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(tbx_catalogSearch,item);
     }
     public String getFirstItemNameFrmSearchResults(){
@@ -352,5 +364,37 @@ public class CustomersPage extends LoginPage {
     public boolean isOrderGuideUpdatedTextDisplayed(){
         distributorUI.waitForVisibility(txt_orderGuideUpdated);
         return distributorUI.isDisplayed(txt_orderGuideUpdated);
+    }
+    public void selectSortOptions(){
+        distributorUI.waitForVisibility(dropdown_SortOptions);
+        distributorUI.click(dropdown_SortOptions);
+    }
+    public void selectCustomOrder(){
+        distributorUI.waitForVisibility(dropdown_customOrder);
+        distributorUI.click(dropdown_customOrder);
+    }
+    public void selectLastOrdered(){
+        distributorUI.waitForVisibility(dropdown_lastOrdered);
+        distributorUI.click(dropdown_lastOrdered);
+    }
+    public void selectAlphabetical(){
+        distributorUI.waitForVisibility(dropdown_alphabetical);
+        distributorUI.click(dropdown_alphabetical);
+    }
+    public void selectItemCategories(){
+        distributorUI.waitForVisibility(dropdown_itemCategories);
+        distributorUI.click(dropdown_itemCategories);
+    }
+    public boolean isProduceTextDisplayed(){
+        distributorUI.waitForVisibility(txt_produce);
+        return distributorUI.isDisplayed(txt_produce);
+    }
+    public boolean isFirstAlphabeticalItemDisplayed(){
+        distributorUI.waitForVisibility(txt_firstItem);
+        return distributorUI.isDisplayed(txt_firstItem);
+    }
+    public boolean isFirstCustomItemDisplayed(){
+        distributorUI.waitForVisibility(txt_firstItem);
+        return distributorUI.isDisplayed(txt_firstItem);
     }
 }
