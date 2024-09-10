@@ -52,4 +52,10 @@ public class LoginPage extends TestBase {
         distributorUI.waitForVisibility(btn_tryAgain);
         distributorUI.click(btn_tryAgain);
     }
+    public void navigateToRestaurant() {
+        distributorUI.navigateToURL("https://app-uat.staging.cutanddry.com/");
+    }
+    public void navigateToDistributor() {
+        distributorUI.navigateToURL("https://supplier-uat.staging.cutanddry.com/");
+    }
 }
