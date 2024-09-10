@@ -2,10 +2,12 @@ package com.cutanddry.qa.functions;
 
 import com.cutanddry.qa.pages.CustomersPage;
 
+import static com.cutanddry.qa.functions.Dashboard.dashboardPage;
+
 public class Customer {
     static CustomersPage customersPage = new CustomersPage();
 
-    public static void searchCustomerByCode(String code){
+    public static void searchCustomerByCode(String code) throws InterruptedException {
         customersPage.clickOnSearchCustomers();
         customersPage.typeOnSearchCustomers(code);
     }
@@ -54,7 +56,7 @@ public class Customer {
     public static void goToCatalog(){
         customersPage.clickOnCatalogButton();
     }
-    public static void searchItemOnCatalog(String item){
+    public static void searchItemOnCatalog(String item) throws InterruptedException {
         customersPage.typeToSearchOnCatalog(item);
     }
     public static String getFirstElementFrmSearchResults(){
@@ -115,7 +117,7 @@ public class Customer {
     public static double getUnitPriceFirstRowCart(){
         return customersPage.getUnitPriceFirstRowCart();
     }
-    public static double getTotalPriceCart(){
+    public static double getTotalPriceCart() throws InterruptedException {
         return customersPage.getTotalPriceCart();
     }
     public static void submitOrder(){
@@ -162,5 +164,113 @@ public class Customer {
     }
     public static boolean isMoreFromThisBrandDisplayed(){
         return customersPage.isMoreFromThisBrandDisplayed();
+    }
+    public static void clickOnPrint(){
+        customersPage.clickOnPrint();
+    }
+    public static boolean isPrintFriendlyPopupDisplayed(){
+        return customersPage.isPrintFriendlyPopupDisplayed();
+    }
+    public static void printOrderGuide(){
+        customersPage.clickOnDownloadOrderGuide();
+    }
+    public static void searchItemOnOrderGuide(String item) throws InterruptedException {
+        customersPage.typeToSearchOnOrderGuide(item);
+    }
+    public static void goToCreatePopup() throws InterruptedException {
+        customersPage.clickOnCreate();
+    }
+    public static void createOrderGuide(String orderGuideName) throws InterruptedException {
+        customersPage.typeOrderGuideName(orderGuideName);
+        customersPage.clickSubmitOrderGuide();
+    }
+    public static void createOrderFromCatalog(){
+        customersPage.clickOnAddFromCatalog();
+    }
+    public static void addItemFromCatalog(){
+        customersPage.clickOnAddToOrderGuide();
+    }
+    public static void closeEditorCatalog(){
+        customersPage.clickOnCloseEditorCatalog();
+//        if (dashboardPage.isDraftOrderPopUpDisplayed()){
+//            dashboardPage.clickOnNoDraftOrder();
+//        }
+    }
+    public static void createOrderByUploading(){
+        customersPage.clickUploadAList();
+    }
+    public static void uploadFile(String path){
+        customersPage.giveFilePath(path);
+        customersPage.clickNext();
+        customersPage.clickConfirm();
+    }
+    public static boolean isOrderGuideCreateSuccessPopupDisplayed(){
+        return customersPage.isOrderGuideCreateSuccessPopupDisplayed();
+    }
+    public static void clickOK(){
+        customersPage.clickOK();
+    }
+    public static void closeEditor(){
+        customersPage.closeEditor();
+//        if (dashboardPage.isDraftOrderPopUpDisplayed()){
+//            dashboardPage.clickOnNoDraftOrder();
+//        }
+    }
+    public static void removeItemFromCatalog(){
+        customersPage.clickOnRemoveFromOrderGuide();
+    }
+    public static void clickCompanyDropdown(){
+        customersPage.clickCompanyDropdown();
+    }
+    public static boolean isCompanyDropdownTextDisplayed(){
+        return customersPage.isCompanyDropdownTextDisplayed();
+    }
+    public static void goToEdit(){
+        customersPage.clickOnEdit();
+    }
+    public static boolean isEditOrderGuideTextDisplayed(){
+        return customersPage.isEditOrderGuideTextDisplayed();
+    }
+    public static void expandMoreOptionsDropdown(){
+        customersPage.clickOnMoreOptions();
+    }
+    public static void exportOrderGuide(){
+        customersPage.clickOnExportOrderGuide();
+    }
+    public static void importOrderGuide(){
+        customersPage.clickOnImportOrderGuide();
+    }
+    public static void uploadToOrder(){
+        customersPage.clickOnUploadToOrder();
+    }
+    public static boolean isReviewOrderTextDisplayed(){
+        return customersPage.isReviewOrderTextDisplayed();
+    }
+    public static boolean isOrderGuideUpdatedTextDisplayed(){
+        return customersPage.isOrderGuideUpdatedTextDisplayed();
+    }
+    public static void clickSortOptionsDropdown(){
+        customersPage.selectSortOptions();
+    }
+    public static void selectItemCategoriesSort(){
+        customersPage.selectItemCategories();
+    }
+    public static void selectAlphabeticalSort(){
+        customersPage.selectAlphabetical();
+    }
+    public static void selectCustomOrderSort(){
+        customersPage.selectCustomOrder();
+    }
+    public static void selectLastOrderedSort(){
+        customersPage.selectLastOrdered();
+    }
+    public static boolean isProduceTextDisplayed(){
+        return customersPage.isProduceTextDisplayed();
+    }
+    public static boolean isFirstAlphabeticalItemDisplayed(){
+        return customersPage.isFirstAlphabeticalItemDisplayed();
+    }
+    public static boolean isFirstCustomItemDisplayed(){
+        return customersPage.isFirstCustomItemDisplayed();
     }
 }

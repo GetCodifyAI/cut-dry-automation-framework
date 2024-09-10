@@ -65,6 +65,17 @@ public class KeywordBase {
         return this;
     }
 
+    public KeywordBase sendKeysToHiddenElements(By by, String data) {
+        try {
+            WebElement element =driver.findElement(by);
+            element.sendKeys(data);
+            logger.info("Sent keys to hidden element: {} with data: {}", by, data);
+        } catch (Exception e) {
+            logger.error("Failed to send keys to element: {} with data: {}", by, data, e);
+        }
+        return this;
+    }
+
     // Clear an input field
     public KeywordBase clear(By by) {
         try {

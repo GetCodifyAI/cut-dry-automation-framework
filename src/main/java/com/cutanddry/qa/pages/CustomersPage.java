@@ -32,6 +32,24 @@ public class CustomersPage extends LoginPage {
     By btn_submitOrder = By.xpath("//button[contains(text(),'Submit Order')]");
     By btn_duplicateOrderYes = By.xpath("//h2[contains(text(),'Duplicate Order')]/../..//button[text()='Yes']");
     By lbl_thankYouForOrder = By.xpath("//*[contains(text(),'Thank you for your order!')]");
+    By btn_print = By.xpath("//button[contains(text(), 'Print')]");
+    By lbl_printFriendlyOrderGuide = By.xpath("//h5[contains(text(), 'Print-Friendly Order Guide')]");
+    By btn_downloadOrderGuide = By.xpath("//button[contains(text(), 'Download Order Guide')]");
+    By tbx_orderGuideSearch = By.xpath("//input[@placeholder='Search order guide...']");
+    By btn_create = By.xpath("//button[contains(text(), 'Create')]");
+    By tbx_OrderGuideName = By.xpath("//input[@placeholder='Enter Name']");
+    By btn_submitOrderGuide = By.xpath("//button[contains(text(), 'Submit')]");
+    By btn_addFromCatalog = By.xpath("//div[contains(text(), 'Add from Catalog')]");
+    By btn_uploadFile = By.xpath("//button[contains(text(), 'Upload File')]");
+    By btn_addToOrderGuide = By.xpath("//button[@data-tip='Add to Order Guide']");
+    By btn_closeEditorCatalog = By.xpath("//button[contains(text(), 'Close Editor')]");
+    By btn_closeEditor = By.xpath("//a[contains(text(), 'Close Editor')]");
+    By btn_removeFromOrderGuide = By.xpath("//button[@data-tip='Remove from Order Guide']");
+    By upload_file = By.xpath("//input[@type='file']");
+    By btn_next = By.xpath("//button[text()='Next']");
+    By btn_confirm = By.xpath("//button[text()='Confirm']");
+    By txt_orderGuideCreateSuccess = By.xpath("//h2[contains(text(), 'Order guide updated successfully')]");
+    By btn_OK = By.xpath("//button[text()='OK']");
     By msg_banner = By.xpath("//span[text()='Test Broadcast Message']");
     By lbl_productDetails = By.xpath("//span[text()='Product Details']");
     By lbl_topCategoryPicks = By.xpath("//div[text()='Top Category Picks']");
@@ -42,11 +60,31 @@ public class CustomersPage extends LoginPage {
     By lbl_recommendedBySalesRep = By.xpath("//div[text()='Recommended by Steve O']//following-sibling::div//div[text()='#00475']");
     By section_dontForget = By.xpath("//div[text()=\"Don't Forget to Order\"]");
     By section_moreFromThisBrand = By.xpath("//div[text()='More From Dole']");
+    By btn_companyDropdown = By.xpath("//button[.//span[text()='Company:']]");
+    By txt_companyDropdownText = By.xpath("//a[contains(text(), 'Independent Foods Co')]");
+    By btn_edit = By.xpath("//button[contains(., 'Edit')]");
+    By txt_editOrderGuide= By.xpath("//span[contains(text(), 'Edit Order Guide')]");
+    By btn_moreOptions = By.xpath("//span[contains(text(), 'More Options')]");
+    By btn_exportOrderGuide = By.xpath("//a[contains(text(), 'Export Order Guide (XLSX)')]");
+    By btn_importOrderGuide = By.xpath("//a[contains(text(), 'Import Order Guide (XLSX)')]");
+    By btn_uploadToOrder = By.xpath("//a[contains(text(), 'Upload to Order')]");
+    By txt_reviewOrder = By.xpath("//div[text()='Review Order']");
+    By txt_orderGuideUpdated = By.xpath("//h2[text()='Order guide updated successfully']");
+    By dropdown_SortOptions = By.xpath("//div[text()='Sort Items By:']/following::div[contains(@class, 'cd_themed_select__control')][1]");
+    By dropdown_customOrder =  By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Custom Order')]");
+    By dropdown_lastOrdered = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Last Ordered')]");
+    By dropdown_alphabetical = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Alphabetical (A-Z)')]");
+    By dropdown_itemCategories = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Item Categories')]");
+    By txt_produce = By.xpath("//div[text()='produce']");
+    By txt_firstItem = By.xpath("//div[text()='artichoke -24ct']");
+
 
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
     }
-    public void typeOnSearchCustomers(String code){
+    public void typeOnSearchCustomers(String code) throws InterruptedException {
+        distributorUI.clear(tbx_searchCustomers);
+        distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(tbx_searchCustomers, code);
     }
     public boolean isCustomerSearchResultByCodeDisplayed(String code) throws InterruptedException {
@@ -59,7 +97,7 @@ public class CustomersPage extends LoginPage {
     }
     public String getItemNameFirstRow() throws InterruptedException {
         distributorUI.waitForElementEnabledState(lbl_itemNameList,true);
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(3000);
         return distributorUI.getText(lbl_itemNameList);
     }
     public void clickPlusQryFirstRow(){
@@ -84,9 +122,12 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForCustom(4000);
     }
     public void clickOnCatalogButton(){
+        distributorUI.waitForClickability(btn_catalog);
         distributorUI.click(btn_catalog);
     }
-    public void typeToSearchOnCatalog(String item){
+    public void typeToSearchOnCatalog(String item) throws InterruptedException {
+        distributorUI.clear(tbx_catalogSearch);
+        distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(tbx_catalogSearch,item);
     }
     public String getFirstItemNameFrmSearchResults(){
@@ -148,7 +189,8 @@ public class CustomersPage extends LoginPage {
     public Double getUnitPriceFirstRowCart(){
         return Double.valueOf(distributorUI.getText(lbl_itemPriceCartRowOne).split("\\$")[1]);
     }
-    public Double getTotalPriceCart(){
+    public Double getTotalPriceCart() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.waitForVisibility(lbl_cartTotal);
         return Double.valueOf(distributorUI.getText(lbl_cartTotal).split("\\$")[1]);
     }
@@ -175,6 +217,59 @@ public class CustomersPage extends LoginPage {
         } catch (Exception e){
             return false;
         }
+    }
+    public void clickOnPrint(){
+        distributorUI.waitForClickability(btn_print);
+        distributorUI.click(btn_print);
+    }
+    public boolean isPrintFriendlyPopupDisplayed(){
+        return distributorUI.isDisplayed(lbl_printFriendlyOrderGuide);
+    }
+    public void clickOnDownloadOrderGuide(){
+        distributorUI.waitForClickability(btn_downloadOrderGuide);
+        distributorUI.click(btn_downloadOrderGuide);
+    }
+    public void typeToSearchOnOrderGuide(String item) throws InterruptedException {
+        distributorUI.clear(tbx_orderGuideSearch);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_orderGuideSearch,item);
+    }
+    public void clickOnCreate() throws InterruptedException {
+        distributorUI.waitForCustom(1000);
+        distributorUI.waitForClickability(btn_create);
+        distributorUI.click(btn_create);
+    }
+    public void typeOrderGuideName(String orderGuideName) throws InterruptedException {
+        distributorUI.clear(tbx_orderGuideSearch);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_OrderGuideName,orderGuideName);
+    }
+    public void clickSubmitOrderGuide(){
+        distributorUI.waitForClickability(btn_submitOrderGuide);
+        distributorUI.click(btn_submitOrderGuide);
+    }
+    public void clickOnAddFromCatalog(){
+        distributorUI.waitForVisibility(btn_addFromCatalog);
+        distributorUI.click(btn_addFromCatalog);
+    }
+    public void clickUploadAList(){
+        distributorUI.waitForVisibility(btn_uploadFile);
+        distributorUI.click(btn_uploadFile);
+    }
+    public void clickOnAddToOrderGuide(){
+        distributorUI.waitForClickability(btn_addToOrderGuide);
+        distributorUI.click(btn_addToOrderGuide);
+    }
+    public void giveFilePath(String path){
+        distributorUI.sendKeysToHiddenElements(upload_file, path);
+    }
+    public void clickOnCloseEditorCatalog(){
+        distributorUI.waitForClickability(btn_closeEditorCatalog);
+        distributorUI.click(btn_closeEditorCatalog);
+    }
+    public void clickOnRemoveFromOrderGuide(){
+        distributorUI.waitForVisibility(btn_removeFromOrderGuide);
+        distributorUI.click(btn_removeFromOrderGuide);
     }
     public boolean isBroadcastMessageDisplayed() {
         return distributorUI.isDisplayed(msg_banner);
@@ -211,5 +306,99 @@ public class CustomersPage extends LoginPage {
     }
     public boolean isMoreFromThisBrandDisplayed(){
         return distributorUI.isDisplayed(section_moreFromThisBrand);
+    }
+    public void clickNext(){
+        distributorUI.waitForClickability(btn_next);
+        distributorUI.click(btn_next);
+    }
+    public void clickConfirm(){
+        distributorUI.waitForClickability(btn_confirm);
+        distributorUI.click(btn_confirm);
+    }
+    public void clickOK(){
+        distributorUI.waitForClickability(btn_OK);
+        distributorUI.click(btn_OK);
+    }
+    public void closeEditor(){
+        distributorUI.waitForClickability(btn_closeEditor);
+        distributorUI.click(btn_closeEditor);
+    }
+    public boolean isOrderGuideCreateSuccessPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_orderGuideCreateSuccess);
+    }
+    public void clickCompanyDropdown(){
+        distributorUI.waitForClickability(btn_companyDropdown);
+        distributorUI.click(btn_companyDropdown);
+    }
+    public boolean isCompanyDropdownTextDisplayed(){
+        return distributorUI.isDisplayed(txt_companyDropdownText);
+    }
+    public void clickOnEdit(){
+        distributorUI.waitForClickability(btn_edit);
+        distributorUI.click(btn_edit);
+    }
+    public boolean isEditOrderGuideTextDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_editOrderGuide);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_editOrderGuide);
+    }
+    public void clickOnMoreOptions(){
+        distributorUI.waitForClickability(btn_moreOptions);
+        distributorUI.click(btn_moreOptions);
+    }
+    public void clickOnExportOrderGuide(){
+        distributorUI.waitForClickability(btn_exportOrderGuide);
+        distributorUI.click(btn_exportOrderGuide);
+    }
+    public void clickOnImportOrderGuide(){
+        distributorUI.waitForClickability(btn_importOrderGuide);
+        distributorUI.click(btn_importOrderGuide);
+    }
+    public void clickOnUploadToOrder(){
+        distributorUI.waitForClickability(btn_uploadToOrder);
+        distributorUI.click(btn_uploadToOrder);
+    }
+    public boolean isReviewOrderTextDisplayed(){
+        distributorUI.waitForVisibility(txt_reviewOrder);
+        return distributorUI.isDisplayed(txt_reviewOrder);
+    }
+    public boolean isOrderGuideUpdatedTextDisplayed(){
+        distributorUI.waitForVisibility(txt_orderGuideUpdated);
+        return distributorUI.isDisplayed(txt_orderGuideUpdated);
+    }
+    public void selectSortOptions(){
+        distributorUI.waitForVisibility(dropdown_SortOptions);
+        distributorUI.click(dropdown_SortOptions);
+    }
+    public void selectCustomOrder(){
+        distributorUI.waitForVisibility(dropdown_customOrder);
+        distributorUI.click(dropdown_customOrder);
+    }
+    public void selectLastOrdered(){
+        distributorUI.waitForVisibility(dropdown_lastOrdered);
+        distributorUI.click(dropdown_lastOrdered);
+    }
+    public void selectAlphabetical(){
+        distributorUI.waitForVisibility(dropdown_alphabetical);
+        distributorUI.click(dropdown_alphabetical);
+    }
+    public void selectItemCategories(){
+        distributorUI.waitForVisibility(dropdown_itemCategories);
+        distributorUI.click(dropdown_itemCategories);
+    }
+    public boolean isProduceTextDisplayed(){
+        distributorUI.waitForVisibility(txt_produce);
+        return distributorUI.isDisplayed(txt_produce);
+    }
+    public boolean isFirstAlphabeticalItemDisplayed(){
+        distributorUI.waitForVisibility(txt_firstItem);
+        return distributorUI.isDisplayed(txt_firstItem);
+    }
+    public boolean isFirstCustomItemDisplayed(){
+        distributorUI.waitForVisibility(txt_firstItem);
+        return distributorUI.isDisplayed(txt_firstItem);
     }
 }
