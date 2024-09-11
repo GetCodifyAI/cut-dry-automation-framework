@@ -46,7 +46,7 @@ public class VerifyTopCategoryPicksTest extends TestBase{
         Customer.clickOnOrderGuide(customerId);
         Customer.goToCatalog();
         softAssert.assertTrue(Customer.isTopCategoryPicksDisplayed(),"top picks missing error");
-        softAssert.assertTrue(Customer.isItemInTopCategoryPicks(),"item missing error");
+        softAssert.assertTrue(Customer.isItemInTopCategoryPicks(itemCode),"item missing error");
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickSuggestiveSales();

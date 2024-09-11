@@ -51,7 +51,7 @@ public class VerifyRecommendedBySalesRepTest extends TestBase {
         Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItems();
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
-        softAssert.assertTrue(Customer.isRecommendedBySalesRepDisplayed(),"recommended by sales rep item missing error");
+        softAssert.assertTrue(Customer.isRecommendedBySalesRepDisplayed(itemCode),"recommended by sales rep item missing error");
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickSuggestiveSales();

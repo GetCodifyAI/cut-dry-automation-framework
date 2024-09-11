@@ -141,8 +141,8 @@ public class Customer {
     public static boolean isTopCategoryPicksDisplayed(){
         return customersPage.isTopCategoryPicksDisplayed();
     }
-    public static boolean isItemInTopCategoryPicks(){
-        return customersPage.isItemInTopCategoryPicks();
+    public static boolean isItemInTopCategoryPicks(String code){
+        return customersPage.isItemInTopCategoryPicks(code);
     }
     public static void selectSearchedCatalogItem(String code) {
         customersPage.clickSearchedItem(code);
@@ -153,11 +153,11 @@ public class Customer {
     public static boolean isCompareSimilarItemsDisplayed(){
         return customersPage.isCompareSimilarItemsDisplayed();
     }
-    public static boolean isRecommendedForYouItemDisplayed(){
-        return customersPage.isRecommendedForYouItemDisplayed();
+    public static boolean isRecommendedForYouItemDisplayed(String code){
+        return customersPage.isRecommendedForYouItemDisplayed(code);
     }
-    public static boolean isRecommendedBySalesRepDisplayed(){
-        return customersPage.isRecommendedBySalesRepDisplayed();
+    public static boolean isRecommendedBySalesRepDisplayed(String code){
+        return customersPage.isRecommendedBySalesRepDisplayed(code);
     }
     public static boolean isDontForgetToOrderDisplayed(){
         return customersPage.isDontForgetToOrderDisplayed();

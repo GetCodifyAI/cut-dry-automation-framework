@@ -48,7 +48,7 @@ public class VerifyRecommendedForCustomerTest extends TestBase {
         Customer.clickOnOrderGuide(customerId);
         Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItems();
-        softAssert.assertTrue(Customer.isRecommendedForYouItemDisplayed(),"recommended for you item missing error");
+        softAssert.assertTrue(Customer.isRecommendedForYouItemDisplayed(itemCode),"recommended for you item missing error");
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickSuggestiveSales();
