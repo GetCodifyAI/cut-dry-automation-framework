@@ -1,6 +1,5 @@
 package com.cutanddry.qa.pages;
 
-import com.cutanddry.qa.utils.JsonUtil;
 import org.openqa.selenium.By;
 
 public class CatalogPage extends LoginPage{
@@ -9,7 +8,8 @@ public class CatalogPage extends LoginPage{
     By txt_editItem = By.xpath("//li[contains(text(),'Edit Item')]");
     By btn_preview = By.xpath("//a[.//button[contains(text(), 'Preview')]]");
     By txt_preview = By.xpath("//a[contains(text(),'Preview')]");
-    By btn_downloadPdf = By.xpath("//button[contains(text(), 'Download PDF')]");
+    By btn_downloadPdf = By.xpath("//div[text()='Export PDP (Pdf)']");
+    By btn_dropdown = By.xpath("//button[@aria-haspopup='true']");
 
     public boolean isCatalogTextDisplayed() {
         try {
@@ -32,7 +32,8 @@ public class CatalogPage extends LoginPage{
     public boolean isNavigatedToPreview() {
         return distributorUI.isDisplayed(txt_preview);
     }
-    public void clickDownloadPdf() {
+    public void clickExportPdf() {
+        distributorUI.click(btn_dropdown);
         distributorUI.waitForVisibility(btn_downloadPdf);
         distributorUI.click(btn_downloadPdf);
         distributorUI.waitForVisibility(btn_downloadPdf);

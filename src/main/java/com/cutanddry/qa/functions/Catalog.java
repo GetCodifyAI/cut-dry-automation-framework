@@ -21,6 +21,6 @@ public class Catalog {
         return catalogPage.isNavigatedToPreview();
     }
     public static void DownloadPDF() {
-        catalogPage.clickDownloadPdf();
+        catalogPage.clickExportPdf();
     }
 }
