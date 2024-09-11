@@ -8,6 +8,7 @@ public class Constants {
     public static boolean RUN_HEADLESS = Boolean.parseBoolean(System.getProperty("run.headless", "false"));
     public static String TEST_ENV = System.getProperty("test.env", "uat");
     public static String MAIN_URL = baseDomain();
+    public static String RESTAURANT_APP_URL = "https://app-uat.staging.cutanddry.com/";
     public static String BASE_URI = "https://supplier-uat.staging.cutanddry.com/GraphQLController";
     public static String SLACK_WEBHOOK = System.getenv("SLACK_WEBHOOK");
     //  https://hooks.slack.com/services/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 //group - test-alerts

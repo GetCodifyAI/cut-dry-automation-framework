@@ -1,6 +1,7 @@
 package com.cutanddry.qa.pages;
 
 import com.cutanddry.qa.base.TestBase;
+import com.cutanddry.qa.common.Constants;
 import org.openqa.selenium.By;
 
 public class LoginPage extends TestBase {
@@ -51,5 +52,11 @@ public class LoginPage extends TestBase {
     public void clickTryAgain() {
         distributorUI.waitForVisibility(btn_tryAgain);
         distributorUI.click(btn_tryAgain);
+    }
+    public void navigateToRestaurant() {
+        distributorUI.navigateToURL(Constants.RESTAURANT_APP_URL);
+    }
+    public void navigateToDistributor() {
+        distributorUI.navigateToURL(Constants.MAIN_URL);
     }
 }

@@ -31,4 +31,13 @@ public class Login {
     public static void clickTryAgain(){
         loginPage.clickTryAgain();
     }
+    public static void logIntoRestaurant(String emailOrMobile, String password){
+        loginPage.navigateToRestaurant();
+        loginPage.typeEmailOrMobile(emailOrMobile);
+        loginPage.typePassword(password);
+        loginPage.clickSubmit();
+    }
+    public static void navigateToDistributor() {
+        loginPage.navigateToDistributor();
+    }
 }
