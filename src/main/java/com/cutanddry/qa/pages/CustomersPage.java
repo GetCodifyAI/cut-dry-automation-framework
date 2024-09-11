@@ -77,6 +77,8 @@ public class CustomersPage extends LoginPage {
     By dropdown_itemCategories = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Item Categories')]");
     By txt_produce = By.xpath("//div[text()='produce']");
     By txt_firstItem = By.xpath("//div[text()='artichoke -24ct']");
+    By txt_minOrderBanner = By.xpath("//div[contains(text(), 'Add a few more items worth') and contains(text(), 'to meet minimum order amount')]");
+    By txt_popupAlertOrderMin = By.xpath("//h2[text()='Order Minimum Not Met']");
 
 
     public void clickOnSearchCustomers(){
@@ -400,5 +402,13 @@ public class CustomersPage extends LoginPage {
     public boolean isFirstCustomItemDisplayed(){
         distributorUI.waitForVisibility(txt_firstItem);
         return distributorUI.isDisplayed(txt_firstItem);
+    }
+    public boolean isMinOrderBannerDisplayed(){
+        distributorUI.waitForVisibility(txt_minOrderBanner);
+        return distributorUI.isDisplayed(txt_minOrderBanner);
+    }
+    public boolean isOrderMinPopupDisplayed(){
+        distributorUI.waitForVisibility(txt_popupAlertOrderMin);
+        return distributorUI.isDisplayed(txt_popupAlertOrderMin);
     }
 }
