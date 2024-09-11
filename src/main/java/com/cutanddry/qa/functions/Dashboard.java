@@ -15,5 +15,15 @@ public class Dashboard {
     public static void navigateToBoost() {
         dashboardPage.clickOnBoost();
     }
+    public static void navigateToChat() {
+        dashboardPage.clickOnChat();
+    }
+    public static boolean isUserNavigatedToRestaurantDashboard(){
+        return dashboardPage.isRestaurantDashboardTextDisplayed();
+    }
+    public static void navigateToRestaurantChat() {
+        dashboardPage.clickOnRestaurantChat();
+    }
+
 
 }
