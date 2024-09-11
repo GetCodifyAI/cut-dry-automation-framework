@@ -18,9 +18,9 @@ public class Chat {
     public static void clickOnCustomerChat(String name){
         chatPage.clickOnCustomerChat(name);
     }
-    public static void sendDistributorMessage() throws InterruptedException {
+    public static void sendDistributorMessage(String msg) throws InterruptedException {
         chatPage.clickOnMessage();
-        chatPage.typeOnMessage("Test Message Distributor");
+        chatPage.typeOnMessage(msg);
         chatPage.clickSendButton();
     }
     public static String getLastMessageDisplayed() throws InterruptedException {
@@ -30,9 +30,9 @@ public class Chat {
     public static void clickOnRestaurantChat() {
         chatPage.clickOnRestaurantChat();
     }
-    public static void sendRestaurantMessage() throws InterruptedException {
+    public static void sendRestaurantMessage(String msg) throws InterruptedException {
         chatPage.clickOnMessage();
-        chatPage.typeOnMessage("Test Message Restaurant");
+        chatPage.typeOnMessage(msg);
         chatPage.clickSendButton();
     }
 }

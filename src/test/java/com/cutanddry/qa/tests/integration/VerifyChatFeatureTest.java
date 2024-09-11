@@ -15,6 +15,8 @@ import org.testng.asserts.SoftAssert;
 public class VerifyChatFeatureTest extends TestBase {
     static User user;
     static String customerName = "Restaurant (Test) - Hayes";
+    static String distributorMessage = "Test Message Distributor";
+    static String restaurantMessage = "Test Message Restaurant";
 
     @BeforeMethod
     public void setUp(){
@@ -33,15 +35,15 @@ public class VerifyChatFeatureTest extends TestBase {
         Chat.searchCustomerByName(customerName);
         softAssert.assertTrue(Chat.isCustomerSearchResultDisplayed(customerName),"search error");
         Chat.clickOnCustomerChat(customerName);
-        Chat.sendDistributorMessage();
-        softAssert.assertEquals(Chat.getLastMessageDisplayed(),"Test Message Distributor","messaging sending error");
+        Chat.sendDistributorMessage(distributorMessage);
+        softAssert.assertEquals(Chat.getLastMessageDisplayed(), distributorMessage,"messaging sending error");
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Dashboard.navigateToRestaurantChat();
         Chat.clickOnRestaurantChat();
-        softAssert.assertEquals(Chat.getLastMessageDisplayed(),"Test Message Distributor","messaging receiving error");
-        Chat.sendRestaurantMessage();
-        softAssert.assertEquals(Chat.getLastMessageDisplayed(),"Test Message Restaurant","messaging sending error");
+        softAssert.assertEquals(Chat.getLastMessageDisplayed(), distributorMessage,"messaging receiving error");
+        Chat.sendRestaurantMessage(restaurantMessage);
+        softAssert.assertEquals(Chat.getLastMessageDisplayed(), restaurantMessage,"messaging sending error");
         Login.navigateToDistributor();
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
@@ -50,7 +52,7 @@ public class VerifyChatFeatureTest extends TestBase {
         Chat.searchCustomerByName(customerName);
         softAssert.assertTrue(Chat.isCustomerSearchResultDisplayed(customerName),"search error");
         Chat.clickOnCustomerChat(customerName);
-        softAssert.assertEquals(Chat.getLastMessageDisplayed(),"Test Message Restaurant","messaging receiving error");
+        softAssert.assertEquals(Chat.getLastMessageDisplayed(), restaurantMessage,"messaging receiving error");
         softAssert.assertAll();
     }
 

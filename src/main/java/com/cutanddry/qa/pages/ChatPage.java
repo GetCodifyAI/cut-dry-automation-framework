@@ -43,13 +43,14 @@ public class ChatPage extends LoginPage{
     }
     public void typeOnMessage(String msg) throws InterruptedException {
         distributorUI.clear(tbx_Message);
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(3000);
         distributorUI.sendKeys(tbx_Message, msg);
     }
     public void clickSendButton(){
         distributorUI.waitForElementEnabledState(icon_send,true);
         distributorUI.waitForClickability(icon_send);
         distributorUI.click(icon_send);
+        distributorUI.waitForVisibility(icon_send);
     }
     public String getLastMessageDisplayed() throws InterruptedException {
         distributorUI.waitForCustom(2000);
