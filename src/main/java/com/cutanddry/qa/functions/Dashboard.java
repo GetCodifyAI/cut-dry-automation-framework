@@ -25,5 +25,11 @@ public class Dashboard {
         dashboardPage.clickOnRestaurantChat();
     }
 
+    public static void navigateToCatalog() {
+        dashboardPage.clickOnCatalog();
+    }
+    public static void navigateToOrderSettings() {
+        dashboardPage.clickOnOrderSettings();
+    }
 
 }

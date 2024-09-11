@@ -35,6 +35,8 @@
             <class name="com.cutanddry.qa.tests.boost.VerifyDontForgetToOrderTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyMoreFromThisBrandTest" />
             <class name="com.cutanddry.qa.tests.integration.VerifyChatFeatureTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPDFGenerationForCatalogPDPTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyHardOrderMinimumWarningTest" />
         </classes>
     </test>
 </suite>

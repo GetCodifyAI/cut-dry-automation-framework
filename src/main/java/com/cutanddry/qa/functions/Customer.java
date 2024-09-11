@@ -273,4 +273,10 @@ public class Customer {
     public static boolean isFirstCustomItemDisplayed(){
         return customersPage.isFirstCustomItemDisplayed();
     }
+    public static boolean isMinOrderBannerDisplayed(){
+        return customersPage.isMinOrderBannerDisplayed();
+    }
+    public static boolean isOrderMinPopupDisplayed(){
+        return customersPage.isOrderMinPopupDisplayed();
+    }
 }
