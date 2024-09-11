@@ -34,6 +34,7 @@
             <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedBySalesRepTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyDontForgetToOrderTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyMoreFromThisBrandTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPDFGenerationForCatalogPDPTest" />
         </classes>
     </test>
 </suite>

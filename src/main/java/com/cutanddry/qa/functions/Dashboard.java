@@ -15,5 +15,8 @@ public class Dashboard {
     public static void navigateToBoost() {
         dashboardPage.clickOnBoost();
     }
+    public static void navigateToCatalog() {
+        dashboardPage.clickOnCatalog();
+    }
 
 }

@@ -8,6 +8,7 @@ public class DashboardPage extends LoginPage{
     By txt_draftOrder = By.xpath("//div[contains(text(), 'Do you want to continue your previous draft order?')]");
     By btn_noDraftOrder = By.xpath("//div[contains(text(), 'No')]");
     By btn_boost = By.xpath("//a[@data-tip='Boost']");
+    By btn_catalog = By.xpath("//a[@data-tip='View Catalog']");
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -33,5 +34,8 @@ public class DashboardPage extends LoginPage{
     public void clickOnNoDraftOrder(){
         distributorUI.click(btn_noDraftOrder);
         distributorUI.waitForInvisibility(btn_noDraftOrder);
+    }
+    public void clickOnCatalog(){
+        distributorUI.click(btn_catalog);
     }
 }
