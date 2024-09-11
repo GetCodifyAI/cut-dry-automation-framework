@@ -1,7 +1,6 @@
 package com.cutanddry.qa.pages;
 
 import com.cutanddry.qa.data.models.Broadcast;
-import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.openqa.selenium.By;
 
@@ -13,7 +12,7 @@ public class BoostPage extends LoginPage {
     By option_customList = By.xpath("//div[text()='Custom List']");
     By txt_selectCustomers = By.xpath("//label[text()='Select Customers:']");
     By dropdown_customList = By.xpath("//div[contains(@class, 'themed_select__placeholder') and text()='Search...']");
-    By txt_KafeLayers = By.xpath("//div[@class='d-flex align-items-center' and contains(., 'Kafe Layers #3 Test - San Francisco')]");
+    String txt_customerName = "//div[@class='d-flex align-items-center' and contains(., 'NAME')]";
     By txt_selectionCount = By.xpath("//div[text()='1 customers selected for your broadcast.']");
     By btn_continue = By.xpath("//button[text()='Continue']");
     By dropdown_search = By.xpath("//div[contains(@class, 'themed_select__placeholder') and text()='Search...']/following-sibling::div//input");
@@ -33,12 +32,10 @@ public class BoostPage extends LoginPage {
     By btn_allItemConfig = By.xpath("//tr[td[text()='All Items']]//button[contains(text(), 'Configure')]");
     By btn_addItems = By.xpath("//button[text()='Add Items']");
     By input_addItem = By.xpath("//div[text()='Search items by name or code']/following-sibling::div//input");
-    By txt_itemAdded = By.xpath("//div[text()='00475 : Orange - Valencia']");
+    String txt_itemAdded = "//div[contains(text(), 'CODE')]";
     By btn_add = By.xpath("//button[text()='Add']");
     By btn_close = By.xpath("//button[@class='close']");
-    By txt_itemOrangeAdded = By.xpath("//td[text()='00475']");
-    By btn_removeItem = By.xpath("//tr[td[text()='00475']]//button[text()='Remove']");
-    By txt_itemPreview = By.xpath("//div[text()='orange - valencia']");
+    String btn_removeItem = "//tr[td[text()='CODE']]//button[text()='Remove']";
     By btn_similar_config = By.xpath("//tr[td[contains(text(), 'Compare Similar Items')]]//button[contains(text(), 'View & Configure')]");
     By txt_popupCompareSimilarItems = By.xpath("//div[text()='Configure item recommendation carousel']");
     By toggle_carouselDisplayStatus = By.xpath("//div[@class='react-switch-handle']");
@@ -46,7 +43,7 @@ public class BoostPage extends LoginPage {
     By txt_popupRecommendForCustomer = By.xpath("//div[text()='Configure item recommendation carousel']");
     By btn_recSales_config = By.xpath("//tr[td[contains(text(), 'Recommended by Sales Rep')]]//button[contains(text(), 'View & Configure')]");
     By txt_popupRecommendedBySalesRep = By.xpath("//div[text()='Select a sales rep to configure']");
-    By btn_salesRepConfig = By.xpath("//tr[td[text()='Steve O']]//button[text()='Configure']");
+    String btn_salesRepConfig = "//tr[td[text()='NAME']]//button[text()='Configure']";
     By txt_popupSalesRepConfig = By.xpath("//div[text()='Configure item recommendation carousel']");
     By btn_dontforget_config = By.xpath("//tr[td[contains(text(), \"Don't Forget to Order\")]]//button[contains(text(), \"View & Configure\")]");
     By txt_popupDontForgetToOrder = By.xpath("//div[text()='Configure item recommendation carousel']");
@@ -83,9 +80,9 @@ public class BoostPage extends LoginPage {
     public void clickSelectCustomersDropdown() {
         distributorUI.click(dropdown_customList);
     }
-    public void selectCustomer() {
-        distributorUI.sendKeys(dropdown_search, "Kafe Layers #3 Test - San Francisco");
-        distributorUI.click(txt_KafeLayers);
+    public void selectCustomer(String name) {
+        distributorUI.sendKeys(dropdown_search, name);
+        distributorUI.click(By.xpath(txt_customerName.replace("NAME", name)));
     }
     public boolean isSelectionCountDisplayed() {
         return distributorUI.isDisplayed(txt_selectionCount);
@@ -98,9 +95,9 @@ public class BoostPage extends LoginPage {
         distributorUI.waitForClickability(btn_submit);
         return distributorUI.isDisplayed(txt_step2);
     }
-    public void typeMessage() {
+    public void typeMessage(String msg) {
         distributorUI.waitForVisibility(type_message);
-        distributorUI.sendKeys(type_message, "Test Broadcast Message");
+        distributorUI.sendKeys(type_message, msg);
     }
     public void addURL() {
         Broadcast url = JsonUtil.readUrl();
@@ -150,27 +147,29 @@ public class BoostPage extends LoginPage {
     public void clickAddItems() {
         distributorUI.click(btn_addItems);
     }
-    public void addItem() {
+    public void addItem(String code) {
         distributorUI.waitForVisibility(input_addItem);
-        distributorUI.sendKeys(input_addItem, "00475");
-        distributorUI.click(txt_itemAdded);
+        distributorUI.sendKeys(input_addItem, code);
+        distributorUI.waitForVisibility(By.xpath(txt_itemAdded.replace("CODE", code+" : ")));
+        distributorUI.hoverOverElement(By.xpath(txt_itemAdded.replace("CODE", code+" : ")));
+        distributorUI.click(By.xpath(txt_itemAdded.replace("CODE", code+" : ")));
     }
     public void clickAdd() {
         distributorUI.waitForVisibility(btn_add);
         distributorUI.click(btn_add);
     }
-    public boolean isItemAdded() {
-        return distributorUI.isDisplayed(txt_itemOrangeAdded);
+    public boolean isItemAdded(String code) {
+        return distributorUI.isDisplayed(By.xpath(txt_itemAdded.replace("CODE", code)));
     }
     public void clickClose() throws InterruptedException {
         distributorUI.click(btn_close);
         distributorUI.waitForCustom(2000);
     }
-    public void removeItem() {
-        distributorUI.click(btn_removeItem);
+    public void removeItem(String code) {
+        distributorUI.click(By.xpath(btn_removeItem.replace("CODE", code)));
     }
-    public boolean isItemInCarouselPreview() {
-        return distributorUI.isDisplayed(txt_itemPreview);
+    public boolean isItemInCarouselPreview(String code) {
+        return distributorUI.isDisplayed(By.xpath(txt_itemAdded.replace("CODE", code)));
     }
     public void clickCompareSimilarItemsConfig() {
         distributorUI.click(btn_similar_config);
@@ -199,9 +198,9 @@ public class BoostPage extends LoginPage {
     public boolean isRecommendBySalesRepPopupDisplayed() {
         return distributorUI.isDisplayed(txt_popupRecommendedBySalesRep);
     }
-    public void clickSalesRepConfig() {
-        distributorUI.waitForVisibility(btn_salesRepConfig);
-        distributorUI.click(btn_salesRepConfig);
+    public void clickSalesRepConfig(String name) {
+        distributorUI.waitForVisibility(By.xpath(btn_salesRepConfig.replace("NAME", name)));
+        distributorUI.click(By.xpath(btn_salesRepConfig.replace("NAME", name)));
     }
     public boolean isSalesRepConfigPopupDisplayed() {
         return distributorUI.isDisplayed(txt_popupSalesRepConfig);
