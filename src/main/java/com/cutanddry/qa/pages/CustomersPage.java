@@ -79,6 +79,7 @@ public class CustomersPage extends LoginPage {
     By txt_firstItem = By.xpath("//div[text()='artichoke -24ct']");
     By txt_minOrderBanner = By.xpath("//div[contains(text(), 'Add a few more items worth') and contains(text(), 'to meet minimum order amount')]");
     By txt_popupAlertOrderMin = By.xpath("//h2[text()='Order Minimum Not Met']");
+    By btn_previousDraftOrderNo = By.xpath("//div[contains(text(),'previous draft order')]/..//div[text()='No']");
     String txt_customerCode = "//td[text()='CODE']";
     By tb_orders = By.xpath("//a[text()='Orders' and @role='tab']");
     By txt_standingOrders = By.xpath("//div[text()='Standing Orders: ']");
@@ -98,6 +99,15 @@ public class CustomersPage extends LoginPage {
     By txt_deletePopup = By.xpath("//h2[text()='Are you sure?']");
     By btn_yes = By.xpath("//button[text()='Yes']");
 
+    public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(btn_previousDraftOrderNo);
+    }
+
+    public void clickPreviousDraftOrderNo() throws InterruptedException {
+        distributorUI.click(btn_previousDraftOrderNo);
+    }
 
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
