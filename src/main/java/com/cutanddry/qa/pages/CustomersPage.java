@@ -93,7 +93,7 @@ public class CustomersPage extends LoginPage {
     By txt_success = By.xpath("//h2[text()='Success']");
     By btn_editStandingOrders = By.xpath("//div[text()='Edit']");
     By btn_removeDelivery = By.xpath("(//div[contains(@class, 'cd_themed_select__clear-indicator')])[1]");
-
+    By btn_addAnotherStandingOrder = By.xpath("//button[contains(text(), 'Add another')]");
 
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
@@ -477,5 +477,8 @@ public class CustomersPage extends LoginPage {
         if (distributorUI.isDisplayed(btn_removeDelivery)){
             distributorUI.click(btn_removeDelivery);
         }
+    }
+    public void clickOnAddAnotherStandingOrder() {
+        distributorUI.click(btn_addAnotherStandingOrder);
     }
 }

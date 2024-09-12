@@ -315,4 +315,7 @@ public class Customer {
     public static void clickOnEditStandingOrder(){
         customersPage.clickOnEditStandingOrder();
     }
+    public static void clickOnAddAnotherStandingOrder(){
+        customersPage.clickOnAddAnotherStandingOrder();
+    }
 }
