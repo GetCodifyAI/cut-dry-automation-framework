@@ -79,7 +79,17 @@ public class CustomersPage extends LoginPage {
     By txt_firstItem = By.xpath("//div[text()='artichoke -24ct']");
     By txt_minOrderBanner = By.xpath("//div[contains(text(), 'Add a few more items worth') and contains(text(), 'to meet minimum order amount')]");
     By txt_popupAlertOrderMin = By.xpath("//h2[text()='Order Minimum Not Met']");
+    By btn_previousDraftOrderNo = By.xpath("//div[contains(text(),'previous draft order')]/..//div[text()='No']");
 
+    public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(btn_previousDraftOrderNo);
+    }
+
+    public void clickPreviousDraftOrderNo() throws InterruptedException {
+        distributorUI.click(btn_previousDraftOrderNo);
+    }
 
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
