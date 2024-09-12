@@ -12,10 +12,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyCreatingStandingOrdersTest extends TestBase {
+public class VerifyEditingStandingOrdersTest extends TestBase {
     static User user;
     static String customerId = "16579";
-    static String deliveryDay = "Monday";
+    static String deliveryDay = "Tuesday";
 
     @BeforeMethod
     public void setUp() {
@@ -23,8 +23,8 @@ public class VerifyCreatingStandingOrdersTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-200")
-    public void verifyCreatingStandingOrders() throws InterruptedException {
+    @Test(groups = "DOT-TC-201")
+    public void verifyEditingStandingOrders() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
@@ -35,7 +35,7 @@ public class VerifyCreatingStandingOrdersTest extends TestBase {
         Customer.clickOnCustomerCode(customerId);
         Customer.clickOnOrdersTab();
         softAssert.assertTrue(Customer.isStandingOrdersDisplayed(),"navigation error");
-        Customer.clickOnCreateStandingOrder();
+        Customer.clickOnEditStandingOrder();
         Customer.selectDeliveryDate(deliveryDay);
         itemName = Customer.getItemNameFirstRow();
         Customer.increaseFirstRowQtyByOne();
@@ -43,7 +43,6 @@ public class VerifyCreatingStandingOrdersTest extends TestBase {
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
         Customer.setStandingOrder();
         softAssert.assertTrue(Customer.isStandingOrderEmailPopupDisplayed(),"pop up display error");
-        Customer.selectEmail();
         Customer.scheduleStandingOrder();
         softAssert.assertTrue(Customer.isStandingOrderSuccessPopupDisplayed(),"order creating error");
         Customer.clickOK();

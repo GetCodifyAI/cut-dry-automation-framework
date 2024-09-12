@@ -291,9 +291,10 @@ public class Customer {
     public static void clickOnCreateStandingOrder(){
         customersPage.clickOnCreateStandingOrder();
     }
-    public static void selectDeliveryDate(){
+    public static void selectDeliveryDate(String day){
+        customersPage.clickOnRemoveDelivery();
         customersPage.clickOnDropdownDelivery();
-        customersPage.clickOnDeliveryDate();
+        customersPage.clickOnDeliveryDate(day);
     }
     public static void setStandingOrder(){
         customersPage.setStandingOrder();
@@ -310,5 +311,8 @@ public class Customer {
     }
     public static boolean isStandingOrderSuccessPopupDisplayed(){
         return customersPage.isStandingOrderSuccessPopupDisplayed();
+    }
+    public static void clickOnEditStandingOrder(){
+        customersPage.clickOnEditStandingOrder();
     }
 }

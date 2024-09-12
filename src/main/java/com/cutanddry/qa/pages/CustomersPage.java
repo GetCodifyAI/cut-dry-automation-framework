@@ -84,15 +84,15 @@ public class CustomersPage extends LoginPage {
     By txt_standingOrders = By.xpath("//div[text()='Standing Orders: ']");
     By btn_createStandingOrders = By.xpath("//div[text()='Create']");
     By dropdown_delivery = By.xpath("//div[text()='Delivery:']/following-sibling::div//div[text()='Select Days...']");
-    By txt_deliveryMonday = By.xpath("//div[text()='Monday']/preceding-sibling::input[@type='checkbox']");
+    String txt_deliveryDay = "//div[text()='DAY']/preceding-sibling::input[@type='checkbox']";
     By btn_setStandingOrder = By.xpath("//button[text()='Set Standing Order ']");
     By txt_EmailPopup = By.xpath("//div[text()='Standing Order CC Emails']");
     By dropdown_email = By.xpath("//div[text()='Select...']");
     By txt_testEmail = By.xpath("//div[text()='Test_Automation_QA (quinn-bins-sd9lph1ucd@e.rainforestqa.com)']");
     By btn_schedule = By.xpath("//button[text()='Schedule Standing Order']");
     By txt_success = By.xpath("//h2[text()='Success']");
-
-
+    By btn_editStandingOrders = By.xpath("//div[text()='Edit']");
+    By btn_removeDelivery = By.xpath("(//div[contains(@class, 'cd_themed_select__clear-indicator')])[1]");
 
 
     public void clickOnSearchCustomers(){
@@ -441,10 +441,10 @@ public class CustomersPage extends LoginPage {
     public void clickOnDropdownDelivery() {
         distributorUI.click(dropdown_delivery);
     }
-    public void clickOnDeliveryDate() {
-        distributorUI.waitForVisibility(txt_deliveryMonday);
-        distributorUI.click(txt_deliveryMonday);
-        distributorUI.waitForElementEnabledState(txt_deliveryMonday,true);
+    public void clickOnDeliveryDate(String day) {
+        distributorUI.waitForVisibility(By.xpath(txt_deliveryDay.replace("DAY", day)));
+        distributorUI.click(By.xpath(txt_deliveryDay.replace("DAY", day)));
+        distributorUI.waitForElementEnabledState(By.xpath(txt_deliveryDay.replace("DAY", day)),true);
     }
     public void setStandingOrder(){
         distributorUI.waitForClickability(btn_setStandingOrder);
@@ -469,5 +469,13 @@ public class CustomersPage extends LoginPage {
     public boolean isStandingOrderSuccessPopupDisplayed(){
         distributorUI.waitForVisibility(txt_success);
         return distributorUI.isDisplayed(txt_success);
+    }
+    public void clickOnEditStandingOrder() {
+        distributorUI.click(btn_editStandingOrders);
+    }
+    public void clickOnRemoveDelivery() {
+        if (distributorUI.isDisplayed(btn_removeDelivery)){
+            distributorUI.click(btn_removeDelivery);
+        }
     }
 }
