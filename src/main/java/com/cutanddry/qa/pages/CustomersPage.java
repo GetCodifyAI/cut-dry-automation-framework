@@ -79,6 +79,20 @@ public class CustomersPage extends LoginPage {
     By txt_firstItem = By.xpath("//div[text()='artichoke -24ct']");
     By txt_minOrderBanner = By.xpath("//div[contains(text(), 'Add a few more items worth') and contains(text(), 'to meet minimum order amount')]");
     By txt_popupAlertOrderMin = By.xpath("//h2[text()='Order Minimum Not Met']");
+    String txt_customerCode = "//td[text()='CODE']";
+    By tb_orders = By.xpath("//a[text()='Orders' and @role='tab']");
+    By txt_standingOrders = By.xpath("//div[text()='Standing Orders: ']");
+    By btn_createStandingOrders = By.xpath("//div[text()='Create']");
+    By dropdown_delivery = By.xpath("//div[text()='Delivery:']/following-sibling::div//div[text()='Select Days...']");
+    By txt_deliveryMonday = By.xpath("//div[text()='Monday']/preceding-sibling::input[@type='checkbox']");
+    By btn_setStandingOrder = By.xpath("//button[text()='Set Standing Order ']");
+    By txt_EmailPopup = By.xpath("//div[text()='Standing Order CC Emails']");
+    By dropdown_email = By.xpath("//div[text()='Select...']");
+    By txt_testEmail = By.xpath("//div[text()='Test_Automation_QA (quinn-bins-sd9lph1ucd@e.rainforestqa.com)']");
+    By btn_schedule = By.xpath("//button[text()='Schedule Standing Order']");
+    By txt_success = By.xpath("//h2[text()='Success']");
+
+
 
 
     public void clickOnSearchCustomers(){
@@ -410,5 +424,50 @@ public class CustomersPage extends LoginPage {
     public boolean isOrderMinPopupDisplayed(){
         distributorUI.waitForVisibility(txt_popupAlertOrderMin);
         return distributorUI.isDisplayed(txt_popupAlertOrderMin);
+    }
+    public void clickOnCustomerCode(String code) {
+        distributorUI.click(By.xpath(txt_customerCode.replace("CODE", code)));
+    }
+    public void clickOnOrdersTab() {
+        distributorUI.click(tb_orders);
+    }
+    public boolean isStandingOrdersDisplayed(){
+        distributorUI.waitForVisibility(txt_standingOrders);
+        return distributorUI.isDisplayed(txt_standingOrders);
+    }
+    public void clickOnCreateStandingOrder() {
+        distributorUI.click(btn_createStandingOrders);
+    }
+    public void clickOnDropdownDelivery() {
+        distributorUI.click(dropdown_delivery);
+    }
+    public void clickOnDeliveryDate() {
+        distributorUI.waitForVisibility(txt_deliveryMonday);
+        distributorUI.click(txt_deliveryMonday);
+        distributorUI.waitForElementEnabledState(txt_deliveryMonday,true);
+    }
+    public void setStandingOrder(){
+        distributorUI.waitForClickability(btn_setStandingOrder);
+        distributorUI.click(btn_setStandingOrder);
+    }
+    public boolean isStandingOrderEmailPopupDisplayed(){
+        distributorUI.waitForVisibility(txt_EmailPopup);
+        return distributorUI.isDisplayed(txt_EmailPopup);
+    }
+    public void clickOnDropdownEmail() {
+        distributorUI.click(dropdown_email);
+    }
+    public void clickOnEmail() {
+        distributorUI.waitForVisibility(txt_testEmail);
+        distributorUI.click(txt_testEmail);
+        distributorUI.click(txt_EmailPopup);
+    }
+    public void scheduleStandingOrder() {
+        distributorUI.waitForClickability(btn_schedule);
+        distributorUI.click(btn_schedule);
+    }
+    public boolean isStandingOrderSuccessPopupDisplayed(){
+        distributorUI.waitForVisibility(txt_success);
+        return distributorUI.isDisplayed(txt_success);
     }
 }
