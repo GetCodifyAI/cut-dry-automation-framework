@@ -16,6 +16,8 @@ import org.testng.asserts.SoftAssert;
 public class VerifyBroadcastMessageTest extends TestBase {
     static User user;
     static String customerId = "16579";
+    static String customerName = "Kafe Layers #3 Test - San Francisco";
+    static String broadcastMessage = "Test Broadcast Message";
 
     @BeforeMethod
     public void setUp(){
@@ -34,11 +36,11 @@ public class VerifyBroadcastMessageTest extends TestBase {
         softAssert.assertTrue(Boost.isStepOneDisplayed(),"add Message display error");
         Boost.selectCustomList();
         softAssert.assertTrue(Boost.isSelectCustomersDisplayed(),"custom List select error");
-        Boost.selectCustomer();
+        Boost.selectCustomer(customerName);
         softAssert.assertTrue(Boost.isSelectionCountDisplayed(),"customer selection error");
         Boost.clickContinue();
         softAssert.assertTrue(Boost.isStepTwoDisplayed(),"continuation error");
-        Boost.customizeMessage();
+        Boost.customizeMessage(broadcastMessage);
         Boost.clickSubmit();
         softAssert.assertTrue(Boost.isBroadcastSuccessDisplayed(),"broadcast error");
         Boost.clickOk();

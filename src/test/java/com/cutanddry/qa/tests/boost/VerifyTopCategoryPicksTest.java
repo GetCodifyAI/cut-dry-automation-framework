@@ -16,6 +16,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTopCategoryPicksTest extends TestBase{
     static User user;
     static String customerId = "16579";
+    static String itemCode = "00475";
 
     @BeforeMethod
     public void setUp(){
@@ -36,8 +37,8 @@ public class VerifyTopCategoryPicksTest extends TestBase{
         softAssert.assertTrue(Boost.isTopCategoryPopupDisplayed(),"top category popup error");
         Boost.clickAllItemsConfig();
         Boost.clickAddItems();
-        Boost.addItem();
-        softAssert.assertTrue(Boost.isItemAdded(),"item adding error");
+        Boost.addItem(itemCode);
+        softAssert.assertTrue(Boost.isItemAdded(itemCode),"item adding error");
         Boost.clickClose();
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
@@ -45,7 +46,7 @@ public class VerifyTopCategoryPicksTest extends TestBase{
         Customer.clickOnOrderGuide(customerId);
         Customer.goToCatalog();
         softAssert.assertTrue(Customer.isTopCategoryPicksDisplayed(),"top picks missing error");
-        softAssert.assertTrue(Customer.isItemInTopCategoryPicks(),"item missing error");
+        softAssert.assertTrue(Customer.isItemInTopCategoryPicks(itemCode),"item missing error");
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickSuggestiveSales();
@@ -53,8 +54,8 @@ public class VerifyTopCategoryPicksTest extends TestBase{
         Boost.clickTopCategoryPicksConfig();
         softAssert.assertTrue(Boost.isTopCategoryPopupDisplayed(),"top category popup error");
         Boost.clickAllItemsConfig();
-        Boost.removeItem();
-        softAssert.assertFalse(Boost.isItemInCarouselPreview(),"item remove error");
+        Boost.removeItem(itemCode);
+        softAssert.assertFalse(Boost.isItemInCarouselPreview(itemCode),"item remove error");
         softAssert.assertAll();
     }
     @AfterMethod

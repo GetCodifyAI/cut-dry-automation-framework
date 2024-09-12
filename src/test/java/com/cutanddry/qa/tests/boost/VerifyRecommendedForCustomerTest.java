@@ -16,6 +16,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyRecommendedForCustomerTest extends TestBase {
     static User user;
     static String customerId = "16579";
+    static String itemCode = "00475";
 
     @BeforeMethod
     public void setUp(){
@@ -38,8 +39,8 @@ public class VerifyRecommendedForCustomerTest extends TestBase {
         softAssert.assertTrue(Boost.isRecommendForCustomerPopupDisplayed(),"recommend for customer popup error");
         Boost.toggleOnCarouselDisplayStatus(inactiveState);
         Boost.clickAddItems();
-        Boost.addItem();
-        softAssert.assertTrue(Boost.isItemAdded(),"item adding error");
+        Boost.addItem(itemCode);
+        softAssert.assertTrue(Boost.isItemAdded(itemCode),"item adding error");
         Boost.clickClose();
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
@@ -47,15 +48,15 @@ public class VerifyRecommendedForCustomerTest extends TestBase {
         Customer.clickOnOrderGuide(customerId);
         Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItems();
-        softAssert.assertTrue(Customer.isRecommendedForYouItemDisplayed(),"recommended for you item missing error");
+        softAssert.assertTrue(Customer.isRecommendedForYouItemDisplayed(itemCode),"recommended for you item missing error");
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickSuggestiveSales();
         softAssert.assertTrue(Boost.isSuggestiveTabDisplayed(),"navigate to suggestive sales error");
         Boost.clickRecommendForCustomerConfig();
         softAssert.assertTrue(Boost.isRecommendForCustomerPopupDisplayed(),"recommend for customer popup error");
-        Boost.removeItem();
-        softAssert.assertFalse(Boost.isItemInCarouselPreview(),"item remove error");
+        Boost.removeItem(itemCode);
+        softAssert.assertFalse(Boost.isItemInCarouselPreview(itemCode),"item remove error");
         softAssert.assertAll();
     }
     @AfterMethod

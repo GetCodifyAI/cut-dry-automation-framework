@@ -53,13 +53,13 @@ public class CustomersPage extends LoginPage {
     By msg_banner = By.xpath("//span[text()='Test Broadcast Message']");
     By lbl_productDetails = By.xpath("//span[text()='Product Details']");
     By lbl_topCategoryPicks = By.xpath("//div[text()='Top Category Picks']");
-    By lbl_itemAdded = By.xpath("//div[text()='Top Category Picks']//following-sibling::div//div[text()='#00475']");
+    String lbl_itemAdded = "//div[text()='Top Category Picks']//following-sibling::div//div[text()='CODE']";
     String lbl_searchedItem = "//div[text()='CODE']";
     By section_compareSimilar = By.xpath("//div[text()='Compare Similar Items']");
-    By lbl_recommendedForYouItem = By.xpath("//div[text()='Recommended for You']//following-sibling::div//div[text()='#00475']");
-    By lbl_recommendedBySalesRep = By.xpath("//div[text()='Recommended by Steve O']//following-sibling::div//div[text()='#00475']");
+    String lbl_recommendedForYouItem = "//div[text()='Recommended for You']//following-sibling::div//div[text()='CODE']";
+    String lbl_recommendedBySalesRep = "//div[contains(text(), 'Recommended by')]//following-sibling::div//div[contains(text(), 'CODE')]";
     By section_dontForget = By.xpath("//div[text()=\"Don't Forget to Order\"]");
-    By section_moreFromThisBrand = By.xpath("//div[text()='More From Dole']");
+    By section_moreFromThisBrand = By.xpath("//div[contains(text(), 'More From')]");
     By btn_companyDropdown = By.xpath("//button[.//span[text()='Company:']]");
     By txt_companyDropdownText = By.xpath("//a[contains(text(), 'Independent Foods Co')]");
     By btn_edit = By.xpath("//button[contains(., 'Edit')]");
@@ -285,8 +285,8 @@ public class CustomersPage extends LoginPage {
     public boolean isTopCategoryPicksDisplayed(){
         return distributorUI.isDisplayed(lbl_topCategoryPicks);
     }
-    public boolean isItemInTopCategoryPicks(){
-        return distributorUI.isDisplayed(lbl_itemAdded);
+    public boolean isItemInTopCategoryPicks(String code){
+        return distributorUI.isDisplayed(By.xpath(lbl_itemAdded.replace("CODE", '#'+code)));
     }
     public void clickSearchedItem(String code){
         distributorUI.click((By.xpath(lbl_searchedItem.replace("CODE", '#'+code))));
@@ -297,11 +297,11 @@ public class CustomersPage extends LoginPage {
     public boolean isCompareSimilarItemsDisplayed(){
         return distributorUI.isDisplayed(section_compareSimilar);
     }
-    public boolean isRecommendedForYouItemDisplayed(){
-        return distributorUI.isDisplayed(lbl_recommendedForYouItem);
+    public boolean isRecommendedForYouItemDisplayed(String code){
+        return distributorUI.isDisplayed(By.xpath(lbl_recommendedForYouItem.replace("CODE", '#'+code)));
     }
-    public boolean isRecommendedBySalesRepDisplayed() {
-        return distributorUI.isDisplayed(lbl_recommendedBySalesRep);
+    public boolean isRecommendedBySalesRepDisplayed(String code) {
+        return distributorUI.isDisplayed(By.xpath(lbl_recommendedBySalesRep.replace("CODE", '#'+code)));
     }
     public boolean isDontForgetToOrderDisplayed(){
         return distributorUI.isDisplayed(section_dontForget);

@@ -22,9 +22,9 @@ public class Boost {
     public static boolean isSelectCustomersDisplayed() {
         return boostPage.isSelectCustomersDisplayed();
     }
-    public static void selectCustomer() {
+    public static void selectCustomer(String name) {
         boostPage.clickSelectCustomersDropdown();
-        boostPage.selectCustomer();
+        boostPage.selectCustomer(name);
     }
     public static boolean isSelectionCountDisplayed() {
         return boostPage.isSelectionCountDisplayed();
@@ -35,8 +35,8 @@ public class Boost {
     public static boolean isStepTwoDisplayed() {
         return boostPage.isStepTwoDisplayed();
     }
-    public static void customizeMessage() {
-        boostPage.typeMessage();
+    public static void customizeMessage(String msg) {
+        boostPage.typeMessage(msg);
         boostPage.addURL();
         boostPage.removeNotifications();
     }
@@ -76,21 +76,21 @@ public class Boost {
     public static void clickAddItems(){
         boostPage.clickAddItems();
     }
-    public static void addItem(){
-        boostPage.addItem();
+    public static void addItem(String code){
+        boostPage.addItem(code);
         boostPage.clickAdd();
     }
-    public static boolean isItemAdded(){
-        return boostPage.isItemAdded();
+    public static boolean isItemAdded(String code){
+        return boostPage.isItemAdded(code);
     }
     public static void clickClose() throws InterruptedException {
         boostPage.clickClose();
     }
-    public static void removeItem(){
-        boostPage.removeItem();
+    public static void removeItem(String code){
+        boostPage.removeItem(code);
     }
-    public static boolean isItemInCarouselPreview(){
-        return boostPage.isItemInCarouselPreview();
+    public static boolean isItemInCarouselPreview(String code){
+        return boostPage.isItemInCarouselPreview(code);
     }
     public static void clickCompareSimilarItemsConfig(){
         boostPage.clickCompareSimilarItemsConfig();
@@ -116,8 +116,8 @@ public class Boost {
     public static boolean isRecommendBySalesRepPopupDisplayed(){
         return boostPage.isRecommendBySalesRepPopupDisplayed();
     }
-    public static void clickSalesRepConfig(){
-        boostPage.clickSalesRepConfig();
+    public static void clickSalesRepConfig(String name){
+        boostPage.clickSalesRepConfig(name);
     }
     public static boolean isSalesRepConfigPopupDisplayed(){
         return boostPage.isSalesRepConfigPopupDisplayed();
