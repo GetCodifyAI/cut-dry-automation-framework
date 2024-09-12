@@ -94,6 +94,10 @@ public class CustomersPage extends LoginPage {
     By btn_editStandingOrders = By.xpath("//div[text()='Edit']");
     By btn_removeDelivery = By.xpath("(//div[contains(@class, 'cd_themed_select__clear-indicator')])[1]");
     By btn_addAnotherStandingOrder = By.xpath("//button[contains(text(), 'Add another')]");
+    By btn_deleteStandingOrders = By.xpath("//div[text()='Delete']");
+    By txt_deletePopup = By.xpath("//h2[text()='Are you sure?']");
+    By btn_yes = By.xpath("//button[text()='Yes']");
+
 
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
@@ -480,5 +484,14 @@ public class CustomersPage extends LoginPage {
     }
     public void clickOnAddAnotherStandingOrder() {
         distributorUI.click(btn_addAnotherStandingOrder);
+    }
+    public void clickOnDeleteStandingOrders() {
+        distributorUI.click(btn_deleteStandingOrders);
+        distributorUI.waitForVisibility(txt_deletePopup);
+        distributorUI.waitForClickability(btn_yes);
+        distributorUI.click(btn_yes);
+    }
+    public boolean areStandingOrdersDeleted(){
+        return distributorUI.isDisplayed(btn_deleteStandingOrders);
     }
 }

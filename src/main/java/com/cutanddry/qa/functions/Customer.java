@@ -318,4 +318,12 @@ public class Customer {
     public static void clickOnAddAnotherStandingOrder(){
         customersPage.clickOnAddAnotherStandingOrder();
     }
+    public static void clickOnDeleteStandingOrders(){
+        while (customersPage.areStandingOrdersDeleted()){
+            customersPage.clickOnDeleteStandingOrders();
+        }
+    }
+    public static boolean areStandingOrdersDeleted(){
+        return customersPage.areStandingOrdersDeleted();
+    }
 }
