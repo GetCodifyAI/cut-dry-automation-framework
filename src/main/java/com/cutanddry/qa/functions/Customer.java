@@ -62,7 +62,10 @@ public class Customer {
     public static void checkoutItems() throws InterruptedException {
         customersPage.clickOnCheckoutButton();
     }
-    public static void goToCatalog(){
+    public static void goToCatalog() throws InterruptedException {
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
         customersPage.clickOnCatalogButton();
     }
     public static void searchItemOnCatalog(String item) throws InterruptedException {
