@@ -18,6 +18,7 @@ public class CashAndCarryAppPage extends TestBase {
     By btn_submitOrder = By.xpath("//button[contains(text(), 'Submit Pick Up Order')]");
     By txt_invalidCardPopup = By.xpath("//h2[text()='Invalid Card Detail(s)']");
     By btn_OK = By.xpath("//button[text()='OK']");
+    By btn_checkoutCashCarry = By.xpath("//button[@data-tip='Click here to checkout']");
 
     public void navigateToCashAndCarryApp(String url){
         distributorUI.navigateToURL(url);
@@ -29,6 +30,12 @@ public class CashAndCarryAppPage extends TestBase {
             return false;
         }
         return distributorUI.isDisplayed(txt_marketPlace);
+    }
+    public void clickOnCheckoutButton() throws InterruptedException {
+        distributorUI.waitForCustom(4000);
+        distributorUI.waitForElementEnabledState(btn_checkoutCashCarry,true);
+        distributorUI.click(btn_checkoutCashCarry);
+        distributorUI.waitForCustom(4000);
     }
     public void enterFullName(String name){
         distributorUI.sendKeys(lbl_enterFullName,name);
