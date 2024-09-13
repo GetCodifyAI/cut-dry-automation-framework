@@ -35,7 +35,7 @@ public class VerifyCashAndCarryAppSimulatingCVVMatchTest extends TestBase {
         CashAndCarry.enterFullName(user.getFull_name());
         CashAndCarry.enterEmail(user.getEmail());
         CashAndCarry.enterMobilePhone(user.getMobile());
-        CashAndCarry.enterCardNum(user.getCard_number_invalid());
+        CashAndCarry.enterCardNum(user.getCard_number_valid());
         CashAndCarry.enterExpDate(user.getExpiration());
         CashAndCarry.enterCVV(user.getCvv());
         CashAndCarry.enterStreetAddress(user.getStreet_address());

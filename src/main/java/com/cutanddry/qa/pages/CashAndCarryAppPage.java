@@ -12,13 +12,14 @@ public class CashAndCarryAppPage extends TestBase {
     By lbl_enterCity = By.xpath("//input[@placeholder='City']");
     By lbl_enterState = By.xpath("//input[@placeholder='State']");
     By lbl_enterZip = By.xpath("//input[@placeholder='Zip Code']");
-    By lbl_enterCardNum = By.xpath("//input[@id='ccnumber']");
-    By lbl_enterExpDate = By.xpath("//input[@id='ccexp']");
-    By lbl_enterCVV = By.xpath("//input[@id='cvv']");
+    String lbl_enterCardNum = "ccnumber";
+    String lbl_enterExpDate = "ccexp";
+    String lbl_enterCVV = "cvv";
     By btn_submitOrder = By.xpath("//button[contains(text(), 'Submit Pick Up Order')]");
     By txt_invalidCardPopup = By.xpath("//h2[text()='Invalid Card Detail(s)']");
     By btn_OK = By.xpath("//button[text()='OK']");
     By btn_checkoutCashCarry = By.xpath("//button[@data-tip='Click here to checkout']");
+    By txt_paymentFailedPopup = By.xpath("//h2[contains(text(), 'Your payment authorization failed.')]");
 
     public void navigateToCashAndCarryApp(String url){
         distributorUI.navigateToURL(url);
@@ -59,13 +60,14 @@ public class CashAndCarryAppPage extends TestBase {
         distributorUI.sendKeys(lbl_enterZip,zip);
     }
     public void enterCardNum(String card) throws InterruptedException {
-        distributorUI.sendKeys(lbl_enterCardNum,card);
+        distributorUI.waitForCustom(3000);
+        distributorUI.sendKeysToField(lbl_enterCardNum,card);
     }
     public void enterExpDate(String exp){
-        distributorUI.sendKeys(lbl_enterExpDate,exp);
+        distributorUI.sendKeysToField(lbl_enterExpDate,exp);
     }
     public void enterCVV(String cvv){
-        distributorUI.sendKeys(lbl_enterCVV,cvv);
+        distributorUI.sendKeysToField(lbl_enterCVV,cvv);
     }
     public void submitOrder(){
         distributorUI.waitForClickability(btn_submitOrder);
