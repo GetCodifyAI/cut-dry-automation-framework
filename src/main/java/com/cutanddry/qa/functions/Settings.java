@@ -14,5 +14,58 @@ public class Settings {
     public static void clickOnSaveChanges() {
         settingsPage.clickOnSaveChanges();
     }
-
+    public static boolean isTeamSettingsTextDisplayed(){
+        return settingsPage.isTeamSettingsTextDisplayed();
+    }
+    public static void clickOnAddUser() {
+        settingsPage.clickOnAddUser();
+    }
+    public static void enterName(String name){
+        settingsPage.enterName(name);
+    }
+    public static void enterEmail(String email){
+        settingsPage.enterEmail(email);
+    }
+    public static void enterPhone(String mobile){
+        settingsPage.enterPhone(mobile);
+    }
+    public static void enterUserRef(String ref){
+        settingsPage.enterUserRef(ref);
+    }
+    public static void clickOnInviteUser() {
+        settingsPage.clickOnInviteUser();
+    }
+    public static boolean isUserDisplayed(String user){
+        return settingsPage.isUserDisplayed(user);
+    }
+    public static void clickOnRemoveUserLabel() {
+        settingsPage.clickOnRemoveUserLabel();
+    }
+    public static void clickOnEditUser(String user) {
+        settingsPage.clickOnEditUser(user);
+    }
+    public static boolean isEditUserPopupDisplayed(){
+        return settingsPage.isEditUserPopupDisplayed();
+    }
+    public static void clickOK(){
+        settingsPage.clickOK();
+    }
+    public static void clickOnRemoveUser() {
+        settingsPage.clickOnRemoveUser();
+    }
+    public static boolean isRemoveUserPopupDisplayed(){
+        return settingsPage.isRemoveUserPopupDisplayed();
+    }
+    public static boolean isUserRefErrorDisplayed(){
+        return settingsPage.isUserRefErrorDisplayed();
+    }
+    public static void clickRemoveAddedUserRef() {
+        settingsPage.clickRemoveAddedUserRef();
+    }
+    public static boolean isUserRefAdded(String ref){
+        return settingsPage.isUserRefAdded(ref);
+    }
+    public static boolean isUserAddingErrorPopupDisplayed(){
+        return settingsPage.isUserAddingErrorPopupDisplayed();
+    }
 }
