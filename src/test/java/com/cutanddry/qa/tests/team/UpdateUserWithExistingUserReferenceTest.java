@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class UpdateUserWithExistingUserReferenceTest extends TestBase {
     static User user;
-    static String name = "Test Other";
+    static String name = "Test";
     static String userRef = "KF";
 
     @BeforeMethod
@@ -24,7 +24,7 @@ public class UpdateUserWithExistingUserReferenceTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-139")
-    public void UpdateUserWithExistingUserReference() throws InterruptedException {
+    public void UpdateUserWithExistingUserReference() {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();

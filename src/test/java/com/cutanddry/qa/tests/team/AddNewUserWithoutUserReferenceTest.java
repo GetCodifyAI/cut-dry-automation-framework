@@ -16,7 +16,6 @@ public class AddNewUserWithoutUserReferenceTest extends TestBase {
     static User user;
     static String name = "Test";
     static String email = "test@email.com";
-    static String phone = "1234567890";
 
     @BeforeMethod
     public void setUp(){
@@ -35,7 +34,6 @@ public class AddNewUserWithoutUserReferenceTest extends TestBase {
         Settings.clickOnAddUser();
         Settings.enterName(name);
         Settings.enterEmail(email);
-        Settings.enterPhone(phone);
         Settings.clickOnInviteUser();
         softAssert.assertTrue(Settings.isUserDisplayed(name),"user adding error");
         softAssert.assertAll();

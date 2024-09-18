@@ -51,7 +51,7 @@ public class SettingsPage extends LoginPage{
         return distributorUI.isDisplayed(txt_teamSettings);
     }
     public void clickOnAddUser() {
-        distributorUI.waitForVisibility(btn_addUser);
+        distributorUI.waitForClickability(btn_addUser);
         distributorUI.click(btn_addUser);
     }
     public void enterName(String name){
