@@ -71,8 +71,8 @@ public class Customer {
     public static void searchItemOnCatalog(String item) throws InterruptedException {
         customersPage.typeToSearchOnCatalog(item);
     }
-    public static String getFirstElementFrmSearchResults(){
-       return customersPage.getFirstItemNameFrmSearchResults();
+    public static String getFirstElementFrmSearchResults(String name){
+       return customersPage.getFirstItemNameFrmSearchResults(name);
     }
     public static void addItemToCartCatalog() throws InterruptedException {
         customersPage.clickAddToCartCatalog();

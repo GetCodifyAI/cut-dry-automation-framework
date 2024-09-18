@@ -37,6 +37,7 @@
             <class name="com.cutanddry.qa.tests.integration.VerifyChatFeatureTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyPDFGenerationForCatalogPDPTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyHardOrderMinimumWarningTest" />
+            <class name="com.cutanddry.qa.tests.integration.VerifyCashAndCarryAppPassingInvalidAccountTest" />
         </classes>
     </test>
 </suite>

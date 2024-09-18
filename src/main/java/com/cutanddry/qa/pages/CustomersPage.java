@@ -13,7 +13,7 @@ public class CustomersPage extends LoginPage {
     By btn_checkout = By.xpath("//button[text()='$']/../button[2]");
     By btn_catalog = By.xpath("//div[text()='Catalog']");
     By tbx_catalogSearch = By.xpath("//input[@placeholder='Search catalog...']");
-    By lbl_catalogSearchItemList = By.xpath("//div[contains(text(), 'Artichoke')]");
+    String lbl_catalogSearchItemList = "//div[contains(text(), 'NAME')]";
     By btn_addToCart = By.xpath("//button[text()='Add to Cart']");
     By tbx_itemQuantityFirstRow = By.xpath("//tr[1]//td[8]//input");
     By lbl_itemPriceFirstRow = By.xpath("//tr[1]//td[7]/div");
@@ -142,8 +142,8 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(tbx_catalogSearch,item);
     }
-    public String getFirstItemNameFrmSearchResults(){
-        return distributorUI.getText(lbl_catalogSearchItemList, 0);
+    public String getFirstItemNameFrmSearchResults(String name){
+        return distributorUI.getText(By.xpath(lbl_catalogSearchItemList.replace("NAME", name)), 0);
     }
     public void clickAddToCartCatalog() throws InterruptedException {
         distributorUI.waitForClickability(btn_addToCart);
