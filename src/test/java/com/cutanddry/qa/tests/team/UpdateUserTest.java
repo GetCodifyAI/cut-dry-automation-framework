@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class UpdateUserTest extends TestBase {
     static User user;
-    static String testUser = "Test Other";
+    static String testUser = "Test Test";
     static String userRef1 = "AZ";
     static String userRef2 = "ZZ";
 

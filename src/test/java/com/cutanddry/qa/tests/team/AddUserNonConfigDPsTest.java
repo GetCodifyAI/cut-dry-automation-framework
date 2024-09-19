@@ -14,8 +14,8 @@ import org.testng.asserts.SoftAssert;
 
 public class AddUserNonConfigDPsTest extends TestBase {
     static User user;
-    static String name = "Test55";
-    static String email = "test55@email.com";
+    static String name = "Test 99";
+    static String email = "test99@email.com";
 
     @BeforeMethod
     public void setUp(){
