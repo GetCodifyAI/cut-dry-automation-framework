@@ -17,7 +17,7 @@ public class SettingsPage extends LoginPage{
     By txt_editUser = By.xpath("//div[text()='Edit User']");
     By lbl_removeUser = By.xpath("//a[text()='Remove user']");
     By btn_OK = By.xpath("//button[text()='OK']");
-    By txt_removeUser = By.xpath("//div[text()='Remove user?']");
+    By txt_removeUser = By.xpath("//div[text()='Removing this user will result in the following:']");
     By btn_removeUser = By.xpath("//button[text()='Remove User']");
     By txt_userRefError = By.xpath("//h2[contains(text(), 'already being assigned to a another')]");
     By btn_removeAddedUserRef = By.xpath("(//div[contains(@class, 'themed_select__multi-value__remove')])[1]");
@@ -97,8 +97,10 @@ public class SettingsPage extends LoginPage{
     public void clickOK(){
         distributorUI.waitForClickability(btn_OK);
         distributorUI.click(btn_OK);
+        distributorUI.refreshPage();
     }
     public boolean isRemoveUserPopupDisplayed(){
+        distributorUI.waitForVisibility(txt_removeUser);
         return distributorUI.isDisplayed(txt_removeUser);
     }
     public void clickOnRemoveUser() {
