@@ -10,6 +10,10 @@ public class Boost {
     }
 
     public static void addMessage() {
+        if (boostPage.isDeactivated()) {
+            boostPage.clickXButton();
+            boostPage.clickYes();
+        }
         boostPage.clickAddMessage();
     }
     public static boolean isStepOneDisplayed() {

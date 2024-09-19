@@ -80,6 +80,24 @@ public class CustomersPage extends LoginPage {
     By txt_minOrderBanner = By.xpath("//div[contains(text(), 'Add a few more items worth') and contains(text(), 'to meet minimum order amount')]");
     By txt_popupAlertOrderMin = By.xpath("//h2[text()='Order Minimum Not Met']");
     By btn_previousDraftOrderNo = By.xpath("//div[contains(text(),'previous draft order')]/..//div[text()='No']");
+    String txt_customerCode = "//td[text()='CODE']";
+    By tb_orders = By.xpath("//a[text()='Orders' and @role='tab']");
+    By txt_standingOrders = By.xpath("//div[text()='Standing Orders: ']");
+    By btn_createStandingOrders = By.xpath("//div[text()='Create']");
+    By dropdown_delivery = By.xpath("//div[text()='Delivery:']/following-sibling::div//div[text()='Select Days...']");
+    String txt_deliveryDay = "//div[text()='DAY']/preceding-sibling::input[@type='checkbox']";
+    By btn_setStandingOrder = By.xpath("//button[text()='Set Standing Order ']");
+    By txt_EmailPopup = By.xpath("//div[text()='Standing Order CC Emails']");
+    By dropdown_email = By.xpath("//div[text()='Select...']");
+    By txt_testEmail = By.xpath("//div[text()='Test_Automation_QA (quinn-bins-sd9lph1ucd@e.rainforestqa.com)']");
+    By btn_schedule = By.xpath("//button[text()='Schedule Standing Order']");
+    By txt_success = By.xpath("//h2[text()='Success']");
+    By btn_editStandingOrders = By.xpath("//div[text()='Edit']");
+    By btn_removeDelivery = By.xpath("(//div[contains(@class, 'cd_themed_select__clear-indicator')])[1]");
+    By btn_addAnotherStandingOrder = By.xpath("//button[contains(text(), 'Add another')]");
+    By btn_deleteStandingOrders = By.xpath("//div[text()='Delete']");
+    By txt_deletePopup = By.xpath("//h2[text()='Are you sure?']");
+    By btn_yes = By.xpath("//button[text()='Yes']");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -420,5 +438,70 @@ public class CustomersPage extends LoginPage {
     public boolean isOrderMinPopupDisplayed(){
         distributorUI.waitForVisibility(txt_popupAlertOrderMin);
         return distributorUI.isDisplayed(txt_popupAlertOrderMin);
+    }
+    public void clickOnCustomerCode(String code) {
+        distributorUI.click(By.xpath(txt_customerCode.replace("CODE", code)));
+    }
+    public void clickOnOrdersTab() {
+        distributorUI.click(tb_orders);
+    }
+    public boolean isStandingOrdersDisplayed(){
+        distributorUI.waitForVisibility(txt_standingOrders);
+        return distributorUI.isDisplayed(txt_standingOrders);
+    }
+    public void clickOnCreateStandingOrder() {
+        distributorUI.click(btn_createStandingOrders);
+    }
+    public void clickOnDropdownDelivery() {
+        distributorUI.click(dropdown_delivery);
+    }
+    public void clickOnDeliveryDate(String day) {
+        distributorUI.waitForVisibility(By.xpath(txt_deliveryDay.replace("DAY", day)));
+        distributorUI.click(By.xpath(txt_deliveryDay.replace("DAY", day)));
+        distributorUI.waitForElementEnabledState(By.xpath(txt_deliveryDay.replace("DAY", day)),true);
+    }
+    public void setStandingOrder(){
+        distributorUI.waitForClickability(btn_setStandingOrder);
+        distributorUI.click(btn_setStandingOrder);
+    }
+    public boolean isStandingOrderEmailPopupDisplayed(){
+        distributorUI.waitForVisibility(txt_EmailPopup);
+        return distributorUI.isDisplayed(txt_EmailPopup);
+    }
+    public void clickOnDropdownEmail() {
+        distributorUI.click(dropdown_email);
+    }
+    public void clickOnEmail() {
+        distributorUI.waitForVisibility(txt_testEmail);
+        distributorUI.click(txt_testEmail);
+        distributorUI.click(txt_EmailPopup);
+    }
+    public void scheduleStandingOrder() {
+        distributorUI.waitForClickability(btn_schedule);
+        distributorUI.click(btn_schedule);
+    }
+    public boolean isStandingOrderSuccessPopupDisplayed(){
+        distributorUI.waitForVisibility(txt_success);
+        return distributorUI.isDisplayed(txt_success);
+    }
+    public void clickOnEditStandingOrder() {
+        distributorUI.click(btn_editStandingOrders);
+    }
+    public void clickOnRemoveDelivery() {
+        if (distributorUI.isDisplayed(btn_removeDelivery)){
+            distributorUI.click(btn_removeDelivery);
+        }
+    }
+    public void clickOnAddAnotherStandingOrder() {
+        distributorUI.click(btn_addAnotherStandingOrder);
+    }
+    public void clickOnDeleteStandingOrders() {
+        distributorUI.click(btn_deleteStandingOrders);
+        distributorUI.waitForVisibility(txt_deletePopup);
+        distributorUI.waitForClickability(btn_yes);
+        distributorUI.click(btn_yes);
+    }
+    public boolean areStandingOrdersDeleted(){
+        return distributorUI.isDisplayed(btn_deleteStandingOrders);
     }
 }
