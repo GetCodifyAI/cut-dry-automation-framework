@@ -25,7 +25,7 @@ public class AddNewUserWithExistingUserReferenceTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-141")
-    public void AddNewUserWithExistingUserReference() {
+    public void AddNewUserWithExistingUserReference() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
