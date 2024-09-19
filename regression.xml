@@ -41,6 +41,7 @@
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyEditingStandingOrdersTest" />
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyAddingAnotherStandingOrderTest" />
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyDeletingStandingOrdersTest" />
+            <class name="com.cutanddry.qa.tests.integration.VerifyCashAndCarryAppPassingInvalidAccountTest" />
         </classes>
     </test>
 </suite>
