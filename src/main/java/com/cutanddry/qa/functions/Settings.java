@@ -47,7 +47,7 @@ public class Settings {
     public static boolean isEditUserPopupDisplayed(){
         return settingsPage.isEditUserPopupDisplayed();
     }
-    public static void clickOK(){
+    public static void clickOK() throws InterruptedException {
         settingsPage.clickOK();
     }
     public static void clickOnRemoveUser() {

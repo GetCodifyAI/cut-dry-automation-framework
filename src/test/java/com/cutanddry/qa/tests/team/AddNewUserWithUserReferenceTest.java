@@ -38,6 +38,12 @@ public class AddNewUserWithUserReferenceTest extends TestBase {
         Settings.enterUserRef(userRef);
         Settings.clickOnInviteUser();
         softAssert.assertTrue(Settings.isUserDisplayed(name),"user adding error");
+        Settings.clickOnEditUser(name);
+        Settings.clickOnRemoveUserLabel();
+        softAssert.assertTrue(Settings.isRemoveUserPopupDisplayed(),"remove pop up error");
+        Settings.clickOnRemoveUser();
+        Settings.clickOK();
+        softAssert.assertFalse(Settings.isUserDisplayed(name),"user remove error");
         softAssert.assertAll();
     }
 

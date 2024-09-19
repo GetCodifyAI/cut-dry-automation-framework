@@ -46,13 +46,13 @@ public class DashboardPage extends LoginPage{
         distributorUI.click(btn_catalog);
     }
     public void clickOnOrderSettings(){
-        distributorUI.waitForClickability(btn_settings);
+        distributorUI.scrollToElement(btn_settings);
         distributorUI.click(btn_settings);
         distributorUI.hoverOverElement(btn_orderSettings);
         distributorUI.click(btn_orderSettings);
     }
     public void clickOnTeamSettings(){
-        distributorUI.waitForClickability(btn_settings);
+        distributorUI.scrollToElement(btn_settings);
         distributorUI.click(btn_settings);
         distributorUI.hoverOverElement(btn_teamSettings);
         distributorUI.click(btn_teamSettings);

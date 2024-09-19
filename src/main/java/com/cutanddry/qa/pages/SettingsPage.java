@@ -94,10 +94,10 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForVisibility(txt_editUser);
         return distributorUI.isDisplayed(txt_editUser);
     }
-    public void clickOK(){
+    public void clickOK() throws InterruptedException {
         distributorUI.waitForClickability(btn_OK);
         distributorUI.click(btn_OK);
-        distributorUI.refreshPage();
+        distributorUI.waitForCustom(2000);
     }
     public boolean isRemoveUserPopupDisplayed(){
         distributorUI.waitForVisibility(txt_removeUser);

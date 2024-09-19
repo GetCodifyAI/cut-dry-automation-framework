@@ -23,7 +23,7 @@ public class RemoveUserTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-142")
-    public void RemoveUser() {
+    public void RemoveUser() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();

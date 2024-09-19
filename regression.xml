@@ -43,6 +43,7 @@
             <class name="com.cutanddry.qa.tests.team.UpdateUserTest" />
             <class name="com.cutanddry.qa.tests.team.AddNewUserWithExistingUserReferenceTest" />
             <class name="com.cutanddry.qa.tests.team.RemoveUserTest" />
+            <class name="com.cutanddry.qa.tests.team.AddNewUserWithUserReferenceTest" />
         </classes>
     </test>
 </suite>
