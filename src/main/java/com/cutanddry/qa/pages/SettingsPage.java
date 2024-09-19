@@ -99,7 +99,6 @@ public class SettingsPage extends LoginPage{
         distributorUI.click(btn_OK);
     }
     public boolean isRemoveUserPopupDisplayed(){
-        distributorUI.waitForVisibility(txt_removeUser);
         return distributorUI.isDisplayed(txt_removeUser);
     }
     public void clickOnRemoveUser() {

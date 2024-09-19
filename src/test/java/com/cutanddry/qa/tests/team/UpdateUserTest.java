@@ -40,6 +40,7 @@ public class UpdateUserTest extends TestBase {
         Settings.clickRemoveAddedUserRef();
         Settings.clickRemoveAddedUserRef();
         Settings.enterUserRef(userRef1);
+        Settings.clickOnSaveChanges();
         softAssert.assertAll();
     }
 
