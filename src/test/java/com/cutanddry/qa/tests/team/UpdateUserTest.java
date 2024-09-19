@@ -15,7 +15,8 @@ import org.testng.asserts.SoftAssert;
 public class UpdateUserTest extends TestBase {
     static User user;
     static String testUser = "Test Other";
-    static String userRef = "ZZ";
+    static String userRef1 = "AZ";
+    static String userRef2 = "ZZ";
 
     @BeforeMethod
     public void setUp(){
@@ -32,10 +33,13 @@ public class UpdateUserTest extends TestBase {
         Dashboard.navigateToTeamSettings();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");
         Settings.clickOnEditUser(testUser);
-        Settings.enterUserRef(userRef);
+        Settings.enterUserRef(userRef2);
         Settings.clickOnSaveChanges();
         Settings.clickOnEditUser(testUser);
-        softAssert.assertTrue(Settings.isUserRefAdded(userRef),"ref updating error");
+        softAssert.assertTrue(Settings.isUserRefAdded(userRef2),"ref updating error");
+        Settings.clickRemoveAddedUserRef();
+        Settings.clickRemoveAddedUserRef();
+        Settings.enterUserRef(userRef1);
         softAssert.assertAll();
     }
 

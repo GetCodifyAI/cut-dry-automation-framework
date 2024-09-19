@@ -66,7 +66,8 @@ public class SettingsPage extends LoginPage{
         distributorUI.clear(lbl_phone);
         distributorUI.sendKeys(lbl_phone,mobile);
     }
-    public void enterUserRef(String ref) {
+    public void enterUserRef(String ref) throws InterruptedException {
+        distributorUI.waitForCustom(1000);
         distributorUI.sendKeysAndEnter(lbl_userRef,ref);
     }
     public void clickOnInviteUser() {
@@ -74,6 +75,11 @@ public class SettingsPage extends LoginPage{
         distributorUI.click(btn_inviteUser);
     }
     public boolean isUserDisplayed(String user){
+        try {
+            distributorUI.waitForVisibility(By.xpath(btn_editUser.replace("USER", user)));
+        } catch (Exception e){
+            return false;
+        }
         return distributorUI.isDisplayed(By.xpath(btn_editUser.replace("USER", user)));
     }
     public void clickOnRemoveUserLabel() {

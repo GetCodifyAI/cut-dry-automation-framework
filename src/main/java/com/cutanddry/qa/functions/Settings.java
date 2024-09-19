@@ -29,7 +29,7 @@ public class Settings {
     public static void enterPhone(String mobile){
         settingsPage.enterPhone(mobile);
     }
-    public static void enterUserRef(String ref){
+    public static void enterUserRef(String ref) throws InterruptedException {
         settingsPage.enterUserRef(ref);
     }
     public static void clickOnInviteUser() {
