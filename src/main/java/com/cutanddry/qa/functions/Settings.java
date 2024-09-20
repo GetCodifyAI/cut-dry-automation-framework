@@ -59,8 +59,8 @@ public class Settings {
     public static boolean isUserRefErrorDisplayed(){
         return settingsPage.isUserRefErrorDisplayed();
     }
-    public static void clickRemoveAddedUserRef() {
-        settingsPage.clickRemoveAddedUserRef();
+    public static void clickRemoveAddedUserRef(String ref) {
+        settingsPage.clickRemoveAddedUserRef(ref);
     }
     public static boolean isUserRefAdded(String ref){
         return settingsPage.isUserRefAdded(ref);

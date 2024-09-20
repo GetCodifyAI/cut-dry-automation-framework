@@ -36,7 +36,7 @@ public class UpdateUserWithExistingUserReferenceTest extends TestBase {
         Settings.clickOnSaveChanges();
         softAssert.assertTrue(Settings.isUserRefErrorDisplayed(),"user ref error");
         Settings.clickOK();
-        Settings.clickRemoveAddedUserRef();
+        Settings.clickRemoveAddedUserRef(userRef);
         Settings.clickOnSaveChanges();
         softAssert.assertAll();
     }

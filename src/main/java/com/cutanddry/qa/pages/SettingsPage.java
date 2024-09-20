@@ -20,7 +20,7 @@ public class SettingsPage extends LoginPage{
     By txt_removeUser = By.xpath("//div[text()='Removing this user will result in the following:']");
     By btn_removeUser = By.xpath("//button[text()='Remove User']");
     By txt_userRefError = By.xpath("//h2[contains(text(), 'already being assigned to a another')]");
-    By btn_removeAddedUserRef = By.xpath("(//div[contains(@class, 'themed_select__multi-value__remove')])[1]");
+    String btn_removeAddedUserRef = "//div[text()='REF']/following-sibling::div[contains(@class, 'themed_select__multi-value__remove')]";
     String txt_addedUserRef = "//div[text()='REF']";
     By txt_userAddingErrorPopup = By.xpath("//h2[text()='Error while creating a new user. Please try again.']");
 
@@ -111,9 +111,9 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForVisibility(txt_userRefError);
         return distributorUI.isDisplayed(txt_userRefError);
     }
-    public void clickRemoveAddedUserRef(){
-        distributorUI.waitForVisibility(btn_removeAddedUserRef);
-        distributorUI.click(btn_removeAddedUserRef);
+    public void clickRemoveAddedUserRef(String ref){
+        distributorUI.waitForVisibility(By.xpath(btn_removeAddedUserRef.replace("REF", ref)));
+        distributorUI.click(By.xpath(btn_removeAddedUserRef.replace("REF", ref)));
     }
     public boolean isUserRefAdded(String ref){
         distributorUI.waitForVisibility(By.xpath(txt_addedUserRef.replace("REF", ref)));
