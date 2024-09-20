@@ -57,8 +57,7 @@ public class SettingsPage extends LoginPage{
         return distributorUI.isDisplayed(txt_teamSettings);
     }
     public void clickOnAddUser() {
-        distributorUI.waitForClickability(btn_addUser);
-        distributorUI.click(btn_addUser);
+        distributorUI.clickUsingJavaScript(btn_addUser);
     }
     public void enterName(String name){
         distributorUI.clear(lbl_name);
@@ -93,7 +92,6 @@ public class SettingsPage extends LoginPage{
         distributorUI.click(lbl_removeUser);
     }
     public void clickOnEditUser(String user) {
-        distributorUI.waitForClickability(By.xpath(btn_editUser.replace("USER", user)));
         distributorUI.click(By.xpath(btn_editUser.replace("USER", user)));
     }
     public boolean isEditUserPopupDisplayed(){
