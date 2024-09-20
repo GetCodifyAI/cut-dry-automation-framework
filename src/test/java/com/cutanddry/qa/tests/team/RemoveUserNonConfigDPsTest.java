@@ -12,9 +12,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class RemoveUserTest extends TestBase {
+public class RemoveUserNonConfigDPsTest extends TestBase {
     static User user;
-    static String name = "Test";
+    static String name = "Test 99";
 
     @BeforeMethod
     public void setUp(){
@@ -22,8 +22,8 @@ public class RemoveUserTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-142")
-    public void RemoveUser() throws InterruptedException {
+    @Test(groups = "DOT-TC-145")
+    public void RemoveUserNonConfigDPs() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();

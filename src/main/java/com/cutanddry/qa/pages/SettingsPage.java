@@ -115,8 +115,8 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForVisibility(By.xpath(btn_removeAddedUserRef.replace("REF", ref)));
         distributorUI.click(By.xpath(btn_removeAddedUserRef.replace("REF", ref)));
     }
-    public boolean isUserRefAdded(String ref){
-        distributorUI.waitForVisibility(By.xpath(txt_addedUserRef.replace("REF", ref)));
+    public boolean isUserRefAdded(String ref) throws InterruptedException {
+        distributorUI.waitForCustom(1000);
         return distributorUI.isDisplayed(By.xpath(txt_addedUserRef.replace("REF", ref)));
     }
     public boolean isUserAddingErrorPopupDisplayed(){

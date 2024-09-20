@@ -15,6 +15,8 @@ import org.testng.asserts.SoftAssert;
 public class UpdateUserTest extends TestBase {
     static User user;
     static String testUser = "Test Test";
+    static String testEmail = "other@email.com";
+    static String testUserRef = "AZ";
     static String userRef = "ZZ";
 
     @BeforeMethod
@@ -31,13 +33,22 @@ public class UpdateUserTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToTeamSettings();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");
+        Settings.clickOnAddUser();
+        Settings.enterName(testUser);
+        Settings.enterEmail(testEmail);
+        Settings.enterUserRef(testUserRef);
+        Settings.clickOnInviteUser();
+        softAssert.assertTrue(Settings.isUserDisplayed(testUser),"add test user error");
         Settings.clickOnEditUser(testUser);
         Settings.enterUserRef(userRef);
         Settings.clickOnSaveChanges();
         Settings.clickOnEditUser(testUser);
         softAssert.assertTrue(Settings.isUserRefAdded(userRef),"ref updating error");
-        Settings.clickRemoveAddedUserRef(userRef);
-        Settings.clickOnSaveChanges();
+        Settings.clickOnRemoveUserLabel();
+        softAssert.assertTrue(Settings.isRemoveUserPopupDisplayed(),"remove pop up error");
+        Settings.clickOnRemoveUser();
+        Settings.clickOK();
+        softAssert.assertFalse(Settings.isUserDisplayed(testUser),"test user remove error");
         softAssert.assertAll();
     }
 

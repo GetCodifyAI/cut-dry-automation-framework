@@ -62,7 +62,7 @@ public class Settings {
     public static void clickRemoveAddedUserRef(String ref) {
         settingsPage.clickRemoveAddedUserRef(ref);
     }
-    public static boolean isUserRefAdded(String ref){
+    public static boolean isUserRefAdded(String ref) throws InterruptedException {
         return settingsPage.isUserRefAdded(ref);
     }
     public static boolean isUserAddingErrorPopupDisplayed(){
