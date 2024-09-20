@@ -16,6 +16,9 @@ public class LoginPage extends TestBase {
     By txt_invalidEmailOrMobile = By.xpath("//div[text()='Error']");
     By btn_ok = By.xpath("//button[text()='Ok']");
     By btn_tryAgain = By.xpath("//button[text()='Try Again']");
+    By lbl_loginAs = By.xpath("//div[text()='Select...']/following::input[@type='text']");
+    String txt_whitelblCustomer = "//div[contains(@class, 'css-1n7v3ny-option') and contains(text(), 'NAME')]";
+    By btn_loginAsWLApp = By.xpath("//a[contains(text(), 'Login As (white-label)')]");
 
     public void typeEmailOrMobile(String emailOrMobile){
         distributorUI.sendKeys(txt_emailOrMobile,emailOrMobile);
@@ -54,9 +57,16 @@ public class LoginPage extends TestBase {
         distributorUI.click(btn_tryAgain);
     }
     public void navigateToRestaurant() {
-        distributorUI.navigateToURL(Constants.RESTAURANT_APP_URL);
+        distributorUI.navigateToURL(Constants.SEC_URL);
     }
     public void navigateToDistributor() {
         distributorUI.navigateToURL(Constants.MAIN_URL);
+    }
+    public void navigateToWhiteLabelPortal(String name) {
+        distributorUI.navigateToURL(Constants.LOGIN_AS);
+        distributorUI.sendKeys(lbl_loginAs,name);
+        distributorUI.isDisplayed(By.xpath(txt_whitelblCustomer.replace("NAME", name)));
+        distributorUI.click(By.xpath(txt_whitelblCustomer.replace("NAME", name)));
+        distributorUI.navigateToURL(distributorUI.getText(btn_loginAsWLApp, "href"));
     }
 }

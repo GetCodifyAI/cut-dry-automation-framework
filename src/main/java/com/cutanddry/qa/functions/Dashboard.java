@@ -34,5 +34,12 @@ public class Dashboard {
     public static void navigateToTeamSettings() {
         dashboardPage.clickOnTeamSettings();
     }
+    public static boolean isUserNavigatedToDashboardWhiteLabel(){
+        return dashboardPage.isWhiteLabelDashboardTextDisplayed();
+    }
+    public static void navigateToUsersWhiteLabel() {
+        dashboardPage.clickOnUsers();
+    }
+
 
 }

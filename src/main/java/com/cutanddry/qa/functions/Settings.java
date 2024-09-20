@@ -68,4 +68,25 @@ public class Settings {
     public static boolean isUserAddingErrorPopupDisplayed(){
         return settingsPage.isUserAddingErrorPopupDisplayed();
     }
+    public static void enterNameWL(String name){
+        settingsPage.enterNameWL(name);
+    }
+    public static void enterEmailWL(String email){
+        settingsPage.enterEmailWL(email);
+    }
+    public static void clickOnAddUserWL() {
+        settingsPage.clickOnAddUserWL();
+    }
+    public static boolean isRemovePopupWLUserDisplayed(){
+        return settingsPage.isRemovePopupWLUserDisplayed();
+    }
+    public static boolean isWLUserDisplayed(String user){
+        return settingsPage.isWLUserDisplayed(user);
+    }
+    public static void clickOnUser(String user) {
+        settingsPage.clickOnUser(user);
+    }
+    public static void clickYes() throws InterruptedException {
+        settingsPage.clickYes();
+    }
 }

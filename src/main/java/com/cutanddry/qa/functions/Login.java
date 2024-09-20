@@ -40,4 +40,7 @@ public class Login {
     public static void navigateToDistributor() {
         loginPage.navigateToDistributor();
     }
+    public static void navigateToWhiteLabelPortal(String name) {
+        loginPage.navigateToWhiteLabelPortal(name);
+    }
 }

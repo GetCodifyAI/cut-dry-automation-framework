@@ -23,6 +23,12 @@ public class SettingsPage extends LoginPage{
     String btn_removeAddedUserRef = "//div[text()='REF']/following-sibling::div[contains(@class, 'themed_select__multi-value__remove')]";
     String txt_addedUserRef = "//div[text()='REF']";
     By txt_userAddingErrorPopup = By.xpath("//h2[text()='Error while creating a new user. Please try again.']");
+    By lbl_nameWL = By.xpath("//label[text()='Name']/parent::div//input");
+    By lbl_emailWL = By.xpath("//label[contains(text(),'Email')]/parent::div//input");
+    By btn_addUserWL = By.xpath("//button[@type='submit' and text()='Add User']");
+    By txt_removePopup = By.xpath("//h2[text()='Are you sure you want to remove this user?']");
+    By btn_Yes = By.xpath("//button[text()='Yes']");
+    String txt_userField = "//td[text()='USER']";
 
     public boolean isOrderSettingsTextDisplayed(){
         try {
@@ -122,5 +128,40 @@ public class SettingsPage extends LoginPage{
     public boolean isUserAddingErrorPopupDisplayed(){
         distributorUI.waitForVisibility(txt_userAddingErrorPopup);
         return distributorUI.isDisplayed(txt_userAddingErrorPopup);
+    }
+    public void enterNameWL(String name){
+        distributorUI.sendKeys(lbl_nameWL,name);
+    }
+    public void enterEmailWL(String email){
+        distributorUI.sendKeys(lbl_emailWL,email);
+    }
+    public void clickOnAddUserWL() {
+        distributorUI.waitForClickability(btn_addUserWL);
+        distributorUI.click(btn_addUserWL);
+    }
+    public boolean isRemovePopupWLUserDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_removePopup);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_removePopup);
+    }
+    public void clickYes() throws InterruptedException {
+        distributorUI.waitForClickability(btn_Yes);
+        distributorUI.click(btn_Yes);
+        distributorUI.waitForCustom(1000);
+    }
+    public boolean isWLUserDisplayed(String user){
+        try {
+            distributorUI.waitForVisibility(By.xpath(txt_userField.replace("USER", user)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(txt_userField.replace("USER", user)));
+    }
+    public void clickOnUser(String user) {
+        distributorUI.waitForClickability(By.xpath(txt_userField.replace("USER", user)));
+        distributorUI.click(By.xpath(txt_userField.replace("USER", user)));
     }
 }
