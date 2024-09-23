@@ -14,6 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class UpdateUserWithExistingUserReferenceTest extends TestBase {
     static User user;
+    static String nameAdmin = "mashan";
     static String name = "Test";
     static String userRef = "KF";
 
@@ -31,6 +32,9 @@ public class UpdateUserWithExistingUserReferenceTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToTeamSettings();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");
+        Settings.clickOnEditUser(nameAdmin);
+        Settings.enterUserRef(userRef);
+        Settings.clickOnSaveChanges();
         Settings.clickOnEditUser(name);
         Settings.enterUserRef(userRef);
         Settings.clickOnSaveChanges();

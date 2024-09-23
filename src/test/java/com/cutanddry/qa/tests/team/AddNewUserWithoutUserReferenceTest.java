@@ -16,6 +16,7 @@ public class AddNewUserWithoutUserReferenceTest extends TestBase {
     static User user;
     static String name = "Test";
     static String email = "test@email.com";
+    static String verifiedVendorId = "46017666";
 
     @BeforeMethod
     public void setUp(){
@@ -26,6 +27,11 @@ public class AddNewUserWithoutUserReferenceTest extends TestBase {
     @Test(groups = "DOT-TC-135")
     public void AddNewUserWithoutUserReference() {
         SoftAssert softAssert = new SoftAssert();
+        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
+        Dashboard.isUserNavigatedToRestaurantDashboard();
+        Login.navigateToSupplierPortalVendor(verifiedVendorId);
+        Login.setNode();
+        Login.navigateToDistributor();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");

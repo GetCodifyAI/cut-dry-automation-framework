@@ -19,6 +19,13 @@ public class LoginPage extends TestBase {
     By lbl_loginAs = By.xpath("//div[text()='Select...']/following::input[@type='text']");
     String txt_whitelblCustomer = "//div[contains(@class, 'css-1n7v3ny-option') and contains(text(), 'NAME')]";
     By btn_loginAsWLApp = By.xpath("//a[contains(text(), 'Login As (white-label)')]");
+    By lbl_verifiedVendor = By.xpath("//a[text()='verifiedvendor']");
+    String txt_verifiedVendor = "//a[contains(text(), 'ID')]";
+    By lbl_suuplierPortalVendorData = By.xpath("//a[contains(text(), 'Link') and ancestor::th[contains(., 'SupplierPortalVendorData')]]");
+    By txt_key = By.xpath("//input[@name='data_key']");
+    By txt_value = By.xpath("//input[@name='data_val']");
+    By btn_setData = By.xpath("//button[contains(text(), 'Set data')]");
+
 
     public void typeEmailOrMobile(String emailOrMobile){
         distributorUI.sendKeys(txt_emailOrMobile,emailOrMobile);
@@ -68,5 +75,16 @@ public class LoginPage extends TestBase {
         distributorUI.isDisplayed(By.xpath(txt_whitelblCustomer.replace("NAME", name)));
         distributorUI.click(By.xpath(txt_whitelblCustomer.replace("NAME", name)));
         distributorUI.navigateToURL(distributorUI.getText(btn_loginAsWLApp, "href"));
+    }
+    public void navigateToSupplierPortalVendor(String id) {
+        distributorUI.navigateToURL(Constants.NODE_EXPLORER);
+        distributorUI.navigateToURL(distributorUI.getText(lbl_verifiedVendor, "href"));
+        distributorUI.navigateToURL(distributorUI.getText(By.xpath(txt_verifiedVendor.replace("ID", id)), "href"));
+        distributorUI.navigateToURL(distributorUI.getText(lbl_suuplierPortalVendorData, "href"));
+    }
+    public void setNode() {
+        distributorUI.sendKeys(txt_key,"allowUpdateSalesPeopleMapData");
+        distributorUI.sendKeys(txt_value, String.valueOf(true));
+        distributorUI.click(btn_setData);
     }
 }
