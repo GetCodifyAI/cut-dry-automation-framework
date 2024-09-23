@@ -32,9 +32,6 @@ public class UpdateUserWithExistingUserReferenceTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToTeamSettings();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");
-        Settings.clickOnEditUser(nameAdmin);
-        Settings.enterUserRef(userRef);
-        Settings.clickOnSaveChanges();
         Settings.clickOnEditUser(name);
         Settings.enterUserRef(userRef);
         Settings.clickOnSaveChanges();

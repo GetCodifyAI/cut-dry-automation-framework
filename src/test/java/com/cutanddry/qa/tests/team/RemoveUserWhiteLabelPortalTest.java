@@ -24,7 +24,7 @@ public class RemoveUserWhiteLabelPortalTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-151")
-    public void RemoveUserNonConfigDPs() throws InterruptedException {
+    public void RemoveUserWhiteLabelPortal() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
