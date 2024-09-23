@@ -37,6 +37,10 @@
             <class name="com.cutanddry.qa.tests.integration.VerifyChatFeatureTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyPDFGenerationForCatalogPDPTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyHardOrderMinimumWarningTest" />
+            <class name="com.cutanddry.qa.tests.standing_orders.VerifyCreatingStandingOrdersTest" />
+            <class name="com.cutanddry.qa.tests.standing_orders.VerifyEditingStandingOrdersTest" />
+            <class name="com.cutanddry.qa.tests.standing_orders.VerifyAddingAnotherStandingOrderTest" />
+            <class name="com.cutanddry.qa.tests.standing_orders.VerifyDeletingStandingOrdersTest" />
             <class name="com.cutanddry.qa.tests.integration.VerifyCashAndCarryAppPassingInvalidAccountTest" />
             <class name="com.cutanddry.qa.tests.team.AddNewUserWithoutUserReferenceTest" />
             <class name="com.cutanddry.qa.tests.team.UpdateUserWithExistingUserReferenceTest" />

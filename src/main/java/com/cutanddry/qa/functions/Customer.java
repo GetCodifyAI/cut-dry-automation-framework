@@ -204,9 +204,6 @@ public class Customer {
     }
     public static void closeEditorCatalog(){
         customersPage.clickOnCloseEditorCatalog();
-//        if (dashboardPage.isDraftOrderPopUpDisplayed()){
-//            dashboardPage.clickOnNoDraftOrder();
-//        }
     }
     public static void createOrderByUploading(){
         customersPage.clickUploadAList();
@@ -224,9 +221,6 @@ public class Customer {
     }
     public static void closeEditor(){
         customersPage.closeEditor();
-//        if (dashboardPage.isDraftOrderPopUpDisplayed()){
-//            dashboardPage.clickOnNoDraftOrder();
-//        }
     }
     public static void removeItemFromCatalog(){
         customersPage.clickOnRemoveFromOrderGuide();
@@ -290,5 +284,52 @@ public class Customer {
     }
     public static boolean isOrderMinPopupDisplayed(){
         return customersPage.isOrderMinPopupDisplayed();
+    }
+    public static void clickOnCustomerCode(String code){
+        customersPage.clickOnCustomerCode(code);
+    }
+    public static void clickOnOrdersTab(){
+        customersPage.clickOnOrdersTab();
+    }
+    public static boolean isStandingOrdersDisplayed(){
+        return customersPage.isStandingOrdersDisplayed();
+    }
+    public static void clickOnCreateStandingOrder(){
+        customersPage.clickOnCreateStandingOrder();
+    }
+    public static void selectDeliveryDate(String day){
+        customersPage.clickOnRemoveDelivery();
+        customersPage.clickOnDropdownDelivery();
+        customersPage.clickOnDeliveryDate(day);
+    }
+    public static void setStandingOrder(){
+        customersPage.setStandingOrder();
+    }
+    public static boolean isStandingOrderEmailPopupDisplayed(){
+        return customersPage.isStandingOrderEmailPopupDisplayed();
+    }
+    public static void selectEmail(){
+        customersPage.clickOnDropdownEmail();
+        customersPage.clickOnEmail();
+    }
+    public static void scheduleStandingOrder(){
+        customersPage.scheduleStandingOrder();
+    }
+    public static boolean isStandingOrderSuccessPopupDisplayed(){
+        return customersPage.isStandingOrderSuccessPopupDisplayed();
+    }
+    public static void clickOnEditStandingOrder(){
+        customersPage.clickOnEditStandingOrder();
+    }
+    public static void clickOnAddAnotherStandingOrder(){
+        customersPage.clickOnAddAnotherStandingOrder();
+    }
+    public static void clickOnDeleteStandingOrders(){
+        while (customersPage.areStandingOrdersDeleted()){
+            customersPage.clickOnDeleteStandingOrders();
+        }
+    }
+    public static boolean areStandingOrdersDeleted(){
+        return customersPage.areStandingOrdersDeleted();
     }
 }
