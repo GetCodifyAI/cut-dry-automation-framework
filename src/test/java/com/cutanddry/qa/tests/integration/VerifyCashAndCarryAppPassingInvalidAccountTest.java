@@ -40,7 +40,7 @@ public class VerifyCashAndCarryAppPassingInvalidAccountTest extends TestBase {
         Customer.searchItemOnCatalog(itemName);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
         Customer.addItemToCartCatalog();
-        CashAndCarry.checkoutItems();
+        Customer.checkoutItemsDist();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         CashAndCarry.enterFullName(user.getFull_name());
         CashAndCarry.enterEmail(user.getEmail());

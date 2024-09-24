@@ -11,9 +11,6 @@ public class CashAndCarry {
     public static boolean isUserNavigatedToCashAndCarry(){
         return cashAndCarryAppPage.isMarketPlaceTextDisplayed();
     }
-    public static void checkoutItems() throws InterruptedException {
-        cashAndCarryAppPage.clickOnCheckoutButton();
-    }
     public static void enterFullName(String name){
         cashAndCarryAppPage.enterFullName(name);
     }
