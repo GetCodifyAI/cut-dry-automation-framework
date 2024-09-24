@@ -344,4 +344,7 @@ public class Customer {
     public static boolean isMultiDistCentersDisplayed(){
         return customersPage.isMultiDistCentersDisplayed();
     }
+    public static int getOrderCount(int num){
+        return customersPage.getOrderCount(num);
+    }
 }

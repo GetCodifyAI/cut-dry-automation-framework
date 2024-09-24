@@ -92,8 +92,7 @@ public class LoginPage extends TestBase {
     }
     public void navigateToDistributorPortal(String name) {
         distributorUI.navigateToURL(Constants.LOGIN_AS);
-        distributorUI.waitForClickability(lbl_loginAsDist);
-        distributorUI.click(lbl_loginAsDist);
+        distributorUI.waitForElementEnabledState(lbl_loginAsDist,true);
         distributorUI.sendKeys(lbl_loginAsDist,name);
         distributorUI.click(By.xpath(txt_distributor.replace("NAME", name)));
         distributorUI.navigateToURL(distributorUI.getText(btn_loginAsDis, "href"));

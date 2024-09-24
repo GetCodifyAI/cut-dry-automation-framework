@@ -103,6 +103,7 @@ public class CustomersPage extends LoginPage {
     By btn_checkoutCashCarry = By.xpath("//button[@data-tip='Click here to checkout']");
     By txt_foodServiceDistCenter = By.xpath("//span[text()='Food Service Distribution Centre']");
     By txt_retailDistCenter = By.xpath("//span[text()='Retail Distribution Centre']");
+    String txt_orders = "(//div[contains(text(), 'Order #')])[NUM]";
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -529,5 +530,14 @@ public class CustomersPage extends LoginPage {
             return false;
         }
         return true;
+    }
+    public int getOrderCount(int num) {
+        int count = 0;
+        for (int i = 1; i <= num; i++) {
+            if (distributorUI.isDisplayed(By.xpath(txt_orders.replace("NUM", String.valueOf(i))))){
+                count += 1;
+            };
+        }
+        return count;
     }
 }

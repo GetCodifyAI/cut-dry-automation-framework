@@ -16,6 +16,9 @@ public class VerifyCreatedOrdersFromMultipleCartsTest extends TestBase {
     static User user;
     static String DP = "Butterfield & Vallis";
     static String customerId = "34315";
+    static String itemName_1 = "Beef Bouillon Cubes";
+    static String itemName_2 = "All Purpose Flour";
+    static int orderCount = 2;
 
     @BeforeMethod
     public void setUp(){
@@ -34,7 +37,17 @@ public class VerifyCreatedOrdersFromMultipleCartsTest extends TestBase {
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
-        //
+        Customer.searchItemOnOrderGuide(itemName_1);
+        softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName_1),"item 1 mismatch");
+        Customer.increaseFirstRowQtyByOneInDist();
+        Customer.searchItemOnOrderGuide(itemName_2);
+        softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName_2),"item 2 mismatch");
+        Customer.increaseFirstRowQtyByOneInDist();
+        Customer.checkoutItemsDist();
+        softAssert.assertTrue(Customer.isMultiDistCentersDisplayed(),"multi cart error");
+        Customer.submitOrder();
+        softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(),"order not completed");
+        softAssert.assertEquals(Customer.getOrderCount(orderCount), orderCount, "multi order submit error error");
         softAssert.assertAll();
     }
 
