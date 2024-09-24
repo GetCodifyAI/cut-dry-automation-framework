@@ -12,6 +12,9 @@ public class DashboardPage extends LoginPage{
     By btn_catalog = By.xpath("//a[@data-tip='View Catalog']");
     By btn_settings = By.xpath("//a[@role='button' and contains(text(), 'Settings')]");
     By btn_orderSettings = By.xpath("//div[@arrowprops]//a[text()='Orders']");
+    By btn_teamSettings = By.xpath("//div[@arrowprops]//a[text()='Team']");
+    By btn_users = By.xpath("//a[@data-tip='Team']");
+    By txt_home = By.xpath("//li[contains(text(),'Home')]");
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -45,8 +48,27 @@ public class DashboardPage extends LoginPage{
         distributorUI.click(btn_catalog);
     }
     public void clickOnOrderSettings(){
-        distributorUI.click(btn_settings);
+        distributorUI.scrollToElement(btn_settings);
+        distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_orderSettings);
         distributorUI.click(btn_orderSettings);
+    }
+    public void clickOnTeamSettings(){
+        distributorUI.scrollToElement(btn_settings);
+        distributorUI.clickUsingJavaScript(btn_settings);
+        distributorUI.hoverOverElement(btn_teamSettings);
+        distributorUI.click(btn_teamSettings);
+    }
+    public boolean isWhiteLabelDashboardTextDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_home);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_home);
+    }
+    public void clickOnUsers(){
+        distributorUI.waitForVisibility(btn_users);
+        distributorUI.click(btn_users);
     }
 }

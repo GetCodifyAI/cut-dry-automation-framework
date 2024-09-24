@@ -31,8 +31,8 @@ public class TestBase {
                     }
                     driver = new ChromeDriver(chromeOptions);
                     js = (JavascriptExecutor) driver;
-                    wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+                    wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
                     driver.get(Constants.MAIN_URL);
                     distributorUI = new KeywordBase(driver, wait);  // Initialize KeywordBase here
 

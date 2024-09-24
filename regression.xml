@@ -42,6 +42,18 @@
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyAddingAnotherStandingOrderTest" />
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyDeletingStandingOrdersTest" />
             <class name="com.cutanddry.qa.tests.integration.VerifyCashAndCarryAppPassingInvalidAccountTest" />
+            <class name="com.cutanddry.qa.tests.team.AddNewUserWithoutUserReferenceTest" />
+            <class name="com.cutanddry.qa.tests.team.UpdateUserWithExistingUserReferenceTest" />
+            <class name="com.cutanddry.qa.tests.team.UpdateUserTest" />
+            <class name="com.cutanddry.qa.tests.team.AddNewUserWithExistingUserReferenceTest" />
+            <class name="com.cutanddry.qa.tests.team.RemoveUserTest" />
+            <class name="com.cutanddry.qa.tests.team.AddNewUserWithUserReferenceTest" />
+            <class name="com.cutanddry.qa.tests.team.AddUserNonConfigDPsTest" />
+            <class name="com.cutanddry.qa.tests.team.UpdateUserNonConfigDPsTest" />
+            <class name="com.cutanddry.qa.tests.team.RemoveUserNonConfigDPsTest" />
+            <class name="com.cutanddry.qa.tests.team.AddUserWhiteLabelPortalTest" />
+            <class name="com.cutanddry.qa.tests.team.UpdateUserWhiteLabelPortalTest" />
+            <class name="com.cutanddry.qa.tests.team.RemoveUserWhiteLabelPortalTest" />
         </classes>
     </test>
 </suite>
