@@ -48,17 +48,24 @@ public class SettingsPage extends LoginPage{
         distributorUI.click(btn_saveChange);
         distributorUI.waitForVisibility(btn_saveChange);
     }
-    public boolean isTeamSettingsTextDisplayed(){
+    public boolean isTeamSettingsTextDisplayed() throws InterruptedException {
         try {
             distributorUI.waitForVisibility(txt_teamSettings);
         } catch (Exception e){
             return false;
         }
+        distributorUI.waitForCustom(2000);
         return distributorUI.isDisplayed(txt_teamSettings);
+
     }
     public void clickOnAddUser() {
         distributorUI.waitForVisibility(btn_addUser);
-        distributorUI.click(btn_addUser);
+        try {
+            distributorUI.click(btn_addUser);
+        } catch (Exception e){
+            distributorUI.refreshPage();
+            distributorUI.click(btn_addUser);
+        }
     }
     public void enterName(String name){
         distributorUI.clear(lbl_name);
@@ -80,12 +87,13 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForClickability(btn_inviteUser);
         distributorUI.click(btn_inviteUser);
     }
-    public boolean isUserDisplayed(String user){
+    public boolean isUserDisplayed(String user) throws InterruptedException {
         try {
             distributorUI.waitForVisibility(By.xpath(btn_editUser.replace("USER", user)));
         } catch (Exception e){
             return false;
         }
+        distributorUI.waitForCustom(2000);
         return distributorUI.isDisplayed(By.xpath(btn_editUser.replace("USER", user)));
     }
     public void clickOnRemoveUserLabel() {
@@ -94,7 +102,12 @@ public class SettingsPage extends LoginPage{
     }
     public void clickOnEditUser(String user) {
         distributorUI.scrollToElement(By.xpath(btn_editUser.replace("USER", user)));
-        distributorUI.click(By.xpath(btn_editUser.replace("USER", user)));
+        try {
+            distributorUI.click(By.xpath(btn_editUser.replace("USER", user)));
+        } catch (Exception e) {
+            distributorUI.refreshPage();
+            distributorUI.click(By.xpath(btn_editUser.replace("USER", user)));
+        }
     }
     public boolean isEditUserPopupDisplayed(){
         distributorUI.waitForVisibility(txt_editUser);

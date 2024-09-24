@@ -25,7 +25,7 @@ public class AddNewUserWithoutUserReferenceTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-135")
-    public void AddNewUserWithoutUserReference() {
+    public void AddNewUserWithoutUserReference() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToRestaurantDashboard();

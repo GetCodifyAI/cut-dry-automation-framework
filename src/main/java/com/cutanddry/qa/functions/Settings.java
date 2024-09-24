@@ -14,7 +14,7 @@ public class Settings {
     public static void clickOnSaveChanges() {
         settingsPage.clickOnSaveChanges();
     }
-    public static boolean isTeamSettingsTextDisplayed(){
+    public static boolean isTeamSettingsTextDisplayed() throws InterruptedException {
         return settingsPage.isTeamSettingsTextDisplayed();
     }
     public static void clickOnAddUser() {
@@ -35,7 +35,7 @@ public class Settings {
     public static void clickOnInviteUser() {
         settingsPage.clickOnInviteUser();
     }
-    public static boolean isUserDisplayed(String user){
+    public static boolean isUserDisplayed(String user) throws InterruptedException {
         return settingsPage.isUserDisplayed(user);
     }
     public static void clickOnRemoveUserLabel() {

@@ -24,7 +24,7 @@ public class UpdateUserNonConfigDPsTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-144")
-    public void UpdateUserNonConfigDPs() {
+    public void UpdateUserNonConfigDPs() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
