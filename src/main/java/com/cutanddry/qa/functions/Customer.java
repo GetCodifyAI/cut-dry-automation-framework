@@ -14,8 +14,11 @@ public class Customer {
     public static boolean isCustomerSearchResultByCodeDisplayed(String code) throws InterruptedException {
         return customersPage.isCustomerSearchResultByCodeDisplayed(code);
     }
-    public static void clickOnOrderGuide(String code){
+    public static void clickOnOrderGuide(String code) throws InterruptedException {
         customersPage.clickOnOrderGuide(code);
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
     }
     public static void increaseFirstRowQtyByOne() throws InterruptedException {
         if (customersPage.isPreviousDraftOrderNoDisplayed()){
@@ -331,5 +334,17 @@ public class Customer {
     }
     public static boolean areStandingOrdersDeleted(){
         return customersPage.areStandingOrdersDeleted();
+    }
+    public static void increaseFirstRowQtyByOneInDist() throws InterruptedException {
+        customersPage.clickPlusQryFirstRowInDist();
+    }
+    public static void checkoutItemsDist() throws InterruptedException {
+        customersPage.clickOnCheckoutButtonInDist();
+    }
+    public static boolean isMultiDistCentersDisplayed(){
+        return customersPage.isMultiDistCentersDisplayed();
+    }
+    public static int getOrderCount(int num){
+        return customersPage.getOrderCount(num);
     }
 }

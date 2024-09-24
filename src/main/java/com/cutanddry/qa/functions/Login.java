@@ -49,4 +49,7 @@ public class Login {
     public static void setNode(){
         loginPage.setNode();
     }
+    public static void navigateToDistributorPortal(String name) {
+        loginPage.navigateToDistributorPortal(name);
+    }
 }

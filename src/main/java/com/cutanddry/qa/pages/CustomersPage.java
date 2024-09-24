@@ -98,6 +98,12 @@ public class CustomersPage extends LoginPage {
     By btn_deleteStandingOrders = By.xpath("//div[text()='Delete']");
     By txt_deletePopup = By.xpath("//h2[text()='Are you sure?']");
     By btn_yes = By.xpath("//button[text()='Yes']");
+    By btn_increaseQtyFirstRowInDist = By.xpath("//tr[2]/td[6]/div/div/div/div[3]");
+    By btn_decreaseQtyFirstRowInDist = By.xpath("//tr[2]/td[6]/div/div/div/div[1]");
+    By btn_checkoutCashCarry = By.xpath("//button[@data-tip='Click here to checkout']");
+    By txt_foodServiceDistCenter = By.xpath("//span[text()='Food Service Distribution Centre']");
+    By txt_retailDistCenter = By.xpath("//span[text()='Retail Distribution Centre']");
+    String txt_orders = "(//div[contains(text(), 'Order #')])[NUM]";
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -503,5 +509,35 @@ public class CustomersPage extends LoginPage {
     }
     public boolean areStandingOrdersDeleted(){
         return distributorUI.isDisplayed(btn_deleteStandingOrders);
+    }
+    public void clickPlusQryFirstRowInDist() throws InterruptedException {
+        distributorUI.waitForCustom(1000);
+        distributorUI.click(btn_increaseQtyFirstRowInDist);
+    }
+    public void clickOnCheckoutButtonInDist() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        distributorUI.waitForElementEnabledState(btn_checkoutCashCarry,true);
+        distributorUI.click(btn_checkoutCashCarry);
+        distributorUI.waitForCustom(3000);
+    }
+    public boolean isMultiDistCentersDisplayed() {
+        try {
+            distributorUI.waitForVisibility(txt_foodServiceDistCenter);
+            distributorUI.isDisplayed(txt_foodServiceDistCenter);
+            distributorUI.waitForVisibility(txt_retailDistCenter);
+            distributorUI.isDisplayed(txt_retailDistCenter);
+        } catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+    public int getOrderCount(int num) {
+        int count = 0;
+        for (int i = 1; i <= num; i++) {
+            if (distributorUI.isDisplayed(By.xpath(txt_orders.replace("NUM", String.valueOf(i))))){
+                count += 1;
+            };
+        }
+        return count;
     }
 }

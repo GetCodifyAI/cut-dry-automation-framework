@@ -25,6 +25,9 @@ public class LoginPage extends TestBase {
     By txt_key = By.xpath("//input[@name='data_key']");
     By txt_value = By.xpath("//input[@name='data_val']");
     By btn_setData = By.xpath("//button[contains(text(), 'Set data')]");
+    By lbl_loginAsDist = By.xpath("//h5[text()='Distributor Portal Quick Links']/following-sibling::div//div[text()='Select User...']/following::input[@type='text'][1]");
+    String txt_distributor = "//div[contains(@class, 'themed_select__option') and contains(text(), 'NAME')]";
+    By btn_loginAsDis = By.xpath("//a[contains(text(), 'Login As (supplier)')]");
 
 
     public void typeEmailOrMobile(String emailOrMobile){
@@ -86,5 +89,12 @@ public class LoginPage extends TestBase {
         distributorUI.sendKeys(txt_key,"allowUpdateSalesPeopleMapData");
         distributorUI.sendKeys(txt_value, String.valueOf(true));
         distributorUI.click(btn_setData);
+    }
+    public void navigateToDistributorPortal(String name) {
+        distributorUI.navigateToURL(Constants.LOGIN_AS);
+        distributorUI.waitForElementEnabledState(lbl_loginAsDist,true);
+        distributorUI.sendKeys(lbl_loginAsDist,name);
+        distributorUI.click(By.xpath(txt_distributor.replace("NAME", name)));
+        distributorUI.navigateToURL(distributorUI.getText(btn_loginAsDis, "href"));
     }
 }
