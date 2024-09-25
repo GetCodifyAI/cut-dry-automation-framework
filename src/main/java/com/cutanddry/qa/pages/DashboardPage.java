@@ -15,6 +15,7 @@ public class DashboardPage extends LoginPage{
     By btn_teamSettings = By.xpath("//div[@arrowprops]//a[text()='Team']");
     By btn_users = By.xpath("//a[@data-tip='Team']");
     By txt_home = By.xpath("//li[contains(text(),'Home')]");
+    By btn_orderDesk = By.xpath("//a[contains(text(),'Order Desk')]");
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -70,5 +71,9 @@ public class DashboardPage extends LoginPage{
     public void clickOnUsers(){
         distributorUI.waitForVisibility(btn_users);
         distributorUI.click(btn_users);
+    }
+
+    public void clickOnOrderDesk(){
+        distributorUI.click(btn_orderDesk);
     }
 }

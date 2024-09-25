@@ -41,5 +41,8 @@ public class Dashboard {
         dashboardPage.clickOnUsers();
     }
 
+    public static void navigateToOrderDesk(){
+        dashboardPage.clickOnOrderDesk();
+    }
 
 }
