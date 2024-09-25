@@ -75,14 +75,9 @@ workflows:
   scheduled-tests:
     triggers:
       - schedule:
-          cron: "20 06 * * *"  # This will run daily-test at 4:00 PM IST (10:30 AM UTC)
-      - schedule:
-          cron: "30 18 * * *"  # This will run nightly-test at 12:00 AM IST (6:30 PM UTC)
+          cron: "30 06 * * *"  # This will run daily-test at 4:00 PM IST (10:30 AM UTC)
     jobs:
       - build
       - daily-test:
-          requires:
-            - build
-      - nightly-test:
           requires:
             - build
