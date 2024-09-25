@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build:
+  daily_build_and_test:
     docker:
       - image: cimg/base:stable
     steps:
@@ -31,23 +31,41 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
             google-chrome --version
+      - run:
+          name: Build and Run Daily Tests
+          command: mvn clean test -Dsurefire.suiteXmlFiles=bvt.xml -Drun.headless=true
     executor:
 
-  daily-test:
+  nightly_build_and_test:
     docker:
       - image: cimg/base:stable
     steps:
       - checkout
       - run:
-          name: Build and Run Nightly Tests
-          command: mvn clean test -Dsurefire.suiteXmlFiles=bvt.xml -Drun.headless=true
-    executor:
-
-  nightly-test:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and Run Nightly Tests
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression.xml -Drun.headless=true
@@ -55,48 +73,21 @@ jobs:
 
 workflows:
   version: 2
-  build:
-    jobs:
-      - build
-      - daily-test:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - main
-  scheduled-tests-1:
+  scheduled-tests:
     triggers:
       - schedule:
-          cron: "30 07 * * *"  # This will run daily-test at 4:00 PM IST (10:30 AM UTC)
+          cron: "15 08 * * *"  # This will run daily_build_and_test at 4:00 PM IST (10:30 AM UTC)
+          filters:
+            branches:
+              only:
+                - main
+      - schedule:
+          cron: "30 18 * * *"  # This will run nightly_build_and_test at 12:00 AM IST (6:30 PM UTC)
           filters:
             branches:
               only:
                 - main
     jobs:
-      - build
-      - daily-test:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - main
+      - daily_build_and_test
+      - nightly_build_and_test
 
-  scheduled-tests-2:
-    triggers:
-      - schedule:
-          cron: "30 18 * * *"  # This will run nightly-test 12:00 AM IST (6:30 PM UTC)
-          filters:
-            branches:
-              only:
-                - main
-    jobs:
-      - build
-      - nightly-test:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - main
