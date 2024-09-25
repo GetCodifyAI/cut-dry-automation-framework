@@ -55,10 +55,20 @@ jobs:
 
 workflows:
   version: 2
+  build:
+    jobs:
+      - build
+      - daily-test:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - main
   scheduled-tests-1:
     triggers:
       - schedule:
-          cron: "00 07 * * *"  # This will run daily-test at 4:00 PM IST (10:30 AM UTC)
+          cron: "30 07 * * *"  # This will run daily-test at 4:00 PM IST (10:30 AM UTC)
           filters:
             branches:
               only:
@@ -68,6 +78,10 @@ workflows:
       - daily-test:
           requires:
             - build
+          filters:
+            branches:
+              only:
+                - main
 
   scheduled-tests-2:
     triggers:
@@ -82,3 +96,7 @@ workflows:
       - nightly-test:
           requires:
             - build
+          filters:
+            branches:
+              only:
+                - main
