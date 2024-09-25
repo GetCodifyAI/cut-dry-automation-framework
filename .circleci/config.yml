@@ -33,7 +33,7 @@ jobs:
             google-chrome --version
     executor:
 
-  daily-test:
+  test:
     docker:
       - image: cimg/base:stable
     steps:
@@ -43,6 +43,16 @@ jobs:
           command: mvn clean test -Dsurefire.suiteXmlFiles=bvt.xml -Drun.headless=true -X
     executor:
 
+  daily-test:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: Build and Run Tests
+          command: mvn clean test -Dsurefire.suiteXmlFiles=bvt.xml -Drun.headless=true -X -Dcreate.cycle=true
+    executor:
+
   nightly-test:
     docker:
       - image: cimg/base:stable
@@ -50,33 +60,26 @@ jobs:
       - checkout
       - run:
           name: Build and Run Tests
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression.xml -Drun.headless=true -Dcreate.cycle=true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression.xml -Drun.headless=true
     executor:
 
 workflows:
   version: 2
-  build-and-test:
-    jobs:
-      - build
-      - daily-test:
-          filters:
-            branches:
-              only:
-                - main
-      - nightly-test:
-          filters:
-            branches:
-              only:
-                - main
+#  build-and-test:
+#    jobs:
+#      - build
+#      - test:
+#          requires:
+#            - build
 
   scheduled-tests:
     triggers:
       - schedule:
-          cron: "38 05 * * *"  # This will run daily-test at 4:00 PM IST (10:30 AM UTC)
+          cron: "08 06 * * *"  # This will run daily-test at 4:00 PM IST (10:30 AM UTC)
           filters:
-            branches:
-              only:
-                - main
+#            branches:
+#              only:
+#                - main
       - schedule:
           cron: "30 18 * * *"  # This will run nightly-test at 12:00 AM IST (6:30 PM UTC)
           filters:
@@ -84,5 +87,18 @@ workflows:
               only:
                 - main
     jobs:
-      - daily-test
-      - nightly-test
+      - build
+      - daily-test:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - main
+      - nightly-test:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - main
