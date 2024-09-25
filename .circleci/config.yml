@@ -76,29 +76,13 @@ workflows:
     triggers:
       - schedule:
           cron: "08 06 * * *"  # This will run daily-test at 4:00 PM IST (10:30 AM UTC)
-#          filters:
-#            branches:
-#              only:
-#                - main
       - schedule:
           cron: "30 18 * * *"  # This will run nightly-test at 12:00 AM IST (6:30 PM UTC)
-          filters:
-            branches:
-              only:
-                - main
     jobs:
       - build
       - daily-test:
-#          requires:
-#            - build
-          filters:
-            branches:
-              only:
-                - main
+          requires:
+            - build
       - nightly-test:
-#          requires:
-#            - build
-          filters:
-            branches:
-              only:
-                - main
+          requires:
+            - build
