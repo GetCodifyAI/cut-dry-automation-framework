@@ -14,6 +14,7 @@ public class DashboardPage extends LoginPage{
     By btn_catalog = By.xpath("//a[@data-tip='View Catalog']");
     By btn_settings = By.xpath("//a[@role='button' and contains(text(), 'Settings')]");
     By btn_orderSettings = By.xpath("//div[@arrowprops]//a[text()='Orders']");
+    By btn_orderDesk = By.xpath("//a[contains(text(),'Order Desk')]");
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -61,5 +62,9 @@ public class DashboardPage extends LoginPage{
         distributorUI.click(btn_settings);
         distributorUI.hoverOverElement(btn_orderSettings);
         distributorUI.click(btn_orderSettings);
+    }
+
+    public void clickOnOrderDesk(){
+        distributorUI.click(btn_orderDesk);
     }
 }

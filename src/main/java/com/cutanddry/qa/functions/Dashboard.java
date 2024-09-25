@@ -32,4 +32,7 @@ public class Dashboard {
         dashboardPage.clickOnOrderSettings();
     }
 
+    public static void navigateToOrderDesk(){
+        dashboardPage.clickOnOrderDesk();
+    }
 }
