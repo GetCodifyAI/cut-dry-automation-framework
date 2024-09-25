@@ -347,4 +347,7 @@ public class Customer {
     public static int getOrderCount(int num){
         return customersPage.getOrderCount(num);
     }
+    public static void clickOnBack(){
+        customersPage.clickOnBack();
+    }
 }
