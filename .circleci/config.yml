@@ -80,11 +80,11 @@ workflows:
   scheduled-tests:
     triggers:
       - schedule:
-          cron: "00 09 * * *"  # This will run nightly-build-and-test at 12:00 AM IST (6:30 PM UTC)
+          cron: "15 09 * * *"  # This will run nightly-build-and-test at 12:00 AM IST (6:30 PM UTC)
           filters:
             branches:
               only:
-                - circle-ci
+                - cicrle-ci
     jobs:
       - nightly-build-and-test
 
