@@ -84,7 +84,7 @@ workflows:
           filters:
             branches:
               only:
-                - main
+                - circle-ci
     jobs:
       - nightly-build-and-test
 
