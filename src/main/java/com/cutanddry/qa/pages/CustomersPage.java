@@ -62,7 +62,7 @@ public class CustomersPage extends LoginPage {
     By section_moreFromThisBrand = By.xpath("//div[contains(text(), 'More From')]");
     By btn_companyDropdown = By.xpath("//button[.//span[text()='Company:']]");
     By txt_companyDropdownText = By.xpath("//a[contains(text(), 'Independent Foods Co')]");
-    By btn_edit = By.xpath("//button[contains(., 'Edit')]");
+    By btn_edit = By.xpath("//button[contains(text(), 'Edit')]");
     By txt_editOrderGuide= By.xpath("//span[contains(text(), 'Edit Order Guide')]");
     By btn_moreOptions = By.xpath("//span[contains(text(), 'More Options')]");
     By btn_exportOrderGuide = By.xpath("//a[contains(text(), 'Export Order Guide (XLSX)')]");
@@ -77,6 +77,7 @@ public class CustomersPage extends LoginPage {
     By dropdown_itemCategories = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Item Categories')]");
     By txt_produce = By.xpath("//div[text()='produce']");
     By txt_firstItem = By.xpath("//div[text()='artichoke -24ct']");
+    By btn_back = By.xpath("//button[contains(text(), 'Back')]");
 
 
     public void clickOnSearchCustomers(){
@@ -400,5 +401,9 @@ public class CustomersPage extends LoginPage {
     public boolean isFirstCustomItemDisplayed(){
         distributorUI.waitForVisibility(txt_firstItem);
         return distributorUI.isDisplayed(txt_firstItem);
+    }
+    public void clickOnBack(){
+        distributorUI.waitForClickability(btn_back);
+        distributorUI.click(btn_back);
     }
 }

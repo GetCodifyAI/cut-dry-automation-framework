@@ -273,4 +273,7 @@ public class Customer {
     public static boolean isFirstCustomItemDisplayed(){
         return customersPage.isFirstCustomItemDisplayed();
     }
+    public static void clickOnBack(){
+        customersPage.clickOnBack();
+    }
 }
