@@ -51,6 +51,8 @@ public class VerifyBroadcastMessageTest extends TestBase {
         softAssert.assertTrue(Customer.isBroadcastMessageDisplayed(),"broadcast error");
         Customer.clickMessage();
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"url redirect error");
+        Customer.clickOnBack();
+        softAssert.assertTrue(Customer.isBroadcastMessageDisplayed(),"back error");
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickXButton();
