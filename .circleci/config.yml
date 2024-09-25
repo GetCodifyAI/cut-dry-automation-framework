@@ -75,13 +75,13 @@ workflows:
   scheduled-tests:
     triggers:
       - schedule:
-          cron: "32 06 * * *"  # This will run daily-test at 4:00 PM IST (10:30 AM UTC)
+          cron: "32 06 * * *"  # This will run nightly-test at 4:00 PM IST (10:30 AM UTC)
           filters:
             branches:
               only:
-                - main  # Specify the branch to filter
+                - main
     jobs:
       - build
-      - daily-test:
+      - nightly-test:
           requires:
             - build
