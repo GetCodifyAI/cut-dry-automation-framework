@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  daily_build_and_test:
+  daily-build-and-test:
     docker:
       - image: cimg/base:stable
     steps:
@@ -36,7 +36,7 @@ jobs:
           command: mvn clean test -Dsurefire.suiteXmlFiles=bvt.xml -Drun.headless=true
     executor:
 
-  nightly_build_and_test:
+  nightly-build-and-test:
     docker:
       - image: cimg/base:stable
     steps:
@@ -73,6 +73,10 @@ jobs:
 
 workflows:
   version: 2
+  test:
+    jobs:
+      - daily-build-and-test
+      - nightly-build-and-test
   scheduled-tests:
     triggers:
       - schedule:
@@ -88,6 +92,6 @@ workflows:
               only:
                 - main
     jobs:
-      - daily_build_and_test
-      - nightly_build_and_test
+      - daily-build-and-test
+      - nightly-build-and-test
 
