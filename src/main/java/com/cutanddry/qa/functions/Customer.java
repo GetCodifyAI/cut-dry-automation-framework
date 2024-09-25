@@ -14,13 +14,22 @@ public class Customer {
     public static boolean isCustomerSearchResultByCodeDisplayed(String code) throws InterruptedException {
         return customersPage.isCustomerSearchResultByCodeDisplayed(code);
     }
-    public static void clickOnOrderGuide(String code){
+    public static void clickOnOrderGuide(String code) throws InterruptedException {
         customersPage.clickOnOrderGuide(code);
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
     }
-    public static void increaseFirstRowQtyByOne(){
+    public static void increaseFirstRowQtyByOne() throws InterruptedException {
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
         customersPage.clickPlusQryFirstRow();
     }
-    public static void increaseFirstRowQtyCustom(int count){
+    public static void increaseFirstRowQtyCustom(int count) throws InterruptedException {
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
         for (int i=0; i<count;i++){
             customersPage.clickPlusQryFirstRow();
         }
@@ -28,7 +37,10 @@ public class Customer {
     public static void decreaseFirstRowQtyByOne(){
         customersPage.clickMinusQryFirstRow();
     }
-    public static void increaseFirstRowQtyByThree(){
+    public static void increaseFirstRowQtyByThree() throws InterruptedException {
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
         customersPage.clickPlusQryFirstRow();
         customersPage.clickPlusQryFirstRow();
         customersPage.clickPlusQryFirstRow();
@@ -53,14 +65,17 @@ public class Customer {
     public static void checkoutItems() throws InterruptedException {
         customersPage.clickOnCheckoutButton();
     }
-    public static void goToCatalog(){
+    public static void goToCatalog() throws InterruptedException {
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
         customersPage.clickOnCatalogButton();
     }
     public static void searchItemOnCatalog(String item) throws InterruptedException {
         customersPage.typeToSearchOnCatalog(item);
     }
-    public static String getFirstElementFrmSearchResults(){
-       return customersPage.getFirstItemNameFrmSearchResults();
+    public static String getFirstElementFrmSearchResults(String name){
+       return customersPage.getFirstItemNameFrmSearchResults(name);
     }
     public static void addItemToCartCatalog() throws InterruptedException {
         customersPage.clickAddToCartCatalog();
@@ -192,9 +207,6 @@ public class Customer {
     }
     public static void closeEditorCatalog(){
         customersPage.clickOnCloseEditorCatalog();
-//        if (dashboardPage.isDraftOrderPopUpDisplayed()){
-//            dashboardPage.clickOnNoDraftOrder();
-//        }
     }
     public static void createOrderByUploading(){
         customersPage.clickUploadAList();
@@ -212,9 +224,6 @@ public class Customer {
     }
     public static void closeEditor(){
         customersPage.closeEditor();
-//        if (dashboardPage.isDraftOrderPopUpDisplayed()){
-//            dashboardPage.clickOnNoDraftOrder();
-//        }
     }
     public static void removeItemFromCatalog(){
         customersPage.clickOnRemoveFromOrderGuide();
@@ -278,5 +287,67 @@ public class Customer {
     }
     public static boolean isOrderMinPopupDisplayed(){
         return customersPage.isOrderMinPopupDisplayed();
+    }
+    public static void clickOnCustomerCode(String code){
+        customersPage.clickOnCustomerCode(code);
+    }
+    public static void clickOnOrdersTab(){
+        customersPage.clickOnOrdersTab();
+    }
+    public static boolean isStandingOrdersDisplayed(){
+        return customersPage.isStandingOrdersDisplayed();
+    }
+    public static void clickOnCreateStandingOrder(){
+        customersPage.clickOnCreateStandingOrder();
+    }
+    public static void selectDeliveryDate(String day){
+        customersPage.clickOnRemoveDelivery();
+        customersPage.clickOnDropdownDelivery();
+        customersPage.clickOnDeliveryDate(day);
+    }
+    public static void setStandingOrder(){
+        customersPage.setStandingOrder();
+    }
+    public static boolean isStandingOrderEmailPopupDisplayed(){
+        return customersPage.isStandingOrderEmailPopupDisplayed();
+    }
+    public static void selectEmail(){
+        customersPage.clickOnDropdownEmail();
+        customersPage.clickOnEmail();
+    }
+    public static void scheduleStandingOrder(){
+        customersPage.scheduleStandingOrder();
+    }
+    public static boolean isStandingOrderSuccessPopupDisplayed(){
+        return customersPage.isStandingOrderSuccessPopupDisplayed();
+    }
+    public static void clickOnEditStandingOrder(){
+        customersPage.clickOnEditStandingOrder();
+    }
+    public static void clickOnAddAnotherStandingOrder(){
+        customersPage.clickOnAddAnotherStandingOrder();
+    }
+    public static void clickOnDeleteStandingOrders(){
+        while (customersPage.areStandingOrdersDeleted()){
+            customersPage.clickOnDeleteStandingOrders();
+        }
+    }
+    public static boolean areStandingOrdersDeleted(){
+        return customersPage.areStandingOrdersDeleted();
+    }
+    public static void increaseFirstRowQtyByOneInDist() throws InterruptedException {
+        customersPage.clickPlusQryFirstRowInDist();
+    }
+    public static void checkoutItemsDist() throws InterruptedException {
+        customersPage.clickOnCheckoutButtonInDist();
+    }
+    public static boolean isMultiDistCentersDisplayed(){
+        return customersPage.isMultiDistCentersDisplayed();
+    }
+    public static int getOrderCount(int num){
+        return customersPage.getOrderCount(num);
+    }
+    public static void clickOnBack(){
+        customersPage.clickOnBack();
     }
 }

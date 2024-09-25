@@ -5,8 +5,6 @@ import org.openqa.selenium.By;
 public class DashboardPage extends LoginPage{
     By txt_dashboard = By.xpath("//li[contains(text(),'Dashboard')]");
     By btn_customers = By.xpath("//a[@data-tip='Customers']");
-    By txt_draftOrder = By.xpath("//div[contains(text(), 'Do you want to continue your previous draft order?')]");
-    By btn_noDraftOrder = By.xpath("//div[contains(text(), 'No')]");
     By btn_boost = By.xpath("//a[@data-tip='Boost']");
     By btn_chat = By.xpath("//a[@data-tip='Chat']");
     By txt_dashboard_restaurant = By.xpath("//div[text()='Place Order']");
@@ -14,6 +12,9 @@ public class DashboardPage extends LoginPage{
     By btn_catalog = By.xpath("//a[@data-tip='View Catalog']");
     By btn_settings = By.xpath("//a[@role='button' and contains(text(), 'Settings')]");
     By btn_orderSettings = By.xpath("//div[@arrowprops]//a[text()='Orders']");
+    By btn_teamSettings = By.xpath("//div[@arrowprops]//a[text()='Team']");
+    By btn_users = By.xpath("//a[@data-tip='Team']");
+    By txt_home = By.xpath("//li[contains(text(),'Home')]");
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -28,17 +29,6 @@ public class DashboardPage extends LoginPage{
     }
     public void clickOnBoost(){
         distributorUI.click(btn_boost);
-    }
-    public boolean isDraftOrderPopUpDisplayed(){
-        try {
-            return distributorUI.isDisplayed(txt_draftOrder);
-        } catch (Exception e){
-            return false;
-        }
-    }
-    public void clickOnNoDraftOrder(){
-        distributorUI.click(btn_noDraftOrder);
-        distributorUI.waitForInvisibility(btn_noDraftOrder);
     }
     public void clickOnChat(){
         distributorUI.click(btn_chat);
@@ -58,8 +48,27 @@ public class DashboardPage extends LoginPage{
         distributorUI.click(btn_catalog);
     }
     public void clickOnOrderSettings(){
-        distributorUI.click(btn_settings);
+        distributorUI.scrollToElement(btn_settings);
+        distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_orderSettings);
         distributorUI.click(btn_orderSettings);
+    }
+    public void clickOnTeamSettings(){
+        distributorUI.scrollToElement(btn_settings);
+        distributorUI.clickUsingJavaScript(btn_settings);
+        distributorUI.hoverOverElement(btn_teamSettings);
+        distributorUI.click(btn_teamSettings);
+    }
+    public boolean isWhiteLabelDashboardTextDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_home);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_home);
+    }
+    public void clickOnUsers(){
+        distributorUI.waitForVisibility(btn_users);
+        distributorUI.click(btn_users);
     }
 }

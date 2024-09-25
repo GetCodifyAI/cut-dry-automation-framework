@@ -16,6 +16,19 @@ public class LoginPage extends TestBase {
     By txt_invalidEmailOrMobile = By.xpath("//div[text()='Error']");
     By btn_ok = By.xpath("//button[text()='Ok']");
     By btn_tryAgain = By.xpath("//button[text()='Try Again']");
+    By lbl_loginAs = By.xpath("//div[text()='Select...']/following::input[@type='text']");
+    String txt_whitelblCustomer = "//div[contains(@class, 'css-1n7v3ny-option') and contains(text(), 'NAME')]";
+    By btn_loginAsWLApp = By.xpath("//a[contains(text(), 'Login As (white-label)')]");
+    By lbl_verifiedVendor = By.xpath("//a[text()='verifiedvendor']");
+    String txt_verifiedVendor = "//a[contains(text(), 'ID')]";
+    By lbl_suuplierPortalVendorData = By.xpath("//a[contains(text(), 'Link') and ancestor::th[contains(., 'SupplierPortalVendorData')]]");
+    By txt_key = By.xpath("//input[@name='data_key']");
+    By txt_value = By.xpath("//input[@name='data_val']");
+    By btn_setData = By.xpath("//button[contains(text(), 'Set data')]");
+    By lbl_loginAsDist = By.xpath("//h5[text()='Distributor Portal Quick Links']/following-sibling::div//div[text()='Select User...']/following::input[@type='text'][1]");
+    String txt_distributor = "//div[contains(@class, 'themed_select__option') and contains(text(), 'NAME')]";
+    By btn_loginAsDis = By.xpath("//a[contains(text(), 'Login As (supplier)')]");
+
 
     public void typeEmailOrMobile(String emailOrMobile){
         distributorUI.sendKeys(txt_emailOrMobile,emailOrMobile);
@@ -54,9 +67,34 @@ public class LoginPage extends TestBase {
         distributorUI.click(btn_tryAgain);
     }
     public void navigateToRestaurant() {
-        distributorUI.navigateToURL(Constants.RESTAURANT_APP_URL);
+        distributorUI.navigateToURL(Constants.SEC_URL);
     }
     public void navigateToDistributor() {
         distributorUI.navigateToURL(Constants.MAIN_URL);
+    }
+    public void navigateToWhiteLabelPortal(String name) {
+        distributorUI.navigateToURL(Constants.LOGIN_AS);
+        distributorUI.sendKeys(lbl_loginAs,name);
+        distributorUI.isDisplayed(By.xpath(txt_whitelblCustomer.replace("NAME", name)));
+        distributorUI.click(By.xpath(txt_whitelblCustomer.replace("NAME", name)));
+        distributorUI.navigateToURL(distributorUI.getText(btn_loginAsWLApp, "href"));
+    }
+    public void navigateToSupplierPortalVendor(String id) {
+        distributorUI.navigateToURL(Constants.NODE_EXPLORER);
+        distributorUI.navigateToURL(distributorUI.getText(lbl_verifiedVendor, "href"));
+        distributorUI.navigateToURL(distributorUI.getText(By.xpath(txt_verifiedVendor.replace("ID", id)), "href"));
+        distributorUI.navigateToURL(distributorUI.getText(lbl_suuplierPortalVendorData, "href"));
+    }
+    public void setNode() {
+        distributorUI.sendKeys(txt_key,"allowUpdateSalesPeopleMapData");
+        distributorUI.sendKeys(txt_value, String.valueOf(true));
+        distributorUI.click(btn_setData);
+    }
+    public void navigateToDistributorPortal(String name) {
+        distributorUI.navigateToURL(Constants.LOGIN_AS);
+        distributorUI.waitForElementEnabledState(lbl_loginAsDist,true);
+        distributorUI.sendKeys(lbl_loginAsDist,name);
+        distributorUI.click(By.xpath(txt_distributor.replace("NAME", name)));
+        distributorUI.navigateToURL(distributorUI.getText(btn_loginAsDis, "href"));
     }
 }

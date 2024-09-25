@@ -75,6 +75,32 @@ public class KeywordBase {
         }
         return this;
     }
+    // Send keys to an element using the id
+    public KeywordBase sendKeysToField(String id_element, String data) {
+        try {
+            Actions actions = new Actions(driver);
+            WebElement element = driver.findElement(By.id(id_element));
+            actions.moveToElement(element).click().sendKeys(data).perform();
+            logger.info("Sent keys to field: {} with data: {}", id_element, data);
+        } catch (Exception e) {
+            logger.error("Failed to send keys to element: {} with data: {}", id_element, data, e);
+        }
+        return this;
+    }
+
+    // Send keys to an element using By object and press enter
+    public KeywordBase sendKeysAndEnter(By by, String data) {
+        try {
+            Actions actions = new Actions(driver);
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
+//            Thread.sleep(500);
+            actions.moveToElement(element).click().sendKeys(data).sendKeys(Keys.ENTER).perform();
+            logger.info("Sent keys to element: {} with data: {} and enter", by, data);
+        } catch (Exception e) {
+            logger.error("Failed to send keys to element: {} with data: {}", by, data, e);
+        }
+        return this;
+    }
 
     // Clear an input field
     public KeywordBase clear(By by) {
