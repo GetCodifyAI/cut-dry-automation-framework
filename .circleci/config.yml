@@ -32,46 +32,18 @@ jobs:
             sudo apt-get install -y google-chrome-stable
             google-chrome --version
     executor:
-
-  test:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      - run:
-          name: Build and Run Tests
-          command: mvn clean test -Dsurefire.suiteXmlFiles=bvt.xml -Drun.headless=true -X
-    executor:
-
-  daily-test:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      - run:
-          name: Build and Run Tests
-          command: mvn clean test -Dsurefire.suiteXmlFiles=bvt.xml -Drun.headless=true -X -Dcreate.cycle=true
-    executor:
-
   nightly-test:
     docker:
       - image: cimg/base:stable
     steps:
       - checkout
       - run:
-          name: Build and Run Tests
+          name: Build and Run Nightly Tests
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression.xml -Drun.headless=true
     executor:
 
 workflows:
   version: 2
-#  build-and-test:
-#    jobs:
-#      - build
-#      - test:
-#          requires:
-#            - build
-
   scheduled-tests:
     triggers:
       - schedule:
