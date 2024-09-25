@@ -15,6 +15,12 @@ public class DashboardPage extends LoginPage{
     By btn_teamSettings = By.xpath("//div[@arrowprops]//a[text()='Team']");
     By btn_users = By.xpath("//a[@data-tip='Team']");
     By txt_home = By.xpath("//li[contains(text(),'Home')]");
+    By txt_all = By.xpath("//div[text()='All']");
+    By txt_lastDays = By.xpath("(//div[text()='Last 30 Days'])[1]");
+    By lbl_salespersonDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[1]");
+    By lbl_durationDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[2]");
+    String txt_salesperson = "//div[text()='NAME']";
+    String txt_days = "//div[text()='DAYS']";
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -70,5 +76,40 @@ public class DashboardPage extends LoginPage{
     public void clickOnUsers(){
         distributorUI.waitForVisibility(btn_users);
         distributorUI.click(btn_users);
+    }
+    public boolean isDashboardDefaultValuesDisplayed(){
+        try {
+            distributorUI.isDisplayed(txt_all);
+            distributorUI.isDisplayed(txt_lastDays);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_all) && distributorUI.isDisplayed(txt_lastDays);
+    }
+    public void selectSalesperson(String name){
+        distributorUI.click(lbl_salespersonDropdown);
+        distributorUI.waitForVisibility(By.xpath(txt_salesperson.replace("NAME", name)));
+        distributorUI.click(By.xpath(txt_salesperson.replace("NAME", name)));
+    }
+    public void selectDuration(String days){
+        distributorUI.click(lbl_durationDropdown);
+        distributorUI.waitForVisibility(By.xpath(txt_days.replace("DAYS", days)));
+        distributorUI.click(By.xpath(txt_days.replace("DAYS", days)));
+    }
+    public boolean isDashboardSalespersonChanged(String name){
+        try {
+            distributorUI.isDisplayed(By.xpath(txt_salesperson.replace("NAME", name)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(txt_salesperson.replace("NAME", name)));
+    }
+    public boolean isDashboardDurationChanged(String days){
+        try {
+            distributorUI.isDisplayed(By.xpath(txt_days.replace("DAYS", days)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(txt_days.replace("DAYS", days)));
     }
 }

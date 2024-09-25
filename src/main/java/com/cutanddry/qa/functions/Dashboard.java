@@ -40,6 +40,19 @@ public class Dashboard {
     public static void navigateToUsersWhiteLabel() {
         dashboardPage.clickOnUsers();
     }
-
-
+    public static boolean isDashboardDefaultValuesDisplayed(){
+        return dashboardPage.isDashboardDefaultValuesDisplayed();
+    }
+    public static void selectSalesperson(String name) {
+        dashboardPage.selectSalesperson(name);
+    }
+    public static void selectDuration(String days) {
+        dashboardPage.selectDuration(days);
+    }
+    public static boolean isDashboardSalespersonChanged(String name){
+        return dashboardPage.isDashboardSalespersonChanged(name);
+    }
+    public static boolean isDashboardDurationChanged(String days){
+        return dashboardPage.isDashboardDurationChanged(days);
+    }
 }
