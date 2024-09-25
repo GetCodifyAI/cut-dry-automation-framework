@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  daily-build-and-test:
+  build-and-test:
     docker:
       - image: cimg/base:stable
     steps:
@@ -32,7 +32,7 @@ jobs:
             sudo apt-get install -y google-chrome-stable
             google-chrome --version
       - run:
-          name: Build and Run Daily Tests
+          name: Build and run tests
           command: mvn clean test -Dsurefire.suiteXmlFiles=bvt.xml -Drun.headless=true
     executor:
 
@@ -67,7 +67,7 @@ jobs:
             sudo apt-get install -y google-chrome-stable
             google-chrome --version
       - run:
-          name: Build and Run Nightly Tests
+          name: Build and run nightly Tests
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression.xml -Drun.headless=true
     executor:
 
@@ -75,16 +75,16 @@ workflows:
   version: 2
   build and tests:
     jobs:
-      - daily-build-and-test
+      - build-and-test
 
   scheduled-tests:
     triggers:
       - schedule:
-          cron: "15 09 * * *"  # This will run nightly-build-and-test at 12:00 AM IST (6:30 PM UTC)
+          cron: "30 06 * * *"  # This will run nightly-build-and-test at 12:00 AM IST (6:30 PM UTC)
           filters:
             branches:
               only:
-                - cicrle-ci
+                - main
     jobs:
       - nightly-build-and-test
 
