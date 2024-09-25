@@ -70,11 +70,11 @@ workflows:
   schedule-workflow:
     triggers:
       - schedule:
-          cron: "08 05 * * *"  # Runs at 4:00 PM IST (10:30 AM UTC)
+          cron: "16 05 * * *"  # Runs at 4:00 PM IST (10:30 AM UTC)
           filters:
             branches:
               only:
-                - main
+                - circle-ci
       - schedule:
           cron: "30 18 * * *"  # Runs at 12:00 AM IST (6:30 PM UTC previous day)
           filters:
