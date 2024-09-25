@@ -53,7 +53,9 @@ workflows:
               only:
                 - main
     jobs:
-      - build
+      - build:
+          tags:
+            only: /.*/
       - nightly-test:
           requires:
             - build
