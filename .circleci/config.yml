@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  test-at-4pm:
+  build:
     docker:
       - image: cimg/base:stable
     steps:
@@ -20,7 +20,9 @@ jobs:
             java -version
       - run:
           name: Install Maven
-          command: sudo apt-get install -y maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
       - run:
           name: Install Chrome
           command: |
@@ -28,59 +30,59 @@ jobs:
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
-      - run:
-          name: Run 4PM IST Test
-          command: mvn clean test -Dsurefire.suiteXmlFiles=bvt.xml -Drun.headless=true -Dcreate.cycle=true
+            google-chrome --version
     executor:
 
-  test-at-12am:
+  daily-test:
     docker:
       - image: cimg/base:stable
     steps:
       - checkout
       - run:
-          name: Install Java 22
-          command: |
-            sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
-            sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
-            source $BASH_ENV
-            java -version
+          name: Build and Run Tests
+          command: mvn clean test -Dsurefire.suiteXmlFiles=bvt.xml -Drun.headless=true -X
+    executor:
+
+  nightly-test:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
       - run:
-          name: Install Maven
-          command: sudo apt-get install -y maven
-      - run:
-          name: Install Chrome
-          command: |
-            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-            sudo apt-get update
-            sudo apt-get install -y google-chrome-stable
-      - run:
-          name: Run 12AM IST Test
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression.xml -Drun.headless=true
+          name: Build and Run Tests
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression.xml -Drun.headless=true -Dcreate.cycle=true
     executor:
 
 workflows:
   version: 2
-  schedule-workflow:
-    triggers:
-      - schedule:
-          cron: "16 05 * * *"  # Runs at 4:00 PM IST (10:30 AM UTC)
+  build-and-test:
+    jobs:
+      - build
+      - daily-test:
           filters:
             branches:
               only:
-                - circle-ci
+                - main
+      - nightly-test:
+          filters:
+            branches:
+              only:
+                - main
+
+  scheduled-tests:
+    triggers:
       - schedule:
-          cron: "30 18 * * *"  # Runs at 12:00 AM IST (6:30 PM UTC previous day)
+          cron: "38 05 * * *"  # This will run daily-test at 4:00 PM IST (10:30 AM UTC)
+          filters:
+            branches:
+              only:
+                - main
+      - schedule:
+          cron: "30 18 * * *"  # This will run nightly-test at 12:00 AM IST (6:30 PM UTC)
           filters:
             branches:
               only:
                 - main
     jobs:
-      - test-at-4pm
-      - test-at-12am
+      - daily-test
+      - nightly-test
