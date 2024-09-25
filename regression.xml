@@ -56,6 +56,8 @@
             <class name="com.cutanddry.qa.tests.team.RemoveUserWhiteLabelPortalTest" />
             <class name="com.cutanddry.qa.tests.multi_cart.VerifyGroupingProductsIntoTwoCartsTest" />
             <class name="com.cutanddry.qa.tests.multi_cart.VerifyCreatedOrdersFromMultipleCartsTest" />
+            <class name="com.cutanddry.qa.tests.dashboard.VerifyDashboardShowingSalespersonsRelatedChartsTest" />
+            <class name="com.cutanddry.qa.tests.dashboard.VerifyFunctionalityOfTeamStandingsTableTest" />
         </classes>
     </test>
 </suite>
