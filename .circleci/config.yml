@@ -73,25 +73,25 @@ jobs:
 
 workflows:
   version: 2
-  test:
-    jobs:
-      - daily-build-and-test
-      - nightly-build-and-test
-  scheduled-tests:
+  scheduled-tests-1:
     triggers:
       - schedule:
-          cron: "15 08 * * *"  # This will run daily_build_and_test at 4:00 PM IST (10:30 AM UTC)
-          filters:
-            branches:
-              only:
-                - main
-      - schedule:
-          cron: "30 18 * * *"  # This will run nightly_build_and_test at 12:00 AM IST (6:30 PM UTC)
+          cron: "15 08 * * *"  # This will run daily-build-and-test at 4:00 PM IST (10:30 AM UTC)
           filters:
             branches:
               only:
                 - main
     jobs:
       - daily-build-and-test
+
+  scheduled-tests-2:
+    triggers:
+      - schedule:
+          cron: "30 18 * * *"  # This will run nightly-build-and-test at 12:00 AM IST (6:30 PM UTC)
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
       - nightly-build-and-test
 
