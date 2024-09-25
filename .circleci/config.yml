@@ -89,15 +89,15 @@ workflows:
     jobs:
       - build
       - daily-test:
-          requires:
-            - build
+#          requires:
+#            - build
           filters:
             branches:
               only:
                 - main
       - nightly-test:
-          requires:
-            - build
+#          requires:
+#            - build
           filters:
             branches:
               only:
