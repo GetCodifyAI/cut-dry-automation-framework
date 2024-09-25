@@ -76,7 +76,7 @@ workflows:
     triggers:
       - schedule:
           cron: "08 06 * * *"  # This will run daily-test at 4:00 PM IST (10:30 AM UTC)
-          filters:
+#          filters:
 #            branches:
 #              only:
 #                - main
