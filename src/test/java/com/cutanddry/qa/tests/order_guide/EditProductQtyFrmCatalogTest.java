@@ -35,7 +35,7 @@ public class EditProductQtyFrmCatalogTest extends TestBase {
         Customer.clickOnOrderGuide(customerId);
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(itemName);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults().contains(itemName), "item not found");
+        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
         Customer.addItemToCartCatalog();
         Customer.increaseQtyUpToThreeCatalogSearch();
         softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),Customer.getItemPriceCatalogSearch()*3, "price error-after increase");

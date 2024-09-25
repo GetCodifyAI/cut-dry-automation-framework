@@ -1,6 +1,7 @@
 package com.cutanddry.qa.utils;
 
 import com.cutanddry.qa.data.models.Broadcast;
+import com.cutanddry.qa.data.models.CashAndCarryAppUser;
 import com.cutanddry.qa.data.models.ForgotPasswordUser;
 import com.cutanddry.qa.data.models.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,6 +14,7 @@ public class JsonUtil {
     private static final String USER_LOGIN_JSON_PATH = "src/main/resources/userlogin.json";
     private static final String FORGOT_PASSWORD_USER_LOGIN_JSON_PATH = "src/main/resources/forgotpassworduserlogin.json";
     private static final String BROADCAST_URL_JSON_PATH = "src/main/resources/broadcast_url.json";
+    private static final String CASH_AND_CARRY_APP_USER_LOGIN_JSON_PATH = "src/main/resources/cashandcarryapp.json";
 
     public static <T> T readJson(String filePath, Class<T> clazz) {
         try {
@@ -32,5 +34,8 @@ public class JsonUtil {
     }
     public static Broadcast readUrl() {
         return readJson(BROADCAST_URL_JSON_PATH, Broadcast.class);
+    }
+    public static CashAndCarryAppUser readCashAndCarryAppUserDetails() {
+        return readJson(CASH_AND_CARRY_APP_USER_LOGIN_JSON_PATH, CashAndCarryAppUser.class);
     }
 }

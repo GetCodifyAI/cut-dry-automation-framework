@@ -25,5 +25,21 @@ public class Dashboard {
         dashboardPage.clickOnRestaurantChat();
     }
 
+    public static void navigateToCatalog() {
+        dashboardPage.clickOnCatalog();
+    }
+    public static void navigateToOrderSettings() {
+        dashboardPage.clickOnOrderSettings();
+    }
+    public static void navigateToTeamSettings() {
+        dashboardPage.clickOnTeamSettings();
+    }
+    public static boolean isUserNavigatedToDashboardWhiteLabel(){
+        return dashboardPage.isWhiteLabelDashboardTextDisplayed();
+    }
+    public static void navigateToUsersWhiteLabel() {
+        dashboardPage.clickOnUsers();
+    }
+
 
 }

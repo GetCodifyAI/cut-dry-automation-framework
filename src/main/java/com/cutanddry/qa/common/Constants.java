@@ -8,7 +8,9 @@ public class Constants {
     public static boolean RUN_HEADLESS = Boolean.parseBoolean(System.getProperty("run.headless", "false"));
     public static String TEST_ENV = System.getProperty("test.env", "uat");
     public static String MAIN_URL = baseDomain();
-    public static String RESTAURANT_APP_URL = "https://app-uat.staging.cutanddry.com/";
+    public static String SEC_URL = secDomain();
+    public static String LOGIN_AS = "https://app-uat.staging.cutanddry.com/internaltools/loginas";
+    public static String NODE_EXPLORER = "https://app-uat.staging.cutanddry.com/admin";
     public static String BASE_URI = "https://supplier-uat.staging.cutanddry.com/GraphQLController";
     public static String SLACK_WEBHOOK = System.getenv("SLACK_WEBHOOK");
     //  https://hooks.slack.com/services/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 //group - test-alerts
@@ -17,11 +19,19 @@ public class Constants {
 
     private static String baseDomain() {
         if (TEST_ENV.equalsIgnoreCase("UAT")){
-            MAIN_URL = "https://supplier-"+TEST_ENV+".staging.cutanddry.com/";
+            MAIN_URL = "https://supplier-uat.staging.cutanddry.com/";
+        } else if (TEST_ENV.equalsIgnoreCase("PROD")){
+            MAIN_URL = "https://supplier.cutanddry.com/";
+        }
+        return MAIN_URL;
+    }
+    private static String secDomain() {
+        if (TEST_ENV.equalsIgnoreCase("UAT")){
+            SEC_URL = "https://app-"+TEST_ENV+".staging.cutanddry.com/";
         } else if (TEST_ENV.equalsIgnoreCase("")){
             //implement for other env here
         }
-        return MAIN_URL;
+        return SEC_URL;
     }
 
 }

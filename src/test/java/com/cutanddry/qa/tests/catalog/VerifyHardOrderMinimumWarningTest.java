@@ -1,23 +1,23 @@
-package com.cutanddry.qa.tests.order_guide;
+package com.cutanddry.qa.tests.catalog;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
+import com.cutanddry.qa.functions.Settings;
 import com.cutanddry.qa.utils.JsonUtil;
-import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class AddProductsFrmCatalogTest extends TestBase {
+public class VerifyHardOrderMinimumWarningTest extends TestBase {
     static User user;
     static String customerId = "16579";
-    static String itemName = "Artichoke";
-
+    static String orderMin = "250";
+    static String defaultOrderMin = "0";
 
     @BeforeMethod
     public void setUp(){
@@ -25,22 +25,33 @@ public class AddProductsFrmCatalogTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-30")
-    public void addProductsFrmCatalog() throws InterruptedException {
+    @Test(groups = "DOT-TC-85")
+    public void verifyCreatingOrdersUploadingExcelFile() throws InterruptedException {
+        String itemName;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+        Dashboard.navigateToOrderSettings();
+        softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation error");
+        Settings.enterOrderMinimum(orderMin);
+        Settings.clickOnSaveChanges();
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
-        Customer.goToCatalog();
-        Customer.searchItemOnCatalog(itemName);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
-        Customer.addItemToCartCatalog();
+        itemName = Customer.getItemNameFirstRow();
+        Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItems();
-        softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
+        softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
+        softAssert.assertTrue(Customer.isMinOrderBannerDisplayed(),"banner not appearing error");
+        Customer.submitOrder();
+        softAssert.assertTrue(Customer.isOrderMinPopupDisplayed(),"popup display error");
+        Customer.clickOK();
+        Dashboard.navigateToOrderSettings();
+        softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation error");
+        Settings.enterOrderMinimum(defaultOrderMin);
+        Settings.clickOnSaveChanges();
         softAssert.assertAll();
     }
 
