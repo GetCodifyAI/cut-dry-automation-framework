@@ -61,4 +61,7 @@ public class Dashboard {
     public static boolean isTeamStandingsDisplayed(){
         return dashboardPage.isTeamStandingsDisplayed();
     }
+    public static String[] getTotalSumDisplayed() {
+        return dashboardPage.getTotalSumDisplayed();
+    }
 }

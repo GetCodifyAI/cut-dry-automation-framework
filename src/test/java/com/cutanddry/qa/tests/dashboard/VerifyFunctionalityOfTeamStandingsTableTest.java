@@ -5,6 +5,7 @@ import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
+import kotlin.DslMarker;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -13,9 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyFunctionalityOfTeamStandingsTableTest extends TestBase {
     static User user;
-    static String salesperson = "Bob";
     static String days = "Last 7 Days";
-    static String defaultSalesperson = "All";
     static String defaultDays = "Last 30 Days";
 
     @BeforeMethod
@@ -26,17 +25,17 @@ public class VerifyFunctionalityOfTeamStandingsTableTest extends TestBase {
 
     @Test(groups = "DOT-TC-241")
     public void verifyFunctionalityOfTeamStandingsTableTest() {
+        String[] beforeSum;
+        String[] afterSum;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         softAssert.assertTrue(Dashboard.isTeamStandingsDisplayed(),"team standing display error");
-        Dashboard.selectSalesperson(salesperson);
-        softAssert.assertTrue(Dashboard.isDashboardSalespersonChanged(salesperson),"salesrep display error");
-        //
+        beforeSum = Dashboard.getTotalSumDisplayed();
         Dashboard.selectDuration(days);
         softAssert.assertTrue(Dashboard.isDashboardDurationChanged(days),"duration display error");
-        //
-        Dashboard.selectSalesperson(defaultSalesperson);
+        afterSum = Dashboard.getTotalSumDisplayed();
+        softAssert.assertNotEquals(beforeSum, afterSum,"totals not changed error");
         Dashboard.selectDuration(defaultDays);
         softAssert.assertAll();
     }

@@ -111,11 +111,9 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForCustom(2000);
         return distributorUI.isDisplayed(btn_previousDraftOrderNo);
     }
-
     public void clickPreviousDraftOrderNo() throws InterruptedException {
         distributorUI.click(btn_previousDraftOrderNo);
     }
-
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
     }
