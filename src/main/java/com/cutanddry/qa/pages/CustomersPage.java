@@ -125,11 +125,9 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForCustom(2000);
         return distributorUI.isDisplayed(btn_previousDraftOrderNo);
     }
-
     public void clickPreviousDraftOrderNo() throws InterruptedException {
         distributorUI.click(btn_previousDraftOrderNo);
     }
-
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
     }
@@ -178,7 +176,7 @@ public class CustomersPage extends LoginPage {
     }
     public void typeToSearchOnCatalog(String item) throws InterruptedException {
         distributorUI.clear(tbx_catalogSearch);
-        distributorUI.waitForCustom(1000);
+        distributorUI.waitForCustom(2000);
         distributorUI.sendKeys(tbx_catalogSearch,item);
     }
     public String getFirstItemNameFrmSearchResults(String name){
@@ -308,6 +306,7 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_uploadFile);
     }
     public void clickOnAddToOrderGuide(){
+        distributorUI.waitForVisibility(btn_addToOrderGuide);
         distributorUI.waitForClickability(btn_addToOrderGuide);
         distributorUI.click(btn_addToOrderGuide);
     }

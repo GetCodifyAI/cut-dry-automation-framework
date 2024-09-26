@@ -66,6 +66,8 @@
             <class name="com.cutanddry.qa.tests.order_desk.VerifyDeliveryDateTest" />
             <class name="com.cutanddry.qa.tests.order_desk.VerifySwapLineItemTest" />
             <class name="com.cutanddry.qa.tests.order_desk.VerifyVoiceRecordUploadTest" />
+            <class name="com.cutanddry.qa.tests.dashboard.VerifyDashboardShowingSalespersonsRelatedChartsTest" />
+            <class name="com.cutanddry.qa.tests.dashboard.VerifyFunctionalityOfTeamStandingsTableTest" />
         </classes>
     </test>
 </suite>
