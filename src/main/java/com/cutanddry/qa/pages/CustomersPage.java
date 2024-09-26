@@ -268,7 +268,7 @@ public class CustomersPage extends LoginPage {
     }
     public void typeToSearchOnOrderGuide(String item) throws InterruptedException {
         distributorUI.clear(tbx_orderGuideSearch);
-        distributorUI.waitForCustom(1000);
+        distributorUI.waitForCustom(2000);
         distributorUI.sendKeys(tbx_orderGuideSearch,item);
     }
     public void clickOnCreate() throws InterruptedException {
@@ -278,7 +278,7 @@ public class CustomersPage extends LoginPage {
     }
     public void typeOrderGuideName(String orderGuideName) throws InterruptedException {
         distributorUI.clear(tbx_orderGuideSearch);
-        distributorUI.waitForCustom(1000);
+        distributorUI.waitForCustom(2000);
         distributorUI.sendKeys(tbx_OrderGuideName,orderGuideName);
     }
     public void clickSubmitOrderGuide(){
