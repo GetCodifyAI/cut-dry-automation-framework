@@ -103,10 +103,10 @@ public class SettingsPage extends LoginPage{
     public void clickOnEditUser(String user) {
         distributorUI.scrollToElement(By.xpath(btn_editUser.replace("USER", user)));
         try {
-            distributorUI.click(By.xpath(btn_editUser.replace("USER", user)));
+            distributorUI.clickUsingJavaScript(By.xpath(btn_editUser.replace("USER", user)));
         } catch (Exception e) {
             distributorUI.refreshPage();
-            distributorUI.click(By.xpath(btn_editUser.replace("USER", user)));
+            distributorUI.clickUsingJavaScript(By.xpath(btn_editUser.replace("USER", user)));
         }
     }
     public boolean isEditUserPopupDisplayed(){
