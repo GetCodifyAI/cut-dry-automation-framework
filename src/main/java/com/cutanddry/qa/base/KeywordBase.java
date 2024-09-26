@@ -554,4 +554,9 @@ public class KeywordBase {
             System.out.println("No options available to select.");
         }
     }
+
+    public List findElements(By by){
+        return driver.findElements(by);
+    }
+
 }

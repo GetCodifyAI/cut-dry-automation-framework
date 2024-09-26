@@ -2,6 +2,13 @@ package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
 
+import org.openqa.selenium.WebElement;
+
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
 public class CustomersPage extends LoginPage {
     By tbx_searchCustomers = By.xpath("//input[@placeholder='Search Customers']");
     String btnOrderGuide = "//td[text()='CODE']/../td[8]//button";
@@ -105,6 +112,13 @@ public class CustomersPage extends LoginPage {
     By txt_retailDistCenter = By.xpath("//span[text()='Retail Distribution Centre']");
     String txt_orders = "(//div[contains(text(), 'Order #')])[NUM]";
     By btn_back = By.xpath("//button[contains(text(), 'Back')]");
+    String SelectCustomerByCode = "//td[contains(text(),'CODE')]";
+    By OrdersTabTxt = By.xpath("//a[contains(text(),'Orders') and @class='_ngcfan text-center nav-item nav-link']");
+    By OrderIdTxt = By.xpath("//th[contains(text(),'Order ID')]");
+    By OrderDateSort = By.xpath("//div[contains(text(),'Order Date')]");
+    By DeliveryDate = By.xpath("//div[contains(text(),'Delivery Date')]");
+    By OrderDateSortData = By.cssSelector("tr._du1frc td:nth-child(1)");
+    By DeliveryDateSortData = By.cssSelector("tr._du1frc td:nth-child(2)");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -545,4 +559,68 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForClickability(btn_back);
         distributorUI.click(btn_back);
     }
+
+    public void ClickOnCustomer(String code){
+        distributorUI.click(By.xpath(SelectCustomerByCode.replace("CODE", code)));
+    }
+
+
+    public boolean isOrdersTabDisplayed(){
+        distributorUI.waitForVisibility(OrdersTabTxt);
+        return distributorUI.isDisplayed(OrdersTabTxt);
+    }
+
+
+    public boolean isOrderIdTxtDisplayed(){
+        distributorUI.waitForVisibility(OrderIdTxt);
+        return distributorUI.isDisplayed(OrderIdTxt);
+    }
+
+
+    public void ClickOrderDateToSort(){
+        distributorUI.click(OrderDateSort);
+    }
+
+
+    public void ClickDeliveryDateSort(){
+        distributorUI.click(DeliveryDate);
+    }
+
+
+    public boolean OrderDateSort(){
+        return isDatesSorted(OrderDateSortData);
+    }
+
+
+    public boolean DeliveryDateSort(){
+        return isDatesSorted(DeliveryDateSortData);
+    }
+
+
+    public boolean isDatesSorted(By by) {
+        List<WebElement> dateElements = distributorUI.findElements(by);
+
+        List<Date> dates = new ArrayList<>();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+
+        // Retrieve text from all first column cells and parse to Date
+        for (WebElement element : dateElements) {
+            try {
+                Date date = dateFormat.parse(element.getText());
+                dates.add(date);
+            } catch (ParseException e) {
+                e.printStackTrace(); // Handle parsing error
+            }
+        }
+
+        // Create a copy of the list and sort it
+        List<Date> sortedList = new ArrayList<>(dates);
+        Collections.sort(sortedList);
+
+        // Check if the original list is equal to the sorted list
+        boolean isSorted = dates.equals(sortedList);
+
+        return isSorted;
+    }
+
 }
