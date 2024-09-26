@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 
 @SuppressWarnings("UnusedReturnValue")
@@ -517,6 +518,40 @@ public class KeywordBase {
             logger.info("Screenshot taken for test: " + testName + " at " + timestamp);
         } catch (IOException e) {
             logger.error("Failed to take screenshot for test: " + testName, e);
+        }
+    }
+
+    // Clear using JavaScript (useful when normal clear doesn't work)
+    public KeywordBase clearUsingJavaScript(By by) {
+        try {
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].value = '';", element);
+            logger.info("Clear using JavaScript on element: {}", by);
+        } catch (Exception e) {
+            logger.error("Failed to Clear using JavaScript on element: {}", by, e);
+        }
+        return this;
+    }
+
+    // Method to select a random option
+    public void selectRandomOptionFromDropDown(By optionsLocator) {
+        // Wait for the options to be present
+        wait.until(ExpectedConditions.visibilityOfElementLocated(optionsLocator));
+
+        // Locate the options within the dropdown
+        List<WebElement> options = driver.findElements(optionsLocator);
+        int totalOptions = options.size();
+
+        if (totalOptions > 0) {
+            // Generate a random index to select a random option
+            Random random = new Random();
+            int randomIndex = random.nextInt(totalOptions);
+
+            // Click on the randomly selected option
+            WebElement selectedOption = options.get(randomIndex);
+            selectedOption.click();
+        } else {
+            System.out.println("No options available to select.");
         }
     }
 }

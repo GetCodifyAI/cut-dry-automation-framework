@@ -40,6 +40,11 @@ public class Dashboard {
     public static void navigateToUsersWhiteLabel() {
         dashboardPage.clickOnUsers();
     }
+
+    public static void navigateToOrderDesk(){
+        dashboardPage.clickOnOrderDesk();
+    }
+
     public static boolean isDashboardDefaultValuesDisplayed(){
         return dashboardPage.isDashboardDefaultValuesDisplayed();
     }
