@@ -40,11 +40,9 @@ public class Dashboard {
     public static void navigateToUsersWhiteLabel() {
         dashboardPage.clickOnUsers();
     }
-
     public static void navigateToOrderDesk(){
         dashboardPage.clickOnOrderDesk();
     }
-
     public static boolean isDashboardDefaultValuesDisplayed(){
         return dashboardPage.isDashboardDefaultValuesDisplayed();
     }
@@ -59,5 +57,8 @@ public class Dashboard {
     }
     public static boolean isDashboardDurationChanged(String days){
         return dashboardPage.isDashboardDurationChanged(days);
+    }
+    public static boolean isTeamStandingsDisplayed(){
+        return dashboardPage.isTeamStandingsDisplayed();
     }
 }

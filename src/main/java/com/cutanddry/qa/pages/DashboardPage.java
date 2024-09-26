@@ -22,6 +22,7 @@ public class DashboardPage extends LoginPage{
     By lbl_durationDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[2]");
     String txt_salesperson = "//div[text()='NAME']";
     String txt_days = "//div[text()='DAYS']";
+    By txt_teamStanding = By.xpath("//h4[contains(text(), 'Team Standings')]");
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -78,7 +79,6 @@ public class DashboardPage extends LoginPage{
         distributorUI.waitForVisibility(btn_users);
         distributorUI.click(btn_users);
     }
-
     public void clickOnOrderDesk(){
         distributorUI.click(btn_orderDesk);
     }
@@ -116,5 +116,14 @@ public class DashboardPage extends LoginPage{
             return false;
         }
         return distributorUI.isDisplayed(By.xpath(txt_days.replace("DAYS", days)));
+    }
+    public boolean isTeamStandingsDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_teamStanding);
+            distributorUI.isDisplayed(txt_teamStanding);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_teamStanding);
     }
 }

@@ -13,6 +13,11 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyFunctionalityOfTeamStandingsTableTest extends TestBase {
     static User user;
+    static String salesperson = "Bob";
+    static String days = "Last 7 Days";
+    static String defaultSalesperson = "All";
+    static String defaultDays = "Last 30 Days";
+
     @BeforeMethod
     public void setUp() {
         initialization();
@@ -24,7 +29,15 @@ public class VerifyFunctionalityOfTeamStandingsTableTest extends TestBase {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+        softAssert.assertTrue(Dashboard.isTeamStandingsDisplayed(),"team standing display error");
+        Dashboard.selectSalesperson(salesperson);
+        softAssert.assertTrue(Dashboard.isDashboardSalespersonChanged(salesperson),"salesrep display error");
         //
+        Dashboard.selectDuration(days);
+        softAssert.assertTrue(Dashboard.isDashboardDurationChanged(days),"duration display error");
+        //
+        Dashboard.selectSalesperson(defaultSalesperson);
+        Dashboard.selectDuration(defaultDays);
         softAssert.assertAll();
     }
 
