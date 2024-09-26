@@ -80,7 +80,7 @@ public class SettingsPage extends LoginPage{
         distributorUI.sendKeys(lbl_phone,mobile);
     }
     public void enterUserRef(String ref) throws InterruptedException {
-        distributorUI.waitForCustom(1000);
+        distributorUI.waitForCustom(3000);
         distributorUI.sendKeysAndEnter(lbl_userRef,ref);
     }
     public void clickOnInviteUser() {
@@ -96,17 +96,18 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForCustom(2000);
         return distributorUI.isDisplayed(By.xpath(btn_editUser.replace("USER", user)));
     }
-    public void clickOnRemoveUserLabel() {
+    public void clickOnRemoveUserLabel() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
         distributorUI.waitForClickability(lbl_removeUser);
         distributorUI.click(lbl_removeUser);
     }
     public void clickOnEditUser(String user) {
         distributorUI.scrollToElement(By.xpath(btn_editUser.replace("USER", user)));
         try {
-            distributorUI.clickUsingJavaScript(By.xpath(btn_editUser.replace("USER", user)));
+            distributorUI.click(By.xpath(btn_editUser.replace("USER", user)));
         } catch (Exception e) {
             distributorUI.refreshPage();
-            distributorUI.clickUsingJavaScript(By.xpath(btn_editUser.replace("USER", user)));
+            distributorUI.click(By.xpath(btn_editUser.replace("USER", user)));
         }
     }
     public boolean isEditUserPopupDisplayed(){

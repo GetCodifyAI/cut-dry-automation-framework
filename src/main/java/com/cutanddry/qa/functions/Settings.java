@@ -38,7 +38,7 @@ public class Settings {
     public static boolean isUserDisplayed(String user) throws InterruptedException {
         return settingsPage.isUserDisplayed(user);
     }
-    public static void clickOnRemoveUserLabel() {
+    public static void clickOnRemoveUserLabel() throws InterruptedException {
         settingsPage.clickOnRemoveUserLabel();
     }
     public static void clickOnEditUser(String user) {
