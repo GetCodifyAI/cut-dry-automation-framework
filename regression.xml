@@ -56,6 +56,14 @@
             <class name="com.cutanddry.qa.tests.team.RemoveUserWhiteLabelPortalTest" />
             <class name="com.cutanddry.qa.tests.multi_cart.VerifyGroupingProductsIntoTwoCartsTest" />
             <class name="com.cutanddry.qa.tests.multi_cart.VerifyCreatedOrdersFromMultipleCartsTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.VerifyAddingNewProductFromCatalogTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.VerifyDeletingVoiceOrderDraftLineItemTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.VerifyOrderDeskFeatureTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.VerifyViewAndEditVoiceOrderDraftTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.UpdateCustomerAndLocationTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.VerifyDeliveryDateTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.VerifySwapLineItemTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.VerifyVoiceRecordUploadTest" />
         </classes>
     </test>
 </suite>
