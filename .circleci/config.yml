@@ -67,13 +67,13 @@ jobs:
             sudo apt-get install -y google-chrome-stable
             google-chrome --version
       - run:
-          name: Build and run nightly Tests
+          name: Build and run nightly tests
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression.xml -Drun.headless=true
     executor:
 
 workflows:
   version: 2
-  build-and-tests:
+  build-and-test:
     jobs:
       - build-and-test
 
