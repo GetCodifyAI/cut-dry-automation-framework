@@ -119,6 +119,8 @@ public class CustomersPage extends LoginPage {
     By DeliveryDate = By.xpath("//div[contains(text(),'Delivery Date')]");
     By OrderDateSortData = By.cssSelector("tr._du1frc td:nth-child(1)");
     By DeliveryDateSortData = By.cssSelector("tr._du1frc td:nth-child(2)");
+    By txt_priceDisclaimer = By.xpath("//div[contains(text(), 'Prices are subject to change. Weighed item prices are estimated.')]");
+
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -562,40 +564,26 @@ public class CustomersPage extends LoginPage {
     public void ClickOnCustomer(String code){
         distributorUI.click(By.xpath(SelectCustomerByCode.replace("CODE", code)));
     }
-
-
     public boolean isOrdersTabDisplayed(){
         distributorUI.waitForVisibility(OrdersTabTxt);
         return distributorUI.isDisplayed(OrdersTabTxt);
     }
-
-
     public boolean isOrderIdTxtDisplayed(){
         distributorUI.waitForVisibility(OrderIdTxt);
         return distributorUI.isDisplayed(OrderIdTxt);
     }
-
-
     public void ClickOrderDateToSort(){
         distributorUI.click(OrderDateSort);
     }
-
-
     public void ClickDeliveryDateSort(){
         distributorUI.click(DeliveryDate);
     }
-
-
     public boolean OrderDateSort(){
         return isDatesSorted(OrderDateSortData);
     }
-
-
     public boolean DeliveryDateSort(){
         return isDatesSorted(DeliveryDateSortData);
     }
-
-
     public boolean isDatesSorted(By by) {
         List<WebElement> dateElements = distributorUI.findElements(by);
 
@@ -621,5 +609,10 @@ public class CustomersPage extends LoginPage {
 
         return isSorted;
     }
+    public boolean isPriceDisclaimerMsgDisplayed(){
+        distributorUI.waitForVisibility(txt_priceDisclaimer);
+        return distributorUI.isDisplayed(txt_priceDisclaimer);
+    }
+
 
 }
