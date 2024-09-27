@@ -68,6 +68,9 @@
             <class name="com.cutanddry.qa.tests.order_desk.VerifyVoiceRecordUploadTest" />
             <class name="com.cutanddry.qa.tests.dashboard.VerifyDashboardShowingSalespersonsRelatedChartsTest" />
             <class name="com.cutanddry.qa.tests.dashboard.VerifyFunctionalityOfTeamStandingsTableTest" />
+            <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderReviewTest" />
+            <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderDetailsSupplierPortalTest" />
+            <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderDetailsCDAppTest" />
         </classes>
     </test>
 </suite>

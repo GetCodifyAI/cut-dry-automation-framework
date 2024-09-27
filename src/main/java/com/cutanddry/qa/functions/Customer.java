@@ -372,7 +372,13 @@ public class Customer {
     public static boolean isDeliveryDateSorted(){
         return customersPage.DeliveryDateSort();
     }
-    public static boolean isPriceDisclaimerMsgDisplayed(){
-        return customersPage.isPriceDisclaimerMsgDisplayed();
+    public static boolean isDiscountDisclaimerOrderDetailsMsgDisplayed(){
+        return customersPage.isDiscountDisclaimerOrderDetailsMsgDisplayed();
+    }
+    public static boolean isDiscountDisclaimerOrderReviewMsgDisplayed(){
+        return customersPage.isDiscountDisclaimerOrderReviewMsgDisplayed();
+    }
+    public static void clickFirstOrderFrmOrderTab(){
+        customersPage.clickFirstOrderFrmOrderTab();
     }
 }

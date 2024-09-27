@@ -24,7 +24,7 @@ public class VerifyCaseDiscountsDisclaimerMsgInOrderReviewTest extends TestBase 
     }
 
     @Test(groups = "DOT-TC-110")
-    public void verifyCreatedOrdersFromMultipleCarts() throws InterruptedException {
+    public void verifyCaseDiscountsDisclaimerMsgInOrderReview() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
@@ -39,7 +39,7 @@ public class VerifyCaseDiscountsDisclaimerMsgInOrderReviewTest extends TestBase 
         Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItems();
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
-        softAssert.assertTrue(Customer.isPriceDisclaimerMsgDisplayed(),"disclaimer msg display error");
+        softAssert.assertTrue(Customer.isDiscountDisclaimerOrderReviewMsgDisplayed(),"disclaimer msg display error");
         softAssert.assertAll();
     }
 

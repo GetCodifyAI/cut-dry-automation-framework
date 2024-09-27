@@ -119,8 +119,9 @@ public class CustomersPage extends LoginPage {
     By DeliveryDate = By.xpath("//div[contains(text(),'Delivery Date')]");
     By OrderDateSortData = By.cssSelector("tr._du1frc td:nth-child(1)");
     By DeliveryDateSortData = By.cssSelector("tr._du1frc td:nth-child(2)");
-    By txt_priceDisclaimer = By.xpath("//div[contains(text(), 'Prices are subject to change. Weighed item prices are estimated.')]");
-
+    By txt_discountDisclaimerOrderReview = By.xpath("//div[contains(text(), 'Case discounts will be reflected on your invoice.')]");
+    By txt_discountDisclaimerOrderDetails = By.xpath("//div[normalize-space() = '*Prices are subject to change. Weighed item prices are estimated. Case discounts will be reflected on your invoice.']");
+    By lbl_firstRowOrderTab = By.xpath("//table//th[contains(text(), 'Order ID')]/ancestor::table//tr[1]/td[1]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -609,10 +610,17 @@ public class CustomersPage extends LoginPage {
 
         return isSorted;
     }
-    public boolean isPriceDisclaimerMsgDisplayed(){
-        distributorUI.waitForVisibility(txt_priceDisclaimer);
-        return distributorUI.isDisplayed(txt_priceDisclaimer);
+    public boolean isDiscountDisclaimerOrderReviewMsgDisplayed(){
+        distributorUI.waitForVisibility(txt_discountDisclaimerOrderReview);
+        return distributorUI.isDisplayed(txt_discountDisclaimerOrderReview);
     }
-
+    public boolean isDiscountDisclaimerOrderDetailsMsgDisplayed(){
+        distributorUI.waitForVisibility(txt_discountDisclaimerOrderDetails);
+        return distributorUI.isDisplayed(txt_discountDisclaimerOrderDetails);
+    }
+    public void clickFirstOrderFrmOrderTab(){
+        distributorUI.waitForClickability(txt_discountDisclaimerOrderDetails);
+        distributorUI.click(lbl_firstRowOrderTab);
+    }
 
 }
