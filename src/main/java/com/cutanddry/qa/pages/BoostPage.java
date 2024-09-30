@@ -50,8 +50,13 @@ public class BoostPage extends LoginPage {
     By btn_morefrom_config = By.xpath("//tr[td[contains(text(), 'More from this Brand')]]//button[contains(text(), 'View & Configure')]");
     By txt_popupMoreFromThis = By.xpath("//div[text()='Configure item recommendation carousel']");
     String txt_inactive_state =  "//tr[td[contains(text(), \"Type\")] and td[contains(text(), 'Inactive')]]";
-
-
+    By tab_catalogHome = By.xpath("//a[text()='Catalog Home']");
+    By txt_primaryBanner = By.xpath("//div[text()='Primary Banners']");
+    By togglePrimaryBanner = By.xpath("(//div[@class='react-switch-handle'])[1]");
+    By btn_saveChange = By.xpath("//button[text()='Save Changes']");
+    By txt_active = By.xpath("//div[text()='Active']");
+    By txt_hidden = By.xpath("//div[text()='Hidden']");
+    By img_banner = By.xpath("//div[contains(@class, 'carousel-item')]//img");
 
     public boolean isBoostTextDisplayed() {
         try {
@@ -220,5 +225,36 @@ public class BoostPage extends LoginPage {
     public boolean checkInactive(String type) throws InterruptedException {
         distributorUI.waitForCustom(1000);
         return distributorUI.isDisplayed(By.xpath(txt_inactive_state.replace("Type", type)));
+    }
+    public void clickCatalogHome() {
+        distributorUI.click(tab_catalogHome);
+    }
+    public boolean isCatalogHomeTabDisplayed() {
+        return distributorUI.isDisplayed(txt_primaryBanner);
+    }
+    public void toggleOnPrimaryBanner() {
+        if (distributorUI.isDisplayed(txt_hidden)){
+            distributorUI.click(togglePrimaryBanner);
+        }
+    }
+    public void toggleOffPrimaryBanner() {
+        if (distributorUI.isDisplayed(txt_active)){
+            distributorUI.click(togglePrimaryBanner);
+        }
+    }
+    public void clickOnSaveChanges() {
+        distributorUI.waitForClickability(btn_saveChange);
+        distributorUI.click(btn_saveChange);
+        distributorUI.waitForElementEnabledState(btn_saveChange, false);
+    }
+    public boolean isActiveDisplayed() {
+        return distributorUI.isDisplayed(txt_active);
+    }
+    public boolean isHiddenDisplayed() {
+        return distributorUI.isDisplayed(txt_hidden);
+    }
+    public boolean isPrimaryBannerDisplayed() {
+        distributorUI.waitForVisibility(img_banner);
+        return distributorUI.isDisplayed(img_banner);
     }
 }
