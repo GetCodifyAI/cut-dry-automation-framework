@@ -399,4 +399,7 @@ public class Customer {
     public static boolean isReplacementDisplayed(){
         return customersPage.isReplacementDisplayed();
     }
+    public static void clickOnItem(String code){
+        customersPage.clickOnItem(code);
+    }
 }

@@ -127,7 +127,7 @@ public class CustomersPage extends LoginPage {
     By btn_saveSelection = By.xpath("//button[normalize-space(text())='Save Selection']");
     By btn_donotsubs = By.xpath("//button[normalize-space(text())='Do Not Substitute']");
     By txt_replacement = By.xpath("//div[contains(normalize-space(text()), 'If out of stock, sub with')]");
-
+    String txt_subItem = "//div[contains(text(), 'CODE')]";
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -647,5 +647,8 @@ public class CustomersPage extends LoginPage {
     public boolean isReplacementDisplayed(){
         distributorUI.waitForVisibility(txt_replacement);
         return distributorUI.isDisplayed(txt_replacement);
+    }
+    public void clickOnItem(String code){
+        distributorUI.click(By.xpath(txt_subItem.replace("CODE", code)));
     }
 }
