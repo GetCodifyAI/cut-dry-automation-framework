@@ -122,6 +122,12 @@ public class CustomersPage extends LoginPage {
     By txt_discountDisclaimerOrderReview = By.xpath("//div[contains(text(), 'Case discounts will be reflected on your invoice.')]");
     By txt_discountDisclaimerOrderDetails = By.xpath("//div[normalize-space() = '*Prices are subject to change. Weighed item prices are estimated. Case discounts will be reflected on your invoice.']");
     By lbl_firstRowOrderTab = By.xpath("//table//th[contains(text(), 'Order ID')]/ancestor::table//tr[1]/td[1]");
+    By txt_southwest = By.xpath("//div[contains(text(),'Southwest Traders')]");
+    By txt_substitutions = By.xpath("//div[contains(normalize-space(text()), 'Substitutions')]");
+    By btn_saveSelection = By.xpath("//button[normalize-space(text())='Save Selection']");
+    By btn_donotsubs = By.xpath("//button[normalize-space(text())='Do Not Substitute']");
+    By txt_replacement = By.xpath("//span[normalize-space(text())='Replacement:']");
+
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -622,5 +628,24 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForClickability(txt_discountDisclaimerOrderDetails);
         distributorUI.click(lbl_firstRowOrderTab);
     }
-
+    public void clickSouthwestTraders(){
+        distributorUI.waitForClickability(txt_southwest);
+        distributorUI.click(txt_southwest);
+    }
+    public boolean isSubstitutesPopupDisplayed(){
+        distributorUI.waitForVisibility(txt_substitutions);
+        return distributorUI.isDisplayed(txt_substitutions);
+    }
+    public void clickSaveSelection(){
+        distributorUI.waitForVisibility(btn_saveSelection);
+        distributorUI.click(btn_saveSelection);
+    }
+    public void clickDoNotSubstitute(){
+        distributorUI.waitForVisibility(btn_donotsubs);
+        distributorUI.click(btn_donotsubs);
+    }
+    public boolean isReplacementDisplayed(){
+        distributorUI.waitForVisibility(txt_replacement);
+        return distributorUI.isDisplayed(txt_replacement);
+    }
 }

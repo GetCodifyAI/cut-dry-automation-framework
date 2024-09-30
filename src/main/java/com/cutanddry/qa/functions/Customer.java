@@ -381,4 +381,22 @@ public class Customer {
     public static void clickFirstOrderFrmOrderTab(){
         customersPage.clickFirstOrderFrmOrderTab();
     }
+    public static void clickSouthwestTraders() throws InterruptedException {
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+        customersPage.clickSouthwestTraders();
+    }
+    public static boolean isSubstitutesPopupDisplayed(){
+        return customersPage.isSubstitutesPopupDisplayed();
+    }
+    public static void clickDoNotSubstitute(){
+        customersPage.clickDoNotSubstitute();
+    }
+    public static void clickSaveSelection(){
+        customersPage.clickSaveSelection();
+    }
+    public static boolean isReplacementDisplayed(){
+        return customersPage.isReplacementDisplayed();
+    }
 }
