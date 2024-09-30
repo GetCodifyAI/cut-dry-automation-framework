@@ -23,7 +23,7 @@ public class VerifySubstituteItemFor0CountItemWithSubstitutingTest extends TestB
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-146")
+    @Test(groups = "DOT-TC-208")
     public void verifySubstituteItemFor0CountItemWithSubstituting() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
