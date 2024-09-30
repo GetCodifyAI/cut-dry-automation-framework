@@ -232,8 +232,15 @@ public class BoostPage extends LoginPage {
     public boolean isCatalogHomeTabDisplayed() {
         return distributorUI.isDisplayed(txt_primaryBanner);
     }
-    public void togglePrimaryBanner() {
-        distributorUI.click(togglePrimaryBanner);
+    public void toggleOnPrimaryBanner() {
+        if (distributorUI.isDisplayed(txt_hidden)){
+            distributorUI.click(togglePrimaryBanner);
+        }
+    }
+    public void toggleOffPrimaryBanner() {
+        if (distributorUI.isDisplayed(txt_active)){
+            distributorUI.click(togglePrimaryBanner);
+        }
     }
     public void clickOnSaveChanges() {
         distributorUI.waitForClickability(btn_saveChange);

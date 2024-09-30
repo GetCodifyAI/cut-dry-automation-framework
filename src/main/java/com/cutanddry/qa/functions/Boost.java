@@ -147,8 +147,11 @@ public class Boost {
     public static boolean isCatalogHomeTabDisplayed(){
         return boostPage.isCatalogHomeTabDisplayed();
     }
-    public static void togglePrimaryBanner(){
-        boostPage.togglePrimaryBanner();
+    public static void toggleOnPrimaryBanner(){
+        boostPage.toggleOnPrimaryBanner();
+    }
+    public static void toggleOffPrimaryBanner(){
+        boostPage.toggleOffPrimaryBanner();
     }
     public static void clickOnSaveChanges() {
         boostPage.clickOnSaveChanges();

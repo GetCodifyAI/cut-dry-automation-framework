@@ -29,7 +29,7 @@ public class VerifyTheBannerFeatureTest extends TestBase {
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickCatalogHome();
         softAssert.assertTrue(Boost.isCatalogHomeTabDisplayed(),"navigate to catalog home error");
-        Boost.togglePrimaryBanner();
+        Boost.toggleOnPrimaryBanner();
         Boost.clickOnSaveChanges();
         softAssert.assertTrue(Boost.isActiveDisplayed(),"toggle on banner error");
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
@@ -43,7 +43,7 @@ public class VerifyTheBannerFeatureTest extends TestBase {
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickCatalogHome();
         softAssert.assertTrue(Boost.isCatalogHomeTabDisplayed(),"navigate to catalog home error");
-        Boost.togglePrimaryBanner();
+        Boost.toggleOffPrimaryBanner();
         Boost.clickOnSaveChanges();
         softAssert.assertTrue(Boost.isHiddenDisplayed(),"toggle off banner error");
         softAssert.assertAll();
