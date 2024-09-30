@@ -37,10 +37,6 @@ public class VerifySubstituteItemFor1OrMoreItemsWithSubstitutingTest extends Tes
         itemName = Customer.getItemNameFirstRow();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         Customer.increaseFirstRowQtyByOneInDist();
-        Customer.searchItemOnOrderGuide(itemCode_2);
-        itemName = Customer.getItemNameFirstRow();
-        softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
-        Customer.increaseFirstRowQtyByOneInDist();
         Customer.checkoutItemsDist();
         softAssert.assertTrue(Customer.isSubstitutesPopupDisplayed(),"substitutes popup error");
         Customer.clickOnItem(itemCode_2);

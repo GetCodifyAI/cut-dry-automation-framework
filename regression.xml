@@ -73,6 +73,8 @@
             <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderDetailsCDAppTest" />
             <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor0CountItemWithSubstitutingTest" />
             <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor0CountItemWithoutSubstitutingTest" />
+            <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor1OrMoreItemsWithoutSubstitutingTest" />
+            <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor1OrMoreItemsWithSubstitutingTest" />
         </classes>
     </test>
 </suite>

@@ -16,7 +16,7 @@ public class VerifySubstituteItemFor1OrMoreItemsWithoutSubstitutingTest extends 
     static User user;
     static String customer = "32404837";
     static String itemCode_1 = "8433";
-    static String itemCode_2 = "";
+    static String itemCode_2 = "31467";
 
     @BeforeMethod
     public void setUp(){
@@ -37,10 +37,6 @@ public class VerifySubstituteItemFor1OrMoreItemsWithoutSubstitutingTest extends 
         itemName = Customer.getItemNameFirstRow();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         Customer.increaseFirstRowQtyByOneInDist();
-//        Customer.searchItemOnOrderGuide(itemCode_2);
-//        itemName = Customer.getItemNameFirstRow();
-//        softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
-//        Customer.increaseFirstRowQtyByOneInDist();
         Customer.checkoutItemsDist();
         softAssert.assertTrue(Customer.isSubstitutesPopupDisplayed(),"substitutes popup error");
         Customer.clickDoNotSubstitute();
