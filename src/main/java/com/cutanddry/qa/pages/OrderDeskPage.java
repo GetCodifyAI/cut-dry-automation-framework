@@ -7,7 +7,7 @@ public class OrderDeskPage extends LoginPage{
     By Submitted_orders_tab = By.xpath("//a[contains(text(),'Submitted Orders')]");
     By DraftOrders_tab = By.xpath("//a[contains(text(),'Draft Orders')]");
     By CustomerName_Draft_orders_text = By.xpath("(//div[contains(text(),'Customer')])[2]");
-    By DraftOrderPageReviewBtn = By.xpath("//a[@class='btn btn-link' and @href='/order-desk/transcribed-order/271563701']");
+    By DraftOrderPageReviewBtn = By.xpath("(//a[contains(@href, '/order-desk/transcribed-order') and contains(@class, 'btn btn-link') and text()='Review'])[1]");
     By DraftOrderReviewPageQuantityIncrementBtn = By.xpath("(//div[@class='p-2 px-sm-3 _du1frc _18jhc3z py-2 ml-2 text-center align-middle'])[1]");
     By DraftOrderReviewPageQuantityDecrementBtn = By.xpath("(//div[@class='p-2 px-sm-3 _du1frc _18jhc3z py-2 mr-2 text-center align-middle'])[1]");
     By DraftOrderReviewPageQuantityEdit = By.xpath("(//input[@class ='_hk3n6z form-control _b1frhss'])[1]");
@@ -28,9 +28,9 @@ public class OrderDeskPage extends LoginPage{
     By SelectedswapItem = By.xpath("//div[contains(text(),'DMAB : Almond Milk Barista-6x32oz-Califia')]");
     By SwapConfirmBtn = By.xpath("//button[contains(text(),'Confirm')]");
     By CustomerSelectionDropdown = By.xpath("(//div[@class='cd_themed_select__single-value css-1uccc91-singleValue'])[1]");
-    By CustomerName = By.xpath("//div[contains(text(),'Acai Bowles')]");
+    By CustomerName = By.cssSelector(".cd_themed_select__option.css-yt9ioa-option");
     By LocationSelectionDropdown = By.xpath("(//div[@class='cd_themed_select__value-container css-1hwfws3'])[1]");
-    By LocationName = By.xpath("//div[contains(text(),'San Francisco')]");
+    By LocationName = By.cssSelector(".cd_themed_select__option.css-1n7v3ny-option");
     By DeliveryDateInput = By.xpath("//input[contains(@class,'form-control') and @type='text']");
     By DeliveryDateSelect = By.xpath("//input[contains(@class,'form-control react-datepicker')]");
     By DeliveryDateNotValidTxt = By.xpath("//div[@class='text-danger']");
@@ -149,12 +149,12 @@ public class OrderDeskPage extends LoginPage{
 
     public void SelectCustomer(){
         distributorUI.click(CustomerSelectionDropdown);
-        distributorUI.click(CustomerName);
+        distributorUI.selectRandomOptionFromDropDown(CustomerName);
     }
 
     public void SelectLocation(){
         distributorUI.click(LocationSelectionDropdown);
-        distributorUI.click(LocationName);
+        distributorUI.selectRandomOptionFromDropDown(LocationName);
     }
 
     public void SelectDeliveryDate(String deliveryDate){
