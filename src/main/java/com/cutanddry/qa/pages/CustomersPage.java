@@ -580,36 +580,13 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(DeliveryDate);
     }
     public boolean OrderDateSort(){
-        return isDatesSorted(OrderDateSortData);
+        return distributorUI.isDatesSorted(OrderDateSortData);
     }
     public boolean DeliveryDateSort(){
-        return isDatesSorted(DeliveryDateSortData);
+        return distributorUI.isDatesSorted(DeliveryDateSortData);
     }
-    public boolean isDatesSorted(By by) {
-        List<WebElement> dateElements = distributorUI.findElements(by);
 
-        List<Date> dates = new ArrayList<>();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
-        // Retrieve text from all first column cells and parse to Date
-        for (WebElement element : dateElements) {
-            try {
-                Date date = dateFormat.parse(element.getText());
-                dates.add(date);
-            } catch (ParseException e) {
-                e.printStackTrace(); // Handle parsing error
-            }
-        }
-
-        // Create a copy of the list and sort it
-        List<Date> sortedList = new ArrayList<>(dates);
-        Collections.sort(sortedList);
-
-        // Check if the original list is equal to the sorted list
-        boolean isSorted = dates.equals(sortedList);
-
-        return isSorted;
-    }
     public boolean isDiscountDisclaimerOrderReviewMsgDisplayed(){
         distributorUI.waitForVisibility(txt_discountDisclaimerOrderReview);
         return distributorUI.isDisplayed(txt_discountDisclaimerOrderReview);
