@@ -64,4 +64,7 @@ public class Dashboard {
     public static String[] getTotalSumDisplayed() {
         return dashboardPage.getTotalSumDisplayed();
     }
+    public static void navigateToHistory() {
+        dashboardPage.clickOnHistory();
+    }
 }

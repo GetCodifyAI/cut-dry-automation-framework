@@ -348,40 +348,37 @@ public class Customer {
     public static void clickOnBack(){
         customersPage.clickOnBack();
     }
-
     public static void SelectCustomer(String code){
         customersPage.ClickOnCustomer(code);
     }
-
     public static boolean isOrdersTabDisplayed(){
         return customersPage.isOrdersTabDisplayed();
     }
-
     public static void navigateToOrdersPage(){
         customersPage.clickOnOrdersTab();
     }
-
     public static boolean isOrderIdTxtDisplayed(){
         return customersPage.isOrderIdTxtDisplayed();
     }
-
     public static void OrderDateSort(){
         customersPage.ClickOrderDateToSort();
     }
-
     public static void DeliveryDateSort(){
         customersPage.ClickDeliveryDateSort();
     }
-
     public static boolean isOrderDateSorted(){
         return customersPage.OrderDateSort();
-
     }
-
     public static boolean isDeliveryDateSorted(){
         return customersPage.DeliveryDateSort();
-
     }
-
-
+    public static boolean isDiscountDisclaimerOrderDetailsMsgDisplayed(){
+        return customersPage.isDiscountDisclaimerOrderDetailsMsgDisplayed();
+    }
+    public static boolean isDiscountDisclaimerOrderReviewMsgDisplayed(){
+        return customersPage.isDiscountDisclaimerOrderReviewMsgDisplayed();
+    }
+    public static void clickFirstOrderFrmOrderTab(){
+        customersPage.clickFirstOrderFrmOrderTab();
+    }
 }
