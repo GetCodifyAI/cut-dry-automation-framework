@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifySubstituteItemFor0CountItemWithSubstitutingTest extends TestBase {
+public class VerifySubstituteItemFor0CountItemWithoutSubstitutingTest extends TestBase {
     static User user;
     static String customer = "32404837";
     static String itemCode = "99005";
@@ -23,7 +23,7 @@ public class VerifySubstituteItemFor0CountItemWithSubstitutingTest extends TestB
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-208")
+    @Test(groups = "DOT-TC-214")
     public void verifySubstituteItemFor0CountItemWithSubstituting() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();
@@ -38,8 +38,8 @@ public class VerifySubstituteItemFor0CountItemWithSubstitutingTest extends TestB
         Customer.increaseFirstRowQtyByOneInDist();
         Customer.checkoutItemsDist();
         softAssert.assertTrue(Customer.isSubstitutesPopupDisplayed(),"substitutes popup error");
-        Customer.clickSaveSelection();
-        softAssert.assertTrue(Customer.isReplacementDisplayed(),"replace error");
+        Customer.clickDoNotSubstitute();
+        softAssert.assertFalse(Customer.isReplacementDisplayed(),"not replace error");
         softAssert.assertAll();
     }
 

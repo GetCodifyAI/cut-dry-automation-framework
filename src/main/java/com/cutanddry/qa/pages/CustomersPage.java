@@ -126,7 +126,7 @@ public class CustomersPage extends LoginPage {
     By txt_substitutions = By.xpath("//div[contains(normalize-space(text()), 'Substitutions')]");
     By btn_saveSelection = By.xpath("//button[normalize-space(text())='Save Selection']");
     By btn_donotsubs = By.xpath("//button[normalize-space(text())='Do Not Substitute']");
-    By txt_replacement = By.xpath("//span[normalize-space(text())='Replacement:']");
+    By txt_replacement = By.xpath("//div[contains(normalize-space(text()), 'If out of stock, sub with')]");
 
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
