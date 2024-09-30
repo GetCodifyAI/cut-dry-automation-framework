@@ -36,7 +36,6 @@ public class VerifyTheBannerFeatureTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToWhiteLabelPortal(customer);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboardWhiteLabel(),"login error");
-        Dashboard.navigateToUsersWhiteLabel();
         softAssert.assertTrue(Boost.isPrimaryBannerDisplayed(),"banner display error");
         Login.navigateToDistributor();
         Dashboard.navigateToBoost();
