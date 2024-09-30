@@ -14,8 +14,9 @@ import org.testng.asserts.SoftAssert;
 
 public class UpdateUserWithExistingUserReferenceTest extends TestBase {
     static User user;
-    static String nameAdmin = "Mashan";
-    static String name = "Test";
+    static String name_1 = "Test";
+    static String name_2 = "Test123";
+    static String email_2 = "test123@email.com";
     static String userRef = "KF";
 
     @BeforeMethod
@@ -32,19 +33,25 @@ public class UpdateUserWithExistingUserReferenceTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToTeamSettings();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");
-        Settings.clickOnEditUser(nameAdmin);
+        Settings.clickOnAddUser();
+        Settings.enterName(name_2);
+        Settings.enterEmail(email_2);
         Settings.enterUserRef(userRef);
-        Settings.clickOnSaveChanges();
-        Settings.clickOnEditUser(name);
+        Settings.clickOnInviteUser();
+        softAssert.assertTrue(Settings.isUserDisplayed(name_2),"user adding error");
+        Settings.clickOnEditUser(name_1);
         Settings.enterUserRef(userRef);
         Settings.clickOnSaveChanges();
         softAssert.assertTrue(Settings.isUserRefErrorDisplayed(),"user ref error");
         Settings.clickOK();
         Settings.clickRemoveAddedUserRef(userRef);
         Settings.clickOnSaveChanges();
-        Settings.clickOnEditUser(nameAdmin);
-        Settings.clickRemoveAddedUserRef(userRef);
-        Settings.clickOnSaveChanges();
+        Settings.clickOnEditUser(name_2);
+        Settings.clickOnRemoveUserLabel();
+        softAssert.assertTrue(Settings.isRemoveUserPopupDisplayed(),"remove pop up error");
+        Settings.clickOnRemoveUser();
+        Settings.clickOK();
+        softAssert.assertFalse(Settings.isUserDisplayed(name_2),"user remove error");
         softAssert.assertAll();
     }
 
