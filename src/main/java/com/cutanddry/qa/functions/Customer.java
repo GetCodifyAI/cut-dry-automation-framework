@@ -381,4 +381,17 @@ public class Customer {
     public static void clickFirstOrderFrmOrderTab(){
         customersPage.clickFirstOrderFrmOrderTab();
     }
+
+    public static boolean isNavigatedToCustomerPage(){
+        return customersPage.isCutomerTxtDisplayed();
+    }
+
+    public static void SelectTestAutomationOrderGuide(){
+        customersPage.ClickTestAutomationOrderGuide();
+    }
+
+    public static boolean isStockCountDisplayed(){
+        return customersPage.StockCountDisplayed();
+    }
+
 }
