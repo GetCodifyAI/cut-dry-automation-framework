@@ -130,7 +130,7 @@ public class CustomersPage extends LoginPage {
     String txt_subItem = "//div[contains(text(), 'CODE')]";
     By btn_increaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div[3]");
     By btn_decreaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div[1]");
-
+    String txt_subItems = "(//div[contains(text(), 'Available Substitutes')]/following-sibling::div//div[contains(text(), '1 x $')])[NUM]";
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -636,5 +636,14 @@ public class CustomersPage extends LoginPage {
     }
     public void clickMinusQryFirstRowInCheckout(){
         distributorUI.click(btn_decreaseQtyFirstRowInCheckout);
+    }
+    public int getSubstituteItemsCount(int num) {
+        int count = 0;
+        for (int i = 1; i <= num; i++) {
+            if (distributorUI.isDisplayed(By.xpath(txt_subItems.replace("NUM", String.valueOf(i))))){
+                count += 1;
+            };
+        }
+        return count;
     }
 }

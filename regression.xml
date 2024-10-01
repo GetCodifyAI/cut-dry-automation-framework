@@ -80,6 +80,7 @@
             <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor1OrMoreItemsWithoutSubstitutingTest" />
             <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor1OrMoreItemsWithSubstitutingTest" />
             <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemByIncreasingOrDecreasingQuantityTest" />
+            <class name="com.cutanddry.qa.tests.substitutions.VerifyTheMaximumAmountOfSubstituteItemsTest" />
         </classes>
     </test>
 </suite>

@@ -408,4 +408,7 @@ public class Customer {
     public static void decreaseFirstRowQtyByOneInCheckout(){
         customersPage.clickMinusQryFirstRowInCheckout();
     }
+    public static int getSubstituteItemsCount(int num){
+        return customersPage.getSubstituteItemsCount(num);
+    }
 }
