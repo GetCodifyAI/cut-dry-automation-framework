@@ -18,7 +18,7 @@ public class LoginPage extends TestBase {
     By btn_tryAgain = By.xpath("//button[text()='Try Again']");
     By lbl_loginAs = By.xpath("//div[text()='Select...']/following::input[@type='text']");
     String txt_whitelblCustomer = "//div[contains(@class, 'css-1n7v3ny-option') and contains(text(), 'NAME')]";
-    By btn_loginAsWLApp = By.xpath("//a[contains(text(), 'Login As (white-label)')]");
+    By btn_loginAsWLApp = By.xpath("//a[contains(text(), 'Login As')]");
     By lbl_verifiedVendor = By.xpath("//a[text()='verifiedvendor']");
     String txt_verifiedVendor = "//a[contains(text(), 'ID')]";
     By lbl_suuplierPortalVendorData = By.xpath("//a[contains(text(), 'Link') and ancestor::th[contains(., 'SupplierPortalVendorData')]]");

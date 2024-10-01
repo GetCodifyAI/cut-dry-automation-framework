@@ -188,6 +188,9 @@ public class Customer {
         customersPage.clickOnDownloadOrderGuide();
     }
     public static void searchItemOnOrderGuide(String item) throws InterruptedException {
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
         customersPage.typeToSearchOnOrderGuide(item);
     }
     public static void goToCreatePopup() throws InterruptedException {
@@ -380,5 +383,32 @@ public class Customer {
     }
     public static void clickFirstOrderFrmOrderTab(){
         customersPage.clickFirstOrderFrmOrderTab();
+    }
+    public static void clickSouthwestTraders() throws InterruptedException {
+        customersPage.clickSouthwestTraders();
+    }
+    public static boolean isSubstitutesPopupDisplayed(){
+        return customersPage.isSubstitutesPopupDisplayed();
+    }
+    public static void clickDoNotSubstitute(){
+        customersPage.clickDoNotSubstitute();
+    }
+    public static void clickSaveSelection(){
+        customersPage.clickSaveSelection();
+    }
+    public static boolean isReplacementDisplayed(){
+        return customersPage.isReplacementDisplayed();
+    }
+    public static void clickOnItem(String code){
+        customersPage.clickOnItem(code);
+    }
+    public static void increaseFirstRowQtyByOneInCheckout(){
+        customersPage.clickPlusQryFirstRowInCheckout();
+    }
+    public static void decreaseFirstRowQtyByOneInCheckout(){
+        customersPage.clickMinusQryFirstRowInCheckout();
+    }
+    public static int getSubstituteItemsCount(int num){
+        return customersPage.getSubstituteItemsCount(num);
     }
 }
