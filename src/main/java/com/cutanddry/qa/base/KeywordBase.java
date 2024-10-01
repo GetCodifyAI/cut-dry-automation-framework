@@ -1,6 +1,7 @@
 package com.cutanddry.qa.base;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,10 +12,10 @@ import org.slf4j.LoggerFactory;
 import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.time.Duration;
+import java.util.*;
 
 
 @SuppressWarnings("UnusedReturnValue")
@@ -555,8 +556,59 @@ public class KeywordBase {
         }
     }
 
-    public List findElements(By by){
-        return driver.findElements(by);
+    public boolean isDatesSorted(By by) {
+        List<WebElement> dateElements = driver.findElements(by);
+
+        List<Date> dates = new ArrayList<>();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+
+        // Retrieve text from all first column cells and parse to Date
+        for (WebElement element : dateElements) {
+            try {
+                Date date = dateFormat.parse(element.getText());
+                dates.add(date);
+            } catch (ParseException e) {
+                e.printStackTrace(); // Handle parsing error
+            }
+        }
+
+        // Create a copy of the list and sort it
+        List<Date> sortedList = new ArrayList<>(dates);
+        Collections.sort(sortedList);
+
+        // Check if the original list is equal to the sorted list
+        boolean isSorted = dates.equals(sortedList);
+
+        return isSorted;
+    }
+
+    public KeywordBase SwitchToNewTab(By by) {
+
+        // Store the current window handle
+        String originalTab = driver.getWindowHandle();
+
+        // Store the current set of window handles (before opening the new tab)
+        Set<String> existingWindows = driver.getWindowHandles();
+
+        // Click the element that opens the new tab
+        driver.findElement(by).click();
+
+        // Wait until the number of windows increases (indicating a new tab is opened)
+        wait.until(ExpectedConditions.numberOfWindowsToBe(existingWindows.size() + 1));
+
+        // Get the updated set of window handles after the new tab opens
+        Set<String> windowHandles = driver.getWindowHandles();
+
+        for (String windowHandle : windowHandles) {
+            if (!existingWindows.contains(windowHandle)) {
+                driver.switchTo().window(windowHandle);
+                logger.info("Switched to new tab: {}", windowHandle);
+                break; // Exit the loop once you've switched
+            }
+        }
+
+        return this;
+
     }
 
 }

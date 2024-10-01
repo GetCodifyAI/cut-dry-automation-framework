@@ -141,5 +141,28 @@ public class Boost {
     public static boolean checkInactiveState(String type) throws InterruptedException {
         return boostPage.checkInactive(type);
     }
-
+    public static void clickCatalogHome(){
+        boostPage.clickCatalogHome();
+    }
+    public static boolean isCatalogHomeTabDisplayed(){
+        return boostPage.isCatalogHomeTabDisplayed();
+    }
+    public static void toggleOnPrimaryBanner(){
+        boostPage.toggleOnPrimaryBanner();
+    }
+    public static void toggleOffPrimaryBanner(){
+        boostPage.toggleOffPrimaryBanner();
+    }
+    public static void clickOnSaveChanges() {
+        boostPage.clickOnSaveChanges();
+    }
+    public static boolean isActiveDisplayed(){
+        return boostPage.isActiveDisplayed();
+    }
+    public static boolean isHiddenDisplayed(){
+        return boostPage.isHiddenDisplayed();
+    }
+    public static boolean isPrimaryBannerDisplayed(){
+        return boostPage.isPrimaryBannerDisplayed();
+    }
 }
