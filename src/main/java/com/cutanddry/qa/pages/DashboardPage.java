@@ -26,7 +26,7 @@ public class DashboardPage extends LoginPage{
     By txt_totalOnlineOrders = By.xpath("//tr[td[contains(text(), 'Total')]]/td[3]");
     By txt_totalOnlineRev = By.xpath("//tr[td[contains(text(), 'Total')]]/td[4]");
     By txt_totalTimeSaved = By.xpath("//tr[td[contains(text(), 'Total')]]/td[5]");
-
+    By btn_history = By.xpath("//a[@data-tip='Order History']");
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -138,5 +138,8 @@ public class DashboardPage extends LoginPage{
         totals[2] = distributorUI.getText(txt_totalTimeSaved);
 
         return totals;
+    }
+    public void clickOnHistory(){
+        distributorUI.click(btn_history);
     }
 }

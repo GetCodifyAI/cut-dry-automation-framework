@@ -39,6 +39,9 @@
             <class name="com.cutanddry.qa.tests.integration.VerifyChatFeatureTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyPDFGenerationForCatalogPDPTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyHardOrderMinimumWarningTest" />
+            <class name="com.cutanddry.qa.tests.catalog.BrandPageForAllPortalsTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyManufacturerPageViaShowCaseTest" />
+            <class name="com.cutanddry.qa.tests.catalog.ViewManufacturerPageTest" />
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyCreatingStandingOrdersTest" />
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyEditingStandingOrdersTest" />
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyAddingAnotherStandingOrderTest" />
@@ -68,6 +71,10 @@
             <class name="com.cutanddry.qa.tests.order_desk.VerifyVoiceRecordUploadTest" />
             <class name="com.cutanddry.qa.tests.dashboard.VerifyDashboardShowingSalespersonsRelatedChartsTest" />
             <class name="com.cutanddry.qa.tests.dashboard.VerifyFunctionalityOfTeamStandingsTableTest" />
+            <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderReviewTest" />
+            <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderDetailsSupplierPortalTest" />
+            <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderDetailsCDAppTest" />
+            <class name="com.cutanddry.qa.tests.banner.VerifyTheBannerFeatureTest" />
         </classes>
     </test>
 </suite>

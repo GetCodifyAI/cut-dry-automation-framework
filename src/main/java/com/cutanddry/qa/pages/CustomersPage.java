@@ -119,6 +119,9 @@ public class CustomersPage extends LoginPage {
     By DeliveryDate = By.xpath("//div[contains(text(),'Delivery Date')]");
     By OrderDateSortData = By.cssSelector("tr._du1frc td:nth-child(1)");
     By DeliveryDateSortData = By.cssSelector("tr._du1frc td:nth-child(2)");
+    By txt_discountDisclaimerOrderReview = By.xpath("//div[contains(text(), 'Case discounts will be reflected on your invoice.')]");
+    By txt_discountDisclaimerOrderDetails = By.xpath("//div[normalize-space() = '*Prices are subject to change. Weighed item prices are estimated. Case discounts will be reflected on your invoice.']");
+    By lbl_firstRowOrderTab = By.xpath("//table//th[contains(text(), 'Order ID')]/ancestor::table//tr[1]/td[1]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -562,64 +565,39 @@ public class CustomersPage extends LoginPage {
     public void ClickOnCustomer(String code){
         distributorUI.click(By.xpath(SelectCustomerByCode.replace("CODE", code)));
     }
-
-
     public boolean isOrdersTabDisplayed(){
         distributorUI.waitForVisibility(OrdersTabTxt);
         return distributorUI.isDisplayed(OrdersTabTxt);
     }
-
-
     public boolean isOrderIdTxtDisplayed(){
         distributorUI.waitForVisibility(OrderIdTxt);
         return distributorUI.isDisplayed(OrderIdTxt);
     }
-
-
     public void ClickOrderDateToSort(){
         distributorUI.click(OrderDateSort);
     }
-
-
     public void ClickDeliveryDateSort(){
         distributorUI.click(DeliveryDate);
     }
-
-
     public boolean OrderDateSort(){
-        return isDatesSorted(OrderDateSortData);
+        return distributorUI.isDatesSorted(OrderDateSortData);
     }
-
-
     public boolean DeliveryDateSort(){
-        return isDatesSorted(DeliveryDateSortData);
+        return distributorUI.isDatesSorted(DeliveryDateSortData);
     }
 
 
-    public boolean isDatesSorted(By by) {
-        List<WebElement> dateElements = distributorUI.findElements(by);
-
-        List<Date> dates = new ArrayList<>();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-
-        // Retrieve text from all first column cells and parse to Date
-        for (WebElement element : dateElements) {
-            try {
-                Date date = dateFormat.parse(element.getText());
-                dates.add(date);
-            } catch (ParseException e) {
-                e.printStackTrace(); // Handle parsing error
-            }
-        }
-
-        // Create a copy of the list and sort it
-        List<Date> sortedList = new ArrayList<>(dates);
-        Collections.sort(sortedList);
-
-        // Check if the original list is equal to the sorted list
-        boolean isSorted = dates.equals(sortedList);
-
-        return isSorted;
+    public boolean isDiscountDisclaimerOrderReviewMsgDisplayed(){
+        distributorUI.waitForVisibility(txt_discountDisclaimerOrderReview);
+        return distributorUI.isDisplayed(txt_discountDisclaimerOrderReview);
+    }
+    public boolean isDiscountDisclaimerOrderDetailsMsgDisplayed(){
+        distributorUI.waitForVisibility(txt_discountDisclaimerOrderDetails);
+        return distributorUI.isDisplayed(txt_discountDisclaimerOrderDetails);
+    }
+    public void clickFirstOrderFrmOrderTab(){
+        distributorUI.waitForClickability(txt_discountDisclaimerOrderDetails);
+        distributorUI.click(lbl_firstRowOrderTab);
     }
 
 }
