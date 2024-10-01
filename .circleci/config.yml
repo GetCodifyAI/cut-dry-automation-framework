@@ -79,7 +79,7 @@ jobs:
           name: Create artifacts directory
           command: mkdir -p /tmp/artifacts
       - store_artifacts:
-          path: /tmp/artifacts
+          path: target/surefire-reports
           destination: nightly-build-and-test-artifacts
     executor:
 
@@ -120,7 +120,7 @@ jobs:
           name: Create artifacts directory
           command: mkdir -p /tmp/artifacts
       - store_artifacts:
-          path: /tmp/artifacts
+          path: target/surefire-reports
           destination: daily-build-and-test-artifacts
     executor:
 
