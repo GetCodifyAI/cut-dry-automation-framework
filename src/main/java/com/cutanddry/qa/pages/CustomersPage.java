@@ -128,6 +128,9 @@ public class CustomersPage extends LoginPage {
     By btn_donotsubs = By.xpath("//button[normalize-space(text())='Do Not Substitute']");
     By txt_replacement = By.xpath("//div[contains(normalize-space(text()), 'If out of stock, sub with')]");
     String txt_subItem = "//div[contains(text(), 'CODE')]";
+    By btn_increaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div[3]");
+    By btn_decreaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div[1]");
+
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -627,5 +630,11 @@ public class CustomersPage extends LoginPage {
     }
     public void clickOnItem(String code){
         distributorUI.click(By.xpath(txt_subItem.replace("CODE", code)));
+    }
+    public void clickPlusQryFirstRowInCheckout(){
+        distributorUI.click(btn_increaseQtyFirstRowInCheckout);
+    }
+    public void clickMinusQryFirstRowInCheckout(){
+        distributorUI.click(btn_decreaseQtyFirstRowInCheckout);
     }
 }

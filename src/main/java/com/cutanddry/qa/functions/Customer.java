@@ -402,4 +402,10 @@ public class Customer {
     public static void clickOnItem(String code){
         customersPage.clickOnItem(code);
     }
+    public static void increaseFirstRowQtyByOneInCheckout(){
+        customersPage.clickPlusQryFirstRowInCheckout();
+    }
+    public static void decreaseFirstRowQtyByOneInCheckout(){
+        customersPage.clickMinusQryFirstRowInCheckout();
+    }
 }

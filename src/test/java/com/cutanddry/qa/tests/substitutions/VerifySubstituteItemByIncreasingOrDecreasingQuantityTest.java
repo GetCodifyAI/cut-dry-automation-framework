@@ -15,7 +15,8 @@ import org.testng.asserts.SoftAssert;
 public class VerifySubstituteItemByIncreasingOrDecreasingQuantityTest extends TestBase {
     static User user;
     static String customer = "32404837";
-    static String itemCode = "99005";
+    static String itemCode_1 = "8433";
+    static String itemCode_2 = "31467";
 
     @BeforeMethod
     public void setUp(){
@@ -32,15 +33,20 @@ public class VerifySubstituteItemByIncreasingOrDecreasingQuantityTest extends Te
         Login.navigateToWhiteLabelPortal(customer);
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Customer.clickSouthwestTraders();
-        Customer.searchItemOnOrderGuide(itemCode);
+        Customer.searchItemOnOrderGuide(itemCode_1);
         itemName = Customer.getItemNameFirstRow();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         Customer.increaseFirstRowQtyByOneInDist();
         Customer.checkoutItemsDist();
         softAssert.assertTrue(Customer.isSubstitutesPopupDisplayed(),"substitutes popup error");
+        Customer.clickOnItem(itemCode_2);
         Customer.clickSaveSelection();
-        softAssert.assertFalse(Customer.isReplacementDisplayed(),"not replace error");
-        //
+        softAssert.assertTrue(Customer.isReplacementDisplayed(),"replace error");
+        Customer.increaseFirstRowQtyByOneInCheckout();
+        Customer.increaseFirstRowQtyByOneInCheckout();
+        softAssert.assertTrue(Customer.isReplacementDisplayed(),"sub item missing error");
+        Customer.decreaseFirstRowQtyByOneInCheckout();
+        softAssert.assertTrue(Customer.isReplacementDisplayed(),"sub item missing error");
         softAssert.assertAll();
     }
 
