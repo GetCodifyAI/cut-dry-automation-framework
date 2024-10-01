@@ -411,4 +411,18 @@ public class Customer {
     public static int getSubstituteItemsCount(int num){
         return customersPage.getSubstituteItemsCount(num);
     }
+
+    public static boolean isNavigatedToCustomerPage(){
+        return customersPage.isCutomerTxtDisplayed();
+    }
+
+    public static void SelectTestAutomationOrderGuide(){
+        customersPage.ClickTestAutomationOrderGuide();
+    }
+
+    public static boolean isStockCountDisplayed(){
+        return customersPage.StockCountDisplayed();
+    }
+
+
 }

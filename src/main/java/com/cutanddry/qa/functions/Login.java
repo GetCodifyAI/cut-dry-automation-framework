@@ -52,4 +52,8 @@ public class Login {
     public static void navigateToDistributorPortal(String name) {
         loginPage.navigateToDistributorPortal(name);
     }
+
+    public static void navigateToInternalToolsPage(){
+        loginPage.ClickOnInternalTools();
+    }
 }

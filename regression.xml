@@ -42,6 +42,7 @@
             <class name="com.cutanddry.qa.tests.catalog.BrandPageForAllPortalsTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyManufacturerPageViaShowCaseTest" />
             <class name="com.cutanddry.qa.tests.catalog.ViewManufacturerPageTest" />
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyStockDataInCatalogViewTest" />
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyCreatingStandingOrdersTest" />
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyEditingStandingOrdersTest" />
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyAddingAnotherStandingOrderTest" />
