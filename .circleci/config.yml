@@ -34,6 +34,8 @@ jobs:
       - run:
           name: Build and run tests
           command: mvn clean test -Dsurefire.suiteXmlFiles=bvt.xml -Drun.headless=true -Dtest.env=uat
+      - store_artifacts:
+          path: cut-dry-automation-framework/target/surefire-reports
     executor:
 
   nightly-build-and-test:
