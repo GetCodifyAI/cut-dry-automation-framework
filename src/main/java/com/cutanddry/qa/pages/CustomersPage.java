@@ -2,13 +2,6 @@ package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
 
-import org.openqa.selenium.WebElement;
-
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
-
 public class CustomersPage extends LoginPage {
     By tbx_searchCustomers = By.xpath("//input[@placeholder='Search Customers']");
     String btnOrderGuide = "//td[text()='CODE']/../td[8]//button";
@@ -20,8 +13,8 @@ public class CustomersPage extends LoginPage {
     By btn_checkout = By.xpath("//button[text()='$']/../button[2]");
     By btn_catalog = By.xpath("//div[text()='Catalog']");
     By tbx_catalogSearch = By.xpath("//input[@placeholder='Search catalog...']");
-    String lbl_catalogSearchItemList = "//div[contains(text(), 'NAME')]";
-    By btn_addToCart = By.xpath("//button[text()='Add to Cart']");
+    String lbl_catalogSearchItemList = "(//div[contains(text(), 'NAME')])[5]";
+    By btn_addToCart = By.xpath("(//button[contains(@class, 'btn-outline-primary') and contains(., 'Add to Cart')])[4]");
     By tbx_itemQuantityFirstRow = By.xpath("//tr[1]//td[8]//input");
     By lbl_itemPriceFirstRow = By.xpath("//tr[1]//td[7]/div");
     By btn_increaseQtyCatalogSearchValueOne = By.xpath("//input[@type='number' and @value='1']/../following-sibling::div");
@@ -30,7 +23,7 @@ public class CustomersPage extends LoginPage {
     By btn_decreaseQtyCatalogSearchValueTwo = By.xpath("//input[@type='number' and @value='2']/../preceding-sibling::div");
     By btn_decreaseQtyCatalogSearchValueThree = By.xpath("//input[@type='number' and @value='3']/../preceding-sibling::div");
     By tbx_itemQuantityCatalogSearch = By.xpath("//input[@type='number']");
-    By lbl_itemPriceSearchCatalogList = By.xpath("//span[contains(text(),'$') and not(contains(text(),' ')) and not(@class='text-muted')]");
+    By lbl_itemPriceSearchCatalogList = By.xpath("(//span[contains(text(),'$') and not(contains(text(),' ')) and not(@class='text-muted')])[3]");
     By btn_decreaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../preceding-sibling::div");
     By btn_increaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../following-sibling::div");
     By tbx_itemQuantityCartRowOne = By.xpath("//tr[2]/td//input/");
@@ -131,6 +124,11 @@ public class CustomersPage extends LoginPage {
     By btn_increaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div[3]");
     By btn_decreaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div[1]");
     String txt_subItems = "(//div[contains(text(), 'Available Substitutes')]/following-sibling::div//div[contains(text(), '1 x $')])[NUM]";
+    By CustomerTxt = By.xpath("//h2[contains(text(),'Customers')]");
+    By Test_AutomationOrderGuide = By.xpath("//div[@class='cd_themed_select__single-value css-1uccc91-singleValue' and contains(text(),'Independent Foods Co')]");
+    By AutomationGuide = By.xpath("//div[contains(text(),'Test_Automation')]");
+    By StockCountTxt = By.xpath("//span[@data-for='cd-label-tooltip' and contains(text(), 'Stock: 50 Pkg')]");
+
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -646,4 +644,19 @@ public class CustomersPage extends LoginPage {
         }
         return count;
     }
+
+    public boolean isCutomerTxtDisplayed(){
+        return distributorUI.isDisplayed(CustomerTxt);
+    }
+
+    public void ClickTestAutomationOrderGuide(){
+        distributorUI.waitForVisibility(Test_AutomationOrderGuide);
+        distributorUI.click(Test_AutomationOrderGuide);
+        distributorUI.click(AutomationGuide);
+    }
+
+    public boolean StockCountDisplayed(){
+        return distributorUI.isDisplayed(StockCountTxt);
+    }
+
 }

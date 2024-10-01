@@ -28,7 +28,7 @@ public class LoginPage extends TestBase {
     By lbl_loginAsDist = By.xpath("//h5[text()='Distributor Portal Quick Links']/following-sibling::div//div[text()='Select User...']/following::input[@type='text'][1]");
     String txt_distributor = "//div[contains(@class, 'themed_select__option') and contains(text(), 'NAME')]";
     By btn_loginAsDis = By.xpath("//a[contains(text(), 'Login As (supplier)')]");
-
+    By InternalToolsBtn = By.xpath("//a[contains(text(),'Internal Tools') and contains(@class,'active nav-link')]");
 
     public void typeEmailOrMobile(String emailOrMobile){
         distributorUI.sendKeys(txt_emailOrMobile,emailOrMobile);
@@ -97,4 +97,11 @@ public class LoginPage extends TestBase {
         distributorUI.click(By.xpath(txt_distributor.replace("NAME", name)));
         distributorUI.navigateToURL(distributorUI.getText(btn_loginAsDis, "href"));
     }
+
+    public void ClickOnInternalTools(){
+        distributorUI.navigateToURL(Constants.LOGIN_AS);
+        distributorUI.waitForElementEnabledState(lbl_loginAsDist,true);
+        distributorUI.click(InternalToolsBtn);
+    }
+
 }
