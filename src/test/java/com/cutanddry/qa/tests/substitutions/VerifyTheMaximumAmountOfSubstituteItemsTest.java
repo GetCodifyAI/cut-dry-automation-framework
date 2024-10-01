@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheMaximumAmountOfSubstituteItemsTest extends TestBase {
     static User user;
     static String customer = "32404837";
-    static String itemCode = "";
+    static String itemCode = "93766";
 
     @BeforeMethod
     public void setUp(){
