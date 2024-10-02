@@ -132,7 +132,8 @@ public class CustomersPage extends LoginPage {
     By txt_unitInDist = By.xpath("//tr[2]/td[3]/div/div/div/div");
     By txt_eachDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Each']");
     By txt_caseDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Case']");
-
+    By btn_orderGuide = By.xpath("//button[normalize-space(text())='Order Guide']");
+    By btn_close = By.xpath("//button[contains(@class, 'close')]/span[text()='×']");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -671,15 +672,27 @@ public class CustomersPage extends LoginPage {
         }
         return distributorUI.isDisplayed(txt_outOfStock);
     }
-    public void clickOnUnitDropdownInDist(){
-        distributorUI.click(txt_unitInDist);
-    }
     public void clickOnUnitDEach(){
+        distributorUI.click(txt_unitInDist);
         distributorUI.waitForVisibility(txt_eachDropdownItem);
         distributorUI.click(txt_eachDropdownItem);
     }
     public void clickOnUnitCase(){
+        distributorUI.click(txt_unitInDist);
         distributorUI.waitForVisibility(txt_caseDropdownItem);
         distributorUI.click(txt_caseDropdownItem);
+    }
+    public void clickOnOrderGuideInProf(){
+        distributorUI.waitForVisibility(btn_orderGuide);
+        distributorUI.click(btn_orderGuide);
+    }
+    public String getUnitType(){
+        distributorUI.waitForVisibility(txt_unitInDist);
+        return distributorUI.getText(txt_unitInDist);
+    }
+    public void clickClose(){
+        distributorUI.waitForVisibility(btn_close);
+        distributorUI.click(btn_close);
+        distributorUI.waitForInvisibility(btn_close);
     }
 }

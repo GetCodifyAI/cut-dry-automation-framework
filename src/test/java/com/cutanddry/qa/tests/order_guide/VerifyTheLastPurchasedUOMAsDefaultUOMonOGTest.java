@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest extends TestBase {
     static User user;
     static String DP = "John Gross";
-    static String customerId = "10891";
+    static String customerId = "80033";
     static String itemCode = "125902";
 
 
@@ -33,21 +33,32 @@ public class VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest extends TestBase {
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DP);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToCustomers();
+        softAssert.assertTrue(Customer.isNavigatedToCustomerPage(),"navigation error");
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
         Customer.searchItemOnOrderGuide(itemCode);
         itemName = Customer.getItemNameFirstRow();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
-        Customer.clickOnUnitDropdownInDist();
         Customer.clickOnUnitDEach();
         Customer.increaseFirstRowQtyByOneInDist();
         Customer.checkoutItemsDist();
         Customer.submitOrder();
-        //
-
+        Customer.clickOnOrderGuideInProfile();
+        Customer.searchItemOnOrderGuide(itemCode);
+        itemName = Customer.getItemNameFirstRow();
+        softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
+        softAssert.assertEquals(Customer.getUnitType(),"Each","unit mismatch");
+        Customer.clickOnUnitCase();
+        Customer.increaseFirstRowQtyByOneInDist();
+        Customer.checkoutItemsDist();
+        Customer.submitOrder();
+        Customer.clickOnOrderGuideInProfile();
+        Customer.searchItemOnOrderGuide(itemCode);
+        itemName = Customer.getItemNameFirstRow();
+        softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
+        softAssert.assertEquals(Customer.getUnitType(),"Case","unit mismatch");
         softAssert.assertAll();
         //
 

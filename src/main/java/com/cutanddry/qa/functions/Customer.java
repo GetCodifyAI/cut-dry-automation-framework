@@ -138,6 +138,7 @@ public class Customer {
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
         }
+        customersPage.clickClose();
     }
     public static boolean isThankingForOrderPopupDisplayed(){
         return customersPage.isThankingForOrderPopupDisplayed();
@@ -426,13 +427,16 @@ public class Customer {
     public static boolean areOutOfStockItemsDisplayed(){
         return customersPage.areOutOfStockItemsDisplayed();
     }
-    public static void clickOnUnitDropdownInDist(){
-        customersPage.clickOnUnitDropdownInDist();
-    }
     public static void clickOnUnitDEach(){
         customersPage.clickOnUnitDEach();
     }
     public static void clickOnUnitCase(){
         customersPage.clickOnUnitCase();
+    }
+    public static void clickOnOrderGuideInProfile(){
+        customersPage.clickOnOrderGuideInProf();
+    }
+    public static String getUnitType(){
+        return customersPage.getUnitType();
     }
 }
