@@ -14,8 +14,8 @@ import org.testng.asserts.SoftAssert;
 
 public class AddNewUserWithoutUserReferenceTest extends TestBase {
     static User user;
-    static String name = "Test";
-    static String email = "test@email.com";
+    static String name = "Testnew";
+    static String email = "testnew@email.com";
     static String verifiedVendorId = "46017666";
 
     @BeforeMethod
@@ -46,7 +46,11 @@ public class AddNewUserWithoutUserReferenceTest extends TestBase {
     }
 
     @AfterMethod
-    public void tearDown(ITestResult result) {
+    public void tearDown(ITestResult result) throws InterruptedException {
+        Settings.clickOnEditUser(name);
+        Settings.clickOnRemoveUserLabel();
+        Settings.clickOnRemoveUser();
+        Settings.clickOK();
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }
