@@ -128,6 +128,7 @@ public class CustomersPage extends LoginPage {
     By Test_AutomationOrderGuide = By.xpath("//div[@class='cd_themed_select__single-value css-1uccc91-singleValue' and contains(text(),'Independent Foods Co')]");
     By AutomationGuide = By.xpath("//div[contains(text(),'Test_Automation')]");
     By StockCountTxt = By.xpath("//span[@data-for='cd-label-tooltip' and contains(text(), 'Stock: 50 Pkg')]");
+    By txt_outOfStock = By.xpath("//div[contains(text(), 'This item is currently out of stock and may not be shipped')]");
 
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
@@ -658,5 +659,13 @@ public class CustomersPage extends LoginPage {
     public boolean StockCountDisplayed(){
         return distributorUI.isDisplayed(StockCountTxt);
     }
-
+    public boolean areOutOfStockItemsDisplayed(){
+        try {
+            distributorUI.isDisplayed(txt_outOfStock);
+        }
+        catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_outOfStock);
+    }
 }

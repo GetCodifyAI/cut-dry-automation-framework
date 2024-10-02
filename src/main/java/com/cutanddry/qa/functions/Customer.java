@@ -423,6 +423,8 @@ public class Customer {
     public static boolean isStockCountDisplayed(){
         return customersPage.StockCountDisplayed();
     }
-
+    public static boolean areOutOfStockItemsDisplayed(){
+        return customersPage.areOutOfStockItemsDisplayed();
+    }
 
 }

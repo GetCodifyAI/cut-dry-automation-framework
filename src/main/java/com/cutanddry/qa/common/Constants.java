@@ -13,6 +13,7 @@ public class Constants {
     public static String NODE_EXPLORER = "https://app-uat.staging.cutanddry.com/admin";
     public static String BASE_URI = "https://supplier-uat.staging.cutanddry.com/GraphQLController";
     public static String SLACK_WEBHOOK = System.getenv("SLACK_WEBHOOK");
+    public static String CONFIG_SUPPLIER = "https://app-uat.staging.cutanddry.com/internaltools/configure-supplier";
     //  https://hooks.slack.com/services/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 //group - test-alerts
     //  https://hooks.slack.com/services/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 //group - ui-automation-tests
 

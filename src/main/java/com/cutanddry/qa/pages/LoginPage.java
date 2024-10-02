@@ -103,5 +103,7 @@ public class LoginPage extends TestBase {
         distributorUI.waitForElementEnabledState(lbl_loginAsDist,true);
         distributorUI.click(InternalToolsBtn);
     }
-
+    public void navigateToConfigSupplier() {
+        distributorUI.navigateToURL(Constants.CONFIG_SUPPLIER);
+    }
 }
