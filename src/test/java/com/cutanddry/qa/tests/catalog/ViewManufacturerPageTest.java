@@ -24,7 +24,7 @@ public class ViewManufacturerPageTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-213")
-    public void ViewManufacturerPage(){
+    public void ViewManufacturerPage() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");

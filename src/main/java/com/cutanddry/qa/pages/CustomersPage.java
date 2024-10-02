@@ -13,8 +13,8 @@ public class CustomersPage extends LoginPage {
     By btn_checkout = By.xpath("//button[text()='$']/../button[2]");
     By btn_catalog = By.xpath("//div[text()='Catalog']");
     By tbx_catalogSearch = By.xpath("//input[@placeholder='Search catalog...']");
-    String lbl_catalogSearchItemList = "(//div[contains(text(), 'NAME')])[5]";
-    By btn_addToCart = By.xpath("(//button[contains(@class, 'btn-outline-primary') and contains(., 'Add to Cart')])[4]");
+    String lbl_catalogSearchItemList = "(//div[contains(text(), 'NAME')])[2]";
+    By btn_addToCart = By.xpath("//button[contains(@class, 'btn-outline-primary') and contains(., 'Add to Cart')]");
     By tbx_itemQuantityFirstRow = By.xpath("//tr[1]//td[8]//input");
     By lbl_itemPriceFirstRow = By.xpath("//tr[1]//td[7]/div");
     By btn_increaseQtyCatalogSearchValueOne = By.xpath("//input[@type='number' and @value='1']/../following-sibling::div");
@@ -128,6 +128,7 @@ public class CustomersPage extends LoginPage {
     By Test_AutomationOrderGuide = By.xpath("//div[@class='cd_themed_select__single-value css-1uccc91-singleValue' and contains(text(),'Independent Foods Co')]");
     By AutomationGuide = By.xpath("//div[contains(text(),'Test_Automation')]");
     By StockCountTxt = By.xpath("//span[@data-for='cd-label-tooltip' and contains(text(), 'Stock: 50 Pkg')]");
+    By CustomerGroupTxt = By.xpath("//div[contains(text(),'Customer Group')]");
     By txt_outOfStock = By.xpath("//div[contains(text(), 'This item is currently out of stock and may not be shipped')]");
     By txt_unitInDist = By.xpath("//tbody/tr/td[3]/div/div/div/div");
     By txt_eachDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Each']");
@@ -193,6 +194,7 @@ public class CustomersPage extends LoginPage {
         distributorUI.clear(tbx_catalogSearch);
         distributorUI.waitForCustom(2000);
         distributorUI.sendKeys(tbx_catalogSearch,item);
+        distributorUI.waitForCustom(4000);
     }
     public String getFirstItemNameFrmSearchResults(String name){
         return distributorUI.getText(By.xpath(lbl_catalogSearchItemList.replace("NAME", name)), 0);
@@ -312,9 +314,10 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForClickability(btn_submitOrderGuide);
         distributorUI.click(btn_submitOrderGuide);
     }
-    public void clickOnAddFromCatalog(){
+    public void clickOnAddFromCatalog() throws InterruptedException {
         distributorUI.waitForVisibility(btn_addFromCatalog);
         distributorUI.click(btn_addFromCatalog);
+        distributorUI.waitForCustom(4000);
     }
     public void clickUploadAList(){
         distributorUI.waitForVisibility(btn_uploadFile);
@@ -663,6 +666,12 @@ public class CustomersPage extends LoginPage {
     public boolean StockCountDisplayed(){
         return distributorUI.isDisplayed(StockCountTxt);
     }
+
+    public boolean isCustomerGroupTxtDisplayed(){
+        distributorUI.waitForVisibility(CustomerGroupTxt);
+        return distributorUI.isDisplayed(CustomerGroupTxt);
+    }
+
     public boolean areOutOfStockItemsDisplayed(){
         try {
             distributorUI.isDisplayed(txt_outOfStock);

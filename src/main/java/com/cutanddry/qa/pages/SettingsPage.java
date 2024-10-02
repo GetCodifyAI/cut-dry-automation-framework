@@ -89,11 +89,11 @@ public class SettingsPage extends LoginPage{
     }
     public boolean isUserDisplayed(String user) throws InterruptedException {
         try {
+            distributorUI.waitForCustom(2000);
             distributorUI.waitForVisibility(By.xpath(btn_editUser.replace("USER", user)));
         } catch (Exception e){
             return false;
         }
-        distributorUI.waitForCustom(2000);
         return distributorUI.isDisplayed(By.xpath(btn_editUser.replace("USER", user)));
     }
     public void clickOnRemoveUserLabel() throws InterruptedException {

@@ -201,7 +201,7 @@ public class Customer {
         customersPage.typeOrderGuideName(orderGuideName);
         customersPage.clickSubmitOrderGuide();
     }
-    public static void createOrderFromCatalog(){
+    public static void createOrderFromCatalog() throws InterruptedException {
         customersPage.clickOnAddFromCatalog();
     }
     public static void addItemFromCatalog(){
@@ -424,6 +424,12 @@ public class Customer {
     public static boolean isStockCountDisplayed(){
         return customersPage.StockCountDisplayed();
     }
+
+    public static boolean isCustomerGroupOptinAvailable(){
+        return customersPage.isCustomerGroupTxtDisplayed();
+    }
+
+
     public static boolean areOutOfStockItemsDisplayed(){
         return customersPage.areOutOfStockItemsDisplayed();
     }

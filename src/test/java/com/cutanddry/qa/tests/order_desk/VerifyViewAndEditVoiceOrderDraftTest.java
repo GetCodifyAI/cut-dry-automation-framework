@@ -12,10 +12,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.util.Random;
+
 public class VerifyViewAndEditVoiceOrderDraftTest extends TestBase{
 
     User user;
-    String ItemQuantity = "20";
+    Random rand = new Random();
+    int randomNum = rand.nextInt(21) + 10;
+    String ItemQuantity = Integer.toString(randomNum);
 
     @BeforeMethod
     public void setup(){
@@ -24,7 +28,7 @@ public class VerifyViewAndEditVoiceOrderDraftTest extends TestBase{
     }
 
     @Test(groups = "DOT-TC-82")
-    public void VerifyViewAndEditVoiceOrderDraft(){
+    public void VerifyViewAndEditVoiceOrderDraft() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(),user.getPassword());
         Dashboard.isUserNavigatedToDashboard();

@@ -33,7 +33,7 @@ public class OrderDesk {
         orderDeskPage.clickOnsubstractQuantityBtnOnDraftOrderReviewPage();
     }
 
-    public static void EditItemQuantityDraftOrderReviewPage(String itemQuantity){
+    public static void EditItemQuantityDraftOrderReviewPage(String itemQuantity) throws InterruptedException {
         orderDeskPage.editItemQuantityOnDraftOrderReviewPage(itemQuantity);
     }
 
