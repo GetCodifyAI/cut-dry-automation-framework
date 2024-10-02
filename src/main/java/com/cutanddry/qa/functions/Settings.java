@@ -56,7 +56,7 @@ public class Settings {
     public static boolean isRemoveUserPopupDisplayed(){
         return settingsPage.isRemoveUserPopupDisplayed();
     }
-    public static boolean isUserRefErrorDisplayed(){
+    public static boolean isUserRefErrorDisplayed() throws InterruptedException {
         return settingsPage.isUserRefErrorDisplayed();
     }
     public static void clickRemoveAddedUserRef(String ref) {
