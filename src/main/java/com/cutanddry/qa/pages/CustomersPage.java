@@ -23,7 +23,7 @@ public class CustomersPage extends LoginPage {
     By btn_decreaseQtyCatalogSearchValueTwo = By.xpath("//input[@type='number' and @value='2']/../preceding-sibling::div");
     By btn_decreaseQtyCatalogSearchValueThree = By.xpath("//input[@type='number' and @value='3']/../preceding-sibling::div");
     By tbx_itemQuantityCatalogSearch = By.xpath("//input[@type='number']");
-    By lbl_itemPriceSearchCatalogList = By.xpath("(//span[contains(text(),'$') and not(contains(text(),' ')) and not(@class='text-muted')])[3]");
+    By lbl_itemPriceSearchCatalogList = By.xpath("(//span[contains(text(),'$') and not(contains(text(),' ')) and not(@class='text-muted')])[1]");
     By btn_decreaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../preceding-sibling::div");
     By btn_increaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../following-sibling::div");
     By tbx_itemQuantityCartRowOne = By.xpath("//tr[2]/td//input/");
@@ -129,6 +129,7 @@ public class CustomersPage extends LoginPage {
     By AutomationGuide = By.xpath("//div[contains(text(),'Test_Automation')]");
     By StockCountTxt = By.xpath("//span[@data-for='cd-label-tooltip' and contains(text(), 'Stock: 50 Pkg')]");
     By CustomerGroupTxt = By.xpath("//div[contains(text(),'Customer Group')]");
+    By EditCustomerGroupBtn = By.xpath("");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -666,4 +667,7 @@ public class CustomersPage extends LoginPage {
         return distributorUI.isDisplayed(CustomerGroupTxt);
     }
 
+//    public void editCustomerGroup(){
+//        distributorUI.click();
+//    }
 }

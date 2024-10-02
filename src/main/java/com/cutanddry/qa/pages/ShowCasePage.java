@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 public class ShowCasePage extends LoginPage {
     By productShowcaseTxt = By.xpath("//h1[contains(text(),'Cut+Dry Product Showcase')]");
     By productSearchBar = By.xpath("//input[@id='order_flow_search']");
-    By productDisplayed = By.xpath("//div[contains(@class,'_3quvq7 _1vlidrf') and contains(text(),'Andy Capps Hot Fries 0 85 Oz')]");
+    By productDisplayed = By.xpath("//div[contains(@class,'_3quvq7') and contains(@class,'_1vlidrf') and contains(text(),'Andy Capps Hot Fries, 0.85 Oz')]");
     By ManufacturerTxt = By.xpath("(//div[contains(text(),'Conagra Foodservice')])[1]");
     By ConagraFoodServiceTxt = By.xpath("//div[contains(@class,'mt-5 mb-1 _mojmdw')]");
     By OurBrandBtn = By.xpath("//img[contains(@class,'img-fluid') and contains(@alt,'Brand logo 96416251')]");
