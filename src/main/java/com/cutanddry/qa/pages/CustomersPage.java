@@ -41,7 +41,7 @@ public class CustomersPage extends LoginPage {
     By btn_submitOrderGuide = By.xpath("//button[contains(text(), 'Submit')]");
     By btn_addFromCatalog = By.xpath("//div[contains(text(), 'Add from Catalog')]");
     By btn_uploadFile = By.xpath("//button[contains(text(), 'Upload File')]");
-    By btn_addToOrderGuide = By.xpath("(//button[@data-tip='Add to Order Guide'])[2]");
+    By btn_addToOrderGuide = By.xpath("//button[@data-tip='Add to Order Guide']");
     By btn_closeEditorCatalog = By.xpath("//button[contains(text(), 'Close Editor')]");
     By btn_closeEditor = By.xpath("//a[contains(text(), 'Close Editor')]");
     By btn_removeFromOrderGuide = By.xpath("//button[@data-tip='Remove from Order Guide']");
@@ -188,6 +188,7 @@ public class CustomersPage extends LoginPage {
         distributorUI.clear(tbx_catalogSearch);
         distributorUI.waitForCustom(2000);
         distributorUI.sendKeys(tbx_catalogSearch,item);
+        distributorUI.waitForCustom(4000);
     }
     public String getFirstItemNameFrmSearchResults(String name){
         return distributorUI.getText(By.xpath(lbl_catalogSearchItemList.replace("NAME", name)), 0);
@@ -307,9 +308,10 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForClickability(btn_submitOrderGuide);
         distributorUI.click(btn_submitOrderGuide);
     }
-    public void clickOnAddFromCatalog(){
+    public void clickOnAddFromCatalog() throws InterruptedException {
         distributorUI.waitForVisibility(btn_addFromCatalog);
         distributorUI.click(btn_addFromCatalog);
+        distributorUI.waitForCustom(4000);
     }
     public void clickUploadAList(){
         distributorUI.waitForVisibility(btn_uploadFile);

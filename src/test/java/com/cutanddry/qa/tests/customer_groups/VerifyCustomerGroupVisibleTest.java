@@ -12,8 +12,8 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyCustomerGroupVisibleTest extends TestBase {
     static User user;
-    String DistributerName = "155997318 - Cut+Dry Agent - Hook to Fork";
-    String CustomerCode = "25464";
+    String DistributerName = "47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String CustomerCode = "16579";
 
     @BeforeMethod
     public void setUp(){
