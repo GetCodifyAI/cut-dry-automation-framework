@@ -23,7 +23,7 @@ public class CustomersPage extends LoginPage {
     By btn_decreaseQtyCatalogSearchValueTwo = By.xpath("//input[@type='number' and @value='2']/../preceding-sibling::div");
     By btn_decreaseQtyCatalogSearchValueThree = By.xpath("//input[@type='number' and @value='3']/../preceding-sibling::div");
     By tbx_itemQuantityCatalogSearch = By.xpath("//input[@type='number']");
-    By lbl_itemPriceSearchCatalogList = By.xpath("(//span[contains(text(),'$') and not(contains(text(),' ')) and not(@class='text-muted')])[3]");
+    By lbl_itemPriceSearchCatalogList = By.xpath("(//span[contains(text(),'$') and not(contains(text(),' ')) and not(@class='text-muted')])[1]");
     By btn_decreaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../preceding-sibling::div");
     By btn_increaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../following-sibling::div");
     By tbx_itemQuantityCartRowOne = By.xpath("//tr[2]/td//input/");
@@ -135,6 +135,7 @@ public class CustomersPage extends LoginPage {
     By txt_caseDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Case']");
     By btn_orderGuide = By.xpath("//button[normalize-space(text())='Order Guide']");
     By btn_close = By.xpath("//button[contains(@class, 'close')]/span[text()='×']");
+    By EditCustomerGroupBtn = By.xpath("");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -671,7 +672,6 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForVisibility(CustomerGroupTxt);
         return distributorUI.isDisplayed(CustomerGroupTxt);
     }
-
     public boolean areOutOfStockItemsDisplayed(){
         try {
             distributorUI.isDisplayed(txt_outOfStock);
@@ -704,4 +704,7 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_close);
         distributorUI.waitForInvisibility(btn_close);
     }
+//    public void editCustomerGroup(){
+//        distributorUI.click();
+//    }
 }
