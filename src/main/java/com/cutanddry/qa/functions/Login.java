@@ -56,4 +56,7 @@ public class Login {
     public static void navigateToInternalToolsPage(){
         loginPage.ClickOnInternalTools();
     }
+    public static void navigateToConfigSupplier(){
+        loginPage.navigateToConfigSupplier();
+    }
 }

@@ -429,4 +429,22 @@ public class Customer {
     }
 
 
+    public static boolean areOutOfStockItemsDisplayed(){
+        return customersPage.areOutOfStockItemsDisplayed();
+    }
+    public static void clickOnUnitDEach(){
+        customersPage.clickOnUnitDEach();
+    }
+    public static void clickOnUnitCase(){
+        customersPage.clickOnUnitCase();
+    }
+    public static void clickOnOrderGuideInProfile(){
+        customersPage.clickOnOrderGuideInProf();
+    }
+    public static String getUnitType(){
+        return customersPage.getUnitType();
+    }
+    public static void clickClose(){
+        customersPage.clickClose();
+    }
 }
