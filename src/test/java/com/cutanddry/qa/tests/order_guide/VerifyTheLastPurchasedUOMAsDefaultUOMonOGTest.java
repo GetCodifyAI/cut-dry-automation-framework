@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest extends TestBase {
     static User user;
     static String DP = "John Gross";
-    static String customerId = "8033";
+    static String customerId = "10891";
     static String itemCode = "125902";
 
 
@@ -41,7 +41,14 @@ public class VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest extends TestBase {
         Customer.searchItemOnOrderGuide(itemCode);
         itemName = Customer.getItemNameFirstRow();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
+        Customer.clickOnUnitDropdownInDist();
+        Customer.clickOnUnitDEach();
+        Customer.increaseFirstRowQtyByOneInDist();
+        Customer.checkoutItemsDist();
+        Customer.submitOrder();
+        //
 
+        softAssert.assertAll();
         //
 
     }

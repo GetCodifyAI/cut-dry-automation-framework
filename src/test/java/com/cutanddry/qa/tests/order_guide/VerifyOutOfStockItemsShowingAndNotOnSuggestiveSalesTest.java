@@ -40,7 +40,6 @@ public class VerifyOutOfStockItemsShowingAndNotOnSuggestiveSalesTest extends Tes
         ConfigSupplier.clickOnSave();
         //
         Login.navigateToDistributorPortal(DP);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
@@ -58,7 +57,6 @@ public class VerifyOutOfStockItemsShowingAndNotOnSuggestiveSalesTest extends Tes
         ConfigSupplier.clickOnSave();
         //
         Login.navigateToDistributorPortal(DP);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");

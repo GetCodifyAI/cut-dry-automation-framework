@@ -83,6 +83,7 @@
             <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemByIncreasingOrDecreasingQuantityTest" />
             <class name="com.cutanddry.qa.tests.substitutions.VerifyTheMaximumAmountOfSubstituteItemsTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyOutOfStockItemsShowingAndNotOnSuggestiveSalesTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest" />
         </classes>
     </test>
 </suite>

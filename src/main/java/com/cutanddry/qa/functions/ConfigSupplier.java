@@ -17,7 +17,7 @@ public class ConfigSupplier {
     public static void clickOnSave(){
         configPage.clickOnSave();
     }
-    public static void toggleOnOGSuggestiveTool(){
+    public static void toggleOnOGSuggestiveTool() throws InterruptedException {
         configPage.toggleOnOGSuggestiveTool();
     }
     public static void toggleOffOGSuggestiveTool(){

@@ -24,17 +24,18 @@ public class ConfigSupplierPage extends LoginPage{
     }
     public void clickOnCatalogSettings() {
         distributorUI.waitForVisibility(btn_catalogSettings);
-        distributorUI.click(btn_catalogSettings);
+        distributorUI.clickUsingJavaScript(btn_catalogSettings);
     }
     public void clickOnSave() {
         distributorUI.waitForVisibility(btn_saveCatalog);
-        distributorUI.click(btn_saveCatalog);
+        distributorUI.clickUsingJavaScript(btn_saveCatalog);
         distributorUI.waitForElementEnabledState(btn_saveCatalog, true);
     }
-    public void toggleOnOGSuggestiveTool() {
+    public void toggleOnOGSuggestiveTool() throws InterruptedException {
         if (!distributorUI.isDisplayed(st_activeOGSugTool)){
             distributorUI.waitForVisibility(lbl_OGSugTool);
             distributorUI.click(lbl_OGSugTool);
+            distributorUI.waitForCustom(2000);
         }
     }
     public void toggleOffOGSuggestiveTool() {

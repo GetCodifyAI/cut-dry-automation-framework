@@ -129,6 +129,9 @@ public class CustomersPage extends LoginPage {
     By AutomationGuide = By.xpath("//div[contains(text(),'Test_Automation')]");
     By StockCountTxt = By.xpath("//span[@data-for='cd-label-tooltip' and contains(text(), 'Stock: 50 Pkg')]");
     By txt_outOfStock = By.xpath("//div[contains(text(), 'This item is currently out of stock and may not be shipped')]");
+    By txt_unitInDist = By.xpath("//tr[2]/td[3]/div/div/div/div");
+    By txt_eachDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Each']");
+    By txt_caseDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Case']");
 
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
@@ -667,5 +670,16 @@ public class CustomersPage extends LoginPage {
             return false;
         }
         return distributorUI.isDisplayed(txt_outOfStock);
+    }
+    public void clickOnUnitDropdownInDist(){
+        distributorUI.click(txt_unitInDist);
+    }
+    public void clickOnUnitDEach(){
+        distributorUI.waitForVisibility(txt_eachDropdownItem);
+        distributorUI.click(txt_eachDropdownItem);
+    }
+    public void clickOnUnitCase(){
+        distributorUI.waitForVisibility(txt_caseDropdownItem);
+        distributorUI.click(txt_caseDropdownItem);
     }
 }
