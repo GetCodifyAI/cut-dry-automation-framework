@@ -17,7 +17,7 @@ public class Settings {
     public static boolean isTeamSettingsTextDisplayed() throws InterruptedException {
         return settingsPage.isTeamSettingsTextDisplayed();
     }
-    public static void clickOnAddUser() {
+    public static void clickOnAddUser() throws InterruptedException {
         settingsPage.clickOnAddUser();
     }
     public static void enterName(String name){
@@ -26,13 +26,10 @@ public class Settings {
     public static void enterEmail(String email){
         settingsPage.enterEmail(email);
     }
-    public static void enterPhone(String mobile){
-        settingsPage.enterPhone(mobile);
-    }
     public static void enterUserRef(String ref) throws InterruptedException {
         settingsPage.enterUserRef(ref);
     }
-    public static void clickOnInviteUser() {
+    public static void clickOnInviteUser() throws InterruptedException {
         settingsPage.clickOnInviteUser();
     }
     public static boolean isUserDisplayed(String user) throws InterruptedException {
@@ -41,7 +38,7 @@ public class Settings {
     public static void clickOnRemoveUserLabel() throws InterruptedException {
         settingsPage.clickOnRemoveUserLabel();
     }
-    public static void clickOnEditUser(String user) {
+    public static void clickOnEditUser(String user) throws InterruptedException {
         settingsPage.clickOnEditUser(user);
     }
     public static boolean isEditUserPopupDisplayed(){
@@ -59,13 +56,13 @@ public class Settings {
     public static boolean isUserRefErrorDisplayed() throws InterruptedException {
         return settingsPage.isUserRefErrorDisplayed();
     }
-    public static void clickRemoveAddedUserRef(String ref) {
+    public static void clickRemoveAddedUserRef(String ref) throws InterruptedException {
         settingsPage.clickRemoveAddedUserRef(ref);
     }
     public static boolean isUserRefAdded(String ref) throws InterruptedException {
         return settingsPage.isUserRefAdded(ref);
     }
-    public static boolean isUserAddingErrorPopupDisplayed(){
+    public static boolean isUserAddingErrorPopupDisplayed() throws InterruptedException {
         return settingsPage.isUserAddingErrorPopupDisplayed();
     }
     public static void enterNameWL(String name){
