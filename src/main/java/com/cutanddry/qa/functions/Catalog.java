@@ -39,7 +39,7 @@ public class Catalog {
         return catalogPage.isNavigatedtoConagaraBrandPage();
 
     }
-    public static boolean isOtherBrandsPageDisplayed(){
+    public static boolean isOtherBrandsPageDisplayed() throws InterruptedException {
         return catalogPage.isNavigatedtoOtherBrandPage();
     }
     public static void NavigateToShowCasePage(){

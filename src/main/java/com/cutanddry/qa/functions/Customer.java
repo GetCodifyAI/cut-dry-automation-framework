@@ -424,5 +424,9 @@ public class Customer {
         return customersPage.StockCountDisplayed();
     }
 
+    public static boolean isCustomerGroupOptinAvailable(){
+        return customersPage.isCustomerGroupTxtDisplayed();
+    }
+
 
 }
