@@ -200,7 +200,7 @@ public class Customer {
         customersPage.typeOrderGuideName(orderGuideName);
         customersPage.clickSubmitOrderGuide();
     }
-    public static void createOrderFromCatalog(){
+    public static void createOrderFromCatalog() throws InterruptedException {
         customersPage.clickOnAddFromCatalog();
     }
     public static void addItemFromCatalog(){

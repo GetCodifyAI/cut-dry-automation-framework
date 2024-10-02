@@ -34,6 +34,7 @@ public class OrderDeskPage extends LoginPage{
     By DeliveryDateInput = By.xpath("//input[contains(@class,'form-control') and @type='text']");
     By DeliveryDateSelect = By.xpath("//input[contains(@class,'form-control react-datepicker')]");
     By DeliveryDateNotValidTxt = By.xpath("//div[@class='text-danger']");
+    By VoiceRecordTxt = By.xpath("//div[text()='Voice Record']");
 
 
 
@@ -72,11 +73,13 @@ public class OrderDeskPage extends LoginPage{
     }
 
     public void editItemQuantityOnDraftOrderReviewPage(String itemQuantity) throws InterruptedException {
+        distributorUI.clearUsingJavaScript(DraftOrderReviewPageQuantityEdit);
         distributorUI.sendKeys(DraftOrderReviewPageQuantityEdit, itemQuantity);
         distributorUI.waitForCustom(4000);
     }
 
     public void clickOnSaveDraftBtn(){
+        distributorUI.click(VoiceRecordTxt);
         distributorUI.click(SaveDraftBtn);
     }
 
