@@ -98,8 +98,8 @@ public class CustomersPage extends LoginPage {
     By btn_deleteStandingOrders = By.xpath("//div[text()='Delete']");
     By txt_deletePopup = By.xpath("//h2[text()='Are you sure?']");
     By btn_yes = By.xpath("//button[text()='Yes']");
-    By btn_increaseQtyFirstRowInDist = By.xpath("//tr[2]/td[6]/div/div/div/div[3]");
-    By btn_decreaseQtyFirstRowInDist = By.xpath("//tr[2]/td[6]/div/div/div/div[1]");
+    By btn_increaseQtyFirstRowInDist = By.xpath("//tbody/tr/td[6]/div/div/div/div[3]");
+    By btn_decreaseQtyFirstRowInDist = By.xpath("//tbody/tr[2]/td[6]/div/div/div/div[1]");
     By btn_checkoutCashCarry = By.xpath("//button[@data-tip='Click here to checkout']");
     By txt_foodServiceDistCenter = By.xpath("//span[text()='Food Service Distribution Centre']");
     By txt_retailDistCenter = By.xpath("//span[text()='Retail Distribution Centre']");
@@ -129,7 +129,7 @@ public class CustomersPage extends LoginPage {
     By AutomationGuide = By.xpath("//div[contains(text(),'Test_Automation')]");
     By StockCountTxt = By.xpath("//span[@data-for='cd-label-tooltip' and contains(text(), 'Stock: 50 Pkg')]");
     By txt_outOfStock = By.xpath("//div[contains(text(), 'This item is currently out of stock and may not be shipped')]");
-    By txt_unitInDist = By.xpath("//tr[2]/td[3]/div/div/div/div");
+    By txt_unitInDist = By.xpath("//tbody/tr/td[3]/div/div/div/div");
     By txt_eachDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Each']");
     By txt_caseDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Case']");
     By btn_orderGuide = By.xpath("//button[normalize-space(text())='Order Guide']");

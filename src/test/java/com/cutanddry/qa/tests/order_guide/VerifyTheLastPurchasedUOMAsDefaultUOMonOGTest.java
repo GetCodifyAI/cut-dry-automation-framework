@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest extends TestBase {
     static User user;
     static String DP = "John Gross";
-    static String customerId = "80033";
+    static String customerId = "10891";
     static String itemCode = "125902";
 
 
@@ -60,8 +60,6 @@ public class VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest extends TestBase {
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         softAssert.assertEquals(Customer.getUnitType(),"Case","unit mismatch");
         softAssert.assertAll();
-        //
-
     }
 
     @AfterMethod
