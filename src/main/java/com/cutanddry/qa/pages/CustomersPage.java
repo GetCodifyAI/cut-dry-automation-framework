@@ -13,8 +13,8 @@ public class CustomersPage extends LoginPage {
     By btn_checkout = By.xpath("//button[text()='$']/../button[2]");
     By btn_catalog = By.xpath("//div[text()='Catalog']");
     By tbx_catalogSearch = By.xpath("//input[@placeholder='Search catalog...']");
-    String lbl_catalogSearchItemList = "(//div[contains(text(), 'NAME')])[5]";
-    By btn_addToCart = By.xpath("(//button[contains(@class, 'btn-outline-primary') and contains(., 'Add to Cart')])[4]");
+    String lbl_catalogSearchItemList = "(//div[contains(text(), 'NAME')])[2]";
+    By btn_addToCart = By.xpath("//button[contains(@class, 'btn-outline-primary') and contains(., 'Add to Cart')]");
     By tbx_itemQuantityFirstRow = By.xpath("//tr[1]//td[8]//input");
     By lbl_itemPriceFirstRow = By.xpath("//tr[1]//td[7]/div");
     By btn_increaseQtyCatalogSearchValueOne = By.xpath("//input[@type='number' and @value='1']/../following-sibling::div");
@@ -41,7 +41,7 @@ public class CustomersPage extends LoginPage {
     By btn_submitOrderGuide = By.xpath("//button[contains(text(), 'Submit')]");
     By btn_addFromCatalog = By.xpath("//div[contains(text(), 'Add from Catalog')]");
     By btn_uploadFile = By.xpath("//button[contains(text(), 'Upload File')]");
-    By btn_addToOrderGuide = By.xpath("//button[@data-tip='Add to Order Guide']");
+    By btn_addToOrderGuide = By.xpath("(//button[@data-tip='Add to Order Guide'])[2]");
     By btn_closeEditorCatalog = By.xpath("//button[contains(text(), 'Close Editor')]");
     By btn_closeEditor = By.xpath("//a[contains(text(), 'Close Editor')]");
     By btn_removeFromOrderGuide = By.xpath("//button[@data-tip='Remove from Order Guide']");
@@ -128,7 +128,7 @@ public class CustomersPage extends LoginPage {
     By Test_AutomationOrderGuide = By.xpath("//div[@class='cd_themed_select__single-value css-1uccc91-singleValue' and contains(text(),'Independent Foods Co')]");
     By AutomationGuide = By.xpath("//div[contains(text(),'Test_Automation')]");
     By StockCountTxt = By.xpath("//span[@data-for='cd-label-tooltip' and contains(text(), 'Stock: 50 Pkg')]");
-
+    By CustomerGroupTxt = By.xpath("//div[contains(text(),'Customer Group')]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -657,6 +657,11 @@ public class CustomersPage extends LoginPage {
 
     public boolean StockCountDisplayed(){
         return distributorUI.isDisplayed(StockCountTxt);
+    }
+
+    public boolean isCustomerGroupTxtDisplayed(){
+        distributorUI.waitForVisibility(CustomerGroupTxt);
+        return distributorUI.isDisplayed(CustomerGroupTxt);
     }
 
 }

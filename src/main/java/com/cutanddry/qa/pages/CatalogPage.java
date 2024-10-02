@@ -76,8 +76,9 @@ public class CatalogPage extends LoginPage{
         return distributorUI.isDisplayed(ConagaraBrandPage);
     }
 
-    public boolean isNavigatedtoOtherBrandPage(){
+    public boolean isNavigatedtoOtherBrandPage() throws InterruptedException {
          distributorUI.SwitchToNewTab(OtherBrandBtn);
+         distributorUI.waitForCustom(6000);
          distributorUI.waitForVisibility(OtherBrandText);
          return distributorUI.isDisplayed(OtherBrandText);
     }

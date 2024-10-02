@@ -24,7 +24,7 @@ public class VerifyViewAndEditVoiceOrderDraftTest extends TestBase{
     }
 
     @Test(groups = "DOT-TC-82")
-    public void VerifyViewAndEditVoiceOrderDraft(){
+    public void VerifyViewAndEditVoiceOrderDraft() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(),user.getPassword());
         Dashboard.isUserNavigatedToDashboard();

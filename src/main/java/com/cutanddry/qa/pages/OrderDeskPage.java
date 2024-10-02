@@ -71,8 +71,9 @@ public class OrderDeskPage extends LoginPage{
         distributorUI.click(DraftOrderReviewPageQuantityDecrementBtn);
     }
 
-    public void editItemQuantityOnDraftOrderReviewPage(String itemQuantity){
+    public void editItemQuantityOnDraftOrderReviewPage(String itemQuantity) throws InterruptedException {
         distributorUI.sendKeys(DraftOrderReviewPageQuantityEdit, itemQuantity);
+        distributorUI.waitForCustom(4000);
     }
 
     public void clickOnSaveDraftBtn(){
