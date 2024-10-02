@@ -86,10 +86,11 @@ public class SettingsPage extends LoginPage{
     public void clickOnInviteUser() {
         distributorUI.waitForClickability(btn_inviteUser);
         distributorUI.click(btn_inviteUser);
+        distributorUI.clickUsingJavaScript(btn_inviteUser);
     }
     public boolean isUserDisplayed(String user) throws InterruptedException {
         try {
-            distributorUI.waitForCustom(2000);
+            distributorUI.waitForCustom(4000);
             distributorUI.waitForVisibility(By.xpath(btn_editUser.replace("USER", user)));
         } catch (Exception e){
             return false;
