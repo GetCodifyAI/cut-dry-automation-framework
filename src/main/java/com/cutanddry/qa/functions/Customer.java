@@ -138,7 +138,6 @@ public class Customer {
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
         }
-        customersPage.clickClose();
     }
     public static boolean isThankingForOrderPopupDisplayed(){
         return customersPage.isThankingForOrderPopupDisplayed();
@@ -444,5 +443,8 @@ public class Customer {
     }
     public static String getUnitType(){
         return customersPage.getUnitType();
+    }
+    public static void clickClose(){
+        customersPage.clickClose();
     }
 }
