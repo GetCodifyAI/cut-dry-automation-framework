@@ -120,7 +120,7 @@ public class CustomersPage extends LoginPage {
     By btn_saveSelection = By.xpath("//button[normalize-space(text())='Save Selection']");
     By btn_donotsubs = By.xpath("//button[normalize-space(text())='Do Not Substitute']");
     By txt_replacement = By.xpath("//div[contains(normalize-space(text()), 'If out of stock, sub with')]");
-    String txt_subItem = "//div[contains(text(), 'CODE')]";
+    String txt_item = "//div[contains(text(), 'CODE')]";
     By btn_increaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div[3]");
     By btn_decreaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div[1]");
     String txt_subItems = "(//div[contains(text(), 'Available Substitutes')]/following-sibling::div//div[contains(text(), '1 x $')])[NUM]";
@@ -135,7 +135,7 @@ public class CustomersPage extends LoginPage {
     By txt_caseDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Case']");
     By btn_orderGuide = By.xpath("//button[normalize-space(text())='Order Guide']");
     By btn_close = By.xpath("//button[contains(@class, 'close')]/span[text()='×']");
-    By EditCustomerGroupBtn = By.xpath("");
+    By btn_delete = By.xpath("//*[local-name() = 'svg' and @data-icon='trash-alt']");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -636,7 +636,7 @@ public class CustomersPage extends LoginPage {
         return distributorUI.isDisplayed(txt_replacement);
     }
     public void clickOnItem(String code){
-        distributorUI.click(By.xpath(txt_subItem.replace("CODE", code)));
+        distributorUI.click(By.xpath(txt_item.replace("CODE", code)));
     }
     public void clickPlusQryFirstRowInCheckout(){
         distributorUI.click(btn_increaseQtyFirstRowInCheckout);
@@ -704,7 +704,9 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_close);
         distributorUI.waitForInvisibility(btn_close);
     }
-//    public void editCustomerGroup(){
-//        distributorUI.click();
-//    }
+    public void clickOnDeleteItem(){
+        distributorUI.waitForVisibility(btn_delete);
+        distributorUI.click(btn_delete);
+        distributorUI.waitForInvisibility(btn_delete);
+    }
 }

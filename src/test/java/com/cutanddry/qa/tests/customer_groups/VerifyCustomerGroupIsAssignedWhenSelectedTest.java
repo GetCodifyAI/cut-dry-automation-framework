@@ -34,7 +34,7 @@ public class VerifyCustomerGroupIsAssignedWhenSelectedTest extends TestBase {
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(CustomerCode);
         Customer.SelectCustomer(CustomerCode);
-        softAssert.assertTrue(Customer.isCustomerGroupOptinAvailable(),"Error in Displaying Customer Group Text");
+        softAssert.assertTrue(Customer.isCustomerGroupOptionAvailable(),"Error in Displaying Customer Group Text");
 
 
         softAssert.assertAll();

@@ -2,6 +2,8 @@ package com.cutanddry.qa.functions;
 
 import com.cutanddry.qa.pages.CustomersPage;
 
+import java.util.Objects;
+
 public class Customer {
     static CustomersPage customersPage = new CustomersPage();
 
@@ -424,7 +426,7 @@ public class Customer {
         return customersPage.StockCountDisplayed();
     }
 
-    public static boolean isCustomerGroupOptinAvailable(){
+    public static boolean isCustomerGroupOptionAvailable(){
         return customersPage.isCustomerGroupTxtDisplayed();
     }
 
@@ -446,5 +448,11 @@ public class Customer {
     }
     public static void clickClose(){
         customersPage.clickClose();
+    }
+    public static void clickOnDeleteItem(){
+        customersPage.clickOnDeleteItem();
+    }
+    public static boolean isItemDisplayed(String item) throws InterruptedException {
+        return Objects.equals(customersPage.getItemNameFirstRow(), item);
     }
 }
