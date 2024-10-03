@@ -14,8 +14,8 @@ import org.testng.asserts.SoftAssert;
 
 public class AddNewUserWithoutUserReferenceTest extends TestBase {
     static User user;
-    static String name = "Testnew";
-    static String email = "testnew@email.com";
+    static String name = "Test";
+    static String email = "test@email.com";
     static String verifiedVendorId = "46017666";
 
     @BeforeMethod
