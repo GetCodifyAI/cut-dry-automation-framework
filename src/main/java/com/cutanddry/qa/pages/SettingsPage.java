@@ -43,10 +43,11 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(tbx_orderMinimum, amount);
     }
-    public void clickOnSaveChanges() {
+    public void clickOnSaveChanges() throws InterruptedException {
         distributorUI.waitForVisibility(btn_saveChange);
         distributorUI.click(btn_saveChange);
         distributorUI.waitForVisibility(btn_saveChange);
+        distributorUI.waitForCustom(1000);
     }
     public boolean isTeamSettingsTextDisplayed() throws InterruptedException {
         try {
@@ -60,7 +61,7 @@ public class SettingsPage extends LoginPage{
     }
     public void clickOnAddUser() throws InterruptedException {
         distributorUI.waitForVisibility(btn_addUser);
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(3000);
         try {
             distributorUI.click(btn_addUser);
         } catch (Exception e){
@@ -76,13 +77,10 @@ public class SettingsPage extends LoginPage{
         distributorUI.clear(lbl_email);
         distributorUI.sendKeys(lbl_email,email);
     }
-    public void enterPhone(String mobile){
-        distributorUI.clear(lbl_phone);
-        distributorUI.sendKeys(lbl_phone,mobile);
-    }
     public void enterUserRef(String ref) throws InterruptedException {
         distributorUI.waitForCustom(4000);
         distributorUI.sendKeysAndEnter(lbl_userRef,ref);
+        distributorUI.waitForCustom(2000);
     }
     public void clickOnInviteUser() throws InterruptedException {
         distributorUI.waitForCustom(2000);
