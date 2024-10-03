@@ -11,4 +11,10 @@ public class Draft {
     public static void clickOnDelete(){
         draftPage.clickOnDelete();
     }
+    public static boolean isLastDraftDisplayed(){
+        return draftPage.isLastDraftDisplayed();
+    }
+    public static boolean isDraftDeleted(){
+        return draftPage.isDraftDeleted();
+    }
 }

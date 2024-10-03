@@ -42,8 +42,7 @@ public class VerifyOrderDraftsTest extends TestBase {
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
         Dashboard.navigateToDrafts();
         softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
-
-        //
+        softAssert.assertTrue(Draft.isLastDraftDisplayed(),"draft creating error");
         softAssert.assertAll();
     }
 
