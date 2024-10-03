@@ -25,7 +25,7 @@ public class VerifyOrderDraftsTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-274")
-    public void addProductsFrmOrderGuide() throws InterruptedException {
+    public void verifyOrderDraftsTest() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
