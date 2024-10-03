@@ -11,7 +11,7 @@ public class Settings {
     public static void enterOrderMinimum(String item) throws InterruptedException {
         settingsPage.enterOrderMinimum(item);
     }
-    public static void clickOnSaveChanges() {
+    public static void clickOnSaveChanges() throws InterruptedException {
         settingsPage.clickOnSaveChanges();
     }
     public static boolean isTeamSettingsTextDisplayed() throws InterruptedException {
