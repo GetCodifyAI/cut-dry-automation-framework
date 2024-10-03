@@ -144,7 +144,7 @@ public class CustomersPage extends LoginPage {
     By txtArea = By.xpath("//div[contains(@class, 'col-lg-9')]//textarea");
     By input_selectItem = By.xpath("//div[contains(text(),'Select...')]/following-sibling::div//input");
     By btn_add = By.xpath("//button[contains(text(), 'Add')]");
-    By btn_removeItem = By.xpath("//div[contains(@class, 'col-md-2') and contains(@class, 'col-2')]");
+    By btn_removeItem = By.xpath("(//*[local-name() = 'svg' and @data-icon='times-circle'])[2]");
 
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
@@ -758,5 +758,6 @@ public class CustomersPage extends LoginPage {
     public void clickOnRemoveItem() {
         distributorUI.waitForVisibility(btn_removeItem);
         distributorUI.click(btn_removeItem);
+        distributorUI.waitForInvisibility(btn_removeItem);
     }
 }
