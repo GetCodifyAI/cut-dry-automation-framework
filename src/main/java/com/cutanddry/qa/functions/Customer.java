@@ -447,4 +447,30 @@ public class Customer {
     public static void clickClose(){
         customersPage.clickClose();
     }
+
+    public static boolean isCustomerGroupEditBtnAvailable(){
+        return customersPage.isCustomerGroupEditBtnDisplayed();
+    }
+
+    public static void editCustomerGroups(){
+        customersPage.editCustomerGroup();
+    }
+
+    public static void creatCustomerGroup(String groupname){
+        customersPage.sendTextToCustomerGroup(groupname);
+    }
+
+    public static void customerGroupSave(){
+        customersPage.clickCustomerGroupSaveBtn();
+    }
+
+    public static boolean isCustomerGroupNameDisplayed(String groupname){
+        return customersPage.customerGroupNameDisplayed(groupname);
+    }
+
+    public static void clearAllCustomerGroups(){
+        customersPage.clickClearAllCustomerGroupsBtn();
+    }
+
+
 }
