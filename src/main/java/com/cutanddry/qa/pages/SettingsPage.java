@@ -100,13 +100,13 @@ public class SettingsPage extends LoginPage{
         return distributorUI.isDisplayed(By.xpath(btn_editUser.replace("USER", user)));
     }
     public void clickOnRemoveUserLabel() throws InterruptedException {
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(3000);
         distributorUI.waitForClickability(lbl_removeUser);
         distributorUI.click(lbl_removeUser);
     }
     public void clickOnEditUser(String user) throws InterruptedException {
         distributorUI.scrollToElement(By.xpath(btn_editUser.replace("USER", user)));
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(3000);
         try {
             distributorUI.click(By.xpath(btn_editUser.replace("USER", user)));
         } catch (Exception e) {
@@ -132,17 +132,17 @@ public class SettingsPage extends LoginPage{
         distributorUI.click(btn_removeUser);
     }
     public boolean isUserRefErrorDisplayed() throws InterruptedException {
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(3000);
         distributorUI.waitForVisibility(txt_userRefError);
         return distributorUI.isDisplayed(txt_userRefError);
     }
     public void clickRemoveAddedUserRef(String ref) throws InterruptedException {
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(3000);
         distributorUI.waitForVisibility(By.xpath(btn_removeAddedUserRef.replace("REF", ref)));
         distributorUI.click(By.xpath(btn_removeAddedUserRef.replace("REF", ref)));
     }
     public boolean isUserRefAdded(String ref) throws InterruptedException {
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(3000);
         return distributorUI.isDisplayed(By.xpath(txt_addedUserRef.replace("REF", ref)));
     }
     public boolean isUserAddingErrorPopupDisplayed() throws InterruptedException {
