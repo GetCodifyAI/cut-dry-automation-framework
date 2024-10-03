@@ -16,7 +16,7 @@ public class VerifyCustomerSpecificProductRecommendationsTest extends TestBase {
     static User user;
     static String customerId = "16579";
     static String itemCode = "01407";
-    static String itemName = "artichoke -24ct";
+    static String itemName = "Artichoke -24ct";
 
     @BeforeMethod
     public void setUp(){
@@ -43,7 +43,12 @@ public class VerifyCustomerSpecificProductRecommendationsTest extends TestBase {
         Customer.checkoutItems();
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
         softAssert.assertTrue(Customer.isRecommendedBySalesRepDisplayed(itemCode),"recommended by sales rep item missing error");
-        Customer.clickOnBack();
+        Dashboard.navigateToCustomers();
+        Customer.searchCustomerByCode(customerId);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
+        Customer.clickOnCustomerCode(customerId);
+        Customer.clickOnBoostTab();
+        softAssert.assertTrue(Customer.isBroadcastTextDisplayed(),"navigation error");
         Customer.clickOnRemoveItem();
         softAssert.assertFalse(Customer.isItemAdded(itemCode),"item adding error");
         softAssert.assertAll();
