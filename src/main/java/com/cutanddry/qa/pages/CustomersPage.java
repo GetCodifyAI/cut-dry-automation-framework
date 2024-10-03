@@ -137,6 +137,7 @@ public class CustomersPage extends LoginPage {
     By btn_close = By.xpath("//button[contains(@class, 'close')]/span[text()='×']");
     By btn_delete = By.xpath("//*[local-name() = 'svg' and @data-icon='trash-alt']");
 
+
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
         distributorUI.waitForCustom(2000);
