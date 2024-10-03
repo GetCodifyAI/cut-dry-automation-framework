@@ -438,13 +438,49 @@ public class Customer {
     public static void clickOnUnitCase(){
         customersPage.clickOnUnitCase();
     }
-    public static void clickOnOrderGuideInProfile(){
+    public static void clickOnOrderGuideInProfile() throws InterruptedException {
         customersPage.clickOnOrderGuideInProf();
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
     }
     public static String getUnitType(){
         return customersPage.getUnitType();
     }
     public static void clickClose(){
         customersPage.clickClose();
+    }
+    public static void clickOnBoostTab(){
+        customersPage.clickOnBoostTab();
+    }
+    public static boolean isBroadcastTextDisplayed(){
+        return customersPage.isBroadcastTextDisplayed();
+    }
+    public static void clickOnEditMessage(){
+        customersPage.clickOnEditMessage();
+    }
+    public static void clickOnClearMessage() throws InterruptedException {
+        customersPage.clickOnClearMessage();
+    }
+    public static void clickOnAddItems(){
+        customersPage.clickOnAddItems();
+    }
+    public static void clickOnSaveMessage() throws InterruptedException {
+        customersPage.clickOnSaveMessage();
+    }
+    public static void typeBroadcastMessage(String msg){
+        customersPage.typeBroadcastMessage(msg);
+    }
+    public static void selectItem(String code){
+        customersPage.selectItem(code);
+    }
+    public static void clickOnAdd(){
+        customersPage.clickOnAdd();
+    }
+    public static boolean isItemAdded(String code){
+        return customersPage.isItemAdded(code);
+    }
+    public static void clickOnRemoveItem(){
+        customersPage.clickOnRemoveItem();
     }
 }

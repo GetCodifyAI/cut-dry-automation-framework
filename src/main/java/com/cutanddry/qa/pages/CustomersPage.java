@@ -135,7 +135,17 @@ public class CustomersPage extends LoginPage {
     By txt_caseDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Case']");
     By btn_orderGuide = By.xpath("//button[normalize-space(text())='Order Guide']");
     By btn_close = By.xpath("//button[contains(@class, 'close')]/span[text()='×']");
-    By EditCustomerGroupBtn = By.xpath("");
+    By tb_boost = By.xpath("//a[text()='Boost' and @role='tab']");
+    By txt_customerSpecific = By.xpath("//div[contains(text(),'Customer-specific Broadcast')]");
+    By btn_editMessage = By.xpath("//button[contains(text(), 'Edit Message')]");
+    By btn_clearMessage = By.xpath("//button[contains(text(), 'Clear Message')]");
+    By btn_saveMessage = By.xpath("//button[contains(text(), 'Save Message')]");
+    By btn_addItems = By.xpath("//button[contains(text(), 'Add Items')]");
+    By txtArea = By.xpath("//div[contains(@class, 'col-lg-9')]//textarea");
+    By input_selectItem = By.xpath("//div[contains(text(),'Select...')]/following-sibling::div//input");
+    By btn_add = By.xpath("//button[contains(text(), 'Add')]");
+    By btn_removeItem = By.xpath("//div[contains(@class, 'col-md-2') and contains(@class, 'col-2')]");
+
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -704,7 +714,48 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_close);
         distributorUI.waitForInvisibility(btn_close);
     }
-//    public void editCustomerGroup(){
-//        distributorUI.click();
-//    }
+    public void clickOnBoostTab() {
+        distributorUI.click(tb_boost);
+    }
+    public boolean isBroadcastTextDisplayed(){
+        return distributorUI.isDisplayed(txt_customerSpecific);
+    }
+    public void clickOnEditMessage(){
+        distributorUI.waitForVisibility(btn_editMessage);
+        distributorUI.click(btn_editMessage);
+    }
+    public void clickOnClearMessage() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_clearMessage);
+        distributorUI.click(btn_clearMessage);
+        distributorUI.waitForCustom(1000);
+    }
+    public void clickOnAddItems() {
+        distributorUI.waitForVisibility(btn_addItems);
+        distributorUI.click(btn_addItems);
+    }
+    public void clickOnSaveMessage() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_saveMessage);
+        distributorUI.click(btn_saveMessage);
+        distributorUI.waitForCustom(1000);
+    }
+    public void typeBroadcastMessage(String msg) {
+        distributorUI.click(txtArea);
+        distributorUI.sendKeys(txtArea, msg);
+    }
+    public void selectItem(String code) {
+        distributorUI.click(input_selectItem);
+        distributorUI.sendKeys(input_selectItem, code);
+        distributorUI.click(By.xpath(txt_subItem.replace("CODE", code)));
+    }
+    public void clickOnAdd() {
+        distributorUI.waitForVisibility(btn_add);
+        distributorUI.click(btn_add);
+    }
+    public boolean isItemAdded(String code){
+        return distributorUI.isDisplayed(By.xpath(txt_subItem.replace("CODE", code)));
+    }
+    public void clickOnRemoveItem() {
+        distributorUI.waitForVisibility(btn_removeItem);
+        distributorUI.click(btn_removeItem);
+    }
 }
