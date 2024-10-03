@@ -32,8 +32,7 @@ public class VerifyOrderDraftsDeleteTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToDrafts();
         softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
-
-        //
+        Draft.clickOnDelete();
         softAssert.assertAll();
     }
 

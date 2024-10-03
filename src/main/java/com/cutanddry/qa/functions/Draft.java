@@ -14,7 +14,4 @@ public class Draft {
     public static boolean isLastDraftDisplayed(){
         return draftPage.isLastDraftDisplayed();
     }
-    public static boolean isDraftDeleted(){
-        return draftPage.isDraftDeleted();
-    }
 }

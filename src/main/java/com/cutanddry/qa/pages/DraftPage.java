@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class DraftPage extends LoginPage{
     By txt_drafts = By.xpath("//li[contains(text(),'Drafts')]");
-    By btn_delete = By.xpath("//button[contains(text(), 'Delete')]");
+    By btn_delete = By.xpath("(//button[contains(text(), 'Delete')])[1]");
     By txt_lastDraft = By.xpath("//tbody/tr[2]/td[5]");
 
 
@@ -26,9 +26,5 @@ public class DraftPage extends LoginPage{
     public boolean isLastDraftDisplayed(){
         distributorUI.waitForVisibility(txt_lastDraft);
         return Objects.equals(distributorUI.getText(txt_lastDraft), "just now");
-    }
-    public boolean isDraftDeleted(){
-        distributorUI.waitForVisibility(txt_lastDraft);
-        return distributorUI.isDisplayed(txt_lastDraft);
     }
 }
