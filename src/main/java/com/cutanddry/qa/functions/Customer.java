@@ -462,7 +462,7 @@ public class Customer {
     public static void typeSectionName(String name) throws InterruptedException {
         customersPage.typeSectionName(name);
     }
-    public static boolean isAddedSectionDisplayed(String name){
+    public static boolean isAddedSectionDisplayed(String name) throws InterruptedException {
         return customersPage.isAddedSectionDisplayed(name);
     }
     public static void dragToTop(String name) {

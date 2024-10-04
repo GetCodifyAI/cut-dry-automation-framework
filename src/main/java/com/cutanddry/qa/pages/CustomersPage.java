@@ -732,7 +732,8 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(tbx_section, name);
     }
-    public boolean isAddedSectionDisplayed(String name){
+    public boolean isAddedSectionDisplayed(String name) throws InterruptedException {
+        distributorUI.waitForCustom(1000);
         distributorUI.waitForVisibility(By.xpath(txt_addedSection.replace("NAME", name)));
         return distributorUI.isDisplayed(By.xpath(txt_addedSection.replace("NAME", name)));
     }
