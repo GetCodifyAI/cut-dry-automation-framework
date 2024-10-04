@@ -2,6 +2,7 @@ package com.cutanddry.qa.base;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -394,9 +395,10 @@ public class KeywordBase {
     // Drag and drop from one element to another
     public KeywordBase dragAndDrop(By sourceBy, By targetBy) {
         try {
+            Actions actions = new Actions(driver);
             WebElement sourceElement = wait.until(ExpectedConditions.visibilityOfElementLocated(sourceBy));
             WebElement targetElement = wait.until(ExpectedConditions.visibilityOfElementLocated(targetBy));
-            actions.dragAndDrop(sourceElement, targetElement).perform();
+            actions.dragAndDrop(sourceElement, targetElement).build().perform();
             logger.info("Dragged and dropped from element: {} to element: {}", sourceBy, targetBy);
         } catch (Exception e) {
             logger.error("Failed to drag and drop from element: {} to element: {}", sourceBy, targetBy, e);

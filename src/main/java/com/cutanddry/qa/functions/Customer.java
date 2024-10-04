@@ -348,8 +348,11 @@ public class Customer {
     public static int getOrderCount(int num){
         return customersPage.getOrderCount(num);
     }
-    public static void clickOnBack(){
+    public static void clickOnBack() throws InterruptedException {
         customersPage.clickOnBack();
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
     }
     public static void SelectCustomer(String code){
         customersPage.ClickOnCustomer(code);
@@ -446,5 +449,41 @@ public class Customer {
     }
     public static void clickClose(){
         customersPage.clickClose();
+    }
+    public static void addSection(){
+        customersPage.addSection();
+    }
+    public static boolean isAddSectionPopupDisplayed(){
+        return customersPage.isAddSectionPopupDisplayed();
+    }
+    public static void clickOnSave(){
+        customersPage.clickOnSave();
+    }
+    public static void typeSectionName(String name) throws InterruptedException {
+        customersPage.typeSectionName(name);
+    }
+    public static boolean isAddedSectionDisplayed(String name){
+        return customersPage.isAddedSectionDisplayed(name);
+    }
+    public static void dragToTop(String name) {
+        customersPage.dragToTop(name);
+    }
+    public static boolean isSectionDisplayed(String name){
+        return customersPage.isSectionDisplayed(name);
+    }
+    public static void editSection(String name){
+        customersPage.clickOnEditSection(name);
+    }
+    public static boolean isEditSectionPopupDisplayed(){
+        return customersPage.isEditSectionPopupDisplayed();
+    }
+    public static void clickOnDelete(){
+        customersPage.clickOnDelete();
+    }
+    public static void clickOnYes(){
+        customersPage.clickOnYes();
+    }
+    public static boolean isAreYouSurePopupDisplayed(){
+        return customersPage.isAreYouSurePopupDisplayed();
     }
 }

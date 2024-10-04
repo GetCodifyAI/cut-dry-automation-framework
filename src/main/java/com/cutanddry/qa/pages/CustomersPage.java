@@ -135,7 +135,19 @@ public class CustomersPage extends LoginPage {
     By txt_caseDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Case']");
     By btn_orderGuide = By.xpath("//button[normalize-space(text())='Order Guide']");
     By btn_close = By.xpath("//button[contains(@class, 'close')]/span[text()='×']");
-    By EditCustomerGroupBtn = By.xpath("");
+    By btn_addSection = By.xpath("//a[contains(text(), 'Add Section')]");
+    By txt_addSection = By.xpath("//div[contains(text(), 'Add Section Header')]");
+    By tbx_section = By.xpath("//input[@placeholder='e.g. Dairy']");
+    By btn_save = By.xpath("//button[normalize-space(text())='Save']");
+    String txt_addedSection = "//div[contains(@data-rbd-draggable-id, 'item')]//div[contains(text(), 'NAME')]";
+    By txt_lastID = By.xpath("//div[contains(@data-rbd-draggable-id, 'item-')][last()]");
+    By txt_targetDrop = By.xpath("//div[@data-rbd-draggable-id='item-212522811']");
+    String txt_source = "//div[@data-rbd-draggable-id='ID']";
+    String txt_section = "//div[contains(text(), 'NAME')]";
+    String btn_editSection = "//div[contains(text(), 'NAME')]/following-sibling::div[@class='col-2 d-flex justify-content-end align-items-center']/*[local-name() = 'svg' and @data-icon='pencil']";
+    By btn_delete = By.xpath("//button[contains(text(), 'Delete')]");
+    By txt_editSection = By.xpath("//div[contains(text(), 'Edit Section Header')]");
+    By txt_areYouSure = By.xpath("//h2[text()='Success']");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -653,7 +665,6 @@ public class CustomersPage extends LoginPage {
         }
         return count;
     }
-
     public boolean isCutomerTxtDisplayed(){
         return distributorUI.isDisplayed(CustomerTxt);
     }
@@ -704,7 +715,53 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_close);
         distributorUI.waitForInvisibility(btn_close);
     }
-//    public void editCustomerGroup(){
-//        distributorUI.click();
-//    }
+    public void addSection(){
+        distributorUI.waitForClickability(btn_addSection);
+        distributorUI.click(btn_addSection);
+    }
+    public boolean isAddSectionPopupDisplayed(){
+        distributorUI.waitForVisibility(txt_addSection);
+        return distributorUI.isDisplayed(txt_addSection);
+    }
+    public void clickOnSave(){
+        distributorUI.waitForVisibility(btn_save);
+        distributorUI.click(btn_save);
+    }
+    public void typeSectionName(String name) throws InterruptedException {
+        distributorUI.click(tbx_section);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_section, name);
+    }
+    public boolean isAddedSectionDisplayed(String name){
+        distributorUI.waitForVisibility(By.xpath(txt_addedSection.replace("NAME", name)));
+        return distributorUI.isDisplayed(By.xpath(txt_addedSection.replace("NAME", name)));
+    }
+    public void dragToTop(String name){
+        String id = distributorUI.getText(txt_lastID,"data-rbd-draggable-id");
+        distributorUI.dragAndDrop(By.xpath(txt_source.replace("ID", id)), txt_targetDrop);
+    }
+    public boolean isSectionDisplayed(String name){
+        distributorUI.waitForVisibility(By.xpath(txt_section.replace("NAME", name)));
+        return distributorUI.isDisplayed(By.xpath(txt_section.replace("NAME", name)));
+    }
+    public void clickOnEditSection(String name){
+        distributorUI.waitForVisibility(By.xpath(btn_editSection.replace("NAME", name)));
+        distributorUI.click(By.xpath(btn_editSection.replace("NAME", name)));
+    }
+    public boolean isEditSectionPopupDisplayed(){
+        distributorUI.waitForVisibility(txt_editSection);
+        return distributorUI.isDisplayed(txt_editSection);
+    }
+    public void clickOnDelete(){
+        distributorUI.waitForVisibility(btn_delete);
+        distributorUI.click(btn_delete);
+    }
+    public void clickOnYes(){
+        distributorUI.waitForVisibility(btn_yes);
+        distributorUI.click(btn_yes);
+    }
+    public boolean isAreYouSurePopupDisplayed(){
+        distributorUI.waitForVisibility(txt_areYouSure);
+        return distributorUI.isDisplayed(txt_areYouSure);
+    }
 }
