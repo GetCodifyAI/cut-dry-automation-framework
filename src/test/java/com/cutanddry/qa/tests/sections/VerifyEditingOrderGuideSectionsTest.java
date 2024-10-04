@@ -15,7 +15,8 @@ import org.testng.asserts.SoftAssert;
 public class VerifyEditingOrderGuideSectionsTest extends TestBase {
     static User user;
     static String customerId = "16579";
-    static String sectionName = "disposables";
+    static String sectionName = "dairy";
+    static String newSectionName = "disposables";
 
     @BeforeMethod
     public void setUp() {
@@ -35,15 +36,17 @@ public class VerifyEditingOrderGuideSectionsTest extends TestBase {
         Customer.goToEdit();
         softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
         Customer.expandMoreOptionsDropdown();
+        Customer.addSection();
+        Customer.clickClose();
         Customer.editSection(sectionName);
         softAssert.assertTrue(Customer.isEditSectionPopupDisplayed()," edit section popup error");
-        Customer.typeSectionName(sectionName);
+        Customer.typeSectionName(newSectionName);
         Customer.clickOnSave();
-        softAssert.assertTrue(Customer.isAddedSectionDisplayed(sectionName)," add section error");
+        softAssert.assertTrue(Customer.isAddedSectionDisplayed(newSectionName)," add section error");
         Customer.clickOnBack();
         Customer.clickSortOptionsDropdown();
         Customer.selectItemCategoriesSort();
-        softAssert.assertTrue(Customer.isSectionDisplayed(sectionName)," add section display error");
+        softAssert.assertTrue(Customer.isSectionDisplayed(newSectionName)," add section display error");
         Customer.clickSortOptionsDropdown();
         Customer.selectCustomOrderSort();
         softAssert.assertAll();

@@ -147,7 +147,7 @@ public class CustomersPage extends LoginPage {
     String btn_editSection = "//div[contains(text(), 'NAME')]/following-sibling::div[@class='col-2 d-flex justify-content-end align-items-center']/*[local-name() = 'svg' and @data-icon='pencil']";
     By btn_delete = By.xpath("//button[contains(text(), 'Delete')]");
     By txt_editSection = By.xpath("//div[contains(text(), 'Edit Section Header')]");
-    By txt_areYouSure = By.xpath("//h2[text()='Success']");
+    By txt_areYouSure = By.xpath("//h2[text()='Are you sure?']");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
