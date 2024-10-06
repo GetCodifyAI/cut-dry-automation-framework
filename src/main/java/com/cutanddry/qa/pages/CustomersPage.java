@@ -135,7 +135,12 @@ public class CustomersPage extends LoginPage {
     By txt_caseDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Case']");
     By btn_orderGuide = By.xpath("//button[normalize-space(text())='Order Guide']");
     By btn_close = By.xpath("//button[contains(@class, 'close')]/span[text()='×']");
-    By EditCustomerGroupBtn = By.xpath("");
+    By EditCustomerGroupBtn = By.xpath("//div[contains(text(), 'Customer Group')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']");
+    By CreateCutomerGroupTextField = By.xpath("//input[@id='react-select-6-input']");
+    By CustomerGroupSavebtn = By.xpath("//button[contains(text(),'Save')]");
+    String CustomerGroupName = "//div[contains(text(),'Customer Group')]/following-sibling::div//div[contains(text(),'GROUPNAME')]";
+    By ClearAllCustomerGroupBtn = By.xpath("//div[contains(@class,'themed_select__indicator themed_select__clear-indicator css-tlfecz-indicatorContainer')]");
+
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -704,7 +709,34 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_close);
         distributorUI.waitForInvisibility(btn_close);
     }
-//    public void editCustomerGroup(){
-//        distributorUI.click();
-//    }
+
+    public boolean isCustomerGroupEditBtnDisplayed(){
+        return distributorUI.isDisplayed(EditCustomerGroupBtn);
+    }
+    public void editCustomerGroup(){
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        distributorUI.click(EditCustomerGroupBtn);
+    }
+
+    public void sendTextToCustomerGroup(String groupname){
+        distributorUI.isDisplayed(CreateCutomerGroupTextField);
+        distributorUI.sendKeysAndEnter(CreateCutomerGroupTextField,groupname);
+    }
+
+    public void clickCustomerGroupSaveBtn(){
+        distributorUI.click(CustomerGroupSavebtn);
+    }
+
+    public boolean customerGroupNameDisplayed(String groupname){
+        return distributorUI.isDisplayed(By.xpath(CustomerGroupName.replace("GROUPNAME",groupname)));
+    }
+
+    public void clickClearAllCustomerGroupsBtn(){
+        distributorUI.isDisplayed(ClearAllCustomerGroupBtn);
+        distributorUI.click(ClearAllCustomerGroupBtn);
+    }
 }
