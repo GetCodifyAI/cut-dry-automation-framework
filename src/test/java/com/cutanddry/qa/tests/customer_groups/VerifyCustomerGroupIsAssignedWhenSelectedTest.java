@@ -36,7 +36,6 @@ public class VerifyCustomerGroupIsAssignedWhenSelectedTest extends TestBase {
         Customer.searchCustomerByCode(CustomerCode);
         Customer.SelectCustomer(CustomerCode);
         softAssert.assertTrue(Customer.isCustomerGroupOptionAvailable(),"Error in Displaying Customer Group Text");
-        softAssert.assertTrue(Customer.isCustomerGroupOptinAvailable(),"Error in Displaying Customer Group Text");
         softAssert.assertTrue(Customer.isCustomerGroupEditBtnAvailable(),"Customer Group Edit Btn Not Available");
         Customer.editCustomerGroups();
         Customer.creatCustomerGroup(CustomerGroupName);
