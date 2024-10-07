@@ -13,8 +13,8 @@ public class CustomersPage extends LoginPage {
     By btn_checkout = By.xpath("//button[text()='$']/../button[2]");
     By btn_catalog = By.xpath("//div[text()='Catalog']");
     By tbx_catalogSearch = By.xpath("//input[@placeholder='Search catalog...']");
-    String lbl_catalogSearchItemList = "(//div[contains(text(), 'NAME')])[2]";
-    By btn_addToCart = By.xpath("//button[contains(@class, 'btn-outline-primary') and contains(., 'Add to Cart')]");
+    String lbl_catalogSearchItemList = "//div[contains(@class, '_3quvq7') and text()='NAME']";
+    By btn_addToCart = By.xpath("(//div[contains(@class, '_cyg77l')]//button[contains(@class, 'btn-outline-primary') and contains(text(), 'Add to Cart')])[2]");
     By tbx_itemQuantityFirstRow = By.xpath("//tr[1]//td[8]//input");
     By lbl_itemPriceFirstRow = By.xpath("//tr[1]//td[7]/div");
     By btn_increaseQtyCatalogSearchValueOne = By.xpath("//input[@type='number' and @value='1']/../following-sibling::div");
@@ -23,7 +23,7 @@ public class CustomersPage extends LoginPage {
     By btn_decreaseQtyCatalogSearchValueTwo = By.xpath("//input[@type='number' and @value='2']/../preceding-sibling::div");
     By btn_decreaseQtyCatalogSearchValueThree = By.xpath("//input[@type='number' and @value='3']/../preceding-sibling::div");
     By tbx_itemQuantityCatalogSearch = By.xpath("//input[@type='number']");
-    By lbl_itemPriceSearchCatalogList = By.xpath("(//span[contains(text(),'$') and not(contains(text(),' ')) and not(@class='text-muted')])[1]");
+    By lbl_itemPriceSearchCatalogList = By.xpath("//div[contains(., 'Artichoke') and not(contains(., '-24ct')) and not(contains(., 'Bottoms'))]//span[contains(text(),'$') and not(contains(text(),' ')) and not(@class='text-muted')]");
     By btn_decreaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../preceding-sibling::div");
     By btn_increaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../following-sibling::div");
     By tbx_itemQuantityCartRowOne = By.xpath("//tr[2]/td//input/");
@@ -140,6 +140,20 @@ public class CustomersPage extends LoginPage {
     By CustomerGroupSavebtn = By.xpath("//button[contains(text(),'Save')]");
     String CustomerGroupName = "//div[contains(text(),'Customer Group')]/following-sibling::div//div[contains(text(),'GROUPNAME')]";
     By ClearAllCustomerGroupBtn = By.xpath("//div[contains(@class,'themed_select__indicator themed_select__clear-indicator css-tlfecz-indicatorContainer')]");
+    By InviteNewUsersBtn = By.xpath("//button[contains(text(),'Invite New Users')]");
+    By AddUserText = By.xpath("//div[contains(text(),'Add User')]");
+    By UserNameInputField = By.xpath("//label[text()='Name']/following-sibling::input");
+    By UserEmailInputField = By.xpath("//label[text()='Email']/following-sibling::input");
+    By SaveChangeswithoutSendingInviteBtn = By.xpath("//span[text()='Save changes without sending an invite']/parent::button");
+    By SuccessfulUpdatedMsg = By.xpath("//div[contains(text(),'Successfully updated user details.')]");
+    By SuccessfulRemovedMsg = By.xpath("//div[contains(text(),'Successfully removed the user')]");
+    String UserName = "//span[text()='USERNAME']";
+    String UserDetailsEditBtn = "//div[@class='_du1frc list-group-item']//span[text()='USERNAME']/../following-sibling::div[@class='col-2']";
+    By RemoveUserTxt = By.xpath("//span[contains(text(),'Remove user')]");
+    By DeleteCnfrmOverlay = By.xpath("//h2[contains(text(),'Are you sure you want to remove this user')]");
+    By DeleteCnfrmYesBtn = By.xpath("//button[contains(text(),'Yes')]");
+
+
 
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
@@ -739,4 +753,77 @@ public class CustomersPage extends LoginPage {
         distributorUI.isDisplayed(ClearAllCustomerGroupBtn);
         distributorUI.click(ClearAllCustomerGroupBtn);
     }
+
+    public void clickInviteNewUsers(){
+        distributorUI.click(InviteNewUsersBtn);
+    }
+
+
+    public boolean isAddUserOverlayDisplayed(){
+        return distributorUI.isDisplayed(AddUserText);
+    }
+
+
+    public void sendTextToAddUserOverlayNameField(String Username){
+        distributorUI.sendKeys(UserNameInputField,Username);
+    }
+
+
+    public void sendTextToAddUserOverlayEmailField(String Useremail){
+        distributorUI.sendKeys(UserEmailInputField,Useremail);
+    }
+
+
+    public void clickSaveChangesWithoutSendingInvite(){
+        distributorUI.waitForElementEnabledState(SaveChangeswithoutSendingInviteBtn,true);
+        distributorUI.click(SaveChangeswithoutSendingInviteBtn);
+    }
+
+
+    public boolean isSuccessfullyUpdatedMsgDisplayed(){
+        return distributorUI.isDisplayed(SuccessfulUpdatedMsg);
+    }
+
+
+    public boolean isSuccessfullyRemovedMsgDisplayed(){
+        return distributorUI.isDisplayed(SuccessfulRemovedMsg);
+    }
+
+
+    public boolean isAddedUserDisplayed(String Username){
+        return distributorUI.isDisplayed(By.xpath(UserName.replace("USERNAME",Username)));
+    }
+
+
+    public boolean isRemovedUserNotDisplayed(String Username){
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return distributorUI.isDisplayed(By.xpath(UserName.replace("USERNAME",Username)));
+    }
+
+
+    public void clickOnUserDetailsEditBtn(String Username){
+        distributorUI.isDisplayed(By.xpath(UserDetailsEditBtn.replace("USERNAME",Username)));
+        distributorUI.click(By.xpath(UserDetailsEditBtn.replace("USERNAME",Username)));
+    }
+
+
+    public void clickOnRemoveUser(){
+        distributorUI.waitForVisibility(RemoveUserTxt);
+        distributorUI.click(RemoveUserTxt);
+    }
+
+
+    public boolean isRemovalConfirmationOverlayDisplayed(){
+        return distributorUI.isDisplayed(DeleteCnfrmOverlay);
+    }
+
+
+    public void ClickYesOnRemovalConfirmationOverlay(){
+        distributorUI.click(DeleteCnfrmYesBtn);
+    }
+
 }
