@@ -423,7 +423,6 @@ public class Customer {
         return customersPage.StockCountDisplayed();
     }
     public static boolean isCustomerGroupOptionAvailable(){
-    public static boolean isCustomerGroupOptinAvailable(){
         return customersPage.isCustomerGroupTxtDisplayed();
     }
     public static boolean areOutOfStockItemsDisplayed(){
@@ -452,6 +451,7 @@ public class Customer {
     }
     public static boolean isItemDisplayed(String item) throws InterruptedException {
         return Objects.equals(customersPage.getItemNameFirstRow(), item);
+    }
     public static void clickOnBoostTab(){
         customersPage.clickOnBoostTab();
     }
