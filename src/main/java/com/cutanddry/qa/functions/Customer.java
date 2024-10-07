@@ -422,7 +422,6 @@ public class Customer {
     public static boolean isStockCountDisplayed(){
         return customersPage.StockCountDisplayed();
     }
-    public static boolean isCustomerGroupOptinAvailable(){
     public static boolean isCustomerGroupOptionAvailable(){
         return customersPage.isCustomerGroupTxtDisplayed();
     }
