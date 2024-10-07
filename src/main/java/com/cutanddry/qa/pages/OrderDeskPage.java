@@ -7,15 +7,15 @@ public class OrderDeskPage extends LoginPage{
     By Submitted_orders_tab = By.xpath("//a[contains(text(),'Submitted Orders')]");
     By DraftOrders_tab = By.xpath("//a[contains(text(),'Draft Orders')]");
     By CustomerName_Draft_orders_text = By.xpath("(//div[contains(text(),'Customer')])[2]");
-    By DraftOrderPageReviewBtn = By.xpath("(//a[contains(@href, '/order-desk/transcribed-order') and contains(@class, 'btn btn-link') and text()='Review'])[1]");
+    By DraftOrderPageReviewBtn = By.xpath("(//div[contains(@class, '_10q9czs')]//a[text()='Review'])[1]");
     By DraftOrderReviewPageQuantityIncrementBtn = By.xpath("(//div[@class='p-2 px-sm-3 _du1frc _18jhc3z py-2 ml-2 text-center align-middle'])[1]");
     By DraftOrderReviewPageQuantityDecrementBtn = By.xpath("(//div[@class='p-2 px-sm-3 _du1frc _18jhc3z py-2 mr-2 text-center align-middle'])[1]");
     By DraftOrderReviewPageQuantityEdit = By.xpath("(//input[@class ='_hk3n6z form-control _b1frhss'])[1]");
     By SaveDraftBtn = By.xpath("//button[@class='mr-3 btn btn-outline-primary']");
     By DraftSavedSucessfullyText = By.xpath("//h2[@class='swal2-title']");
     By SucessfullySavedOverlayOkBtn = By.xpath("//button[contains(text(),'OK')]");
-    By UploadFile = By.xpath("//input[@type='file']");
-    By VoiceUploadSucessTxt = By.xpath("//h2[contains(text(),'Success')]");
+    By UploadFile = By.xpath("//div[contains(@class, '_t6r87r')]/input[@type='file']");
+    By VoiceUploadProcessingText = By.xpath("//div[text()='New draft order upload is processing, please']");
     By AddLineBtn = By.xpath("//button[@class='btn btn-outline-primary']");
     By DropdownItemSelect = By.xpath("//div[@class='themed_select__placeholder css-1wa3eu0-placeholder']");
     By SelectRandomOption = By.cssSelector(".themed_select__option");
@@ -101,8 +101,13 @@ public class OrderDeskPage extends LoginPage{
         distributorUI.sendKeysToHiddenElements(UploadFile, path);
     }
 
-    public boolean isVoiceUploadSucessfullMessageDisplayed(){
-        return distributorUI.isDisplayed(VoiceUploadSucessTxt);
+    public int isVoiceUploadProcssingCountIncreased(){
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return distributorUI.countElements(VoiceUploadProcessingText);
     }
 
     public void ClickAddLineBtnOnDraftOrderReviewPage(){
@@ -162,6 +167,11 @@ public class OrderDeskPage extends LoginPage{
     }
 
     public void SelectDeliveryDate(String deliveryDate){
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.click(DeliveryDateInput);
         distributorUI.clearUsingJavaScript(DeliveryDateInput);
         distributorUI.sendKeys(DeliveryDateSelect,deliveryDate);

@@ -47,10 +47,6 @@ public class AddNewUserWithoutUserReferenceTest extends TestBase {
 
     @AfterMethod
     public void tearDown(ITestResult result) throws InterruptedException {
-        Settings.clickOnEditUser(name);
-        Settings.clickOnRemoveUserLabel();
-        Settings.clickOnRemoveUser();
-        Settings.clickOK();
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }
