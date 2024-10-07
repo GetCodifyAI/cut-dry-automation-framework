@@ -437,7 +437,8 @@ public class CustomersPage extends LoginPage {
     }
     public void closeEditor(){
         distributorUI.waitForClickability(btn_closeEditor);
-        distributorUI.click(btn_closeEditor);
+        // distributorUI.click(btn_closeEditor);
+        distributorUI.clickUsingJavaScript(btn_closeEditor);
     }
     public boolean isOrderGuideCreateSuccessPopupDisplayed(){
         return distributorUI.isDisplayed(txt_orderGuideCreateSuccess);
