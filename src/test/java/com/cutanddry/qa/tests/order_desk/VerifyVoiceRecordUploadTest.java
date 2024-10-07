@@ -27,14 +27,16 @@ public class VerifyVoiceRecordUploadTest extends TestBase {
 
     @Test(groups = "DOT-TC-81")
     public void VerifyVoiceRecordUpload() throws URISyntaxException {
+        int ProcessingMessageCount;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(),user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"Login Error");
         Dashboard.navigateToOrderDesk();
         softAssert.assertTrue(OrderDesk.isUsernavigatedToOrderDeskPage(),"Error in navigating to order desk Page");
+        ProcessingMessageCount = OrderDesk.getNumberOfProcessingVoiceMessages();
         OrderDesk.uploadVoiceRecord(Paths.get(Objects.requireNonNull(ClassLoader.getSystemClassLoader().getResource("VoiceMessage/fbc356af-8f8e-443c-94fa-0200a5307ac3.mp3")).toURI()).toString());
-        softAssert.assertTrue(OrderDesk.isVoiceUploadSucessfullySaved(),"Error in uploading Voice message ");
+        softAssert.assertEquals(OrderDesk.getNumberOfProcessingVoiceMessages(),ProcessingMessageCount+1,"Error uploading voice record");
         softAssert.assertAll();
     }
 
