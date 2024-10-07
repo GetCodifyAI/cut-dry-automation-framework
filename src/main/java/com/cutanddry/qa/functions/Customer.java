@@ -413,24 +413,19 @@ public class Customer {
     public static int getSubstituteItemsCount(int num){
         return customersPage.getSubstituteItemsCount(num);
     }
-
     public static boolean isNavigatedToCustomerPage(){
         return customersPage.isCutomerTxtDisplayed();
     }
-
     public static void SelectTestAutomationOrderGuide(){
         customersPage.ClickTestAutomationOrderGuide();
     }
-
     public static boolean isStockCountDisplayed(){
         return customersPage.StockCountDisplayed();
     }
-
     public static boolean isCustomerGroupOptionAvailable(){
+    public static boolean isCustomerGroupOptinAvailable(){
         return customersPage.isCustomerGroupTxtDisplayed();
     }
-
-
     public static boolean areOutOfStockItemsDisplayed(){
         return customersPage.areOutOfStockItemsDisplayed();
     }
@@ -440,8 +435,11 @@ public class Customer {
     public static void clickOnUnitCase(){
         customersPage.clickOnUnitCase();
     }
-    public static void clickOnOrderGuideInProfile(){
+    public static void clickOnOrderGuideInProfile() throws InterruptedException {
         customersPage.clickOnOrderGuideInProf();
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
     }
     public static String getUnitType(){
         return customersPage.getUnitType();
@@ -454,6 +452,38 @@ public class Customer {
     }
     public static boolean isItemDisplayed(String item) throws InterruptedException {
         return Objects.equals(customersPage.getItemNameFirstRow(), item);
+    public static void clickOnBoostTab(){
+        customersPage.clickOnBoostTab();
+    }
+    public static boolean isBroadcastTextDisplayed(){
+        return customersPage.isBroadcastTextDisplayed();
+    }
+    public static void clickOnEditMessage(){
+        customersPage.clickOnEditMessage();
+    }
+    public static void clickOnClearMessage() throws InterruptedException {
+        customersPage.clickOnClearMessage();
+    }
+    public static void clickOnAddItems(){
+        customersPage.clickOnAddItems();
+    }
+    public static void clickOnSaveMessage() throws InterruptedException {
+        customersPage.clickOnSaveMessage();
+    }
+    public static void typeBroadcastMessage(String msg){
+        customersPage.typeBroadcastMessage(msg);
+    }
+    public static void selectItem(String code){
+        customersPage.selectItem(code);
+    }
+    public static void clickOnAdd(){
+        customersPage.clickOnAdd();
+    }
+    public static boolean isItemAdded(String code){
+        return customersPage.isItemAdded(code);
+    }
+    public static void clickOnRemoveItem(){
+        customersPage.clickOnRemoveItem();
     }
     public static boolean isCustomerGroupEditBtnAvailable(){
         return customersPage.isCustomerGroupEditBtnDisplayed();
