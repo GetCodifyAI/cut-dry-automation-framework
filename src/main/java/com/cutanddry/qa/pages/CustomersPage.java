@@ -180,6 +180,9 @@ public class CustomersPage extends LoginPage {
     By btn_hide = By.xpath("//button[contains(text(), 'Hide Item')]");
     By txt_editItem = By.xpath("//div[contains(text(), 'Edit Item')]");
     By btn_unhide = By.xpath("//button[contains(text(), 'Save and Unhide Item')]");
+    By show_dropdown = By.xpath("//div[text()='Show:']//following-sibling::div//div[@class='cd_themed_select__control css-yk16xz-control']");
+    By txt_activeAndHidden = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Active & Hidden Items']");
+    String btn_editItem = "//div[contains(text(), 'NAME')]/ancestor::div[contains(@class, 'list-group-item')]//div[contains(@class, 'd-flex') and contains(@class, 'justify-content-end')]/*[local-name() = 'svg' and @data-icon='pencil']";
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -925,7 +928,6 @@ public class CustomersPage extends LoginPage {
     public void clickOnHideItem(){
         distributorUI.waitForVisibility(btn_hide);
         distributorUI.click(btn_hide);
-        distributorUI.waitForInvisibility(btn_hide);
     }
     public boolean isEditItemPopupDisplayed(){
         distributorUI.waitForVisibility(txt_editItem);
@@ -935,5 +937,14 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForVisibility(btn_unhide);
         distributorUI.click(btn_unhide);
         distributorUI.waitForInvisibility(btn_unhide);
+    }
+    public void selectActiveAndHiddenItems(){
+        distributorUI.waitForVisibility(show_dropdown);
+        distributorUI.click(show_dropdown);
+        distributorUI.click(txt_activeAndHidden);
+    }
+    public void clickOnEditItem(String name){
+        distributorUI.waitForVisibility(By.xpath(btn_editItem.replace("NAME", name)));
+        distributorUI.click(By.xpath(btn_editItem.replace("NAME", name)));
     }
 }

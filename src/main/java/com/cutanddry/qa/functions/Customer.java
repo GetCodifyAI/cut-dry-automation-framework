@@ -225,7 +225,7 @@ public class Customer {
     public static void clickOK(){
         customersPage.clickOK();
     }
-    public static void closeEditor(){
+    public static void closeEditor() throws InterruptedException {
         customersPage.closeEditor();
     }
     public static void removeItemFromCatalog(){
@@ -596,5 +596,11 @@ public class Customer {
     }
     public static void clickOnSaveAndUnhide(){
         customersPage.clickOnSaveAndUnhide();
+    }
+    public static void selectActiveAndHiddenItems(){
+        customersPage.selectActiveAndHiddenItems();
+    }
+    public static void editItem(String name){
+        customersPage.clickOnEditItem(name);
     }
 }

@@ -35,13 +35,14 @@ public class VerifySavingAndUnhideItemFromOrderGuideTest extends TestBase {
         Customer.clickOnOrderGuide(customerId);
         Customer.goToEdit();
         softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
-        //
-        Customer.editSection(itemCode);
+        Customer.selectActiveAndHiddenItems();
+        Customer.editItem(itemCode);
         softAssert.assertTrue(Customer.isEditItemPopupDisplayed()," edit item popup error");
         Customer.clickOnSaveAndUnhide();
         Customer.closeEditor();
+        Customer.searchItemOnOrderGuide(itemCode);
         itemName = Customer.getItemNameFirstRow();
-        softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
+        softAssert.assertTrue(Customer.isItemDisplayed(itemName),"item unhide error");
         softAssert.assertAll();
     }
 

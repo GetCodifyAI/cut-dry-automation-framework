@@ -35,14 +35,14 @@ public class VerifyHidingAnItemFromTheOrderGuideTest extends TestBase {
         Customer.clickOnOrderGuide(customerId);
         Customer.goToEdit();
         softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
-        Customer.editSection(itemCode);
+        Customer.editItem(itemCode);
         softAssert.assertTrue(Customer.isEditItemPopupDisplayed()," edit item popup error");
         Customer.clickOnHideItem();
         softAssert.assertTrue(Customer.isAreYouSurePopupDisplayed(),"are you sure popup error");
         Customer.clickOnYes();
         Customer.closeEditor();
-        itemName = Customer.getItemNameFirstRow();
-        softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
+        Customer.searchItemOnOrderGuide(itemCode);
+        softAssert.assertNull(Customer.getItemNameFirstRow(),"item hide error");
         softAssert.assertAll();
     }
 
