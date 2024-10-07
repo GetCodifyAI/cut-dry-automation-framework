@@ -588,4 +588,13 @@ public class Customer {
     public static void clickOnUnitPkg(){
         customersPage.clickOnUnitPkg();
     }
+    public static void clickOnHideItem(){
+        customersPage.clickOnHideItem();
+    }
+    public static boolean isEditItemPopupDisplayed(){
+        return customersPage.isEditItemPopupDisplayed();
+    }
+    public static void clickOnSaveAndUnhide(){
+        customersPage.clickOnSaveAndUnhide();
+    }
 }

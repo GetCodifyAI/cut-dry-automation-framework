@@ -177,6 +177,9 @@ public class CustomersPage extends LoginPage {
     By DeleteCnfrmOverlay = By.xpath("//h2[contains(text(),'Are you sure you want to remove this user')]");
     By DeleteCnfrmYesBtn = By.xpath("//button[contains(text(),'Yes')]");
     By txt_pkgDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Pkg']");
+    By btn_hide = By.xpath("//button[contains(text(), 'Hide Item')]");
+    By txt_editItem = By.xpath("//div[contains(text(), 'Edit Item')]");
+    By btn_unhide = By.xpath("//button[contains(text(), 'Save and Unhide Item')]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -918,5 +921,19 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(txt_unitInDist);
         distributorUI.waitForVisibility(txt_pkgDropdownItem);
         distributorUI.click(txt_pkgDropdownItem);
+    }
+    public void clickOnHideItem(){
+        distributorUI.waitForVisibility(btn_hide);
+        distributorUI.click(btn_hide);
+        distributorUI.waitForInvisibility(btn_hide);
+    }
+    public boolean isEditItemPopupDisplayed(){
+        distributorUI.waitForVisibility(txt_editItem);
+        return distributorUI.isDisplayed(txt_editItem);
+    }
+    public void clickOnSaveAndUnhide(){
+        distributorUI.waitForVisibility(btn_unhide);
+        distributorUI.click(btn_unhide);
+        distributorUI.waitForInvisibility(btn_unhide);
     }
 }
