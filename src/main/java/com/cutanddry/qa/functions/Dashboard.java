@@ -67,4 +67,7 @@ public class Dashboard {
     public static void navigateToHistory() {
         dashboardPage.clickOnHistory();
     }
+    public static void navigateToDrafts() {
+        dashboardPage.clickOnDrafts();
+    }
 }
