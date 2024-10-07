@@ -611,4 +611,14 @@ public class KeywordBase {
 
     }
 
+    // Method to count the number of elements matching a given locator
+    public int countElements(By elementsLocator) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(elementsLocator));
+
+        List<WebElement> elements = driver.findElements(elementsLocator);
+
+        // Return the size of the list (i.e., the number of elements)
+        return elements.size();
+    }
+
 }

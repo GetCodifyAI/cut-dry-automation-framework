@@ -17,6 +17,7 @@ public class VerifyCustomerGroupIsAssignedWhenSelectedTest extends TestBase {
     static User user;
     String DistributerName = "47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
     String CustomerCode = "16579";
+    String CustomerGroupName = "NEWGroup01";
 
     @BeforeMethod
     public void setUp(){
@@ -35,13 +36,22 @@ public class VerifyCustomerGroupIsAssignedWhenSelectedTest extends TestBase {
         Customer.searchCustomerByCode(CustomerCode);
         Customer.SelectCustomer(CustomerCode);
         softAssert.assertTrue(Customer.isCustomerGroupOptionAvailable(),"Error in Displaying Customer Group Text");
-
-
+        softAssert.assertTrue(Customer.isCustomerGroupOptinAvailable(),"Error in Displaying Customer Group Text");
+        softAssert.assertTrue(Customer.isCustomerGroupEditBtnAvailable(),"Customer Group Edit Btn Not Available");
+        Customer.editCustomerGroups();
+        Customer.creatCustomerGroup(CustomerGroupName);
+        Customer.customerGroupSave();
+        softAssert.assertTrue(Customer.isCustomerGroupNameDisplayed(CustomerGroupName),"Error in Displaying Customer Group Text");
         softAssert.assertAll();
     }
 
     @AfterMethod
     public void teardown(ITestResult result){
+
+        //clearing the Created Customer Groups
+        Customer.editCustomerGroups();
+        Customer.clearAllCustomerGroups();
+        Customer.customerGroupSave();
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
 

@@ -57,8 +57,8 @@ public class OrderDesk {
         orderDeskPage.giveFilePath(path);
     }
 
-    public static boolean isVoiceUploadSucessfullySaved(){
-        return orderDeskPage.isVoiceUploadSucessfullMessageDisplayed();
+    public static int getNumberOfProcessingVoiceMessages(){
+        return orderDeskPage.isVoiceUploadProcssingCountIncreased();
     }
 
     public static void SearchItemByname(){
