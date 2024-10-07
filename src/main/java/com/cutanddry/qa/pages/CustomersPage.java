@@ -148,7 +148,7 @@ public class CustomersPage extends LoginPage {
     By btn_delete = By.xpath("//button[contains(text(), 'Delete')]");
     By txt_editSection = By.xpath("//div[contains(text(), 'Edit Section Header')]");
     By txt_areYouSure = By.xpath("//h2[text()='Are you sure?']");
-    By btn_delete = By.xpath("//*[local-name() = 'svg' and @data-icon='trash-alt']");
+    By btn_deleteIcon = By.xpath("//*[local-name() = 'svg' and @data-icon='trash-alt']");
     By tb_boost = By.xpath("//a[text()='Boost' and @role='tab']");
     By txt_customerSpecific = By.xpath("//div[contains(text(),'Customer-specific Broadcast')]");
     By btn_editMessage = By.xpath("//button[contains(text(), 'Edit Message')]");
@@ -739,9 +739,9 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForInvisibility(btn_close);
     }
     public void clickOnDeleteItem(){
-        distributorUI.waitForVisibility(btn_delete);
-        distributorUI.click(btn_delete);
-        distributorUI.waitForInvisibility(btn_delete);
+        distributorUI.waitForVisibility(btn_deleteIcon);
+        distributorUI.click(btn_deleteIcon);
+        distributorUI.waitForInvisibility(btn_deleteIcon);
     }
     public void clickOnBoostTab() {
         distributorUI.click(tb_boost);
