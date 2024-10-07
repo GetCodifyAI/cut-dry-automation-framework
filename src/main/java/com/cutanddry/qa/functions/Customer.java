@@ -86,6 +86,9 @@ public class Customer {
     public static double getItemPriceFirstRow(){
         return customersPage.getItemPriceFirstRow();
     }
+    public static String getItemPriceSecondRow(){
+        return customersPage.getItemPriceSecondRow();
+    }
     public static double getItemPriceOnCheckoutButton() throws InterruptedException {
         return customersPage.getItemPriceOnCheckoutButton();
     }
@@ -585,4 +588,8 @@ public class Customer {
     public static void ClickRemovalConfirmationOverlayYesBtn(){
         customersPage.ClickYesOnRemovalConfirmationOverlay();
     }
+    public static String getItemPricePDPView(){
+        return customersPage.getItemPricePDPView();
+    }
+
 }

@@ -17,6 +17,7 @@ public class CustomersPage extends LoginPage {
     By btn_addToCart = By.xpath("(//div[contains(@class, '_cyg77l')]//button[contains(@class, 'btn-outline-primary') and contains(text(), 'Add to Cart')])[2]");
     By tbx_itemQuantityFirstRow = By.xpath("//tr[1]//td[8]//input");
     By lbl_itemPriceFirstRow = By.xpath("//tr[1]//td[7]/div");
+    By lbl_itemPriceSecondRow = By.xpath("//tr[2]//td[7]/span");
     By btn_increaseQtyCatalogSearchValueOne = By.xpath("//input[@type='number' and @value='1']/../following-sibling::div");
     By btn_increaseQtyCatalogSearchValueTwo = By.xpath("//input[@type='number' and @value='2']/../following-sibling::div");
     By btn_decreaseQtyCatalogSearchValueOne = By.xpath("//input[@type='number' and @value='1']/../preceding-sibling::div");
@@ -176,7 +177,7 @@ public class CustomersPage extends LoginPage {
     By RemoveUserTxt = By.xpath("//span[contains(text(),'Remove user')]");
     By DeleteCnfrmOverlay = By.xpath("//h2[contains(text(),'Are you sure you want to remove this user')]");
     By DeleteCnfrmYesBtn = By.xpath("//button[contains(text(),'Yes')]");
-
+    By txt_pricePDP = By.xpath("//span[contains(text(), '$')]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -217,7 +218,8 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_decreaseQtySecondRow);
     }
     public String getItemNameSecondRow(){
-       return distributorUI.getText(lbl_itemNameList,1);
+        distributorUI.waitForElementEnabledState(lbl_itemNameList,true);
+       return distributorUI.getText(lbl_itemNameList,1).toLowerCase();
     }
     public void clickPlusQrySecondRow(){
         distributorUI.click(btn_increaseQtySecondRow);
@@ -253,6 +255,10 @@ public class CustomersPage extends LoginPage {
     }
     public Double getItemPriceFirstRow(){
         return Double.valueOf(distributorUI.getText(lbl_itemPriceFirstRow).replace("$",""));
+    }
+    public String getItemPriceSecondRow(){
+        distributorUI.waitForVisibility(lbl_itemPriceSecondRow);
+        return distributorUI.getText(lbl_itemPriceSecondRow).replace("$","");
     }
     public Double getItemPriceOnCheckoutButton() throws InterruptedException {
         distributorUI.waitForVisibility(btn_checkout);
@@ -674,7 +680,8 @@ public class CustomersPage extends LoginPage {
         return distributorUI.isDisplayed(txt_replacement);
     }
     public void clickOnItem(String code){
-        distributorUI.click(By.xpath(txt_item.replace("CODE", code)));
+        distributorUI.waitForVisibility(By.xpath(txt_item.replace("CODE", code)));
+        distributorUI.clickUsingJavaScript(By.xpath(txt_item.replace("CODE", code)));
     }
     public void clickPlusQryFirstRowInCheckout(){
         distributorUI.click(btn_increaseQtyFirstRowInCheckout);
@@ -913,5 +920,8 @@ public class CustomersPage extends LoginPage {
     }
     public void ClickYesOnRemovalConfirmationOverlay(){
         distributorUI.click(DeleteCnfrmYesBtn);
+    }
+    public String getItemPricePDPView(){
+        return distributorUI.getText(txt_pricePDP).replace("$","");
     }
 }
