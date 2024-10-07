@@ -40,6 +40,7 @@ public class VerifyAddingOrderGuideSectionsTest extends TestBase {
         Customer.typeSectionName(sectionName);
         Customer.clickOnSave();
         softAssert.assertTrue(Customer.isAddedSectionDisplayed(sectionName)," add section error");
+//        Customer.dragToTop();
         Customer.clickOnBack();
         Customer.clickSortOptionsDropdown();
         Customer.selectItemCategoriesSort();

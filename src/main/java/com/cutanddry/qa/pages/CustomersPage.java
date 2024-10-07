@@ -1,6 +1,8 @@
 package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class CustomersPage extends LoginPage {
     By tbx_searchCustomers = By.xpath("//input[@placeholder='Search Customers']");
@@ -141,7 +143,7 @@ public class CustomersPage extends LoginPage {
     By btn_save = By.xpath("//button[normalize-space(text())='Save']");
     String txt_addedSection = "//div[contains(@data-rbd-draggable-id, 'item')]//div[contains(text(), 'NAME')]";
     By txt_lastID = By.xpath("//div[contains(@data-rbd-draggable-id, 'item-')][last()]");
-    By txt_targetDrop = By.xpath("//div[@data-rbd-draggable-id='item-212522811']");
+    By txt_firstID = By.xpath("//div[contains(@data-rbd-draggable-id, 'item-')][1]");
     String txt_source = "//div[@data-rbd-draggable-id='ID']";
     String txt_section = "//div[contains(text(), 'NAME')]";
     String btn_editSection = "//div[contains(text(), 'NAME')]/following-sibling::div[@class='col-2 d-flex justify-content-end align-items-center']/*[local-name() = 'svg' and @data-icon='pencil']";
@@ -758,9 +760,10 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForVisibility(By.xpath(txt_addedSection.replace("NAME", name)));
         return distributorUI.isDisplayed(By.xpath(txt_addedSection.replace("NAME", name)));
     }
-    public void dragToTop(String name){
-        String id = distributorUI.getText(txt_lastID,"data-rbd-draggable-id");
-        distributorUI.dragAndDrop(By.xpath(txt_source.replace("ID", id)), txt_targetDrop);
+    public void dragToTop(){
+        String id_first = distributorUI.getText(txt_firstID,"data-rbd-draggable-id");
+        String id_last = distributorUI.getText(txt_lastID,"data-rbd-draggable-id");
+        distributorUI.dragAndDrop(By.xpath(txt_source.replace("ID", id_last)), By.xpath(txt_source.replace("ID", id_first)));
     }
     public boolean isSectionDisplayed(String name){
         distributorUI.waitForVisibility(By.xpath(txt_section.replace("NAME", name)));

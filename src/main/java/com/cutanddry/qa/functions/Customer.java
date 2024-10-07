@@ -465,8 +465,8 @@ public class Customer {
     public static boolean isAddedSectionDisplayed(String name) throws InterruptedException {
         return customersPage.isAddedSectionDisplayed(name);
     }
-    public static void dragToTop(String name) {
-        customersPage.dragToTop(name);
+    public static void dragToTop() {
+        customersPage.dragToTop();
     }
     public static boolean isSectionDisplayed(String name){
         return customersPage.isSectionDisplayed(name);
