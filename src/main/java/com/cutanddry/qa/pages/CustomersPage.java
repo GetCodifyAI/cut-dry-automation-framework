@@ -120,7 +120,7 @@ public class CustomersPage extends LoginPage {
     By btn_saveSelection = By.xpath("//button[normalize-space(text())='Save Selection']");
     By btn_donotsubs = By.xpath("//button[normalize-space(text())='Do Not Substitute']");
     By txt_replacement = By.xpath("//div[contains(normalize-space(text()), 'If out of stock, sub with')]");
-    String txt_subItem = "//div[contains(text(), 'CODE')]";
+    String txt_item = "//div[contains(text(), 'CODE')]";
     By btn_increaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div[3]");
     By btn_decreaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div[1]");
     String txt_subItems = "(//div[contains(text(), 'Available Substitutes')]/following-sibling::div//div[contains(text(), '1 x $')])[NUM]";
@@ -135,6 +135,7 @@ public class CustomersPage extends LoginPage {
     By txt_caseDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Case']");
     By btn_orderGuide = By.xpath("//button[normalize-space(text())='Order Guide']");
     By btn_close = By.xpath("//button[contains(@class, 'close')]/span[text()='×']");
+    By btn_delete = By.xpath("//*[local-name() = 'svg' and @data-icon='trash-alt']");
     By tb_boost = By.xpath("//a[text()='Boost' and @role='tab']");
     By txt_customerSpecific = By.xpath("//div[contains(text(),'Customer-specific Broadcast')]");
     By btn_editMessage = By.xpath("//button[contains(text(), 'Edit Message')]");
@@ -162,8 +163,6 @@ public class CustomersPage extends LoginPage {
     By RemoveUserTxt = By.xpath("//span[contains(text(),'Remove user')]");
     By DeleteCnfrmOverlay = By.xpath("//h2[contains(text(),'Are you sure you want to remove this user')]");
     By DeleteCnfrmYesBtn = By.xpath("//button[contains(text(),'Yes')]");
-
-
 
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
@@ -606,7 +605,6 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForClickability(btn_back);
         distributorUI.click(btn_back);
     }
-
     public void ClickOnCustomer(String code){
         distributorUI.click(By.xpath(SelectCustomerByCode.replace("CODE", code)));
     }
@@ -630,8 +628,6 @@ public class CustomersPage extends LoginPage {
     public boolean DeliveryDateSort(){
         return distributorUI.isDatesSorted(DeliveryDateSortData);
     }
-
-
     public boolean isDiscountDisclaimerOrderReviewMsgDisplayed(){
         distributorUI.waitForVisibility(txt_discountDisclaimerOrderReview);
         return distributorUI.isDisplayed(txt_discountDisclaimerOrderReview);
@@ -665,7 +661,7 @@ public class CustomersPage extends LoginPage {
         return distributorUI.isDisplayed(txt_replacement);
     }
     public void clickOnItem(String code){
-        distributorUI.click(By.xpath(txt_subItem.replace("CODE", code)));
+        distributorUI.click(By.xpath(txt_item.replace("CODE", code)));
     }
     public void clickPlusQryFirstRowInCheckout(){
         distributorUI.click(btn_increaseQtyFirstRowInCheckout);
@@ -682,21 +678,17 @@ public class CustomersPage extends LoginPage {
         }
         return count;
     }
-
     public boolean isCutomerTxtDisplayed(){
         return distributorUI.isDisplayed(CustomerTxt);
     }
-
     public void ClickTestAutomationOrderGuide(){
         distributorUI.waitForVisibility(Test_AutomationOrderGuide);
         distributorUI.click(Test_AutomationOrderGuide);
         distributorUI.click(AutomationGuide);
     }
-
     public boolean StockCountDisplayed(){
         return distributorUI.isDisplayed(StockCountTxt);
     }
-
     public boolean isCustomerGroupTxtDisplayed(){
         distributorUI.waitForVisibility(CustomerGroupTxt);
         return distributorUI.isDisplayed(CustomerGroupTxt);
@@ -733,6 +725,11 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_close);
         distributorUI.waitForInvisibility(btn_close);
     }
+    public void clickOnDeleteItem(){
+        distributorUI.waitForVisibility(btn_delete);
+        distributorUI.click(btn_delete);
+        distributorUI.waitForInvisibility(btn_delete);
+    }
     public void clickOnBoostTab() {
         distributorUI.click(tb_boost);
     }
@@ -764,15 +761,15 @@ public class CustomersPage extends LoginPage {
     public void selectItem(String code) {
         distributorUI.click(input_selectItem);
         distributorUI.sendKeys(input_selectItem, code);
-        distributorUI.hoverOverElement(By.xpath(txt_subItem.replace("CODE", code+':')));
-        distributorUI.click(By.xpath(txt_subItem.replace("CODE", code+':')));
+        distributorUI.hoverOverElement(By.xpath(txt_item.replace("CODE", code+':')));
+        distributorUI.click(By.xpath(txt_item.replace("CODE", code+':')));
     }
     public void clickOnAdd() {
         distributorUI.waitForVisibility(btn_add);
         distributorUI.click(btn_add);
     }
     public boolean isItemAdded(String code){
-        return distributorUI.isDisplayed(By.xpath(txt_subItem.replace("CODE", code)));
+        return distributorUI.isDisplayed(By.xpath(txt_item.replace("CODE", code)));
     }
     public void clickOnRemoveItem() {
         distributorUI.waitForVisibility(btn_removeItem);
@@ -790,66 +787,45 @@ public class CustomersPage extends LoginPage {
         }
         distributorUI.click(EditCustomerGroupBtn);
     }
-
     public void sendTextToCustomerGroup(String groupname){
         distributorUI.isDisplayed(CreateCutomerGroupTextField);
         distributorUI.sendKeysAndEnter(CreateCutomerGroupTextField,groupname);
     }
-
     public void clickCustomerGroupSaveBtn(){
         distributorUI.click(CustomerGroupSavebtn);
     }
-
     public boolean customerGroupNameDisplayed(String groupname){
         return distributorUI.isDisplayed(By.xpath(CustomerGroupName.replace("GROUPNAME",groupname)));
     }
-
     public void clickClearAllCustomerGroupsBtn(){
         distributorUI.isDisplayed(ClearAllCustomerGroupBtn);
         distributorUI.click(ClearAllCustomerGroupBtn);
     }
-
     public void clickInviteNewUsers(){
         distributorUI.click(InviteNewUsersBtn);
     }
-
-
     public boolean isAddUserOverlayDisplayed(){
         return distributorUI.isDisplayed(AddUserText);
     }
-
-
     public void sendTextToAddUserOverlayNameField(String Username){
         distributorUI.sendKeys(UserNameInputField,Username);
     }
-
-
     public void sendTextToAddUserOverlayEmailField(String Useremail){
         distributorUI.sendKeys(UserEmailInputField,Useremail);
     }
-
-
     public void clickSaveChangesWithoutSendingInvite(){
         distributorUI.waitForElementEnabledState(SaveChangeswithoutSendingInviteBtn,true);
         distributorUI.click(SaveChangeswithoutSendingInviteBtn);
     }
-
-
     public boolean isSuccessfullyUpdatedMsgDisplayed(){
         return distributorUI.isDisplayed(SuccessfulUpdatedMsg);
     }
-
-
     public boolean isSuccessfullyRemovedMsgDisplayed(){
         return distributorUI.isDisplayed(SuccessfulRemovedMsg);
     }
-
-
     public boolean isAddedUserDisplayed(String Username){
         return distributorUI.isDisplayed(By.xpath(UserName.replace("USERNAME",Username)));
     }
-
-
     public boolean isRemovedUserNotDisplayed(String Username){
         try {
             distributorUI.waitForCustom(4000);
@@ -858,27 +834,18 @@ public class CustomersPage extends LoginPage {
         }
         return distributorUI.isDisplayed(By.xpath(UserName.replace("USERNAME",Username)));
     }
-
-
     public void clickOnUserDetailsEditBtn(String Username){
         distributorUI.isDisplayed(By.xpath(UserDetailsEditBtn.replace("USERNAME",Username)));
         distributorUI.click(By.xpath(UserDetailsEditBtn.replace("USERNAME",Username)));
     }
-
-
     public void clickOnRemoveUser(){
         distributorUI.waitForVisibility(RemoveUserTxt);
         distributorUI.click(RemoveUserTxt);
     }
-
-
     public boolean isRemovalConfirmationOverlayDisplayed(){
         return distributorUI.isDisplayed(DeleteCnfrmOverlay);
     }
-
-
     public void ClickYesOnRemovalConfirmationOverlay(){
         distributorUI.click(DeleteCnfrmYesBtn);
     }
-
 }
