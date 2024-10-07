@@ -761,15 +761,15 @@ public class CustomersPage extends LoginPage {
     public void selectItem(String code) {
         distributorUI.click(input_selectItem);
         distributorUI.sendKeys(input_selectItem, code);
-        distributorUI.hoverOverElement(By.xpath(txt_subItem.replace("CODE", code+':')));
-        distributorUI.click(By.xpath(txt_subItem.replace("CODE", code+':')));
+        distributorUI.hoverOverElement(By.xpath(txt_item.replace("CODE", code+':')));
+        distributorUI.click(By.xpath(txt_item.replace("CODE", code+':')));
     }
     public void clickOnAdd() {
         distributorUI.waitForVisibility(btn_add);
         distributorUI.click(btn_add);
     }
     public boolean isItemAdded(String code){
-        return distributorUI.isDisplayed(By.xpath(txt_subItem.replace("CODE", code)));
+        return distributorUI.isDisplayed(By.xpath(txt_item.replace("CODE", code)));
     }
     public void clickOnRemoveItem() {
         distributorUI.waitForVisibility(btn_removeItem);
