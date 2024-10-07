@@ -486,4 +486,100 @@ public class Customer {
     public static boolean isAreYouSurePopupDisplayed(){
         return customersPage.isAreYouSurePopupDisplayed();
     }
+
+    public static boolean isCustomerGroupEditBtnAvailable(){
+        return customersPage.isCustomerGroupEditBtnDisplayed();
+    }
+
+    public static void editCustomerGroups(){
+        customersPage.editCustomerGroup();
+    }
+
+    public static void creatCustomerGroup(String groupname){
+        customersPage.sendTextToCustomerGroup(groupname);
+    }
+
+    public static void customerGroupSave(){
+        customersPage.clickCustomerGroupSaveBtn();
+    }
+
+    public static boolean isCustomerGroupNameDisplayed(String groupname){
+        return customersPage.customerGroupNameDisplayed(groupname);
+    }
+
+    public static void clearAllCustomerGroups(){
+        customersPage.clickClearAllCustomerGroupsBtn();
+    }
+
+    public static void InviteNewUsers(){
+        customersPage.clickInviteNewUsers();
+    }
+
+
+    public static boolean AddUserOverlayDisplayed(){
+        return customersPage.isAddUserOverlayDisplayed();
+    }
+
+
+    public static void FillNameInAddUserOverlay(String username){
+        customersPage.sendTextToAddUserOverlayNameField(username);
+    }
+
+
+    public static void FillEmailInAddUserOverlay(String useremail){
+        customersPage.sendTextToAddUserOverlayEmailField(useremail);
+    }
+
+
+    public static void SaveChangesWithoutSendingInvite(){
+        customersPage.clickSaveChangesWithoutSendingInvite();
+    }
+
+
+    public static boolean UserDetailsSuccessfullyUpdatedMsgDisplayed(){
+        return customersPage.isSuccessfullyUpdatedMsgDisplayed();
+    }
+
+
+    public static boolean UserSuccessfullyRemovedMsgDisplayed(){
+        return customersPage.isSuccessfullyRemovedMsgDisplayed();
+    }
+
+
+    public static void CloseSuccessOverlayByOkBtn(){
+        customersPage.clickOK();
+    }
+
+
+    public static boolean IsAddedUserSuccessfullyDisplayed(String username){
+        return customersPage.isAddedUserDisplayed(username);
+    }
+
+
+    public static boolean RemovedUserNotDisplayed(String username){
+        return customersPage.isRemovedUserNotDisplayed(username);
+    }
+
+
+    public static void EditUserDetails(String username){
+        customersPage.clickOnUserDetailsEditBtn(username);
+    }
+
+
+    public static void RemoveUser(){
+        customersPage.clickOnRemoveUser();
+    }
+
+
+    public static boolean RemovalConfirmationOverlayDisplayed(){
+        return customersPage.isRemovalConfirmationOverlayDisplayed();
+    }
+
+
+    public static void ClickRemovalConfirmationOverlayYesBtn(){
+        customersPage.ClickYesOnRemovalConfirmationOverlay();
+    }
+
+
+
 }
