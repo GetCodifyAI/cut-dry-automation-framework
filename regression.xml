@@ -92,6 +92,10 @@
             <class name="com.cutanddry.qa.tests.sections.VerifyAddingOrderGuideSectionsTest" />
             <class name="com.cutanddry.qa.tests.sections.VerifyEditingOrderGuideSectionsTest" />
             <class name="com.cutanddry.qa.tests.sections.VerifyDeletingOrderGuideSectionsTest" />
+            <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsTest" />
+            <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsDeleteTest" />
+            <class name="com.cutanddry.qa.tests.customer_specific.VerifyCustomerSpecificBroadcastMessageTest" />
+            <class name="com.cutanddry.qa.tests.customer_specific.VerifyCustomerSpecificProductRecommendationsTest" />
         </classes>
     </test>
 </suite>

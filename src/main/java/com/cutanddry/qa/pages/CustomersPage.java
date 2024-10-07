@@ -1,8 +1,6 @@
 package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
 public class CustomersPage extends LoginPage {
     By tbx_searchCustomers = By.xpath("//input[@placeholder='Search Customers']");
@@ -122,7 +120,7 @@ public class CustomersPage extends LoginPage {
     By btn_saveSelection = By.xpath("//button[normalize-space(text())='Save Selection']");
     By btn_donotsubs = By.xpath("//button[normalize-space(text())='Do Not Substitute']");
     By txt_replacement = By.xpath("//div[contains(normalize-space(text()), 'If out of stock, sub with')]");
-    String txt_subItem = "//div[contains(text(), 'CODE')]";
+    String txt_item = "//div[contains(text(), 'CODE')]";
     By btn_increaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div[3]");
     By btn_decreaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div[1]");
     String txt_subItems = "(//div[contains(text(), 'Available Substitutes')]/following-sibling::div//div[contains(text(), '1 x $')])[NUM]";
@@ -150,6 +148,17 @@ public class CustomersPage extends LoginPage {
     By btn_delete = By.xpath("//button[contains(text(), 'Delete')]");
     By txt_editSection = By.xpath("//div[contains(text(), 'Edit Section Header')]");
     By txt_areYouSure = By.xpath("//h2[text()='Are you sure?']");
+    By btn_delete = By.xpath("//*[local-name() = 'svg' and @data-icon='trash-alt']");
+    By tb_boost = By.xpath("//a[text()='Boost' and @role='tab']");
+    By txt_customerSpecific = By.xpath("//div[contains(text(),'Customer-specific Broadcast')]");
+    By btn_editMessage = By.xpath("//button[contains(text(), 'Edit Message')]");
+    By btn_clearMessage = By.xpath("//button[contains(text(), 'Clear Message')]");
+    By btn_saveMessage = By.xpath("//button[contains(text(), 'Save Message')]");
+    By btn_addItems = By.xpath("//button[contains(text(), 'Add Items')]");
+    By txtArea = By.xpath("//div[contains(@class, 'col-lg-9')]//textarea");
+    By input_selectItem = By.xpath("//div[contains(text(),'Select...')]/following-sibling::div//input");
+    By btn_add = By.xpath("//button[contains(text(), 'Add')]");
+    By btn_removeItem = By.xpath("(//*[local-name() = 'svg' and @data-icon='times-circle'])[2]");
     By EditCustomerGroupBtn = By.xpath("//div[contains(text(), 'Customer Group')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']");
     By CreateCutomerGroupTextField = By.xpath("//input[@id='react-select-6-input']");
     By CustomerGroupSavebtn = By.xpath("//button[contains(text(),'Save')]");
@@ -167,8 +176,6 @@ public class CustomersPage extends LoginPage {
     By RemoveUserTxt = By.xpath("//span[contains(text(),'Remove user')]");
     By DeleteCnfrmOverlay = By.xpath("//h2[contains(text(),'Are you sure you want to remove this user')]");
     By DeleteCnfrmYesBtn = By.xpath("//button[contains(text(),'Yes')]");
-
-
 
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
@@ -611,7 +618,6 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForClickability(btn_back);
         distributorUI.click(btn_back);
     }
-
     public void ClickOnCustomer(String code){
         distributorUI.click(By.xpath(SelectCustomerByCode.replace("CODE", code)));
     }
@@ -635,8 +641,6 @@ public class CustomersPage extends LoginPage {
     public boolean DeliveryDateSort(){
         return distributorUI.isDatesSorted(DeliveryDateSortData);
     }
-
-
     public boolean isDiscountDisclaimerOrderReviewMsgDisplayed(){
         distributorUI.waitForVisibility(txt_discountDisclaimerOrderReview);
         return distributorUI.isDisplayed(txt_discountDisclaimerOrderReview);
@@ -670,7 +674,7 @@ public class CustomersPage extends LoginPage {
         return distributorUI.isDisplayed(txt_replacement);
     }
     public void clickOnItem(String code){
-        distributorUI.click(By.xpath(txt_subItem.replace("CODE", code)));
+        distributorUI.click(By.xpath(txt_item.replace("CODE", code)));
     }
     public void clickPlusQryFirstRowInCheckout(){
         distributorUI.click(btn_increaseQtyFirstRowInCheckout);
@@ -690,17 +694,14 @@ public class CustomersPage extends LoginPage {
     public boolean isCutomerTxtDisplayed(){
         return distributorUI.isDisplayed(CustomerTxt);
     }
-
     public void ClickTestAutomationOrderGuide(){
         distributorUI.waitForVisibility(Test_AutomationOrderGuide);
         distributorUI.click(Test_AutomationOrderGuide);
         distributorUI.click(AutomationGuide);
     }
-
     public boolean StockCountDisplayed(){
         return distributorUI.isDisplayed(StockCountTxt);
     }
-
     public boolean isCustomerGroupTxtDisplayed(){
         distributorUI.waitForVisibility(CustomerGroupTxt);
         return distributorUI.isDisplayed(CustomerGroupTxt);
@@ -736,6 +737,57 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForVisibility(btn_close);
         distributorUI.click(btn_close);
         distributorUI.waitForInvisibility(btn_close);
+    }
+    public void clickOnDeleteItem(){
+        distributorUI.waitForVisibility(btn_delete);
+        distributorUI.click(btn_delete);
+        distributorUI.waitForInvisibility(btn_delete);
+    }
+    public void clickOnBoostTab() {
+        distributorUI.click(tb_boost);
+    }
+    public boolean isBroadcastTextDisplayed(){
+        return distributorUI.isDisplayed(txt_customerSpecific);
+    }
+    public void clickOnEditMessage(){
+        distributorUI.waitForVisibility(btn_editMessage);
+        distributorUI.click(btn_editMessage);
+    }
+    public void clickOnClearMessage() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_clearMessage);
+        distributorUI.click(btn_clearMessage);
+        distributorUI.waitForCustom(1000);
+    }
+    public void clickOnAddItems() {
+        distributorUI.waitForVisibility(btn_addItems);
+        distributorUI.click(btn_addItems);
+    }
+    public void clickOnSaveMessage() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_saveMessage);
+        distributorUI.click(btn_saveMessage);
+        distributorUI.waitForCustom(1000);
+    }
+    public void typeBroadcastMessage(String msg) {
+        distributorUI.click(txtArea);
+        distributorUI.sendKeys(txtArea, msg);
+    }
+    public void selectItem(String code) {
+        distributorUI.click(input_selectItem);
+        distributorUI.sendKeys(input_selectItem, code);
+        distributorUI.hoverOverElement(By.xpath(txt_item.replace("CODE", code+':')));
+        distributorUI.click(By.xpath(txt_item.replace("CODE", code+':')));
+    }
+    public void clickOnAdd() {
+        distributorUI.waitForVisibility(btn_add);
+        distributorUI.click(btn_add);
+    }
+    public boolean isItemAdded(String code){
+        return distributorUI.isDisplayed(By.xpath(txt_item.replace("CODE", code)));
+    }
+    public void clickOnRemoveItem() {
+        distributorUI.waitForVisibility(btn_removeItem);
+        distributorUI.click(btn_removeItem);
+        distributorUI.waitForInvisibility(btn_removeItem);
     }
     public void addSection(){
         distributorUI.waitForClickability(btn_addSection);
@@ -801,66 +853,45 @@ public class CustomersPage extends LoginPage {
         }
         distributorUI.click(EditCustomerGroupBtn);
     }
-
     public void sendTextToCustomerGroup(String groupname){
         distributorUI.isDisplayed(CreateCutomerGroupTextField);
         distributorUI.sendKeysAndEnter(CreateCutomerGroupTextField,groupname);
     }
-
     public void clickCustomerGroupSaveBtn(){
         distributorUI.click(CustomerGroupSavebtn);
     }
-
     public boolean customerGroupNameDisplayed(String groupname){
         return distributorUI.isDisplayed(By.xpath(CustomerGroupName.replace("GROUPNAME",groupname)));
     }
-
     public void clickClearAllCustomerGroupsBtn(){
         distributorUI.isDisplayed(ClearAllCustomerGroupBtn);
         distributorUI.click(ClearAllCustomerGroupBtn);
     }
-
     public void clickInviteNewUsers(){
         distributorUI.click(InviteNewUsersBtn);
     }
-
-
     public boolean isAddUserOverlayDisplayed(){
         return distributorUI.isDisplayed(AddUserText);
     }
-
-
     public void sendTextToAddUserOverlayNameField(String Username){
         distributorUI.sendKeys(UserNameInputField,Username);
     }
-
-
     public void sendTextToAddUserOverlayEmailField(String Useremail){
         distributorUI.sendKeys(UserEmailInputField,Useremail);
     }
-
-
     public void clickSaveChangesWithoutSendingInvite(){
         distributorUI.waitForElementEnabledState(SaveChangeswithoutSendingInviteBtn,true);
         distributorUI.click(SaveChangeswithoutSendingInviteBtn);
     }
-
-
     public boolean isSuccessfullyUpdatedMsgDisplayed(){
         return distributorUI.isDisplayed(SuccessfulUpdatedMsg);
     }
-
-
     public boolean isSuccessfullyRemovedMsgDisplayed(){
         return distributorUI.isDisplayed(SuccessfulRemovedMsg);
     }
-
-
     public boolean isAddedUserDisplayed(String Username){
         return distributorUI.isDisplayed(By.xpath(UserName.replace("USERNAME",Username)));
     }
-
-
     public boolean isRemovedUserNotDisplayed(String Username){
         try {
             distributorUI.waitForCustom(4000);
@@ -869,27 +900,18 @@ public class CustomersPage extends LoginPage {
         }
         return distributorUI.isDisplayed(By.xpath(UserName.replace("USERNAME",Username)));
     }
-
-
     public void clickOnUserDetailsEditBtn(String Username){
         distributorUI.isDisplayed(By.xpath(UserDetailsEditBtn.replace("USERNAME",Username)));
         distributorUI.click(By.xpath(UserDetailsEditBtn.replace("USERNAME",Username)));
     }
-
-
     public void clickOnRemoveUser(){
         distributorUI.waitForVisibility(RemoveUserTxt);
         distributorUI.click(RemoveUserTxt);
     }
-
-
     public boolean isRemovalConfirmationOverlayDisplayed(){
         return distributorUI.isDisplayed(DeleteCnfrmOverlay);
     }
-
-
     public void ClickYesOnRemovalConfirmationOverlay(){
         distributorUI.click(DeleteCnfrmYesBtn);
     }
-
 }
