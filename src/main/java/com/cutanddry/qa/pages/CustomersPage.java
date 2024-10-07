@@ -152,7 +152,7 @@ public class CustomersPage extends LoginPage {
     By RemoveUserTxt = By.xpath("//span[contains(text(),'Remove user')]");
     By DeleteCnfrmOverlay = By.xpath("//h2[contains(text(),'Are you sure you want to remove this user')]");
     By DeleteCnfrmYesBtn = By.xpath("//button[contains(text(),'Yes')]");
-
+    By txt_pkgDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Pkg']");
 
 
 
@@ -672,21 +672,17 @@ public class CustomersPage extends LoginPage {
         }
         return count;
     }
-
     public boolean isCutomerTxtDisplayed(){
         return distributorUI.isDisplayed(CustomerTxt);
     }
-
     public void ClickTestAutomationOrderGuide(){
         distributorUI.waitForVisibility(Test_AutomationOrderGuide);
         distributorUI.click(Test_AutomationOrderGuide);
         distributorUI.click(AutomationGuide);
     }
-
     public boolean StockCountDisplayed(){
         return distributorUI.isDisplayed(StockCountTxt);
     }
-
     public boolean isCustomerGroupTxtDisplayed(){
         distributorUI.waitForVisibility(CustomerGroupTxt);
         return distributorUI.isDisplayed(CustomerGroupTxt);
@@ -700,7 +696,7 @@ public class CustomersPage extends LoginPage {
         }
         return distributorUI.isDisplayed(txt_outOfStock);
     }
-    public void clickOnUnitDEach(){
+    public void clickOnUnitEach(){
         distributorUI.click(txt_unitInDist);
         distributorUI.waitForVisibility(txt_eachDropdownItem);
         distributorUI.click(txt_eachDropdownItem);
@@ -723,7 +719,6 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_close);
         distributorUI.waitForInvisibility(btn_close);
     }
-
     public boolean isCustomerGroupEditBtnDisplayed(){
         return distributorUI.isDisplayed(EditCustomerGroupBtn);
     }
@@ -735,12 +730,10 @@ public class CustomersPage extends LoginPage {
         }
         distributorUI.click(EditCustomerGroupBtn);
     }
-
     public void sendTextToCustomerGroup(String groupname){
         distributorUI.isDisplayed(CreateCutomerGroupTextField);
         distributorUI.sendKeysAndEnter(CreateCutomerGroupTextField,groupname);
     }
-
     public void clickCustomerGroupSaveBtn(){
         distributorUI.click(CustomerGroupSavebtn);
     }
@@ -748,53 +741,35 @@ public class CustomersPage extends LoginPage {
     public boolean customerGroupNameDisplayed(String groupname){
         return distributorUI.isDisplayed(By.xpath(CustomerGroupName.replace("GROUPNAME",groupname)));
     }
-
     public void clickClearAllCustomerGroupsBtn(){
         distributorUI.isDisplayed(ClearAllCustomerGroupBtn);
         distributorUI.click(ClearAllCustomerGroupBtn);
     }
-
     public void clickInviteNewUsers(){
         distributorUI.click(InviteNewUsersBtn);
     }
-
-
     public boolean isAddUserOverlayDisplayed(){
         return distributorUI.isDisplayed(AddUserText);
     }
-
-
     public void sendTextToAddUserOverlayNameField(String Username){
         distributorUI.sendKeys(UserNameInputField,Username);
     }
-
-
     public void sendTextToAddUserOverlayEmailField(String Useremail){
         distributorUI.sendKeys(UserEmailInputField,Useremail);
     }
-
-
     public void clickSaveChangesWithoutSendingInvite(){
         distributorUI.waitForElementEnabledState(SaveChangeswithoutSendingInviteBtn,true);
         distributorUI.click(SaveChangeswithoutSendingInviteBtn);
     }
-
-
     public boolean isSuccessfullyUpdatedMsgDisplayed(){
         return distributorUI.isDisplayed(SuccessfulUpdatedMsg);
     }
-
-
     public boolean isSuccessfullyRemovedMsgDisplayed(){
         return distributorUI.isDisplayed(SuccessfulRemovedMsg);
     }
-
-
     public boolean isAddedUserDisplayed(String Username){
         return distributorUI.isDisplayed(By.xpath(UserName.replace("USERNAME",Username)));
     }
-
-
     public boolean isRemovedUserNotDisplayed(String Username){
         try {
             distributorUI.waitForCustom(4000);
@@ -803,27 +778,23 @@ public class CustomersPage extends LoginPage {
         }
         return distributorUI.isDisplayed(By.xpath(UserName.replace("USERNAME",Username)));
     }
-
-
     public void clickOnUserDetailsEditBtn(String Username){
         distributorUI.isDisplayed(By.xpath(UserDetailsEditBtn.replace("USERNAME",Username)));
         distributorUI.click(By.xpath(UserDetailsEditBtn.replace("USERNAME",Username)));
     }
-
-
     public void clickOnRemoveUser(){
         distributorUI.waitForVisibility(RemoveUserTxt);
         distributorUI.click(RemoveUserTxt);
     }
-
-
     public boolean isRemovalConfirmationOverlayDisplayed(){
         return distributorUI.isDisplayed(DeleteCnfrmOverlay);
     }
-
-
     public void ClickYesOnRemovalConfirmationOverlay(){
         distributorUI.click(DeleteCnfrmYesBtn);
     }
-
+    public void clickOnUnitPkg(){
+        distributorUI.click(txt_unitInDist);
+        distributorUI.waitForVisibility(txt_pkgDropdownItem);
+        distributorUI.click(txt_pkgDropdownItem);
+    }
 }
