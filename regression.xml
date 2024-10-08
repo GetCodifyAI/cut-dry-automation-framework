@@ -96,6 +96,8 @@
             <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsDeleteTest" />
             <class name="com.cutanddry.qa.tests.customer_specific.VerifyCustomerSpecificBroadcastMessageTest" />
             <class name="com.cutanddry.qa.tests.customer_specific.VerifyCustomerSpecificProductRecommendationsTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyCatalogItemImagesTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyItemDescriptionsTest" />
         </classes>
     </test>
 </suite>

@@ -178,6 +178,7 @@ public class CustomersPage extends LoginPage {
     By DeleteCnfrmOverlay = By.xpath("//h2[contains(text(),'Are you sure you want to remove this user')]");
     By DeleteCnfrmYesBtn = By.xpath("//button[contains(text(),'Yes')]");
     By txt_pricePDP = By.xpath("//span[contains(text(), '$')]");
+    By img_catalog = By.xpath("//img[contains(@class, 'card-img-top')]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -923,5 +924,9 @@ public class CustomersPage extends LoginPage {
     }
     public String getItemPricePDPView(){
         return distributorUI.getText(txt_pricePDP).replace("$","");
+    }
+    public boolean isCatalogImageDisplayed(){
+        distributorUI.waitForVisibility(img_catalog);
+        return distributorUI.isDisplayed(img_catalog);
     }
 }

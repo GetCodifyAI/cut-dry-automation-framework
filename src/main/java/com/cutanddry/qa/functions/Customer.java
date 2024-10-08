@@ -591,5 +591,7 @@ public class Customer {
     public static String getItemPricePDPView(){
         return customersPage.getItemPricePDPView();
     }
-
+    public static boolean isCatalogImageDisplayed(){
+        return customersPage.isCatalogImageDisplayed();
+    }
 }
