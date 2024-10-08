@@ -15,6 +15,8 @@ public class CustomersPage extends LoginPage {
     By tbx_catalogSearch = By.xpath("//input[@placeholder='Search catalog...']");
     String lbl_catalogSearchItemList = "//div[contains(@class, '_3quvq7') and contains(text(),'NAME')]";
     By btn_addToCart = By.xpath("(//div[contains(@class, '_cyg77l')]//button[contains(@class, 'btn-outline-primary') and contains(text(), 'Add to Cart')])[2]");
+    String lbl_catalogSearchItemList = "//div[contains(@class, '_3quvq7') and text()='NAME']";
+    By btn_addToCart = By.xpath("//div[contains(@class, '_3quvq7') and text()='Alfalfa Sprouts']/ancestor::div[contains(@class, 'card')]//button[contains(text(), 'Add to Cart')]");
     By tbx_itemQuantityFirstRow = By.xpath("//tr[1]//td[8]//input");
     By lbl_itemPriceFirstRow = By.xpath("//tr[1]//td[7]/div");
     By lbl_itemPriceSecondRow = By.xpath("//tr[2]//td[7]/span");
@@ -216,6 +218,11 @@ public class CustomersPage extends LoginPage {
     }
     public void clickMinusQryFirstRow(){
         distributorUI.click(btn_decreaseQtyFirstRow);
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void clickMinusQrySecondRow(){
         distributorUI.click(btn_decreaseQtySecondRow);

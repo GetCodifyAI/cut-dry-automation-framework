@@ -8,7 +8,7 @@ public class ConfigSupplierPage extends LoginPage{
     By btn_catalogSettings = By.xpath("//a[contains(text(), 'Catalog Settings')]");
     By btn_saveCatalog = By.xpath("//h5[text()='Catalog']/following::button[contains(text(), 'Save')]");
     By lbl_OGSugTool= By.xpath("//label[contains(text(), 'OG Suggestive Sales Tool')]/following-sibling::div//div[contains(@class, 'react-switch-handle')]");
-    By st_activeOGSugTool = By.xpath("//label[contains(text(), 'OG Suggestive Sales Tool')]/following::div[contains(@style, 'background: rgb(0, 136, 0)')][1]");
+    By st_activeOGSugTool = By.xpath("//label[contains(text(), 'Show only stock available items on OG Suggestive Sales Tool')]/following-sibling::div//input[@type='checkbox' and ../div[contains(@style, 'background: rgb(0, 136, 0)')]]");
 
     public boolean isConfigTextDisplayed(){
         try {
