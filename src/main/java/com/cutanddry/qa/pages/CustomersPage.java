@@ -10,11 +10,11 @@ public class CustomersPage extends LoginPage {
     By btn_decreaseQtyFirstRow = By.xpath("//tr[1]/td[8]/div/div/div/div[1]");
     By btn_increaseQtySecondRow = By.xpath("//tr[2]/td[8]/div/div/div/div[3]");
     By btn_decreaseQtySecondRow = By.xpath("//tr[2]/td[8]/div/div/div/div[1]");
-    By btn_checkout = By.xpath("//button[text()='$']/../button[2]");
+    By btn_checkout = By.xpath("//button[@data-for='cartCheckoutButton' and @data-tip='Click here to checkout']");
     By btn_catalog = By.xpath("//div[text()='Catalog']");
     By tbx_catalogSearch = By.xpath("//input[@placeholder='Search catalog...']");
     String lbl_catalogSearchItemList = "//div[contains(@class, '_3quvq7') and text()='NAME']";
-    By btn_addToCart = By.xpath("(//div[contains(@class, '_cyg77l')]//button[contains(@class, 'btn-outline-primary') and contains(text(), 'Add to Cart')])[2]");
+    By btn_addToCart = By.xpath("//div[contains(@class, '_3quvq7') and text()='Alfalfa Sprouts']/ancestor::div[contains(@class, 'card')]//button[contains(text(), 'Add to Cart')]");
     By tbx_itemQuantityFirstRow = By.xpath("//tr[1]//td[8]//input");
     By lbl_itemPriceFirstRow = By.xpath("//tr[1]//td[7]/div");
     By btn_increaseQtyCatalogSearchValueOne = By.xpath("//input[@type='number' and @value='1']/../following-sibling::div");
