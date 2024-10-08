@@ -15,6 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyItemDescriptionsTest extends TestBase {
     static User user;
     static String customerId = "16579";
+    static String item = "Organic Bananas";
 
     @BeforeMethod
     public void setUp(){
@@ -24,6 +25,8 @@ public class VerifyItemDescriptionsTest extends TestBase {
 
     @Test(groups = "DOT-TC-295")
     public void verifyItemDescriptions() throws InterruptedException {
+        String itemNamePDP;
+        String itemName;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -33,7 +36,12 @@ public class VerifyItemDescriptionsTest extends TestBase {
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
         Customer.goToCatalog();
-        //
+        Customer.searchItemOnCatalog(item);
+        itemName = Customer.getFirstElementFrmSearchResults(item);
+        Customer.clickOnCatalogItem(itemName);
+        softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"navigation error");
+        itemNamePDP = Customer.getItemNamePDPView();
+        softAssert.assertEquals(itemName,itemNamePDP,"name mismatch");
         softAssert.assertAll();
     }
 

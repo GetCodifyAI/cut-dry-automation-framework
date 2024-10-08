@@ -594,4 +594,10 @@ public class Customer {
     public static boolean isCatalogImageDisplayed(){
         return customersPage.isCatalogImageDisplayed();
     }
+    public static void clickOnCatalogItem(String name){
+        customersPage.clickOnCatalogItem(name);
+    }
+    public static String getItemNamePDPView() throws InterruptedException {
+        return customersPage.getItemNamePDPView();
+    }
 }

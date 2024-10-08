@@ -13,7 +13,7 @@ public class CustomersPage extends LoginPage {
     By btn_checkout = By.xpath("//button[text()='$']/../button[2]");
     By btn_catalog = By.xpath("//div[text()='Catalog']");
     By tbx_catalogSearch = By.xpath("//input[@placeholder='Search catalog...']");
-    String lbl_catalogSearchItemList = "//div[contains(@class, '_3quvq7') and text()='NAME']";
+    String lbl_catalogSearchItemList = "//div[contains(@class, '_3quvq7') and contains(text(),'NAME')]";
     By btn_addToCart = By.xpath("(//div[contains(@class, '_cyg77l')]//button[contains(@class, 'btn-outline-primary') and contains(text(), 'Add to Cart')])[2]");
     By tbx_itemQuantityFirstRow = By.xpath("//tr[1]//td[8]//input");
     By lbl_itemPriceFirstRow = By.xpath("//tr[1]//td[7]/div");
@@ -179,6 +179,8 @@ public class CustomersPage extends LoginPage {
     By DeleteCnfrmYesBtn = By.xpath("//button[contains(text(),'Yes')]");
     By txt_pricePDP = By.xpath("//span[contains(text(), '$')]");
     By img_catalog = By.xpath("//img[contains(@class, 'card-img-top')]");
+    String txt_catalogItem ="(//div[contains(text(), 'NAME')])[last()]";
+    By txt_namePDP = By.xpath("//div[contains(@class, 'd-flex align-items-center mont') and contains(@class, '_1wrelxt') and contains(@class, '_1vlidrf')]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -237,9 +239,9 @@ public class CustomersPage extends LoginPage {
     }
     public void typeToSearchOnCatalog(String item) throws InterruptedException {
         distributorUI.clear(tbx_catalogSearch);
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(tbx_catalogSearch,item);
-        distributorUI.waitForCustom(4000);
+        distributorUI.waitForCustom(5000);
     }
     public String getFirstItemNameFrmSearchResults(String name){
         return distributorUI.getText(By.xpath(lbl_catalogSearchItemList.replace("NAME", name)), 0);
@@ -928,5 +930,13 @@ public class CustomersPage extends LoginPage {
     public boolean isCatalogImageDisplayed(){
         distributorUI.waitForVisibility(img_catalog);
         return distributorUI.isDisplayed(img_catalog);
+    }
+    public void clickOnCatalogItem(String name){
+        distributorUI.waitForVisibility(By.xpath(txt_catalogItem.replace("NAME", name)));
+        distributorUI.clickUsingJavaScript(By.xpath(txt_catalogItem.replace("NAME", name)));
+    }
+    public String getItemNamePDPView() throws InterruptedException {
+        distributorUI.waitForCustom(4000);
+        return distributorUI.getText(txt_namePDP);
     }
 }
