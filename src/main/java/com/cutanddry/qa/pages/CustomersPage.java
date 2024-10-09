@@ -14,7 +14,7 @@ public class CustomersPage extends LoginPage {
     By btn_catalog = By.xpath("//div[text()='Catalog']");
     By tbx_catalogSearch = By.xpath("//input[@placeholder='Search catalog...']");
     String lbl_catalogSearchItemList = "//div[contains(@class, '_3quvq7') and contains(text(),'NAME')]";
-    By btn_addToCart = By.xpath("(//div[contains(@class, '_cyg77l')]//button[contains(@class, 'btn-outline-primary') and contains(text(), 'Add to Cart')])[2]");
+    String btn_addToCart = "//div[contains(@class, '_13kb1gk')]//div[text()= 'ITEMNAME']//ancestor::div[contains(@class, '_13kb1gk')]//div[@class='_btf6h0']//button[contains(@class, 'btn-outline-primary')]";
     By tbx_itemQuantityFirstRow = By.xpath("//tr[1]//td[8]//input");
     By lbl_itemPriceFirstRow = By.xpath("//tr[1]//td[7]/div");
     By lbl_itemPriceSecondRow = By.xpath("//tr[2]//td[7]/span");
@@ -258,10 +258,10 @@ public class CustomersPage extends LoginPage {
     public String getFirstItemNameFrmSearchResults(String name){
         return distributorUI.getText(By.xpath(lbl_catalogSearchItemList.replace("NAME", name)), 0);
     }
-    public void clickAddToCartCatalog() throws InterruptedException {
-        distributorUI.waitForClickability(btn_addToCart);
+    public void clickAddToCartCatalog(String ItemName) throws InterruptedException {
+        distributorUI.waitForClickability(By.xpath(btn_addToCart.replace("ITEMNAME",ItemName)));
         distributorUI.waitForCustom(4000);
-        distributorUI.click(btn_addToCart);
+        distributorUI.click(By.xpath(btn_addToCart.replace("ITEMNAME",ItemName)));
         distributorUI.waitForCustom(4000);
         distributorUI.waitForElementEnabledState(btn_checkout,true);
     }

@@ -29,7 +29,7 @@ public class VerifyCashAndCarryAppSimulatingAVSMatchTest extends TestBase {
         softAssert.assertTrue(CashAndCarry.isUserNavigatedToCashAndCarry(),"navigation error");
         Customer.searchItemOnCatalog(itemName);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
-        Customer.addItemToCartCatalog();
+        Customer.addItemToCartCatalog(itemName);
         Customer.checkoutItemsDist();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         CashAndCarry.enterFullName(user.getFull_name());
