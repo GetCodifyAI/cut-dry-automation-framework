@@ -452,7 +452,10 @@ public class CustomersPage extends LoginPage {
     }
     public void closeEditor(){
         distributorUI.waitForClickability(btn_closeEditor);
-        distributorUI.click(btn_closeEditor);
+        // distributorUI.click(btn_closeEditor);
+        distributorUI.clickUsingJavaScript(btn_closeEditor);
+        distributorUI.refreshPage();
+        distributorUI.waitForVisibility(tbx_orderGuideSearch);
     }
     public boolean isOrderGuideCreateSuccessPopupDisplayed(){
         return distributorUI.isDisplayed(txt_orderGuideCreateSuccess);
