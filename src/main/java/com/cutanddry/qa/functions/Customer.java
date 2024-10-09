@@ -434,7 +434,7 @@ public class Customer {
     public static boolean areOutOfStockItemsDisplayed(){
         return customersPage.areOutOfStockItemsDisplayed();
     }
-    public static void clickOnUnitDEach(){
+    public static void clickOnUnitEach(){
         customersPage.clickOnUnitEach();
     }
     public static void clickOnUnitCase(){

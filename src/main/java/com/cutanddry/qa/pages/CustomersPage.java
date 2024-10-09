@@ -730,7 +730,7 @@ public class CustomersPage extends LoginPage {
         }
         return distributorUI.isDisplayed(txt_outOfStock);
     }
-    public void clickOnUnitDEach(){
+    public void clickOnUnitEach(){
         distributorUI.click(txt_unitInDist);
         distributorUI.waitForVisibility(txt_eachDropdownItem);
         distributorUI.click(txt_eachDropdownItem);
