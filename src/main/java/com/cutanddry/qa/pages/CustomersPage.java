@@ -13,8 +13,6 @@ public class CustomersPage extends LoginPage {
     By btn_checkout = By.xpath("//button[text()='$']/../button[2]");
     By btn_catalog = By.xpath("//div[text()='Catalog']");
     By tbx_catalogSearch = By.xpath("//input[@placeholder='Search catalog...']");
-    String lbl_catalogSearchItemList = "//div[contains(@class, '_3quvq7') and contains(text(),'NAME')]";
-    By btn_addToCart = By.xpath("(//div[contains(@class, '_cyg77l')]//button[contains(@class, 'btn-outline-primary') and contains(text(), 'Add to Cart')])[2]");
     String lbl_catalogSearchItemList = "//div[contains(@class, '_3quvq7') and text()='NAME']";
     By btn_addToCart = By.xpath("//div[contains(@class, '_3quvq7') and text()='Alfalfa Sprouts']/ancestor::div[contains(@class, 'card')]//button[contains(text(), 'Add to Cart')]");
     By tbx_itemQuantityFirstRow = By.xpath("//tr[1]//td[8]//input");
@@ -179,6 +177,13 @@ public class CustomersPage extends LoginPage {
     By RemoveUserTxt = By.xpath("//span[contains(text(),'Remove user')]");
     By DeleteCnfrmOverlay = By.xpath("//h2[contains(text(),'Are you sure you want to remove this user')]");
     By DeleteCnfrmYesBtn = By.xpath("//button[contains(text(),'Yes')]");
+    By txt_pkgDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Pkg']");
+    By btn_hide = By.xpath("//button[contains(text(), 'Hide Item')]");
+    By txt_editItem = By.xpath("//div[contains(text(), 'Edit Item')]");
+    By btn_unhide = By.xpath("//button[contains(text(), 'Save and Unhide Item')]");
+    By show_dropdown = By.xpath("//div[text()='Show:']//following-sibling::div//div[@class='cd_themed_select__control css-yk16xz-control']");
+    By txt_activeAndHidden = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Active & Hidden Items']");
+    String btn_editItem = "//div[contains(text(), 'NAME')]/ancestor::div[contains(@class, 'list-group-item')]//div[contains(@class, 'd-flex') and contains(@class, 'justify-content-end')]/*[local-name() = 'svg' and @data-icon='pencil']";
     By txt_pricePDP = By.xpath("//span[contains(text(), '$')]");
     By img_catalog = By.xpath("//img[contains(@class, 'card-img-top')]");
     String txt_catalogItem ="(//div[contains(text(), 'NAME')])[last()]";
@@ -447,7 +452,8 @@ public class CustomersPage extends LoginPage {
     }
     public void closeEditor(){
         distributorUI.waitForClickability(btn_closeEditor);
-        distributorUI.click(btn_closeEditor);
+        // distributorUI.click(btn_closeEditor);
+        distributorUI.clickUsingJavaScript(btn_closeEditor);
     }
     public boolean isOrderGuideCreateSuccessPopupDisplayed(){
         return distributorUI.isDisplayed(txt_orderGuideCreateSuccess);
@@ -732,7 +738,7 @@ public class CustomersPage extends LoginPage {
         }
         return distributorUI.isDisplayed(txt_outOfStock);
     }
-    public void clickOnUnitDEach(){
+    public void clickOnUnitEach(){
         distributorUI.click(txt_unitInDist);
         distributorUI.waitForVisibility(txt_eachDropdownItem);
         distributorUI.click(txt_eachDropdownItem);
@@ -930,6 +936,33 @@ public class CustomersPage extends LoginPage {
     }
     public void ClickYesOnRemovalConfirmationOverlay(){
         distributorUI.click(DeleteCnfrmYesBtn);
+    }
+    public void clickOnUnitPkg(){
+        distributorUI.click(txt_unitInDist);
+        distributorUI.waitForVisibility(txt_pkgDropdownItem);
+        distributorUI.click(txt_pkgDropdownItem);
+    }
+    public void clickOnHideItem(){
+        distributorUI.waitForVisibility(btn_hide);
+        distributorUI.click(btn_hide);
+    }
+    public boolean isEditItemPopupDisplayed(){
+        distributorUI.waitForVisibility(txt_editItem);
+        return distributorUI.isDisplayed(txt_editItem);
+    }
+    public void clickOnSaveAndUnhide(){
+        distributorUI.waitForVisibility(btn_unhide);
+        distributorUI.click(btn_unhide);
+        distributorUI.waitForInvisibility(btn_unhide);
+    }
+    public void selectActiveAndHiddenItems(){
+        distributorUI.waitForVisibility(show_dropdown);
+        distributorUI.click(show_dropdown);
+        distributorUI.click(txt_activeAndHidden);
+    }
+    public void clickOnEditItem(String name){
+        distributorUI.waitForVisibility(By.xpath(btn_editItem.replace("NAME", name)));
+        distributorUI.click(By.xpath(btn_editItem.replace("NAME", name)));
     }
     public String getItemPricePDPView(){
         return distributorUI.getText(txt_pricePDP).replace("$","");

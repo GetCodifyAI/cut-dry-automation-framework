@@ -228,7 +228,7 @@ public class Customer {
     public static void clickOK(){
         customersPage.clickOK();
     }
-    public static void closeEditor(){
+    public static void closeEditor() throws InterruptedException {
         customersPage.closeEditor();
     }
     public static void removeItemFromCatalog(){
@@ -435,7 +435,7 @@ public class Customer {
         return customersPage.areOutOfStockItemsDisplayed();
     }
     public static void clickOnUnitDEach(){
-        customersPage.clickOnUnitDEach();
+        customersPage.clickOnUnitEach();
     }
     public static void clickOnUnitCase(){
         customersPage.clickOnUnitCase();
@@ -587,6 +587,24 @@ public class Customer {
     }
     public static void ClickRemovalConfirmationOverlayYesBtn(){
         customersPage.ClickYesOnRemovalConfirmationOverlay();
+    }
+    public static void clickOnUnitPkg(){
+        customersPage.clickOnUnitPkg();
+    }
+    public static void clickOnHideItem(){
+        customersPage.clickOnHideItem();
+    }
+    public static boolean isEditItemPopupDisplayed(){
+        return customersPage.isEditItemPopupDisplayed();
+    }
+    public static void clickOnSaveAndUnhide(){
+        customersPage.clickOnSaveAndUnhide();
+    }
+    public static void selectActiveAndHiddenItems(){
+        customersPage.selectActiveAndHiddenItems();
+    }
+    public static void editItem(String name){
+        customersPage.clickOnEditItem(name);
     }
     public static String getItemPricePDPView(){
         return customersPage.getItemPricePDPView();
