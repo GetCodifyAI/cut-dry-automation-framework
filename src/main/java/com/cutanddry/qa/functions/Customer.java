@@ -603,4 +603,7 @@ public class Customer {
     public static void editItem(String name){
         customersPage.clickOnEditItem(name);
     }
+    public static boolean isNavigatedToOrderGuide(){
+        return customersPage.isOrdersTxtDisplayed();
+    }
 }

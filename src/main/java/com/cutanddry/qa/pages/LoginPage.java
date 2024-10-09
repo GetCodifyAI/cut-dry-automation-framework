@@ -106,4 +106,14 @@ public class LoginPage extends TestBase {
     public void navigateToConfigSupplier() {
         distributorUI.navigateToURL(Constants.CONFIG_SUPPLIER);
     }
+    public void navigateToRestaurantProd() {
+        distributorUI.navigateToURL(Constants.PROD_REST);
+    }
+    public void navigateToDistributorPortalProd(String name) {
+        distributorUI.navigateToURL(Constants.PROD_LOGIN_AS);
+        distributorUI.waitForElementEnabledState(lbl_loginAsDist,true);
+        distributorUI.sendKeys(lbl_loginAsDist,name);
+        distributorUI.click(By.xpath(txt_distributor.replace("NAME", name)));
+        distributorUI.navigateToURL(distributorUI.getText(btn_loginAsDis, "href"));
+    }
 }

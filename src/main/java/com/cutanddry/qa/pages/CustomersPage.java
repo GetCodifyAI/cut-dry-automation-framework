@@ -183,6 +183,7 @@ public class CustomersPage extends LoginPage {
     By show_dropdown = By.xpath("//div[text()='Show:']//following-sibling::div//div[@class='cd_themed_select__control css-yk16xz-control']");
     By txt_activeAndHidden = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Active & Hidden Items']");
     String btn_editItem = "//div[contains(text(), 'NAME')]/ancestor::div[contains(@class, 'list-group-item')]//div[contains(@class, 'd-flex') and contains(@class, 'justify-content-end')]/*[local-name() = 'svg' and @data-icon='pencil']";
+    By lbl_orders = By.xpath("//li[contains(text(),'Orders')]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -952,5 +953,8 @@ public class CustomersPage extends LoginPage {
     public void clickOnEditItem(String name){
         distributorUI.waitForVisibility(By.xpath(btn_editItem.replace("NAME", name)));
         distributorUI.click(By.xpath(btn_editItem.replace("NAME", name)));
+    }
+    public boolean isOrdersTxtDisplayed(){
+        return distributorUI.isDisplayed(lbl_orders);
     }
 }
