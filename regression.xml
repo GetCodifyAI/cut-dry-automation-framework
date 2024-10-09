@@ -99,6 +99,8 @@
             <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderItemUnitsTest" />
             <class name="com.cutanddry.qa.tests.archive.VerifyHidingAnItemFromTheOrderGuideTest" />
             <class name="com.cutanddry.qa.tests.archive.VerifySavingAndUnhideItemFromOrderGuideTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyCatalogItemImagesTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyItemDescriptionsTest" />
         </classes>
     </test>
 </suite>

@@ -86,6 +86,9 @@ public class Customer {
     public static double getItemPriceFirstRow(){
         return customersPage.getItemPriceFirstRow();
     }
+    public static String getItemPriceSecondRow(){
+        return customersPage.getItemPriceSecondRow();
+    }
     public static double getItemPriceOnCheckoutButton() throws InterruptedException {
         return customersPage.getItemPriceOnCheckoutButton();
     }
@@ -431,7 +434,7 @@ public class Customer {
     public static boolean areOutOfStockItemsDisplayed(){
         return customersPage.areOutOfStockItemsDisplayed();
     }
-    public static void clickOnUnitDEach(){
+    public static void clickOnUnitEach(){
         customersPage.clickOnUnitEach();
     }
     public static void clickOnUnitCase(){
@@ -602,5 +605,17 @@ public class Customer {
     }
     public static void editItem(String name){
         customersPage.clickOnEditItem(name);
+    }
+    public static String getItemPricePDPView(){
+        return customersPage.getItemPricePDPView();
+    }
+    public static boolean isCatalogImageDisplayed(){
+        return customersPage.isCatalogImageDisplayed();
+    }
+    public static void clickOnCatalogItem(String name){
+        customersPage.clickOnCatalogItem(name);
+    }
+    public static String getItemNamePDPView() throws InterruptedException {
+        return customersPage.getItemNamePDPView();
     }
 }
