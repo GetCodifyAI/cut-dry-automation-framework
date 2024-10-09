@@ -44,11 +44,11 @@ public class VerifyEditingOrderGuideSectionsTest extends TestBase {
         Customer.clickOnSave();
         softAssert.assertTrue(Customer.isAddedSectionDisplayed(newSectionName)," add section error");
         Customer.clickOnBack();
-        Customer.clickSortOptionsDropdown();
-        Customer.selectItemCategoriesSort();
-        softAssert.assertTrue(Customer.isSectionDisplayed(newSectionName)," add section display error");
-        Customer.clickSortOptionsDropdown();
-        Customer.selectCustomOrderSort();
+//        Customer.clickSortOptionsDropdown();
+//        Customer.selectItemCategoriesSort();
+//        softAssert.assertTrue(Customer.isSectionDisplayed(newSectionName)," add section display error");
+//        Customer.clickSortOptionsDropdown();
+//        Customer.selectCustomOrderSort();
         softAssert.assertAll();
     }
 

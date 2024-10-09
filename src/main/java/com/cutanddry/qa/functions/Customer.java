@@ -77,8 +77,8 @@ public class Customer {
     public static String getFirstElementFrmSearchResults(String name){
        return customersPage.getFirstItemNameFrmSearchResults(name);
     }
-    public static void addItemToCartCatalog() throws InterruptedException {
-        customersPage.clickAddToCartCatalog();
+    public static void addItemToCartCatalog(String ItemName) throws InterruptedException {
+        customersPage.clickAddToCartCatalog(ItemName);
     }
     public static String getItemQtyFirstRow(){
         return customersPage.getItemQtyFirstRow();
