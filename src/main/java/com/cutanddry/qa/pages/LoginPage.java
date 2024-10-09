@@ -107,7 +107,7 @@ public class LoginPage extends TestBase {
         distributorUI.navigateToURL(Constants.CONFIG_SUPPLIER);
     }
     public void navigateToRestaurantProd() {
-        distributorUI.navigateToURL(Constants.PROD_REST);
+        distributorUI.navigateToURL(Constants.PROD_RESTAURANT);
     }
     public void navigateToDistributorPortalProd(String name) {
         distributorUI.navigateToURL(Constants.PROD_LOGIN_AS);

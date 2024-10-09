@@ -15,8 +15,7 @@ public class Constants {
     public static String SLACK_WEBHOOK = System.getenv("SLACK_WEBHOOK");
     public static String CONFIG_SUPPLIER = "https://app-uat.staging.cutanddry.com/internaltools/configure-supplier";
 
-    public static String PROD_DIST = "https://supplier.cutanddry.com/";
-    public static String PROD_REST = "https://app.cutanddry.com/";
+    public static String PROD_RESTAURANT = "https://app.cutanddry.com/";
     public static String PROD_LOGIN_AS = "https://internal.cutanddry.com/internaltools/loginas";
 
     //  https://hooks.slack.com/services/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 //group - test-alerts

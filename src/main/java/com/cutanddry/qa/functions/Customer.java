@@ -606,4 +606,7 @@ public class Customer {
     public static boolean isNavigatedToOrderGuide(){
         return customersPage.isOrdersTxtDisplayed();
     }
+    public static boolean isNavigatedToCatalog(){
+        return customersPage.isAllItemsTxtDisplayed();
+    }
 }
