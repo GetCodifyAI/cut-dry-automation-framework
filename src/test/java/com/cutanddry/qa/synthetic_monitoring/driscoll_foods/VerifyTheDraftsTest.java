@@ -3,6 +3,7 @@ package com.cutanddry.qa.synthetic_monitoring.driscoll_foods;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.Dashboard;
+import com.cutanddry.qa.functions.Draft;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.functions.Orders;
 import com.cutanddry.qa.utils.JsonUtil;
@@ -12,7 +13,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheOrdersTest extends TestBase {
+public class VerifyTheDraftsTest extends TestBase {
     static User user;
     static String DP = "Driscoll Foods";
 
@@ -23,13 +24,13 @@ public class VerifyTheOrdersTest extends TestBase {
     }
 
     @Test
-    public void VerifyTheOrders() throws InterruptedException {
+    public void VerifyTheDrafts() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurantProd(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortalProd(DP);
-        Dashboard.navigateToOrders();
-        softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"navigation error");
+        Dashboard.navigateToDrafts();
+        softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
         softAssert.assertAll();
     }
 
