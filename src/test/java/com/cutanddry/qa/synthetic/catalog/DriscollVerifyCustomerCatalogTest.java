@@ -23,7 +23,7 @@ public class DriscollVerifyCustomerCatalogTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-303")
+    @Test
     public void DriscollVerifyCustomerCatalog() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurantProd(user.getEmailOrMobile(), user.getPassword());
