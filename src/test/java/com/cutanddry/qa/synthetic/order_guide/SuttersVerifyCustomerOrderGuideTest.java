@@ -23,7 +23,7 @@ public class SuttersVerifyCustomerOrderGuideTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-302")
+    @Test
     public void SuttersVerifyCustomerOrderGuide() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurantProd(user.getEmailOrMobile(), user.getPassword());
