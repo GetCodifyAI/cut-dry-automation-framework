@@ -627,4 +627,7 @@ public class Customer {
     public static String getItemDetailsFirstRow() throws InterruptedException {
         return customersPage.getItemDetailsFirstRow();
     }
+    public static int getCountZeroPriceItemsDisplayed() throws InterruptedException {
+        return customersPage.getCountZeroPriceItemsDisplayed();
+    }
 }

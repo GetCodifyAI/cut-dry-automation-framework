@@ -191,6 +191,7 @@ public class CustomersPage extends LoginPage {
     By txt_namePDP = By.xpath("//div[contains(@class, 'd-flex align-items-center mont') and contains(@class, '_1wrelxt') and contains(@class, '_1vlidrf')]");
     By lbl_orders = By.xpath("//li[contains(text(),'Orders')]");
     By txt_allItems = By.xpath("//div[text()='All Items']");
+    By txt_priceZero = By.xpath("//tbody//span[contains(text(), '$0.00')]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -994,5 +995,13 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForElementEnabledState(lbl_itemDetails,true);
         distributorUI.waitForCustom(3000);
         return distributorUI.getText(lbl_itemDetails);
+    }
+    public int getCountZeroPriceItemsDisplayed(){
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            return 1;
+        }
+        return distributorUI.countElements(txt_priceZero);
     }
 }

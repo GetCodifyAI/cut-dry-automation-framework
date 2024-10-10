@@ -35,6 +35,7 @@ public class VerifyCustomerOrderGuideTest extends TestBase {
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
         softAssert.assertTrue(Customer.isNavigatedToOrderGuide(),"order guide navigation error");
+        softAssert.assertEquals(Customer.getCountZeroPriceItemsDisplayed(),0);
         softAssert.assertAll();
     }
 
