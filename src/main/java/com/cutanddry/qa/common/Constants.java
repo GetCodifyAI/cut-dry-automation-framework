@@ -6,7 +6,7 @@ public class Constants {
     public static boolean CREATE_CYCLE = Boolean.parseBoolean(System.getProperty("create.cycle","false"));
     public static String BROWSER_NAME = System.getProperty("test.browser", "chrome");
     public static boolean RUN_HEADLESS = Boolean.parseBoolean(System.getProperty("run.headless", "false"));
-    public static String TEST_ENV = System.getProperty("test.env", "uat");
+    public static String TEST_ENV = System.getProperty("test.env", "prod");
     public static String MAIN_URL = baseDomain();
     public static String SEC_URL = secDomain();
     public static String LOGIN_AS = "https://app-uat.staging.cutanddry.com/internaltools/loginas";
@@ -15,7 +15,6 @@ public class Constants {
     public static String SLACK_WEBHOOK = System.getenv("SLACK_WEBHOOK");
     public static String CONFIG_SUPPLIER = "https://app-uat.staging.cutanddry.com/internaltools/configure-supplier";
 
-    public static String PROD_RESTAURANT = "https://app.cutanddry.com/";
     public static String PROD_LOGIN_AS = "https://internal.cutanddry.com/internaltools/loginas";
 
     //  https://hooks.slack.com/services/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 //group - test-alerts
