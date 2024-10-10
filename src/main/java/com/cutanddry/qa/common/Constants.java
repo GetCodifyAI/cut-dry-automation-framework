@@ -6,7 +6,7 @@ public class Constants {
     public static boolean CREATE_CYCLE = Boolean.parseBoolean(System.getProperty("create.cycle","false"));
     public static String BROWSER_NAME = System.getProperty("test.browser", "chrome");
     public static boolean RUN_HEADLESS = Boolean.parseBoolean(System.getProperty("run.headless", "false"));
-    public static String TEST_ENV = System.getProperty("test.env", "uat");
+    public static String TEST_ENV = System.getProperty("test.env", "prod");
     public static String MAIN_URL = baseDomain();
     public static String SEC_URL = secDomain();
     public static String LOGIN_AS = "https://app-uat.staging.cutanddry.com/internaltools/loginas";

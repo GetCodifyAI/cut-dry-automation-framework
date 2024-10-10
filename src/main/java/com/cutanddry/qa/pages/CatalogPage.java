@@ -19,6 +19,9 @@ public class CatalogPage extends LoginPage{
     By ConagaraBrandPage= By.xpath("//div[contains(text(),'Conagra Foodservice ') and @class='mt-5 mb-1 _mojmdw']");
     By OtherBrandText = By.xpath("//h2[contains(text(),'Andy Capp’s®')]");
     By ShowCaseBtn = By.xpath("//a[contains(@data-tip,'Cut+Dry Product Showcase')]");
+    By btn_previewCat = By.xpath("//button[contains(text(), 'Preview Catalog')]");
+    By txt_previewCat = By.xpath("//div[text()='Catalog Preview']");
+    By txt_firstItemDetails = By.xpath("//tbody/tr[1]");
 
     public boolean isCatalogTextDisplayed() {
         try {
@@ -82,10 +85,20 @@ public class CatalogPage extends LoginPage{
          distributorUI.waitForVisibility(OtherBrandText);
          return distributorUI.isDisplayed(OtherBrandText);
     }
-
     public void ClickOnShowCaseBtn(){
         distributorUI.click(ShowCaseBtn);
     }
 
+    public void clickOnPreviewCatalog() {
+        distributorUI.click(txt_previewCat);
+    }
+    public boolean isNavigatedToPreviewCatalog() {
+        return distributorUI.isDisplayed(btn_previewCat);
+    }
+    public String getItemDetailsFirstRow() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(txt_firstItemDetails,true);
+        distributorUI.waitForCustom(3000);
+        return distributorUI.getText(txt_firstItemDetails);
+    }
 }
 
