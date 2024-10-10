@@ -1,4 +1,4 @@
-package com.cutanddry.qa.synthetic.order_guide;
+package com.cutanddry.qa.synthetic_monitoring.driscoll_foods;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
@@ -12,10 +12,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class DriscollVerifyCustomerOrderGuideTest extends TestBase {
+public class VerifyCustomerSearchTest extends TestBase {
     static User user;
     static String DP = "Driscoll Foods";
     static String customerId = "682653";
+    static String itemCode = "684356";
 
     @BeforeMethod
     public void setUp(){
@@ -24,7 +25,7 @@ public class DriscollVerifyCustomerOrderGuideTest extends TestBase {
     }
 
     @Test
-    public void DriscollVerifyCustomerOrderGuide() throws InterruptedException {
+    public void VerifyCustomerSearch() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurantProd(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
@@ -35,6 +36,8 @@ public class DriscollVerifyCustomerOrderGuideTest extends TestBase {
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
         softAssert.assertTrue(Customer.isNavigatedToOrderGuide(),"order guide navigation error");
+        Customer.searchItemOnOrderGuide(itemCode);
+        softAssert.assertTrue(Customer.getItemDetailsFirstRow().contains(itemCode),"item mismatch");
         softAssert.assertAll();
     }
 

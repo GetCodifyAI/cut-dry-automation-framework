@@ -6,6 +6,7 @@ public class CustomersPage extends LoginPage {
     By tbx_searchCustomers = By.xpath("//input[@placeholder='Search Customers']");
     String btnOrderGuide = "//td[text()='CODE']/../td[8]//button";
     By lbl_itemNameList = By.xpath("//td//span/div[@data-tip='View Product Details']");
+    By lbl_itemDetails = By.xpath("//tbody/tr[2]");
     By btn_increaseQtyFirstRow = By.xpath("//tr[1]/td[8]/div/div/div/div[3]");
     By btn_decreaseQtyFirstRow = By.xpath("//tr[1]/td[8]/div/div/div/div[1]");
     By btn_increaseQtySecondRow = By.xpath("//tr[2]/td[8]/div/div/div/div[3]");
@@ -988,5 +989,10 @@ public class CustomersPage extends LoginPage {
     }
     public boolean isAllItemsTxtDisplayed(){
         return distributorUI.isDisplayed(txt_allItems);
+    }
+    public String getItemDetailsFirstRow() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(lbl_itemDetails,true);
+        distributorUI.waitForCustom(3000);
+        return distributorUI.getText(lbl_itemDetails);
     }
 }

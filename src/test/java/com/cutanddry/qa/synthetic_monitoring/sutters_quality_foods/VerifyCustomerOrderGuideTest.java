@@ -1,4 +1,4 @@
-package com.cutanddry.qa.synthetic.order_guide;
+package com.cutanddry.qa.synthetic_monitoring.sutters_quality_foods;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
@@ -12,10 +12,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class SandWWholesaleVerifyCustomerOrderGuideTest extends TestBase {
+public class VerifyCustomerOrderGuideTest extends TestBase {
     static User user;
-    static String DP = "S&W Wholesale";
-    static String customerId = "5694";
+    static String DP = "Sutters Quality Foods";
+    static String customerId = "3322";
 
     @BeforeMethod
     public void setUp(){
@@ -24,7 +24,7 @@ public class SandWWholesaleVerifyCustomerOrderGuideTest extends TestBase {
     }
 
     @Test
-    public void SandWWholesaleVerifyCustomerOrderGuide() throws InterruptedException {
+    public void VerifyCustomerOrderGuide() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurantProd(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");

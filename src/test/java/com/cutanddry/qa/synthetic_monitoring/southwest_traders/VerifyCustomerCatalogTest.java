@@ -1,4 +1,4 @@
-package com.cutanddry.qa.synthetic.order_guide;
+package com.cutanddry.qa.synthetic_monitoring.southwest_traders;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
@@ -12,10 +12,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class CooksCompanyVerifyCustomerOrderGuideTest extends TestBase {
+public class VerifyCustomerCatalogTest extends TestBase {
     static User user;
-    static String DP = "Cooks Company Produce";
-    static String customerId = "BUBQ";
+    static String DP = "Southwest Traders";
+    static String customerId = "113956";
 
     @BeforeMethod
     public void setUp(){
@@ -24,7 +24,7 @@ public class CooksCompanyVerifyCustomerOrderGuideTest extends TestBase {
     }
 
     @Test
-    public void CooksCompanyVerifyCustomerOrderGuide() throws InterruptedException {
+    public void VerifyCustomerCatalog() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurantProd(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
@@ -35,6 +35,8 @@ public class CooksCompanyVerifyCustomerOrderGuideTest extends TestBase {
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
         softAssert.assertTrue(Customer.isNavigatedToOrderGuide(),"order guide navigation error");
+        Customer.goToCatalog();
+        softAssert.assertTrue(Customer.isNavigatedToCatalog(),"catalog navigation error");
         softAssert.assertAll();
     }
 

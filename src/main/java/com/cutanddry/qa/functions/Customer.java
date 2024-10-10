@@ -624,4 +624,7 @@ public class Customer {
     public static boolean isNavigatedToCatalog(){
         return customersPage.isAllItemsTxtDisplayed();
     }
+    public static String getItemDetailsFirstRow() throws InterruptedException {
+        return customersPage.getItemDetailsFirstRow();
+    }
 }
