@@ -59,4 +59,14 @@ public class Login {
     public static void navigateToConfigSupplier(){
         loginPage.navigateToConfigSupplier();
     }
+    public static void navigateToDistributorPortalProd(String name) {
+        loginPage.navigateToDistributorPortalProd(name);
+    }
+    public static void logIntoRestaurantProd(String emailOrMobile, String password){
+        loginPage.navigateToRestaurantProd();
+        loginPage.typeEmailOrMobile(emailOrMobile);
+        loginPage.typePassword(password);
+        loginPage.clickSubmit();
+    }
+
 }

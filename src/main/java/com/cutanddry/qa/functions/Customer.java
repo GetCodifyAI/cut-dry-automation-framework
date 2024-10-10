@@ -618,4 +618,10 @@ public class Customer {
     public static String getItemNamePDPView() throws InterruptedException {
         return customersPage.getItemNamePDPView();
     }
+    public static boolean isNavigatedToOrderGuide(){
+        return customersPage.isOrdersTxtDisplayed();
+    }
+    public static boolean isNavigatedToCatalog(){
+        return customersPage.isAllItemsTxtDisplayed();
+    }
 }

@@ -188,6 +188,8 @@ public class CustomersPage extends LoginPage {
     By img_catalog = By.xpath("//img[contains(@class, 'card-img-top')]");
     String txt_catalogItem ="(//div[contains(text(), 'NAME')])[last()]";
     By txt_namePDP = By.xpath("//div[contains(@class, 'd-flex align-items-center mont') and contains(@class, '_1wrelxt') and contains(@class, '_1vlidrf')]");
+    By lbl_orders = By.xpath("//li[contains(text(),'Orders')]");
+    By txt_allItems = By.xpath("//div[text()='All Items']");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -980,5 +982,11 @@ public class CustomersPage extends LoginPage {
     public String getItemNamePDPView() throws InterruptedException {
         distributorUI.waitForCustom(4000);
         return distributorUI.getText(txt_namePDP);
+    }
+    public boolean isOrdersTxtDisplayed(){
+        return distributorUI.isDisplayed(lbl_orders);
+    }
+    public boolean isAllItemsTxtDisplayed(){
+        return distributorUI.isDisplayed(txt_allItems);
     }
 }

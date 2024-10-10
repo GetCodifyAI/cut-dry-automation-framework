@@ -14,6 +14,9 @@ public class Constants {
     public static String BASE_URI = "https://supplier-uat.staging.cutanddry.com/GraphQLController";
     public static String SLACK_WEBHOOK = System.getenv("SLACK_WEBHOOK");
     public static String CONFIG_SUPPLIER = "https://app-uat.staging.cutanddry.com/internaltools/configure-supplier";
+
+    public static String PROD_LOGIN_AS = "https://internal.cutanddry.com/internaltools/loginas";
+
     //  https://hooks.slack.com/services/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 //group - test-alerts
     //  https://hooks.slack.com/services/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 //group - ui-automation-tests
 
@@ -29,10 +32,9 @@ public class Constants {
     private static String secDomain() {
         if (TEST_ENV.equalsIgnoreCase("UAT")){
             SEC_URL = "https://app-"+TEST_ENV+".staging.cutanddry.com/";
-        } else if (TEST_ENV.equalsIgnoreCase("")){
-            //implement for other env here
+        } else if (TEST_ENV.equalsIgnoreCase("PROD")){
+            SEC_URL = "https://app.cutanddry.com/";
         }
         return SEC_URL;
     }
-
 }
