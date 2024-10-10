@@ -45,37 +45,4 @@ public class VerifyCustomerCatalogTest extends TestBase {
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }
-
-    public static class DriscollVerifyCustomerOrderGuideTest extends TestBase {
-        static User user;
-        static String DP = "Driscoll Foods";
-        static String customerId = "682653";
-
-        @BeforeMethod
-        public void setUp(){
-            initialization();
-            user = JsonUtil.readUserLogin();
-        }
-
-        @Test
-        public void DriscollVerifyCustomerOrderGuide() throws InterruptedException {
-            SoftAssert softAssert = new SoftAssert();
-            Login.logIntoRestaurantProd(user.getEmailOrMobile(), user.getPassword());
-            softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-            Login.navigateToDistributorPortalProd(DP);
-            Dashboard.navigateToCustomers();
-            softAssert.assertTrue(Customer.isNavigatedToCustomerPage(),"navigation error");
-            Customer.searchCustomerByCode(customerId);
-            softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
-            Customer.clickOnOrderGuide(customerId);
-            softAssert.assertTrue(Customer.isNavigatedToOrderGuide(),"order guide navigation error");
-            softAssert.assertAll();
-        }
-
-        @AfterMethod
-        public void tearDown(ITestResult result) {
-            takeScreenshotOnFailure(result);
-            closeAllBrowsers();
-        }
-    }
 }
