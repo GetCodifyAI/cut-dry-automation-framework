@@ -40,6 +40,9 @@ public class Dashboard {
     public static void navigateToUsersWhiteLabel() {
         dashboardPage.clickOnUsers();
     }
+    public static void navigateToOrders(){
+        dashboardPage.clickOnOrders();
+    }
     public static void navigateToOrderDesk(){
         dashboardPage.clickOnOrderDesk();
     }

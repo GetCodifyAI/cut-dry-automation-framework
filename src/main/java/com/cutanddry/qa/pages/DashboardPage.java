@@ -16,6 +16,7 @@ public class DashboardPage extends LoginPage{
     By btn_users = By.xpath("//a[@data-tip='Team']");
     By txt_home = By.xpath("//li[contains(text(),'Home')]");
     By btn_orderDesk = By.xpath("//a[contains(text(),'Order Desk')]");
+    By btn_viewOrders = By.xpath("//a[contains(text(),'Orders')]");
     By txt_all = By.xpath("//div[text()='All']");
     By txt_lastDays = By.xpath("(//div[text()='Last 30 Days'])[1]");
     By lbl_salespersonDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[1]");
@@ -83,6 +84,9 @@ public class DashboardPage extends LoginPage{
     public void clickOnUsers(){
         distributorUI.waitForVisibility(btn_users);
         distributorUI.click(btn_users);
+    }
+    public void clickOnOrders(){
+        distributorUI.click(btn_viewOrders);
     }
     public void clickOnOrderDesk(){
         distributorUI.click(btn_orderDesk);
