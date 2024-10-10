@@ -13,10 +13,11 @@ public class CustomersPage extends LoginPage {
     By btn_checkout = By.xpath("//button[text()='$']/../button[2]");
     By btn_catalog = By.xpath("//div[text()='Catalog']");
     By tbx_catalogSearch = By.xpath("//input[@placeholder='Search catalog...']");
-    String lbl_catalogSearchItemList = "//div[contains(@class, '_3quvq7') and text()='NAME']";
-    By btn_addToCart = By.xpath("//div[contains(@class, '_3quvq7') and text()='Alfalfa Sprouts']/ancestor::div[contains(@class, 'card')]//button[contains(text(), 'Add to Cart')]");
+    String lbl_catalogSearchItemList = "//div[contains(@class, '_3quvq7') and contains(text(),'NAME')]";
+    String btn_addToCart = "//div[contains(@class, '_13kb1gk')]//div[text()= 'ITEMNAME']//ancestor::div[contains(@class, '_13kb1gk')]//div[@class='_btf6h0']//button[contains(@class, 'btn-outline-primary')]";
     By tbx_itemQuantityFirstRow = By.xpath("//tr[1]//td[8]//input");
     By lbl_itemPriceFirstRow = By.xpath("//tr[1]//td[7]/div");
+    By lbl_itemPriceSecondRow = By.xpath("//tr[2]//td[7]/span");
     By btn_increaseQtyCatalogSearchValueOne = By.xpath("//input[@type='number' and @value='1']/../following-sibling::div");
     By btn_increaseQtyCatalogSearchValueTwo = By.xpath("//input[@type='number' and @value='2']/../following-sibling::div");
     By btn_decreaseQtyCatalogSearchValueOne = By.xpath("//input[@type='number' and @value='1']/../preceding-sibling::div");
@@ -183,6 +184,10 @@ public class CustomersPage extends LoginPage {
     By show_dropdown = By.xpath("//div[text()='Show:']//following-sibling::div//div[@class='cd_themed_select__control css-yk16xz-control']");
     By txt_activeAndHidden = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Active & Hidden Items']");
     String btn_editItem = "//div[contains(text(), 'NAME')]/ancestor::div[contains(@class, 'list-group-item')]//div[contains(@class, 'd-flex') and contains(@class, 'justify-content-end')]/*[local-name() = 'svg' and @data-icon='pencil']";
+    By txt_pricePDP = By.xpath("//span[contains(text(), '$')]");
+    By img_catalog = By.xpath("//img[contains(@class, 'card-img-top')]");
+    String txt_catalogItem ="(//div[contains(text(), 'NAME')])[last()]";
+    By txt_namePDP = By.xpath("//div[contains(@class, 'd-flex align-items-center mont') and contains(@class, '_1wrelxt') and contains(@class, '_1vlidrf')]");
     By lbl_orders = By.xpath("//li[contains(text(),'Orders')]");
     By txt_allItems = By.xpath("//div[text()='All Items']");
 
@@ -230,7 +235,8 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_decreaseQtySecondRow);
     }
     public String getItemNameSecondRow(){
-       return distributorUI.getText(lbl_itemNameList,1);
+        distributorUI.waitForElementEnabledState(lbl_itemNameList,true);
+       return distributorUI.getText(lbl_itemNameList,1).toLowerCase();
     }
     public void clickPlusQrySecondRow(){
         distributorUI.click(btn_increaseQtySecondRow);
@@ -247,17 +253,17 @@ public class CustomersPage extends LoginPage {
     }
     public void typeToSearchOnCatalog(String item) throws InterruptedException {
         distributorUI.clear(tbx_catalogSearch);
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(tbx_catalogSearch,item);
-        distributorUI.waitForCustom(4000);
+        distributorUI.waitForCustom(5000);
     }
     public String getFirstItemNameFrmSearchResults(String name){
         return distributorUI.getText(By.xpath(lbl_catalogSearchItemList.replace("NAME", name)), 0);
     }
-    public void clickAddToCartCatalog() throws InterruptedException {
-        distributorUI.waitForClickability(btn_addToCart);
+    public void clickAddToCartCatalog(String ItemName) throws InterruptedException {
+        distributorUI.waitForClickability(By.xpath(btn_addToCart.replace("ITEMNAME",ItemName)));
         distributorUI.waitForCustom(4000);
-        distributorUI.click(btn_addToCart);
+        distributorUI.click(By.xpath(btn_addToCart.replace("ITEMNAME",ItemName)));
         distributorUI.waitForCustom(4000);
         distributorUI.waitForElementEnabledState(btn_checkout,true);
     }
@@ -266,6 +272,10 @@ public class CustomersPage extends LoginPage {
     }
     public Double getItemPriceFirstRow(){
         return Double.valueOf(distributorUI.getText(lbl_itemPriceFirstRow).replace("$",""));
+    }
+    public String getItemPriceSecondRow(){
+        distributorUI.waitForVisibility(lbl_itemPriceSecondRow);
+        return distributorUI.getText(lbl_itemPriceSecondRow).replace("$","");
     }
     public Double getItemPriceOnCheckoutButton() throws InterruptedException {
         distributorUI.waitForVisibility(btn_checkout);
@@ -446,6 +456,8 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForClickability(btn_closeEditor);
         // distributorUI.click(btn_closeEditor);
         distributorUI.clickUsingJavaScript(btn_closeEditor);
+        distributorUI.refreshPage();
+        distributorUI.waitForVisibility(tbx_orderGuideSearch);
     }
     public boolean isOrderGuideCreateSuccessPopupDisplayed(){
         return distributorUI.isDisplayed(txt_orderGuideCreateSuccess);
@@ -688,7 +700,8 @@ public class CustomersPage extends LoginPage {
         return distributorUI.isDisplayed(txt_replacement);
     }
     public void clickOnItem(String code){
-        distributorUI.click(By.xpath(txt_item.replace("CODE", code)));
+        distributorUI.waitForVisibility(By.xpath(txt_item.replace("CODE", code)));
+        distributorUI.clickUsingJavaScript(By.xpath(txt_item.replace("CODE", code)));
     }
     public void clickPlusQryFirstRowInCheckout(){
         distributorUI.click(btn_increaseQtyFirstRowInCheckout);
@@ -951,9 +964,24 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(show_dropdown);
         distributorUI.click(txt_activeAndHidden);
     }
-    public void clickOnEditItem(String name){
+    public void clickOnEditItem(String name) {
         distributorUI.waitForVisibility(By.xpath(btn_editItem.replace("NAME", name)));
         distributorUI.click(By.xpath(btn_editItem.replace("NAME", name)));
+    }
+    public String getItemPricePDPView(){
+        return distributorUI.getText(txt_pricePDP).replace("$","");
+    }
+    public boolean isCatalogImageDisplayed(){
+        distributorUI.waitForVisibility(img_catalog);
+        return distributorUI.isDisplayed(img_catalog);
+    }
+    public void clickOnCatalogItem(String name){
+        distributorUI.waitForVisibility(By.xpath(txt_catalogItem.replace("NAME", name)));
+        distributorUI.clickUsingJavaScript(By.xpath(txt_catalogItem.replace("NAME", name)));
+    }
+    public String getItemNamePDPView() throws InterruptedException {
+        distributorUI.waitForCustom(4000);
+        return distributorUI.getText(txt_namePDP);
     }
     public boolean isOrdersTxtDisplayed(){
         return distributorUI.isDisplayed(lbl_orders);

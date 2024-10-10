@@ -12,10 +12,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class EditProductQtyFrmCatalogTest extends TestBase {
+public class VerifyItemPriceTest extends TestBase {
     static User user;
     static String customerId = "16579";
-    static String itemName = "Artichoke";
 
     @BeforeMethod
     public void setUp(){
@@ -23,8 +22,10 @@ public class EditProductQtyFrmCatalogTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-32")
-    public void editProductQtyFrmCatalog() throws InterruptedException {
+    @Test(groups = "DOT-TC-296")
+    public void editProductQtyFrmOrderGuide() throws InterruptedException {
+        String itemName;
+        String itemPrice;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -33,14 +34,12 @@ public class EditProductQtyFrmCatalogTest extends TestBase {
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
-        Customer.goToCatalog();
-        Customer.searchItemOnCatalog(itemName);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
-        Customer.addItemToCartCatalog(itemName);
-        Customer.increaseQtyUpToThreeCatalogSearch();
-        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),Customer.getItemPriceCatalogSearch()*3, "price error-after increase");
-        Customer.decreaseQtyByThreeCatalogSearch();
-        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),0.0, "price error-after decrease");
+        itemName = Customer.getItemNameSecondRow();
+        Customer.clickOnItem(itemName);
+        softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"navigation error");
+        itemPrice = Customer.getItemPricePDPView();
+        Customer.clickOnBack();
+        softAssert.assertEquals(Customer.getItemPriceSecondRow(),itemPrice,"price error");
         softAssert.assertAll();
     }
 

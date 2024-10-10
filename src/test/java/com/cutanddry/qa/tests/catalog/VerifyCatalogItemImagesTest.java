@@ -1,4 +1,4 @@
-package com.cutanddry.qa.tests.order_guide;
+package com.cutanddry.qa.tests.catalog;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
@@ -12,10 +12,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class EditProductQtyFrmCatalogTest extends TestBase {
+public class VerifyCatalogItemImagesTest extends TestBase {
     static User user;
     static String customerId = "16579";
-    static String itemName = "Artichoke";
 
     @BeforeMethod
     public void setUp(){
@@ -23,8 +22,8 @@ public class EditProductQtyFrmCatalogTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-32")
-    public void editProductQtyFrmCatalog() throws InterruptedException {
+    @Test(groups = "DOT-TC-294")
+    public void verifyCatalogItemImages() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -34,13 +33,7 @@ public class EditProductQtyFrmCatalogTest extends TestBase {
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
         Customer.goToCatalog();
-        Customer.searchItemOnCatalog(itemName);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
-        Customer.addItemToCartCatalog(itemName);
-        Customer.increaseQtyUpToThreeCatalogSearch();
-        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),Customer.getItemPriceCatalogSearch()*3, "price error-after increase");
-        Customer.decreaseQtyByThreeCatalogSearch();
-        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),0.0, "price error-after decrease");
+        softAssert.assertTrue(Customer.isCatalogImageDisplayed(),"display error");
         softAssert.assertAll();
     }
 

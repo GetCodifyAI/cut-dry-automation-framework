@@ -77,14 +77,17 @@ public class Customer {
     public static String getFirstElementFrmSearchResults(String name){
        return customersPage.getFirstItemNameFrmSearchResults(name);
     }
-    public static void addItemToCartCatalog() throws InterruptedException {
-        customersPage.clickAddToCartCatalog();
+    public static void addItemToCartCatalog(String ItemName) throws InterruptedException {
+        customersPage.clickAddToCartCatalog(ItemName);
     }
     public static String getItemQtyFirstRow(){
         return customersPage.getItemQtyFirstRow();
     }
     public static double getItemPriceFirstRow(){
         return customersPage.getItemPriceFirstRow();
+    }
+    public static String getItemPriceSecondRow(){
+        return customersPage.getItemPriceSecondRow();
     }
     public static double getItemPriceOnCheckoutButton() throws InterruptedException {
         return customersPage.getItemPriceOnCheckoutButton();
@@ -431,7 +434,7 @@ public class Customer {
     public static boolean areOutOfStockItemsDisplayed(){
         return customersPage.areOutOfStockItemsDisplayed();
     }
-    public static void clickOnUnitDEach(){
+    public static void clickOnUnitEach(){
         customersPage.clickOnUnitEach();
     }
     public static void clickOnUnitCase(){
@@ -602,6 +605,18 @@ public class Customer {
     }
     public static void editItem(String name){
         customersPage.clickOnEditItem(name);
+    }
+    public static String getItemPricePDPView(){
+        return customersPage.getItemPricePDPView();
+    }
+    public static boolean isCatalogImageDisplayed(){
+        return customersPage.isCatalogImageDisplayed();
+    }
+    public static void clickOnCatalogItem(String name){
+        customersPage.clickOnCatalogItem(name);
+    }
+    public static String getItemNamePDPView() throws InterruptedException {
+        return customersPage.getItemNamePDPView();
     }
     public static boolean isNavigatedToOrderGuide(){
         return customersPage.isOrdersTxtDisplayed();
