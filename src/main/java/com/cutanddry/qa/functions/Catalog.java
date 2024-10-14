@@ -45,4 +45,13 @@ public class Catalog {
     public static void NavigateToShowCasePage(){
         catalogPage.ClickOnShowCaseBtn();
     }
+    public static void clickOnPreviewCatalog() {
+        catalogPage.clickOnPreviewCatalog();
+    }
+    public static boolean isNavigatedToPreviewCatalog() {
+        return catalogPage.isNavigatedToPreviewCatalog();
+    }
+    public static String getItemDetailsFirstRow() throws InterruptedException {
+        return catalogPage.getItemDetailsFirstRow();
+    }
 }

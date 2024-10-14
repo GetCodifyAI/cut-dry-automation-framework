@@ -6,6 +6,7 @@ public class CustomersPage extends LoginPage {
     By tbx_searchCustomers = By.xpath("//input[@placeholder='Search Customers']");
     String btnOrderGuide = "//td[text()='CODE']/../td[8]//button";
     By lbl_itemNameList = By.xpath("//td//span/div[@data-tip='View Product Details']");
+    By lbl_itemDetails = By.xpath("//tbody/tr[2]");
     By btn_increaseQtyFirstRow = By.xpath("//tr[1]/td[8]/div/div/div/div[3]");
     By btn_decreaseQtyFirstRow = By.xpath("//tr[1]/td[8]/div/div/div/div[1]");
     By btn_increaseQtySecondRow = By.xpath("//tr[2]/td[8]/div/div/div/div[3]");
@@ -190,6 +191,7 @@ public class CustomersPage extends LoginPage {
     By txt_namePDP = By.xpath("//div[contains(@class, 'd-flex align-items-center mont') and contains(@class, '_1wrelxt') and contains(@class, '_1vlidrf')]");
     By lbl_orders = By.xpath("//li[contains(text(),'Orders')]");
     By txt_allItems = By.xpath("//div[text()='All Items']");
+    By txt_priceZero = By.xpath("//tbody//span[contains(text(), '$0.00')]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -988,5 +990,18 @@ public class CustomersPage extends LoginPage {
     }
     public boolean isAllItemsTxtDisplayed(){
         return distributorUI.isDisplayed(txt_allItems);
+    }
+    public String getItemDetailsFirstRow() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(lbl_itemDetails,true);
+        distributorUI.waitForCustom(3000);
+        return distributorUI.getText(lbl_itemDetails);
+    }
+    public int getCountZeroPriceItemsDisplayed(){
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            return 1;
+        }
+        return distributorUI.countElements(txt_priceZero);
     }
 }
