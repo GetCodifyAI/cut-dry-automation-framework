@@ -43,7 +43,7 @@ public class VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest extends TestBase {
         Customer.clickOnUnitEach();
         Customer.increaseFirstRowQtyByOneInDist();
         Customer.checkoutItemsDist();
-        Customer.submitOrder();
+        Customer.submitOrderWithoutReachMinimum();
         Customer.clickClose();
         Customer.clickOnOrderGuideInProfile();
         Customer.searchItemOnOrderGuide(itemCode);
@@ -53,7 +53,7 @@ public class VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest extends TestBase {
         Customer.clickOnUnitCase();
         Customer.increaseFirstRowQtyByOneInDist();
         Customer.checkoutItemsDist();
-        Customer.submitOrder();
+        Customer.submitOrderWithoutReachMinimum();
         Customer.clickClose();
         Customer.clickOnOrderGuideInProfile();
         Customer.searchItemOnOrderGuide(itemCode);

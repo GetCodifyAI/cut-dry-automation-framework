@@ -630,4 +630,15 @@ public class Customer {
     public static int getCountZeroPriceItemsDisplayed() throws InterruptedException {
         return customersPage.getCountZeroPriceItemsDisplayed();
     }
+
+    public static void submitOrderWithoutReachMinimum(){
+        customersPage.submitOrder();
+        if(customersPage.isOrderMinimumOverlayDisplayed()){
+            customersPage.clickOnYes();
+        }
+        if (customersPage.isDuplicatePopupDisplayed()){
+            customersPage.clickYesDuplicatePopup();
+        }
+    }
+
 }
