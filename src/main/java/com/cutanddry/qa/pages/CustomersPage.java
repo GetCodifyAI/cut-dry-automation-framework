@@ -192,6 +192,7 @@ public class CustomersPage extends LoginPage {
     By lbl_orders = By.xpath("//li[contains(text(),'Orders')]");
     By txt_allItems = By.xpath("//div[text()='All Items']");
     By txt_priceZero = By.xpath("//tbody//span[contains(text(), '$0.00')]");
+    By minimumOrderOverlay = By.xpath("//h2[@id='swal2-title' and contains(text(),'Order Minimum Not Met')]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -766,6 +767,7 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForVisibility(btn_close);
         distributorUI.click(btn_close);
         distributorUI.waitForInvisibility(btn_close);
+        distributorUI.refreshPage();
     }
     public void clickOnDeleteItem(){
         distributorUI.waitForVisibility(btn_deleteIcon);
@@ -1004,4 +1006,9 @@ public class CustomersPage extends LoginPage {
         }
         return distributorUI.countElements(txt_priceZero);
     }
+
+    public boolean isOrderMinimumOverlayDisplayed(){
+        return distributorUI.isDisplayed(minimumOrderOverlay);
+    }
+
 }
