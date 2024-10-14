@@ -8,8 +8,8 @@ public class ShowCasePage extends LoginPage {
     By productDisplayed = By.xpath("//div[contains(@class,'_3quvq7') and contains(@class,'_1vlidrf') and contains(text(),'Andy Capps Hot Fries, 0.85 Oz')]");
     By ManufacturerTxt = By.xpath("(//div[contains(text(),'Conagra Foodservice')])[1]");
     By ConagraFoodServiceTxt = By.xpath("//div[contains(@class,'mt-5 mb-1 _mojmdw')]");
-    By OurBrandBtn = By.xpath("//img[contains(@class,'img-fluid') and contains(@alt,'Brand logo 96416251')]");
-    By OurBrandPageTxt = By.xpath("//div[contains(@class,'mt-2 _1g8obcq mont')]");
+    By OurBrandBtn = By.xpath("//img[contains(@class,'img-fluid') and contains(@alt,'Brand logo 134266051')]");
+    By OurBrandPageTxt = By.xpath("//div[contains(@class,'_1g8obcq mont _vk0dbk mt-2') and contains(text(),'Angela Mia')]");
     By HungerfordSmithBrand = By.xpath("//img[@alt='Brand logo 87504485' and @class='img-fluid']");
     By HungerfordSmithText =By.xpath("//div[@class='_1g8obcq mont _vk0dbk mt-2' and contains(text(),'J Hungerford Smith')]");
 

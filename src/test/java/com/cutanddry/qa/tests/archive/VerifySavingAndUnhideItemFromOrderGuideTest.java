@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifySavingAndUnhideItemFromOrderGuideTest extends TestBase {
     static User user;
     static String customerId = "16579";
-    static String itemCode = "10235";
+    static String itemCode = "01409";
 
     @BeforeMethod
     public void setUp() {

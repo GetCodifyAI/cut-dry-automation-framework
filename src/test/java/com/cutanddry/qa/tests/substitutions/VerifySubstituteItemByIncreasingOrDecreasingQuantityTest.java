@@ -16,7 +16,7 @@ public class VerifySubstituteItemByIncreasingOrDecreasingQuantityTest extends Te
     static User user;
     static String customer = "32404837";
     static String itemCode_1 = "8433";
-    static String itemCode_2 = "31467";
+    static String itemCode_2 = "43137";
 
     @BeforeMethod
     public void setUp(){
