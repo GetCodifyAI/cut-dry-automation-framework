@@ -76,4 +76,7 @@ public class Dashboard {
     public static void navigateToTrackResources() {
         dashboardPage.clickOnTrackResources();
     }
+    public static void navigateToTrackRoutes() {
+        dashboardPage.clickOnTrackRoutes();
+    }
 }

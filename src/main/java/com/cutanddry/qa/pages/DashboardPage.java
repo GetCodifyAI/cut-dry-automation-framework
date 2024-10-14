@@ -31,6 +31,7 @@ public class DashboardPage extends LoginPage{
     By btn_drafts  =By.xpath("//a[@data-tip='View Drafts']");
     By btn_track = By.xpath("//a[@role='button' and contains(text(), 'Track')]");
     By btn_trackResources = By.xpath("//div[@arrowprops]//a[text()='Resources']");
+    By btn_trackRoutes = By.xpath("//div[@arrowprops]//a[text()='Routes']");
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -158,5 +159,11 @@ public class DashboardPage extends LoginPage{
         distributorUI.clickUsingJavaScript(btn_track);
         distributorUI.hoverOverElement(btn_trackResources);
         distributorUI.click(btn_trackResources);
+    }
+    public void clickOnTrackRoutes(){
+        distributorUI.scrollToElement(btn_track);
+        distributorUI.clickUsingJavaScript(btn_track);
+        distributorUI.hoverOverElement(btn_trackRoutes);
+        distributorUI.click(btn_trackRoutes);
     }
 }
