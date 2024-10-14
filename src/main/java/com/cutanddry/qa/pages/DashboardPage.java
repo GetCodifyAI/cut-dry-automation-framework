@@ -29,6 +29,8 @@ public class DashboardPage extends LoginPage{
     By txt_totalTimeSaved = By.xpath("//tr[td[contains(text(), 'Total')]]/td[5]");
     By btn_history = By.xpath("//a[@data-tip='Order History']");
     By btn_drafts  =By.xpath("//a[@data-tip='View Drafts']");
+    By btn_track = By.xpath("//a[@role='button' and contains(text(), 'Track')]");
+    By btn_trackResources = By.xpath("//div[@arrowprops]//a[text()='Resources']");
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -149,5 +151,12 @@ public class DashboardPage extends LoginPage{
     }
     public void clickOnDrafts(){
         distributorUI.click(btn_drafts);
+    }
+
+    public void clickOnTrackResources(){
+        distributorUI.scrollToElement(btn_track);
+        distributorUI.clickUsingJavaScript(btn_track);
+        distributorUI.hoverOverElement(btn_trackResources);
+        distributorUI.click(btn_trackResources);
     }
 }

@@ -73,4 +73,7 @@ public class Dashboard {
     public static void navigateToDrafts() {
         dashboardPage.clickOnDrafts();
     }
+    public static void navigateToTrackResources() {
+        dashboardPage.clickOnTrackResources();
+    }
 }
