@@ -56,7 +56,13 @@ public class UpdateUserWithExistingUserReferenceTest extends TestBase {
     }
 
     @AfterMethod
-    public void tearDown(ITestResult result) {
+    public void tearDown(ITestResult result) throws InterruptedException {
+
+        //Reverting back the Ref id Since it will be used in TC:141
+        Settings.clickOnEditUser(name_1);
+        Settings.enterUserRef(userRef);
+        Settings.clickOnSaveChanges();
+
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }

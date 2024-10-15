@@ -34,7 +34,7 @@ public class OrderDeskPage extends LoginPage{
     By DeliveryDateInput = By.xpath("//input[contains(@class,'form-control') and @type='text']");
     By DeliveryDateSelect = By.xpath("//input[contains(@class,'form-control react-datepicker')]");
     By DeliveryDateNotValidTxt = By.xpath("//div[@class='text-danger']");
-    By VoiceRecordTxt = By.xpath("//div[text()='Voice Record']");
+    By ReviewTxt = By.xpath("//h2[contains(text(),'pending_review')]");
 
 
 
@@ -79,7 +79,7 @@ public class OrderDeskPage extends LoginPage{
     }
 
     public void clickOnSaveDraftBtn(){
-        distributorUI.click(VoiceRecordTxt);
+        distributorUI.click(ReviewTxt);
         distributorUI.click(SaveDraftBtn);
     }
 
