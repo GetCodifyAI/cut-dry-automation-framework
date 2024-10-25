@@ -1,4 +1,4 @@
-package com.cutanddry.qa.tests.catalog;
+package com.cutanddry.qa.tests.catalog_view;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
@@ -12,10 +12,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class ViewManufacturerPageTest extends TestBase {
+public class VerifyImageOfItemTest extends TestBase {
     static User user;
-    String ItemCode = "10153581";
-    String DistributerName = "185556964 - Brandon Cheney - Cheney Brothers";
+    String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String itemCode = "00475";
 
     @BeforeMethod
     public void setUp(){
@@ -23,32 +23,28 @@ public class ViewManufacturerPageTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-213")
-    public void ViewManufacturerPage() throws InterruptedException {
+    @Test(groups = "DOT-TC-371")
+    public void VerifyImageOfItem() {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DistributerName);
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
-        Catalog.SearchItemInCatalogByItemCode(ItemCode);
-        Catalog.SelectItemAfterSearch(ItemCode);
-        Catalog.ClickOnPreview();
-        softAssert.assertTrue(Catalog.isItemPreviewDisplayed(ItemCode),"Error in navigating to Preview Page");
-        Catalog.SelectManufacturer();
-        softAssert.assertTrue(Catalog.isCongaraBrandPageDisplayed(),"ERROR in Navigating to Congara BrandPage");
-        softAssert.assertTrue(Catalog.isOtherBrandsPageDisplayed(),"Error in navigating to Other Brands Page");
+        Catalog.selectItemFromGrid(itemCode);
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        Catalog.navigateToImages();
+        softAssert.assertTrue(Catalog.ProductImageDisplayed(),"Product image is not displayed");
 
         softAssert.assertAll();
     }
-
-
 
     @AfterMethod
     public void tearDown(ITestResult result) {
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }
-
 
 
 

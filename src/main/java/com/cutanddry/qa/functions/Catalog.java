@@ -28,8 +28,8 @@ public class Catalog {
     public static void ClickOnPreview(){
         catalogPage.ClickOnPreviewBtn();
     }
-    public static boolean isItemPreviewDisplayed(){
-        return catalogPage.isNavigateToItemPreview();
+    public static boolean isItemPreviewDisplayed(String itemCode){
+        return catalogPage.isNavigateToItemPreview(itemCode);
     }
     public static void SelectManufacturer(){
         catalogPage.ClickOnManufacture();
@@ -54,4 +54,119 @@ public class Catalog {
     public static String getItemDetailsFirstRow() throws InterruptedException {
         return catalogPage.getItemDetailsFirstRow();
     }
+
+    public static void selectItemFromGrid(String itemCode){
+        catalogPage.clickonItemOnCatalogPage(itemCode);
+    }
+
+    public static String getItemcodeInCatalogData(){
+        return catalogPage.getItemCodeFromCatalogDataPage();
+    }
+
+    public static void saveChanges(){
+        catalogPage.clickOnSaveChangesBtn();
+    }
+
+    public static boolean successOverlayDisplayed(){
+       return catalogPage.isSuccessOverlayDisplayed();
+    }
+
+    public static void navigateToAdditionalAttributes(){
+        catalogPage.clickOnAdditionalAttributesTab();
+    }
+
+    public static boolean isAdditionalAttributesTabDisplayed(){
+        return catalogPage.isCertificationsSectionDisplayed();
+    }
+
+    public static void navigateToImages(){
+        catalogPage.clickOnImagesTab();
+    }
+
+    public static boolean ProductImageDisplayed(){
+        return catalogPage.isProductImageDisplayed();
+    }
+
+    public static void navigateToPricingAndPromotions(){
+        catalogPage.clickOnPricingAndPromotionsTab();
+    }
+
+    public static void addUnitOfMeasure(){
+        catalogPage.clickOnUnitOfMeasure();
+    }
+
+    public static int getUnitOfMeasureCount(){
+        return catalogPage.getUnitOfMeasureCount();
+    }
+
+    public static void selectUnitFromDropdown(){
+        catalogPage.clickOnUnit();
+    }
+
+    public static void setItemUnitPrice(String unitPrice){
+        catalogPage.typeUnitPrice(unitPrice);
+    }
+
+    public static void selectPercentageAsSalesTypeFrmDropdown(){
+        catalogPage.clickOnSalesTypeDropDown();
+        catalogPage.clickOnPercentageOption();
+    }
+
+    public static void setSaleValue(String saleValue){
+        catalogPage.typeSaleValue(saleValue);
+    }
+
+    public static void deleteUOMFromCatalog(){
+        catalogPage.deleteUOMinCatalog();
+    }
+
+    public static boolean deleteUOMOverlayDisplayed(){
+        return catalogPage.isUOMDeleteOverlayDisplayed();
+    }
+
+    public static void DeleteConfirm(){
+        catalogPage.clickOnConfirmBtn();
+    }
+
+    public static boolean isAddedUOMDisplayed(){
+        return catalogPage.isBagUOMDisplayed();
+    }
+
+    public static boolean isDeletedUOMDisplayed(){
+        return catalogPage.isBagUOMDisplayed();
+    }
+
+    public static void navigateToSubstituteTab(){
+        catalogPage.clickOnSubstituteTab();
+    }
+
+    public static void addSubstitutions(){
+        catalogPage.clickAddSubstitutionBtn();
+    }
+
+    public static void searchAndAddSubstituteItem(String ItemCode){
+        catalogPage.searchSubstituteItem(ItemCode);
+        catalogPage.addSubstitutionsBtn();
+    }
+
+    public static String getSubstituteItemName(String ItemCode){
+        return catalogPage.getSubstituteItemName(ItemCode);
+    }
+
+    public static boolean isAddedSubstituteItemDisplayedInPage(String ItemCode){
+        return catalogPage.isSubstituteItemDisplayed(ItemCode);
+    }
+
+    public static boolean isDeletedSubstituteItemDisplayedInPage(String ItemCode){
+        return catalogPage.isSubstituteItemDisplayed(ItemCode);
+    }
+
+    public static void deleteSubstituteItem(String itemCode){
+        catalogPage.clickOnDeleteSubstituteItemBtn(itemCode);
+    }
+
+    public static void searchItemInCatalog(String itemName){
+        catalogPage.clickSearchItemInCatalog(itemName);
+    }
+
 }

@@ -43,6 +43,13 @@
             <class name="com.cutanddry.qa.tests.catalog.VerifyManufacturerPageViaShowCaseTest" />
             <class name="com.cutanddry.qa.tests.catalog.ViewManufacturerPageTest" />
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyStockDataInCatalogViewTest" />
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyImageOfItemTest" />
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyAdditionalAttributeOfItemTest" />
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyTheCatalogItemDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyCreatingUnitOfMeasureOfItemTest" />
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyDeletingUnitOfMeasureOfItemTest" />
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyAddingSubstituteForAnItemTest" />
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyRemovingSubstituteFromAnItemTest" />
             <class name="com.cutanddry.qa.tests.customer_groups.VerifyCustomerGroupIsAssignedWhenSelectedTest" />
             <class name="com.cutanddry.qa.tests.customer_groups.VerifyCustomerGroupVisibleTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileNewUserInviteTest" />
