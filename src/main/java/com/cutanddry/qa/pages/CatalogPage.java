@@ -253,7 +253,6 @@ public class CatalogPage extends LoginPage{
     public void clickSearchItemInCatalog(String itemName){
         distributorUI.click(searchField);
         distributorUI.sendKeys(searchField,itemName);
-
     }
 }
 
