@@ -165,4 +165,68 @@ public class Boost {
     public static boolean isPrimaryBannerDisplayed(){
         return boostPage.isPrimaryBannerDisplayed();
     }
+
+    public static void navigateToFeaturedListTab(){
+        boostPage.clickFeaturedListTab();
+    }
+
+    public static void createNewFeaturedList(){
+        boostPage.clickOnCreateNewFeaturedListBtn();
+    }
+
+    public static boolean isCrateListOverlayDisplayed(){
+        return boostPage.CreateListOverlayDisplayed();
+    }
+
+    public static void enterFeaturedListName(String featuredListName){
+        boostPage.typeFeaturedListName(featuredListName);
+    }
+
+    public static void submitEnteredListName(){
+        boostPage.clickSubmitBtnInCreateList();
+    }
+
+    public static boolean addedListNameDisplayed(String featuredList){
+        return boostPage.isFeaturedListDisplayed(featuredList);
+    }
+
+    public static boolean deletedListDisplayed(String featuredList){
+        return boostPage.isFeaturedListDisplayed(featuredList);
+    }
+    public static void viewAndConfigure(String featuredListName){
+        boostPage.clickViewAndConfigureBtn(featuredListName);
+    }
+
+    public static boolean itemConfigureOverlayDisplayed(){
+        return boostPage.isConfigureItemOverlayDisplayed();
+    }
+
+    public static void editListName(){
+        boostPage.clickOnEditListName();
+    }
+
+    public static boolean editListNameDisplayed(){
+        return boostPage.isEditListNameOverlayDisplayed();
+    }
+
+    public static void saveChanges(){
+        boostPage.clickSaveChangesBtn();
+    }
+
+    public static void closeEditOverlay(){
+        boostPage.clickOnCloseEditOverlayBtn();
+    }
+
+    public static void deleteFeaturedList(String featuredList){
+        boostPage.clickListDeleteBtn(featuredList);
+    }
+
+    public static boolean deleteFeaturedListOverlayDisplayed(){
+        return boostPage.isDeleteFeaturedListOverlayDisplayed();
+    }
+
+    public static void deleteFeaturedListFromOverlay(){
+        boostPage.clickDeleteBtnInDeleteListOverlay();
+    }
+
 }

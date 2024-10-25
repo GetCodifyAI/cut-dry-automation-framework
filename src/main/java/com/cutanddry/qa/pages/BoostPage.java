@@ -57,6 +57,22 @@ public class BoostPage extends LoginPage {
     By txt_active = By.xpath("//div[text()='Active']");
     By txt_hidden = By.xpath("//div[text()='Hidden']");
     By img_banner = By.xpath("//div[contains(@class, 'carousel-item')]//img");
+    By featuredListTab = By.xpath("//a[contains(@class,'_ngcfan text-center nav-item nav-link') and text()='Featured Lists']");
+    By createNewFeaturedListBtn = By.xpath("//button[contains(text(),'Create New Featured List')]");
+    By createListTxt = By.xpath("//div[contains(text(),'Create List')]");
+    By featuredListNameTxtField = By.xpath("//div[@class='my-4 py-3 form-group']/input");
+    String addedFeaturedList = "//table[@class='_6rf0k0 table']//tbody//td[contains(text(),'FEATUREDLIST')]";
+    String viewAndConfigureBtn = "//tr[td[contains(text(), 'FEATUREDLISTNAME')]]//button[contains(., 'View & Configure')]";
+    By configureItemOverlay = By.xpath("//div[contains(@class,'_ringdvy lato') and contains(text(),'Configure items for this featured list')]");
+    By editListNameBtn = By.xpath("//button[contains(text(),'Edit List Name')]");
+    By editListNameOverlay = By.xpath("//div[@class='mont modal-title h4' and contains(text(),'Edit List Name')]");
+    By saveChangesBtn = By.xpath("//button[contains(text(),'Save Changes')]");
+    By editOverlayCloseBtn = By.xpath("//span[contains(text(),'×')]");
+    String featuredListDeleteBtn = "//tr[td[contains(text(), 'FEATUREDLIST')]]//button[contains(@class, 'cdbutton ml-2 _1fibbi88 btn btn-outline-primary btn-sm')]";
+    By deleteListOverlayTxt = By.xpath("//div[contains(@class,'_1j771rs _5x3l6t mt-3 mb-2') and text()='Delete List?']");
+    By OverlayDeleteBtn = By.xpath("//button[contains(@class,'w-100 _len1zh btn btn-danger') and text()='Delete']");
+
+
 
     public boolean isBoostTextDisplayed() {
         try {
@@ -257,4 +273,71 @@ public class BoostPage extends LoginPage {
         distributorUI.waitForVisibility(img_banner);
         return distributorUI.isDisplayed(img_banner);
     }
+
+    public void clickFeaturedListTab(){
+        distributorUI.click(featuredListTab);
+    }
+
+    public void clickOnCreateNewFeaturedListBtn(){
+        distributorUI.click(createNewFeaturedListBtn);
+    }
+
+    public boolean CreateListOverlayDisplayed(){
+        return distributorUI.isDisplayed(createListTxt);
+    }
+
+    public void typeFeaturedListName(String featuredListName){
+        distributorUI.sendKeys(featuredListNameTxtField,featuredListName);
+    }
+
+    public void clickSubmitBtnInCreateList(){
+        distributorUI.click(btn_submit);
+    }
+
+    public boolean isFeaturedListDisplayed(String featuredList){
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return distributorUI.isDisplayed(By.xpath(addedFeaturedList.replace("FEATUREDLIST", featuredList)));
+    }
+
+    public void clickViewAndConfigureBtn(String featuredListName){
+        distributorUI.click(By.xpath(viewAndConfigureBtn.replace("FEATUREDLISTNAME", featuredListName)));
+    }
+
+    public boolean isConfigureItemOverlayDisplayed(){
+        return distributorUI.isDisplayed(configureItemOverlay);
+    }
+
+    public void clickOnEditListName(){
+        distributorUI.click(editListNameBtn);
+    }
+
+    public boolean isEditListNameOverlayDisplayed(){
+        return distributorUI.isDisplayed(editListNameOverlay);
+    }
+
+    public void clickSaveChangesBtn(){
+        distributorUI.click(saveChangesBtn);
+    }
+
+    public void clickOnCloseEditOverlayBtn(){
+        distributorUI.click(editOverlayCloseBtn);
+    }
+
+    public void clickListDeleteBtn(String featuredList){
+        distributorUI.click(By.xpath(featuredListDeleteBtn.replace("FEATUREDLIST",featuredList)));
+    }
+
+    public boolean isDeleteFeaturedListOverlayDisplayed(){
+        return distributorUI.isDisplayed(deleteListOverlayTxt);
+    }
+
+    public void clickDeleteBtnInDeleteListOverlay(){
+        distributorUI.click(OverlayDeleteBtn);
+    }
+
+
 }

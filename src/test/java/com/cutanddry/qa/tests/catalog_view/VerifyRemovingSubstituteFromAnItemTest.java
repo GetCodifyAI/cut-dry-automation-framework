@@ -1,4 +1,4 @@
-package com.cutanddry.qa.tests.catalog;
+package com.cutanddry.qa.tests.catalog_view;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
@@ -12,10 +12,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class ViewManufacturerPageTest extends TestBase {
+public class VerifyRemovingSubstituteFromAnItemTest extends TestBase{
     static User user;
-    String ItemCode = "10153581";
-    String DistributerName = "185556964 - Brandon Cheney - Cheney Brothers";
+    String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String itemCode = "00475";
+    String substituteItemCode = "20024";
+
 
     @BeforeMethod
     public void setUp(){
@@ -23,24 +25,26 @@ public class ViewManufacturerPageTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-213")
-    public void ViewManufacturerPage() throws InterruptedException {
+    @Test(groups = "DOT-TC-375")
+    public void VerifyRemovingSubstituteFromAnItem() {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DistributerName);
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
-        Catalog.SearchItemInCatalogByItemCode(ItemCode);
-        Catalog.SelectItemAfterSearch(ItemCode);
-        Catalog.ClickOnPreview();
-        softAssert.assertTrue(Catalog.isItemPreviewDisplayed(ItemCode),"Error in navigating to Preview Page");
-        Catalog.SelectManufacturer();
-        softAssert.assertTrue(Catalog.isCongaraBrandPageDisplayed(),"ERROR in Navigating to Congara BrandPage");
-        softAssert.assertTrue(Catalog.isOtherBrandsPageDisplayed(),"Error in navigating to Other Brands Page");
+        Catalog.searchItemInCatalog(itemCode);
+        Catalog.selectItemFromGrid(itemCode);
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        Catalog.navigateToSubstituteTab();
+        Catalog.deleteSubstituteItem(substituteItemCode);
+        Catalog.saveChanges();
+        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in Removing substitute item");
+        softAssert.assertFalse(Catalog.isDeletedSubstituteItemDisplayedInPage(itemCode),"Substitute Item not Removed");
 
         softAssert.assertAll();
     }
-
 
 
     @AfterMethod
@@ -48,7 +52,6 @@ public class ViewManufacturerPageTest extends TestBase {
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }
-
 
 
 
