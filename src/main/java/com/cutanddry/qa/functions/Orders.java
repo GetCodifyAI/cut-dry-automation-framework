@@ -8,4 +8,9 @@ public class Orders {
     public static boolean isUserNavigatedToOrder(){
         return ordersPage.isOrdersTextDisplayed();
     }
+
+    public static void SelectSupplierFromPlaceOrderPage(String supplierName){
+        ordersPage.clickOnSupplier(supplierName);
+    }
+
 }

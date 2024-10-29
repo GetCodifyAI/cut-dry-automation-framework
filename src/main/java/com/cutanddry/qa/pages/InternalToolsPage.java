@@ -9,6 +9,10 @@ public class InternalToolsPage extends LoginPage {
     By PortalStockLevelToggle = By.xpath("//div[contains(text(), 'Display stock levels on Portal:')]/following-sibling::div//div[@class='react-switch-bg']");
     By SaveBtn = By.xpath("//div[@class='text-right col']//button[text()='Save']");
     By SuccessOkBtn = By.xpath("//button[text()='OK']");
+    By CatalogSettingsTab = By.xpath("//a[contains(text(),'Catalog Settings')]");
+    By disableCatalogDropDown = By.xpath("//div[contains(text(), 'Disable catalog for:')]/following-sibling::div//div[contains(text(), 'Manual Selection')]");
+    String catalogOptionSelect = "(//div[text()='CATALOGDROPDOWNOPTION'])[last()]";
+    By catalogSettingsSaveBtn = By.xpath("//div[h5[text()='Catalog']]/following-sibling::div//button[contains(text(), 'Save')]");
 
     public void clickConfigureSupplier(){
         distributorUI.click(configureSupplierTxt);
@@ -37,5 +41,21 @@ public class InternalToolsPage extends LoginPage {
 
     public void clickOKOnSucessOverlay(){
         distributorUI.click(SuccessOkBtn);
+    }
+
+    public void clickOnCatalogSettingsTab(){
+        distributorUI.waitForVisibility(CatalogSettingsTab);
+        distributorUI.click(CatalogSettingsTab);
+    }
+
+    public void clickOnManualSelectionFromDropdown(String SelectDisableCatOption){
+        distributorUI.click(disableCatalogDropDown);
+        distributorUI.click(By.xpath(catalogOptionSelect.replace("CATALOGDROPDOWNOPTION",SelectDisableCatOption)));
+    }
+
+    public void clickCatalogSettingsSaveBtn(){
+        distributorUI.scrollToElement(catalogSettingsSaveBtn);
+        distributorUI.waitForVisibility(catalogSettingsSaveBtn);
+        distributorUI.clickUsingJavaScript(catalogSettingsSaveBtn);
     }
 }

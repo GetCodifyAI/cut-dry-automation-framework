@@ -641,4 +641,28 @@ public class Customer {
         }
     }
 
+    public static boolean catalogAccessEnabled(){
+        return customersPage.isCatalogAccessEnabled();
+    }
+
+    public static boolean catalogAccessDisabled(){
+        return customersPage.isCatalogAccessDisabled();
+    }
+
+    public static boolean catalogSectionsDisplayed(){
+        return customersPage.isCatalogSectionDisplayInOrderGuide();
+    }
+
+    public static void disableCatalogAccess(){
+        customersPage.clickEditCatalogAccess();
+        customersPage.clickOnDisableCatalogAccessOption();
+        customersPage.saveCatalogAccessChanges();
+    }
+
+    public static void enableCatalogAccess(){
+        customersPage.clickEditCatalogAccess();
+        customersPage.clickOnEnableCatalogAccessOption();
+        customersPage.saveCatalogAccessChanges();
+    }
+
 }

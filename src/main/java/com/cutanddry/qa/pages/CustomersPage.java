@@ -163,7 +163,7 @@ public class CustomersPage extends LoginPage {
     By btn_removeItem = By.xpath("(//*[local-name() = 'svg' and @data-icon='times-circle'])[2]");
     By EditCustomerGroupBtn = By.xpath("//div[contains(text(), 'Customer Group')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']");
     By CreateCutomerGroupTextField = By.xpath("//input[@id='react-select-6-input']");
-    By CustomerGroupSavebtn = By.xpath("//button[contains(text(),'Save')]");
+    By Savebtn = By.xpath("//button[contains(text(),'Save')]");
     String CustomerGroupName = "//div[contains(text(),'Customer Group')]/following-sibling::div//div[contains(text(),'GROUPNAME')]";
     By ClearAllCustomerGroupBtn = By.xpath("//div[contains(@class,'themed_select__indicator themed_select__clear-indicator css-tlfecz-indicatorContainer')]");
     By InviteNewUsersBtn = By.xpath("//button[contains(text(),'Invite New Users')]");
@@ -193,6 +193,12 @@ public class CustomersPage extends LoginPage {
     By txt_allItems = By.xpath("//div[text()='All Items']");
     By txt_priceZero = By.xpath("//tbody//span[contains(text(), '$0.00')]");
     By minimumOrderOverlay = By.xpath("//h2[@id='swal2-title' and contains(text(),'Order Minimum Not Met')]");
+    By catalogAccessEnableTxt = By.xpath("//div[@class='list-group-item']//div[text()='Enabled']");
+    By catalogAccessDisableTxt = By.xpath("//div[@class='list-group-item']//div[text()='Disabled']");
+    By catalogAccessEditBtn = By.xpath("//div[contains(text(), 'Catalog Access')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']");
+    By catalogSectionInOrderGuide = By.xpath("//div[contains(text(),'Catalog')]");
+    By catalogAccessDisableOption = By.xpath("//div[contains(text(),'Disabled')]");
+    By catalogAccessEnableOption = By.xpath("//div[contains(text(),'Enabled')]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -889,7 +895,7 @@ public class CustomersPage extends LoginPage {
         distributorUI.sendKeysAndEnter(CreateCutomerGroupTextField,groupname);
     }
     public void clickCustomerGroupSaveBtn(){
-        distributorUI.click(CustomerGroupSavebtn);
+        distributorUI.click(Savebtn);
     }
     public boolean customerGroupNameDisplayed(String groupname){
         return distributorUI.isDisplayed(By.xpath(CustomerGroupName.replace("GROUPNAME",groupname)));
@@ -1009,6 +1015,39 @@ public class CustomersPage extends LoginPage {
 
     public boolean isOrderMinimumOverlayDisplayed(){
         return distributorUI.isDisplayed(minimumOrderOverlay);
+    }
+
+    public boolean isCatalogAccessEnabled(){
+        return distributorUI.isDisplayed(catalogAccessEnableTxt);
+    }
+
+    public boolean isCatalogAccessDisabled(){
+        distributorUI.refreshPage();
+        return distributorUI.isDisplayed(catalogAccessDisableTxt);
+    }
+
+    public void saveCatalogAccessChanges(){
+        distributorUI.click(Savebtn);
+    }
+
+    public boolean isCatalogSectionDisplayInOrderGuide(){
+        return distributorUI.isDisplayed(catalogSectionInOrderGuide);
+    }
+
+    public void clickEditCatalogAccess(){
+        distributorUI.click(catalogAccessEditBtn);
+    }
+
+    public void clickOnDisableCatalogAccessOption(){
+        distributorUI.click(catalogAccessEnableOption);
+        distributorUI.waitForVisibility(catalogAccessDisableOption);
+        distributorUI.click(catalogAccessDisableOption);
+    }
+
+    public void clickOnEnableCatalogAccessOption(){
+        distributorUI.click(catalogAccessDisableOption);
+        distributorUI.waitForVisibility(catalogAccessEnableOption);
+        distributorUI.click(catalogAccessEnableOption);
     }
 
 }
