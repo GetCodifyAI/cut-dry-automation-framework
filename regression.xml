@@ -36,11 +36,15 @@
             <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedBySalesRepTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyDontForgetToOrderTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyMoreFromThisBrandTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyAddingFeaturedListTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyEditingFeaturedListTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyRemovingFeaturedListTest" />
             <class name="com.cutanddry.qa.tests.integration.VerifyChatFeatureTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyPDFGenerationForCatalogPDPTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyHardOrderMinimumWarningTest" />
             <class name="com.cutanddry.qa.tests.catalog.BrandPageForAllPortalsTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyManufacturerPageViaShowCaseTest" />
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessRestrictedViaCustomerProfileTest" />
             <class name="com.cutanddry.qa.tests.catalog.ViewManufacturerPageTest" />
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyStockDataInCatalogViewTest" />
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyImageOfItemTest" />

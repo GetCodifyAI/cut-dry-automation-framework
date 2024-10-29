@@ -169,4 +169,12 @@ public class Catalog {
         catalogPage.clickSearchItemInCatalog(itemName);
     }
 
+    public static void checkAndAddNecessarySubstituteItems(String ItemName){
+        if(!catalogPage.isSubstituteItemDisplayed(ItemName)){
+            catalogPage.clickAddSubstitutionBtn();
+            catalogPage.searchSubstituteItem(ItemName);
+            catalogPage.addSubstitutionsBtn();
+        }
+    }
+
 }

@@ -33,5 +33,16 @@ public class InternalTools {
         internalToolsPage.clickOKOnSucessOverlay();
     }
 
+    public static void navigateToCatalogSettingsTab(){
+        internalToolsPage.clickOnCatalogSettingsTab();
+    }
+
+    public static void selectManualSelectionFromDropdown(String CatalogDisableOption){
+        internalToolsPage.clickOnManualSelectionFromDropdown(CatalogDisableOption);
+    }
+
+    public static void catalogSettingsSave(){
+        internalToolsPage.clickCatalogSettingsSaveBtn();
+    }
 
 }

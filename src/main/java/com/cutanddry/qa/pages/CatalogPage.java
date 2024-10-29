@@ -22,7 +22,7 @@ public class CatalogPage extends LoginPage{
     By btn_previewCat = By.xpath("//button[contains(text(), 'Preview Catalog')]");
     By txt_previewCat = By.xpath("//div[text()='Catalog Preview']");
     By txt_firstItemDetails = By.xpath("//tbody/tr[1]");
-    String itemInTheGrid = "//tr[contains(@class,'_du1frc')]//td[contains(text(),'00475')]";
+    String itemInTheGrid = "//tr[contains(@class,'_du1frc')]//td[text()='ITEMCODE']";
     By ItemCodeInCatalogData = By.xpath("//div[contains(@class, 'form-group') and contains(.//label, 'Item Code')]//div[contains(@class, 'col-sm-8')]");
     By saveChangesBtn = By.xpath("//button[text()='Save Changes']");
     By successOverlay = By.xpath("//h2[contains(text(),'Success')]");
@@ -46,8 +46,10 @@ public class CatalogPage extends LoginPage{
     By substituteTab = By.xpath("//a[contains(text(),'Substitutes')]");
     By addSubstitutionsBtn = By.xpath("//button[contains(text(),'+ Add Substitution')]");
     By selectSubstituteTxtField = By.xpath("//div[@class= ' css-1wa3eu0-placeholder' and text()='Select...']");
-    String selectItemFromDropdown = "//div[contains(text(),'ITEMCODE')]";
+    By substituteItemInputField = By.xpath("//div[@class=' css-1wa3eu0-placeholder' and text()='Select...']/following::input[@type='text' and @aria-autocomplete='list']");
+    String selectItemFromDropdown = "(//div[contains(text(),'ITEMCODE')])[last()]";
     By substituteAddBtn = By.xpath("//button[contains(text(),'Add')]");
+    By substituteCancelBtn = By.xpath("//button[contains(text(),'Cancel')]");
     String substituteItemNameTxt = "//div[contains(text(),'ITEMNAME')]";
     String deleteSubstituteItemBtn = "//div[@class='align-items-center my-1 row']//div[contains(text(),'ITEMCODE')]//./following-sibling::*[3]";
     By searchField = By.xpath("//div//input[contains(@placeholder,'Find Item in Catalog')]");
@@ -221,12 +223,13 @@ public class CatalogPage extends LoginPage{
     }
 
     public void clickAddSubstitutionBtn(){
+        distributorUI.scrollToElement(addSubstitutionsBtn);
         distributorUI.click(addSubstitutionsBtn);
     }
 
     public void searchSubstituteItem(String substituteItem){
         distributorUI.click(selectSubstituteTxtField);
-        distributorUI.click(By.xpath(selectItemFromDropdown.replace("ITEMCODE",substituteItem)));
+        distributorUI.sendKeysWaitAndSelectDropdownOptionByEnter(substituteItemInputField,substituteItem);
     }
 
     public void addSubstitutionsBtn(){
@@ -235,10 +238,12 @@ public class CatalogPage extends LoginPage{
 
     public String getSubstituteItemName(String substituteItem){
         distributorUI.click(selectSubstituteTxtField);
+        distributorUI.sendKeys(substituteItemInputField,substituteItem);
         distributorUI.waitForVisibility(By.xpath(selectItemFromDropdown.replace("ITEMCODE",substituteItem)));
         String ItemName = distributorUI.getText(By.xpath(selectItemFromDropdown.replace("ITEMCODE",substituteItem)));
         String cleanedItemName = ItemName.split(":")[1].split("\\(")[0].trim();
-        distributorUI.click(selectSubstituteTxtField);
+        distributorUI.click(substituteCancelBtn);
+        distributorUI.click(substituteAddBtn);
         return cleanedItemName;
     }
 
