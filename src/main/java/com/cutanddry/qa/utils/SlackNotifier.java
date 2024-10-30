@@ -3,6 +3,7 @@ package com.cutanddry.qa.utils;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import com.cutanddry.qa.common.Constants;
@@ -82,7 +83,7 @@ public class SlackNotifier {
 
             // Send the JSON payload
             try (OutputStream os = connection.getOutputStream()) {
-                byte[] input = payload.getBytes("utf-8");
+                byte[] input = payload.getBytes(StandardCharsets.UTF_8);
                 os.write(input, 0, input.length);
             }
 
