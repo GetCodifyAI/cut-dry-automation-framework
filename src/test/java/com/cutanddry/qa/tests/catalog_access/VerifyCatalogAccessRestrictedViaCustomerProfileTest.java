@@ -24,7 +24,7 @@ public class VerifyCatalogAccessRestrictedViaCustomerProfileTest extends TestBas
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-376")
+    @Test(groups = "DOT-TC-401")
     public void VerifyCatalogAccessRestrictedViaCustomerProfile() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
 
