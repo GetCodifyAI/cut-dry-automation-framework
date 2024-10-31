@@ -10,7 +10,7 @@ public class InternalToolsPage extends LoginPage {
     By SaveBtn = By.xpath("//div[@class='text-right col']//button[text()='Save']");
     By SuccessOkBtn = By.xpath("//button[text()='OK']");
     By CatalogSettingsTab = By.xpath("//a[contains(text(),'Catalog Settings')]");
-    By disableCatalogDropDown = By.xpath("//div[contains(text(), 'Disable catalog for:')]/following-sibling::div//div[contains(text(), 'Manual Selection')]");
+    By disableCatalogDropDown = By.xpath("(//div[contains(text(), 'Disable catalog for:')]/following-sibling::div//div)[2]");
     String catalogOptionSelect = "(//div[text()='CATALOGDROPDOWNOPTION'])[last()]";
     By catalogSettingsSaveBtn = By.xpath("//div[h5[text()='Catalog']]/following-sibling::div//button[contains(text(), 'Save')]");
 
