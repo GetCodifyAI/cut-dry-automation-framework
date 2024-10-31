@@ -2,6 +2,7 @@ package com.cutanddry.qa.utils;
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -75,7 +76,8 @@ public class SlackNotifier {
                     + "}";
 
             // Establish a connection to the Slack webhook
-            URL url = new URL(WEBHOOK_URL);
+            URI uri = new URI(WEBHOOK_URL);
+            URL url = uri.toURL();
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json; utf-8");
