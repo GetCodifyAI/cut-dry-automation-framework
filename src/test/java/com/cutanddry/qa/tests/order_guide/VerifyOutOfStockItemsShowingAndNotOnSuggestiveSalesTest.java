@@ -17,7 +17,7 @@ public class VerifyOutOfStockItemsShowingAndNotOnSuggestiveSalesTest extends Tes
     static User user;
     static String DP = "John Gross";
     static String customerId = "10891";
-    static String itemCode = "737100";
+    static String itemCode = "507120";
 
 
     @BeforeMethod

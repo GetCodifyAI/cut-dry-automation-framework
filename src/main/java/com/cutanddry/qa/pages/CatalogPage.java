@@ -240,6 +240,11 @@ public class CatalogPage extends LoginPage{
         distributorUI.click(selectSubstituteTxtField);
         distributorUI.sendKeys(substituteItemInputField,substituteItem);
         distributorUI.waitForVisibility(By.xpath(selectItemFromDropdown.replace("ITEMCODE",substituteItem)));
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         String ItemName = distributorUI.getText(By.xpath(selectItemFromDropdown.replace("ITEMCODE",substituteItem)));
         String cleanedItemName = ItemName.split(":")[1].split("\\(")[0].trim();
         distributorUI.click(substituteCancelBtn);

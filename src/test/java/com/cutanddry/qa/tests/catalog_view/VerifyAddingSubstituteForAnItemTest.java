@@ -41,7 +41,7 @@ public class VerifyAddingSubstituteForAnItemTest extends TestBase {
         String SubstituteItemName = Catalog.getSubstituteItemName(substituteItemCode);
         Catalog.searchAndAddSubstituteItem(substituteItemCode);
         Catalog.saveChanges();
-        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving the changes after UOM Delete");
+        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving the changes after adding  substitute");
         softAssert.assertTrue(Catalog.isAddedSubstituteItemDisplayedInPage(SubstituteItemName),"Error in adding substitute items");
 
         softAssert.assertAll();
