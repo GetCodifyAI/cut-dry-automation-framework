@@ -1,8 +1,10 @@
 package com.cutanddry.qa.utils;
 
+import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -76,21 +78,8 @@ public class SlackNotifier {
                     + "}";
 
             // Establish a connection to the Slack webhook
-            URI uri = new URI(WEBHOOK_URL);
-            URL url = uri.toURL();
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("Content-Type", "application/json; utf-8");
-            connection.setDoOutput(true);
 
-            // Send the JSON payload
-            try (OutputStream os = connection.getOutputStream()) {
-                byte[] input = payload.getBytes(StandardCharsets.UTF_8);
-                os.write(input, 0, input.length);
-            }
-
-            // Check the response code
-            int responseCode = connection.getResponseCode();
+            int responseCode = getResponseCode(payload);
             if (responseCode != 200) {
                 System.out.println("Slack alert not sent: response code - "+responseCode);
                 throw new RuntimeException("Failed to send Slack alert, response code: " + responseCode);
@@ -101,5 +90,24 @@ public class SlackNotifier {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static int getResponseCode(String payload) throws URISyntaxException, IOException {
+        URI uri = new URI(WEBHOOK_URL);
+        URL url = uri.toURL();
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Content-Type", "application/json; utf-8");
+        connection.setDoOutput(true);
+
+        // Send the JSON payload
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = payload.getBytes(StandardCharsets.UTF_8);
+            os.write(input, 0, input.length);
+        }
+
+        // Check the response code
+        int responseCode = connection.getResponseCode();
+        return responseCode;
     }
 }
