@@ -78,6 +78,8 @@
             <class name="com.cutanddry.qa.tests.team.RemoveUserWhiteLabelPortalTest" />
             <class name="com.cutanddry.qa.tests.multi_cart.VerifyGroupingProductsIntoTwoCartsTest" />
             <class name="com.cutanddry.qa.tests.multi_cart.VerifyCreatedOrdersFromMultipleCartsTest" />
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderGuideOrderApprovalUIFeatureTest" />
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderApprovalSettingsReflectedWhileOrderingTest" />
             <class name="com.cutanddry.qa.tests.order_desk.VerifyAddingNewProductFromCatalogTest" />
             <class name="com.cutanddry.qa.tests.order_desk.VerifyDeletingVoiceOrderDraftLineItemTest" />
             <class name="com.cutanddry.qa.tests.order_desk.VerifyOrderDeskFeatureTest" />
@@ -92,10 +94,10 @@
             <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderDetailsSupplierPortalTest" />
             <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderDetailsCDAppTest" />
             <class name="com.cutanddry.qa.tests.banner.VerifyTheBannerFeatureTest" />
+            <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor1OrMoreItemsWithSubstitutingTest" />
             <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor0CountItemWithSubstitutingTest" />
             <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor0CountItemWithoutSubstitutingTest" />
             <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor1OrMoreItemsWithoutSubstitutingTest" />
-            <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor1OrMoreItemsWithSubstitutingTest" />
             <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemByIncreasingOrDecreasingQuantityTest" />
             <class name="com.cutanddry.qa.tests.substitutions.VerifyTheMaximumAmountOfSubstituteItemsTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyOutOfStockItemsShowingAndNotOnSuggestiveSalesTest" />

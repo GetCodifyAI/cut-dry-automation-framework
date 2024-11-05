@@ -199,6 +199,15 @@ public class CustomersPage extends LoginPage {
     By catalogSectionInOrderGuide = By.xpath("//div[contains(text(),'Catalog')]");
     By catalogAccessDisableOption = By.xpath("//div[contains(text(),'Disabled')]");
     By catalogAccessEnableOption = By.xpath("//div[contains(text(),'Enabled')]");
+    By orderApprovalTxt = By.xpath("//div[contains(text(),'Order Approval')]");
+    By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']");
+    By orderApprovalSettingsOverlayTxt = By.xpath("//div[contains(text(),'Order Approval Settings')]");
+    By orderApprovalSettingsOverlayNewlyCreatedOGOptionsEnabledOrDisabled = By.xpath("//div[contains(@class,'themed_select') and contains(text(),'Enabled') or contains(text(),'Disabled')]");
+    String orderApprovalSettingsOverlayOrderGuideTxt = "//div[contains(text(),'Existing Order Guide(s)')]/following-sibling::div//div[contains(text(),'ORDERGUIDE')]";
+    By orderApprovalSettingsOverlayCloseBtn = By.xpath("//span[contains(text(),'×')]");
+    String orderGuideOrderApprovalDisabledBtn = "//div[contains(text(),'ORDERGUIDE')]/../following-sibling::*//div[contains(@style, 'rgb(204, 204, 204)')]";
+    String orderGuideOrderApprovalEnabledBtn = "//div[contains(text(),'ORDERGUIDE')]/../following-sibling::*//div[contains(@style, 'rgb(255, 255, 255)')]";
+    String orderGuideOrderApprovalToggle = "//div[contains(text(),'ORDERGUIDE')]/../following-sibling::*//div[2]";
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -373,6 +382,7 @@ public class CustomersPage extends LoginPage {
         distributorUI.clear(tbx_orderGuideSearch);
         distributorUI.waitForCustom(2000);
         distributorUI.sendKeys(tbx_orderGuideSearch,item);
+        distributorUI.waitForCustom(2000);
     }
     public void clickOnCreate() throws InterruptedException {
         distributorUI.waitForCustom(1000);
@@ -1050,4 +1060,39 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(catalogAccessEnableOption);
     }
 
+    public boolean isOrderApprovalOptionDisplayed(){
+        return distributorUI.isDisplayed(orderApprovalTxt);
+    }
+
+    public void clickOnOrderApprovalEditBtn(){
+        distributorUI.click(orderApprovalEditBtn);
+    }
+
+    public boolean isOrderApprovalSettingsOverlayDisplayed(){
+        return distributorUI.isDisplayed(orderApprovalSettingsOverlayTxt);
+    }
+
+    public boolean isNewlyCreatedOrderGuideApprovalStatusDisplayed(){
+        return distributorUI.isDisplayed(orderApprovalSettingsOverlayNewlyCreatedOGOptionsEnabledOrDisabled);
+    }
+
+    public boolean isExistingOrderGuidesDisplayed(String orderGuideName){
+        return distributorUI.isDisplayed(By.xpath(orderApprovalSettingsOverlayOrderGuideTxt.replace("ORDERGUIDE",orderGuideName)));
+    }
+
+    public void clickCloseOnOrderApprovalSettingsOverlay(){
+        distributorUI.click(orderApprovalSettingsOverlayCloseBtn);
+    }
+
+    public void clickTurnOnOrderApprovalForOrderGuide(String OrderGuideName){
+        if(distributorUI.isDisplayed(By.xpath(orderGuideOrderApprovalDisabledBtn.replace("ORDERGUIDE",OrderGuideName)))){
+            distributorUI.click(By.xpath(orderGuideOrderApprovalToggle.replace("ORDERGUIDE",OrderGuideName)));
+        }
+    }
+
+    public void clickTurnOffOrderApprovalForOrderGuide(String OrderGuideName){
+        if(distributorUI.isDisplayed(By.xpath(orderGuideOrderApprovalEnabledBtn.replace("ORDERGUIDE",OrderGuideName)))){
+            distributorUI.click(By.xpath(orderGuideOrderApprovalToggle.replace("ORDERGUIDE",OrderGuideName)));
+        }
+    }
 }

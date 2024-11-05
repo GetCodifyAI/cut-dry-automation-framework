@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifySubstituteItemFor0CountItemWithSubstitutingTest extends TestBase {
     static User user;
     static String customer = "32404837";
-    static String itemCode = "99005";
+    static String itemCode = "27586";
 
     @BeforeMethod
     public void setUp(){

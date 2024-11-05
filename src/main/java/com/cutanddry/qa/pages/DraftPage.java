@@ -8,6 +8,8 @@ public class DraftPage extends LoginPage{
     By txt_drafts = By.xpath("//li[contains(text(),'Drafts')]");
     By btn_delete = By.xpath("(//button[contains(text(), 'Delete')])[1]");
     By txt_lastDraft = By.xpath("//tbody/tr[2]/td[5]");
+    By pendingApprovalOrders = By.xpath("(//td/span[contains(text(),'Pending Approval')])[1]");
+    By approveAndSubmitBtn = By.xpath("//button[contains(text(),'Approve & Submit Order')]");
 
 
     public boolean isDraftsTextDisplayed(){
@@ -27,4 +29,17 @@ public class DraftPage extends LoginPage{
         distributorUI.waitForVisibility(txt_lastDraft);
         return Objects.equals(distributorUI.getText(txt_lastDraft), "just now");
     }
+
+    public boolean isPendingApprovalOrdersDisplayed(){
+        return distributorUI.isDisplayed(pendingApprovalOrders);
+    }
+
+    public void clickOnApprovalPendingOrder(){
+        distributorUI.click(pendingApprovalOrders);
+    }
+
+    public void clickOnApproveAndSubmitBtn(){
+        distributorUI.click(approveAndSubmitBtn);
+    }
+
 }
