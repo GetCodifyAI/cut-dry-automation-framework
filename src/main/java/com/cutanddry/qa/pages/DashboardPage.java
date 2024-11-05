@@ -32,6 +32,19 @@ public class DashboardPage extends LoginPage{
     By btn_track = By.xpath("//a[@role='button' and contains(text(), 'Track')]");
     By btn_trackResources = By.xpath("//div[@arrowprops]//a[text()='Resources']");
     By btn_trackRoutes = By.xpath("//div[@arrowprops]//a[text()='Routes']");
+    By btn_trackMonitoring = By.xpath("//div[@arrowprops]//a[text()='Monitoring']");
+    By btn_trackNotifications = By.xpath("//div[@arrowprops]//a[text()='Notifications']");
+    By btn_pay  =By.xpath("//a[@data-tip='Payments']");
+    By btn_reports  =By.xpath("//a[@data-tip='Reports']");
+    By btn_trackSettings = By.xpath("//div[@arrowprops]//a[text()='Track']");
+    By btn_profSettings = By.xpath("//div[@arrowprops]//a[text()='Profile']");
+    By btn_companySettings = By.xpath("//div[@arrowprops]//a[text()='Company']");
+    By btn_billingSettings = By.xpath("//div[@arrowprops]//a[text()='Billing']");
+    By btn_support = By.xpath("//a[@data-tip='Support']");
+    By btn_tracker  =By.xpath("//a[@data-tip='Tracker']");
+    By btn_endlAisle  =By.xpath("//a[@data-tip='Endless Aisle']");
+    By btn_creditReq  =By.xpath("//a[@data-tip='Credit Requests']");
+    By btn_showcase = By.xpath("//a[contains(@data-tip,'Cut+Dry Product Showcase')]");
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -165,5 +178,63 @@ public class DashboardPage extends LoginPage{
         distributorUI.clickUsingJavaScript(btn_track);
         distributorUI.hoverOverElement(btn_trackRoutes);
         distributorUI.click(btn_trackRoutes);
+    }
+    public void clickOnTrackMonitoring(){
+        distributorUI.scrollToElement(btn_track);
+        distributorUI.clickUsingJavaScript(btn_track);
+        distributorUI.hoverOverElement(btn_trackMonitoring);
+        distributorUI.click(btn_trackMonitoring);
+    }
+    public void clickOnTrackNotifications(){
+        distributorUI.scrollToElement(btn_track);
+        distributorUI.clickUsingJavaScript(btn_track);
+        distributorUI.hoverOverElement(btn_trackNotifications);
+        distributorUI.click(btn_trackNotifications);
+    }
+    public void clickOnPay(){
+        distributorUI.click(btn_pay);
+    }
+    public void clickOnReports(){
+        distributorUI.click(btn_reports);
+    }
+    public void clickOnBillingSettings(){
+        distributorUI.scrollToElement(btn_settings);
+        distributorUI.clickUsingJavaScript(btn_settings);
+        distributorUI.hoverOverElement(btn_billingSettings);
+        distributorUI.click(btn_billingSettings);
+    }
+    public void clickOnCompanySettings(){
+        distributorUI.scrollToElement(btn_settings);
+        distributorUI.clickUsingJavaScript(btn_settings);
+        distributorUI.hoverOverElement(btn_companySettings);
+        distributorUI.click(btn_companySettings);
+    }
+    public void clickOnTrackSettings(){
+        distributorUI.scrollToElement(btn_settings);
+        distributorUI.clickUsingJavaScript(btn_settings);
+        distributorUI.hoverOverElement(btn_trackSettings);
+        distributorUI.click(btn_trackSettings);
+    }
+    public void clickOnProfileSettings(){
+        distributorUI.scrollToElement(btn_settings);
+        distributorUI.clickUsingJavaScript(btn_settings);
+        distributorUI.hoverOverElement(btn_profSettings);
+        distributorUI.click(btn_profSettings);
+    }
+    public void clickOnSupport(){
+        String url = distributorUI.getText(btn_support,"href");
+        distributorUI.navigateToURL(url);
+    }
+    public void clickOnTracker(){
+        distributorUI.click(btn_tracker);
+    }
+    public void clickOnEndlessAisle(){
+        distributorUI.click(btn_endlAisle);
+    }
+    public void clickOnCreditRequest(){
+        distributorUI.click(btn_creditReq);
+    }
+    public void clickOnShowCase(){
+        distributorUI.click(btn_showcase);
     }
 }

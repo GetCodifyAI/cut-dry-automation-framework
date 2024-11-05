@@ -21,6 +21,14 @@ public class Track {
     public static boolean isAddTrucksBtnDisplayed(){
         return trackPage.isAddTrucksBtnDisplayed();
     }
-
+    public static boolean isRoutesTextDisplayed(){
+        return trackPage.isTrackRoutesTextDisplayed();
+    }
+    public static boolean isMonitoringTextDisplayed(){
+        return trackPage.isTrackMonitoringTextDisplayed();
+    }
+    public static boolean isNotificationsTextDisplayed(){
+        return trackPage.isTrackNotificationsTextDisplayed();
+    }
 
 }

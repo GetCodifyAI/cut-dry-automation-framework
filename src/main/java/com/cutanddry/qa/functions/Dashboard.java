@@ -79,4 +79,43 @@ public class Dashboard {
     public static void navigateToTrackRoutes() {
         dashboardPage.clickOnTrackRoutes();
     }
+    public static void navigateToTrackMonitoring() {
+        dashboardPage.clickOnTrackMonitoring();
+    }
+    public static void navigateToTrackNotifications() {
+        dashboardPage.clickOnTrackNotifications();
+    }
+    public static void navigateToPay() {
+        dashboardPage.clickOnPay();
+    }
+    public static void navigateToReports() {
+        dashboardPage.clickOnReports();
+    }
+    public static void navigateToCompanySettings() {
+        dashboardPage.clickOnCompanySettings();
+    }
+    public static void navigateToBillingSettings() {
+        dashboardPage.clickOnBillingSettings();
+    }
+    public static void navigateToTrackSettings() {
+        dashboardPage.clickOnTrackSettings();
+    }
+    public static void navigateToProfileSettings() {
+        dashboardPage.clickOnProfileSettings();
+    }
+    public static void navigateToSupport() {
+        dashboardPage.clickOnSupport();
+    }
+    public static void navigateToTracker() {
+        dashboardPage.clickOnTracker();
+    }
+    public static void navigateToEndlessAisle() {
+        dashboardPage.clickOnEndlessAisle();
+    }
+    public static void navigateToCreditRequest() {
+        dashboardPage.clickOnCreditRequest();
+    }
+    public static void navigateToShowCasePage(){
+        dashboardPage.clickOnShowCase();
+    }
 }

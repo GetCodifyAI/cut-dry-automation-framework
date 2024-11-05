@@ -86,4 +86,16 @@ public class Settings {
     public static void clickYes() throws InterruptedException {
         settingsPage.clickYes();
     }
+    public static boolean isCompanySettingsTextDisplayed() throws InterruptedException {
+        return settingsPage.isCompanySettingsTextDisplayed();
+    }
+    public static boolean isProfileSettingsTextDisplayed() throws InterruptedException {
+        return settingsPage.isProfileSettingsTextDisplayed();
+    }
+    public static boolean isTrackSettingsTextDisplayed() throws InterruptedException {
+        return settingsPage.isTrackSettingsTextDisplayed();
+    }
+    public static boolean isBillingSettingsTextDisplayed() throws InterruptedException {
+        return settingsPage.isBillingSettingsTextDisplayed();
+    }
 }
