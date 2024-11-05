@@ -12,6 +12,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyAdminRoleTest extends TestBase {
     static User user;
+    static String customerId = "16579";
 
     @BeforeMethod
     public void setUp() {
@@ -27,6 +28,14 @@ public class VerifyAdminRoleTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         //customer
         Dashboard.navigateToCustomers();
+
+        Customer.searchCustomerByCode(customerId);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"customer search error");
+        Customer.clickOnCustomerCode(customerId);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
+        Customer.clickOnOrderGuide(customerId);
+        Customer.goToEdit();
+        softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
         //catalog
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(), "navigation to catalog error");
@@ -66,7 +75,6 @@ public class VerifyAdminRoleTest extends TestBase {
         softAssert.assertTrue(Track.isNotificationsTextDisplayed(),"navigation to track notif error");
         Dashboard.navigateToTrackMonitoring();
         softAssert.assertTrue(Track.isMonitoringTextDisplayed(),"navigation to track monitoring error");
-
         softAssert.assertAll();
     }
 
