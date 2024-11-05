@@ -30,6 +30,14 @@ public class VerifyAdminRoleTest extends TestBase {
         //catalog
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(), "navigation to catalog error");
+        Catalog.clickOnPreviewCatalog();
+        softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
+
+        //broadcast
+        Dashboard.navigateToBoost();
+        softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
+        softAssert.assertTrue(Boost.isBroadcastTabDisplayed(),"navigate to broadcast error");
+        //promotions
         //pay
         Dashboard.navigateToPay();
         softAssert.assertTrue(Pay.isUserNavigatedToPay(),"navigation to pay error");

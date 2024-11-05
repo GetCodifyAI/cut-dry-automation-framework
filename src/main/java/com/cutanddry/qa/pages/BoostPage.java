@@ -25,6 +25,7 @@ public class BoostPage extends LoginPage {
     By btn_ok = By.xpath("//button[text()='OK']");
     By btn_X = By.xpath("//tr[td[contains(text(),'Test Broadcast Message')]]//button//*[name()='svg' and @data-icon='times-circle']");
     By btn_yes = By.xpath("//button[text()='Yes']");
+    By tab_broadcast = By.xpath("//a[text()='Broadcasts']");
     By tab_suggestiveSales = By.xpath("//a[text()='Suggestive Sales']");
     By txt_topCategoryPicks = By.xpath("//td[text()='Top Category Picks']");
     By btn_topPicks_config = By.xpath("//tr[td[contains(text(), 'Top Category Picks')]]//button[contains(text(), 'View & Configure')]");
@@ -151,6 +152,9 @@ public class BoostPage extends LoginPage {
     }
     public void clickSuggestiveSales() {
         distributorUI.click(tab_suggestiveSales);
+    }
+    public boolean isBroadcastTabDisplayed() {
+        return distributorUI.isDisplayed(tab_broadcast);
     }
     public boolean isSuggestiveTabDisplayed() {
         return distributorUI.isDisplayed(txt_topCategoryPicks);

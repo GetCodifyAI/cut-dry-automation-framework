@@ -65,6 +65,9 @@ public class Boost {
     public static void clickSuggestiveSales(){
         boostPage.clickSuggestiveSales();
     }
+    public static boolean isBroadcastTabDisplayed(){
+        return boostPage.isBroadcastTabDisplayed();
+    }
     public static boolean isSuggestiveTabDisplayed(){
         return boostPage.isSuggestiveTabDisplayed();
     }
