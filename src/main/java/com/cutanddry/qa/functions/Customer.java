@@ -665,4 +665,40 @@ public class Customer {
         customersPage.saveCatalogAccessChanges();
     }
 
+    public static boolean orderApprovalTxtDisplayed(){
+        return customersPage.isOrderApprovalOptionDisplayed();
+    }
+
+    public static void orderApprovalEdit(){
+        customersPage.clickOnOrderApprovalEditBtn();
+    }
+
+    public static boolean orderApprovalSettingsOverlayDisplayed(){
+        return customersPage.isOrderApprovalSettingsOverlayDisplayed();
+    }
+
+    public static boolean NewlyCreatedOrderGuideApprovalStatusDisplayed(){
+        return customersPage.isNewlyCreatedOrderGuideApprovalStatusDisplayed();
+    }
+
+    public static boolean existingOrderGuideDisplayed(String orderGuideName){
+        return customersPage.isExistingOrderGuidesDisplayed(orderGuideName);
+    }
+
+    public static void closeOrderApprovalSettingsOverlay(){
+        customersPage.clickCloseOnOrderApprovalSettingsOverlay();
+    }
+
+    public static void orderApprovalTurnOnForTheOrderGuide(String OrderGuideName){
+        customersPage.clickTurnOnOrderApprovalForOrderGuide(OrderGuideName);
+    }
+
+    public static void orderApprovalTurnOffForTheOrderGuide(String OrderGuideName){
+        customersPage.clickTurnOffOrderApprovalForOrderGuide(OrderGuideName);
+    }
+
+    public static void saveOrderApprovalSettings(){
+        customersPage.clickOnSave();
+    }
+
 }

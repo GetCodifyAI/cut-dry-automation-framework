@@ -12,7 +12,7 @@ public class CatalogPage extends LoginPage{
     By btn_dropdown = By.xpath("//button[@aria-haspopup='true']");
     By ItemCatalogSearchBtn = By.xpath("//input[@placeholder=\"Find Item in Catalog\"]");
     String SearchedItemItemCode = "//tr[contains(@class, '_du1frc')][td[1]='ITEMCODE']";
-    By PreviewBtn = By.xpath("//button[@class='_lzbys2 mx-2 btn btn-primary']");
+    By PreviewBtn = By.xpath("//button[@class='_xrol5g mx-2 btn btn-primary']");
     String ItemPreviewTxt = "//div[@class='mt-1 _5h4pkd' and contains(text(),'ITEMCODE')]";
     By Manufacturer = By.xpath("//div[contains(text(),'Conagra Foodservice')]");
     By OtherBrandBtn = By.xpath("//img[@class='_kfc3ia img-fluid' and contains(@src,\"2b4b2013cb03bd26957893f39d0783bd.jpg\")]");
@@ -24,8 +24,8 @@ public class CatalogPage extends LoginPage{
     By txt_firstItemDetails = By.xpath("//tbody/tr[1]");
     String itemInTheGrid = "//tr[contains(@class,'_du1frc')]//td[text()='ITEMCODE']";
     By ItemCodeInCatalogData = By.xpath("//div[contains(@class, 'form-group') and contains(.//label, 'Item Code')]//div[contains(@class, 'col-sm-8')]");
-    By saveChangesBtn = By.xpath("//button[text()='Save Changes']");
-    By successOverlay = By.xpath("//h2[contains(text(),'Success')]");
+    By saveChangesBtn = By.xpath("//button[text()='Save']");
+    By successOverlay = By.xpath("//div[contains(text(),'successfully saved!')]");
     By additionalAttributesTab = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Additional Attributes')]");
     By imagesTab = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Images')]");
     By certificationAttribute = By.xpath("//div[contains(text(),'Certifications')]");
@@ -134,6 +134,7 @@ public class CatalogPage extends LoginPage{
     }
 
     public void clickonItemOnCatalogPage(String itemCode){
+        distributorUI.waitForVisibility(By.xpath(itemInTheGrid.replace("ITEMCODE",itemCode)));
         distributorUI.click(By.xpath(itemInTheGrid.replace("ITEMCODE",itemCode)));
     }
 
@@ -180,6 +181,7 @@ public class CatalogPage extends LoginPage{
     }
 
     public void clickOnUnit(){
+        distributorUI.waitForVisibility(uomSelectDropdown);
         distributorUI.click(uomSelectDropdown);
         distributorUI.waitForVisibility(unit);
         distributorUI.click(unit);
@@ -214,7 +216,11 @@ public class CatalogPage extends LoginPage{
     }
 
     public boolean isBagUOMDisplayed(){
-        distributorUI.waitForInvisibility(bagUOM);
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return distributorUI.isDisplayed(bagUOM);
     }
 
@@ -240,6 +246,7 @@ public class CatalogPage extends LoginPage{
         distributorUI.click(selectSubstituteTxtField);
         distributorUI.sendKeys(substituteItemInputField,substituteItem);
         distributorUI.waitForVisibility(By.xpath(selectItemFromDropdown.replace("ITEMCODE",substituteItem)));
+        distributorUI.waitForClickability(By.xpath(selectItemFromDropdown.replace("ITEMCODE",substituteItem)));
         try {
             distributorUI.waitForCustom(4000);
         } catch (InterruptedException e) {
