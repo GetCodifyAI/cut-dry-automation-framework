@@ -667,4 +667,7 @@ public class Customer {
     public static boolean isSalespersonEditable(){
         return customersPage.isSalespersonEditable();
     }
+    public static boolean isAbleToInviteUsers(){
+        return customersPage.isAbleToInviteUsers();
+    }
 }

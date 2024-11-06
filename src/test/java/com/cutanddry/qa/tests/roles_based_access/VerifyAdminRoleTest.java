@@ -33,10 +33,12 @@ public class VerifyAdminRoleTest extends TestBase {
         Customer.clickOnCustomerCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         softAssert.assertTrue(Customer.isSalespersonEditable(),"edit salesperson error");
-
+        softAssert.assertTrue(Customer.isAbleToInviteUsers(),"invite users error");
         Customer.clickOnOrderGuide(customerId);
         Customer.goToEdit();
         softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
+        Customer.clickOnBack();
+
         //catalog
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(), "navigation to catalog error");

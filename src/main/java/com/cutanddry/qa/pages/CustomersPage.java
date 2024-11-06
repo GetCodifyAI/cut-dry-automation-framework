@@ -1058,6 +1058,14 @@ public class CustomersPage extends LoginPage {
         } catch (Exception e){
             return false;
         }
-
+    }
+    public boolean isAbleToInviteUsers() {
+        try {
+            distributorUI.click(InviteNewUsersBtn);
+            distributorUI.click(btn_close);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
