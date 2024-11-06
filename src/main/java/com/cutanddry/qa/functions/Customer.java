@@ -664,5 +664,7 @@ public class Customer {
         customersPage.clickOnEnableCatalogAccessOption();
         customersPage.saveCatalogAccessChanges();
     }
-
+    public static boolean isSalespersonEditable(){
+        return customersPage.isSalespersonEditable();
+    }
 }

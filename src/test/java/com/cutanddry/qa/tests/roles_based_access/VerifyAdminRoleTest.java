@@ -28,11 +28,12 @@ public class VerifyAdminRoleTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         //customer
         Dashboard.navigateToCustomers();
-
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"customer search error");
         Customer.clickOnCustomerCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
+        softAssert.assertTrue(Customer.isSalespersonEditable(),"edit salesperson error");
+
         Customer.clickOnOrderGuide(customerId);
         Customer.goToEdit();
         softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
@@ -41,7 +42,6 @@ public class VerifyAdminRoleTest extends TestBase {
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(), "navigation to catalog error");
         Catalog.clickOnPreviewCatalog();
         softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
-
         //broadcast
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
