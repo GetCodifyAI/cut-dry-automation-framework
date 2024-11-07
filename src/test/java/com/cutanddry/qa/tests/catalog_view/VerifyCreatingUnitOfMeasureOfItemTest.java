@@ -16,6 +16,7 @@ import static com.cutanddry.qa.base.TestBase.*;
 public class VerifyCreatingUnitOfMeasureOfItemTest {
     static User user;
     String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String UOM = "Bag";
     String itemCode = "00475";
     String itemPrice = "20.00";
     String saleValue = "30.00";
@@ -41,7 +42,7 @@ public class VerifyCreatingUnitOfMeasureOfItemTest {
         int UOMCount = Catalog.getUnitOfMeasureCount();
         Catalog.addUnitOfMeasure();
         softAssert.assertEquals(Catalog.getUnitOfMeasureCount(),UOMCount+1,"Error in increasing UOM");
-        Catalog.selectUnitFromDropdown();
+        Catalog.selectUnitFromDropdown(UOM);
         Catalog.setItemUnitPrice(itemPrice);
         Catalog.selectPercentageAsSalesTypeFrmDropdown();
         Catalog.setSaleValue(saleValue);
