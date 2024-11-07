@@ -45,6 +45,8 @@ public class DashboardPage extends LoginPage{
     By btn_endlAisle  =By.xpath("//a[@data-tip='Endless Aisle']");
     By btn_creditReq  =By.xpath("//a[@data-tip='Credit Requests']");
     By btn_showcase = By.xpath("//a[contains(@data-tip,'Cut+Dry Product Showcase')]");
+    By btn_adsSettings = By.xpath("//div[@arrowprops]//a[text()='Ads + Rebates']");
+    By btn_paySettings = By.xpath("//div[@arrowprops]//a[text()='Pay']");
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -220,6 +222,18 @@ public class DashboardPage extends LoginPage{
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_profSettings);
         distributorUI.click(btn_profSettings);
+    }
+    public void clickOnAdsSettings(){
+        distributorUI.scrollToElement(btn_settings);
+        distributorUI.clickUsingJavaScript(btn_settings);
+        distributorUI.hoverOverElement(btn_adsSettings);
+        distributorUI.click(btn_adsSettings);
+    }
+    public void clickOnPaySettings(){
+        distributorUI.scrollToElement(btn_settings);
+        distributorUI.clickUsingJavaScript(btn_settings);
+        distributorUI.hoverOverElement(btn_paySettings);
+        distributorUI.click(btn_paySettings);
     }
     public void clickOnSupport(){
         String url = distributorUI.getText(btn_support,"href");

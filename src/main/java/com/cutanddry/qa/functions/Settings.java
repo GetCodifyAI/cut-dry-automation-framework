@@ -17,6 +17,12 @@ public class Settings {
     public static boolean isTeamSettingsTextDisplayed() throws InterruptedException {
         return settingsPage.isTeamSettingsTextDisplayed();
     }
+    public static boolean isAdsSettingsTextDisplayed() throws InterruptedException {
+        return settingsPage.isAdsSettingsTextDisplayed();
+    }
+    public static boolean isPaySettingsTextDisplayed() throws InterruptedException {
+        return settingsPage.isPaySettingsTextDisplayed();
+    }
     public static void clickOnAddUser() throws InterruptedException {
         settingsPage.clickOnAddUser();
     }

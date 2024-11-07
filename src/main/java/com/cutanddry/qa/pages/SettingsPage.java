@@ -33,6 +33,8 @@ public class SettingsPage extends LoginPage{
     By txt_profSettings = By.xpath("//h2[contains(text(),'Profile')]");
     By txt_trackSettings = By.xpath("//h2[contains(text(),'Delivery Settings')]");
     By txt_billingSettings = By.xpath("//h2[contains(text(),'Billing Settings')]");
+    By txt_adsSettings = By.xpath("//div[contains(text(),'Ads and Rebates')]");
+    By txt_paySettings = By.xpath("//h2[contains(text(),'Pay Settings')]");
 
     public boolean isOrderSettingsTextDisplayed(){
         try {
@@ -61,7 +63,24 @@ public class SettingsPage extends LoginPage{
         }
         distributorUI.waitForCustom(2000);
         return distributorUI.isDisplayed(txt_teamSettings);
-
+    }
+    public boolean isPaySettingsTextDisplayed() throws InterruptedException {
+        try {
+            distributorUI.waitForVisibility(txt_paySettings);
+        } catch (Exception e){
+            return false;
+        }
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(txt_paySettings);
+    }
+    public boolean isAdsSettingsTextDisplayed() throws InterruptedException {
+        try {
+            distributorUI.waitForVisibility(txt_adsSettings);
+        } catch (Exception e){
+            return false;
+        }
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(txt_adsSettings);
     }
     public void clickOnAddUser() throws InterruptedException {
         distributorUI.waitForVisibility(btn_addUser);

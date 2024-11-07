@@ -80,6 +80,10 @@ public class VerifyARRoleTest extends TestBase {
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation to team settings error");
         Dashboard.navigateToTrackSettings();
         softAssert.assertTrue(Settings.isTrackSettingsTextDisplayed(),"navigation to track settings error");
+        Dashboard.navigateToPaySettings();
+        softAssert.assertTrue(Settings.isPaySettingsTextDisplayed(),"navigation to team settings error");
+        Dashboard.navigateToAdsSettings();
+        softAssert.assertTrue(Settings.isAdsSettingsTextDisplayed(),"navigation to team settings error");
         //track
         Dashboard.navigateToTrackRoutes();
         softAssert.assertTrue(Track.isRoutesTextDisplayed(),"navigation to track routes error");

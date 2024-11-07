@@ -103,6 +103,12 @@ public class Dashboard {
     public static void navigateToProfileSettings() {
         dashboardPage.clickOnProfileSettings();
     }
+    public static void navigateToPaySettings() {
+        dashboardPage.clickOnPaySettings();
+    }
+    public static void navigateToAdsSettings() {
+        dashboardPage.clickOnAdsSettings();
+    }
     public static void navigateToSupport() {
         dashboardPage.clickOnSupport();
     }
