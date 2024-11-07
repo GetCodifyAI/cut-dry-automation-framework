@@ -13,6 +13,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyAdminRoleTest extends TestBase {
     static User user;
     static String customerId = "16579";
+    static String itemName = "Artichoke";
 
     @BeforeMethod
     public void setUp() {
@@ -31,14 +32,27 @@ public class VerifyAdminRoleTest extends TestBase {
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"customer search error");
         Customer.clickOnCustomerCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         softAssert.assertTrue(Customer.isSalespersonEditable(),"edit salesperson error");
         softAssert.assertTrue(Customer.isAbleToInviteUsers(),"invite users error");
+        Customer.clickOnBack();
         Customer.clickOnOrderGuide(customerId);
         Customer.goToEdit();
         softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
         Customer.clickOnBack();
-
+        Customer.getItemNameFirstRow();
+        Customer.increaseFirstRowQtyByOne();
+        Customer.goToCatalog();
+        Customer.searchItemOnCatalog(itemName);
+        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
+        Customer.addItemToCartCatalog(itemName);
+        Customer.checkoutItems();
+        Customer.submitOrder();
+        softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(),"order not completed");
+        Customer.clickClose();
+        Customer.clickOnBoostTab();
+        softAssert.assertTrue(Customer.isAbleToEditMsg(),"edit boost msg error");
+        Dashboard.navigateToOrders();
+        softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"navigate to order history error");
         //catalog
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(), "navigation to catalog error");
@@ -48,7 +62,6 @@ public class VerifyAdminRoleTest extends TestBase {
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         softAssert.assertTrue(Boost.isBroadcastTabDisplayed(),"navigate to broadcast error");
-        //promotions
         //pay
         Dashboard.navigateToPay();
         softAssert.assertTrue(Pay.isUserNavigatedToPay(),"navigation to pay error");

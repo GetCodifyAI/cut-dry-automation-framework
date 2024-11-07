@@ -670,4 +670,7 @@ public class Customer {
     public static boolean isAbleToInviteUsers(){
         return customersPage.isAbleToInviteUsers();
     }
+    public static boolean isAbleToEditMsg(){
+        return customersPage.isAbleToEditMsg();
+    }
 }
