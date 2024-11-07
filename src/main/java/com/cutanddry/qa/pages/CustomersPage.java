@@ -108,7 +108,7 @@ public class CustomersPage extends LoginPage {
     String txt_orders = "(//div[contains(text(), 'Order #')])[NUM]";
     By btn_back = By.xpath("//button[contains(text(), 'Back')]");
     String SelectCustomerByCode = "//td[contains(text(),'CODE')]";
-    By OrdersTabTxt = By.xpath("//a[contains(text(),'Orders') and @class='_ngcfan text-center nav-item nav-link']");
+    By OrdersTabTxt = By.xpath("//a[contains(text(),'Orders') and @class='_1n4k2vi text-center nav-item nav-link']");
     By OrderIdTxt = By.xpath("//th[contains(text(),'Order ID')]");
     By OrderDateSort = By.xpath("//div[contains(text(),'Order Date')]");
     By DeliveryDate = By.xpath("//div[contains(text(),'Delivery Date')]");
@@ -160,7 +160,7 @@ public class CustomersPage extends LoginPage {
     By txtArea = By.xpath("//div[contains(@class, 'col-lg-9')]//textarea");
     By input_selectItem = By.xpath("//div[contains(text(),'Select...')]/following-sibling::div//input");
     By btn_add = By.xpath("//button[contains(text(), 'Add')]");
-    By btn_removeItem = By.xpath("(//*[local-name() = 'svg' and @data-icon='times-circle'])[2]");
+    String btn_removeItem ="//div[text()='ITEMCODE']/following-sibling::div[2]/*";
     By EditCustomerGroupBtn = By.xpath("//div[contains(text(), 'Customer Group')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']");
     By CreateCutomerGroupTextField = By.xpath("//input[@id='react-select-6-input']");
     By Savebtn = By.xpath("//button[contains(text(),'Save')]");
@@ -836,10 +836,10 @@ public class CustomersPage extends LoginPage {
     public boolean isItemAdded(String code){
         return distributorUI.isDisplayed(By.xpath(txt_item.replace("CODE", code)));
     }
-    public void clickOnRemoveItem() {
-        distributorUI.waitForVisibility(btn_removeItem);
-        distributorUI.click(btn_removeItem);
-        distributorUI.waitForInvisibility(btn_removeItem);
+    public void clickOnRemoveItem(String Itemcode) {
+        distributorUI.waitForVisibility(By.xpath(btn_removeItem.replace("ITEMCODE",Itemcode)));
+        distributorUI.click(By.xpath(btn_removeItem.replace("ITEMCODE",Itemcode)));
+        distributorUI.waitForInvisibility(By.xpath(btn_removeItem.replace("ITEMCODE",Itemcode)));
     }
     public void addSection(){
         distributorUI.waitForClickability(btn_addSection);

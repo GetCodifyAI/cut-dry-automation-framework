@@ -56,6 +56,9 @@ public class CatalogPage extends LoginPage{
     String clearCertificationBtn = "//label[contains(text(),'CERTIFICATIONTYPE')]/..//div[contains(@class,'themed_select__clear-indicato')]";
     String selectCertificationDropdown = "//label[contains(text(),'CERTIFICATIONTYPE')]/..//div[contains(text(),'Select')]";
     String buyAmericanOption  = "//div[contains(text(),'CERTIFICATEOPTION')]";
+    By productStatusDropdown = By.xpath("//label[contains(text(), 'Product Status')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
+    String productStatus = "(//div[contains(text(),'PRODSTATUS')])[last()]";
+
 
     public boolean isCatalogTextDisplayed() {
         try {
@@ -143,6 +146,11 @@ public class CatalogPage extends LoginPage{
     public String getItemCodeFromCatalogDataPage(){
         distributorUI.waitForVisibility(ItemCodeInCatalogData);
         return distributorUI.getText(ItemCodeInCatalogData);
+    }
+
+    public void clickOnInactiveOrInactive(String prodStatus){
+        distributorUI.click(productStatusDropdown);
+        distributorUI.click(By.xpath(productStatus.replace("PRODSTATUS",prodStatus)));
     }
 
     public void clickOnSaveChangesBtn(){
@@ -271,6 +279,11 @@ public class CatalogPage extends LoginPage{
     }
 
     public boolean isSubstituteItemDisplayed(String substituteItem){
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return distributorUI.isDisplayed(By.xpath(substituteItemNameTxt.replace("ITEMNAME",substituteItem)));
     }
 
