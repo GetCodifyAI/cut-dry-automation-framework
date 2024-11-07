@@ -12,6 +12,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyARRoleTest extends TestBase {
     static User user;
+    static String userAR = "Isuru AR";
     static String customerId = "16579";
     static String itemName = "Artichoke";
 
@@ -24,9 +25,10 @@ public class VerifyARRoleTest extends TestBase {
     @Test
     public void VerifyARRole() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
-        Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        //dashboard
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
+        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Login.navigateToLoginAsPortal(userAR);
+        softAssert.assertTrue(Pay.isUserNavigatedToPay(),"navigation to pay error");
         //customer
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
@@ -62,9 +64,6 @@ public class VerifyARRoleTest extends TestBase {
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         softAssert.assertTrue(Boost.isBroadcastTabDisplayed(),"navigate to broadcast error");
-        //pay
-        Dashboard.navigateToPay();
-        softAssert.assertTrue(Pay.isUserNavigatedToPay(),"navigation to pay error");
         //reports
         Dashboard.navigateToReports();
         softAssert.assertTrue(Reports.isUserNavigatedToReports(),"navigation to reports error");
