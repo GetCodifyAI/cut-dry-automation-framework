@@ -488,8 +488,8 @@ public class Customer {
     public static boolean isItemAdded(String code){
         return customersPage.isItemAdded(code);
     }
-    public static void clickOnRemoveItem(){
-        customersPage.clickOnRemoveItem();
+    public static void clickOnRemoveItem(String Itemcode){
+        customersPage.clickOnRemoveItem(Itemcode);
     }
     public static void addSection(){
         customersPage.addSection();

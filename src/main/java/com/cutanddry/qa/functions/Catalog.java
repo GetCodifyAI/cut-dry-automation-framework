@@ -63,6 +63,10 @@ public class Catalog {
         return catalogPage.getItemCodeFromCatalogDataPage();
     }
 
+    public static void selectProductActiveInactiveStatus(String prodStatus){
+        catalogPage.clickOnInactiveOrInactive(prodStatus);
+    }
+
     public static void saveChanges(){
         catalogPage.clickOnSaveChangesBtn();
     }
