@@ -27,7 +27,7 @@ public class OrderDeskPage extends LoginPage{
     By SearchProduct = By.xpath("//div[@class='themed_select__placeholder css-1wa3eu0-placeholder']");
     By SelectedswapItem = By.xpath("//div[contains(text(),'DMAB : Almond Milk Barista-6x32oz-Califia')]");
     By SwapConfirmBtn = By.xpath("//button[contains(text(),'Confirm')]");
-    By CustomerSelectionDropdown = By.xpath("(//div[@class='cd_themed_select__single-value css-1uccc91-singleValue'])[1]");
+    By CustomerSelectionDropdown = By.xpath(" //div[contains(text(),'Search for a customer')]");
     By CustomerName = By.cssSelector(".cd_themed_select__option.css-yt9ioa-option");
     By LocationSelectionDropdown = By.xpath("(//div[@class='cd_themed_select__value-container css-1hwfws3'])[1]");
     By LocationName = By.cssSelector(".cd_themed_select__option.css-1n7v3ny-option");

@@ -29,12 +29,12 @@ public class CatalogPage extends LoginPage{
     By additionalAttributesTab = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Additional Attributes')]");
     By imagesTab = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Images')]");
     By certificationAttribute = By.xpath("//div[contains(text(),'Certifications')]");
-    By productItemImage = By.xpath("//img[contains(@class,'_s81fdh img-fluid') and contains(@src,'img01.jpg')]");
+    By productItemImage = By.xpath("//img[contains(@class,'_kzpva6 img-fluid') and contains(@src,'img01.jpg')]");
     By priceAndPromotions = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Pricing & Promotions')]");
     By unitOfMeasure = By.xpath("//button[contains(text(),'+ Unit of measure')]");
     By uomCount = By.xpath("//table[@class='pt-4 w-auto table table-borderless']//tr");
     By uomSelectDropdown = By.xpath("//div[contains(text(),'Select UoM')]");
-    By unit = By.xpath("//div[@id='react-select-24-option-10']");
+    String unit = "//div[text()='UNIT']";
     By unitPriceTxtField = By.xpath("//div[contains(text(), 'Bag')]/ancestor::td[1]/following-sibling::td[1]//input[@type='number']");
     By salesTypeDropDown =By.xpath("//tr[td//div[contains(text(), 'Bag')]]/td[3]//div[contains(@class, 'cd_themed_select__placeholder css-1wa3eu0-placeholder')]");
     By percentageOption = By.xpath("//div[contains(text(),'Percentage')]");
@@ -53,7 +53,9 @@ public class CatalogPage extends LoginPage{
     String substituteItemNameTxt = "//div[contains(text(),'ITEMNAME')]";
     String deleteSubstituteItemBtn = "//div[@class='align-items-center my-1 row']//div[contains(text(),'ITEMCODE')]//./following-sibling::*[3]";
     By searchField = By.xpath("//div//input[contains(@placeholder,'Find Item in Catalog')]");
-
+    String clearCertificationBtn = "//label[contains(text(),'CERTIFICATIONTYPE')]/..//div[contains(@class,'themed_select__clear-indicato')]";
+    String selectCertificationDropdown = "//label[contains(text(),'CERTIFICATIONTYPE')]/..//div[contains(text(),'Select')]";
+    String buyAmericanOption  = "//div[contains(text(),'CERTIFICATEOPTION')]";
 
     public boolean isCatalogTextDisplayed() {
         try {
@@ -160,6 +162,15 @@ public class CatalogPage extends LoginPage{
         return distributorUI.isDisplayed(certificationAttribute);
     }
 
+    public void clickClearCertification(String CertificationType){
+        distributorUI.click(By.xpath(clearCertificationBtn.replace("CERTIFICATIONTYPE",CertificationType)));
+    }
+
+    public void clickOnCertification(String CertificationType, String certificate){
+        distributorUI.click(By.xpath(selectCertificationDropdown.replace("CERTIFICATIONTYPE",CertificationType)));
+        distributorUI.click(By.xpath(buyAmericanOption.replace("CERTIFICATEOPTION",certificate)));
+    }
+
     public void clickOnImagesTab(){
         distributorUI.click(imagesTab);
     }
@@ -180,11 +191,11 @@ public class CatalogPage extends LoginPage{
         return distributorUI.countElements(uomCount);
     }
 
-    public void clickOnUnit(){
+    public void clickOnUnit(String uom){
         distributorUI.waitForVisibility(uomSelectDropdown);
         distributorUI.click(uomSelectDropdown);
-        distributorUI.waitForVisibility(unit);
-        distributorUI.click(unit);
+        distributorUI.waitForVisibility(By.xpath(unit.replace("UNIT",uom)));
+        distributorUI.click(By.xpath(unit.replace("UNIT",uom)));
     }
 
     public void typeUnitPrice(String unitPrice){

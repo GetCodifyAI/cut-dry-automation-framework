@@ -208,6 +208,8 @@ public class CustomersPage extends LoginPage {
     String orderGuideOrderApprovalDisabledBtn = "//div[contains(text(),'ORDERGUIDE')]/../following-sibling::*//div[contains(@style, 'rgb(204, 204, 204)')]";
     String orderGuideOrderApprovalEnabledBtn = "//div[contains(text(),'ORDERGUIDE')]/../following-sibling::*//div[contains(@style, 'rgb(255, 255, 255)')]";
     String orderGuideOrderApprovalToggle = "//div[contains(text(),'ORDERGUIDE')]/../following-sibling::*//div[2]";
+    By editExistingOrderTxt = By.xpath("//h2[contains(text(),'Edit Existing Order')]");
+    By cancelBtn = By.xpath("//button[contains(text(),'Cancel')]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -701,6 +703,9 @@ public class CustomersPage extends LoginPage {
     public void clickSouthwestTraders(){
         distributorUI.waitForClickability(txt_southwest);
         distributorUI.click(txt_southwest);
+        if(distributorUI.isDisplayed(editExistingOrderTxt)){
+            distributorUI.click(cancelBtn);
+        }
     }
     public boolean isSubstitutesPopupDisplayed(){
         distributorUI.waitForVisibility(txt_substitutions);
