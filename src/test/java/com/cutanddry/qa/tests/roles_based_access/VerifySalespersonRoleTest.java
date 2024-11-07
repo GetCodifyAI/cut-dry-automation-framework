@@ -10,9 +10,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyARRoleTest extends TestBase {
+public class VerifySalespersonRoleTest extends TestBase {
     static User user;
-    static String userAR = "Isuru Test AR";
+    static String userAR = "apptesters@test.com";
     static String customerId = "16579";
     static String itemName = "Artichoke";
 
@@ -28,13 +28,12 @@ public class VerifyARRoleTest extends TestBase {
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToLoginAsPortal(userAR);
-        softAssert.assertTrue(Pay.isUserNavigatedToPay(),"navigation to pay error");
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         //customer
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"customer search error");
         Customer.clickOnCustomerCode(customerId);
-        softAssert.assertTrue(Customer.isSalespersonEditable(),"edit salesperson error");
         softAssert.assertTrue(Customer.isAbleToInviteUsers(),"invite users error");
         Customer.clickOnBack();
         Customer.clickOnOrderGuide(customerId);
@@ -56,42 +55,16 @@ public class VerifyARRoleTest extends TestBase {
         softAssert.assertTrue(Customer.isAbleToEditMsg(),"edit boost msg error");
         Dashboard.navigateToOrders();
         softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"navigate to order history error");
-        //catalog
-        Dashboard.navigateToCatalog();
-        softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(), "navigation to catalog error");
-        Catalog.clickOnPreviewCatalog();
-        softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
-        //broadcast
-        Dashboard.navigateToBoost();
-        softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
-        softAssert.assertTrue(Boost.isBroadcastTabDisplayed(),"navigate to broadcast error");
-        //reports
-        Dashboard.navigateToReports();
-        softAssert.assertTrue(Reports.isUserNavigatedToReports(),"navigation to reports error");
         //settings
         Dashboard.navigateToTeamSettings();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation to team settings error");
         Dashboard.navigateToCompanySettings();
         softAssert.assertTrue(Settings.isCompanySettingsTextDisplayed(),"navigation to company settings error");
-        Dashboard.navigateToBillingSettings();
-        softAssert.assertTrue(Settings.isBillingSettingsTextDisplayed(),"navigation to billing settings error");
-//        Dashboard.navigateToPaySettings();
-//        softAssert.assertTrue(Settings.isPaySettingsTextDisplayed(),"navigation to pay settings error");
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");
-        Dashboard.navigateToTrackSettings();
-        softAssert.assertTrue(Settings.isTrackSettingsTextDisplayed(),"navigation to track settings error");
-        Dashboard.navigateToAdsSettings();
-        softAssert.assertTrue(Settings.isAdsSettingsTextDisplayed(),"navigation to ads settings error");
         Dashboard.navigateToProfileSettings();
         softAssert.assertTrue(Settings.isProfileSettingsTextDisplayed(),"navigation to profile settings error");
         //track
-        Dashboard.navigateToTrackRoutes();
-        softAssert.assertTrue(Track.isRoutesTextDisplayed(),"navigation to track routes error");
-        Dashboard.navigateToTrackResources();
-        softAssert.assertTrue(Track.isResourcesTextDisplayed(),"navigation to track resources error");
-        Dashboard.navigateToTrackNotifications();
-        softAssert.assertTrue(Track.isNotificationsTextDisplayed(),"navigation to track notif error");
         Dashboard.navigateToTrackMonitoring();
         softAssert.assertTrue(Track.isMonitoringTextDisplayed(),"navigation to track monitoring error");
         softAssert.assertAll();

@@ -673,4 +673,7 @@ public class Customer {
     public static boolean isAbleToEditMsg(){
         return customersPage.isAbleToEditMsg();
     }
+    public static void clickOnIndependentFoods(){
+        customersPage.clickOnIndependentFoods();
+    }
 }

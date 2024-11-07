@@ -200,6 +200,7 @@ public class CustomersPage extends LoginPage {
     By catalogAccessDisableOption = By.xpath("//div[contains(text(),'Disabled')]");
     By catalogAccessEnableOption = By.xpath("//div[contains(text(),'Enabled')]");
     By btn_editSalesperson = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[5]");
+    By btn_independentFoods = By.xpath("//div[contains(text(), 'Independent Foods Co')]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -1075,5 +1076,9 @@ public class CustomersPage extends LoginPage {
         } catch (Exception e) {
             return false;
         }
+    }
+    public void clickOnIndependentFoods(){
+        distributorUI.waitForVisibility(btn_independentFoods);
+        distributorUI.click(btn_independentFoods);
     }
 }
