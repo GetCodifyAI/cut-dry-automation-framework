@@ -112,6 +112,10 @@
             <class name="com.cutanddry.qa.tests.archive.VerifySavingAndUnhideItemFromOrderGuideTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyCatalogItemImagesTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyItemDescriptionsTest" />
+            <class name="com.cutanddry.qa.tests.roles_based_access.VerifyAdminRoleTest" />
+            <class name="com.cutanddry.qa.tests.roles_based_access.VerifyARRoleTest" />
+            <class name="com.cutanddry.qa.tests.roles_based_access.VerifySalespersonRoleTest" />
+            <class name="com.cutanddry.qa.tests.roles_based_access.VerifyDispatcherRoleTest" />
         </classes>
     </test>
 </suite>
