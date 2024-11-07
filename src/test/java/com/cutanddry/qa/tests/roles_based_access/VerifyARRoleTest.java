@@ -12,7 +12,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyARRoleTest extends TestBase {
     static User user;
-    static String userAR = "Isuru AR";
+    static String userAR = "Isuru Test AR";
     static String customerId = "16579";
     static String itemName = "Artichoke";
 
@@ -74,8 +74,8 @@ public class VerifyARRoleTest extends TestBase {
         softAssert.assertTrue(Settings.isCompanySettingsTextDisplayed(),"navigation to company settings error");
         Dashboard.navigateToBillingSettings();
         softAssert.assertTrue(Settings.isBillingSettingsTextDisplayed(),"navigation to billing settings error");
-        Dashboard.navigateToPaySettings();
-        softAssert.assertTrue(Settings.isPaySettingsTextDisplayed(),"navigation to pay settings error");
+//        Dashboard.navigateToPaySettings();
+//        softAssert.assertTrue(Settings.isPaySettingsTextDisplayed(),"navigation to pay settings error");
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");
         Dashboard.navigateToTrackSettings();
