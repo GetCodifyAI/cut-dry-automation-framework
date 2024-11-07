@@ -29,7 +29,7 @@ public class AddUserWhiteLabelPortalTest extends TestBase {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-        Login.navigateToWhiteLabelPortal(customer);
+        Login.navigateToLoginAsPortal(customer);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboardWhiteLabel(),"login error");
         Dashboard.navigateToUsersWhiteLabel();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");

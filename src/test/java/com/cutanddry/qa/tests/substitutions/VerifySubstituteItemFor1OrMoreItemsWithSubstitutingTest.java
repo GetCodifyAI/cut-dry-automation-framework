@@ -45,7 +45,7 @@ public class VerifySubstituteItemFor1OrMoreItemsWithSubstitutingTest extends Tes
         Catalog.checkAndAddNecessarySubstituteItems(itemCode_2);
         Catalog.saveChanges();
 
-        Login.navigateToWhiteLabelPortal(customer);
+        Login.navigateToLoginAsPortal(customer);
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Customer.clickSouthwestTraders();
         Customer.searchItemOnOrderGuide(itemCode_1);

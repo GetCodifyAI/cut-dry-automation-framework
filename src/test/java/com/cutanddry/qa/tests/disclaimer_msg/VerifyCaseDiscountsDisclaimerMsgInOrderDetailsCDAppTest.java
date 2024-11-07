@@ -28,7 +28,7 @@ public class VerifyCaseDiscountsDisclaimerMsgInOrderDetailsCDAppTest extends Tes
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-        Login.navigateToWhiteLabelPortal(customer);
+        Login.navigateToLoginAsPortal(customer);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboardWhiteLabel(),"white label login error");
         Dashboard.navigateToUsersWhiteLabel();
         Dashboard.navigateToHistory();
