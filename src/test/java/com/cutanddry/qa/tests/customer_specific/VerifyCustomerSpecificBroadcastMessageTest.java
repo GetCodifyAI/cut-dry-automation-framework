@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyCustomerSpecificBroadcastMessageTest extends TestBase {
     static User user;
     static String customerId = "16579";
-    static String broadcastMessage = "Test Broadcast Message";
+    static String broadcastMessage = "Broadcast Message Test";
 
     @BeforeMethod
     public void setUp(){
@@ -37,11 +37,11 @@ public class VerifyCustomerSpecificBroadcastMessageTest extends TestBase {
         Customer.typeBroadcastMessage(broadcastMessage);
         Customer.clickOnSaveMessage();
         Customer.clickOnOrderGuideInProfile();
-        softAssert.assertTrue(Customer.isBroadcastMessageDisplayed(),"broadcast error");
+        softAssert.assertTrue(Customer.isBroadcastMessageDisplayed(broadcastMessage),"broadcast error");
         Customer.clickOnBack();
         Customer.clickOnClearMessage();
         Customer.clickOnOrderGuideInProfile();
-        softAssert.assertFalse(Customer.isBroadcastMessageDisplayed(),"broadcast clear error");
+        softAssert.assertFalse(Customer.isBroadcastMessageDisplayed(broadcastMessage),"broadcast clear error");
         softAssert.assertAll();
     }
 

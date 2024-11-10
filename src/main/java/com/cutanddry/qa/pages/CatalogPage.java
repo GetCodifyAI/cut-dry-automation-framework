@@ -57,7 +57,7 @@ public class CatalogPage extends LoginPage{
     String selectCertificationDropdown = "//label[contains(text(),'CERTIFICATIONTYPE')]/..//div[contains(text(),'Select')]";
     String buyAmericanOption  = "//div[contains(text(),'CERTIFICATEOPTION')]";
     By productStatusDropdown = By.xpath("//label[contains(text(), 'Product Status')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
-    String productStatus = "(//div[contains(text(),'PRODSTATUS')])[last()]";
+    String productStatus = "(//div[contains(text(),'PRODSTATUS') and contains(@class,'themed_select__option')])[last()]";
 
 
     public boolean isCatalogTextDisplayed() {
@@ -150,6 +150,7 @@ public class CatalogPage extends LoginPage{
 
     public void clickOnInactiveOrInactive(String prodStatus){
         distributorUI.click(productStatusDropdown);
+        distributorUI.waitForVisibility(By.xpath(productStatus.replace("PRODSTATUS",prodStatus)));
         distributorUI.click(By.xpath(productStatus.replace("PRODSTATUS",prodStatus)));
     }
 
@@ -288,6 +289,11 @@ public class CatalogPage extends LoginPage{
     }
 
     public void clickOnDeleteSubstituteItemBtn(String itemCode){
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.click(By.xpath(deleteSubstituteItemBtn.replace("ITEMCODE",itemCode)));
     }
 

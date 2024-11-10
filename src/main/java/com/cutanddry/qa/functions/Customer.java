@@ -147,11 +147,11 @@ public class Customer {
     public static boolean isThankingForOrderPopupDisplayed(){
         return customersPage.isThankingForOrderPopupDisplayed();
     }
-    public static boolean isBroadcastMessageDisplayed() {
-        return customersPage.isBroadcastMessageDisplayed();
+    public static boolean isBroadcastMessageDisplayed(String message) {
+        return customersPage.isBroadcastMessageDisplayed(message);
     }
-    public static void clickMessage() {
-        customersPage.clickMessage();
+    public static void clickMessage(String message) {
+        customersPage.clickMessage(message);
     }
     public static boolean isProductDetailsDisplayed(){
         return customersPage.isProductDetailsDisplayed();

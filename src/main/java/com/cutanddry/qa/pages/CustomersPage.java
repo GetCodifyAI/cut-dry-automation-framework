@@ -52,7 +52,7 @@ public class CustomersPage extends LoginPage {
     By btn_confirm = By.xpath("//button[text()='Confirm']");
     By txt_orderGuideCreateSuccess = By.xpath("//h2[contains(text(), 'Order guide updated successfully')]");
     By btn_OK = By.xpath("//button[text()='OK']");
-    By msg_banner = By.xpath("//span[text()='Test Broadcast Message']");
+    String msg_banner = "//span[text()='TESTMESSAGE']";
     By lbl_productDetails = By.xpath("//span[text()='Product Details']");
     By lbl_topCategoryPicks = By.xpath("//div[text()='Top Category Picks']");
     String lbl_itemAdded = "//div[text()='Top Category Picks']//following-sibling::div//div[text()='CODE']";
@@ -425,11 +425,12 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForVisibility(btn_removeFromOrderGuide);
         distributorUI.click(btn_removeFromOrderGuide);
     }
-    public boolean isBroadcastMessageDisplayed() {
-        return distributorUI.isDisplayed(msg_banner);
+    public boolean isBroadcastMessageDisplayed(String message) {
+        distributorUI.waitForVisibility(By.xpath(msg_banner.replace("TESTMESSAGE",message)));
+        return distributorUI.isDisplayed(By.xpath(msg_banner.replace("TESTMESSAGE",message)));
     }
-    public void clickMessage(){
-        distributorUI.click(msg_banner);
+    public void clickMessage(String message){
+        distributorUI.click(By.xpath(msg_banner.replace("TESTMESSAGE",message)));
     }
     public boolean isProductDetailsDisplayed(){
         return distributorUI.isDisplayed(lbl_productDetails);
