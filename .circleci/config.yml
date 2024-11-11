@@ -130,7 +130,7 @@ workflows:
           filters:
             branches:
               only:
-                - circle-ci
+                - main
     jobs:
       - nightly-build-and-test
 
