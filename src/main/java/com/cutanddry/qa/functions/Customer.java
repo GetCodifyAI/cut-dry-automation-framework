@@ -701,4 +701,16 @@ public class Customer {
         customersPage.clickOnSave();
     }
 
+    public static boolean isSalespersonEditable(){
+        return customersPage.isSalespersonEditable();
+    }
+    public static boolean isAbleToInviteUsers(){
+        return customersPage.isAbleToInviteUsers();
+    }
+    public static boolean isAbleToEditMsg(){
+        return customersPage.isAbleToEditMsg();
+    }
+    public static void clickOnIndependentFoods(){
+        customersPage.clickOnIndependentFoods();
+    }
 }

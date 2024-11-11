@@ -210,6 +210,8 @@ public class CustomersPage extends LoginPage {
     String orderGuideOrderApprovalToggle = "//div[contains(text(),'ORDERGUIDE')]/../following-sibling::*//div[2]";
     By editExistingOrderTxt = By.xpath("//h2[contains(text(),'Edit Existing Order')]");
     By cancelBtn = By.xpath("//button[contains(text(),'Cancel')]");
+    By btn_editSalesperson = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[5]");
+    By btn_independentFoods = By.xpath("//div[contains(text(), 'Independent Foods Co')]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -1100,5 +1102,35 @@ public class CustomersPage extends LoginPage {
         if(distributorUI.isDisplayed(By.xpath(orderGuideOrderApprovalEnabledBtn.replace("ORDERGUIDE",OrderGuideName)))){
             distributorUI.click(By.xpath(orderGuideOrderApprovalToggle.replace("ORDERGUIDE",OrderGuideName)));
         }
+    }
+    public boolean isSalespersonEditable(){
+        try {
+            distributorUI.click(btn_editSalesperson);
+            distributorUI.click(btn_close);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
+    }
+    public boolean isAbleToInviteUsers() {
+        try {
+            distributorUI.click(InviteNewUsersBtn);
+            distributorUI.click(btn_close);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    public boolean isAbleToEditMsg() {
+        try {
+            distributorUI.click(btn_editMessage);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    public void clickOnIndependentFoods(){
+        distributorUI.waitForVisibility(btn_independentFoods);
+        distributorUI.click(btn_independentFoods);
     }
 }
