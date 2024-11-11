@@ -147,11 +147,11 @@ public class Customer {
     public static boolean isThankingForOrderPopupDisplayed(){
         return customersPage.isThankingForOrderPopupDisplayed();
     }
-    public static boolean isBroadcastMessageDisplayed() {
-        return customersPage.isBroadcastMessageDisplayed();
+    public static boolean isBroadcastMessageDisplayed(String message) {
+        return customersPage.isBroadcastMessageDisplayed(message);
     }
-    public static void clickMessage() {
-        customersPage.clickMessage();
+    public static void clickMessage(String message) {
+        customersPage.clickMessage(message);
     }
     public static boolean isProductDetailsDisplayed(){
         return customersPage.isProductDetailsDisplayed();
@@ -488,8 +488,8 @@ public class Customer {
     public static boolean isItemAdded(String code){
         return customersPage.isItemAdded(code);
     }
-    public static void clickOnRemoveItem(){
-        customersPage.clickOnRemoveItem();
+    public static void clickOnRemoveItem(String Itemcode){
+        customersPage.clickOnRemoveItem(Itemcode);
     }
     public static void addSection(){
         customersPage.addSection();
@@ -663,6 +663,42 @@ public class Customer {
         customersPage.clickEditCatalogAccess();
         customersPage.clickOnEnableCatalogAccessOption();
         customersPage.saveCatalogAccessChanges();
+    }
+
+    public static boolean orderApprovalTxtDisplayed(){
+        return customersPage.isOrderApprovalOptionDisplayed();
+    }
+
+    public static void orderApprovalEdit(){
+        customersPage.clickOnOrderApprovalEditBtn();
+    }
+
+    public static boolean orderApprovalSettingsOverlayDisplayed(){
+        return customersPage.isOrderApprovalSettingsOverlayDisplayed();
+    }
+
+    public static boolean NewlyCreatedOrderGuideApprovalStatusDisplayed(){
+        return customersPage.isNewlyCreatedOrderGuideApprovalStatusDisplayed();
+    }
+
+    public static boolean existingOrderGuideDisplayed(String orderGuideName){
+        return customersPage.isExistingOrderGuidesDisplayed(orderGuideName);
+    }
+
+    public static void closeOrderApprovalSettingsOverlay(){
+        customersPage.clickCloseOnOrderApprovalSettingsOverlay();
+    }
+
+    public static void orderApprovalTurnOnForTheOrderGuide(String OrderGuideName){
+        customersPage.clickTurnOnOrderApprovalForOrderGuide(OrderGuideName);
+    }
+
+    public static void orderApprovalTurnOffForTheOrderGuide(String OrderGuideName){
+        customersPage.clickTurnOffOrderApprovalForOrderGuide(OrderGuideName);
+    }
+
+    public static void saveOrderApprovalSettings(){
+        customersPage.clickOnSave();
     }
 
 }

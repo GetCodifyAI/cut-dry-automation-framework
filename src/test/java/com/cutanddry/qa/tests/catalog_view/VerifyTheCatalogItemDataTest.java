@@ -14,6 +14,8 @@ public class VerifyTheCatalogItemDataTest extends TestBase {
     static User user;
     String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
     String itemCode = "00475";
+    String Active = "Active";
+    String InActive = "Inactive";
 
     @BeforeMethod
     public void setUp(){
@@ -32,6 +34,7 @@ public class VerifyTheCatalogItemDataTest extends TestBase {
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        Catalog.selectProductActiveInactiveStatus(Active);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");
 
@@ -40,6 +43,7 @@ public class VerifyTheCatalogItemDataTest extends TestBase {
 
     @AfterMethod
     public void tearDown(ITestResult result) {
+        Catalog.selectProductActiveInactiveStatus(InActive);
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }

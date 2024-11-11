@@ -63,6 +63,10 @@ public class Catalog {
         return catalogPage.getItemCodeFromCatalogDataPage();
     }
 
+    public static void selectProductActiveInactiveStatus(String prodStatus){
+        catalogPage.clickOnInactiveOrInactive(prodStatus);
+    }
+
     public static void saveChanges(){
         catalogPage.clickOnSaveChangesBtn();
     }
@@ -77,6 +81,14 @@ public class Catalog {
 
     public static boolean isAdditionalAttributesTabDisplayed(){
         return catalogPage.isCertificationsSectionDisplayed();
+    }
+
+    public static void clearCertification(String CertificationType){
+        catalogPage.clickClearCertification(CertificationType);
+    }
+
+    public static void selectCertification(String CertificationType,String certification){
+        catalogPage.clickOnCertification(CertificationType,certification);
     }
 
     public static void navigateToImages(){
@@ -99,8 +111,8 @@ public class Catalog {
         return catalogPage.getUnitOfMeasureCount();
     }
 
-    public static void selectUnitFromDropdown(){
-        catalogPage.clickOnUnit();
+    public static void selectUnitFromDropdown(String uom){
+        catalogPage.clickOnUnit(uom);
     }
 
     public static void setItemUnitPrice(String unitPrice){

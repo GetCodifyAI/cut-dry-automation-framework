@@ -30,7 +30,7 @@ public class VerifySubstituteItemByIncreasingOrDecreasingQuantityTest extends Te
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-        Login.navigateToWhiteLabelPortal(customer);
+        Login.navigateToLoginAsPortal(customer);
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Customer.clickSouthwestTraders();
         Customer.searchItemOnOrderGuide(itemCode_1);

@@ -52,7 +52,7 @@ public class CustomersPage extends LoginPage {
     By btn_confirm = By.xpath("//button[text()='Confirm']");
     By txt_orderGuideCreateSuccess = By.xpath("//h2[contains(text(), 'Order guide updated successfully')]");
     By btn_OK = By.xpath("//button[text()='OK']");
-    By msg_banner = By.xpath("//span[text()='Test Broadcast Message']");
+    String msg_banner = "//span[text()='TESTMESSAGE']";
     By lbl_productDetails = By.xpath("//span[text()='Product Details']");
     By lbl_topCategoryPicks = By.xpath("//div[text()='Top Category Picks']");
     String lbl_itemAdded = "//div[text()='Top Category Picks']//following-sibling::div//div[text()='CODE']";
@@ -77,7 +77,7 @@ public class CustomersPage extends LoginPage {
     By dropdown_lastOrdered = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Last Ordered')]");
     By dropdown_alphabetical = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Alphabetical (A-Z)')]");
     By dropdown_itemCategories = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Item Categories')]");
-    By txt_produce = By.xpath("//div[@class='flex-grow-1' and text()='produce']");
+    By txt_produce = By.xpath("//div[@class='flex-grow-1' and starts-with(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'produce')]");
     By txt_firstItem = By.xpath("//div[text()='artichoke -24ct']");
     By txt_minOrderBanner = By.xpath("//div[contains(text(), 'Add a few more items worth') and contains(text(), 'to meet minimum order amount')]");
     By txt_popupAlertOrderMin = By.xpath("//h2[text()='Order Minimum Not Met']");
@@ -108,7 +108,7 @@ public class CustomersPage extends LoginPage {
     String txt_orders = "(//div[contains(text(), 'Order #')])[NUM]";
     By btn_back = By.xpath("//button[contains(text(), 'Back')]");
     String SelectCustomerByCode = "//td[contains(text(),'CODE')]";
-    By OrdersTabTxt = By.xpath("//a[contains(text(),'Orders') and @class='_ngcfan text-center nav-item nav-link']");
+    By OrdersTabTxt = By.xpath("//a[contains(text(),'Orders') and @class='_1n4k2vi text-center nav-item nav-link']");
     By OrderIdTxt = By.xpath("//th[contains(text(),'Order ID')]");
     By OrderDateSort = By.xpath("//div[contains(text(),'Order Date')]");
     By DeliveryDate = By.xpath("//div[contains(text(),'Delivery Date')]");
@@ -160,7 +160,7 @@ public class CustomersPage extends LoginPage {
     By txtArea = By.xpath("//div[contains(@class, 'col-lg-9')]//textarea");
     By input_selectItem = By.xpath("//div[contains(text(),'Select...')]/following-sibling::div//input");
     By btn_add = By.xpath("//button[contains(text(), 'Add')]");
-    By btn_removeItem = By.xpath("(//*[local-name() = 'svg' and @data-icon='times-circle'])[2]");
+    String btn_removeItem ="//div[text()='ITEMCODE']/following-sibling::div[2]/*";
     By EditCustomerGroupBtn = By.xpath("//div[contains(text(), 'Customer Group')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']");
     By CreateCutomerGroupTextField = By.xpath("//input[@id='react-select-6-input']");
     By Savebtn = By.xpath("//button[contains(text(),'Save')]");
@@ -199,6 +199,17 @@ public class CustomersPage extends LoginPage {
     By catalogSectionInOrderGuide = By.xpath("//div[contains(text(),'Catalog')]");
     By catalogAccessDisableOption = By.xpath("//div[contains(text(),'Disabled')]");
     By catalogAccessEnableOption = By.xpath("//div[contains(text(),'Enabled')]");
+    By orderApprovalTxt = By.xpath("//div[contains(text(),'Order Approval')]");
+    By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']");
+    By orderApprovalSettingsOverlayTxt = By.xpath("//div[contains(text(),'Order Approval Settings')]");
+    By orderApprovalSettingsOverlayNewlyCreatedOGOptionsEnabledOrDisabled = By.xpath("//div[contains(@class,'themed_select') and contains(text(),'Enabled') or contains(text(),'Disabled')]");
+    String orderApprovalSettingsOverlayOrderGuideTxt = "//div[contains(text(),'Existing Order Guide(s)')]/following-sibling::div//div[contains(text(),'ORDERGUIDE')]";
+    By orderApprovalSettingsOverlayCloseBtn = By.xpath("//span[contains(text(),'×')]");
+    String orderGuideOrderApprovalDisabledBtn = "//div[contains(text(),'ORDERGUIDE')]/../following-sibling::*//div[contains(@style, 'rgb(204, 204, 204)')]";
+    String orderGuideOrderApprovalEnabledBtn = "//div[contains(text(),'ORDERGUIDE')]/../following-sibling::*//div[contains(@style, 'rgb(255, 255, 255)')]";
+    String orderGuideOrderApprovalToggle = "//div[contains(text(),'ORDERGUIDE')]/../following-sibling::*//div[2]";
+    By editExistingOrderTxt = By.xpath("//h2[contains(text(),'Edit Existing Order')]");
+    By cancelBtn = By.xpath("//button[contains(text(),'Cancel')]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -373,6 +384,7 @@ public class CustomersPage extends LoginPage {
         distributorUI.clear(tbx_orderGuideSearch);
         distributorUI.waitForCustom(2000);
         distributorUI.sendKeys(tbx_orderGuideSearch,item);
+        distributorUI.waitForCustom(2000);
     }
     public void clickOnCreate() throws InterruptedException {
         distributorUI.waitForCustom(1000);
@@ -413,11 +425,12 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForVisibility(btn_removeFromOrderGuide);
         distributorUI.click(btn_removeFromOrderGuide);
     }
-    public boolean isBroadcastMessageDisplayed() {
-        return distributorUI.isDisplayed(msg_banner);
+    public boolean isBroadcastMessageDisplayed(String message) {
+        distributorUI.waitForVisibility(By.xpath(msg_banner.replace("TESTMESSAGE",message)));
+        return distributorUI.isDisplayed(By.xpath(msg_banner.replace("TESTMESSAGE",message)));
     }
-    public void clickMessage(){
-        distributorUI.click(msg_banner);
+    public void clickMessage(String message){
+        distributorUI.click(By.xpath(msg_banner.replace("TESTMESSAGE",message)));
     }
     public boolean isProductDetailsDisplayed(){
         return distributorUI.isDisplayed(lbl_productDetails);
@@ -691,6 +704,9 @@ public class CustomersPage extends LoginPage {
     public void clickSouthwestTraders(){
         distributorUI.waitForClickability(txt_southwest);
         distributorUI.click(txt_southwest);
+        if(distributorUI.isDisplayed(editExistingOrderTxt)){
+            distributorUI.click(cancelBtn);
+        }
     }
     public boolean isSubstitutesPopupDisplayed(){
         distributorUI.waitForVisibility(txt_substitutions);
@@ -821,10 +837,10 @@ public class CustomersPage extends LoginPage {
     public boolean isItemAdded(String code){
         return distributorUI.isDisplayed(By.xpath(txt_item.replace("CODE", code)));
     }
-    public void clickOnRemoveItem() {
-        distributorUI.waitForVisibility(btn_removeItem);
-        distributorUI.click(btn_removeItem);
-        distributorUI.waitForInvisibility(btn_removeItem);
+    public void clickOnRemoveItem(String Itemcode) {
+        distributorUI.waitForVisibility(By.xpath(btn_removeItem.replace("ITEMCODE",Itemcode)));
+        distributorUI.click(By.xpath(btn_removeItem.replace("ITEMCODE",Itemcode)));
+        distributorUI.waitForInvisibility(By.xpath(btn_removeItem.replace("ITEMCODE",Itemcode)));
     }
     public void addSection(){
         distributorUI.waitForClickability(btn_addSection);
@@ -1050,4 +1066,39 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(catalogAccessEnableOption);
     }
 
+    public boolean isOrderApprovalOptionDisplayed(){
+        return distributorUI.isDisplayed(orderApprovalTxt);
+    }
+
+    public void clickOnOrderApprovalEditBtn(){
+        distributorUI.click(orderApprovalEditBtn);
+    }
+
+    public boolean isOrderApprovalSettingsOverlayDisplayed(){
+        return distributorUI.isDisplayed(orderApprovalSettingsOverlayTxt);
+    }
+
+    public boolean isNewlyCreatedOrderGuideApprovalStatusDisplayed(){
+        return distributorUI.isDisplayed(orderApprovalSettingsOverlayNewlyCreatedOGOptionsEnabledOrDisabled);
+    }
+
+    public boolean isExistingOrderGuidesDisplayed(String orderGuideName){
+        return distributorUI.isDisplayed(By.xpath(orderApprovalSettingsOverlayOrderGuideTxt.replace("ORDERGUIDE",orderGuideName)));
+    }
+
+    public void clickCloseOnOrderApprovalSettingsOverlay(){
+        distributorUI.click(orderApprovalSettingsOverlayCloseBtn);
+    }
+
+    public void clickTurnOnOrderApprovalForOrderGuide(String OrderGuideName){
+        if(distributorUI.isDisplayed(By.xpath(orderGuideOrderApprovalDisabledBtn.replace("ORDERGUIDE",OrderGuideName)))){
+            distributorUI.click(By.xpath(orderGuideOrderApprovalToggle.replace("ORDERGUIDE",OrderGuideName)));
+        }
+    }
+
+    public void clickTurnOffOrderApprovalForOrderGuide(String OrderGuideName){
+        if(distributorUI.isDisplayed(By.xpath(orderGuideOrderApprovalEnabledBtn.replace("ORDERGUIDE",OrderGuideName)))){
+            distributorUI.click(By.xpath(orderGuideOrderApprovalToggle.replace("ORDERGUIDE",OrderGuideName)));
+        }
+    }
 }

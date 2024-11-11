@@ -16,6 +16,8 @@ public class VerifyAdditionalAttributeOfItemTest extends TestBase {
     static User user;
     String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
     String itemCode = "00475";
+    String CertificationType = "Provenance Certifications";
+    String CertificationOption = "Buy American";
 
     @BeforeMethod
     public void setUp(){
@@ -36,6 +38,10 @@ public class VerifyAdditionalAttributeOfItemTest extends TestBase {
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
         Catalog.navigateToAdditionalAttributes();
         softAssert.assertTrue(Catalog.isAdditionalAttributesTabDisplayed(),"Error in displaying Additional attributes tab");
+        Catalog.clearCertification(CertificationType);
+        Catalog.saveChanges();
+        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");
+        Catalog.selectCertification(CertificationType,CertificationOption);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");
 

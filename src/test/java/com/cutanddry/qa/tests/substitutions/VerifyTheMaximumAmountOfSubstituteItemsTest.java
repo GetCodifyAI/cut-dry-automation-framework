@@ -51,7 +51,7 @@ public class VerifyTheMaximumAmountOfSubstituteItemsTest extends TestBase {
         Catalog.checkAndAddNecessarySubstituteItems(itemCodeSub4);
         Catalog.saveChanges();
 
-        Login.navigateToWhiteLabelPortal(customer);
+        Login.navigateToLoginAsPortal(customer);
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Customer.clickSouthwestTraders();
         Customer.searchItemOnOrderGuide(itemCode);
