@@ -72,7 +72,7 @@ public class LoginPage extends TestBase {
     public void navigateToDistributor() {
         distributorUI.navigateToURL(Constants.MAIN_URL);
     }
-    public void navigateToWhiteLabelPortal(String name) {
+    public void navigateToLoginAsPortal(String name) {
         distributorUI.navigateToURL(Constants.LOGIN_AS);
         distributorUI.sendKeys(lbl_loginAs,name);
         distributorUI.isDisplayed(By.xpath(txt_whitelblCustomer.replace("NAME", name)));

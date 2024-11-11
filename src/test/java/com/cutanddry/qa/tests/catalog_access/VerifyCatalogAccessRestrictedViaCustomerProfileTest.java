@@ -48,7 +48,7 @@ public class VerifyCatalogAccessRestrictedViaCustomerProfileTest extends TestBas
         softAssert.assertTrue(Customer.catalogAccessEnabled(),"Error in catalog access enable displaying");
 
         //Log in to restaurant and verify whether the catalog is visible
-        Login.navigateToWhiteLabelPortal(RestaurantUserCode);
+        Login.navigateToLoginAsPortal(RestaurantUserCode);
         Orders.SelectSupplierFromPlaceOrderPage(SupplierName);
         softAssert.assertTrue(Customer.catalogSectionsDisplayed(),"Error in enabling catalog access");
 
@@ -62,7 +62,7 @@ public class VerifyCatalogAccessRestrictedViaCustomerProfileTest extends TestBas
         softAssert.assertTrue(Customer.catalogAccessDisabled(),"Error in catalog access disable displaying");
 
         //Log in to restaurant and verify whether the catalog is not visible
-        Login.navigateToWhiteLabelPortal(RestaurantUserCode);
+        Login.navigateToLoginAsPortal(RestaurantUserCode);
         Orders.SelectSupplierFromPlaceOrderPage(SupplierName);
         softAssert.assertFalse(Customer.catalogSectionsDisplayed(),"Error in disabling catalog access");
 

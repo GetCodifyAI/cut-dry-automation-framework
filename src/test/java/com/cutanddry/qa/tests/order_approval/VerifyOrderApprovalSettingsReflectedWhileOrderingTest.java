@@ -52,7 +52,7 @@ public class VerifyOrderApprovalSettingsReflectedWhileOrderingTest {
         Customer.saveOrderApprovalSettings();
 
         //Log in as Employee user to place the Order
-        Login.navigateToWhiteLabelPortal(EmployeeUserCode);
+        Login.navigateToLoginAsPortal(EmployeeUserCode);
         Orders.SelectSupplierFromPlaceOrderPage(SupplierName);
         Customer.searchItemOnOrderGuide(ItemCode);
         Orders.increaseItemQuantity(ItemCode, quantity1);
@@ -63,7 +63,7 @@ public class VerifyOrderApprovalSettingsReflectedWhileOrderingTest {
         softAssert.assertTrue(Orders.orderDraftDisplayedForApproval(),"Error inn displaying the order approval");
 
         //Approve the Order after login as admin
-        Login.navigateToWhiteLabelPortal(AdminUserCode);
+        Login.navigateToLoginAsPortal(AdminUserCode);
         Dashboard.navigateToDrafts();
         softAssert.assertTrue(Draft.isApprovalRequestedOrderDisplayed(),"Approval Requested order doesn't get displayed");
         Draft.selectApprovalRequestedOrder();
@@ -84,7 +84,7 @@ public class VerifyOrderApprovalSettingsReflectedWhileOrderingTest {
         Customer.saveOrderApprovalSettings();
 
         //Log in as Employee user to place the Order
-        Login.navigateToWhiteLabelPortal(EmployeeUserCode);
+        Login.navigateToLoginAsPortal(EmployeeUserCode);
         Orders.SelectSupplierFromPlaceOrderPage(SupplierName);
         Customer.searchItemOnOrderGuide(ItemCode);
         Orders.increaseItemQuantity(ItemCode, quantity2);
