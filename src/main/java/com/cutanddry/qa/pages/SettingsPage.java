@@ -29,13 +29,20 @@ public class SettingsPage extends LoginPage{
     By txt_removePopup = By.xpath("//h2[text()='Are you sure you want to remove this user?']");
     By btn_Yes = By.xpath("//button[text()='Yes']");
     String txt_userField = "//td[text()='USER']";
+    By txt_companySettings = By.xpath("//h2[contains(text(),'Company Settings')]");
+    By txt_profSettings = By.xpath("//h2[contains(text(),'Profile')]");
+    By txt_trackSettings = By.xpath("//h2[contains(text(),'Delivery Settings')]");
+    By txt_billingSettings = By.xpath("//h2[contains(text(),'Billing Settings')]");
+    By txt_adsSettings = By.xpath("//div[contains(text(),'Ads and Rebates')]");
+    By txt_paySettings = By.xpath("//h2[contains(text(),'Pay Settings')]");
 
-    public boolean isOrderSettingsTextDisplayed(){
+    public boolean isOrderSettingsTextDisplayed() throws InterruptedException {
         try {
             distributorUI.waitForVisibility(txt_orderSettings);
         } catch (Exception e){
             return false;
         }
+        distributorUI.waitForCustom(4000);
         return distributorUI.isDisplayed(txt_orderSettings);
     }
     public void enterOrderMinimum(String amount) throws InterruptedException {
@@ -55,9 +62,26 @@ public class SettingsPage extends LoginPage{
         } catch (Exception e){
             return false;
         }
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(4000);
         return distributorUI.isDisplayed(txt_teamSettings);
-
+    }
+    public boolean isPaySettingsTextDisplayed() throws InterruptedException {
+        try {
+            distributorUI.waitForVisibility(txt_paySettings);
+        } catch (Exception e){
+            return false;
+        }
+        distributorUI.waitForCustom(4000);
+        return distributorUI.isDisplayed(txt_paySettings);
+    }
+    public boolean isAdsSettingsTextDisplayed() throws InterruptedException {
+        try {
+            distributorUI.waitForVisibility(txt_adsSettings);
+        } catch (Exception e){
+            return false;
+        }
+        distributorUI.waitForCustom(4000);
+        return distributorUI.isDisplayed(txt_adsSettings);
     }
     public void clickOnAddUser() throws InterruptedException {
         distributorUI.waitForVisibility(btn_addUser);
@@ -182,5 +206,44 @@ public class SettingsPage extends LoginPage{
     public void clickOnUser(String user) {
         distributorUI.waitForClickability(By.xpath(txt_userField.replace("USER", user)));
         distributorUI.click(By.xpath(txt_userField.replace("USER", user)));
+    }
+    public boolean isCompanySettingsTextDisplayed() throws InterruptedException {
+        try {
+            distributorUI.waitForVisibility(txt_companySettings);
+        } catch (Exception e){
+            return false;
+        }
+        distributorUI.waitForCustom(4000);
+        return distributorUI.isDisplayed(txt_companySettings);
+
+    }
+    public boolean isBillingSettingsTextDisplayed() throws InterruptedException {
+        try {
+            distributorUI.waitForVisibility(txt_billingSettings);
+        } catch (Exception e){
+            return false;
+        }
+        distributorUI.waitForCustom(4000);
+        return distributorUI.isDisplayed(txt_billingSettings);
+
+    }
+    public boolean isProfileSettingsTextDisplayed() throws InterruptedException {
+        try {
+            distributorUI.waitForVisibility(txt_profSettings);
+        } catch (Exception e){
+            return false;
+        }
+        distributorUI.waitForCustom(4000);
+        return distributorUI.isDisplayed(txt_profSettings);
+
+    }
+    public boolean isTrackSettingsTextDisplayed() throws InterruptedException {
+        try {
+            distributorUI.waitForVisibility(txt_trackSettings);
+        } catch (Exception e){
+            return false;
+        }
+        distributorUI.waitForCustom(4000);
+        return distributorUI.isDisplayed(txt_trackSettings);
     }
 }
