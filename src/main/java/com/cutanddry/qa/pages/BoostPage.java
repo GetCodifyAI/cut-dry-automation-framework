@@ -23,7 +23,7 @@ public class BoostPage extends LoginPage {
     By btn_clear = By.xpath("//div[contains(@class, 'themed_select__clear-indicator')]");
     By txt_broadcastSuccess = By.xpath("//div[text()='Broadcast message created successfully']");
     By btn_ok = By.xpath("//button[text()='OK']");
-    By btn_X = By.xpath("//tr[td[contains(text(),'Test Broadcast Message')]]//button//*[name()='svg' and @data-icon='times-circle']");
+    By btn_X = By.xpath("//tr[td[contains(text(),'Test Broadcast Message')]]//td[contains(@class,'text-right')]//button//*[name()='svg' and @data-icon='circle-xmark']");
     By btn_yes = By.xpath("//button[text()='Yes']");
     By tab_suggestiveSales = By.xpath("//a[text()='Suggestive Sales']");
     By txt_topCategoryPicks = By.xpath("//td[text()='Top Category Picks']");
