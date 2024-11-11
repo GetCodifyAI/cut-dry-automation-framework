@@ -5,7 +5,7 @@ import com.cutanddry.qa.pages.SettingsPage;
 public class Settings {
     static SettingsPage settingsPage = new SettingsPage();
 
-    public static boolean isOrderSettingsTextDisplayed(){
+    public static boolean isOrderSettingsTextDisplayed() throws InterruptedException {
         return settingsPage.isOrderSettingsTextDisplayed();
     }
     public static void enterOrderMinimum(String item) throws InterruptedException {

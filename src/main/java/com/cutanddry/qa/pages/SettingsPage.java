@@ -36,12 +36,13 @@ public class SettingsPage extends LoginPage{
     By txt_adsSettings = By.xpath("//div[contains(text(),'Ads and Rebates')]");
     By txt_paySettings = By.xpath("//h2[contains(text(),'Pay Settings')]");
 
-    public boolean isOrderSettingsTextDisplayed(){
+    public boolean isOrderSettingsTextDisplayed() throws InterruptedException {
         try {
             distributorUI.waitForVisibility(txt_orderSettings);
         } catch (Exception e){
             return false;
         }
+        distributorUI.waitForCustom(4000);
         return distributorUI.isDisplayed(txt_orderSettings);
     }
     public void enterOrderMinimum(String amount) throws InterruptedException {
@@ -61,7 +62,7 @@ public class SettingsPage extends LoginPage{
         } catch (Exception e){
             return false;
         }
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(4000);
         return distributorUI.isDisplayed(txt_teamSettings);
     }
     public boolean isPaySettingsTextDisplayed() throws InterruptedException {
@@ -70,7 +71,7 @@ public class SettingsPage extends LoginPage{
         } catch (Exception e){
             return false;
         }
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(4000);
         return distributorUI.isDisplayed(txt_paySettings);
     }
     public boolean isAdsSettingsTextDisplayed() throws InterruptedException {
@@ -79,7 +80,7 @@ public class SettingsPage extends LoginPage{
         } catch (Exception e){
             return false;
         }
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(4000);
         return distributorUI.isDisplayed(txt_adsSettings);
     }
     public void clickOnAddUser() throws InterruptedException {
@@ -212,7 +213,7 @@ public class SettingsPage extends LoginPage{
         } catch (Exception e){
             return false;
         }
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(4000);
         return distributorUI.isDisplayed(txt_companySettings);
 
     }
@@ -222,7 +223,7 @@ public class SettingsPage extends LoginPage{
         } catch (Exception e){
             return false;
         }
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(4000);
         return distributorUI.isDisplayed(txt_billingSettings);
 
     }
@@ -232,7 +233,7 @@ public class SettingsPage extends LoginPage{
         } catch (Exception e){
             return false;
         }
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(4000);
         return distributorUI.isDisplayed(txt_profSettings);
 
     }
@@ -242,7 +243,7 @@ public class SettingsPage extends LoginPage{
         } catch (Exception e){
             return false;
         }
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(4000);
         return distributorUI.isDisplayed(txt_trackSettings);
     }
 }

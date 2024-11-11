@@ -69,14 +69,14 @@ public class VerifyARRoleTest extends TestBase {
         Dashboard.navigateToReports();
         softAssert.assertTrue(Reports.isUserNavigatedToReports(),"navigation to reports error");
         //settings
+        Dashboard.navigateToPaySettings();
+        softAssert.assertTrue(Settings.isPaySettingsTextDisplayed(),"navigation to pay settings error");
         Dashboard.navigateToTeamSettings();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation to team settings error");
         Dashboard.navigateToCompanySettings();
         softAssert.assertTrue(Settings.isCompanySettingsTextDisplayed(),"navigation to company settings error");
         Dashboard.navigateToBillingSettings();
         softAssert.assertTrue(Settings.isBillingSettingsTextDisplayed(),"navigation to billing settings error");
-//        Dashboard.navigateToPaySettings();
-//        softAssert.assertTrue(Settings.isPaySettingsTextDisplayed(),"navigation to pay settings error");
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");
         Dashboard.navigateToTrackSettings();
