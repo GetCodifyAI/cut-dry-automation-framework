@@ -12,7 +12,7 @@ public class CatalogPage extends LoginPage{
     By btn_dropdown = By.xpath("//button[@aria-haspopup='true']");
     By ItemCatalogSearchBtn = By.xpath("//input[@placeholder=\"Find Item in Catalog\"]");
     String SearchedItemItemCode = "//tr[contains(@class, '_du1frc')][td[1]='ITEMCODE']";
-    By PreviewBtn = By.xpath("//button[@class='_lzbys2 mx-2 btn btn-primary']");
+    By PreviewBtn = By.xpath("//button[@class='_xrol5g mx-2 btn btn-primary']");
     String ItemPreviewTxt = "//div[@class='mt-1 _5h4pkd' and contains(text(),'ITEMCODE')]";
     By Manufacturer = By.xpath("//div[contains(text(),'Conagra Foodservice')]");
     By OtherBrandBtn = By.xpath("//img[@class='_kfc3ia img-fluid' and contains(@src,\"2b4b2013cb03bd26957893f39d0783bd.jpg\")]");
@@ -24,17 +24,17 @@ public class CatalogPage extends LoginPage{
     By txt_firstItemDetails = By.xpath("//tbody/tr[1]");
     String itemInTheGrid = "//tr[contains(@class,'_du1frc')]//td[text()='ITEMCODE']";
     By ItemCodeInCatalogData = By.xpath("//div[contains(@class, 'form-group') and contains(.//label, 'Item Code')]//div[contains(@class, 'col-sm-8')]");
-    By saveChangesBtn = By.xpath("//button[text()='Save Changes']");
-    By successOverlay = By.xpath("//h2[contains(text(),'Success')]");
+    By saveChangesBtn = By.xpath("//button[text()='Save']");
+    By successOverlay = By.xpath("//div[contains(text(),'successfully saved!')]");
     By additionalAttributesTab = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Additional Attributes')]");
     By imagesTab = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Images')]");
     By certificationAttribute = By.xpath("//div[contains(text(),'Certifications')]");
-    By productItemImage = By.xpath("//img[contains(@class,'_s81fdh img-fluid') and contains(@src,'img01.jpg')]");
+    By productItemImage = By.xpath("//img[contains(@class,'_kzpva6 img-fluid') and contains(@src,'img01.jpg')]");
     By priceAndPromotions = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Pricing & Promotions')]");
     By unitOfMeasure = By.xpath("//button[contains(text(),'+ Unit of measure')]");
     By uomCount = By.xpath("//table[@class='pt-4 w-auto table table-borderless']//tr");
     By uomSelectDropdown = By.xpath("//div[contains(text(),'Select UoM')]");
-    By unit = By.xpath("//div[@id='react-select-24-option-10']");
+    String unit = "//div[text()='UNIT']";
     By unitPriceTxtField = By.xpath("//div[contains(text(), 'Bag')]/ancestor::td[1]/following-sibling::td[1]//input[@type='number']");
     By salesTypeDropDown =By.xpath("//tr[td//div[contains(text(), 'Bag')]]/td[3]//div[contains(@class, 'cd_themed_select__placeholder css-1wa3eu0-placeholder')]");
     By percentageOption = By.xpath("//div[contains(text(),'Percentage')]");
@@ -53,6 +53,11 @@ public class CatalogPage extends LoginPage{
     String substituteItemNameTxt = "//div[contains(text(),'ITEMNAME')]";
     String deleteSubstituteItemBtn = "//div[@class='align-items-center my-1 row']//div[contains(text(),'ITEMCODE')]//./following-sibling::*[3]";
     By searchField = By.xpath("//div//input[contains(@placeholder,'Find Item in Catalog')]");
+    String clearCertificationBtn = "//label[contains(text(),'CERTIFICATIONTYPE')]/..//div[contains(@class,'themed_select__clear-indicato')]";
+    String selectCertificationDropdown = "//label[contains(text(),'CERTIFICATIONTYPE')]/..//div[contains(text(),'Select')]";
+    String buyAmericanOption  = "//div[contains(text(),'CERTIFICATEOPTION')]";
+    By productStatusDropdown = By.xpath("//label[contains(text(), 'Product Status')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
+    String productStatus = "(//div[contains(text(),'PRODSTATUS') and contains(@class,'themed_select__option')])[last()]";
 
 
     public boolean isCatalogTextDisplayed() {
@@ -134,12 +139,19 @@ public class CatalogPage extends LoginPage{
     }
 
     public void clickonItemOnCatalogPage(String itemCode){
+        distributorUI.waitForVisibility(By.xpath(itemInTheGrid.replace("ITEMCODE",itemCode)));
         distributorUI.click(By.xpath(itemInTheGrid.replace("ITEMCODE",itemCode)));
     }
 
     public String getItemCodeFromCatalogDataPage(){
         distributorUI.waitForVisibility(ItemCodeInCatalogData);
         return distributorUI.getText(ItemCodeInCatalogData);
+    }
+
+    public void clickOnInactiveOrInactive(String prodStatus){
+        distributorUI.click(productStatusDropdown);
+        distributorUI.waitForVisibility(By.xpath(productStatus.replace("PRODSTATUS",prodStatus)));
+        distributorUI.click(By.xpath(productStatus.replace("PRODSTATUS",prodStatus)));
     }
 
     public void clickOnSaveChangesBtn(){
@@ -157,6 +169,15 @@ public class CatalogPage extends LoginPage{
 
     public boolean isCertificationsSectionDisplayed(){
         return distributorUI.isDisplayed(certificationAttribute);
+    }
+
+    public void clickClearCertification(String CertificationType){
+        distributorUI.click(By.xpath(clearCertificationBtn.replace("CERTIFICATIONTYPE",CertificationType)));
+    }
+
+    public void clickOnCertification(String CertificationType, String certificate){
+        distributorUI.click(By.xpath(selectCertificationDropdown.replace("CERTIFICATIONTYPE",CertificationType)));
+        distributorUI.click(By.xpath(buyAmericanOption.replace("CERTIFICATEOPTION",certificate)));
     }
 
     public void clickOnImagesTab(){
@@ -179,10 +200,11 @@ public class CatalogPage extends LoginPage{
         return distributorUI.countElements(uomCount);
     }
 
-    public void clickOnUnit(){
+    public void clickOnUnit(String uom){
+        distributorUI.waitForVisibility(uomSelectDropdown);
         distributorUI.click(uomSelectDropdown);
-        distributorUI.waitForVisibility(unit);
-        distributorUI.click(unit);
+        distributorUI.waitForVisibility(By.xpath(unit.replace("UNIT",uom)));
+        distributorUI.click(By.xpath(unit.replace("UNIT",uom)));
     }
 
     public void typeUnitPrice(String unitPrice){
@@ -214,7 +236,11 @@ public class CatalogPage extends LoginPage{
     }
 
     public boolean isBagUOMDisplayed(){
-        distributorUI.waitForInvisibility(bagUOM);
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return distributorUI.isDisplayed(bagUOM);
     }
 
@@ -240,6 +266,7 @@ public class CatalogPage extends LoginPage{
         distributorUI.click(selectSubstituteTxtField);
         distributorUI.sendKeys(substituteItemInputField,substituteItem);
         distributorUI.waitForVisibility(By.xpath(selectItemFromDropdown.replace("ITEMCODE",substituteItem)));
+        distributorUI.waitForClickability(By.xpath(selectItemFromDropdown.replace("ITEMCODE",substituteItem)));
         try {
             distributorUI.waitForCustom(4000);
         } catch (InterruptedException e) {
@@ -253,10 +280,20 @@ public class CatalogPage extends LoginPage{
     }
 
     public boolean isSubstituteItemDisplayed(String substituteItem){
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return distributorUI.isDisplayed(By.xpath(substituteItemNameTxt.replace("ITEMNAME",substituteItem)));
     }
 
     public void clickOnDeleteSubstituteItemBtn(String itemCode){
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.click(By.xpath(deleteSubstituteItemBtn.replace("ITEMCODE",itemCode)));
     }
 
