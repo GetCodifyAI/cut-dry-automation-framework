@@ -1,6 +1,5 @@
 package com.cutanddry.qa.functions;
 
-import com.cutanddry.qa.pages.SettingsPage;
 import com.cutanddry.qa.pages.TrackPage;
 
 public class Track {
@@ -71,5 +70,11 @@ public class Track {
     }
     public static void clickOnSaveChanges() throws InterruptedException {
         trackPage.clickOnSaveChanges();
+    }
+    public static void searchDrivers(String name) {
+        trackPage.searchDriver(name);
+    }
+    public static boolean isSearchDisplayed(String name) throws InterruptedException {
+        return trackPage.isSearchDisplayed(name);
     }
 }

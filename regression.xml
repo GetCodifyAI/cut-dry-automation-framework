@@ -118,6 +118,10 @@
             <class name="com.cutanddry.qa.tests.roles_based_access.VerifySalespersonRoleTest" />
             <class name="com.cutanddry.qa.tests.roles_based_access.VerifyDispatcherRoleTest" />
             <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessRestrictedViaCustomerProfileTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterAddingNewDriverTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterEditingDriverTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterDeletingDriverTest" />
+
         </classes>
     </test>
 </suite>

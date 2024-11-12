@@ -15,7 +15,6 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheTrackResourcesAfterDeletingDriverTest extends TestBase {
     static User user;
     static String name = "Jordan Harper";
-    static String phone = "14155300000";
 
     @BeforeMethod
     public void setUp() {
@@ -24,7 +23,7 @@ public class VerifyTheTrackResourcesAfterDeletingDriverTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-526")
-    public void loginAsDistributor() throws InterruptedException {
+    public void VerifyTheTrackResourcesAfterDeletingDriver() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
@@ -35,6 +34,7 @@ public class VerifyTheTrackResourcesAfterDeletingDriverTest extends TestBase {
         Track.clickOnEditUser(name);
         Track.clickOnRemoveUserLabel();
         Track.clickOnRemoveUser();
+        Track.clickOK();
         softAssert.assertFalse(Track.isUserDisplayed(name),"add driver error");
         softAssert.assertAll();
     }

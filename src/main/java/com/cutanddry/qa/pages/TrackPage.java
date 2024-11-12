@@ -14,7 +14,7 @@ public class TrackPage extends LoginPage{
     By txt_addDriver = By.xpath("//div[contains(text(), 'Add Driver')]");
     By lbl_name = By.xpath("//input[@placeholder='First Last']");
     By lbl_phone = By.xpath("//input[@placeholder='12223334444']");
-    By lbl_email = By.xpath("//input[@placeholder='name@email.com']");
+    By lbl_searchDriver = By.xpath("//input[@placeholder='Search Drivers']");
     By lbl_loc = By.xpath("//input[@placeholder='First Last']");
     By btn_inviteUser = By.xpath("//button[text()='Invite User']");
     String btn_editUser = "//tr[td[text()='USER']]/td/following-sibling::td//*[local-name()='svg']";
@@ -24,6 +24,7 @@ public class TrackPage extends LoginPage{
     By txt_removeUser = By.xpath("//div[text()='Removing this user will result in the following:']");
     By btn_removeUser = By.xpath("//button[text()='Remove User']");
     By btn_saveChange = By.xpath("//button[text()='Save Changes']");
+    String txt_searchUser = "//tr[1][td[text()='USER']]";
 
     public boolean isTrackResourcesTextDisplayed(){
         try {
@@ -94,7 +95,8 @@ public class TrackPage extends LoginPage{
         distributorUI.sendKeys(lbl_name,name);
     }
     public void enterPhone(String phone) throws InterruptedException {
-        distributorUI.waitForCustom(4000);
+        distributorUI.waitForCustom(2000);
+        distributorUI.clear(lbl_phone);
         distributorUI.sendKeysAndEnter(lbl_phone,phone);
         distributorUI.waitForCustom(2000);
     }
@@ -150,5 +152,18 @@ public class TrackPage extends LoginPage{
         distributorUI.click(btn_saveChange);
         distributorUI.waitForVisibility(btn_saveChange);
         distributorUI.waitForCustom(1000);
+    }
+    public void searchDriver(String name){
+        distributorUI.clear(lbl_searchDriver);
+        distributorUI.sendKeys(lbl_searchDriver,name);
+    }
+    public boolean isSearchDisplayed(String user) throws InterruptedException {
+        try {
+            distributorUI.waitForCustom(3000);
+            distributorUI.waitForVisibility(By.xpath(txt_searchUser.replace("USER", user)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(txt_searchUser.replace("USER", user)));
     }
 }

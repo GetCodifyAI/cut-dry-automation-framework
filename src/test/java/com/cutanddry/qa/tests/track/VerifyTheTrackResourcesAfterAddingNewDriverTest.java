@@ -24,7 +24,7 @@ public class VerifyTheTrackResourcesAfterAddingNewDriverTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-524")
-    public void loginAsDistributor() throws InterruptedException {
+    public void VerifyTheTrackResourcesAfterAddingNewDriver() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");

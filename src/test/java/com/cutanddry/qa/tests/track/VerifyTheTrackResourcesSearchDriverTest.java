@@ -12,10 +12,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheTrackResourcesAfterEditingDriverTest extends TestBase {
+public class VerifyTheTrackResourcesSearchDriverTest extends TestBase {
     static User user;
-    static String name = "Jordan Harper";
-    static String phone = "14155300000";
+    static String name = "Hadley";
 
     @BeforeMethod
     public void setUp() {
@@ -23,8 +22,8 @@ public class VerifyTheTrackResourcesAfterEditingDriverTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-525")
-    public void VerifyTheTrackResourcesAfterEditingDriver() throws InterruptedException {
+    @Test(groups = "DOT-TC-527")
+    public void VerifyTheTrackResourcesSearchDriver() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
@@ -32,10 +31,8 @@ public class VerifyTheTrackResourcesAfterEditingDriverTest extends TestBase {
         softAssert.assertTrue(Track.isResourcesTextDisplayed(),"navigation to track resources error");
         Track.clickOnDrivers();
         softAssert.assertTrue(Track.isAddDriversBtnDisplayed(),"navigation to drivers error");
-        Track.clickOnEditUser(name);
-        Track.enterPhone(phone);
-        Track.clickOnSaveChanges();
-        softAssert.assertTrue(Track.isUserDisplayed(name),"add driver error");
+        Track.searchDrivers(name);
+        softAssert.assertTrue(Track.isSearchDisplayed(name),"search driver error");
         softAssert.assertAll();
     }
 
