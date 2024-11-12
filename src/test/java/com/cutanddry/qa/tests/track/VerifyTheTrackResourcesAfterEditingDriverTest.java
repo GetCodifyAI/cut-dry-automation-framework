@@ -23,7 +23,7 @@ public class VerifyTheTrackResourcesAfterEditingDriverTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-524")
+    @Test(groups = "DOT-TC-525")
     public void loginAsDistributor() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
