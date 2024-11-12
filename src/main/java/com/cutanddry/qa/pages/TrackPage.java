@@ -23,6 +23,7 @@ public class TrackPage extends LoginPage{
     By btn_OK = By.xpath("//button[text()='OK']");
     By txt_removeUser = By.xpath("//div[text()='Removing this user will result in the following:']");
     By btn_removeUser = By.xpath("//button[text()='Remove User']");
+    By btn_saveChange = By.xpath("//button[text()='Save Changes']");
 
     public boolean isTrackResourcesTextDisplayed(){
         try {
@@ -143,5 +144,11 @@ public class TrackPage extends LoginPage{
         distributorUI.waitForCustom(3000);
         distributorUI.waitForClickability(lbl_removeUser);
         distributorUI.click(lbl_removeUser);
+    }
+    public void clickOnSaveChanges() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_saveChange);
+        distributorUI.click(btn_saveChange);
+        distributorUI.waitForVisibility(btn_saveChange);
+        distributorUI.waitForCustom(1000);
     }
 }

@@ -69,4 +69,7 @@ public class Track {
     public static boolean isRemoveUserPopupDisplayed(){
         return trackPage.isRemoveUserPopupDisplayed();
     }
+    public static void clickOnSaveChanges() throws InterruptedException {
+        trackPage.clickOnSaveChanges();
+    }
 }

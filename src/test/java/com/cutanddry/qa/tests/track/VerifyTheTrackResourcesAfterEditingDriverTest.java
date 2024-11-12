@@ -32,9 +32,9 @@ public class VerifyTheTrackResourcesAfterEditingDriverTest extends TestBase {
         softAssert.assertTrue(Track.isResourcesTextDisplayed(),"navigation to track resources error");
         Track.clickOnDrivers();
         softAssert.assertTrue(Track.isAddDriversBtnDisplayed(),"navigation to drivers error");
-        Track.enterName(name);
+        Track.clickOnEditUser(name);
         Track.enterPhone(phone);
-        Track.clickOnInviteUser();
+        Track.clickOnSaveChanges();
         softAssert.assertTrue(Track.isUserDisplayed(name),"add driver error");
         softAssert.assertAll();
     }
