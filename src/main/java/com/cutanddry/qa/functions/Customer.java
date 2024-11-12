@@ -713,4 +713,9 @@ public class Customer {
     public static void clickOnIndependentFoods(){
         customersPage.clickOnIndependentFoods();
     }
+
+    public static void addItemFromCatalogIfNotAvailableInOG(String itemCode){
+        customersPage.clickItemFromCatalogIfNotAvailableInOG(itemCode);
+    }
+
 }

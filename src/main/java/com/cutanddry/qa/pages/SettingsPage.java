@@ -13,7 +13,7 @@ public class SettingsPage extends LoginPage{
     By lbl_phone = By.xpath("//label[text()='Phone']/following-sibling::div//input");
     By lbl_userRef = By.xpath("//label[text()='User reference']/following-sibling::div//input");
     By btn_inviteUser = By.xpath("//button[text()='Invite User']");
-    String btn_editUser = "//tr[td[text()='USER']]/td/button";
+    String btn_editUser = "//tr[td[text()='USER']]/td/following-sibling::td//*[local-name()='svg']";
     By txt_editUser = By.xpath("//div[text()='Edit User']");
     By lbl_removeUser = By.xpath("//a[text()='Remove user']");
     By btn_OK = By.xpath("//button[text()='OK']");
@@ -107,7 +107,7 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForCustom(2000);
     }
     public void clickOnInviteUser() throws InterruptedException {
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(3000);
         distributorUI.waitForVisibility(btn_inviteUser);
         distributorUI.click(btn_inviteUser);
         distributorUI.clickUsingJavaScript(btn_inviteUser);

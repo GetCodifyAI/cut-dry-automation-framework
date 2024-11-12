@@ -45,7 +45,6 @@
             <class name="com.cutanddry.qa.tests.catalog.BrandPageForAllPortalsTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyManufacturerPageViaShowCaseTest" />
             <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessRestrictedViaCustomerProfileTest" />
-            <class name="com.cutanddry.qa.tests.catalog.ViewManufacturerPageTest" />
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyStockDataInCatalogViewTest" />
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyImageOfItemTest" />
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyAdditionalAttributeOfItemTest" />
@@ -118,6 +117,7 @@
             <class name="com.cutanddry.qa.tests.roles_based_access.VerifyARRoleTest" />
             <class name="com.cutanddry.qa.tests.roles_based_access.VerifySalespersonRoleTest" />
             <class name="com.cutanddry.qa.tests.roles_based_access.VerifyDispatcherRoleTest" />
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessRestrictedViaCustomerProfileTest" />
         </classes>
     </test>
 </suite>
