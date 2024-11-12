@@ -126,4 +126,22 @@ public class TrackPage extends LoginPage{
         distributorUI.waitForVisibility(txt_editUser);
         return distributorUI.isDisplayed(txt_editUser);
     }
+    public void clickOK() throws InterruptedException {
+        distributorUI.waitForClickability(btn_OK);
+        distributorUI.click(btn_OK);
+        distributorUI.waitForCustom(4000);
+    }
+    public boolean isRemoveUserPopupDisplayed(){
+        distributorUI.waitForVisibility(txt_removeUser);
+        return distributorUI.isDisplayed(txt_removeUser);
+    }
+    public void clickOnRemoveUser() {
+        distributorUI.waitForClickability(btn_removeUser);
+        distributorUI.click(btn_removeUser);
+    }
+    public void clickOnRemoveUserLabel() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        distributorUI.waitForClickability(lbl_removeUser);
+        distributorUI.click(lbl_removeUser);
+    }
 }
