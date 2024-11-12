@@ -121,7 +121,14 @@
             <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterAddingNewDriverTest" />
             <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterEditingDriverTest" />
             <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterDeletingDriverTest" />
-
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesSearchDriverTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterAddingNewTruckTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterEditingTruckTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterDeletingTruckTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesSearchTruckTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsSMSTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsEmailTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsPushTest" />
         </classes>
     </test>
 </suite>
