@@ -22,8 +22,8 @@ public class VerifySalespersonRoleTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test
-    public void VerifyARRole() throws InterruptedException {
+    @Test(groups = "DOT-TC-486")
+    public void VerifySalespersonRole() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
