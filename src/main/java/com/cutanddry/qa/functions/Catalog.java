@@ -189,4 +189,40 @@ public class Catalog {
         }
     }
 
+    public static void searchItemInCatalogPreview(String itemCode){
+        catalogPage.searchItemInCatalogPreview(itemCode);
+    }
+
+    public static void clickOnItemInCatalogPreview(String itemCode){
+        catalogPage.clickItemOnCatalogPreview(itemCode);
+    }
+
+    public static boolean isItemDetailsDisplayedInPDP(String itemCode){
+        return catalogPage.isItemDetailsDisplayed(itemCode);
+    }
+
+    public static void copyPDPUrl(){
+        catalogPage.clickCopyPDPUrl();
+    }
+
+    public static boolean linkCopiedOverlayDisplayed(){
+        return catalogPage.isLinkCopiedTxtDisplayed();
+    }
+
+    public static void navigateToPublicCatalog(){
+        catalogPage.goToPublicCatalog();
+    }
+
+    public static boolean PublicCatalogDisplayed(String itemCode){
+        return catalogPage.isPublicCatalogDisplayed(itemCode);
+    }
+
+    public static void clickOnAddToCart(){
+        catalogPage.clickOnAddToCart();
+    }
+
+    public static boolean alreadyACustomerOrJoinOverlayDisplayed(){
+        return catalogPage.isAlreadyACustomerDisplayed();
+    }
+
 }

@@ -17,6 +17,7 @@ public class VerifyGroupingProductsIntoTwoCartsTest extends TestBase {
     static String DP = "Butterfield & Vallis";
     static String customerId = "34315";
     static String itemName_1 = "Beef Bouillon Cubes";
+    static String itemCode = "24901";
     static String itemName_2 = "All Purpose Flour";
 
     @BeforeMethod
@@ -37,6 +38,7 @@ public class VerifyGroupingProductsIntoTwoCartsTest extends TestBase {
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
         Customer.searchItemOnOrderGuide(itemName_1);
+        Customer.addItemFromCatalogIfNotAvailableInOG(itemCode);
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName_1),"item 1 mismatch");
         Customer.increaseFirstRowQtyByOneInDist();
         Customer.searchItemOnOrderGuide(itemName_2);

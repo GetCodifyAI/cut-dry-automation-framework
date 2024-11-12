@@ -212,6 +212,10 @@ public class CustomersPage extends LoginPage {
     By cancelBtn = By.xpath("//button[contains(text(),'Cancel')]");
     By btn_editSalesperson = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[5]");
     By btn_independentFoods = By.xpath("//div[contains(text(), 'Independent Foods Co')]");
+    By itemNotFoundTxt = By.xpath("//div[contains(text(),'No matches found')]");
+    String catalogCardAddToOGBtn = "//div[contains(text(),'ITEMCODE')]/../..//button[@data-tip='Add to Order Guide']";
+
+
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -1133,4 +1137,16 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForVisibility(btn_independentFoods);
         distributorUI.click(btn_independentFoods);
     }
+
+    public void clickItemFromCatalogIfNotAvailableInOG(String itemName){
+        if(distributorUI.isDisplayed(itemNotFoundTxt)){
+            distributorUI.click(By.xpath(catalogCardAddToOGBtn.replace("ITEMCODE",itemName)));
+        }
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

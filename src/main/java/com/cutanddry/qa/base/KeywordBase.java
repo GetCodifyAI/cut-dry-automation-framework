@@ -11,12 +11,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.commons.io.FileUtils;
+
+import java.awt.*;
+import java.awt.datatransfer.DataFlavor;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.*;
+import java.util.List;
 
 
 @SuppressWarnings("UnusedReturnValue")
@@ -25,6 +29,8 @@ public class KeywordBase {
     private final WebDriverWait wait;
     private final Actions actions;
     private static final Logger logger = LoggerFactory.getLogger(KeywordBase.class);
+    private String originalTab;
+    private String secondTab;
 
     public KeywordBase(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -650,6 +656,54 @@ public class KeywordBase {
         }
         return this;
     }
+
+
+    public KeywordBase OpenNewTabAndSwitchToIt() {
+
+        // Store the current window handle as the original tab
+        originalTab = driver.getWindowHandle();
+
+        // Store the current set of window handles (before opening the new tab)
+        Set<String> existingWindows = driver.getWindowHandles();
+
+        // Use JavaScript to open a new blank tab
+        ((JavascriptExecutor) driver).executeScript("window.open();");
+
+        // Wait until the number of windows increases (indicating a new tab is opened)
+        wait.until(ExpectedConditions.numberOfWindowsToBe(existingWindows.size() + 1));
+
+        // Get the updated set of window handles after the new tab opens
+        Set<String> windowHandles = driver.getWindowHandles();
+
+        for (String windowHandle : windowHandles) {
+            if (!existingWindows.contains(windowHandle)) {
+                secondTab = windowHandle;  // Store the handle of the new tab
+                driver.switchTo().window(secondTab);
+                logger.info("Switched to new tab: {}", secondTab);
+                break; // Exit the loop once you've switched
+            }
+        }
+
+        return this;
+    }
+
+    public KeywordBase pasteUrlFromClipboard() {
+        try {
+            // Get the URL from the clipboard
+            String url = Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor).toString();
+
+            // Navigate directly to the URL in the clipboard
+            driver.get(url);
+
+            logger.info("Navigated to the URL from clipboard: {}", url);
+        } catch (Exception e) {
+            logger.error("Failed to retrieve URL from clipboard or navigate", e);
+        }
+        return this;
+    }
+
+
+
 
 
 }

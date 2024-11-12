@@ -58,7 +58,14 @@ public class CatalogPage extends LoginPage{
     String buyAmericanOption  = "//div[contains(text(),'CERTIFICATEOPTION')]";
     By productStatusDropdown = By.xpath("//label[contains(text(), 'Product Status')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
     String productStatus = "(//div[contains(text(),'PRODSTATUS') and contains(@class,'themed_select__option')])[last()]";
-
+    By searchInCatalogPreview = By.xpath("//div//input[contains(@placeholder,'Search catalog')]");
+    String clickOnItemInPreviewCatalog = "//div[contains(@class, ' _du1frc')]//div[contains(@class, '_1evg3oy') and contains(., 'ITEMCODE')]";
+    String itemCodeDetails = "//div[contains(text(),'ITEMCODE')]";
+    By threeDotBtn = By.xpath("//button//*[contains(@data-icon,'cdDotVertical')]");
+    By copyPDPURLTxt = By.xpath("//div[contains(text(),'Copy PDP (url)')]");
+    By productLink = By.xpath("//h2[contains(text(),'Product Link')]");
+    By publicCatalogAddToCart = By.xpath("//button[contains(text(),'Add to Cart')]");
+    By alreadyACustomer = By.xpath("//b[contains(text(),'Already a Customer?')]");
 
     public boolean isCatalogTextDisplayed() {
         try {
@@ -127,10 +134,10 @@ public class CatalogPage extends LoginPage{
     }
 
     public void clickOnPreviewCatalog() {
-        distributorUI.click(txt_previewCat);
+        distributorUI.click(btn_previewCat);
     }
     public boolean isNavigatedToPreviewCatalog() {
-        return distributorUI.isDisplayed(btn_previewCat);
+        return distributorUI.isDisplayed(txt_previewCat);
     }
     public String getItemDetailsFirstRow() throws InterruptedException {
         distributorUI.waitForElementEnabledState(txt_firstItemDetails,true);
@@ -301,5 +308,46 @@ public class CatalogPage extends LoginPage{
         distributorUI.click(searchField);
         distributorUI.sendKeys(searchField,itemName);
     }
+
+    public void searchItemInCatalogPreview(String itemCode){
+        distributorUI.sendKeys(searchInCatalogPreview,itemCode);
+    }
+
+    public void clickItemOnCatalogPreview(String itemCode){
+        distributorUI.click(By.xpath(clickOnItemInPreviewCatalog.replace("ITEMCODE",itemCode)));
+    }
+
+    public boolean isItemDetailsDisplayed(String itemCode){
+        return distributorUI.isDisplayed(By.xpath(itemCodeDetails.replace("ITEMCODE",itemCode)));
+    }
+
+    public void clickCopyPDPUrl(){
+        distributorUI.click(threeDotBtn);
+        distributorUI.waitForVisibility(copyPDPURLTxt);
+        distributorUI.click(copyPDPURLTxt);
+    }
+
+    public boolean isLinkCopiedTxtDisplayed(){
+        return distributorUI.isDisplayed(productLink);
+    }
+
+    public void goToPublicCatalog(){
+        distributorUI.OpenNewTabAndSwitchToIt();
+        distributorUI.pasteUrlFromClipboard();
+    }
+
+    public boolean isPublicCatalogDisplayed(String itemCode){
+        distributorUI.isDisplayed(publicCatalogAddToCart);
+        return  distributorUI.isDisplayed(By.xpath(itemCodeDetails.replace("ITEMCODE",itemCode)));
+    }
+
+    public void clickOnAddToCart(){
+        distributorUI.click(publicCatalogAddToCart);
+    }
+
+    public boolean isAlreadyACustomerDisplayed(){
+       return  distributorUI.isDisplayed(alreadyACustomer);
+    }
+
 }
 
