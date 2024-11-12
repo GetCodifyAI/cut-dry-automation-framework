@@ -30,5 +30,43 @@ public class Track {
     public static boolean isNotificationsTextDisplayed(){
         return trackPage.isTrackNotificationsTextDisplayed();
     }
-
+    public static void clickOnAddDrivers(){
+        trackPage.clickOnAddDrivers();
+    }
+    public static boolean isAddDriverPopupDisplayed() {
+        return trackPage.isAddDriverPopupDisplayed();
+    }
+    public static void clickOnAddTrucks(){
+        trackPage.clickOnAddTrucks();
+    }
+    public static void enterName(String name){
+        trackPage.enterName(name);
+    }
+    public static void enterPhone(String phone) throws InterruptedException {
+        trackPage.enterPhone(phone);
+    }
+    public static void clickOnInviteUser() throws InterruptedException {
+        trackPage.clickOnInviteUser();
+    }
+    public static boolean isUserDisplayed(String user) throws InterruptedException {
+        return trackPage.isUserDisplayed(user);
+    }
+    public static void clickOnRemoveUserLabel() throws InterruptedException {
+        trackPage.clickOnRemoveUserLabel();
+    }
+    public static void clickOnEditUser(String user) throws InterruptedException {
+        trackPage.clickOnEditUser(user);
+    }
+    public static boolean isEditUserPopupDisplayed(){
+        return trackPage.isEditUserPopupDisplayed();
+    }
+    public static void clickOK() throws InterruptedException {
+        trackPage.clickOK();
+    }
+    public static void clickOnRemoveUser() {
+        trackPage.clickOnRemoveUser();
+    }
+    public static boolean isRemoveUserPopupDisplayed(){
+        return trackPage.isRemoveUserPopupDisplayed();
+    }
 }

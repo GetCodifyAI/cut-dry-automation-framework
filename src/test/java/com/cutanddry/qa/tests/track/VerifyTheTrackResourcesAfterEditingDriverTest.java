@@ -12,10 +12,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheTrackResourcesAfterAddingNewDriverTest extends TestBase {
+public class VerifyTheTrackResourcesAfterEditingDriverTest extends TestBase {
     static User user;
     static String name = "Jordan Harper";
-    static String phone = "14155321770";
+    static String phone = "14155300000";
 
     @BeforeMethod
     public void setUp() {
@@ -32,8 +32,6 @@ public class VerifyTheTrackResourcesAfterAddingNewDriverTest extends TestBase {
         softAssert.assertTrue(Track.isResourcesTextDisplayed(),"navigation to track resources error");
         Track.clickOnDrivers();
         softAssert.assertTrue(Track.isAddDriversBtnDisplayed(),"navigation to drivers error");
-        Track.clickOnAddDrivers();
-        softAssert.assertTrue(Track.isAddDriverPopupDisplayed(),"add driver popup error");
         Track.enterName(name);
         Track.enterPhone(phone);
         Track.clickOnInviteUser();

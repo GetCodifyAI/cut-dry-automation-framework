@@ -11,6 +11,18 @@ public class TrackPage extends LoginPage{
     By txt_trackRoutes = By.xpath("//li[contains(text(),'Routes')]");
     By txt_trackMon = By.xpath("//li[contains(text(),'Monitoring')]");
     By txt_trackNotif = By.xpath("//li[contains(text(),'Notifications')]");
+    By txt_addDriver = By.xpath("//div[contains(text(), 'Add Driver')]");
+    By lbl_name = By.xpath("//input[@placeholder='First Last']");
+    By lbl_phone = By.xpath("//input[@placeholder='12223334444']");
+    By lbl_email = By.xpath("//input[@placeholder='name@email.com']");
+    By lbl_loc = By.xpath("//input[@placeholder='First Last']");
+    By btn_inviteUser = By.xpath("//button[text()='Invite User']");
+    String btn_editUser = "//tr[td[text()='USER']]/td/following-sibling::td//*[local-name()='svg']";
+    By txt_editUser = By.xpath("//div[text()='Edit User']");
+    By lbl_removeUser = By.xpath("//a[text()='Remove user']");
+    By btn_OK = By.xpath("//button[text()='OK']");
+    By txt_removeUser = By.xpath("//div[text()='Removing this user will result in the following:']");
+    By btn_removeUser = By.xpath("//button[text()='Remove User']");
 
     public boolean isTrackResourcesTextDisplayed(){
         try {
@@ -60,5 +72,58 @@ public class TrackPage extends LoginPage{
         }
         return distributorUI.isDisplayed(txt_trackNotif);
     }
-
+    public boolean isAddDriverPopupDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_addDriver);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_addDriver);
+    }
+    public void clickOnAddDrivers() {
+        distributorUI.waitForVisibility(btn_addDriver);
+        distributorUI.click(btn_addDriver);
+    }
+    public void clickOnAddTrucks() {
+        distributorUI.waitForVisibility(btn_addTrucks);
+        distributorUI.click(btn_addTrucks);
+    }
+    public void enterName(String name){
+        distributorUI.clear(lbl_name);
+        distributorUI.sendKeys(lbl_name,name);
+    }
+    public void enterPhone(String phone) throws InterruptedException {
+        distributorUI.waitForCustom(4000);
+        distributorUI.sendKeysAndEnter(lbl_phone,phone);
+        distributorUI.waitForCustom(2000);
+    }
+    public void clickOnInviteUser() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        distributorUI.waitForVisibility(btn_inviteUser);
+        distributorUI.click(btn_inviteUser);
+        distributorUI.clickUsingJavaScript(btn_inviteUser);
+    }
+    public boolean isUserDisplayed(String user) throws InterruptedException {
+        try {
+            distributorUI.waitForCustom(4000);
+            distributorUI.waitForVisibility(By.xpath(btn_editUser.replace("USER", user)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(btn_editUser.replace("USER", user)));
+    }
+    public void clickOnEditUser(String user) throws InterruptedException {
+        distributorUI.scrollToElement(By.xpath(btn_editUser.replace("USER", user)));
+        distributorUI.waitForCustom(3000);
+        try {
+            distributorUI.click(By.xpath(btn_editUser.replace("USER", user)));
+        } catch (Exception e) {
+            distributorUI.refreshPage();
+            distributorUI.click(By.xpath(btn_editUser.replace("USER", user)));
+        }
+    }
+    public boolean isEditUserPopupDisplayed(){
+        distributorUI.waitForVisibility(txt_editUser);
+        return distributorUI.isDisplayed(txt_editUser);
+    }
 }
