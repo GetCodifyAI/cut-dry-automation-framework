@@ -12,9 +12,12 @@ public class TrackPage extends LoginPage{
     By txt_trackMon = By.xpath("//li[contains(text(),'Monitoring')]");
     By txt_trackNotif = By.xpath("//li[contains(text(),'Notifications')]");
     By txt_addDriver = By.xpath("//div[contains(text(), 'Add Driver')]");
+    By txt_addTruck = By.xpath("//div[contains(text(), 'Add Truck')]");
     By lbl_name = By.xpath("//input[@placeholder='First Last']");
+    By lbl_nameTruck = By.xpath("//input[@placeholder='Truck Name/ID']");
     By lbl_phone = By.xpath("//input[@placeholder='12223334444']");
     By lbl_searchDriver = By.xpath("//input[@placeholder='Search Drivers']");
+    By lbl_searchTruck = By.xpath("//input[@placeholder='Search Trucks']");
     By lbl_loc = By.xpath("//input[@placeholder='First Last']");
     By btn_inviteUser = By.xpath("//button[text()='Invite User']");
     String btn_editUser = "//tr[td[text()='USER']]/td/following-sibling::td//*[local-name()='svg']";
@@ -82,6 +85,14 @@ public class TrackPage extends LoginPage{
         }
         return distributorUI.isDisplayed(txt_addDriver);
     }
+    public boolean isAddTruckPopupDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_addTruck);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_addTruck);
+    }
     public void clickOnAddDrivers() {
         distributorUI.waitForVisibility(btn_addDriver);
         distributorUI.click(btn_addDriver);
@@ -89,6 +100,10 @@ public class TrackPage extends LoginPage{
     public void clickOnAddTrucks() {
         distributorUI.waitForVisibility(btn_addTrucks);
         distributorUI.click(btn_addTrucks);
+    }
+    public void enterTruckName(String name){
+        distributorUI.clear(lbl_nameTruck);
+        distributorUI.sendKeys(lbl_nameTruck,name);
     }
     public void enterName(String name){
         distributorUI.clear(lbl_name);

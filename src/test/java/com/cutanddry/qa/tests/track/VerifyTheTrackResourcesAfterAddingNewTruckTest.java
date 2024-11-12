@@ -12,9 +12,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheTrackResourcesAfterDeletingDriverTest extends TestBase {
+public class VerifyTheTrackResourcesAfterAddingNewTruckTest extends TestBase {
     static User user;
-    static String name = "Jordan Harper";
+    static String name = "Jordan Truck";
 
     @BeforeMethod
     public void setUp() {
@@ -22,21 +22,20 @@ public class VerifyTheTrackResourcesAfterDeletingDriverTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-526")
-    public void VerifyTheTrackResourcesAfterDeletingDriver() throws InterruptedException {
+    @Test(groups = "DOT-TC-528")
+    public void VerifyTheTrackResourcesAfterAddingNewTruckT() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToTrackResources();
         softAssert.assertTrue(Track.isResourcesTextDisplayed(),"navigation to track resources error");
-        Track.clickOnDrivers();
-        softAssert.assertTrue(Track.isAddDriversBtnDisplayed(),"navigation to drivers error");
-        Track.clickOnEditUser(name);
-        softAssert.assertTrue(Track.isEditUserPopupDisplayed(),"pop display error");
-        Track.clickOnRemoveUserLabel();
-        Track.clickOnRemoveUser();
-        Track.clickOK();
-        softAssert.assertFalse(Track.isUserDisplayed(name),"add driver error");
+        Track.clickOnTrucks();
+        softAssert.assertTrue(Track.isAddTrucksBtnDisplayed(),"navigation to trucks error");
+        Track.clickOnAddTrucks();
+        softAssert.assertTrue(Track.isAddTruckPopupDisplayed(),"add truck popup error");
+        Track.enterTruckName(name);
+        Track.clickOnSaveChanges();
+        softAssert.assertTrue(Track.isUserDisplayed(name),"add driver error");
         softAssert.assertAll();
     }
 

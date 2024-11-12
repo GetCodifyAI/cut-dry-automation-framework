@@ -35,8 +35,14 @@ public class Track {
     public static boolean isAddDriverPopupDisplayed() {
         return trackPage.isAddDriverPopupDisplayed();
     }
+    public static boolean isAddTruckPopupDisplayed() {
+        return trackPage.isAddTruckPopupDisplayed();
+    }
     public static void clickOnAddTrucks(){
         trackPage.clickOnAddTrucks();
+    }
+    public static void enterTruckName(String name){
+        trackPage.enterTruckName(name);
     }
     public static void enterName(String name){
         trackPage.enterName(name);
