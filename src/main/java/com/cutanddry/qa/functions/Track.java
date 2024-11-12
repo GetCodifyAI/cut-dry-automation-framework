@@ -86,4 +86,19 @@ public class Track {
     public static boolean isSearchDisplayed(String name) throws InterruptedException {
         return trackPage.isSearchDisplayed(name);
     }
+    public static void clickOnNotifExample() {
+        trackPage.clickOnNotifExample();
+    }
+    public static boolean isNotificationExamplePopupDisplayed(){
+        return trackPage.isNotificationExamplePopupDisplayed();
+    }
+    public static void clickOnSMS(){
+        trackPage.clickOnSMS();
+    }
+    public static void clickOnEmail(){
+        trackPage.clickOnEmail();
+    }
+    public static void clickOnPush(){
+        trackPage.clickOnPush();
+    }
 }

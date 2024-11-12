@@ -28,6 +28,11 @@ public class TrackPage extends LoginPage{
     By btn_removeUser = By.xpath("//button[contains(text(), 'Remove')]");
     By btn_saveChange = By.xpath("//button[text()='Save Changes']");
     String txt_searchUser = "//tr[1][td[text()='USER']]";
+    By btn_notifExample = By.xpath("(//button[contains(text(), 'Notification Example')])[1]");
+    By txt_exPopup = By.xpath("//div[text()='Track Welcome Message']");
+    By tb_SMS =By.xpath("//a[@role='tab' and text()='SMS']");
+    By tb_email =By.xpath("//a[@role='tab' and text()='Email']");
+    By tb_push =By.xpath("//a[@role='tab' and text()='Push']");
 
     public boolean isTrackResourcesTextDisplayed(){
         try {
@@ -184,5 +189,29 @@ public class TrackPage extends LoginPage{
             return false;
         }
         return distributorUI.isDisplayed(By.xpath(txt_searchUser.replace("USER", user)));
+    }
+    public void clickOnNotifExample() {
+        distributorUI.waitForVisibility(btn_notifExample);
+        distributorUI.click(btn_notifExample);
+    }
+    public boolean isNotificationExamplePopupDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_exPopup);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_exPopup);
+    }
+    public void clickOnSMS() {
+        distributorUI.waitForVisibility(tb_SMS);
+        distributorUI.click(tb_SMS);
+    }
+    public void clickOnEmail() {
+        distributorUI.waitForVisibility(tb_email);
+        distributorUI.click(tb_email);
+    }
+    public void clickOnPush() {
+        distributorUI.waitForVisibility(tb_push);
+        distributorUI.click(tb_push);
     }
 }
