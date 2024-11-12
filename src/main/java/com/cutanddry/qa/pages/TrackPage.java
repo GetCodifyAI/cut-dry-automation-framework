@@ -21,11 +21,11 @@ public class TrackPage extends LoginPage{
     By lbl_loc = By.xpath("//input[@placeholder='First Last']");
     By btn_inviteUser = By.xpath("//button[text()='Invite User']");
     String btn_editUser = "//tr[td[text()='USER']]/td/following-sibling::td//*[local-name()='svg']";
-    By txt_editUser = By.xpath("//div[text()='Edit User']");
-    By lbl_removeUser = By.xpath("//a[text()='Remove user']");
+    By txt_editUser = By.xpath("//div[contains(text(), 'Edit')]");
+    By lbl_removeUser = By.xpath("//a[contains(text(), 'Remove')]");
     By btn_OK = By.xpath("//button[text()='OK']");
     By txt_removeUser = By.xpath("//div[text()='Removing this user will result in the following:']");
-    By btn_removeUser = By.xpath("//button[text()='Remove User']");
+    By btn_removeUser = By.xpath("//button[contains(text(), 'Remove')]");
     By btn_saveChange = By.xpath("//button[text()='Save Changes']");
     String txt_searchUser = "//tr[1][td[text()='USER']]";
 
@@ -171,6 +171,10 @@ public class TrackPage extends LoginPage{
     public void searchDriver(String name){
         distributorUI.clear(lbl_searchDriver);
         distributorUI.sendKeys(lbl_searchDriver,name);
+    }
+    public void searchTrucks(String name){
+        distributorUI.clear(lbl_searchTruck);
+        distributorUI.sendKeys(lbl_searchTruck,name);
     }
     public boolean isSearchDisplayed(String user) throws InterruptedException {
         try {

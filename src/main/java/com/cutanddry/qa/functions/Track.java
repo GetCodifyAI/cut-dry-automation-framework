@@ -80,6 +80,9 @@ public class Track {
     public static void searchDrivers(String name) {
         trackPage.searchDriver(name);
     }
+    public static void searchTrucks(String name) {
+        trackPage.searchTrucks(name);
+    }
     public static boolean isSearchDisplayed(String name) throws InterruptedException {
         return trackPage.isSearchDisplayed(name);
     }
