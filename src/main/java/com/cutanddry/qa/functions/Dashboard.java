@@ -124,4 +124,7 @@ public class Dashboard {
     public static void navigateToShowCasePage(){
         dashboardPage.clickOnShowCase();
     }
+    public static void navigateToCreditRequests(){
+        dashboardPage.clickOnCreditRequests();
+    }
 }
