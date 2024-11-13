@@ -30,11 +30,11 @@ public class VerifyOrderApprovalSettingsReflectedWhileOrderingTest {
     }
 
     @Test(groups = "DOT-TC-438")
-    public void VerifyOrderGuideOrderApprovalUIFeature() throws InterruptedException {
+    public void VerifyOrderApprovalSettingsReflectedWhileOrdering() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Random random = new Random();
-        int quantity1 = random.nextInt(10) + 1;
-        int quantity2 = random.nextInt(10) + 1;
+        int quantity1 = random.nextInt(6) + 15;
+        int quantity2 = random.nextInt(6) + 15;
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DistributerName);

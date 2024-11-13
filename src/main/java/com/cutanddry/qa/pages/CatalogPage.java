@@ -162,7 +162,6 @@ public class CatalogPage extends LoginPage{
     }
 
     public void clickOnSaveChangesBtn(){
-        distributorUI.scrollToElement(saveChangesBtn);
         distributorUI.click(saveChangesBtn);
     }
 
