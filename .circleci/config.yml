@@ -204,12 +204,12 @@ workflows:
     triggers:
       - schedule:
           #cron: "30 20 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC)
-          cron: "45 11 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC)
+          cron: "10 12 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC)
           filters:
             branches:
               only:
                 #- main
-                - xml_separate
+                - feature/xml_separate
     jobs:
       - nightly-build-and-test-1
       - nightly-build-and-test-2
