@@ -47,6 +47,8 @@ public class DashboardPage extends LoginPage{
     By btn_showcase = By.xpath("//a[contains(@data-tip,'Cut+Dry Product Showcase')]");
     By btn_adsSettings = By.xpath("//div[@arrowprops]//a[text()='Ads + Rebates']");
     By btn_paySettings = By.xpath("//div[@arrowprops]//a[text()='Pay']");
+    By btn_credit_requests = By.xpath("//a[@data-for='sideNavSupplierMenuOptions' and @href='/credit-requests']");
+
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -251,4 +253,5 @@ public class DashboardPage extends LoginPage{
     public void clickOnShowCase(){
         distributorUI.click(btn_showcase);
     }
+    public void clickOnCreditRequests(){distributorUI.click(btn_credit_requests);}
 }
