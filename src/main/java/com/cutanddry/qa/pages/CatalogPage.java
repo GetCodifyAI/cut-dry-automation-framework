@@ -166,6 +166,11 @@ public class CatalogPage extends LoginPage{
     }
 
     public boolean isSuccessOverlayDisplayed(){
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return distributorUI.isDisplayed(successOverlay);
     }
 

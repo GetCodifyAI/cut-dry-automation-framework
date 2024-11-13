@@ -53,6 +53,16 @@
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyDeletingUnitOfMeasureOfItemTest" />
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyAddingSubstituteForAnItemTest" />
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyRemovingSubstituteFromAnItemTest" />
+            <class name="com.cutanddry.qa.tests.customer_groups.VerifyCustomerGroupIsAssignedWhenSelectedTest" />
+            <class name="com.cutanddry.qa.tests.customer_groups.VerifyCustomerGroupVisibleTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileNewUserInviteTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileEditTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileDeleteTest" />
+            <class name="com.cutanddry.qa.tests.standing_orders.VerifyCreatingStandingOrdersTest" />
+            <class name="com.cutanddry.qa.tests.standing_orders.VerifyEditingStandingOrdersTest" />
+            <class name="com.cutanddry.qa.tests.standing_orders.VerifyAddingAnotherStandingOrderTest" />
+            <class name="com.cutanddry.qa.tests.standing_orders.VerifyDeletingStandingOrdersTest" />
+            <class name="com.cutanddry.qa.tests.integration.VerifyCashAndCarryAppPassingInvalidAccountTest" />
         </classes>
     </test>
 </suite>
