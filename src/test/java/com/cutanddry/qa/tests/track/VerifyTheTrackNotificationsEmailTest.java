@@ -28,7 +28,10 @@ public class VerifyTheTrackNotificationsEmailTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToTrackNotifications();
         softAssert.assertTrue(Track.isNotificationsTextDisplayed(),"navigation to track notif error");
-
+        Track.clickOnNotifExample();
+        softAssert.assertTrue(Track.isNotificationExamplePopupDisplayed(),"notif example popup error");
+        Track.clickOnEmail();
+        softAssert.assertTrue(Track.isEmailTemplateAndPreviewDisplayed(),"email notif error");
         softAssert.assertAll();
     }
 
