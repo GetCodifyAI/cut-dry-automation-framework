@@ -12,10 +12,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class verifyTheCreditReqSearchByDistributorTest extends TestBase {
+public class VerifyTheCreditViewofCreditRequestIssueDetailsByDistributorTest extends TestBase{
+
     static User user;
     String timeRange = "All";
-    String orderID = "316727041";
 
     @BeforeMethod
     public void setUp(){
@@ -23,18 +23,22 @@ public class verifyTheCreditReqSearchByDistributorTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-493")
-    public void verifyTheCreditReqSearchByDistributor() throws InterruptedException {
+    @Test(groups = "DOT-TC-496")
+    public void VerifyTheCreditViewofCreditRequestIssueDetailsByDistributor() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCreditRequests();
+        softAssert.assertTrue(CreditRequests.isErrorTextNotDisplayed(),"Error Message Displayed");
         CreditRequests.changeRequestDate(timeRange); //Select the "All" option
-        CreditRequests.searchOrderID(orderID);
-        softAssert.assertTrue(CreditRequests.checkIfSearchedElementVisible(orderID), "Order ID not found in the table.");
-        CreditRequests.checkIfSearchedElementVisible(orderID);
-        softAssert.assertAll();
+        CreditRequests.clickOnFirstItemOfCreditView();
+        softAssert.assertTrue(CreditRequests.isErrorTextNotDisplayed(),"Error Message Displayed");
+        CreditRequests.clickOnCreditView();
+        softAssert.assertTrue(CreditRequests.checkIfCreditViewSectionVisible(), "Timeline Section is not visible");
+        softAssert.assertTrue(CreditRequests.isErrorTextNotDisplayed(),"Error Message Displayed");
+        CreditRequests.clickOnFirstItemOfCreditRequests();
+        softAssert.assertTrue(CreditRequests.checkIfIssueDetailsModalDisplayed(), "Issue Detail Modal Card is not visible");
     }
 
     @AfterMethod
@@ -42,4 +46,5 @@ public class verifyTheCreditReqSearchByDistributorTest extends TestBase {
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }
+
 }
