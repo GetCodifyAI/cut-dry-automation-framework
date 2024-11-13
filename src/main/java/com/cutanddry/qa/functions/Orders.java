@@ -41,4 +41,7 @@ public class Orders {
         return ordersPage.isOrderDraftDisplayedForApproval();
     }
 
+    public static void selectOrderGuide(String OrderGuide) {
+        ordersPage.clickOnOrderGuide(OrderGuide);
+    }
 }
