@@ -33,6 +33,13 @@ public class TrackPage extends LoginPage{
     By tb_SMS =By.xpath("//a[@role='tab' and text()='SMS']");
     By tb_email =By.xpath("//a[@role='tab' and text()='Email']");
     By tb_push =By.xpath("//a[@role='tab' and text()='Push']");
+    By txt_smsTemp = By.xpath("//h6[contains(text(),'SMS Template')]");
+    By txt_emailTemp = By.xpath("//h6[contains(text(),'Email Template')]");
+    By txt_pushTemp = By.xpath("//h6[contains(text(),'Push Template')]");
+    By txt_smsPrev = By.xpath("//h6[contains(text(),'SMS Preview')]");
+    By txt_emailPrev = By.xpath("//h6[contains(text(),'Email Preview')]");
+    By txt_pushPrev = By.xpath("//h6[contains(text(),'Push Preview')]");
+
 
     public boolean isTrackResourcesTextDisplayed(){
         try {
@@ -213,5 +220,20 @@ public class TrackPage extends LoginPage{
     public void clickOnPush() {
         distributorUI.waitForVisibility(tb_push);
         distributorUI.click(tb_push);
+    }
+    public boolean isSMSTemplateAndPreviewDisplayed(){
+        distributorUI.waitForVisibility(txt_smsTemp);
+        distributorUI.waitForVisibility(txt_smsPrev);
+        return distributorUI.isDisplayed(txt_smsTemp) && distributorUI.isDisplayed(txt_smsPrev);
+    }
+    public boolean isEmailTemplateAndPreviewDisplayed(){
+        distributorUI.waitForVisibility(txt_emailTemp);
+        distributorUI.waitForVisibility(txt_emailPrev);
+        return distributorUI.isDisplayed(txt_emailTemp) && distributorUI.isDisplayed(txt_emailPrev);
+    }
+    public boolean isPushTemplateAndPreviewDisplayed(){
+        distributorUI.waitForVisibility(txt_pushTemp);
+        distributorUI.waitForVisibility(txt_pushPrev);
+        return distributorUI.isDisplayed(txt_pushTemp) && distributorUI.isDisplayed(txt_pushPrev);
     }
 }

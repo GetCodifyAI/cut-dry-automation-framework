@@ -101,4 +101,13 @@ public class Track {
     public static void clickOnPush(){
         trackPage.clickOnPush();
     }
+    public static boolean isSMSTemplateAndPreviewDisplayed(){
+        return trackPage.isSMSTemplateAndPreviewDisplayed();
+    }
+    public static boolean isEmailTemplateAndPreviewDisplayed(){
+        return trackPage.isEmailTemplateAndPreviewDisplayed();
+    }
+    public static boolean isPushTemplateAndPreviewDisplayed(){
+        return trackPage.isPushTemplateAndPreviewDisplayed();
+    }
 }
