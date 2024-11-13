@@ -45,7 +45,6 @@ public class CreditRequests {
 
     }
 
-
     public static void clickOnCreditView(){
         creditRequestsPage.clickOnCreditView();
     }
