@@ -7,7 +7,7 @@ public class OrderDeskPage extends LoginPage{
     By Submitted_orders_tab = By.xpath("//a[contains(text(),'Submitted Orders')]");
     By DraftOrders_tab = By.xpath("//a[contains(text(),'Draft Orders')]");
     By CustomerName_Draft_orders_text = By.xpath("(//div[contains(text(),'Customer')])[2]");
-    By DraftOrderPageReviewBtn = By.xpath("(//div[contains(@class, '_10q9czs')]//a[text()='Review'])[2]");
+    By DraftOrderPageReviewBtn = By.xpath("(//div[contains(@class, '_10q9czs')]//a[text()='Review'])[4]");
     By DraftOrderReviewPageQuantityIncrementBtn = By.xpath("(//div[@class='p-2 px-sm-3 _du1frc _18jhc3z py-2 ml-2 text-center align-middle'])[1]");
     By DraftOrderReviewPageQuantityDecrementBtn = By.xpath("(//div[@class='p-2 px-sm-3 _du1frc _18jhc3z py-2 mr-2 text-center align-middle'])[1]");
     By DraftOrderReviewPageQuantityEdit = By.xpath("(//input[@class ='_hk3n6z form-control _b1frhss'])[1]");

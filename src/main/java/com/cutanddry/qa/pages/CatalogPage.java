@@ -51,7 +51,7 @@ public class CatalogPage extends LoginPage{
     By substituteAddBtn = By.xpath("//button[contains(text(),'Add')]");
     By substituteCancelBtn = By.xpath("//button[contains(text(),'Cancel')]");
     String substituteItemNameTxt = "//div[contains(text(),'ITEMNAME')]";
-    String deleteSubstituteItemBtn = "//div[@class='align-items-center my-1 row']//div[contains(text(),'ITEMCODE')]//./following-sibling::*[3]";
+    String deleteSubstituteItemBtn = "//div[@class='align-items-center my-1 row']//div[contains(text(),'ITEMCODE')]//following-sibling::div[contains(@class,'col-md')]/*";
     By searchField = By.xpath("//div//input[contains(@placeholder,'Find Item in Catalog')]");
     String clearCertificationBtn = "//label[contains(text(),'CERTIFICATIONTYPE')]/..//div[contains(@class,'themed_select__clear-indicato')]";
     String selectCertificationDropdown = "//label[contains(text(),'CERTIFICATIONTYPE')]/..//div[contains(text(),'Select')]";
