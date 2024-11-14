@@ -11,6 +11,9 @@ public class OrdersPage extends LoginPage{
     By sendForApprovaltext = By.xpath("//strong[contains(text(),'Sent for approval!')]");
     By viewOrderInDraft = By.xpath("//button[contains(text(),'View Order in Drafts')]");
     By pendingApprovalText = By.xpath("//span[contains(text(),'Pending Approval')]");
+    By selectOrderGuide = By.xpath("//div[contains(text(),'Select Order Guide')]");
+    String orderGuide ="//div[contains(text(),'ORDERGUIDE')]";
+
 
     public boolean isOrdersTextDisplayed(){
         try {
@@ -61,4 +64,9 @@ public class OrdersPage extends LoginPage{
         return distributorUI.isDisplayed(pendingApprovalText);
     }
 
+    public void clickOnOrderGuide(String OrderGuideName){
+        if(distributorUI.isDisplayed(selectOrderGuide)){
+            distributorUI.click(By.xpath(orderGuide.replace("ORDERGUIDE",OrderGuideName)));
+        }
+    }
 }
