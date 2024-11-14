@@ -162,11 +162,7 @@ public class CatalogPage extends LoginPage{
     }
 
     public void clickOnSaveChangesBtn(){
-        try {
-            distributorUI.waitForCustom(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        distributorUI.waitForVisibility(saveChangesBtn);
         distributorUI.click(saveChangesBtn);
     }
 
