@@ -204,7 +204,7 @@ workflows:
     triggers:
       - schedule:
           #cron: "30 20 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC)
-          cron: "20 14 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC)
+          cron: "15 2 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC)
           filters:
             branches:
               only:

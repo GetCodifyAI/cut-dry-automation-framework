@@ -32,7 +32,7 @@ public class CatalogPage extends LoginPage{
     By productItemImage = By.xpath("//img[contains(@class,'_kzpva6 img-fluid') and contains(@src,'img01.jpg')]");
     By priceAndPromotions = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Pricing & Promotions')]");
     By unitOfMeasure = By.xpath("//button[contains(text(),'+ Unit of measure')]");
-    By uomCount = By.xpath("//table[@class='pt-4 w-auto table table-borderless']//tr");
+    By uomCount = By.xpath("//table[@class='pt-4 w-auto table table-borderless']//td[contains(@class, 'pl-0')]//label");
     By uomSelectDropdown = By.xpath("//div[contains(text(),'Select UoM')]");
     String unit = "//div[text()='UNIT']";
     By unitPriceTxtField = By.xpath("//div[contains(text(), 'Bag')]/ancestor::td[1]/following-sibling::td[1]//input[@type='number']");
@@ -162,6 +162,11 @@ public class CatalogPage extends LoginPage{
     }
 
     public void clickOnSaveChangesBtn(){
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.click(saveChangesBtn);
     }
 
@@ -208,6 +213,11 @@ public class CatalogPage extends LoginPage{
     }
 
     public int getUnitOfMeasureCount(){
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return distributorUI.countElements(uomCount);
     }
 
