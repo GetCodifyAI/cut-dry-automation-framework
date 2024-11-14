@@ -54,6 +54,7 @@ public class VerifyOrderApprovalSettingsReflectedWhileOrderingTest {
         //Log in as Employee user to place the Order
         Login.navigateToLoginAsPortal(EmployeeUserCode);
         Orders.SelectSupplierFromPlaceOrderPage(SupplierName);
+        Orders.selectOrderGuide(OrderGuideName);
         Customer.searchItemOnOrderGuide(ItemCode);
         Orders.increaseItemQuantity(ItemCode, quantity1);
         Orders.checkOutFromOperatorCart();
