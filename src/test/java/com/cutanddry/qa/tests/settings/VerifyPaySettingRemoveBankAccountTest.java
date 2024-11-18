@@ -28,7 +28,12 @@ public class VerifyPaySettingRemoveBankAccountTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToPaySettings();
         softAssert.assertTrue(Settings.isPaySettingsTextDisplayed(),"navigation to pay settings error");
-
+        Settings.clickOnRemoveAcc();
+        softAssert.assertTrue(Settings.isAreYouSurePopupDisplayed(),"popup error");
+        Settings.clickYes();
+        softAssert.assertTrue(Settings.isBankDetailsRemovedPopupDisplayed(),"bank remove popup error");
+        Settings.clickOK();
+        softAssert.assertFalse(Settings.isPayoutMethodAdded(),"payout method adding error");
         softAssert.assertAll();
     }
 

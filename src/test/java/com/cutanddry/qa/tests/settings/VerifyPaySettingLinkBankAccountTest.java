@@ -36,7 +36,7 @@ public class VerifyPaySettingLinkBankAccountTest extends TestBase {
         Settings.enterAccountNumber(acc_num);
         Settings.enterRoutingNumber(routing_num);
         Settings.clickOnSave();
-        softAssert.assertTrue(Settings.isBankDetailsAddedPopup(),"bank adding popup error");
+        softAssert.assertTrue(Settings.isBankDetailsAddedPopupDisplayed(),"bank adding popup error");
         Settings.clickOK();
         softAssert.assertTrue(Settings.isPayoutMethodAdded(),"payout method adding error");
         softAssert.assertAll();

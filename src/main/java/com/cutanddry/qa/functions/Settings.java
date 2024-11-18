@@ -158,7 +158,10 @@ public class Settings {
     public static boolean isPayoutMethodAdded() {
         return settingsPage.isPayoutMethodAdded();
     }
-    public static boolean isBankDetailsAddedPopup() {
-        return settingsPage.isBankDetailsAddedPopup();
+    public static boolean isBankDetailsAddedPopupDisplayed() {
+        return settingsPage.isBankDetailsAddedPopupDisplayed();
+    }
+    public static boolean isBankDetailsRemovedPopupDisplayed() {
+        return settingsPage.isBankDetailsRemovedPopupDisplayed();
     }
 }

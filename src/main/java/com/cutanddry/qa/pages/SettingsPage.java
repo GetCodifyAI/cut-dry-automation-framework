@@ -54,6 +54,7 @@ public class SettingsPage extends LoginPage{
     By btn_save= By.xpath("//div[contains(@class, 'modal-content')]//button[contains(text(), 'Save')]");
     By txt_displayedPayout = By.xpath("//div[text()='All payouts will be transferred to bank account x2220.']");
     By txt_bankDetailsAddedPopup = By.xpath("//h2[text()='Bank account details have been added successfully.']");
+    By txt_bankDetailsRemovedPopup = By.xpath("//h2[text()='The bank account has been successfully removed.']");
 
     public boolean isOrderSettingsTextDisplayed() throws InterruptedException {
         try {
@@ -333,7 +334,10 @@ public class SettingsPage extends LoginPage{
     public boolean isPayoutMethodAdded(){
         return distributorUI.isDisplayed(txt_displayedPayout);
     }
-    public boolean isBankDetailsAddedPopup(){
+    public boolean isBankDetailsAddedPopupDisplayed(){
         return distributorUI.isDisplayed(txt_bankDetailsAddedPopup);
+    }
+    public boolean isBankDetailsRemovedPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_bankDetailsRemovedPopup);
     }
 }
