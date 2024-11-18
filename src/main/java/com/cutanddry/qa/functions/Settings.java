@@ -134,4 +134,13 @@ public class Settings {
     public static boolean isAreYouSurePopupDisplayed() {
         return settingsPage.isAreYouSurePopupDisplayed();
     }
+    public static void selectInvoice() {
+        settingsPage.selectInvoice();
+    }
+    public static void clickOnDownloadInvoices() {
+        settingsPage.clickOnDownloadInvoices();
+    }
+    public static boolean isDownloadInvoiceClickable() {
+        return settingsPage.isDownloadInvoiceClickable();
+    }
 }

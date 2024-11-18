@@ -45,6 +45,10 @@ public class SettingsPage extends LoginPage{
     By txt_displayedPaymentMethod = By.xpath("//div[text()='Your monthly bill will be deducted from the bank account x2220.']");
     By btn_removeAcc = By.xpath("//button[text()='Remove Account']");
     By txt_areYouSure = By.xpath("//h2[text()='Are you sure?']");
+    By btn_batchActions = By.xpath("//button[contains(text(),'Batch Actions')]");
+    By btn_downloadInvoices = By.xpath("//a[@class='dropdown-item' and text()='Download Invoices']");
+    By lbl_invoice = By.xpath("//tr[td[text()='10008']]/td/div");
+
 
     public boolean isOrderSettingsTextDisplayed() throws InterruptedException {
         try {
@@ -291,5 +295,22 @@ public class SettingsPage extends LoginPage{
     }
     public boolean isAreYouSurePopupDisplayed(){
         return distributorUI.isDisplayed(txt_areYouSure);
+    }
+    public void selectInvoice() {
+        distributorUI.waitForVisibility(lbl_invoice);
+        distributorUI.clickUsingJavaScript(lbl_invoice);
+    }
+    public boolean isDownloadInvoiceClickable(){
+        distributorUI.click(btn_batchActions);
+        try {
+            distributorUI.waitForClickability(btn_downloadInvoices);
+        } catch (Exception e){
+            return false;
+        }
+        return  distributorUI.isDisplayed(btn_downloadInvoices);
+    }
+    public void clickOnDownloadInvoices() {
+        distributorUI.click(btn_downloadInvoices);
+
     }
 }
