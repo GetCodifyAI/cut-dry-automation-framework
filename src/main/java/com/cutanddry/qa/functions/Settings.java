@@ -131,4 +131,7 @@ public class Settings {
     public static void clickOnRemoveAcc() {
         settingsPage.clickOnRemoveAcc();
     }
+    public static boolean isAreYouSurePopupDisplayed() {
+        return settingsPage.isAreYouSurePopupDisplayed();
+    }
 }
