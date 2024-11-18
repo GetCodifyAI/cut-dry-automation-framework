@@ -131,6 +131,8 @@
             <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsPushTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogGetLinkTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogSearchTest" />
+            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingAddPaymentMethodTest" />
+            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingRemovePaymentMethodTest" />
         </classes>
     </test>
 </suite>
