@@ -21,7 +21,7 @@ public class VerifyBillingSettingRemovePaymentMethodTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-603")
+    @Test(groups = "DOT-TC-604")
     public void VerifyBillingSettingAddPaymentMethod() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
