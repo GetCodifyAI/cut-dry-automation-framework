@@ -224,5 +224,19 @@ public class Catalog {
     public static boolean alreadyACustomerOrJoinOverlayDisplayed(){
         return catalogPage.isAlreadyACustomerDisplayed();
     }
-
+    public static void clickOnGetLink(){
+        catalogPage.clickOnGetLink();
+    }
+    public static void clickOK(){
+        catalogPage.clickOK();
+    }
+    public static boolean isCatalogLinkPopupDisplayed(){
+        return catalogPage.isCatalogLinkPopupDisplayed();
+    }
+    public static void goToCopiedLink(){
+        catalogPage.goToCopiedLink();
+    }
+    public static boolean isNavigatedToBrowseCatalog(){
+        return catalogPage.isNavigatedToBrowseCatalog();
+    }
 }
