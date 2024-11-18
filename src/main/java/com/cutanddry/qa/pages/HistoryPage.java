@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 public class HistoryPage extends LoginPage{
     By txt_orderHistory = By.xpath("//h2[contains(text(),'Order History')]");
-    By lbl_firstItemInHistory = By.xpath("//th[normalize-space()='ID']/following::td[1]");
+    By lbl_firstItemInHistory = By.xpath("//tr[contains(@href,'/orders-revised/view-one')][1]");
 
     public boolean isOrderHistoryTextDisplayed() {
         try {
