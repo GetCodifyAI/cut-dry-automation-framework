@@ -104,4 +104,28 @@ public class Settings {
     public static boolean isBillingSettingsTextDisplayed() throws InterruptedException {
         return settingsPage.isBillingSettingsTextDisplayed();
     }
+    public static boolean isAddPaymentPopupDisplayed() throws InterruptedException {
+        return settingsPage.isAddPaymentPopupDisplayed();
+    }
+    public static void clickOnAddPaymentMethod() {
+        settingsPage.clickOnAddPaymentMethod();
+    }
+    public static void clickOnAddBank() {
+        settingsPage.clickOnAddBank();
+    }
+    public static void enterAccountNumber(String num){
+        settingsPage.enterAccountNumber(num);
+    }
+    public static void enterRoutingNumber(String num){
+        settingsPage.enterRoutingNumber(num);
+    }
+    public static void clickOnNext() {
+        settingsPage.clickOnNext();
+    }
+    public static boolean isAddPaymentSuccessPopupDisplayed() {
+        return settingsPage.isAddPaymentSuccessPopupDisplayed();
+    }
+    public static boolean isPaymentMethodAdded() {
+        return settingsPage.isPaymentMethodAdded();
+    }
 }

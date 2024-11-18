@@ -35,6 +35,15 @@ public class SettingsPage extends LoginPage{
     By txt_billingSettings = By.xpath("//h2[contains(text(),'Billing Settings')]");
     By txt_adsSettings = By.xpath("//div[contains(text(),'Ads and Rebates')]");
     By txt_paySettings = By.xpath("//h2[contains(text(),'Pay Settings')]");
+    By btn_addPaymentMethod = By.xpath("//button[text()='Add Payment Method']");
+    By txt_addPaymentPopup = By.xpath("//h3[text()='Add Payment Method']");
+    By lbl_addBank = By.xpath("//span[text()='Add bank account']");
+    By lbl_accNum = By.xpath("//div[label[text()='Account Number']]//input");
+    By lbl_RoutingNum = By.xpath("//div[label[text()='Routing Number']]//input");
+    By btn_next = By.xpath("//button[text()='Next']");
+    By txt_paymentMethodAddedPopup = By.xpath("//h2[text()='Payment method has been added successfully.']");
+    By txt_displayedPaymentMethod = By.xpath("//div[text()='Your monthly bill will be deducted from the bank account x2220.']");
+
 
     public boolean isOrderSettingsTextDisplayed() throws InterruptedException {
         try {
@@ -245,5 +254,34 @@ public class SettingsPage extends LoginPage{
         }
         distributorUI.waitForCustom(4000);
         return distributorUI.isDisplayed(txt_trackSettings);
+    }
+    public void clickOnAddPaymentMethod() {
+        distributorUI.waitForClickability(btn_addPaymentMethod);
+        distributorUI.click(btn_addPaymentMethod);
+    }
+    public void clickOnAddBank() {
+        distributorUI.waitForClickability(lbl_addBank);
+        distributorUI.click(lbl_addBank);
+    }
+    public boolean isAddPaymentPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_addPaymentPopup);
+    }
+    public void enterAccountNumber(String num){
+        distributorUI.clear(lbl_accNum);
+        distributorUI.sendKeys(lbl_accNum,num);
+    }
+    public void enterRoutingNumber(String num){
+        distributorUI.clear(lbl_RoutingNum);
+        distributorUI.sendKeys(lbl_RoutingNum,num);
+    }
+    public void clickOnNext() {
+        distributorUI.waitForClickability(btn_next);
+        distributorUI.click(btn_next);
+    }
+    public boolean isAddPaymentSuccessPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_paymentMethodAddedPopup);
+    }
+    public boolean isPaymentMethodAdded(){
+        return distributorUI.isDisplayed(txt_displayedPaymentMethod);
     }
 }
