@@ -27,7 +27,7 @@ public class SlackNotifier {
                     + "\"type\": \"section\","
                     + "\"text\": {"
                     + "\"type\": \"mrkdwn\","
-                    + "\"text\": \"*Distributor" + PART +" - Test Suite Execution Completed!*\""
+                    + "\"text\": \"*Distributor " + PART +" - Test Suite Execution Completed!*\""
                     + "}"
                     + "},"
                     + "{"
