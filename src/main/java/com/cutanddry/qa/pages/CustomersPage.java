@@ -135,7 +135,7 @@ public class CustomersPage extends LoginPage {
     By txt_unitInDist = By.xpath("//tbody/tr/td[3]/div/div/div/div");
     By txt_eachDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Each']");
     By txt_caseDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Case']");
-    By btn_orderGuide = By.xpath("//button[normalize-space(text())='Order Guide']");
+    By btn_orderGuide = By.xpath("//button[text()='Order Guide']");
     By btn_close = By.xpath("//button[contains(@class, 'close')]/span[text()='×']");
     By btn_addSection = By.xpath("//a[contains(text(), 'Add Section')]");
     By txt_addSection = By.xpath("//div[contains(text(), 'Add Section Header')]");
@@ -214,7 +214,14 @@ public class CustomersPage extends LoginPage {
     By btn_independentFoods = By.xpath("//div[contains(text(), 'Independent Foods Co')]");
     By itemNotFoundTxt = By.xpath("//div[contains(text(),'No matches found')]");
     String catalogCardAddToOGBtn = "//div[contains(text(),'ITEMCODE')]/../..//button[@data-tip='Add to Order Guide']";
-
+    By btn_editAccHold = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[11]");
+    By dropdown_acc = By.xpath("//div[text()='Account Holds']/following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
+    By txt_hardHold = By.xpath("//div[contains(@class, 'themed_select__option') and  text()='Hard Hold']");
+    By lbl_hardHold = By.xpath("//div[text()='Account Holds']/following-sibling::div//span[contains(@class, 'badge') and text()='None']");
+    By txt_none = By.xpath("//div[contains(@class, 'themed_select__option') and  text()='Hard Hold']");
+    By lbl_none = By.xpath("//div[text()='Account Holds']/following-sibling::div//span[contains(@class, 'badge') and text()='None']");
+    By txt_hardHoldPopup = By.xpath("//h2[contains(text(), 'Your order could not be submitted due to a hold on your account')]");
+    By txt_removeHold = By.xpath("//h2[contains(text(), 'Remove hold')]");
 
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
@@ -1148,5 +1155,32 @@ public class CustomersPage extends LoginPage {
             throw new RuntimeException(e);
         }
     }
-
+    public void clickOnEditAccHolds(){
+        distributorUI.waitForVisibility(btn_editAccHold);
+        distributorUI.click(btn_editAccHold);
+    }
+    public void clickOnAccDropdown(){
+        distributorUI.waitForVisibility(dropdown_acc);
+        distributorUI.click(dropdown_acc);
+    }
+    public void clickOnHardHold(){
+        distributorUI.waitForVisibility(txt_hardHold);
+        distributorUI.click(txt_hardHold);
+    }
+    public boolean isHardHoldSelected(){
+        return distributorUI.isDisplayed(lbl_hardHold);
+    }
+    public boolean isHardHoldPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_hardHoldPopup);
+    }
+    public void clickOnNone(){
+        distributorUI.waitForVisibility(txt_none);
+        distributorUI.click(txt_none);
+    }
+    public boolean isNoneSelected(){
+        return distributorUI.isDisplayed(lbl_none);
+    }
+    public boolean isRemoveHoldPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_removeHold);
+    }
 }
