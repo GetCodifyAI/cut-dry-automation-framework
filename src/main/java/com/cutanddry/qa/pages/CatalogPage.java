@@ -66,6 +66,10 @@ public class CatalogPage extends LoginPage{
     By productLink = By.xpath("//h2[contains(text(),'Product Link')]");
     By publicCatalogAddToCart = By.xpath("//button[contains(text(),'Add to Cart')]");
     By alreadyACustomer = By.xpath("//b[contains(text(),'Already a Customer?')]");
+    By lbl_link = By.xpath("//*[local-name() = 'svg' and @data-icon='link']");
+    By txt_categoryLink = By.xpath("//h2[contains(text(),'Category Link')]");
+    By btn_Ok = By.xpath("//button[contains(text(), 'OK')]");
+    By txt_browseCatalog= By.xpath("//div[contains(text(),'Browse Catalog')]");
 
     public boolean isCatalogTextDisplayed() {
         try {
@@ -358,6 +362,33 @@ public class CatalogPage extends LoginPage{
     public boolean isAlreadyACustomerDisplayed(){
        return  distributorUI.isDisplayed(alreadyACustomer);
     }
-
+    public void clickOnGetLink(){
+        distributorUI.waitForVisibility(lbl_link);
+        distributorUI.click(lbl_link);
+    }
+    public boolean isCatalogLinkPopupDisplayed() {
+        try {
+            distributorUI.waitForVisibility(txt_categoryLink);
+        } catch (Exception e) {
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_categoryLink);
+    }
+    public void clickOK(){
+        distributorUI.waitForVisibility(btn_Ok);
+        distributorUI.click(btn_Ok);
+    }
+    public void goToCopiedLink(){
+//        distributorUI.OpenNewTabAndSwitchToIt();
+        distributorUI.pasteUrlFromClipboard();
+    }
+    public boolean isNavigatedToBrowseCatalog() {
+        try {
+            distributorUI.waitForVisibility(txt_browseCatalog);
+        } catch (Exception e) {
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_browseCatalog);
+    }
 }
 
