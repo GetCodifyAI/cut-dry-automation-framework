@@ -143,4 +143,22 @@ public class Settings {
     public static boolean isDownloadInvoiceClickable() {
         return settingsPage.isDownloadInvoiceClickable();
     }
+    public static void clickOnLinkBank() {
+        settingsPage.clickOnLinkBank();
+    }
+    public static void clickOnLinkBankManually() {
+        settingsPage.clickOnLinkBankManually();
+    }
+    public static boolean isLinkAccPopupDisplayed() {
+        return settingsPage.isLinkAccPopupDisplayed();
+    }
+    public static void clickOnSave() {
+        settingsPage.clickOnSave();
+    }
+    public static boolean isPayoutMethodAdded() {
+        return settingsPage.isPayoutMethodAdded();
+    }
+    public static boolean isBankDetailsAddedPopup() {
+        return settingsPage.isBankDetailsAddedPopup();
+    }
 }

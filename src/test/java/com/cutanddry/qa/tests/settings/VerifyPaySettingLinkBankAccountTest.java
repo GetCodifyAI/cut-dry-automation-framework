@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyBillingSettingAddPaymentMethodTest extends TestBase {
+public class VerifyPaySettingLinkBankAccountTest extends TestBase {
     static User user;
     static String acc_num = "2222220";
     static String routing_num = "321081669";
@@ -23,22 +23,22 @@ public class VerifyBillingSettingAddPaymentMethodTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-603")
-    public void VerifyBillingSettingAddPaymentMethod() throws InterruptedException {
+    @Test(groups = "DOT-TC-607")
+    public void VerifyPaySettingLinkBankAccount() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
-        Dashboard.navigateToBillingSettings();
-        softAssert.assertTrue(Settings.isBillingSettingsTextDisplayed(),"navigation to billing settings error");
-        Settings.clickOnAddPaymentMethod();
-        softAssert.assertTrue(Settings.isAddPaymentPopupDisplayed(),"add payment popup error");
-        Settings.clickOnAddBank();
+        Dashboard.navigateToPaySettings();
+        softAssert.assertTrue(Settings.isPaySettingsTextDisplayed(),"navigation to pay settings error");
+        Settings.clickOnLinkBank();
+        softAssert.assertTrue(Settings.isLinkAccPopupDisplayed(),"link popup error");
+        Settings.clickOnLinkBankManually();
         Settings.enterAccountNumber(acc_num);
         Settings.enterRoutingNumber(routing_num);
-        Settings.clickOnNext();
-        softAssert.assertTrue(Settings.isAddPaymentSuccessPopupDisplayed(),"add payment success popup error");
+        Settings.clickOnSave();
+        softAssert.assertTrue(Settings.isBankDetailsAddedPopup(),"bank adding popup error");
         Settings.clickOK();
-        softAssert.assertTrue(Settings.isPaymentMethodAdded(),"payment method adding error");
+        softAssert.assertTrue(Settings.isPayoutMethodAdded(),"payout method adding error");
         softAssert.assertAll();
     }
 
