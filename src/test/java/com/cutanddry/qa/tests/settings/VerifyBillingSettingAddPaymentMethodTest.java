@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyBillingSettingAddPaymentMethodTest extends TestBase {
     static User user;
-    static String acc_num = "2222220";
+    static String acc_num = "20222220";
     static String routing_num = "321081669";
 
     @BeforeMethod

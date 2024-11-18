@@ -43,7 +43,7 @@ public class SettingsPage extends LoginPage{
     By btn_next = By.xpath("//button[text()='Next']");
     By txt_paymentMethodAddedPopup = By.xpath("//h2[text()='Payment method has been added successfully.']");
     By txt_displayedPaymentMethod = By.xpath("//div[text()='Your monthly bill will be deducted from the bank account x2220.']");
-
+    By btn_removeAcc = By.xpath("//button[text()='Remove Account']");
 
     public boolean isOrderSettingsTextDisplayed() throws InterruptedException {
         try {
@@ -283,5 +283,9 @@ public class SettingsPage extends LoginPage{
     }
     public boolean isPaymentMethodAdded(){
         return distributorUI.isDisplayed(txt_displayedPaymentMethod);
+    }
+    public void clickOnRemoveAcc() {
+        distributorUI.waitForClickability(btn_removeAcc);
+        distributorUI.click(btn_removeAcc);
     }
 }

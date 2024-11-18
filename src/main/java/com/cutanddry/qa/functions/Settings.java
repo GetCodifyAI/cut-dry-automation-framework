@@ -128,4 +128,7 @@ public class Settings {
     public static boolean isPaymentMethodAdded() {
         return settingsPage.isPaymentMethodAdded();
     }
+    public static void clickOnRemoveAcc() {
+        settingsPage.clickOnRemoveAcc();
+    }
 }
