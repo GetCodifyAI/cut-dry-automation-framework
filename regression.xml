@@ -129,6 +129,8 @@
             <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsSMSTest" />
             <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsEmailTest" />
             <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsPushTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountHardHoldTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountRemoveHardHoldTest" />
         </classes>
     </test>
 </suite>
