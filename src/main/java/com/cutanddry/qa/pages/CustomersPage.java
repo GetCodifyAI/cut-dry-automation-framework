@@ -217,8 +217,8 @@ public class CustomersPage extends LoginPage {
     By btn_editAccHold = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[11]");
     By dropdown_acc = By.xpath("//div[text()='Account Holds']/following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
     By txt_hardHold = By.xpath("//div[contains(@class, 'themed_select__option') and  text()='Hard Hold']");
-    By lbl_hardHold = By.xpath("//div[text()='Account Holds']/following-sibling::div//span[contains(@class, 'badge') and text()='None']");
-    By txt_none = By.xpath("//div[contains(@class, 'themed_select__option') and  text()='Hard Hold']");
+    By lbl_hardHold = By.xpath("//div[text()='Account Holds']/following-sibling::div//span[contains(@class, 'badge') and text()='Hard Hold']");
+    By txt_none = By.xpath("//div[contains(@class, 'themed_select__option') and  text()='None']");
     By lbl_none = By.xpath("//div[text()='Account Holds']/following-sibling::div//span[contains(@class, 'badge') and text()='None']");
     By txt_hardHoldPopup = By.xpath("//h2[contains(text(), 'Your order could not be submitted due to a hold on your account')]");
     By txt_removeHold = By.xpath("//h2[contains(text(), 'Remove hold')]");
