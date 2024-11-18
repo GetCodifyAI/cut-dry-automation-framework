@@ -28,7 +28,7 @@
             <class name="com.cutanddry.qa.tests.order_desk.VerifyOrderDeskFeatureTest" />
             <class name="com.cutanddry.qa.tests.order_desk.VerifyViewAndEditVoiceOrderDraftTest" />
             <class name="com.cutanddry.qa.tests.order_desk.UpdateCustomerAndLocationTest" />
-            <class name="com.cutanddry.qa.tests.order_desk.VerifyDeliveryDateTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.verifyOrderDeskDeliveryDateTest" />
             <class name="com.cutanddry.qa.tests.order_desk.VerifySwapLineItemTest" />
             <class name="com.cutanddry.qa.tests.order_desk.VerifyVoiceRecordUploadTest" />
             <class name="com.cutanddry.qa.tests.dashboard.VerifyDashboardShowingSalespersonsRelatedChartsTest" />
