@@ -718,4 +718,28 @@ public class Customer {
         customersPage.clickItemFromCatalogIfNotAvailableInOG(itemCode);
     }
 
+    public static void clickOnEditAccHolds(){
+        customersPage.clickOnEditAccHolds();
+    }
+    public static void clickOnAccDropdown(){
+        customersPage.clickOnAccDropdown();
+    }
+    public static void clickOnHardHold(){
+        customersPage.clickOnHardHold();
+    }
+    public static boolean isHardHoldSelected(){
+        return customersPage.isHardHoldSelected();
+    }
+    public static boolean isHardHoldPopupDisplayed(){
+        return customersPage.isHardHoldPopupDisplayed();
+    }
+    public static void clickOnNone(){
+        customersPage.clickOnNone();
+    }
+    public static boolean isNoneSelected(){
+        return customersPage.isNoneSelected();
+    }
+    public static boolean isRemoveHoldPopupDisplayed(){
+        return customersPage.isRemoveHoldPopupDisplayed();
+    }
 }

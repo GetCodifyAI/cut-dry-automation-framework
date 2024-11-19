@@ -31,8 +31,8 @@ public class OrderDeskPage extends LoginPage{
     By CustomerName = By.cssSelector(".cd_themed_select__option.css-yt9ioa-option");
     By LocationSelectionDropdown = By.xpath("(//div[@class='cd_themed_select__value-container css-1hwfws3'])[1]");
     By LocationName = By.cssSelector(".cd_themed_select__option.css-1n7v3ny-option");
-    By DeliveryDateInput = By.xpath("//input[contains(@class,'form-control') and @type='text']");
-    By DeliveryDateSelect = By.xpath("//input[contains(@class,'form-control react-datepicker')]");
+    By DeliveryDateInput = By.xpath("//div[text()='Delivery Date']/following-sibling::div//div[contains(@class,'cd_themed_select__control')]");
+    String DeliveryDateSelect = "//div[contains(text(),'DELIVERYDATE')]";
     By DeliveryDateNotValidTxt = By.xpath("//div[@class='text-danger']");
     By ReviewTxt = By.xpath("//h2[contains(text(),'pending_review')]");
 
@@ -173,8 +173,8 @@ public class OrderDeskPage extends LoginPage{
             throw new RuntimeException(e);
         }
         distributorUI.click(DeliveryDateInput);
-        distributorUI.clearUsingJavaScript(DeliveryDateInput);
-        distributorUI.sendKeys(DeliveryDateSelect,deliveryDate);
+        distributorUI.waitForVisibility(By.xpath(DeliveryDateSelect.replace("DELIVERYDATE",deliveryDate)));
+        distributorUI.click(By.xpath(DeliveryDateSelect.replace("DELIVERYDATE",deliveryDate)));
     }
 
     public boolean isDeliveryDateInvalidTextisDisplayed(){

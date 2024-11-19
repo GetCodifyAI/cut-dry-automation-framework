@@ -109,14 +109,14 @@ public class CustomersPage extends LoginPage {
     By btn_back = By.xpath("//button[contains(text(), 'Back')]");
     String SelectCustomerByCode = "//td[contains(text(),'CODE')]";
     By OrdersTabTxt = By.xpath("//a[contains(text(),'Orders') and @class='_1n4k2vi text-center nav-item nav-link']");
-    By OrderIdTxt = By.xpath("//th[contains(text(),'Order ID')]");
-    By OrderDateSort = By.xpath("//div[contains(text(),'Order Date')]");
-    By DeliveryDate = By.xpath("//div[contains(text(),'Delivery Date')]");
+    By OrderIdTxt = By.xpath("//tr[contains(@href,'/ordersView/')][1]");
+    By OrderDateSort = By.xpath("//span[contains(text(),'Order Date')]");
+    By DeliveryDate = By.xpath("//span[contains(text(),'Fulfill By')]");
     By OrderDateSortData = By.cssSelector("tr._du1frc td:nth-child(1)");
     By DeliveryDateSortData = By.cssSelector("tr._du1frc td:nth-child(2)");
     By txt_discountDisclaimerOrderReview = By.xpath("//div[contains(text(), 'Case discounts will be reflected on your invoice.')]");
     By txt_discountDisclaimerOrderDetails = By.xpath("//div[normalize-space() = '*Prices are subject to change. Weighed item prices are estimated. Case discounts will be reflected on your invoice.']");
-    By lbl_firstRowOrderTab = By.xpath("//table//th[contains(text(), 'Order ID')]/ancestor::table//tr[1]/td[1]");
+    By lbl_firstRowOrderTab = By.xpath("//tr[contains(@href,'/ordersView/')][1]");
     By txt_southwest = By.xpath("//div[contains(text(),'Southwest Traders')]");
     By txt_substitutions = By.xpath("//div[contains(normalize-space(text()), 'Substitutions')]");
     By btn_saveSelection = By.xpath("//button[normalize-space(text())='Save Selection']");
@@ -135,7 +135,7 @@ public class CustomersPage extends LoginPage {
     By txt_unitInDist = By.xpath("//tbody/tr/td[3]/div/div/div/div");
     By txt_eachDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Each']");
     By txt_caseDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Case']");
-    By btn_orderGuide = By.xpath("//button[normalize-space(text())='Order Guide']");
+    By btn_orderGuide = By.xpath("//button[text()='Order Guide']");
     By btn_close = By.xpath("//button[contains(@class, 'close')]/span[text()='×']");
     By btn_addSection = By.xpath("//a[contains(text(), 'Add Section')]");
     By txt_addSection = By.xpath("//div[contains(text(), 'Add Section Header')]");
@@ -214,7 +214,14 @@ public class CustomersPage extends LoginPage {
     By btn_independentFoods = By.xpath("//div[contains(text(), 'Independent Foods Co')]");
     By itemNotFoundTxt = By.xpath("//div[contains(text(),'No matches found')]");
     String catalogCardAddToOGBtn = "//div[contains(text(),'ITEMCODE')]/../..//button[@data-tip='Add to Order Guide']";
-
+    By btn_editAccHold = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[11]");
+    By dropdown_acc = By.xpath("//div[text()='Account Holds']/following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
+    By txt_hardHold = By.xpath("//div[contains(@class, 'themed_select__option') and  text()='Hard Hold']");
+    By lbl_hardHold = By.xpath("//div[text()='Account Holds']/following-sibling::div//span[contains(@class, 'badge') and text()='Hard Hold']");
+    By txt_none = By.xpath("//div[contains(@class, 'themed_select__option') and  text()='None']");
+    By lbl_none = By.xpath("//div[text()='Account Holds']/following-sibling::div//span[contains(@class, 'badge') and text()='None']");
+    By txt_hardHoldPopup = By.xpath("//h2[contains(text(), 'Your order could not be submitted due to a hold on your account')]");
+    By txt_removeHold = By.xpath("//h2[contains(text(), 'Remove hold')]");
 
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
@@ -704,7 +711,7 @@ public class CustomersPage extends LoginPage {
         return distributorUI.isDisplayed(txt_discountDisclaimerOrderDetails);
     }
     public void clickFirstOrderFrmOrderTab(){
-        distributorUI.waitForClickability(txt_discountDisclaimerOrderDetails);
+        distributorUI.waitForClickability(lbl_firstRowOrderTab);
         distributorUI.click(lbl_firstRowOrderTab);
     }
     public void clickSouthwestTraders(){
@@ -1148,5 +1155,32 @@ public class CustomersPage extends LoginPage {
             throw new RuntimeException(e);
         }
     }
-
+    public void clickOnEditAccHolds(){
+        distributorUI.waitForVisibility(btn_editAccHold);
+        distributorUI.click(btn_editAccHold);
+    }
+    public void clickOnAccDropdown(){
+        distributorUI.waitForVisibility(dropdown_acc);
+        distributorUI.click(dropdown_acc);
+    }
+    public void clickOnHardHold(){
+        distributorUI.waitForVisibility(txt_hardHold);
+        distributorUI.click(txt_hardHold);
+    }
+    public boolean isHardHoldSelected(){
+        return distributorUI.isDisplayed(lbl_hardHold);
+    }
+    public boolean isHardHoldPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_hardHoldPopup);
+    }
+    public void clickOnNone(){
+        distributorUI.waitForVisibility(txt_none);
+        distributorUI.click(txt_none);
+    }
+    public boolean isNoneSelected(){
+        return distributorUI.isDisplayed(lbl_none);
+    }
+    public boolean isRemoveHoldPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_removeHold);
+    }
 }
