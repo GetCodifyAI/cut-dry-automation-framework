@@ -109,14 +109,14 @@ public class CustomersPage extends LoginPage {
     By btn_back = By.xpath("//button[contains(text(), 'Back')]");
     String SelectCustomerByCode = "//td[contains(text(),'CODE')]";
     By OrdersTabTxt = By.xpath("//a[contains(text(),'Orders') and @class='_1n4k2vi text-center nav-item nav-link']");
-    By OrderIdTxt = By.xpath("//th[contains(text(),'Order ID')]");
-    By OrderDateSort = By.xpath("//div[contains(text(),'Order Date')]");
-    By DeliveryDate = By.xpath("//div[contains(text(),'Delivery Date')]");
+    By OrderIdTxt = By.xpath("//tr[contains(@href,'/ordersView/')][1]");
+    By OrderDateSort = By.xpath("//span[contains(text(),'Order Date')]");
+    By DeliveryDate = By.xpath("//span[contains(text(),'Fulfill By')]");
     By OrderDateSortData = By.cssSelector("tr._du1frc td:nth-child(1)");
     By DeliveryDateSortData = By.cssSelector("tr._du1frc td:nth-child(2)");
     By txt_discountDisclaimerOrderReview = By.xpath("//div[contains(text(), 'Case discounts will be reflected on your invoice.')]");
     By txt_discountDisclaimerOrderDetails = By.xpath("//div[normalize-space() = '*Prices are subject to change. Weighed item prices are estimated. Case discounts will be reflected on your invoice.']");
-    By lbl_firstRowOrderTab = By.xpath("//table//th[contains(text(), 'Order ID')]/ancestor::table//tr[1]/td[1]");
+    By lbl_firstRowOrderTab = By.xpath("//tr[contains(@href,'/ordersView/')][1]");
     By txt_southwest = By.xpath("//div[contains(text(),'Southwest Traders')]");
     By txt_substitutions = By.xpath("//div[contains(normalize-space(text()), 'Substitutions')]");
     By btn_saveSelection = By.xpath("//button[normalize-space(text())='Save Selection']");
@@ -711,7 +711,7 @@ public class CustomersPage extends LoginPage {
         return distributorUI.isDisplayed(txt_discountDisclaimerOrderDetails);
     }
     public void clickFirstOrderFrmOrderTab(){
-        distributorUI.waitForClickability(txt_discountDisclaimerOrderDetails);
+        distributorUI.waitForClickability(lbl_firstRowOrderTab);
         distributorUI.click(lbl_firstRowOrderTab);
     }
     public void clickSouthwestTraders(){
