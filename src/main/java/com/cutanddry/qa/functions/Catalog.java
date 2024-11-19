@@ -263,4 +263,13 @@ public class Catalog {
     public static String  getItemCode(){
         return catalogPage.getItemCode();
     }
+    public static String getRecentlyAddedCount(){
+        return catalogPage.getRecentlyAddedCount();
+    }
+    public static void clickOnReview(){
+        catalogPage.clickOnReview();
+    }
+    public static String getResultsCount(){
+        return catalogPage.getResultsCount();
+    }
 }

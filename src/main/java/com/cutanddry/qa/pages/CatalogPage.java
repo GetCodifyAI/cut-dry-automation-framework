@@ -78,6 +78,9 @@ public class CatalogPage extends LoginPage{
     By txt_itemCreated = By.xpath("//h2[contains(text(),'Item created.')]");
     By btn_close = By.xpath("//button[text()='Close']");
     By txt_getItemCode = By.xpath("//div[contains(text(), 'A new item was successfully created with the item code')]");
+    By btn_review = By.xpath("//a[text()='Review']");
+    By txt_numRecentAdded = By.xpath("//div[p[text()='Recently Added']]//h6");
+    By txt_resultsCount = By.xpath("//div[@class='col-sm-4']//span[contains(text(), 'results')]");
 
     public boolean isCatalogTextDisplayed() {
         try {
@@ -370,6 +373,18 @@ public class CatalogPage extends LoginPage{
         int startIndex = fullText.indexOf("item code \"") + "item code \"".length();
         int endIndex = fullText.indexOf("\"", startIndex);
         return fullText.substring(startIndex, endIndex);
+    }
+    public String getRecentlyAddedCount() {
+        distributorUI.waitForVisibility(txt_numRecentAdded);
+        return distributorUI.getText(txt_numRecentAdded);
+    }
+    public void clickOnReview(){
+        distributorUI.click(btn_review);
+    }
+    public String getResultsCount() {
+        distributorUI.waitForVisibility(txt_resultsCount);
+        String resultsText = distributorUI.getText(txt_resultsCount);
+        return resultsText.split(" ")[0];
     }
 }
 
