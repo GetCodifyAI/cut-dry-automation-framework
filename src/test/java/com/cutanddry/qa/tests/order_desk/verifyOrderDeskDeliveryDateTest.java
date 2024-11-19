@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class VerifyDeliveryDateTest extends TestBase {
+public class verifyOrderDeskDeliveryDateTest extends TestBase {
     User user;
 
 
@@ -26,7 +26,7 @@ public class VerifyDeliveryDateTest extends TestBase {
     }
 
     @Test(groups="DOT-TC-171")
-    public void verifyDeliveryDate(){
+    public void verifyOrderDeskDeliveryDate(){
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(),user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -36,19 +36,19 @@ public class VerifyDeliveryDateTest extends TestBase {
         OrderDesk.navigateToDraftOrders();
         OrderDesk.navigateToDraftOrderReviewPage();
 
-        //Invalid Delivery Date
+        //Today Delivery Date
         LocalDate today = LocalDate.now();
-        LocalDate InvalidDate = today.minusDays(7);
-        DateTimeFormatter usFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        String PastDate = usFormatter.format(InvalidDate);
-        OrderDesk.SelectDeliveryDate(PastDate);
-        softAssert.assertTrue(OrderDesk.isInvalidDeliveryDateTextDisplayed(),"ERROR in Displaying the Date Invalid Text");
+        DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("E, MMM dd");
+        String TodayDate = customFormatter.format(today);
+        OrderDesk.SelectDeliveryDate(TodayDate);
+        OrderDesk.SaveDraftOrder();
+        softAssert.assertTrue(OrderDesk.isSaveDraftSucessful(),"Error in Saving Delivery Date Draft");
+        OrderDesk.CloseTheSucessfulOverlayByOK();
 
-        //Valid Delivery Date
-        LocalDate ValidDate = today.plusDays(7);
-        DateTimeFormatter usFormatterDateType = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        String Futuredate = usFormatterDateType.format(ValidDate);
-        OrderDesk.SelectDeliveryDate(Futuredate);
+        //Date after DayAfter Tomorrow Delivery Date
+        LocalDate ThreeDaysLater = today.plusDays(3);
+        String DayAfterTodayDate = customFormatter.format(ThreeDaysLater);
+        OrderDesk.SelectDeliveryDate(DayAfterTodayDate);
         OrderDesk.SaveDraftOrder();
         softAssert.assertTrue(OrderDesk.isSaveDraftSucessful(),"Error in Saving Delivery Date Draft");
         OrderDesk.CloseTheSucessfulOverlayByOK();
