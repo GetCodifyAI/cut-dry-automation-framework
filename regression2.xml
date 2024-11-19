@@ -76,6 +76,8 @@
             <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingDownloadInvoicesTest" />
             <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingLinkBankAccountTest" />
             <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingRemoveBankAccountTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountHardHoldTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountRemoveHardHoldTest" />
         </classes>
     </test>
 </suite>
