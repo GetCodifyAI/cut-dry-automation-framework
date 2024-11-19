@@ -70,6 +70,14 @@ public class CatalogPage extends LoginPage{
     By txt_categoryLink = By.xpath("//h2[contains(text(),'Category Link')]");
     By btn_Ok = By.xpath("//button[contains(text(), 'OK')]");
     By txt_browseCatalog= By.xpath("//div[contains(text(),'Browse Catalog')]");
+    By btn_manageCatalog = By.xpath("//button[span[contains(text(), 'Manage Catalog')]]");
+    By lbl_createNewItem = By.xpath("//a[text()='Create new item']");
+    By lbl_itemName = By.xpath("//input[@placeholder='Enter item name...']");
+    By lbl_itemPrice = By.xpath("//input[@placeholder='0.00']");
+    By btn_continue = By.xpath("//button[text()='Continue']");
+    By txt_itemCreated = By.xpath("//h2[contains(text(),'Item created.')]");
+    By btn_close = By.xpath("//button[text()='Close']");
+    By txt_getItemCode = By.xpath("//div[contains(text(), 'A new item was successfully created with the item code')]");
 
     public boolean isCatalogTextDisplayed() {
         try {
@@ -378,6 +386,39 @@ public class CatalogPage extends LoginPage{
             return false;
         }
         return distributorUI.isDisplayed(txt_browseCatalog);
+    }
+    public void clickOnManageCatalog(){
+        distributorUI.waitForVisibility(btn_manageCatalog);
+        distributorUI.click(btn_manageCatalog);
+    }
+    public void selectCreateNewItem(){
+        distributorUI.waitForVisibility(lbl_createNewItem);
+        distributorUI.click(lbl_createNewItem);
+    }
+    public void enterItemName(String name){
+        distributorUI.clear(lbl_itemName);
+        distributorUI.sendKeys(lbl_itemName,name);
+    }
+    public void enterItemPrice(String price){
+        distributorUI.clear(lbl_itemPrice);
+        distributorUI.sendKeys(lbl_itemPrice,price);
+    }
+    public void clickOnContinue(){
+        distributorUI.waitForClickability(btn_continue);
+        distributorUI.click(btn_continue);
+    }
+    public boolean isItemCreatedPopupDisplayed(){
+        return  distributorUI.isDisplayed(txt_itemCreated);
+    }
+    public void clickOnClose(){
+        distributorUI.waitForClickability(btn_close);
+        distributorUI.click(btn_close);
+    }
+    public String getItemCode() {
+        String fullText = distributorUI.getText(txt_getItemCode);
+        int startIndex = fullText.indexOf("item code \"") + "item code \"".length();
+        int endIndex = fullText.indexOf("\"", startIndex);
+        return fullText.substring(startIndex, endIndex);
     }
 }
 

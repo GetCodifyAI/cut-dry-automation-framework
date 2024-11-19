@@ -239,4 +239,28 @@ public class Catalog {
     public static boolean isNavigatedToBrowseCatalog(){
         return catalogPage.isNavigatedToBrowseCatalog();
     }
+    public static void clickOnManageCatalog(){
+        catalogPage.clickOnManageCatalog();
+    }
+    public static void selectCreateNewItem(){
+        catalogPage.selectCreateNewItem();
+    }
+    public static void enterItemName(String name){
+        catalogPage.enterItemName(name);
+    }
+    public static void enterItemPrice(String price){
+        catalogPage.enterItemPrice(price);
+    }
+    public static void clickOnContinue(){
+        catalogPage.clickOnContinue();
+    }
+    public static boolean isItemCreatedPopupDisplayed(){
+        return catalogPage.isItemCreatedPopupDisplayed();
+    }
+    public static void clickOnClose(){
+        catalogPage.clickOnClose();
+    }
+    public static String  getItemCode(){
+        return catalogPage.getItemCode();
+    }
 }
