@@ -106,35 +106,27 @@ public class CatalogPage extends LoginPage{
         distributorUI.click(btn_downloadPdf);
         distributorUI.waitForVisibility(btn_downloadPdf);
     }
-
     public void TypeSearchInCatalogSearch(String ItemName){
         distributorUI.sendKeys(ItemCatalogSearchBtn,ItemName);
         distributorUI.waitForVisibility(By.xpath(SearchedItemItemCode.replace("ITEMCODE",ItemName)));
-
     }
-
     public void ClickOnItemCode(String ItemCode){
         distributorUI.click(By.xpath(SearchedItemItemCode.replace("ITEMCODE",ItemCode)));
     }
-
     public void ClickOnPreviewBtn(){
         distributorUI.SwitchToNewTab(PreviewBtn);
     }
-
     public boolean isNavigateToItemPreview(String itemCode){
         distributorUI.waitForVisibility(By.xpath(ItemPreviewTxt.replace("ITEMCODE",itemCode)));
         return distributorUI.isDisplayed(By.xpath(ItemPreviewTxt.replace("ITEMCODE",itemCode)));
     }
-
     public void ClickOnManufacture(){
         distributorUI.click(Manufacturer);
     }
-
-    public boolean isNavigatedtoConagaraBrandPage(){
+    public boolean isNavigatedtoConagaraBrandPage() {
         distributorUI.waitForVisibility(ConagaraBrandPage);
         return distributorUI.isDisplayed(ConagaraBrandPage);
     }
-
     public boolean isNavigatedtoOtherBrandPage() throws InterruptedException {
          distributorUI.SwitchToNewTab(OtherBrandBtn);
          distributorUI.waitForCustom(6000);
@@ -144,7 +136,6 @@ public class CatalogPage extends LoginPage{
     public void ClickOnShowCaseBtn(){
         distributorUI.click(ShowCaseBtn);
     }
-
     public void clickOnPreviewCatalog() {
         distributorUI.click(btn_previewCat);
     }
@@ -156,103 +147,80 @@ public class CatalogPage extends LoginPage{
         distributorUI.waitForCustom(3000);
         return distributorUI.getText(txt_firstItemDetails);
     }
-
     public void clickonItemOnCatalogPage(String itemCode){
         distributorUI.waitForVisibility(By.xpath(itemInTheGrid.replace("ITEMCODE",itemCode)));
         distributorUI.click(By.xpath(itemInTheGrid.replace("ITEMCODE",itemCode)));
     }
-
     public String getItemCodeFromCatalogDataPage(){
         distributorUI.waitForVisibility(ItemCodeInCatalogData);
         return distributorUI.getText(ItemCodeInCatalogData);
     }
-
     public void clickOnInactiveOrInactive(String prodStatus){
         distributorUI.click(productStatusDropdown);
         distributorUI.waitForVisibility(By.xpath(productStatus.replace("PRODSTATUS",prodStatus)));
         distributorUI.click(By.xpath(productStatus.replace("PRODSTATUS",prodStatus)));
     }
-
     public void clickOnSaveChangesBtn(){
         distributorUI.click(saveChangesBtn);
     }
-
     public boolean isSuccessOverlayDisplayed(){
         return distributorUI.isDisplayed(successOverlay);
     }
-
     public void clickOnAdditionalAttributesTab(){
         distributorUI.click(additionalAttributesTab);
     }
-
-    public boolean isCertificationsSectionDisplayed(){
+    public boolean isCertificationsSectionDisplayed() {
         return distributorUI.isDisplayed(certificationAttribute);
     }
-
     public void clickClearCertification(String CertificationType){
         distributorUI.click(By.xpath(clearCertificationBtn.replace("CERTIFICATIONTYPE",CertificationType)));
     }
-
     public void clickOnCertification(String CertificationType, String certificate){
         distributorUI.click(By.xpath(selectCertificationDropdown.replace("CERTIFICATIONTYPE",CertificationType)));
         distributorUI.click(By.xpath(buyAmericanOption.replace("CERTIFICATEOPTION",certificate)));
     }
-
     public void clickOnImagesTab(){
         distributorUI.click(imagesTab);
     }
-
     public boolean isProductImageDisplayed(){
         return distributorUI.isDisplayed(productItemImage);
     }
-
     public void clickOnPricingAndPromotionsTab(){
         distributorUI.click(priceAndPromotions);
     }
-
     public void clickOnUnitOfMeasure(){
         distributorUI.click(unitOfMeasure);
     }
-
     public int getUnitOfMeasureCount(){
         return distributorUI.countElements(uomCount);
     }
-
     public void clickOnUnit(String uom){
         distributorUI.waitForVisibility(uomSelectDropdown);
         distributorUI.click(uomSelectDropdown);
         distributorUI.waitForVisibility(By.xpath(unit.replace("UNIT",uom)));
         distributorUI.click(By.xpath(unit.replace("UNIT",uom)));
     }
-
     public void typeUnitPrice(String unitPrice){
         distributorUI.sendKeys(unitPriceTxtField,unitPrice);
     }
-
     public void clickOnSalesTypeDropDown(){
         distributorUI.click(salesTypeDropDown);
     }
-
     public void clickOnPercentageOption(){
         distributorUI.click(percentageOption);
     }
-
     public void typeSaleValue(String saleValue){
         distributorUI.sendKeys(salesValue,saleValue);
     }
-
     public void deleteUOMinCatalog(){
         distributorUI.click(uomDeleteBtn);
     }
-
     public boolean isUOMDeleteOverlayDisplayed(){
         return distributorUI.isDisplayed(uomDeleteOverlay);
     }
-
     public void clickOnConfirmBtn(){
         distributorUI.click(confirmBtn);
     }
-
     public boolean isBagUOMDisplayed(){
         try {
             distributorUI.waitForCustom(2000);
@@ -261,25 +229,20 @@ public class CatalogPage extends LoginPage{
         }
         return distributorUI.isDisplayed(bagUOM);
     }
-
     public void clickOnSubstituteTab(){
         distributorUI.click(substituteTab);
     }
-
     public void clickAddSubstitutionBtn(){
         distributorUI.scrollToElement(addSubstitutionsBtn);
         distributorUI.click(addSubstitutionsBtn);
     }
-
     public void searchSubstituteItem(String substituteItem){
         distributorUI.click(selectSubstituteTxtField);
         distributorUI.sendKeysWaitAndSelectDropdownOptionByEnter(substituteItemInputField,substituteItem);
     }
-
     public void addSubstitutionsBtn(){
         distributorUI.click(substituteAddBtn);
     }
-
     public String getSubstituteItemName(String substituteItem){
         distributorUI.click(selectSubstituteTxtField);
         distributorUI.sendKeys(substituteItemInputField,substituteItem);
@@ -296,7 +259,6 @@ public class CatalogPage extends LoginPage{
         distributorUI.click(substituteAddBtn);
         return cleanedItemName;
     }
-
     public boolean isSubstituteItemDisplayed(String substituteItem){
         try {
             distributorUI.waitForCustom(2000);
@@ -305,7 +267,6 @@ public class CatalogPage extends LoginPage{
         }
         return distributorUI.isDisplayed(By.xpath(substituteItemNameTxt.replace("ITEMNAME",substituteItem)));
     }
-
     public void clickOnDeleteSubstituteItemBtn(String itemCode){
         try {
             distributorUI.waitForCustom(2000);
@@ -314,48 +275,38 @@ public class CatalogPage extends LoginPage{
         }
         distributorUI.click(By.xpath(deleteSubstituteItemBtn.replace("ITEMCODE",itemCode)));
     }
-
     public void clickSearchItemInCatalog(String itemName){
         distributorUI.click(searchField);
         distributorUI.sendKeys(searchField,itemName);
     }
-
     public void searchItemInCatalogPreview(String itemCode){
         distributorUI.sendKeys(searchInCatalogPreview,itemCode);
     }
-
     public void clickItemOnCatalogPreview(String itemCode){
         distributorUI.click(By.xpath(clickOnItemInPreviewCatalog.replace("ITEMCODE",itemCode)));
     }
-
     public boolean isItemDetailsDisplayed(String itemCode){
         return distributorUI.isDisplayed(By.xpath(itemCodeDetails.replace("ITEMCODE",itemCode)));
     }
-
     public void clickCopyPDPUrl(){
         distributorUI.click(threeDotBtn);
         distributorUI.waitForVisibility(copyPDPURLTxt);
         distributorUI.click(copyPDPURLTxt);
     }
-
     public boolean isLinkCopiedTxtDisplayed(){
         return distributorUI.isDisplayed(productLink);
     }
-
     public void goToPublicCatalog(){
         distributorUI.OpenNewTabAndSwitchToIt();
         distributorUI.pasteUrlFromClipboard();
     }
-
     public boolean isPublicCatalogDisplayed(String itemCode){
         distributorUI.isDisplayed(publicCatalogAddToCart);
         return  distributorUI.isDisplayed(By.xpath(itemCodeDetails.replace("ITEMCODE",itemCode)));
     }
-
     public void clickOnAddToCart(){
         distributorUI.click(publicCatalogAddToCart);
     }
-
     public boolean isAlreadyACustomerDisplayed(){
        return  distributorUI.isDisplayed(alreadyACustomer);
     }
