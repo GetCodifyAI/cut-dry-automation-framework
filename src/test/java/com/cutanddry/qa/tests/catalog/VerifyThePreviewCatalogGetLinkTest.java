@@ -42,6 +42,6 @@ public class VerifyThePreviewCatalogGetLinkTest extends TestBase {
     @AfterMethod
     public void tearDown(ITestResult result) {
         takeScreenshotOnFailure(result);
-        closeAllBrowsers();
+        closeMultipleTabs();
     }
 }

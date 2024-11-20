@@ -165,6 +165,11 @@ public class CatalogPage extends LoginPage{
         return distributorUI.getText(txt_firstItemDetails);
     }
     public void clickonItemOnCatalogPage(String itemCode){
+        try {
+            distributorUI.waitForCustom(7000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.waitForVisibility(By.xpath(itemInTheGrid.replace("ITEMCODE",itemCode)));
         distributorUI.click(By.xpath(itemInTheGrid.replace("ITEMCODE",itemCode)));
     }
@@ -355,7 +360,7 @@ public class CatalogPage extends LoginPage{
         distributorUI.click(btn_Ok);
     }
     public void goToCopiedLink(){
-//        distributorUI.OpenNewTabAndSwitchToIt();
+        distributorUI.OpenNewTabAndSwitchToIt();
         distributorUI.pasteUrlFromClipboard();
     }
     public boolean isNavigatedToBrowseCatalog() {
