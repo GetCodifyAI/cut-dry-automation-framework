@@ -164,4 +164,13 @@ public class Settings {
     public static boolean isBankDetailsRemovedPopupDisplayed() {
         return settingsPage.isBankDetailsRemovedPopupDisplayed();
     }
+
+    public static void removeExistingBankAccount() throws InterruptedException {
+        if(settingsPage.isPayoutMethodAdded()){
+            Settings.clickOnRemoveAcc();
+            Settings.clickYes();
+            Settings.clickOK();
+        }
+    }
+
 }
