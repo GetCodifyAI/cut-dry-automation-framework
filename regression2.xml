@@ -78,6 +78,12 @@
             <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingRemoveBankAccountTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountHardHoldTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountRemoveHardHoldTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyRecentlyAddedTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyCategorySelectionTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyMoreFiltersTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyUpdateImagesTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyItemStatusTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyManageCatalogCreateNewItemTest" />
         </classes>
     </test>
 </suite>
