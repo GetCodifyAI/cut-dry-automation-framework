@@ -13,6 +13,8 @@ public class OrdersPage extends LoginPage{
     By pendingApprovalText = By.xpath("//span[contains(text(),'Pending Approval')]");
     By selectOrderGuide = By.xpath("//div[contains(text(),'Select Order Guide')]");
     String orderGuide ="//div[contains(text(),'ORDERGUIDE')]";
+    By ratingsOverlay = By.id("nps-modal");
+    By ratingOverlayCloseBtn = By.xpath("//div[contains(text(),'✕')]");
 
 
     public boolean isOrdersTextDisplayed(){
@@ -32,12 +34,16 @@ public class OrdersPage extends LoginPage{
         for (int i = 0; i < Quantity; i++) {
             distributorUI.click(By.xpath(quantityIncreaseBtn.replace("ITEMCODE", ItemCode)));
         }
+        if(distributorUI.isDisplayed(ratingsOverlay)){
+            distributorUI.click(ratingOverlayCloseBtn);
+        }
+        distributorUI.click(checkOutBtn);
     }
 
     public void clickOnCheckoutBtnInOperator(){
         distributorUI.click(checkOutBtn);
         try {
-            distributorUI.waitForCustom(3000);
+            distributorUI.waitForCustom(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
