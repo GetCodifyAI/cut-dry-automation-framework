@@ -71,6 +71,11 @@
             <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsPushTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogGetLinkTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogSearchTest" />
+            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingAddPaymentMethodTest" />
+            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingRemovePaymentMethodTest" />
+            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingDownloadInvoicesTest" />
+            <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingLinkBankAccountTest" />
+            <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingRemoveBankAccountTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountHardHoldTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountRemoveHardHoldTest" />
         </classes>
