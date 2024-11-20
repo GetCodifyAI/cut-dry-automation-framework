@@ -104,4 +104,64 @@ public class Settings {
     public static boolean isBillingSettingsTextDisplayed() throws InterruptedException {
         return settingsPage.isBillingSettingsTextDisplayed();
     }
+    public static boolean isAddPaymentPopupDisplayed() throws InterruptedException {
+        return settingsPage.isAddPaymentPopupDisplayed();
+    }
+    public static void clickOnAddPaymentMethod() {
+        settingsPage.clickOnAddPaymentMethod();
+    }
+    public static void clickOnAddBank() {
+        settingsPage.clickOnAddBank();
+    }
+    public static void enterAccountNumber(String num){
+        settingsPage.enterAccountNumber(num);
+    }
+    public static void enterRoutingNumber(String num){
+        settingsPage.enterRoutingNumber(num);
+    }
+    public static void clickOnNext() {
+        settingsPage.clickOnNext();
+    }
+    public static boolean isAddPaymentSuccessPopupDisplayed() {
+        return settingsPage.isAddPaymentSuccessPopupDisplayed();
+    }
+    public static boolean isPaymentMethodAdded() {
+        return settingsPage.isPaymentMethodAdded();
+    }
+    public static void clickOnRemoveAcc() {
+        settingsPage.clickOnRemoveAcc();
+    }
+    public static boolean isAreYouSurePopupDisplayed() {
+        return settingsPage.isAreYouSurePopupDisplayed();
+    }
+    public static void selectInvoice() {
+        settingsPage.selectInvoice();
+    }
+    public static void clickOnDownloadInvoices() {
+        settingsPage.clickOnDownloadInvoices();
+    }
+    public static boolean isDownloadInvoiceClickable() {
+        return settingsPage.isDownloadInvoiceClickable();
+    }
+    public static void clickOnLinkBank() {
+        settingsPage.clickOnLinkBank();
+    }
+    public static void clickOnLinkBankManually() {
+        settingsPage.clickOnLinkBankManually();
+    }
+    public static boolean isLinkAccPopupDisplayed() {
+        return settingsPage.isLinkAccPopupDisplayed();
+    }
+    public static void clickOnSave() {
+        settingsPage.clickOnSave();
+    }
+    public static boolean isPayoutMethodAdded() {
+        return settingsPage.isPayoutMethodAdded();
+    }
+    public static boolean isBankDetailsAddedPopupDisplayed() {
+        return settingsPage.isBankDetailsAddedPopupDisplayed();
+    }
+    public static boolean isBankDetailsRemovedPopupDisplayed() {
+        return settingsPage.isBankDetailsRemovedPopupDisplayed();
+    }
 }

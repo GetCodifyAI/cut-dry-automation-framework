@@ -35,6 +35,26 @@ public class SettingsPage extends LoginPage{
     By txt_billingSettings = By.xpath("//h2[contains(text(),'Billing Settings')]");
     By txt_adsSettings = By.xpath("//div[contains(text(),'Ads and Rebates')]");
     By txt_paySettings = By.xpath("//h2[contains(text(),'Pay Settings')]");
+    By btn_addPaymentMethod = By.xpath("//button[text()='Add Payment Method']");
+    By txt_addPaymentPopup = By.xpath("//h3[text()='Add Payment Method']");
+    By lbl_addBank = By.xpath("//span[text()='Add bank account']");
+    By lbl_accNum = By.xpath("//div[label[text()='Account Number']]//input");
+    By lbl_RoutingNum = By.xpath("//div[label[text()='Routing Number']]//input");
+    By btn_next = By.xpath("//button[text()='Next']");
+    By txt_paymentMethodAddedPopup = By.xpath("//h2[text()='Payment method has been added successfully.']");
+    By txt_displayedPaymentMethod = By.xpath("//div[text()='Your monthly bill will be deducted from the bank account x2220.']");
+    By btn_removeAcc = By.xpath("//button[text()='Remove Account']");
+    By txt_areYouSure = By.xpath("//h2[text()='Are you sure?']");
+    By btn_batchActions = By.xpath("//button[contains(text(),'Batch Actions')]");
+    By btn_downloadInvoices = By.xpath("//a[@class='dropdown-item' and text()='Download Invoices']");
+    By lbl_invoice = By.xpath("//tr[td[text()='10008']]/td/div");
+    By btn_linkBank = By.xpath("//button[text()='Link Bank Account']");
+    By btn_linkBankManually = By.xpath("//button[text()='Link your account manually']");
+    By txt_linkAccPopup = By.xpath("//h3[text()='Link your bank account']");
+    By btn_save= By.xpath("//div[contains(@class, 'modal-content')]//button[contains(text(), 'Save')]");
+    By txt_displayedPayout = By.xpath("//div[text()='All payouts will be transferred to bank account x2220.']");
+    By txt_bankDetailsAddedPopup = By.xpath("//h2[text()='Bank account details have been added successfully.']");
+    By txt_bankDetailsRemovedPopup = By.xpath("//h2[text()='The bank account has been successfully removed.']");
 
     public boolean isOrderSettingsTextDisplayed() throws InterruptedException {
         try {
@@ -245,5 +265,79 @@ public class SettingsPage extends LoginPage{
         }
         distributorUI.waitForCustom(4000);
         return distributorUI.isDisplayed(txt_trackSettings);
+    }
+    public void clickOnAddPaymentMethod() {
+        distributorUI.waitForClickability(btn_addPaymentMethod);
+        distributorUI.click(btn_addPaymentMethod);
+    }
+    public void clickOnAddBank() {
+        distributorUI.waitForClickability(lbl_addBank);
+        distributorUI.click(lbl_addBank);
+    }
+    public boolean isAddPaymentPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_addPaymentPopup);
+    }
+    public void enterAccountNumber(String num){
+        distributorUI.clear(lbl_accNum);
+        distributorUI.sendKeys(lbl_accNum,num);
+    }
+    public void enterRoutingNumber(String num){
+        distributorUI.clear(lbl_RoutingNum);
+        distributorUI.sendKeys(lbl_RoutingNum,num);
+    }
+    public void clickOnNext() {
+        distributorUI.waitForClickability(btn_next);
+        distributorUI.click(btn_next);
+    }
+    public boolean isAddPaymentSuccessPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_paymentMethodAddedPopup);
+    }
+    public boolean isPaymentMethodAdded(){
+        return distributorUI.isDisplayed(txt_displayedPaymentMethod);
+    }
+    public void clickOnRemoveAcc() {
+        distributorUI.waitForClickability(btn_removeAcc);
+        distributorUI.click(btn_removeAcc);
+    }
+    public boolean isAreYouSurePopupDisplayed(){
+        return distributorUI.isDisplayed(txt_areYouSure);
+    }
+    public void selectInvoice() {
+        distributorUI.waitForVisibility(lbl_invoice);
+        distributorUI.clickUsingJavaScript(lbl_invoice);
+    }
+    public boolean isDownloadInvoiceClickable(){
+        distributorUI.click(btn_batchActions);
+        try {
+            distributorUI.waitForClickability(btn_downloadInvoices);
+        } catch (Exception e){
+            return false;
+        }
+        return  distributorUI.isDisplayed(btn_downloadInvoices);
+    }
+    public void clickOnDownloadInvoices() {
+        distributorUI.click(btn_downloadInvoices);
+    }
+    public void clickOnLinkBank() {
+        distributorUI.click(btn_linkBank);
+    }
+    public boolean isLinkAccPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_linkAccPopup);
+    }
+    public void clickOnLinkBankManually() {
+        distributorUI.click(btn_linkBankManually);
+    }
+    public void clickOnSave() {
+        distributorUI.waitForClickability(btn_save);
+        distributorUI.click(btn_save);
+    }
+    public boolean isPayoutMethodAdded(){
+        return distributorUI.isDisplayed(txt_displayedPayout);
+    }
+    public boolean isBankDetailsAddedPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_bankDetailsAddedPopup);
+    }
+    public boolean isBankDetailsRemovedPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_bankDetailsRemovedPopup);
     }
 }
