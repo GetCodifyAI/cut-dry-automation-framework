@@ -86,6 +86,9 @@ public class CatalogPage extends LoginPage{
     By lbl_categoriesDropdown = By.xpath("//div[@class='themed_select__single-value css-1uccc91-singleValue' and text()='All Categories']");
     By lbl_snack = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Snack']");
     By lbl_nonSnack = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[4][not(normalize-space()='Snack')]");
+    By lbl_statusDropdown = By.xpath("//div[@class='themed_select__single-value css-1uccc91-singleValue' and text()='All']");
+    By lbl_active = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Active']");
+    By lbl_nonactive = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[7][not(normalize-space()='Active')]");
 
     public boolean isCatalogTextDisplayed() {
         try {
@@ -416,6 +419,14 @@ public class CatalogPage extends LoginPage{
     }
     public boolean areNotSnacksDisplayed(){
         return  distributorUI.isDisplayed(lbl_nonSnack);
+    }
+    public void selectStatusActive() throws InterruptedException {
+        distributorUI.click(lbl_statusDropdown);
+        distributorUI.click(lbl_active);
+        distributorUI.waitForCustom(2000);
+    }
+    public boolean areNotActiveStatusesDisplayed(){
+        return  distributorUI.isDisplayed(lbl_nonactive);
     }
 }
 

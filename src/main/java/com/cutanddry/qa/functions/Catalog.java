@@ -284,4 +284,10 @@ public class Catalog {
     public static boolean areNotSnacksDisplayed(){
         return catalogPage.areNotSnacksDisplayed();
     }
+    public static void selectStatusActive() throws InterruptedException {
+        catalogPage.selectStatusActive();
+    }
+    public static boolean areNotActiveStatusesDisplayed(){
+        return catalogPage.areNotActiveStatusesDisplayed();
+    }
 }
