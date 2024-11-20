@@ -29,7 +29,8 @@ public class VerifyCataegorySelectionTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
-
+        Catalog.selectCategorySnack();
+        softAssert.assertFalse(Catalog.areNotSnacksDisplayed(),"category error");
         softAssert.assertAll();
     }
 

@@ -83,6 +83,9 @@ public class CatalogPage extends LoginPage{
     By txt_resultsCount = By.xpath("//div[@class='col-sm-4']//span[contains(text(), 'results')]");
     By btn_updateImages = By.xpath("//a[text()='Update Images']");
     By txt_numImageMissing= By.xpath("//div[p[text()='Products Images Missing']]//h6");
+    By lbl_categoriesDropdown = By.xpath("//div[@class='themed_select__single-value css-1uccc91-singleValue' and text()='All Categories']");
+    By lbl_snack = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Snack']");
+    By lbl_nonSnack = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[4][not(normalize-space()='Snack')]");
 
     public boolean isCatalogTextDisplayed() {
         try {
@@ -405,6 +408,14 @@ public class CatalogPage extends LoginPage{
     public String getMissingImagesCount() {
         distributorUI.waitForVisibility(txt_numImageMissing);
         return distributorUI.getText(txt_numImageMissing);
+    }
+    public void selectCategorySnack() throws InterruptedException {
+        distributorUI.click(lbl_categoriesDropdown);
+        distributorUI.click(lbl_snack);
+        distributorUI.waitForCustom(2000);
+    }
+    public boolean areNotSnacksDisplayed(){
+        return  distributorUI.isDisplayed(lbl_nonSnack);
     }
 }
 

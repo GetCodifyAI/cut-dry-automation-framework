@@ -278,4 +278,10 @@ public class Catalog {
     public static void clickOnUpdateImages(){
         catalogPage.clickOnUpdateImages();
     }
+    public static void selectCategorySnack() throws InterruptedException {
+        catalogPage.selectCategorySnack();
+    }
+    public static boolean areNotSnacksDisplayed(){
+        return catalogPage.areNotSnacksDisplayed();
+    }
 }
