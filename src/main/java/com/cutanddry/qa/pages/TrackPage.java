@@ -166,7 +166,11 @@ public class TrackPage extends LoginPage{
         return distributorUI.isDisplayed(txt_removeUser);
     }
     public void clickOnRemoveUser() {
-        distributorUI.waitForClickability(btn_removeUser);
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.click(btn_removeUser);
     }
     public void clickOnRemoveUserLabel() throws InterruptedException {
