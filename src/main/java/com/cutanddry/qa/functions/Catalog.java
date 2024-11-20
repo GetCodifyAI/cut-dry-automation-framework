@@ -272,4 +272,10 @@ public class Catalog {
     public static String getResultsCount(){
         return catalogPage.getResultsCount();
     }
+    public static String getMissingImagesCount(){
+        return catalogPage.getMissingImagesCount();
+    }
+    public static void clickOnUpdateImages(){
+        catalogPage.clickOnUpdateImages();
+    }
 }

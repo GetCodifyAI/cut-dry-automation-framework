@@ -81,6 +81,8 @@ public class CatalogPage extends LoginPage{
     By btn_review = By.xpath("//a[text()='Review']");
     By txt_numRecentAdded = By.xpath("//div[p[text()='Recently Added']]//h6");
     By txt_resultsCount = By.xpath("//div[@class='col-sm-4']//span[contains(text(), 'results')]");
+    By btn_updateImages = By.xpath("//a[text()='Update Images']");
+    By txt_numImageMissing= By.xpath("//div[p[text()='Products Images Missing']]//h6");
 
     public boolean isCatalogTextDisplayed() {
         try {
@@ -396,6 +398,13 @@ public class CatalogPage extends LoginPage{
         distributorUI.waitForVisibility(txt_resultsCount);
         String resultsText = distributorUI.getText(txt_resultsCount);
         return resultsText.split(" ")[0];
+    }
+    public void clickOnUpdateImages(){
+        distributorUI.click(btn_updateImages);
+    }
+    public String getMissingImagesCount() {
+        distributorUI.waitForVisibility(txt_numImageMissing);
+        return distributorUI.getText(txt_numImageMissing);
     }
 }
 

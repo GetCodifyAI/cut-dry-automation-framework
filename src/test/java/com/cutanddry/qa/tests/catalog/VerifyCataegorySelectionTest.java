@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyUpdateImagesTest extends TestBase {
+public class VerifyCataegorySelectionTest extends TestBase {
     static User user;
 
     @BeforeMethod
@@ -21,7 +21,7 @@ public class VerifyUpdateImagesTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-510")
+    @Test(groups = "DOT-TC-511")
     public void VerifyUpdateImages() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
@@ -29,9 +29,7 @@ public class VerifyUpdateImagesTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
-        String imageCount = Catalog.getMissingImagesCount();
-        Catalog.clickOnUpdateImages();
-        softAssert.assertEquals(Catalog.getResultsCount(), imageCount, "missing images count error");
+
         softAssert.assertAll();
     }
 
