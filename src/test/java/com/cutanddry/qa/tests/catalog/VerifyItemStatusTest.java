@@ -22,7 +22,7 @@ public class VerifyItemStatusTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-512")
-    public void VerifyUpdateImages() throws InterruptedException {
+    public void VerifyItemStatus() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();

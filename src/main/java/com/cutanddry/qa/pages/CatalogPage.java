@@ -89,6 +89,12 @@ public class CatalogPage extends LoginPage{
     By lbl_statusDropdown = By.xpath("//div[@class='themed_select__single-value css-1uccc91-singleValue' and text()='All']");
     By lbl_active = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Active']");
     By lbl_nonactive = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[7][not(normalize-space()='Active')]");
+    By btn_moreFilters = By.xpath("//button[contains(., 'More Filters')]");
+    By txt_filterCatalog= By.xpath("//div[contains(text(),'Filter Catalog')]");
+    By lbl_imageUploaded = By.xpath("//label[contains(text(), 'Image Uploaded')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    By lbl_no = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and contains(text(), 'No')]");
+    By btn_apply = By.xpath("//button[contains(text(), 'Apply')]");
+    By lbl_noImage = By.xpath("//div[@class='_hm9gs6 text-center']/img[not(@src='https://d3stps52o2e9nv.cloudfront.net/consumer/placeholder-img-product-v2.svg')]");
 
     public boolean isCatalogTextDisplayed() {
         try {
@@ -427,6 +433,23 @@ public class CatalogPage extends LoginPage{
     }
     public boolean areNotActiveStatusesDisplayed(){
         return  distributorUI.isDisplayed(lbl_nonactive);
+    }
+    public boolean isFilterCatalogPopupDisplayed(){
+        return  distributorUI.isDisplayed(txt_filterCatalog);
+    }
+    public void clickOnMoreFilters() {
+        distributorUI.click(btn_moreFilters);
+    }
+    public void selectImageUploadedNo() throws InterruptedException {
+        distributorUI.click(lbl_imageUploaded);
+        distributorUI.hoverOverElement(lbl_no);
+        distributorUI.clickUsingJavaScript(lbl_no);
+        distributorUI.waitForCustom(1000);
+        distributorUI.click(btn_apply);
+        distributorUI.waitForCustom(1000);
+    }
+    public boolean areImagesDisplayed(){
+        return distributorUI.isDisplayed(lbl_noImage);
     }
 }
 

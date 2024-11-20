@@ -21,16 +21,18 @@ public class VerifyMoreFiltersTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-512")
-    public void VerifyUpdateImages() throws InterruptedException {
+    @Test(groups = "DOT-TC-513")
+    public void VerifyMoreFilters() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
-        Catalog.selectStatusActive();
-        softAssert.assertFalse(Catalog.areNotActiveStatusesDisplayed(),"status error");
+        Catalog.clickOnMoreFilters();
+        softAssert.assertTrue(Catalog.isFilterCatalogPopupDisplayed(),"popup error");
+        Catalog.selectImageUploadedNo();
+        softAssert.assertFalse(Catalog.areImagesDisplayed(),"filtering error");
         softAssert.assertAll();
     }
 

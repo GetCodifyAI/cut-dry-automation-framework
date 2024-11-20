@@ -290,4 +290,16 @@ public class Catalog {
     public static boolean areNotActiveStatusesDisplayed(){
         return catalogPage.areNotActiveStatusesDisplayed();
     }
+    public static void clickOnMoreFilters(){
+        catalogPage.clickOnMoreFilters();
+    }
+    public static boolean isFilterCatalogPopupDisplayed(){
+        return catalogPage.isFilterCatalogPopupDisplayed();
+    }
+    public static void selectImageUploadedNo() throws InterruptedException {
+        catalogPage.selectImageUploadedNo();
+    }
+    public static boolean areImagesDisplayed(){
+        return catalogPage.areImagesDisplayed();
+    }
 }

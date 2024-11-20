@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyCataegorySelectionTest extends TestBase {
+public class VerifyCategorySelectionTest extends TestBase {
     static User user;
 
     @BeforeMethod
@@ -22,7 +22,7 @@ public class VerifyCataegorySelectionTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-511")
-    public void VerifyUpdateImages() throws InterruptedException {
+    public void VerifyCategorySelection() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
