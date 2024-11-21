@@ -365,9 +365,10 @@ public class CatalogPage extends LoginPage{
     }
     public boolean isNavigatedToBrowseCatalog() {
         try {
+            distributorUI.waitForCustom(10000);
             distributorUI.waitForVisibility(txt_browseCatalog);
-        } catch (Exception e) {
-            return false;
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         return distributorUI.isDisplayed(txt_browseCatalog);
     }
