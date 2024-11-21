@@ -311,4 +311,7 @@ public class Catalog {
     public static void clickOnEditProduct(){
         catalogPage.clickOnEditProduct();
     }
+    public static void selectFirstEditItem(){
+        catalogPage.selectFirstEditItem();
+    }
 }

@@ -98,6 +98,7 @@ public class CatalogPage extends LoginPage{
     By firstItem = By.xpath("(//div[contains(@class, 'card')]//div[@class='_3quvq7 _1vlidrf'])[1]");
     By txt_productOverview= By.xpath("//div[contains(text(),'Product Overview')]");
     By btn_editProduct = By.xpath("//a[text()='Edit Product']");
+    By btn_firstEditItem = By.xpath("(//a[text()='Edit Item'])[1]");
 
     public boolean isCatalogTextDisplayed() {
         try {
@@ -468,6 +469,9 @@ public class CatalogPage extends LoginPage{
     }
     public void clickOnEditProduct() {
         distributorUI.click(btn_editProduct);
+    }
+    public void selectFirstEditItem() {
+        distributorUI.click(btn_firstEditItem);
     }
 }
 
