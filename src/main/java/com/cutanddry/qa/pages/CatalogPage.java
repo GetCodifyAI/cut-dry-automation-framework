@@ -70,6 +70,34 @@ public class CatalogPage extends LoginPage{
     By txt_categoryLink = By.xpath("//h2[contains(text(),'Category Link')]");
     By btn_Ok = By.xpath("//button[contains(text(), 'OK')]");
     By txt_browseCatalog= By.xpath("//div[contains(text(),'Browse Catalog')]");
+    By btn_manageCatalog = By.xpath("//button[span[contains(text(), 'Manage Catalog')]]");
+    By lbl_createNewItem = By.xpath("//a[text()='Create new item']");
+    By lbl_itemName = By.xpath("//input[@placeholder='Enter item name...']");
+    By lbl_itemPrice = By.xpath("//input[@placeholder='0.00']");
+    By btn_continue = By.xpath("//button[text()='Continue']");
+    By txt_itemCreated = By.xpath("//h2[contains(text(),'Item created.')]");
+    By btn_close = By.xpath("//button[text()='Close']");
+    By txt_getItemCode = By.xpath("//div[contains(text(), 'A new item was successfully created with the item code')]");
+    By btn_review = By.xpath("//a[text()='Review']");
+    By txt_numRecentAdded = By.xpath("//div[p[text()='Recently Added']]//h6");
+    By txt_resultsCount = By.xpath("//div[@class='col-sm-4']//span[contains(text(), 'results')]");
+    By btn_updateImages = By.xpath("//a[text()='Update Images']");
+    By txt_numImageMissing= By.xpath("//div[p[text()='Products Images Missing']]//h6");
+    By lbl_categoriesDropdown = By.xpath("//div[@class='themed_select__single-value css-1uccc91-singleValue' and text()='All Categories']");
+    By lbl_snack = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Snack']");
+    By lbl_nonSnack = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[4][not(normalize-space()='Snack')]");
+    By lbl_statusDropdown = By.xpath("//div[@class='themed_select__single-value css-1uccc91-singleValue' and text()='All']");
+    By lbl_active = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Active']");
+    By lbl_nonactive = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[7][not(normalize-space()='Active')]");
+    By btn_moreFilters = By.xpath("//button[contains(., 'More Filters')]");
+    By txt_filterCatalog= By.xpath("//div[contains(text(),'Filter Catalog')]");
+    By lbl_imageUploaded = By.xpath("//label[contains(text(), 'Image Uploaded')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    By lbl_no = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and contains(text(), 'No')]");
+    By btn_apply = By.xpath("//button[contains(text(), 'Apply')]");
+    By lbl_noImage = By.xpath("//div[@class='_hm9gs6 text-center']/img[not(@src='https://d3stps52o2e9nv.cloudfront.net/consumer/placeholder-img-product-v2.svg')]");
+    By firstItem = By.xpath("(//div[contains(@class, 'card')]//div[@class='_3quvq7 _1vlidrf'])[1]");
+    By txt_productOverview= By.xpath("//div[contains(text(),'Product Overview')]");
+    By btn_editProduct = By.xpath("//a[text()='Edit Product']");
 
     public boolean isCatalogTextDisplayed() {
         try {
@@ -98,35 +126,27 @@ public class CatalogPage extends LoginPage{
         distributorUI.click(btn_downloadPdf);
         distributorUI.waitForVisibility(btn_downloadPdf);
     }
-
     public void TypeSearchInCatalogSearch(String ItemName){
         distributorUI.sendKeys(ItemCatalogSearchBtn,ItemName);
         distributorUI.waitForVisibility(By.xpath(SearchedItemItemCode.replace("ITEMCODE",ItemName)));
-
     }
-
     public void ClickOnItemCode(String ItemCode){
         distributorUI.click(By.xpath(SearchedItemItemCode.replace("ITEMCODE",ItemCode)));
     }
-
     public void ClickOnPreviewBtn(){
         distributorUI.SwitchToNewTab(PreviewBtn);
     }
-
     public boolean isNavigateToItemPreview(String itemCode){
         distributorUI.waitForVisibility(By.xpath(ItemPreviewTxt.replace("ITEMCODE",itemCode)));
         return distributorUI.isDisplayed(By.xpath(ItemPreviewTxt.replace("ITEMCODE",itemCode)));
     }
-
     public void ClickOnManufacture(){
         distributorUI.click(Manufacturer);
     }
-
-    public boolean isNavigatedtoConagaraBrandPage(){
+    public boolean isNavigatedtoConagaraBrandPage() {
         distributorUI.waitForVisibility(ConagaraBrandPage);
         return distributorUI.isDisplayed(ConagaraBrandPage);
     }
-
     public boolean isNavigatedtoOtherBrandPage() throws InterruptedException {
          distributorUI.SwitchToNewTab(OtherBrandBtn);
          distributorUI.waitForCustom(6000);
@@ -136,7 +156,6 @@ public class CatalogPage extends LoginPage{
     public void ClickOnShowCaseBtn(){
         distributorUI.click(ShowCaseBtn);
     }
-
     public void clickOnPreviewCatalog() {
         distributorUI.click(btn_previewCat);
     }
@@ -148,7 +167,6 @@ public class CatalogPage extends LoginPage{
         distributorUI.waitForCustom(3000);
         return distributorUI.getText(txt_firstItemDetails);
     }
-
     public void clickonItemOnCatalogPage(String itemCode){
         try {
             distributorUI.waitForCustom(7000);
@@ -158,23 +176,19 @@ public class CatalogPage extends LoginPage{
         distributorUI.waitForVisibility(By.xpath(itemInTheGrid.replace("ITEMCODE",itemCode)));
         distributorUI.click(By.xpath(itemInTheGrid.replace("ITEMCODE",itemCode)));
     }
-
     public String getItemCodeFromCatalogDataPage(){
         distributorUI.waitForVisibility(ItemCodeInCatalogData);
         return distributorUI.getText(ItemCodeInCatalogData);
     }
-
     public void clickOnInactiveOrInactive(String prodStatus){
         distributorUI.click(productStatusDropdown);
         distributorUI.waitForVisibility(By.xpath(productStatus.replace("PRODSTATUS",prodStatus)));
         distributorUI.click(By.xpath(productStatus.replace("PRODSTATUS",prodStatus)));
     }
-
     public void clickOnSaveChangesBtn(){
         distributorUI.waitForVisibility(saveChangesBtn);
         distributorUI.click(saveChangesBtn);
     }
-
     public boolean isSuccessOverlayDisplayed(){
         try {
             distributorUI.waitForCustom(2000);
@@ -183,40 +197,31 @@ public class CatalogPage extends LoginPage{
         }
         return distributorUI.isDisplayed(successOverlay);
     }
-
     public void clickOnAdditionalAttributesTab(){
         distributorUI.click(additionalAttributesTab);
     }
-
-    public boolean isCertificationsSectionDisplayed(){
+    public boolean isCertificationsSectionDisplayed() {
         return distributorUI.isDisplayed(certificationAttribute);
     }
-
     public void clickClearCertification(String CertificationType){
         distributorUI.click(By.xpath(clearCertificationBtn.replace("CERTIFICATIONTYPE",CertificationType)));
     }
-
     public void clickOnCertification(String CertificationType, String certificate){
         distributorUI.click(By.xpath(selectCertificationDropdown.replace("CERTIFICATIONTYPE",CertificationType)));
         distributorUI.click(By.xpath(buyAmericanOption.replace("CERTIFICATEOPTION",certificate)));
     }
-
     public void clickOnImagesTab(){
         distributorUI.click(imagesTab);
     }
-
     public boolean isProductImageDisplayed(){
         return distributorUI.isDisplayed(productItemImage);
     }
-
     public void clickOnPricingAndPromotionsTab(){
         distributorUI.click(priceAndPromotions);
     }
-
     public void clickOnUnitOfMeasure(){
         distributorUI.click(unitOfMeasure);
     }
-
     public int getUnitOfMeasureCount(){
         try {
             distributorUI.waitForCustom(4000);
@@ -225,42 +230,33 @@ public class CatalogPage extends LoginPage{
         }
         return distributorUI.countElements(uomCount);
     }
-
     public void clickOnUnit(String uom){
         distributorUI.waitForVisibility(uomSelectDropdown);
         distributorUI.click(uomSelectDropdown);
         distributorUI.waitForVisibility(By.xpath(unit.replace("UNIT",uom)));
         distributorUI.click(By.xpath(unit.replace("UNIT",uom)));
     }
-
     public void typeUnitPrice(String unitPrice){
         distributorUI.sendKeys(unitPriceTxtField,unitPrice);
     }
-
     public void clickOnSalesTypeDropDown(){
         distributorUI.click(salesTypeDropDown);
     }
-
     public void clickOnPercentageOption(){
         distributorUI.click(percentageOption);
     }
-
     public void typeSaleValue(String saleValue){
         distributorUI.sendKeys(salesValue,saleValue);
     }
-
     public void deleteUOMinCatalog(){
         distributorUI.click(uomDeleteBtn);
     }
-
     public boolean isUOMDeleteOverlayDisplayed(){
         return distributorUI.isDisplayed(uomDeleteOverlay);
     }
-
     public void clickOnConfirmBtn(){
         distributorUI.click(confirmBtn);
     }
-
     public boolean isBagUOMDisplayed(){
         try {
             distributorUI.waitForCustom(2000);
@@ -269,25 +265,20 @@ public class CatalogPage extends LoginPage{
         }
         return distributorUI.isDisplayed(bagUOM);
     }
-
     public void clickOnSubstituteTab(){
         distributorUI.click(substituteTab);
     }
-
     public void clickAddSubstitutionBtn(){
         distributorUI.scrollToElement(addSubstitutionsBtn);
         distributorUI.click(addSubstitutionsBtn);
     }
-
     public void searchSubstituteItem(String substituteItem){
         distributorUI.click(selectSubstituteTxtField);
         distributorUI.sendKeysWaitAndSelectDropdownOptionByEnter(substituteItemInputField,substituteItem);
     }
-
     public void addSubstitutionsBtn(){
         distributorUI.click(substituteAddBtn);
     }
-
     public String getSubstituteItemName(String substituteItem){
         distributorUI.click(selectSubstituteTxtField);
         distributorUI.sendKeys(substituteItemInputField,substituteItem);
@@ -304,7 +295,6 @@ public class CatalogPage extends LoginPage{
         distributorUI.click(substituteAddBtn);
         return cleanedItemName;
     }
-
     public boolean isSubstituteItemDisplayed(String substituteItem){
         try {
             distributorUI.waitForCustom(2000);
@@ -313,7 +303,6 @@ public class CatalogPage extends LoginPage{
         }
         return distributorUI.isDisplayed(By.xpath(substituteItemNameTxt.replace("ITEMNAME",substituteItem)));
     }
-
     public void clickOnDeleteSubstituteItemBtn(String itemCode){
         try {
             distributorUI.waitForCustom(2000);
@@ -322,48 +311,38 @@ public class CatalogPage extends LoginPage{
         }
         distributorUI.click(By.xpath(deleteSubstituteItemBtn.replace("ITEMCODE",itemCode)));
     }
-
     public void clickSearchItemInCatalog(String itemName){
         distributorUI.click(searchField);
         distributorUI.sendKeys(searchField,itemName);
     }
-
     public void searchItemInCatalogPreview(String itemCode){
         distributorUI.sendKeys(searchInCatalogPreview,itemCode);
     }
-
     public void clickItemOnCatalogPreview(String itemCode){
         distributorUI.click(By.xpath(clickOnItemInPreviewCatalog.replace("ITEMCODE",itemCode)));
     }
-
     public boolean isItemDetailsDisplayed(String itemCode){
         return distributorUI.isDisplayed(By.xpath(itemCodeDetails.replace("ITEMCODE",itemCode)));
     }
-
     public void clickCopyPDPUrl(){
         distributorUI.click(threeDotBtn);
         distributorUI.waitForVisibility(copyPDPURLTxt);
         distributorUI.click(copyPDPURLTxt);
     }
-
     public boolean isLinkCopiedTxtDisplayed(){
         return distributorUI.isDisplayed(productLink);
     }
-
     public void goToPublicCatalog(){
         distributorUI.OpenNewTabAndSwitchToIt();
         distributorUI.pasteUrlFromClipboard();
     }
-
     public boolean isPublicCatalogDisplayed(String itemCode){
         distributorUI.isDisplayed(publicCatalogAddToCart);
         return  distributorUI.isDisplayed(By.xpath(itemCodeDetails.replace("ITEMCODE",itemCode)));
     }
-
     public void clickOnAddToCart(){
         distributorUI.click(publicCatalogAddToCart);
     }
-
     public boolean isAlreadyACustomerDisplayed(){
        return  distributorUI.isDisplayed(alreadyACustomer);
     }
@@ -394,6 +373,100 @@ public class CatalogPage extends LoginPage{
             return false;
         }
         return distributorUI.isDisplayed(txt_browseCatalog);
+    }
+    public void clickOnManageCatalog(){
+        distributorUI.waitForVisibility(btn_manageCatalog);
+        distributorUI.click(btn_manageCatalog);
+    }
+    public void selectCreateNewItem(){
+        distributorUI.waitForVisibility(lbl_createNewItem);
+        distributorUI.click(lbl_createNewItem);
+    }
+    public void enterItemName(String name){
+        distributorUI.clear(lbl_itemName);
+        distributorUI.sendKeys(lbl_itemName,name);
+    }
+    public void enterItemPrice(String price){
+        distributorUI.clear(lbl_itemPrice);
+        distributorUI.sendKeys(lbl_itemPrice,price);
+    }
+    public void clickOnContinue(){
+        distributorUI.waitForClickability(btn_continue);
+        distributorUI.click(btn_continue);
+    }
+    public boolean isItemCreatedPopupDisplayed(){
+        return  distributorUI.isDisplayed(txt_itemCreated);
+    }
+    public void clickOnClose(){
+        distributorUI.waitForClickability(btn_close);
+        distributorUI.click(btn_close);
+    }
+    public String getItemCode() {
+        String fullText = distributorUI.getText(txt_getItemCode);
+        int startIndex = fullText.indexOf("item code \"") + "item code \"".length();
+        int endIndex = fullText.indexOf("\"", startIndex);
+        return fullText.substring(startIndex, endIndex);
+    }
+    public String getRecentlyAddedCount() {
+        distributorUI.waitForVisibility(txt_numRecentAdded);
+        return distributorUI.getText(txt_numRecentAdded);
+    }
+    public void clickOnReview(){
+        distributorUI.click(btn_review);
+    }
+    public String getResultsCount() {
+        distributorUI.waitForVisibility(txt_resultsCount);
+        String resultsText = distributorUI.getText(txt_resultsCount);
+        return resultsText.split(" ")[0];
+    }
+    public void clickOnUpdateImages(){
+        distributorUI.click(btn_updateImages);
+    }
+    public String getMissingImagesCount() {
+        distributorUI.waitForVisibility(txt_numImageMissing);
+        return distributorUI.getText(txt_numImageMissing);
+    }
+    public void selectCategorySnack() throws InterruptedException {
+        distributorUI.click(lbl_categoriesDropdown);
+        distributorUI.click(lbl_snack);
+        distributorUI.waitForCustom(2000);
+    }
+    public boolean areNotSnacksDisplayed(){
+        return  distributorUI.isDisplayed(lbl_nonSnack);
+    }
+    public void selectStatusActive() throws InterruptedException {
+        distributorUI.click(lbl_statusDropdown);
+        distributorUI.click(lbl_active);
+        distributorUI.waitForCustom(2000);
+    }
+    public boolean areNotActiveStatusesDisplayed(){
+        return  distributorUI.isDisplayed(lbl_nonactive);
+    }
+    public boolean isFilterCatalogPopupDisplayed(){
+        return  distributorUI.isDisplayed(txt_filterCatalog);
+    }
+    public void clickOnMoreFilters() {
+        distributorUI.click(btn_moreFilters);
+    }
+    public void selectImageUploadedNo() throws InterruptedException {
+        distributorUI.click(lbl_imageUploaded);
+        distributorUI.hoverOverElement(lbl_no);
+        distributorUI.clickUsingJavaScript(lbl_no);
+        distributorUI.waitForCustom(1000);
+        distributorUI.click(btn_apply);
+        distributorUI.waitForCustom(1000);
+    }
+    public boolean areImagesDisplayed(){
+        return distributorUI.isDisplayed(lbl_noImage);
+    }
+    public void selectFirstItem() {
+        distributorUI.click(firstItem);
+    }
+    public boolean isProductOverviewDisplayed(){
+        return  distributorUI.isDisplayed(txt_productOverview);
+    }
+    public void clickOnEditProduct() {
+        distributorUI.click(btn_editProduct);
     }
 }
 
