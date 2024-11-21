@@ -239,4 +239,67 @@ public class Catalog {
     public static boolean isNavigatedToBrowseCatalog(){
         return catalogPage.isNavigatedToBrowseCatalog();
     }
+    public static void clickOnManageCatalog(){
+        catalogPage.clickOnManageCatalog();
+    }
+    public static void selectCreateNewItem(){
+        catalogPage.selectCreateNewItem();
+    }
+    public static void enterItemName(String name){
+        catalogPage.enterItemName(name);
+    }
+    public static void enterItemPrice(String price){
+        catalogPage.enterItemPrice(price);
+    }
+    public static void clickOnContinue(){
+        catalogPage.clickOnContinue();
+    }
+    public static boolean isItemCreatedPopupDisplayed(){
+        return catalogPage.isItemCreatedPopupDisplayed();
+    }
+    public static void clickOnClose(){
+        catalogPage.clickOnClose();
+    }
+    public static String  getItemCode(){
+        return catalogPage.getItemCode();
+    }
+    public static String getRecentlyAddedCount(){
+        return catalogPage.getRecentlyAddedCount();
+    }
+    public static void clickOnReview(){
+        catalogPage.clickOnReview();
+    }
+    public static String getResultsCount(){
+        return catalogPage.getResultsCount();
+    }
+    public static String getMissingImagesCount(){
+        return catalogPage.getMissingImagesCount();
+    }
+    public static void clickOnUpdateImages(){
+        catalogPage.clickOnUpdateImages();
+    }
+    public static void selectCategorySnack() throws InterruptedException {
+        catalogPage.selectCategorySnack();
+    }
+    public static boolean areNotSnacksDisplayed(){
+        return catalogPage.areNotSnacksDisplayed();
+    }
+    public static void selectStatusActive() throws InterruptedException {
+        catalogPage.selectStatusActive();
+    }
+    public static boolean areNotActiveStatusesDisplayed(){
+        return catalogPage.areNotActiveStatusesDisplayed();
+    }
+    public static void clickOnMoreFilters(){
+        catalogPage.clickOnMoreFilters();
+    }
+    public static boolean isFilterCatalogPopupDisplayed(){
+        return catalogPage.isFilterCatalogPopupDisplayed();
+    }
+    public static void selectImageUploadedNo() throws InterruptedException {
+        catalogPage.selectImageUploadedNo();
+    }
+    public static boolean areImagesDisplayed(){
+        return catalogPage.areImagesDisplayed();
+    }
 }
