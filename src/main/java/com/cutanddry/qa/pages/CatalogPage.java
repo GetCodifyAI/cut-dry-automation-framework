@@ -248,7 +248,8 @@ public class CatalogPage extends LoginPage{
     public void typeSaleValue(String saleValue){
         distributorUI.sendKeys(salesValue,saleValue);
     }
-    public void deleteUOMinCatalog(){
+    public void deleteUOMinCatalog() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.click(uomDeleteBtn);
     }
     public boolean isUOMDeleteOverlayDisplayed(){

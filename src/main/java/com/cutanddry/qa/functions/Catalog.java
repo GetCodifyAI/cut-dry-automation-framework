@@ -128,7 +128,7 @@ public class Catalog {
         catalogPage.typeSaleValue(saleValue);
     }
 
-    public static void deleteUOMFromCatalog(){
+    public static void deleteUOMFromCatalog() throws InterruptedException {
         catalogPage.deleteUOMinCatalog();
     }
 
