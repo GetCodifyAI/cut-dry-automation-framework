@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheTrackResourcesSearchTruckTest extends TestBase {
     static User user;
-    static String name = "bmw";
+    static String name = "Black Longhauler";
 
     @BeforeMethod
     public void setUp() {

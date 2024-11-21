@@ -30,6 +30,8 @@ public class VerifyPaySettingLinkBankAccountTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToPaySettings();
         softAssert.assertTrue(Settings.isPaySettingsTextDisplayed(),"navigation to pay settings error");
+        //Remove existing bank accounts
+        Settings.removeExistingBankAccount();
         Settings.clickOnLinkBank();
         softAssert.assertTrue(Settings.isLinkAccPopupDisplayed(),"link popup error");
         Settings.clickOnLinkBankManually();
