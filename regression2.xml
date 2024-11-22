@@ -84,6 +84,12 @@
             <class name="com.cutanddry.qa.tests.catalog.VerifyUpdateImagesTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyItemStatusTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyManageCatalogCreateNewItemTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogItemDetailsCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogItemDetailsAdditionalAttributesTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogEditImageTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogPricingPromotionsTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogAddSubstituteTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogRemoveSubstituteTest" />
         </classes>
     </test>
 </suite>
