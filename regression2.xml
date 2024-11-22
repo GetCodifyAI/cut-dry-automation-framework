@@ -84,12 +84,12 @@
             <class name="com.cutanddry.qa.tests.catalog.VerifyUpdateImagesTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyItemStatusTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyManageCatalogCreateNewItemTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogItemDetailsCatalogDataTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogItemDetailsAdditionalAttributesTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogEditImageTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogPricingPromotionsTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogAddSubstituteTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogRemoveSubstituteTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsAdditionalAttributesTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsImageTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsPricingPromotionsTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsAddSubstituteTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsRemoveSubstituteTest" />
         </classes>
     </test>
 </suite>

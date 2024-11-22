@@ -12,8 +12,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyThePreviewCatalogEditImageTest extends TestBase {
+public class VerifyPreviewCatalogItemDetailsCatalogDataTest extends TestBase {
     static User user;
+    String Active = "Active";
+    String InActive = "Inactive";
 
     @BeforeMethod
     public void setUp(){
@@ -21,8 +23,8 @@ public class VerifyThePreviewCatalogEditImageTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-613")
-    public void VerifyThePreviewCatalogEditImage() throws InterruptedException {
+    @Test(groups = "DOT-TC-611")
+    public void VerifyThePreviewCatalogEditItemDetails() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -31,11 +33,12 @@ public class VerifyThePreviewCatalogEditImageTest extends TestBase {
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.clickOnPreviewCatalog();
         softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
-        Catalog.selectFirstItem();
-        softAssert.assertTrue(Catalog.isProductOverviewDisplayed(),"select product error");
-        Catalog.clickOnEditProduct();
-        Catalog.navigateToImages();
-        softAssert.assertTrue(Catalog.ProductImageDisplayed(),"product image is not displayed");
+        Catalog.selectFirstEditItem();
+        Catalog.selectProductActiveInactiveStatus(Active);
+        Catalog.saveChanges();
+        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");
+        Catalog.selectProductActiveInactiveStatus(InActive);
+        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");
         softAssert.assertAll();
     }
 

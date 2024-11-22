@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyThePreviewCatalogAddSubstituteTest extends TestBase {
+public class VerifyPreviewCatalogItemDetailsAddSubstituteTest extends TestBase {
     static User user;
     String substituteItemCode = "20024";
 
@@ -23,7 +23,7 @@ public class VerifyThePreviewCatalogAddSubstituteTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-615")
-    public void VerifyThePreviewCatalogAddSubstitute() throws InterruptedException {
+    public void VerifyThePreviewCatalogItemDetailsAddSubstitute() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();

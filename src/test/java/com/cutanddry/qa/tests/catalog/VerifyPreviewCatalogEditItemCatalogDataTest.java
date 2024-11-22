@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyThePreviewCatalogEditItemCatalogDataTest extends TestBase {
+public class VerifyPreviewCatalogEditItemCatalogDataTest extends TestBase {
     static User user;
     String Active = "Active";
     String InActive = "Inactive";

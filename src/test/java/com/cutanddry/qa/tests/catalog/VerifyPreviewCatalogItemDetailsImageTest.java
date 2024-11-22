@@ -12,9 +12,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyThePreviewCatalogRemoveSubstituteTest extends TestBase {
+public class VerifyPreviewCatalogItemDetailsImageTest extends TestBase {
     static User user;
-    String substituteItemCode = "20024";
 
     @BeforeMethod
     public void setUp(){
@@ -22,8 +21,8 @@ public class VerifyThePreviewCatalogRemoveSubstituteTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-616")
-    public void VerifyThePreviewCatalogRemoveSubstitute() throws InterruptedException {
+    @Test(groups = "DOT-TC-613")
+    public void VerifyThePreviewCatalogItemDetailsImage() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -35,10 +34,8 @@ public class VerifyThePreviewCatalogRemoveSubstituteTest extends TestBase {
         Catalog.selectFirstItem();
         softAssert.assertTrue(Catalog.isProductOverviewDisplayed(),"select product error");
         Catalog.clickOnEditProduct();
-        Catalog.navigateToSubstituteTab();
-        Catalog.deleteSubstituteItem(substituteItemCode);
-        Catalog.saveChanges();
-        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in Removing substitute item");
+        Catalog.navigateToImages();
+        softAssert.assertTrue(Catalog.ProductImageDisplayed(),"product image is not displayed");
         softAssert.assertAll();
     }
 

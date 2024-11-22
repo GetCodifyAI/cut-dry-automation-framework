@@ -12,10 +12,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyThePreviewCatalogItemDetailsCatalogDataTest extends TestBase {
+public class VerifyPreviewCatalogItemDetailsRemoveSubstituteTest extends TestBase {
     static User user;
-    String Active = "Active";
-    String InActive = "Inactive";
+    String substituteItemCode = "20024";
 
     @BeforeMethod
     public void setUp(){
@@ -23,8 +22,8 @@ public class VerifyThePreviewCatalogItemDetailsCatalogDataTest extends TestBase 
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-611")
-    public void VerifyThePreviewCatalogEditItemDetails() throws InterruptedException {
+    @Test(groups = "DOT-TC-616")
+    public void VerifyThePreviewCatalogItemDetailsRemoveSubstitute() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -33,12 +32,13 @@ public class VerifyThePreviewCatalogItemDetailsCatalogDataTest extends TestBase 
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.clickOnPreviewCatalog();
         softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
-        Catalog.selectFirstEditItem();
-        Catalog.selectProductActiveInactiveStatus(Active);
+        Catalog.selectFirstItem();
+        softAssert.assertTrue(Catalog.isProductOverviewDisplayed(),"select product error");
+        Catalog.clickOnEditProduct();
+        Catalog.navigateToSubstituteTab();
+        Catalog.deleteSubstituteItem(substituteItemCode);
         Catalog.saveChanges();
-        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");
-        Catalog.selectProductActiveInactiveStatus(InActive);
-        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");
+        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in Removing substitute item");
         softAssert.assertAll();
     }
 
