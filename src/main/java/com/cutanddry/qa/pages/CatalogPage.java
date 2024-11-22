@@ -92,7 +92,7 @@ public class CatalogPage extends LoginPage{
     By btn_moreFilters = By.xpath("//button[contains(., 'More Filters')]");
     By txt_filterCatalog= By.xpath("//div[contains(text(),'Filter Catalog')]");
     By lbl_imageUploaded = By.xpath("//label[contains(text(), 'Image Uploaded')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
-    By lbl_no = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and contains(text(), 'No')]");
+    By lbl_no = By.xpath("(//div[contains(text(), 'No')])[last()]");
     By btn_apply = By.xpath("//button[contains(text(), 'Apply')]");
     By lbl_noImage = By.xpath("//div[@class='_hm9gs6 text-center']/img[not(@src='https://d3stps52o2e9nv.cloudfront.net/consumer/placeholder-img-product-v2.svg')]");
 
