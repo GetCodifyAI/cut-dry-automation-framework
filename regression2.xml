@@ -90,6 +90,12 @@
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsPricingPromotionsTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsAddSubstituteTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsRemoveSubstituteTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemAdditionalAttributesTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemImageTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemPricingPromotionsTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemAddSubstituteTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemRemoveSubstituteTest" />
         </classes>
     </test>
 </suite>
