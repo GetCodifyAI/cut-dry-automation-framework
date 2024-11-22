@@ -23,7 +23,7 @@ public class VerifyPreviewCatalogEditItemCatalogDataTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-611")
+    @Test(groups = "DOT-TC-617")
     public void VerifyThePreviewCatalogEditItemCatalogData() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
@@ -33,9 +33,7 @@ public class VerifyPreviewCatalogEditItemCatalogDataTest extends TestBase {
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.clickOnPreviewCatalog();
         softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
-        Catalog.selectFirstItem();
-        softAssert.assertTrue(Catalog.isProductOverviewDisplayed(),"select product error");
-        Catalog.clickOnEditProduct();
+        Catalog.selectFirstEditItem();
         Catalog.selectProductActiveInactiveStatus(Active);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");

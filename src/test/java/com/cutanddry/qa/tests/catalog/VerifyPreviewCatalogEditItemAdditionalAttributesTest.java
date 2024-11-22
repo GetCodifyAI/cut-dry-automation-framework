@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyPreviewCatalogItemDetailsCatalogDataTest extends TestBase {
+public class VerifyPreviewCatalogEditItemAdditionalAttributesTest extends TestBase {
     static User user;
     String Active = "Active";
     String InActive = "Inactive";
@@ -23,8 +23,8 @@ public class VerifyPreviewCatalogItemDetailsCatalogDataTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-611")
-    public void VerifyThePreviewCatalogEditItemDetails() throws InterruptedException {
+    @Test(groups = "DOT-TC-618")
+    public void VerifyPreviewCatalogEditItemAdditionalAttributes() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
