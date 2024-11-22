@@ -34,12 +34,9 @@ public class VerifyPreviewCatalogEditItemRemoveSubstituteTest extends TestBase {
         softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
         Catalog.selectFirstEditItem();
         Catalog.navigateToSubstituteTab();
-        Catalog.addSubstitutions();
-        String SubstituteItemName = Catalog.getSubstituteItemName(substituteItemCode);
-        Catalog.searchAndAddSubstituteItem(substituteItemCode);
+        Catalog.deleteSubstituteItem(substituteItemCode);
         Catalog.saveChanges();
-        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving the changes after adding  substitute");
-        softAssert.assertTrue(Catalog.isAddedSubstituteItemDisplayedInPage(SubstituteItemName),"Error in adding substitute items");
+        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in Removing substitute item");
         softAssert.assertAll();
     }
 
