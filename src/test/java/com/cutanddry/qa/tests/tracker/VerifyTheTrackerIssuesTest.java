@@ -26,7 +26,7 @@ public class VerifyTheTrackerIssuesTest extends TestBase {
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToTracker();
-        softAssert.assertTrue(Tracker.isOnboardingDocsDisplayed(),"navigation to tracker onboarding docs error");
+        softAssert.assertTrue(Tracker.isOnboardingDocsDisplayed(),"navigation to tracker error");
         Tracker.clickIssueTracker();
         softAssert.assertTrue(Tracker.isIssueTrackerDisplayed(),"navigation issue tracker error");
         Tracker.clickNewTicket();

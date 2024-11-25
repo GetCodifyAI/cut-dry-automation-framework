@@ -26,7 +26,7 @@ public class VerifyTheTrackerFeatureRequestsTest extends TestBase {
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToTracker();
-        softAssert.assertTrue(Tracker.isOnboardingDocsDisplayed(),"navigation to tracker onboarding docs error");
+        softAssert.assertTrue(Tracker.isOnboardingDocsDisplayed(),"navigation to tracker error");
         Tracker.clickFeatureRequests();
         softAssert.assertTrue(Tracker.isFeatureRequestsDisplayed(),"navigation feature requests error");
         Tracker.clickRequestFeature();
