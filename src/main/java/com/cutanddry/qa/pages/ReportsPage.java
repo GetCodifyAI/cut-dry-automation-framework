@@ -31,7 +31,10 @@ public class ReportsPage extends LoginPage{
         }
         return distributorUI.isDisplayed(txt_generating_report);
     }
-    public void clickOk(){
+    public void clickOkReport(){
         distributorUI.click(btn_ok);
+    }
+    public void clickDownloadReport(){
+        distributorUI.click(btn_download_report);
     }
 }

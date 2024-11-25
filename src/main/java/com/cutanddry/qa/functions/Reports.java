@@ -14,8 +14,11 @@ public class Reports {
     public static boolean isGeneratingReportPopupDisplayed(){
         return reportsPage.isGeneratingReportPopupDisplayed();
     }
-    public static void clickOk(){
-        reportsPage.clickOk();
+    public static void clickOkReport(){
+        reportsPage.clickOkReport();
+    }
+    public static void clickDownloadReport(){
+        reportsPage.clickDownloadReport();
     }
 
 }

@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheEmailReportTest extends TestBase {
+public class VerifyTheDownloadReportTest extends TestBase {
     static User user;
 
     @BeforeMethod
@@ -20,16 +20,14 @@ public class VerifyTheEmailReportTest extends TestBase {
         initialization();
         user = JsonUtil.readUserLogin();
     }
-    @Test(groups = "DOT-TC-546")
-    public void VerifyTheEmailReport() throws InterruptedException {
+    @Test(groups = "DOT-TC-547")
+    public void VerifyTheDownloadReport() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToReports();
         softAssert.assertTrue(Reports.isUserNavigatedToReports(),"navigation to reports error");
-        Reports.clickEmailReport();
-        softAssert.assertTrue(Reports.isGeneratingReportPopupDisplayed(),"generating report pop up not display");
-        Reports.clickOkReport();
+        Reports.clickDownloadReport();
         softAssert.assertAll();
     }
     @AfterMethod
