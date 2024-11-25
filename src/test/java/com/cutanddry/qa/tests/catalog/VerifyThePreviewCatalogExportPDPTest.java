@@ -31,7 +31,10 @@ public class VerifyThePreviewCatalogExportPDPTest extends TestBase {
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.clickOnPreviewCatalog();
         softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
-
+        Catalog.selectFirstItem();
+        softAssert.assertTrue(Catalog.isProductOverviewDisplayed(),"select product error");
+        Catalog.selectExportPDP();
+        softAssert.assertTrue(Catalog.isPDFExported(),"export error");
         softAssert.assertAll();
     }
 

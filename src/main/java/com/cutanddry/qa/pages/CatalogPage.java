@@ -493,5 +493,8 @@ public class CatalogPage extends LoginPage{
     public boolean isNavigatedToProductDetails(){
         return  distributorUI.isDisplayed(txt_productDetails);
     }
+    public boolean isPDFExported(){
+        return  distributorUI.isDisplayed(btn_3dots);
+    }
 }
 

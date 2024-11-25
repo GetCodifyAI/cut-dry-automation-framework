@@ -326,4 +326,7 @@ public class Catalog {
     public static boolean isNavigatedToProductDetails(){
         return catalogPage.isNavigatedToProductDetails();
     }
+    public static boolean isPDFExported(){
+        return catalogPage.isPDFExported();
+    }
 }
