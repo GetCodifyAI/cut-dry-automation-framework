@@ -104,6 +104,8 @@ public class CatalogPage extends LoginPage{
     By txt_exportPDP= By.xpath("//div[contains(text(),'Export PDP (pdf)')]");
     By txt_copyPDPPopup = By.xpath("//h2[contains(text(),'Product Link')]");
     By txt_productDetails= By.xpath("//span[contains(text(),'Product Details')]");
+    By lbl_exportCatalog = By.xpath("//a[text()='Export catalog (csv)']");
+    By lbl_exportPromoFile = By.xpath("//a[text()='Export Promotion File (csv)']");
 
     public boolean isCatalogTextDisplayed() {
         try {
@@ -495,6 +497,14 @@ public class CatalogPage extends LoginPage{
     }
     public boolean isPDFExported(){
         return  distributorUI.isDisplayed(btn_3dots);
+    }
+    public void selectExportCatalog(){
+        distributorUI.waitForVisibility(lbl_exportCatalog);
+        distributorUI.click(lbl_exportCatalog);
+    }
+    public void selectExportPromoFiles(){
+        distributorUI.waitForVisibility(lbl_exportPromoFile);
+        distributorUI.click(lbl_exportPromoFile);
     }
 }
 

@@ -329,4 +329,10 @@ public class Catalog {
     public static boolean isPDFExported(){
         return catalogPage.isPDFExported();
     }
+    public static void selectExportCatalog(){
+        catalogPage.selectExportCatalog();
+    }
+    public static void selectExportPromoFiles(){
+        catalogPage.selectExportPromoFiles();
+    }
 }
