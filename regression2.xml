@@ -96,6 +96,7 @@
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemPricingPromotionsTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemAddSubstituteTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemRemoveSubstituteTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheEmailReportTest" />
         </classes>
     </test>
 </suite>
