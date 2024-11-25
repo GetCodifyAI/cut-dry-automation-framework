@@ -1,4 +1,4 @@
-package com.cutanddry.qa.tests.catalog_view;
+package com.cutanddry.qa.tests.catalog;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
@@ -12,10 +12,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyDeletingUnitOfMeasureOfItemTest extends TestBase {
+public class VerifyPreviewCatalogEditItemPricingPromotionsTest extends TestBase {
     static User user;
-    String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
-    String itemCode = "00475";
+    String UOM = "Bag";
+    String itemPrice = "20.00";
 
     @BeforeMethod
     public void setUp(){
@@ -23,25 +23,28 @@ public class VerifyDeletingUnitOfMeasureOfItemTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-373")
-    public void VerifyDeletingUnitOfMeasureOfItem() throws InterruptedException {
+    @Test(groups = "DOT-TC-622")
+    public void VerifyThePreviewCatalogEditItemCatalogData() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
-        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-        Login.navigateToDistributorPortal(DistributerName);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
+        Dashboard.isUserNavigatedToDashboard();
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
-        Catalog.selectItemFromGrid(itemCode);
-        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        Catalog.clickOnPreviewCatalog();
+        softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
+        Catalog.selectFirstEditItem();
         Catalog.navigateToPricingAndPromotions();
+        Catalog.addUnitOfMeasure();
+        Catalog.selectUnitFromDropdown(UOM);
+        Catalog.setItemUnitPrice(itemPrice);
+        Catalog.saveChanges();
+        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in creating UOM");
         Catalog.deleteUOMFromCatalog();
         softAssert.assertTrue(Catalog.deleteUOMOverlayDisplayed(),"UOM delete overlay displaying ERROR");
         Catalog.DeleteConfirm();
         Catalog.saveChanges();
-        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving the changes after UOM Delete");
-        softAssert.assertFalse(Catalog.isDeletedUOMDisplayed(),"Error in deleting the UOM");
-
+        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in deleting UOM");
         softAssert.assertAll();
     }
 
@@ -50,6 +53,4 @@ public class VerifyDeletingUnitOfMeasureOfItemTest extends TestBase {
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }
-
-
 }

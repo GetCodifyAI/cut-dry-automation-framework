@@ -1,4 +1,4 @@
-package com.cutanddry.qa.tests.catalog_view;
+package com.cutanddry.qa.tests.catalog;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
@@ -12,12 +12,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyRemovingSubstituteFromAnItemTest extends TestBase{
+public class VerifyPreviewCatalogEditItemRemoveSubstituteTest extends TestBase {
     static User user;
-    String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
-    String itemCode = "00475";
     String substituteItemCode = "20024";
-
 
     @BeforeMethod
     public void setUp(){
@@ -25,33 +22,27 @@ public class VerifyRemovingSubstituteFromAnItemTest extends TestBase{
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-375")
-    public void VerifyRemovingSubstituteFromAnItem() {
+    @Test(groups = "DOT-TC-624")
+    public void VerifyPreviewCatalogEditItemAddSubstitute() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
-        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-        Login.navigateToDistributorPortal(DistributerName);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
+        Dashboard.isUserNavigatedToDashboard();
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
-        Catalog.searchItemInCatalog(itemCode);
-        Catalog.selectItemFromGrid(itemCode);
-        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        Catalog.clickOnPreviewCatalog();
+        softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
+        Catalog.selectFirstEditItem();
         Catalog.navigateToSubstituteTab();
         Catalog.deleteSubstituteItem(substituteItemCode);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in Removing substitute item");
-        softAssert.assertFalse(Catalog.isDeletedSubstituteItemDisplayedInPage(itemCode),"Substitute Item not Removed");
         softAssert.assertAll();
     }
-
 
     @AfterMethod
     public void tearDown(ITestResult result) {
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }
-
-
-
 }

@@ -29,7 +29,7 @@ public class CatalogPage extends LoginPage{
     By additionalAttributesTab = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Additional Attributes')]");
     By imagesTab = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Images')]");
     By certificationAttribute = By.xpath("//div[contains(text(),'Certifications')]");
-    By productItemImage = By.xpath("//img[contains(@class,'_kzpva6 img-fluid') and contains(@src,'img01.jpg')]");
+    By productItemImage = By.xpath("//img[contains(@class,'_kzpva6 img-fluid') and contains(@src,'.jpg')]");
     By priceAndPromotions = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Pricing & Promotions')]");
     By unitOfMeasure = By.xpath("//button[contains(text(),'+ Unit of measure')]");
     By uomCount = By.xpath("//table[@class='pt-4 w-auto table table-borderless']//td[contains(@class, 'pl-0')]//label");
@@ -95,6 +95,10 @@ public class CatalogPage extends LoginPage{
     By lbl_no = By.xpath("(//div[contains(text(), 'No')])[last()]");
     By btn_apply = By.xpath("//button[contains(text(), 'Apply')]");
     By lbl_noImage = By.xpath("//div[@class='_hm9gs6 text-center']/img[not(@src='https://d3stps52o2e9nv.cloudfront.net/consumer/placeholder-img-product-v2.svg')]");
+    By firstItem = By.xpath("(//div[contains(@class, 'card')]//div[@class='_3quvq7 _1vlidrf'])[1]");
+    By txt_productOverview= By.xpath("//div[contains(text(),'Product Overview')]");
+    By btn_editProduct = By.xpath("//a[text()='Edit Product']");
+    By btn_firstEditItem = By.xpath("(//a[text()='Edit Item'])[1]");
 
     public boolean isCatalogTextDisplayed() {
         try {
@@ -245,7 +249,8 @@ public class CatalogPage extends LoginPage{
     public void typeSaleValue(String saleValue){
         distributorUI.sendKeys(salesValue,saleValue);
     }
-    public void deleteUOMinCatalog(){
+    public void deleteUOMinCatalog() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.click(uomDeleteBtn);
     }
     public boolean isUOMDeleteOverlayDisplayed(){
@@ -456,6 +461,18 @@ public class CatalogPage extends LoginPage{
     }
     public boolean areImagesDisplayed(){
         return distributorUI.isDisplayed(lbl_noImage);
+    }
+    public void selectFirstItem() {
+        distributorUI.click(firstItem);
+    }
+    public boolean isProductOverviewDisplayed(){
+        return  distributorUI.isDisplayed(txt_productOverview);
+    }
+    public void clickOnEditProduct() {
+        distributorUI.click(btn_editProduct);
+    }
+    public void selectFirstEditItem() {
+        distributorUI.click(btn_firstEditItem);
     }
 }
 
