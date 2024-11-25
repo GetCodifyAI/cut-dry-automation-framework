@@ -17,5 +17,13 @@ public class Tracker {
     public static boolean isCreateNewIssueDisplayed() throws InterruptedException{
         return trackerPage.isCreateNewIssueDisplayed();
     }
+    public static void clickFeatureRequests(){trackerPage.clickFeatureRequests();}
+    public static boolean isFeatureRequestsDisplayed() throws InterruptedException{
+        return trackerPage.isFeatureRequestsDisplayed();
+    }
+    public static void clickRequestFeature(){trackerPage.clickRequestFeature();}
+    public static boolean isRequestNewFeatureDisplayed() throws InterruptedException{
+        return trackerPage.isRequestNewFeatureDisplayed();
+    }
 
 }
