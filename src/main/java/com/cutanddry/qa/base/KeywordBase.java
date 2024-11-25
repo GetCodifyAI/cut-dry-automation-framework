@@ -598,7 +598,7 @@ public class KeywordBase {
         // Store the current set of window handles (before opening the new tab)
         Set<String> existingWindows = driver.getWindowHandles();
 
-        // Click the element that opens the new tab
+        // Click the element that opens the new
         driver.findElement(by).click();
 
         // Wait until the number of windows increases (indicating a new tab is opened)

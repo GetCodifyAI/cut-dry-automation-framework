@@ -314,4 +314,16 @@ public class Catalog {
     public static void selectFirstEditItem(){
         catalogPage.selectFirstEditItem();
     }
+    public static void selectCopyPDP(){
+        catalogPage.selectCopyPDP();
+    }
+    public static void selectExportPDP(){
+        catalogPage.selectExportPDP();
+    }
+    public static boolean isPDPLinkCopiedPopupDisplayed(){
+        return catalogPage.isPDPLinkCopiedPopupDisplayed();
+    }
+    public static boolean isNavigatedToProductDetails(){
+        return catalogPage.isNavigatedToProductDetails();
+    }
 }

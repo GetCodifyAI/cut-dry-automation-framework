@@ -31,7 +31,13 @@ public class VerifyThePreviewCatalogCopyPDPTest extends TestBase {
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.clickOnPreviewCatalog();
         softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
-
+        Catalog.selectFirstItem();
+        softAssert.assertTrue(Catalog.isProductOverviewDisplayed(),"select product error");
+        Catalog.selectCopyPDP();
+        softAssert.assertTrue(Catalog.isPDPLinkCopiedPopupDisplayed(),"link copy error");
+        Catalog.clickOK();
+        Catalog.goToCopiedLink();
+        softAssert.assertTrue(Catalog.isNavigatedToProductDetails(),"navigate to link error");
         softAssert.assertAll();
     }
 
