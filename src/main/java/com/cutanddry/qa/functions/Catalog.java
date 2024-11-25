@@ -128,7 +128,7 @@ public class Catalog {
         catalogPage.typeSaleValue(saleValue);
     }
 
-    public static void deleteUOMFromCatalog(){
+    public static void deleteUOMFromCatalog() throws InterruptedException {
         catalogPage.deleteUOMinCatalog();
     }
 
@@ -301,5 +301,17 @@ public class Catalog {
     }
     public static boolean areImagesDisplayed(){
         return catalogPage.areImagesDisplayed();
+    }
+    public static void selectFirstItem(){
+        catalogPage.selectFirstItem();
+    }
+    public static boolean isProductOverviewDisplayed(){
+        return catalogPage.isProductOverviewDisplayed();
+    }
+    public static void clickOnEditProduct(){
+        catalogPage.clickOnEditProduct();
+    }
+    public static void selectFirstEditItem(){
+        catalogPage.selectFirstEditItem();
     }
 }
