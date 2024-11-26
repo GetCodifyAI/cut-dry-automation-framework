@@ -47,4 +47,13 @@ public class Orders {
     public static void clickOnFirstOrder(){
         ordersPage.clickOnFirstOrder();
     }
+    public static void clickOnEditOrder(){
+        ordersPage.clickOnEditOrder();
+    }
+    public static boolean isEditOrderPopupDisplayed(){
+        return ordersPage.isEditOrderPopupDisplayed();
+    }
+    public static void clickOnConfirm(){
+        ordersPage.clickOnConfirm();
+    }
 }

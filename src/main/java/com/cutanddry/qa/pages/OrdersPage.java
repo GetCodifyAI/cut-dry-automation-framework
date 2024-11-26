@@ -17,6 +17,9 @@ public class OrdersPage extends LoginPage{
     By ratingOverlayCloseBtn = By.xpath("//div[contains(text(),'✕')]");
     By lbl_firstOrderTickBox = By.xpath("//tbody/tr[2]/td[1]");
     By lbl_firstOrder = By.xpath("//tbody/tr[2]/td[2]");
+    By btn_editOrder = By.xpath("//button[contains(text(),'Edit Order')]");
+    By txt_editOrder = By.xpath("//h2[contains(text(),'Edit Order?')]");
+    By btn_confirm= By.xpath("//button[contains(text(),'Confirm')]");
 
     public boolean isOrdersTextDisplayed(){
         try {
@@ -79,5 +82,13 @@ public class OrdersPage extends LoginPage{
     public void clickOnFirstOrder(){
         distributorUI.click(lbl_firstOrder);
     }
-
+    public void clickOnEditOrder(){
+        distributorUI.click(btn_editOrder);
+    }
+    public boolean isEditOrderPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_editOrder);
+    }
+    public void clickOnConfirm(){
+        distributorUI.click(btn_confirm);
+    }
 }

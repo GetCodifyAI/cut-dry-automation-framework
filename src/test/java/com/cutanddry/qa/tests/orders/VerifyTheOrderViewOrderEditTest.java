@@ -27,9 +27,11 @@ public class VerifyTheOrderViewOrderEditTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToOrders();
         softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"navigation error");
-
         Orders.clickOnFirstOrder();
-
+        Orders.clickOnEditOrder();
+        softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(),"popup error");
+        Orders.clickOnConfirm();
+        softAssert.assertAll();
     }
 
     @AfterMethod
