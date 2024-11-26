@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyManageCatalogExportCatalogTest extends TestBase {
+public class VerifyManageCatalogExportPromotionFileTest extends TestBase {
     static User user;
 
     @BeforeMethod
@@ -21,8 +21,8 @@ public class VerifyManageCatalogExportCatalogTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-514")
-    public void VerifyManageCatalogExportCatalog() throws InterruptedException {
+    @Test(groups = "DOT-TC-515")
+    public void VerifyManageCatalogExportPromotionFile() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -30,7 +30,7 @@ public class VerifyManageCatalogExportCatalogTest extends TestBase {
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.clickOnManageCatalog();
-        Catalog.selectExportCatalog();
+        Catalog.selectExportPromoFiles();
         softAssert.assertAll();
     }
 
