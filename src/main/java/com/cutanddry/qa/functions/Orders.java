@@ -80,4 +80,16 @@ public class Orders {
     public static String isCustomerSearchResultDisplayed() throws InterruptedException {
         return ordersPage.isCustomerSearchResultDisplayed();
     }
+    public static void selectOrderDate(String days) {
+        ordersPage.selectOrderDate(days);
+    }
+    public static boolean isOrderDateChanged(String days){
+        return ordersPage.isOrderDateChanged(days);
+    }
+    public static String getCount() {
+        return ordersPage.getCount();
+    }
+    public static String getResultsCount() throws InterruptedException {
+        return ordersPage.getResultsCount();
+    }
 }

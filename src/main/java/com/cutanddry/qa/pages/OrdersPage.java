@@ -28,6 +28,12 @@ public class OrdersPage extends LoginPage{
     By txt_printKitchenReceipt = By.xpath("//a[contains(text(), 'Print Kitchen Receipt')]");
     By tbx_searchOrders = By.xpath("//input[@placeholder='Search']");
     By tbx_firstOrder = By.xpath("//tbody/tr[2]/td[5]");
+    By lbl_orderDateDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[1]");
+    By lbl_statusDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[2]");
+    String txt_days = "//div[text()='DAYS']";
+    By txt_date = By.xpath("(//td[2])[1]");
+    String date = "//td[text()='DATE']";
+    By txt_resultsCount = By.xpath("//div[contains(text(), 'results')]");
 
     public boolean isOrdersTextDisplayed(){
         try {
@@ -128,5 +134,28 @@ public class OrdersPage extends LoginPage{
     public String isCustomerSearchResultDisplayed() throws InterruptedException {
         distributorUI.waitForCustom(4000);
         return distributorUI.getText(tbx_firstOrder);
+    }
+    public void selectOrderDate(String days){
+        distributorUI.click(lbl_orderDateDropdown);
+        distributorUI.waitForVisibility(By.xpath(txt_days.replace("DAYS", days)));
+        distributorUI.click(By.xpath(txt_days.replace("DAYS", days)));
+    }
+    public boolean isOrderDateChanged(String days){
+        try {
+            distributorUI.isDisplayed(By.xpath(txt_days.replace("DAYS", days)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(txt_days.replace("DAYS", days)));
+    }
+    public String getResultsCount() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        distributorUI.waitForVisibility(txt_resultsCount);
+        String resultsText = distributorUI.getText(txt_resultsCount);
+        return resultsText.split(" ")[0];
+    }
+    public String getCount() {
+        String d = distributorUI.getText(txt_date);
+        return String.valueOf(distributorUI.countElements(By.xpath(date.replace("DATE", d))));
     }
 }
