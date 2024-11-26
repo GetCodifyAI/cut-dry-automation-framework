@@ -31,6 +31,7 @@ public class OrdersPage extends LoginPage{
     By lbl_orderDateDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[1]");
     By lbl_statusDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[2]");
     String txt_days = "//div[text()='DAYS']";
+    String txt_status = "//div[text()='STATUS']";
     By txt_date = By.xpath("(//td[2])[1]");
     String date = "//td[text()='DATE']";
     By txt_resultsCount = By.xpath("//div[contains(text(), 'results')]");
@@ -140,6 +141,19 @@ public class OrdersPage extends LoginPage{
         distributorUI.waitForVisibility(By.xpath(txt_days.replace("DAYS", days)));
         distributorUI.click(By.xpath(txt_days.replace("DAYS", days)));
     }
+    public void selectOrderStatus(String status){
+        distributorUI.click(lbl_statusDropdown);
+        distributorUI.waitForVisibility(By.xpath(txt_status.replace("STATUS", status)));
+        distributorUI.click(By.xpath(txt_status.replace("STATUS", status)));
+    }
+    public boolean isOrderStatusChanged(String status){
+        try {
+            distributorUI.isDisplayed(By.xpath(txt_status.replace("STATUS", status)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(txt_status.replace("STATUS", status)));
+    }
     public boolean isOrderDateChanged(String days){
         try {
             distributorUI.isDisplayed(By.xpath(txt_days.replace("DAYS", days)));
@@ -154,7 +168,11 @@ public class OrdersPage extends LoginPage{
         String resultsText = distributorUI.getText(txt_resultsCount);
         return resultsText.split(" ")[0];
     }
-    public String getCount() {
+    public String getCountDates() {
+        String d = distributorUI.getText(txt_date);
+        return String.valueOf(distributorUI.countElements(By.xpath(date.replace("DATE", d))));
+    }
+    public String getCountStatus() {
         String d = distributorUI.getText(txt_date);
         return String.valueOf(distributorUI.countElements(By.xpath(date.replace("DATE", d))));
     }

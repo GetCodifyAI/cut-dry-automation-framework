@@ -86,8 +86,8 @@ public class Orders {
     public static boolean isOrderDateChanged(String days){
         return ordersPage.isOrderDateChanged(days);
     }
-    public static String getCount() {
-        return ordersPage.getCount();
+    public static String getCountDates() {
+        return ordersPage.getCountDates();
     }
     public static String getResultsCount() throws InterruptedException {
         return ordersPage.getResultsCount();
