@@ -35,7 +35,7 @@ public class OrdersPage extends LoginPage{
     String days = "//div[text()='DATE']";
     String sts = "//div[text()='STATUS']";
     String date = "//td[text()='DATE']";
-    String status = "//td[text()='STATUS']";
+    String status = "//td/div[text()='STATUS']";
     By txt_resultsCount = By.xpath("//div[contains(text(), 'results')]");
 
     public boolean isOrdersTextDisplayed(){
