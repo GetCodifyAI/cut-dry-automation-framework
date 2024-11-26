@@ -18,8 +18,11 @@ public class OrdersPage extends LoginPage{
     By lbl_firstOrderTickBox = By.xpath("//tbody/tr[2]/td[1]");
     By lbl_firstOrder = By.xpath("//tbody/tr[2]/td[2]");
     By btn_editOrder = By.xpath("//button[contains(text(),'Edit Order')]");
-    By txt_editOrder = By.xpath("//h2[contains(text(),'Edit Order?')]");
+    By txt_editOrderPopup = By.xpath("//h2[contains(text(),'Edit Order?')]");
     By btn_confirm= By.xpath("//button[contains(text(),'Confirm')]");
+    By txt_editOrder = By.xpath("//span/div[contains(text(),'Edit Order')]");
+    By txt_submitPopup = By.xpath("//h2[contains(text(),'Submit Changes?')]");
+    By btn_close = By.xpath("//button[contains(text(),'Close')]");
 
     public boolean isOrdersTextDisplayed(){
         try {
@@ -86,9 +89,18 @@ public class OrdersPage extends LoginPage{
         distributorUI.click(btn_editOrder);
     }
     public boolean isEditOrderPopupDisplayed(){
-        return distributorUI.isDisplayed(txt_editOrder);
+        return distributorUI.isDisplayed(txt_editOrderPopup);
     }
     public void clickOnConfirm(){
         distributorUI.click(btn_confirm);
+    }
+    public boolean isNavigatedToEditOrder(){
+        return distributorUI.isDisplayed(txt_editOrder);
+    }
+    public boolean isSubmitPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_submitPopup);
+    }
+    public void clickOnClose(){
+        distributorUI.click(btn_close);
     }
 }

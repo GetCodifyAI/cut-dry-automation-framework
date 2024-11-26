@@ -56,4 +56,13 @@ public class Orders {
     public static void clickOnConfirm(){
         ordersPage.clickOnConfirm();
     }
+    public static boolean isNavigatedToEditOrder(){
+        return ordersPage.isNavigatedToEditOrder();
+    }
+    public static boolean isSubmitPopupDisplayed(){
+        return ordersPage.isSubmitPopupDisplayed();
+    }
+    public static void clickOnClose(){
+        ordersPage.clickOnClose();
+    }
 }

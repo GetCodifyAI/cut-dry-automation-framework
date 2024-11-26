@@ -2,6 +2,7 @@ package com.cutanddry.qa.tests.orders;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.functions.Orders;
@@ -21,7 +22,7 @@ public class VerifyTheOrderViewOrderEditTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-536")
-    public void loginAsDistributor() {
+    public void loginAsDistributor() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
@@ -29,8 +30,14 @@ public class VerifyTheOrderViewOrderEditTest extends TestBase {
         softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"navigation error");
         Orders.clickOnFirstOrder();
         Orders.clickOnEditOrder();
-        softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(),"popup error");
+        softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(),"edit popup error");
         Orders.clickOnConfirm();
+        softAssert.assertTrue(Orders.isNavigatedToEditOrder(),"edit error");
+        Customer.increaseFirstRowQtyByOne();
+        Customer.checkoutItems();
+        softAssert.assertTrue(Orders.isSubmitPopupDisplayed(),"submit popup error");
+        Orders.clickOnConfirm();
+        Orders.clickOnClose();
         softAssert.assertAll();
     }
 
