@@ -32,6 +32,8 @@ public class OrdersPage extends LoginPage{
     By lbl_statusDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[2]");
     By txt_date = By.xpath("(//td[2])[1]");
     By txt_status = By.xpath("(//td[9])[1]");
+    String days = "//div[text()='DATE']";
+    String sts = "//div[text()='STATUS']";
     String date = "//td[text()='DATE']";
     String status = "//td[text()='STATUS']";
     By txt_resultsCount = By.xpath("//div[contains(text(), 'results')]");
@@ -136,31 +138,31 @@ public class OrdersPage extends LoginPage{
         distributorUI.waitForCustom(4000);
         return distributorUI.getText(tbx_firstOrder);
     }
-    public void selectOrderDate(String days){
+    public void selectOrderDate(String day){
         distributorUI.click(lbl_orderDateDropdown);
-        distributorUI.waitForVisibility(By.xpath(date.replace("DATE", days)));
-        distributorUI.click(By.xpath(date.replace("DATE", days)));
+        distributorUI.waitForVisibility(By.xpath(days.replace("DATE", day)));
+        distributorUI.click(By.xpath(days.replace("DATE", day)));
     }
     public void selectOrderStatus(String stat){
         distributorUI.click(lbl_statusDropdown);
-        distributorUI.waitForVisibility(By.xpath(status.replace("STATUS", stat)));
-        distributorUI.click(By.xpath(status.replace("STATUS", stat)));
+        distributorUI.waitForVisibility(By.xpath(sts.replace("STATUS", stat)));
+        distributorUI.click(By.xpath(sts.replace("STATUS", stat)));
     }
     public boolean isOrderStatusChanged(String stat){
         try {
-            distributorUI.isDisplayed(By.xpath(status.replace("STATUS", stat)));
+            distributorUI.isDisplayed(By.xpath(sts.replace("STATUS", stat)));
         } catch (Exception e){
             return false;
         }
-        return distributorUI.isDisplayed(By.xpath(status.replace("STATUS", stat)));
+        return distributorUI.isDisplayed(By.xpath(sts.replace("STATUS", stat)));
     }
-    public boolean isOrderDateChanged(String days){
+    public boolean isOrderDateChanged(String day){
         try {
-            distributorUI.isDisplayed(By.xpath(this.date.replace("DATE", days)));
+            distributorUI.isDisplayed(By.xpath(days.replace("DATE", day)));
         } catch (Exception e){
             return false;
         }
-        return distributorUI.isDisplayed(By.xpath(this.date.replace("DATE", days)));
+        return distributorUI.isDisplayed(By.xpath(days.replace("DATE", day)));
     }
     public String getResultsCount() throws InterruptedException {
         distributorUI.waitForCustom(2000);
