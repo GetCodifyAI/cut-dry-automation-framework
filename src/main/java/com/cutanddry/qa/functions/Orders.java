@@ -65,4 +65,13 @@ public class Orders {
     public static void clickOnClose(){
         ordersPage.clickOnClose();
     }
+    public static void selectFirstOrder(){
+        ordersPage.selectFirstOrder();
+    }
+    public static void clickPrintKitchenReceipt(){
+        ordersPage.clickPrintKitchenReceipt();
+    }
+    public static void clickPrintOrderConfirmation(){
+        ordersPage.clickPrintOrderConfirmation();
+    }
 }

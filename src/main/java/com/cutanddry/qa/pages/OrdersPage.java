@@ -23,6 +23,9 @@ public class OrdersPage extends LoginPage{
     By txt_editOrder = By.xpath("//span/div[contains(text(),'Edit Order')]");
     By txt_submitPopup = By.xpath("//h2[contains(text(),'Submit Changes?')]");
     By btn_close = By.xpath("//button[contains(text(),'Close')]");
+    By btn_bulkActions =    By.xpath("//button[span[contains(., 'Bulk Actions')]]");
+    By txt_printConfirm = By.xpath("//a[contains(text(), 'Print Order Confirmations')]");
+    By txt_printKitchenReceipt = By.xpath("//a[contains(text(), 'Print Kitchen Receipt')]");
 
     public boolean isOrdersTextDisplayed(){
         try {
@@ -102,5 +105,16 @@ public class OrdersPage extends LoginPage{
     }
     public void clickOnClose(){
         distributorUI.click(btn_close);
+    }
+    public void selectFirstOrder(){
+        distributorUI.click(lbl_firstOrderTickBox);
+    }
+    public void clickPrintKitchenReceipt(){
+        distributorUI.click(btn_bulkActions);
+        distributorUI.click(txt_printConfirm);
+    }
+    public void clickPrintOrderConfirmation(){
+        distributorUI.click(btn_bulkActions);
+        distributorUI.click(txt_printKitchenReceipt);
     }
 }
