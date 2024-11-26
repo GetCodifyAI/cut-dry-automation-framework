@@ -53,7 +53,7 @@ public class ChatPage extends LoginPage{
         distributorUI.waitForVisibility(icon_send);
     }
     public String getLastMessageDisplayed() throws InterruptedException {
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(3000);
         return distributorUI.getText(txt_lastMessage);
     }
     public void clickOnRestaurantChat() {

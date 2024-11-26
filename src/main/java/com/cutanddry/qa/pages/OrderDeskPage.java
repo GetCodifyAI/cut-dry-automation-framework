@@ -7,10 +7,11 @@ public class OrderDeskPage extends LoginPage{
     By Submitted_orders_tab = By.xpath("//a[contains(text(),'Submitted Orders')]");
     By DraftOrders_tab = By.xpath("//a[contains(text(),'Draft Orders')]");
     By CustomerName_Draft_orders_text = By.xpath("(//div[contains(text(),'Customer')])[2]");
+    By CustomerName_Submitted_orders_text = By.xpath("(//div[contains(text(),'Customer')])[last()]");
     By DraftOrderPageReviewBtn = By.xpath("(//div[contains(@class, '_10q9czs')]//a[text()='Review'])[2]");
     By DraftOrderReviewPageQuantityIncrementBtn = By.xpath("(//div[@class='p-2 px-sm-3 _du1frc _18jhc3z py-2 ml-2 text-center align-middle'])[1]");
     By DraftOrderReviewPageQuantityDecrementBtn = By.xpath("(//div[@class='p-2 px-sm-3 _du1frc _18jhc3z py-2 mr-2 text-center align-middle'])[1]");
-    By DraftOrderReviewPageQuantityEdit = By.xpath("(//input[@class ='_hk3n6z form-control _b1frhss'])[1]");
+    By DraftOrderReviewPageQuantityEdit = By.xpath("(//input[contains(@data-input,'quantityInput')])[1]");
     By SaveDraftBtn = By.xpath("//button[@class='mr-3 btn btn-outline-primary']");
     By DraftSavedSucessfullyText = By.xpath("//h2[@class='swal2-title']");
     By SucessfullySavedOverlayOkBtn = By.xpath("//button[contains(text(),'OK')]");
@@ -35,8 +36,8 @@ public class OrderDeskPage extends LoginPage{
     String DeliveryDateSelect = "//div[contains(text(),'DELIVERYDATE')]";
     By DeliveryDateNotValidTxt = By.xpath("//div[@class='text-danger']");
     By ReviewTxt = By.xpath("//h2[contains(text(),'pending_review')]");
-
-
+    By SubmittedOrderPageReViewBtn = By.xpath("(//div[contains(@class, '_10q9czs row')]//div//a[text()='Review' and contains(@href,'/order-desk')])[last()]");
+    By SubmitTxt = By.xpath("//h2[contains(text(),'submitted')]");
 
     public boolean isOrderDeskTextDisplayed(){
         try{
@@ -79,7 +80,11 @@ public class OrderDeskPage extends LoginPage{
     }
 
     public void clickOnSaveDraftBtn(){
-        distributorUI.click(ReviewTxt);
+        if (distributorUI.isDisplayed(ReviewTxt)) {
+            distributorUI.click(ReviewTxt);
+        } else {
+            distributorUI.click(SubmitTxt);
+        }
         distributorUI.click(SaveDraftBtn);
     }
 
@@ -179,6 +184,14 @@ public class OrderDeskPage extends LoginPage{
 
     public boolean isDeliveryDateInvalidTextisDisplayed(){
         return distributorUI.isDisplayed(DeliveryDateNotValidTxt);
+    }
+
+    public boolean isSubmittedOrderCustomerTxtDisplayed(){
+        return distributorUI.isDisplayed(CustomerName_Submitted_orders_text);
+    }
+
+    public void clickOnSubmittedOrderPageReviewBtn(){
+        distributorUI.click(SubmittedOrderPageReViewBtn);
     }
 
 
