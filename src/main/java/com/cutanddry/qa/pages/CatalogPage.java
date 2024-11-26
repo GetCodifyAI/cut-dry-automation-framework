@@ -99,6 +99,13 @@ public class CatalogPage extends LoginPage{
     By txt_productOverview= By.xpath("//div[contains(text(),'Product Overview')]");
     By btn_editProduct = By.xpath("//a[text()='Edit Product']");
     By btn_firstEditItem = By.xpath("(//a[text()='Edit Item'])[1]");
+    By btn_3dots = By.xpath("//button[contains(@class, 'dropdown-toggle') and @aria-haspopup=\"true\"]");
+    By txt_copyPDP= By.xpath("//div[contains(text(),'Copy PDP (url)')]");
+    By txt_exportPDP= By.xpath("//div[contains(text(),'Export PDP (pdf)')]");
+    By txt_copyPDPPopup = By.xpath("//h2[contains(text(),'Product Link')]");
+    By txt_productDetails= By.xpath("//span[contains(text(),'Product Details')]");
+    By lbl_exportCatalog = By.xpath("//a[text()='Export catalog (csv)']");
+    By lbl_exportPromoFile = By.xpath("//a[text()='Export Promotion File (csv)']");
 
     public boolean isCatalogTextDisplayed() {
         try {
@@ -473,6 +480,31 @@ public class CatalogPage extends LoginPage{
     }
     public void selectFirstEditItem() {
         distributorUI.click(btn_firstEditItem);
+    }
+    public void selectCopyPDP() {
+        distributorUI.click(btn_3dots);
+        distributorUI.click(txt_copyPDP);
+    }
+    public void selectExportPDP() {
+        distributorUI.click(btn_3dots);
+        distributorUI.click(txt_exportPDP);
+    }
+    public boolean isPDPLinkCopiedPopupDisplayed(){
+        return  distributorUI.isDisplayed(txt_copyPDPPopup);
+    }
+    public boolean isNavigatedToProductDetails(){
+        return  distributorUI.isDisplayed(txt_productDetails);
+    }
+    public boolean isPDFExported(){
+        return  distributorUI.isDisplayed(btn_3dots);
+    }
+    public void selectExportCatalog(){
+        distributorUI.waitForVisibility(lbl_exportCatalog);
+        distributorUI.click(lbl_exportCatalog);
+    }
+    public void selectExportPromoFiles(){
+        distributorUI.waitForVisibility(lbl_exportPromoFile);
+        distributorUI.click(lbl_exportPromoFile);
     }
 }
 
