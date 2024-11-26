@@ -31,7 +31,7 @@ public class OrdersPage extends LoginPage{
     By lbl_orderDateDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[1]");
     By lbl_statusDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[2]");
     By txt_date = By.xpath("(//td[2])[1]");
-    By txt_status = By.xpath("(//td[9])[1]");
+    By txt_status = By.xpath("(//td[10])[1]/div[1]");
     String days = "//div[text()='DATE']";
     String sts = "//div[text()='STATUS']";
     String date = "//td[text()='DATE']";
