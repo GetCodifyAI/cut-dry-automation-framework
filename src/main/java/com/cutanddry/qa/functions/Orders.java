@@ -74,4 +74,10 @@ public class Orders {
     public static void clickPrintOrderConfirmation(){
         ordersPage.clickPrintOrderConfirmation();
     }
+    public static void searchOrder(String code) throws InterruptedException {
+        ordersPage.typeOnSearch(code);
+    }
+    public static String isCustomerSearchResultDisplayed() throws InterruptedException {
+        return ordersPage.isCustomerSearchResultDisplayed();
+    }
 }

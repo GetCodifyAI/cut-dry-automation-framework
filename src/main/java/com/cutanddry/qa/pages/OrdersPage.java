@@ -26,6 +26,8 @@ public class OrdersPage extends LoginPage{
     By btn_bulkActions =    By.xpath("//button[span[contains(., 'Bulk Actions')]]");
     By txt_printConfirm = By.xpath("//a[contains(text(), 'Print Order Confirmations')]");
     By txt_printKitchenReceipt = By.xpath("//a[contains(text(), 'Print Kitchen Receipt')]");
+    By tbx_searchOrders = By.xpath("//input[@placeholder='Search']");
+    By tbx_firstOrder = By.xpath("//tbody/tr[2]/td[5]");
 
     public boolean isOrdersTextDisplayed(){
         try {
@@ -116,5 +118,15 @@ public class OrdersPage extends LoginPage{
     public void clickPrintOrderConfirmation(){
         distributorUI.click(btn_bulkActions);
         distributorUI.click(txt_printKitchenReceipt);
+    }
+    public void typeOnSearch(String code) throws InterruptedException {
+        distributorUI.click(tbx_searchOrders);
+        distributorUI.clear(tbx_searchOrders);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_searchOrders, code);
+    }
+    public String isCustomerSearchResultDisplayed() throws InterruptedException {
+        distributorUI.waitForCustom(4000);
+        return distributorUI.getText(tbx_firstOrder);
     }
 }
