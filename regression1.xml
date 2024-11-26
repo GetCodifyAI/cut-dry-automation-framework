@@ -69,6 +69,9 @@
             <class name="com.cutanddry.qa.tests.roles_based_access.VerifySalespersonRoleTest" />
             <class name="com.cutanddry.qa.tests.roles_based_access.VerifyDispatcherRoleTest" />
             <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessRestrictedViaCustomerProfileTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.VerifySavingSubmittedVoiceOrderTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.VerifyEditingSubmittedVoiceOrderTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.VerifyDeletingVoiceOrderSubmitLineItemTest" />
         </classes>
     </test>
 </suite>

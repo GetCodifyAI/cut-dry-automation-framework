@@ -126,4 +126,11 @@ public class OrderDesk {
         return orderDeskPage.isDeliveryDateInvalidTextisDisplayed();
     }
 
+    public static boolean navigatedToSubmittedOrders(){
+        return orderDeskPage.isSubmittedOrderCustomerTxtDisplayed();
+    }
+
+    public static void navigateToSubmitOrdersReviewPage(){
+        orderDeskPage.clickOnSubmittedOrderPageReviewBtn();
+    }
 }
