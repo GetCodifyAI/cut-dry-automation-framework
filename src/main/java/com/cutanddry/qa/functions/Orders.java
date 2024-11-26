@@ -44,4 +44,7 @@ public class Orders {
     public static void selectOrderGuide(String OrderGuide) {
         ordersPage.clickOnOrderGuide(OrderGuide);
     }
+    public static void clickOnFirstOrder(){
+        ordersPage.clickOnFirstOrder();
+    }
 }

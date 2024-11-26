@@ -15,7 +15,8 @@ public class OrdersPage extends LoginPage{
     String orderGuide ="//div[contains(text(),'ORDERGUIDE')]";
     By ratingsOverlay = By.id("nps-modal");
     By ratingOverlayCloseBtn = By.xpath("//div[contains(text(),'✕')]");
-
+    By lbl_firstOrderTickBox = By.xpath("//tbody/tr[2]/td[1]");
+    By lbl_firstOrder = By.xpath("//tbody/tr[2]/td[2]");
 
     public boolean isOrdersTextDisplayed(){
         try {
@@ -75,4 +76,8 @@ public class OrdersPage extends LoginPage{
             distributorUI.click(By.xpath(orderGuide.replace("ORDERGUIDE",OrderGuideName)));
         }
     }
+    public void clickOnFirstOrder(){
+        distributorUI.click(lbl_firstOrder);
+    }
+
 }

@@ -28,6 +28,8 @@ public class VerifyTheOrderViewOrderEditTest extends TestBase {
         Dashboard.navigateToOrders();
         softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"navigation error");
 
+        Orders.clickOnFirstOrder();
+
     }
 
     @AfterMethod
