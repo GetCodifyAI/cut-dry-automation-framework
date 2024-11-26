@@ -2,7 +2,6 @@ package com.cutanddry.qa.tests.orders;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
-import com.cutanddry.qa.functions.Catalog;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.functions.Orders;
@@ -32,7 +31,7 @@ public class VerifyTheOrderViewDateDropdownTest extends TestBase {
         softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"navigation error");
         Orders.selectOrderDate(date);
         softAssert.assertTrue(Orders.isOrderDateChanged(date),"dropdown error");
-        softAssert.assertEquals(Orders.getResultsCount(), Orders.getCount(), "set date error");
+        softAssert.assertEquals(Orders.getResultsCount(), Orders.getCountDates(), "set date error");
         softAssert.assertAll();
     }
 

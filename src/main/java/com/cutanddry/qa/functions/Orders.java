@@ -83,11 +83,20 @@ public class Orders {
     public static void selectOrderDate(String days) {
         ordersPage.selectOrderDate(days);
     }
+    public static void selectOrderStatus(String sts) {
+        ordersPage.selectOrderStatus(sts);
+    }
     public static boolean isOrderDateChanged(String days){
         return ordersPage.isOrderDateChanged(days);
     }
+    public static boolean isOrderStatusChanged(String days){
+        return ordersPage.isOrderStatusChanged(days);
+    }
     public static String getCountDates() {
         return ordersPage.getCountDates();
+    }
+    public static String getCountStatus() {
+        return ordersPage.getCountStatus();
     }
     public static String getResultsCount() throws InterruptedException {
         return ordersPage.getResultsCount();
