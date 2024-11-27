@@ -742,4 +742,14 @@ public class Customer {
     public static boolean isRemoveHoldPopupDisplayed(){
         return customersPage.isRemoveHoldPopupDisplayed();
     }
+
+    public static void ifHasHoldsRemoveHoldsFromCustomer(){
+        if(customersPage.isCustomerOnHold()){
+            customersPage.clickOnEditAccHolds();
+            customersPage.clickOnAccDropdown();
+            customersPage.clickOnNone();
+            customersPage.clickOnSave();
+            customersPage.clickOnYes();
+        }
+    }
 }
