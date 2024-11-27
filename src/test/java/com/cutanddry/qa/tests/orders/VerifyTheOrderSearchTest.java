@@ -23,7 +23,7 @@ public class VerifyTheOrderSearchTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-539")
-    public void loginAsDistributor() throws InterruptedException {
+    public void VerifyTheOrderSearch() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");

@@ -21,7 +21,7 @@ public class VerifyTheOrderViewPrintOrderConfirmationTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-538")
-    public void loginAsDistributor() throws InterruptedException {
+    public void VerifyTheOrderViewPrintOrderConfirmation() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");

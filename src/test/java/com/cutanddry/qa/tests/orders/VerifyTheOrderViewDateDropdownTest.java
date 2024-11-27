@@ -23,7 +23,7 @@ public class VerifyTheOrderViewDateDropdownTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-543")
-    public void loginAsDistributor() throws InterruptedException {
+    public void VerifyTheOrderViewDateDropdown() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
