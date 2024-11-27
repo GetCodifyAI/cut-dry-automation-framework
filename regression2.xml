@@ -98,6 +98,14 @@
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemRemoveSubstituteTest" />
             <class name="com.cutanddry.qa.tests.reports.VerifyTheEmailReportTest" />
             <class name="com.cutanddry.qa.tests.reports.VerifyTheDownloadReportTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogCopyPDPTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogExportPDPTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheSearchTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyManageCatalogExportCatalogTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyManageCatalogExportPromotionFileTest" />
+            <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerOnboardingDocsTest" />
+            <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerIssuesTest" />
+            <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerFeatureRequestsTest" />
         </classes>
     </test>
 </suite>
