@@ -13,8 +13,8 @@ public class OrdersPage extends LoginPage{
     By pendingApprovalText = By.xpath("//span[contains(text(),'Pending Approval')]");
     By selectOrderGuide = By.xpath("//div[contains(text(),'Select Order Guide')]");
     String orderGuide ="//div[contains(text(),'ORDERGUIDE')]";
-    By ratingsOverlay = By.id("nps-modal");
-    By ratingOverlayCloseBtn = By.xpath("//div[contains(text(),'✕')]");
+    By ratingOverlayIframe = By.xpath("//iframe[contains(@aria-label,'NPS Survey')]");
+    By ratingOverlayCloseBtn = By.cssSelector(".ask-me-later .close-icon");
 
 
     public boolean isOrdersTextDisplayed(){
@@ -28,16 +28,17 @@ public class OrdersPage extends LoginPage{
 
     public void clickOnSupplier(String supplierName){
         distributorUI.click(By.xpath(supplierNameInPlaceOrder.replace("SUPPLIERNAME",supplierName)));
+        if(distributorUI.isDisplayed(ratingOverlayIframe)){
+            distributorUI.switchToFrameByElement(ratingOverlayIframe);
+            distributorUI.click(ratingOverlayCloseBtn);
+        }
+        distributorUI.click(checkOutBtn);
     }
 
     public void clickOnIncreaseQuantityBtnInItem(String ItemCode, int Quantity){
         for (int i = 0; i < Quantity; i++) {
             distributorUI.click(By.xpath(quantityIncreaseBtn.replace("ITEMCODE", ItemCode)));
         }
-        if(distributorUI.isDisplayed(ratingsOverlay)){
-            distributorUI.click(ratingOverlayCloseBtn);
-        }
-        distributorUI.click(checkOutBtn);
     }
 
     public void clickOnCheckoutBtnInOperator(){
