@@ -28,16 +28,20 @@ public class OrdersPage extends LoginPage{
 
     public void clickOnSupplier(String supplierName){
         distributorUI.click(By.xpath(supplierNameInPlaceOrder.replace("SUPPLIERNAME",supplierName)));
-        if(distributorUI.isDisplayed(ratingOverlayIframe)){
-            distributorUI.switchToFrameByElement(ratingOverlayIframe);
-            distributorUI.click(ratingOverlayCloseBtn);
-        }
-        distributorUI.click(checkOutBtn);
     }
 
     public void clickOnIncreaseQuantityBtnInItem(String ItemCode, int Quantity){
         for (int i = 0; i < Quantity; i++) {
             distributorUI.click(By.xpath(quantityIncreaseBtn.replace("ITEMCODE", ItemCode)));
+        }
+        if(distributorUI.isDisplayed(ratingOverlayIframe)){
+            distributorUI.switchToFrameByElement(ratingOverlayIframe);
+            distributorUI.click(ratingOverlayCloseBtn);
+            try {
+                distributorUI.waitForCustom(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
