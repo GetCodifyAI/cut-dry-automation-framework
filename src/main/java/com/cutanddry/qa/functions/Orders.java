@@ -101,4 +101,16 @@ public class Orders {
     public static String getResultsCount() throws InterruptedException {
         return ordersPage.getResultsCount();
     }
+    public static void clickOnMoreFilters(){
+        ordersPage.clickOnMoreFilters();
+    }
+    public static boolean isFilterOrdersPopupDisplayed(){
+        return ordersPage.isFilterOrdersPopupDisplayed();
+    }
+    public static void selectCreditReqStatus() throws InterruptedException {
+        ordersPage.selectCreditReqStatus();
+    }
+    public static String getCountFiltered() {
+        return ordersPage.getCountFiltered();
+    }
 }

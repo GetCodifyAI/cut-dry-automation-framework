@@ -37,6 +37,12 @@ public class OrdersPage extends LoginPage{
     String date = "//td[text()='DATE']";
     String status = "//td/div[text()='STATUS']";
     By txt_resultsCount = By.xpath("//div[contains(text(), 'results')]");
+    By btn_moreFilters = By.xpath("//button[contains(., 'More Filters')]");
+    By txt_filterOrders= By.xpath("//div[contains(text(),'Filter Orders')]");
+    By lbl_credReqStat = By.xpath("//label[contains(text(), 'Credit Request Status')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    By lbl_req = By.xpath("//div[contains(text(),'Requested')]");
+    By btn_save = By.xpath("//button[contains(text(),'Save')]");
+    By lbl_credReq = By.xpath("//div[contains(text(),'Credit Requested')]");
 
     public boolean isOrdersTextDisplayed(){
         try {
@@ -177,5 +183,22 @@ public class OrdersPage extends LoginPage{
     public String getCountStatus() {
         String s = distributorUI.getText(txt_status);
         return String.valueOf(distributorUI.countElements(By.xpath(status.replace("STATUS", s))));
+    }
+    public void clickOnMoreFilters() {
+        distributorUI.click(btn_moreFilters);
+    }
+    public boolean isFilterOrdersPopupDisplayed(){
+        return  distributorUI.isDisplayed(txt_filterOrders);
+    }
+    public void selectCreditReqStatus() throws InterruptedException {
+        distributorUI.click(lbl_credReqStat);
+        distributorUI.hoverOverElement(lbl_req);
+        distributorUI.clickUsingJavaScript(lbl_req);
+        distributorUI.waitForCustom(1000);
+        distributorUI.click(btn_save);
+        distributorUI.waitForCustom(1000);
+    }
+    public String getCountFiltered() {
+        return String.valueOf(distributorUI.countElements(lbl_credReq));
     }
 }

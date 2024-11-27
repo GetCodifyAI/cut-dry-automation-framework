@@ -14,6 +14,8 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheOrderViewMoreFiltersTest extends TestBase {
     static User user;
+    String date = "Last week";
+
     @BeforeMethod
     public void setUp() {
         initialization();
@@ -27,7 +29,12 @@ public class VerifyTheOrderViewMoreFiltersTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToOrders();
         softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"navigation error");
-
+        Orders.selectOrderDate(date);
+        softAssert.assertTrue(Orders.isOrderDateChanged(date),"dropdown error");
+        Orders.clickOnMoreFilters();
+        softAssert.assertTrue(Orders.isFilterOrdersPopupDisplayed(),"popup error");
+        Orders.selectCreditReqStatus();
+        softAssert.assertEquals(Orders.getResultsCount(), Orders.getCountFiltered(), "filtering error");
         softAssert.assertAll();
     }
 
