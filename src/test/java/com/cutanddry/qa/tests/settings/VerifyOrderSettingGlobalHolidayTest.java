@@ -50,7 +50,7 @@ public class VerifyOrderSettingGlobalHolidayTest extends TestBase {
         Dashboard.navigateToOrderGuide();
         softAssert.assertTrue(Dashboard.isUserNavigatedToOrderGuide(),"navigation error");
         Customer.searchItemOnOrderGuide(itemName);
-        softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item 1 mismatch");
+        softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         Customer.increaseFirstRowQtyByOneInDist();
         Customer.checkoutItemsDist();
         softAssert.assertFalse(Settings.isHolidayInDeliveryDates(),"operator setting error");
