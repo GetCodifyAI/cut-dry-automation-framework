@@ -2,6 +2,7 @@ package com.cutanddry.qa.tests.settings;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.functions.Settings;
@@ -14,6 +15,8 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyOrderSettingCustomerSpecificHolidayPickupWillCallMailDeliveryTest extends TestBase {
     static User user;
+    static String customerId = "21259";
+    static String itemName = "Asparagus 11 Lb";
 
     @BeforeMethod
     public void setUp() {
@@ -28,7 +31,43 @@ public class VerifyOrderSettingCustomerSpecificHolidayPickupWillCallMailDelivery
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");
-
+        Settings.clickOnAddHoliday();
+        softAssert.assertTrue(Settings.isSetHolidayPopupDisplayed(),"holiday settings popup error");
+        Settings.selectCustomerSpecific(customerId);
+        Settings.clickOnSaveBtn();
+        softAssert.assertEquals(Settings.getDate(),Settings.getAddedDate(),"holiday setting error");
+        Settings.clickOnSaveChanges();
+        Dashboard.navigateToCustomers();
+        Customer.searchCustomerByCode(customerId);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
+        Customer.clickOnOrderGuide(customerId);
+        Customer.increaseFirstRowQtyByOne();
+        Customer.checkoutItems();
+        Customer.selectPickUpWillCall();
+        softAssert.assertFalse(Settings.isHolidayInDeliveryOrPuckUpOrMailDates(),"distributor setting error");
+        Customer.selectMailDelivery();
+        softAssert.assertFalse(Settings.isHolidayInDeliveryOrPuckUpOrMailDates(),"distributor setting error");
+        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
+        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Dashboard.navigateToIndependentFoodsCo();
+        Dashboard.navigateToOrderGuide();
+        softAssert.assertTrue(Dashboard.isUserNavigatedToOrderGuide(),"navigation error");
+        Customer.searchItemOnOrderGuide(itemName);
+        softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
+        Customer.increaseFirstRowQtyByOneInDist();
+        Customer.checkoutItemsDist();
+        Customer.selectPickUpWillCall();
+        softAssert.assertFalse(Settings.isHolidayInDeliveryOrPuckUpOrMailDates(),"operator setting error");
+        Customer.selectMailDelivery();
+        softAssert.assertFalse(Settings.isHolidayInDeliveryOrPuckUpOrMailDates(),"operator setting error");
+        Login.navigateToDistributor();
+        Dashboard.isUserNavigatedToDashboard();
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+        Dashboard.navigateToOrderSettings();
+        softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");
+        Settings.clickOnRemoveHoliday();
+        softAssert.assertNotEquals(Settings.getDate(),Settings.getAddedDate(),"holiday setting error");
+        Settings.clickOnSaveChanges();
         softAssert.assertAll();
     }
 
