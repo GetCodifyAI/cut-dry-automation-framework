@@ -13,7 +13,7 @@ public class OrdersPage extends LoginPage{
     By pendingApprovalText = By.xpath("//span[contains(text(),'Pending Approval')]");
     By selectOrderGuide = By.xpath("//div[contains(text(),'Select Order Guide')]");
     String orderGuide ="//div[contains(text(),'ORDERGUIDE')]";
-    By ratingsOverlay = By.id("nps-modal");
+    By ratingOverlayIframe = By.xpath("//iframe[contains(@aria-label,'NPS Survey')]");
     By ratingOverlayCloseBtn = By.xpath("//div[contains(text(),'✕')]");
     By lbl_firstOrderTickBox = By.xpath("//tbody/tr[2]/td[1]");
     By lbl_firstOrder = By.xpath("//tbody/tr[2]/td[2]");
@@ -61,10 +61,15 @@ public class OrdersPage extends LoginPage{
         for (int i = 0; i < Quantity; i++) {
             distributorUI.click(By.xpath(quantityIncreaseBtn.replace("ITEMCODE", ItemCode)));
         }
-        if(distributorUI.isDisplayed(ratingsOverlay)){
+        if(distributorUI.isDisplayed(ratingOverlayIframe)){
+            distributorUI.switchToFrameByElement(ratingOverlayIframe);
             distributorUI.click(ratingOverlayCloseBtn);
+            try {
+                distributorUI.waitForCustom(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
-        distributorUI.click(checkOutBtn);
     }
 
     public void clickOnCheckoutBtnInOperator(){

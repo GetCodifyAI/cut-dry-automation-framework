@@ -222,7 +222,7 @@ public class CustomersPage extends LoginPage {
     By lbl_none = By.xpath("//div[text()='Account Holds']/following-sibling::div//span[contains(@class, 'badge') and text()='None']");
     By txt_hardHoldPopup = By.xpath("//h2[contains(text(), 'Your order could not be submitted due to a hold on your account')]");
     By txt_removeHold = By.xpath("//h2[contains(text(), 'Remove hold')]");
-
+    By customer_Holds = By.xpath("//span[contains(text(),'Credit') or contains(text(),'Hard') or contains(text(),'General')]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -1183,4 +1183,8 @@ public class CustomersPage extends LoginPage {
     public boolean isRemoveHoldPopupDisplayed(){
         return distributorUI.isDisplayed(txt_removeHold);
     }
+    public boolean isCustomerOnHold(){
+        return distributorUI.isDisplayed(customer_Holds);
+    }
+
 }

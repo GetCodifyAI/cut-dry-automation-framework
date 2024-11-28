@@ -45,6 +45,7 @@ public class VerifyOrderApprovalSettingsReflectedWhileOrderingTest {
         Customer.searchCustomerByCode(CustomerCode);
         Customer.SelectCustomer(CustomerCode);
         softAssert.assertTrue(Customer.orderApprovalTxtDisplayed(),"Order approval option is not displayed");
+        Customer.ifHasHoldsRemoveHoldsFromCustomer();
         Customer.orderApprovalEdit();
         softAssert.assertTrue(Customer.orderApprovalSettingsOverlayDisplayed(),"Order approval overlay is not displayed");
         softAssert.assertTrue(Customer.existingOrderGuideDisplayed(OrderGuideName),"Error in displaying the existing order guids");

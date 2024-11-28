@@ -1,10 +1,10 @@
-package com.cutanddry.qa.tests.standing_orders;
+package com.cutanddry.qa.tests.reports;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
-import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
+import com.cutanddry.qa.functions.Reports;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -12,32 +12,26 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyDeletingStandingOrdersTest extends TestBase {
+public class VerifyTheEmailReportTest extends TestBase {
     static User user;
-    static String customerId = "16579";
 
     @BeforeMethod
     public void setUp() {
         initialization();
         user = JsonUtil.readUserLogin();
     }
-
-    @Test(groups = "DOT-TC-203")
-    public void verifyDeletingStandingOrders() throws InterruptedException {
+    @Test(groups = "DOT-TC-546")
+    public void VerifyTheEmailReport() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
-        Dashboard.navigateToCustomers();
-        Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
-        Customer.clickOnCustomerCode(customerId);
-        Customer.clickOnOrdersTab();
-        softAssert.assertTrue(Customer.isStandingOrdersDisplayed(),"navigation error");
-        Customer.clickOnDeleteStandingOrders();
-        softAssert.assertFalse(Customer.areStandingOrdersDeleted(),"delete error");
+        Dashboard.navigateToReports();
+        softAssert.assertTrue(Reports.isUserNavigatedToReports(),"navigation to reports error");
+        Reports.clickEmailReport();
+        softAssert.assertTrue(Reports.isGeneratingReportPopupDisplayed(),"generating report pop up not display");
+        Reports.clickOkReport();
         softAssert.assertAll();
     }
-
     @AfterMethod
     public void tearDown(ITestResult result) {
         takeScreenshotOnFailure(result);
