@@ -105,7 +105,13 @@
             <class name="com.cutanddry.qa.tests.catalog.VerifyManageCatalogExportPromotionFileTest" />
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerOnboardingDocsTest" />
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerIssuesTest" />
-            <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerFeatureRequestsTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderSearchTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewOrderEditTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewDateDropdownTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewStatusDropdownTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewPrintOrderConfirmationTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewPrintKitchenReceiptTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewMoreFiltersTest" />
         </classes>
     </test>
 </suite>
