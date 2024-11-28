@@ -44,4 +44,73 @@ public class Orders {
     public static void selectOrderGuide(String OrderGuide) {
         ordersPage.clickOnOrderGuide(OrderGuide);
     }
+    public static void clickOnFirstOrder(){
+        ordersPage.clickOnFirstOrder();
+    }
+    public static void clickOnEditOrder(){
+        ordersPage.clickOnEditOrder();
+    }
+    public static boolean isEditOrderPopupDisplayed(){
+        return ordersPage.isEditOrderPopupDisplayed();
+    }
+    public static void clickOnConfirm(){
+        ordersPage.clickOnConfirm();
+    }
+    public static boolean isNavigatedToEditOrder(){
+        return ordersPage.isNavigatedToEditOrder();
+    }
+    public static boolean isSubmitPopupDisplayed(){
+        return ordersPage.isSubmitPopupDisplayed();
+    }
+    public static void clickOnClose(){
+        ordersPage.clickOnClose();
+    }
+    public static void selectFirstOrder(){
+        ordersPage.selectFirstOrder();
+    }
+    public static void clickPrintKitchenReceipt(){
+        ordersPage.clickPrintKitchenReceipt();
+    }
+    public static void clickPrintOrderConfirmation(){
+        ordersPage.clickPrintOrderConfirmation();
+    }
+    public static void searchOrder(String code) throws InterruptedException {
+        ordersPage.typeOnSearch(code);
+    }
+    public static String isCustomerSearchResultDisplayed() throws InterruptedException {
+        return ordersPage.isCustomerSearchResultDisplayed();
+    }
+    public static void selectOrderDate(String days) {
+        ordersPage.selectOrderDate(days);
+    }
+    public static void selectOrderStatus(String sts) {
+        ordersPage.selectOrderStatus(sts);
+    }
+    public static boolean isOrderDateChanged(String days){
+        return ordersPage.isOrderDateChanged(days);
+    }
+    public static boolean isOrderStatusChanged(String days){
+        return ordersPage.isOrderStatusChanged(days);
+    }
+    public static String getCountDates() {
+        return ordersPage.getCountDates();
+    }
+    public static String getCountStatus() {
+        return ordersPage.getCountStatus();
+    }
+    public static String getResultsCount() throws InterruptedException {
+        return ordersPage.getResultsCount();
+    }
+    public static void clickOnMoreFilters(){
+        ordersPage.clickOnMoreFilters();
+    }
+    public static boolean isFilterOrdersPopupDisplayed(){
+        return ordersPage.isFilterOrdersPopupDisplayed();
+    }
+    public static void selectCreditReqStatus() throws InterruptedException {
+        ordersPage.selectCreditReqStatus();
+    }
+    public static String getCountFiltered() {
+        return ordersPage.getCountFiltered();
+    }
 }
