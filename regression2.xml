@@ -112,6 +112,10 @@
             <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewPrintOrderConfirmationTest" />
             <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewPrintKitchenReceiptTest" />
             <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewMoreFiltersTest" />
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingGlobalHolidayTest" />
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingCustomerSpecificHolidayTest" />
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingGlobalHolidayPickupWillCallMailDeliveryTest" />
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingCustomerSpecificHolidayPickupWillCallMailDeliveryTest" />
         </classes>
     </test>
 </suite>
