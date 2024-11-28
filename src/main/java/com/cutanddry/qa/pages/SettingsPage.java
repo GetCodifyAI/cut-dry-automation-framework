@@ -69,6 +69,7 @@ public class SettingsPage extends LoginPage{
     By dropdown_items = By.xpath("//div[@class='cd_themed_select__menu css-26l3qy-menu']");
     By dropdown_deliveryDate = By.xpath("//div[@class='text-truncate']");
     By btn_minus = By.xpath("(//button[*[local-name()='svg' and @data-icon='minus']])[last()]");
+    By txt_addCustomerCode =    By.xpath("//div[text()='Add Customer Codes']/following::input[@type='text']");
 
     public boolean isOrderSettingsTextDisplayed() throws InterruptedException {
         try {
@@ -370,10 +371,13 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForVisibility(txt_global);
         distributorUI.click(txt_global);
     }
-    public void selectCustomerSpecific() {
+    public void selectCustomerSpecific(String code) {
         distributorUI.click(dropdown_selectType);
         distributorUI.waitForVisibility(txt_customerSpecific);
         distributorUI.click(txt_customerSpecific);
+        distributorUI.waitForVisibility(txt_addCustomerCode);
+        distributorUI.sendKeys(txt_addCustomerCode, code);
+
     }
     public String getDate() {
         LocalDate today = LocalDate.now();

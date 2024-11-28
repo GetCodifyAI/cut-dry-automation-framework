@@ -33,7 +33,7 @@ public class VerifyOrderSettingCustomerSpecificHolidayTest extends TestBase {
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");
         Settings.clickOnAddHoliday();
         softAssert.assertTrue(Settings.isSetHolidayPopupDisplayed(),"holiday settings popup error");
-        Settings.selectCustomerSpecific();
+        Settings.selectCustomerSpecific(customerId);
         Settings.clickOnSaveBtn();
         softAssert.assertEquals(Settings.getDate(),Settings.getAddedDate(),"holiday setting error");
         Settings.clickOnSaveChanges();

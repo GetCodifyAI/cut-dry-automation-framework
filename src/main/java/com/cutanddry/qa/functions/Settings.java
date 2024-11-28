@@ -181,8 +181,8 @@ public class Settings {
     public static void selectGlobal() {
         settingsPage.selectGlobal();
     }
-    public static void selectCustomerSpecific() {
-        settingsPage.selectCustomerSpecific();
+    public static void selectCustomerSpecific(String code) {
+        settingsPage.selectCustomerSpecific(code);
     }
     public static void clickOnSaveBtn() {
         settingsPage.clickOnSaveBtn();
