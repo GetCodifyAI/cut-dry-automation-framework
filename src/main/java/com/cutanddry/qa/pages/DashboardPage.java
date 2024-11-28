@@ -48,7 +48,12 @@ public class DashboardPage extends LoginPage{
     By btn_adsSettings = By.xpath("//div[@arrowprops]//a[text()='Ads + Rebates']");
     By btn_paySettings = By.xpath("//div[@arrowprops]//a[text()='Pay']");
     By btn_credit_requests = By.xpath("//a[@data-for='sideNavSupplierMenuOptions' and @href='/credit-requests']");
-
+    By btn_placeOrder = By.xpath("//div[contains(text(), 'Independent Foods Co')]");
+    By btn_hayes = By.xpath("//div[contains(text(), 'Hayes')]");
+    By txt_OrderGuide = By.xpath("//div[contains(text(), 'Order Guide')]");
+    By btn_TestAutomation = By.xpath("//div[contains(text(), 'Test_Automation') and contains(@class, 'w-100')]");
+    By txt_draftOrder = By.xpath("//div[contains(@class, 'text-center') and contains(text(), 'continue your previous draft order')]");
+    By btn_noDraftOrder = By.xpath("//span[text()='×']");
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -254,4 +259,23 @@ public class DashboardPage extends LoginPage{
         distributorUI.click(btn_showcase);
     }
     public void clickOnCreditRequests(){distributorUI.click(btn_credit_requests);}
+    public void clickOnPlaceOrder() {
+        distributorUI.click(btn_placeOrder);}
+    public void clickOnHayes() {
+        distributorUI.click(btn_hayes);}
+    public boolean isOrderGuideTextDisplayed(){
+        return distributorUI.isDisplayed(txt_OrderGuide);
+    }
+    public boolean isTestAutomationPopupDisplayed(){
+        try {
+            return distributorUI.isDisplayed(btn_TestAutomation);
+        } catch (Exception e){
+            return false;
+        }
+    }
+    public void clickOnTestAutomationPopup(){
+        distributorUI.waitForClickability(btn_TestAutomation);
+        distributorUI.click(btn_TestAutomation);
+        distributorUI.waitForInvisibility(btn_TestAutomation);
+    }
 }

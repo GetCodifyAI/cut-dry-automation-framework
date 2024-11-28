@@ -172,5 +172,31 @@ public class Settings {
             Settings.clickOK();
         }
     }
-
+    public static boolean isSetHolidayPopupDisplayed() {
+        return settingsPage.isSetHolidayPopupDisplayed();
+    }
+    public static void clickOnAddHoliday() {
+        settingsPage.clickOnPlusBtn();
+    }
+    public static void selectGlobal() {
+        settingsPage.selectGlobal();
+    }
+    public static void selectCustomerSpecific() {
+        settingsPage.selectCustomerSpecific();
+    }
+    public static void clickOnSaveBtn() {
+        settingsPage.clickOnSaveBtn();
+    }
+    public static String getDate() {
+        return settingsPage.getDate();
+    }
+    public static String getAddedDate() {
+        return settingsPage.getAddedDate();
+    }
+    public static boolean isHolidayInDeliveryDates() {
+        return settingsPage.isHolidayInDeliveryDates();
+    }
+    public static void clickOnRemoveHoliday() {
+        settingsPage.clickOnMinusBtn();
+    }
 }
