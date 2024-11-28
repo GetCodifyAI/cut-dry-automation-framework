@@ -752,4 +752,10 @@ public class Customer {
             customersPage.clickOnYes();
         }
     }
+    public static void selectPickUpWillCall(){
+        customersPage.selectPickUpWillCall();
+    }
+    public static void selectMailDelivery(){
+        customersPage.selectMailDelivery();
+    }
 }

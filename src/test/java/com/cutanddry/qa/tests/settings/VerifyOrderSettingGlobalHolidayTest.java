@@ -43,7 +43,7 @@ public class VerifyOrderSettingGlobalHolidayTest extends TestBase {
         Customer.clickOnOrderGuide(customerId);
         Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItems();
-        softAssert.assertFalse(Settings.isHolidayInDeliveryDates(),"distributor setting error");
+        softAssert.assertFalse(Settings.isHolidayInDeliveryOrPuckUpOrMailDates(),"distributor setting error");
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Dashboard.navigateToIndependentFoodsCo();
@@ -53,7 +53,7 @@ public class VerifyOrderSettingGlobalHolidayTest extends TestBase {
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         Customer.increaseFirstRowQtyByOneInDist();
         Customer.checkoutItemsDist();
-        softAssert.assertFalse(Settings.isHolidayInDeliveryDates(),"operator setting error");
+        softAssert.assertFalse(Settings.isHolidayInDeliveryOrPuckUpOrMailDates(),"operator setting error");
         Login.navigateToDistributor();
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");

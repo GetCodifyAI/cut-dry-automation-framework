@@ -388,7 +388,7 @@ public class SettingsPage extends LoginPage{
     public String getAddedDate() {
         return distributorUI.getText(txt_lastDate);
     }
-    public boolean isHolidayInDeliveryDates() {
+    public boolean isHolidayInDeliveryOrPuckUpOrMailDates() {
         LocalDate today = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, MMM dd");
         String formattedDate = today.format(formatter);

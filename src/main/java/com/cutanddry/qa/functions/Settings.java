@@ -193,8 +193,8 @@ public class Settings {
     public static String getAddedDate() {
         return settingsPage.getAddedDate();
     }
-    public static boolean isHolidayInDeliveryDates() {
-        return settingsPage.isHolidayInDeliveryDates();
+    public static boolean isHolidayInDeliveryOrPuckUpOrMailDates() {
+        return settingsPage.isHolidayInDeliveryOrPuckUpOrMailDates();
     }
     public static void clickOnRemoveHoliday() {
         settingsPage.clickOnMinusBtn();
