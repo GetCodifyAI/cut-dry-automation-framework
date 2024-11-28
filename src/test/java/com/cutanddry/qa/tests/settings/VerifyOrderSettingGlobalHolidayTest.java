@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyOrderSettingGlobalHolidayTest extends TestBase {
     static User user;
-    static String customerId = "16579";
+    static String customerId = "21259";
     static String itemName = "Asparagus 11 Lb";
 
     @BeforeMethod
@@ -60,7 +60,7 @@ public class VerifyOrderSettingGlobalHolidayTest extends TestBase {
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");
         Settings.clickOnRemoveHoliday();
-        softAssert.assertEquals(Settings.getDate(),Settings.getAddedDate(),"holiday setting error");
+        softAssert.assertNotEquals(Settings.getDate(),Settings.getAddedDate(),"holiday setting error");
         Settings.clickOnSaveChanges();
         softAssert.assertAll();
     }
