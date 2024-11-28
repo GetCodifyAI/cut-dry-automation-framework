@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyOrderSettingCustomerSpecificHolidayTest extends TestBase {
     static User user;
-    static String customerId = "16579";
+    static String customerId = "21259";
     static String itemName = "Asparagus 11 Lb";
 
     @BeforeMethod
