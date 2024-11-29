@@ -134,6 +134,9 @@ public class Dashboard {
     }
     public static void navigateToOrderGuide() throws InterruptedException {
         dashboardPage.clickOnHayes();
+        if (dashboardPage.isTestAutomationPopupDisplayed()){
+            dashboardPage.clickOnTestAutomationPopup();
+        }
         if (customersPage.isPreviousDraftOrderNoDisplayed()){
             customersPage.clickPreviousDraftOrderNo();
         }
