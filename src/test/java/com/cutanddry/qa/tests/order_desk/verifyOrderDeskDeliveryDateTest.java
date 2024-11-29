@@ -38,7 +38,7 @@ public class verifyOrderDeskDeliveryDateTest extends TestBase {
 
         //Today Delivery Date
         LocalDate today = LocalDate.now();
-        DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("E, MMM dd");
+        DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("EEE, MMM d");
         String TodayDate = customFormatter.format(today);
         OrderDesk.SelectDeliveryDate(TodayDate);
         OrderDesk.SaveDraftOrder();

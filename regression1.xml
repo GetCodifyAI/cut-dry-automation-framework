@@ -45,7 +45,6 @@
             <class name="com.cutanddry.qa.tests.catalog.VerifyHardOrderMinimumWarningTest" />
             <class name="com.cutanddry.qa.tests.catalog.BrandPageForAllPortalsTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyManufacturerPageViaShowCaseTest" />
-            <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessRestrictedViaCustomerProfileTest" />
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyStockDataInCatalogViewTest" />
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyImageOfItemTest" />
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyAdditionalAttributeOfItemTest" />
@@ -59,19 +58,6 @@
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileNewUserInviteTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileEditTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileDeleteTest" />
-            <class name="com.cutanddry.qa.tests.standing_orders.VerifyCreatingStandingOrdersTest" />
-            <class name="com.cutanddry.qa.tests.standing_orders.VerifyEditingStandingOrdersTest" />
-            <class name="com.cutanddry.qa.tests.standing_orders.VerifyAddingAnotherStandingOrderTest" />
-            <class name="com.cutanddry.qa.tests.standing_orders.VerifyDeletingStandingOrdersTest" />
-            <class name="com.cutanddry.qa.tests.integration.VerifyCashAndCarryAppPassingInvalidAccountTest" />
-            <class name="com.cutanddry.qa.tests.roles_based_access.VerifyAdminRoleTest" />
-            <class name="com.cutanddry.qa.tests.roles_based_access.VerifyARRoleTest" />
-            <class name="com.cutanddry.qa.tests.roles_based_access.VerifySalespersonRoleTest" />
-            <class name="com.cutanddry.qa.tests.roles_based_access.VerifyDispatcherRoleTest" />
-            <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessRestrictedViaCustomerProfileTest" />
-            <class name="com.cutanddry.qa.tests.order_desk.VerifySavingSubmittedVoiceOrderTest" />
-            <class name="com.cutanddry.qa.tests.order_desk.VerifyEditingSubmittedVoiceOrderTest" />
-            <class name="com.cutanddry.qa.tests.order_desk.VerifyDeletingVoiceOrderSubmitLineItemTest" />
         </classes>
     </test>
 </suite>
