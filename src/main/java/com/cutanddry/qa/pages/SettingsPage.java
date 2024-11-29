@@ -70,6 +70,8 @@ public class SettingsPage extends LoginPage{
     By dropdown_deliveryDate = By.xpath("//div[@class='text-truncate']");
     By btn_minus = By.xpath("(//button[*[local-name()='svg' and @data-icon='minus']])[last()]");
     By txt_addCustomerCode =    By.xpath("//div[text()='Add Customer Codes']/following::input[@type='text']");
+    By lbl_customerSpecDisabled = By.xpath("//label[text()='Customer Specific Delivery Days']/preceding-sibling::input[@type='checkbox' and @disabled]");
+    By lbl_deliveryDays = By.xpath("//label[text()='Delivery Days']/preceding-sibling::input[@type='checkbox']");
 
     public boolean isOrderSettingsTextDisplayed() throws InterruptedException {
         try {
@@ -399,5 +401,10 @@ public class SettingsPage extends LoginPage{
     public void clickOnMinusBtn() {
         distributorUI.waitForClickability(btn_minus);
         distributorUI.click(btn_minus);
+    }
+    public void uncheckDeliveryDays() {
+        if (distributorUI.isDisplayed(lbl_customerSpecDisabled)){
+            distributorUI.click(lbl_deliveryDays);
+        }
     }
 }

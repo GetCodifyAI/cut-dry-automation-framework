@@ -199,4 +199,7 @@ public class Settings {
     public static void clickOnRemoveHoliday() {
         settingsPage.clickOnMinusBtn();
     }
+    public static void uncheckDeliveryDays() {
+        settingsPage.uncheckDeliveryDays();
+    }
 }
