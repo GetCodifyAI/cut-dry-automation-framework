@@ -127,4 +127,9 @@ public class Dashboard {
     public static void navigateToCreditRequests(){
         dashboardPage.clickOnCreditRequests();
     }
+
+    public static void navigateToOrderPageWhiteLabel(){
+        dashboardPage.navigateToWhiteLabelOrdersPage();
+    }
+
 }

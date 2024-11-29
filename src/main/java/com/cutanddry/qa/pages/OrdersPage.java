@@ -176,7 +176,7 @@ public class OrdersPage extends LoginPage{
         return distributorUI.isDisplayed(By.xpath(days.replace("DATE", day)));
     }
     public String getResultsCount() throws InterruptedException {
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(4000);
         distributorUI.waitForVisibility(txt_resultsCount);
         String resultsText = distributorUI.getText(txt_resultsCount);
         return resultsText.split(" ")[0];

@@ -17,6 +17,7 @@ public class VerifyManufacturerPageViaShowCaseTest extends TestBase {
     static User user;
     String DistributerName = "185556964 - Brandon Cheney - Cheney Brothers";
     String ProductName = "andy capps hot fries, 0.85 oz";
+    String BrandPage = "Conagra Foodservice";
 
     @BeforeMethod
     public void setUp(){
@@ -36,7 +37,7 @@ public class VerifyManufacturerPageViaShowCaseTest extends TestBase {
         ShowCase.SearchProductInProductSearhBar(ProductName);
         ShowCase.SelectProductFromShowCase();
         ShowCase.NavigateToManufacturerPage();
-        softAssert.assertTrue(ShowCase.isNavigatedToManufacturerPage(),"ERROR in Navigating to Manufacturer Page");
+        softAssert.assertTrue(ShowCase.isNavigatedToManufacturerPage(BrandPage),"ERROR in Navigating to Manufacturer Page");
         ShowCase.NavigateToOurBrandsPage();
         softAssert.assertTrue(ShowCase.isNavigatedToOurBrandsPage(),"ERROR in Navigating to Our Brands Page");
 

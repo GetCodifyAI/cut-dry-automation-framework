@@ -53,6 +53,7 @@ public class SettingsPage extends LoginPage{
     By txt_linkAccPopup = By.xpath("//h3[text()='Link your bank account']");
     By btn_save= By.xpath("//div[contains(@class, 'modal-content')]//button[contains(text(), 'Save')]");
     By txt_displayedPayout = By.xpath("//div[text()='All payouts will be transferred to bank account x2220.']");
+    By text_payOutMethodPresent = By.xpath("//div[contains(text(),'All payouts will be transferred to bank account')]");
     By txt_bankDetailsAddedPopup = By.xpath("//h2[text()='Bank account details have been added successfully.']");
     By txt_bankDetailsRemovedPopup = By.xpath("//h2[text()='The bank account has been successfully removed.']");
 
@@ -339,5 +340,9 @@ public class SettingsPage extends LoginPage{
     }
     public boolean isBankDetailsRemovedPopupDisplayed(){
         return distributorUI.isDisplayed(txt_bankDetailsRemovedPopup);
+    }
+
+    public boolean isPayoutMethodAvailable(){
+        return distributorUI.isDisplayed(text_payOutMethodPresent);
     }
 }

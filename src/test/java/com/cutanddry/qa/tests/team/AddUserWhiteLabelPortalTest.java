@@ -16,7 +16,7 @@ public class AddUserWhiteLabelPortalTest extends TestBase {
     static User user;
     static String name = "Test";
     static String email = "test@email.com";
-    static String customer = "1I2S E- COMMERCE LLC";
+    static String customer = "201465141";
 
     @BeforeMethod
     public void setUp(){

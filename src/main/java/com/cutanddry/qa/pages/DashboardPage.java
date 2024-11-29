@@ -48,7 +48,7 @@ public class DashboardPage extends LoginPage{
     By btn_adsSettings = By.xpath("//div[@arrowprops]//a[text()='Ads + Rebates']");
     By btn_paySettings = By.xpath("//div[@arrowprops]//a[text()='Pay']");
     By btn_credit_requests = By.xpath("//a[@data-for='sideNavSupplierMenuOptions' and @href='/credit-requests']");
-
+    By ordersTab = By.xpath("//div[text()='Order']");
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -254,4 +254,9 @@ public class DashboardPage extends LoginPage{
         distributorUI.click(btn_showcase);
     }
     public void clickOnCreditRequests(){distributorUI.click(btn_credit_requests);}
+
+    public void navigateToWhiteLabelOrdersPage(){
+        distributorUI.click(ordersTab);
+    }
+
 }

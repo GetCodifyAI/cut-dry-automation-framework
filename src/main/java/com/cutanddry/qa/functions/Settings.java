@@ -166,7 +166,7 @@ public class Settings {
     }
 
     public static void removeExistingBankAccount() throws InterruptedException {
-        if(settingsPage.isPayoutMethodAdded()){
+        if(settingsPage.isPayoutMethodAvailable()){
             Settings.clickOnRemoveAcc();
             Settings.clickYes();
             Settings.clickOK();
