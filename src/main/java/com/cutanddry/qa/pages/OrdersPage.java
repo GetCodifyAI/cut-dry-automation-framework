@@ -61,6 +61,9 @@ public class OrdersPage extends LoginPage{
         for (int i = 0; i < Quantity; i++) {
             distributorUI.click(By.xpath(quantityIncreaseBtn.replace("ITEMCODE", ItemCode)));
         }
+    }
+
+    public void clickCloseRatingOverlay(){
         if(distributorUI.isDisplayed(ratingOverlayIframe)){
             distributorUI.switchToFrameByElement(ratingOverlayIframe);
             distributorUI.click(ratingOverlayCloseBtn);
@@ -185,6 +188,29 @@ public class OrdersPage extends LoginPage{
         String d = distributorUI.getText(txt_date);
         return String.valueOf(distributorUI.countElements(By.xpath(date.replace("DATE", d))));
     }
+
+    public Boolean isFilteredOrdersCorrect(String OrdersDate){
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        String d = distributorUI.getText(txt_date);
+        distributorUI.scrollToElement(By.xpath("("+ date.replace("DATE", d) + ")" + "[last()]"));
+        return distributorUI.validateFilteredElements(By.xpath(date.replace("DATE", d)),OrdersDate);
+    }
+
+    public Boolean isFilteredOrderStatusCorrect(String OrdersStatus){
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        String s = distributorUI.getText(txt_status);
+        distributorUI.scrollToElement(By.xpath("("+ status.replace("STATUS", s) + ")" + "[last()]"));
+        return distributorUI.validateFilteredElements(By.xpath(status.replace("STATUS", s)),OrdersStatus);
+    }
+
     public String getCountStatus() {
         String s = distributorUI.getText(txt_status);
         return String.valueOf(distributorUI.countElements(By.xpath(status.replace("STATUS", s))));

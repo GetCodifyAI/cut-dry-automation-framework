@@ -12,6 +12,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class VerifyTheOrderViewDateDropdownTest extends TestBase {
     static User user;
     String date = "Yesterday";
@@ -25,13 +29,18 @@ public class VerifyTheOrderViewDateDropdownTest extends TestBase {
     @Test(groups = "DOT-TC-543")
     public void VerifyTheOrderViewDateDropdown() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
+
+        ZonedDateTime yesterdayUTC = ZonedDateTime.now(ZoneOffset.UTC).minusDays(1);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        String yesterdayDate = yesterdayUTC.format(formatter);
+
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToOrders();
         softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"navigation error");
         Orders.selectOrderDate(date);
         softAssert.assertTrue(Orders.isOrderDateChanged(date),"dropdown error");
-        softAssert.assertEquals(Orders.getResultsCount(), Orders.getCountDates(), "set date error");
+        softAssert.assertTrue(Orders.validateFilteredOrders(yesterdayDate),"Error in filtering order dates");
         softAssert.assertAll();
     }
 

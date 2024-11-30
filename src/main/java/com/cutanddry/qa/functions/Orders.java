@@ -16,6 +16,11 @@ public class Orders {
 
     public static void increaseItemQuantity(String ItemCode, int Quantity){
         ordersPage.clickOnIncreaseQuantityBtnInItem(ItemCode,Quantity);
+        ordersPage.clickCloseRatingOverlay();
+    }
+
+    public static void closeRatingOverlay(){
+        ordersPage.clickCloseRatingOverlay();
     }
 
     public static void checkOutFromOperatorCart(){
@@ -95,6 +100,15 @@ public class Orders {
     public static String getCountDates() {
         return ordersPage.getCountDates();
     }
+
+    public static boolean validateFilteredOrders(String OrdersDate){
+        return ordersPage.isFilteredOrdersCorrect(OrdersDate);
+    }
+
+    public static boolean validateOrdersStatus(String OrdersState){
+        return ordersPage.isFilteredOrderStatusCorrect(OrdersState);
+    }
+
     public static String getCountStatus() {
         return ordersPage.getCountStatus();
     }

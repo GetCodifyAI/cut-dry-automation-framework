@@ -31,7 +31,7 @@ public class VerifyTheOrderViewStatusDropdownTest extends TestBase {
         softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"navigation error");
         Orders.selectOrderStatus(status);
         softAssert.assertTrue(Orders.isOrderStatusChanged(status),"dropdown error");
-        softAssert.assertEquals(Orders.getResultsCount(), Orders.getCountStatus(), "set status error");
+        softAssert.assertTrue(Orders.validateOrdersStatus(status),"Error in filtering order status");
         softAssert.assertAll();
     }
 

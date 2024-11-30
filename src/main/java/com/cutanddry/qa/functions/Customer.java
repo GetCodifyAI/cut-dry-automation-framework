@@ -1,6 +1,7 @@
 package com.cutanddry.qa.functions;
 
 import com.cutanddry.qa.pages.CustomersPage;
+import com.cutanddry.qa.pages.OrdersPage;
 
 import java.util.Objects;
 
@@ -705,6 +706,7 @@ public class Customer {
         return customersPage.isSalespersonEditable();
     }
     public static boolean isAbleToInviteUsers(){
+        Orders.closeRatingOverlay();
         return customersPage.isAbleToInviteUsers();
     }
     public static boolean isAbleToEditMsg(){
