@@ -32,7 +32,7 @@ public class OrdersPage extends LoginPage{
     By lbl_statusDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[2]");
     By txt_date = By.xpath("(//td[2])[1]");
     By txt_status = By.xpath("(//td[10])[1]/div[1]");
-    By moreFilterStatus = By.xpath("(//td[10])[1]/div[1]/following-sibling::div");
+    By moreFilterStatus = By.xpath("(//td[10])[1]/div[1]/following-sibling::div[1]");
     String days = "//div[text()='DATE']";
     String sts = "//div[text()='STATUS']";
     String date = "//td[text()='DATE']";
@@ -236,7 +236,8 @@ public class OrdersPage extends LoginPage{
     public void selectCreditReqStatus() throws InterruptedException {
         distributorUI.click(lbl_credReqStat);
         distributorUI.hoverOverElement(lbl_req);
-        distributorUI.clickUsingJavaScript(lbl_req);
+        distributorUI.waitForVisibility(lbl_req);
+        distributorUI.click(lbl_req);
         distributorUI.waitForCustom(1000);
         distributorUI.click(btn_save);
         distributorUI.waitForCustom(1000);
