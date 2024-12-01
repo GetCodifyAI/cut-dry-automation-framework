@@ -109,6 +109,10 @@ public class Orders {
         return ordersPage.isFilteredOrderStatusCorrect(OrdersState);
     }
 
+    public static boolean validateMoreFilterResults(String moreFilterStatus){
+        return ordersPage.isMoreFiltersDisplayedCorrect(moreFilterStatus);
+    }
+
     public static String getCountStatus() {
         return ordersPage.getCountStatus();
     }
@@ -123,8 +127,5 @@ public class Orders {
     }
     public static void selectCreditReqStatus() throws InterruptedException {
         ordersPage.selectCreditReqStatus();
-    }
-    public static String getCountFiltered() {
-        return ordersPage.getCountFiltered();
     }
 }

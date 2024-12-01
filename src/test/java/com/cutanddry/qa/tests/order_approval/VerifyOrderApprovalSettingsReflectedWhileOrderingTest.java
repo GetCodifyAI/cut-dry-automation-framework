@@ -33,7 +33,7 @@ public class VerifyOrderApprovalSettingsReflectedWhileOrderingTest {
     public void VerifyOrderApprovalSettingsReflectedWhileOrdering() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Random random = new Random();
-        int quantity1 = random.nextInt(6) + 15;
+        int quantity1 = random.nextInt((35 - 15) + 1) + 15;
         int quantity2 = random.nextInt(6) + 15;
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");

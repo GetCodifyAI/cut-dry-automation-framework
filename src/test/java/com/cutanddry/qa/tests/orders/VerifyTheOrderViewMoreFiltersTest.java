@@ -15,6 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheOrderViewMoreFiltersTest extends TestBase {
     static User user;
     String date = "Last week";
+    String creditStatus = "Credit Requested";
 
     @BeforeMethod
     public void setUp() {
@@ -34,7 +35,7 @@ public class VerifyTheOrderViewMoreFiltersTest extends TestBase {
         Orders.clickOnMoreFilters();
         softAssert.assertTrue(Orders.isFilterOrdersPopupDisplayed(),"popup error");
         Orders.selectCreditReqStatus();
-        softAssert.assertEquals(Orders.getResultsCount(), Orders.getCountFiltered(), "filtering error");
+        softAssert.assertTrue(Orders.validateMoreFilterResults(creditStatus),"Error in adding more filters");
         softAssert.assertAll();
     }
 

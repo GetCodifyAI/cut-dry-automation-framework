@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class RemoveUserWhiteLabelPortalTest extends TestBase {
     static User user;
     static String name = "Test";
-    static String customer = "201465141";
+    static String customer = "13038005947";
 
     @BeforeMethod
     public void setUp(){

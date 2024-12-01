@@ -32,6 +32,7 @@ public class OrdersPage extends LoginPage{
     By lbl_statusDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[2]");
     By txt_date = By.xpath("(//td[2])[1]");
     By txt_status = By.xpath("(//td[10])[1]/div[1]");
+    By moreFilterStatus = By.xpath("(//td[10])[1]/div[1]/following-sibling::div");
     String days = "//div[text()='DATE']";
     String sts = "//div[text()='STATUS']";
     String date = "//td[text()='DATE']";
@@ -42,7 +43,7 @@ public class OrdersPage extends LoginPage{
     By lbl_credReqStat = By.xpath("//label[contains(text(), 'Credit Request Status')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     By lbl_req = By.xpath("//div[contains(text(),'Requested')]");
     By btn_save = By.xpath("//button[contains(text(),'Save')]");
-    By lbl_credReq = By.xpath("//div[contains(text(),'Credit Requested')]");
+    String lbl_credReq = "//div[contains(text(),'MOREFILTERSTATUS')]";
 
     public boolean isOrdersTextDisplayed(){
         try {
@@ -211,6 +212,17 @@ public class OrdersPage extends LoginPage{
         return distributorUI.validateFilteredElements(By.xpath(status.replace("STATUS", s)),OrdersStatus);
     }
 
+    public Boolean isMoreFiltersDisplayedCorrect(String OrdersStatus){
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        String f = distributorUI.getText(moreFilterStatus);
+        distributorUI.scrollToElement(By.xpath("("+ lbl_credReq.replace("MOREFILTERSTATUS", f) + ")" + "[last()]"));
+        return distributorUI.validateFilteredElements(By.xpath(lbl_credReq.replace("MOREFILTERSTATUS", f)),OrdersStatus);
+    }
+
     public String getCountStatus() {
         String s = distributorUI.getText(txt_status);
         return String.valueOf(distributorUI.countElements(By.xpath(status.replace("STATUS", s))));
@@ -228,8 +240,5 @@ public class OrdersPage extends LoginPage{
         distributorUI.waitForCustom(1000);
         distributorUI.click(btn_save);
         distributorUI.waitForCustom(1000);
-    }
-    public String getCountFiltered() {
-        return String.valueOf(distributorUI.countElements(lbl_credReq));
     }
 }

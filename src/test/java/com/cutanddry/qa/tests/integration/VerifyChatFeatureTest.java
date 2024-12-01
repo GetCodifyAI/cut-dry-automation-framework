@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyChatFeatureTest extends TestBase {
     static User user;
-    static String customerName = "Cut & Dry Test Account - Hayes";
+    static String customerName = "Restaurant(Test) - Hayes";
     static String distributorMessage = "Test Message Distributor";
     static String restaurantMessage = "Test Message Restaurant";
 
