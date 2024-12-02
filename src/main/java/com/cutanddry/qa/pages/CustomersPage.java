@@ -19,13 +19,13 @@ public class CustomersPage extends LoginPage {
     By tbx_itemQuantityFirstRow = By.xpath("//tr[1]//td[8]//input");
     By lbl_itemPriceFirstRow = By.xpath("//tr[1]//td[7]/div");
     By lbl_itemPriceSecondRow = By.xpath("//tr[2]//td[7]/span");
-    By btn_increaseQtyCatalogSearchValueOne = By.xpath("//input[@type='number' and @value='1']/../following-sibling::div");
-    By btn_increaseQtyCatalogSearchValueTwo = By.xpath("//input[@type='number' and @value='2']/../following-sibling::div");
-    By btn_decreaseQtyCatalogSearchValueOne = By.xpath("//input[@type='number' and @value='1']/../preceding-sibling::div");
-    By btn_decreaseQtyCatalogSearchValueTwo = By.xpath("//input[@type='number' and @value='2']/../preceding-sibling::div");
-    By btn_decreaseQtyCatalogSearchValueThree = By.xpath("//input[@type='number' and @value='3']/../preceding-sibling::div");
+    By btn_increaseQtyCatalogSearchValueOne = By.xpath("//input[@type='number' and @value='1']/../following-sibling::div[last()]");
+    By btn_increaseQtyCatalogSearchValueTwo = By.xpath("//input[@type='number' and @value='2']/../following-sibling::div[last()]");
+    By btn_decreaseQtyCatalogSearchValueOne = By.xpath("//input[@type='number' and @value='1']/../preceding-sibling::div[last()]");
+    By btn_decreaseQtyCatalogSearchValueTwo = By.xpath("//input[@type='number' and @value='2']/../preceding-sibling::div[last()]");
+    By btn_decreaseQtyCatalogSearchValueThree = By.xpath("//input[@type='number' and @value='3']/../preceding-sibling::div[last()]");
     By tbx_itemQuantityCatalogSearch = By.xpath("//input[@type='number']");
-    By lbl_itemPriceSearchCatalogList = By.xpath("//div[contains(., 'Artichoke') and not(contains(., '-24ct')) and not(contains(., 'Bottoms'))]//span[contains(text(),'$') and not(contains(text(),' ')) and not(@class='text-muted')]");
+    By lbl_itemPriceSearchCatalogList = By.xpath("(//div[contains(., 'Artichoke') and not(contains(., '-24ct')) and not(contains(., 'Bottoms'))]//span[contains(text(),'$') and not(contains(text(),' ')) and not(@class='text-muted')])[last()]");
     By btn_decreaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../preceding-sibling::div");
     By btn_increaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../following-sibling::div");
     By tbx_itemQuantityCartRowOne = By.xpath("//tr[2]/td//input/");
@@ -327,6 +327,11 @@ public class CustomersPage extends LoginPage {
     }
     public void clickMinusQryCatalogSearchValueOne(){
         distributorUI.click(btn_decreaseQtyCatalogSearchValueOne);
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.waitForElementEnabledState(btn_checkout, false);
     }
     public void clickMinusQryCatalogSearchValueTwo(){
