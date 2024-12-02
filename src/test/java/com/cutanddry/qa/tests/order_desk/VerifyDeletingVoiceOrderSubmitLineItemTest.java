@@ -29,7 +29,7 @@ public class VerifyDeletingVoiceOrderSubmitLineItemTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"Login Error");
         Dashboard.navigateToOrderDesk();
         softAssert.assertTrue(OrderDesk.isUsernavigatedToOrderDeskPage(),"Error in navigating to order desk Page");
-        OrderDesk.navigatedToSubmittedOrders();
+        OrderDesk.navigateToSubmittedOrders();
         OrderDesk.navigateToSubmitOrdersReviewPage();
         softAssert.assertTrue(OrderDesk.navigatedToSubmittedOrders(),"Error Navigating to Drafted Orders Page");
         OrderDesk.DeleteItem();

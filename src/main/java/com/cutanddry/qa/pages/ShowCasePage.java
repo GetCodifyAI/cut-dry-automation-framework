@@ -7,11 +7,12 @@ public class ShowCasePage extends LoginPage {
     By productSearchBar = By.xpath("//input[@id='order_flow_search']");
     By productDisplayed = By.xpath("//div[contains(@class,'_3quvq7') and contains(@class,'_1vlidrf') and contains(text(),'Andy Capps Hot Fries, 0.85 Oz')]");
     By ManufacturerTxt = By.xpath("(//div[contains(text(),'Conagra Foodservice')])[1]");
-    By ConagraFoodServiceTxt = By.xpath("//div[contains(@class,'mt-5 mb-1 _mojmdw')]");
-    By OurBrandBtn = By.xpath("//img[contains(@class,'img-fluid') and contains(@alt,'Brand logo 134266051')]");
-    By OurBrandPageTxt = By.xpath("//div[contains(@class,'_1g8obcq mont _vk0dbk mt-2') and contains(text(),'Angela Mia')]");
-    By HungerfordSmithBrand = By.xpath("//img[@alt='Brand logo 87504485' and @class='img-fluid']");
-    By HungerfordSmithText =By.xpath("//div[@class='_1g8obcq mont _vk0dbk mt-2' and contains(text(),'J Hungerford Smith')]");
+    String ConagraFoodServiceTxt = "//div[contains(text(),'BRANDPAGE')]";
+    By OurBrandBtn = By.xpath("//img[contains(@class,'img-fluid') and contains(@src,'angela-mia-logo')]");
+    By OurBrandPageTxt = By.xpath("//div[contains(@class,'_12lmd5r8') and contains(text(),'Angela Mia')]");
+    By OurBrands = By.xpath("//div[contains(text(),'Our Brands')]");
+    By HungerfordSmithBrand = By.xpath("//img[contains(@class,'img-fluid') and contains(@src,'e1709cd4888480e1b60d1b64da314fc8')]");
+    By HungerfordSmithText =By.xpath("//div[@class='_12lmd5r8' and contains(text(),'J Hungerford Smith')]");
 
 
     public boolean isProductShowcaseTxtDisplayed(){
@@ -32,11 +33,12 @@ public class ShowCasePage extends LoginPage {
         distributorUI.click(ManufacturerTxt);
     }
 
-    public boolean isConagraFoodServiceTxtDisplayed(){
-        return distributorUI.isDisplayed(ConagraFoodServiceTxt);
+    public boolean isConagraFoodServiceTxtDisplayed(String brand){
+        return distributorUI.isDisplayed(By.xpath(ConagraFoodServiceTxt.replace("BRANDPAGE",brand)));
     }
 
     public void ClickOnOurBrandBtn(){
+        distributorUI.scrollToElement(OurBrands);
         distributorUI.click(OurBrandBtn);
     }
 

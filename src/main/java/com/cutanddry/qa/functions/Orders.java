@@ -16,6 +16,11 @@ public class Orders {
 
     public static void increaseItemQuantity(String ItemCode, int Quantity){
         ordersPage.clickOnIncreaseQuantityBtnInItem(ItemCode,Quantity);
+        ordersPage.clickCloseRatingOverlay();
+    }
+
+    public static void closeRatingOverlay(){
+        ordersPage.clickCloseRatingOverlay();
     }
 
     public static void checkOutFromOperatorCart(){
@@ -95,6 +100,19 @@ public class Orders {
     public static String getCountDates() {
         return ordersPage.getCountDates();
     }
+
+    public static boolean validateFilteredOrders(String OrdersDate){
+        return ordersPage.isFilteredOrdersCorrect(OrdersDate);
+    }
+
+    public static boolean validateOrdersStatus(String OrdersState){
+        return ordersPage.isFilteredOrderStatusCorrect(OrdersState);
+    }
+
+    public static boolean validateMoreFilterResults(String moreFilterStatus){
+        return ordersPage.isMoreFiltersDisplayedCorrect(moreFilterStatus);
+    }
+
     public static String getCountStatus() {
         return ordersPage.getCountStatus();
     }
@@ -109,8 +127,5 @@ public class Orders {
     }
     public static void selectCreditReqStatus() throws InterruptedException {
         ordersPage.selectCreditReqStatus();
-    }
-    public static String getCountFiltered() {
-        return ordersPage.getCountFiltered();
     }
 }

@@ -21,8 +21,8 @@ public class ShowCase {
         showCasePage.ClickOnManufacturer();
     }
 
-    public static boolean isNavigatedToManufacturerPage(){
-        return showCasePage.isConagraFoodServiceTxtDisplayed();
+    public static boolean isNavigatedToManufacturerPage(String brand){
+        return showCasePage.isConagraFoodServiceTxtDisplayed(brand);
     }
 
     public static void NavigateToOurBrandsPage(){

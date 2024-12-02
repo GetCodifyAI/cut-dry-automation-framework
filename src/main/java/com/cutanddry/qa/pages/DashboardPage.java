@@ -54,6 +54,7 @@ public class DashboardPage extends LoginPage{
     By btn_TestAutomation = By.xpath("//div[contains(text(), 'Test_Automation') and contains(@class, 'w-100')]");
     By txt_draftOrder = By.xpath("//div[contains(@class, 'text-center') and contains(text(), 'continue your previous draft order')]");
     By btn_noDraftOrder = By.xpath("//span[text()='×']");
+    By ordersTab = By.xpath("//div[text()='Order']");
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -278,4 +279,9 @@ public class DashboardPage extends LoginPage{
         distributorUI.click(btn_TestAutomation);
         distributorUI.waitForInvisibility(btn_TestAutomation);
     }
+
+    public void navigateToWhiteLabelOrdersPage(){
+        distributorUI.click(ordersTab);
+    }
+
 }

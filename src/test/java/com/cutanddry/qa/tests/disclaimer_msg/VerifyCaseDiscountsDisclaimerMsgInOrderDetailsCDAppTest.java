@@ -2,10 +2,7 @@ package com.cutanddry.qa.tests.disclaimer_msg;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
-import com.cutanddry.qa.functions.Customer;
-import com.cutanddry.qa.functions.Dashboard;
-import com.cutanddry.qa.functions.History;
-import com.cutanddry.qa.functions.Login;
+import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -16,6 +13,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyCaseDiscountsDisclaimerMsgInOrderDetailsCDAppTest extends TestBase {
     static User user;
     static String customer = "sales@jordanpaige.com";
+    String ItemCode = "4MK008BB";
 
     @BeforeMethod
     public void setUp(){
@@ -30,7 +28,15 @@ public class VerifyCaseDiscountsDisclaimerMsgInOrderDetailsCDAppTest extends Tes
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToLoginAsPortal(customer);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboardWhiteLabel(),"white label login error");
-        Dashboard.navigateToUsersWhiteLabel();
+
+        //Placing an order before verification
+        Dashboard.navigateToOrderPageWhiteLabel();
+        Customer.searchItemOnOrderGuide(ItemCode);
+        Orders.increaseItemQuantity(ItemCode, 3);
+        Orders.checkOutFromOperatorCart();
+        Customer.submitOrder();
+        Customer.clickClose();
+
         Dashboard.navigateToHistory();
         softAssert.assertTrue(History.isUserNavigatedToHistory(),"navigation error");
         History.clickFirstItemFrmHistory();

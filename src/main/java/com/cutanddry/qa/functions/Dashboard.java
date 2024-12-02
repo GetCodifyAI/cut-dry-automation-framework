@@ -145,4 +145,9 @@ public class Dashboard {
         return dashboardPage.isOrderGuideTextDisplayed();
     }
 
+
+    public static void navigateToOrderPageWhiteLabel(){
+        dashboardPage.navigateToWhiteLabelOrdersPage();
+    }
+
 }

@@ -702,6 +702,32 @@ public class KeywordBase {
         return this;
     }
 
+    public boolean validateFilteredElements(By locator, String filterOption) {
+        try {
+            // Find all elements using the provided locator
+            List<WebElement> elements = driver.findElements(locator);
+
+            // Log total elements found
+            logger.info("Found " + elements.size() + " elements for locator: " + locator);
+
+            // Validate that all elements match the filter option
+            for (WebElement element : elements) {
+                String elementText = element.getText();
+                if (!elementText.equals(filterOption)) {
+                    logger.error("Validation failed for element text: " + elementText + " (Expected: " + filterOption + ")");
+                    return false; // Validation failed
+                }
+            }
+
+            // Log validation success
+            logger.info("All elements match the filter option: " + filterOption);
+            return true;
+        } catch (Exception e) {
+            logger.error("Error occurred while validating elements for locator: " + locator, e);
+            return false;
+        }
+    }
+
 
 
 
