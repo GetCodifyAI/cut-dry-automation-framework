@@ -27,6 +27,10 @@
             <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewMoreFiltersTest" />
             <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessRestrictedViaCustomerProfileTest" />
             <class name="com.cutanddry.qa.tests.banner.VerifyTheBannerFeatureTest" />
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingGlobalHolidayTest" />
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingGlobalHolidayPickupWillCallMailDeliveryTest" />
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingCustomerSpecificHolidayTest" />
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingCustomerSpecificHolidayPickupWillCallMailDeliveryTest" />
         </classes>
     </test>
 </suite>

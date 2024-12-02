@@ -2,6 +2,8 @@ package com.cutanddry.qa.functions;
 
 import com.cutanddry.qa.pages.DashboardPage;
 
+import static com.cutanddry.qa.functions.Customer.customersPage;
+
 public class Dashboard {
     static DashboardPage dashboardPage = new DashboardPage();
 
@@ -127,4 +129,20 @@ public class Dashboard {
     public static void navigateToCreditRequests(){
         dashboardPage.clickOnCreditRequests();
     }
+    public static void navigateToIndependentFoodsCo() {
+        dashboardPage.clickOnPlaceOrder();
+    }
+    public static void navigateToOrderGuide() throws InterruptedException {
+        dashboardPage.clickOnHayes();
+        if (dashboardPage.isTestAutomationPopupDisplayed()){
+            dashboardPage.clickOnTestAutomationPopup();
+        }
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+    }
+    public static boolean isUserNavigatedToOrderGuide(){
+        return dashboardPage.isOrderGuideTextDisplayed();
+    }
+
 }
