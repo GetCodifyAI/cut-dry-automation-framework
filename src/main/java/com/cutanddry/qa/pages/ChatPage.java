@@ -32,7 +32,7 @@ public class ChatPage extends LoginPage{
         return distributorUI.isDisplayed(By.xpath(customerName.replace("NAME", name)));
     }
     public void clickOnCustomerChat(String name) {
-        distributorUI.click(By.xpath(customerName.replace("NAME", name)));
+        distributorUI.clickUsingJavaScript(By.xpath(customerName.replace("NAME", name)));
         if (distributorUI.isDisplayed(txt_defaultMsg)) {
             distributorUI.waitForInvisibility(txt_defaultMsg);
         }
@@ -53,7 +53,9 @@ public class ChatPage extends LoginPage{
         distributorUI.waitForVisibility(icon_send);
     }
     public String getLastMessageDisplayed() throws InterruptedException {
-        distributorUI.waitForCustom(3000);
+        distributorUI.waitForCustom(5000);
+        distributorUI.refreshPage();
+        distributorUI.waitForInvisibility(txt_defaultMsg);
         return distributorUI.getText(txt_lastMessage);
     }
     public void clickOnRestaurantChat() {

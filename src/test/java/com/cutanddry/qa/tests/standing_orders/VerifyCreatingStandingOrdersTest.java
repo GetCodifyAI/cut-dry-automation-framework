@@ -35,6 +35,7 @@ public class VerifyCreatingStandingOrdersTest extends TestBase {
         Customer.clickOnCustomerCode(customerId);
         Customer.clickOnOrdersTab();
         softAssert.assertTrue(Customer.isStandingOrdersDisplayed(),"navigation error");
+        Customer.removeStandingOrdersIfAvailable();
         Customer.clickOnCreateStandingOrder();
         Customer.selectDeliveryDate(deliveryDay);
         itemName = Customer.getItemNameFirstRow();
