@@ -85,6 +85,7 @@ public class CustomersPage extends LoginPage {
     String txt_customerCode = "//td[text()='CODE']";
     By tb_orders = By.xpath("//a[text()='Orders' and @role='tab']");
     By txt_standingOrders = By.xpath("//div[text()='Standing Orders: ']");
+    By created_StandingOrders = By.xpath("//div[contains(text(),'Set for ')]");
     By btn_createStandingOrders = By.xpath("//div[text()='Create']");
     By dropdown_delivery = By.xpath("//div[text()='Delivery:']/following-sibling::div//div[text()='Select Days...']");
     String txt_deliveryDay = "//div[text()='DAY']/preceding-sibling::input[@type='checkbox']";
@@ -597,6 +598,15 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForVisibility(txt_standingOrders);
         return distributorUI.isDisplayed(txt_standingOrders);
     }
+
+    public boolean isAlreadySetStandingOrdersAvailable(){
+        return distributorUI.isDisplayed(created_StandingOrders);
+    }
+
+    public int getStandingOrdersCount(){
+        return distributorUI.countElements(created_StandingOrders);
+    }
+
     public void clickOnCreateStandingOrder() {
         distributorUI.click(btn_createStandingOrders);
     }
@@ -648,6 +658,11 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForVisibility(txt_deletePopup);
         distributorUI.waitForClickability(btn_yes);
         distributorUI.click(btn_yes);
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public boolean areStandingOrdersDeleted(){
         return distributorUI.isDisplayed(btn_deleteStandingOrders);

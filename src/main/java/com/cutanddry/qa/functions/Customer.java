@@ -307,6 +307,16 @@ public class Customer {
     public static void clickOnCreateStandingOrder(){
         customersPage.clickOnCreateStandingOrder();
     }
+
+    public static void removeStandingOrdersIfAvailable(){
+        if(customersPage.isAlreadySetStandingOrdersAvailable()) {
+            int standingOrdersCount = customersPage.getStandingOrdersCount();
+            for (int i = 0; i < standingOrdersCount; i++) {
+                customersPage.clickOnDeleteStandingOrders();
+            }
+        }
+    }
+
     public static void selectDeliveryDate(String day){
         customersPage.clickOnRemoveDelivery();
         customersPage.clickOnDropdownDelivery();
