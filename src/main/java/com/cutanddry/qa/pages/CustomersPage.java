@@ -1273,4 +1273,15 @@ public class CustomersPage extends LoginPage {
         }
         return distributorUI.isDisplayed(txt_generatingReport);
     }
+    public void clickExportOrderGuides(){
+        distributorUI.click(btn_exportOrderGuidesCSV);
+    }
+    public boolean isExportOrderGuidesPopUpDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_exportOrderGuidesCSVPopUp);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_exportOrderGuidesCSVPopUp);
+    }
 }

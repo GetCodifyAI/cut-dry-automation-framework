@@ -787,4 +787,8 @@ public class Customer {
     public static boolean isGeneratingReportPopUpDisplayed(){
         return customersPage.isGeneratingReportPopUpDisplayed();
     }
+    public static void clickExportOrderGuides(){customersPage.clickExportOrderGuides();}
+    public static boolean isExportOrderGuidesPopUpDisplayed(){
+        return customersPage.isExportOrderGuidesPopUpDisplayed();
+    }
 }
