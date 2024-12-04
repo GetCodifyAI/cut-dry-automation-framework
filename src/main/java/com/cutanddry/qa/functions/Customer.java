@@ -791,4 +791,14 @@ public class Customer {
     public static boolean isExportOrderGuidesPopUpDisplayed(){
         return customersPage.isExportOrderGuidesPopUpDisplayed();
     }
+    public static void clickMoreFilters(){customersPage.clickMoreFilters();}
+    public static boolean isFilterCustomersPopUpDisplayed(){
+        return customersPage.isFilterCustomersPopUpDisplayed();
+    }
+    public static void clickSignUpStatus(){customersPage.clickSignUpStatus();}
+    public static void clickSignUpOption(){customersPage.clickSignUpOption();}
+    public static void clickApply(){customersPage.clickApply();}
+    public static boolean isStatusDisplayed(String status){
+        return customersPage.isStatusDisplayed(status);
+    }
 }

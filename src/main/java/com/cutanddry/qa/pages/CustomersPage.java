@@ -238,6 +238,10 @@ public class CustomersPage extends LoginPage {
     By txt_exportOrderGuidesCSVPopUp = By.xpath("//h4[contains(text(), 'Export  File')]");
     By btn_moreFilters = By.xpath("//span[contains(text(), 'More Filters')]");
     By txt_filterCustomersPopUp = By.xpath("//div[contains(text(), 'Filter Customers')]");
+    By btn_signUpStatus = By.xpath("(//div[contains(@class, 'themed_select__value-container themed_select__value-container--has-value css-1hwfws3')])[4]");
+    By btn_signUpOption = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and normalize-space(text())='Signed up']");
+    By btn_apply =By.xpath("//button[@class='mx-auto btn btn-primary btn-block' and normalize-space(text())='Apply']");
+    String signUpStatus = "//tr//td[4][text()='STATUS']";
 
 
 
@@ -1284,4 +1288,28 @@ public class CustomersPage extends LoginPage {
         }
         return distributorUI.isDisplayed(txt_exportOrderGuidesCSVPopUp);
     }
+    public void clickMoreFilters(){
+        distributorUI.click(btn_moreFilters);
+    }
+    public boolean isFilterCustomersPopUpDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_filterCustomersPopUp);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_filterCustomersPopUp);
+    }
+    public void clickSignUpStatus(){
+        distributorUI.click(btn_signUpStatus);
+    }
+    public void clickSignUpOption(){
+        distributorUI.click(btn_signUpOption);
+    }
+    public void clickApply(){
+        distributorUI.click(btn_apply);
+    }
+    public boolean isStatusDisplayed(String status){
+        return distributorUI.isDisplayed(By.xpath(signUpStatus.replace("STATUS",status)));
+    }
+
 }

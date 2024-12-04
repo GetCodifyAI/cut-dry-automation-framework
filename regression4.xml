@@ -34,6 +34,7 @@
             <class name="com.cutanddry.qa.tests.customers.VerifyTheFilterFromSalespersonTest" />
             <class name="com.cutanddry.qa.tests.customers.VerifyTheExportCustomersTest" />
             <class name="com.cutanddry.qa.tests.customers.VerifyTheExportOrderGuidesTest" />
+            <class name="com.cutanddry.qa.tests.customers.VerifyTheMoreFiltersTest" />
 
         </classes>
     </test>
