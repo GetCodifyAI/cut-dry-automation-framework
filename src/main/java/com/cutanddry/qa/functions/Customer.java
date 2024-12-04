@@ -778,4 +778,13 @@ public class Customer {
     public static boolean isSalespersonNameDisplayed(String salesperson){
         return customersPage.isSalespersonNameDisplayed(salesperson);
     }
+    public static void clickManageCustomers(){customersPage.clickManageCustomers();}
+    public static void clickExportCustomers(){customersPage.clickExportCustomers();}
+    public static boolean isExportCustomersPopUpDisplayed(){
+        return customersPage.isExportCustomersPopUpDisplayed();
+    }
+    public static void clickConfirm(){customersPage.clickConfirm();}
+    public static boolean isGeneratingReportPopUpDisplayed(){
+        return customersPage.isGeneratingReportPopUpDisplayed();
+    }
 }

@@ -230,6 +230,18 @@ public class CustomersPage extends LoginPage {
     By btn_salesperson = By.xpath("(//div[contains(@class, 'themed_select__value-container') and contains(@class, 'themed_select__value-container--has-value')])[1]");
     By btn_salespersonOption = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and normalize-space(text())='Amir IFC']");
     String salespersonName = "//tr//td[6]//div[normalize-space(text())='SALESPERSON']";
+    By btn_manageCustomers = By.xpath("//span[contains(text(), 'Manage Customers')]");
+    By btn_exportCustomers = By.xpath("//a[contains(text(), 'Export customers(csv)')]");
+    By txt_exportCustomersPopUp = By.xpath("//h4[contains(text(), 'Export \"Customer\" File')]");
+    By txt_generatingReport = By.xpath("//h2[text()='Generating Report']");
+    By btn_exportOrderGuidesCSV = By.xpath("//a[contains(text(), 'Export order guides(csv)')]");
+    By txt_exportOrderGuidesCSVPopUp = By.xpath("//h4[contains(text(), 'Export  File')]");
+    By btn_moreFilters = By.xpath("//span[contains(text(), 'More Filters')]");
+    By txt_filterCustomersPopUp = By.xpath("//div[contains(text(), 'Filter Customers')]");
+
+
+
+
 
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
@@ -1238,5 +1250,27 @@ public class CustomersPage extends LoginPage {
     }
     public boolean isSalespersonNameDisplayed(String salesperson){
         return distributorUI.isDisplayed(By.xpath(salespersonName.replace("SALESPERSON",salesperson)));
+    }
+    public void clickManageCustomers(){
+        distributorUI.click(btn_manageCustomers);
+    }
+    public void clickExportCustomers(){
+        distributorUI.click(btn_exportCustomers);
+    }
+    public boolean isExportCustomersPopUpDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_exportCustomersPopUp);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_exportCustomersPopUp);
+    }
+    public boolean isGeneratingReportPopUpDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_generatingReport);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_generatingReport);
     }
 }

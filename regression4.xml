@@ -32,6 +32,7 @@
             <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingCustomerSpecificHolidayTest" />
             <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingCustomerSpecificHolidayPickupWillCallMailDeliveryTest" />
             <class name="com.cutanddry.qa.tests.customers.VerifyTheFilterFromSalespersonTest" />
+            <class name="com.cutanddry.qa.tests.customers.VerifyTheExportCustomersTest" />
 
         </classes>
     </test>
