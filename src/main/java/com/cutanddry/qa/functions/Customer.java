@@ -770,4 +770,12 @@ public class Customer {
     public static void selectMailDelivery(){
         customersPage.selectMailDelivery();
     }
+    public static boolean isCustomersTextDisplayed(){
+        return customersPage.isCustomersTextDisplayed();
+    }
+    public static void clickSalespersonDropDown(){customersPage.clickSalespersonDropDown();}
+    public static void clickSalespersonOption(){customersPage.clickSalespersonOption();}
+    public static boolean isSalespersonNameDisplayed(String salesperson){
+        return customersPage.isSalespersonNameDisplayed(salesperson);
+    }
 }

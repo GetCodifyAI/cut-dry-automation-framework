@@ -226,6 +226,11 @@ public class CustomersPage extends LoginPage {
     By customer_Holds = By.xpath("//span[contains(text(),'Credit') or contains(text(),'Hard') or contains(text(),'General')]");
     By lbl_pickUp = By.xpath("//span[text()='Pickup/Will Call']");
     By lbl_mailDelivery = By.xpath("//span[text()='Mail Delivery']");
+    By txt_customers = By.xpath("//h2[text()='Customers']");
+    By btn_salesperson = By.xpath("(//div[contains(@class, 'themed_select__value-container') and contains(@class, 'themed_select__value-container--has-value')])[1]");
+    By btn_salespersonOption = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and normalize-space(text())='Amir IFC']");
+    String salespersonName = "//tr//td[6]//div[normalize-space(text())='SALESPERSON']";
+
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -1215,5 +1220,23 @@ public class CustomersPage extends LoginPage {
     public void selectMailDelivery(){
         distributorUI.waitForVisibility(lbl_mailDelivery);
         distributorUI.click(lbl_mailDelivery);
+    }
+
+    public boolean isCustomersTextDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_customers);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_customers);
+    }
+    public void clickSalespersonDropDown(){
+        distributorUI.click(btn_salesperson);
+    }
+    public void clickSalespersonOption(){
+        distributorUI.click(btn_salespersonOption);
+    }
+    public boolean isSalespersonNameDisplayed(String salesperson){
+        return distributorUI.isDisplayed(By.xpath(salespersonName.replace("SALESPERSON",salesperson)));
     }
 }
