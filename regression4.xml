@@ -37,6 +37,7 @@
             <class name="com.cutanddry.qa.tests.customers.VerifyTheMoreFiltersTest" />
             <class name="com.cutanddry.qa.tests.customers.VerifyTheAddNewCustomerTest" />
             <class name="com.cutanddry.qa.tests.customers.VerifyTheBulkActionsInviteUsersTest" />
+            <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfEditOrderGuideTest" />
 
         </classes>
     </test>

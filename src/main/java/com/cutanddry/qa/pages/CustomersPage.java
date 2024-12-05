@@ -260,7 +260,9 @@ public class CustomersPage extends LoginPage {
     By btn_moreOption = By.xpath("//button[contains(text(), 'More Options')]");
     By btn_editOrderGuide = By.xpath("//a[contains(text(), 'Edit Order Guide')]");
     By btn_previewCatalog = By.xpath("//a[contains(text(), 'Preview Catalog')]");
-    By txt_orderGuide = By.xpath("//div[contains(text(), 'Acai Bowles')]");
+    By txt_orderGuide = By.xpath("//div[contains(text(), 'Kafe Layers')]");
+    By txt_customerProfile = By.xpath("//div[contains(@class, 'd-flex') and contains(text(), 'Kafe Layers')]");
+    By btn_no = By.xpath("//div[contains(text(), 'No')]");
 
 
 
@@ -1400,6 +1402,33 @@ public class CustomersPage extends LoginPage {
     public void clickInviteEmail(){
         distributorUI.click(btn_inviteEmail);
     }
+    public boolean isCustomerProfileDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_customerProfile);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_customerProfile);
+    }
+    public void clickMoreOption(){
+        distributorUI.click(btn_moreOption);
+    }
+    public void clickEditOrderGuide(){
+        distributorUI.click(btn_editOrderGuide);
+    }
+    public void clickNo()throws InterruptedException{
+        distributorUI.waitForVisibility(btn_no);
+        distributorUI.click(btn_no);
+    }
+    public boolean isCustomerOrderGuideDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_orderGuide);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_orderGuide);
+    }
+
 
 
 

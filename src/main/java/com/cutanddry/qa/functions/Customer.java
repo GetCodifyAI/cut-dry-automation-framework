@@ -835,4 +835,15 @@ public class Customer {
     public static boolean isSuccessPopUpDisplayed(){
         return customersPage.isStandingOrderSuccessPopupDisplayed();
     }
+    public static boolean isCustomerProfileDisplayed(){
+        return customersPage.isCustomerProfileDisplayed();
+    }
+    public static void clickMoreOption(){customersPage.clickMoreOption();}
+    public static void clickEditOrderGuide(){customersPage.clickEditOrderGuide();}
+    public static void clickNo()throws InterruptedException{customersPage.clickNo();}
+    public static boolean isCustomerOrderGuideDisplayed(){
+        return customersPage.isCustomerOrderGuideDisplayed();
+    }
+
+
 }
