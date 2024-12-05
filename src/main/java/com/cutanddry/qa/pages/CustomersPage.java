@@ -1256,6 +1256,6 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForCustom(2000);
     }
     public String isStopDurationUpdated() throws InterruptedException {
-        return distributorUI.getText(lbl_stopDuration);
+        return distributorUI.getText(txt_stopDuration,"value");
     }
 }
