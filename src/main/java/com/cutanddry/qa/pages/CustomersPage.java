@@ -233,6 +233,10 @@ public class CustomersPage extends LoginPage {
     By lbl_deliveryNotes = By.xpath("//div[text()='Delivery Notes']/following-sibling::div/textarea");
     By lbl_DoorDesc = By.xpath("//div[text()='Door Description']/following-sibling::div//input");
     By txt_stopDuration = By.xpath("//div[text()='Stop Duration']/following-sibling::div//input");
+    By lbl_orderGuide = By.xpath("//div[text()='Order Guide:']/following-sibling::div//div[@class='cd_themed_select__single-value css-1uccc91-singleValue']");
+    By dropdown_testGuide1 =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Test_Guide_01')]");
+    By dropdown_testAutomation =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Test_Automation')]");
+
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -1257,5 +1261,17 @@ public class CustomersPage extends LoginPage {
     }
     public String isStopDurationUpdated() throws InterruptedException {
         return distributorUI.getText(txt_stopDuration,"value");
+    }
+    public void clickOGDropdown(){
+        distributorUI.waitForVisibility(lbl_orderGuide);
+        distributorUI.click(lbl_orderGuide);
+    }
+    public void selectTestOrderGuide1(){
+        distributorUI.waitForVisibility(dropdown_testGuide1);
+        distributorUI.click(dropdown_testGuide1);
+    }
+    public void selectTestAutomation(){
+        distributorUI.waitForVisibility(dropdown_testAutomation);
+        distributorUI.click(dropdown_testAutomation);
     }
 }

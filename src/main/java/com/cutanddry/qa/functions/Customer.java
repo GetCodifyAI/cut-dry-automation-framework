@@ -791,4 +791,13 @@ public class Customer {
     public static String isStopDurationUpdated() throws InterruptedException {
         return customersPage.isStopDurationUpdated();
     }
+    public static void clickOGDropdown(){
+        customersPage.clickOGDropdown();
+    }
+    public static void selectTestOrderGuide1(){
+        customersPage.selectTestOrderGuide1();
+    }
+    public static void selectTestAutomation(){
+        customersPage.selectTestAutomation();
+    }
 }
