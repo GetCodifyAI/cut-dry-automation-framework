@@ -239,6 +239,8 @@ public class CustomersPage extends LoginPage {
     By btn_editMargin = By.xpath("//*[local-name() = 'svg' and @data-icon='cdEdit']");
     By btn_resetValues = By.xpath("//button[contains(text(), 'Reset Values')]");
     By btn_updateValues = By.xpath("//button[contains(text(), 'Update')]");
+    By lbl_margin = By.xpath("//label[text()='Margin ($)']/following-sibling::input");
+
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -1284,5 +1286,10 @@ public class CustomersPage extends LoginPage {
     }
     public void updateMarginValues(){
         distributorUI.click(btn_updateValues);
+    }
+    public void enterMarginValue(String num) throws InterruptedException {
+        distributorUI.clear(lbl_margin);
+        distributorUI.sendKeys(lbl_margin, num);
+        distributorUI.waitForCustom(1000);
     }
 }

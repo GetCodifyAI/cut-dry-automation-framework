@@ -809,4 +809,7 @@ public class Customer {
     public static void updateMarginValues(){
         customersPage.updateMarginValues();
     }
+    public static void enterMarginValue(String val) throws InterruptedException {
+        customersPage.enterKeyDropNum(val);
+    }
 }
