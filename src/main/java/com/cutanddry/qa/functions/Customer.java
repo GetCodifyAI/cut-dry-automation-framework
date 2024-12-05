@@ -803,4 +803,10 @@ public class Customer {
     public static void editMargin(){
         customersPage.editMargin();
     }
+    public static void resetMarginValues(){
+        customersPage.resetMarginValues();
+    }
+    public static void updateMarginValues(){
+        customersPage.updateMarginValues();
+    }
 }
