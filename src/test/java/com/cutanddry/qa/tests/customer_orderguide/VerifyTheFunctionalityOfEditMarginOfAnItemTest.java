@@ -33,7 +33,7 @@ public class VerifyTheFunctionalityOfEditMarginOfAnItemTest extends TestBase {
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
         Customer.editMargin();
-
+        softAssert.assertTrue(Customer.isMarginValuePopupDisplayed(),"popup error");
         softAssert.assertAll();
     }
 

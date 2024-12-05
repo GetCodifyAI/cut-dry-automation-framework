@@ -812,4 +812,7 @@ public class Customer {
     public static void enterMarginValue(String val) throws InterruptedException {
         customersPage.enterKeyDropNum(val);
     }
+    public static boolean isMarginValuePopupDisplayed(){
+        return customersPage.isMarginValuePopupDisplayed();
+    }
 }

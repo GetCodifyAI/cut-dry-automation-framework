@@ -1287,6 +1287,9 @@ public class CustomersPage extends LoginPage {
     public void updateMarginValues(){
         distributorUI.click(btn_updateValues);
     }
+    public boolean isMarginValuePopupDisplayed(){
+        return distributorUI.isDisplayed(lbl_margin);
+    }
     public void enterMarginValue(String num) throws InterruptedException {
         distributorUI.clear(lbl_margin);
         distributorUI.sendKeys(lbl_margin, num);
