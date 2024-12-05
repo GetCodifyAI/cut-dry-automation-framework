@@ -841,8 +841,9 @@ public class CustomersPage extends LoginPage {
     public void clickOnBoostTab() {
         distributorUI.click(tb_boost);
     }
-    public void clickOnTrackTab() {
+    public void clickOnTrackTab() throws InterruptedException {
         distributorUI.click(tb_track);
+        distributorUI.waitForCustom(2000);
     }
     public boolean isBroadcastTextDisplayed(){
         return distributorUI.isDisplayed(txt_customerSpecific);

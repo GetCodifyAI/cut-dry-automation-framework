@@ -32,7 +32,6 @@ public class VerifyTheRemovingTrackProfileTest extends TestBase {
         Customer.clickOnTrackTab();
         softAssert.assertTrue(Customer.isProfileTextDisplayed(),"navigation error");
         Customer.enterStopDuration("0");
-        Customer.enterStopDuration("0");
         Customer.enterKeyDropNum("");
         Customer.enterDeliveryNotes("");
         Customer.enterDoorDesc("");

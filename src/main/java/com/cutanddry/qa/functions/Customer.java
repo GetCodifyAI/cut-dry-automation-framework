@@ -472,7 +472,7 @@ public class Customer {
     public static void clickOnBoostTab(){
         customersPage.clickOnBoostTab();
     }
-    public static void clickOnTrackTab(){
+    public static void clickOnTrackTab() throws InterruptedException {
         customersPage.clickOnTrackTab();
     }
     public static boolean isBroadcastTextDisplayed(){

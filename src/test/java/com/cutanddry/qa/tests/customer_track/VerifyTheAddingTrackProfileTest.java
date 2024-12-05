@@ -32,7 +32,6 @@ public class VerifyTheAddingTrackProfileTest extends TestBase {
         Customer.clickOnTrackTab();
         softAssert.assertTrue(Customer.isProfileTextDisplayed(),"navigation error");
         Customer.enterStopDuration("1");
-        Customer.enterStopDuration("1");
         Customer.enterKeyDropNum("10");
         Customer.enterDeliveryNotes("test");
         Customer.enterDoorDesc("test");
