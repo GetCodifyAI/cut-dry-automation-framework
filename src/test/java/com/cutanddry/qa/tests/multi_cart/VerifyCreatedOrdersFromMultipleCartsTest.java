@@ -17,7 +17,7 @@ public class VerifyCreatedOrdersFromMultipleCartsTest extends TestBase {
     static String DP = "Butterfield & Vallis";
     static String customerId = "34315";
     static String itemName_1 = "Beef Bouillon Cubes";
-    static String itemName_2 = "All Purpose Flour";
+    static String itemName_2 = "Sugar Dark Brown";
     static int orderCount = 2;
 
     @BeforeMethod
