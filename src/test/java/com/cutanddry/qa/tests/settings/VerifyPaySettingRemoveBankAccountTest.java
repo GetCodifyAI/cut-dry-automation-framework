@@ -14,6 +14,8 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyPaySettingRemoveBankAccountTest extends TestBase {
     static User user;
+    static String acc_num = "2222220";
+    static String routing_num = "321081669";
 
     @BeforeMethod
     public void setUp() {
@@ -38,7 +40,16 @@ public class VerifyPaySettingRemoveBankAccountTest extends TestBase {
     }
 
     @AfterMethod
-    public void tearDown(ITestResult result) {
+    public void tearDown(ITestResult result) throws InterruptedException {
+
+        //Adding the bank account again
+        Settings.clickOnLinkBank();
+        Settings.clickOnLinkBankManually();
+        Settings.enterAccountNumber(acc_num);
+        Settings.enterRoutingNumber(routing_num);
+        Settings.clickOnSave();
+        Settings.clickOK();
+
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }
