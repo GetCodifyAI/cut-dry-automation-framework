@@ -803,14 +803,14 @@ public class Customer {
     public static void editMargin(){
         customersPage.editMargin();
     }
-    public static void resetMarginValues(){
+    public static void resetMarginValues() throws InterruptedException {
         customersPage.resetMarginValues();
     }
-    public static void updateMarginValues(){
+    public static void updateMarginValues() throws InterruptedException {
         customersPage.updateMarginValues();
     }
     public static void enterMarginValue(String val) throws InterruptedException {
-        customersPage.enterKeyDropNum(val);
+        customersPage.enterMarginValue(val);
     }
     public static boolean isMarginValuePopupDisplayed(){
         return customersPage.isMarginValuePopupDisplayed();

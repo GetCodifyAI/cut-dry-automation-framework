@@ -236,7 +236,7 @@ public class CustomersPage extends LoginPage {
     By lbl_orderGuide = By.xpath("//div[text()='Order Guide:']/following-sibling::div//div[@class='cd_themed_select__single-value css-1uccc91-singleValue']");
     By dropdown_testGuide1 =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Test_Guide_01')]");
     By dropdown_testAutomation =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Test_Automation')]");
-    By btn_editMargin = By.xpath("//*[local-name() = 'svg' and @data-icon='cdEdit']");
+    By btn_editMargin = By.xpath("//td/div/button/*[local-name() = 'svg' and @data-icon='cdEdit']");
     By btn_resetValues = By.xpath("//button[contains(text(), 'Reset Values')]");
     By btn_updateValues = By.xpath("//button[contains(text(), 'Update')]");
     By lbl_margin = By.xpath("//label[text()='Margin ($)']/following-sibling::input");
@@ -1281,11 +1281,13 @@ public class CustomersPage extends LoginPage {
     public void editMargin(){
         distributorUI.click(btn_editMargin);
     }
-    public void resetMarginValues(){
+    public void resetMarginValues() throws InterruptedException {
         distributorUI.click(btn_resetValues);
+        distributorUI.waitForCustom(2000);
     }
-    public void updateMarginValues(){
+    public void updateMarginValues() throws InterruptedException {
         distributorUI.click(btn_updateValues);
+        distributorUI.waitForCustom(2000);
     }
     public boolean isMarginValuePopupDisplayed(){
         return distributorUI.isDisplayed(lbl_margin);
