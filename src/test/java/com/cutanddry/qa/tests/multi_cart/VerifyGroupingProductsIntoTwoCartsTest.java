@@ -18,7 +18,7 @@ public class VerifyGroupingProductsIntoTwoCartsTest extends TestBase {
     static String customerId = "34315";
     static String itemName_1 = "Beef Bouillon Cubes";
     static String itemCode = "24901";
-    static String itemName_2 = "All Purpose Flour";
+    static String itemName_2 = "Sugar Dark Brown";
 
     @BeforeMethod
     public void setUp(){
