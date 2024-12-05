@@ -264,6 +264,8 @@ public class CustomersPage extends LoginPage {
     By txt_customerProfile = By.xpath("//div[contains(@class, 'd-flex') and contains(text(), 'Kafe Layers')]");
     By btn_no = By.xpath("//div[contains(text(), 'No')]");
     By txt_previewCatalog = By.xpath("//div[contains(text(), 'Catalog Preview')]");
+    By btn_chat = By.xpath("//button[contains(text(), 'Chat')]");
+    By txt_chatArea = By.xpath("//input[@placeholder='Message...']");
 
 
 
@@ -1433,6 +1435,17 @@ public class CustomersPage extends LoginPage {
             return false;
         }
         return distributorUI.isDisplayed(txt_previewCatalog);
+    }
+    public void clickChat(){
+        distributorUI.click(btn_chat);
+    }
+    public boolean isChatSectionDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_chatArea);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_chatArea);
     }
 
 

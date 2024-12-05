@@ -848,6 +848,10 @@ public class Customer {
     public static boolean isCatalogPreviewSectionDisplayed(){
         return customersPage.isCatalogPreviewSectionDisplayed();
     }
+    public static void clickChat(){customersPage.clickChat();}
+    public static boolean isChatSectionDisplayed(){
+        return customersPage.isChatSectionDisplayed();
+    }
 
 
 }

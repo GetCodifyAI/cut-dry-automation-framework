@@ -39,6 +39,7 @@
             <class name="com.cutanddry.qa.tests.customers.VerifyTheBulkActionsInviteUsersTest" />
             <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfEditOrderGuideTest" />
             <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfPreviewCatalogTest" />
+            <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfChatFlowTest" />
 
         </classes>
     </test>
