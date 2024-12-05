@@ -770,4 +770,58 @@ public class Customer {
     public static void selectMailDelivery(){
         customersPage.selectMailDelivery();
     }
+    public static boolean isCustomersTextDisplayed(){
+        return customersPage.isCustomersTextDisplayed();
+    }
+    public static void clickSalespersonDropDown(){customersPage.clickSalespersonDropDown();}
+    public static void clickSalespersonOption(){customersPage.clickSalespersonOption();}
+    public static boolean isSalespersonNameDisplayed(String salesperson){
+        return customersPage.isSalespersonNameDisplayed(salesperson);
+    }
+    public static void clickManageCustomers(){customersPage.clickManageCustomers();}
+    public static void clickExportCustomers(){customersPage.clickExportCustomers();}
+    public static boolean isExportCustomersPopUpDisplayed(){
+        return customersPage.isExportCustomersPopUpDisplayed();
+    }
+    public static void clickConfirm(){customersPage.clickConfirm();}
+    public static boolean isGeneratingReportPopUpDisplayed(){
+        return customersPage.isGeneratingReportPopUpDisplayed();
+    }
+    public static void clickExportOrderGuides(){customersPage.clickExportOrderGuides();}
+    public static boolean isExportOrderGuidesPopUpDisplayed(){
+        return customersPage.isExportOrderGuidesPopUpDisplayed();
+    }
+    public static void clickMoreFilters(){customersPage.clickMoreFilters();}
+    public static boolean isFilterCustomersPopUpDisplayed(){
+        return customersPage.isFilterCustomersPopUpDisplayed();
+    }
+    public static void clickSignUpStatus(){customersPage.clickSignUpStatus();}
+    public static void clickSignUpOption(){customersPage.clickSignUpOption();}
+    public static void clickApply(){customersPage.clickApply();}
+    public static boolean isStatusDisplayed(String status){
+        return customersPage.isStatusDisplayed(status);
+    }
+    public static void clickAddNewCustomer(){customersPage.clickAddNewCustomer();}
+    public static boolean isAddNewCustomerPopUpDisplayed(){
+        return customersPage.isAddNewCustomerPopUpDisplayed();
+    }
+    public static void typeCustomerName(String customerName)throws InterruptedException{
+        customersPage.typeCustomerName(customerName);
+    }
+    public static void clickContinue(){customersPage.clickContinue();}
+    public static void typeCustomerCity(String customerCity)throws InterruptedException{
+        customersPage.typeCustomerCity(customerCity);
+    }
+    public static void clickCreateCustomer(){customersPage.clickCreateCustomer();}
+    public static boolean isCreatedCustomerPopUpDisplayed(){
+        return customersPage.isCreatedCustomerPopUpDisplayed();
+    }
+    public static void clickClosePopUp(){customersPage.clickClosePopUp();}
+    public static void searchCustomerByName(String customerName) throws InterruptedException {
+        customersPage.clickOnSearchCustomers();
+        customersPage.typeOnSearchCustomerName(customerName);
+    }
+    public static boolean isNewCustomerDisplayed(String customerName)throws InterruptedException{
+        return customersPage.isNewCustomerDisplayed(customerName);
+    }
 }

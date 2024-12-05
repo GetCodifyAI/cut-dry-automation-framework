@@ -226,6 +226,38 @@ public class CustomersPage extends LoginPage {
     By customer_Holds = By.xpath("//span[contains(text(),'Credit') or contains(text(),'Hard') or contains(text(),'General')]");
     By lbl_pickUp = By.xpath("//span[text()='Pickup/Will Call']");
     By lbl_mailDelivery = By.xpath("//span[text()='Mail Delivery']");
+    By txt_customers = By.xpath("//h2[text()='Customers']");
+    By btn_salesperson = By.xpath("(//div[contains(@class, 'themed_select__value-container') and contains(@class, 'themed_select__value-container--has-value')])[1]");
+    By btn_salespersonOption = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and normalize-space(text())='Amir IFC']");
+    String salespersonName = "//tr//td[6]//div[normalize-space(text())='SALESPERSON']";
+    By btn_manageCustomers = By.xpath("//span[contains(text(), 'Manage Customers')]");
+    By btn_exportCustomers = By.xpath("//a[contains(text(), 'Export customers(csv)')]");
+    By txt_exportCustomersPopUp = By.xpath("//h4[contains(text(), 'Export \"Customer\" File')]");
+    By txt_generatingReport = By.xpath("//h2[text()='Generating Report']");
+    By btn_exportOrderGuidesCSV = By.xpath("//a[contains(text(), 'Export order guides(csv)')]");
+    By txt_exportOrderGuidesCSVPopUp = By.xpath("//h4[contains(text(), 'Export  File')]");
+    By btn_moreFilters = By.xpath("//span[contains(text(), 'More Filters')]");
+    By txt_filterCustomersPopUp = By.xpath("//div[contains(text(), 'Filter Customers')]");
+    By btn_signUpStatus = By.xpath("(//div[contains(@class, 'themed_select__value-container themed_select__value-container--has-value css-1hwfws3')])[4]");
+    By btn_signUpOption = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and normalize-space(text())='Signed up']");
+    By btn_apply =By.xpath("//button[@class='mx-auto btn btn-primary btn-block' and normalize-space(text())='Apply']");
+    String signUpStatus = "//tr//td[4][text()='STATUS']";
+    By btn_addNewCustomer = By.xpath("//a[contains(text(), 'Add new customer')]");
+    By txt_addNewCustomer = By.xpath("//div[contains(text(), 'Add new customer')]");
+    By txt_customerName = By.xpath("//label[contains(text(),'Customer Name*')]/following-sibling::input");
+    By btn_continue = By.xpath("//button[contains(text(), 'Continue')]");
+    By txt_city = By.xpath("//label[contains(text(),'City')]/following-sibling::input");
+    By btn_createCustomer = By.xpath("//button[contains(text(), 'Create Customer')]");
+    By txt_customerCreatedPopUp = By.xpath("//h2[contains(text(), 'Customer created.')]");
+    By btn_closePopUp = By.xpath("//button[contains(text(), 'Close')]");
+    String NewCustomerName = "//tr//td[3][text()='CUSTOMERNAME']";
+
+
+
+
+
+
+
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -1216,4 +1248,123 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForVisibility(lbl_mailDelivery);
         distributorUI.click(lbl_mailDelivery);
     }
+
+    public boolean isCustomersTextDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_customers);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_customers);
+    }
+    public void clickSalespersonDropDown(){
+        distributorUI.click(btn_salesperson);
+    }
+    public void clickSalespersonOption(){
+        distributorUI.click(btn_salespersonOption);
+    }
+    public boolean isSalespersonNameDisplayed(String salesperson){
+        return distributorUI.isDisplayed(By.xpath(salespersonName.replace("SALESPERSON",salesperson)));
+    }
+    public void clickManageCustomers(){
+        distributorUI.click(btn_manageCustomers);
+    }
+    public void clickExportCustomers(){
+        distributorUI.click(btn_exportCustomers);
+    }
+    public boolean isExportCustomersPopUpDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_exportCustomersPopUp);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_exportCustomersPopUp);
+    }
+    public boolean isGeneratingReportPopUpDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_generatingReport);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_generatingReport);
+    }
+    public void clickExportOrderGuides(){
+        distributorUI.click(btn_exportOrderGuidesCSV);
+    }
+    public boolean isExportOrderGuidesPopUpDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_exportOrderGuidesCSVPopUp);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_exportOrderGuidesCSVPopUp);
+    }
+    public void clickMoreFilters(){
+        distributorUI.click(btn_moreFilters);
+    }
+    public boolean isFilterCustomersPopUpDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_filterCustomersPopUp);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_filterCustomersPopUp);
+    }
+    public void clickSignUpStatus(){
+        distributorUI.click(btn_signUpStatus);
+    }
+    public void clickSignUpOption(){
+        distributorUI.click(btn_signUpOption);
+    }
+    public void clickApply(){
+        distributorUI.click(btn_apply);
+    }
+    public boolean isStatusDisplayed(String status){
+        return distributorUI.isDisplayed(By.xpath(signUpStatus.replace("STATUS",status)));
+    }
+    public void clickAddNewCustomer(){
+        distributorUI.click(btn_addNewCustomer);
+    }
+    public boolean isAddNewCustomerPopUpDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_addNewCustomer);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_addNewCustomer);
+    }
+    public void typeCustomerName(String customerName)throws InterruptedException {
+        distributorUI.sendKeys(txt_customerName,customerName);
+        distributorUI.waitForCustom(800);
+    }
+    public void clickContinue(){
+        distributorUI.click(btn_continue);
+    }
+    public void typeCustomerCity(String customerCity)throws InterruptedException {
+        distributorUI.sendKeys(txt_city,customerCity);
+        distributorUI.waitForCustom(800);
+    }
+    public void clickCreateCustomer(){
+        distributorUI.click(btn_createCustomer);
+    }
+    public boolean isCreatedCustomerPopUpDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_customerCreatedPopUp);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_customerCreatedPopUp);
+    }
+    public void clickClosePopUp(){
+        distributorUI.click(btn_closePopUp);
+    }
+    public void typeOnSearchCustomerName(String customerName) throws InterruptedException {
+        distributorUI.clear(tbx_searchCustomers);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_searchCustomers, customerName);
+    }
+    public boolean isNewCustomerDisplayed(String customerName){
+        return distributorUI.isDisplayed(By.xpath(NewCustomerName.replace("CUSTOMERNAME",customerName)));
+    }
+
 }
