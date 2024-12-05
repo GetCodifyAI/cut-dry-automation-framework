@@ -242,6 +242,17 @@ public class CustomersPage extends LoginPage {
     By btn_signUpOption = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and normalize-space(text())='Signed up']");
     By btn_apply =By.xpath("//button[@class='mx-auto btn btn-primary btn-block' and normalize-space(text())='Apply']");
     String signUpStatus = "//tr//td[4][text()='STATUS']";
+    By btn_addNewCustomer = By.xpath("//a[contains(text(), 'Add new customer')]");
+    By txt_addNewCustomer = By.xpath("//div[contains(text(), 'Add new customer')]");
+    By txt_customerName = By.xpath("//label[contains(text(),'Customer Name*')]/following-sibling::input");
+    By btn_continue = By.xpath("//button[contains(text(), 'Continue')]");
+    By txt_city = By.xpath("//label[contains(text(),'City')]/following-sibling::input");
+    By btn_createCustomer = By.xpath("//button[contains(text(), 'Create Customer')]");
+    By txt_customerCreatedPopUp = By.xpath("//h2[contains(text(), 'Customer created.')]");
+    By btn_closePopUp = By.xpath("//button[contains(text(), 'Close')]");
+    String NewCustomerName = "//tr//td[3][text()='CUSTOMERNAME']";
+
+
 
 
 
@@ -1310,6 +1321,50 @@ public class CustomersPage extends LoginPage {
     }
     public boolean isStatusDisplayed(String status){
         return distributorUI.isDisplayed(By.xpath(signUpStatus.replace("STATUS",status)));
+    }
+    public void clickAddNewCustomer(){
+        distributorUI.click(btn_addNewCustomer);
+    }
+    public boolean isAddNewCustomerPopUpDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_addNewCustomer);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_addNewCustomer);
+    }
+    public void typeCustomerName(String customerName)throws InterruptedException {
+        distributorUI.sendKeys(txt_customerName,customerName);
+        distributorUI.waitForCustom(800);
+    }
+    public void clickContinue(){
+        distributorUI.click(btn_continue);
+    }
+    public void typeCustomerCity(String customerCity)throws InterruptedException {
+        distributorUI.sendKeys(txt_city,customerCity);
+        distributorUI.waitForCustom(800);
+    }
+    public void clickCreateCustomer(){
+        distributorUI.click(btn_createCustomer);
+    }
+    public boolean isCreatedCustomerPopUpDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_customerCreatedPopUp);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_customerCreatedPopUp);
+    }
+    public void clickClosePopUp(){
+        distributorUI.click(btn_closePopUp);
+    }
+    public void typeOnSearchCustomerName(String customerName) throws InterruptedException {
+        distributorUI.clear(tbx_searchCustomers);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_searchCustomers, customerName);
+    }
+    public boolean isNewCustomerDisplayed(String customerName){
+        return distributorUI.isDisplayed(By.xpath(NewCustomerName.replace("CUSTOMERNAME",customerName)));
     }
 
 }

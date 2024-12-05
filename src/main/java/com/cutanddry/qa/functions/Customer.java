@@ -801,4 +801,27 @@ public class Customer {
     public static boolean isStatusDisplayed(String status){
         return customersPage.isStatusDisplayed(status);
     }
+    public static void clickAddNewCustomer(){customersPage.clickAddNewCustomer();}
+    public static boolean isAddNewCustomerPopUpDisplayed(){
+        return customersPage.isAddNewCustomerPopUpDisplayed();
+    }
+    public static void typeCustomerName(String customerName)throws InterruptedException{
+        customersPage.typeCustomerName(customerName);
+    }
+    public static void clickContinue(){customersPage.clickContinue();}
+    public static void typeCustomerCity(String customerCity)throws InterruptedException{
+        customersPage.typeCustomerCity(customerCity);
+    }
+    public static void clickCreateCustomer(){customersPage.clickCreateCustomer();}
+    public static boolean isCreatedCustomerPopUpDisplayed(){
+        return customersPage.isCreatedCustomerPopUpDisplayed();
+    }
+    public static void clickClosePopUp(){customersPage.clickClosePopUp();}
+    public static void searchCustomerByName(String customerName) throws InterruptedException {
+        customersPage.clickOnSearchCustomers();
+        customersPage.typeOnSearchCustomerName(customerName);
+    }
+    public static boolean isNewCustomerDisplayed(String customerName)throws InterruptedException{
+        return customersPage.isNewCustomerDisplayed(customerName);
+    }
 }
