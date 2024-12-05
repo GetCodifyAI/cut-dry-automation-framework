@@ -263,12 +263,7 @@ public class CustomersPage extends LoginPage {
     By txt_orderGuide = By.xpath("//div[contains(text(), 'Kafe Layers')]");
     By txt_customerProfile = By.xpath("//div[contains(@class, 'd-flex') and contains(text(), 'Kafe Layers')]");
     By btn_no = By.xpath("//div[contains(text(), 'No')]");
-
-
-
-
-
-
+    By txt_previewCatalog = By.xpath("//div[contains(text(), 'Catalog Preview')]");
 
 
 
@@ -1427,6 +1422,17 @@ public class CustomersPage extends LoginPage {
             return false;
         }
         return distributorUI.isDisplayed(txt_orderGuide);
+    }
+    public void clickPreviewCatalog(){
+        distributorUI.click(btn_previewCatalog);
+    }
+    public boolean isCatalogPreviewSectionDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_previewCatalog);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_previewCatalog);
     }
 
 

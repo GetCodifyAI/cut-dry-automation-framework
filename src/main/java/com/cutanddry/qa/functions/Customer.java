@@ -844,6 +844,10 @@ public class Customer {
     public static boolean isCustomerOrderGuideDisplayed(){
         return customersPage.isCustomerOrderGuideDisplayed();
     }
+    public static void clickPreviewCatalog(){customersPage.clickPreviewCatalog();}
+    public static boolean isCatalogPreviewSectionDisplayed(){
+        return customersPage.isCatalogPreviewSectionDisplayed();
+    }
 
 
 }
