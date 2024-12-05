@@ -232,7 +232,7 @@ public class CustomersPage extends LoginPage {
     By lbl_keyDropNum = By.xpath("//div[text()='Key Drop Number']/following-sibling::div//input");
     By lbl_deliveryNotes = By.xpath("//div[text()='Delivery Notes']/following-sibling::div/textarea");
     By lbl_DoorDesc = By.xpath("//div[text()='Door Description']/following-sibling::div//input");
-
+    By txt_stopDuration = By.xpath("//div[text()='Stop Duration']/following-sibling::div//input");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -1241,20 +1241,21 @@ public class CustomersPage extends LoginPage {
         distributorUI.clear(lbl_keyDropNum);
         distributorUI.sendKeys(lbl_keyDropNum, msg);
         distributorUI.waitForCustom(2000);
-
     }
     public void enterDeliveryNotes(String msg) throws InterruptedException {
         distributorUI.click(lbl_deliveryNotes);
         distributorUI.clear(lbl_deliveryNotes);
         distributorUI.sendKeys(lbl_deliveryNotes, msg);
         distributorUI.waitForCustom(2000);
-
     }
+
     public void enterDoorDesc(String msg) throws InterruptedException {
         distributorUI.click(lbl_DoorDesc);
         distributorUI.clear(lbl_DoorDesc);
         distributorUI.sendKeys(lbl_DoorDesc, msg);
         distributorUI.waitForCustom(2000);
-
+    }
+    public String isStopDurationUpdated() throws InterruptedException {
+        return distributorUI.getText(lbl_stopDuration);
     }
 }

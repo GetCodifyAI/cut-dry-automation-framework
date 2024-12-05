@@ -36,6 +36,7 @@ public class VerifyTheAddingTrackProfileTest extends TestBase {
         Customer.enterDeliveryNotes("test");
         Customer.enterDoorDesc("test");
         Customer.clickOnSave();
+        softAssert.assertEquals(Customer.isStopDurationUpdated(),"1","track prof error");
         softAssert.assertAll();
     }
 

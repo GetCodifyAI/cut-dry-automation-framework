@@ -788,4 +788,7 @@ public class Customer {
     public static void enterKeyDropNum(String num) throws InterruptedException {
         customersPage.enterKeyDropNum(num);
     }
+    public static String isStopDurationUpdated() throws InterruptedException {
+        return customersPage.isStopDurationUpdated();
+    }
 }
