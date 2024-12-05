@@ -236,7 +236,7 @@ public class CustomersPage extends LoginPage {
     By lbl_orderGuide = By.xpath("//div[text()='Order Guide:']/following-sibling::div//div[@class='cd_themed_select__single-value css-1uccc91-singleValue']");
     By dropdown_testGuide1 =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Test_Guide_01')]");
     By dropdown_testAutomation =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Test_Automation')]");
-
+    By btn_editMargin = By.xpath("//*[local-name() = 'svg' and @data-icon='cdEdit']");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -1273,5 +1273,8 @@ public class CustomersPage extends LoginPage {
     public void selectTestAutomation(){
         distributorUI.waitForVisibility(dropdown_testAutomation);
         distributorUI.click(dropdown_testAutomation);
+    }
+    public void editMargin(){
+        distributorUI.click(btn_editMargin);
     }
 }

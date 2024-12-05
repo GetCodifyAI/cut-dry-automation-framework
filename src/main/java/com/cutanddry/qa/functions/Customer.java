@@ -800,4 +800,7 @@ public class Customer {
     public static void selectTestAutomation(){
         customersPage.selectTestAutomation();
     }
+    public static void editMargin(){
+        customersPage.editMargin();
+    }
 }
