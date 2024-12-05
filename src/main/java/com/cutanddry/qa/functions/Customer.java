@@ -472,8 +472,14 @@ public class Customer {
     public static void clickOnBoostTab(){
         customersPage.clickOnBoostTab();
     }
+    public static void clickOnTrackTab(){
+        customersPage.clickOnTrackTab();
+    }
     public static boolean isBroadcastTextDisplayed(){
         return customersPage.isBroadcastTextDisplayed();
+    }
+    public static boolean isProfileTextDisplayed(){
+        return customersPage.isProfileTextDisplayed();
     }
     public static void clickOnEditMessage(){
         customersPage.clickOnEditMessage();
@@ -769,5 +775,17 @@ public class Customer {
     }
     public static void selectMailDelivery(){
         customersPage.selectMailDelivery();
+    }
+    public static void enterStopDuration(String num) throws InterruptedException {
+        customersPage.enterStopDuration(num);
+    }
+    public static void enterDeliveryNotes(String name) throws InterruptedException {
+        customersPage.enterDeliveryNotes(name);
+    }
+    public static void enterDoorDesc(String name) throws InterruptedException {
+        customersPage.enterDoorDesc(name);
+    }
+    public static void enterKeyDropNum(String num) throws InterruptedException {
+        customersPage.enterKeyDropNum(num);
     }
 }

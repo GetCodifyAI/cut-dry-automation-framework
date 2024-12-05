@@ -153,7 +153,9 @@ public class CustomersPage extends LoginPage {
     By txt_areYouSure = By.xpath("//h2[text()='Are you sure?']");
     By btn_deleteIcon = By.xpath("//*[local-name() = 'svg' and @data-icon='trash-alt']");
     By tb_boost = By.xpath("//a[text()='Boost' and @role='tab']");
+    By tb_track = By.xpath("//a[text()='Track' and @role='tab']");
     By txt_customerSpecific = By.xpath("//div[contains(text(),'Customer-specific Broadcast')]");
+    By txt_profile = By.xpath("//div[contains(text(),'Profile')]");
     By btn_editMessage = By.xpath("//button[contains(text(), 'Edit Message')]");
     By btn_clearMessage = By.xpath("//button[contains(text(), 'Clear Message')]");
     By btn_saveMessage = By.xpath("//button[contains(text(), 'Save Message')]");
@@ -226,6 +228,11 @@ public class CustomersPage extends LoginPage {
     By customer_Holds = By.xpath("//span[contains(text(),'Credit') or contains(text(),'Hard') or contains(text(),'General')]");
     By lbl_pickUp = By.xpath("//span[text()='Pickup/Will Call']");
     By lbl_mailDelivery = By.xpath("//span[text()='Mail Delivery']");
+    By lbl_stopDuration = By.xpath("//div[text()='Stop Duration']/following-sibling::div//input");
+    By lbl_keyDropNum = By.xpath("//div[text()='Key Drop Number']/following-sibling::div//input");
+    By lbl_deliveryNotes = By.xpath("//div[text()='Delivery Notes']/following-sibling::div/textarea");
+    By lbl_DoorDesc = By.xpath("//div[text()='Door Description']/following-sibling::div//input");
+
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -834,8 +841,14 @@ public class CustomersPage extends LoginPage {
     public void clickOnBoostTab() {
         distributorUI.click(tb_boost);
     }
+    public void clickOnTrackTab() {
+        distributorUI.click(tb_track);
+    }
     public boolean isBroadcastTextDisplayed(){
         return distributorUI.isDisplayed(txt_customerSpecific);
+    }
+    public boolean isProfileTextDisplayed(){
+        return distributorUI.isDisplayed(txt_profile);
     }
     public void clickOnEditMessage(){
         distributorUI.waitForVisibility(btn_editMessage);
@@ -1215,5 +1228,32 @@ public class CustomersPage extends LoginPage {
     public void selectMailDelivery(){
         distributorUI.waitForVisibility(lbl_mailDelivery);
         distributorUI.click(lbl_mailDelivery);
+    }
+    public void enterStopDuration(String msg) throws InterruptedException {
+        distributorUI.clickUsingJavaScript(lbl_stopDuration);
+        distributorUI.clear(lbl_stopDuration);
+        distributorUI.sendKeys(lbl_stopDuration, msg);
+        distributorUI.waitForCustom(4000);
+    }
+    public void enterKeyDropNum(String msg) throws InterruptedException {
+        distributorUI.click(lbl_keyDropNum);
+        distributorUI.clear(lbl_keyDropNum);
+        distributorUI.sendKeys(lbl_keyDropNum, msg);
+        distributorUI.waitForCustom(2000);
+
+    }
+    public void enterDeliveryNotes(String msg) throws InterruptedException {
+        distributorUI.click(lbl_deliveryNotes);
+        distributorUI.clear(lbl_deliveryNotes);
+        distributorUI.sendKeys(lbl_deliveryNotes, msg);
+        distributorUI.waitForCustom(2000);
+
+    }
+    public void enterDoorDesc(String msg) throws InterruptedException {
+        distributorUI.click(lbl_DoorDesc);
+        distributorUI.clear(lbl_DoorDesc);
+        distributorUI.sendKeys(lbl_DoorDesc, msg);
+        distributorUI.waitForCustom(2000);
+
     }
 }
