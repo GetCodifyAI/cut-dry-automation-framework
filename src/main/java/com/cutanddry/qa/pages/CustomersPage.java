@@ -272,6 +272,8 @@ public class CustomersPage extends LoginPage {
     By btn_threeDot = By.xpath("(//button[contains(@id, 'dropdown-basic')])[2]");
     By btn_printKitchenReceipt = By.xpath("//span[contains(text(), 'Print Kitchen Receipt')]");
     By btn_orderConfirmation = By.xpath("//span[contains(text(), 'Print Order Confirmation')]");
+    By btn_order = By.xpath("(//tr[contains(@class, '_du1frc _du1frc _qy4b979 py-3')])[1]");
+    By txt_order = By.xpath("//h2[contains(text(), 'Order')]");
 
 
 
@@ -1478,6 +1480,17 @@ public class CustomersPage extends LoginPage {
     }
     public void clickOrderConfirmation() throws InterruptedException{
         distributorUI.click(btn_orderConfirmation);
+    }
+    public void clickOrder(){
+        distributorUI.click(btn_order);
+    }
+    public boolean isOrderSectionDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_order);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_order);
     }
 
 

@@ -865,6 +865,10 @@ public class Customer {
         customersPage.clickThreeDot();
         customersPage.clickOrderConfirmation();
     }
+    public static void clickOrder(){customersPage.clickOrder();}
+    public static boolean isOrderSectionDisplayed(){
+        return customersPage.isOrderSectionDisplayed();
+    }
 
 
 }
