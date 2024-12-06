@@ -274,6 +274,8 @@ public class CustomersPage extends LoginPage {
     By btn_orderConfirmation = By.xpath("//span[contains(text(), 'Print Order Confirmation')]");
     By btn_order = By.xpath("(//tr[contains(@class, '_du1frc _du1frc _qy4b979 py-3')])[1]");
     By txt_order = By.xpath("//h2[contains(text(), 'Order')]");
+    By tb_drafts = By.xpath("//a[text()='Drafts' and @role='tab']");
+    By txt_draftStatus = By.xpath("//tr[2]//td[3][contains(text(), 'just now')]");
 
 
 
@@ -1491,6 +1493,17 @@ public class CustomersPage extends LoginPage {
             return false;
         }
         return distributorUI.isDisplayed(txt_order);
+    }
+    public void clickDraftsTab(){
+        distributorUI.click(tb_drafts);
+    }
+    public boolean isOrderDraftDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_draftStatus);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_draftStatus);
     }
 
 

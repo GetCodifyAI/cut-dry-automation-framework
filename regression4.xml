@@ -44,6 +44,7 @@
             <class name="com.cutanddry.qa.tests.customer_orders.VerifyThePrintKitchenReceiptTest" />
             <class name="com.cutanddry.qa.tests.customer_orders.VerifyThePrintOrderConfirmationTest" />
             <class name="com.cutanddry.qa.tests.customer_orders.VerifyTheNavigatesToOrderSectionTest" />
+            <class name="com.cutanddry.qa.tests.customer_drafts.VerifyTheCreatedDraftsTest" />
 
         </classes>
     </test>

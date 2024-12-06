@@ -869,6 +869,10 @@ public class Customer {
     public static boolean isOrderSectionDisplayed(){
         return customersPage.isOrderSectionDisplayed();
     }
+    public static void clickDraftsTab(){customersPage.clickDraftsTab();}
+    public static boolean isOrderDraftDisplayed(){
+        return customersPage.isOrderDraftDisplayed();
+    }
 
 
 }
