@@ -857,6 +857,10 @@ public class Customer {
         return customersPage.isStandingOrdersPaused();
     }
     public static void clickResume(){customersPage.clickResume();}
+    public static void clickPrintReceipt() throws InterruptedException{
+        customersPage.clickThreeDot();
+        customersPage.clickPrintReceipt();
+    }
 
 
 }

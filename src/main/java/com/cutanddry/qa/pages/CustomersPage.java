@@ -269,6 +269,10 @@ public class CustomersPage extends LoginPage {
     By btn_pauseStandingOrders = By.xpath("//div[contains(text(), 'Pause')]");
     By txt_pausedStandingOrders = By.xpath("//div[contains(text(),'(Paused) ')]");
     By btn_resumeStandingOrders = By.xpath("//div[contains(text(), 'Resume')]");
+    By btn_threeDot = By.xpath("(//button[contains(@id, 'dropdown-basic')])[2]");
+    By btn_printKitchenReceipt = By.xpath("//span[contains(text(), 'Print Kitchen Receipt')]");
+    By btn_orderConfirmation = By.xpath("//span[contains(text(), 'Print Order Confirmation')]");
+
 
 
 
@@ -1465,6 +1469,15 @@ public class CustomersPage extends LoginPage {
     }
     public void clickResume(){
         distributorUI.click(btn_resumeStandingOrders);
+    }
+    public void clickThreeDot() throws InterruptedException{
+        distributorUI.click(btn_threeDot);
+    }
+    public void clickPrintReceipt() throws InterruptedException{
+        distributorUI.click(btn_printKitchenReceipt);
+    }
+    public void clickOrderConfirmation() throws InterruptedException{
+        distributorUI.click(btn_orderConfirmation);
     }
 
 
