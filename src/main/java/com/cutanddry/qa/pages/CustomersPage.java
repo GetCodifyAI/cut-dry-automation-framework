@@ -266,6 +266,10 @@ public class CustomersPage extends LoginPage {
     By txt_previewCatalog = By.xpath("//div[contains(text(), 'Catalog Preview')]");
     By btn_chat = By.xpath("//button[contains(text(), 'Chat')]");
     By txt_chatArea = By.xpath("//input[@placeholder='Message...']");
+    By btn_pauseStandingOrders = By.xpath("//div[contains(text(), 'Pause')]");
+    By txt_pausedStandingOrders = By.xpath("//div[contains(text(),'(Paused) ')]");
+    By btn_resumeStandingOrders = By.xpath("//div[contains(text(), 'Resume')]");
+
 
 
 
@@ -1446,6 +1450,21 @@ public class CustomersPage extends LoginPage {
             return false;
         }
         return distributorUI.isDisplayed(txt_chatArea);
+    }
+    public void clickPause(){
+        distributorUI.click(btn_pauseStandingOrders);
+    }
+
+    public boolean isStandingOrdersPaused(){
+        try {
+            distributorUI.waitForVisibility(txt_pausedStandingOrders);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_pausedStandingOrders);
+    }
+    public void clickResume(){
+        distributorUI.click(btn_resumeStandingOrders);
     }
 
 

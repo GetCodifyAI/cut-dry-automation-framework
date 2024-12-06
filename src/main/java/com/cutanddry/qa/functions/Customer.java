@@ -852,6 +852,11 @@ public class Customer {
     public static boolean isChatSectionDisplayed(){
         return customersPage.isChatSectionDisplayed();
     }
+    public static void clickPause(){customersPage.clickPause();}
+    public static boolean isStandingOrdersPaused(){
+        return customersPage.isStandingOrdersPaused();
+    }
+    public static void clickResume(){customersPage.clickResume();}
 
 
 }
