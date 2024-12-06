@@ -42,7 +42,7 @@ public class VerifyTheFunctionalityOfEditMarginOfAnItemTest extends TestBase {
         Customer.editMargin();
         softAssert.assertTrue(Customer.isMarginValuePopupDisplayed(),"popup error");
         Customer.resetMarginValues();
-        softAssert.assertFalse(Customer.isItemAdded("$8.05"),"reset error");
+        softAssert.assertFalse(Customer.isItemAdded("$8.05 "),"reset error");
         softAssert.assertAll();
     }
 
