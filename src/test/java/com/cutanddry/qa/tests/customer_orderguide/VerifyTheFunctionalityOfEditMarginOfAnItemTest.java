@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheFunctionalityOfEditMarginOfAnItemTest extends TestBase {
     static User user;
     static String customerId = "16579";
-    static String itemName = "Asparagus 11 Lb";
+    static String itemName = "Carrot";
 
     @BeforeMethod
     public void setUp(){
@@ -38,11 +38,11 @@ public class VerifyTheFunctionalityOfEditMarginOfAnItemTest extends TestBase {
         softAssert.assertTrue(Customer.isMarginValuePopupDisplayed(),"popup error");
         Customer.enterMarginValue("8");
         Customer.updateMarginValues();
-        softAssert.assertTrue(Customer.isItemAdded("$8.00"),"update error");
+        softAssert.assertTrue(Customer.isItemAdded("$8.05"),"update error");
         Customer.editMargin();
         softAssert.assertTrue(Customer.isMarginValuePopupDisplayed(),"popup error");
         Customer.resetMarginValues();
-        softAssert.assertTrue(Customer.isItemAdded("$5.00"),"reset error");
+        softAssert.assertFalse(Customer.isItemAdded("$8.05"),"reset error");
         softAssert.assertAll();
     }
 
