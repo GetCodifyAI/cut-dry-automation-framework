@@ -472,8 +472,14 @@ public class Customer {
     public static void clickOnBoostTab(){
         customersPage.clickOnBoostTab();
     }
+    public static void clickOnTrackTab() throws InterruptedException {
+        customersPage.clickOnTrackTab();
+    }
     public static boolean isBroadcastTextDisplayed(){
         return customersPage.isBroadcastTextDisplayed();
+    }
+    public static boolean isProfileTextDisplayed(){
+        return customersPage.isProfileTextDisplayed();
     }
     public static void clickOnEditMessage(){
         customersPage.clickOnEditMessage();
@@ -823,5 +829,44 @@ public class Customer {
     }
     public static boolean isNewCustomerDisplayed(String customerName)throws InterruptedException{
         return customersPage.isNewCustomerDisplayed(customerName);
+    }
+    public static void enterStopDuration(String num) throws InterruptedException {
+        customersPage.enterStopDuration(num);
+    }
+    public static void enterDeliveryNotes(String name) throws InterruptedException {
+        customersPage.enterDeliveryNotes(name);
+    }
+    public static void enterDoorDesc(String name) throws InterruptedException {
+        customersPage.enterDoorDesc(name);
+    }
+    public static void enterKeyDropNum(String num) throws InterruptedException {
+        customersPage.enterKeyDropNum(num);
+    }
+    public static String isStopDurationUpdated() throws InterruptedException {
+        return customersPage.isStopDurationUpdated();
+    }
+    public static void clickOGDropdown(){
+        customersPage.clickOGDropdown();
+    }
+    public static void selectTestOrderGuide1(){
+        customersPage.selectTestOrderGuide1();
+    }
+    public static void selectTestAutomation(){
+        customersPage.selectTestAutomation();
+    }
+    public static void editMargin(){
+        customersPage.editMargin();
+    }
+    public static void resetMarginValues() throws InterruptedException {
+        customersPage.resetMarginValues();
+    }
+    public static void updateMarginValues() throws InterruptedException {
+        customersPage.updateMarginValues();
+    }
+    public static void enterMarginValue(String val) throws InterruptedException {
+        customersPage.enterMarginValue(val);
+    }
+    public static boolean isMarginValuePopupDisplayed(){
+        return customersPage.isMarginValuePopupDisplayed();
     }
 }

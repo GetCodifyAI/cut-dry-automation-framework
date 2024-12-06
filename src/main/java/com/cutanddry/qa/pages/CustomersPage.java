@@ -153,7 +153,9 @@ public class CustomersPage extends LoginPage {
     By txt_areYouSure = By.xpath("//h2[text()='Are you sure?']");
     By btn_deleteIcon = By.xpath("//*[local-name() = 'svg' and @data-icon='trash-alt']");
     By tb_boost = By.xpath("//a[text()='Boost' and @role='tab']");
+    By tb_track = By.xpath("//a[text()='Track' and @role='tab']");
     By txt_customerSpecific = By.xpath("//div[contains(text(),'Customer-specific Broadcast')]");
+    By txt_profile = By.xpath("//div[contains(text(),'Profile')]");
     By btn_editMessage = By.xpath("//button[contains(text(), 'Edit Message')]");
     By btn_clearMessage = By.xpath("//button[contains(text(), 'Clear Message')]");
     By btn_saveMessage = By.xpath("//button[contains(text(), 'Save Message')]");
@@ -257,6 +259,19 @@ public class CustomersPage extends LoginPage {
 
 
 
+
+    By lbl_stopDuration = By.xpath("//div[text()='Stop Duration']/following-sibling::div//input");
+    By lbl_keyDropNum = By.xpath("//div[text()='Key Drop Number']/following-sibling::div//input");
+    By lbl_deliveryNotes = By.xpath("//div[text()='Delivery Notes']/following-sibling::div/textarea");
+    By lbl_DoorDesc = By.xpath("//div[text()='Door Description']/following-sibling::div//input");
+    By txt_stopDuration = By.xpath("//div[text()='Stop Duration']/following-sibling::div//input");
+    By lbl_orderGuide = By.xpath("//div[text()='Order Guide:']/following-sibling::div//div[@class='cd_themed_select__single-value css-1uccc91-singleValue']");
+    By dropdown_testGuide1 =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Test_Guide_01')]");
+    By dropdown_testAutomation =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Test_Automation')]");
+    By btn_editMargin = By.xpath("//td/div/button/*[local-name() = 'svg' and @data-icon='cdEdit']");
+    By btn_resetValues = By.xpath("//button[contains(text(), 'Reset Values')]");
+    By btn_updateValues = By.xpath("//button[contains(text(), 'Update')]");
+    By lbl_margin = By.xpath("//label[text()='Margin ($)']/following-sibling::input");
 
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
@@ -866,8 +881,15 @@ public class CustomersPage extends LoginPage {
     public void clickOnBoostTab() {
         distributorUI.click(tb_boost);
     }
+    public void clickOnTrackTab() throws InterruptedException {
+        distributorUI.click(tb_track);
+        distributorUI.waitForCustom(2000);
+    }
     public boolean isBroadcastTextDisplayed(){
         return distributorUI.isDisplayed(txt_customerSpecific);
+    }
+    public boolean isProfileTextDisplayed(){
+        return distributorUI.isDisplayed(txt_profile);
     }
     public void clickOnEditMessage(){
         distributorUI.waitForVisibility(btn_editMessage);
@@ -1367,4 +1389,63 @@ public class CustomersPage extends LoginPage {
         return distributorUI.isDisplayed(By.xpath(NewCustomerName.replace("CUSTOMERNAME",customerName)));
     }
 
+    public void enterStopDuration(String msg) throws InterruptedException {
+        distributorUI.clickUsingJavaScript(lbl_stopDuration);
+        distributorUI.clear(lbl_stopDuration);
+        distributorUI.sendKeys(lbl_stopDuration, msg);
+        distributorUI.waitForCustom(4000);
+    }
+    public void enterKeyDropNum(String msg) throws InterruptedException {
+        distributorUI.click(lbl_keyDropNum);
+        distributorUI.clear(lbl_keyDropNum);
+        distributorUI.sendKeys(lbl_keyDropNum, msg);
+        distributorUI.waitForCustom(2000);
+    }
+    public void enterDeliveryNotes(String msg) throws InterruptedException {
+        distributorUI.click(lbl_deliveryNotes);
+        distributorUI.clear(lbl_deliveryNotes);
+        distributorUI.sendKeys(lbl_deliveryNotes, msg);
+        distributorUI.waitForCustom(2000);
+    }
+
+    public void enterDoorDesc(String msg) throws InterruptedException {
+        distributorUI.click(lbl_DoorDesc);
+        distributorUI.clear(lbl_DoorDesc);
+        distributorUI.sendKeys(lbl_DoorDesc, msg);
+        distributorUI.waitForCustom(2000);
+    }
+    public String isStopDurationUpdated() throws InterruptedException {
+        return distributorUI.getText(txt_stopDuration,"value");
+    }
+    public void clickOGDropdown(){
+        distributorUI.waitForVisibility(lbl_orderGuide);
+        distributorUI.click(lbl_orderGuide);
+    }
+    public void selectTestOrderGuide1(){
+        distributorUI.waitForVisibility(dropdown_testGuide1);
+        distributorUI.click(dropdown_testGuide1);
+    }
+    public void selectTestAutomation(){
+        distributorUI.waitForVisibility(dropdown_testAutomation);
+        distributorUI.click(dropdown_testAutomation);
+    }
+    public void editMargin(){
+        distributorUI.click(btn_editMargin);
+    }
+    public void resetMarginValues() throws InterruptedException {
+        distributorUI.click(btn_resetValues);
+        distributorUI.waitForCustom(2000);
+    }
+    public void updateMarginValues() throws InterruptedException {
+        distributorUI.click(btn_updateValues);
+        distributorUI.waitForCustom(2000);
+    }
+    public boolean isMarginValuePopupDisplayed(){
+        return distributorUI.isDisplayed(lbl_margin);
+    }
+    public void enterMarginValue(String num) throws InterruptedException {
+        distributorUI.clear(lbl_margin);
+        distributorUI.sendKeys(lbl_margin, num);
+        distributorUI.waitForCustom(1000);
+    }
 }

@@ -36,7 +36,10 @@
             <class name="com.cutanddry.qa.tests.customers.VerifyTheExportOrderGuidesTest" />
             <class name="com.cutanddry.qa.tests.customers.VerifyTheMoreFiltersTest" />
             <class name="com.cutanddry.qa.tests.customers.VerifyTheAddNewCustomerTest" />
-
+            <class name="com.cutanddry.qa.tests.customer_track.VerifyTheAddingTrackProfileTest" />
+            <class name="com.cutanddry.qa.tests.customer_track.VerifyTheRemovingTrackProfileTest" />
+            <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfEditMarginOfAnItemTest" />
+            <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyViewMultipleOGsAndMoveBetweenDifferentOGTest" />
         </classes>
     </test>
 </suite>
