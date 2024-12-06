@@ -42,6 +42,7 @@
             <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfChatFlowTest" />
             <class name="com.cutanddry.qa.tests.customer_orders.VerifyThePauseStandingOrderTest" />
             <class name="com.cutanddry.qa.tests.customer_orders.VerifyThePrintKitchenReceiptTest" />
+            <class name="com.cutanddry.qa.tests.customer_orders.VerifyThePrintOrderConfirmationTest" />
 
         </classes>
     </test>

@@ -861,6 +861,10 @@ public class Customer {
         customersPage.clickThreeDot();
         customersPage.clickPrintReceipt();
     }
+    public static void clickOrderConfirmation() throws InterruptedException{
+        customersPage.clickThreeDot();
+        customersPage.clickOrderConfirmation();
+    }
 
 
 }
