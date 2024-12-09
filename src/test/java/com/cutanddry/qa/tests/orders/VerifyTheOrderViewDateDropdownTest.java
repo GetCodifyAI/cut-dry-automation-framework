@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 
 public class VerifyTheOrderViewDateDropdownTest extends TestBase {
     static User user;
-    String date = "Yesterday";
+    String date = "Last 7 Days";
 
     @BeforeMethod
     public void setUp() {
