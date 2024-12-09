@@ -50,6 +50,14 @@
             <class name="com.cutanddry.qa.tests.customer_track.VerifyTheRemovingTrackProfileTest" />
             <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfEditMarginOfAnItemTest" />
             <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyViewMultipleOGsAndMoveBetweenDifferentOGTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyEditCustomerNameTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyEditCustomerShippingAddressTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyAddNoteTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyEditNoteTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyAddSalespersonTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyRemoveSalespersonTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyAddTagTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyRemoveTagTest" />
         </classes>
     </test>
 </suite>
