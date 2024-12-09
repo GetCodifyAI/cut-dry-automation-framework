@@ -37,6 +37,7 @@ public class ValidateTheCatalogFilterSidebarTest extends TestBase {
         Customer.clickSection();
         Customer.clickCategory();
         Customer.clickBrand();
+        softAssert.assertTrue(Customer.isFilteredBrandDisplayed(),"brand filter not work");
         Customer.clickItemStatus();
         Customer.clickStorageType();
         Customer.clickDietType();
@@ -48,10 +49,10 @@ public class ValidateTheCatalogFilterSidebarTest extends TestBase {
         softAssert.assertAll();
     }
 
-//    @AfterMethod
-//    public void tearDown(ITestResult result){
-//        takeScreenshotOnFailure(result);
-//        closeAllBrowsers();
-//    }
+    @AfterMethod
+    public void tearDown(ITestResult result){
+        takeScreenshotOnFailure(result);
+        closeAllBrowsers();
+    }
 
 }

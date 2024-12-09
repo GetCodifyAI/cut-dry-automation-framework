@@ -295,6 +295,7 @@ public class CustomersPage extends LoginPage {
     By btn_allItems = By.xpath("//div[contains(text(), 'All Items')]");
     By btn_brand = By.xpath("//div[contains(text(), 'Brand')]");
     By btn_brandOption = By.xpath("//div[contains(text(), 'Bob')]");
+    By txt_filterByBrand =By.xpath("//div[@class='_1y3bqj7 p-0 d-inline-block _5h4pkd _1451qv9 _du1frc' and contains(text(), 'Red Mill')]");
     By btn_itemStatus = By.xpath("//div[contains(text(), 'Item Status')]");
     By btn_itemStatusOption = By.xpath("//div[contains(text(), 'Stocked')]");
     By btn_storageType = By.xpath("//div[contains(text(), 'Storage Type')]");
@@ -1624,6 +1625,14 @@ public class CustomersPage extends LoginPage {
     public void clickBrand()throws InterruptedException{
         distributorUI.click(btn_brand);
         distributorUI.click(btn_brandOption);
+    }
+    public boolean isFilteredBrandDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_filterByBrand);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_filterByBrand);
     }
     public void clickItemStatus()throws InterruptedException{
         distributorUI.click(btn_itemStatus);

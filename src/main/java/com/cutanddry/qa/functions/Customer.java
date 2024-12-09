@@ -928,6 +928,9 @@ public class Customer {
     public static void clickSection()throws InterruptedException{customersPage.clickNewArrivals();}
     public static void clickCategory()throws InterruptedException{customersPage.clickAllItems();}
     public static void clickBrand()throws InterruptedException{customersPage.clickBrand();}
+    public static boolean isFilteredBrandDisplayed(){
+        return customersPage.isFilteredBrandDisplayed();
+    }
     public static void clickItemStatus()throws InterruptedException{customersPage.clickItemStatus();}
     public static void clickStorageType()throws InterruptedException{customersPage.clickStorageType();}
     public static void clickDietType()throws InterruptedException{customersPage.clickDietType();}
