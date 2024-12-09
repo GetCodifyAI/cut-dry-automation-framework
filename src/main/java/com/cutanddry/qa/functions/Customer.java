@@ -873,6 +873,7 @@ public class Customer {
     public static boolean isOrderDraftDisplayed(){
         return customersPage.isOrderDraftDisplayed();
     }
+    public static void clickDeleteDraft(){customersPage.clickDeleteDraft();}
 
 
 }

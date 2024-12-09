@@ -276,6 +276,7 @@ public class CustomersPage extends LoginPage {
     By txt_order = By.xpath("//h2[contains(text(), 'Order')]");
     By tb_drafts = By.xpath("//a[text()='Drafts' and @role='tab']");
     By txt_draftStatus = By.xpath("//tr[2]//td[3][contains(text(), 'just now')]");
+    By btn_deleteDraft = By.xpath("(//button[contains(@class, '_47hinf btn btn-link')])[1]");
 
 
 
@@ -1504,6 +1505,9 @@ public class CustomersPage extends LoginPage {
             return false;
         }
         return distributorUI.isDisplayed(txt_draftStatus);
+    }
+    public void clickDeleteDraft(){
+        distributorUI.click(btn_deleteDraft);
     }
 
 
