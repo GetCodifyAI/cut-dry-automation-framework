@@ -50,6 +50,7 @@
             <class name="com.cutanddry.qa.tests.customer_track.VerifyTheRemovingTrackProfileTest" />
             <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfEditMarginOfAnItemTest" />
             <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyViewMultipleOGsAndMoveBetweenDifferentOGTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheCatalogFilterSidebarTest" />
         </classes>
     </test>
 </suite>

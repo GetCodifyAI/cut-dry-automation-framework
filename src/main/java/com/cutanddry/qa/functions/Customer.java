@@ -924,4 +924,18 @@ public class Customer {
     public static void increaseFirstRowQtyBysix() throws InterruptedException {
         customersPage.clickPlusQryFirstRowBySix();
     }
+    public static void clickCatalog(){customersPage.clickOnCatalogButton();}
+    public static void clickSection()throws InterruptedException{customersPage.clickNewArrivals();}
+    public static void clickCategory()throws InterruptedException{customersPage.clickAllItems();}
+    public static void clickBrand()throws InterruptedException{customersPage.clickBrand();}
+    public static void clickItemStatus()throws InterruptedException{customersPage.clickItemStatus();}
+    public static void clickStorageType()throws InterruptedException{customersPage.clickStorageType();}
+    public static void clickDietType()throws InterruptedException{customersPage.clickDietType();}
+    public static boolean isFilterItemDisplayed(){
+        return customersPage.isFilterItemDisplayed();
+    }
+    public static void clickProcessingFormulation()throws InterruptedException{customersPage.clickProcessingType();}
+    public static boolean isFilterProcessingTypeWork(){
+        return customersPage.isFilterProcessingTypeWork();
+    }
 }

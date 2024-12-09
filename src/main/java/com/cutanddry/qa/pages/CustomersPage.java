@@ -279,10 +279,6 @@ public class CustomersPage extends LoginPage {
     By tb_drafts = By.xpath("//a[text()='Drafts' and @role='tab']");
     By txt_draftStatus = By.xpath("//tr[2]//td[3][contains(text(), 'just now')]");
     By btn_deleteDraft = By.xpath("(//button[contains(@class, '_47hinf btn btn-link')])[1]");
-
-
-
-
     By lbl_stopDuration = By.xpath("//div[text()='Stop Duration']/following-sibling::div//input");
     By lbl_keyDropNum = By.xpath("//div[text()='Key Drop Number']/following-sibling::div//input");
     By lbl_deliveryNotes = By.xpath("//div[text()='Delivery Notes']/following-sibling::div/textarea");
@@ -295,6 +291,24 @@ public class CustomersPage extends LoginPage {
     By btn_resetValues = By.xpath("//button[contains(text(), 'Reset Values')]");
     By btn_updateValues = By.xpath("//button[contains(text(), 'Update')]");
     By lbl_margin = By.xpath("//label[text()='Margin ($)']/following-sibling::input");
+    By btn_newArrivals = By.xpath("//div[contains(text(), 'New Arrivals (')]");
+    By btn_allItems = By.xpath("//div[contains(text(), 'All Items')]");
+    By btn_brand = By.xpath("//div[contains(text(), 'Brand')]");
+    By btn_brandOption = By.xpath("//div[contains(text(), 'Bob')]");
+    By btn_itemStatus = By.xpath("//div[contains(text(), 'Item Status')]");
+    By btn_itemStatusOption = By.xpath("//div[contains(text(), 'Stocked')]");
+    By btn_storageType = By.xpath("//div[contains(text(), 'Storage Type')]");
+    By btn_storageTypeOption = By.xpath("//div[@class='_du1frc _17ct4f8 w-100 pr-1' and contains(text(), 'Dry')]");
+    By btn_dietType = By.xpath("//div[contains(text(), 'Diet Type')]");
+    By btn_dietTypeOption = By.xpath("//div[@class='_du1frc _17ct4f8 w-100 pr-1' and contains(text(), 'Kosher')]");
+    By txt_filterItem = By.xpath("//div[contains(text(), 'Family Kitchen Baked Potato Soup 4/4lb Frozen')]");
+    By btn_processingType = By.xpath("//div[contains(text(), 'Processing & Formulation')]");
+    By btn_processingTypeOption = By.xpath("//div[contains(text(), 'Non-GMO')]");
+    By txt_noItems = By.xpath("//div[contains(text(), '0 Results')]");
+
+
+
+
 
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
@@ -1599,4 +1613,50 @@ public class CustomersPage extends LoginPage {
             distributorUI.click(btn_increaseQtyFirstRow);
         }
     }
+    public void clickNewArrivals()throws InterruptedException{
+        distributorUI.click(btn_newArrivals);
+        distributorUI.waitForCustom(1000);
+    }
+    public void clickAllItems()throws InterruptedException{
+        distributorUI.click(btn_allItems);
+        distributorUI.waitForCustom(1000);
+    }
+    public void clickBrand()throws InterruptedException{
+        distributorUI.click(btn_brand);
+        distributorUI.click(btn_brandOption);
+    }
+    public void clickItemStatus()throws InterruptedException{
+        distributorUI.click(btn_itemStatus);
+        distributorUI.click(btn_itemStatusOption);
+    }
+    public void clickStorageType()throws InterruptedException{
+        distributorUI.click(btn_storageType);
+        distributorUI.click(btn_storageTypeOption);
+    }
+    public void clickDietType()throws InterruptedException{
+        distributorUI.click(btn_dietType);
+        distributorUI.click(btn_dietTypeOption);
+    }
+    public boolean isFilterItemDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_filterItem);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_filterItem);
+    }
+    public void clickProcessingType()throws InterruptedException{
+        distributorUI.click(btn_processingType);
+        distributorUI.click(btn_processingTypeOption);
+    }
+    public boolean isFilterProcessingTypeWork(){
+        try {
+            distributorUI.waitForVisibility(txt_noItems);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_noItems);
+    }
+
+
 }
