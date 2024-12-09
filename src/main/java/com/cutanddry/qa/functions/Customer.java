@@ -830,6 +830,58 @@ public class Customer {
     public static boolean isNewCustomerDisplayed(String customerName)throws InterruptedException{
         return customersPage.isNewCustomerDisplayed(customerName);
     }
+    public static void selectCustomer(){customersPage.selectCustomer();}
+    public static void clickBulkActions(){customersPage.clickBulkActions();}
+    public static void clickInviteUser(){customersPage.clickInviteUser();}
+    public static boolean isInviteUserPopUpDisplayed(){
+        return customersPage.isInviteUserPopUpDisplayed();
+    }
+    public static void clickOptionAll(){customersPage.clickOptionAll();}
+    public static void clickInviteEmail(){customersPage.clickInviteEmail();}
+    public static boolean isSuccessPopUpDisplayed(){
+        return customersPage.isStandingOrderSuccessPopupDisplayed();
+    }
+    public static boolean isCustomerProfileDisplayed(){
+        return customersPage.isCustomerProfileDisplayed();
+    }
+    public static void clickMoreOption(){customersPage.clickMoreOption();}
+    public static void clickEditOrderGuide(){customersPage.clickEditOrderGuide();}
+    public static void clickNo()throws InterruptedException{customersPage.clickNo();}
+    public static boolean isCustomerOrderGuideDisplayed(){
+        return customersPage.isCustomerOrderGuideDisplayed();
+    }
+    public static void clickPreviewCatalog(){customersPage.clickPreviewCatalog();}
+    public static boolean isCatalogPreviewSectionDisplayed(){
+        return customersPage.isCatalogPreviewSectionDisplayed();
+    }
+    public static void clickChat(){customersPage.clickChat();}
+    public static boolean isChatSectionDisplayed(){
+        return customersPage.isChatSectionDisplayed();
+    }
+    public static void clickPause(){customersPage.clickPause();}
+    public static boolean isStandingOrdersPaused(){
+        return customersPage.isStandingOrdersPaused();
+    }
+    public static void clickResume(){customersPage.clickResume();}
+    public static void clickPrintReceipt() throws InterruptedException{
+        customersPage.clickThreeDot();
+        customersPage.clickPrintReceipt();
+    }
+    public static void clickOrderConfirmation() throws InterruptedException{
+        customersPage.clickThreeDot();
+        customersPage.clickOrderConfirmation();
+    }
+    public static void clickOrder(){customersPage.clickOrder();}
+    public static boolean isOrderSectionDisplayed(){
+        return customersPage.isOrderSectionDisplayed();
+    }
+    public static void clickDraftsTab(){customersPage.clickDraftsTab();}
+    public static boolean isOrderDraftDisplayed(){
+        return customersPage.isOrderDraftDisplayed();
+    }
+    public static void clickDeleteDraft(){customersPage.clickDeleteDraft();}
+
+
     public static void enterStopDuration(String num) throws InterruptedException {
         customersPage.enterStopDuration(num);
     }
@@ -868,5 +920,8 @@ public class Customer {
     }
     public static boolean isMarginValuePopupDisplayed(){
         return customersPage.isMarginValuePopupDisplayed();
+    }
+    public static void increaseFirstRowQtyBysix() throws InterruptedException {
+        customersPage.clickPlusQryFirstRowBySix();
     }
 }

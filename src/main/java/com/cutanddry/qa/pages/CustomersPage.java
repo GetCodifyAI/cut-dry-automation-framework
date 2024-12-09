@@ -253,9 +253,32 @@ public class CustomersPage extends LoginPage {
     By txt_customerCreatedPopUp = By.xpath("//h2[contains(text(), 'Customer created.')]");
     By btn_closePopUp = By.xpath("//button[contains(text(), 'Close')]");
     String NewCustomerName = "//tr//td[3][text()='CUSTOMERNAME']";
-
-
-
+    By btn_selectCustomer = By.xpath("(//div[@class= '_du1frc'])[2]");
+    By btn_bulkAction = By.xpath("//span[contains(text(), 'Bulk Actions')]");
+    By btn_inviteUser = By.xpath("//a[contains(text(), 'Invite Users')]");
+    By txt_inviteUserPopUp = By.xpath("//div[contains(text(), 'Invite Users')]");
+    By btn_allOption = By.xpath("(//div[@class='my-2 _du1frc d-flex align-items-start' ])[1]");
+    By btn_inviteEmail = By.xpath("//button[contains(text(), 'invite via email')]");
+    By btn_moreOption = By.xpath("//button[contains(text(), 'More Options')]");
+    By btn_editOrderGuide = By.xpath("//a[contains(text(), 'Edit Order Guide')]");
+    By btn_previewCatalog = By.xpath("//a[contains(text(), 'Preview Catalog')]");
+    By txt_orderGuide = By.xpath("//div[contains(text(), 'Kafe Layers')]");
+    By txt_customerProfile = By.xpath("//div[contains(@class, 'd-flex') and contains(text(), 'Kafe Layers')]");
+    By btn_no = By.xpath("//div[contains(text(), 'No')]");
+    By txt_previewCatalog = By.xpath("//div[contains(text(), 'Catalog Preview')]");
+    By btn_chat = By.xpath("//button[contains(text(), 'Chat')]");
+    By txt_chatArea = By.xpath("//input[@placeholder='Message...']");
+    By btn_pauseStandingOrders = By.xpath("//div[contains(text(), 'Pause')]");
+    By txt_pausedStandingOrders = By.xpath("//div[contains(text(),'(Paused) ')]");
+    By btn_resumeStandingOrders = By.xpath("//div[contains(text(), 'Resume')]");
+    By btn_threeDot = By.xpath("(//button[contains(@id, 'dropdown-basic')])[2]");
+    By btn_printKitchenReceipt = By.xpath("//span[contains(text(), 'Print Kitchen Receipt')]");
+    By btn_orderConfirmation = By.xpath("//span[contains(text(), 'Print Order Confirmation')]");
+    By btn_order = By.xpath("(//tr[contains(@class, '_du1frc _du1frc _qy4b979 py-3')])[1]");
+    By txt_order = By.xpath("//h2[contains(text(), 'Order')]");
+    By tb_drafts = By.xpath("//a[text()='Drafts' and @role='tab']");
+    By txt_draftStatus = By.xpath("//tr[2]//td[3][contains(text(), 'just now')]");
+    By btn_deleteDraft = By.xpath("(//button[contains(@class, '_47hinf btn btn-link')])[1]");
 
 
 
@@ -1388,6 +1411,129 @@ public class CustomersPage extends LoginPage {
     public boolean isNewCustomerDisplayed(String customerName){
         return distributorUI.isDisplayed(By.xpath(NewCustomerName.replace("CUSTOMERNAME",customerName)));
     }
+    public void selectCustomer(){
+        distributorUI.click(btn_selectCustomer);
+    }
+    public void clickBulkActions(){
+        distributorUI.click(btn_bulkAction);
+    }
+    public void clickInviteUser(){
+        distributorUI.click(btn_inviteUser);
+    }
+    public boolean isInviteUserPopUpDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_inviteUserPopUp);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_inviteUserPopUp);
+    }
+    public void clickOptionAll(){
+        distributorUI.click(btn_allOption);
+    }
+    public void clickInviteEmail(){
+        distributorUI.click(btn_inviteEmail);
+    }
+    public boolean isCustomerProfileDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_customerProfile);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_customerProfile);
+    }
+    public void clickMoreOption(){
+        distributorUI.click(btn_moreOption);
+    }
+    public void clickEditOrderGuide(){
+        distributorUI.click(btn_editOrderGuide);
+    }
+    public void clickNo()throws InterruptedException{
+        distributorUI.waitForVisibility(btn_no);
+        distributorUI.click(btn_no);
+    }
+    public boolean isCustomerOrderGuideDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_orderGuide);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_orderGuide);
+    }
+    public void clickPreviewCatalog(){
+        distributorUI.click(btn_previewCatalog);
+    }
+    public boolean isCatalogPreviewSectionDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_previewCatalog);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_previewCatalog);
+    }
+    public void clickChat(){
+        distributorUI.click(btn_chat);
+    }
+    public boolean isChatSectionDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_chatArea);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_chatArea);
+    }
+    public void clickPause(){
+        distributorUI.click(btn_pauseStandingOrders);
+    }
+
+    public boolean isStandingOrdersPaused(){
+        try {
+            distributorUI.waitForVisibility(txt_pausedStandingOrders);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_pausedStandingOrders);
+    }
+    public void clickResume(){
+        distributorUI.click(btn_resumeStandingOrders);
+    }
+    public void clickThreeDot() throws InterruptedException{
+        distributorUI.click(btn_threeDot);
+    }
+    public void clickPrintReceipt() throws InterruptedException{
+        distributorUI.click(btn_printKitchenReceipt);
+    }
+    public void clickOrderConfirmation() throws InterruptedException{
+        distributorUI.click(btn_orderConfirmation);
+    }
+    public void clickOrder(){
+        distributorUI.click(btn_order);
+    }
+    public boolean isOrderSectionDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_order);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_order);
+    }
+    public void clickDraftsTab(){
+        distributorUI.click(tb_drafts);
+    }
+    public boolean isOrderDraftDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_draftStatus);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_draftStatus);
+    }
+    public void clickDeleteDraft(){
+        distributorUI.click(btn_deleteDraft);
+    }
+
+
+
 
     public void enterStopDuration(String msg) throws InterruptedException {
         distributorUI.clickUsingJavaScript(lbl_stopDuration);
@@ -1447,5 +1593,10 @@ public class CustomersPage extends LoginPage {
         distributorUI.clear(lbl_margin);
         distributorUI.sendKeys(lbl_margin, num);
         distributorUI.waitForCustom(1000);
+    }
+    public void clickPlusQryFirstRowBySix() {
+        for (int i = 0; i < 6; i++) {
+            distributorUI.click(btn_increaseQtyFirstRow);
+        }
     }
 }
