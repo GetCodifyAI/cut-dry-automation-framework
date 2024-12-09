@@ -51,6 +51,9 @@
             <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfEditMarginOfAnItemTest" />
             <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyViewMultipleOGsAndMoveBetweenDifferentOGTest" />
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheCatalogFilterSidebarTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheCatalogClearAllFiltersTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheViewCatalogAsCustomerRadioButtonTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateAddProductFromPDPTest" />
         </classes>
     </test>
 </suite>

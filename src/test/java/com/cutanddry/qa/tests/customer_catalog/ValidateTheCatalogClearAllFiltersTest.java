@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class ValidateTheCatalogFilterSidebarTest extends TestBase {
+public class ValidateTheCatalogClearAllFiltersTest extends TestBase {
     static User user;
     String CustomerCode = "37631";
 
@@ -23,8 +23,8 @@ public class ValidateTheCatalogFilterSidebarTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-704")
-    public void ValidateTheCatalogFilterSidebar() throws InterruptedException {
+    @Test(groups = "DOT-TC-706")
+    public void ValidateTheCatalogClearAllFilters() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
@@ -44,8 +44,7 @@ public class ValidateTheCatalogFilterSidebarTest extends TestBase {
         softAssert.assertTrue(Customer.isFilterItemDisplayed(),"filter not work");
         Customer.clickProcessingFormulation();
         softAssert.assertTrue(Customer.isFilterProcessingTypeWork(),"filter processing and formulation not work");
-
-
+        Customer.clickClearAllFilters();
         softAssert.assertAll();
     }
 

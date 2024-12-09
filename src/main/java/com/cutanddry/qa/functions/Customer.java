@@ -924,7 +924,6 @@ public class Customer {
     public static void increaseFirstRowQtyBysix() throws InterruptedException {
         customersPage.clickPlusQryFirstRowBySix();
     }
-    public static void clickCatalog(){customersPage.clickOnCatalogButton();}
     public static void clickSection()throws InterruptedException{customersPage.clickNewArrivals();}
     public static void clickCategory()throws InterruptedException{customersPage.clickAllItems();}
     public static void clickBrand()throws InterruptedException{customersPage.clickBrand();}
@@ -941,4 +940,13 @@ public class Customer {
     public static boolean isFilterProcessingTypeWork(){
         return customersPage.isFilterProcessingTypeWork();
     }
+    public static void clickClearAllFilters(){customersPage.clickClearAllFilters();}
+    public static void clickViewCatalogAsCustomer(){customersPage.clickRadioButton();}
+    public static void clickOnProduct(String name){
+        customersPage.clickOnProduct(name);
+    }
+    public static void clickAddToCart(){customersPage.clickAddToCart();}
+    public static void clickCheckOutPDP(){customersPage.clickCheckOutPDP();}
+    public static boolean isOrderSubmitSuccessfully(){
+        return customersPage.isOrderSubmitSuccessfully();}
 }

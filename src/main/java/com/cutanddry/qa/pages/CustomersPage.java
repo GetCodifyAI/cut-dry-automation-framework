@@ -291,21 +291,29 @@ public class CustomersPage extends LoginPage {
     By btn_resetValues = By.xpath("//button[contains(text(), 'Reset Values')]");
     By btn_updateValues = By.xpath("//button[contains(text(), 'Update')]");
     By lbl_margin = By.xpath("//label[text()='Margin ($)']/following-sibling::input");
-    By btn_newArrivals = By.xpath("//div[contains(text(), 'New Arrivals (')]");
-    By btn_allItems = By.xpath("//div[contains(text(), 'All Items')]");
-    By btn_brand = By.xpath("//div[contains(text(), 'Brand')]");
-    By btn_brandOption = By.xpath("//div[contains(text(), 'Bob')]");
+    By newArrivalsOption = By.xpath("//div[contains(text(), 'New Arrivals (')]");
+    By allItemsOption = By.xpath("//div[contains(text(), 'All Items')]");
+    By brandDropDown = By.xpath("//div[contains(text(), 'Brand')]");
+    By brandDropDownOption = By.xpath("//div[contains(text(), 'Bob')]");
     By txt_filterByBrand =By.xpath("//div[@class='_1y3bqj7 p-0 d-inline-block _5h4pkd _1451qv9 _du1frc' and contains(text(), 'Red Mill')]");
-    By btn_itemStatus = By.xpath("//div[contains(text(), 'Item Status')]");
-    By btn_itemStatusOption = By.xpath("//div[contains(text(), 'Stocked')]");
-    By btn_storageType = By.xpath("//div[contains(text(), 'Storage Type')]");
-    By btn_storageTypeOption = By.xpath("//div[@class='_du1frc _17ct4f8 w-100 pr-1' and contains(text(), 'Dry')]");
-    By btn_dietType = By.xpath("//div[contains(text(), 'Diet Type')]");
-    By btn_dietTypeOption = By.xpath("//div[@class='_du1frc _17ct4f8 w-100 pr-1' and contains(text(), 'Kosher')]");
+    By itemStatusDropDown = By.xpath("//div[contains(text(), 'Item Status')]");
+    By itemStatusDropDownOption = By.xpath("//div[contains(text(), 'Stocked')]");
+    By storageTypeDropDown = By.xpath("//div[contains(text(), 'Storage Type')]");
+    By storageTypeDropDownOption = By.xpath("//div[@class='_du1frc _17ct4f8 w-100 pr-1' and contains(text(), 'Dry')]");
+    By dietTypeDropDown = By.xpath("//div[contains(text(), 'Diet Type')]");
+    By dietTypeDropDownOption = By.xpath("//div[@class='_du1frc _17ct4f8 w-100 pr-1' and contains(text(), 'Kosher')]");
     By txt_filterItem = By.xpath("//div[contains(text(), 'Family Kitchen Baked Potato Soup 4/4lb Frozen')]");
-    By btn_processingType = By.xpath("//div[contains(text(), 'Processing & Formulation')]");
-    By btn_processingTypeOption = By.xpath("//div[contains(text(), 'Non-GMO')]");
+    By processingTypeDropDown = By.xpath("//div[contains(text(), 'Processing & Formulation')]");
+    By processingTypeDropOption = By.xpath("//div[contains(text(), 'Non-GMO')]");
     By txt_noItems = By.xpath("//div[contains(text(), '0 Results')]");
+    By btn_clearAllFilters = By.xpath("//button[contains(text(), 'Clear All Filters')]");
+    By radioButton =By.xpath("//div[@class = 'align-middle']");
+    String txt_product = "//div[contains(@class,'_3quvq7 _1vlidrf' ) and contains(text(), 'NAME')]";
+    By btn_addToCartPDP = By.xpath("//button[contains(@class,'d-flex align-items-center justify-content-center cdbutton _1g89unu _du1frc text-nowrap w-100 btn btn-outline-primary btn-sm' ) and contains(text(), 'Add to Cart')]");
+    By btn_checkOutPDP = By.xpath("//button[@data-for='cartCheckoutButton' and contains(text(),'$')]");
+    By txt_orderConfirmationPopUp = By.xpath("//strong[contains(text(), 'Thank you for your order!')]");
+
+
 
 
 
@@ -1615,16 +1623,16 @@ public class CustomersPage extends LoginPage {
         }
     }
     public void clickNewArrivals()throws InterruptedException{
-        distributorUI.click(btn_newArrivals);
+        distributorUI.click(newArrivalsOption);
         distributorUI.waitForCustom(1000);
     }
     public void clickAllItems()throws InterruptedException{
-        distributorUI.click(btn_allItems);
+        distributorUI.click(allItemsOption);
         distributorUI.waitForCustom(1000);
     }
     public void clickBrand()throws InterruptedException{
-        distributorUI.click(btn_brand);
-        distributorUI.click(btn_brandOption);
+        distributorUI.click(brandDropDown);
+        distributorUI.click(brandDropDownOption);
     }
     public boolean isFilteredBrandDisplayed(){
         try {
@@ -1635,16 +1643,16 @@ public class CustomersPage extends LoginPage {
         return distributorUI.isDisplayed(txt_filterByBrand);
     }
     public void clickItemStatus()throws InterruptedException{
-        distributorUI.click(btn_itemStatus);
-        distributorUI.click(btn_itemStatusOption);
+        distributorUI.click(itemStatusDropDown);
+        distributorUI.click(itemStatusDropDownOption);
     }
     public void clickStorageType()throws InterruptedException{
-        distributorUI.click(btn_storageType);
-        distributorUI.click(btn_storageTypeOption);
+        distributorUI.click(storageTypeDropDown);
+        distributorUI.click(storageTypeDropDownOption);
     }
     public void clickDietType()throws InterruptedException{
-        distributorUI.click(btn_dietType);
-        distributorUI.click(btn_dietTypeOption);
+        distributorUI.click(dietTypeDropDown);
+        distributorUI.click(dietTypeDropDownOption);
     }
     public boolean isFilterItemDisplayed(){
         try {
@@ -1655,8 +1663,8 @@ public class CustomersPage extends LoginPage {
         return distributorUI.isDisplayed(txt_filterItem);
     }
     public void clickProcessingType()throws InterruptedException{
-        distributorUI.click(btn_processingType);
-        distributorUI.click(btn_processingTypeOption);
+        distributorUI.click(processingTypeDropDown);
+        distributorUI.click(processingTypeDropOption);
     }
     public boolean isFilterProcessingTypeWork(){
         try {
@@ -1665,6 +1673,31 @@ public class CustomersPage extends LoginPage {
             return false;
         }
         return distributorUI.isDisplayed(txt_noItems);
+    }
+    public void clickClearAllFilters(){
+        distributorUI.click(btn_clearAllFilters);
+    }
+    public void clickRadioButton(){
+        distributorUI.click(radioButton);
+    }
+    public void clickOnProduct(String name){
+        distributorUI.waitForVisibility(By.xpath(txt_product.replace("NAME", name)));
+        distributorUI.clickUsingJavaScript(By.xpath(txt_product.replace("NAME", name)));
+    }
+    public void clickAddToCart(){
+        distributorUI.click(btn_addToCartPDP);
+    }
+    public void clickCheckOutPDP(){
+        distributorUI.click(btn_checkOutPDP);
+    }
+
+    public boolean isOrderSubmitSuccessfully(){
+        try {
+            distributorUI.waitForVisibility(txt_orderConfirmationPopUp);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_orderConfirmationPopUp);
     }
 
 
