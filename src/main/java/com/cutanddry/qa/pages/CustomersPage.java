@@ -1594,4 +1594,9 @@ public class CustomersPage extends LoginPage {
         distributorUI.sendKeys(lbl_margin, num);
         distributorUI.waitForCustom(1000);
     }
+    public void clickPlusQryFirstRowBySix() {
+        for (int i = 0; i < 6; i++) {
+            distributorUI.click(btn_increaseQtyFirstRow);
+        }
+    }
 }

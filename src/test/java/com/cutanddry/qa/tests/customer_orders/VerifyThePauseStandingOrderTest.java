@@ -15,6 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyThePauseStandingOrderTest extends TestBase {
     static User user;
     String CustomerCode = "16579";
+    static String deliveryDay = "Monday";
 
 
     @BeforeMethod
@@ -25,6 +26,7 @@ public class VerifyThePauseStandingOrderTest extends TestBase {
 
     @Test(groups = "DOT-TC-665")
     public void VerifyThePauseStandingOrder() throws InterruptedException {
+        String itemName;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
@@ -36,6 +38,20 @@ public class VerifyThePauseStandingOrderTest extends TestBase {
         softAssert.assertTrue(Customer.isCustomerProfileDisplayed(),"customer profile not display ");
         Customer.clickOnOrdersTab();
         softAssert.assertTrue(Customer.isStandingOrdersDisplayed(),"navigation error");
+        Customer.removeStandingOrdersIfAvailable();
+        Customer.clickOnCreateStandingOrder();
+        Customer.selectDeliveryDate(deliveryDay);
+        itemName = Customer.getItemNameFirstRow();
+        Customer.increaseFirstRowQtyBysix();
+        Customer.checkoutItems();
+        softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
+        Customer.setStandingOrder();
+        softAssert.assertTrue(Customer.isStandingOrderEmailPopupDisplayed(),"pop up display error");
+        Customer.selectEmail();
+        Customer.scheduleStandingOrder();
+        softAssert.assertTrue(Customer.isStandingOrderSuccessPopupDisplayed(),"order creating error");
+        Customer.clickOK();
+        Customer.clickOnOrdersTab();
         Customer.clickPause();
         softAssert.assertTrue(Customer.isStandingOrdersPaused(),"standing orders not paused");
         Customer.clickResume();

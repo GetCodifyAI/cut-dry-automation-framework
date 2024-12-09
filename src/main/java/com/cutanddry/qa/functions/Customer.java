@@ -921,4 +921,7 @@ public class Customer {
     public static boolean isMarginValuePopupDisplayed(){
         return customersPage.isMarginValuePopupDisplayed();
     }
+    public static void increaseFirstRowQtyBysix() throws InterruptedException {
+        customersPage.clickPlusQryFirstRowBySix();
+    }
 }
