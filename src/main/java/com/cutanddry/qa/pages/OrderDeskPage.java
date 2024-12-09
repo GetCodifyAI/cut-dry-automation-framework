@@ -31,7 +31,7 @@ public class OrderDeskPage extends LoginPage{
     By CustomerSelectionDropdown = By.xpath(" //div[contains(text(),'Customer')]/..//div[contains(@class,'select__dropdown-indicator')]");
     By CustomerName = By.cssSelector(".cd_themed_select__option.css-yt9ioa-option");
     By LocationSelectionDropdown = By.xpath("//div[contains(text(),'Location')]/..//div[contains(@class,'select__dropdown-indicator')]");
-    By LocationName = By.cssSelector(".cd_themed_select__control .cd_themed_select__single-value");
+    By LocationName = By.cssSelector(".cd_themed_select__menu .cd_themed_select__option");
     By DeliveryDateInput = By.xpath("//div[text()='Delivery Date']/following-sibling::div//div[contains(@class,'cd_themed_select__control')]");
     String DeliveryDateSelect = "//div[contains(text(),'DELIVERYDATE')]";
     By DeliveryDateNotValidTxt = By.xpath("//div[@class='text-danger']");
