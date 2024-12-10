@@ -64,6 +64,7 @@
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateAddProductFromPDPTest" />
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateAddProductToOrderGuideByClickPDPHeartIconTest" />
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheExportPDPTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateImageCarouselInPDPTest" />
         </classes>
     </test>
 </suite>

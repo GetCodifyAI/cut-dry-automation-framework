@@ -1159,5 +1159,13 @@ public class Customer {
     }
     public static void clickRemoveOrderGuide(){customersPage.clickRemoveOrderGuide();}
     public static void clickExportPDP(){customersPage.clickExportPDP();}
+    public static void clickRightArrow(){customersPage.clickRightArrow();}
+    public static boolean isNextImageDisplay(){
+        return customersPage.isNextImageDisplay();
+    }
+    public static void clickLeftArrow(){customersPage.clickLeftArrow();}
+    public static boolean isPreviousImageDisplay(){
+        return customersPage.isPreviousImageDisplay();
+    }
 
 }

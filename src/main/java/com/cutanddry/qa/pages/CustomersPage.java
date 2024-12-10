@@ -377,6 +377,8 @@ public class CustomersPage extends LoginPage {
     By btn_rightArrow = By.xpath("(//div[@class='_1gmghi1'])[1]");
     By btn_leftArrow = By.xpath("(//div[@class='_35991e'])[1]");
     By btn_exportPDP = By.xpath("//button[contains(text(), 'Export PDP (pdf)')]");
+    By img_first = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'extra-large-artichoke-bottoms-main-600.png')]");
+    By img_second = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'extra-large-artichoke-bottoms-raw-600.png')]");
 
 
 
@@ -2021,6 +2023,29 @@ public class CustomersPage extends LoginPage {
     public void clickExportPDP(){
         distributorUI.click(btn_exportPDP);
     }
+    public void clickRightArrow(){
+        distributorUI.click(btn_rightArrow);
+    }
+    public boolean isNextImageDisplay(){
+        try {
+            distributorUI.waitForVisibility(img_second);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(img_second);
+    }
+    public void clickLeftArrow(){
+        distributorUI.click(btn_leftArrow);
+    }
+    public boolean isPreviousImageDisplay(){
+        try {
+            distributorUI.waitForVisibility(img_first);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(img_first);
+    }
+
 
 
 }
