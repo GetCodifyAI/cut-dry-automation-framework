@@ -374,6 +374,10 @@ public class CustomersPage extends LoginPage {
     By btn_catalogToOrderGuide = By.xpath("//div[text()='Order Guide']");
     String lbl_orderGuideItem = "//div[contains(@class, 'text-capitalize _1i69w9z') and contains(text(),'NAME')]";
     By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items-center justify-content-center cdbutton w-100 _fousr2 fa-stack btn btn-primary btn-sm' and @data-tip='Remove from Order Guide']");
+    By btn_rightArrow = By.xpath("(//div[@class='_1gmghi1'])[1]");
+    By btn_leftArrow = By.xpath("(//div[@class='_35991e'])[1]");
+    By btn_exportPDP = By.xpath("//button[contains(text(), 'Export PDP (pdf)')]");
+
 
 
 
@@ -2013,6 +2017,9 @@ public class CustomersPage extends LoginPage {
 
     public boolean isActiveStatusDisplayed(){
         return distributorUI.isDisplayed(txt_status);
+    }
+    public void clickExportPDP(){
+        distributorUI.click(btn_exportPDP);
     }
 
 

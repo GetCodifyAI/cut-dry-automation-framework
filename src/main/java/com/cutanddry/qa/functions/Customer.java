@@ -1158,5 +1158,6 @@ public class Customer {
         customersPage.clickOrderGuideProduct(name);
     }
     public static void clickRemoveOrderGuide(){customersPage.clickRemoveOrderGuide();}
+    public static void clickExportPDP(){customersPage.clickExportPDP();}
 
 }
