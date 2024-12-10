@@ -381,6 +381,14 @@ public class CustomersPage extends LoginPage {
     By img_second = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'extra-large-artichoke-bottoms-raw-600.png')]");
     By btn_firstImage = By.xpath("//div[contains(@class,'position-relative')]/img[contains(@src,'extra-large-artichoke-bottoms-main-600.png')]");
     By btn_secondImage = By.xpath("//div[contains(@class,'position-relative')]/img[contains(@src,'extra-large-artichoke-bottoms-raw-600.png')]");
+    By txt_specialInstruction =By.xpath("(//textarea[contains(@class, '_1r74rn3 w-100 border')])[1]");
+    By txt_internalNote =By.xpath("(//textarea[contains(@class, '_1r74rn3 w-100 border')])[2]");
+    By txt_noteToCustomer =By.xpath("(//textarea[contains(@class, '_1r74rn3 w-100 border')])[3]");
+    By txt_poNumber = By.xpath("//input[contains(@class, '_1jnwk4ts w-100')]");
+    String specialInstructionText = "//span[contains(text(),'SPECIALINSTRUCTION')]";
+    String internalNoteText = "//span[contains(text(),'INTERNALNOTE')]";
+    String noteToCustomerText = "//span[contains(text(),'NOTETOCUSTOMER')]";
+
 
 
 
@@ -2053,6 +2061,30 @@ public class CustomersPage extends LoginPage {
     }
     public void clickSecondImage(){
         distributorUI.click(btn_secondImage);
+    }
+    public void typeSpecialInstruction(String specialInstruction){
+        distributorUI.sendKeys(txt_specialInstruction,specialInstruction);
+    }
+    public void typeInternalNote(String internalNote){
+        distributorUI.sendKeys(txt_internalNote,internalNote);
+    }
+    public void typeNoteToCustomer(String noteToCustomer){
+        distributorUI.sendKeys(txt_noteToCustomer,noteToCustomer);
+    }
+    public void typePONumber(String poNumber){
+        distributorUI.sendKeys(txt_poNumber,poNumber);
+    }
+    public boolean isSpecialInstructionDisplayed(String specialInstruction) {
+        distributorUI.waitForVisibility(By.xpath(specialInstructionText.replace("SPECIALINSTRUCTION",specialInstruction)));
+        return distributorUI.isDisplayed(By.xpath(specialInstructionText.replace("SPECIALINSTRUCTION",specialInstruction)));
+    }
+    public boolean isInternalNoteDisplayed(String internalNote) {
+        distributorUI.waitForVisibility(By.xpath(internalNoteText.replace("INTERNALNOTE",internalNote)));
+        return distributorUI.isDisplayed(By.xpath(internalNoteText.replace("INTERNALNOTE",internalNote)));
+    }
+    public boolean isNoteToCustomerDisplayed(String noteToCustomer) {
+        distributorUI.waitForVisibility(By.xpath(noteToCustomerText.replace("NOTETOCUSTOMER",noteToCustomer)));
+        return distributorUI.isDisplayed(By.xpath(noteToCustomerText.replace("NOTETOCUSTOMER",noteToCustomer)));
     }
 
 

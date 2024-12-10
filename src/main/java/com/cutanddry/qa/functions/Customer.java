@@ -1169,5 +1169,26 @@ public class Customer {
     }
     public static void clickFirstImage(){customersPage.clickFirstImage();}
     public static void clickSecondImage(){customersPage.clickSecondImage();}
+    public static void typeSpecialInstruction(String specialInstruction){
+        customersPage.typeSpecialInstruction(specialInstruction);
+    }
+    public static void typeInternalNote(String internalNote){
+        customersPage.typeInternalNote(internalNote);
+    }
+    public static void typeNoteToCustomer(String noteToCustomer){
+        customersPage.typeNoteToCustomer(noteToCustomer);
+    }
+    public static void typePONumber(String poNumber){
+        customersPage.typePONumber(poNumber);
+    }
+    public static boolean isSpecialInstructionDisplayed(String specialInstruction){
+        return customersPage.isSpecialInstructionDisplayed(specialInstruction);
+    }
+    public static boolean isInternalNoteDisplayed(String internalNote){
+        return customersPage.isInternalNoteDisplayed(internalNote);
+    }
+    public static boolean isNoteToCustomerDisplayed(String noteToCustomer){
+        return customersPage.isNoteToCustomerDisplayed(noteToCustomer);
+    }
 
 }
