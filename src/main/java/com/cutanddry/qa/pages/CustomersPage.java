@@ -312,6 +312,11 @@ public class CustomersPage extends LoginPage {
     By btn_addToCartPDP = By.xpath("//button[contains(@class,'d-flex align-items-center justify-content-center cdbutton _1g89unu _du1frc text-nowrap w-100 btn btn-outline-primary btn-sm' ) and contains(text(), 'Add to Cart')]");
     By btn_checkOutPDP = By.xpath("//button[@data-for='cartCheckoutButton' and contains(text(),'$')]");
     By txt_orderConfirmationPopUp = By.xpath("//strong[contains(text(), 'Thank you for your order!')]");
+    By btn_addOrderGuideHeart = By.xpath("//button[@class='d-flex align-items-center justify-content-center cdbutton w-100 _fousr2 fa-stack btn btn-primary btn-sm' and @data-tip='Add to Order Guide']");
+    By btn_catalogToOrderGuide = By.xpath("//div[text()='Order Guide']");
+    String lbl_orderGuideItem = "//div[contains(@class, 'text-capitalize _1i69w9z') and contains(text(),'NAME')]";
+    By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items-center justify-content-center cdbutton w-100 _fousr2 fa-stack btn btn-primary btn-sm' and @data-tip='Remove from Order Guide']");
+
 
 
 
@@ -1698,6 +1703,21 @@ public class CustomersPage extends LoginPage {
             return false;
         }
         return distributorUI.isDisplayed(txt_orderConfirmationPopUp);
+    }
+    public void clickOrderGuide(){
+        distributorUI.click(btn_addOrderGuideHeart);
+    }
+    public void clickOrderGuideTab(){
+        distributorUI.click(btn_catalogToOrderGuide);
+    }
+    public boolean addedItemDisplayOnOrderGuide(String name){
+        return distributorUI.isDisplayed(By.xpath(lbl_orderGuideItem.replace("NAME", name)));
+    }
+    public void clickOrderGuideProduct(String name){
+        distributorUI.click(By.xpath(lbl_orderGuideItem.replace("NAME", name)));
+    }
+    public void clickRemoveOrderGuide(){
+        distributorUI.click(btn_removeFromOrderGuideHeart);
     }
 
 

@@ -54,6 +54,7 @@
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheCatalogClearAllFiltersTest" />
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheViewCatalogAsCustomerRadioButtonTest" />
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateAddProductFromPDPTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateAddProductToOrderGuideByClickPDPHeartIconTest" />
         </classes>
     </test>
 </suite>

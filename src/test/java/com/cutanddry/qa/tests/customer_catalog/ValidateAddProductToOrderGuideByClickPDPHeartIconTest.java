@@ -12,10 +12,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class ValidateAddProductFromPDPTest extends TestBase {
+public class ValidateAddProductToOrderGuideByClickPDPHeartIconTest extends TestBase {
     static User user;
     String CustomerCode = "37631";
     static String itemName = "J. Hungerford Smith Chocolate Cone Coating";
+    static String OrderGuideProductName = "j. hungerford smith chocolate cone coating";
 
 
     @BeforeMethod
@@ -24,8 +25,8 @@ public class ValidateAddProductFromPDPTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-686")
-    public void ValidateAddProductFromPDP() throws InterruptedException {
+    @Test(groups = "DOT-TC-690")
+    public void ValidateAddProductToOrderGuideByClickPDPHeartIcon() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
@@ -39,13 +40,10 @@ public class ValidateAddProductFromPDPTest extends TestBase {
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
         Customer.clickOnProduct(itemName);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"navigation error");
-        Customer.clickAddToCart();
-        Customer.clickCheckOutPDP();
-        softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(),"navigation error for review order");
-        Customer.submitOrder();
-        softAssert.assertTrue(Customer.isOrderSubmitSuccessfully(),"order not submit ");
-        Customer.clickClose();
-        Customer.clickOnBack();
+        Customer.clickOrderGuide();
+        Customer.goToOrderGuide();
+        softAssert.assertTrue(Customer.addedItemDisplayOnOrderGuide(OrderGuideProductName),"product not found");
+        Customer.clickOrderGuideProduct(OrderGuideProductName);
         Customer.clickRemoveOrderGuide();
         softAssert.assertAll();
     }

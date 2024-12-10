@@ -949,4 +949,17 @@ public class Customer {
     public static void clickCheckOutPDP(){customersPage.clickCheckOutPDP();}
     public static boolean isOrderSubmitSuccessfully(){
         return customersPage.isOrderSubmitSuccessfully();}
+    public static void clickOrderGuide(){customersPage.clickOrderGuide();}
+    public static void goToOrderGuide()throws InterruptedException{
+        customersPage.clickOnBack();
+        customersPage.clickOrderGuideTab();
+    }
+    public static boolean addedItemDisplayOnOrderGuide(String name){
+         return customersPage.addedItemDisplayOnOrderGuide(name);
+    }
+    public static void clickOrderGuideProduct(String name){
+        customersPage.clickOrderGuideProduct(name);
+    }
+    public static void clickRemoveOrderGuide(){customersPage.clickRemoveOrderGuide();}
+
 }
