@@ -67,6 +67,7 @@
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateImageCarouselInPDPTest" />
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateImageThumbnailInPDPTest" />
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateAddingSpecialInstructionsTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateItemCountAndTotalValueTest" />
         </classes>
     </test>
 </suite>

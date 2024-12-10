@@ -388,6 +388,11 @@ public class CustomersPage extends LoginPage {
     String specialInstructionText = "//span[contains(text(),'SPECIALINSTRUCTION')]";
     String internalNoteText = "//span[contains(text(),'INTERNALNOTE')]";
     String noteToCustomerText = "//span[contains(text(),'NOTETOCUSTOMER')]";
+    By quantityValue = By.xpath("(//input[contains(@class, '_hk3n6z form-control _qxqnfl6')])[1]");
+    By Value = By.xpath("//td[@class='_xigbpq4 border-top border-bottom py-3' and contains(text(),'$')]");
+    By totalQuantity = By.xpath("//td[@class='_ygdk15 align-bottom pb-1']");
+    By totalValue=By.xpath("//td[@class='border-0 pt-1' and contains(text(),'$')]");
+
 
 
 
@@ -2086,6 +2091,27 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForVisibility(By.xpath(noteToCustomerText.replace("NOTETOCUSTOMER",noteToCustomer)));
         return distributorUI.isDisplayed(By.xpath(noteToCustomerText.replace("NOTETOCUSTOMER",noteToCustomer)));
     }
+    public String getItemQuantity() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(quantityValue, true);
+        return distributorUI.getText(quantityValue, "value");
+    }
+
+    public String getItemTotalQuantity() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(totalQuantity, true);
+        return distributorUI.getText(totalQuantity);
+    }
+    public String getItemValue() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(Value, true);
+        return distributorUI.getText(Value);
+    }
+
+    public String getItemTotalValue() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(totalValue, true);
+        return distributorUI.getText(totalValue);
+    }
+
+
+
 
 
 

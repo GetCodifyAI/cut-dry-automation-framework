@@ -1190,5 +1190,17 @@ public class Customer {
     public static boolean isNoteToCustomerDisplayed(String noteToCustomer){
         return customersPage.isNoteToCustomerDisplayed(noteToCustomer);
     }
+    public static String getItemQuantity() throws InterruptedException {
+        return customersPage.getItemQuantity();
+    }
+    public static String getItemTotalQuantity()throws InterruptedException{
+        return customersPage.getItemTotalQuantity();
+    }
+    public static String getItemValue() throws InterruptedException {
+        return customersPage.getItemValue();
+    }
+    public static String getItemTotalValue()throws InterruptedException{
+        return customersPage.getItemTotalValue();
+    }
 
 }
