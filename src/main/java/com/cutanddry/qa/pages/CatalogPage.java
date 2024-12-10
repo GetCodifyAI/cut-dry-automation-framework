@@ -106,6 +106,8 @@ public class CatalogPage extends LoginPage{
     By txt_productDetails= By.xpath("//span[contains(text(),'Product Details')]");
     By lbl_exportCatalog = By.xpath("//a[text()='Export catalog (csv)']");
     By lbl_exportPromoFile = By.xpath("//a[text()='Export Promotion File (csv)']");
+    By showSubsRadioBtn = By.xpath("//input[@id='show-subs']");
+
 
     public boolean isCatalogTextDisplayed() {
         try {
@@ -308,6 +310,13 @@ public class CatalogPage extends LoginPage{
         }
         return distributorUI.isDisplayed(By.xpath(substituteItemNameTxt.replace("ITEMNAME",substituteItem)));
     }
+
+    public void clickOnShowSubstituteBtn(){
+        if(!distributorUI.isCheckboxOrRadioBtnSelected(showSubsRadioBtn)){
+            distributorUI.click(showSubsRadioBtn);
+        }
+    }
+
     public void clickOnDeleteSubstituteItemBtn(String itemCode){
         try {
             distributorUI.waitForCustom(2000);

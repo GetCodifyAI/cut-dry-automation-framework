@@ -189,6 +189,10 @@ public class Catalog {
         }
     }
 
+    public static void showSubstituteBtnIfNotSelected(){
+        catalogPage.clickOnShowSubstituteBtn();
+    }
+
     public static void searchItemInCatalogPreview(String itemCode){
         catalogPage.searchItemInCatalogPreview(itemCode);
     }

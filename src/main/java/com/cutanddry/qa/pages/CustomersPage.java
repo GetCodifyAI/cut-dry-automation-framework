@@ -221,7 +221,7 @@ public class CustomersPage extends LoginPage {
     By btn_independentFoods = By.xpath("//div[contains(text(), 'Independent Foods Co')]");
     By itemNotFoundTxt = By.xpath("//div[contains(text(),'No matches found')]");
     String catalogCardAddToOGBtn = "//div[contains(text(),'ITEMCODE')]/../..//button[@data-tip='Add to Order Guide']";
-    By btn_editAccHold = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[11]");
+    By btn_editAccHold = By.xpath("//div[contains(text(),'Account Holds')]/..//*[local-name() = 'svg' and @data-icon='pen-to-square']");
     By dropdown_acc = By.xpath("//div[text()='Account Holds']/following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
     By txt_hardHold = By.xpath("//div[contains(@class, 'themed_select__option') and  text()='Hard Hold']");
     By lbl_hardHold = By.xpath("//div[text()='Account Holds']/following-sibling::div//span[contains(@class, 'badge') and text()='Hard Hold']");
@@ -749,6 +749,11 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_setStandingOrder);
     }
     public boolean isStandingOrderEmailPopupDisplayed(){
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.waitForVisibility(txt_EmailPopup);
         return distributorUI.isDisplayed(txt_EmailPopup);
     }
