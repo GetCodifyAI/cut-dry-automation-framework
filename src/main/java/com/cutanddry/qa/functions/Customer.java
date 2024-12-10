@@ -924,6 +924,203 @@ public class Customer {
     public static void increaseFirstRowQtyBysix() throws InterruptedException {
         customersPage.clickPlusQryFirstRowBySix();
     }
+
+    public static void selectOneCustomer(){customersPage.clickOneCustomer();}
+    public static boolean isCustomerNameTxtDisplayed(){
+        return customersPage.isCustomerNameDisplayed();
+    }
+    public static void clickOnCustomerNameEdit(){customersPage.clickCustomerNameEditIcon();}
+
+
+    public static void editCustomerProfileName(String editCustomerName)throws InterruptedException {
+        customersPage.editCustomerName(editCustomerName);
+    }
+
+
+    public static void clickOnSaveEditedCustomerName(){customersPage.clickEditCusNameSave();}
+    public static void clickOnShippingAddressEdit(){customersPage.clickShippingAddressEditIcon();}
+
+
+    public static boolean isEditShippingAddressTextDisplayed(){
+        return customersPage.isEditShippingAddressTextDisplayed();
+    }
+
+
+    public static void editShipAddressStreetName(String editStreet)throws InterruptedException{
+        customersPage.editStreetName(editStreet);
+    }
+
+
+    public static void editShipAddressCityName(String editCity)throws InterruptedException{
+        customersPage.editCityName(editCity);
+    }
+
+
+    public static void editShipAddressStateName(String editState)throws InterruptedException{
+        customersPage.editStateName(editState);
+    }
+
+
+    public static void editShipAddressZipCode(String editZipNum)throws InterruptedException{
+        customersPage.editZipCode(editZipNum);
+    }
+
+
+    public static void clickOnSaveChangesEditShipAddress(){customersPage.clickEditShipAddressDetailsSave();}
+
+
+    public static void clickOnAddNoteEditIcon(){customersPage.clickEditNoteIcon();}
+
+
+
+
+    public static void addCustomerNote(String addNote)throws InterruptedException{
+        customersPage.addNote(addNote);
+    }
+
+
+    public static void clickOnSaveChangesAddNote(){customersPage.clickAddNoteSave();}
+
+
+    public static void editCustomerNote(String editCusNote)throws InterruptedException{
+        customersPage.editNote(editCusNote);
+    }
+
+
+    public static void clickOnEditSalespersonIcon(){customersPage.clickEditSalespersonIcon();}
+
+
+    public static boolean isAssignSalespersonTextDisplayed(){
+        return customersPage.isAssignSalespersonsTextDisplayed();
+    }
+
+
+    public static void clickOnAssignSalespersonDropdown(){customersPage.clickAssignSalespersonDropdownArrow();}
+    public static void selectOneAssignSalesperson(){customersPage.clickOneSalespersonOption();}
+
+
+    public static boolean isAssignedSalespersonNameDisplayed(){
+        return customersPage.isAssignedSalespersonDisplayed();
+    }
+
+
+    public static void clickOnAssignSalespersonSave(){customersPage.clickSalespersonSaveChanges();}
+
+
+    public static boolean isAddedSalespersonNameDisplayed(){
+        return customersPage.isAddedSalespersonDisplayed();
+    }
+
+
+    public static void clickAssignedSalespersonRemove(){customersPage.clickAssignedSalespersonRemoveIcon();}
+
+
+    public static boolean isAddedSalespersonNameDeleted(){
+        return customersPage.isAssignedSalespersonDeleted();
+    }
+
+
+    public static void placeAnOrder(){customersPage.placeNewOrder();}
+
+
+    public static boolean isTotalOrderValueUpdated(){
+        return customersPage.isOrderValueUpdated();
+    }
+
+
+    public static void clickOrderSubmissionOption(){customersPage.clickSubmitOrder();}
+    public static void clickOrderDuplicateConfirmation(){customersPage.clickDuplicateOrder();}
+
+
+    public static boolean isSuccessOrderMessageDisplayed(){
+        return customersPage.isOrderSubmissionTextDisplayed();
+    }
+    public static void clickOrderSuccessMessageClose(){customersPage.clickCloseSuccessMsg();}
+
+
+    public static void clickOnAddTagDropdownMenu(){customersPage.clickAddTagsDropdown();}
+
+
+    public static boolean isDropdownMenuDisplayed(){
+        return customersPage.isDropdownListDisplayed();
+    }
+
+
+    public static void selectToAddTagOption(){customersPage.selectTagOption();}
+
+
+    public static boolean isAddedTagNameDisplayed(){
+        return customersPage.isAddedTagDisplayed();
+    }
+
+
+    public static void clickRemoveAddedTag(){customersPage.clickRemoveTagOption();}
+
+
+    public static boolean isAddedTagNameDeleted(){
+        return customersPage.isAddedTagDeleted();
+    }
+
+
+    public static boolean isLastOrderDateToday(){
+        return customersPage.isLastOrderDateUpdated();
+    }
+
+
+    public static boolean isCustomerListTextDisplayed(){
+        return customersPage.isCustomersTextDisplayed();
+    }
+
+
+    public static void clickCusAccountVisibilityOption(){customersPage.clickEditVisibilityIcon();}
+    public static void clickCusAccountVisibilityDropdown(){customersPage.clickVisibilityDropdown();}
+
+
+    public static void selectCusAccountHiddenOption(){
+        customersPage.selectHiddenOption();
+    }
+
+
+    public static boolean isAccountHiddenOptionDisplayed(){
+        return customersPage.isHiddenOptionDisplayed();
+    }
+
+
+    public static void logIntoCustomer()throws InterruptedException{
+        customersPage.loginAsCustomerPortal();
+    }
+
+
+    public static void loginAsCustomer(String email)throws InterruptedException{
+        customersPage.loginAsCus(email);
+    }
+
+
+    public static void clickCustomerPortalOrderIcon()throws InterruptedException{customersPage.clickOrderIcon();}
+
+
+    public static boolean isVisibleAddSupplierButton(){
+        return customersPage.isAddSupplierButtonVisible();
+    }
+
+
+    public static void clickCusAccountStatusOption(){customersPage.clickEditStatusIcon();}
+    public static void clickCusAccountStatusDropdown(){customersPage.clickStatusDropdown();}
+
+
+    public static boolean isAccountStatusDropdownMenuDisplayed(){
+        return customersPage.isStatusDropdownListDisplayed();
+    }
+
+
+    public static void selectCusAccountStatusOption(){customersPage.selectStatusOption();}
+
+
+    public static boolean isAccountStatusTextDisplayed(){
+        return customersPage.isActiveStatusDisplayed();
+    }
+
+
     public static void clickSection()throws InterruptedException{customersPage.clickNewArrivals();}
     public static void clickCategory()throws InterruptedException{customersPage.clickAllItems();}
     public static void clickBrand()throws InterruptedException{customersPage.clickBrand();}

@@ -1,6 +1,10 @@
 package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class CustomersPage extends LoginPage {
     By tbx_searchCustomers = By.xpath("//input[@placeholder='Search Customers']");
@@ -213,7 +217,7 @@ public class CustomersPage extends LoginPage {
     String orderGuideOrderApprovalToggle = "//div[contains(text(),'ORDERGUIDE')]/../following-sibling::*//div[2]";
     By editExistingOrderTxt = By.xpath("//h2[contains(text(),'Edit Existing Order')]");
     By cancelBtn = By.xpath("//button[contains(text(),'Cancel')]");
-    By btn_editSalesperson = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[5]");
+    By btn_editSalesperson = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[6]");
     By btn_independentFoods = By.xpath("//div[contains(text(), 'Independent Foods Co')]");
     By itemNotFoundTxt = By.xpath("//div[contains(text(),'No matches found')]");
     String catalogCardAddToOGBtn = "//div[contains(text(),'ITEMCODE')]/../..//button[@data-tip='Add to Order Guide']";
@@ -291,6 +295,60 @@ public class CustomersPage extends LoginPage {
     By btn_resetValues = By.xpath("//button[contains(text(), 'Reset Values')]");
     By btn_updateValues = By.xpath("//button[contains(text(), 'Update')]");
     By lbl_margin = By.xpath("//label[text()='Margin ($)']/following-sibling::input");
+    By sel_customer = By.xpath("//tr[contains(@href,'/customers/140060852')]");
+    By txt_cusName = By.xpath("(//div[contains(@class,'d-flex align-items-center')])[1]");
+    By btn_editCusName = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[1]");
+    By tbx_editCusName = By.xpath("//input[contains(@class,'form-control')]");
+    By btn_saveEditCusName = By.xpath("//button[contains(@class,'btn-outline-primary btn-sm')]");
+    By btn_editShipAddress = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[2]");
+    By txt_editShipAddress = By.xpath("//div[contains(text(),'Edit Shipping address')]");
+    By tbx_editStreet = By.xpath("//label[contains(text(),'Street Address')]/following-sibling::input");
+    By tbx_editCity = By.xpath("//label[contains(text(),'City')]/following-sibling::input");
+    By tbx_editState = By.xpath("//label[contains(text(),'State')]/following-sibling::input");
+    By tbx_editZipCode = By.xpath("//label[contains(text(),'Zip Code')]/following-sibling::input");
+    By btn_saveEditShipAddress = By.xpath("//button[contains(text(),'Save Changes')]");
+    By btn_editNote = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[10]");
+    By txtarea_editNote = By.xpath("(//textarea)[1]");
+    By btn_saveNote = By.xpath("//button[contains(@class,'mx-2 my-2 btn btn-outline-primary btn-sm')]");
+    By txt_assignSalesperson = By.xpath("//div[contains(text(),'Assign Salesperson')]");
+    By dropdown_assignSalesperson = By.xpath("((//*[local-name() = 'svg' and @class='css-19bqh2r']))[2]");
+    By sel_salesperson = By.xpath("//div[contains(@class, 'themed_select__option') and contains(text(), 'Ali Loynachan')]");
+    By txt_assignedSalesperson = By.xpath("//td[contains(text(),'Ali Loynachan')]");
+    By btn_saveChanges = By.xpath("//button[contains(text(),'Save changes')]");
+    By txt_cusProfSalesperson = By.xpath("//div[contains(@class,'_vjioml w-100 border') and contains(text(),'Ali Loynachan')]");
+    By btn_removeSalesperson = By.xpath("((//*[local-name() = 'svg' and @data-icon='trash-can']))[4]");
+    By txt_totalOrderValue = By.xpath("//div[contains(text(),'Total Order Value')]/following-sibling::div");
+    By btn_orderGuideCusProf = By.xpath("//button[contains(text(),'Order Guide')]");
+    By txt_OrderGuideCusName = By.xpath("//div[contains(@class,'_1hyqzayu mont')]");
+    By sel_product = By.xpath("((//*[local-name() = 'svg' and @data-icon='plus']))[8]");
+    By txt_reviewPage = By.xpath("//div[contains(text(),'Review Order')]");
+    By btn_orderCheckout = By.xpath("//button[contains(@data-tip,'Click here to checkout')]");
+    By btn_draftNo =By.xpath("//div[contains(text(),'No')]");
+    By txt_orderSuccessMsg = By.xpath("//strong[contains(text(),'Thank you for your order!')]");
+    By btn_closeMsg = By.xpath("//span[text()='×']");
+    By dropdown_selTags = By.xpath("(//*[local-name() = 'svg' and @class='css-19bqh2r'])");
+    By dropdown_list = By.xpath("//div[contains(@class,'themed_select__menu-list themed_select')]");
+    By sel_tagOption = By.xpath("//div[contains(text(),'Rep Orders')]");
+    By sel_tagName = By.xpath("//div[contains(@class,'css-12jo7m5 theme')]");
+    By icon_removeTag = By.xpath("((//*[local-name() = 'svg' and @class='css-19bqh2r']))[1]");
+    By txt_lastOrderDate = By.xpath("//div[contains(text(),'Last ordered on')]");
+    By customersText = By.xpath("//h2[contains(text(),'Customers')]");
+    By btn_accountVisibility = By.xpath("((//*[local-name() = 'svg' and @data-icon='pen-to-square']))[8]");
+    By dropdown_visibility = By.xpath("(//*[local-name() = 'svg' and @class='css-19bqh2r'])[1]");
+    By sel_hiddenOption = By.xpath("//div[contains(text(),'Hidden')]");
+    By btn_visibilitySave = By.xpath("//button[contains(@class,'mr-2 my-2 btn btn-outline')]");
+    By txt_hidden = By.xpath("//div[contains(@class,'col')and contains(text(),'Hidden')]");
+    By tbx_emailOrMobile = By.xpath("//input[@id='react-select-5-input']");
+    By sel_cusOption = By.xpath("//div[contains(@class,' css-yt9ioa-option')and contains(text(),'Acai Bowles')]");
+    By btn_loginAsCus = By.xpath("//a[contains(text(),'Login As')]");
+    By btn_cusOrderIcon = By.xpath("//div[text()='Order']");
+    By btn_cusAddSupplier = By.xpath("//button[contains(text(),'Add Supplier')]");
+    By btn_accountStatus = By.xpath("((//*[local-name() = 'svg' and @data-icon='pen-to-square']))[12]");
+    By dropdown_status = By.xpath("(//*[local-name() = 'svg' and @class='css-19bqh2r'])[1]");
+    By sel_statusOption = By.xpath("//div[contains(@class,'themed_select__option') and contains(text(),'Active')]");
+    By btn_statusSave = By.xpath("//button[contains(@class,'mr-2 my-2 btn btn-outline')]");
+    By txt_status = By.xpath("//div[contains(text(),'Active')]");
+    By ls_status = By.xpath("//div[contains(@class,'themed_select__menu-list css-11unzgr')]");
     By newArrivalsOption = By.xpath("//div[contains(text(), 'New Arrivals (')]");
     By allItemsOption = By.xpath("//div[contains(text(), 'All Items')]");
     By brandDropDown = By.xpath("//div[contains(text(), 'Brand')]");
@@ -316,12 +374,6 @@ public class CustomersPage extends LoginPage {
     By btn_catalogToOrderGuide = By.xpath("//div[text()='Order Guide']");
     String lbl_orderGuideItem = "//div[contains(@class, 'text-capitalize _1i69w9z') and contains(text(),'NAME')]";
     By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items-center justify-content-center cdbutton w-100 _fousr2 fa-stack btn btn-primary btn-sm' and @data-tip='Remove from Order Guide']");
-
-
-
-
-
-
 
 
 
@@ -1560,9 +1612,6 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_deleteDraft);
     }
 
-
-
-
     public void enterStopDuration(String msg) throws InterruptedException {
         distributorUI.clickUsingJavaScript(lbl_stopDuration);
         distributorUI.clear(lbl_stopDuration);
@@ -1625,6 +1674,105 @@ public class CustomersPage extends LoginPage {
     public void clickPlusQryFirstRowBySix() {
         for (int i = 0; i < 6; i++) {
             distributorUI.click(btn_increaseQtyFirstRow);
+        }
+    }
+
+    public void clickOneCustomer(){
+        distributorUI.waitForVisibility(sel_customer);
+        distributorUI.click(sel_customer);
+    }
+
+    public boolean isCustomerNameDisplayed(){
+        return distributorUI.isDisplayed(txt_cusName);
+    }
+    public void clickCustomerNameEditIcon(){distributorUI.click(btn_editCusName);}
+
+    public void editCustomerName(String editCustomerName)throws InterruptedException{
+        distributorUI.waitForClickability(tbx_editCusName);
+        distributorUI.clear(tbx_editCusName);
+        distributorUI.sendKeys(tbx_editCusName,editCustomerName);
+    }
+
+    public void clickEditCusNameSave(){distributorUI.click(btn_saveEditCusName);}
+    public void clickShippingAddressEditIcon(){distributorUI.click(btn_editShipAddress);}
+
+    public boolean isEditShippingAddressTextDisplayed(){
+        return distributorUI.isDisplayed(txt_editShipAddress);
+    }
+
+    public void editStreetName(String editStreet)throws InterruptedException {
+        distributorUI.clear(tbx_editStreet);
+        distributorUI.sendKeys(tbx_editStreet,editStreet);
+        distributorUI.waitForCustom(800);
+    }
+
+    public void editCityName(String editCityName)throws InterruptedException {
+        distributorUI.clear(tbx_editCity);
+        distributorUI.sendKeys(tbx_editCity,editCityName);
+        distributorUI.waitForCustom(800);
+    }
+
+    public void editStateName(String editState)throws InterruptedException {
+        distributorUI.clear(tbx_editState);
+        distributorUI.sendKeys(tbx_editState,editState);
+        distributorUI.waitForCustom(800);
+    }
+
+    public void editZipCode(String editZipNum)throws InterruptedException {
+        distributorUI.clear(tbx_editZipCode);
+        distributorUI.sendKeys(tbx_editZipCode,editZipNum);
+        distributorUI.waitForCustom(800);
+    }
+
+    public void clickEditShipAddressDetailsSave(){distributorUI.click(btn_saveEditShipAddress);}
+
+    public void clickEditNoteIcon(){distributorUI.click(btn_editNote);}
+
+    public void addNote(String addNote)throws InterruptedException {
+        distributorUI.sendKeys(txtarea_editNote,addNote);
+        distributorUI.waitForCustom(800);
+    }
+
+    public void clickAddNoteSave(){distributorUI.click(btn_saveNote);}
+
+    public void editNote(String editCusNote)throws InterruptedException {
+        distributorUI.sendKeys(txtarea_editNote,editCusNote);
+        distributorUI.waitForCustom(800);
+    }
+
+    public void clickEditSalespersonIcon(){distributorUI.click(btn_editSalesperson);}
+
+    public boolean isAssignSalespersonsTextDisplayed(){
+        return distributorUI.isDisplayed(txt_assignSalesperson);
+    }
+
+    public void clickAssignSalespersonDropdownArrow(){distributorUI.click(dropdown_assignSalesperson);}
+    public void clickOneSalespersonOption(){distributorUI.click(sel_salesperson);}
+
+    public boolean isAssignedSalespersonDisplayed(){
+        return distributorUI.isDisplayed(txt_assignedSalesperson);
+    }
+
+
+    public void clickSalespersonSaveChanges(){distributorUI.click(btn_saveChanges);}
+
+    public boolean isAddedSalespersonDisplayed(){
+        String assignedSalespersonName = distributorUI.getText(txt_assignedSalesperson);
+        String cusProfileSalespersonName = distributorUI.getText(txt_cusProfSalesperson);
+        try {
+            return assignedSalespersonName.equals(cusProfileSalespersonName) && assignedSalespersonName.equals("Ali Loynachan");
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public void clickAssignedSalespersonRemoveIcon(){distributorUI.click(btn_removeSalesperson);}
+
+    public boolean isAssignedSalespersonDeleted() {
+        try {
+            return !distributorUI.isDisplayed(txt_assignedSalesperson);
+        } catch (NoSuchElementException e) {
+            return true;
         }
     }
     public void clickNewArrivals()throws InterruptedException{
@@ -1720,5 +1868,153 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_removeFromOrderGuideHeart);
     }
 
+    private double getTotalOrderValue() {
+        String orderValueText = distributorUI.getText(txt_totalOrderValue);
+        return parseCurrency(orderValueText);
+    }
+
+    public void placeNewOrder() {
+        distributorUI.click(btn_orderGuideCusProf);
+        distributorUI.waitForInvisibility(btn_draftNo);
+        distributorUI.doubleClick(btn_draftNo);
+        for (int i = 0; i < 4; i++) {
+            distributorUI.click(sel_product);
+        }
+        distributorUI.click(btn_orderCheckout);
+
+
+        if (isReviewPageTextDisplayed()) {
+            if (distributorUI.isDisplayed(txt_reviewPage)) {
+                return;
+            }
+        } else {
+            return;
+        }
+    }
+
+    public boolean isOrderValueUpdated() {
+        try {
+            double previousOrderValue = getTotalOrderValue();
+            double newOrderValue = getTotalOrderValue();
+            return newOrderValue > previousOrderValue;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public boolean isReviewPageTextDisplayed(){
+        return distributorUI.isDisplayed(txt_reviewPage);
+    }
+
+    public void clickSubmitOrder(){distributorUI.click(btn_submitOrder);}
+
+    public void clickDuplicateOrder(){distributorUI.click(btn_duplicateOrderYes);}
+
+    public boolean isOrderSubmissionTextDisplayed(){
+        return distributorUI.isDisplayed(txt_orderSuccessMsg);
+    }
+
+    public void clickCloseSuccessMsg(){distributorUI.click(btn_closeMsg);}
+
+    private double parseCurrency(String currencyText) {
+        currencyText = currencyText.replaceAll("[^\\d.]", "");
+        return Double.parseDouble(currencyText);
+    }
+
+    public void clickAddTagsDropdown(){distributorUI.click(dropdown_selTags);}
+
+    public boolean isDropdownListDisplayed(){
+        return distributorUI.isDisplayed(dropdown_list);
+    }
+
+    public void selectTagOption(){distributorUI.click(sel_tagOption);}
+
+    public boolean isAddedTagDisplayed(){
+        return distributorUI.isDisplayed(sel_tagName);
+    }
+
+    public void clickRemoveTagOption(){distributorUI.click(icon_removeTag);}
+
+    public boolean isAddedTagDeleted() {
+        try {
+            return !distributorUI.isDisplayed(sel_tagName);
+        } catch (NoSuchElementException e) {
+            return true;
+        }
+    }
+
+    public String getLastOrderedDate() {
+        String lastOrderedText = distributorUI.getText(txt_lastOrderDate);
+        String dateOnly;
+        dateOnly = lastOrderedText.substring(lastOrderedText.indexOf("on") + 3).trim();
+        return dateOnly;
+    }
+
+    public boolean isLastOrderDateUpdated() {
+        placeNewOrder();
+        LocalDate today = LocalDate.now();
+        String updatedOrderDate = today.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+        String lastOrderedDate = getLastOrderedDate();
+        return lastOrderedDate.equals(updatedOrderDate);
+    }
+
+    public boolean isCustomersDisplayed(){
+        return distributorUI.isDisplayed(customersText);
+    }
+
+    public void clickEditVisibilityIcon(){distributorUI.click(btn_accountVisibility);}
+    public void clickVisibilityDropdown(){distributorUI.click(dropdown_visibility);}
+
+    public void selectHiddenOption(){
+        distributorUI.click(sel_hiddenOption);
+        distributorUI.click(btn_visibilitySave);
+    }
+
+    public boolean isHiddenOptionDisplayed(){
+        return distributorUI.isDisplayed(txt_hidden);
+    }
+
+    public void loginAsCustomerPortal() throws InterruptedException{
+        distributorUI.navigateToURL("https://app-uat.staging.cutanddry.com/internaltools/loginas");
+    }
+
+    public void loginAsCus(String email)throws InterruptedException{
+        distributorUI.click(tbx_emailOrMobile);
+        distributorUI.sendKeys(tbx_emailOrMobile,email);
+        distributorUI.waitForCustom(800);
+        distributorUI.click(sel_cusOption);
+        distributorUI.click(btn_loginAsCus);
+    }
+
+    public void clickOrderIcon()throws InterruptedException{
+        distributorUI.waitForCustom(500);
+        distributorUI.click(btn_cusOrderIcon);
+    }
+
+    public boolean isAddSupplierButtonVisible(){
+        try {
+            return distributorUI.isDisplayed(btn_cusAddSupplier);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void clickEditStatusIcon(){distributorUI.click(btn_accountStatus);}
+    public void clickStatusDropdown(){distributorUI.click(dropdown_status);}
+
+    public boolean isStatusDropdownListDisplayed(){
+        return distributorUI.isDisplayed(ls_status);
+    }
+
+    public void selectStatusOption(){
+        distributorUI.click(sel_statusOption);
+        distributorUI.click(btn_statusSave);
+    }
+
+    public boolean isActiveStatusDisplayed(){
+        return distributorUI.isDisplayed(txt_status);
+    }
+
 
 }
+
