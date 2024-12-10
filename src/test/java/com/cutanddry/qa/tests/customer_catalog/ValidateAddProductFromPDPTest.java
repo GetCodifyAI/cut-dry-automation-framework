@@ -39,7 +39,7 @@ public class ValidateAddProductFromPDPTest extends TestBase {
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
         Customer.clickOnProduct(itemName);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"navigation error");
-        Customer.clickAddToCart();
+        Customer.clickAddToCartPDP();
         Customer.clickCheckOutPDP();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(),"navigation error for review order");
         Customer.submitOrder();

@@ -1142,7 +1142,7 @@ public class Customer {
     public static void clickOnProduct(String name){
         customersPage.clickOnProduct(name);
     }
-    public static void clickAddToCart(){customersPage.clickAddToCart();}
+    public static void clickAddToCartPDP(){customersPage.clickAddToCart();}
     public static void clickCheckOutPDP(){customersPage.clickCheckOutPDP();}
     public static boolean isOrderSubmitSuccessfully(){
         return customersPage.isOrderSubmitSuccessfully();}
