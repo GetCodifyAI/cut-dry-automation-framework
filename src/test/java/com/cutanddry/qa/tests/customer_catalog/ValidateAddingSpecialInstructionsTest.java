@@ -38,6 +38,7 @@ public class ValidateAddingSpecialInstructionsTest extends TestBase {
         Customer.clickOnOrderGuide(customerId);
         Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItems();
+        softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(),"navigation error for review order");
         Customer.typeSpecialInstruction(specialInstruction);
         Customer.typeInternalNote(internalNote);
         Customer.typeNoteToCustomer(noteToCustomer);
