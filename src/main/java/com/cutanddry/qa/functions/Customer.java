@@ -1167,5 +1167,7 @@ public class Customer {
     public static boolean isPreviousImageDisplay(){
         return customersPage.isPreviousImageDisplay();
     }
+    public static void clickFirstImage(){customersPage.clickFirstImage();}
+    public static void clickSecondImage(){customersPage.clickSecondImage();}
 
 }
