@@ -58,6 +58,8 @@
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyRemoveSalespersonTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyAddTagTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyRemoveTagTest" />
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCutAndDryPayInCustomerInvoices" />
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifythePaymentTermsincustomerInvoices" />
         </classes>
     </test>
 </suite>
