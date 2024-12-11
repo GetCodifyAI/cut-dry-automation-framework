@@ -1226,4 +1226,17 @@ public class Customer {
         return customersPage.getItemTotalValue();
     }
 
+    public static boolean isUserNavigatedToDashboard() {
+        return customersPage.isReviewPageTextDisplayed();
+    }
+
+    public static String getSuccessOrderId() {
+        return customersPage.getOrderedId();
+    }
+
+    public static boolean isDeliveryOptionSelected() {
+        return customersPage.isDeliveryOptionSelected();
+    }
+
+
 }
