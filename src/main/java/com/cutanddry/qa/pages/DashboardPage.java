@@ -1,6 +1,7 @@
 package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class DashboardPage extends LoginPage{
     By txt_dashboard = By.xpath("//li[contains(text(),'Dashboard')]");
@@ -57,6 +58,9 @@ public class DashboardPage extends LoginPage{
     By ordersTab = By.xpath("//div[text()='Order']");
     By btn_company = By.xpath("//span[@class='_5h4pkd' and text()='Company:']");
     By txt_independant_food_co = By.xpath("//a[contains(text(), 'Independent Foods Co')]");
+    static By wordAfterCompanyLocator = By.xpath("//span[text()='Company:']/following-sibling::span");
+    static By dropdownToggle = By.xpath("//span[text()='Company:']/ancestor::button[contains(@class, 'dropdown-toggle')]");
+    static By independentFoodOption = By.xpath("//a[text()='Independent Foods Co']");
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -286,13 +290,28 @@ public class DashboardPage extends LoginPage{
         distributorUI.click(ordersTab);
     }
 
-    public void ClickOnCompanyBtn(){
-        distributorUI.waitForVisibility(btn_company);
-        distributorUI.click(btn_company);
+    public static String getTextAfterCompany() {
+        // Call the external waitForVisibility method
+        distributorUI.waitForVisibility(wordAfterCompanyLocator);
+
+        // Locate the element
+        WebElement wordAfterCompanyElement = driver.findElement(wordAfterCompanyLocator);
+
+        // Get and return the text content
+        return wordAfterCompanyElement.getText();
     }
 
-    public void ClickOnIndependantFoodCo(){
-        distributorUI.click(txt_independant_food_co);
+    public static void selectIndependentFoodCo() {
+        // Click the dropdown
+        driver.findElement(dropdownToggle).click();
+        System.out.println("Dropdown clicked.");
+
+        // Wait for the 'Independent Foods Co' option to be visible and click it
+        distributorUI.waitForVisibility(independentFoodOption);
+        driver.findElement(independentFoodOption).click();
+
+        System.out.println("Company name changed to 'Independent Foods Co'.");
     }
+
 
 }

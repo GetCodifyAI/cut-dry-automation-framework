@@ -151,8 +151,18 @@ public class Dashboard {
     }
 
     public static void selectIndependantFoodCo(){
-        dashboardPage.ClickOnCompanyBtn();
-        dashboardPage.ClickOnIndependantFoodCo();
+        DashboardPage.selectIndependentFoodCo();
     }
+
+    public static boolean isCompanyIndependentFood() {
+        String companyName = DashboardPage.getTextAfterCompany();
+        System.out.println("The current company name is "+ companyName);
+        return "Independent Foods Co".equals(companyName);
+    }
+
+    public static void selectIndependentFoodCo(){
+        DashboardPage.selectIndependentFoodCo();
+    }
+
 
 }
