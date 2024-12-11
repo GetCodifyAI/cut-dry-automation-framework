@@ -43,13 +43,15 @@ public class ValidateAddProductToOrderGuideByClickPDPHeartIconTest extends TestB
         Customer.clickOrderGuide();
         Customer.goToOrderGuide();
         softAssert.assertTrue(Customer.addedItemDisplayOnOrderGuide(OrderGuideProductName),"product not found");
+        Customer.clickOrderGuideProduct(OrderGuideProductName);
+        Customer.clickRemoveOrderGuide();
         softAssert.assertAll();
     }
 
-    @AfterMethod
-    public void tearDown(ITestResult result){
-        takeScreenshotOnFailure(result);
-        closeAllBrowsers();
-    }
+//    @AfterMethod
+//    public void tearDown(ITestResult result){
+//        takeScreenshotOnFailure(result);
+//        closeAllBrowsers();
+//    }
 
 }

@@ -1887,6 +1887,7 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_catalogToOrderGuide);
     }
     public boolean addedItemDisplayOnOrderGuide(String name){
+        distributorUI.waitForVisibility(By.xpath(lbl_orderGuideItem.replace("NAME", name)));
         return distributorUI.isDisplayed(By.xpath(lbl_orderGuideItem.replace("NAME", name)));
     }
     public void clickOrderGuideProduct(String name){
