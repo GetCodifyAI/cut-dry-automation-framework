@@ -1120,5 +1120,25 @@ public class Customer {
         return customersPage.isActiveStatusDisplayed();
     }
 
+    public static boolean isErrorTextNotDisplayed(){
+        return customersPage.isErrorTextNotDisplayed();
+    }
+
+    public static void clickOnFirstItemOfCreditRequests(){
+        customersPage.clickOnFirstItemOfCreditRequests();
+    }
+
+    public static void clickonInvoice(){
+        customersPage.clickonInvoice();
+    }
+
+    public static void verifyEnabledStatus(){
+        customersPage.verifyEnabledStatus();
+    }
+
+    public static void verifyPaymentTermStatus(){
+        customersPage.verifyPaymentTermStatus();
+    }
+
 
 }
