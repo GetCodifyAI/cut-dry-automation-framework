@@ -12,6 +12,7 @@ public class CustomersPage extends LoginPage {
     By lbl_itemNameList = By.xpath("//td//span/div[@data-tip='View Product Details']");
     By lbl_itemDetails = By.xpath("//tbody/tr[2]");
     By btn_increaseQtyFirstRow = By.xpath("(//div//*[local-name()='svg' and @data-icon='plus' and contains(@class,'_gf457k')])[1]");
+    By btn_increaseQtyFifthRow = By.xpath("(//div//*[local-name()='svg' and @data-icon='plus' and contains(@class,'_gf457k')])[5]");
     By btn_decreaseQtyFirstRow = By.xpath("//tr[1]/td[8]/div/div/div/div[1]");
     By btn_increaseQtySecondRow = By.xpath("//tr[2]/td[8]/div/div/div/div[3]");
     By btn_decreaseQtySecondRow = By.xpath("//tr[2]/td[8]/div/div/div/div[1]");
@@ -1696,6 +1697,11 @@ public class CustomersPage extends LoginPage {
     public void clickPlusQryFirstRowBySix() {
         for (int i = 0; i < 6; i++) {
             distributorUI.click(btn_increaseQtyFirstRow);
+        }
+    }
+    public void clickPlusQryFifthRowBySix() {
+        for (int i = 0; i < 6; i++) {
+            distributorUI.click(btn_increaseQtyFifthRow);
         }
     }
 

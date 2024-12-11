@@ -36,7 +36,7 @@ public class ValidateAddingSpecialInstructionsTest extends TestBase {
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
-        Customer.increaseFirstRowQtyByOne();
+        Customer.clickPlusQryFifthRowBySix();
         Customer.checkoutItems();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(),"navigation error for review order");
         Customer.typeSpecialInstruction(specialInstruction);

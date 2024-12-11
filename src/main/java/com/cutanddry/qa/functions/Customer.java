@@ -924,6 +924,9 @@ public class Customer {
     public static void increaseFirstRowQtyBysix() throws InterruptedException {
         customersPage.clickPlusQryFirstRowBySix();
     }
+    public static void clickPlusQryFifthRowBySix() throws InterruptedException {
+        customersPage.clickPlusQryFifthRowBySix();
+    }
 
     public static void selectOneCustomer(){customersPage.clickOneCustomer();}
     public static boolean isCustomerNameTxtDisplayed(){
