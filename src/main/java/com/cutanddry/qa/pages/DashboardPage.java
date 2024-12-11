@@ -55,6 +55,8 @@ public class DashboardPage extends LoginPage{
     By txt_draftOrder = By.xpath("//div[contains(@class, 'text-center') and contains(text(), 'continue your previous draft order')]");
     By btn_noDraftOrder = By.xpath("//span[text()='×']");
     By ordersTab = By.xpath("//div[text()='Order']");
+    By btn_company = By.xpath("//span[@class='_5h4pkd' and text()='Company:']");
+    By txt_independant_food_co = By.xpath("//a[contains(text(), 'Independent Foods Co')]");
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -282,6 +284,14 @@ public class DashboardPage extends LoginPage{
 
     public void navigateToWhiteLabelOrdersPage(){
         distributorUI.click(ordersTab);
+    }
+
+    public void ClickOnCompanyBtn(){
+        distributorUI.click(btn_company);
+    }
+
+    public void ClickOnIndependantFoodCo(){
+        distributorUI.click(txt_independant_food_co);
     }
 
 }

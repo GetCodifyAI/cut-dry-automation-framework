@@ -150,4 +150,9 @@ public class Dashboard {
         dashboardPage.navigateToWhiteLabelOrdersPage();
     }
 
+    public static void selectIndependantFoodCo(){
+        dashboardPage.ClickOnCompanyBtn();
+        dashboardPage.ClickOnIndependantFoodCo();
+    }
+
 }
