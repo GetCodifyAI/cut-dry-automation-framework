@@ -287,6 +287,7 @@ public class DashboardPage extends LoginPage{
     }
 
     public void ClickOnCompanyBtn(){
+        distributorUI.waitForVisibility(btn_company);
         distributorUI.click(btn_company);
     }
 
