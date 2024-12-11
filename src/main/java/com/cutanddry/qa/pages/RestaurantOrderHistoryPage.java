@@ -1,0 +1,31 @@
+package com.cutanddry.qa.pages;
+
+import org.openqa.selenium.By;
+
+public class RestaurantOrderHistoryPage extends LoginPage {
+
+    By tbx_searchOrderHistory = By.xpath("//input[@placeholder='Search']");
+    String specificOrderRecord = "//tr/td[text()='ORDER_ID']";
+
+    public void clickOnSearchOrder() {
+        distributorUI.click(tbx_searchOrderHistory);
+    }
+
+    public void typeOnSearchOrder(String code) throws InterruptedException {
+        distributorUI.clear(tbx_searchOrderHistory);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_searchOrderHistory, code);
+    }
+
+    public boolean isOrderSearchResultByOrderIdDisplayed(String orderId) throws InterruptedException {
+        distributorUI.waitForElementEnabledState(By.xpath(specificOrderRecord.replace("ORDER_ID", orderId)), true);
+        distributorUI.waitForCustom(4000);
+        return distributorUI.isDisplayed(By.xpath(specificOrderRecord.replace("ORDER_ID", orderId)));
+    }
+
+    public void clickOnSpecificRecord(String orderId) {
+        distributorUI.click(By.xpath(specificOrderRecord.replace("ORDER_ID", orderId)));
+    }
+
+}
+
