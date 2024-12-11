@@ -401,6 +401,10 @@ public class CustomersPage extends LoginPage {
     By Value = By.xpath("//td[@class='_xigbpq4 border-top border-bottom py-3' and contains(text(),'$')]");
     By totalQuantity = By.xpath("//td[@class='_ygdk15 align-bottom pb-1']");
     By totalValue=By.xpath("//td[@class='border-0 pt-1' and contains(text(),'$')]");
+    By txt_orderId = By.xpath("//div[contains(text(),'Order #')]");
+    By sel_delivery = By.xpath("//span[text()='Delivery']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
+    By sel_pickup = By.xpath("//span[text()='Pickup/Will Call']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
+    By sel_mailDelivery = By.xpath("//span[text()='Mail Delivery']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
 
 
 
@@ -2196,5 +2200,41 @@ public class CustomersPage extends LoginPage {
             return false;
         }
     }
+
+    public String getOrderedId() {
+        String orderId = distributorUI.getText(txt_orderId);
+        return orderId.substring(orderId.indexOf("#") + 1).trim();
+    }
+
+    public boolean isDeliveryOptionSelected() {
+        try {
+            distributorUI.waitForVisibility(sel_delivery);
+            String dataIconValue = distributorUI.getText(sel_delivery, "data-icon").trim(); // Use getAttribute to fetch the attribute value
+            return dataIconValue.equals("circle-check");
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isPickUpOptionSelected() {
+        try {
+            distributorUI.waitForVisibility(sel_pickup);
+            String dataIconValue = distributorUI.getText(sel_pickup, "data-icon").trim(); // Use getAttribute to fetch the attribute value
+            return dataIconValue.equals("circle-check");
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isMailDeliveryOptionSelected() {
+        try {
+            distributorUI.waitForVisibility(sel_mailDelivery);
+            String dataIconValue = distributorUI.getText(sel_mailDelivery, "data-icon").trim(); // Use getAttribute to fetch the attribute value
+            return dataIconValue.equals("circle-check");
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }
 

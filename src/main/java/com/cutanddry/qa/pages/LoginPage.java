@@ -116,4 +116,8 @@ public class LoginPage extends TestBase {
         distributorUI.click(By.xpath(txt_distributor.replace("NAME", name)));
         distributorUI.navigateToURL(distributorUI.getText(btn_loginAsDis, "href"));
     }
+
+    public void switchIntoNewTab(){
+        distributorUI.OpenNewTabAndSwitchToIt();
+    }
 }

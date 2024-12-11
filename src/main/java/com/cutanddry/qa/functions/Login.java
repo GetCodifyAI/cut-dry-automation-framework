@@ -69,4 +69,8 @@ public class Login {
         loginPage.clickSubmit();
     }
 
+    public static void switchIntoNewTab(){
+        loginPage.switchIntoNewTab();
+    }
+
 }
