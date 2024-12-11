@@ -30,7 +30,6 @@ public class VerifyTheCutAndDryPayInCustomerInvoices extends TestBase {
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"The user is unable to land on the Dashboard page.");
-        Dashboard.selectIndependantFoodCo();
         Dashboard.navigateToCustomers();
         softAssert.assertAll();
         Customer.searchCustomerByCode(CustomerCode);
