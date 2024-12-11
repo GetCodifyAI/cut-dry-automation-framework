@@ -1906,10 +1906,9 @@ public class CustomersPage extends LoginPage {
     }
 
     public boolean isErrorTextNotDisplayed() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         try {
             // Wait to see if the error text becomes visible
-            wait.until(ExpectedConditions.presenceOfElementLocated(txt_error));
+            distributorUI.waitForVisibility(txt_error);
             return false; // "error" text is found
         } catch (TimeoutException e) {
             return true; // No "error" text is found within the timeout
