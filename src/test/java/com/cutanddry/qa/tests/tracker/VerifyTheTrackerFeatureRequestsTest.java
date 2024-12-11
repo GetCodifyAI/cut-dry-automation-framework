@@ -14,6 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheTrackerFeatureRequestsTest extends TestBase {
     static User user;
+    static String ticketTitle = "Test Ticket 10";
 
     @BeforeMethod
     public void setUp() {
@@ -31,6 +32,12 @@ public class VerifyTheTrackerFeatureRequestsTest extends TestBase {
         softAssert.assertTrue(Tracker.isFeatureRequestsDisplayed(),"navigation feature requests error");
         Tracker.clickRequestFeature();
         softAssert.assertTrue(Tracker.isRequestNewFeatureDisplayed(),"create request new feature not display");
+        Tracker.typeTicketTitle(ticketTitle);
+        Tracker.selectStatus();
+        Tracker.selectPriority();
+        Tracker.selectCategory();
+        Tracker.clickCreateTicket();
+        softAssert.assertTrue(Tracker.isTaskTitleDisplayed(ticketTitle),"feature request ticket not create");
         softAssert.assertAll();
     }
 
