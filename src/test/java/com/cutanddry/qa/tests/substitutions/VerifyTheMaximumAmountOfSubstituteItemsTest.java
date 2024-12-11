@@ -49,12 +49,14 @@ public class VerifyTheMaximumAmountOfSubstituteItemsTest extends TestBase {
         Catalog.checkAndAddNecessarySubstituteItems(itemCodeSub2);
         Catalog.checkAndAddNecessarySubstituteItems(itemCodeSub3);
         Catalog.checkAndAddNecessarySubstituteItems(itemCodeSub4);
+        Catalog.showSubstituteBtnIfNotSelected();
         Catalog.saveChanges();
 
         Login.navigateToLoginAsPortal(customer);
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Customer.clickSouthwestTraders();
         Customer.searchItemOnOrderGuide(itemCode);
+        Customer.addItemFromCatalogIfNotAvailableInOG(itemCode);
         Customer.addItemFromCatalogIfNotAvailableInOG(itemCode);
         itemName = Customer.getItemNameFirstRow();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
