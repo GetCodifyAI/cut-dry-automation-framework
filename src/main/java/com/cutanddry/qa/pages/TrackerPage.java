@@ -21,6 +21,12 @@ public class TrackerPage extends LoginPage{
     By priorityOption = By.xpath("//div[contains(@class, 'd-flex align-items-center') and text()='P1']");
     By btn_createTicket = By.xpath("//button[contains(text(), 'Create Ticket')]");
     String taskTitle = "//tr[2]//td[2][text()='TITLE']";
+    By editStatusDropDown = By.xpath("//span[contains(@class, '_bzn5z48 px-2 py-0 _107wcic _e9f0tt badge')]");
+    By editStatusOption = By.xpath("//span[contains(@class, '_ktrzlb8 px-2 py-0 badge') and text()='To-do']");
+    By firstRowOfTask = By.xpath("(//tr[@class='_7ogv5c _1g2ivyf _du1frc'])[1]");
+    By btn_close = By.xpath("//span[text()='×']");
+    String editStatus = "//tr[2]//td//span[text()='STATUS']";
+    String editPopUp = "//span[text()='Test Ticket 10']";
 
 
     public boolean isOnboardingDocsDisplayed(){
@@ -100,10 +106,29 @@ public class TrackerPage extends LoginPage{
         distributorUI.waitForVisibility(priorityOption);
         distributorUI.click(priorityOption);
     }
-    public void clickCreateTicket(){
+    public void clickCreateTicket()throws InterruptedException{
         distributorUI.click(btn_createTicket);
+        distributorUI.waitForCustom(2000);
     }
     public boolean isTaskTitleDisplayed(String title){
         return distributorUI.isDisplayed(By.xpath(taskTitle.replace("TITLE",title)));
+    }
+    public void clickEditStatus(){
+        distributorUI.click(editStatusDropDown);
+    }
+    public void clickEditStatusOption(){
+        distributorUI.click(editStatusOption);
+    }
+    public void clickCloseEditTicket(){
+        distributorUI.click(btn_close);
+    }
+    public void clickFirstRow(){
+        distributorUI.click(firstRowOfTask);
+    }
+    public boolean isEditTicketDisplayed(String status){
+        return distributorUI.isDisplayed(By.xpath(editStatus.replace("STATUS",status)));
+    }
+    public boolean isEditTicketPopUpDisplayed(String title){
+        return distributorUI.isDisplayed(By.xpath(editPopUp.replace("TITLE",title)));
     }
 }

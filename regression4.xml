@@ -18,6 +18,7 @@
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerOnboardingDocsTest" />
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerIssuesTest" />
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerFeatureRequestsTest" />
+            <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerEditFeatureRequestsTest" />
             <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderSearchTest" />
             <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewOrderEditTest" />
             <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewDateDropdownTest" />
