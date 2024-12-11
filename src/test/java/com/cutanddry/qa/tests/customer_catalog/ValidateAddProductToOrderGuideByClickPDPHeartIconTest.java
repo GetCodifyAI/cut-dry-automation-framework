@@ -48,10 +48,10 @@ public class ValidateAddProductToOrderGuideByClickPDPHeartIconTest extends TestB
         softAssert.assertAll();
     }
 
-//    @AfterMethod
-//    public void tearDown(ITestResult result){
-//        takeScreenshotOnFailure(result);
-//        closeAllBrowsers();
-//    }
+    @AfterMethod
+    public void tearDown(ITestResult result){
+        takeScreenshotOnFailure(result);
+        closeAllBrowsers();
+    }
 
 }

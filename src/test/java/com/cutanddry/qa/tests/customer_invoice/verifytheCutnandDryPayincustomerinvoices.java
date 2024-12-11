@@ -29,7 +29,7 @@ public class verifytheCutnandDryPayincustomerinvoices extends TestBase {
         Dashboard.navigateToCustomers();
         softAssert.assertTrue(Customer.isErrorTextNotDisplayed(),"Error Message Displayed");
         Customer.searchCustomerByCode(Customer_Code);
-        Customer.clickOnFirstItemOfCreditRequests();
+        Customer.clickOnFirstItemOfCustomerRequests();
         Customer.clickonInvoice();
         Customer.verifyEnabledStatus();
     }
