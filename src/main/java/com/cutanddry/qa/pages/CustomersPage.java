@@ -1,10 +1,13 @@
 package com.cutanddry.qa.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class CustomersPage extends LoginPage {
     By tbx_searchCustomers = By.xpath("//input[@placeholder='Search Customers']");
@@ -349,8 +352,11 @@ public class CustomersPage extends LoginPage {
     By btn_statusSave = By.xpath("//button[contains(@class,'mr-2 my-2 btn btn-outline')]");
     By txt_status = By.xpath("//div[contains(text(),'Active')]");
     By ls_status = By.xpath("//div[contains(@class,'themed_select__menu-list css-11unzgr')]");
-
-
+    By txt_error = By.xpath("//*[contains(translate(text(), 'ERROR', 'error'), 'error')]");
+    By first_row = By.xpath("//table[@class='table table-hover']//tbody//tr[1]");
+    By btn_invoice = By.xpath("//a[text()='Invoices']");
+    By enabledStatusLocator = By.xpath("//div[@class='_jehyy2' and text()='Enabled']");
+    By defaultTermStatusLocator = By.xpath("//div[@class='_jehyy2' and text()='Default']");
 
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
@@ -1899,6 +1905,69 @@ public class CustomersPage extends LoginPage {
         return distributorUI.isDisplayed(txt_status);
     }
 
+    public boolean isErrorTextNotDisplayed() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        try {
+            // Wait to see if the error text becomes visible
+            wait.until(ExpectedConditions.presenceOfElementLocated(txt_error));
+            return false; // "error" text is found
+        } catch (TimeoutException e) {
+            return true; // No "error" text is found within the timeout
+        }
+    }
 
+    public void clickOnFirstItemOfCreditRequests(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(first_row));
+        distributorUI.click(first_row);
+    }
+
+    public void clickonInvoice(){
+        distributorUI.click(btn_invoice);
+    }
+
+    public void verifyEnabledStatus() {
+
+        // Wait until at least one matching element is visible
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(enabledStatusLocator));
+
+        // Find all matching elements to be sure
+        List<WebElement> enabledStatusElements = driver.findElements(enabledStatusLocator);
+
+        if (!enabledStatusElements.isEmpty()) {
+            for (WebElement element : enabledStatusElements) {
+                // Verify current text
+                String currentStatus = element.getText();
+                if (currentStatus.equalsIgnoreCase("Enabled")) {
+                    System.out.println("Found 'Enabled'.");
+                }
+            }
+        } else {
+            System.out.println("No element with 'Enabled' text found.");
+        }
+    }
+
+    public void verifyPaymentTermStatus() {
+
+        // Wait until at least one matching element is visible
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(defaultTermStatusLocator));
+
+        // Find all matching elements to be sure
+        List<WebElement> enabledStatusElements = driver.findElements(defaultTermStatusLocator);
+
+        if (!enabledStatusElements.isEmpty()) {
+            for (WebElement element : enabledStatusElements) {
+                // Verify current text
+                String currentStatus = element.getText();
+                if (currentStatus.equalsIgnoreCase("Enabled")) {
+                    System.out.println("Found 'Enabled'.");
+                }
+            }
+        } else {
+            System.out.println("No element with 'Enabled' text found.");
+        }
+    }
 }
 
