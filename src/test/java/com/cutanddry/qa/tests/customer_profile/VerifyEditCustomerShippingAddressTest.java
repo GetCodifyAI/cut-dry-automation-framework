@@ -18,7 +18,7 @@ public class VerifyEditCustomerShippingAddressTest extends TestBase{
     String editShipAddCity = "Test city";
     String editShipAddState = "Test state";
     String editShipAddZipCode = "28070";
-
+    String CustomerCode = "16579";
 
 
     @BeforeMethod
@@ -33,8 +33,10 @@ public class VerifyEditCustomerShippingAddressTest extends TestBase{
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCustomers();
-        Customer.selectOneCustomer();
-        softAssert.assertTrue(Customer.isCustomerNameTxtDisplayed(),"text error");
+        Customer.searchCustomerByCode(CustomerCode);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"Error in displaying the customer");
+        Customer.SelectCustomer(CustomerCode);
+        softAssert.assertTrue(Customer.isCustomerProfileDisplayed(),"Error in navigation to customer page");
         Customer.clickOnShippingAddressEdit();
         softAssert.assertTrue(Customer.isEditShippingAddressTextDisplayed(),"text error");
         Customer.editShipAddressStreetName(editShipAddStreet);

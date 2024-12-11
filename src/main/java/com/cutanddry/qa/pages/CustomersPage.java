@@ -221,7 +221,7 @@ public class CustomersPage extends LoginPage {
     String orderGuideOrderApprovalToggle = "//div[contains(text(),'ORDERGUIDE')]/../following-sibling::*//div[2]";
     By editExistingOrderTxt = By.xpath("//h2[contains(text(),'Edit Existing Order')]");
     By cancelBtn = By.xpath("//button[contains(text(),'Cancel')]");
-    By btn_editSalesperson = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[6]");
+    By btn_editSalesperson = By.xpath("//div[contains(text(),'Salesperson')]/following-sibling::div//*[contains(@data-icon,'pen-to-square')]");
     By btn_independentFoods = By.xpath("//div[contains(text(), 'Independent Foods Co')]");
     By itemNotFoundTxt = By.xpath("//div[contains(text(),'No matches found')]");
     String catalogCardAddToOGBtn = "//div[contains(text(),'ITEMCODE')]/../..//button[@data-tip='Add to Order Guide']";
@@ -320,7 +320,7 @@ public class CustomersPage extends LoginPage {
     By txt_assignedSalesperson = By.xpath("//td[contains(text(),'Ali Loynachan')]");
     By btn_saveChanges = By.xpath("//button[contains(text(),'Save changes')]");
     By txt_cusProfSalesperson = By.xpath("//div[contains(@class,'_vjioml w-100 border') and contains(text(),'Ali Loynachan')]");
-    By btn_removeSalesperson = By.xpath("((//*[local-name() = 'svg' and @data-icon='trash-can']))[4]");
+    By btn_removeSalesperson = By.xpath("(//td/*[contains(@data-icon,'trash-can')])[last()]");
     By txt_totalOrderValue = By.xpath("//div[contains(text(),'Total Order Value')]/following-sibling::div");
     By btn_orderGuideCusProf = By.xpath("//button[contains(text(),'Order Guide')]");
     By txt_OrderGuideCusName = By.xpath("//div[contains(@class,'_1hyqzayu mont')]");
@@ -405,7 +405,7 @@ public class CustomersPage extends LoginPage {
     By sel_delivery = By.xpath("//span[text()='Delivery']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
     By sel_pickup = By.xpath("//span[text()='Pickup/Will Call']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
     By sel_mailDelivery = By.xpath("//span[text()='Mail Delivery']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
-
+    By editOrderReviewScreen = By.xpath("//a[contains(text(),'Edit Order')]");
 
 
 
@@ -2134,6 +2134,9 @@ public class CustomersPage extends LoginPage {
         return distributorUI.getText(totalValue);
     }
 
+    public void clickEditOrderInReviewScreen(){
+        distributorUI.click(editOrderReviewScreen);
+    }
 
 
 
