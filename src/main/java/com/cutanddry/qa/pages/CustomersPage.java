@@ -15,6 +15,7 @@ public class CustomersPage extends LoginPage {
     By lbl_itemNameList = By.xpath("//td//span/div[@data-tip='View Product Details']");
     By lbl_itemDetails = By.xpath("//tbody/tr[2]");
     By btn_increaseQtyFirstRow = By.xpath("(//div//*[local-name()='svg' and @data-icon='plus' and contains(@class,'_gf457k')])[1]");
+    By btn_increaseQtyFifthRow = By.xpath("(//div//*[local-name()='svg' and @data-icon='plus' and contains(@class,'_gf457k')])[5]");
     By btn_decreaseQtyFirstRow = By.xpath("//tr[1]/td[8]/div/div/div/div[1]");
     By btn_increaseQtySecondRow = By.xpath("//tr[2]/td[8]/div/div/div/div[3]");
     By btn_decreaseQtySecondRow = By.xpath("//tr[2]/td[8]/div/div/div/div[1]");
@@ -357,6 +358,54 @@ public class CustomersPage extends LoginPage {
     By btn_invoice = By.xpath("//a[text()='Invoices']");
     By enabledStatusLocator = By.xpath("//div[@class='_jehyy2' and text()='Enabled']");
     By defaultTermStatusLocator = By.xpath("//div[@class='_jehyy2' and text()='Default']");
+    By newArrivalsOption = By.xpath("//div[contains(text(), 'New Arrivals (')]");
+    By allItemsOption = By.xpath("//div[contains(text(), 'All Items')]");
+    By brandDropDown = By.xpath("//div[contains(text(), 'Brand')]");
+    By brandDropDownOption = By.xpath("//div[contains(text(), 'Bob')]");
+    By txt_filterByBrand =By.xpath("//div[@class='_1y3bqj7 p-0 d-inline-block _5h4pkd _1451qv9 _du1frc' and contains(text(), 'Red Mill')]");
+    By itemStatusDropDown = By.xpath("//div[contains(text(), 'Item Status')]");
+    By itemStatusDropDownOption = By.xpath("//div[contains(text(), 'Stocked')]");
+    By storageTypeDropDown = By.xpath("//div[contains(text(), 'Storage Type')]");
+    By storageTypeDropDownOption = By.xpath("//div[@class='_du1frc _17ct4f8 w-100 pr-1' and contains(text(), 'Dry')]");
+    By dietTypeDropDown = By.xpath("//div[contains(text(), 'Diet Type')]");
+    By dietTypeDropDownOption = By.xpath("//div[@class='_du1frc _17ct4f8 w-100 pr-1' and contains(text(), 'Kosher')]");
+    By txt_filterItem = By.xpath("//div[contains(text(), 'Family Kitchen Baked Potato Soup 4/4lb Frozen')]");
+    By processingTypeDropDown = By.xpath("//div[contains(text(), 'Processing & Formulation')]");
+    By processingTypeDropOption = By.xpath("//div[contains(text(), 'Non-GMO')]");
+    By txt_noItems = By.xpath("//div[contains(text(), '0 Results')]");
+    By btn_clearAllFilters = By.xpath("//button[contains(text(), 'Clear All Filters')]");
+    By radioButton =By.xpath("//div[@class = 'align-middle']");
+    String txt_product = "//div[contains(@class,'_3quvq7 _1vlidrf' ) and contains(text(), 'NAME')]";
+    By btn_addToCartPDP = By.xpath("//button[contains(@class,'d-flex align-items-center justify-content-center cdbutton _1g89unu _du1frc text-nowrap w-100 btn btn-outline-primary btn-sm' ) and contains(text(), 'Add to Cart')]");
+    By btn_checkOutPDP = By.xpath("//button[@data-for='cartCheckoutButton' and contains(text(),'$')]");
+    By txt_orderConfirmationPopUp = By.xpath("//strong[contains(text(), 'Thank you for your order!')]");
+    By btn_addOrderGuideHeart = By.xpath("//button[@class='d-flex align-items-center justify-content-center cdbutton w-100 _fousr2 fa-stack btn btn-primary btn-sm' and @data-tip='Add to Order Guide']");
+    By btn_catalogToOrderGuide = By.xpath("//div[text()='Order Guide']");
+    String lbl_orderGuideItem = "//div[contains(@class, 'text-capitalize _1i69w9z') and contains(text(),'NAME')]";
+    By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items-center justify-content-center cdbutton w-100 _fousr2 fa-stack btn btn-primary btn-sm' and @data-tip='Remove from Order Guide']");
+    By btn_rightArrow = By.xpath("(//div[@class='_1gmghi1'])[1]");
+    By btn_leftArrow = By.xpath("(//div[@class='_35991e'])[1]");
+    By btn_exportPDP = By.xpath("//button[contains(text(), 'Export PDP (pdf)')]");
+    By img_first = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'extra-large-artichoke-bottoms-main-600.png')]");
+    By img_second = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'extra-large-artichoke-bottoms-raw-600.png')]");
+    By btn_firstImage = By.xpath("//div[contains(@class,'position-relative')]/img[contains(@src,'extra-large-artichoke-bottoms-main-600.png')]");
+    By btn_secondImage = By.xpath("//div[contains(@class,'position-relative')]/img[contains(@src,'extra-large-artichoke-bottoms-raw-600.png')]");
+    By txt_specialInstruction =By.xpath("(//textarea[contains(@class, '_1r74rn3 w-100 border')])[1]");
+    By txt_internalNote =By.xpath("(//textarea[contains(@class, '_1r74rn3 w-100 border')])[2]");
+    By txt_noteToCustomer =By.xpath("(//textarea[contains(@class, '_1r74rn3 w-100 border')])[3]");
+    By txt_poNumber = By.xpath("//input[contains(@class, '_1jnwk4ts w-100')]");
+    String specialInstructionText = "//span[contains(text(),'SPECIALINSTRUCTION')]";
+    String internalNoteText = "//span[contains(text(),'INTERNALNOTE')]";
+    String noteToCustomerText = "//span[contains(text(),'NOTETOCUSTOMER')]";
+    By quantityValue = By.xpath("(//input[contains(@class, '_hk3n6z form-control _qxqnfl6')])[1]");
+    By Value = By.xpath("//td[@class='_xigbpq4 border-top border-bottom py-3' and contains(text(),'$')]");
+    By totalQuantity = By.xpath("//td[@class='_ygdk15 align-bottom pb-1']");
+    By totalValue=By.xpath("//td[@class='border-0 pt-1' and contains(text(),'$')]");
+
+
+
+
+
 
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
@@ -1663,6 +1712,11 @@ public class CustomersPage extends LoginPage {
             distributorUI.click(btn_increaseQtyFirstRow);
         }
     }
+    public void clickPlusQryFifthRowBySix() {
+        for (int i = 0; i < 6; i++) {
+            distributorUI.click(btn_increaseQtyFifthRow);
+        }
+    }
 
     public void clickOneCustomer(){
         distributorUI.waitForVisibility(sel_customer);
@@ -1761,6 +1815,99 @@ public class CustomersPage extends LoginPage {
         } catch (NoSuchElementException e) {
             return true;
         }
+    }
+    public void clickNewArrivals()throws InterruptedException{
+        distributorUI.click(newArrivalsOption);
+        distributorUI.waitForCustom(1000);
+    }
+    public void clickAllItems()throws InterruptedException{
+        distributorUI.click(allItemsOption);
+        distributorUI.waitForCustom(1000);
+    }
+    public void clickBrand()throws InterruptedException{
+        distributorUI.click(brandDropDown);
+        distributorUI.click(brandDropDownOption);
+    }
+    public boolean isFilteredBrandDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_filterByBrand);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_filterByBrand);
+    }
+    public void clickItemStatus()throws InterruptedException{
+        distributorUI.click(itemStatusDropDown);
+        distributorUI.click(itemStatusDropDownOption);
+    }
+    public void clickStorageType()throws InterruptedException{
+        distributorUI.click(storageTypeDropDown);
+        distributorUI.click(storageTypeDropDownOption);
+    }
+    public void clickDietType()throws InterruptedException{
+        distributorUI.click(dietTypeDropDown);
+        distributorUI.click(dietTypeDropDownOption);
+    }
+    public boolean isFilterItemDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_filterItem);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_filterItem);
+    }
+    public void clickProcessingType()throws InterruptedException{
+        distributorUI.click(processingTypeDropDown);
+        distributorUI.click(processingTypeDropOption);
+    }
+    public boolean isFilterProcessingTypeWork(){
+        try {
+            distributorUI.waitForVisibility(txt_noItems);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_noItems);
+    }
+    public void clickClearAllFilters(){
+        distributorUI.click(btn_clearAllFilters);
+    }
+    public void clickRadioButton(){
+        distributorUI.click(radioButton);
+    }
+    public void clickOnProduct(String name){
+        distributorUI.waitForVisibility(By.xpath(txt_product.replace("NAME", name)));
+        distributorUI.clickUsingJavaScript(By.xpath(txt_product.replace("NAME", name)));
+    }
+    public void clickAddToCart(){
+        distributorUI.click(btn_addToCartPDP);
+    }
+    public void clickCheckOutPDP(){
+        distributorUI.click(btn_checkOutPDP);
+    }
+
+    public boolean isOrderSubmitSuccessfully(){
+        try {
+            distributorUI.waitForVisibility(txt_orderConfirmationPopUp);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_orderConfirmationPopUp);
+    }
+    public void clickOrderGuide(){
+        distributorUI.click(btn_addOrderGuideHeart);
+    }
+    public void clickOrderGuideTab(){
+        distributorUI.click(btn_catalogToOrderGuide);
+    }
+    public boolean addedItemDisplayOnOrderGuide(String name){
+        distributorUI.waitForVisibility(By.xpath(lbl_orderGuideItem.replace("NAME", name)));
+        return distributorUI.isDisplayed(By.xpath(lbl_orderGuideItem.replace("NAME", name)));
+    }
+    public void clickOrderGuideProduct(String name){
+        distributorUI.click(By.xpath(lbl_orderGuideItem.replace("NAME", name)));
+    }
+    public void clickRemoveOrderGuide(){
+        distributorUI.click(btn_removeFromOrderGuideHeart);
     }
 
     private double getTotalOrderValue() {
@@ -1909,6 +2056,83 @@ public class CustomersPage extends LoginPage {
     public boolean isActiveStatusDisplayed(){
         return distributorUI.isDisplayed(txt_status);
     }
+    public void clickExportPDP(){
+        distributorUI.click(btn_exportPDP);
+    }
+    public void clickRightArrow(){
+        distributorUI.click(btn_rightArrow);
+    }
+    public boolean isNextImageDisplay(){
+        try {
+            distributorUI.waitForVisibility(img_second);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(img_second);
+    }
+    public void clickLeftArrow(){
+        distributorUI.click(btn_leftArrow);
+    }
+    public boolean isPreviousImageDisplay(){
+        try {
+            distributorUI.waitForVisibility(img_first);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(img_first);
+    }
+    public void clickFirstImage(){
+        distributorUI.click(btn_firstImage);
+    }
+    public void clickSecondImage(){
+        distributorUI.click(btn_secondImage);
+    }
+    public void typeSpecialInstruction(String specialInstruction){
+        distributorUI.sendKeys(txt_specialInstruction,specialInstruction);
+    }
+    public void typeInternalNote(String internalNote){
+        distributorUI.sendKeys(txt_internalNote,internalNote);
+    }
+    public void typeNoteToCustomer(String noteToCustomer){
+        distributorUI.sendKeys(txt_noteToCustomer,noteToCustomer);
+    }
+    public void typePONumber(String poNumber){
+        distributorUI.sendKeys(txt_poNumber,poNumber);
+    }
+    public boolean isSpecialInstructionDisplayed(String specialInstruction) {
+        distributorUI.waitForVisibility(By.xpath(specialInstructionText.replace("SPECIALINSTRUCTION",specialInstruction)));
+        return distributorUI.isDisplayed(By.xpath(specialInstructionText.replace("SPECIALINSTRUCTION",specialInstruction)));
+    }
+    public boolean isInternalNoteDisplayed(String internalNote) {
+        distributorUI.waitForVisibility(By.xpath(internalNoteText.replace("INTERNALNOTE",internalNote)));
+        return distributorUI.isDisplayed(By.xpath(internalNoteText.replace("INTERNALNOTE",internalNote)));
+    }
+    public boolean isNoteToCustomerDisplayed(String noteToCustomer) {
+        distributorUI.waitForVisibility(By.xpath(noteToCustomerText.replace("NOTETOCUSTOMER",noteToCustomer)));
+        return distributorUI.isDisplayed(By.xpath(noteToCustomerText.replace("NOTETOCUSTOMER",noteToCustomer)));
+    }
+    public String getItemQuantity() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(quantityValue, true);
+        return distributorUI.getText(quantityValue, "value");
+    }
+
+    public String getItemTotalQuantity() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(totalQuantity, true);
+        return distributorUI.getText(totalQuantity);
+    }
+    public String getItemValue() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(Value, true);
+        return distributorUI.getText(Value);
+    }
+
+    public String getItemTotalValue() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(totalValue, true);
+        return distributorUI.getText(totalValue);
+    }
+
+
+
+
 
     public boolean isErrorTextNotDisplayed() {
         try {

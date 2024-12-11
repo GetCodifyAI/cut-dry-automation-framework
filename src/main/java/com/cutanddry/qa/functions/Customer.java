@@ -923,6 +923,9 @@ public class Customer {
     public static void increaseFirstRowQtyBysix() throws InterruptedException {
         customersPage.clickPlusQryFirstRowBySix();
     }
+    public static void clickPlusQryFifthRowBySix() throws InterruptedException {
+        customersPage.clickPlusQryFifthRowBySix();
+    }
 
     public static void selectOneCustomer(){customersPage.clickOneCustomer();}
     public static boolean isCustomerNameTxtDisplayed(){
@@ -1140,5 +1143,87 @@ public class Customer {
         return customersPage.verifyPaymentTermStatus();
     }
 
+
+    public static void clickSection()throws InterruptedException{customersPage.clickNewArrivals();}
+    public static void clickCategory()throws InterruptedException{customersPage.clickAllItems();}
+    public static void clickBrand()throws InterruptedException{customersPage.clickBrand();}
+    public static boolean isFilteredBrandDisplayed(){
+        return customersPage.isFilteredBrandDisplayed();
+    }
+    public static void clickItemStatus()throws InterruptedException{customersPage.clickItemStatus();}
+    public static void clickStorageType()throws InterruptedException{customersPage.clickStorageType();}
+    public static void clickDietType()throws InterruptedException{customersPage.clickDietType();}
+    public static boolean isFilterItemDisplayed(){
+        return customersPage.isFilterItemDisplayed();
+    }
+    public static void clickProcessingFormulation()throws InterruptedException{customersPage.clickProcessingType();}
+    public static boolean isFilterProcessingTypeWork(){
+        return customersPage.isFilterProcessingTypeWork();
+    }
+    public static void clickClearAllFilters(){customersPage.clickClearAllFilters();}
+    public static void clickViewCatalogAsCustomer(){customersPage.clickRadioButton();}
+    public static void clickOnProduct(String name){
+        customersPage.clickOnProduct(name);
+    }
+    public static void clickAddToCartPDP(){customersPage.clickAddToCart();}
+    public static void clickCheckOutPDP(){customersPage.clickCheckOutPDP();}
+    public static boolean isOrderSubmitSuccessfully(){
+        return customersPage.isOrderSubmitSuccessfully();}
+    public static void clickOrderGuide(){customersPage.clickOrderGuide();}
+    public static void goToOrderGuide()throws InterruptedException{
+        customersPage.clickOnBack();
+        customersPage.clickOrderGuideTab();
+    }
+    public static boolean addedItemDisplayOnOrderGuide(String name){
+         return customersPage.addedItemDisplayOnOrderGuide(name);
+    }
+    public static void clickOrderGuideProduct(String name){
+        customersPage.clickOrderGuideProduct(name);
+    }
+    public static void clickRemoveOrderGuide(){customersPage.clickRemoveOrderGuide();}
+    public static void clickExportPDP(){customersPage.clickExportPDP();}
+    public static void clickRightArrow(){customersPage.clickRightArrow();}
+    public static boolean isNextImageDisplay(){
+        return customersPage.isNextImageDisplay();
+    }
+    public static void clickLeftArrow(){customersPage.clickLeftArrow();}
+    public static boolean isPreviousImageDisplay(){
+        return customersPage.isPreviousImageDisplay();
+    }
+    public static void clickFirstImage(){customersPage.clickFirstImage();}
+    public static void clickSecondImage(){customersPage.clickSecondImage();}
+    public static void typeSpecialInstruction(String specialInstruction){
+        customersPage.typeSpecialInstruction(specialInstruction);
+    }
+    public static void typeInternalNote(String internalNote){
+        customersPage.typeInternalNote(internalNote);
+    }
+    public static void typeNoteToCustomer(String noteToCustomer){
+        customersPage.typeNoteToCustomer(noteToCustomer);
+    }
+    public static void typePONumber(String poNumber){
+        customersPage.typePONumber(poNumber);
+    }
+    public static boolean isSpecialInstructionDisplayed(String specialInstruction){
+        return customersPage.isSpecialInstructionDisplayed(specialInstruction);
+    }
+    public static boolean isInternalNoteDisplayed(String internalNote){
+        return customersPage.isInternalNoteDisplayed(internalNote);
+    }
+    public static boolean isNoteToCustomerDisplayed(String noteToCustomer){
+        return customersPage.isNoteToCustomerDisplayed(noteToCustomer);
+    }
+    public static String getItemQuantity() throws InterruptedException {
+        return customersPage.getItemQuantity();
+    }
+    public static String getItemTotalQuantity()throws InterruptedException{
+        return customersPage.getItemTotalQuantity();
+    }
+    public static String getItemValue() throws InterruptedException {
+        return customersPage.getItemValue();
+    }
+    public static String getItemTotalValue()throws InterruptedException{
+        return customersPage.getItemTotalValue();
+    }
 
 }
