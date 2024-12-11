@@ -1,7 +1,6 @@
 package com.cutanddry.qa.functions;
 
 import com.cutanddry.qa.pages.CustomersPage;
-import com.cutanddry.qa.pages.OrdersPage;
 
 import java.util.Objects;
 
@@ -1124,20 +1123,21 @@ public class Customer {
         return customersPage.isErrorTextNotDisplayed();
     }
 
-    public static void clickOnFirstItemOfCreditRequests(){
-        customersPage.clickOnFirstItemOfCreditRequests();
+    public static void clickOnFirstItemOfCustomerRequests(){
+        customersPage.clickOnFirstItemOfCustomerRequests();
     }
 
     public static void clickonInvoice(){
         customersPage.clickonInvoice();
     }
 
-    public static void verifyEnabledStatus(){
-        customersPage.verifyEnabledStatus();
+    public static boolean verifyEnabledStatus(){
+        return customersPage.verifyEnabledStatus();
+
     }
 
-    public static void verifyPaymentTermStatus(){
-        customersPage.verifyPaymentTermStatus();
+    public static boolean verifyPaymentTermStatus(){
+        return customersPage.verifyPaymentTermStatus();
     }
 
 

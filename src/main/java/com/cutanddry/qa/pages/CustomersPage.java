@@ -1906,7 +1906,7 @@ public class CustomersPage extends LoginPage {
     }
 
     public boolean isErrorTextNotDisplayed() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         try {
             // Wait to see if the error text becomes visible
             wait.until(ExpectedConditions.presenceOfElementLocated(txt_error));
@@ -1916,7 +1916,7 @@ public class CustomersPage extends LoginPage {
         }
     }
 
-    public void clickOnFirstItemOfCreditRequests(){
+    public void clickOnFirstItemOfCustomerRequests(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(first_row));
         distributorUI.click(first_row);
@@ -1926,11 +1926,8 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_invoice);
     }
 
-    public void verifyEnabledStatus() {
-
-        // Wait until at least one matching element is visible
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(enabledStatusLocator));
+    public boolean verifyEnabledStatus() {
+        distributorUI.waitForVisibility(enabledStatusLocator);
 
         // Find all matching elements to be sure
         List<WebElement> enabledStatusElements = driver.findElements(enabledStatusLocator);
@@ -1943,16 +1940,16 @@ public class CustomersPage extends LoginPage {
                     System.out.println("Found 'Enabled'.");
                 }
             }
+            return true;
         } else {
             System.out.println("No element with 'Enabled' text found.");
+            return false;
         }
     }
 
-    public void verifyPaymentTermStatus() {
+    public boolean verifyPaymentTermStatus() {
 
-        // Wait until at least one matching element is visible
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(defaultTermStatusLocator));
+        distributorUI.waitForVisibility(enabledStatusLocator);
 
         // Find all matching elements to be sure
         List<WebElement> enabledStatusElements = driver.findElements(defaultTermStatusLocator);
@@ -1965,8 +1962,10 @@ public class CustomersPage extends LoginPage {
                     System.out.println("Found 'Enabled'.");
                 }
             }
+            return true;
         } else {
             System.out.println("No element with 'Enabled' text found.");
+            return false;
         }
     }
 }
