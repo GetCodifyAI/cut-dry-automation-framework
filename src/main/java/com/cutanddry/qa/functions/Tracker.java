@@ -25,5 +25,24 @@ public class Tracker {
     public static boolean isRequestNewFeatureDisplayed() throws InterruptedException{
         return trackerPage.isRequestNewFeatureDisplayed();
     }
+    public static void typeTicketTitle(String title)throws InterruptedException{
+        trackerPage.typeTicketTitle(title);
+    }
+    public static void selectStatus()throws InterruptedException{
+        trackerPage.clickStatusDropDown();
+        trackerPage.clickStatusOption();
+    }
+    public static void selectCategory()throws InterruptedException{
+        trackerPage.clickCategoryDropDown();
+        trackerPage.clickCategoryOption();
+    }
+    public static void selectPriority()throws InterruptedException{
+        trackerPage.clickPriorityDropDown();
+        trackerPage.clickPriorityOption();
+    }
+    public static void clickCreateTicket(){trackerPage.clickCreateTicket();}
+    public static boolean isTaskTitleDisplayed(String title)throws InterruptedException{
+        return trackerPage.isTaskTitleDisplayed(title);
+    }
 
 }

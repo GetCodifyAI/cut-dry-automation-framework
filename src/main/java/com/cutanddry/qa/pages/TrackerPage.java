@@ -12,6 +12,15 @@ public class TrackerPage extends LoginPage{
     By txt_feature_requests = By.xpath("//div[@class='_1ducyq8 mont mb-2 _xdqbqk6' and text()='Feature Requests']");
     By btn_request_feature = By.xpath("//button[@class='d-flex align-items-center justify-content-center cdbutton _1c2qb1w btn btn-primary btn-sm' and text()='Request Feature']");
     By txt_request_new_feature = By.xpath("//div[@class='p-0 mx-4 mt-4 pb-4 modal-header']//span[@class='_1tcxgp3 _wfze9d' and text()='Request New Feature']");
+    By txt_title = By.xpath("//input[@placeholder='Type here...']");
+    By statusDropDown = By.xpath("(//div[contains(@class, 'cd_themed_select__value-container cd_themed_select__value-container--has-value css-mzcm4s')])[2]");
+    By statusOption = By.xpath("//span[contains(@class, '_bzn5z48 px-2 py-0 badge') and text()='Completed']");
+    By categoryDropDown = By.xpath("(//div[contains(@class, 'cd_themed_select__placeholder css-1wa3eu0-placeholder') and text()='Select...'])[1]");
+    By catalogOption = By.xpath("//div[contains(@class, 'cd_themed_select__option css-yt9ioa-option') and text()='Catalog']");
+    By priorityDropDown = By.xpath("(//div[contains(@class, 'cd_themed_select__placeholder css-1wa3eu0-placeholder') and text()='Select...'])[2]");
+    By priorityOption = By.xpath("//div[contains(@class, 'd-flex align-items-center') and text()='P1']");
+    By btn_createTicket = By.xpath("//button[contains(text(), 'Create Ticket')]");
+    String taskTitle = "//tr[2]//td[2][text()='TITLE']";
 
 
     public boolean isOnboardingDocsDisplayed(){
@@ -66,5 +75,35 @@ public class TrackerPage extends LoginPage{
             return false;
         }
         return distributorUI.isDisplayed(txt_request_new_feature);
+    }
+    public void typeTicketTitle(String title)throws InterruptedException {
+        distributorUI.sendKeys(txt_title,title);
+    }
+    public void clickStatusDropDown(){
+        distributorUI.click(statusDropDown);
+    }
+    public void clickStatusOption()throws InterruptedException{
+        distributorUI.waitForVisibility(statusOption);
+        distributorUI.click(statusOption);
+    }
+    public void clickCategoryDropDown(){
+        distributorUI.click(categoryDropDown);
+    }
+    public void clickCategoryOption()throws InterruptedException{
+        distributorUI.waitForVisibility(catalogOption);
+        distributorUI.click(catalogOption);
+    }
+    public void clickPriorityDropDown(){
+        distributorUI.click(priorityDropDown);
+    }
+    public void clickPriorityOption()throws InterruptedException{
+        distributorUI.waitForVisibility(priorityOption);
+        distributorUI.click(priorityOption);
+    }
+    public void clickCreateTicket(){
+        distributorUI.click(btn_createTicket);
+    }
+    public boolean isTaskTitleDisplayed(String title){
+        return distributorUI.isDisplayed(By.xpath(taskTitle.replace("TITLE",title)));
     }
 }
