@@ -64,8 +64,14 @@ public class Orders {
     public static boolean isNavigatedToEditOrder(){
         return ordersPage.isNavigatedToEditOrder();
     }
+    public static boolean isNavigatedToOrderReviewPage(){
+        return ordersPage.isNavigatedToReviewOrderScreen();
+    }
     public static boolean isSubmitPopupDisplayed(){
         return ordersPage.isSubmitPopupDisplayed();
+    }
+    public static boolean isOrderUpdatedOverlayDisplayed(){
+        return ordersPage.isOrderUpdatedTxtDisplayed();
     }
     public static void clickOnClose(){
         ordersPage.clickOnClose();
