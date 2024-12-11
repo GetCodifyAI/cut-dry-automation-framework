@@ -69,7 +69,7 @@
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateAddingSpecialInstructionsTest" />
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateItemCountAndTotalValueTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaOrderGuideTest" />
-          <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCutAndDryPayInCustomerInvoices" />
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCutAndDryPayInCustomerInvoices" />
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifythePaymentTermsincustomerInvoices" />
         </classes>
     </test>
