@@ -32,11 +32,10 @@ public class VerifyTheOrderViewOrderEditTest extends TestBase {
         Orders.clickOnEditOrder();
         softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(),"edit popup error");
         Orders.clickOnConfirm();
-        softAssert.assertTrue(Orders.isNavigatedToEditOrder(),"edit error");
+        softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(),"edit error");
         Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItems();
-        softAssert.assertTrue(Orders.isSubmitPopupDisplayed(),"submit popup error");
-        Orders.clickOnConfirm();
+        softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(),"update popup error");
         Orders.clickOnClose();
         softAssert.assertAll();
     }
