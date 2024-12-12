@@ -19,6 +19,13 @@
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerIssuesTest" />
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerFeatureRequestsTest" />
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerEditFeatureRequestsTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderSearchTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewOrderEditTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewDateDropdownTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewStatusDropdownTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewPrintOrderConfirmationTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewPrintKitchenReceiptTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewMoreFiltersTest" />
             <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessRestrictedViaCustomerProfileTest" />
             <class name="com.cutanddry.qa.tests.banner.VerifyTheBannerFeatureTest" />
             <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingGlobalHolidayTest" />
@@ -44,6 +51,7 @@
             <class name="com.cutanddry.qa.tests.customer_track.VerifyTheRemovingTrackProfileTest" />
             <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfEditMarginOfAnItemTest" />
             <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyViewMultipleOGsAndMoveBetweenDifferentOGTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyEditCustomerNameTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyEditCustomerShippingAddressTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyAddNoteTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyEditNoteTest" />
@@ -51,13 +59,19 @@
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyRemoveSalespersonTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyAddTagTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyRemoveTagTest" />
-            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderSearchTest" />
-            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewOrderEditTest" />
-            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewDateDropdownTest" />
-            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewStatusDropdownTest" />
-            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewPrintOrderConfirmationTest" />
-            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewPrintKitchenReceiptTest" />
-            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewMoreFiltersTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheCatalogFilterSidebarTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheCatalogClearAllFiltersTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheViewCatalogAsCustomerRadioButtonTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateAddProductFromPDPTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateAddProductToOrderGuideByClickPDPHeartIconTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheExportPDPTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateImageCarouselInPDPTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateImageThumbnailInPDPTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateAddingSpecialInstructionsTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateItemCountAndTotalValueTest" />
+            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaOrderGuideTest" />
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCutAndDryPayInCustomerInvoices" />
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifythePaymentTermsincustomerInvoices" />
         </classes>
     </test>
 </suite>
