@@ -1238,5 +1238,7 @@ public class Customer {
         return customersPage.isDeliveryOptionSelected();
     }
 
-
+    public static void editOrderFromReviewScreen(){
+        customersPage.clickEditOrderInReviewScreen();
+    }
 }

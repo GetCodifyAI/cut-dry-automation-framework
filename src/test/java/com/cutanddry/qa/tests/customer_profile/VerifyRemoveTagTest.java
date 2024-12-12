@@ -14,6 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyRemoveTagTest extends TestBase {
     static User user;
+    String CustomerCode = "16579";
 
     @BeforeMethod
     public void setUp() {
@@ -27,10 +28,12 @@ public class VerifyRemoveTagTest extends TestBase {
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "login error");
         Dashboard.navigateToCustomers();
-        Customer.selectOneCustomer();
+        Customer.searchCustomerByCode(CustomerCode);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"Error in displaying the customer");
+        Customer.SelectCustomer(CustomerCode);
         softAssert.assertTrue(Customer.isCustomerNameTxtDisplayed(), "text error");
         Customer.clickRemoveAddedTag();
-        softAssert.assertTrue(Customer.isAddedTagNameDeleted(), "error");
+        softAssert.assertTrue(Customer.isAddedTagNameDeleted(), "error in deleting tag");
         softAssert.assertAll();
     }
 
