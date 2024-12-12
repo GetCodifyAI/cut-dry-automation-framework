@@ -58,6 +58,9 @@
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyRemoveSalespersonTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyAddTagTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyRemoveTagTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyCustomerProfileVisibilityTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTotalOrderValueTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyLastOrderDateTest" />
         </classes>
     </test>
 </suite>

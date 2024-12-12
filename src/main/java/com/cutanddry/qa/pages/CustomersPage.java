@@ -333,11 +333,14 @@ public class CustomersPage extends LoginPage {
     By icon_removeTag = By.xpath("((//*[local-name() = 'svg' and @class='css-19bqh2r']))[1]");
     By txt_lastOrderDate = By.xpath("//div[contains(text(),'Last ordered on')]");
     By customersText = By.xpath("//h2[contains(text(),'Customers')]");
-    By btn_accountVisibility = By.xpath("((//*[local-name() = 'svg' and @data-icon='pen-to-square']))[8]");
+    By btn_accountVisibility = By.xpath("((//*[local-name() = 'svg' and @data-icon='pen-to-square']))[11]");
     By dropdown_visibility = By.xpath("(//*[local-name() = 'svg' and @class='css-19bqh2r'])[1]");
     By sel_hiddenOption = By.xpath("//div[contains(text(),'Hidden')]");
     By btn_visibilitySave = By.xpath("//button[contains(@class,'mr-2 my-2 btn btn-outline')]");
+    By sel_visibleOption = By.xpath("//div[contains(text(),'Visible')]");
     By txt_hidden = By.xpath("//div[contains(@class,'col')and contains(text(),'Hidden')]");
+    By txt_visible = By.xpath("//div[contains(@class,'col')and contains(text(),'Visible')]");
+    By tab_orderGuide = By.xpath("//div[text()='Order Guide']");
     By tbx_emailOrMobile = By.xpath("//input[@id='react-select-5-input']");
     By sel_cusOption = By.xpath("//div[contains(@class,' css-yt9ioa-option')and contains(text(),'Acai Bowles')]");
     By btn_loginAsCus = By.xpath("//a[contains(text(),'Login As')]");
@@ -1752,43 +1755,22 @@ public class CustomersPage extends LoginPage {
         }
     }
 
-    private double getTotalOrderValue() {
-        String orderValueText = distributorUI.getText(txt_totalOrderValue);
-        return parseCurrency(orderValueText);
+    public double getTotalOrderValue() {
+        String orderValueText = distributorUI.getText(txt_totalOrderValue).replace("$", "");
+         double orderValue = Double.valueOf(orderValueText);
+         return orderValue;
     }
 
     public void placeNewOrder() {
         distributorUI.click(btn_orderGuideCusProf);
         distributorUI.waitForInvisibility(btn_draftNo);
-        distributorUI.doubleClick(btn_draftNo);
+        distributorUI.click(btn_draftNo);
         for (int i = 0; i < 4; i++) {
             distributorUI.click(sel_product);
         }
         distributorUI.click(btn_orderCheckout);
-
-
-        if (isReviewPageTextDisplayed()) {
-            if (distributorUI.isDisplayed(txt_reviewPage)) {
-                return;
-            }
-        } else {
-            return;
-        }
     }
 
-    public boolean isOrderValueUpdated() {
-        try {
-            double previousOrderValue = getTotalOrderValue();
-            double newOrderValue = getTotalOrderValue();
-            return newOrderValue > previousOrderValue;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
-
-    public boolean isReviewPageTextDisplayed(){
-        return distributorUI.isDisplayed(txt_reviewPage);
-    }
 
     public void clickSubmitOrder(){distributorUI.click(btn_submitOrder);}
 
@@ -1800,10 +1782,6 @@ public class CustomersPage extends LoginPage {
 
     public void clickCloseSuccessMsg(){distributorUI.click(btn_closeMsg);}
 
-    private double parseCurrency(String currencyText) {
-        currencyText = currencyText.replaceAll("[^\\d.]", "");
-        return Double.parseDouble(currencyText);
-    }
 
     public void clickAddTagsDropdown(){distributorUI.click(dropdown_selTags);}
 
@@ -1835,9 +1813,9 @@ public class CustomersPage extends LoginPage {
     }
 
     public boolean isLastOrderDateUpdated() {
-        placeNewOrder();
         LocalDate today = LocalDate.now();
         String updatedOrderDate = today.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+        System.out.println();
         String lastOrderedDate = getLastOrderedDate();
         return lastOrderedDate.equals(updatedOrderDate);
     }
@@ -1867,7 +1845,8 @@ public class CustomersPage extends LoginPage {
         distributorUI.sendKeys(tbx_emailOrMobile,email);
         distributorUI.waitForCustom(800);
         distributorUI.click(sel_cusOption);
-        distributorUI.click(btn_loginAsCus);
+        distributorUI.SwitchToNewTab(btn_loginAsCus);
+
     }
 
     public void clickOrderIcon()throws InterruptedException{
@@ -1881,6 +1860,23 @@ public class CustomersPage extends LoginPage {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public void loginToDistributorPortal() throws InterruptedException{
+        distributorUI.navigateToURL("https://supplier-uat.staging.cutanddry.com/log-in");
+    }
+
+    public void selectVisibleOption(){
+        distributorUI.click(sel_visibleOption);
+        distributorUI.click(btn_visibilitySave);
+    }
+
+    public boolean isVisibilityOptionDisplayed(){
+        return distributorUI.isDisplayed(txt_visible);
+    }
+
+    public boolean isOrderGuideVisible(){
+        return distributorUI.isDisplayed(tab_orderGuide);
     }
 
     public void clickEditStatusIcon(){distributorUI.click(btn_accountStatus);}
@@ -1898,6 +1894,9 @@ public class CustomersPage extends LoginPage {
     public boolean isActiveStatusDisplayed(){
         return distributorUI.isDisplayed(txt_status);
     }
+
+
+
 
 
 }
