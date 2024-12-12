@@ -223,7 +223,7 @@ public class CustomersPage extends LoginPage {
     By cancelBtn = By.xpath("//button[contains(text(),'Cancel')]");
     By btn_editSalesperson = By.xpath("//div[contains(text(),'Salesperson')]/following-sibling::div//*[contains(@data-icon,'pen-to-square')]");
     By btn_independentFoods = By.xpath("//div[contains(text(), 'Independent Foods Co')]");
-    By itemNotFoundTxt = By.xpath("//div[contains(text(),'No matches found')]");
+    String itemNotFoundTxt = "//div[contains(text(),'Showing results for \"ITEMCODE\"')]/following-sibling::div[contains(text(),'0 Results')]";
     String catalogCardAddToOGBtn = "//div[contains(text(),'ITEMCODE')]/../..//button[@data-tip='Add to Order Guide']";
     By btn_editAccHold = By.xpath("//div[contains(text(),'Account Holds')]/..//*[local-name() = 'svg' and @data-icon='pen-to-square']");
     By dropdown_acc = By.xpath("//div[text()='Account Holds']/following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
@@ -1365,7 +1365,7 @@ public class CustomersPage extends LoginPage {
     }
 
     public void clickItemFromCatalogIfNotAvailableInOG(String itemName){
-        if(distributorUI.isDisplayed(itemNotFoundTxt)){
+        if(distributorUI.isDisplayed(By.xpath(itemNotFoundTxt.replace("ITEMCODE",itemName)))){
             distributorUI.click(By.xpath(catalogCardAddToOGBtn.replace("ITEMCODE",itemName)));
         }
         try {
