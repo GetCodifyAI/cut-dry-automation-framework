@@ -223,7 +223,7 @@ public class CustomersPage extends LoginPage {
     String orderGuideOrderApprovalToggle = "//div[contains(text(),'ORDERGUIDE')]/../following-sibling::*//div[2]";
     By editExistingOrderTxt = By.xpath("//h2[contains(text(),'Edit Existing Order')]");
     By cancelBtn = By.xpath("//button[contains(text(),'Cancel')]");
-    By btn_editSalesperson = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[6]");
+    By btn_editSalesperson = By.xpath("//div[contains(text(),'Salesperson')]/following-sibling::div//*[contains(@data-icon,'pen-to-square')]");
     By btn_independentFoods = By.xpath("//div[contains(text(), 'Independent Foods Co')]");
     By itemNotFoundTxt = By.xpath("//div[contains(text(),'No matches found')]");
     String catalogCardAddToOGBtn = "//div[contains(text(),'ITEMCODE')]/../..//button[@data-tip='Add to Order Guide']";
@@ -322,7 +322,7 @@ public class CustomersPage extends LoginPage {
     By txt_assignedSalesperson = By.xpath("//td[contains(text(),'Ali Loynachan')]");
     By btn_saveChanges = By.xpath("//button[contains(text(),'Save changes')]");
     By txt_cusProfSalesperson = By.xpath("//div[contains(@class,'_vjioml w-100 border') and contains(text(),'Ali Loynachan')]");
-    By btn_removeSalesperson = By.xpath("((//*[local-name() = 'svg' and @data-icon='trash-can']))[4]");
+    By btn_removeSalesperson = By.xpath("(//td/*[contains(@data-icon,'trash-can')])[last()]");
     By txt_totalOrderValue = By.xpath("//div[contains(text(),'Total Order Value')]/following-sibling::div");
     By btn_orderGuideCusProf = By.xpath("//button[contains(text(),'Order Guide')]");
     By txt_OrderGuideCusName = By.xpath("//div[contains(@class,'_1hyqzayu mont')]");
@@ -413,7 +413,7 @@ public class CustomersPage extends LoginPage {
     By sel_delivery = By.xpath("//span[text()='Delivery']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
     By sel_pickup = By.xpath("//span[text()='Pickup/Will Call']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
     By sel_mailDelivery = By.xpath("//span[text()='Mail Delivery']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
-
+    By editOrderReviewScreen = By.xpath("//a[contains(text(),'Edit Order')]");
 
 
 
@@ -1719,6 +1719,11 @@ public class CustomersPage extends LoginPage {
             distributorUI.click(btn_increaseQtyFirstRow);
         }
     }
+    public void clickPlusQryFifthRowBySix() {
+        for (int i = 0; i < 6; i++) {
+            distributorUI.click(btn_increaseQtyFifthRow);
+        }
+    }
 
     public void clickOneCustomer(){
         distributorUI.waitForVisibility(sel_customer);
@@ -1965,6 +1970,86 @@ public class CustomersPage extends LoginPage {
     public boolean isActiveStatusDisplayed(){
         return distributorUI.isDisplayed(txt_status);
     }
+    public void clickExportPDP(){
+        distributorUI.click(btn_exportPDP);
+    }
+    public void clickRightArrow(){
+        distributorUI.click(btn_rightArrow);
+    }
+    public boolean isNextImageDisplay(){
+        try {
+            distributorUI.waitForVisibility(img_second);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(img_second);
+    }
+    public void clickLeftArrow(){
+        distributorUI.click(btn_leftArrow);
+    }
+    public boolean isPreviousImageDisplay(){
+        try {
+            distributorUI.waitForVisibility(img_first);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(img_first);
+    }
+    public void clickFirstImage(){
+        distributorUI.click(btn_firstImage);
+    }
+    public void clickSecondImage(){
+        distributorUI.click(btn_secondImage);
+    }
+    public void typeSpecialInstruction(String specialInstruction){
+        distributorUI.sendKeys(txt_specialInstruction,specialInstruction);
+    }
+    public void typeInternalNote(String internalNote){
+        distributorUI.sendKeys(txt_internalNote,internalNote);
+    }
+    public void typeNoteToCustomer(String noteToCustomer){
+        distributorUI.sendKeys(txt_noteToCustomer,noteToCustomer);
+    }
+    public void typePONumber(String poNumber){
+        distributorUI.sendKeys(txt_poNumber,poNumber);
+    }
+    public boolean isSpecialInstructionDisplayed(String specialInstruction) {
+        distributorUI.waitForVisibility(By.xpath(specialInstructionText.replace("SPECIALINSTRUCTION",specialInstruction)));
+        return distributorUI.isDisplayed(By.xpath(specialInstructionText.replace("SPECIALINSTRUCTION",specialInstruction)));
+    }
+    public boolean isInternalNoteDisplayed(String internalNote) {
+        distributorUI.waitForVisibility(By.xpath(internalNoteText.replace("INTERNALNOTE",internalNote)));
+        return distributorUI.isDisplayed(By.xpath(internalNoteText.replace("INTERNALNOTE",internalNote)));
+    }
+    public boolean isNoteToCustomerDisplayed(String noteToCustomer) {
+        distributorUI.waitForVisibility(By.xpath(noteToCustomerText.replace("NOTETOCUSTOMER",noteToCustomer)));
+        return distributorUI.isDisplayed(By.xpath(noteToCustomerText.replace("NOTETOCUSTOMER",noteToCustomer)));
+    }
+    public String getItemQuantity() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(quantityValue, true);
+        return distributorUI.getText(quantityValue, "value");
+    }
+
+    public String getItemTotalQuantity() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(totalQuantity, true);
+        return distributorUI.getText(totalQuantity);
+    }
+    public String getItemValue() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(Value, true);
+        return distributorUI.getText(Value);
+    }
+
+    public String getItemTotalValue() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(totalValue, true);
+        return distributorUI.getText(totalValue);
+    }
+
+    public void clickEditOrderInReviewScreen(){
+        distributorUI.click(editOrderReviewScreen);
+    }
+
+
+
 
     public boolean isErrorTextNotDisplayed() {
         try {
