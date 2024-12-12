@@ -6,8 +6,6 @@ import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -17,8 +15,9 @@ public class VerifyGroupingProductsIntoTwoCartsTest extends TestBase {
     static String DP = "Butterfield & Vallis";
     static String customerId = "34315";
     static String itemName_1 = "Beef Bouillon Cubes";
-    static String itemCode = "24901";
+    static String itemCode_1 = "24901";
     static String itemName_2 = "Sugar Dark Brown";
+    static String itemCode_2 = "32817";
 
     @BeforeMethod
     public void setUp(){
@@ -37,11 +36,12 @@ public class VerifyGroupingProductsIntoTwoCartsTest extends TestBase {
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
-        Customer.searchItemOnOrderGuide(itemName_1);
-        Customer.addItemFromCatalogIfNotAvailableInOG(itemCode);
+        Customer.searchItemOnOrderGuide(itemCode_1);
+        Customer.addItemFromCatalogIfNotAvailableInOG(itemCode_1);
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName_1),"item 1 mismatch");
         Customer.increaseFirstRowQtyByOneInDist();
-        Customer.searchItemOnOrderGuide(itemName_2);
+        Customer.searchItemOnOrderGuide(itemCode_2);
+        Customer.addItemFromCatalogIfNotAvailableInOG(itemCode_2);
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName_2),"item 2 mismatch");
         Customer.increaseFirstRowQtyByOneInDist();
         Customer.checkoutItemsDist();
@@ -49,9 +49,9 @@ public class VerifyGroupingProductsIntoTwoCartsTest extends TestBase {
         softAssert.assertAll();
     }
 
-    @AfterMethod
-    public void tearDown(ITestResult result) {
-        takeScreenshotOnFailure(result);
-        closeAllBrowsers();
-    }
+//    @AfterMethod
+//    public void tearDown(ITestResult result) {
+//        takeScreenshotOnFailure(result);
+//        closeAllBrowsers();
+//    }
 }
