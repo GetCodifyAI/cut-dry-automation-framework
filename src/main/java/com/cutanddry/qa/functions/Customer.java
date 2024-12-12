@@ -1,11 +1,15 @@
 package com.cutanddry.qa.functions;
 
 import com.cutanddry.qa.pages.CustomersPage;
+import com.cutanddry.qa.pages.DashboardPage;
+import com.cutanddry.qa.pages.SettingsPage;
 
 import java.util.Objects;
 
 public class Customer {
     static CustomersPage customersPage = new CustomersPage();
+    static DashboardPage dashboardPage = new DashboardPage();
+    static SettingsPage settingsPage = new SettingsPage();
 
     public static void searchCustomerByCode(String code) throws InterruptedException {
         customersPage.clickOnSearchCustomers();
@@ -64,6 +68,12 @@ public class Customer {
     }
     public static void checkoutItems() throws InterruptedException {
         customersPage.clickOnCheckoutButton();
+        if (customersPage.isOrderMiniumErrorBannerDisplayed()){
+            dashboardPage.clickOnOrderSettings();
+            settingsPage.selectOnOrderMinimums();
+            settingsPage.clickOnSaveChanges();
+            customersPage.clickOnBack();
+        }
     }
     public static void goToCatalog() throws InterruptedException {
         if (customersPage.isPreviousDraftOrderNoDisplayed()){
@@ -1262,7 +1272,15 @@ public class Customer {
         return customersPage.isDeliveryOptionSelected();
     }
 
-    public static void editOrderFromReviewScreen(){
+    public static boolean isPickUpOptionSelected() {
+        return customersPage.isPickUpOptionSelected();
+    }
+
+    public static boolean isMailDeliveryOptionSelected() {
+        return customersPage.isMailDeliveryOptionSelected();
+    }
+
+    public static void editOrderFromReviewScreen() {
         customersPage.clickEditOrderInReviewScreen();
     }
 }

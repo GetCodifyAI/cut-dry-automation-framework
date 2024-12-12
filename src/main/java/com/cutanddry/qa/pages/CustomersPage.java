@@ -225,9 +225,9 @@ public class CustomersPage extends LoginPage {
     By cancelBtn = By.xpath("//button[contains(text(),'Cancel')]");
     By btn_editSalesperson = By.xpath("//div[contains(text(),'Salesperson')]/following-sibling::div//*[contains(@data-icon,'pen-to-square')]");
     By btn_independentFoods = By.xpath("//div[contains(text(), 'Independent Foods Co')]");
-    By itemNotFoundTxt = By.xpath("//div[contains(text(),'No matches found')]");
+    String itemNotFoundTxt = "//div[contains(text(),'Showing results for \"ITEMCODE\"')]/following-sibling::div[contains(text(),'0 Results')]";
     String catalogCardAddToOGBtn = "//div[contains(text(),'ITEMCODE')]/../..//button[@data-tip='Add to Order Guide']";
-    By btn_editAccHold = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[11]");
+    By btn_editAccHold = By.xpath("//div[contains(text(),'Account Holds')]/..//*[local-name() = 'svg' and @data-icon='pen-to-square']");
     By dropdown_acc = By.xpath("//div[text()='Account Holds']/following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
     By txt_hardHold = By.xpath("//div[contains(@class, 'themed_select__option') and  text()='Hard Hold']");
     By lbl_hardHold = By.xpath("//div[text()='Account Holds']/following-sibling::div//span[contains(@class, 'badge') and text()='Hard Hold']");
@@ -414,6 +414,7 @@ public class CustomersPage extends LoginPage {
     By sel_pickup = By.xpath("//span[text()='Pickup/Will Call']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
     By sel_mailDelivery = By.xpath("//span[text()='Mail Delivery']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
     By editOrderReviewScreen = By.xpath("//a[contains(text(),'Edit Order')]");
+    By lbl_OrderMinimumErrorBanner = By.xpath("//*[contains(text(),'Add a few more items worth') and contains(text(),'to meet minimum order amount')]");
 
 
 
@@ -1368,7 +1369,7 @@ public class CustomersPage extends LoginPage {
     }
 
     public void clickItemFromCatalogIfNotAvailableInOG(String itemName){
-        if(distributorUI.isDisplayed(itemNotFoundTxt)){
+        if(distributorUI.isDisplayed(By.xpath(itemNotFoundTxt.replace("ITEMCODE",itemName)))){
             distributorUI.click(By.xpath(catalogCardAddToOGBtn.replace("ITEMCODE",itemName)));
         }
         try {
@@ -2145,6 +2146,14 @@ public class CustomersPage extends LoginPage {
             String dataIconValue = distributorUI.getText(sel_mailDelivery, "data-icon").trim(); // Use getAttribute to fetch the attribute value
             return dataIconValue.equals("circle-check");
         } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isOrderMiniumErrorBannerDisplayed(){
+        try {
+            return distributorUI.isDisplayed(lbl_OrderMinimumErrorBanner);
+        } catch (Exception e){
             return false;
         }
     }

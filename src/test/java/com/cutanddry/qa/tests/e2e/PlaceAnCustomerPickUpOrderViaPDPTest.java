@@ -11,11 +11,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class PlaceAnCustomerDeliveryOrderViaOrderGuideTest extends TestBase {
+public class PlaceAnCustomerPickUpOrderViaPDPTest extends TestBase {
     SoftAssert softAssert;
     static User user;
     static String customerId = DistributorOrderData.RESTAURANT_TEST_HAYES_ID;
-    static String itemName, orderId;
+    static String itemName, orderId, searchItemName;
 
     @BeforeMethod
     public void setUp() {
@@ -23,8 +23,8 @@ public class PlaceAnCustomerDeliveryOrderViaOrderGuideTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-713")
-    public void PlaceAnCustomerDeliveryOrderViaOrderGuide() throws InterruptedException {
+    @Test(groups = "DOT-TC-717")
+    public void PlaceAnCustomerPickUpOrderViaPDP() throws InterruptedException {
 
         softAssert = new SoftAssert();
 
@@ -38,12 +38,19 @@ public class PlaceAnCustomerDeliveryOrderViaOrderGuideTest extends TestBase {
         Customer.clickOnOrderGuide(customerId);
 
         itemName = Customer.getItemNameFirstRow();
-        Customer.increaseFirstRowQtyCustom(1);
-        Customer.checkoutItems();
+        Customer.goToCatalog();
+        searchItemName = itemName.split("-")[0];
+        Customer.searchItemOnCatalog(searchItemName);
+        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(searchItemName).contains(searchItemName), "item not found");
+        Customer.clickOnProduct(itemName);
+        softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
+        Customer.clickAddToCartPDP();
+        Customer.clickCheckOutPDP();
 
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         softAssert.assertEquals(Customer.getItemNameFirstRow(), itemName, "The item selected by the user is different from what is shown on the order review page.");
-        softAssert.assertTrue(Customer.isDeliveryOptionSelected(), "The expected fulfillment type is not selected.");
+        Customer.selectPickUpWillCall();
+        softAssert.assertTrue(Customer.isPickUpOptionSelected(), "The expected fulfillment type is not selected.");
         Customer.submitOrder();
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "The order was not completed successfully.");
         orderId = Customer.getSuccessOrderId();
