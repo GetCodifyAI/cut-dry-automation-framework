@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class PlaceAnCustomerDeliveryOrderViaOrderGuideTest extends TestBase {
+public class PlaceAnCustomerPickUpOrderViaOrderGuideTest extends TestBase {
     SoftAssert softAssert;
     static User user;
     static String customerId = DistributorOrderData.RESTAURANT_TEST_HAYES_ID;
@@ -23,8 +23,8 @@ public class PlaceAnCustomerDeliveryOrderViaOrderGuideTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-713")
-    public void PlaceAnCustomerDeliveryOrderViaOrderGuide() throws InterruptedException {
+    @Test(groups = "DOT-TC-714")
+    public void PlaceAnCustomerPickUpOrderViaOrderGuide() throws InterruptedException {
 
         softAssert = new SoftAssert();
 
@@ -43,7 +43,8 @@ public class PlaceAnCustomerDeliveryOrderViaOrderGuideTest extends TestBase {
 
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         softAssert.assertEquals(Customer.getItemNameFirstRow(), itemName, "The item selected by the user is different from what is shown on the order review page.");
-        softAssert.assertTrue(Customer.isDeliveryOptionSelected(), "The expected fulfillment type is not selected.");
+        Customer.selectPickUpWillCall();
+        softAssert.assertTrue(Customer.isPickUpOptionSelected(), "The expected fulfillment type is not selected.");
         Customer.submitOrder();
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "The order was not completed successfully.");
         orderId = Customer.getSuccessOrderId();

@@ -72,6 +72,11 @@
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaOrderGuideTest" />
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCutAndDryPayInCustomerInvoices" />
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifythePaymentTermsincustomerInvoices" />
+            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaOrderGuideTest" />
+            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerMailDeliveryOrderViaOrderGuideTest" />
+            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaPDPTest" />
+            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaPDPTest" />
+            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerMailDeliveryOrderViaPDPTest" />
         </classes>
     </test>
 </suite>
