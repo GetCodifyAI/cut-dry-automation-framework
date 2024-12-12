@@ -21,6 +21,8 @@ public class OrdersPage extends LoginPage{
     By txt_editOrderPopup = By.xpath("//h2[contains(text(),'Edit Order?')]");
     By btn_confirm= By.xpath("//button[contains(text(),'Confirm')]");
     By txt_editOrder = By.xpath("//span/div[contains(text(),'Edit Order')]");
+    By reviewOrderText = By.xpath("//div[contains(text(),'Review Order')]");
+    By orderUpdatedText = By.xpath("//h2[contains(text(),'Order Updated')]");
     By txt_submitPopup = By.xpath("//h2[contains(text(),'Submit Changes?')]");
     By btn_close = By.xpath("//button[contains(text(),'Close')]");
     By btn_bulkActions =    By.xpath("//button[span[contains(., 'Bulk Actions')]]");
@@ -126,6 +128,15 @@ public class OrdersPage extends LoginPage{
     public boolean isNavigatedToEditOrder(){
         return distributorUI.isDisplayed(txt_editOrder);
     }
+
+    public boolean isNavigatedToReviewOrderScreen(){
+        return distributorUI.isDisplayed(reviewOrderText);
+    }
+
+    public boolean isOrderUpdatedTxtDisplayed(){
+        return distributorUI.isDisplayed(orderUpdatedText);
+    }
+
     public boolean isSubmitPopupDisplayed(){
         return distributorUI.isDisplayed(txt_submitPopup);
     }

@@ -2,6 +2,7 @@ package com.cutanddry.qa.pages;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.common.Constants;
+import com.cutanddry.qa.functions.Orders;
 import org.openqa.selenium.By;
 
 public class LoginPage extends TestBase {
@@ -74,6 +75,7 @@ public class LoginPage extends TestBase {
     }
     public void navigateToLoginAsPortal(String name) {
         distributorUI.navigateToURL(Constants.LOGIN_AS);
+        Orders.closeRatingOverlay();
         distributorUI.sendKeys(lbl_loginAs,name);
         distributorUI.isDisplayed(By.xpath(txt_whitelblCustomer.replace("NAME", name)));
         distributorUI.click(By.xpath(txt_whitelblCustomer.replace("NAME", name)));
@@ -115,5 +117,9 @@ public class LoginPage extends TestBase {
         distributorUI.sendKeys(lbl_loginAsDist,name);
         distributorUI.click(By.xpath(txt_distributor.replace("NAME", name)));
         distributorUI.navigateToURL(distributorUI.getText(btn_loginAsDis, "href"));
+    }
+
+    public void switchIntoNewTab(){
+        distributorUI.OpenNewTabAndSwitchToIt();
     }
 }

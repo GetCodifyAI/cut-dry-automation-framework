@@ -14,6 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheTrackerIssuesTest extends TestBase {
     static User user;
+    static String ticketTitle = "Test Ticket 10";
 
     @BeforeMethod
     public void setUp() {
@@ -31,6 +32,12 @@ public class VerifyTheTrackerIssuesTest extends TestBase {
         softAssert.assertTrue(Tracker.isIssueTrackerDisplayed(),"navigation issue tracker error");
         Tracker.clickNewTicket();
         softAssert.assertTrue(Tracker.isCreateNewIssueDisplayed(),"create new issue window not display");
+        Tracker.typeTicketTitle(ticketTitle);
+        Tracker.selectStatus();
+        Tracker.selectPriority();
+        Tracker.selectCategory();
+        Tracker.clickCreateTicket();
+        softAssert.assertTrue(Tracker.isTaskTitleDisplayed(ticketTitle),"Issue ticket not create");
         softAssert.assertAll();
     }
 

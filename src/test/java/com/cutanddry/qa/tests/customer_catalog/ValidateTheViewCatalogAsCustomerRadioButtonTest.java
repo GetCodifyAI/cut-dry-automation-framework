@@ -1,4 +1,4 @@
-package com.cutanddry.qa.tests.customer_profile;
+package com.cutanddry.qa.tests.customer_catalog;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
@@ -12,34 +12,38 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyRemoveTagTest extends TestBase {
+public class ValidateTheViewCatalogAsCustomerRadioButtonTest extends TestBase {
     static User user;
-    String CustomerCode = "16579";
+    String CustomerCode = "37631";
+
 
     @BeforeMethod
-    public void setUp() {
+    public void setUp(){
         initialization();
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-664")
-    public void VerifyRemoveTag() throws InterruptedException {
+    @Test(groups = "DOT-TC-712")
+    public void ValidateTheViewCatalogAsCustomerRadioButton() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "login error");
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCustomers();
+        softAssert.assertTrue(Customer.isCustomersTextDisplayed(),"customer section not display");
         Customer.searchCustomerByCode(CustomerCode);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"Error in displaying the customer");
-        Customer.SelectCustomer(CustomerCode);
-        softAssert.assertTrue(Customer.isCustomerNameTxtDisplayed(), "text error");
-        Customer.clickRemoveAddedTag();
-        softAssert.assertTrue(Customer.isAddedTagNameDeleted(), "error in deleting tag");
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"customer not found");
+        Customer.clickOnOrderGuide(CustomerCode);
+        Customer.goToCatalog();
+        Customer.clickSection();
+        Customer.clickCategory();
+        Customer.clickViewCatalogAsCustomer();
         softAssert.assertAll();
     }
 
     @AfterMethod
-    public void tearDown(ITestResult result) {
+    public void tearDown(ITestResult result){
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }
+
 }

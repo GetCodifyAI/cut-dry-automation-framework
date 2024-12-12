@@ -36,6 +36,7 @@ public class VerifyThePreviewCatalogCopyPDPTest extends TestBase {
         Catalog.selectCopyPDP();
         softAssert.assertTrue(Catalog.isPDPLinkCopiedPopupDisplayed(),"link copy error");
         Catalog.clickOK();
+        softAssert.assertAll();
     }
 
     @AfterMethod

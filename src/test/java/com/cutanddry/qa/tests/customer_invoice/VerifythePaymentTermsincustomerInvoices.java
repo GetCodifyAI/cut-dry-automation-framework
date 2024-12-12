@@ -1,7 +1,8 @@
-package com.cutanddry.qa.tests.customer_profile;
+package com.cutanddry.qa.tests.customer_invoice;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.CustomerInvoiceData;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
@@ -12,9 +13,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyAddTagTest extends TestBase {
+public class VerifythePaymentTermsincustomerInvoices extends TestBase
+{
     static User user;
-    String CustomerCode = "16579";
+    String CustomerCode = CustomerInvoiceData.CUSTOMER_CODE;
 
     @BeforeMethod
     public void setUp() {
@@ -22,20 +24,19 @@ public class VerifyAddTagTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-663")
-    public void VerifyAddTag() throws InterruptedException {
+    @Test(groups = "DOT-TC-678")
+    public void VerifythePaymentTermsincustomerInvoices() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "login error");
+        Dashboard.isUserNavigatedToDashboard();
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"The user is unable to land on the Dashboard page.");
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(CustomerCode);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"Error in displaying the customer");
-        Customer.SelectCustomer(CustomerCode);
-        softAssert.assertTrue(Customer.isCustomerProfileDisplayed(),"Error in navigation to customer page");
-        Customer.clickOnAddTagDropdownMenu();
-        softAssert.assertTrue(Customer.isDropdownMenuDisplayed(), "visibility error");
-        Customer.selectToAddTagOption();
-        softAssert.assertTrue(Customer.isAddedTagNameDisplayed(), "text error");
+        Customer.clickOnFirstItemOfCustomerRequests();
+        Customer.clickonInvoice();
+        boolean isStatusCorrect = Customer.verifyPaymentTermStatus();
+        softAssert.assertTrue(isStatusCorrect, "The 'Default' status is not displayed correctly.");
+        System.out.println("The Payment Term status is default");
         softAssert.assertAll();
     }
 
