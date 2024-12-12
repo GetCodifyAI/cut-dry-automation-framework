@@ -2,7 +2,9 @@ package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -358,6 +360,12 @@ public class CustomersPage extends LoginPage {
     By btn_invoice = By.xpath("//a[text()='Invoices']");
     By enabledStatusLocator = By.xpath("//div[@class='_jehyy2' and text()='Enabled']");
     By defaultTermStatusLocator = By.xpath("//div[@class='_jehyy2' and text()='Default']");
+    By btn_add_payment_method = By.xpath("//button[contains(@class, 'btn-link') and text()='+ Add Payment Method']");
+    By btn_add_bank_account = By.xpath("//div[contains(@class, 'd-flex') and .//span[text()='Add bank account']]");
+    By tbx_account_number =By.xpath( "//label[contains(text(), 'Account Number')]/following-sibling::input");
+    By tbx_routing_number = By.xpath("//label[text()='Routing Number']/following-sibling::input");
+    By dropdownToggle_account_type = By.xpath("//label[text()='Account Type']/following-sibling::div//div[contains(@class, 'themed_select__dropdown-indicator')]");
+
     By newArrivalsOption = By.xpath("//div[contains(text(), 'New Arrivals (')]");
     By allItemsOption = By.xpath("//div[contains(text(), 'All Items')]");
     By brandDropDown = By.xpath("//div[contains(text(), 'Brand')]");
@@ -467,6 +475,7 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForCustom(4000);
         distributorUI.waitForElementEnabledState(btn_checkout,true);
         distributorUI.click(btn_checkout);
+        distributorUI.waitForCustom(4000);
     }
     public void clickOnCatalogButton(){
         distributorUI.waitForClickability(btn_catalog);
@@ -808,11 +817,6 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_setStandingOrder);
     }
     public boolean isStandingOrderEmailPopupDisplayed(){
-        try {
-            distributorUI.waitForCustom(4000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         distributorUI.waitForVisibility(txt_EmailPopup);
         return distributorUI.isDisplayed(txt_EmailPopup);
     }
@@ -1716,11 +1720,6 @@ public class CustomersPage extends LoginPage {
             distributorUI.click(btn_increaseQtyFirstRow);
         }
     }
-    public void clickPlusQryFifthRowBySix() {
-        for (int i = 0; i < 6; i++) {
-            distributorUI.click(btn_increaseQtyFifthRow);
-        }
-    }
 
     public void clickOneCustomer(){
         distributorUI.waitForVisibility(sel_customer);
@@ -1819,99 +1818,6 @@ public class CustomersPage extends LoginPage {
         } catch (NoSuchElementException e) {
             return true;
         }
-    }
-    public void clickNewArrivals()throws InterruptedException{
-        distributorUI.click(newArrivalsOption);
-        distributorUI.waitForCustom(1000);
-    }
-    public void clickAllItems()throws InterruptedException{
-        distributorUI.click(allItemsOption);
-        distributorUI.waitForCustom(1000);
-    }
-    public void clickBrand()throws InterruptedException{
-        distributorUI.click(brandDropDown);
-        distributorUI.click(brandDropDownOption);
-    }
-    public boolean isFilteredBrandDisplayed(){
-        try {
-            distributorUI.waitForVisibility(txt_filterByBrand);
-        } catch (Exception e){
-            return false;
-        }
-        return distributorUI.isDisplayed(txt_filterByBrand);
-    }
-    public void clickItemStatus()throws InterruptedException{
-        distributorUI.click(itemStatusDropDown);
-        distributorUI.click(itemStatusDropDownOption);
-    }
-    public void clickStorageType()throws InterruptedException{
-        distributorUI.click(storageTypeDropDown);
-        distributorUI.click(storageTypeDropDownOption);
-    }
-    public void clickDietType()throws InterruptedException{
-        distributorUI.click(dietTypeDropDown);
-        distributorUI.click(dietTypeDropDownOption);
-    }
-    public boolean isFilterItemDisplayed(){
-        try {
-            distributorUI.waitForVisibility(txt_filterItem);
-        } catch (Exception e){
-            return false;
-        }
-        return distributorUI.isDisplayed(txt_filterItem);
-    }
-    public void clickProcessingType()throws InterruptedException{
-        distributorUI.click(processingTypeDropDown);
-        distributorUI.click(processingTypeDropOption);
-    }
-    public boolean isFilterProcessingTypeWork(){
-        try {
-            distributorUI.waitForVisibility(txt_noItems);
-        } catch (Exception e){
-            return false;
-        }
-        return distributorUI.isDisplayed(txt_noItems);
-    }
-    public void clickClearAllFilters(){
-        distributorUI.click(btn_clearAllFilters);
-    }
-    public void clickRadioButton(){
-        distributorUI.click(radioButton);
-    }
-    public void clickOnProduct(String name){
-        distributorUI.waitForVisibility(By.xpath(txt_product.replace("NAME", name)));
-        distributorUI.clickUsingJavaScript(By.xpath(txt_product.replace("NAME", name)));
-    }
-    public void clickAddToCart(){
-        distributorUI.click(btn_addToCartPDP);
-    }
-    public void clickCheckOutPDP(){
-        distributorUI.click(btn_checkOutPDP);
-    }
-
-    public boolean isOrderSubmitSuccessfully(){
-        try {
-            distributorUI.waitForVisibility(txt_orderConfirmationPopUp);
-        } catch (Exception e){
-            return false;
-        }
-        return distributorUI.isDisplayed(txt_orderConfirmationPopUp);
-    }
-    public void clickOrderGuide(){
-        distributorUI.click(btn_addOrderGuideHeart);
-    }
-    public void clickOrderGuideTab(){
-        distributorUI.click(btn_catalogToOrderGuide);
-    }
-    public boolean addedItemDisplayOnOrderGuide(String name){
-        distributorUI.waitForVisibility(By.xpath(lbl_orderGuideItem.replace("NAME", name)));
-        return distributorUI.isDisplayed(By.xpath(lbl_orderGuideItem.replace("NAME", name)));
-    }
-    public void clickOrderGuideProduct(String name){
-        distributorUI.click(By.xpath(lbl_orderGuideItem.replace("NAME", name)));
-    }
-    public void clickRemoveOrderGuide(){
-        distributorUI.click(btn_removeFromOrderGuideHeart);
     }
 
     private double getTotalOrderValue() {
@@ -2247,5 +2153,47 @@ public class CustomersPage extends LoginPage {
         }
     }
 
+
+    public void clickOnAddPaymentMethod(){
+        distributorUI.click(btn_add_payment_method);
+    }
+
+    public void clickOnAddBankAccount(){
+        distributorUI.click(btn_add_bank_account);
+    }
+
+    public  void enterAccountNumber(String accountNumber) {
+        try {
+            distributorUI.click(tbx_account_number);
+            distributorUI.clear(tbx_account_number);
+            distributorUI.sendKeys(tbx_account_number,accountNumber);
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+    }
+
+    public void enterRoutingNumber(String routingNumber) {
+        try {
+            distributorUI.click(tbx_routing_number);
+            distributorUI.clear(tbx_routing_number);
+            distributorUI.sendKeys(tbx_routing_number, routingNumber);
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+    }
+
+    public void selectAccountType(String accountType) {
+        try {
+            driver.findElement(dropdownToggle_account_type).click();
+            System.out.println("Dropdown clicked.");
+            By accountTypeOption = By.xpath("//div[contains(@class, 'themed_select__single-value') and text()='" + accountType + "']");
+            distributorUI.waitForVisibility(accountTypeOption);
+            distributorUI.click(accountTypeOption);
+            System.out.println("Account type '" + accountType + "' selected successfully.");
+
+        } catch (Exception e) {
+            System.out.println("An error occurred while selecting account type: " + e.getMessage());
+        }
+    }
 }
 
