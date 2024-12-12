@@ -202,4 +202,7 @@ public class Settings {
     public static void uncheckDeliveryDays() {
         settingsPage.uncheckDeliveryDays();
     }
+    public static void selectOnOrderMinimums() {
+        settingsPage.selectOnOrderMinimums();
+    }
 }

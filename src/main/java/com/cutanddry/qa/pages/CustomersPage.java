@@ -406,6 +406,7 @@ public class CustomersPage extends LoginPage {
     By sel_pickup = By.xpath("//span[text()='Pickup/Will Call']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
     By sel_mailDelivery = By.xpath("//span[text()='Mail Delivery']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
     By editOrderReviewScreen = By.xpath("//a[contains(text(),'Edit Order')]");
+    By lbl_OrderMinimumErrorBanner = By.xpath("//*[contains(text(),'Add a few more items worth') and contains(text(),'to meet minimum order amount')]");
 
 
 
@@ -466,7 +467,6 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForCustom(4000);
         distributorUI.waitForElementEnabledState(btn_checkout,true);
         distributorUI.click(btn_checkout);
-        distributorUI.waitForCustom(4000);
     }
     public void clickOnCatalogButton(){
         distributorUI.waitForClickability(btn_catalog);
@@ -2235,6 +2235,14 @@ public class CustomersPage extends LoginPage {
             String dataIconValue = distributorUI.getText(sel_mailDelivery, "data-icon").trim(); // Use getAttribute to fetch the attribute value
             return dataIconValue.equals("circle-check");
         } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isOrderMiniumErrorBannerDisplayed(){
+        try {
+            return distributorUI.isDisplayed(lbl_OrderMinimumErrorBanner);
+        } catch (Exception e){
             return false;
         }
     }

@@ -73,6 +73,8 @@ public class SettingsPage extends LoginPage{
     By txt_addCustomerCode =    By.xpath("//div[text()='Add Customer Codes']/following::input[@type='text']");
     By lbl_customerSpecDisabled = By.xpath("//label[text()='Customer Specific Delivery Days']/preceding-sibling::input[@type='checkbox' and @disabled]");
     By lbl_deliveryDays = By.xpath("//label[text()='Delivery Days']/preceding-sibling::input[@type='checkbox']");
+    By sel_OrderMinimums = By.xpath("//*[contains(text(),'Order Minimums')]/preceding-sibling::input");
+
 
     public boolean isOrderSettingsTextDisplayed() throws InterruptedException {
         try {
@@ -411,5 +413,10 @@ public class SettingsPage extends LoginPage{
 
     public boolean isPayoutMethodAvailable(){
         return distributorUI.isDisplayed(text_payOutMethodPresent);
+    }
+
+    public void selectOnOrderMinimums() {
+        distributorUI.waitForVisibility(sel_OrderMinimums);
+        distributorUI.click(sel_OrderMinimums);
     }
 }
