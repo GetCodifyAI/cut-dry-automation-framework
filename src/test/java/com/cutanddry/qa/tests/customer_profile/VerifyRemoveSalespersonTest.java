@@ -14,6 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyRemoveSalespersonTest extends TestBase {
     static User user;
+    String CustomerCode = "16579";
 
     @BeforeMethod
     public void setUp() {
@@ -27,8 +28,10 @@ public class VerifyRemoveSalespersonTest extends TestBase {
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "login error");
         Dashboard.navigateToCustomers();
-        Customer.selectOneCustomer();
-        softAssert.assertTrue(Customer.isCustomerNameTxtDisplayed(), "text error");
+        Customer.searchCustomerByCode(CustomerCode);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"Error in displaying the customer");
+        Customer.SelectCustomer(CustomerCode);
+        softAssert.assertTrue(Customer.isCustomerProfileDisplayed(),"Error in navigation to customer page");
         Customer.clickOnEditSalespersonIcon();
         softAssert.assertTrue(Customer.isAssignSalespersonTextDisplayed(), "text error");
         Customer.clickAssignedSalespersonRemove();

@@ -18,6 +18,7 @@
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerOnboardingDocsTest" />
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerIssuesTest" />
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerFeatureRequestsTest" />
+            <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerEditFeatureRequestsTest" />
             <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderSearchTest" />
             <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewOrderEditTest" />
             <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewDateDropdownTest" />
@@ -69,6 +70,8 @@
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateAddingSpecialInstructionsTest" />
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateItemCountAndTotalValueTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaOrderGuideTest" />
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCutAndDryPayInCustomerInvoices" />
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifythePaymentTermsincustomerInvoices" />
         </classes>
     </test>
 </suite>
