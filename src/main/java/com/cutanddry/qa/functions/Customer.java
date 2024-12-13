@@ -1286,6 +1286,7 @@ public class Customer {
 
     public static boolean isPaymentMethodAddedSuccessfully(){
         return customersPage.isPaymentMethodAddedSuccessfully();
+    }
 
     public static String getItemCodeFirstRow() throws InterruptedException {
         return customersPage.getItemCodeFirstRow();
