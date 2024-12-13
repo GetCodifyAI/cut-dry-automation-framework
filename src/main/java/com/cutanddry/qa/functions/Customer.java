@@ -1259,4 +1259,8 @@ public class Customer {
     public static void editOrderFromReviewScreen() {
         customersPage.clickEditOrderInReviewScreen();
     }
+
+    public static String getItemCodeFirstRow() throws InterruptedException {
+        return customersPage.getItemCodeFirstRow();
+    }
 }
