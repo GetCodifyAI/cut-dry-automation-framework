@@ -1144,8 +1144,8 @@ public class Customer {
         return customersPage.isActiveStatusDisplayed();
     }
 
-    public static boolean isErrorTextNotDisplayed(){
-        return customersPage.isErrorTextNotDisplayed();
+    public static boolean isErrorOccuredAddingPaymentMethod(){
+        return customersPage.isErrorOccuredAddingPaymentMethod();
     }
 
     public static void clickOnFirstItemOfCustomerRequests(){
@@ -1270,5 +1270,37 @@ public class Customer {
 
     public static void editOrderFromReviewScreen() {
         customersPage.clickEditOrderInReviewScreen();
+    }
+
+    public static void clickOnAddPaymentMethod() {
+        customersPage.clickOnAddPaymentMethod();
+    }
+
+    public static void clickOnAddBankAccount() {
+        customersPage.clickOnAddBankAccount();
+    }
+
+    public static void typeAccountNumber(String accountNumber){
+        customersPage.typeAccountNumber(accountNumber);
+    }
+
+    public static void typeRoutingNumber(String routingNumber){
+        customersPage.typeRoutingNumber(routingNumber);
+    }
+
+    public static void selectAccountType(String accountType){
+        customersPage.selectAccountType(accountType);
+    }
+
+    public static void clickBtnNext(){
+        customersPage.clickNext();
+    }
+
+    public static boolean isPaymentMethodAddedSuccessfully(){
+        return customersPage.isPaymentMethodAddedSuccessfully();
+    }
+
+    public static String getItemCodeFirstRow() throws InterruptedException {
+        return customersPage.getItemCodeFirstRow();
     }
 }

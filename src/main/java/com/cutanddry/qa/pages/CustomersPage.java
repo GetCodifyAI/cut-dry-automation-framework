@@ -407,6 +407,15 @@ public class CustomersPage extends LoginPage {
     By sel_mailDelivery = By.xpath("//span[text()='Mail Delivery']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
     By editOrderReviewScreen = By.xpath("//a[contains(text(),'Edit Order')]");
     By lbl_OrderMinimumErrorBanner = By.xpath("//*[contains(text(),'Add a few more items worth') and contains(text(),'to meet minimum order amount')]");
+    By addPaymentMethodButton = By.xpath("//button[contains(@class, 'btn-link') and text()='+ Add Payment Method']");
+    By addBankAccountButton = By.xpath("//div[contains(@class, 'd-flex') and .//span[text()='Add bank account']]");
+    By tbx_account_number = By.xpath("//label[text()='Account Number']/following-sibling::input");
+    By tbx_routing_number = By.xpath("//label[text()='Routing Number']/following-sibling::input");
+    By dropDownAccountType = By.xpath("//label[text()='Account Type']/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    String btn_accountTypeOption = "//div[contains(@class, 'themed_select__option') and text()='OPTION_TEXT']";
+    By txt_paymentMethodAddedSuccessfully = By.xpath("//h2[text()='Payment method added successfully']");
+    By txt_errorOccurredAddingPaymentMethod = By.xpath("//h2[text()='An error occurred while trying to add the payment method.']");
+    By lbl_itemCodeList = By.xpath("//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[2]");
     By sel_visibleOption = By.xpath("//div[contains(text(),'Visible')]");
     By txt_visible = By.xpath("//div[contains(@class,'col')and contains(text(),'Visible')]");
     By tab_orderGuide = By.xpath("//div[text()='Order Guide']");
@@ -2142,16 +2151,13 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(editOrderReviewScreen);
     }
 
-
-
-
-    public boolean isErrorTextNotDisplayed() {
+    public boolean isErrorTextDisplayed() {
         try {
             // Wait to see if the error text becomes visible
             distributorUI.waitForVisibility(txt_error);
-            return false; // "error" text is found
+            return true; // "error" text is found
         } catch (TimeoutException e) {
-            return true; // No "error" text is found within the timeout
+            return false; // No "error" text is found within the timeout
         }
     }
 
@@ -2249,6 +2255,69 @@ public class CustomersPage extends LoginPage {
         } catch (Exception e){
             return false;
         }
+    }
+
+    public void clickOnAddPaymentMethod() {
+        distributorUI.click(addPaymentMethodButton);
+    }
+
+    public void clickOnAddBankAccount() {
+        distributorUI.click(addBankAccountButton);
+    }
+
+    public void typeAccountNumber(String accountNumber) {
+        distributorUI.click(tbx_account_number);
+        distributorUI.clear(tbx_account_number);
+        distributorUI.sendKeys(tbx_account_number, accountNumber);
+    }
+
+    public void typeRoutingNumber(String routingNumber) {
+        distributorUI.click(tbx_routing_number);
+        distributorUI.clear(tbx_routing_number);
+        distributorUI.sendKeys(tbx_routing_number, routingNumber);
+    }
+
+    public void selectAccountType(String accountType) {
+    try {
+        distributorUI.click(dropDownAccountType);
+        System.out.println("Dropdown opened successfully.");
+
+        By btn_accountType = By.xpath(btn_accountTypeOption.replace("OPTION_TEXT", accountType));
+
+        // Wait for the option to be visible and click it
+        distributorUI.waitForVisibility(btn_accountType);
+        distributorUI.click(btn_accountType);
+
+        System.out.println("Account type changed to: " + accountType);
+    } catch (Exception e) {
+        System.err.println("Failed to select account type '" + accountType + "'. Error: " + e.getMessage());
+    }
+}
+
+    public boolean isPaymentMethodAddedSuccessfully() {
+        try {
+            distributorUI.waitForVisibility(txt_paymentMethodAddedSuccessfully);
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+
+    public boolean isErrorOccuredAddingPaymentMethod() {
+        try {
+            distributorUI.waitForVisibility(txt_errorOccurredAddingPaymentMethod);
+
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+
+
+    public String getItemCodeFirstRow() throws InterruptedException {
+        distributorUI.waitForVisibility(lbl_itemCodeList);
+        distributorUI.waitForCustom(3000);
+        return distributorUI.getText(lbl_itemCodeList);
     }
 
 }
