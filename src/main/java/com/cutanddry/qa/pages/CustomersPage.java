@@ -407,7 +407,7 @@ public class CustomersPage extends LoginPage {
     By sel_mailDelivery = By.xpath("//span[text()='Mail Delivery']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
     By editOrderReviewScreen = By.xpath("//a[contains(text(),'Edit Order')]");
     By lbl_OrderMinimumErrorBanner = By.xpath("//*[contains(text(),'Add a few more items worth') and contains(text(),'to meet minimum order amount')]");
-
+    By lbl_itemCodeList = By.xpath("//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[2]");
 
 
 
@@ -2245,6 +2245,12 @@ public class CustomersPage extends LoginPage {
         } catch (Exception e){
             return false;
         }
+    }
+
+    public String getItemCodeFirstRow() throws InterruptedException {
+        distributorUI.waitForVisibility(lbl_itemCodeList);
+        distributorUI.waitForCustom(3000);
+        return distributorUI.getText(lbl_itemCodeList);
     }
 
 }

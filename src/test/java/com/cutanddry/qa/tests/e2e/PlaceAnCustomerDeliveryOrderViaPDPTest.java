@@ -15,7 +15,7 @@ public class PlaceAnCustomerDeliveryOrderViaPDPTest extends TestBase {
     SoftAssert softAssert;
     static User user;
     static String customerId = DistributorOrderData.RESTAURANT_TEST_HAYES_ID;
-    static String itemName, orderId, searchItemName;
+    static String itemName, orderId, searchItemCode;
 
     @BeforeMethod
     public void setUp() {
@@ -38,10 +38,10 @@ public class PlaceAnCustomerDeliveryOrderViaPDPTest extends TestBase {
         Customer.clickOnOrderGuide(customerId);
 
         itemName = Customer.getItemNameFirstRow();
+        searchItemCode = Customer.getItemCodeFirstRow();
         Customer.goToCatalog();
-        searchItemName = itemName.split("-")[0];
-        Customer.searchItemOnCatalog(searchItemName);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(searchItemName).contains(searchItemName), "item not found");
+        Customer.searchItemOnCatalog(searchItemCode);
+        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
         Customer.clickOnProduct(itemName);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
         Customer.clickAddToCartPDP();
