@@ -414,6 +414,7 @@ public class CustomersPage extends LoginPage {
     By dropDownAccountType = By.xpath("//label[text()='Account Type']/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     By txt_paymentMethodAddedSuccessfully = By.xpath("//h2[text()='Payment method added successfully']");
     By txt_errorOccurredAddingPaymentMethod = By.xpath("//h2[text()='An error occurred while trying to add the payment method.']");
+    By lbl_itemCodeList = By.xpath("//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[2]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -2299,6 +2300,12 @@ public class CustomersPage extends LoginPage {
         }
     }
 
+
+    public String getItemCodeFirstRow() throws InterruptedException {
+        distributorUI.waitForVisibility(lbl_itemCodeList);
+        distributorUI.waitForCustom(3000);
+        return distributorUI.getText(lbl_itemCodeList);
+    }
 
 }
 
