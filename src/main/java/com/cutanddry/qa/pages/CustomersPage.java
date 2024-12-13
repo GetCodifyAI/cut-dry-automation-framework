@@ -412,6 +412,7 @@ public class CustomersPage extends LoginPage {
     By tbx_account_number = By.xpath("//label[text()='Account Number']/following-sibling::input");
     By tbx_routing_number = By.xpath("//label[text()='Routing Number']/following-sibling::input");
     By dropDownAccountType = By.xpath("//label[text()='Account Type']/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    String btn_accountTypeOption = "//div[contains(@class, 'themed_select__option') and text()='OPTION_TEXT']";
     By txt_paymentMethodAddedSuccessfully = By.xpath("//h2[text()='Payment method added successfully']");
     By txt_errorOccurredAddingPaymentMethod = By.xpath("//h2[text()='An error occurred while trying to add the payment method.']");
     By lbl_itemCodeList = By.xpath("//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[2]");
@@ -2268,18 +2269,21 @@ public class CustomersPage extends LoginPage {
     }
 
     public void selectAccountType(String accountType) {
-        try {
-            distributorUI.click(dropDownAccountType);
-            System.out.println("Dropdown opened successfully.");
+    try {
+        distributorUI.click(dropDownAccountType);
+        System.out.println("Dropdown opened successfully.");
 
-            By btn_accountType = By.xpath("//div[contains(@class, 'themed_select__option') and text()='" + accountType + "']");
-            distributorUI.waitForVisibility(btn_accountType);
-            distributorUI.click(btn_accountType);
-            System.out.println("Account type changed to: " + accountType);
-        } catch (Exception e) {
-            System.out.println("Failed to select account type '" + accountType + "'. Error: " + e.getMessage());
-        }
+        By btn_accountType = By.xpath(btn_accountTypeOption.replace("OPTION_TEXT", accountType));
+        
+        // Wait for the option to be visible and click it
+        distributorUI.waitForVisibility(btn_accountType);
+        distributorUI.click(btn_accountType);
+        
+        System.out.println("Account type changed to: " + accountType);
+    } catch (Exception e) {
+        System.err.println("Failed to select account type '" + accountType + "'. Error: " + e.getMessage());
     }
+}
 
     public boolean isPaymentMethodAddedSuccessfully() {
         try {
