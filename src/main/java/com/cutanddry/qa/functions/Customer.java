@@ -1203,7 +1203,8 @@ public class Customer {
     public static boolean isOrderSubmitSuccessfully(){
         return customersPage.isOrderSubmitSuccessfully();}
     public static void clickOrderGuide(){customersPage.clickOrderGuide();}
-    public static void goToOrderGuide()throws InterruptedException{
+    public static void goToOrderGuid
+    e()throws InterruptedException{
         customersPage.clickOnBack();
         customersPage.clickOrderGuideTab();
     }
