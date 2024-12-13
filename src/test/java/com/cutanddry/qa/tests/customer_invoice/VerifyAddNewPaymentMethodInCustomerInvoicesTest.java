@@ -28,7 +28,7 @@ public class VerifyAddNewPaymentMethodInCustomerInvoicesTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-679")
-    public void verifyTheCutAndDryPayInCustomerInvoices() throws InterruptedException {
+    public void VerifyAddNewPaymentMethodInCustomerInvoicesTest() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
