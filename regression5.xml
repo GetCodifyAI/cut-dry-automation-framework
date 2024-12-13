@@ -27,6 +27,8 @@
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaPDPTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaPDPTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerMailDeliveryOrderViaPDPTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyLastOrderDateTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTotalOrderValueTest" />
         </classes>
     </test>
 </suite>

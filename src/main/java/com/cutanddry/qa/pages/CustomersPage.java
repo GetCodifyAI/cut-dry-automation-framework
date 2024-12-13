@@ -299,7 +299,7 @@ public class CustomersPage extends LoginPage {
     By btn_resetValues = By.xpath("//button[contains(text(), 'Reset Values')]");
     By btn_updateValues = By.xpath("//button[contains(text(), 'Update')]");
     By lbl_margin = By.xpath("//label[text()='Margin ($)']/following-sibling::input");
-    By sel_customer = By.xpath("//tr[contains(@href,'/customers/140060852')]");
+    By sel_customer = By.xpath("//td[contains(text(),'Avg C Store')]");
     By txt_cusName = By.xpath("(//div[contains(@class,'d-flex align-items-center')])[1]");
     By btn_editCusName = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[1]");
     By tbx_editCusName = By.xpath("//input[contains(@class,'form-control')]");
@@ -337,13 +337,13 @@ public class CustomersPage extends LoginPage {
     By icon_removeTag = By.xpath("((//*[local-name() = 'svg' and @class='css-19bqh2r']))[1]");
     By txt_lastOrderDate = By.xpath("//div[contains(text(),'Last ordered on')]");
     By customersText = By.xpath("//h2[contains(text(),'Customers')]");
-    By btn_accountVisibility = By.xpath("((//*[local-name() = 'svg' and @data-icon='pen-to-square']))[8]");
+    By btn_accountVisibility = By.xpath("((//*[local-name() = 'svg' and @data-icon='pen-to-square']))[10]");
     By dropdown_visibility = By.xpath("(//*[local-name() = 'svg' and @class='css-19bqh2r'])[1]");
     By sel_hiddenOption = By.xpath("//div[contains(text(),'Hidden')]");
     By btn_visibilitySave = By.xpath("//button[contains(@class,'mr-2 my-2 btn btn-outline')]");
     By txt_hidden = By.xpath("//div[contains(@class,'col')and contains(text(),'Hidden')]");
     By tbx_emailOrMobile = By.xpath("//input[@id='react-select-5-input']");
-    By sel_cusOption = By.xpath("//div[contains(@class,' css-yt9ioa-option')and contains(text(),'Acai Bowles')]");
+    By sel_cusOption = By.xpath("//div[contains(@class,'css-9gakcf-option')and contains(text(),'Brandon Bonne')]");
     By btn_loginAsCus = By.xpath("//a[contains(text(),'Login As')]");
     By btn_cusOrderIcon = By.xpath("//div[text()='Order']");
     By btn_cusAddSupplier = By.xpath("//button[contains(text(),'Add Supplier')]");
@@ -407,10 +407,9 @@ public class CustomersPage extends LoginPage {
     By sel_mailDelivery = By.xpath("//span[text()='Mail Delivery']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
     By editOrderReviewScreen = By.xpath("//a[contains(text(),'Edit Order')]");
     By lbl_OrderMinimumErrorBanner = By.xpath("//*[contains(text(),'Add a few more items worth') and contains(text(),'to meet minimum order amount')]");
-
-
-
-
+    By sel_visibleOption = By.xpath("//div[contains(text(),'Visible')]");
+    By txt_visible = By.xpath("//div[contains(@class,'col')and contains(text(),'Visible')]");
+    By tab_orderGuide = By.xpath("//div[text()='Order Guide']");
 
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
@@ -1914,9 +1913,10 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_removeFromOrderGuideHeart);
     }
 
-    private double getTotalOrderValue() {
-        String orderValueText = distributorUI.getText(txt_totalOrderValue);
-        return parseCurrency(orderValueText);
+    public double getTotalOrderValue() {
+        String orderValueText = distributorUI.getText(txt_totalOrderValue).replace("$", "");
+        double orderValue = Double.valueOf(orderValueText);
+        return orderValue;
     }
 
     public void placeNewOrder() {
@@ -1938,16 +1938,6 @@ public class CustomersPage extends LoginPage {
         }
     }
 
-    public boolean isOrderValueUpdated() {
-        try {
-            double previousOrderValue = getTotalOrderValue();
-            double newOrderValue = getTotalOrderValue();
-            return newOrderValue > previousOrderValue;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
-
     public boolean isReviewPageTextDisplayed(){
         return distributorUI.isDisplayed(txt_reviewPage);
     }
@@ -1961,11 +1951,6 @@ public class CustomersPage extends LoginPage {
     }
 
     public void clickCloseSuccessMsg(){distributorUI.click(btn_closeMsg);}
-
-    private double parseCurrency(String currencyText) {
-        currencyText = currencyText.replaceAll("[^\\d.]", "");
-        return Double.parseDouble(currencyText);
-    }
 
     public void clickAddTagsDropdown(){distributorUI.click(dropdown_selTags);}
 
@@ -1997,10 +1982,11 @@ public class CustomersPage extends LoginPage {
     }
 
     public boolean isLastOrderDateUpdated() {
-        placeNewOrder();
         LocalDate today = LocalDate.now();
         String updatedOrderDate = today.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
         String lastOrderedDate = getLastOrderedDate();
+        System.out.println(lastOrderedDate);
+        System.out.println(updatedOrderDate);
         return lastOrderedDate.equals(updatedOrderDate);
     }
 
@@ -2029,7 +2015,8 @@ public class CustomersPage extends LoginPage {
         distributorUI.sendKeys(tbx_emailOrMobile,email);
         distributorUI.waitForCustom(800);
         distributorUI.click(sel_cusOption);
-        distributorUI.click(btn_loginAsCus);
+        distributorUI.click(sel_cusOption);
+        distributorUI.SwitchToNewTab(btn_loginAsCus);
     }
 
     public void clickOrderIcon()throws InterruptedException{
@@ -2043,6 +2030,23 @@ public class CustomersPage extends LoginPage {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public void loginToDistributorPortal() throws InterruptedException{
+        distributorUI.navigateToURL("https://supplier-uat.staging.cutanddry.com/log-in");
+    }
+
+    public void selectVisibleOption(){
+        distributorUI.click(sel_visibleOption);
+        distributorUI.click(btn_visibilitySave);
+    }
+
+    public boolean isVisibilityOptionDisplayed(){
+        return distributorUI.isDisplayed(txt_visible);
+    }
+
+    public boolean isOrderGuideVisible(){
+        return distributorUI.isDisplayed(tab_orderGuide);
     }
 
     public void clickEditStatusIcon(){distributorUI.click(btn_accountStatus);}
