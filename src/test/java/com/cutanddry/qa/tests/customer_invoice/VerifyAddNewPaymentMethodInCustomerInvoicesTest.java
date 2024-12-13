@@ -48,16 +48,16 @@ public class VerifyAddNewPaymentMethodInCustomerInvoicesTest extends TestBase {
         softAssert.assertAll();
     }
 
-//    @AfterMethod
-//    public void tearDown(ITestResult result) {
-//        // Capture a screenshot if the test fails
-//        if (ITestResult.FAILURE == result.getStatus()) {
-//            takeScreenshotOnFailure(result);
-//            System.out.println("Screenshot captured for failed test case.");
-//        }
-//
-//        // Close the browser
-//        closeAllBrowsers();
-//        System.out.println("Browser closed successfully.");
-//    }
+    @AfterMethod
+    public void tearDown(ITestResult result) {
+        // Capture a screenshot if the test fails
+        if (ITestResult.FAILURE == result.getStatus()) {
+            takeScreenshotOnFailure(result);
+            System.out.println("Screenshot captured for failed test case.");
+        }
+
+        // Close the browser
+        closeAllBrowsers();
+        System.out.println("Browser closed successfully.");
+    }
 }
