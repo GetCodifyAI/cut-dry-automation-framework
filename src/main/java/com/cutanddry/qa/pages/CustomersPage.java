@@ -416,6 +416,9 @@ public class CustomersPage extends LoginPage {
     By txt_paymentMethodAddedSuccessfully = By.xpath("//h2[text()='Payment method added successfully']");
     By txt_errorOccurredAddingPaymentMethod = By.xpath("//h2[text()='An error occurred while trying to add the payment method.']");
     By lbl_itemCodeList = By.xpath("//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[2]");
+    By icon_edit_payment_method = By.xpath("//div[contains(@class, 'font-weight-bold') and normalize-space(text())='Payment methods']/*[name()='svg']");
+    By btn_trash_can = By.xpath("//div[@class='mx-0 my-auto col-2']//button[contains(@class, 'btn-link')]/*[name()='svg' and @data-icon='trash-can']");
+    By txt_payment_method_removed = By.xpath("//h2[@id='swal2-title' and text()='Payment method has been removed successfully.']");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -2304,12 +2307,24 @@ public class CustomersPage extends LoginPage {
         }
     }
 
-
     public String getItemCodeFirstRow() throws InterruptedException {
         distributorUI.waitForVisibility(lbl_itemCodeList);
         distributorUI.waitForCustom(3000);
         return distributorUI.getText(lbl_itemCodeList);
     }
 
+    public boolean isPaymentMethodRemovedDisplayed() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(txt_payment_method_removed, true);
+        distributorUI.waitForCustom(1000);
+        return distributorUI.isDisplayed(btn_previousDraftOrderNo);
+    }
+
+    public void clickOnTrashCan(){
+        distributorUI.click(btn_trash_can);
+    }
+
+    public void editPaymentMethod(){
+        distributorUI.click(icon_edit_payment_method);
+    }
 }
 
