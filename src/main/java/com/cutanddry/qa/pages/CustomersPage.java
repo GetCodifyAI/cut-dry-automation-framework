@@ -419,6 +419,28 @@ public class CustomersPage extends LoginPage {
     By icon_edit_payment_method = By.xpath("//div[contains(@class, 'font-weight-bold') and normalize-space(text())='Payment methods']/*[name()='svg']");
     By btn_trash_can = By.xpath("//div[@class='mx-0 my-auto col-2']//button[contains(@class, 'btn-link')]/*[name()='svg' and @data-icon='trash-can']");
     By txt_payment_method_removed = By.xpath("//h2[@id='swal2-title' and text()='Payment method has been removed successfully.']");
+    By btn_enable = By.xpath("//div[contains(@class, 'col')]//button[contains(text(), 'Enable')]");
+    By btn_i_agree = By.xpath("//button[text()='I Agree' and contains(@class, 'btn-primary')]");
+    By btn_enable_auto_pay = By.xpath("//button[text()='Enable Auto Pay' and contains(@class, 'btn-primary')]");
+    By txt_under_auto_pay = By.xpath("//div[div[contains(@class, 'font-weight-bold') and text()='Auto Pay']]/div[@class='_jehyy2']");
+
+    public boolean isAutoPayEnabled() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(txt_under_auto_pay, true);
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(txt_under_auto_pay);
+    }
+
+    public void clickOnEnableAutoPlay(){
+        distributorUI.click(btn_enable_auto_pay);
+    }
+
+    public void clickOnIAgree(){
+        distributorUI.click(btn_i_agree);
+    }
+
+    public void clickOnEnable(){
+        distributorUI.click(btn_enable);
+    }
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);

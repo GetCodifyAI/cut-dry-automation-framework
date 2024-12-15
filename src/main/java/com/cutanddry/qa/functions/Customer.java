@@ -1304,5 +1304,20 @@ public class Customer {
         return customersPage.isPaymentMethodRemovedDisplayed();
     }
 
+    public static void clickOnEnable(){
+        customersPage.clickOnEnable();
+    }
+
+    public static void clickOnIAgree(){
+        customersPage.clickOnIAgree();
+    }
+
+    public static void clickOnEnableAutoPay(){
+        customersPage.clickOnEnableAutoPlay();
+    }
+
+    public static boolean isAutoPayEnabled() throws InterruptedException {
+        return customersPage.isAutoPayEnabled();
+    }
 }
 
