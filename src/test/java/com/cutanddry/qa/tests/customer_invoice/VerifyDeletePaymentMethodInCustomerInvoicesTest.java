@@ -39,6 +39,7 @@ public class VerifyDeletePaymentMethodInCustomerInvoicesTest extends TestBase {
         Customer.clickOnYes();
         softAssert.assertTrue(Customer.isPaymentMethodRemovedDisplayed(), "Message is not displayed");
         Customer.clickOK();
+        softAssert.assertAll();
     }
 
     @AfterMethod
