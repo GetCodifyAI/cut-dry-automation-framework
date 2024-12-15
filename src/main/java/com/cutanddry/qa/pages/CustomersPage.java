@@ -424,24 +424,6 @@ public class CustomersPage extends LoginPage {
     By btn_enable_auto_pay = By.xpath("//button[text()='Enable Auto Pay' and contains(@class, 'btn-primary')]");
     By txt_under_auto_pay = By.xpath("//div[div[contains(@class, 'font-weight-bold') and text()='Auto Pay']]/div[@class='_jehyy2']");
 
-    public boolean isAutoPayEnabled() throws InterruptedException {
-        distributorUI.waitForElementEnabledState(txt_under_auto_pay, true);
-        distributorUI.waitForCustom(2000);
-        return distributorUI.isDisplayed(txt_under_auto_pay);
-    }
-
-    public void clickOnEnableAutoPlay(){
-        distributorUI.click(btn_enable_auto_pay);
-    }
-
-    public void clickOnIAgree(){
-        distributorUI.click(btn_i_agree);
-    }
-
-    public void clickOnEnable(){
-        distributorUI.click(btn_enable);
-    }
-
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
         distributorUI.waitForCustom(2000);
@@ -2347,6 +2329,24 @@ public class CustomersPage extends LoginPage {
 
     public void editPaymentMethod(){
         distributorUI.click(icon_edit_payment_method);
+    }
+
+    public boolean isAutoPayEnabled() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(txt_under_auto_pay, true);
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(txt_under_auto_pay);
+    }
+
+    public void clickOnEnableAutoPlay(){
+        distributorUI.click(btn_enable_auto_pay);
+    }
+
+    public void clickOnIAgree(){
+        distributorUI.click(btn_i_agree);
+    }
+
+    public void clickOnEnable(){
+        distributorUI.click(btn_enable);
     }
 }
 
