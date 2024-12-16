@@ -49,10 +49,13 @@ public class Customer {
         customersPage.clickPlusQryFirstRow();
         customersPage.clickPlusQryFirstRow();
     }
-    public static void decreaseFirstRowQtyByThree(){
-        customersPage.clickMinusQryFirstRow();
-        customersPage.clickMinusQryFirstRow();
-        customersPage.clickMinusQryFirstRow();
+    public static void decreaseFirstRowQtyByThree(int count){
+//        customersPage.clickMinusQryFirstRow();
+//        customersPage.clickMinusQryFirstRow();
+//        customersPage.clickMinusQryFirstRow();
+        for (int i = 0; i<count; i++){
+            customersPage.clickMinusQryFirstRow();
+        }
     }
     public static void increaseSecondRowQtyByOne(){
         customersPage.clickPlusQrySecondRow();
@@ -1323,4 +1326,53 @@ public class Customer {
     public static String getItemCodeFirstRow() throws InterruptedException {
         return customersPage.getItemCodeFirstRow();
     }
+
+    public static void editPaymentMethod(){
+        customersPage.editPaymentMethod();
+    }
+
+    public static void clickOnTrashCan(){
+        customersPage.clickOnTrashCan();
+    }
+
+    public static boolean isPaymentMethodRemovedDisplayed() throws InterruptedException {
+        return customersPage.isPaymentMethodRemovedDisplayed();
+    }
+
+    public static void clickOnEnable(){
+        customersPage.clickOnEnable();
+    }
+
+    public static void clickOnIAgree(){
+        customersPage.clickOnIAgree();
+    }
+
+    public static void clickOnEnableAutoPay(){
+        customersPage.clickOnEnableAutoPlay();
+    }
+
+    public static boolean isAutoPayEnabled() throws InterruptedException {
+        return customersPage.isAutoPayEnabled();
+    }
+
+    public static void clickPlusSearchedSingleItem(int count) {
+        for (int i=0; i<count;i++){
+            customersPage.clickPlusSearchedSingleItem();
+        }
+    }
+
+    public static void clickMinusSearchedSingleItem(int count) {
+        for (int i=0; i<count;i++){
+            customersPage.clickMinusSearchedSingleItem();
+        }
+    }
+
+    public static double getActiveItemPriceFirstRow() throws InterruptedException {
+        return customersPage.getActiveItemPriceFirstRow();
+    }
+
+    public static double getItemPriceOnCheckoutButtonViaPDP() throws InterruptedException {
+        return customersPage.getItemPriceOnCheckoutButtonViaPDP();
+    }
 }
+
