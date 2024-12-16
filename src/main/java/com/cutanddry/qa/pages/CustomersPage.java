@@ -427,7 +427,42 @@ public class CustomersPage extends LoginPage {
     By btn_minusQtyFirstRow = By.xpath("(//*[name()='svg' and @data-icon='minus'])[1]");
     By tbx_itemQuantityinFirstRow = By.xpath("(//*[@data-input ='quantityInput'])[1]");
     By lbl_cartItemUnitPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//span)[1]");
+    By icon_edit_auto_pay = By.xpath("//div[contains(@class, 'font-weight-bold') and normalize-space(text())='Auto Pay']/*[name()='svg']");
+    By dropdown_schedule = By.xpath("//div[contains(@class, 'themed_select__single-value') and text()='On due date']");
+    String option_ScheduleType = "//div[contains(@class, 'themed_select__menu')]//div[contains(@class, 'themed_select__option') and text()='OPTION_TEXT']";
+    By btn_update = By.xpath("//button[text()='Update']");
+    String txt_auto_pay_details = "//div[contains(@class, '_jehyy2') and contains(text(), 'SCHEDULE_OPTION')]";
 
+    public boolean isAutoPayUpdated(String expectedText){
+        String autoPayDetailsXpath = txt_auto_pay_details.replace("SCHEDULE_OPTION", expectedText);
+        By autoPayDetailsCheck = By.xpath(autoPayDetailsXpath);
+
+        return distributorUI.isDisplayed(autoPayDetailsCheck);
+    }
+
+    public void clickOnUpdate(){
+        distributorUI.click(btn_update);
+    }
+
+    public void selectDropdownOption(String optionText) {
+        try {
+            // Replace placeholder in the option XPath with the actual option text
+            String optionXpath = option_ScheduleType.replace("OPTION_TEXT", optionText);
+            By optionLocator = By.xpath(optionXpath);
+
+            // Wait for the option to be visible and click it
+            distributorUI.waitForVisibility(optionLocator);
+            distributorUI.click(optionLocator);
+
+            System.out.println("Option selected: " + optionText);
+        } catch (Exception e) {
+            System.err.println("Failed to select option '" + optionText + "'. Error: " + e.getMessage());
+        }
+    }
+
+    public void clickOnDropdownSchedule(){
+        distributorUI.click(dropdown_schedule);
+    }
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -2317,8 +2352,8 @@ public class CustomersPage extends LoginPage {
         System.out.println("Account type changed to: " + accountType);
     } catch (Exception e) {
         System.err.println("Failed to select account type '" + accountType + "'. Error: " + e.getMessage());
+        }
     }
-}
 
     public boolean isPaymentMethodAddedSuccessfully() {
         try {
@@ -2375,6 +2410,10 @@ public class CustomersPage extends LoginPage {
 
     public void clickOnEnable(){
         distributorUI.click(btn_enable);
+    }
+
+    public void editAutoPay(){
+        distributorUI.click(icon_edit_auto_pay);
     }
 }
 
