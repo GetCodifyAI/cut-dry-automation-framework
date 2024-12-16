@@ -419,4 +419,29 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForVisibility(sel_OrderMinimums);
         distributorUI.click(sel_OrderMinimums);
     }
+
+    public void selectOrderMinimums() {
+        distributorUI.waitForVisibility(sel_OrderMinimums);
+        if (!distributorUI.isCheckboxOrRadioBtnSelected(sel_OrderMinimums)) {
+            distributorUI.click(sel_OrderMinimums);
+        }
+    }
+
+    public void deSelectOrderMinimums() {
+        distributorUI.waitForVisibility(sel_OrderMinimums);
+        if (distributorUI.isCheckboxOrRadioBtnSelected(sel_OrderMinimums)) {
+            distributorUI.click(sel_OrderMinimums);
+        }
+    }
+
+    public void setOrderMinimums(boolean select) {
+        distributorUI.waitForVisibility(sel_OrderMinimums);
+        boolean isSelected = distributorUI.isCheckboxOrRadioBtnSelected(sel_OrderMinimums);
+
+        if (select && !isSelected) {
+            distributorUI.click(sel_OrderMinimums); // Select the checkbox
+        } else if (!select && isSelected) {
+            distributorUI.click(sel_OrderMinimums); // Deselect the checkbox
+        }
+    }
 }
