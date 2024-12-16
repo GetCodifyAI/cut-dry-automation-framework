@@ -25,8 +25,8 @@ public class CustomersPage extends LoginPage {
     String lbl_catalogSearchItemList = "//div[contains(@class, '_3quvq7') and contains(text(),'NAME')]";
     String btn_addToCart = "//div[contains(@class, '_13kb1gk')]//div[text()= 'ITEMNAME']//ancestor::div[contains(@class, '_13kb1gk')]//div[@class='_btf6h0']//button[contains(@class, 'btn-outline-primary')]";
     By tbx_itemQuantityFirstRow = By.xpath("//tr[1]//td[8]//input");
-    By lbl_itemPriceFirstRow = By.xpath("//tr[1]//td[7]/div");
-    By lbl_itemPriceSecondRow = By.xpath("//tr[2]//td[7]/span");
+    By lbl_itemPriceFirstRow = By.xpath("//tr[1]//td[7]/span");
+    By lbl_itemPriceSecondRow = By.xpath("//tr[2]//td[7]//input");
     By btn_increaseQtyCatalogSearchValueOne = By.xpath("(//input[@type='number' and @value='1']/../following-sibling::div)[last()]");
     By btn_increaseQtyCatalogSearchValueTwo = By.xpath("(//input[@type='number' and @value='2']/../following-sibling::div)[last()]");
     By btn_decreaseQtyCatalogSearchValueOne = By.xpath("(//input[@type='number' and @value='1']/../preceding-sibling::div)[last()]");
@@ -223,7 +223,7 @@ public class CustomersPage extends LoginPage {
     By cancelBtn = By.xpath("//button[contains(text(),'Cancel')]");
     By btn_editSalesperson = By.xpath("//div[contains(text(),'Salesperson')]/following-sibling::div//*[contains(@data-icon,'pen-to-square')]");
     By btn_independentFoods = By.xpath("//div[contains(text(), 'Independent Foods Co')]");
-    String itemNotFoundTxt = "//div[contains(text(),'Showing results for \"ITEMCODE\"')]/following-sibling::div[contains(text(),'0 Results')]";
+    String itemNotFoundTxt = "//div[contains(translate(text(),'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ'),'ITEMCODE')]/following-sibling::div[contains(text(),'0 Results')]";
     String catalogCardAddToOGBtn = "//div[contains(text(),'ITEMCODE')]/../..//button[@data-tip='Add to Order Guide']";
     By btn_editAccHold = By.xpath("//div[contains(text(),'Account Holds')]/..//*[local-name() = 'svg' and @data-icon='pen-to-square']");
     By dropdown_acc = By.xpath("//div[text()='Account Holds']/following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
@@ -500,7 +500,7 @@ public class CustomersPage extends LoginPage {
     }
     public String getItemPriceSecondRow(){
         distributorUI.waitForVisibility(lbl_itemPriceSecondRow);
-        return distributorUI.getText(lbl_itemPriceSecondRow).replace("$","");
+        return distributorUI.getText(lbl_itemPriceSecondRow, "value").replace("$","");
     }
     public Double getItemPriceOnCheckoutButton() throws InterruptedException {
         distributorUI.waitForVisibility(btn_checkout);
