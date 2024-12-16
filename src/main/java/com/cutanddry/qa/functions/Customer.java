@@ -49,10 +49,13 @@ public class Customer {
         customersPage.clickPlusQryFirstRow();
         customersPage.clickPlusQryFirstRow();
     }
-    public static void decreaseFirstRowQtyByThree(){
-        customersPage.clickMinusQryFirstRow();
-        customersPage.clickMinusQryFirstRow();
-        customersPage.clickMinusQryFirstRow();
+    public static void decreaseFirstRowQtyByThree(int count){
+//        customersPage.clickMinusQryFirstRow();
+//        customersPage.clickMinusQryFirstRow();
+//        customersPage.clickMinusQryFirstRow();
+        for (int i = 0; i<count; i++){
+            customersPage.clickMinusQryFirstRow();
+        }
     }
     public static void increaseSecondRowQtyByOne(){
         customersPage.clickPlusQrySecondRow();

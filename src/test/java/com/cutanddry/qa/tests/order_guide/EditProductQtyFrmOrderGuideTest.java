@@ -39,7 +39,7 @@ public class EditProductQtyFrmOrderGuideTest extends TestBase {
         Customer.increaseFirstRowQtyByThree();
         softAssert.assertEquals(Customer.getItemQtyFirstRow(),"3", "item count error");
         softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),Customer.getItemPriceFirstRow()*3, "price error");
-        Customer.decreaseFirstRowQtyByThree();
+        Customer.decreaseFirstRowQtyByThree(3);
         softAssert.assertEquals(Customer.getItemQtyFirstRow(),"0","item count error");
         softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),Customer.getItemPriceFirstRow()*0, "price error");
         softAssert.assertAll();
