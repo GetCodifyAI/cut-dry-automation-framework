@@ -423,6 +423,9 @@ public class CustomersPage extends LoginPage {
     By btn_i_agree = By.xpath("//button[text()='I Agree' and contains(@class, 'btn-primary')]");
     By btn_enable_auto_pay = By.xpath("//button[text()='Enable Auto Pay' and contains(@class, 'btn-primary')]");
     By txt_under_auto_pay = By.xpath("//div[div[contains(@class, 'font-weight-bold') and text()='Auto Pay']]/div[@class='_jehyy2']");
+    By lbl_itemPriceList = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]//span)[1]");
+    By btn_minusQtyFirstRow = By.xpath("(//*[name()='svg' and @data-icon='minus'])[1]");
+    By tbx_itemQuantityinFirstRow = By.xpath("(//*[@data-input ='quantityInput'])[1]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -457,7 +460,8 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_increaseQtyFirstRow);
     }
     public void clickMinusQryFirstRow(){
-        distributorUI.click(btn_decreaseQtyFirstRow);
+//        distributorUI.click(btn_decreaseQtyFirstRow);
+        distributorUI.click(btn_minusQtyFirstRow);
         try {
             distributorUI.waitForCustom(4000);
         } catch (InterruptedException e) {
@@ -500,10 +504,21 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForElementEnabledState(btn_checkout,true);
     }
     public String getItemQtyFirstRow(){
-        return distributorUI.getText(tbx_itemQuantityFirstRow, "value");
+//        return distributorUI.getText(tbx_itemQuantityFirstRow, "value");
+        return distributorUI.getText(tbx_itemQuantityinFirstRow, "value");
     }
     public Double getItemPriceFirstRow(){
-        return Double.valueOf(distributorUI.getText(lbl_itemPriceFirstRow).replace("$",""));
+//        return Double.valueOf(distributorUI.getText(lbl_itemPriceFirstRow).replace("$",""));
+        distributorUI.waitForVisibility(lbl_itemPriceList);
+        String tagName = distributorUI.getElement(lbl_itemPriceList).getTagName();
+        String priceText;
+        if (tagName.equals("input")) {
+            priceText = distributorUI.getText(lbl_itemPriceList, "value");
+        } else {
+            priceText = distributorUI.getText(lbl_itemPriceList);
+        }
+
+        return Double.valueOf(priceText.replace("$", "").trim());
     }
     public String getItemPriceSecondRow(){
         distributorUI.waitForVisibility(lbl_itemPriceSecondRow);
