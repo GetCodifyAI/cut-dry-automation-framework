@@ -1291,4 +1291,33 @@ public class Customer {
     public static String getItemCodeFirstRow() throws InterruptedException {
         return customersPage.getItemCodeFirstRow();
     }
+
+    public static void editPaymentMethod(){
+        customersPage.editPaymentMethod();
+    }
+
+    public static void clickOnTrashCan(){
+        customersPage.clickOnTrashCan();
+    }
+
+    public static boolean isPaymentMethodRemovedDisplayed() throws InterruptedException {
+        return customersPage.isPaymentMethodRemovedDisplayed();
+    }
+
+    public static void clickOnEnable(){
+        customersPage.clickOnEnable();
+    }
+
+    public static void clickOnIAgree(){
+        customersPage.clickOnIAgree();
+    }
+
+    public static void clickOnEnableAutoPay(){
+        customersPage.clickOnEnableAutoPlay();
+    }
+
+    public static boolean isAutoPayEnabled() throws InterruptedException {
+        return customersPage.isAutoPayEnabled();
+    }
 }
+
