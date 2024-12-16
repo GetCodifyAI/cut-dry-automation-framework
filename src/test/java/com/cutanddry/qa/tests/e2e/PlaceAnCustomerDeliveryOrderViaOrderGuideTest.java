@@ -15,7 +15,8 @@ public class PlaceAnCustomerDeliveryOrderViaOrderGuideTest extends TestBase {
     SoftAssert softAssert;
     static User user;
     static String customerId = DistributorOrderData.RESTAURANT_TEST_HAYES_ID;
-    static String itemName, orderId;
+    static String itemName, orderId, searchItemCode;
+    static double itemPrice;
 
     @BeforeMethod
     public void setUp() {
@@ -38,7 +39,10 @@ public class PlaceAnCustomerDeliveryOrderViaOrderGuideTest extends TestBase {
         Customer.clickOnOrderGuide(customerId);
 
         itemName = Customer.getItemNameFirstRow();
+        searchItemCode = Customer.getItemCodeFirstRow();
+        itemPrice = Customer.getActiveItemPriceFirstRow();
         Customer.increaseFirstRowQtyCustom(1);
+        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice,"The item has not been selected.");
         Customer.checkoutItems();
 
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
