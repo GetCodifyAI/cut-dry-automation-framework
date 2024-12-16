@@ -432,37 +432,7 @@ public class CustomersPage extends LoginPage {
     String option_ScheduleType = "//div[contains(@class, 'themed_select__menu')]//div[contains(@class, 'themed_select__option') and text()='OPTION_TEXT']";
     By btn_update = By.xpath("//button[text()='Update']");
     String txt_auto_pay_details = "//div[contains(@class, '_jehyy2') and contains(text(), 'SCHEDULE_OPTION')]";
-
-    public boolean isAutoPayUpdated(String expectedText){
-        String autoPayDetailsXpath = txt_auto_pay_details.replace("SCHEDULE_OPTION", expectedText);
-        By autoPayDetailsCheck = By.xpath(autoPayDetailsXpath);
-
-        return distributorUI.isDisplayed(autoPayDetailsCheck);
-    }
-
-    public void clickOnUpdate(){
-        distributorUI.click(btn_update);
-    }
-
-    public void selectDropdownOption(String optionText) {
-        try {
-            // Replace placeholder in the option XPath with the actual option text
-            String optionXpath = option_ScheduleType.replace("OPTION_TEXT", optionText);
-            By optionLocator = By.xpath(optionXpath);
-
-            // Wait for the option to be visible and click it
-            distributorUI.waitForVisibility(optionLocator);
-            distributorUI.click(optionLocator);
-
-            System.out.println("Option selected: " + optionText);
-        } catch (Exception e) {
-            System.err.println("Failed to select option '" + optionText + "'. Error: " + e.getMessage());
-        }
-    }
-
-    public void clickOnDropdownSchedule(){
-        distributorUI.click(dropdown_schedule);
-    }
+    By btn_cancelAutoPay = By.xpath("//button[text()='Cancel Auto Pay' and contains(@class, 'btn-outline-primary')]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -2415,5 +2385,43 @@ public class CustomersPage extends LoginPage {
     public void editAutoPay(){
         distributorUI.click(icon_edit_auto_pay);
     }
-}
 
+    public boolean isEnableVisible(){
+        return distributorUI.isDisplayed(btn_enable);
+    }
+
+    public void clickOnCancelAutopay(){
+        distributorUI.click(btn_cancelAutoPay);
+    }
+
+    public boolean isAutoPayUpdated(String expectedText){
+        String autoPayDetailsXpath = txt_auto_pay_details.replace("SCHEDULE_OPTION", expectedText);
+        By autoPayDetailsCheck = By.xpath(autoPayDetailsXpath);
+
+        return distributorUI.isDisplayed(autoPayDetailsCheck);
+    }
+
+    public void clickOnUpdate(){
+        distributorUI.click(btn_update);
+    }
+
+    public void selectDropdownOption(String optionText) {
+        try {
+            // Replace placeholder in the option XPath with the actual option text
+            String optionXpath = option_ScheduleType.replace("OPTION_TEXT", optionText);
+            By optionLocator = By.xpath(optionXpath);
+
+            // Wait for the option to be visible and click it
+            distributorUI.waitForVisibility(optionLocator);
+            distributorUI.click(optionLocator);
+
+            System.out.println("Option selected: " + optionText);
+        } catch (Exception e) {
+            System.err.println("Failed to select option '" + optionText + "'. Error: " + e.getMessage());
+        }
+    }
+
+    public void clickOnDropdownSchedule(){
+        distributorUI.click(dropdown_schedule);
+    }
+}

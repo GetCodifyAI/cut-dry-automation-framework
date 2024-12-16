@@ -1342,5 +1342,13 @@ public class Customer {
     public static boolean isAutoPayUpdated(String expectedText){
         return customersPage.isAutoPayUpdated(expectedText);
     }
+
+    public static void clickOnCancelAutopay(){
+        customersPage.clickOnCancelAutopay();
+    }
+
+    public static boolean isEnableVisible(){
+        return customersPage.isEnableVisible();
+    }
 }
 
