@@ -462,7 +462,6 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_increaseQtyFirstRow);
     }
     public void clickMinusQryFirstRow(){
-//        distributorUI.click(btn_decreaseQtyFirstRow);
         distributorUI.click(btn_minusQtyFirstRow);
         try {
             distributorUI.waitForCustom(4000);
