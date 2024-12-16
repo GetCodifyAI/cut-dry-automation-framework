@@ -426,6 +426,8 @@ public class CustomersPage extends LoginPage {
     By lbl_itemPriceList = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]//span)[1]");
     By btn_minusQtyFirstRow = By.xpath("(//*[name()='svg' and @data-icon='minus'])[1]");
     By tbx_itemQuantityinFirstRow = By.xpath("(//*[@data-input ='quantityInput'])[1]");
+    By lbl_cartItemUnitPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//span)[1]");
+
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -570,7 +572,18 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_increaseQtyCartRowOne);
     }
     public Double getUnitPriceFirstRowCart(){
-        return Double.valueOf(distributorUI.getText(lbl_itemPriceCartRowOne).split("\\$")[1]);
+//        return Double.valueOf(distributorUI.getText(lbl_itemPriceCartRowOne).split("\\$")[1]);
+
+        distributorUI.waitForVisibility(lbl_cartItemUnitPrice);
+        String tagName = distributorUI.getElement(lbl_cartItemUnitPrice).getTagName();
+        String priceText;
+        if (tagName.equals("input")) {
+            priceText = distributorUI.getText(lbl_cartItemUnitPrice, "value");
+        } else {
+            priceText = distributorUI.getText(lbl_cartItemUnitPrice);
+        }
+
+        return Double.valueOf(priceText.replace("$", "").trim());
     }
     public Double getTotalPriceCart() throws InterruptedException {
         distributorUI.waitForCustom(3000);
