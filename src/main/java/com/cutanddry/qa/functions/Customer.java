@@ -1344,7 +1344,7 @@ public class Customer {
     }
 
     public static void clickOnDefaultCheckoutButton() throws InterruptedException {
-        customersPage.clickOnDefaultCheckoutButton();
+        customersPage.clickOnCheckoutButton();
     }
 }
 
