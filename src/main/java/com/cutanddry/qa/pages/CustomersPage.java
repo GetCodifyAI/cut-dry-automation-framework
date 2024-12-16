@@ -362,7 +362,7 @@ public class CustomersPage extends LoginPage {
     By allItemsOption = By.xpath("//div[contains(text(), 'All Items')]");
     By brandDropDown = By.xpath("//div[contains(text(), 'Brand')]");
     By brandDropDownOption = By.xpath("//div[contains(text(), 'Bob')]");
-    By txt_filterByBrand =By.xpath("//div[@class='_1y3bqj7 p-0 d-inline-block _5h4pkd _1451qv9 _du1frc' and contains(text(), 'Red Mill')]");
+    By txt_filterByBrand =By.xpath("//button[@data-tip='View Brand Page']//*[contains(text(), 'Red Mill')]");
     By itemStatusDropDown = By.xpath("//div[contains(text(), 'Item Status')]");
     By itemStatusDropDownOption = By.xpath("//div[contains(text(), 'Stocked')]");
     By storageTypeDropDown = By.xpath("//div[contains(text(), 'Storage Type')]");
