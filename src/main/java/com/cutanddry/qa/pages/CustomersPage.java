@@ -415,7 +415,6 @@ public class CustomersPage extends LoginPage {
     String btn_accountTypeOption = "//div[contains(@class, 'themed_select__option') and text()='OPTION_TEXT']";
     By txt_paymentMethodAddedSuccessfully = By.xpath("//h2[text()='Payment method added successfully']");
     By txt_errorOccurredAddingPaymentMethod = By.xpath("//h2[text()='An error occurred while trying to add the payment method.']");
-    By lbl_itemCodeList = By.xpath("//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[2]");
     By icon_edit_payment_method = By.xpath("//div[contains(@class, 'font-weight-bold') and normalize-space(text())='Payment methods']/*[name()='svg']");
     By btn_trash_can = By.xpath("//div[@class='mx-0 my-auto col-2']//button[contains(@class, 'btn-link')]/*[name()='svg' and @data-icon='trash-can']");
     By txt_payment_method_removed = By.xpath("//h2[@id='swal2-title' and text()='Payment method has been removed successfully.']");
@@ -427,7 +426,9 @@ public class CustomersPage extends LoginPage {
     By btn_minusQtyFirstRow = By.xpath("(//*[name()='svg' and @data-icon='minus'])[1]");
     By tbx_itemQuantityinFirstRow = By.xpath("(//*[@data-input ='quantityInput'])[1]");
     By lbl_cartItemUnitPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//span)[1]");
-
+    By lbl_itemCodeList = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[2])[1]");
+    By btn_catalogPlus = By.xpath("//*[name()='svg' and @data-icon='plus']");
+    By btn_catalogMinus = By.xpath("//*[name()='svg' and @data-icon='minus']");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -2375,5 +2376,33 @@ public class CustomersPage extends LoginPage {
     public void clickOnEnable(){
         distributorUI.click(btn_enable);
     }
+
+    public void clickPlusSearchedSingleItem(){
+        distributorUI.click(btn_catalogPlus);
+    }
+
+    public void clickMinusSearchedSingleItem(){
+        distributorUI.click(btn_catalogMinus);
+    }
+
+    public double getActiveItemPriceFirstRow() throws InterruptedException {
+        distributorUI.waitForVisibility(lbl_itemPriceList);
+        String tagName = distributorUI.getElement(lbl_itemPriceList).getTagName();
+        String priceText;
+        if (tagName.equals("input")) {
+            priceText = distributorUI.getText(lbl_itemPriceList, "value");
+        } else {
+            priceText = distributorUI.getText(lbl_itemPriceList);
+        }
+
+        return Double.valueOf(priceText.replace("$", "").trim());
+    }
+
+    public Double getItemPriceOnCheckoutButtonViaPDP() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_checkOutPDP);
+        distributorUI.waitForCustom(4000);
+        return Double.valueOf(distributorUI.getText(btn_checkOutPDP).replace("$",""));
+    }
+
 }
 
