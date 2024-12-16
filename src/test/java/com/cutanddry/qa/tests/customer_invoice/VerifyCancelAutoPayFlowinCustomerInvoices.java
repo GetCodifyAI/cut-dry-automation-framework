@@ -54,6 +54,4 @@ public class VerifyCancelAutoPayFlowinCustomerInvoices extends TestBase {
         closeAllBrowsers();
         System.out.println("Browser closed successfully.");
     }
-
-
 }
