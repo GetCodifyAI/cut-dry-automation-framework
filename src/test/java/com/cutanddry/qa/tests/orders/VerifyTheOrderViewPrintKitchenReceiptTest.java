@@ -28,14 +28,13 @@ public class VerifyTheOrderViewPrintKitchenReceiptTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToOrders();
         softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"navigation error");
-        Orders.selectFirstOrder();
-        Orders.clickPrintKitchenReceipt();
+        Orders.clickOrderPrintKitchenReceipt();
         softAssert.assertAll();
     }
 
-    @AfterMethod
-    public void tearDown(ITestResult result) {
-        takeScreenshotOnFailure(result);
-        closeAllBrowsers();
-    }
+//    @AfterMethod
+//    public void tearDown(ITestResult result) {
+//        takeScreenshotOnFailure(result);
+//        closeAllBrowsers();
+//    }
 }

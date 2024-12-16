@@ -27,8 +27,7 @@ public class VerifyTheOrderViewPrintOrderConfirmationTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToOrders();
         softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"navigation error");
-        Orders.selectFirstOrder();
-        Orders.clickPrintOrderConfirmation();
+        Orders.clickOrderPrintOrderConfirmation();
         softAssert.assertAll();
     }
 
