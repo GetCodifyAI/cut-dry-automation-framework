@@ -1342,5 +1342,9 @@ public class Customer {
     public static double getItemPriceOnCheckoutButtonViaPDP() throws InterruptedException {
         return customersPage.getItemPriceOnCheckoutButtonViaPDP();
     }
+
+    public static void clickOnDefaultCheckoutButton() throws InterruptedException {
+        customersPage.clickOnDefaultCheckoutButton();
+    }
 }
 

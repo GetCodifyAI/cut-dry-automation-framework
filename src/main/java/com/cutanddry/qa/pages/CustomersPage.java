@@ -480,7 +480,7 @@ public class CustomersPage extends LoginPage {
     public void clickPlusQrySecondRow(){
         distributorUI.click(btn_increaseQtySecondRow);
     }
-    public void clickOnCheckoutButton() throws InterruptedException {
+    public void clickOnDefaultCheckoutButton() throws InterruptedException {
         distributorUI.waitForCustom(4000);
         distributorUI.waitForElementEnabledState(btn_checkout,true);
         distributorUI.click(btn_checkout);
