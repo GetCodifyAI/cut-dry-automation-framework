@@ -54,7 +54,7 @@ public class SettingsPage extends LoginPage{
     By lbl_invoice = By.xpath("//tr[td[text()='10008']]/td/div");
     By btn_linkBank = By.xpath("//button[text()='Link Bank Account']");
     By btn_linkBankManually = By.xpath("//button[text()='Link your account manually']");
-    By txt_linkAccPopup = By.xpath("//h3[text()='Link your bank account']");
+    By txt_linkAccPopup = By.xpath("//h3[text()='Add Bank Account']");
     By btn_save= By.xpath("//div[contains(@class, 'modal-content')]//button[contains(text(), 'Save')]");
     By txt_displayedPayout = By.xpath("//div[text()='All payouts will be transferred to bank account x2220.']");
     By text_payOutMethodPresent = By.xpath("//div[contains(text(),'All payouts will be transferred to bank account')]");
@@ -418,5 +418,30 @@ public class SettingsPage extends LoginPage{
     public void selectOnOrderMinimums() {
         distributorUI.waitForVisibility(sel_OrderMinimums);
         distributorUI.click(sel_OrderMinimums);
+    }
+
+    public void selectOrderMinimums() {
+        distributorUI.waitForVisibility(sel_OrderMinimums);
+        if (!distributorUI.isCheckboxOrRadioBtnSelected(sel_OrderMinimums)) {
+            distributorUI.click(sel_OrderMinimums);
+        }
+    }
+
+    public void deSelectOrderMinimums() {
+        distributorUI.waitForVisibility(sel_OrderMinimums);
+        if (distributorUI.isCheckboxOrRadioBtnSelected(sel_OrderMinimums)) {
+            distributorUI.click(sel_OrderMinimums);
+        }
+    }
+
+    public void setOrderMinimums(boolean select) {
+        distributorUI.waitForVisibility(sel_OrderMinimums);
+        boolean isSelected = distributorUI.isCheckboxOrRadioBtnSelected(sel_OrderMinimums);
+
+        if (select && !isSelected) {
+            distributorUI.click(sel_OrderMinimums); // Select the checkbox
+        } else if (!select && isSelected) {
+            distributorUI.click(sel_OrderMinimums); // Deselect the checkbox
+        }
     }
 }

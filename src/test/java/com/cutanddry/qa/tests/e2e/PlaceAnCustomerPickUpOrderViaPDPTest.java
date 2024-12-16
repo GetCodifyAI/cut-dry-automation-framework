@@ -16,6 +16,7 @@ public class PlaceAnCustomerPickUpOrderViaPDPTest extends TestBase {
     static User user;
     static String customerId = DistributorOrderData.RESTAURANT_TEST_HAYES_ID;
     static String itemName, orderId, searchItemCode;
+    static double itemPrice;
 
     @BeforeMethod
     public void setUp() {
@@ -39,12 +40,15 @@ public class PlaceAnCustomerPickUpOrderViaPDPTest extends TestBase {
 
         itemName = Customer.getItemNameFirstRow();
         searchItemCode = Customer.getItemCodeFirstRow();
+        itemPrice = Customer.getActiveItemPriceFirstRow();
         Customer.goToCatalog();
+
         Customer.searchItemOnCatalog(searchItemCode);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
         Customer.clickOnProduct(itemName);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
         Customer.clickAddToCartPDP();
+        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButtonViaPDP(),itemPrice,"The item has not been selected.");
         Customer.clickCheckOutPDP();
 
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");

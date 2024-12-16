@@ -22,7 +22,7 @@ public class CustomersPage extends LoginPage {
     By btn_checkout = By.xpath("//button[text()='$']/../button[2]");
     By btn_catalog = By.xpath("//div[text()='Catalog']");
     By tbx_catalogSearch = By.xpath("//input[@placeholder='Search catalog...']");
-    String lbl_catalogSearchItemList = "//div[contains(@class, '_3quvq7') and contains(text(),'NAME')]";
+    String lbl_catalogSearchItemList = "//*[contains(text(),'NAME')]";
     String btn_addToCart = "//div[contains(@class, '_13kb1gk')]//div[text()= 'ITEMNAME']//ancestor::div[contains(@class, '_13kb1gk')]//div[@class='_btf6h0']//button[contains(@class, 'btn-outline-primary')]";
     By tbx_itemQuantityFirstRow = By.xpath("//tr[1]//td[8]//input");
     By lbl_itemPriceFirstRow = By.xpath("//tr[1]//td[7]/span");
@@ -362,7 +362,7 @@ public class CustomersPage extends LoginPage {
     By allItemsOption = By.xpath("//div[contains(text(), 'All Items')]");
     By brandDropDown = By.xpath("//div[contains(text(), 'Brand')]");
     By brandDropDownOption = By.xpath("//div[contains(text(), 'Bob')]");
-    By txt_filterByBrand =By.xpath("//div[@class='_1y3bqj7 p-0 d-inline-block _5h4pkd _1451qv9 _du1frc' and contains(text(), 'Red Mill')]");
+    By txt_filterByBrand =By.xpath("//button[@data-tip='View Brand Page']//*[contains(text(), 'Red Mill')]");
     By itemStatusDropDown = By.xpath("//div[contains(text(), 'Item Status')]");
     By itemStatusDropDownOption = By.xpath("//div[contains(text(), 'Stocked')]");
     By storageTypeDropDown = By.xpath("//div[contains(text(), 'Storage Type')]");
@@ -415,7 +415,6 @@ public class CustomersPage extends LoginPage {
     String btn_accountTypeOption = "//div[contains(@class, 'themed_select__option') and text()='OPTION_TEXT']";
     By txt_paymentMethodAddedSuccessfully = By.xpath("//h2[text()='Payment method added successfully']");
     By txt_errorOccurredAddingPaymentMethod = By.xpath("//h2[text()='An error occurred while trying to add the payment method.']");
-    By lbl_itemCodeList = By.xpath("//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[2]");
     By icon_edit_payment_method = By.xpath("//div[contains(@class, 'font-weight-bold') and normalize-space(text())='Payment methods']/*[name()='svg']");
     By btn_trash_can = By.xpath("//div[@class='mx-0 my-auto col-2']//button[contains(@class, 'btn-link')]/*[name()='svg' and @data-icon='trash-can']");
     By txt_payment_method_removed = By.xpath("//h2[@id='swal2-title' and text()='Payment method has been removed successfully.']");
@@ -433,6 +432,9 @@ public class CustomersPage extends LoginPage {
     By btn_update = By.xpath("//button[text()='Update']");
     String txt_auto_pay_details = "//div[contains(@class, '_jehyy2') and contains(text(), 'SCHEDULE_OPTION')]";
     By btn_cancelAutoPay = By.xpath("//button[text()='Cancel Auto Pay' and contains(@class, 'btn-outline-primary')]");
+    By lbl_itemCodeList = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[2])[1]");
+    By btn_catalogPlus = By.xpath("//*[name()='svg' and @data-icon='plus']");
+    By btn_catalogMinus = By.xpath("//*[name()='svg' and @data-icon='minus']");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -467,7 +469,6 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_increaseQtyFirstRow);
     }
     public void clickMinusQryFirstRow(){
-//        distributorUI.click(btn_decreaseQtyFirstRow);
         distributorUI.click(btn_minusQtyFirstRow);
         try {
             distributorUI.waitForCustom(4000);
@@ -2385,6 +2386,35 @@ public class CustomersPage extends LoginPage {
     public void editAutoPay(){
         distributorUI.click(icon_edit_auto_pay);
     }
+
+    public void clickPlusSearchedSingleItem(){
+        distributorUI.click(btn_catalogPlus);
+    }
+
+    public void clickMinusSearchedSingleItem(){
+        distributorUI.click(btn_catalogMinus);
+    }
+
+    public double getActiveItemPriceFirstRow() throws InterruptedException {
+        distributorUI.waitForVisibility(lbl_itemPriceList);
+        String tagName = distributorUI.getElement(lbl_itemPriceList).getTagName();
+        String priceText;
+        if (tagName.equals("input")) {
+            priceText = distributorUI.getText(lbl_itemPriceList, "value");
+        } else {
+            priceText = distributorUI.getText(lbl_itemPriceList);
+        }
+
+        return Double.valueOf(priceText.replace("$", "").trim());
+    }
+
+    public Double getItemPriceOnCheckoutButtonViaPDP() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_checkOutPDP);
+        distributorUI.waitForCustom(4000);
+        return Double.valueOf(distributorUI.getText(btn_checkOutPDP).replace("$",""));
+    }
+
+}
 
     public boolean isEnableVisible(){
         return distributorUI.isDisplayed(btn_enable);

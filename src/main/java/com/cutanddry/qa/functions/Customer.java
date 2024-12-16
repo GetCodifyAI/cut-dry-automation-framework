@@ -1323,6 +1323,30 @@ public class Customer {
         return customersPage.isAutoPayEnabled();
     }
 
+    public static void clickPlusSearchedSingleItem(int count) {
+        for (int i=0; i<count;i++){
+            customersPage.clickPlusSearchedSingleItem();
+        }
+    }
+
+    public static void clickMinusSearchedSingleItem(int count) {
+        for (int i=0; i<count;i++){
+            customersPage.clickMinusSearchedSingleItem();
+        }
+    }
+
+    public static double getActiveItemPriceFirstRow() throws InterruptedException {
+        return customersPage.getActiveItemPriceFirstRow();
+    }
+
+    public static double getItemPriceOnCheckoutButtonViaPDP() throws InterruptedException {
+        return customersPage.getItemPriceOnCheckoutButtonViaPDP();
+    }
+
+    public static void clickOnDefaultCheckoutButton() throws InterruptedException {
+        customersPage.clickOnCheckoutButton();
+    }
+
     public static void editAutoPay(){
         customersPage.editAutoPay();
     }
