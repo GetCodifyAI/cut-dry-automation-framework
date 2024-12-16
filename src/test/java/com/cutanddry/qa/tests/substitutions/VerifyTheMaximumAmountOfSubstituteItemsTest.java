@@ -57,7 +57,6 @@ public class VerifyTheMaximumAmountOfSubstituteItemsTest extends TestBase {
         Customer.clickSouthwestTraders();
         Customer.searchItemOnOrderGuide(itemCode);
         Customer.addItemFromCatalogIfNotAvailableInOG(itemCode);
-        Customer.addItemFromCatalogIfNotAvailableInOG(itemCode);
         itemName = Customer.getItemNameFirstRow();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         Customer.increaseFirstRowQtyByOneInDist();
