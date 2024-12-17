@@ -176,6 +176,7 @@ public class Settings {
         return settingsPage.isSetHolidayPopupDisplayed();
     }
     public static void clickOnAddHoliday() {
+        settingsPage.removeTodayDateAsHoliday();
         settingsPage.clickOnPlusBtn();
     }
     public static void selectGlobal() {
@@ -208,5 +209,13 @@ public class Settings {
 
     public static void setOrderMinimums(boolean selection) {
         settingsPage.setOrderMinimums(selection);
+    }
+
+    public static void setCustomerSpecificDeliveryDays(boolean selection) {
+        settingsPage.setCustomerSpecificDeliveryDays(selection);
+    }
+
+    public static void removeTodayDateAsHoliday() {
+        settingsPage.removeTodayDateAsHoliday();
     }
 }

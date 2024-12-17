@@ -74,7 +74,8 @@ public class SettingsPage extends LoginPage{
     By lbl_customerSpecDisabled = By.xpath("//label[text()='Customer Specific Delivery Days']/preceding-sibling::input[@type='checkbox' and @disabled]");
     By lbl_deliveryDays = By.xpath("//label[text()='Delivery Days']/preceding-sibling::input[@type='checkbox']");
     By sel_OrderMinimums = By.xpath("//*[contains(text(),'Order Minimums')]/preceding-sibling::input");
-
+    By sel_CustomerSpecificDeliveryDays = By.xpath("//*[contains(text(),'Customer Specific Delivery Days')]/preceding-sibling::input");
+    By lbl_HolidayDate = By.xpath("(//button[*[local-name()='svg' and @data-icon='minus']]/following::div[1])[last()]");
 
     public boolean isOrderSettingsTextDisplayed() throws InterruptedException {
         try {
@@ -442,6 +443,32 @@ public class SettingsPage extends LoginPage{
             distributorUI.click(sel_OrderMinimums); // Select the checkbox
         } else if (!select && isSelected) {
             distributorUI.click(sel_OrderMinimums); // Deselect the checkbox
+        }
+    }
+
+    public void setCustomerSpecificDeliveryDays(boolean select) {
+        distributorUI.waitForVisibility(sel_CustomerSpecificDeliveryDays);
+        boolean isSelected = distributorUI.isCheckboxOrRadioBtnSelected(sel_CustomerSpecificDeliveryDays);
+
+        if (select && !isSelected) {
+            distributorUI.click(sel_CustomerSpecificDeliveryDays); // Select the checkbox
+        } else if (!select && isSelected) {
+            distributorUI.click(sel_CustomerSpecificDeliveryDays); // Deselect the checkbox
+        }
+    }
+
+    public void removeTodayDateAsHoliday() {
+        String currentDate = distributorUI.getCurrentDateFormatted();
+        distributorUI.waitForVisibility(lbl_HolidayDate);
+        String actualDate = distributorUI.getText(lbl_HolidayDate);
+        System.out.println(actualDate + " -" + currentDate);
+        if (currentDate.equals(actualDate)) {
+            distributorUI.click(btn_minus);
+            try {
+                distributorUI.waitForCustom(3000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }
