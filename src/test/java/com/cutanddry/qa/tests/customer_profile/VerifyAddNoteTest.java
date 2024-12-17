@@ -2,6 +2,7 @@ package com.cutanddry.qa.tests.customer_profile;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.CustomerProfileData;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
@@ -15,6 +16,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyAddNoteTest extends TestBase {
     static User user;
     String addCustomerNote = "This is a test note.";
+    String CustomerCode = "16579";
 
     @BeforeMethod
     public void setUp() {
@@ -28,8 +30,10 @@ public class VerifyAddNoteTest extends TestBase {
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "login error");
         Dashboard.navigateToCustomers();
-        Customer.selectOneCustomer();
-        softAssert.assertTrue(Customer.isCustomerNameTxtDisplayed(), "text error");
+        Customer.searchCustomerByCode(CustomerCode);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"Error in displaying the customer");
+        Customer.SelectCustomer(CustomerCode);
+        softAssert.assertTrue(Customer.isCustomerProfileDisplayed(),"Error in navigation to customer page");
         Customer.clickOnAddNoteEditIcon();
         Customer.addCustomerNote(addCustomerNote);
         Customer.clickOnSaveChangesAddNote();

@@ -2,7 +2,6 @@ package com.cutanddry.qa.tests.customer_profile;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
-import com.cutanddry.qa.data.testdata.CustomerProfileData;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
@@ -13,10 +12,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyEditNoteTest extends TestBase {
+public class VerifyLastOrderDateTest extends TestBase{
     static User user;
-    String editCustomerNote = "This is the newly added test note.";
-    String CustomerCode = "16579";
+    String customerID = "16579";
 
     @BeforeMethod
     public void setUp() {
@@ -24,28 +22,28 @@ public class VerifyEditNoteTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-662")
-    public void VerifyEditNote() throws InterruptedException {
+    @Test(groups = "DOT-TC-672")
+    public void VerifyLastOrderDate() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "login error");
         Dashboard.navigateToCustomers();
-        Customer.searchCustomerByCode(CustomerCode);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"Error in displaying the customer");
-        Customer.SelectCustomer(CustomerCode);
-        softAssert.assertTrue(Customer.isCustomerProfileDisplayed(),"Error in navigation to customer page");
-        Customer.clickOnAddNoteEditIcon();
-        Customer.editCustomerNote(editCustomerNote);
-        Customer.clickOnSaveChangesAddNote();
+        Customer.searchCustomerByCode(customerID);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerID),"search error");
+        Customer.SelectCustomer(customerID);
+        Customer.clickOnOrderGuideInProfile();
+        Customer.increaseFirstRowQtyByOne();
+        Customer.checkoutItems();
+        Customer.submitOrder();
+        Customer.clickOrderSuccessMessageClose();
+        softAssert.assertTrue(Customer.isLastOrderDateToday(), "date error");
+
         softAssert.assertAll();
     }
 
-    @AfterMethod
+   @AfterMethod
     public void tearDown(ITestResult result) {
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }
-
-
-
 }

@@ -299,7 +299,7 @@ public class CustomersPage extends LoginPage {
     By btn_resetValues = By.xpath("//button[contains(text(), 'Reset Values')]");
     By btn_updateValues = By.xpath("//button[contains(text(), 'Update')]");
     By lbl_margin = By.xpath("//label[text()='Margin ($)']/following-sibling::input");
-    By sel_customer = By.xpath("//tr[contains(@href,'/customers/140060852')]");
+    String sel_customer ="//td[contains(text(),'CUSTOMERCODE')";
     By txt_cusName = By.xpath("(//div[contains(@class,'d-flex align-items-center')])[1]");
     By btn_editCusName = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[1]");
     By tbx_editCusName = By.xpath("//input[contains(@class,'form-control')]");
@@ -311,7 +311,7 @@ public class CustomersPage extends LoginPage {
     By tbx_editState = By.xpath("//label[contains(text(),'State')]/following-sibling::input");
     By tbx_editZipCode = By.xpath("//label[contains(text(),'Zip Code')]/following-sibling::input");
     By btn_saveEditShipAddress = By.xpath("//button[contains(text(),'Save Changes')]");
-    By btn_editNote = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[10]");
+    By btn_editNote = By.xpath("//div[contains(text(),'Notes')]/following-sibling::*[contains(@data-icon,'pen-to-square')]");
     By txtarea_editNote = By.xpath("(//textarea)[1]");
     By btn_saveNote = By.xpath("//button[contains(@class,'mx-2 my-2 btn btn-outline-primary btn-sm')]");
     By txt_assignSalesperson = By.xpath("//div[contains(text(),'Assign Salesperson')]");
@@ -337,21 +337,21 @@ public class CustomersPage extends LoginPage {
     By icon_removeTag = By.xpath("((//*[local-name() = 'svg' and @class='css-19bqh2r']))[1]");
     By txt_lastOrderDate = By.xpath("//div[contains(text(),'Last ordered on')]");
     By customersText = By.xpath("//h2[contains(text(),'Customers')]");
-    By btn_accountVisibility = By.xpath("((//*[local-name() = 'svg' and @data-icon='pen-to-square']))[8]");
+    By btn_accountVisibility = By.xpath("//div[contains(text(),'Visibility')]/following-sibling::div//*[@data-icon='pen-to-square']");
     By dropdown_visibility = By.xpath("(//*[local-name() = 'svg' and @class='css-19bqh2r'])[1]");
     By sel_hiddenOption = By.xpath("//div[contains(text(),'Hidden')]");
     By btn_visibilitySave = By.xpath("//button[contains(@class,'mr-2 my-2 btn btn-outline')]");
     By txt_hidden = By.xpath("//div[contains(@class,'col')and contains(text(),'Hidden')]");
     By tbx_emailOrMobile = By.xpath("//input[@id='react-select-5-input']");
-    By sel_cusOption = By.xpath("//div[contains(@class,' css-yt9ioa-option')and contains(text(),'Acai Bowles')]");
+    String sel_cusOption ="//div[contains(text(),'CUS_NAME')]";
     By btn_loginAsCus = By.xpath("//a[contains(text(),'Login As')]");
     By btn_cusOrderIcon = By.xpath("//div[text()='Order']");
     By btn_cusAddSupplier = By.xpath("//button[contains(text(),'Add Supplier')]");
-    By btn_accountStatus = By.xpath("((//*[local-name() = 'svg' and @data-icon='pen-to-square']))[12]");
+    By btn_accountStatus = By.xpath("//div[contains(text(),'Status')]/following-sibling::div//*[@data-icon='pen-to-square']");
     By dropdown_status = By.xpath("(//*[local-name() = 'svg' and @class='css-19bqh2r'])[1]");
-    By sel_statusOption = By.xpath("//div[contains(@class,'themed_select__option') and contains(text(),'Active')]");
+    By sel_statusOption = By.xpath("//div[contains(@class,'themed_select__option') and contains(text(),'Inactive')]");
     By btn_statusSave = By.xpath("//button[contains(@class,'mr-2 my-2 btn btn-outline')]");
-    By txt_status = By.xpath("//div[contains(text(),'Active')]");
+    By txt_status = By.xpath("//div[contains(text(),'Inactive')]");
     By ls_status = By.xpath("//div[contains(@class,'themed_select__menu-list css-11unzgr')]");
     By txt_error = By.xpath("//*[contains(translate(text(), 'ERROR', 'error'), 'error')]");
     By first_row = By.xpath("//table[@class='table table-hover']//tbody//tr[1]");
@@ -429,6 +429,17 @@ public class CustomersPage extends LoginPage {
     By lbl_itemCodeList = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[2])[1]");
     By btn_catalogPlus = By.xpath("//*[name()='svg' and @data-icon='plus']");
     By btn_catalogMinus = By.xpath("//*[name()='svg' and @data-icon='minus']");
+    By sel_visibleOption = By.xpath("//div[contains(text(),'Visible')]");
+    By txt_visible = By.xpath("//div[contains(text(),'Visible')]");
+    By btn_placeOrder = By.xpath("//button[contains(text(),'Place Order')]");
+    By txt_noCusMatch = By.xpath("//td[contains(text(),'No customers matching')]");
+    By btn_moreFilter = By.xpath("//span[contains(text(),'More Filters')]");
+    By sel_filterStatusDropdown = By.xpath("(//label[contains(text(),'Status')]//following::div[contains(@class,'themed_select__indicator')])[2]");
+    By sel_filterInactive = By.xpath("//div[contains(text(),'Inactive')]");
+    By btn_filterApply = By.xpath("//button[contains(text(),'Apply')]");
+    By sel_statusOptionActive = By.xpath("//div[contains(text(),'Active')]");
+    By txt_activeStatus = By.xpath("//div[contains(text(),'Active')]");
+    By sel_filterActive = By.xpath("//div[contains(text(),'Active')]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -1761,9 +1772,8 @@ public class CustomersPage extends LoginPage {
         }
     }
 
-    public void clickOneCustomer(){
-        distributorUI.waitForVisibility(sel_customer);
-        distributorUI.click(sel_customer);
+    public void clickOneCustomer(String cusCode)throws InterruptedException{
+        distributorUI.click(By.xpath(sel_customer.replace("CUSTOMERCODE", cusCode)));
     }
 
     public boolean isCustomerNameDisplayed(){
@@ -1953,9 +1963,11 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_removeFromOrderGuideHeart);
     }
 
-    private double getTotalOrderValue() {
-        String orderValueText = distributorUI.getText(txt_totalOrderValue);
-        return parseCurrency(orderValueText);
+    public double getTotalOrderValue() {
+        distributorUI.waitForVisibility(txt_totalOrderValue);
+        String orderValueText = distributorUI.getText(txt_totalOrderValue).replace("$", "");
+        double orderValue = Double.valueOf(orderValueText);
+        return orderValue;
     }
 
     public void placeNewOrder() {
@@ -1977,16 +1989,6 @@ public class CustomersPage extends LoginPage {
         }
     }
 
-    public boolean isOrderValueUpdated() {
-        try {
-            double previousOrderValue = getTotalOrderValue();
-            double newOrderValue = getTotalOrderValue();
-            return newOrderValue > previousOrderValue;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
-
     public boolean isReviewPageTextDisplayed(){
         return distributorUI.isDisplayed(txt_reviewPage);
     }
@@ -2000,11 +2002,6 @@ public class CustomersPage extends LoginPage {
     }
 
     public void clickCloseSuccessMsg(){distributorUI.click(btn_closeMsg);}
-
-    private double parseCurrency(String currencyText) {
-        currencyText = currencyText.replaceAll("[^\\d.]", "");
-        return Double.parseDouble(currencyText);
-    }
 
     public void clickAddTagsDropdown(){distributorUI.click(dropdown_selTags);}
 
@@ -2036,10 +2033,11 @@ public class CustomersPage extends LoginPage {
     }
 
     public boolean isLastOrderDateUpdated() {
-        placeNewOrder();
         LocalDate today = LocalDate.now();
         String updatedOrderDate = today.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
         String lastOrderedDate = getLastOrderedDate();
+        System.out.println(lastOrderedDate);
+        System.out.println(updatedOrderDate);
         return lastOrderedDate.equals(updatedOrderDate);
     }
 
@@ -2063,13 +2061,16 @@ public class CustomersPage extends LoginPage {
         distributorUI.navigateToURL("https://app-uat.staging.cutanddry.com/internaltools/loginas");
     }
 
-    public void loginAsCus(String email)throws InterruptedException{
+    public void loginAsCus(String email,String nameCus)throws InterruptedException{
         distributorUI.click(tbx_emailOrMobile);
         distributorUI.sendKeys(tbx_emailOrMobile,email);
         distributorUI.waitForCustom(800);
-        distributorUI.click(sel_cusOption);
-        distributorUI.click(btn_loginAsCus);
+        distributorUI.click(By.xpath(sel_cusOption.replace("CUS_NAME", nameCus)));
+        distributorUI.SwitchToNewTab(btn_loginAsCus);
+        //distributorUI.click(sel_cusOption);
+        //distributorUI.SwitchToNewTab(btn_loginAsCus);
     }
+
 
     public void clickOrderIcon()throws InterruptedException{
         distributorUI.waitForCustom(500);
@@ -2084,6 +2085,23 @@ public class CustomersPage extends LoginPage {
         }
     }
 
+    public void loginToDistributorPortal() throws InterruptedException{
+        distributorUI.navigateToURL("https://supplier-uat.staging.cutanddry.com/log-in");
+    }
+
+    public void selectVisibleOption(){
+        distributorUI.click(sel_visibleOption);
+        distributorUI.click(btn_visibilitySave);
+    }
+
+    public boolean isVisibilityOptionDisplayed(){
+        return distributorUI.isDisplayed(txt_visible);
+    }
+
+    public boolean isOrderGuideVisible(){
+        return distributorUI.isDisplayed(btn_placeOrder);
+    }
+
     public void clickEditStatusIcon(){distributorUI.click(btn_accountStatus);}
     public void clickStatusDropdown(){distributorUI.click(dropdown_status);}
 
@@ -2096,9 +2114,39 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_statusSave);
     }
 
-    public boolean isActiveStatusDisplayed(){
+    public boolean isInactiveStatusDisplayed(){
+        distributorUI.waitForVisibility(txt_status);
         return distributorUI.isDisplayed(txt_status);
     }
+
+    public void refreshCustomersPage(){
+        distributorUI.refreshPage();
+    }
+
+    public boolean isCustomerNotMatchTextDisplayed(){
+        distributorUI.waitForVisibility(txt_noCusMatch);
+        return distributorUI.isDisplayed(txt_noCusMatch);
+    }
+
+    public void clickOnMoreFiltersOption(){distributorUI.click(btn_moreFilter);}
+
+    public void clickOnMoreFilterStatusDropdown(){distributorUI.click(sel_filterStatusDropdown);}
+    public void clickOnMoreFiltersInactiveOption(){distributorUI.click(sel_filterInactive);}
+    public void clickOnApplyFiltersOption(){distributorUI.click(btn_filterApply);}
+
+
+    public void selectActiveStatusOption(){
+        distributorUI.click(sel_statusOptionActive);
+        distributorUI.click(btn_statusSave);
+    }
+
+    public boolean isActiveStatusDisplayed(){
+        distributorUI.waitForVisibility(txt_activeStatus);
+        return distributorUI.isDisplayed(txt_activeStatus);
+    }
+
+    public void clickOnMoreFiltersActiveOption(){distributorUI.click(sel_filterActive);}
+
     public void clickExportPDP(){
         distributorUI.click(btn_exportPDP);
     }
@@ -2309,11 +2357,11 @@ public class CustomersPage extends LoginPage {
         System.out.println("Dropdown opened successfully.");
 
         By btn_accountType = By.xpath(btn_accountTypeOption.replace("OPTION_TEXT", accountType));
-        
+
         // Wait for the option to be visible and click it
         distributorUI.waitForVisibility(btn_accountType);
         distributorUI.click(btn_accountType);
-        
+
         System.out.println("Account type changed to: " + accountType);
     } catch (Exception e) {
         System.err.println("Failed to select account type '" + accountType + "'. Error: " + e.getMessage());

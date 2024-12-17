@@ -940,7 +940,9 @@ public class Customer {
         customersPage.clickPlusQryFifthRowBySix();
     }
 
-    public static void selectOneCustomer(){customersPage.clickOneCustomer();}
+    public static void selectOneCustomer(String cusCode)throws InterruptedException {
+        customersPage.clickOneCustomer(cusCode);}
+
     public static boolean isCustomerNameTxtDisplayed(){
         return customersPage.isCustomerNameDisplayed();
     }
@@ -1036,13 +1038,6 @@ public class Customer {
 
 
     public static void placeAnOrder(){customersPage.placeNewOrder();}
-
-
-    public static boolean isTotalOrderValueUpdated(){
-        return customersPage.isOrderValueUpdated();
-    }
-
-
     public static void clickOrderSubmissionOption(){customersPage.clickSubmitOrder();}
     public static void clickOrderDuplicateConfirmation(){customersPage.clickDuplicateOrder();}
 
@@ -1052,6 +1047,10 @@ public class Customer {
     }
     public static void clickOrderSuccessMessageClose(){customersPage.clickCloseSuccessMsg();}
 
+
+    public static double getLastOrderedValue(){
+        return customersPage.getTotalOrderValue();
+    }
 
     public static void clickOnAddTagDropdownMenu(){customersPage.clickAddTagsDropdown();}
 
@@ -1106,13 +1105,28 @@ public class Customer {
     }
 
 
-    public static void loginAsCustomer(String email)throws InterruptedException{
-        customersPage.loginAsCus(email);
+    public static void loginAsCustomer(String email,String nameCus)throws InterruptedException{
+        customersPage.loginAsCus(email,nameCus);
     }
 
 
     public static void clickCustomerPortalOrderIcon()throws InterruptedException{customersPage.clickOrderIcon();}
 
+    public static void logIntoDP()throws InterruptedException{
+        customersPage.loginToDistributorPortal();
+    }
+
+    public static void selectCusAccountVisibleOption(){
+        customersPage.selectVisibleOption();
+    }
+
+    public static boolean isAccountVisibleOptionDisplayed(){
+        return customersPage.isVisibilityOptionDisplayed();
+    }
+
+    public static boolean isOrderGuideVisibleCustomerPortal(){
+        return customersPage.isOrderGuideVisible();
+    }
 
     public static boolean isVisibleAddSupplierButton(){
         return customersPage.isAddSupplierButtonVisible();
@@ -1130,10 +1144,28 @@ public class Customer {
 
     public static void selectCusAccountStatusOption(){customersPage.selectStatusOption();}
 
-
     public static boolean isAccountStatusTextDisplayed(){
+        return customersPage.isInactiveStatusDisplayed();
+    }
+
+    public static void refreshCustomersPage(){customersPage.refreshCustomersPage();}
+
+    public static boolean isSearchedCustomerNotDisplayedText(){
+        return customersPage.isCustomerNotMatchTextDisplayed();
+    }
+
+    public static void selectCusAccountActiveStatusOption(){customersPage.selectActiveStatusOption();}
+
+    public static void clickCustomersMoreFilter(){customersPage.clickOnMoreFiltersOption();}
+    public static void clickOnMoreFilterStatusDropdownMenu(){customersPage.clickOnMoreFilterStatusDropdown();}
+    public static void clickCustomersInactiveStatusFilter(){customersPage.clickOnMoreFiltersInactiveOption();}
+    public static void clickCustomerFilterApply(){customersPage.clickOnApplyFiltersOption();}
+
+    public static boolean isCusActiveStatusTextDisplayed(){
         return customersPage.isActiveStatusDisplayed();
     }
+
+    public static void clickCustomersActiveStatusFilter(){customersPage.clickOnMoreFiltersActiveOption();}
 
     public static boolean isErrorOccuredAddingPaymentMethod(){
         return customersPage.isErrorOccuredAddingPaymentMethod();

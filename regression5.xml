@@ -37,6 +37,8 @@
             <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsPrintKitchenReceiptTest" />
             <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsPrintOrderConfirmationTest" />
             <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsUpdateStatusTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyLastOrderDateTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTotalOrderValueTest" />
         </classes>
     </test>
 </suite>
