@@ -31,6 +31,7 @@ public class VerifyOrderSettingGlobalHolidayPickupWillCallMailDeliveryTest exten
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");
+        Settings.setCustomerSpecificDeliveryDays(false);
         Settings.clickOnAddHoliday();
         softAssert.assertTrue(Settings.isSetHolidayPopupDisplayed(),"holiday settings popup error");
         Settings.selectGlobal();

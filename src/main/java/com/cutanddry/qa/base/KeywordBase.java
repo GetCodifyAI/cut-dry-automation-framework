@@ -754,4 +754,16 @@ public class KeywordBase {
         }
     }
 
+    /**
+     * Gets the current date in the format "Day MM/dd/yyyy".
+     * Example: "Tuesday 12/17/2024"
+     *
+     * @return formatted current date as a String
+     */
+    public String getCurrentDateFormatted() {
+        SimpleDateFormat formatter = new SimpleDateFormat("EEEE MM/dd/yyyy");
+        Date today = new Date();
+        return formatter.format(today);
+    }
+
 }
