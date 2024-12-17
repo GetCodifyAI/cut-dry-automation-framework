@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheOrderViewPrintOrderConfirmationTest extends TestBase {
+public class VerifyBulkActionsPrintKitchenReceiptTest extends TestBase {
     static User user;
     @BeforeMethod
     public void setUp() {
@@ -20,14 +20,16 @@ public class VerifyTheOrderViewPrintOrderConfirmationTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-538")
-    public void VerifyTheOrderViewPrintOrderConfirmation() throws InterruptedException {
+    @Test(groups = "DOT-TC-796")
+    public void VerifyBulkActionsPrintKitchenReceipt() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToOrders();
         softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"navigation error");
-        Orders.clickOrderPrintOrderConfirmation();
+        Orders.selectFirstOrder();
+        Orders.clickBulkActions();
+        Orders.clickPrintKitchenReceipt();
         softAssert.assertAll();
     }
 
