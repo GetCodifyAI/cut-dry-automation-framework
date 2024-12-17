@@ -65,6 +65,7 @@ public class VerifyCustomerProfileVisibilityTest extends TestBase{
         Customer.loginAsCustomer(email, nameCus);
         Customer.clickCustomerPortalOrderIcon();
         softAssert.assertTrue(Customer.isOrderGuideVisibleCustomerPortal(), "error in visibility");
+        softAssert.assertAll();
     }
 
    @AfterMethod

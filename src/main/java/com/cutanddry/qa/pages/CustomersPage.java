@@ -343,10 +343,10 @@ public class CustomersPage extends LoginPage {
     By btn_visibilitySave = By.xpath("//button[contains(@class,'mr-2 my-2 btn btn-outline')]");
     By txt_hidden = By.xpath("//div[contains(@class,'col')and contains(text(),'Hidden')]");
     By tbx_emailOrMobile = By.xpath("//input[@id='react-select-5-input']");
-    String sel_cusOption ="//div[@id='react-select-5-option-0']";
+    String sel_cusOption ="//div[contains(text(),'CUS_NAME')]";
     By btn_loginAsCus = By.xpath("//a[contains(text(),'Login As')]");
     By btn_cusOrderIcon = By.xpath("//div[text()='Order']");
-    By btn_cusAddSupplier = By.xpath("//td[contains(@class, '_1jmtcxs py-3 d-flex align')]");
+    By btn_cusAddSupplier = By.xpath("//button[contains(text(),'Add Supplier')]");
     By btn_accountStatus = By.xpath("//div[contains(text(),'Status')]/following-sibling::div//*[@data-icon='pen-to-square']");
     By dropdown_status = By.xpath("(//*[local-name() = 'svg' and @class='css-19bqh2r'])[1]");
     By sel_statusOption = By.xpath("//div[contains(@class,'themed_select__option') and contains(text(),'Inactive')]");
@@ -430,16 +430,16 @@ public class CustomersPage extends LoginPage {
     By btn_catalogPlus = By.xpath("//*[name()='svg' and @data-icon='plus']");
     By btn_catalogMinus = By.xpath("//*[name()='svg' and @data-icon='minus']");
     By sel_visibleOption = By.xpath("//div[contains(text(),'Visible')]");
-    By txt_visible = By.xpath("//div[contains(@class,'col')and contains(text(),'Visible')]");
-    By tab_orderGuide = By.xpath("//div[text()='Order Guide']");
+    By txt_visible = By.xpath("//div[contains(text(),'Visible')]");
+    By btn_placeOrder = By.xpath("//button[contains(text(),'Place Order')]");
     By txt_noCusMatch = By.xpath("//td[contains(text(),'No customers matching')]");
-    By btn_moreFilter = By.xpath("//button[contains(@class,'_1soje5b px-3 btn btn')]");
+    By btn_moreFilter = By.xpath("//span[contains(text(),'More Filters')]");
     By sel_filterStatusDropdown = By.xpath("(//label[contains(text(),'Status')]//following::div[contains(@class,'themed_select__indicator')])[2]");
-    By sel_filterInactive = By.xpath("//div[contains(@class,'themed_select__option') and contains(text(),'Inactive')]");
+    By sel_filterInactive = By.xpath("//div[contains(text(),'Inactive')]");
     By btn_filterApply = By.xpath("//button[contains(text(),'Apply')]");
-    By sel_statusOptionActive = By.xpath("//div[contains(@class,'themed_select__option') and contains(text(),'Active')]");
+    By sel_statusOptionActive = By.xpath("//div[contains(text(),'Active')]");
     By txt_activeStatus = By.xpath("//div[contains(text(),'Active')]");
-    By sel_filterActive = By.xpath("//div[contains(@class,'themed_select__option') and contains(text(),'Active')]");
+    By sel_filterActive = By.xpath("//div[contains(text(),'Active')]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -2065,7 +2065,7 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(tbx_emailOrMobile);
         distributorUI.sendKeys(tbx_emailOrMobile,email);
         distributorUI.waitForCustom(800);
-        distributorUI.click(By.xpath(sel_cusOption.replace("NAME_CUS", nameCus)));
+        distributorUI.click(By.xpath(sel_cusOption.replace("CUS_NAME", nameCus)));
         distributorUI.SwitchToNewTab(btn_loginAsCus);
         //distributorUI.click(sel_cusOption);
         //distributorUI.SwitchToNewTab(btn_loginAsCus);
@@ -2099,7 +2099,7 @@ public class CustomersPage extends LoginPage {
     }
 
     public boolean isOrderGuideVisible(){
-        return distributorUI.isDisplayed(tab_orderGuide);
+        return distributorUI.isDisplayed(btn_placeOrder);
     }
 
     public void clickEditStatusIcon(){distributorUI.click(btn_accountStatus);}
