@@ -46,6 +46,27 @@ public class OrdersPage extends LoginPage{
     By lbl_req = By.xpath("//div[contains(text(),'Requested')]");
     By btn_save = By.xpath("//button[contains(text(),'Save')]");
     String lbl_credReq = "//div[contains(text(),'MOREFILTERSTATUS')]";
+    By lbl_salesperson = By.xpath("//label[contains(text(), 'Salesperson')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    By txt_salesperson = By.xpath("//div[contains(text(),'Chamika IFC')]");
+    By first_row_order_details = By.xpath("//tr[2]/td[4]");
+    By txt_order_section = By.xpath("//h2[@class='mb-0 _1vx3fhy' and starts-with(text(), 'Order #')]");
+    By btn_checkin = By.xpath("//button[@class = 'mr-3 btn btn-outline-primary' and text() = 'Check-In Order']");
+    By txt_checkin_order_section = By.xpath("//h2[@class='mb-0 _1vx3fhy' and starts-with(text(), 'Check-In Order #')]");
+    By btn_threeDot = By.xpath("(//button[@id='dropdown-basic'])[1]");
+    By txt_threeDotPrintOrderConfirmation = By.xpath("//span[contains(text(), 'Print Order Confirmation')]");
+    By txt_threeDotPrintKitchenReceipt = By.xpath("//span[contains(text(), 'Print Kitchen Receipt')]");
+    By txt_updateStatus = By.xpath("//div[@class = 'mont modal-title h4' and text() = 'Update Status']");
+    By bulkActionStatusDropDown = By.xpath("//label[contains(text(), 'Status')]/following-sibling::div//div[contains(@class, 'themed_select__value-container css-1hwfws3')]");
+    By bulkActionsStatusOption = By.xpath("//div[contains(@class, 'themed_select__option css-yt9ioa-option') and contains(text(),'Invoiced')]");
+    By bulkActionsUpdateStatus = By.xpath("//a[contains(text(), 'Update Status')]");
+    By areYouSurePopUp = By.xpath("//h2[@class = 'swal2-title' and text() = 'Are you sure?']");
+    By btn_yes = By.xpath("//button[contains(@class, 'swal2-confirm _1fmw5qi order-2 swal2-styled') and text() = 'Yes']");
+    By orderStatusUpdatedPopUp = By.xpath("//h2[contains(text(),'Order Status Updated!')]");
+    By btn_ok = By.xpath("//button[contains(@class, 'swal2-confirm swal2-styled') and text() = 'OK']");
+    String lbl_creditRequested = "//tr//td[10]//div[contains(text(),'STATUS')]";
+
+
+
 
     public boolean isOrdersTextDisplayed(){
         try {
@@ -146,12 +167,13 @@ public class OrdersPage extends LoginPage{
     public void selectFirstOrder(){
         distributorUI.click(lbl_firstOrderTickBox);
     }
-    public void clickPrintKitchenReceipt(){
+    public void clickBulkActions(){
         distributorUI.click(btn_bulkActions);
+    }
+    public void clickPrintKitchenReceipt(){
         distributorUI.click(txt_printConfirm);
     }
     public void clickPrintOrderConfirmation(){
-        distributorUI.click(btn_bulkActions);
         distributorUI.click(txt_printKitchenReceipt);
     }
     public void typeOnSearch(String code) throws InterruptedException {
@@ -234,6 +256,7 @@ public class OrdersPage extends LoginPage{
         return distributorUI.validateFilteredElements(By.xpath(lbl_credReq.replace("MOREFILTERSTATUS", f)),OrdersStatus);
     }
 
+
     public String getCountStatus() {
         String s = distributorUI.getText(txt_status);
         return String.valueOf(distributorUI.countElements(By.xpath(status.replace("STATUS", s))));
@@ -253,4 +276,82 @@ public class OrdersPage extends LoginPage{
         distributorUI.click(btn_save);
         distributorUI.waitForCustom(1000);
     }
+    public void selectSalespersonStatus() throws InterruptedException {
+        distributorUI.click(lbl_salesperson);
+        distributorUI.hoverOverElement(txt_salesperson);
+        distributorUI.waitForVisibility(txt_salesperson);
+        distributorUI.click(txt_salesperson);
+        distributorUI.waitForCustom(1000);
+    }
+    public boolean checkFiltersCorrectlyDisplayed(String status) {
+
+        return distributorUI.isDisplayed(By.xpath(lbl_creditRequested.replace("STATUS",status)));
+    }
+    public void clickOrder(){
+        distributorUI.click(first_row_order_details);
+    }
+    public void clickCheckIn(){
+        distributorUI.click(btn_checkin);
+    }
+    public boolean isCheckInOrderSectionDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_checkin_order_section);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_checkin_order_section);
+    }
+    public void clickOrderPrintKitchenReceipt(){
+        distributorUI.click(btn_threeDot);
+        distributorUI.click(txt_threeDotPrintKitchenReceipt);
+    }
+    public void clickOrderPrintOrderConfirmation(){
+        distributorUI.click(btn_threeDot);
+        distributorUI.click(txt_threeDotPrintOrderConfirmation);
+    }
+    public void clickUpdateStatus(){
+        distributorUI.click(bulkActionsUpdateStatus);
+    }
+    public boolean isUpdateStatusDropDownDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_updateStatus);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_updateStatus);
+    }
+    public void clickStatusDropDown(){
+        distributorUI.click(bulkActionStatusDropDown);
+    }
+    public void clickStatusOption()throws InterruptedException{
+        distributorUI.waitForVisibility(bulkActionsStatusOption);
+        distributorUI.click(bulkActionsStatusOption);
+        distributorUI.waitForCustom(1000);
+        distributorUI.click(btn_save);
+    }
+    public boolean isAreYouSurePopUpDisplayed(){
+        try {
+            distributorUI.waitForVisibility(areYouSurePopUp);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(areYouSurePopUp);
+    }
+    public void clickYes(){
+        distributorUI.click(btn_yes);
+    }
+    public boolean isOrderStatusUpdatedPopUpDisplayed(){
+        try {
+            distributorUI.waitForVisibility(orderStatusUpdatedPopUp);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(orderStatusUpdatedPopUp);
+    }
+    public void clickOkButton(){
+        distributorUI.click(btn_ok);
+    }
+
+
+
 }

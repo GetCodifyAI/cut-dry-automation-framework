@@ -33,6 +33,10 @@
             <class name="com.cutanddry.qa.tests.e2e.PlaceCustomerDeliveryOrderViaOrderGuideCatalogPDPTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceCustomerPickUpOrderViaOrderGuideCatalogPDPTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceCustomerMailDeliveryOrderViaOrderGuideCatalogPDPTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyMoreFiltersSalesPersonAndCreditRequestTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsPrintKitchenReceiptTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsPrintOrderConfirmationTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsUpdateStatusTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyLastOrderDateTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyTotalOrderValueTest" />
         </classes>

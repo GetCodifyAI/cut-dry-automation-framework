@@ -60,4 +60,30 @@ public class CreditRequests {
     public static boolean checkIfIssueDetailsModalDisplayed(){
         return creditRequestsPage.checkIfIssueDetailsModalDisplayed();
     }
+    //-----------
+    public static void clickReportIssue(){
+        creditRequestsPage.clickReportIssue();
+    }
+    public static boolean isReportIssueSectionDisplayed(){
+        return creditRequestsPage.isReportIssueSectionDisplayed();
+    }
+    public static void clickOneItem(){
+        creditRequestsPage.clickOneItem();
+    }
+    public static boolean isIssuePopUpDisplayed(){
+        return creditRequestsPage.isIssuePopUpDisplayed();
+    }
+    public static void clickIssueOption() throws InterruptedException{
+        creditRequestsPage.clickIssueOption();
+    }
+    public static void clickContinue(){
+        creditRequestsPage.clickContinue();
+    }
+    public static boolean isCreditRequestedDisplayed(){
+        return creditRequestsPage.isCreditRequestedDisplayed();
+    }
+    public static void clickSaveCheckIn(){
+        creditRequestsPage.clickSaveCheckIn();
+    }
+
 }

@@ -21,6 +21,15 @@ public class CreditRequestsPage extends TestBase {
     By btn_credit_view = By.xpath("//a[@role='tab' and @data-rb-event-key='Credit Request']");
     By header_credit_view_table = By.xpath("//tr[@class='_jg41os' and th[text()='Item Code'] and th[text()='Unit'] and th[text()='Price'] and th[text()='Qty.'] and th[text()='Issue'] and th[text()='Total'] and th[text()='Credit']]");
     By modal_issue_details = By.xpath("//div[@class='modal-header']//div[contains(@class, 'modal-title') and text()='Issue Details']");
+    By btn_report_issue = By.xpath("//button[@class='mr-3 btn btn-outline-danger']");
+    By txt_report_issue = By.xpath("//h2[@class='mb-0 _1vx3fhy' and text()='Which items had an issue?']");
+    By btn_first_row = By.xpath("//tr[@class='_du1frc']");
+    By txt_tell_us = By.xpath("//div[@class='mont modal-title h4' and text()='Tell us more...']");
+    By btn_issue_option = By.xpath("//div[@class='themed_select__value-container css-1hwfws3']");
+    By btn_first_option = By.xpath("//div[@id='react-select-2-option-1']");
+    By btn_continue = By.xpath("//button[@class='btn btn-primary btn-block']");
+    By txt_credit_requested = By.xpath("//td[text()='Credit Requested']");
+    By btn_save_checkin = By.xpath("//button[@class = 'btn btn-primary' and text() = 'Save Check-In']");
 
 
     public void clickOnRequestDate() {
@@ -140,4 +149,47 @@ public class CreditRequestsPage extends TestBase {
             return false; // Modal Card is not displayed within the timeout
         }
     }
+
+    public void clickReportIssue(){
+        distributorUI.click(btn_report_issue);
+    }
+    public boolean isReportIssueSectionDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_report_issue);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_report_issue);
+    }
+    public void clickOneItem(){
+        distributorUI.click(btn_first_row);
+    }
+    public boolean isIssuePopUpDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_tell_us);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_tell_us);
+    }
+    public void clickIssueOption() throws InterruptedException{
+        distributorUI.click(btn_issue_option);
+        distributorUI.waitForCustom(2000);
+        distributorUI.click(btn_first_option);
+    }
+    public void clickContinue(){
+        distributorUI.click(btn_continue);
+    }
+    public boolean isCreditRequestedDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_credit_requested);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_credit_requested);
+    }
+    public void clickSaveCheckIn(){
+        distributorUI.click(btn_save_checkin);
+    }
+
 }
