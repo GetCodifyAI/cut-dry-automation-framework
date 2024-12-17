@@ -32,9 +32,9 @@ public class VerifyTheOrderViewPrintKitchenReceiptTest extends TestBase {
         softAssert.assertAll();
     }
 
-//    @AfterMethod
-//    public void tearDown(ITestResult result) {
-//        takeScreenshotOnFailure(result);
-//        closeAllBrowsers();
-//    }
+    @AfterMethod
+    public void tearDown(ITestResult result) {
+        takeScreenshotOnFailure(result);
+        closeAllBrowsers();
+    }
 }
