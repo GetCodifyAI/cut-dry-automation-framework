@@ -15,7 +15,9 @@ import org.testng.asserts.SoftAssert;
 public class EditProductQtyFrmCatalogTest extends TestBase {
     static User user;
     static String customerId = "16579";
-    static String itemName = "Artichoke";
+    //    static String itemName = "Artichoke";
+    static String itemName, searchItemCode;
+    static double itemPrice;
 
     @BeforeMethod
     public void setUp(){
@@ -29,16 +31,25 @@ public class EditProductQtyFrmCatalogTest extends TestBase {
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
+
+        itemName = Customer.getItemNameFirstRow();
+        searchItemCode = Customer.getItemCodeFirstRow();
+        itemPrice = Customer.getActiveItemPriceFirstRow();
         Customer.goToCatalog();
-        Customer.searchItemOnCatalog(itemName);
+
+//        Customer.searchItemOnCatalog(itemName);
+//        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
+        Customer.searchItemOnCatalog(searchItemCode);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
         Customer.addItemToCartCatalog(itemName);
         Customer.increaseQtyUpToThreeCatalogSearch();
-        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),Customer.getItemPriceCatalogSearch()*3, "price error-after increase");
+//        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),Customer.getItemPriceCatalogSearch()*3, "price error-after increase");
+        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice*3,"The item has not been selected.");
         Customer.decreaseQtyByThreeCatalogSearch();
         softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),0.0, "price error-after decrease");
         softAssert.assertAll();

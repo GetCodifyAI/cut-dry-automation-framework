@@ -47,7 +47,7 @@ public class Tracker {
     public static void clickEditStatus(){trackerPage.clickEditStatus();}
     public static void clickEditStatusOption(){trackerPage.clickEditStatusOption();}
     public static void clickCloseEditTicket(){trackerPage.clickCloseEditTicket();}
-    public static void clickFirstRow(){trackerPage.clickFirstRow();}
+    public static void clickFirstRow(String title){trackerPage.clickFirstRow(title);}
     public static boolean isEditTicketDisplayed(String status){
         return trackerPage.isEditTicketDisplayed(status);
     }

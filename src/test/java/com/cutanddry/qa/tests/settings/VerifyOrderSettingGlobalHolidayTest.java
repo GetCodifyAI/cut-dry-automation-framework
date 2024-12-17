@@ -31,7 +31,7 @@ public class VerifyOrderSettingGlobalHolidayTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");
-        Settings.uncheckDeliveryDays();
+        Settings.setCustomerSpecificDeliveryDays(false); // Settings.uncheckDeliveryDays();
         Settings.clickOnAddHoliday();
         softAssert.assertTrue(Settings.isSetHolidayPopupDisplayed(),"holiday settings popup error");
         Settings.selectGlobal();
