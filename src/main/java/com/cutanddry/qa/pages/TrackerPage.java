@@ -26,7 +26,7 @@ public class TrackerPage extends LoginPage{
     By firstRowOfTask = By.xpath("(//tr[@class='_7ogv5c _1g2ivyf _du1frc'])[1]");
     By btn_close = By.xpath("//span[text()='×']");
     String editStatus = "//tr[2]//td//span[text()='STATUS']";
-    String editPopUp = "//span[text()='Test Ticket 10']";
+    String editPopUp = "//span[text()='TITLE']";
 
 
     public boolean isOnboardingDocsDisplayed(){
@@ -111,6 +111,7 @@ public class TrackerPage extends LoginPage{
         distributorUI.waitForCustom(2000);
     }
     public boolean isTaskTitleDisplayed(String title){
+        distributorUI.waitForVisibility(By.xpath(taskTitle.replace("TITLE",title)));
         return distributorUI.isDisplayed(By.xpath(taskTitle.replace("TITLE",title)));
     }
     public void clickEditStatus(){
@@ -122,13 +123,14 @@ public class TrackerPage extends LoginPage{
     public void clickCloseEditTicket(){
         distributorUI.click(btn_close);
     }
-    public void clickFirstRow(){
-        distributorUI.click(firstRowOfTask);
+    public void clickFirstRow(String title){
+        distributorUI.click(By.xpath(taskTitle.replace("TITLE",title)));
     }
     public boolean isEditTicketDisplayed(String status){
         return distributorUI.isDisplayed(By.xpath(editStatus.replace("STATUS",status)));
     }
     public boolean isEditTicketPopUpDisplayed(String title){
+        distributorUI.waitForVisibility(By.xpath(editPopUp.replace("TITLE",title)));
         return distributorUI.isDisplayed(By.xpath(editPopUp.replace("TITLE",title)));
     }
 }

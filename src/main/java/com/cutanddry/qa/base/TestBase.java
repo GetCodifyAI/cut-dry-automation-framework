@@ -89,4 +89,9 @@ public class TestBase {
         }
     }
 
+    public static int generateDynamicValue() {
+        // Generate a random number between 1 and 100 (or any range you want)
+        return (int) (Math.random() * 1000) + 1;
+    }
+
 }

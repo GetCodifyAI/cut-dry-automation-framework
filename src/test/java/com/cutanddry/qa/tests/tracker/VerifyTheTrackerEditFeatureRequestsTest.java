@@ -14,7 +14,8 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheTrackerEditFeatureRequestsTest extends TestBase {
     static User user;
-    static String ticketTitle = "Test Ticket 10";
+//    static String ticketTitle = "Test Ticket 10";
+    static String ticketTitle = "Test Ticket " + generateDynamicValue();
     static String editTicket ="To-do";
 
     @BeforeMethod
@@ -39,7 +40,7 @@ public class VerifyTheTrackerEditFeatureRequestsTest extends TestBase {
         Tracker.selectCategory();
         Tracker.clickCreateTicket();
         softAssert.assertTrue(Tracker.isTaskTitleDisplayed(ticketTitle),"feature request ticket not create");
-        Tracker.clickFirstRow();
+        Tracker.clickFirstRow(ticketTitle);
         softAssert.assertTrue(Tracker.isEditTicketPopUpDisplayed(ticketTitle),"edit ticket pop up not display");
         Tracker.clickEditStatus();
         Tracker.clickEditStatusOption();
