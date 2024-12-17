@@ -79,6 +79,9 @@ public class Orders {
     public static void selectFirstOrder(){
         ordersPage.selectFirstOrder();
     }
+    public static void clickBulkActions(){
+        ordersPage.clickBulkActions();
+    }
     public static void clickPrintKitchenReceipt(){
         ordersPage.clickPrintKitchenReceipt();
     }
@@ -134,4 +137,49 @@ public class Orders {
     public static void selectCreditReqStatus() throws InterruptedException {
         ordersPage.selectCreditReqStatus();
     }
+    public static void selectSalespersonStatus() throws InterruptedException{
+        ordersPage.selectSalespersonStatus();
+    }
+    public static void clickOrder(){ordersPage.clickOrder();}
+    public static void clickCheckIn(){
+        ordersPage.clickCheckIn();
+    }
+    public static boolean isCheckInOrderSectionDisplayed(){
+        return ordersPage.isCheckInOrderSectionDisplayed();
+    }
+    public static void clickOrderPrintKitchenReceipt(){
+        ordersPage.clickOrderPrintKitchenReceipt();
+    }
+    public static void clickOrderPrintOrderConfirmation(){
+        ordersPage.clickOrderPrintOrderConfirmation();
+    }
+    public static void clickUpdateStatus(){
+        ordersPage.clickUpdateStatus();
+    }
+    public static boolean isUpdateStatusDropDownDisplayed(){
+        return ordersPage.isUpdateStatusDropDownDisplayed();
+    }
+    public static void clickStatusDropDown(){
+        ordersPage.clickStatusDropDown();
+    }
+    public static void clickStatusOption()throws InterruptedException{
+        ordersPage.clickStatusOption();
+    }
+    public static boolean isAreYouSurePopUpDisplayed(){
+        return ordersPage.isAreYouSurePopUpDisplayed();
+    }
+    public static void clickYes(){
+        ordersPage.clickYes();
+    }
+    public static boolean isOrderStatusUpdatedPopUpDisplayed(){
+        return ordersPage.isOrderStatusUpdatedPopUpDisplayed();
+    }
+    public static void clickOkUpdate(){
+        ordersPage.clickOkButton();
+    }
+    public static boolean checkFiltersCorrectlyDisplayed(String status){
+        return ordersPage.checkFiltersCorrectlyDisplayed(status);
+    }
+
+
 }
