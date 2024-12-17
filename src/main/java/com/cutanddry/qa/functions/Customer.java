@@ -1378,5 +1378,33 @@ public class Customer {
     public static void clickOnDefaultCheckoutButton() throws InterruptedException {
         customersPage.clickOnCheckoutButton();
     }
+
+    public static void editAutoPay(){
+        customersPage.editAutoPay();
+    }
+
+    public static void clickOnAutoPayScheduleDropdown(){
+        customersPage.clickOnDropdownSchedule();
+    }
+
+    public static void selectDropdownOption(String optionText){
+        customersPage.selectDropdownOption(optionText);
+    }
+
+    public static void clickOnUpdate(){
+        customersPage.clickOnUpdate();
+    }
+
+    public static boolean isAutoPayUpdated(String expectedText){
+        return customersPage.isAutoPayUpdated(expectedText);
+    }
+
+    public static void clickOnCancelAutopay(){
+        customersPage.clickOnCancelAutopay();
+    }
+
+    public static boolean isEnableVisible(){
+        return customersPage.isEnableVisible();
+    }
 }
 
