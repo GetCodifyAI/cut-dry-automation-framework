@@ -1059,7 +1059,8 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(txt_caseDropdownItem);
     }
     public void clickOnOrderGuideInProf(){
-        distributorUI.waitForVisibility(btn_orderGuide);
+//        distributorUI.waitForVisibility(btn_orderGuide);
+        distributorUI.waitForClickability(btn_orderGuide);
         distributorUI.click(btn_orderGuide);
     }
     public String getUnitType(){
@@ -1085,6 +1086,7 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForCustom(2000);
     }
     public boolean isBroadcastTextDisplayed(){
+        distributorUI.waitForVisibility(txt_customerSpecific);
         return distributorUI.isDisplayed(txt_customerSpecific);
     }
     public boolean isProfileTextDisplayed(){
@@ -1093,11 +1095,16 @@ public class CustomersPage extends LoginPage {
     public void clickOnEditMessage(){
         distributorUI.waitForVisibility(btn_editMessage);
         distributorUI.click(btn_editMessage);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void clickOnClearMessage() throws InterruptedException {
         distributorUI.waitForVisibility(btn_clearMessage);
         distributorUI.click(btn_clearMessage);
-        distributorUI.waitForCustom(1000);
+        distributorUI.waitForCustom(3000);
     }
     public void clickOnAddItems() {
         distributorUI.waitForVisibility(btn_addItems);
@@ -1106,7 +1113,7 @@ public class CustomersPage extends LoginPage {
     public void clickOnSaveMessage() throws InterruptedException {
         distributorUI.waitForVisibility(btn_saveMessage);
         distributorUI.click(btn_saveMessage);
-        distributorUI.waitForCustom(1000);
+        distributorUI.waitForCustom(3000);
     }
     public void typeBroadcastMessage(String msg) {
         distributorUI.click(txtArea);
