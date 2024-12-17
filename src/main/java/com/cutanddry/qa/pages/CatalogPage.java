@@ -113,6 +113,11 @@ public class CatalogPage extends LoginPage{
     String proprietaryItemStatus = "(//div[contains(text(),'PROPRIETARYSTATUS') and contains(@class,'themed_select__option')])[last()]";
     By lbl_itemType = By.xpath("//label[contains(text(), 'Item Type')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     By lbl_proprietaryItem = By.xpath("(//div[contains(text(), 'Proprietary Items')])[last()]");
+    By categoryDropDown = By.xpath("//label[contains(text(), 'Category')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
+    String categoryOption = "(//div[contains(text(),'CATEGORY') and contains(@class,'themed_select__option')])[last()]";
+    By lbl_meat = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Meat']");
+
+
 
 
 
@@ -540,6 +545,16 @@ public class CatalogPage extends LoginPage{
         distributorUI.waitForCustom(1000);
         distributorUI.click(btn_apply);
         distributorUI.waitForCustom(1000);
+    }
+    public void clickOnCategory(String category){
+        distributorUI.click(categoryDropDown);
+        distributorUI.waitForVisibility(By.xpath(categoryOption.replace("CATEGORY",category)));
+        distributorUI.click(By.xpath(categoryOption.replace("CATEGORY",category)));
+    }
+    public void selectCategoryMeat() throws InterruptedException {
+        distributorUI.click(lbl_categoriesDropdown);
+        distributorUI.click(lbl_meat);
+        distributorUI.waitForCustom(2000);
     }
 }
 

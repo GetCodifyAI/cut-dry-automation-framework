@@ -42,6 +42,7 @@
             <class name="com.cutanddry.qa.tests.orders.ValidateOrderStatusChangesTest" />
             <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheProductStatusInCatalogDataTest" />
             <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheProprietaryItemInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheCategorySelectionInCatalogDataTest" />
         </classes>
     </test>
 </suite>

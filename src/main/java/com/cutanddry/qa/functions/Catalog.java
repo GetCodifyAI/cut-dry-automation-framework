@@ -349,5 +349,11 @@ public class Catalog {
     public static void selectProprietaryItem() throws InterruptedException {
         catalogPage.selectProprietaryItem();
     }
+    public static void clickOnCategory(String category){
+        catalogPage.clickOnCategory(category);
+    }
+    public static void selectCategory() throws InterruptedException {
+        catalogPage.selectCategoryMeat();
+    }
 
 }
