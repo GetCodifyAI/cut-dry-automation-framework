@@ -35,6 +35,7 @@ public class VerifyHardOrderMinimumWarningTest extends TestBase {
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation error");
         Settings.enterOrderMinimum(orderMin);
+        Settings.setOrderMinimums(false);
         Settings.clickOnSaveChanges();
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
@@ -42,7 +43,7 @@ public class VerifyHardOrderMinimumWarningTest extends TestBase {
         Customer.clickOnOrderGuide(customerId);
         itemName = Customer.getItemNameFirstRow();
         Customer.increaseFirstRowQtyByOne();
-        Customer.checkoutItems();
+        Customer.clickOnDefaultCheckoutButton();
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
         softAssert.assertTrue(Customer.isMinOrderBannerDisplayed(),"banner not appearing error");
         Customer.submitOrder();

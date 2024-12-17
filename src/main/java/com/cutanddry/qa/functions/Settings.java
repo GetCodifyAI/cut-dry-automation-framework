@@ -205,4 +205,8 @@ public class Settings {
     public static void selectOnOrderMinimums() {
         settingsPage.selectOnOrderMinimums();
     }
+
+    public static void setOrderMinimums(boolean selection) {
+        settingsPage.setOrderMinimums(selection);
+    }
 }
