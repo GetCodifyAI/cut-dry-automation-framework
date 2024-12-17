@@ -180,6 +180,17 @@ public class Orders {
     public static boolean checkFiltersCorrectlyDisplayed(String status){
         return ordersPage.checkFiltersCorrectlyDisplayed(status);
     }
+    public static boolean isOrderSectionDisplayed(){
+        return ordersPage.isOrderSectionDisplayed();
+    }
+    public static void clickOrderStatus(){ordersPage.clickOrderStatus();}
+    public static void selectOrderStatusOption(String status){
+        ordersPage.selectOrderStatusOption(status);
+    }
+    public static boolean isOrderStatusUpdatedDisplayed(String status){
+        return ordersPage.isOrderStatusUpdatedDisplayed(status);
+    }
+
 
 
 }
