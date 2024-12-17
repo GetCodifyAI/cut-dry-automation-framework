@@ -2414,7 +2414,7 @@ public class CustomersPage extends LoginPage {
         return Double.valueOf(distributorUI.getText(btn_checkOutPDP).replace("$",""));
     }
 
-}
+
 
     public boolean isEnableVisible(){
         return distributorUI.isDisplayed(btn_enable);
@@ -2454,4 +2454,5 @@ public class CustomersPage extends LoginPage {
     public void clickOnDropdownSchedule(){
         distributorUI.click(dropdown_schedule);
     }
+
 }

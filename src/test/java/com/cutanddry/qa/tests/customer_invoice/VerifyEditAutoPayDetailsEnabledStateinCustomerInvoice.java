@@ -51,8 +51,8 @@ public class VerifyEditAutoPayDetailsEnabledStateinCustomerInvoice extends TestB
             System.out.println("Screenshot captured for failed test case.");
         }
 
-        // Close the browser
-        closeAllBrowsers();
-        System.out.println("Browser closed successfully.");
-    }
+         // Close the browser
+         closeAllBrowsers();
+         System.out.println("Browser closed successfully.");
+     }
 }
