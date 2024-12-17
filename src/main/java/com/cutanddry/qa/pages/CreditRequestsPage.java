@@ -34,6 +34,8 @@ public class CreditRequestsPage extends TestBase {
     By btn_continue = By.xpath("//button[@class='btn btn-primary btn-block']");
     By txt_credit_requested = By.xpath("//td[text()='Credit Requested']");
     By btn_save_checkin = By.xpath("//button[@class = 'btn btn-primary' and text() = 'Save Check-In']");
+    String option_timeRange = "//div[contains(@class, 'themed_select__menu')]//div[contains(text(), 'TIME_RANGE')]";
+    String searchedElementXPath = "//td[normalize-space(text())='ORDER_ID']";
 
     public void clickOnRequestDate() {
         // Check if it's in an iFrame
@@ -42,13 +44,10 @@ public class CreditRequestsPage extends TestBase {
     }
 
     public void selectTimeRange(String timeRange) {
-        // Dynamic XPath using the provided timeRange
-        By option_dynamic = By
-                .xpath("//div[contains(@class, 'themed_select__menu')]//div[contains(text(), '" + timeRange + "')]");
+        // Replace placeholder 'TIME_RANGE' with the actual value
+        By option_dynamic = By.xpath(option_timeRange.replace("TIME_RANGE", timeRange));
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Wait max 10 seconds until the option
-                                                                                // is visible
-        wait.until(ExpectedConditions.visibilityOfElementLocated(option_dynamic));
+        distributorUI.waitForElementEnabledState(option_dynamic, true); // Wait for the element to be enabled
         distributorUI.click(option_dynamic); // Click on the desired option
     }
 
@@ -63,10 +62,8 @@ public class CreditRequestsPage extends TestBase {
     }
 
     public boolean checkIfSearchedElementVisible(String orderID) {
-        // Corrected XPath for dynamic value
-        By visibleObject = By.xpath("//td[normalize-space(text())='" + orderID + "']");
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        By visibleObject = By.xpath(searchedElementXPath.replace("ORDER_ID", orderID));
+        distributorUI.waitForVisibility(visibleObject);
         try {
             // Wait for the element to be visible
             wait.until(ExpectedConditions.visibilityOfElementLocated(visibleObject));
@@ -77,8 +74,7 @@ public class CreditRequestsPage extends TestBase {
     }
 
     public void clickOnFirstItemOfCreditRequests() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(first_row_credit_requests));
+        distributorUI.waitForVisibility(first_row_credit_requests);
         distributorUI.click(first_row_credit_requests);
     }
 
@@ -87,25 +83,11 @@ public class CreditRequestsPage extends TestBase {
     }
 
     public boolean checkIfItemSectionVisible() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        try {
-            // Wait for the element to be visible
-            wait.until(ExpectedConditions.visibilityOfElementLocated(header_items_table));
-        } catch (Exception e) {
-            return false; // Element is not visible within the timeout
-        }
-        return driver.findElement(header_items_table).isDisplayed(); // Verify visibility
+        return distributorUI.isDisplayed(header_items_table);
     }
 
     public boolean isErrorTextNotDisplayed() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
-        try {
-            // Wait to see if the error text becomes visible
-            wait.until(ExpectedConditions.presenceOfElementLocated(txt_error));
-            return false; // "error" text is found
-        } catch (TimeoutException e) {
-            return true; // No "error" text is found within the timeout
-        }
+        return distributorUI.isDisplayed(txt_error);
     }
 
     public void clickOnTimeline() {
@@ -113,14 +95,7 @@ public class CreditRequestsPage extends TestBase {
     }
 
     public boolean checkIfTimelineSectionVisible() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        try {
-            // Wait for the header row to be visible
-            wait.until(ExpectedConditions.visibilityOfElementLocated(header_timeline_table));
-            return true; // Header row is displayed
-        } catch (TimeoutException e) {
-            return false; // Header row is not visible within the timeout
-        }
+        return distributorUI.isDisplayed(header_timeline_table);
     }
 
     public void clickOnCreditView() {
@@ -128,31 +103,16 @@ public class CreditRequestsPage extends TestBase {
     }
 
     public boolean checkIfCreditViewSectionVisible() {
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        try {
-            // Wait for the header row to be visible
-            wait.until(ExpectedConditions.visibilityOfElementLocated(header_credit_view_table));
-            return true; // Header row is visible
-        } catch (TimeoutException e) {
-            return false; // Header row is not visible within the timeout
-        }
+            return distributorUI.isDisplayed(header_credit_view_table);
     }
 
     public void clickOnFirstItemOfCreditView() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(first_row_credit_view));
+        distributorUI.waitForVisibility(first_row_credit_view);
         distributorUI.click(first_row_credit_view);
     }
 
     public boolean checkIfIssueDetailsModalDisplayed() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(modal_issue_details));
-            return true;
-        } catch (TimeoutException e) {
-            return false; // Modal Card is not displayed within the timeout
-        }
+        return distributorUI.isDisplayed(modal_issue_details);
     }
 
     public void clickReportIssue() {
