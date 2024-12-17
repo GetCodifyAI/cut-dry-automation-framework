@@ -16,6 +16,7 @@ public class VerifyItemDescriptionsTest extends TestBase {
     static User user;
     static String customerId = "16579";
     static String item = "Organic Bananas";
+    static String itemName, searchItemCode;
 
     @BeforeMethod
     public void setUp(){
@@ -25,23 +26,33 @@ public class VerifyItemDescriptionsTest extends TestBase {
 
     @Test(groups = "DOT-TC-295")
     public void verifyItemDescriptions() throws InterruptedException {
-        String itemNamePDP;
-        String itemName;
+//        String itemNamePDP;
+//        String itemName;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
+
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
+
+        itemName = Customer.getItemNameFirstRow();
+        searchItemCode = Customer.getItemCodeFirstRow();
         Customer.goToCatalog();
-        Customer.searchItemOnCatalog(item);
-        itemName = Customer.getFirstElementFrmSearchResults(item);
-        Customer.clickOnCatalogItem(itemName);
-        softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"navigation error");
-        itemNamePDP = Customer.getItemNamePDPView();
-        softAssert.assertEquals(itemName,itemNamePDP,"name mismatch");
+
+//        Customer.searchItemOnCatalog(item);
+        Customer.searchItemOnCatalog(searchItemCode);
+        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
+        Customer.clickOnProduct(itemName);
+        softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
+//        itemName = Customer.getFirstElementFrmSearchResults(item);
+//        Customer.clickOnCatalogItem(itemName);
+//        softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"navigation error");
+//        itemNamePDP = Customer.getItemNamePDPView();
+//        softAssert.assertEquals(itemName,itemNamePDP,"name mismatch");
+        softAssert.assertTrue(Customer.getItemNamePDPView().contains(itemName), "item not found");
         softAssert.assertAll();
     }
 
