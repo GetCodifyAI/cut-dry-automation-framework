@@ -25,7 +25,7 @@ public class ValidateTheProprietaryItemInCatalogDataTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-742")
-    public void ValidateTheProductStatusInCatalogData() throws InterruptedException {
+    public void ValidateTheProprietaryItemInCatalogData() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.navigateToCatalog();
