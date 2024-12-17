@@ -291,6 +291,9 @@ public class Catalog {
     public static void selectStatusActive() throws InterruptedException {
         catalogPage.selectStatusActive();
     }
+    public static void selectStatusInactive() throws InterruptedException {
+        catalogPage.selectStatusInactive();
+    }
     public static boolean areNotActiveStatusesDisplayed(){
         return catalogPage.areNotActiveStatusesDisplayed();
     }
@@ -339,4 +342,5 @@ public class Catalog {
     public static void selectExportPromoFiles(){
         catalogPage.selectExportPromoFiles();
     }
+    public static void clickBack(){catalogPage.clickBack();}
 }

@@ -88,6 +88,7 @@ public class CatalogPage extends LoginPage{
     By lbl_nonSnack = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[4][not(normalize-space()='Snack')]");
     By lbl_statusDropdown = By.xpath("//div[@class='themed_select__single-value css-1uccc91-singleValue' and text()='All']");
     By lbl_active = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Active']");
+    By lbl_inActive = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Inactive']");
     By lbl_nonactive = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[7][not(normalize-space()='Active')]");
     By btn_moreFilters = By.xpath("//button[contains(., 'More Filters')]");
     By txt_filterCatalog= By.xpath("//div[contains(text(),'Filter Catalog')]");
@@ -107,6 +108,7 @@ public class CatalogPage extends LoginPage{
     By lbl_exportCatalog = By.xpath("//a[text()='Export catalog (csv)']");
     By lbl_exportPromoFile = By.xpath("//a[text()='Export Promotion File (csv)']");
     By showSubsRadioBtn = By.xpath("//input[@id='show-subs']");
+    By btn_back = By.xpath("//button[text()='Back']");
 
 
     public boolean isCatalogTextDisplayed() {
@@ -450,8 +452,14 @@ public class CatalogPage extends LoginPage{
         return  distributorUI.isDisplayed(lbl_nonSnack);
     }
     public void selectStatusActive() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
         distributorUI.click(lbl_statusDropdown);
         distributorUI.click(lbl_active);
+        distributorUI.waitForCustom(2000);
+    }
+    public void selectStatusInactive() throws InterruptedException {
+        distributorUI.click(lbl_statusDropdown);
+        distributorUI.click(lbl_inActive);
         distributorUI.waitForCustom(2000);
     }
     public boolean areNotActiveStatusesDisplayed(){
@@ -510,6 +518,9 @@ public class CatalogPage extends LoginPage{
     public void selectExportPromoFiles(){
         distributorUI.waitForVisibility(lbl_exportPromoFile);
         distributorUI.click(lbl_exportPromoFile);
+    }
+    public void clickBack(){
+        distributorUI.click(btn_back);
     }
 }
 
