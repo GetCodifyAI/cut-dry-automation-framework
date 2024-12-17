@@ -343,4 +343,11 @@ public class Catalog {
         catalogPage.selectExportPromoFiles();
     }
     public static void clickBack(){catalogPage.clickBack();}
+    public static void clickOnProprietaryItemStatus(String proprietaryStatus){
+        catalogPage.clickOnProprietaryItem(proprietaryStatus);
+    }
+    public static void selectProprietaryItem() throws InterruptedException {
+        catalogPage.selectProprietaryItem();
+    }
+
 }

@@ -109,6 +109,12 @@ public class CatalogPage extends LoginPage{
     By lbl_exportPromoFile = By.xpath("//a[text()='Export Promotion File (csv)']");
     By showSubsRadioBtn = By.xpath("//input[@id='show-subs']");
     By btn_back = By.xpath("//button[text()='Back']");
+    By proprietaryItemDropDown = By.xpath("//label[contains(text(), 'Proprietary Item')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
+    String proprietaryItemStatus = "(//div[contains(text(),'PROPRIETARYSTATUS') and contains(@class,'themed_select__option')])[last()]";
+    By lbl_itemType = By.xpath("//label[contains(text(), 'Item Type')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    By lbl_proprietaryItem = By.xpath("(//div[contains(text(), 'Proprietary Items')])[last()]");
+
+
 
 
     public boolean isCatalogTextDisplayed() {
@@ -521,6 +527,19 @@ public class CatalogPage extends LoginPage{
     }
     public void clickBack(){
         distributorUI.click(btn_back);
+    }
+    public void clickOnProprietaryItem(String proprietaryStatus){
+        distributorUI.click(proprietaryItemDropDown);
+        distributorUI.waitForVisibility(By.xpath(proprietaryItemStatus.replace("PROPRIETARYSTATUS",proprietaryStatus)));
+        distributorUI.click(By.xpath(proprietaryItemStatus.replace("PROPRIETARYSTATUS",proprietaryStatus)));
+    }
+    public void selectProprietaryItem() throws InterruptedException {
+        distributorUI.click(lbl_itemType);
+        distributorUI.hoverOverElement(lbl_proprietaryItem);
+        distributorUI.clickUsingJavaScript(lbl_proprietaryItem);
+        distributorUI.waitForCustom(1000);
+        distributorUI.click(btn_apply);
+        distributorUI.waitForCustom(1000);
     }
 }
 
