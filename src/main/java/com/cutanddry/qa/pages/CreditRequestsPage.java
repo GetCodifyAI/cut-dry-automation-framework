@@ -73,20 +73,6 @@ public class CreditRequestsPage extends TestBase {
         return distributorUI.isDisplayed(visibleObject);
     }
 
-//    public boolean checkIfSearchedElementVisible(String orderID) {
-//        // Corrected XPath for dynamic value
-//        By visibleObject = By.xpath("//td[normalize-space(text())='" + orderID + "']");
-//
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        try {
-//            // Wait for the element to be visible
-//            wait.until(ExpectedConditions.visibilityOfElementLocated(visibleObject));
-//        } catch (Exception e) {
-//            return false; // Element is not visible
-//        }
-//        return distributorUI.isDisplayed(visibleObject);
-//    }
-
     public void clickOnFirstItemOfCreditRequests() {
         distributorUI.waitForVisibility(first_row_credit_requests);
         distributorUI.click(first_row_credit_requests);
