@@ -311,7 +311,7 @@ public class CustomersPage extends LoginPage {
     By tbx_editState = By.xpath("//label[contains(text(),'State')]/following-sibling::input");
     By tbx_editZipCode = By.xpath("//label[contains(text(),'Zip Code')]/following-sibling::input");
     By btn_saveEditShipAddress = By.xpath("//button[contains(text(),'Save Changes')]");
-    By btn_editNote = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[10]");
+    By btn_editNote = By.xpath("//div[contains(text(),'Notes')]/following-sibling::*[contains(@data-icon,'pen-to-square')]");
     By txtarea_editNote = By.xpath("(//textarea)[1]");
     By btn_saveNote = By.xpath("//button[contains(@class,'mx-2 my-2 btn btn-outline-primary btn-sm')]");
     By txt_assignSalesperson = By.xpath("//div[contains(text(),'Assign Salesperson')]");
@@ -343,11 +343,11 @@ public class CustomersPage extends LoginPage {
     By btn_visibilitySave = By.xpath("//button[contains(@class,'mr-2 my-2 btn btn-outline')]");
     By txt_hidden = By.xpath("//div[contains(@class,'col')and contains(text(),'Hidden')]");
     By tbx_emailOrMobile = By.xpath("//input[@id='react-select-5-input']");
-    By sel_cusOption = By.xpath("//div[contains(@class,' css-1n7v3ny-option')and contains(text(),'Brandon Bonne')]");
+    String sel_cusOption ="//div[@id='react-select-5-option-0']";
     By btn_loginAsCus = By.xpath("//a[contains(text(),'Login As')]");
     By btn_cusOrderIcon = By.xpath("//div[text()='Order']");
     By btn_cusAddSupplier = By.xpath("//td[contains(@class, '_1jmtcxs py-3 d-flex align')]");
-    By btn_accountStatus = By.xpath("((//*[local-name() = 'svg' and @data-icon='pen-to-square']))[11]");
+    By btn_accountStatus = By.xpath("//div[contains(text(),'Status')]/following-sibling::div//*[@data-icon='pen-to-square']");
     By dropdown_status = By.xpath("(//*[local-name() = 'svg' and @class='css-19bqh2r'])[1]");
     By sel_statusOption = By.xpath("//div[contains(@class,'themed_select__option') and contains(text(),'Inactive')]");
     By btn_statusSave = By.xpath("//button[contains(@class,'mr-2 my-2 btn btn-outline')]");
@@ -429,7 +429,6 @@ public class CustomersPage extends LoginPage {
     By lbl_itemCodeList = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[2])[1]");
     By btn_catalogPlus = By.xpath("//*[name()='svg' and @data-icon='plus']");
     By btn_catalogMinus = By.xpath("//*[name()='svg' and @data-icon='minus']");
-    By lbl_itemCodeList = By.xpath("//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[2]");
     By sel_visibleOption = By.xpath("//div[contains(text(),'Visible')]");
     By txt_visible = By.xpath("//div[contains(@class,'col')and contains(text(),'Visible')]");
     By tab_orderGuide = By.xpath("//div[text()='Order Guide']");
@@ -1774,7 +1773,7 @@ public class CustomersPage extends LoginPage {
     }
 
     public void clickOneCustomer(String cusCode)throws InterruptedException{
-        distributorUI.click(By.xpath(sel_customer.replace("CODE", cusCode)));
+        distributorUI.click(By.xpath(sel_customer.replace("CUSTOMERCODE", cusCode)));
     }
 
     public boolean isCustomerNameDisplayed(){
@@ -2062,13 +2061,16 @@ public class CustomersPage extends LoginPage {
         distributorUI.navigateToURL("https://app-uat.staging.cutanddry.com/internaltools/loginas");
     }
 
-    public void loginAsCus(String email)throws InterruptedException{
+    public void loginAsCus(String email,String nameCus)throws InterruptedException{
         distributorUI.click(tbx_emailOrMobile);
         distributorUI.sendKeys(tbx_emailOrMobile,email);
         distributorUI.waitForCustom(800);
-        distributorUI.click(sel_cusOption);
+        distributorUI.click(By.xpath(sel_cusOption.replace("NAME_CUS", nameCus)));
         distributorUI.SwitchToNewTab(btn_loginAsCus);
+        //distributorUI.click(sel_cusOption);
+        //distributorUI.SwitchToNewTab(btn_loginAsCus);
     }
+
 
     public void clickOrderIcon()throws InterruptedException{
         distributorUI.waitForCustom(500);
@@ -2113,6 +2115,7 @@ public class CustomersPage extends LoginPage {
     }
 
     public boolean isInactiveStatusDisplayed(){
+        distributorUI.waitForVisibility(txt_status);
         return distributorUI.isDisplayed(txt_status);
     }
 
@@ -2138,6 +2141,7 @@ public class CustomersPage extends LoginPage {
     }
 
     public boolean isActiveStatusDisplayed(){
+        distributorUI.waitForVisibility(txt_activeStatus);
         return distributorUI.isDisplayed(txt_activeStatus);
     }
 

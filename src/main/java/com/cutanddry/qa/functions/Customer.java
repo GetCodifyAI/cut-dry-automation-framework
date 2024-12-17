@@ -1105,8 +1105,8 @@ public class Customer {
     }
 
 
-    public static void loginAsCustomer(String email)throws InterruptedException{
-        customersPage.loginAsCus(email);
+    public static void loginAsCustomer(String email,String nameCus)throws InterruptedException{
+        customersPage.loginAsCus(email,nameCus);
     }
 
 
