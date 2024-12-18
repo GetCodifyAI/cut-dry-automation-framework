@@ -42,8 +42,6 @@ public class VerifyOrderDraftsTest extends TestBase {
         searchItemCode = Customer.getItemCodeFirstRow();
         itemPrice = Customer.getActiveItemPriceFirstRow();
         Customer.searchItemOnOrderGuide(searchItemCode);
-//        itemName = Customer.getItemNameFirstRow();
-//        Customer.increaseFirstRowQtyByOne();
         Customer.increaseFirstRowQtyCustom(1);
         softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice,"The item has not been selected.");
         Customer.checkoutItems();
