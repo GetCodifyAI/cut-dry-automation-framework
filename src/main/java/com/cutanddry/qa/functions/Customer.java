@@ -1406,5 +1406,9 @@ public class Customer {
     public static boolean isEnableVisible(){
         return customersPage.isEnableVisible();
     }
+
+    public static boolean verifyLastInvoicePaid(){
+        return customersPage.verifyLastInvoicePaid();
+    }
 }
 
