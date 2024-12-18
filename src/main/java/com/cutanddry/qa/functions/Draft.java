@@ -12,8 +12,8 @@ public class Draft {
     public static void clickOnDelete(){
         draftPage.clickOnDelete();
     }
-    public static boolean isLastDraftDisplayed(){
-        return draftPage.isLastDraftDisplayed();
+    public static boolean isLastDraftDisplayed(String total){
+        return draftPage.isLastDraftDisplayed(total);
     }
 
     public static boolean isApprovalRequestedOrderDisplayed(){

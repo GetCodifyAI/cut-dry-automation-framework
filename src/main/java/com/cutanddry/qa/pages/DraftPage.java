@@ -7,7 +7,7 @@ import java.util.Objects;
 public class DraftPage extends LoginPage{
     By txt_drafts = By.xpath("//li[contains(text(),'Drafts')]");
     By btn_delete = By.xpath("(//button[contains(text(), 'Delete')])[1]");
-    By txt_lastDraft = By.xpath("//tbody/tr[2]/td[5]");
+    String txt_lastDraft = "(//tbody/tr[contains(@href, '/customers/place_order/') and contains(@href, 'draftId')]/td[8][contains(text(), 'TOTAL')])[1]";
     By pendingApprovalOrders = By.xpath("(//td/span[contains(text(),'Pending Approval')])[1]");
     By approveAndSubmitBtn = By.xpath("//button[contains(text(),'Approve & Submit Order')]");
 
@@ -25,9 +25,9 @@ public class DraftPage extends LoginPage{
         distributorUI.click(btn_delete);
         distributorUI.waitForInvisibility(btn_delete);
     }
-    public boolean isLastDraftDisplayed(){
-        distributorUI.waitForVisibility(txt_lastDraft);
-        return Objects.equals(distributorUI.getText(txt_lastDraft), "just now");
+    public boolean isLastDraftDisplayed(String total){
+        distributorUI.waitForVisibility(By.xpath(txt_lastDraft.replace("TOTAL", total)));
+        return distributorUI.isDisplayed(By.xpath(txt_lastDraft.replace("TOTAL", total)));
     }
 
     public boolean isPendingApprovalOrdersDisplayed(){

@@ -16,7 +16,9 @@ import org.testng.asserts.SoftAssert;
 public class VerifyOrderDraftsTest extends TestBase {
     static User user;
     static String customerId = "16579";
-    static String itemCode = "01700";
+//    static String itemCode = "01700";
+    static String itemName, searchItemCode;
+    static double itemPrice;
 
     @BeforeMethod
     public void setUp(){
@@ -26,23 +28,31 @@ public class VerifyOrderDraftsTest extends TestBase {
 
     @Test(groups = "DOT-TC-274")
     public void verifyOrderDraftsTest() throws InterruptedException {
-        String itemName;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
-        Customer.searchItemOnOrderGuide(itemCode);
+
         itemName = Customer.getItemNameFirstRow();
-        Customer.increaseFirstRowQtyByOne();
+        searchItemCode = Customer.getItemCodeFirstRow();
+        itemPrice = Customer.getActiveItemPriceFirstRow();
+        Customer.searchItemOnOrderGuide(searchItemCode);
+//        itemName = Customer.getItemNameFirstRow();
+//        Customer.increaseFirstRowQtyByOne();
+        Customer.increaseFirstRowQtyCustom(1);
+        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice,"The item has not been selected.");
         Customer.checkoutItems();
-        softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
+
+        softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
+        softAssert.assertEquals(Customer.getItemNameFirstRow(), itemName, "The item selected by the user is different from what is shown on the order review page.");
         Dashboard.navigateToDrafts();
         softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
-        softAssert.assertTrue(Draft.isLastDraftDisplayed(),"draft creating error");
+        softAssert.assertTrue(Draft.isLastDraftDisplayed(String.valueOf(itemPrice)),"draft creating error");
         softAssert.assertAll();
     }
 
