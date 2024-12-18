@@ -291,6 +291,9 @@ public class Catalog {
     public static void selectStatusActive() throws InterruptedException {
         catalogPage.selectStatusActive();
     }
+    public static void selectStatusInactive() throws InterruptedException {
+        catalogPage.selectStatusInactive();
+    }
     public static boolean areNotActiveStatusesDisplayed(){
         return catalogPage.areNotActiveStatusesDisplayed();
     }
@@ -339,4 +342,18 @@ public class Catalog {
     public static void selectExportPromoFiles(){
         catalogPage.selectExportPromoFiles();
     }
+    public static void clickBack(){catalogPage.clickBack();}
+    public static void clickOnProprietaryItemStatus(String proprietaryStatus){
+        catalogPage.clickOnProprietaryItem(proprietaryStatus);
+    }
+    public static void selectProprietaryItem() throws InterruptedException {
+        catalogPage.selectProprietaryItem();
+    }
+    public static void clickOnCategory(String category){
+        catalogPage.clickOnCategory(category);
+    }
+    public static void selectCategory() throws InterruptedException {
+        catalogPage.selectCategoryMeat();
+    }
+
 }

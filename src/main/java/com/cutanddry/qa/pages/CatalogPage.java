@@ -88,6 +88,7 @@ public class CatalogPage extends LoginPage{
     By lbl_nonSnack = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[4][not(normalize-space()='Snack')]");
     By lbl_statusDropdown = By.xpath("//div[@class='themed_select__single-value css-1uccc91-singleValue' and text()='All']");
     By lbl_active = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Active']");
+    By lbl_inActive = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Inactive']");
     By lbl_nonactive = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[7][not(normalize-space()='Active')]");
     By btn_moreFilters = By.xpath("//button[contains(., 'More Filters')]");
     By txt_filterCatalog= By.xpath("//div[contains(text(),'Filter Catalog')]");
@@ -107,6 +108,18 @@ public class CatalogPage extends LoginPage{
     By lbl_exportCatalog = By.xpath("//a[text()='Export catalog (csv)']");
     By lbl_exportPromoFile = By.xpath("//a[text()='Export Promotion File (csv)']");
     By showSubsRadioBtn = By.xpath("//input[@id='show-subs']");
+    By btn_back = By.xpath("//button[text()='Back']");
+    By proprietaryItemDropDown = By.xpath("//label[contains(text(), 'Proprietary Item')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
+    String proprietaryItemStatus = "(//div[contains(text(),'PROPRIETARYSTATUS') and contains(@class,'themed_select__option')])[last()]";
+    By lbl_itemType = By.xpath("//label[contains(text(), 'Item Type')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    By lbl_proprietaryItem = By.xpath("(//div[contains(text(), 'Proprietary Items')])[last()]");
+    By categoryDropDown = By.xpath("//label[contains(text(), 'Category')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
+    String categoryOption = "(//div[contains(text(),'CATEGORY') and contains(@class,'themed_select__option')])[last()]";
+    By lbl_meat = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Meat']");
+
+
+
+
 
 
     public boolean isCatalogTextDisplayed() {
@@ -450,8 +463,14 @@ public class CatalogPage extends LoginPage{
         return  distributorUI.isDisplayed(lbl_nonSnack);
     }
     public void selectStatusActive() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
         distributorUI.click(lbl_statusDropdown);
         distributorUI.click(lbl_active);
+        distributorUI.waitForCustom(2000);
+    }
+    public void selectStatusInactive() throws InterruptedException {
+        distributorUI.click(lbl_statusDropdown);
+        distributorUI.click(lbl_inActive);
         distributorUI.waitForCustom(2000);
     }
     public boolean areNotActiveStatusesDisplayed(){
@@ -510,6 +529,32 @@ public class CatalogPage extends LoginPage{
     public void selectExportPromoFiles(){
         distributorUI.waitForVisibility(lbl_exportPromoFile);
         distributorUI.click(lbl_exportPromoFile);
+    }
+    public void clickBack(){
+        distributorUI.click(btn_back);
+    }
+    public void clickOnProprietaryItem(String proprietaryStatus){
+        distributorUI.click(proprietaryItemDropDown);
+        distributorUI.waitForVisibility(By.xpath(proprietaryItemStatus.replace("PROPRIETARYSTATUS",proprietaryStatus)));
+        distributorUI.click(By.xpath(proprietaryItemStatus.replace("PROPRIETARYSTATUS",proprietaryStatus)));
+    }
+    public void selectProprietaryItem() throws InterruptedException {
+        distributorUI.click(lbl_itemType);
+        distributorUI.hoverOverElement(lbl_proprietaryItem);
+        distributorUI.clickUsingJavaScript(lbl_proprietaryItem);
+        distributorUI.waitForCustom(1000);
+        distributorUI.click(btn_apply);
+        distributorUI.waitForCustom(1000);
+    }
+    public void clickOnCategory(String category){
+        distributorUI.click(categoryDropDown);
+        distributorUI.waitForVisibility(By.xpath(categoryOption.replace("CATEGORY",category)));
+        distributorUI.click(By.xpath(categoryOption.replace("CATEGORY",category)));
+    }
+    public void selectCategoryMeat() throws InterruptedException {
+        distributorUI.click(lbl_categoriesDropdown);
+        distributorUI.click(lbl_meat);
+        distributorUI.waitForCustom(2000);
     }
 }
 

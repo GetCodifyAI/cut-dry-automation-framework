@@ -64,6 +64,9 @@ public class OrdersPage extends LoginPage{
     By orderStatusUpdatedPopUp = By.xpath("//h2[contains(text(),'Order Status Updated!')]");
     By btn_ok = By.xpath("//button[contains(@class, 'swal2-confirm swal2-styled') and text() = 'OK']");
     String lbl_creditRequested = "//tr//td[10]//div[contains(text(),'STATUS')]";
+    String lbl_orderStatus = "//div[contains(@class, 'themed_select__single-value css-1uccc91-singleValue') and contains(text(),'STATUSVALUE')]";
+    By btn_orderStatus = By.xpath("//div[contains(@class, 'themed_select__single-value css-1uccc91-singleValue') and contains(text(),'Order Status:')]");
+    String lbl_orderStatusOption = "//div[contains(@class, 'themed_select__option') and contains(text(),'STATUS')]";
 
 
 
@@ -350,6 +353,29 @@ public class OrdersPage extends LoginPage{
     }
     public void clickOkButton(){
         distributorUI.click(btn_ok);
+    }
+    public void clickOrderStatus(){
+        distributorUI.click(btn_orderStatus);
+    }
+    public boolean isOrderSectionDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_order_section);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_order_section);
+    }
+    public void selectOrderStatusOption(String status) {
+
+        distributorUI.click(By.xpath(lbl_orderStatusOption.replace("STATUS",status)));
+    }
+    public boolean isOrderStatusUpdatedDisplayed(String status){
+        try {
+            distributorUI.waitForVisibility(By.xpath(lbl_orderStatus.replace("STATUSVALUE",status)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(lbl_orderStatus.replace("STATUSVALUE",status)));
     }
 
 

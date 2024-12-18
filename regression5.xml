@@ -39,6 +39,10 @@
             <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsUpdateStatusTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyLastOrderDateTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyTotalOrderValueTest" />
+            <class name="com.cutanddry.qa.tests.orders.ValidateOrderStatusChangesTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheProductStatusInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheProprietaryItemInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheCategorySelectionInCatalogDataTest" />
         </classes>
     </test>
 </suite>
