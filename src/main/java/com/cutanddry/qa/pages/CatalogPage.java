@@ -123,6 +123,9 @@ public class CatalogPage extends LoginPage{
     By storageMethodDropDown = By.xpath("//label[contains(text(), 'Storage Method')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
     String storageMethodOption = "(//div[contains(text(),'STORAGEMETHOD') and contains(@class,'themed_select__option')])[last()]";
     String txt_storageMethod = "//tr//td//div[contains(text(),'STORAGEMETHOD')]";
+    By txt_description = By.xpath("(//textarea[@class='form-control'])[1]");
+    String newDescription = " //div[contains(text(),'DESCRIPTION')]";
+
 
 
 
@@ -584,6 +587,15 @@ public class CatalogPage extends LoginPage{
     }
     public boolean isStorageMethodDisplayed(String storageMethod){
         return distributorUI.isDisplayed(By.xpath(txt_storageMethod.replace("STORAGEMETHOD",storageMethod)));
+    }
+    public void typeNewDescription(String description) throws InterruptedException {
+        distributorUI.click(txt_description);
+        distributorUI.clear(txt_description);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(txt_description, description);
+    }
+    public boolean isNewDescriptionDisplayed(String description){
+        return distributorUI.isDisplayed(By.xpath(newDescription.replace("DESCRIPTION",description)));
     }
 
 }

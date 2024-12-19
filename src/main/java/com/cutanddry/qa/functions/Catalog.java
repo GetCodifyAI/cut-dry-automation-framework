@@ -367,5 +367,11 @@ public class Catalog {
     public static boolean isStorageMethodDisplayed(String storageMethod){
         return catalogPage.isStorageMethodDisplayed(storageMethod);
     }
+    public static void typeNewDescription(String description)throws InterruptedException{
+        catalogPage.typeNewDescription(description);
+    }
+    public static boolean isNewDescriptionDisplayed(String description){
+        return catalogPage.isNewDescriptionDisplayed(description);
+    }
 
 }

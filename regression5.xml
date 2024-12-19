@@ -45,6 +45,7 @@
             <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheCategorySelectionInCatalogDataTest" />
             <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheSubCategorySelectionInCatalogDataTest" />
             <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheStorageMethodInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheDescriptionInCatalogDataTest" />
         </classes>
     </test>
 </suite>
