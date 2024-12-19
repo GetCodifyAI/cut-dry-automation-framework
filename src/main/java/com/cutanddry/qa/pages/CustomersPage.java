@@ -465,20 +465,6 @@ public class CustomersPage extends LoginPage {
     By dropdown_moreActions = By.xpath("//button[@aria-haspopup='true' and @aria-expanded='false' and contains(text(), 'More Actions')]");
     By dropdown_optionManageNotifications = By.xpath("//a[@class='dropdown-item' and text()='Manage Notifications']");
 
-    public void clickDropdownMoreActions(){
-        distributorUI.click(dropdown_moreActions);
-    }
-
-    public void clickManageNotifications(){
-        distributorUI.click(dropdown_optionManageNotifications);
-    }
-
-    public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
-        distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
-        distributorUI.waitForCustom(2000);
-        return distributorUI.isDisplayed(btn_previousDraftOrderNo);
-    }
-
     public void clickPreviousDraftOrderNo() throws InterruptedException {
         distributorUI.click(btn_previousDraftOrderNo);
     }
@@ -2629,5 +2615,20 @@ public class CustomersPage extends LoginPage {
         By btnrow_searchedCustomer = By.xpath(row_searchedCustomer.replace("CODE", CustomerCode));
         return distributorUI.isDisplayed(btnrow_searchedCustomer);
     }
+
+    public void clickDropdownMoreActions(){
+        distributorUI.click(dropdown_moreActions);
+    }
+
+    public void clickManageNotifications(){
+        distributorUI.click(dropdown_optionManageNotifications);
+    }
+
+    public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(btn_previousDraftOrderNo);
+    }
+
 
 }
