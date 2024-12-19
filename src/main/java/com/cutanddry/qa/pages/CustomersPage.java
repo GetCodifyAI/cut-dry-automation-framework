@@ -451,7 +451,9 @@ public class CustomersPage extends LoginPage {
     By dropdown_CCFee = By.xpath("//div[contains(@class, 'modal-content')]//div[contains(@class, 'themed_select__control') and contains(@class, 'css-yk16xz-control')]");
     String dropdown_CCFeeOption = "//div[contains(@class, 'themed_select__menu')]//div[text()='PLACEHOLDER']";
     String txt_CCFeeValue = "//div[contains(@class, 'font-weight-bold') and contains(text(), 'CC Fees')]/following-sibling::div[@class='_jehyy2' and contains(text(), 'OPTION_TEXT')]";
-
+    By btn_editNotes = By.xpath("//div[contains(@class, 'font-weight-bold') and text()='Notes']/*[local-name()='svg' and @data-icon='pencil']");
+    By tbx_editNotes= By.xpath("//textarea[@class='mr-2 form-control']");
+    String txt_Note = "//div[contains(@class, 'font-weight-bold') and contains(text(), 'Notes')]/following-sibling::div[@class='_jehyy2' and contains(text(), 'OPTION_TEXT')]";
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -2546,6 +2548,21 @@ public class CustomersPage extends LoginPage {
 
     public void clickOnEditCCFees(){
         distributorUI.click(btn_editCCFee);
+    }
+
+    public boolean isNoteCorrect(String expectedNote) {
+        By txt_finalNote = By.xpath(txt_Note.replace("OPTION_TEXT", expectedNote));
+        return distributorUI.isDisplayed(txt_finalNote);
+    }
+
+    public void typeNewNote(String note) throws InterruptedException {
+        distributorUI.clear(tbx_editNotes);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_editNotes, note);
+    }
+
+    public void clickOnEditNotes(){
+        distributorUI.click(btn_editNotes);
     }
 
 }

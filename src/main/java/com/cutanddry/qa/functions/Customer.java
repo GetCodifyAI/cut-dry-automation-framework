@@ -1427,5 +1427,16 @@ public class Customer {
         return customersPage.isCCFeesValueCorrect(expectedValue);
     }
 
+    public static void clickOnEditNotes(){
+        customersPage.clickOnEditNotes();
+    }
+
+    public static void typeNewNote(String note) throws InterruptedException {
+        customersPage.typeNewNote(note);
+    }
+
+    public static boolean isNoteCorrect(String expectedNote){
+         return customersPage.isNoteCorrect(expectedNote);
+    }
 }
 
