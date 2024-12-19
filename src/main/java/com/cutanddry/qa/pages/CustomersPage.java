@@ -447,6 +447,11 @@ public class CustomersPage extends LoginPage {
     By txt_activeStatus = By.xpath("//div[contains(text(),'Active')]");
     By sel_filterActive = By.xpath("//div[contains(text(),'Active')]");
     By txt_lastInvoicePaid = By.xpath("//div[contains(@class, 'font-weight-bold') and text()='Last invoice paid on']/following-sibling::div");
+    By btn_editCCFee = By.xpath("//div[contains(@class, 'font-weight-bold') and text()='CC Fees']/*[local-name()='svg' and @data-icon='pencil']");
+    By dropdown_CCFee = By.xpath("//div[contains(@class, 'modal-content')]//div[contains(@class, 'themed_select__control') and contains(@class, 'css-yk16xz-control')]");
+    String dropdown_CCFeeOption = "//div[contains(@class, 'themed_select__menu')]//div[text()='PLACEHOLDER']";
+    String txt_CCFeeValue = "//div[contains(@class, 'font-weight-bold') and contains(text(), 'CC Fees')]/following-sibling::div[@class='_jehyy2' and contains(text(), 'OPTION_TEXT')]";
+
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -2513,6 +2518,28 @@ public class CustomersPage extends LoginPage {
 
     public boolean verifyLastInvoicePaid(){
         return distributorUI.isDisplayed(txt_lastInvoicePaid);
+    }
+
+    public boolean isCCFeesValueCorrect(String expectedValue) {
+            By txt_finalCCFeeValue = By.xpath(txt_CCFeeValue.replace("OPTION_TEXT", expectedValue));
+            return distributorUI.isDisplayed(txt_finalCCFeeValue);
+    }
+
+    public void clickOnCCFeeValue(String CCFeeValue) {
+                // Replace placeholder with actual value and locate the dropdown option
+        By dropdownValueLocator = By.xpath(dropdown_CCFeeOption.replace("PLACEHOLDER", CCFeeValue));
+
+        // Wait for visibility of the dropdown option and click it
+        distributorUI.waitForVisibility(dropdownValueLocator);
+        distributorUI.click(dropdownValueLocator);
+    }
+
+    public void clickOnDropdownCCFee(){
+        distributorUI.click(dropdown_CCFee);
+    }
+
+    public void clickOnEditCCFees(){
+        distributorUI.click(btn_editCCFee);
     }
 
 }

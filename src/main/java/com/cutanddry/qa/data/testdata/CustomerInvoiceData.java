@@ -7,4 +7,5 @@ public class CustomerInvoiceData
         public static final String ROUTING_NUMBER = "321081669";
         public static final String ACCOUNT_TYPE = "Checking account";
         public static final String SCHEDULE_OPTION = "Weekly on Tuesday";
+        public static final String CC_FEE_VALUE = "2.5%";
     }

@@ -1410,5 +1410,22 @@ public class Customer {
     public static boolean verifyLastInvoicePaid(){
         return customersPage.verifyLastInvoicePaid();
     }
+
+    public static void clickOnEditCCFees(){
+        customersPage.clickOnEditCCFees();
+    }
+
+    public static void clickOnDropdownCCFee(){
+        customersPage.clickOnDropdownCCFee();
+    }
+
+    public static void clickOnCCFeeValue(String CCFeeValue){
+        customersPage.clickOnCCFeeValue(CCFeeValue);
+    }
+
+    public static boolean isCCFeesValueCorrect(String expectedValue){
+        return customersPage.isCCFeesValueCorrect(expectedValue);
+    }
+
 }
 
