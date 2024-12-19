@@ -120,6 +120,10 @@ public class CatalogPage extends LoginPage{
     String subCategoryOption = "(//div[contains(text(),'SUBCATEGORY') and contains(@class,'themed_select__option')])[last()]";
     By lbl_subCategoriesDropdown = By.xpath("//label[contains(text(),'Sub-Category:')]/following-sibling::div//div[contains(@class,'themed_select__single-value css-1uccc91-singleValue') and contains(text(),'All')]");
     By lbl_pork = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Pork']");
+    By storageMethodDropDown = By.xpath("//label[contains(text(), 'Storage Method')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
+    String storageMethodOption = "(//div[contains(text(),'STORAGEMETHOD') and contains(@class,'themed_select__option')])[last()]";
+    String txt_storageMethod = "//tr//td//div[contains(text(),'STORAGEMETHOD')]";
+
 
 
 
@@ -572,6 +576,14 @@ public class CatalogPage extends LoginPage{
         distributorUI.click(lbl_subCategoriesDropdown);
         distributorUI.click(lbl_pork);
         distributorUI.waitForCustom(2000);
+    }
+    public void clickOnStorageMethod(String storageMethod){
+        distributorUI.click(storageMethodDropDown);
+        distributorUI.waitForVisibility(By.xpath(storageMethodOption.replace("STORAGEMETHOD",storageMethod)));
+        distributorUI.click(By.xpath(storageMethodOption.replace("STORAGEMETHOD",storageMethod)));
+    }
+    public boolean isStorageMethodDisplayed(String storageMethod){
+        return distributorUI.isDisplayed(By.xpath(txt_storageMethod.replace("STORAGEMETHOD",storageMethod)));
     }
 
 }

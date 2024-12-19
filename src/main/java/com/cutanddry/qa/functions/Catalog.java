@@ -361,5 +361,11 @@ public class Catalog {
     public static void selectSubCategory() throws InterruptedException {
         catalogPage.selectSubCategoryPork();
     }
+    public static void clickOnStorageMethod(String storageMethod){
+        catalogPage.clickOnStorageMethod(storageMethod);
+    }
+    public static boolean isStorageMethodDisplayed(String storageMethod){
+        return catalogPage.isStorageMethodDisplayed(storageMethod);
+    }
 
 }
