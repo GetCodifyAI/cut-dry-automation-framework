@@ -94,6 +94,7 @@ public class CatalogPage extends LoginPage{
     By txt_filterCatalog= By.xpath("//div[contains(text(),'Filter Catalog')]");
     By lbl_imageUploaded = By.xpath("//label[contains(text(), 'Image Uploaded')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     By lbl_no = By.xpath("(//div[contains(text(), 'No')])[last()]");
+    By lbl_yes = By.xpath("(//div[contains(text(), 'Yes')])[last()]");
     By btn_apply = By.xpath("//button[contains(text(), 'Apply')]");
     By lbl_noImage = By.xpath("//div[@class='_hm9gs6 text-center']/img[not(@src='https://d3stps52o2e9nv.cloudfront.net/consumer/placeholder-img-product-v2.svg')]");
     By firstItem = By.xpath("(//div[contains(@class, 'card')]//div[@class='_3quvq7 _1vlidrf'])[1]");
@@ -125,14 +126,10 @@ public class CatalogPage extends LoginPage{
     String txt_storageMethod = "//tr//td//div[contains(text(),'STORAGEMETHOD')]";
     By txt_description = By.xpath("(//textarea[@class='form-control'])[1]");
     String newDescription = " //div[contains(text(),'DESCRIPTION')]";
-
-
-
-
-
-
-
-
+    By onSaleRadioButton = By.xpath("//label[contains(text(),'On Sale')]/../following-sibling::div/div");
+    By newArrivalRadioButton = By.xpath("//label[contains(text(),'New Arrival')]/../following-sibling::div/div");
+    By onSaleDropDown = By.xpath("//label[contains(text(), 'On Sale')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    By newArrivalDropDown = By.xpath("//label[contains(text(), 'On Sale')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
 
 
 
@@ -596,6 +593,28 @@ public class CatalogPage extends LoginPage{
     }
     public boolean isNewDescriptionDisplayed(String description){
         return distributorUI.isDisplayed(By.xpath(newDescription.replace("DESCRIPTION",description)));
+    }
+    public void clickOnSale(){
+        distributorUI.click(onSaleRadioButton);
+    }
+    public void clickNewArrival(){
+        distributorUI.click(newArrivalRadioButton);
+    }
+    public void selectOnSaleYes() throws InterruptedException {
+        distributorUI.click(onSaleDropDown);
+        distributorUI.hoverOverElement(lbl_yes);
+        distributorUI.clickUsingJavaScript(lbl_yes);
+        distributorUI.waitForCustom(1000);
+        distributorUI.click(btn_apply);
+        distributorUI.waitForCustom(1000);
+    }
+    public void selectNewArrivalYes() throws InterruptedException {
+        distributorUI.click(newArrivalDropDown);
+        distributorUI.hoverOverElement(lbl_yes);
+        distributorUI.clickUsingJavaScript(lbl_yes);
+        distributorUI.waitForCustom(1000);
+        distributorUI.click(btn_apply);
+        distributorUI.waitForCustom(1000);
     }
 
 }

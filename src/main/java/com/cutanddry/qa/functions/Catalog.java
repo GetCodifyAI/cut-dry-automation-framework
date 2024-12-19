@@ -373,5 +373,13 @@ public class Catalog {
     public static boolean isNewDescriptionDisplayed(String description){
         return catalogPage.isNewDescriptionDisplayed(description);
     }
+    public static void clickOnSale(){catalogPage.clickOnSale();}
+    public static void clickNewArrival(){catalogPage.clickNewArrival();}
+    public static void selectOnSaleYes()throws InterruptedException{
+        catalogPage.selectOnSaleYes();
+    }
+    public static void selectNewArrivalYes()throws InterruptedException{
+        catalogPage.selectNewArrivalYes();
+    }
 
 }
