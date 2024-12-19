@@ -129,7 +129,7 @@ public class CatalogPage extends LoginPage{
     By onSaleRadioButton = By.xpath("//label[contains(text(),'On Sale')]/../following-sibling::div/div");
     By newArrivalRadioButton = By.xpath("//label[contains(text(),'New Arrival')]/../following-sibling::div/div");
     By onSaleDropDown = By.xpath("//label[contains(text(), 'On Sale')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
-    By newArrivalDropDown = By.xpath("//label[contains(text(), 'On Sale')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    By newArrivalDropDown = By.xpath("//label[contains(text(), 'New Arrivals')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
 
 
 
