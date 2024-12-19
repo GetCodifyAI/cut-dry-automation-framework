@@ -457,18 +457,26 @@ public class CustomersPage extends LoginPage {
     By drodown_Filter = By.xpath("//div[@class='themed_select__value-container themed_select__value-container--has-value css-1hwfws3']//div[@class='themed_select__single-value css-1uccc91-singleValue']");
     String dropdown_FilterOption = "//div[contains(@class, 'themed_select__menu')]//div[text()='PLACEHOLDER']";
     By txt_Filter = By.xpath("//div[@class='themed_select__single-value css-1uccc91-singleValue']");
+    String row_searchedCustomer = "//td[text()='CODE']/..";
+    By btn_sendPaymentReminder = By.xpath("//button[text()='Send Payment Reminder']");
+    By btn_sendEmail = By.xpath("//button[text()='Send Email']");
+    By txt_EmailsSent = By.xpath("//h2[@id='swal2-title' and text()='Emails Sent!']");
+    By txt_noDueInvoices = By.xpath("//h2[@class='swal2-title' and text()='There are no past due invoices']");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
         distributorUI.waitForCustom(2000);
         return distributorUI.isDisplayed(btn_previousDraftOrderNo);
     }
+
     public void clickPreviousDraftOrderNo() throws InterruptedException {
         distributorUI.click(btn_previousDraftOrderNo);
     }
+
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
     }
+
     public void typeOnSearchCustomers(String code) throws InterruptedException {
         distributorUI.clear(tbx_searchCustomers);
         distributorUI.waitForCustom(1000);
@@ -2265,9 +2273,11 @@ public class CustomersPage extends LoginPage {
         }
     }
 
-    public void clickOnFirstItemOfCustomerRequests(){
+    public void clickOnFirstItemOfCustomerRequests() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(first_row));
+//        distributorUI.wait(10);
+//        distributorUI.waitForClickability(first_row);
         distributorUI.click(first_row);
     }
 
@@ -2583,6 +2593,31 @@ public class CustomersPage extends LoginPage {
         By dropdownValueLocator = By.xpath(dropdown_FilterOption.replace("PLACEHOLDER", FilterOption));
         distributorUI.waitForVisibility(dropdownValueLocator);
         distributorUI.click(dropdownValueLocator);
+    }
+
+    public boolean isNoDueInvoicesDisplayed(){
+        return distributorUI.isDisplayed(txt_noDueInvoices);
+    }
+
+    public boolean isAreYouSureTxtDisplayed(){
+        return distributorUI.isDisplayed(txt_areYouSure);
+    }
+
+    public boolean istxtEmailsSentDisplayed(){
+        return distributorUI.isDisplayed(txt_EmailsSent);
+    }
+
+    public void clickOnSendPaymentReminder(){
+        distributorUI.click(btn_sendPaymentReminder);
+    }
+
+    public void clickOnSendEmail(){
+        distributorUI.click(btn_sendEmail);
+    }
+
+    public boolean isSearchedCustomerDisplayed(String CustomerCode){
+        By btnrow_searchedCustomer = By.xpath(row_searchedCustomer.replace("CODE", CustomerCode));
+        return distributorUI.isDisplayed(btnrow_searchedCustomer);
     }
 
 }
