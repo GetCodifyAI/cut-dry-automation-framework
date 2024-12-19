@@ -16,7 +16,6 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheFilterCustomerInvoices extends TestBase {
     static User user;
     String CustomerCode = CustomerInvoiceData.CUSTOMER_CODE;
-    String CustomerNote = CustomerInvoiceData.CUSTOMER_NOTE;
     String CustomerFilterOption = CustomerInvoiceData.CUSTOMER_FILTER_OPTION;
 
     @BeforeMethod
