@@ -355,5 +355,11 @@ public class Catalog {
     public static void selectCategory() throws InterruptedException {
         catalogPage.selectCategoryMeat();
     }
+    public static void clickOnSubCategory(String subCategory){
+        catalogPage.clickOnSubCategory(subCategory);
+    }
+    public static void selectSubCategory() throws InterruptedException {
+        catalogPage.selectSubCategoryPork();
+    }
 
 }

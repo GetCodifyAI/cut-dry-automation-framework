@@ -116,6 +116,13 @@ public class CatalogPage extends LoginPage{
     By categoryDropDown = By.xpath("//label[contains(text(), 'Category')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
     String categoryOption = "(//div[contains(text(),'CATEGORY') and contains(@class,'themed_select__option')])[last()]";
     By lbl_meat = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Meat']");
+    By subCategoryDropDown = By.xpath("//label[contains(text(), 'Subcategories')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
+    String subCategoryOption = "(//div[contains(text(),'SUBCATEGORY') and contains(@class,'themed_select__option')])[last()]";
+    By lbl_subCategoriesDropdown = By.xpath("//label[contains(text(),'Sub-Category:')]/following-sibling::div//div[contains(@class,'themed_select__single-value css-1uccc91-singleValue') and contains(text(),'All')]");
+    By lbl_pork = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Pork']");
+
+
+
 
 
 
@@ -556,5 +563,16 @@ public class CatalogPage extends LoginPage{
         distributorUI.click(lbl_meat);
         distributorUI.waitForCustom(2000);
     }
+    public void clickOnSubCategory(String subCategory){
+        distributorUI.click(subCategoryDropDown);
+        distributorUI.waitForVisibility(By.xpath(subCategoryOption.replace("SUBCATEGORY",subCategory)));
+        distributorUI.click(By.xpath(subCategoryOption.replace("SUBCATEGORY",subCategory)));
+    }
+    public void selectSubCategoryPork() throws InterruptedException {
+        distributorUI.click(lbl_subCategoriesDropdown);
+        distributorUI.click(lbl_pork);
+        distributorUI.waitForCustom(2000);
+    }
+
 }
 
