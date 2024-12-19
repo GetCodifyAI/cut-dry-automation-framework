@@ -454,6 +454,9 @@ public class CustomersPage extends LoginPage {
     By btn_editNotes = By.xpath("//div[contains(@class, 'font-weight-bold') and text()='Notes']/*[local-name()='svg' and @data-icon='pencil']");
     By tbx_editNotes= By.xpath("//textarea[@class='mr-2 form-control']");
     String txt_Note = "//div[contains(@class, 'font-weight-bold') and contains(text(), 'Notes')]/following-sibling::div[@class='_jehyy2' and contains(text(), 'OPTION_TEXT')]";
+    By drodown_Filter = By.xpath("//div[@class='themed_select__value-container themed_select__value-container--has-value css-1hwfws3']//div[@class='themed_select__single-value css-1uccc91-singleValue']");
+    String dropdown_FilterOption = "//div[contains(@class, 'themed_select__menu')]//div[text()='PLACEHOLDER']";
+    By txt_Filter = By.xpath("//div[@class='themed_select__single-value css-1uccc91-singleValue']");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -2563,6 +2566,23 @@ public class CustomersPage extends LoginPage {
 
     public void clickOnEditNotes(){
         distributorUI.click(btn_editNotes);
+    }
+
+    public boolean isFilterSelectedCorrectly(String expectedFilter){
+        String filterType = distributorUI.getText(txt_Filter);
+        System.out.println("The type displayed is "+filterType);
+        String expectedFilterDisplay = "Filter: " + expectedFilter;
+        return filterType.equals(expectedFilterDisplay);
+    }
+
+    public void clickOnDropDownFilter(){
+        distributorUI.click(drodown_Filter);
+    }
+
+    public void selectFilterDropDown(String FilterOption) {
+        By dropdownValueLocator = By.xpath(dropdown_FilterOption.replace("PLACEHOLDER", FilterOption));
+        distributorUI.waitForVisibility(dropdownValueLocator);
+        distributorUI.click(dropdownValueLocator);
     }
 
 }

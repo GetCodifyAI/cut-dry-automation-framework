@@ -1438,5 +1438,17 @@ public class Customer {
     public static boolean isNoteCorrect(String expectedNote){
          return customersPage.isNoteCorrect(expectedNote);
     }
+
+    public static void clickOnDropDownFilter(){
+        customersPage.clickOnDropDownFilter();
+    }
+
+    public static void selectFilterDropDown(String FilterOption){
+        customersPage.selectFilterDropDown(FilterOption);
+    }
+
+    public static boolean isFilterSelectedCorrectly(String expectedFilter){
+        return customersPage.isFilterSelectedCorrectly(expectedFilter);
+    }
 }
 
