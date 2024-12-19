@@ -462,6 +462,16 @@ public class CustomersPage extends LoginPage {
     By btn_sendEmail = By.xpath("//button[text()='Send Email']");
     By txt_EmailsSent = By.xpath("//h2[@id='swal2-title' and text()='Emails Sent!']");
     By txt_noDueInvoices = By.xpath("//h2[@class='swal2-title' and text()='There are no past due invoices']");
+    By dropdown_moreActions = By.xpath("//button[@aria-haspopup='true' and @aria-expanded='false' and contains(text(), 'More Actions')]");
+    By dropdown_optionManageNotifications = By.xpath("//a[@class='dropdown-item' and text()='Manage Notifications']");
+
+    public void clickDropdownMoreActions(){
+        distributorUI.click(dropdown_moreActions);
+    }
+
+    public void clickManageNotifications(){
+        distributorUI.click(dropdown_optionManageNotifications);
+    }
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);

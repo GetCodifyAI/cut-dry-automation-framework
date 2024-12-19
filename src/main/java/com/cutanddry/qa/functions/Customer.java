@@ -1496,5 +1496,13 @@ public class Customer {
         }
     }
 
+    public static void clickDropdownMoreActions(){
+        customersPage.clickDropdownMoreActions();
+    }
+
+    public static void clickManageNotifications(){
+        customersPage.clickManageNotifications();
+    }
+
 }
 
