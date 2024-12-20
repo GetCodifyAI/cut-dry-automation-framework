@@ -68,6 +68,8 @@
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheSendPaymentReminder"/>
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTtheInviteBookkeeperInMoreActions"/>
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheDownloadStatementInMoreActions"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCreateCreditMemoInMoreActions"/>
+
 
         </classes>
     </test>
