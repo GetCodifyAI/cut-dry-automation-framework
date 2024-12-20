@@ -13,4 +13,5 @@ public class CustomerInvoiceData
         public static final String BOOK_KEEPER_NAME = "Test";
         public static final String BOOK_KEEPER_EMAIL = "test123@gmail.com";
         public static final String BOOK_KEEPER_MOBILE = "0712222222";
+        public static final String NOTIFICATION_EMAIL = "test123@gmail.com";
     }
