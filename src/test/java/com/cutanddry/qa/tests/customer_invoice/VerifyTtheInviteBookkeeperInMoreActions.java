@@ -26,7 +26,7 @@ public class VerifyTtheInviteBookkeeperInMoreActions extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-698")
+    @Test(groups = "DOT-TC-699")
     public void VerifyTtheInviteBookkeeperInMoreActions() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
@@ -52,5 +52,4 @@ public class VerifyTtheInviteBookkeeperInMoreActions extends TestBase {
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }
-
 }
