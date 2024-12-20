@@ -1540,4 +1540,8 @@ public class Customer {
         customersPage.clickSend();
     }
 
+    public static void clickDownloadStatement() throws InterruptedException {
+        customersPage.clickDownloadStatement();
+    }
+
 }

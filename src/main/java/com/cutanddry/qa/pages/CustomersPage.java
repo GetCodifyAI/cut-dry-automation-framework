@@ -466,6 +466,9 @@ public class CustomersPage extends LoginPage {
     By dropdown_optionManageNotifications = By.xpath("//a[@class='dropdown-item' and text()='Manage Notifications']");
     By dropdown_optionInviteBookkeeper = By.xpath("//a[@class='dropdown-item' and text()='Invite Bookkeeper']");
     By dropdown_optionEmailStatement = By.xpath("//a[@class='dropdown-item' and text()='Email Statement']");
+    By dropdown_optionDownloadStatement = By.xpath("//a[@class='dropdown-item' and text()='Download Statement']");
+    By dropdown_optionCreateCreditMent = By.xpath("//a[@class='dropdown-item' and text()='Create Credit Menu']");
+    By dropdown_optionMarkAsPaid = By.xpath("//a[@class='dropdown-item' and text()='Mark As Paid']");
     By tbx_bookKeeperName = By.xpath("//div[@class='form-group']//input[@class='form-control' and @placeholder='Enter contact person name...']");
     By tbx_bookKeeperEmail = By.xpath("//input[@class='form-control' and @placeholder='Enter contact person email...']");
     By tbx_bookKeeperMobile = By.xpath("//input[@class='form-control' and @placeholder='Enter contact person mobile phone number...']");
@@ -2681,4 +2684,8 @@ public class CustomersPage extends LoginPage {
         distributorUI.sendKeys(tbx_enterNotificationEmail, Email);
     }
 
+    public void clickDownloadStatement() throws InterruptedException {
+        distributorUI.click(dropdown_optionDownloadStatement);
+        distributorUI.waitForCustom(1000);
+    }
 }
