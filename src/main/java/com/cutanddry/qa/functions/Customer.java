@@ -1410,5 +1410,8 @@ public class Customer {
     public static boolean verifyLastInvoicePaid(){
         return customersPage.verifyLastInvoicePaid();
     }
+    public static boolean isProprietaryItemOptionDisplayed()throws InterruptedException{
+        return customersPage.isProprietaryItemOptionDisplayed();
+    }
 }
 

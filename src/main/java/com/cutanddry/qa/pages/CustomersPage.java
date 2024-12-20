@@ -447,6 +447,7 @@ public class CustomersPage extends LoginPage {
     By txt_activeStatus = By.xpath("//div[contains(text(),'Active')]");
     By sel_filterActive = By.xpath("//div[contains(text(),'Active')]");
     By txt_lastInvoicePaid = By.xpath("//div[contains(@class, 'font-weight-bold') and text()='Last invoice paid on']/following-sibling::div");
+    By proprietaryItemOption = By.xpath("//div[contains(text(), 'Proprietary Items (')]");
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
         distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
@@ -2513,6 +2514,9 @@ public class CustomersPage extends LoginPage {
 
     public boolean verifyLastInvoicePaid(){
         return distributorUI.isDisplayed(txt_lastInvoicePaid);
+    }
+    public boolean isProprietaryItemOptionDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(proprietaryItemOption);
     }
 
 }

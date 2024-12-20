@@ -130,6 +130,8 @@ public class CatalogPage extends LoginPage{
     By newArrivalRadioButton = By.xpath("//label[contains(text(),'New Arrival')]/../following-sibling::div/div");
     By onSaleDropDown = By.xpath("//label[contains(text(), 'On Sale')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     By newArrivalDropDown = By.xpath("//label[contains(text(), 'New Arrivals')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    String categoryOptionInCatalog = "//div[contains(text(),'Category')]/../../following-sibling::div//div[contains(text(),'CATEGORY')]";
+    String categoryName = "//div[contains(@class,'mt-3 mb-2 _4ffx9r8') and contains(text(),'CATEGORY')]";
 
 
 
@@ -615,6 +617,12 @@ public class CatalogPage extends LoginPage{
         distributorUI.waitForCustom(1000);
         distributorUI.click(btn_apply);
         distributorUI.waitForCustom(1000);
+    }
+    public void clickOnCategoryOption(String category){
+        distributorUI.click(By.xpath(categoryOptionInCatalog.replace("CATEGORY",category)));
+    }
+    public boolean isCategoryFilteredItem(String category)throws InterruptedException{
+       return distributorUI.isDisplayed(By.xpath(categoryName.replace("CATEGORY",category)));
     }
 
 }

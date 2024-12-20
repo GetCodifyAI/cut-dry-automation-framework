@@ -381,5 +381,11 @@ public class Catalog {
     public static void selectNewArrivalYes()throws InterruptedException{
         catalogPage.selectNewArrivalYes();
     }
+    public static void clickOnCategoryOption(String category){
+        catalogPage.clickOnCategoryOption(category);
+    }
+    public static boolean isCategoryFilteredItem(String category)throws InterruptedException{
+        return catalogPage.isCategoryFilteredItem(category);
+    }
 
 }
