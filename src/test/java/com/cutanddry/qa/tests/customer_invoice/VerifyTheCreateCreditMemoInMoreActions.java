@@ -16,6 +16,10 @@ import com.cutanddry.qa.base.TestBase;
 public class VerifyTheCreateCreditMemoInMoreActions extends TestBase {
     static User user;
     String CustomerCode = CustomerInvoiceData.CUSTOMER_CODE;
+    String CreditMemoNumber = CustomerInvoiceData.CREDIT_MEMO_NUMBER;
+    String AssociatedInvoive = CustomerInvoiceData.ASSOCIATED_INVOICE;
+    String CreditMemoAmount = CustomerInvoiceData.CREDIT_MEMO_AMOUNT;
+    String CreditMemoDescription = CustomerInvoiceData.CREDIT_MEMO_DESCRIPTION;
 
     @BeforeMethod
     public void setUp() {
@@ -35,7 +39,14 @@ public class VerifyTheCreateCreditMemoInMoreActions extends TestBase {
         Customer.clickOnFirstItemOfCustomerRequests();
         Customer.clickonInvoice();
         Customer.clickDropdownMoreActions();
-        Customer.clickDownloadStatement();
+        Customer.clickCreateCreditMemo();
+        Customer.typeCreditMemoNumber(CreditMemoNumber);
+        Customer.fillDropdownAssociatedInvoice(AssociatedInvoive);
+        Customer.typeCreditMemoAmount(CreditMemoAmount);
+        Customer.typeCreditMemoDescription(CreditMemoDescription);
+        Customer.clickBtnCreateCreditMemo();
+        softAssert.assertTrue(Customer.isCreditMemoFinalized(CreditMemoNumber),"There has been an error creating the credit memo");
+        Customer.clickOK();
         softAssert.assertAll();
     }
 
