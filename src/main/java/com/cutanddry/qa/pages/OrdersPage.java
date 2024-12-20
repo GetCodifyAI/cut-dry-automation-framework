@@ -67,6 +67,7 @@ public class OrdersPage extends LoginPage{
     String lbl_orderStatus = "//div[contains(@class, 'themed_select__single-value css-1uccc91-singleValue') and contains(text(),'STATUSVALUE')]";
     By btn_orderStatus = By.xpath("//div[contains(@class, 'themed_select__single-value css-1uccc91-singleValue') and contains(text(),'Order Status:')]");
     String lbl_orderStatusOption = "//div[contains(@class, 'themed_select__option') and contains(text(),'STATUS')]";
+    By txt_description = By.xpath("(//textarea[@class='form-control'])[1]");
 
 
 

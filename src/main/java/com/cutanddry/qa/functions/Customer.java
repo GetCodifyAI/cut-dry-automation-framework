@@ -1527,6 +1527,9 @@ public class Customer {
     public static boolean isBookKeeperEmailSentConfirmationDisplayed(String expectedEmail){
         return customersPage.isBookKeeperEmailSentConfirmationDisplayed(expectedEmail);
     }
+    public static boolean isProprietaryItemOptionDisplayed()throws InterruptedException{
+        return customersPage.isProprietaryItemOptionDisplayed();
+    }
 
     public static void clickEmailStatement(){
         customersPage.clickEmailStatement();
