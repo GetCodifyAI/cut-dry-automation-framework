@@ -464,6 +464,12 @@ public class CustomersPage extends LoginPage {
     By txt_noDueInvoices = By.xpath("//h2[@class='swal2-title' and text()='There are no past due invoices']");
     By dropdown_moreActions = By.xpath("//button[@aria-haspopup='true' and @aria-expanded='false' and contains(text(), 'More Actions')]");
     By dropdown_optionManageNotifications = By.xpath("//a[@class='dropdown-item' and text()='Manage Notifications']");
+    By dropdown_optionInviteBookkeeper = By.xpath("//a[@class='dropdown-item' and text()='Invite Bookkeeper']");
+    By tbx_bookKeeperName = By.xpath("//div[@class='form-group']//input[@class='form-control' and @placeholder='Enter contact person name...']");
+    By tbx_bookKeeperEmail = By.xpath("//input[@class='form-control' and @placeholder='Enter contact person email...']");
+    By tbx_bookKeeperMobile = By.xpath("//input[@class='form-control' and @placeholder='Enter contact person mobile phone number...']");
+    By btn_inviteViaEmail = By.xpath("//button[@class='btn btn-primary btn-block' and text()='Invite via email']");
+    String txt_BookKeeperEmailSent = "//div[text()='An invitation was sent to EMAIL.']";
 
     public void clickPreviousDraftOrderNo() throws InterruptedException {
         distributorUI.click(btn_previousDraftOrderNo);
@@ -2630,5 +2636,34 @@ public class CustomersPage extends LoginPage {
         return distributorUI.isDisplayed(btn_previousDraftOrderNo);
     }
 
+    public boolean isBookKeeperEmailSentConfirmationDisplayed(String expectedEmail) {
+        By txt_confirmEmailSent = By.xpath(txt_BookKeeperEmailSent.replace("EMAIL", expectedEmail));
+        distributorUI.waitForVisibility(txt_confirmEmailSent);
+        return distributorUI.isDisplayed(txt_confirmEmailSent);
+    }
+
+    public void clickInviteViaEmail(){
+        distributorUI.click(btn_inviteViaEmail);
+    }
+
+    public void fillBookKeeperEmail(String Email) throws InterruptedException {
+        distributorUI.clear(tbx_bookKeeperEmail);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_bookKeeperEmail, Email);
+    }
+    public void fillBookKeeperMobile(String Mobile) throws InterruptedException {
+        distributorUI.clear(tbx_bookKeeperMobile);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_bookKeeperMobile, Mobile);
+    }
+    public void fillBookKeeperName(String Name) throws InterruptedException {
+        distributorUI.clear(tbx_bookKeeperName);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_bookKeeperName, Name);
+    }
+
+    public void clickInviteBookKeeper(){
+        distributorUI.click(dropdown_optionInviteBookkeeper);
+    }
 
 }

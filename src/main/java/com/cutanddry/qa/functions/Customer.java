@@ -1504,5 +1504,28 @@ public class Customer {
         customersPage.clickManageNotifications();
     }
 
-}
+    public static void clickInviteBookKeeper(){
+        customersPage.clickInviteBookKeeper();
+    }
 
+    public static void fillBookKeeperName(String Name) throws InterruptedException {
+        customersPage.fillBookKeeperName(Name);
+    }
+
+    public static void fillBookKeeperEmail(String Email) throws InterruptedException {
+        customersPage.fillBookKeeperEmail(Email);
+    }
+
+    public static void fillBookKeeperMobile(String Mobile) throws InterruptedException {
+        customersPage.fillBookKeeperMobile(Mobile);
+    }
+
+    public static void clickInviteViaEmail(){
+        customersPage.clickInviteViaEmail();
+    }
+
+    public static boolean isBookKeeperEmailSentConfirmationDisplayed(String expectedEmail){
+        return customersPage.isBookKeeperEmailSentConfirmationDisplayed(expectedEmail);
+    }
+
+}
