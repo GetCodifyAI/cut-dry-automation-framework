@@ -1,6 +1,5 @@
 package com.cutanddry.qa.tests.customer_invoice;
 
-
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CustomerInvoiceData;
 import com.cutanddry.qa.functions.Customer;
@@ -13,7 +12,6 @@ import org.testng.ITestResult;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import com.cutanddry.qa.base.TestBase;
-
 
 public class VerifyTheEmailStatementInMoreActions extends TestBase {
     static User user;
