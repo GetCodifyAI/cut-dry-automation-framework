@@ -25,7 +25,7 @@ public class ValidateFilterItemsByCategoryInCatalogTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-769")
-    public void ValidateTheCatalogClearAllFilters() throws InterruptedException {
+    public void ValidateFilterItemsByCategoryInCatalog() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");

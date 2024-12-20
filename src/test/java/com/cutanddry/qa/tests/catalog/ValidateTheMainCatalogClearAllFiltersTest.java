@@ -24,7 +24,7 @@ public class ValidateTheMainCatalogClearAllFiltersTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-759")
-    public void ValidateTheCatalogClearAllFilters() throws InterruptedException {
+    public void ValidateTheMainCatalogClearAllFilters() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
