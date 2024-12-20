@@ -49,6 +49,7 @@
             <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheOnSaleFilterInCatalogPricingAndPromotionsTest" />
             <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheNewArrivalFilterInCatalogPricingAndPromotionsTest" />
             <class name="com.cutanddry.qa.tests.catalog.ValidateTheMainCatalogFilterSidebarFiltersTest" />
+            <class name="com.cutanddry.qa.tests.catalog.ValidateTheMainCatalogClearAllFiltersTest" />
         </classes>
     </test>
 </suite>
