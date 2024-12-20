@@ -473,6 +473,7 @@ public class CustomersPage extends LoginPage {
     String txt_BookKeeperEmailSent = "//div[text()='An invitation was sent to EMAIL.']";
     By tbx_enterNotificationEmail = By.xpath("//input[@class='form-control' and @placeholder='Enter email address']");
     By btn_send = By.xpath("//button[@class='btn btn-primary' and text()='Send']");
+    By proprietaryItemOption = By.xpath("//div[contains(text(), 'Proprietary Items (')]");
 
     public void clickPreviousDraftOrderNo() throws InterruptedException {
         distributorUI.click(btn_previousDraftOrderNo);
@@ -2542,6 +2543,9 @@ public class CustomersPage extends LoginPage {
 
     public boolean verifyLastInvoicePaid(){
         return distributorUI.isDisplayed(txt_lastInvoicePaid);
+    }
+    public boolean isProprietaryItemOptionDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(proprietaryItemOption);
     }
 
     public boolean isCCFeesValueCorrect(String expectedValue) {

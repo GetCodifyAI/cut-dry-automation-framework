@@ -94,6 +94,7 @@ public class CatalogPage extends LoginPage{
     By txt_filterCatalog= By.xpath("//div[contains(text(),'Filter Catalog')]");
     By lbl_imageUploaded = By.xpath("//label[contains(text(), 'Image Uploaded')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     By lbl_no = By.xpath("(//div[contains(text(), 'No')])[last()]");
+    By lbl_yes = By.xpath("(//div[contains(text(), 'Yes')])[last()]");
     By btn_apply = By.xpath("//button[contains(text(), 'Apply')]");
     By lbl_noImage = By.xpath("//div[@class='_hm9gs6 text-center']/img[not(@src='https://d3stps52o2e9nv.cloudfront.net/consumer/placeholder-img-product-v2.svg')]");
     By firstItem = By.xpath("(//div[contains(@class, 'card')]//div[@class='_3quvq7 _1vlidrf'])[1]");
@@ -116,9 +117,21 @@ public class CatalogPage extends LoginPage{
     By categoryDropDown = By.xpath("//label[contains(text(), 'Category')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
     String categoryOption = "(//div[contains(text(),'CATEGORY') and contains(@class,'themed_select__option')])[last()]";
     By lbl_meat = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Meat']");
-
-
-
+    By subCategoryDropDown = By.xpath("//label[contains(text(), 'Subcategories')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
+    String subCategoryOption = "(//div[contains(text(),'SUBCATEGORY') and contains(@class,'themed_select__option')])[last()]";
+    By lbl_subCategoriesDropdown = By.xpath("//label[contains(text(),'Sub-Category:')]/following-sibling::div//div[contains(@class,'themed_select__single-value css-1uccc91-singleValue') and contains(text(),'All')]");
+    By lbl_pork = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Pork']");
+    By storageMethodDropDown = By.xpath("//label[contains(text(), 'Storage Method')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
+    String storageMethodOption = "(//div[contains(text(),'STORAGEMETHOD') and contains(@class,'themed_select__option')])[last()]";
+    String txt_storageMethod = "//tr//td//div[contains(text(),'STORAGEMETHOD')]";
+    By txt_description = By.xpath("(//textarea[@class='form-control'])[1]");
+    String newDescription = " //div[contains(text(),'DESCRIPTION')]";
+    By onSaleRadioButton = By.xpath("//label[contains(text(),'On Sale')]/../following-sibling::div/div");
+    By newArrivalRadioButton = By.xpath("//label[contains(text(),'New Arrival')]/../following-sibling::div/div");
+    By onSaleDropDown = By.xpath("//label[contains(text(), 'On Sale')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    By newArrivalDropDown = By.xpath("//label[contains(text(), 'New Arrivals')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    String categoryOptionInCatalog = "//div[contains(text(),'Category')]/../../following-sibling::div//div[contains(text(),'CATEGORY')]";
+    String categoryName = "//div[contains(@class,'mt-3 mb-2 _4ffx9r8') and contains(text(),'CATEGORY')]";
 
 
 
@@ -556,5 +569,61 @@ public class CatalogPage extends LoginPage{
         distributorUI.click(lbl_meat);
         distributorUI.waitForCustom(2000);
     }
+    public void clickOnSubCategory(String subCategory){
+        distributorUI.click(subCategoryDropDown);
+        distributorUI.waitForVisibility(By.xpath(subCategoryOption.replace("SUBCATEGORY",subCategory)));
+        distributorUI.click(By.xpath(subCategoryOption.replace("SUBCATEGORY",subCategory)));
+    }
+    public void selectSubCategoryPork() throws InterruptedException {
+        distributorUI.click(lbl_subCategoriesDropdown);
+        distributorUI.click(lbl_pork);
+        distributorUI.waitForCustom(2000);
+    }
+    public void clickOnStorageMethod(String storageMethod){
+        distributorUI.click(storageMethodDropDown);
+        distributorUI.waitForVisibility(By.xpath(storageMethodOption.replace("STORAGEMETHOD",storageMethod)));
+        distributorUI.click(By.xpath(storageMethodOption.replace("STORAGEMETHOD",storageMethod)));
+    }
+    public boolean isStorageMethodDisplayed(String storageMethod){
+        return distributorUI.isDisplayed(By.xpath(txt_storageMethod.replace("STORAGEMETHOD",storageMethod)));
+    }
+    public void typeNewDescription(String description) throws InterruptedException {
+        distributorUI.click(txt_description);
+        distributorUI.clear(txt_description);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(txt_description, description);
+    }
+    public boolean isNewDescriptionDisplayed(String description){
+        return distributorUI.isDisplayed(By.xpath(newDescription.replace("DESCRIPTION",description)));
+    }
+    public void clickOnSale(){
+        distributorUI.click(onSaleRadioButton);
+    }
+    public void clickNewArrival(){
+        distributorUI.click(newArrivalRadioButton);
+    }
+    public void selectOnSaleYes() throws InterruptedException {
+        distributorUI.click(onSaleDropDown);
+        distributorUI.hoverOverElement(lbl_yes);
+        distributorUI.clickUsingJavaScript(lbl_yes);
+        distributorUI.waitForCustom(1000);
+        distributorUI.click(btn_apply);
+        distributorUI.waitForCustom(1000);
+    }
+    public void selectNewArrivalYes() throws InterruptedException {
+        distributorUI.click(newArrivalDropDown);
+        distributorUI.hoverOverElement(lbl_yes);
+        distributorUI.clickUsingJavaScript(lbl_yes);
+        distributorUI.waitForCustom(1000);
+        distributorUI.click(btn_apply);
+        distributorUI.waitForCustom(1000);
+    }
+    public void clickOnCategoryOption(String category){
+        distributorUI.click(By.xpath(categoryOptionInCatalog.replace("CATEGORY",category)));
+    }
+    public boolean isCategoryFilteredItem(String category)throws InterruptedException{
+       return distributorUI.isDisplayed(By.xpath(categoryName.replace("CATEGORY",category)));
+    }
+
 }
 
