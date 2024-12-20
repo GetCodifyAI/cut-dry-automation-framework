@@ -465,11 +465,14 @@ public class CustomersPage extends LoginPage {
     By dropdown_moreActions = By.xpath("//button[@aria-haspopup='true' and @aria-expanded='false' and contains(text(), 'More Actions')]");
     By dropdown_optionManageNotifications = By.xpath("//a[@class='dropdown-item' and text()='Manage Notifications']");
     By dropdown_optionInviteBookkeeper = By.xpath("//a[@class='dropdown-item' and text()='Invite Bookkeeper']");
+    By dropdown_optionEmailStatement = By.xpath("//a[@class='dropdown-item' and text()='Email Statement']");
     By tbx_bookKeeperName = By.xpath("//div[@class='form-group']//input[@class='form-control' and @placeholder='Enter contact person name...']");
     By tbx_bookKeeperEmail = By.xpath("//input[@class='form-control' and @placeholder='Enter contact person email...']");
     By tbx_bookKeeperMobile = By.xpath("//input[@class='form-control' and @placeholder='Enter contact person mobile phone number...']");
     By btn_inviteViaEmail = By.xpath("//button[@class='btn btn-primary btn-block' and text()='Invite via email']");
     String txt_BookKeeperEmailSent = "//div[text()='An invitation was sent to EMAIL.']";
+    By tbx_enterNotificationEmail = By.xpath("//input[@class='form-control' and @placeholder='Enter email address']");
+    By btn_send = By.xpath("//button[@class='btn btn-primary' and text()='Send']");
 
     public void clickPreviousDraftOrderNo() throws InterruptedException {
         distributorUI.click(btn_previousDraftOrderNo);
@@ -2498,8 +2501,6 @@ public class CustomersPage extends LoginPage {
         return Double.valueOf(distributorUI.getText(btn_checkOutPDP).replace("$",""));
     }
 
-
-
     public boolean isEnableVisible(){
         return distributorUI.isDisplayed(btn_enable);
     }
@@ -2664,6 +2665,20 @@ public class CustomersPage extends LoginPage {
 
     public void clickInviteBookKeeper(){
         distributorUI.click(dropdown_optionInviteBookkeeper);
+    }
+
+    public void clickEmailStatement(){
+        distributorUI.click(dropdown_optionEmailStatement);
+    }
+
+    public void clickSend(){
+        distributorUI.click(btn_send);
+    }
+
+    public void fillNotificationEmailAddress(String Email) throws InterruptedException {
+        distributorUI.clear(tbx_enterNotificationEmail);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_enterNotificationEmail, Email);
     }
 
 }

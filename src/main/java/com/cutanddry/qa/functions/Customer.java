@@ -1528,4 +1528,16 @@ public class Customer {
         return customersPage.isBookKeeperEmailSentConfirmationDisplayed(expectedEmail);
     }
 
+    public static void clickEmailStatement(){
+        customersPage.clickEmailStatement();
+    }
+
+    public static void fillNotificationEmailAddress(String Email) throws InterruptedException {
+        customersPage.fillNotificationEmailAddress(Email);
+    }
+
+    public static void clickSend(){
+        customersPage.clickSend();
+    }
+
 }
