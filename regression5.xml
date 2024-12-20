@@ -50,6 +50,7 @@
             <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheNewArrivalFilterInCatalogPricingAndPromotionsTest" />
             <class name="com.cutanddry.qa.tests.catalog.ValidateTheMainCatalogFilterSidebarFiltersTest" />
             <class name="com.cutanddry.qa.tests.catalog.ValidateTheMainCatalogClearAllFiltersTest" />
+            <class name="com.cutanddry.qa.tests.catalog.ValidateTheViewCatalogAsCustomerRadioButtonInMainCatalogTest" />
         </classes>
     </test>
 </suite>
