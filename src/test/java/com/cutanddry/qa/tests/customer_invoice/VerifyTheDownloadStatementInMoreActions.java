@@ -13,10 +13,9 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import com.cutanddry.qa.base.TestBase;
 
-public class VerifyTheEmailStatementInMoreActions extends TestBase {
+public class VerifyTheDownloadStatementInMoreActions extends TestBase {
     static User user;
     String CustomerCode = CustomerInvoiceData.CUSTOMER_CODE;
-    String NotificationEmail = CustomerInvoiceData.NOTIFICATION_EMAIL;
 
     @BeforeMethod
     public void setUp() {
@@ -24,8 +23,8 @@ public class VerifyTheEmailStatementInMoreActions extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-700")
-    public void VerifyTheEmailStatementInMoreActions() throws InterruptedException {
+    @Test(groups = "DOT-TC-701")
+    public void VerifyTheDownloadStatementInMoreActions() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -36,10 +35,7 @@ public class VerifyTheEmailStatementInMoreActions extends TestBase {
         Customer.clickOnFirstItemOfCustomerRequests();
         Customer.clickonInvoice();
         Customer.clickDropdownMoreActions();
-        Customer.clickEmailStatement();
-        Customer.fillNotificationEmailAddress(NotificationEmail);
-        Customer.clickSend();
-        Customer.clickOK();
+        Customer.clickDownloadStatement();
         softAssert.assertAll();
     }
 

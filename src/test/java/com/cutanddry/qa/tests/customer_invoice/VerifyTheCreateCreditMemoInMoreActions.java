@@ -13,10 +13,13 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import com.cutanddry.qa.base.TestBase;
 
-public class VerifyTheEmailStatementInMoreActions extends TestBase {
+public class VerifyTheCreateCreditMemoInMoreActions extends TestBase {
     static User user;
     String CustomerCode = CustomerInvoiceData.CUSTOMER_CODE;
-    String NotificationEmail = CustomerInvoiceData.NOTIFICATION_EMAIL;
+    String CreditMemoNumber = CustomerInvoiceData.CREDIT_MEMO_NUMBER;
+    String AssociatedInvoive = CustomerInvoiceData.ASSOCIATED_INVOICE;
+    String CreditMemoAmount = CustomerInvoiceData.CREDIT_MEMO_AMOUNT;
+    String CreditMemoDescription = CustomerInvoiceData.CREDIT_MEMO_DESCRIPTION;
 
     @BeforeMethod
     public void setUp() {
@@ -24,8 +27,8 @@ public class VerifyTheEmailStatementInMoreActions extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-700")
-    public void VerifyTheEmailStatementInMoreActions() throws InterruptedException {
+    @Test(groups = "DOT-TC-702")
+    public void VerifyTheCreateCreditMemoInMoreActions() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -36,9 +39,13 @@ public class VerifyTheEmailStatementInMoreActions extends TestBase {
         Customer.clickOnFirstItemOfCustomerRequests();
         Customer.clickonInvoice();
         Customer.clickDropdownMoreActions();
-        Customer.clickEmailStatement();
-        Customer.fillNotificationEmailAddress(NotificationEmail);
-        Customer.clickSend();
+        Customer.clickCreateCreditMemo();
+        Customer.typeCreditMemoNumber(CreditMemoNumber);
+        Customer.fillDropdownAssociatedInvoice(AssociatedInvoive);
+        Customer.typeCreditMemoAmount(CreditMemoAmount);
+        Customer.typeCreditMemoDescription(CreditMemoDescription);
+        Customer.clickBtnCreateCreditMemo();
+        softAssert.assertTrue(Customer.isCreditMemoFinalized(CreditMemoNumber),"There has been an error creating the credit memo");
         Customer.clickOK();
         softAssert.assertAll();
     }

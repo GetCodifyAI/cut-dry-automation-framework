@@ -1,5 +1,6 @@
 package com.cutanddry.qa.pages;
 
+import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -466,6 +467,9 @@ public class CustomersPage extends LoginPage {
     By dropdown_optionManageNotifications = By.xpath("//a[@class='dropdown-item' and text()='Manage Notifications']");
     By dropdown_optionInviteBookkeeper = By.xpath("//a[@class='dropdown-item' and text()='Invite Bookkeeper']");
     By dropdown_optionEmailStatement = By.xpath("//a[@class='dropdown-item' and text()='Email Statement']");
+    By dropdown_optionDownloadStatement = By.xpath("//a[@class='dropdown-item' and text()='Download Statement']");
+    By dropdown_optionCreateCreditMemo = By.xpath("//a[@class='dropdown-item' and text()='Create Credit Memo']");
+    By dropdown_optionMarkAsPaid = By.xpath("//a[@class='dropdown-item' and text()='Mark As Paid']");
     By tbx_bookKeeperName = By.xpath("//div[@class='form-group']//input[@class='form-control' and @placeholder='Enter contact person name...']");
     By tbx_bookKeeperEmail = By.xpath("//input[@class='form-control' and @placeholder='Enter contact person email...']");
     By tbx_bookKeeperMobile = By.xpath("//input[@class='form-control' and @placeholder='Enter contact person mobile phone number...']");
@@ -474,6 +478,14 @@ public class CustomersPage extends LoginPage {
     By tbx_enterNotificationEmail = By.xpath("//input[@class='form-control' and @placeholder='Enter email address']");
     By btn_send = By.xpath("//button[@class='btn btn-primary' and text()='Send']");
     By proprietaryItemOption = By.xpath("//div[contains(text(), 'Proprietary Items (')]");
+    By tbx_creditMemoNumber = By.xpath("//input[contains(@class, 'form-control') and @placeholder='Enter credit memo number']");
+    By dropdown_AssociatedInvoice = By.xpath("//div[@class='form-group' and .//label[text()='Associated Invoice']]//div[contains(@class, 'css-yk16xz-control')]");
+    By dropdownOption_AssociatedInvoice = By.xpath("//div[@class='form-group' and .//label[text()='Associated Invoice']]//div[contains(@class, 'css-yk16xz-menu')]//div[1]");
+    By tbx_enterTheAmount = By.xpath("//input[@placeholder='Enter the amount']");
+    By tbx_description = By.xpath("//input[@placeholder='Enter the description' and @type='text' and @class='form-control']");
+    By btn_CreateCreditMemo = By.xpath("//button[@type='button' and contains(@class, 'btn btn-primary') and text()='Create Credit Memo']");
+    By txt_CreditMemoConfirm = By.xpath("//h2[@class='swal2-title' and @id='swal2-title' and text()='Created the credit memo successfully.']");
+    String errorMessage_CreditMemoAlreadyExists = "//h2[@class='swal2-title' and @id='swal2-title' and text()='Credit memo number: memoNumber already exists.']";
 
     public void clickPreviousDraftOrderNo() throws InterruptedException {
         distributorUI.click(btn_previousDraftOrderNo);
@@ -2685,4 +2697,51 @@ public class CustomersPage extends LoginPage {
         distributorUI.sendKeys(tbx_enterNotificationEmail, Email);
     }
 
+    public void clickDownloadStatement() throws InterruptedException {
+        distributorUI.click(dropdown_optionDownloadStatement);
+        distributorUI.waitForCustom(1000);
+    }
+
+    public void clickCreateCreditMemo(){
+        distributorUI.click(dropdown_optionCreateCreditMemo);
+    }
+
+    public boolean isTxtCreditMemoExistingDisplayed(String memoNumber) {
+        By txt_CreditMemoAlreadyExists = By.xpath(errorMessage_CreditMemoAlreadyExists.replace("memoNumber", memoNumber));
+        return distributorUI.isDisplayed(txt_CreditMemoAlreadyExists);
+    }
+
+    public boolean isTxtCreditMemoConfirmDisplayed(){
+        return distributorUI.isDisplayed(txt_CreditMemoConfirm);
+    }
+
+    public void clickBtnCreateCreditMemo(){
+        distributorUI.click(btn_CreateCreditMemo);
+    }
+
+    public void typeCreditMemoDescription(String description) throws InterruptedException {
+        distributorUI.clear(tbx_description);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_description, description);
+    }
+
+    public void typeCreditMemoAmount(String amount) throws InterruptedException {
+        distributorUI.clear(tbx_enterTheAmount);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_enterTheAmount, amount);
+    }
+
+    public void typeCreditMemoNumber(String creditMemoNumber) throws InterruptedException {
+        distributorUI.clear(tbx_creditMemoNumber);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_creditMemoNumber, creditMemoNumber);
+    }
+
+    public void fillDropdownAssociatedInvoice(String associatedInvoice){
+        distributorUI.sendKeysAndEnter(dropdown_AssociatedInvoice, associatedInvoice);
+    }
+    public void selectOptionAssociatedInvoice(){
+        distributorUI.waitForVisibility(dropdownOption_AssociatedInvoice);
+        distributorUI.click(dropdownOption_AssociatedInvoice);
+    }
 }

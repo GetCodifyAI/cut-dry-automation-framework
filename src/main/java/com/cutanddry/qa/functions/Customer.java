@@ -1543,4 +1543,41 @@ public class Customer {
         customersPage.clickSend();
     }
 
+    public static void clickDownloadStatement() throws InterruptedException {
+        customersPage.clickDownloadStatement();
+    }
+
+    public static void clickCreateCreditMemo(){
+        customersPage.clickCreateCreditMemo();
+    }
+
+    public static void typeCreditMemoNumber(String creditMemoNumber) throws InterruptedException {
+        customersPage.typeCreditMemoNumber(creditMemoNumber);
+    }
+
+    public static void fillDropdownAssociatedInvoice(String associatedInvoice){
+        customersPage.fillDropdownAssociatedInvoice(associatedInvoice);
+    }
+
+    public static void typeCreditMemoAmount(String creditMemoAmount) throws InterruptedException {
+        customersPage.typeCreditMemoAmount(creditMemoAmount);
+    }
+
+    public static void typeCreditMemoDescription(String creditMemoDescription) throws InterruptedException {
+        customersPage.typeCreditMemoDescription(creditMemoDescription);
+    }
+
+    public static void clickBtnCreateCreditMemo(){
+        customersPage.clickBtnCreateCreditMemo();
+    }
+
+    public static boolean isCreditMemoFinalized(String memoNumber){
+        if (customersPage.isTxtCreditMemoConfirmDisplayed()){
+            return true;}
+        else if (customersPage.isTxtCreditMemoExistingDisplayed(memoNumber)){
+            System.out.println("The credit memo for " +memoNumber+ " already exists");
+            return true;
+        }
+        else return false;
+    }
 }
