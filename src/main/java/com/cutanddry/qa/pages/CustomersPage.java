@@ -486,6 +486,8 @@ public class CustomersPage extends LoginPage {
     By btn_CreateCreditMemo = By.xpath("//button[@type='button' and contains(@class, 'btn btn-primary') and text()='Create Credit Memo']");
     By txt_CreditMemoConfirm = By.xpath("//h2[@class='swal2-title' and @id='swal2-title' and text()='Created the credit memo successfully.']");
     String errorMessage_CreditMemoAlreadyExists = "//h2[@class='swal2-title' and @id='swal2-title' and text()='Credit memo number: memoNumber already exists.']";
+    By txt_markedAsPaidSucessfully = By.xpath("//div[@id='swal2-content' and contains(text(), 'The selected invoice was marked as paid successfully')]");
+    String checkBox_inInvoiceTable = "//table/tbody/tr[row]/td[1]//div[contains(@class, '_du1frc')]";
 
     public void clickPreviousDraftOrderNo() throws InterruptedException {
         distributorUI.click(btn_previousDraftOrderNo);
@@ -2640,6 +2642,7 @@ public class CustomersPage extends LoginPage {
     }
 
     public void clickDropdownMoreActions(){
+        distributorUI.waitForVisibility(dropdown_moreActions);
         distributorUI.click(dropdown_moreActions);
     }
 
@@ -2743,5 +2746,29 @@ public class CustomersPage extends LoginPage {
     public void selectOptionAssociatedInvoice(){
         distributorUI.waitForVisibility(dropdownOption_AssociatedInvoice);
         distributorUI.click(dropdownOption_AssociatedInvoice);
+    }
+
+    public void clickMarkAsPaid(){
+        distributorUI.click(dropdown_optionMarkAsPaid);
+    }
+
+    public void clickOnCheckBox(int totalCheckboxes) {
+        for (int j = 1; j <= totalCheckboxes; j++) {
+            String checkBoxXPath = checkBox_inInvoiceTable.replace("row", String.valueOf(j));
+            By checkBox_InvoiceTable = By.xpath(checkBoxXPath);
+            distributorUI.click(checkBox_InvoiceTable);
+        }
+    }
+
+    public boolean isMarkedAsPaidSuccessfullyDisplayed(){
+        distributorUI.waitForVisibility(txt_markedAsPaidSucessfully);
+        if (distributorUI.isDisplayed(txt_markedAsPaidSucessfully)){
+            System.out.println("Mark As Paid Successfully Displayed");
+            return true;
+        }
+        else{
+            System.out.println("Mark As Paid Successfully is not Displayed");
+            return false;
+        }
     }
 }
