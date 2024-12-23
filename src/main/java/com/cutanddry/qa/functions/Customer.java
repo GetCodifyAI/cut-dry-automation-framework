@@ -1171,7 +1171,7 @@ public class Customer {
         return customersPage.isErrorOccuredAddingPaymentMethod();
     }
 
-    public static void clickOnFirstItemOfCustomerRequests(){
+    public static void clickOnFirstItemOfCustomerRequests() throws InterruptedException {
         customersPage.clickOnFirstItemOfCustomerRequests();
     }
 
@@ -1427,5 +1427,169 @@ public class Customer {
         return customersPage.isCCFeesValueCorrect(expectedValue);
     }
 
-}
+    public static void clickOnEditNotes(){
+        customersPage.clickOnEditNotes();
+    }
 
+    public static void typeNewNote(String note) throws InterruptedException {
+        customersPage.typeNewNote(note);
+    }
+
+    public static boolean isNoteCorrect(String expectedNote){
+         return customersPage.isNoteCorrect(expectedNote);
+    }
+
+    public static void clickOnDropDownFilter(){
+        customersPage.clickOnDropDownFilter();
+    }
+
+    public static void selectFilterDropDown(String FilterOption){
+        customersPage.selectFilterDropDown(FilterOption);
+    }
+
+    public static boolean isFilterSelectedCorrectly(String expectedFilter){
+        return customersPage.isFilterSelectedCorrectly(expectedFilter);
+    }
+
+    public static boolean isSearchedRowDisplayed(String CustomerCode){
+        return customersPage.isSearchedCustomerDisplayed(CustomerCode);
+    }
+
+    public static boolean istxtEmailsSentDisplayed(){
+        return customersPage.istxtEmailsSentDisplayed();
+    }
+
+    public static void clickOnSendPaymentReminder(){
+        customersPage.clickOnSendPaymentReminder();
+    }
+
+    public static void clickOnSendEmail(){
+        customersPage.clickOnSendEmail();
+    }
+
+    public static boolean sendEmail(){
+        if (customersPage.isNoDueInvoicesDisplayed()){
+            customersPage.clickOK();
+            System.out.println("No Due Invoices Found");
+            return true;
+        }
+        else if (customersPage.isAreYouSureTxtDisplayed()){
+            System.out.println("Are you sure text displayed");
+            customersPage.clickOnYes();
+
+            if (customersPage.istxtEmailsSentDisplayed()){
+                customersPage.clickOK();
+                return true;
+            }
+            else{
+                return false;
+            }
+
+        }
+        else if(customersPage.istxtEmailsSentDisplayed()){
+            System.out.println("Email Sent text displayed");
+            customersPage.clickOK();
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static void clickDropdownMoreActions(){
+        customersPage.clickDropdownMoreActions();
+    }
+
+    public static void clickManageNotifications(){
+        customersPage.clickManageNotifications();
+    }
+
+    public static void clickInviteBookKeeper(){
+        customersPage.clickInviteBookKeeper();
+    }
+
+    public static void fillBookKeeperName(String Name) throws InterruptedException {
+        customersPage.fillBookKeeperName(Name);
+    }
+
+    public static void fillBookKeeperEmail(String Email) throws InterruptedException {
+        customersPage.fillBookKeeperEmail(Email);
+    }
+
+    public static void fillBookKeeperMobile(String Mobile) throws InterruptedException {
+        customersPage.fillBookKeeperMobile(Mobile);
+    }
+
+    public static void clickInviteViaEmail(){
+        customersPage.clickInviteViaEmail();
+    }
+
+    public static boolean isBookKeeperEmailSentConfirmationDisplayed(String expectedEmail){
+        return customersPage.isBookKeeperEmailSentConfirmationDisplayed(expectedEmail);
+    }
+    public static boolean isProprietaryItemOptionDisplayed()throws InterruptedException{
+        return customersPage.isProprietaryItemOptionDisplayed();
+    }
+
+    public static void clickEmailStatement(){
+        customersPage.clickEmailStatement();
+    }
+
+    public static void fillNotificationEmailAddress(String Email) throws InterruptedException {
+        customersPage.fillNotificationEmailAddress(Email);
+    }
+
+    public static void clickSend(){
+        customersPage.clickSend();
+    }
+
+    public static void clickDownloadStatement() throws InterruptedException {
+        customersPage.clickDownloadStatement();
+    }
+
+    public static void clickCreateCreditMemo(){
+        customersPage.clickCreateCreditMemo();
+    }
+
+    public static void typeCreditMemoNumber(String creditMemoNumber) throws InterruptedException {
+        customersPage.typeCreditMemoNumber(creditMemoNumber);
+    }
+
+    public static void fillDropdownAssociatedInvoice(String associatedInvoice){
+        customersPage.fillDropdownAssociatedInvoice(associatedInvoice);
+    }
+
+    public static void typeCreditMemoAmount(String creditMemoAmount) throws InterruptedException {
+        customersPage.typeCreditMemoAmount(creditMemoAmount);
+    }
+
+    public static void typeCreditMemoDescription(String creditMemoDescription) throws InterruptedException {
+        customersPage.typeCreditMemoDescription(creditMemoDescription);
+    }
+
+    public static void clickBtnCreateCreditMemo(){
+        customersPage.clickBtnCreateCreditMemo();
+    }
+
+    public static boolean isCreditMemoFinalized(String memoNumber){
+        if (customersPage.isTxtCreditMemoConfirmDisplayed()){
+            return true;}
+        else if (customersPage.isTxtCreditMemoExistingDisplayed(memoNumber)){
+            System.out.println("The credit memo for " +memoNumber+ " already exists");
+            return true;
+        }
+        else return false;
+    }
+
+    public static void clickOnCheckBox(int i){
+        customersPage.clickOnCheckBox(i);
+    }
+
+    public static void clickMarkAsPaid(){
+        customersPage.clickMarkAsPaid();
+    }
+
+    public static boolean isMarkedAsPaidSuccessfullyDisplayed(){
+        return customersPage.isMarkedAsPaidSuccessfullyDisplayed();
+    }
+}

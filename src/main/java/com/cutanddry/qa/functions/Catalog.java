@@ -355,5 +355,37 @@ public class Catalog {
     public static void selectCategory() throws InterruptedException {
         catalogPage.selectCategoryMeat();
     }
+    public static void clickOnSubCategory(String subCategory){
+        catalogPage.clickOnSubCategory(subCategory);
+    }
+    public static void selectSubCategory() throws InterruptedException {
+        catalogPage.selectSubCategoryPork();
+    }
+    public static void clickOnStorageMethod(String storageMethod){
+        catalogPage.clickOnStorageMethod(storageMethod);
+    }
+    public static boolean isStorageMethodDisplayed(String storageMethod){
+        return catalogPage.isStorageMethodDisplayed(storageMethod);
+    }
+    public static void typeNewDescription(String description)throws InterruptedException{
+        catalogPage.typeNewDescription(description);
+    }
+    public static boolean isNewDescriptionDisplayed(String description){
+        return catalogPage.isNewDescriptionDisplayed(description);
+    }
+    public static void clickOnSale(){catalogPage.clickOnSale();}
+    public static void clickNewArrival(){catalogPage.clickNewArrival();}
+    public static void selectOnSaleYes()throws InterruptedException{
+        catalogPage.selectOnSaleYes();
+    }
+    public static void selectNewArrivalYes()throws InterruptedException{
+        catalogPage.selectNewArrivalYes();
+    }
+    public static void clickOnCategoryOption(String category){
+        catalogPage.clickOnCategoryOption(category);
+    }
+    public static boolean isCategoryFilteredItem(String category)throws InterruptedException{
+        return catalogPage.isCategoryFilteredItem(category);
+    }
 
 }

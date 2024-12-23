@@ -1,5 +1,6 @@
 package com.cutanddry.qa.pages;
 
+import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -451,19 +452,51 @@ public class CustomersPage extends LoginPage {
     By dropdown_CCFee = By.xpath("//div[contains(@class, 'modal-content')]//div[contains(@class, 'themed_select__control') and contains(@class, 'css-yk16xz-control')]");
     String dropdown_CCFeeOption = "//div[contains(@class, 'themed_select__menu')]//div[text()='PLACEHOLDER']";
     String txt_CCFeeValue = "//div[contains(@class, 'font-weight-bold') and contains(text(), 'CC Fees')]/following-sibling::div[@class='_jehyy2' and contains(text(), 'OPTION_TEXT')]";
+    By btn_editNotes = By.xpath("//div[contains(@class, 'font-weight-bold') and text()='Notes']/*[local-name()='svg' and @data-icon='pencil']");
+    By tbx_editNotes= By.xpath("//textarea[@class='mr-2 form-control']");
+    String txt_Note = "//div[contains(@class, 'font-weight-bold') and contains(text(), 'Notes')]/following-sibling::div[@class='_jehyy2' and contains(text(), 'OPTION_TEXT')]";
+    By drodown_Filter = By.xpath("//div[@class='themed_select__value-container themed_select__value-container--has-value css-1hwfws3']//div[@class='themed_select__single-value css-1uccc91-singleValue']");
+    String dropdown_FilterOption = "//div[contains(@class, 'themed_select__menu')]//div[text()='PLACEHOLDER']";
+    By txt_Filter = By.xpath("//div[@class='themed_select__single-value css-1uccc91-singleValue']");
+    String row_searchedCustomer = "//td[text()='CODE']/..";
+    By btn_sendPaymentReminder = By.xpath("//button[text()='Send Payment Reminder']");
+    By btn_sendEmail = By.xpath("//button[text()='Send Email']");
+    By txt_EmailsSent = By.xpath("//h2[@id='swal2-title' and text()='Emails Sent!']");
+    By txt_noDueInvoices = By.xpath("//h2[@class='swal2-title' and text()='There are no past due invoices']");
+    By dropdown_moreActions = By.xpath("//button[@aria-haspopup='true' and @aria-expanded='false' and contains(text(), 'More Actions')]");
+    By dropdown_optionManageNotifications = By.xpath("//a[@class='dropdown-item' and text()='Manage Notifications']");
+    By dropdown_optionInviteBookkeeper = By.xpath("//a[@class='dropdown-item' and text()='Invite Bookkeeper']");
+    By dropdown_optionEmailStatement = By.xpath("//a[@class='dropdown-item' and text()='Email Statement']");
+    By dropdown_optionDownloadStatement = By.xpath("//a[@class='dropdown-item' and text()='Download Statement']");
+    By dropdown_optionCreateCreditMemo = By.xpath("//a[@class='dropdown-item' and text()='Create Credit Memo']");
+    By dropdown_optionMarkAsPaid = By.xpath("//a[@class='dropdown-item' and text()='Mark As Paid']");
+    By tbx_bookKeeperName = By.xpath("//div[@class='form-group']//input[@class='form-control' and @placeholder='Enter contact person name...']");
+    By tbx_bookKeeperEmail = By.xpath("//input[@class='form-control' and @placeholder='Enter contact person email...']");
+    By tbx_bookKeeperMobile = By.xpath("//input[@class='form-control' and @placeholder='Enter contact person mobile phone number...']");
+    By btn_inviteViaEmail = By.xpath("//button[@class='btn btn-primary btn-block' and text()='Invite via email']");
+    String txt_BookKeeperEmailSent = "//div[text()='An invitation was sent to EMAIL.']";
+    By tbx_enterNotificationEmail = By.xpath("//input[@class='form-control' and @placeholder='Enter email address']");
+    By btn_send = By.xpath("//button[@class='btn btn-primary' and text()='Send']");
+    By proprietaryItemOption = By.xpath("//div[contains(text(), 'Proprietary Items (')]");
+    By tbx_creditMemoNumber = By.xpath("//input[contains(@class, 'form-control') and @placeholder='Enter credit memo number']");
+    By dropdown_AssociatedInvoice = By.xpath("//div[@class='form-group' and .//label[text()='Associated Invoice']]//div[contains(@class, 'css-yk16xz-control')]");
+    By dropdownOption_AssociatedInvoice = By.xpath("//div[@class='form-group' and .//label[text()='Associated Invoice']]//div[contains(@class, 'css-yk16xz-menu')]//div[1]");
+    By tbx_enterTheAmount = By.xpath("//input[@placeholder='Enter the amount']");
+    By tbx_description = By.xpath("//input[@placeholder='Enter the description' and @type='text' and @class='form-control']");
+    By btn_CreateCreditMemo = By.xpath("//button[@type='button' and contains(@class, 'btn btn-primary') and text()='Create Credit Memo']");
+    By txt_CreditMemoConfirm = By.xpath("//h2[@class='swal2-title' and @id='swal2-title' and text()='Created the credit memo successfully.']");
+    String errorMessage_CreditMemoAlreadyExists = "//h2[@class='swal2-title' and @id='swal2-title' and text()='Credit memo number: memoNumber already exists.']";
+    By txt_markedAsPaidSucessfully = By.xpath("//div[@id='swal2-content' and contains(text(), 'The selected invoice was marked as paid successfully')]");
+    String checkBox_inInvoiceTable = "//table/tbody/tr[row]/td[1]//div[contains(@class, '_du1frc')]";
 
-
-    public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
-        distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
-        distributorUI.waitForCustom(2000);
-        return distributorUI.isDisplayed(btn_previousDraftOrderNo);
-    }
     public void clickPreviousDraftOrderNo() throws InterruptedException {
         distributorUI.click(btn_previousDraftOrderNo);
     }
+
     public void clickOnSearchCustomers(){
         distributorUI.click(tbx_searchCustomers);
     }
+
     public void typeOnSearchCustomers(String code) throws InterruptedException {
         distributorUI.clear(tbx_searchCustomers);
         distributorUI.waitForCustom(1000);
@@ -2260,9 +2293,11 @@ public class CustomersPage extends LoginPage {
         }
     }
 
-    public void clickOnFirstItemOfCustomerRequests(){
+    public void clickOnFirstItemOfCustomerRequests() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(first_row));
+//        distributorUI.wait(10);
+//        distributorUI.waitForClickability(first_row);
         distributorUI.click(first_row);
     }
 
@@ -2481,8 +2516,6 @@ public class CustomersPage extends LoginPage {
         return Double.valueOf(distributorUI.getText(btn_checkOutPDP).replace("$",""));
     }
 
-
-
     public boolean isEnableVisible(){
         return distributorUI.isDisplayed(btn_enable);
     }
@@ -2525,6 +2558,9 @@ public class CustomersPage extends LoginPage {
     public boolean verifyLastInvoicePaid(){
         return distributorUI.isDisplayed(txt_lastInvoicePaid);
     }
+    public boolean isProprietaryItemOptionDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(proprietaryItemOption);
+    }
 
     public boolean isCCFeesValueCorrect(String expectedValue) {
             By txt_finalCCFeeValue = By.xpath(txt_CCFeeValue.replace("OPTION_TEXT", expectedValue));
@@ -2548,4 +2584,191 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_editCCFee);
     }
 
+    public boolean isNoteCorrect(String expectedNote) {
+        By txt_finalNote = By.xpath(txt_Note.replace("OPTION_TEXT", expectedNote));
+        return distributorUI.isDisplayed(txt_finalNote);
+    }
+
+    public void typeNewNote(String note) throws InterruptedException {
+        distributorUI.clear(tbx_editNotes);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_editNotes, note);
+    }
+
+    public void clickOnEditNotes(){
+        distributorUI.click(btn_editNotes);
+    }
+
+    public boolean isFilterSelectedCorrectly(String expectedFilter){
+        String filterType = distributorUI.getText(txt_Filter);
+        System.out.println("The type displayed is "+filterType);
+        String expectedFilterDisplay = "Filter: " + expectedFilter;
+        return filterType.equals(expectedFilterDisplay);
+    }
+
+    public void clickOnDropDownFilter(){
+        distributorUI.click(drodown_Filter);
+    }
+
+    public void selectFilterDropDown(String FilterOption) {
+        By dropdownValueLocator = By.xpath(dropdown_FilterOption.replace("PLACEHOLDER", FilterOption));
+        distributorUI.waitForVisibility(dropdownValueLocator);
+        distributorUI.click(dropdownValueLocator);
+    }
+
+    public boolean isNoDueInvoicesDisplayed(){
+        return distributorUI.isDisplayed(txt_noDueInvoices);
+    }
+
+    public boolean isAreYouSureTxtDisplayed(){
+        return distributorUI.isDisplayed(txt_areYouSure);
+    }
+
+    public boolean istxtEmailsSentDisplayed(){
+        return distributorUI.isDisplayed(txt_EmailsSent);
+    }
+
+    public void clickOnSendPaymentReminder(){
+        distributorUI.click(btn_sendPaymentReminder);
+    }
+
+    public void clickOnSendEmail(){
+        distributorUI.click(btn_sendEmail);
+    }
+
+    public boolean isSearchedCustomerDisplayed(String CustomerCode){
+        By btnrow_searchedCustomer = By.xpath(row_searchedCustomer.replace("CODE", CustomerCode));
+        return distributorUI.isDisplayed(btnrow_searchedCustomer);
+    }
+
+    public void clickDropdownMoreActions(){
+        distributorUI.waitForVisibility(dropdown_moreActions);
+        distributorUI.click(dropdown_moreActions);
+    }
+
+    public void clickManageNotifications(){
+        distributorUI.click(dropdown_optionManageNotifications);
+    }
+
+    public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(btn_previousDraftOrderNo);
+    }
+
+    public boolean isBookKeeperEmailSentConfirmationDisplayed(String expectedEmail) {
+        By txt_confirmEmailSent = By.xpath(txt_BookKeeperEmailSent.replace("EMAIL", expectedEmail));
+        distributorUI.waitForVisibility(txt_confirmEmailSent);
+        return distributorUI.isDisplayed(txt_confirmEmailSent);
+    }
+
+    public void clickInviteViaEmail(){
+        distributorUI.click(btn_inviteViaEmail);
+    }
+
+    public void fillBookKeeperEmail(String Email) throws InterruptedException {
+        distributorUI.clear(tbx_bookKeeperEmail);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_bookKeeperEmail, Email);
+    }
+    public void fillBookKeeperMobile(String Mobile) throws InterruptedException {
+        distributorUI.clear(tbx_bookKeeperMobile);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_bookKeeperMobile, Mobile);
+    }
+    public void fillBookKeeperName(String Name) throws InterruptedException {
+        distributorUI.clear(tbx_bookKeeperName);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_bookKeeperName, Name);
+    }
+
+    public void clickInviteBookKeeper(){
+        distributorUI.click(dropdown_optionInviteBookkeeper);
+    }
+
+    public void clickEmailStatement(){
+        distributorUI.click(dropdown_optionEmailStatement);
+    }
+
+    public void clickSend(){
+        distributorUI.click(btn_send);
+    }
+
+    public void fillNotificationEmailAddress(String Email) throws InterruptedException {
+        distributorUI.clear(tbx_enterNotificationEmail);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_enterNotificationEmail, Email);
+    }
+
+    public void clickDownloadStatement() throws InterruptedException {
+        distributorUI.click(dropdown_optionDownloadStatement);
+        distributorUI.waitForCustom(1000);
+    }
+
+    public void clickCreateCreditMemo(){
+        distributorUI.click(dropdown_optionCreateCreditMemo);
+    }
+
+    public boolean isTxtCreditMemoExistingDisplayed(String memoNumber) {
+        By txt_CreditMemoAlreadyExists = By.xpath(errorMessage_CreditMemoAlreadyExists.replace("memoNumber", memoNumber));
+        return distributorUI.isDisplayed(txt_CreditMemoAlreadyExists);
+    }
+
+    public boolean isTxtCreditMemoConfirmDisplayed(){
+        return distributorUI.isDisplayed(txt_CreditMemoConfirm);
+    }
+
+    public void clickBtnCreateCreditMemo(){
+        distributorUI.click(btn_CreateCreditMemo);
+    }
+
+    public void typeCreditMemoDescription(String description) throws InterruptedException {
+        distributorUI.clear(tbx_description);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_description, description);
+    }
+
+    public void typeCreditMemoAmount(String amount) throws InterruptedException {
+        distributorUI.clear(tbx_enterTheAmount);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_enterTheAmount, amount);
+    }
+
+    public void typeCreditMemoNumber(String creditMemoNumber) throws InterruptedException {
+        distributorUI.clear(tbx_creditMemoNumber);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_creditMemoNumber, creditMemoNumber);
+    }
+
+    public void fillDropdownAssociatedInvoice(String associatedInvoice){
+        distributorUI.sendKeysAndEnter(dropdown_AssociatedInvoice, associatedInvoice);
+    }
+    public void selectOptionAssociatedInvoice(){
+        distributorUI.waitForVisibility(dropdownOption_AssociatedInvoice);
+        distributorUI.click(dropdownOption_AssociatedInvoice);
+    }
+
+    public void clickMarkAsPaid(){
+        distributorUI.click(dropdown_optionMarkAsPaid);
+    }
+
+    public void clickOnCheckBox(int totalCheckboxes) {
+        for (int j = 1; j <= totalCheckboxes; j++) {
+            String checkBoxXPath = checkBox_inInvoiceTable.replace("row", String.valueOf(j));
+            By checkBox_InvoiceTable = By.xpath(checkBoxXPath);
+            distributorUI.click(checkBox_InvoiceTable);
+        }
+    }
+
+    public boolean isMarkedAsPaidSuccessfullyDisplayed(){
+        distributorUI.waitForVisibility(txt_markedAsPaidSucessfully);
+        if (distributorUI.isDisplayed(txt_markedAsPaidSucessfully)){
+            System.out.println("Mark As Paid Successfully Displayed");
+            return true;
+        }
+        else{
+            System.out.println("Mark As Paid Successfully is not Displayed");
+            return false;
+        }
+    }
 }
