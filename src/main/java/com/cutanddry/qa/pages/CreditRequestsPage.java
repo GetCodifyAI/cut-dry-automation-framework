@@ -37,29 +37,35 @@ public class CreditRequestsPage extends TestBase {
     String option_timeRange = "//div[contains(@class, 'themed_select__menu')]//div[contains(text(), 'TIME_RANGE')]";
     String searchedElementXPath = "//td[normalize-space(text())='ORDER_ID']";
     By txt_priceColumnItems = By.xpath("//table[@class='mt-3 table table-hover']//tbody/tr[1]/td[4]");
-    By txt_totalColumnItems = By.xpath("//table[@class='mt-3 table table-hover']//tbody/tr[1]/td[6]");
+    By txt_QtyColumnItems = By.xpath("//table[@class='mt-3 table table-hover']//tbody/tr[1]/td[5]");
     By txt_totalValueOfItems =  By.xpath("//tr[contains(@class, 'font-weight-bold')]//td[div[text()='Total']]/following-sibling::td");
+    By txt_Order = By.xpath("//h2[contains(text(), 'Order')]");
+    By txt_CreditRequestTableCrQty = By.xpath("//table[@class='table table-hover']//tbody/tr[1]/td[6]");
+    By txt_CreditRequestTableCrValue = By.xpath("//table[@class='table table-hover']//tbody/tr[1]/td[7]");
 
-    public boolean isPriceAndTotalEqual() {
-        try {
-            // Get the text values for price, total columns, and total value
-            String price = distributorUI.getText(txt_priceColumnItems);
-            String totalColumns = distributorUI.getText(txt_totalColumnItems);
-            String total = distributorUI.getText(txt_totalValueOfItems);
+    public String[] getCrQtyCrValue() {
+        String CrQty = distributorUI.getText(txt_CreditRequestTableCrQty);
+        String CrValue = distributorUI.getText(txt_CreditRequestTableCrValue);
 
-            // Remove currency symbols and convert to numbers for comparison
-            double priceValue = Double.parseDouble(price.replace("$", "").trim());
-            double totalColumnsValue = Double.parseDouble(totalColumns.replace("$", "").trim());
-            double totalValue = Double.parseDouble(total.replace("$", "").trim());
+        System.out.println(CrQty);
+        System.out.println(CrValue);
 
-            // Check if all values are equal
-            if (priceValue == totalColumnsValue && totalColumnsValue == totalValue) {
-                return true;
-            }
-        } catch (Exception e) {
-            System.err.println("Error while comparing price and total values: " + e.getMessage());
-        }
-        return false;
+        return new String[] { CrQty, CrValue };
+    }
+
+    public String[] getItemQtyItemPrice() {
+        String ItemQty = distributorUI.getText(txt_QtyColumnItems);
+        String ItemPrice = distributorUI.getText(txt_priceColumnItems);
+
+        System.out.println(ItemQty);
+        System.out.println(ItemPrice);
+
+        return new String[] { ItemQty, ItemPrice };
+    }
+
+    public boolean isNavigatedToOrderSection(){
+        distributorUI.waitForVisibility(txt_Order);
+        return distributorUI.isDisplayed(txt_Order);
     }
 
     public void clickOnRequestDate() {

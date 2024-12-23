@@ -12,11 +12,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-
 public class ValidateTheCreditRequestPriceQuantityTotalInItemsSection extends TestBase {
     static User user;
-    String timeRange = "All";
-    String orderID = "316727041";
 
     @BeforeMethod
     public void setUp(){
@@ -32,10 +29,13 @@ public class ValidateTheCreditRequestPriceQuantityTotalInItemsSection extends Te
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCreditRequests();
         softAssert.assertFalse(CreditRequests.isErrorTextDisplayed(),"Error Message Displayed");
+        String[] CrResult = CreditRequests.getCrQtyCrValue();
+        String CrQty = CrResult[0];
+        String CrValue = CrResult[1];
         CreditRequests.clickOnFirstItemOfCreditRequests();
         CreditRequests.clickOnItems();
         softAssert.assertFalse(CreditRequests.isErrorTextDisplayed(),"Error Message Displayed");
-        CreditRequests.isPriceAndTotalEqual();
+        softAssert.assertTrue(CreditRequests.getItemQtyItemPrice(CrQty, CrValue),"ERROR");
         softAssert.assertAll();
     }
 
