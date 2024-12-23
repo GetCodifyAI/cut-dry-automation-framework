@@ -488,6 +488,7 @@ public class CustomersPage extends LoginPage {
     String errorMessage_CreditMemoAlreadyExists = "//h2[@class='swal2-title' and @id='swal2-title' and text()='Credit memo number: memoNumber already exists.']";
     By txt_markedAsPaidSucessfully = By.xpath("//div[@id='swal2-content' and contains(text(), 'The selected invoice was marked as paid successfully')]");
     String checkBox_inInvoiceTable = "//table/tbody/tr[row]/td[1]//div[contains(@class, '_du1frc')]";
+    By btn_checkout_stable = By.xpath("//button[contains(@data-for, 'cartCheckoutButton')]");
 
     public void clickPreviousDraftOrderNo() throws InterruptedException {
         distributorUI.click(btn_previousDraftOrderNo);
@@ -2770,5 +2771,11 @@ public class CustomersPage extends LoginPage {
             System.out.println("Mark As Paid Successfully is not Displayed");
             return false;
         }
+    }
+
+    public void clickOnStableCheckoutButton() throws InterruptedException {
+        distributorUI.waitForCustom(4000);
+        distributorUI.waitForElementEnabledState(btn_checkout_stable,true);
+        distributorUI.click(btn_checkout_stable);
     }
 }

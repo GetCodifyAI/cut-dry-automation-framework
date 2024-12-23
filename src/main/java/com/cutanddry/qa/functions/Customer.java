@@ -1592,4 +1592,15 @@ public class Customer {
     public static boolean isMarkedAsPaidSuccessfullyDisplayed(){
         return customersPage.isMarkedAsPaidSuccessfullyDisplayed();
     }
+
+    public static void stableCheckoutItems() throws InterruptedException {
+        customersPage.clickOnStableCheckoutButton();
+        if (customersPage.isOrderMiniumErrorBannerDisplayed()){
+            dashboardPage.clickOnOrderSettings();
+            settingsPage.selectOnOrderMinimums();
+            settingsPage.clickOnSaveChanges();
+            customersPage.clickOnBack();
+        }
+    }
+
 }

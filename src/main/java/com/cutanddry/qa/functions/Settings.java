@@ -2,6 +2,8 @@ package com.cutanddry.qa.functions;
 
 import com.cutanddry.qa.pages.SettingsPage;
 
+import java.text.ParseException;
+
 public class Settings {
     static SettingsPage settingsPage = new SettingsPage();
 
@@ -175,12 +177,20 @@ public class Settings {
     public static boolean isSetHolidayPopupDisplayed() {
         return settingsPage.isSetHolidayPopupDisplayed();
     }
-    public static void clickOnAddHoliday() {
-        settingsPage.removeTodayDateAsHoliday();
+    public static void clickOnAddHoliday(int daysToAdd) {
+        settingsPage.removeDateAsHoliday(daysToAdd);
         settingsPage.clickOnPlusBtn();
     }
     public static void selectGlobal() {
         settingsPage.selectGlobal();
+    }
+
+    public static void selectHolidayDate(int nextDayCount) throws InterruptedException {
+        settingsPage.selectHolidayDate(nextDayCount);
+    }
+
+    public static String getHolidayDate() {
+        return settingsPage.getHolidayDate();
     }
     public static void selectCustomerSpecific(String code) {
         settingsPage.selectCustomerSpecific(code);
@@ -215,7 +225,11 @@ public class Settings {
         settingsPage.setCustomerSpecificDeliveryDays(selection);
     }
 
-    public static void removeTodayDateAsHoliday() {
-        settingsPage.removeTodayDateAsHoliday();
+    public static void setDeliveryDays(boolean selection) {
+        settingsPage.setDeliveryDays(selection);
+    }
+
+    public static boolean isHolidayInDelivery(String date) throws ParseException {
+        return settingsPage.isHolidayInDelivery(date);
     }
 }
