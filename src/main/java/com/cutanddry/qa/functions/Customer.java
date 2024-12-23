@@ -1592,4 +1592,16 @@ public class Customer {
     public static boolean isMarkedAsPaidSuccessfullyDisplayed(){
         return customersPage.isMarkedAsPaidSuccessfullyDisplayed();
     }
+
+    public static void clickOnItemOrderGuideDropDown(String item) throws InterruptedException {
+        customersPage.clickOnDropDownOrderGuide();
+        customersPage.clickOnItemDropDownOrderGuide(item);
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+    }
+
+    public static boolean isDisplayedOrderGuideTypeCorrect(String item){
+        return customersPage.isDisplayedOrderGuideTypeCorrect(item);
+    }
 }

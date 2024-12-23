@@ -488,6 +488,9 @@ public class CustomersPage extends LoginPage {
     String errorMessage_CreditMemoAlreadyExists = "//h2[@class='swal2-title' and @id='swal2-title' and text()='Credit memo number: memoNumber already exists.']";
     By txt_markedAsPaidSucessfully = By.xpath("//div[@id='swal2-content' and contains(text(), 'The selected invoice was marked as paid successfully')]");
     String checkBox_inInvoiceTable = "//table/tbody/tr[row]/td[1]//div[contains(@class, '_du1frc')]";
+    By dropdown_orderGuide = By.xpath("//div[contains(@class, '_1nxcwl8') and contains(@class, 'col-3') and contains(@class, 'd-none') and contains(@class, 'd-lg-block')][.//div[text()='Order Guide:']]//div[contains(@class, 'cd_themed_select__control')]");
+    String dropdownOrderGuideItemXPath = "//div[contains(@class, 'cd_themed_select__menu')]//div[text()='{}']";
+    By txt_displayedOrderGuide = By.xpath("//div[contains(@class, '_1nxcwl8') and contains(@class, 'col-3') and contains(@class, 'd-none') and contains(@class, 'd-lg-block')][.//div[text()='Order Guide:']]//div[contains(@class, 'cd_themed_select__single-value')]");
 
     public void clickPreviousDraftOrderNo() throws InterruptedException {
         distributorUI.click(btn_previousDraftOrderNo);
@@ -2770,5 +2773,29 @@ public class CustomersPage extends LoginPage {
             System.out.println("Mark As Paid Successfully is not Displayed");
             return false;
         }
+    }
+
+    public boolean isDisplayedOrderGuideTypeCorrect(String item){
+        distributorUI.waitForVisibility(txt_displayedOrderGuide);
+        String displayedOrderGuide = distributorUI.getText(txt_displayedOrderGuide);
+        System.out.println("The Order Guide Type is "+displayedOrderGuide);
+        if (displayedOrderGuide.equals(item)){
+            System.out.println("Displayed Order Guide Type is Correct");
+            return true;
+        }
+        else{
+            System.out.println("Displayed Order Guide Type is Incorrect");
+            return false;
+        }
+    }
+
+    public void clickOnItemDropDownOrderGuide(String item) {
+        By dropDownItem = By.xpath(dropdownOrderGuideItemXPath.replace("{}", item));
+        System.out.println(dropDownItem);
+        distributorUI.click(dropDownItem);
+    }
+    public void clickOnDropDownOrderGuide() throws InterruptedException {
+        distributorUI.waitForVisibility(dropdown_orderGuide);
+        distributorUI.click(dropdown_orderGuide);
     }
 }
