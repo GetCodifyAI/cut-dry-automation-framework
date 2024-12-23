@@ -85,5 +85,8 @@ public class Login {
     public static void switchIntoNewTab(){
         loginPage.switchIntoNewTab();
     }
+    public static void navigateToRestaurantPortal(String phoneNo){
+        loginPage.navigateToRestaurantPortal(phoneNo);
+    }
 
 }

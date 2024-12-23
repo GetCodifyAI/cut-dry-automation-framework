@@ -491,6 +491,7 @@ public class CustomersPage extends LoginPage {
     By dropdown_orderGuide = By.xpath("//div[contains(@class, '_1nxcwl8') and contains(@class, 'col-3') and contains(@class, 'd-none') and contains(@class, 'd-lg-block')][.//div[text()='Order Guide:']]//div[contains(@class, 'cd_themed_select__control')]");
     String dropdownOrderGuideItemXPath = "//div[contains(@class, 'cd_themed_select__menu')]//div[text()='{}']";
     By txt_displayedOrderGuide = By.xpath("//div[contains(@class, '_1nxcwl8') and contains(@class, 'col-3') and contains(@class, 'd-none') and contains(@class, 'd-lg-block')][.//div[text()='Order Guide:']]//div[contains(@class, 'cd_themed_select__single-value')]");
+    By btn_checkout_stable = By.xpath("//button[contains(@data-for, 'cartCheckoutButton')]");
 
     public void clickPreviousDraftOrderNo() throws InterruptedException {
         distributorUI.click(btn_previousDraftOrderNo);
@@ -2797,5 +2798,11 @@ public class CustomersPage extends LoginPage {
     public void clickOnDropDownOrderGuide() throws InterruptedException {
         distributorUI.waitForVisibility(dropdown_orderGuide);
         distributorUI.click(dropdown_orderGuide);
+    }
+
+    public void clickOnStableCheckoutButton() throws InterruptedException {
+        distributorUI.waitForCustom(4000);
+        distributorUI.waitForElementEnabledState(btn_checkout_stable,true);
+        distributorUI.click(btn_checkout_stable);
     }
 }

@@ -164,5 +164,9 @@ public class Dashboard {
         DashboardPage.selectIndependentFoodCo();
     }
 
+    public static void clickOnPlaceOrderBtn(){
+        dashboardPage.clickOnPlaceOrderBtn();
+    }
+
 
 }

@@ -30,6 +30,10 @@ public class LoginPage extends TestBase {
     String txt_distributor = "//div[contains(@class, 'themed_select__option') and contains(text(), 'NAME')]";
     By btn_loginAsDis = By.xpath("//a[contains(text(), 'Login As (supplier)')]");
     By InternalToolsBtn = By.xpath("//a[contains(text(),'Internal Tools') and contains(@class,'active nav-link')]");
+    By lbl_loginAsCustomer = By.xpath("//button[contains(text(),'Re-Index')]/following-sibling::div//div[contains(text(),'Select')]/following::input[@type='text'][1]");
+    String txt_customer = "//div[@id='react-select-5-option-0' and contains(text(), 'PHONE_NO')]";
+    By btn_loginAsCustomer = By.xpath("//a[contains(text(), 'Login As (classic)')]");
+
 
     public void typeEmailOrMobile(String emailOrMobile){
         distributorUI.sendKeys(txt_emailOrMobile,emailOrMobile);
@@ -121,5 +125,13 @@ public class LoginPage extends TestBase {
 
     public void switchIntoNewTab(){
         distributorUI.OpenNewTabAndSwitchToIt();
+    }
+
+    public void navigateToRestaurantPortal(String phoneNo) {
+        distributorUI.navigateToURL(Constants.LOGIN_AS);
+        distributorUI.waitForElementEnabledState(lbl_loginAsCustomer,true);
+        distributorUI.sendKeys(lbl_loginAsCustomer,phoneNo);
+        distributorUI.click(By.xpath(txt_customer.replace("PHONE_NO", phoneNo)));
+        distributorUI.navigateToURL(distributorUI.getText(btn_loginAsCustomer, "href"));
     }
 }

@@ -1604,4 +1604,15 @@ public class Customer {
     public static boolean isDisplayedOrderGuideTypeCorrect(String item){
         return customersPage.isDisplayedOrderGuideTypeCorrect(item);
     }
+
+    public static void stableCheckoutItems() throws InterruptedException {
+        customersPage.clickOnStableCheckoutButton();
+        if (customersPage.isOrderMiniumErrorBannerDisplayed()){
+            dashboardPage.clickOnOrderSettings();
+            settingsPage.selectOnOrderMinimums();
+            settingsPage.clickOnSaveChanges();
+            customersPage.clickOnBack();
+        }
+    }
+
 }

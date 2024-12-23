@@ -1,9 +1,13 @@
 package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
+import java.util.Date;
 import java.util.Locale;
 
 public class SettingsPage extends LoginPage{
@@ -75,7 +79,10 @@ public class SettingsPage extends LoginPage{
     By lbl_deliveryDays = By.xpath("//label[text()='Delivery Days']/preceding-sibling::input[@type='checkbox']");
     By sel_OrderMinimums = By.xpath("//*[contains(text(),'Order Minimums')]/preceding-sibling::input");
     By sel_CustomerSpecificDeliveryDays = By.xpath("//*[contains(text(),'Customer Specific Delivery Days')]/preceding-sibling::input");
+    By sel_DeliveryDays = By.xpath("(//*[contains(text(),'Delivery Days')]/preceding-sibling::input)[1]");
     By lbl_HolidayDate = By.xpath("(//button[*[local-name()='svg' and @data-icon='minus']]/following::div[1])[last()]");
+    By dropdown_selectHolidayDate = By.xpath("//div[text()='Select Date']/following-sibling::div//input");
+    String dynamicXPath = "//div[contains(@class, 'react-datepicker__day--selected')]/following::div[contains(@class, 'react-datepicker__day')][DAY]";
 
     public boolean isOrderSettingsTextDisplayed() throws InterruptedException {
         try {
@@ -95,7 +102,7 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForVisibility(btn_saveChange);
         distributorUI.click(btn_saveChange);
         distributorUI.waitForVisibility(btn_saveChange);
-        distributorUI.waitForCustom(1000);
+        distributorUI.waitForCustom(5000);
     }
     public boolean isTeamSettingsTextDisplayed() throws InterruptedException {
         try {
@@ -377,6 +384,20 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForVisibility(txt_global);
         distributorUI.click(txt_global);
     }
+
+    public void selectHolidayDate(int nextDayCount) throws InterruptedException {
+        distributorUI.click(dropdown_selectHolidayDate);
+        String day = String.valueOf(nextDayCount);
+        By lbl_selectHolidayDate = By.xpath(dynamicXPath.replace("DAY", day));
+        distributorUI.waitForVisibility(lbl_selectHolidayDate);
+        distributorUI.click(lbl_selectHolidayDate);
+        distributorUI.waitForCustom(3000);
+    }
+
+    public String getHolidayDate() {
+        return distributorUI.getText(dropdown_selectHolidayDate,"value");
+    }
+
     public void selectCustomerSpecific(String code) {
         distributorUI.click(dropdown_selectType);
         distributorUI.waitForVisibility(txt_customerSpecific);
@@ -402,6 +423,25 @@ public class SettingsPage extends LoginPage{
         String dates = distributorUI.getText(dropdown_items);
         return dates.contains(formattedDate);
     }
+
+    public boolean isHolidayInDelivery(String date) throws ParseException {
+        distributorUI.refreshPage();
+        distributorUI.waitForClickability(dropdown_deliveryDate);
+
+        // Parse the input date (e.g., "Friday 12/20/2024")
+        SimpleDateFormat inputFormatter = new SimpleDateFormat("EEEE MM/dd/yyyy");
+        Date parsedDate = inputFormatter.parse(date);
+
+        // Format the parsed date to match the dropdown format (e.g., "Fri, Dec 20")
+        SimpleDateFormat dropdownFormatter = new SimpleDateFormat("EEE, MMM dd");
+        String formattedDate = dropdownFormatter.format(parsedDate);
+
+        distributorUI.click(dropdown_deliveryDate);
+        String dates = distributorUI.getText(dropdown_items);
+        return dates.contains(formattedDate);
+
+    }
+
     public void clickOnMinusBtn() {
         distributorUI.waitForClickability(btn_minus);
         distributorUI.click(btn_minus);
@@ -457,8 +497,19 @@ public class SettingsPage extends LoginPage{
         }
     }
 
-    public void removeTodayDateAsHoliday() {
-        String currentDate = distributorUI.getCurrentDateFormatted();
+    public void setDeliveryDays(boolean select) {
+        distributorUI.waitForVisibility(sel_DeliveryDays);
+        boolean isSelected = distributorUI.isCheckboxOrRadioBtnSelected(sel_DeliveryDays);
+
+        if (select && !isSelected) {
+            distributorUI.click(sel_DeliveryDays); // Select the checkbox
+        } else if (!select && isSelected) {
+            distributorUI.click(sel_DeliveryDays); // Deselect the checkbox
+        }
+    }
+
+    public void removeDateAsHoliday(int daysToAdd) {
+        String currentDate = distributorUI.getDateAfterDaysFormatted(daysToAdd);
         distributorUI.waitForVisibility(lbl_HolidayDate);
         String actualDate = distributorUI.getText(lbl_HolidayDate);
         System.out.println(actualDate + " -" + currentDate);
