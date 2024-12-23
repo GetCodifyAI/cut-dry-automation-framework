@@ -766,4 +766,12 @@ public class KeywordBase {
         return formatter.format(today);
     }
 
+    public String getDateAfterDaysFormatted(int daysToAdd) {
+        SimpleDateFormat formatter = new SimpleDateFormat("EEEE MM/dd/yyyy");
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, daysToAdd);
+        Date futureDate = calendar.getTime();
+        return formatter.format(futureDate);
+    }
+
 }

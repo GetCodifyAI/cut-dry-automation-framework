@@ -1,7 +1,6 @@
 package com.cutanddry.qa.tests.orders;
 
 import com.cutanddry.qa.base.TestBase;
-import com.cutanddry.qa.data.DistributorOrderData;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;

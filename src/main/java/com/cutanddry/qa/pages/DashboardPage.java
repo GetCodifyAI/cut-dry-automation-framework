@@ -61,6 +61,7 @@ public class DashboardPage extends LoginPage{
     static By wordAfterCompanyLocator = By.xpath("//span[text()='Company:']/following-sibling::span");
     static By dropdownToggle = By.xpath("//span[text()='Company:']/ancestor::button[contains(@class, 'dropdown-toggle')]");
     static By independentFoodOption = By.xpath("//a[text()='Independent Foods Co']");
+    By btn_PlaceOrder = By.xpath("(//button[text()='Place Order'])[1]");
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -313,5 +314,8 @@ public class DashboardPage extends LoginPage{
         System.out.println("Company name changed to 'Independent Foods Co'.");
     }
 
+    public void clickOnPlaceOrderBtn(){
+        distributorUI.click(btn_PlaceOrder);
+    }
 
 }
