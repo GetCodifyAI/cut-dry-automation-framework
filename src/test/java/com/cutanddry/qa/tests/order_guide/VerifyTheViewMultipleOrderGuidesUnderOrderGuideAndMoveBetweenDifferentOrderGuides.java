@@ -14,8 +14,6 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheViewMultipleOrderGuidesUnderOrderGuideAndMoveBetweenDifferentOrderGuides extends TestBase {
     static User user;
-    static String itemName = "Artichoke -24ct";
-    static String itemCode = "01700";
     static String customerId = "16579";
     static String orderGuideType = "Test_Guide_01";
     static String defaultOrderGuideType = "Test_Automation";
