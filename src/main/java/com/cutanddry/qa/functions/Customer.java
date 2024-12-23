@@ -1615,4 +1615,16 @@ public class Customer {
         }
     }
 
+    public static void clickOnEditMargin(){
+        customersPage.clickOnEditMargin();
+    }
+
+    public static void editMarginValue(String value){
+        customersPage.editMarginValue(value);
+    }
+
+    public static void clickBtnResetValues(){
+        customersPage.clickBtnResetValues();
+    }
+
 }

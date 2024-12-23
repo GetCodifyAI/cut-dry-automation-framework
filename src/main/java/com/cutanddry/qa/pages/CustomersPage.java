@@ -492,6 +492,10 @@ public class CustomersPage extends LoginPage {
     String dropdownOrderGuideItemXPath = "//div[contains(@class, 'cd_themed_select__menu')]//div[text()='{}']";
     By txt_displayedOrderGuide = By.xpath("//div[contains(@class, '_1nxcwl8') and contains(@class, 'col-3') and contains(@class, 'd-none') and contains(@class, 'd-lg-block')][.//div[text()='Order Guide:']]//div[contains(@class, 'cd_themed_select__single-value')]");
     By btn_checkout_stable = By.xpath("//button[contains(@data-for, 'cartCheckoutButton')]");
+    By table_OrderGuide = By.xpath("//table[@class='_6rf0k0 mb-5 table']");
+    String item_MarginColumnOrderGuide = ".//tbody/tr[PLACEHOLDER]/td[6]";
+    By tbx_editMarginValue = By.xpath("//input[@type='text' and @class='_1dq0frk form-control']");
+    By btn_reset = By.xpath("//button[@type='button' and contains(@class, 'btn-primary') and text()='Reset Values']");
 
     public void clickPreviousDraftOrderNo() throws InterruptedException {
         distributorUI.click(btn_previousDraftOrderNo);
@@ -2804,5 +2808,40 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForCustom(4000);
         distributorUI.waitForElementEnabledState(btn_checkout_stable,true);
         distributorUI.click(btn_checkout_stable);
+    }
+
+    public void clickBtnResetValues(){
+        distributorUI.click(btn_reset);
+    }
+
+
+    public void editMarginValue(String value){
+        distributorUI.waitForVisibility(tbx_editMarginValue);
+        distributorUI.clear(tbx_editMarginValue);
+        distributorUI.sendKeys(tbx_editMarginValue,value);
+    }
+
+    public void clickOnEditMargin() {
+        distributorUI.waitForVisibility(table_OrderGuide);
+        try {
+            distributorUI.waitForVisibility(table_OrderGuide);
+            int numberOfRows = distributorUI.getRowCount(table_OrderGuide);
+            System.out.println("There are " + numberOfRows + " rows.");
+
+            for (int i = 1; i <= numberOfRows; i++) { // Rows in XPath are 1-based
+                By marginColumnItem = By.xpath(item_MarginColumnOrderGuide.replace("PLACEHOLDER", String.valueOf(i)));
+                String item = distributorUI.getText(marginColumnItem);
+
+                if (!item.equalsIgnoreCase("N/A")) {
+                    By editButton = By.xpath(".//tbody/tr[" + i + "]//button[contains(@class, 'btn-primary')]");
+                    distributorUI.click(editButton);
+                    System.out.println("Clicked edit button in row: " + i);
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Failed to click on edit button for margin.");
+        }
     }
 }
