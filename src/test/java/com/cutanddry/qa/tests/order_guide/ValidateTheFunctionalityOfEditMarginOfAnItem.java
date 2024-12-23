@@ -24,7 +24,7 @@ public class ValidateTheFunctionalityOfEditMarginOfAnItem extends TestBase {
         user = JsonUtil.readUserLogin();
     }
     @Test(groups = "DOT-TC-710")
-    public void VerifyTheViewMultipleOrderGuidesUnderOrderGuideAndMoveBetweenDifferentOrderGuides() throws InterruptedException {
+    public void ValidateTheFunctionalityOfEditMarginOfAnItem() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
