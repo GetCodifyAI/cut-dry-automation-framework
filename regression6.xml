@@ -25,6 +25,11 @@
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromCatalogTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromPDPTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsViaOrderGuideCatalogPDPTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheCreditRequestPriceQuantityTotalInItemsSection"/>
+            <class name="com.cutanddry.qa.tests.credit_request.verifyTheCreditReqSearchByDistributorTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.VerifyTheCreditViewItemsByDistributorTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.VerifyTheCreditViewofCreditRequestIssueDetailsByDistributorTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.VerifyTheCreditViewTimelineByDistributorTest"/>
         </classes>
     </test>
 </suite>
