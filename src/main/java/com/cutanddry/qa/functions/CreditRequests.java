@@ -32,8 +32,8 @@ public class CreditRequests {
         return creditRequestsPage.checkIfItemSectionVisible();
     }
 
-    public static boolean isErrorTextNotDisplayed(){
-        return creditRequestsPage.isErrorTextNotDisplayed();
+    public static boolean isErrorTextDisplayed(){
+        return creditRequestsPage.isErrorTextDisplayed();
     }
 
     public static void clickOnTimeline(){

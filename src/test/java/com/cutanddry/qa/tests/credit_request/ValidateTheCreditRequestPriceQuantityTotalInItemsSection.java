@@ -31,8 +31,10 @@ public class ValidateTheCreditRequestPriceQuantityTotalInItemsSection extends Te
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCreditRequests();
+        softAssert.assertFalse(CreditRequests.isErrorTextDisplayed(),"Error Message Displayed");
         CreditRequests.clickOnFirstItemOfCreditRequests();
         CreditRequests.clickOnItems();
+        softAssert.assertFalse(CreditRequests.isErrorTextDisplayed(),"Error Message Displayed");
         CreditRequests.isPriceAndTotalEqual();
         softAssert.assertAll();
     }

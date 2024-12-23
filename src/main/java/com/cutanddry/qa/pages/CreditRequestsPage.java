@@ -111,7 +111,7 @@ public class CreditRequestsPage extends TestBase {
         return distributorUI.isDisplayed(header_items_table);
     }
 
-    public boolean isErrorTextNotDisplayed() {
+    public boolean isErrorTextDisplayed() {
         return distributorUI.isDisplayed(txt_error);
     }
 
