@@ -86,4 +86,8 @@ public class CreditRequests {
         creditRequestsPage.clickSaveCheckIn();
     }
 
+    public static void isPriceAndTotalEqual(){
+        creditRequestsPage.isPriceAndTotalEqual();
+    }
+
 }
