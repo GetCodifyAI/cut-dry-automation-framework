@@ -1580,4 +1580,16 @@ public class Customer {
         }
         else return false;
     }
+
+    public static void clickOnCheckBox(int i){
+        customersPage.clickOnCheckBox(i);
+    }
+
+    public static void clickMarkAsPaid(){
+        customersPage.clickMarkAsPaid();
+    }
+
+    public static boolean isMarkedAsPaidSuccessfullyDisplayed(){
+        return customersPage.isMarkedAsPaidSuccessfullyDisplayed();
+    }
 }
