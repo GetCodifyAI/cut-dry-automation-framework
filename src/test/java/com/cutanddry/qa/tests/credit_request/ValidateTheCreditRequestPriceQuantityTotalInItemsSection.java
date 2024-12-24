@@ -12,10 +12,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheCreditViewTimelineByDistributorTest extends  TestBase{
-
+public class ValidateTheCreditRequestPriceQuantityTotalInItemsSection extends TestBase {
     static User user;
-    String timeRange = "All";
 
     @BeforeMethod
     public void setUp(){
@@ -23,20 +21,22 @@ public class VerifyTheCreditViewTimelineByDistributorTest extends  TestBase{
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-495")
-    public void VerifyTheCreditViewTimelineByDistributor() throws InterruptedException {
+    @Test(groups = "DOT-TC-784")
+    public void ValidateTheCreditRequestPriceQuantityTotalInItemsSection() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCreditRequests();
         softAssert.assertFalse(CreditRequests.isErrorTextDisplayed(),"Error Message Displayed");
-        CreditRequests.changeRequestDate(timeRange); //Select the "All" option
+        String[] CrResult = CreditRequests.getCrQtyCrValue();
+        String CrQty = CrResult[0];
+        String CrValue = CrResult[1];
         CreditRequests.clickOnFirstItemOfCreditRequests();
+        CreditRequests.clickOnItems();
         softAssert.assertFalse(CreditRequests.isErrorTextDisplayed(),"Error Message Displayed");
-        CreditRequests.clickOnTimeline();
-        softAssert.assertTrue(CreditRequests.checkIfTimelineSectionVisible(), "Timeline Section is not visible");
-        softAssert.assertFalse(CreditRequests.isErrorTextDisplayed(),"Error Message Displayed");
+        softAssert.assertTrue(CreditRequests.getItemQtyItemPrice(CrQty, CrValue),"ERROR");
+        softAssert.assertAll();
     }
 
     @AfterMethod

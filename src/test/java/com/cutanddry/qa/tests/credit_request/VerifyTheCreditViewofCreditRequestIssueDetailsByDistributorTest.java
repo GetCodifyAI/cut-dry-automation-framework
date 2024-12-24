@@ -30,13 +30,13 @@ public class VerifyTheCreditViewofCreditRequestIssueDetailsByDistributorTest ext
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCreditRequests();
-        softAssert.assertTrue(CreditRequests.isErrorTextNotDisplayed(),"Error Message Displayed");
+        softAssert.assertFalse(CreditRequests.isErrorTextDisplayed(),"Error Message Displayed");
         CreditRequests.changeRequestDate(timeRange); //Select the "All" option
         CreditRequests.clickOnFirstItemOfCreditView();
-        softAssert.assertTrue(CreditRequests.isErrorTextNotDisplayed(),"Error Message Displayed");
+        softAssert.assertFalse(CreditRequests.isErrorTextDisplayed(),"Error Message Displayed");
         CreditRequests.clickOnCreditView();
         softAssert.assertTrue(CreditRequests.checkIfCreditViewSectionVisible(), "Timeline Section is not visible");
-        softAssert.assertTrue(CreditRequests.isErrorTextNotDisplayed(),"Error Message Displayed");
+        softAssert.assertFalse(CreditRequests.isErrorTextDisplayed(),"Error Message Displayed");
         CreditRequests.clickOnFirstItemOfCreditRequests();
         softAssert.assertTrue(CreditRequests.checkIfIssueDetailsModalDisplayed(), "Issue Detail Modal Card is not visible");
     }
