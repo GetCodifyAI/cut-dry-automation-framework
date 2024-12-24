@@ -61,6 +61,22 @@ public class KeywordBase {
         return this;
     }
 
+    //Get row count in a table
+    public int getRowCount(By tableXPath) {
+        int rowCount = 0;
+        try {
+            // Locate the table and its rows
+            WebElement table = wait.until(ExpectedConditions.presenceOfElementLocated(tableXPath));
+            List<WebElement> rows = table.findElements(By.xpath(".//tbody/tr"));
+            rowCount = rows.size();
+            logger.info("Number of rows in table {}: {}", tableXPath, rowCount);
+        } catch (Exception e) {
+            logger.error("Failed to get row count for table: {}", tableXPath, e);
+        }
+        return rowCount;
+    }
+
+
     // Send keys to an element using By object
     public KeywordBase sendKeys(By by, String data) {
         try {
