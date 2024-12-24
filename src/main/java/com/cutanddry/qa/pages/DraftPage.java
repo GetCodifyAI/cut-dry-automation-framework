@@ -10,6 +10,7 @@ public class DraftPage extends LoginPage{
     String txt_lastDraft = "(//tbody/tr[contains(@href, '/customers/place_order/') and contains(@href, 'draftId')]/td[8][contains(text(), 'TOTAL')])[1]";
     By pendingApprovalOrders = By.xpath("(//td/span[contains(text(),'Pending Approval')])[1]");
     By approveAndSubmitBtn = By.xpath("//button[contains(text(),'Approve & Submit Order')]");
+    By btn_editOrder = By.xpath("//a[contains(text(),'Edit Order')]");
 
 
     public boolean isDraftsTextDisplayed(){
@@ -41,5 +42,10 @@ public class DraftPage extends LoginPage{
     public void clickOnApproveAndSubmitBtn(){
         distributorUI.click(approveAndSubmitBtn);
     }
-
+    public void clickDraft(String total){
+        distributorUI.click(By.xpath(txt_lastDraft.replace("TOTAL", total)));
+    }
+    public void clickEditOrder(){
+        distributorUI.click(btn_editOrder);
+    }
 }

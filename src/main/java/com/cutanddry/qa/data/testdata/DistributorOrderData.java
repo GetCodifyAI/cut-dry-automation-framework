@@ -1,4 +1,4 @@
-package com.cutanddry.qa.data;
+package com.cutanddry.qa.data.testdata;
 
 public class DistributorOrderData {
 

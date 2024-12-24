@@ -30,5 +30,12 @@ public class Draft {
             customersPage.clickYesDuplicatePopup();
         }
     }
+    public static void clickDraft(String total){
+        draftPage.clickDraft(total);
+    }
+    public static void clickEditOrder(){
+        draftPage.clickEditOrder();
+    }
+
 
 }
