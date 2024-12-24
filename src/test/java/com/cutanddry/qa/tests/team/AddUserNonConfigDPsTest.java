@@ -12,10 +12,15 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.util.Random;
+
 public class AddUserNonConfigDPsTest extends TestBase {
     static User user;
-    static String name = "Test 99";
-    static String email = "test99@email.com";
+    SoftAssert softAssert;
+//    static String name = "Test 99";
+    static int randomNumber = new Random().nextInt(1000);
+    static String dynamicName = "Testnoconfig" + randomNumber;
+    static String email = "test"+randomNumber+"@email.com";
 
     @BeforeMethod
     public void setUp(){
@@ -25,17 +30,20 @@ public class AddUserNonConfigDPsTest extends TestBase {
 
     @Test(groups = "DOT-TC-143")
     public void AddUserNonConfigDPs() throws InterruptedException {
-        SoftAssert softAssert = new SoftAssert();
+        softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+
         Dashboard.navigateToTeamSettings();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");
         Settings.clickOnAddUser();
-        Settings.enterName(name);
+        Settings.enterName(dynamicName);
         Settings.enterEmail(email);
         Settings.clickOnInviteUser();
-        softAssert.assertTrue(Settings.isUserDisplayed(name),"user adding error");
+        softAssert.assertTrue(Settings.isUserDisplayed(dynamicName),"user adding error");
+
+        softAssert.assertFalse(Settings.userCleanUp(dynamicName),"The user cannot be removed.");
         softAssert.assertAll();
     }
 

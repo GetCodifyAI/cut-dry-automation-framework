@@ -12,10 +12,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.util.Random;
+
 public class AddNewUserWithUserReferenceTest extends TestBase {
     static User user;
-    static String name = "Test1234";
-    static String email = "test1234@email.com";
+    SoftAssert softAssert;
+    static int randomNumber = new Random().nextInt(1000);
+    static String dynamicName = "Testref " + randomNumber;
+    static String email = "testref"+randomNumber+"@email.com";
     static String userRef = "CC";
 
     @BeforeMethod
@@ -26,24 +30,26 @@ public class AddNewUserWithUserReferenceTest extends TestBase {
 
     @Test(groups = "DOT-TC-148")
     public void AddNewUserWithUserReference() throws InterruptedException {
-        SoftAssert softAssert = new SoftAssert();
+        softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+
         Dashboard.navigateToTeamSettings();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");
         Settings.clickOnAddUser();
-        Settings.enterName(name);
-        Settings.enterEmail(email);
+        Settings.enterName(dynamicName);
+        Settings.enterEmail(email.trim());
         Settings.enterUserRef(userRef);
         Settings.clickOnInviteUser();
-        softAssert.assertTrue(Settings.isUserDisplayed(name),"user adding error");
-        Settings.clickOnEditUser(name);
+        softAssert.assertTrue(Settings.isUserDisplayed(dynamicName),"user adding error");
+
+        Settings.clickOnEditUser(dynamicName);
         Settings.clickOnRemoveUserLabel();
         softAssert.assertTrue(Settings.isRemoveUserPopupDisplayed(),"remove pop up error");
         Settings.clickOnRemoveUser();
         Settings.clickOK();
-        softAssert.assertFalse(Settings.isUserDisplayed(name),"user remove error");
+        softAssert.assertFalse(Settings.isUserDisplayed(dynamicName),"user remove error");
         softAssert.assertAll();
     }
 

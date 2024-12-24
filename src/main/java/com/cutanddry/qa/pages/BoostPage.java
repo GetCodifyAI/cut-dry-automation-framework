@@ -72,6 +72,8 @@ public class BoostPage extends LoginPage {
     String featuredListDeleteBtn = "//tr[td[contains(text(), 'FEATUREDLIST')]]//button[contains(@class, 'cdbutton ml-2 _1fibbi88 btn btn-outline-primary btn-sm')]";
     By deleteListOverlayTxt = By.xpath("//div[contains(@class,'_1j771rs _5x3l6t mt-3 mb-2') and text()='Delete List?']");
     By OverlayDeleteBtn = By.xpath("//button[contains(@class,'w-100 _len1zh btn btn-danger') and text()='Delete']");
+    By toggleCarouselDisplayStatus = By.xpath("//div[@class='ml-4']//input[@type='checkbox' and @role='switch' and @checked]");
+
 
 
 
@@ -343,5 +345,10 @@ public class BoostPage extends LoginPage {
         distributorUI.click(OverlayDeleteBtn);
     }
 
-
+    public void ensureCarouselDisplayStatus(boolean enable) throws InterruptedException {
+        if (distributorUI.isCheckboxOrRadioBtnSelected(toggleCarouselDisplayStatus ) != enable){
+            distributorUI.click(toggle_carouselDisplayStatus);
+        }
+        distributorUI.waitForCustom(2000);
+    }
 }
