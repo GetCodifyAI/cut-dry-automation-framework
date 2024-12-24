@@ -90,6 +90,22 @@ public class KeywordBase {
         return this;
     }
 
+    // Send keys to an element character by character using By object
+    public KeywordBase sendKeysCharByChar(By by, String data) {
+        try {
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+            element.clear(); // Clear the field before typing
+            for (char ch : data.toCharArray()) {
+                element.sendKeys(String.valueOf(ch)); // Send each character one by one
+                Thread.sleep(100);
+            }
+            logger.info("Sent keys to element character by character: {} with data: {}", by, data);
+        } catch (Exception e) {
+            logger.error("Failed to send keys character by character to element: {} with data: {}", by, data, e);
+        }
+        return this;
+    }
+
     public KeywordBase sendKeysToHiddenElements(By by, String data) {
         try {
             WebElement element =driver.findElement(by);

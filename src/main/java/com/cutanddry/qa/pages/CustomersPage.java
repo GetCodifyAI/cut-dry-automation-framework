@@ -496,6 +496,7 @@ public class CustomersPage extends LoginPage {
     String item_MarginColumnOrderGuide = ".//tbody/tr[PLACEHOLDER]/td[6]";
     By tbx_editMarginValue = By.xpath("//input[@type='text' and @class='_1dq0frk form-control']");
     By btn_reset = By.xpath("//button[@type='button' and contains(@class, 'btn-primary') and text()='Reset Values']");
+    By section_dontForgetToBuy = By.xpath("//div[text()=\"Don't Forget to Buy\"]");
 
     public void clickPreviousDraftOrderNo() throws InterruptedException {
         distributorUI.click(btn_previousDraftOrderNo);
@@ -2843,5 +2844,9 @@ public class CustomersPage extends LoginPage {
             e.printStackTrace();
             System.err.println("Failed to click on edit button for margin.");
         }
+    }
+
+    public boolean isDontForgetToBuyDisplayed() {
+        return distributorUI.isDisplayed(section_dontForgetToBuy);
     }
 }

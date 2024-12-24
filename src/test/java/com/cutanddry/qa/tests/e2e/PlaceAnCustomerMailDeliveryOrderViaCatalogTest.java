@@ -32,6 +32,7 @@ public class PlaceAnCustomerMailDeliveryOrderViaCatalogTest extends TestBase {
         // Distributor Flows
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
+        Customer.ensureCarouselDisplayStatus(false);
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);

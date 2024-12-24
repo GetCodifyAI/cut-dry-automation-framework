@@ -232,4 +232,12 @@ public class Settings {
     public static boolean isHolidayInDelivery(String date) throws ParseException {
         return settingsPage.isHolidayInDelivery(date);
     }
+
+    public static boolean userCleanUp(String user) throws InterruptedException {
+        settingsPage.clickOnEditUser(user);
+        settingsPage.clickOnRemoveUserLabel();
+        settingsPage.clickOnRemoveUser();
+        settingsPage.clickOK();
+        return settingsPage.isUserDisplayed(user);
+    }
 }
