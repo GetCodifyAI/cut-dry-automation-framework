@@ -27,7 +27,7 @@ public class VerifyTheCustomerOrderGuideReportGenerationTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-546")
-    public void VerifyTheEmailReport() throws InterruptedException {
+    public void VerifyTheCustomerOrderGuideReportGeneration() throws InterruptedException {
         softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "login error");

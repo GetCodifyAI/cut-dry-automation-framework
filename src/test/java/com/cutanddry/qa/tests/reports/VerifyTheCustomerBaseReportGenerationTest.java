@@ -26,7 +26,7 @@ public class VerifyTheCustomerBaseReportGenerationTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
     @Test(groups = "DOT-TC-822")
-    public void VerifyTheEmailReport() throws InterruptedException {
+    public void VerifyTheCustomerBaseReportGeneration() throws InterruptedException {
         softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");

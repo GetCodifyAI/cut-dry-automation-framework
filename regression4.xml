@@ -9,7 +9,7 @@
         <parameter name="PART" value="Part Four" />
         <classes>
             <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerOrderGuideReportGenerationTest" />
-            <class name="com.cutanddry.qa.tests.reports.VerifyTheDownloadReportTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyThePickListDownloadReportTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogCopyPDPTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogExportPDPTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyTheSearchTest" />

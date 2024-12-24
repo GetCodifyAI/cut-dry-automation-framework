@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 import java.text.ParseException;
 
-public class VerifyTheDownloadReportTest extends TestBase {
+public class VerifyThePickListDownloadReportTest extends TestBase {
     static User user;
     SoftAssert softAssert;
     static String downloadPath = System.getProperty("user.dir") + "/downloads";
@@ -28,7 +28,7 @@ public class VerifyTheDownloadReportTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
     @Test(groups = "DOT-TC-547")
-    public void VerifyTheDownloadReport() throws InterruptedException, ParseException {
+    public void VerifyThePickListDownloadReport() throws InterruptedException, ParseException {
         softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
