@@ -40,8 +40,37 @@ public class CreditRequestsPage extends TestBase {
     By txt_status = By.xpath("(//td[9])[1]");
     By btn_salesperson = By.xpath("//label[text()='Salesperson:']/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     String optionSalesperson = "//div[contains(@class, 'themed_select__menu')]//div[contains(text(), 'SALESPERSON')]";
+    By txt_priceColumnItems = By.xpath("//table[@class='mt-3 table table-hover']//tbody/tr[1]/td[4]");
+    By txt_QtyColumnItems = By.xpath("//table[@class='mt-3 table table-hover']//tbody/tr[1]/td[5]");
+    By txt_totalValueOfItems =  By.xpath("//tr[contains(@class, 'font-weight-bold')]//td[div[text()='Total']]/following-sibling::td");
+    By txt_Order = By.xpath("//h2[contains(text(), 'Order')]");
+    By txt_CreditRequestTableCrQty = By.xpath("//table[@class='table table-hover']//tbody/tr[1]/td[6]");
+    By txt_CreditRequestTableCrValue = By.xpath("//table[@class='table table-hover']//tbody/tr[1]/td[7]");
 
+    public String[] getCrQtyCrValue() {
+        String CrQty = distributorUI.getText(txt_CreditRequestTableCrQty);
+        String CrValue = distributorUI.getText(txt_CreditRequestTableCrValue);
 
+        System.out.println(CrQty);
+        System.out.println(CrValue);
+
+        return new String[] { CrQty, CrValue };
+    }
+
+    public String[] getItemQtyItemPrice() {
+        String ItemQty = distributorUI.getText(txt_QtyColumnItems);
+        String ItemPrice = distributorUI.getText(txt_priceColumnItems);
+
+        System.out.println(ItemQty);
+        System.out.println(ItemPrice);
+
+        return new String[] { ItemQty, ItemPrice };
+    }
+
+    public boolean isNavigatedToOrderSection(){
+        distributorUI.waitForVisibility(txt_Order);
+        return distributorUI.isDisplayed(txt_Order);
+    }
 
     public void clickOnRequestDate() {
         // Check if it's in an iFrame
@@ -92,7 +121,7 @@ public class CreditRequestsPage extends TestBase {
         return distributorUI.isDisplayed(header_items_table);
     }
 
-    public boolean isErrorTextNotDisplayed() {
+    public boolean isErrorTextDisplayed() {
         return distributorUI.isDisplayed(txt_error);
     }
 

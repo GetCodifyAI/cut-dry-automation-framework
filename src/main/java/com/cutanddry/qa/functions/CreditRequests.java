@@ -1,6 +1,9 @@
 package com.cutanddry.qa.functions;
 
 import com.cutanddry.qa.pages.CreditRequestsPage;
+import org.openqa.selenium.devtools.v85.domstorage.model.Item;
+
+import java.lang.ref.SoftReference;
 
 public class CreditRequests {
 
@@ -32,8 +35,8 @@ public class CreditRequests {
         return creditRequestsPage.checkIfItemSectionVisible();
     }
 
-    public static boolean isErrorTextNotDisplayed(){
-        return creditRequestsPage.isErrorTextNotDisplayed();
+    public static boolean isErrorTextDisplayed(){
+        return creditRequestsPage.isErrorTextDisplayed();
     }
 
     public static void clickOnTimeline(){
@@ -109,4 +112,24 @@ public class CreditRequests {
         return creditRequestsPage.isSalespersonChanged(salesperson);
     }
 
-}
+    public static boolean isNavigatedToOrderSection(){
+        return creditRequestsPage.isNavigatedToOrderSection();
+    }
+
+    public static String[] getCrQtyCrValue(){
+        return creditRequestsPage.getCrQtyCrValue();
+    }
+
+    public static boolean getItemQtyItemPrice(String CrQty, String CrValue){
+        String[] ItemResults =  creditRequestsPage.getItemQtyItemPrice();
+        String ItemQty = ItemResults[0];
+        String ItemValue = ItemResults[1];
+
+        String ItemQtyWithoutSuffix = ItemQty.substring(0, ItemQty.length() - 6);
+
+        if (CrValue.equals(ItemValue) && CrQty.equals(ItemQtyWithoutSuffix)){
+            System.out.println("Prices and Quantities are Equal");
+            return true;
+        }
+        return false;
+    }}
