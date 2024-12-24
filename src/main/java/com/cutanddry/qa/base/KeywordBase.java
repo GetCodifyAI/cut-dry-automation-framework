@@ -790,4 +790,37 @@ public class KeywordBase {
         return formatter.format(futureDate);
     }
 
+    public boolean isFileDownloaded(String downloadPath, String expectedFileName, String fromDate, String toDate) throws ParseException {
+        File dir = new File(downloadPath);
+        File[] files = dir.listFiles();
+        if (files != null) {
+            SimpleDateFormat currentFormatter = new SimpleDateFormat("MM/dd/yyyy");
+            SimpleDateFormat expectedFormatter = new SimpleDateFormat("MM-dd-yyyy");
+
+            String formattedFromDate = expectedFormatter.format(currentFormatter.parse(fromDate));
+            String formattedToDate = expectedFormatter.format(currentFormatter.parse(toDate));
+
+            String fullExpectedFileName = String.format("%s - %s - %s.xlsx", expectedFileName, formattedFromDate, formattedToDate);
+
+            for (File file : files) {
+                if (file.getName().equals(fullExpectedFileName)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void cleanUpDownloads(String downloadPath) {
+        File dir = new File(downloadPath);
+        File[] files = dir.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile()) {
+                    file.delete();  // Delete each file
+                }
+            }
+        }
+    }
+
 }
