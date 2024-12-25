@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +32,13 @@ public class TestBase {
                     if (Constants.RUN_HEADLESS) {
                         chromeOptions.addArguments("--headless", "--window-size=1920,1080");
                     }
+
+                    // Set custom download directory
+                    Map<String, Object> prefs = new HashMap<>();
+                    prefs.put("download.default_directory", System.getProperty("user.dir") + "/Downloads");
+                    prefs.put("profile.default_content_settings.popups", 0);
+                    chromeOptions.setExperimentalOption("prefs", prefs);
+
                     driver = new ChromeDriver(chromeOptions);
                     js = (JavascriptExecutor) driver;
                     wait = new WebDriverWait(driver, Duration.ofSeconds(15));

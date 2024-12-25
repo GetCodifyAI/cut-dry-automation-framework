@@ -12,10 +12,18 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.util.Random;
+
 public class UpdateUserTest extends TestBase {
     static User user;
-    static String testUser = "Test Test";
-    static String testEmail = "other@email.com";
+//    static String testUser = "Test Test";
+//    static String testEmail = "other@email.com";
+
+
+    SoftAssert softAssert;
+    static int randomNumber = new Random().nextInt(1000);
+    static String testUser = "Testupdate " + randomNumber;
+    static String testEmail = "testupdate"+randomNumber+"@email.com";
     static String testUserRef = "AZ";
     static String userRef = "ZZ";
 
@@ -27,10 +35,11 @@ public class UpdateUserTest extends TestBase {
 
     @Test(groups = "DOT-TC-140")
     public void UpdateUser() throws InterruptedException {
-        SoftAssert softAssert = new SoftAssert();
+        softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+
         Dashboard.navigateToTeamSettings();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");
         Settings.clickOnAddUser();
@@ -39,6 +48,7 @@ public class UpdateUserTest extends TestBase {
         Settings.enterUserRef(testUserRef);
         Settings.clickOnInviteUser();
         softAssert.assertTrue(Settings.isUserDisplayed(testUser),"add test user error");
+
         Settings.clickOnEditUser(testUser);
         Settings.enterUserRef(userRef);
         Settings.clickOnSaveChanges();

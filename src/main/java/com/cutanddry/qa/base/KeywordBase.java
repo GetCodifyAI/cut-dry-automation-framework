@@ -90,6 +90,22 @@ public class KeywordBase {
         return this;
     }
 
+    // Send keys to an element character by character using By object
+    public KeywordBase sendKeysCharByChar(By by, String data) {
+        try {
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+            element.clear(); // Clear the field before typing
+            for (char ch : data.toCharArray()) {
+                element.sendKeys(String.valueOf(ch)); // Send each character one by one
+                Thread.sleep(100);
+            }
+            logger.info("Sent keys to element character by character: {} with data: {}", by, data);
+        } catch (Exception e) {
+            logger.error("Failed to send keys character by character to element: {} with data: {}", by, data, e);
+        }
+        return this;
+    }
+
     public KeywordBase sendKeysToHiddenElements(By by, String data) {
         try {
             WebElement element =driver.findElement(by);
@@ -788,6 +804,39 @@ public class KeywordBase {
         calendar.add(Calendar.DATE, daysToAdd);
         Date futureDate = calendar.getTime();
         return formatter.format(futureDate);
+    }
+
+    public boolean isFileDownloaded(String downloadPath, String expectedFileName, String fromDate, String toDate) throws ParseException {
+        File dir = new File(downloadPath);
+        File[] files = dir.listFiles();
+        if (files != null) {
+            SimpleDateFormat currentFormatter = new SimpleDateFormat("MM/dd/yyyy");
+            SimpleDateFormat expectedFormatter = new SimpleDateFormat("MM-dd-yyyy");
+
+            String formattedFromDate = expectedFormatter.format(currentFormatter.parse(fromDate));
+            String formattedToDate = expectedFormatter.format(currentFormatter.parse(toDate));
+
+            String fullExpectedFileName = String.format("%s - %s - %s.xlsx", expectedFileName, formattedFromDate, formattedToDate);
+
+            for (File file : files) {
+                if (file.getName().equals(fullExpectedFileName)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void cleanUpDownloads(String downloadPath) {
+        File dir = new File(downloadPath);
+        File[] files = dir.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile()) {
+                    file.delete();  // Delete each file
+                }
+            }
+        }
     }
 
 }
