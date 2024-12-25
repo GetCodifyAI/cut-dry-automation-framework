@@ -23,7 +23,7 @@ public class ValidateFilterCreditRequestFromSalespersonTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-781")
+    @Test(groups = "DOT-TC-782")
     public void ValidateFilterCreditRequestFromSalesperson() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
