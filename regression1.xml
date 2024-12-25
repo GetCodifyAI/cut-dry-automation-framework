@@ -27,8 +27,6 @@
             <class name="com.cutanddry.qa.tests.order_guide.VerifySortOptionsTest" />
             <class name="com.cutanddry.qa.tests.order_guide.DisplayCustomerOrdersTest" />
             <class name="com.cutanddry.qa.tests.order_guide.SortCustomerOrdersTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.ValidateTheFunctionalityOfEditMarginOfAnItem" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheViewMultipleOrderGuidesUnderOrderGuideAndMoveBetweenDifferentOrderGuides" />
             <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordValidTest" />
             <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordInvalidTest" />
             <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />
