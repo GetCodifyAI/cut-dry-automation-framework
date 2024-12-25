@@ -33,6 +33,9 @@
             <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerBaseReportGenerationTest" />
             <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerOrdersReportGenerationTest" />
             <class name="com.cutanddry.qa.tests.reports.VerifyTheItemMovementReportGenerationTest" />
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromRequestDateTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromCreditStatusTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromSalespersonTest"/>
         </classes>
     </test>
 </suite>

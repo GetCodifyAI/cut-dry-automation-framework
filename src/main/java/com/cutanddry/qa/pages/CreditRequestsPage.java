@@ -9,8 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CreditRequestsPage extends TestBase {
 
-    By btn_request_data = By.xpath(
-            "//label[text()='Request Date:']/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    By btn_request_data = By.xpath("//label[text()='Request Date:']/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     By btn_search = By.xpath("//input[@placeholder='Search' and contains(@class, 'form-control')]");
     By first_row_credit_requests = By.xpath("//table[@class='table table-hover']//tbody//tr[1]");
     By first_row_credit_view = By.xpath("//table[@class='table table-hover']//tbody//tr[1]");
@@ -18,13 +17,10 @@ public class CreditRequestsPage extends TestBase {
     By btn_items = By.xpath("//a[@role='tab' and @data-rb-event-key='Items']");
     By header_items_table = By.xpath("//thead/tr[@class='_jg41os']");
     By btn_timeline = By.xpath("//a[@role='tab' and @data-rb-event-key='Timeline']");
-    By header_timeline_table = By.xpath(
-            "//tr[@class='_jg41os' and th[text()='Timestamp'] and th[text()='Status'] and th[text()='Organization'] and th[text()='User'] and th[text()='Action']]");
+    By header_timeline_table = By.xpath("//tr[@class='_jg41os' and th[text()='Timestamp'] and th[text()='Status'] and th[text()='Organization'] and th[text()='User'] and th[text()='Action']]");
     By btn_credit_view = By.xpath("//a[@role='tab' and @data-rb-event-key='Credit Request']");
-    By header_credit_view_table = By.xpath(
-            "//tr[@class='_jg41os' and th[text()='Item Code'] and th[text()='Unit'] and th[text()='Price'] and th[text()='Qty.'] and th[text()='Issue'] and th[text()='Total'] and th[text()='Credit']]");
-    By modal_issue_details = By
-            .xpath("//div[@class='modal-header']//div[contains(@class, 'modal-title') and text()='Issue Details']");
+    By header_credit_view_table = By.xpath("//tr[@class='_jg41os' and th[text()='Item Code'] and th[text()='Unit'] and th[text()='Price'] and th[text()='Qty.'] and th[text()='Issue'] and th[text()='Total'] and th[text()='Credit']]");
+    By modal_issue_details = By.xpath("//div[@class='modal-header']//div[contains(@class, 'modal-title') and text()='Issue Details']");
     By btn_report_issue = By.xpath("//button[@class='mr-3 btn btn-outline-danger']");
     By txt_report_issue = By.xpath("//h2[@class='mb-0 _1vx3fhy' and text()='Which items had an issue?']");
     By btn_first_row = By.xpath("//tr[@class='_du1frc']");
@@ -36,6 +32,14 @@ public class CreditRequestsPage extends TestBase {
     By btn_save_checkin = By.xpath("//button[@class = 'btn btn-primary' and text() = 'Save Check-In']");
     String option_timeRange = "//div[contains(@class, 'themed_select__menu')]//div[contains(text(), 'TIME_RANGE')]";
     String searchedElementXPath = "//td[normalize-space(text())='ORDER_ID']";
+    String days = "//div[text()='DATE']";
+    By txt_date = By.xpath("(//td[1])[1]");
+    String date = "//td[text()='DATE']";
+    By btn_creditStatus = By.xpath("//label[text()='Credit Status:']/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    String optionCreditStatus = "//div[contains(@class, 'themed_select__menu')]//div[contains(text(), 'STATUS')]";
+    By txt_status = By.xpath("(//td[9])[1]");
+    By btn_salesperson = By.xpath("//label[text()='Salesperson:']/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    String optionSalesperson = "//div[contains(@class, 'themed_select__menu')]//div[contains(text(), 'SALESPERSON')]";
     By txt_priceColumnItems = By.xpath("//table[@class='mt-3 table table-hover']//tbody/tr[1]/td[4]");
     By txt_QtyColumnItems = By.xpath("//table[@class='mt-3 table table-hover']//tbody/tr[1]/td[5]");
     By txt_totalValueOfItems =  By.xpath("//tr[contains(@class, 'font-weight-bold')]//td[div[text()='Total']]/following-sibling::td");
@@ -193,6 +197,62 @@ public class CreditRequestsPage extends TestBase {
 
     public void clickSaveCheckIn() {
         distributorUI.click(btn_save_checkin);
+    }
+    public boolean isRequestDateChanged(String day){
+        try {
+            distributorUI.isDisplayed(By.xpath(days.replace("DATE", day)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(days.replace("DATE", day)));
+    }
+    public Boolean isFilteredRequestCorrect(String requestsDate){
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        String d = distributorUI.getText(txt_date);
+        distributorUI.scrollToElement(By.xpath("("+ date.replace("DATE", d) + ")" + "[last()]"));
+        return distributorUI.validateFilteredElements(By.xpath(date.replace("DATE", d)),requestsDate);
+    }
+    public void clickOnCreditStatus() {
+        distributorUI.click(btn_creditStatus);
+    }
+    public void clickOnCreditStatusOption(String status){
+        distributorUI.click(By.xpath(optionCreditStatus.replace("STATUS",status)));
+    }
+    public boolean isCreditStatusChanged(String status){
+        try {
+            distributorUI.isDisplayed(By.xpath(days.replace("DATE", status)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(days.replace("DATE", status)));
+    }
+    public Boolean isFilteredCreditStatusCorrect(String status){
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        String s = distributorUI.getText(txt_status);
+        distributorUI.scrollToElement(By.xpath("("+ date.replace("DATE", s) + ")" + "[last()]"));
+        return distributorUI.validateFilteredElements(By.xpath(date.replace("DATE", s)),status);
+    }
+    public void clickOnSalesperson() {
+        distributorUI.click(btn_salesperson);
+    }
+    public void clickOnSalespersonOption(String salesperson){
+        distributorUI.click(By.xpath(optionSalesperson.replace("SALESPERSON",salesperson)));
+    }
+    public boolean isSalespersonChanged(String salesperson){
+        try {
+            distributorUI.isDisplayed(By.xpath(days.replace("DATE", salesperson)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(days.replace("DATE", salesperson)));
     }
 
 }
