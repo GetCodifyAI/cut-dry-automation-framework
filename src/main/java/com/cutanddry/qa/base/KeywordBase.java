@@ -811,15 +811,22 @@ public class KeywordBase {
         File[] files = dir.listFiles();
         if (files != null) {
             SimpleDateFormat currentFormatter = new SimpleDateFormat("MM/dd/yyyy");
-            SimpleDateFormat expectedFormatter = new SimpleDateFormat("MM-dd-yyyy");
+            SimpleDateFormat dashFormatter = new SimpleDateFormat("MM-dd-yyyy");
+            SimpleDateFormat underscoreFormatter = new SimpleDateFormat("yyyy-MM-dd");
 
-            String formattedFromDate = expectedFormatter.format(currentFormatter.parse(fromDate));
-            String formattedToDate = expectedFormatter.format(currentFormatter.parse(toDate));
+            String formattedFromDate = fromDate != null ? dashFormatter.format(currentFormatter.parse(fromDate)) : null;
+            String formattedToDateDash = toDate != null ? dashFormatter.format(currentFormatter.parse(toDate)) : null;
+            String formattedToDateUnderscore = toDate != null ? underscoreFormatter.format(currentFormatter.parse(toDate)) : null;
 
-            String fullExpectedFileName = String.format("%s - %s - %s.xlsx", expectedFileName, formattedFromDate, formattedToDate);
+            String fileNameCase1 = String.format("%s - %s - %s.xlsx", expectedFileName, formattedFromDate, formattedToDateDash); // Case 1
+            String fileNameCase2 = String.format("%s_%s.xlsx", expectedFileName, formattedToDateDash); // Case 2
+            String fileNameCase3 = String.format("%s_%s.xlsx", expectedFileName, formattedToDateUnderscore); // Case 3
+            String fileNameCase4 = String.format("%s.xlsx", expectedFileName); // Case 4
 
             for (File file : files) {
-                if (file.getName().equals(fullExpectedFileName)) {
+                String fileName = file.getName();
+                if (fileName.equals(fileNameCase1) || fileName.equals(fileNameCase2) ||
+                        fileName.equals(fileNameCase3) || fileName.equals(fileNameCase4)) {
                     return true;
                 }
             }
