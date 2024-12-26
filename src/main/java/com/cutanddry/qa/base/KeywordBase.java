@@ -406,6 +406,30 @@ public class KeywordBase {
         return this;
     }
 
+    // Scroll to the top of the page
+    public KeywordBase uiScrollTop() {
+        try {
+            JavascriptExecutor jse = (JavascriptExecutor) driver;
+            jse.executeScript("window.scrollTo(0, 0);");
+            logger.info("Scrolled to the top of the page.");
+        } catch (Exception e) {
+            logger.error("Failed to scroll to the top of the page.", e);
+        }
+        return this;
+    }
+
+    // Scroll to the bottom of the page
+    public KeywordBase uiScrollBottom() {
+        try {
+            JavascriptExecutor jse = (JavascriptExecutor) driver;
+            jse.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+            logger.info("Scrolled to the bottom of the page.");
+        } catch (Exception e) {
+            logger.error("Failed to scroll to the bottom of the page.", e);
+        }
+        return this;
+    }
+
     // Click using JavaScript (useful when normal click doesn't work)
     public KeywordBase clickUsingJavaScript(By by) {
         try {
@@ -441,6 +465,29 @@ public class KeywordBase {
         } catch (Exception e) {
             logger.error("Failed to drag and drop from element: {} to element: {}", sourceBy, targetBy, e);
         }
+        return this;
+    }
+
+    // Drag and drop from one element to another element
+    public KeywordBase dragAndDropAction(By sourceBy, By targetBy) {
+        try {
+            Actions actions = new Actions(driver);
+
+            WebElement sourceElement = wait.until(ExpectedConditions.visibilityOfElementLocated(sourceBy));
+            WebElement targetElement = wait.until(ExpectedConditions.visibilityOfElementLocated(targetBy));
+
+            actions.clickAndHold(sourceElement)
+                    .moveToElement(targetElement)
+                    .pause(Duration.ofSeconds(1)) // Pause for stability
+                    .release(targetElement)
+                    .build()
+                    .perform();
+
+            logger.info("Successfully dragged and dropped from element: {} to element: {}", sourceBy, targetBy);
+        } catch (Exception e) {
+            logger.error("Failed to drag and drop from element: {} to element: {}", sourceBy, targetBy, e);
+        }
+
         return this;
     }
 

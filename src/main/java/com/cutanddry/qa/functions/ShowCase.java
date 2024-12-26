@@ -25,7 +25,7 @@ public class ShowCase {
         return showCasePage.isConagraFoodServiceTxtDisplayed(brand);
     }
 
-    public static void NavigateToOurBrandsPage(){
+    public static void NavigateToOurBrandsPage() throws InterruptedException {
         showCasePage.ClickOnOurBrandBtn();
     }
 
@@ -33,7 +33,7 @@ public class ShowCase {
         return showCasePage.isOurBrandPageisDisplayed();
     }
 
-    public static void NavigateToHungerfordSmithPage(){
+    public static void NavigateToHungerfordSmithPage() throws InterruptedException {
         showCasePage.ClickOnHungerfordSmith();
     }
 

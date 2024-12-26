@@ -109,7 +109,12 @@ public class Settings {
     public static boolean isAddPaymentPopupDisplayed() throws InterruptedException {
         return settingsPage.isAddPaymentPopupDisplayed();
     }
-    public static void clickOnAddPaymentMethod() {
+    public static void clickOnAddPaymentMethod() throws InterruptedException {
+        if(settingsPage.isRemoveAccountBtnDisplayed()){
+            settingsPage.clickOnRemoveAcc();
+            settingsPage.clickYes();
+            Settings.clickOK();
+        }
         settingsPage.clickOnAddPaymentMethod();
     }
     public static void clickOnAddBank() {

@@ -43,7 +43,6 @@ public class VerifyCashAndCarryAppPassingAmountLessThanOneTest extends TestBase 
         CashAndCarry.enterState(user.getState());
         CashAndCarry.enterZip(user.getCode());
         CashAndCarry.submitOrder();
-        //
         softAssert.assertAll();
     }
 
