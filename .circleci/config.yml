@@ -261,6 +261,9 @@ jobs:
             sudo apt-get install -y google-chrome-stable
             google-chrome --version
       - run:
+          name: Create Downloads Directory
+          command: mkdir -p ~/Downloads
+      - run:
           name: Build and run nightly tests 6
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression6.xml -Drun.headless=true -Dtest.env=uat
       - store_artifacts:
@@ -491,6 +494,9 @@ jobs:
             sudo apt-get install -y google-chrome-stable
             google-chrome --version
       - run:
+          name: Create Downloads Directory
+          command: mkdir -p ~/Downloads
+      - run:
           name: Build and run daily tests 6
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression6.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true
       - store_artifacts:
@@ -507,17 +513,17 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "30 20 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC)
+          cron: "15 10 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * *
           filters:
             branches:
               only:
-                - main
+                - e2e_mubarak
     jobs:
-      - nightly-build-and-test-1
-      - nightly-build-and-test-2
-      - nightly-build-and-test-3
-      - nightly-build-and-test-4
-      - nightly-build-and-test-5
+#      - nightly-build-and-test-1
+#      - nightly-build-and-test-2
+#      - nightly-build-and-test-3
+#      - nightly-build-and-test-4
+#      - nightly-build-and-test-5
       - nightly-build-and-test-6
 
   scheduled-test-2:
