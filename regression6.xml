@@ -25,6 +25,38 @@
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromCatalogTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromPDPTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsViaOrderGuideCatalogPDPTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheCreditRequestPriceQuantityTotalInItemsSection"/>
+            <class name="com.cutanddry.qa.tests.credit_request.verifyTheCreditReqSearchByDistributorTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.VerifyTheCreditViewItemsByDistributorTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.VerifyTheCreditViewofCreditRequestIssueDetailsByDistributorTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.VerifyTheCreditViewTimelineByDistributorTest"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerBaseReportGenerationTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerOrdersReportGenerationTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheItemMovementReportGenerationTest" />
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromRequestDateTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromCreditStatusTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromSalespersonTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.ValidateTheFunctionalityOfEditMarginOfAnItem" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheViewMultipleOrderGuidesUnderOrderGuideAndMoveBetweenDifferentOrderGuides" />
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCutAndDryPayInCustomerInvoices"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheDetailsOnLastInvoicePaidOnInCustomerInvoices"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheEmailStatementInMoreActions"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheFilterCustomerInvoices"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheManageNotificationsInMoreActions"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheNotesCanEditInCustomerInvoices"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifythePaymentTermsincustomerInvoices"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheSendPaymentReminder"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTtheInviteBookkeeperInMoreActions"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheDownloadStatementInMoreActions"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCreateCreditMemoInMoreActions"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheMarkAsPaidInMoreActions"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerWiseItemMovementDownloadReportTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheCatalogExportDownloadReportTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyThePayCustomersDownloadReportTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheAtRiskAccountsDownloadReportTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyThePaymentTransactionDownloadReportTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyThePaymentAuthorizationStatusDownloadReportTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheTrackReadyOrdersDownloadReportTest" />
         </classes>
     </test>
 </suite>

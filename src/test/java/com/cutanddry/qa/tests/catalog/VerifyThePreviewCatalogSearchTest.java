@@ -15,7 +15,9 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyThePreviewCatalogSearchTest extends TestBase {
     static User user;
-    static String itemName = "Anchovy Paste";
+    SoftAssert softAssert;
+//    static String itemName = "Anchovy Paste";
+    static String itemName, searchItemCode;
 
     @BeforeMethod
     public void setUp(){
@@ -25,16 +27,20 @@ public class VerifyThePreviewCatalogSearchTest extends TestBase {
 
     @Test(groups = "DOT-TC-520")
     public void VerifyThePreviewCatalogSearch() throws InterruptedException {
-        SoftAssert softAssert = new SoftAssert();
+        softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
+        itemName = Catalog.getItemNameFirstRowInCatalog();
+        searchItemCode = Catalog.getItemCodeFirstRowInCatalog();
+
         Catalog.clickOnPreviewCatalog();
         softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
-        Catalog.searchItemInCatalog(itemName);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
+        Catalog.searchItemInCatalogPreview(searchItemCode);
+        softAssert.assertTrue(Catalog.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
         softAssert.assertAll();
     }
 

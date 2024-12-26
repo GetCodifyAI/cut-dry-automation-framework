@@ -6,6 +6,8 @@ import com.cutanddry.qa.pages.SettingsPage;
 
 import java.util.Objects;
 
+import static com.cutanddry.qa.functions.Boost.boostPage;
+
 public class Customer {
     static CustomersPage customersPage = new CustomersPage();
     static DashboardPage dashboardPage = new DashboardPage();
@@ -1593,6 +1595,18 @@ public class Customer {
         return customersPage.isMarkedAsPaidSuccessfullyDisplayed();
     }
 
+    public static void clickOnItemOrderGuideDropDown(String item) throws InterruptedException {
+        customersPage.clickOnDropDownOrderGuide();
+        customersPage.clickOnItemDropDownOrderGuide(item);
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+    }
+
+    public static boolean isDisplayedOrderGuideTypeCorrect(String item){
+        return customersPage.isDisplayedOrderGuideTypeCorrect(item);
+    }
+
     public static void stableCheckoutItems() throws InterruptedException {
         customersPage.clickOnStableCheckoutButton();
         if (customersPage.isOrderMiniumErrorBannerDisplayed()){
@@ -1601,6 +1615,26 @@ public class Customer {
             settingsPage.clickOnSaveChanges();
             customersPage.clickOnBack();
         }
+    }
+
+    public static void clickOnEditMargin(){
+        customersPage.clickOnEditMargin();
+    }
+
+    public static void editMarginValue(String value){
+        customersPage.editMarginValue(value);
+    }
+
+    public static void clickBtnResetValues(){
+        customersPage.clickBtnResetValues();
+    }
+
+    public static void ensureCarouselDisplayStatus(boolean status) throws InterruptedException {
+        dashboardPage.clickOnBoost();
+        boostPage.clickSuggestiveSales();
+        boostPage.clickDontForgetToOrderConfig();
+        boostPage.ensureCarouselDisplayStatus(status);
+        boostPage.clickClose();
     }
 
 }

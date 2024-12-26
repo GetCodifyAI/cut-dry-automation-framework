@@ -83,6 +83,8 @@ public class SettingsPage extends LoginPage{
     By lbl_HolidayDate = By.xpath("(//button[*[local-name()='svg' and @data-icon='minus']]/following::div[1])[last()]");
     By dropdown_selectHolidayDate = By.xpath("//div[text()='Select Date']/following-sibling::div//input");
     String dynamicXPath = "//div[contains(@class, 'react-datepicker__day--selected')]/following::div[contains(@class, 'react-datepicker__day')][DAY]";
+    By lbl_InvalidEmail = By.xpath("//h2[contains(text(),'Invalid Email')]");
+
 
     public boolean isOrderSettingsTextDisplayed() throws InterruptedException {
         try {
@@ -159,6 +161,11 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForVisibility(btn_inviteUser);
         distributorUI.click(btn_inviteUser);
         distributorUI.clickUsingJavaScript(btn_inviteUser);
+        if(distributorUI.isDisplayed(lbl_InvalidEmail)){
+            distributorUI.waitForClickability(btn_OK);
+            distributorUI.click(btn_OK);
+            distributorUI.waitForCustom(3000);
+        }
     }
     public boolean isUserDisplayed(String user) throws InterruptedException {
         try {

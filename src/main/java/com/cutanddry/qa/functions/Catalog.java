@@ -388,4 +388,16 @@ public class Catalog {
         return catalogPage.isCategoryFilteredItem(category);
     }
 
+    public static String getItemCodeFirstRowInCatalog() throws InterruptedException {
+        return catalogPage.getItemCodeFirstRowInCatalog();
+    }
+
+    public static String getItemNameFirstRowInCatalog() throws InterruptedException {
+        return catalogPage.getItemNameFirstRowInCatalog();
+    }
+
+    public static String getFirstElementFrmSearchResults(String name){
+        return catalogPage.getFirstItemNameFrmSearchResults(name);
+    }
+
 }

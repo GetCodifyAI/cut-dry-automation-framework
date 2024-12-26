@@ -61,6 +61,22 @@ public class KeywordBase {
         return this;
     }
 
+    //Get row count in a table
+    public int getRowCount(By tableXPath) {
+        int rowCount = 0;
+        try {
+            // Locate the table and its rows
+            WebElement table = wait.until(ExpectedConditions.presenceOfElementLocated(tableXPath));
+            List<WebElement> rows = table.findElements(By.xpath(".//tbody/tr"));
+            rowCount = rows.size();
+            logger.info("Number of rows in table {}: {}", tableXPath, rowCount);
+        } catch (Exception e) {
+            logger.error("Failed to get row count for table: {}", tableXPath, e);
+        }
+        return rowCount;
+    }
+
+
     // Send keys to an element using By object
     public KeywordBase sendKeys(By by, String data) {
         try {
@@ -70,6 +86,22 @@ public class KeywordBase {
             logger.info("Sent keys to element: {} with data: {}", by, data);
         } catch (Exception e) {
             logger.error("Failed to send keys to element: {} with data: {}", by, data, e);
+        }
+        return this;
+    }
+
+    // Send keys to an element character by character using By object
+    public KeywordBase sendKeysCharByChar(By by, String data) {
+        try {
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+            element.clear(); // Clear the field before typing
+            for (char ch : data.toCharArray()) {
+                element.sendKeys(String.valueOf(ch)); // Send each character one by one
+                Thread.sleep(100);
+            }
+            logger.info("Sent keys to element character by character: {} with data: {}", by, data);
+        } catch (Exception e) {
+            logger.error("Failed to send keys character by character to element: {} with data: {}", by, data, e);
         }
         return this;
     }
@@ -772,6 +804,46 @@ public class KeywordBase {
         calendar.add(Calendar.DATE, daysToAdd);
         Date futureDate = calendar.getTime();
         return formatter.format(futureDate);
+    }
+
+    public boolean isFileDownloaded(String downloadPath, String expectedFileName, String fromDate, String toDate) throws ParseException {
+        File dir = new File(downloadPath);
+        File[] files = dir.listFiles();
+        if (files != null) {
+            SimpleDateFormat currentFormatter = new SimpleDateFormat("MM/dd/yyyy");
+            SimpleDateFormat dashFormatter = new SimpleDateFormat("MM-dd-yyyy");
+            SimpleDateFormat underscoreFormatter = new SimpleDateFormat("yyyy-MM-dd");
+
+            String formattedFromDate = fromDate != null ? dashFormatter.format(currentFormatter.parse(fromDate)) : null;
+            String formattedToDateDash = toDate != null ? dashFormatter.format(currentFormatter.parse(toDate)) : null;
+            String formattedToDateUnderscore = toDate != null ? underscoreFormatter.format(currentFormatter.parse(toDate)) : null;
+
+            String fileNameCase1 = String.format("%s - %s - %s.xlsx", expectedFileName, formattedFromDate, formattedToDateDash); // Case 1
+            String fileNameCase2 = String.format("%s_%s.xlsx", expectedFileName, formattedToDateDash); // Case 2
+            String fileNameCase3 = String.format("%s_%s.xlsx", expectedFileName, formattedToDateUnderscore); // Case 3
+            String fileNameCase4 = String.format("%s.xlsx", expectedFileName); // Case 4
+
+            for (File file : files) {
+                String fileName = file.getName();
+                if (fileName.equals(fileNameCase1) || fileName.equals(fileNameCase2) ||
+                        fileName.equals(fileNameCase3) || fileName.equals(fileNameCase4)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void cleanUpDownloads(String downloadPath) {
+        File dir = new File(downloadPath);
+        File[] files = dir.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile()) {
+                    file.delete();  // Delete each file
+                }
+            }
+        }
     }
 
 }

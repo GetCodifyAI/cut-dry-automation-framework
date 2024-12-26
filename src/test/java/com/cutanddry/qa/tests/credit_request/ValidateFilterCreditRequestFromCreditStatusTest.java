@@ -2,9 +2,9 @@ package com.cutanddry.qa.tests.credit_request;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.functions.CreditRequests;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
-import com.cutanddry.qa.functions.CreditRequests;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -12,10 +12,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheCreditViewTimelineByDistributorTest extends  TestBase{
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
+public class ValidateFilterCreditRequestFromCreditStatusTest extends TestBase {
     static User user;
-    String timeRange = "All";
+    String date = "All";
+    String status = "Requested";
 
     @BeforeMethod
     public void setUp(){
@@ -23,20 +27,19 @@ public class VerifyTheCreditViewTimelineByDistributorTest extends  TestBase{
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-495")
-    public void VerifyTheCreditViewTimelineByDistributor() throws InterruptedException {
+    @Test(groups = "DOT-TC-781")
+    public void ValidateFilterCreditRequestFromCreditStatus() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCreditRequests();
-        softAssert.assertFalse(CreditRequests.isErrorTextDisplayed(),"Error Message Displayed");
-        CreditRequests.changeRequestDate(timeRange); //Select the "All" option
-        CreditRequests.clickOnFirstItemOfCreditRequests();
-        softAssert.assertFalse(CreditRequests.isErrorTextDisplayed(),"Error Message Displayed");
-        CreditRequests.clickOnTimeline();
-        softAssert.assertTrue(CreditRequests.checkIfTimelineSectionVisible(), "Timeline Section is not visible");
-        softAssert.assertFalse(CreditRequests.isErrorTextDisplayed(),"Error Message Displayed");
+        CreditRequests.changeRequestDate(date);
+        softAssert.assertTrue(CreditRequests.isRequestDateChanged(date),"dropdown error");
+        CreditRequests.changeCreditRequestStatus(status);
+        softAssert.assertTrue(CreditRequests.isCreditRequestStatusChanged(status),"dropdown error");
+        softAssert.assertTrue(CreditRequests.isFilteredCreditStatusCorrect(status),"Error in filtering credit request status");
+        softAssert.assertAll();
     }
 
     @AfterMethod
