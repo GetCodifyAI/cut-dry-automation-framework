@@ -26,7 +26,7 @@ public class VerifyManufacturerPageViaShowCaseTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-258")
-    public void VerifyManufacturerPageViaShowCase(){
+    public void VerifyManufacturerPageViaShowCase() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");

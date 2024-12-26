@@ -16,6 +16,7 @@ public class VerifyTheOrderViewMoreFiltersTest extends TestBase {
     static User user;
     String date = "This week";
     String creditStatus = "Credit Requested";
+    static String type = "Requested";
 
     @BeforeMethod
     public void setUp() {
@@ -34,7 +35,8 @@ public class VerifyTheOrderViewMoreFiltersTest extends TestBase {
         softAssert.assertTrue(Orders.isOrderDateChanged(date),"dropdown error");
         Orders.clickOnMoreFilters();
         softAssert.assertTrue(Orders.isFilterOrdersPopupDisplayed(),"popup error");
-        Orders.selectCreditReqStatus();
+//        Orders.selectCreditReqStatus();
+        Orders.selectCreditReqStatusStable(type);
         softAssert.assertTrue(Orders.checkFiltersCorrectlyDisplayed(creditStatus),"Error in adding more filters");
         softAssert.assertAll();
     }

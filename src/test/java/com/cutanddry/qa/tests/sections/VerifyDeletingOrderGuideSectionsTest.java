@@ -36,7 +36,12 @@ public class VerifyDeletingOrderGuideSectionsTest extends TestBase {
         softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
         Customer.expandMoreOptionsDropdown();
         Customer.addSection();
-        Customer.clickClose();
+//        Customer.clickClose();
+        softAssert.assertTrue(Customer.isAddSectionPopupDisplayed()," add section popup error");
+        Customer.typeSectionName(sectionName);
+        Customer.clickOnSave();
+        softAssert.assertTrue(Customer.isAddedSectionDisplayed(sectionName)," add section error");
+
         Customer.editSection(sectionName);
         softAssert.assertTrue(Customer.isEditSectionPopupDisplayed(),"edit pop up error");
         Customer.clickOnDelete();

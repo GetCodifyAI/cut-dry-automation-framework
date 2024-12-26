@@ -26,7 +26,7 @@ public class BrandPageForAllPortalsTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-252")
-    public void BrandPageForAllPortals(){
+    public void BrandPageForAllPortals() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");

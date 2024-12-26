@@ -302,10 +302,16 @@ public class SettingsPage extends LoginPage{
         return distributorUI.isDisplayed(txt_trackSettings);
     }
     public void clickOnAddPaymentMethod() {
+        distributorUI.click(txt_billingSettings);
         distributorUI.waitForClickability(btn_addPaymentMethod);
         distributorUI.click(btn_addPaymentMethod);
     }
     public void clickOnAddBank() {
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.waitForClickability(lbl_addBank);
         distributorUI.click(lbl_addBank);
     }
@@ -321,6 +327,11 @@ public class SettingsPage extends LoginPage{
         distributorUI.sendKeys(lbl_RoutingNum,num);
     }
     public void clickOnNext() {
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.waitForClickability(btn_next);
         distributorUI.click(btn_next);
     }
@@ -528,5 +539,10 @@ public class SettingsPage extends LoginPage{
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    public boolean isRemoveAccountBtnDisplayed() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        return distributorUI.isDisplayed(btn_removeAcc);
     }
 }

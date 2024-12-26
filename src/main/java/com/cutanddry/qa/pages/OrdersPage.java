@@ -42,8 +42,10 @@ public class OrdersPage extends LoginPage{
     By txt_resultsCount = By.xpath("//div[contains(text(), 'results')]");
     By btn_moreFilters = By.xpath("//button[contains(., 'More Filters')]");
     By txt_filterOrders= By.xpath("//div[contains(text(),'Filter Orders')]");
-    By lbl_credReqStat = By.xpath("//label[contains(text(), 'Credit Request Status')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+//    By lbl_credReqStat = By.xpath("//label[contains(text(), 'Credit Request Status')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    By lbl_credReqStat = By.xpath("(//label[contains(text(), 'Credit Request Status')]/following-sibling::div//div)[1]");
     By lbl_req = By.xpath("//div[contains(text(),'Requested')]");
+    String sel_CreditRequestStatus = "//div[text()='TYPE']";
     By btn_save = By.xpath("//button[contains(text(),'Save')]");
     String lbl_credReq = "//div[contains(text(),'MOREFILTERSTATUS')]";
     By lbl_salesperson = By.xpath("//label[contains(text(), 'Salesperson')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
@@ -280,6 +282,17 @@ public class OrdersPage extends LoginPage{
         distributorUI.click(btn_save);
         distributorUI.waitForCustom(1000);
     }
+
+    public void selectCreditReqStatusStable(String type) throws InterruptedException {
+        distributorUI.click(lbl_credReqStat);
+        By lbl_CatalogExportReportType = By.xpath(sel_CreditRequestStatus.replace("TYPE", type));
+        distributorUI.waitForVisibility(lbl_CatalogExportReportType);
+        distributorUI.click(lbl_CatalogExportReportType);
+        distributorUI.waitForCustom(3000);
+        distributorUI.click(btn_save);
+        distributorUI.waitForCustom(3000);
+    }
+
     public void selectSalespersonStatus() throws InterruptedException {
         distributorUI.click(lbl_salesperson);
         distributorUI.hoverOverElement(txt_salesperson);
