@@ -517,7 +517,7 @@ workflows:
           filters:
             branches:
               only:
-                - e2e_mubarak
+                - feature/e2e_mubarak
     jobs:
 #      - nightly-build-and-test-1
 #      - nightly-build-and-test-2
