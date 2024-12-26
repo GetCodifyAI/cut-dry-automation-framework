@@ -8,7 +8,7 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part Six" />
         <classes>
-           <!-- <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCutAndDryPayInCustomerInvoices"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCutAndDryPayInCustomerInvoices"/>
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheDetailsOnLastInvoicePaidOnInCustomerInvoices"/>
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheEmailStatementInMoreActions"/>
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheFilterCustomerInvoices"/>
@@ -49,7 +49,7 @@
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTtheInviteBookkeeperInMoreActions"/>
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheDownloadStatementInMoreActions"/>
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCreateCreditMemoInMoreActions"/>
-            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheMarkAsPaidInMoreActions"/>-->
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheMarkAsPaidInMoreActions"/>
             <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerWiseItemMovementDownloadReportTest" />
             <class name="com.cutanddry.qa.tests.reports.VerifyTheCatalogExportDownloadReportTest" />
             <class name="com.cutanddry.qa.tests.reports.VerifyThePayCustomersDownloadReportTest" />

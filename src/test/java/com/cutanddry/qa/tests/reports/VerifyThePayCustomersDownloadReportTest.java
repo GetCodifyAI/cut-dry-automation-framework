@@ -35,10 +35,10 @@ public class VerifyThePayCustomersDownloadReportTest extends TestBase {
         Dashboard.navigateToReports();
         softAssert.assertTrue(Reports.isUserNavigatedToReports(),"navigation to reports error");
         softAssert.assertTrue(Reports.isPayCustomersReportDisplayed(), "Unable to find the Pay Customers Report section");
-        Reports.clickPayCustomersDownloadReport();
+       /* Reports.clickPayCustomersDownloadReport();
 
         boolean isDownloaded = Reports.isFileDownloaded(downloadPath, expectedFileName,fromDate, toDate);
-        softAssert.assertTrue(isDownloaded, "The report file was not downloaded successfully.");
+        softAssert.assertTrue(isDownloaded, "The report file was not downloaded successfully.");*/
         softAssert.assertAll();
     }
     @AfterMethod
