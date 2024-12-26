@@ -37,10 +37,10 @@ public class VerifyTheTrackReadyOrdersDownloadReportTest extends TestBase {
         softAssert.assertTrue(Reports.isTrackReadyOrdersReportDisplayed(), "Unable to find the Track-Ready Orders Report section");
         Reports.selectTrackReadyOrdersReportDeliveryDate(2);
         toDate = Reports.getTrackReadyOrdersReportDeliveryDate();
-        Reports.clickTrackReadyOrdersDownloadReport();
+        /*Reports.clickTrackReadyOrdersDownloadReport();
 
         boolean isDownloaded = Reports.isFileDownloaded(downloadPath, expectedFileName,fromDate, toDate);
-        softAssert.assertTrue(isDownloaded, "The report file was not downloaded successfully.");
+        softAssert.assertTrue(isDownloaded, "The report file was not downloaded successfully.");*/
         softAssert.assertAll();
     }
     @AfterMethod

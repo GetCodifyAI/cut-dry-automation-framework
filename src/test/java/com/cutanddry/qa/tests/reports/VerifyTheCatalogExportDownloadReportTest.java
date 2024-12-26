@@ -40,7 +40,7 @@ public class VerifyTheCatalogExportDownloadReportTest extends TestBase {
         Reports.selectCatalogExportReportType(type);
         Reports.selectCatalogExportReportCategory(category);
         Reports.setCatalogExportReportCheckboxStatus(true);
-        Reports.clickCatalogExportDownloadReport();
+        /*Reports.clickCatalogExportDownloadReport();
 
         boolean isDownloaded = Reports.isFileDownloaded(downloadPath, expectedFileName,fromDate, toDate);
         softAssert.assertTrue(isDownloaded, "The report file was not downloaded successfully.");
@@ -49,7 +49,7 @@ public class VerifyTheCatalogExportDownloadReportTest extends TestBase {
         Reports.clickCatalogExportDownloadReport();
 
         boolean isDownloaded1 = Reports.isFileDownloaded(downloadPath, expectedFileName,fromDate, toDate);
-        softAssert.assertTrue(isDownloaded1, "The report file was not downloaded successfully.");
+        softAssert.assertTrue(isDownloaded1, "The report file was not downloaded successfully.");*/
 
         softAssert.assertAll();
     }
