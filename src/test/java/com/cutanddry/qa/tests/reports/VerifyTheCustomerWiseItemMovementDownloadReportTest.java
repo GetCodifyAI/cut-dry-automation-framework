@@ -14,12 +14,11 @@ import org.testng.asserts.SoftAssert;
 
 import java.text.ParseException;
 
-public class VerifyThePickListDownloadReportTest extends TestBase {
+public class VerifyTheCustomerWiseItemMovementDownloadReportTest extends TestBase {
     static User user;
     SoftAssert softAssert;
     static String downloadPath = System.getProperty("user.dir") + "/downloads";
-    static String expectedFileName = "Independent Foods Co - Pick List";
-    static String email = "test@cutanddry.com";
+    static String expectedFileName = "customer-wise-item-movement-report-Independent Foods Co";
     static String fromDate, toDate;
 
     @BeforeMethod
@@ -27,20 +26,18 @@ public class VerifyThePickListDownloadReportTest extends TestBase {
         initialization();
         user = JsonUtil.readUserLogin();
     }
-    @Test(groups = "DOT-TC-547")
-    public void VerifyThePickListDownloadReport() throws InterruptedException, ParseException {
+    @Test(groups = "DOT-TC-825")
+    public void VerifyTheCustomerWiseItemMovementDownloadReport() throws InterruptedException, ParseException {
         softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+
         Dashboard.navigateToReports();
         softAssert.assertTrue(Reports.isUserNavigatedToReports(),"navigation to reports error");
-        softAssert.assertTrue(Reports.isPickListReportDisplayed(), "Unable to find the Pick List Report section");
-        Reports.selectPickListReportFromDate(2);
-        fromDate = Reports.getPickListReportFromDate();
-        Reports.selectPickListReportToDate(3);
-        toDate = Reports.getPickListReportToDate();
-        Reports.typeOnPickListReportEmail(email);
-        Reports.clickPickListDownloadReport();
+        softAssert.assertTrue(Reports.isCustomerWiseItemMovementReportDisplayed(), "Unable to find the Customer-wise Item Movement Report section");
+        Reports.selectCustomerWiseItemMovementReportFromDate(2);
+        Reports.selectCustomerWiseItemMovementReportToDate(3);
+        Reports.clickCustomerWiseItemMovementDownloadReport();
 
         boolean isDownloaded = Reports.isFileDownloaded(downloadPath, expectedFileName,fromDate, toDate);
         softAssert.assertTrue(isDownloaded, "The report file was not downloaded successfully.");
