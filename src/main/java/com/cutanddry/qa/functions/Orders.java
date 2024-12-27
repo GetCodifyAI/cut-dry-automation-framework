@@ -137,6 +137,9 @@ public class Orders {
     public static void selectCreditReqStatus() throws InterruptedException {
         ordersPage.selectCreditReqStatus();
     }
+    public static void selectCreditReqStatusStable(String type) throws InterruptedException {
+        ordersPage.selectCreditReqStatusStable(type);
+    }
     public static void selectSalespersonStatus() throws InterruptedException{
         ordersPage.selectSalespersonStatus();
     }

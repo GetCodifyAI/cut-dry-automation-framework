@@ -23,8 +23,10 @@ public class CustomersPage extends LoginPage {
     By btn_checkout = By.xpath("//button[text()='$']/../button[2]");
     By btn_catalog = By.xpath("//div[text()='Catalog']");
     By tbx_catalogSearch = By.xpath("//input[@placeholder='Search catalog...']");
-    String lbl_catalogSearchItemList = "//button[contains(@data-for,'tooltipundefined')]/ancestor::div[2]/following-sibling::div[2]/div/div[contains(text(),'NAME')]";
-    String btn_addToCart = "//div[contains(@class, '_13kb1gk')]//div[text()= 'ITEMNAME']//ancestor::div[contains(@class, '_13kb1gk')]//div[@class='_btf6h0']//button[contains(@class, 'btn-outline-primary')]";
+//    String lbl_catalogSearchItemList = "//button[contains(@data-for,'tooltipundefined')]/ancestor::div[2]/following-sibling::div[2]/div/div[contains(text(),'NAME')]";
+    String lbl_catalogSearchItemList = "//button[contains(text(), 'Add to Cart')]/ancestor::div//*[contains(text(), 'NAME')]";
+//    String btn_addToCart = "//div[contains(@class, '_13kb1gk')]//div[text()= 'ITEMNAME']//ancestor::div[contains(@class, '_13kb1gk')]//div[@class='_btf6h0']//button[contains(@class, 'btn-outline-primary')]";
+    String btn_addToCart = "//*[contains(text(), 'ITEMNAME')]/ancestor::div[contains(@class, 'card')]//button[contains(text(), 'Add to Cart')]";
     By tbx_itemQuantityFirstRow = By.xpath("//tr[1]//td[8]//input");
     By lbl_itemPriceFirstRow = By.xpath("//tr[1]//td[7]/span");
     By lbl_itemPriceSecondRow = By.xpath("//tr[2]//td[7]//input");
@@ -152,7 +154,7 @@ public class CustomersPage extends LoginPage {
     By tbx_section = By.xpath("//input[@placeholder='e.g. Dairy']");
     By btn_save = By.xpath("//button[normalize-space(text())='Save']");
     String txt_addedSection = "//div[contains(@data-rbd-draggable-id, 'item')]//div[contains(text(), 'NAME')]";
-    By txt_lastID = By.xpath("//div[contains(@data-rbd-draggable-id, 'item-')][last()]");
+    By txt_lastID = By.xpath("//div[contains(@data-rbd-draggable-id, 'item-')][last()-2]");
     By txt_firstID = By.xpath("//div[contains(@data-rbd-draggable-id, 'item-')][1]");
     String txt_source = "//div[@data-rbd-draggable-id='ID']";
     String txt_section = "//div[contains(text(), 'NAME')]";
@@ -574,7 +576,7 @@ public class CustomersPage extends LoginPage {
         distributorUI.waitForCustom(4000);
         distributorUI.click(By.xpath(btn_addToCart.replace("ITEMNAME",ItemName)));
         distributorUI.waitForCustom(4000);
-        distributorUI.waitForElementEnabledState(btn_checkout,true);
+        distributorUI.waitForElementEnabledState(btn_checkout_stable,true);
     }
     public String getItemQtyFirstRow(){
 //        return distributorUI.getText(tbx_itemQuantityFirstRow, "value");
@@ -809,6 +811,11 @@ public class CustomersPage extends LoginPage {
     }
     public void clickOnEdit(){
         distributorUI.waitForClickability(btn_edit);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.click(btn_edit);
     }
     public boolean isEditOrderGuideTextDisplayed(){
@@ -1202,6 +1209,11 @@ public class CustomersPage extends LoginPage {
     public void clickOnSave(){
         distributorUI.waitForVisibility(btn_save);
         distributorUI.click(btn_save);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void typeSectionName(String name) throws InterruptedException {
         distributorUI.click(tbx_section);
@@ -1224,6 +1236,11 @@ public class CustomersPage extends LoginPage {
         return distributorUI.isDisplayed(By.xpath(txt_section.replace("NAME", name)));
     }
     public void clickOnEditSection(String name){
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.waitForVisibility(By.xpath(btn_editSection.replace("NAME", name)));
         distributorUI.click(By.xpath(btn_editSection.replace("NAME", name)));
     }
@@ -1232,6 +1249,11 @@ public class CustomersPage extends LoginPage {
         return distributorUI.isDisplayed(txt_editSection);
     }
     public void clickOnDelete(){
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.waitForVisibility(btn_delete);
         distributorUI.click(btn_delete);
     }

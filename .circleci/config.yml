@@ -260,6 +260,9 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
             google-chrome --version
+#      - run:
+#          name: Create Downloads Directory
+#          command: mkdir -p ~/Downloads
       - run:
           name: Build and run nightly tests 6
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression6.xml -Drun.headless=true -Dtest.env=uat
@@ -490,6 +493,9 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
             google-chrome --version
+#      - run:
+#          name: Create Downloads Directory
+#          command: mkdir -p ~/Downloads
       - run:
           name: Build and run daily tests 6
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression6.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true

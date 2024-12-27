@@ -8,10 +8,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 
+import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,7 +35,9 @@ public class TestBase {
                     // Set custom download directory
                     Map<String, Object> prefs = new HashMap<>();
                     prefs.put("download.default_directory", System.getProperty("user.dir") + "/Downloads");
+//                    prefs.put("download.prompt_for_download", false);    // Disable the download prompt
                     prefs.put("profile.default_content_settings.popups", 0);
+//                    prefs.put("safebrowsing.enabled", "true");            // Enable safe browsing
                     chromeOptions.setExperimentalOption("prefs", prefs);
 
                     driver = new ChromeDriver(chromeOptions);
@@ -101,6 +102,13 @@ public class TestBase {
     public static int generateDynamicValue() {
         // Generate a random number between 1 and 100 (or any range you want)
         return (int) (Math.random() * 1000) + 1;
+    }
+
+    public static String generateUTCCurrentDateFormatted() {
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+        Date today = new Date();
+        return formatter.format(today);
     }
 
 }

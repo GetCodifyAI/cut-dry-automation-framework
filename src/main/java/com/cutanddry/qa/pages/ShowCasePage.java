@@ -37,8 +37,10 @@ public class ShowCasePage extends LoginPage {
         return distributorUI.isDisplayed(By.xpath(ConagraFoodServiceTxt.replace("BRANDPAGE",brand)));
     }
 
-    public void ClickOnOurBrandBtn(){
-        distributorUI.scrollToElement(OurBrands);
+    public void ClickOnOurBrandBtn() throws InterruptedException {
+        distributorUI.waitForClickability(HungerfordSmithBrand);
+        distributorUI.waitForCustom(3000);
+//        distributorUI.scrollToElement(OurBrands);
         distributorUI.click(OurBrandBtn);
     }
 
@@ -47,7 +49,9 @@ public class ShowCasePage extends LoginPage {
         return distributorUI.isDisplayed(OurBrandPageTxt);
     }
 
-    public void ClickOnHungerfordSmith(){
+    public void ClickOnHungerfordSmith() throws InterruptedException {
+        distributorUI.waitForClickability(HungerfordSmithBrand);
+        distributorUI.waitForCustom(3000);
         distributorUI.click(HungerfordSmithBrand);
     }
 

@@ -50,6 +50,13 @@
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheDownloadStatementInMoreActions"/>
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCreateCreditMemoInMoreActions"/>
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheMarkAsPaidInMoreActions"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerWiseItemMovementDownloadReportTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheCatalogExportDownloadReportTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyThePayCustomersDownloadReportTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheAtRiskAccountsDownloadReportTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyThePaymentTransactionDownloadReportTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyThePaymentAuthorizationStatusDownloadReportTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheTrackReadyOrdersDownloadReportTest" />
             <class name="com.cutanddry.qa.tests.draft.ValidateDraftOrdersAreOnlyAppearing30DaysTest"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingAddCreditCardTest"/>
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemImageTest"/>

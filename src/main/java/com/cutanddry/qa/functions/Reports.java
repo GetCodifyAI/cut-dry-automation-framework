@@ -19,9 +19,6 @@ public class Reports {
     public static void clickOkReport(){
         reportsPage.clickOkReport();
     }
-    public static void clickDownloadReport(){
-        reportsPage.clickDownloadReport();
-    }
 
     public static boolean isCustomerOrderGuidesDisplayed(){
         return reportsPage.isCustomerOrderGuidesDisplayed();
@@ -94,6 +91,111 @@ public class Reports {
     public static String getPickListReportToDate() {
         return reportsPage.getPickListReportToDate();
     }
+
+    public static void clickPickListDownloadReport(){
+        reportsPage.clickPickListDownloadReport();
+    }
+
+    public static boolean isCustomerWiseItemMovementReportDisplayed(){
+        return reportsPage.isCustomerWiseItemMovementReportDisplayed();
+    }
+
+    public static void selectCustomerWiseItemMovementReportFromDate(int nextDayCount) throws InterruptedException {
+        reportsPage.selectCustomerWiseItemMovementReportFromDate(nextDayCount);
+    }
+
+    public static String getCustomerWiseItemMovementReportFromDate() {
+        return reportsPage.getCustomerWiseItemMovementReportFromDate();
+    }
+
+    public static void selectCustomerWiseItemMovementReportToDate(int beforeDayCount) throws InterruptedException {
+        reportsPage.selectCustomerWiseItemMovementReportToDate(beforeDayCount);
+    }
+
+    public static String getCustomerWiseItemMovementReportToDate() {
+        return reportsPage.getCustomerWiseItemMovementReportToDate();
+    }
+
+    public static void clickCustomerWiseItemMovementDownloadReport(){
+        reportsPage.clickCustomerWiseItemMovementDownloadReport();
+    }
+
+    public static boolean isCatalogExportReportDisplayed(){
+        return reportsPage.isCatalogExportReportDisplayed();
+    }
+
+    public static void selectCatalogExportReportType(String type) throws InterruptedException {
+        reportsPage.selectCatalogExportReportType(type);
+    }
+
+    public static void selectCatalogExportReportCategory(String category) throws InterruptedException {
+        reportsPage.selectCatalogExportReportCategory(category);
+    }
+
+    public static void setCatalogExportReportCheckboxStatus(boolean select) {
+        reportsPage.setCatalogExportReportCheckboxStatus(select);
+    }
+
+    public static void clickCatalogExportDownloadReport(){
+        reportsPage.clickCatalogExportDownloadReport();
+    }
+
+    public static boolean isPayCustomersReportDisplayed(){
+        return reportsPage.isPayCustomersReportDisplayed();
+    }
+
+    public static void clickPayCustomersDownloadReport(){
+        reportsPage.clickPayCustomersDownloadReport();
+    }
+
+    public static boolean isAtRiskAccountsReportDisplayed(){
+        return reportsPage.isAtRiskAccountsReportDisplayed();
+    }
+
+    public static void clickAtRiskAccountsDownloadReport(){
+        reportsPage.clickAtRiskAccountsDownloadReport();
+    }
+
+    public static boolean isPaymentTransactionReportDisplayed(){
+        return reportsPage.isPaymentTransactionReportDisplayed();
+    }
+
+    public static void selectPaymentTransactionReportFromDate(int nextDayCount) throws InterruptedException {
+        reportsPage.selectPaymentTransactionReportFromDate(nextDayCount);
+    }
+
+    public static void selectPaymentTransactionReportToDate(int beforeDayCount) throws InterruptedException {
+        reportsPage.selectPaymentTransactionReportToDate(beforeDayCount);
+    }
+
+    public static void clickPaymentTransactionDownloadReport(){
+        reportsPage.clickPaymentTransactionDownloadReport();
+    }
+
+    public static boolean isPaymentAuthorizationStatusReportDisplayed(){
+        return reportsPage.isPaymentAuthorizationStatusReportDisplayed();
+    }
+
+    public static void clickPaymentAuthorizationStatusDownloadReport(){
+        reportsPage.clickPaymentAuthorizationStatusDownloadReport();
+    }
+
+    public static boolean isTrackReadyOrdersReportDisplayed(){
+        return reportsPage.isTrackReadyOrdersReportDisplayed();
+    }
+
+    public static void selectTrackReadyOrdersReportDeliveryDate(int beforeDayCount) throws InterruptedException {
+        reportsPage.selectTrackReadyOrdersReportDeliveryDate(beforeDayCount);
+    }
+
+    public static String getTrackReadyOrdersReportDeliveryDate() {
+        return reportsPage.getTrackReadyOrdersReportDeliveryDate();
+    }
+
+    public static void clickTrackReadyOrdersDownloadReport(){
+        reportsPage.clickTrackReadyOrdersDownloadReport();
+    }
+
 
 
     public static boolean isFileDownloaded(String downloadPath, String fileName,String fromDate,String toDate) throws InterruptedException, ParseException {

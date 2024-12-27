@@ -37,13 +37,23 @@ public class VerifyEditingOrderGuideSectionsTest extends TestBase {
         softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
         Customer.expandMoreOptionsDropdown();
         Customer.addSection();
-        Customer.clickClose();
+//        Customer.clickClose();
+        softAssert.assertTrue(Customer.isAddSectionPopupDisplayed()," add section popup error");
+        Customer.typeSectionName(sectionName);
+        Customer.clickOnSave();
+        softAssert.assertTrue(Customer.isAddedSectionDisplayed(sectionName)," add section error");
+
         Customer.editSection(sectionName);
         softAssert.assertTrue(Customer.isEditSectionPopupDisplayed()," edit section popup error");
         Customer.typeSectionName(newSectionName);
         Customer.clickOnSave();
         softAssert.assertTrue(Customer.isAddedSectionDisplayed(newSectionName)," add section error");
-        Customer.clickOnBack();
+        Customer.editSection(newSectionName);
+        Customer.clickOnDelete();
+        softAssert.assertTrue(Customer.isAreYouSurePopupDisplayed(),"are you sure popup error");
+        Customer.clickOnYes();
+
+//        Customer.clickOnBack();
 //        Customer.clickSortOptionsDropdown();
 //        Customer.selectItemCategoriesSort();
 //        softAssert.assertTrue(Customer.isSectionDisplayed(newSectionName)," add section display error");

@@ -14,36 +14,43 @@ import org.testng.asserts.SoftAssert;
 
 import java.text.ParseException;
 
-public class VerifyThePickListDownloadReportTest extends TestBase {
+public class VerifyTheCatalogExportDownloadReportTest extends TestBase {
     static User user;
     SoftAssert softAssert;
     static String downloadPath = System.getProperty("user.dir") + "/downloads";
-    static String expectedFileName = "Independent Foods Co - Pick List";
-    static String email = "test@cutanddry.com";
+    static String expectedFileName = "ActiveCatalogItems_Independent Foods Co";
     static String fromDate, toDate;
+    static String type = "All";
+    static String category = "All Categories";
 
     @BeforeMethod
     public void setUp() {
         initialization();
         user = JsonUtil.readUserLogin();
     }
-    @Test(groups = "DOT-TC-547")
-    public void VerifyThePickListDownloadReport() throws InterruptedException, ParseException {
+    @Test(groups = "DOT-TC-826")
+    public void VerifyTheCatalogExportDownloadReport() throws InterruptedException, ParseException {
         softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+
         Dashboard.navigateToReports();
         softAssert.assertTrue(Reports.isUserNavigatedToReports(),"navigation to reports error");
-        softAssert.assertTrue(Reports.isPickListReportDisplayed(), "Unable to find the Pick List Report section");
-        Reports.selectPickListReportFromDate(2);
-        fromDate = Reports.getPickListReportFromDate();
-        Reports.selectPickListReportToDate(3);
-        toDate = Reports.getPickListReportToDate();
-        Reports.typeOnPickListReportEmail(email);
-        /*Reports.clickPickListDownloadReport();
+        softAssert.assertTrue(Reports.isCatalogExportReportDisplayed(), "Unable to find the Catalog Export Report section");
+        Reports.selectCatalogExportReportType(type);
+        Reports.selectCatalogExportReportCategory(category);
+        Reports.setCatalogExportReportCheckboxStatus(true);
+        /*Reports.clickCatalogExportDownloadReport();
 
         boolean isDownloaded = Reports.isFileDownloaded(downloadPath, expectedFileName,fromDate, toDate);
-        softAssert.assertTrue(isDownloaded, "The report file was not downloaded successfully.");*/
+        softAssert.assertTrue(isDownloaded, "The report file was not downloaded successfully.");
+
+        Reports.setCatalogExportReportCheckboxStatus(true);
+        Reports.clickCatalogExportDownloadReport();
+
+        boolean isDownloaded1 = Reports.isFileDownloaded(downloadPath, expectedFileName,fromDate, toDate);
+        softAssert.assertTrue(isDownloaded1, "The report file was not downloaded successfully.");*/
+
         softAssert.assertAll();
     }
     @AfterMethod
