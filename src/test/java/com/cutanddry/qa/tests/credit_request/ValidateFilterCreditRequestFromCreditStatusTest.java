@@ -1,8 +1,8 @@
-package com.cutanddry.qa.tests.catalog;
+package com.cutanddry.qa.tests.credit_request;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
-import com.cutanddry.qa.functions.Catalog;
+import com.cutanddry.qa.functions.CreditRequests;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
@@ -12,10 +12,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyPreviewCatalogEditItemImageTest extends TestBase {
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class ValidateFilterCreditRequestFromCreditStatusTest extends TestBase {
     static User user;
-    String newMediaType = "360-Degree & 3D";
-    String previousMediaType = "Primary Image Web";
+    String date = "All";
+    String status = "Requested";
 
     @BeforeMethod
     public void setUp(){
@@ -23,23 +27,18 @@ public class VerifyPreviewCatalogEditItemImageTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-620")
-    public void VerifyThePreviewCatalogEditItemCatalogData() throws InterruptedException {
+    @Test(groups = "DOT-TC-781")
+    public void ValidateFilterCreditRequestFromCreditStatus() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
-        Dashboard.navigateToCatalog();
-        softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
-        Catalog.clickOnPreviewCatalog();
-        softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
-        Catalog.selectFirstEditItem();
-        Catalog.navigateToImages();
-        softAssert.assertTrue(Catalog.ProductImageDisplayed(),"product image is not displayed");
-        Catalog.clickMediaType(newMediaType);
-        Catalog.saveChanges();
-        Catalog.clickMediaType(previousMediaType);
-        Catalog.saveChanges();
+        Dashboard.navigateToCreditRequests();
+        CreditRequests.changeRequestDate(date);
+        softAssert.assertTrue(CreditRequests.isRequestDateChanged(date),"dropdown error");
+        CreditRequests.changeCreditRequestStatus(status);
+        softAssert.assertTrue(CreditRequests.isCreditRequestStatusChanged(status),"dropdown error");
+        softAssert.assertTrue(CreditRequests.isFilteredCreditStatusCorrect(status),"Error in filtering credit request status");
         softAssert.assertAll();
     }
 

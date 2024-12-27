@@ -132,6 +132,11 @@ public class CatalogPage extends LoginPage{
     By newArrivalDropDown = By.xpath("//label[contains(text(), 'New Arrivals')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     String categoryOptionInCatalog = "//div[contains(text(),'Category')]/../../following-sibling::div//div[contains(text(),'CATEGORY')]";
     String categoryName = "//div[contains(@class,'mt-3 mb-2 _4ffx9r8') and contains(text(),'CATEGORY')]";
+    By lbl_firstRowItemCode = By.xpath("(//tbody/tr[1]/td[1])[1]");
+    By lbl_firstRowItemName = By.xpath("(//tbody/tr[1]/td[3])[1]");
+    By mediaTypeDropDown = By.xpath("//label[contains(text(), 'Media Type')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    String mediaTypeOption = "(//div[text()='TYPE' and contains(@class,'themed_select__option')])[last()]";
+
 
 
 
@@ -623,6 +628,33 @@ public class CatalogPage extends LoginPage{
     }
     public boolean isCategoryFilteredItem(String category)throws InterruptedException{
        return distributorUI.isDisplayed(By.xpath(categoryName.replace("CATEGORY",category)));
+    }
+
+    public String getItemCodeFirstRowInCatalog() throws InterruptedException {
+        distributorUI.waitForVisibility(lbl_firstRowItemCode);
+        distributorUI.waitForCustom(3000);
+        return distributorUI.getText(lbl_firstRowItemCode);
+    }
+
+    public String getItemNameFirstRowInCatalog() throws InterruptedException {
+        distributorUI.waitForVisibility(lbl_firstRowItemName);
+        distributorUI.waitForCustom(3000);
+        return distributorUI.getText(lbl_firstRowItemName);
+    }
+
+    public String getFirstItemNameFrmSearchResults(String name){
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        distributorUI.waitForVisibility(By.xpath(substituteItemNameTxt.replace("ITEMNAME", name)));
+        return distributorUI.getText(By.xpath(substituteItemNameTxt.replace("ITEMNAME", name)));
+    }
+    public void clickMediaType(String type){
+        distributorUI.click(mediaTypeDropDown);
+        distributorUI.waitForVisibility(By.xpath(mediaTypeOption.replace("TYPE",type)));
+        distributorUI.click(By.xpath(mediaTypeOption.replace("TYPE",type)));
     }
 
 }

@@ -88,6 +88,29 @@ public class CreditRequests {
     public static void clickSaveCheckIn(){
         creditRequestsPage.clickSaveCheckIn();
     }
+    public static boolean isRequestDateChanged(String days){
+        return creditRequestsPage.isRequestDateChanged(days);
+    }
+    public static boolean isFilteredRequestCorrect(String requestsDate){
+        return creditRequestsPage.isFilteredRequestCorrect(requestsDate);
+    }
+    public static void changeCreditRequestStatus(String status) {
+        creditRequestsPage.clickOnCreditStatus();
+        creditRequestsPage.clickOnCreditStatusOption(status);
+    }
+    public static boolean isCreditRequestStatusChanged(String status){
+        return creditRequestsPage.isCreditStatusChanged(status);
+    }
+    public static boolean isFilteredCreditStatusCorrect(String status){
+        return creditRequestsPage.isFilteredCreditStatusCorrect(status);
+    }
+    public static void changeSalesperson(String salesperson) {
+        creditRequestsPage.clickOnSalesperson();
+        creditRequestsPage.clickOnSalespersonOption(salesperson);
+    }
+    public static boolean isSalespersonChanged(String salesperson){
+        return creditRequestsPage.isSalespersonChanged(salesperson);
+    }
 
     public static boolean isNavigatedToOrderSection(){
         return creditRequestsPage.isNavigatedToOrderSection();

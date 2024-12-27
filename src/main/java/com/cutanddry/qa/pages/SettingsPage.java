@@ -50,6 +50,7 @@ public class SettingsPage extends LoginPage{
     By lbl_RoutingNum = By.xpath("//div[label[text()='Routing Number']]//input");
     By btn_next = By.xpath("//button[text()='Next']");
     By txt_paymentMethodAddedPopup = By.xpath("//h2[text()='Payment method has been added successfully.']");
+    By txt_paymentMethodRemovedPopup = By.xpath("//h2[text()='Payment method has been removed successfully.']");
     By txt_displayedPaymentMethod = By.xpath("//div[text()='Your monthly bill will be deducted from the bank account x2220.']");
     By btn_removeAcc = By.xpath("//button[text()='Remove Account']");
     By txt_areYouSure = By.xpath("//h2[text()='Are you sure?']");
@@ -83,6 +84,19 @@ public class SettingsPage extends LoginPage{
     By lbl_HolidayDate = By.xpath("(//button[*[local-name()='svg' and @data-icon='minus']]/following::div[1])[last()]");
     By dropdown_selectHolidayDate = By.xpath("//div[text()='Select Date']/following-sibling::div//input");
     String dynamicXPath = "//div[contains(@class, 'react-datepicker__day--selected')]/following::div[contains(@class, 'react-datepicker__day')][DAY]";
+    By lbl_InvalidEmail = By.xpath("//h2[contains(text(),'Invalid Email')]");
+    By lbl_addCreditCard = By.xpath("//span[text()='Add credit card']");
+    By switchIframeCardNumber = By.xpath("//iframe[contains(@id,'CollectJSInlineccnumber')]");
+    By cardNumber = By.xpath("//input[@id='ccnumber']");
+    By switchIframeCardExp = By.xpath("//iframe[contains(@id,'CollectJSInlineccexp')]");
+    By cardExp = By.xpath("//input[contains(@name,'ccexp')]");
+    By switchIframeCardCVV = By.xpath("//iframe[contains(@id,'CollectJSInlinecvv')]");
+    By cardCVV = By.xpath("//input[@id='cvv']");
+    By streetAddress = By.xpath("//input[@placeHolder='Street Address']");
+    By cityName = By.xpath("//input[@placeHolder='City']");
+
+
+
 
     public boolean isOrderSettingsTextDisplayed() throws InterruptedException {
         try {
@@ -159,6 +173,11 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForVisibility(btn_inviteUser);
         distributorUI.click(btn_inviteUser);
         distributorUI.clickUsingJavaScript(btn_inviteUser);
+        if(distributorUI.isDisplayed(lbl_InvalidEmail)){
+            distributorUI.waitForClickability(btn_OK);
+            distributorUI.click(btn_OK);
+            distributorUI.waitForCustom(3000);
+        }
     }
     public boolean isUserDisplayed(String user) throws InterruptedException {
         try {
@@ -295,10 +314,16 @@ public class SettingsPage extends LoginPage{
         return distributorUI.isDisplayed(txt_trackSettings);
     }
     public void clickOnAddPaymentMethod() {
+        distributorUI.click(txt_billingSettings);
         distributorUI.waitForClickability(btn_addPaymentMethod);
         distributorUI.click(btn_addPaymentMethod);
     }
     public void clickOnAddBank() {
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.waitForClickability(lbl_addBank);
         distributorUI.click(lbl_addBank);
     }
@@ -314,11 +339,19 @@ public class SettingsPage extends LoginPage{
         distributorUI.sendKeys(lbl_RoutingNum,num);
     }
     public void clickOnNext() {
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.waitForClickability(btn_next);
         distributorUI.click(btn_next);
     }
     public boolean isAddPaymentSuccessPopupDisplayed(){
         return distributorUI.isDisplayed(txt_paymentMethodAddedPopup);
+    }
+    public boolean isRemovePaymentSuccessPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_paymentMethodRemovedPopup);
     }
     public boolean isPaymentMethodAdded(){
         return distributorUI.isDisplayed(txt_displayedPaymentMethod);
@@ -522,4 +555,43 @@ public class SettingsPage extends LoginPage{
             }
         }
     }
+
+    public boolean isRemoveAccountBtnDisplayed() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        return distributorUI.isDisplayed(btn_removeAcc);
+    }
+    public boolean isPaymentMethodAvailable(){
+        return distributorUI.isDisplayed(btn_removeAcc);
+    }
+    public boolean isRemovePaymentMethodAvailable(){
+        return distributorUI.isDisplayed(btn_removeAcc);
+    }
+    public void clickCreditCard(){
+        distributorUI.click(lbl_addCreditCard);
+    }
+    public void enterCardNumber(String cardNum)throws InterruptedException{
+        distributorUI.switchToFrameByElement(switchIframeCardNumber);
+        distributorUI.sendKeys(cardNumber,cardNum);
+        distributorUI.switchToDefaultContent();
+
+    }
+    public void enterExpDate(String expDate){
+        distributorUI.switchToFrameByElement(switchIframeCardExp);
+        distributorUI.sendKeys(cardExp,expDate);
+        distributorUI.switchToDefaultContent();
+    }
+    public void enterCVV(String cvv){
+        distributorUI.switchToFrameByElement(switchIframeCardCVV);
+        distributorUI.sendKeys(cardCVV,cvv);
+        distributorUI.switchToDefaultContent();
+    }
+    public void enterStreetAddress(String address){
+        distributorUI.clear(streetAddress);
+        distributorUI.sendKeys(streetAddress,address);
+    }
+    public void enterCity(String city){
+        distributorUI.clear(cityName);
+        distributorUI.sendKeys(cityName,city);
+    }
+
 }

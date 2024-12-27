@@ -6,6 +6,8 @@ import com.cutanddry.qa.pages.SettingsPage;
 
 import java.util.Objects;
 
+import static com.cutanddry.qa.functions.Boost.boostPage;
+
 public class Customer {
     static CustomersPage customersPage = new CustomersPage();
     static DashboardPage dashboardPage = new DashboardPage();
@@ -76,6 +78,9 @@ public class Customer {
             settingsPage.selectOnOrderMinimums();
             settingsPage.clickOnSaveChanges();
             customersPage.clickOnBack();
+        }
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
         }
     }
     public static void goToCatalog() throws InterruptedException {
@@ -1625,6 +1630,14 @@ public class Customer {
 
     public static void clickBtnResetValues(){
         customersPage.clickBtnResetValues();
+    }
+
+    public static void ensureCarouselDisplayStatus(boolean status) throws InterruptedException {
+        dashboardPage.clickOnBoost();
+        boostPage.clickSuggestiveSales();
+        boostPage.clickDontForgetToOrderConfig();
+        boostPage.ensureCarouselDisplayStatus(status);
+        boostPage.clickClose();
     }
 
 }

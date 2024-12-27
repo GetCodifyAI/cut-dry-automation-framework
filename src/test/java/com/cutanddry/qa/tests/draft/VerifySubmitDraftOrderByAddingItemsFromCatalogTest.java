@@ -45,6 +45,7 @@ public class VerifySubmitDraftOrderByAddingItemsFromCatalogTest extends TestBase
         softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice,"The item has not been selected.");
         Customer.checkoutItems();
 
+
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         softAssert.assertEquals(Customer.getItemNameFirstRow(), itemName, "The item selected by the user is different from what is shown on the order review page.");
         Dashboard.navigateToDrafts();

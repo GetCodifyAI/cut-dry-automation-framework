@@ -22,6 +22,11 @@ import java.time.Duration;
 import java.util.*;
 import java.util.List;
 
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+
 
 @SuppressWarnings("UnusedReturnValue")
 public class KeywordBase {
@@ -86,6 +91,22 @@ public class KeywordBase {
             logger.info("Sent keys to element: {} with data: {}", by, data);
         } catch (Exception e) {
             logger.error("Failed to send keys to element: {} with data: {}", by, data, e);
+        }
+        return this;
+    }
+
+    // Send keys to an element character by character using By object
+    public KeywordBase sendKeysCharByChar(By by, String data) {
+        try {
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+            element.clear(); // Clear the field before typing
+            for (char ch : data.toCharArray()) {
+                element.sendKeys(String.valueOf(ch)); // Send each character one by one
+                Thread.sleep(100);
+            }
+            logger.info("Sent keys to element character by character: {} with data: {}", by, data);
+        } catch (Exception e) {
+            logger.error("Failed to send keys character by character to element: {} with data: {}", by, data, e);
         }
         return this;
     }
@@ -390,6 +411,30 @@ public class KeywordBase {
         return this;
     }
 
+    // Scroll to the top of the page
+    public KeywordBase uiScrollTop() {
+        try {
+            JavascriptExecutor jse = (JavascriptExecutor) driver;
+            jse.executeScript("window.scrollTo(0, 0);");
+            logger.info("Scrolled to the top of the page.");
+        } catch (Exception e) {
+            logger.error("Failed to scroll to the top of the page.", e);
+        }
+        return this;
+    }
+
+    // Scroll to the bottom of the page
+    public KeywordBase uiScrollBottom() {
+        try {
+            JavascriptExecutor jse = (JavascriptExecutor) driver;
+            jse.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+            logger.info("Scrolled to the bottom of the page.");
+        } catch (Exception e) {
+            logger.error("Failed to scroll to the bottom of the page.", e);
+        }
+        return this;
+    }
+
     // Click using JavaScript (useful when normal click doesn't work)
     public KeywordBase clickUsingJavaScript(By by) {
         try {
@@ -425,6 +470,29 @@ public class KeywordBase {
         } catch (Exception e) {
             logger.error("Failed to drag and drop from element: {} to element: {}", sourceBy, targetBy, e);
         }
+        return this;
+    }
+
+    // Drag and drop from one element to another element
+    public KeywordBase dragAndDropAction(By sourceBy, By targetBy) {
+        try {
+            Actions actions = new Actions(driver);
+
+            WebElement sourceElement = wait.until(ExpectedConditions.visibilityOfElementLocated(sourceBy));
+            WebElement targetElement = wait.until(ExpectedConditions.visibilityOfElementLocated(targetBy));
+
+            actions.clickAndHold(sourceElement)
+                    .moveToElement(targetElement)
+                    .pause(Duration.ofSeconds(1)) // Pause for stability
+                    .release(targetElement)
+                    .build()
+                    .perform();
+
+            logger.info("Successfully dragged and dropped from element: {} to element: {}", sourceBy, targetBy);
+        } catch (Exception e) {
+            logger.error("Failed to drag and drop from element: {} to element: {}", sourceBy, targetBy, e);
+        }
+
         return this;
     }
 
@@ -788,6 +856,85 @@ public class KeywordBase {
         calendar.add(Calendar.DATE, daysToAdd);
         Date futureDate = calendar.getTime();
         return formatter.format(futureDate);
+    }
+
+    public boolean isFileDownloaded(String downloadPath, String expectedFileName, String fromDate, String toDate) throws ParseException {
+        File dir = new File(downloadPath);
+        File[] files = dir.listFiles();
+        if (files != null) {
+            SimpleDateFormat currentFormatter = new SimpleDateFormat("MM/dd/yyyy");
+            SimpleDateFormat dashFormatter = new SimpleDateFormat("MM-dd-yyyy");
+            SimpleDateFormat underscoreFormatter = new SimpleDateFormat("yyyy-MM-dd");
+
+            String formattedFromDate = fromDate != null ? dashFormatter.format(currentFormatter.parse(fromDate)) : null;
+            String formattedToDateDash = toDate != null ? dashFormatter.format(currentFormatter.parse(toDate)) : null;
+            String formattedToDateUnderscore = toDate != null ? underscoreFormatter.format(currentFormatter.parse(toDate)) : null;
+
+            String fileNameCase1 = String.format("%s - %s - %s.xlsx", expectedFileName, formattedFromDate, formattedToDateDash); // Case 1
+            String fileNameCase2 = String.format("%s_%s.xlsx", expectedFileName, formattedToDateDash); // Case 2
+            String fileNameCase3 = String.format("%s_%s.xlsx", expectedFileName, formattedToDateUnderscore); // Case 3
+            String fileNameCase4 = String.format("%s.xlsx", expectedFileName); // Case 4
+
+            for (File file : files) {
+                String fileName = file.getName();
+                if (fileName.equals(fileNameCase1) || fileName.equals(fileNameCase2) ||
+                        fileName.equals(fileNameCase3) || fileName.equals(fileNameCase4)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void cleanUpDownloads(String downloadPath) {
+        File dir = new File(downloadPath);
+        File[] files = dir.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile()) {
+                    file.delete();  // Delete each file
+                }
+            }
+        }
+    }
+    public boolean isDraftOrdersNotOlder30Days(By locator, String filterOption) {
+        try {
+            // Find all elements using the provided locator
+            List<WebElement> elements = driver.findElements(locator);
+
+            // Log total elements found
+            logger.info("Found " + elements.size() + " elements for locator: " + locator);
+
+            // Validate that all elements match the filter option
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+            // Define the date range
+            ZonedDateTime nowUTC = ZonedDateTime.now(ZoneOffset.UTC);
+            ZonedDateTime before31DateUTC = nowUTC.minusDays(31);
+            for (WebElement element : elements) {
+                String elementText = element.getText();
+
+                // Parse elementText into LocalDate using the correct format
+                LocalDate elementLocalDate = LocalDate.parse(elementText, formatter);
+
+                // Convert LocalDate to ZonedDateTime at UTC for comparison
+                ZonedDateTime elementDate = elementLocalDate.atStartOfDay(ZoneOffset.UTC);
+
+
+                if (elementDate.isBefore(before31DateUTC) || elementDate.isAfter(nowUTC.plusDays(1))) {
+                    logger.error("Validation failed for element text: " + elementText +
+                            " (Date out of range. Expected between: " +
+                            before31DateUTC.format(formatter) + " and " +
+                            nowUTC.format(formatter) + ")");
+                    return false; // Validation failed
+                }
+            }
+            // Log validation success
+            logger.info("All elements match the filter option: " + filterOption);
+            return true;
+        } catch (Exception e) {
+            logger.error("Error occurred while validating elements for locator: " + locator, e);
+            return false;
+        }
     }
 
 }
