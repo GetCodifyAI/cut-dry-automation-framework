@@ -12,8 +12,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyBillingSettingRemovePaymentMethodTest extends TestBase {
+public class VerifyBillingSettingAddCreditCardTest extends TestBase {
     static User user;
+    static String card_num = "4111111111111111";
+    static String exp_date = "10/25";
+    static String cvv = "999";
+    static String address = "N0 07 Beakers' street";
+    static String city = "California";
 
     @BeforeMethod
     public void setUp() {
@@ -21,19 +26,22 @@ public class VerifyBillingSettingRemovePaymentMethodTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-604")
-    public void VerifyBillingSettingAddPaymentMethod() throws InterruptedException {
+    @Test(groups = "DOT-TC-837")
+    public void VerifyBillingSettingAddCreditCard() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToBillingSettings();
         softAssert.assertTrue(Settings.isBillingSettingsTextDisplayed(),"navigation to billing settings error");
-        Settings.clickOnRemoveAcc();
-        softAssert.assertTrue(Settings.isAreYouSurePopupDisplayed(),"popup error");
-        Settings.clickYes();
-        softAssert.assertTrue(Settings.isRemovePaymentSuccessPopupDisplayed(),"Remove payment success popup error");
-        Settings.clickOK();
-        softAssert.assertFalse(Settings.isPaymentMethodAdded(),"payment method removing error");
+        Settings.clickOnAddPaymentMethod();
+        softAssert.assertTrue(Settings.isAddPaymentPopupDisplayed(),"add payment popup error");
+        Settings.clickCreditCard();
+        Settings.enterCardNumber(card_num);
+        Settings.enterExpDate(exp_date);
+        Settings.enterCVV(cvv);
+        Settings.enterStreetAddress(address);
+        Settings.enterCity(city);
+        Settings.clickOnNext();
         softAssert.assertAll();
     }
 

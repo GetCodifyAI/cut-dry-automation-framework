@@ -22,6 +22,11 @@ import java.time.Duration;
 import java.util.*;
 import java.util.List;
 
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+
 
 @SuppressWarnings("UnusedReturnValue")
 public class KeywordBase {
@@ -890,6 +895,45 @@ public class KeywordBase {
                     file.delete();  // Delete each file
                 }
             }
+        }
+    }
+    public boolean isDraftOrdersNotOlder30Days(By locator, String filterOption) {
+        try {
+            // Find all elements using the provided locator
+            List<WebElement> elements = driver.findElements(locator);
+
+            // Log total elements found
+            logger.info("Found " + elements.size() + " elements for locator: " + locator);
+
+            // Validate that all elements match the filter option
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+            // Define the date range
+            ZonedDateTime nowUTC = ZonedDateTime.now(ZoneOffset.UTC);
+            ZonedDateTime before31DateUTC = nowUTC.minusDays(31);
+            for (WebElement element : elements) {
+                String elementText = element.getText();
+
+                // Parse elementText into LocalDate using the correct format
+                LocalDate elementLocalDate = LocalDate.parse(elementText, formatter);
+
+                // Convert LocalDate to ZonedDateTime at UTC for comparison
+                ZonedDateTime elementDate = elementLocalDate.atStartOfDay(ZoneOffset.UTC);
+
+
+                if (elementDate.isBefore(before31DateUTC) || elementDate.isAfter(nowUTC.plusDays(1))) {
+                    logger.error("Validation failed for element text: " + elementText +
+                            " (Date out of range. Expected between: " +
+                            before31DateUTC.format(formatter) + " and " +
+                            nowUTC.format(formatter) + ")");
+                    return false; // Validation failed
+                }
+            }
+            // Log validation success
+            logger.info("All elements match the filter option: " + filterOption);
+            return true;
+        } catch (Exception e) {
+            logger.error("Error occurred while validating elements for locator: " + locator, e);
+            return false;
         }
     }
 

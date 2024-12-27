@@ -399,5 +399,8 @@ public class Catalog {
     public static String getFirstElementFrmSearchResults(String name){
         return catalogPage.getFirstItemNameFrmSearchResults(name);
     }
+    public static void clickMediaType(String type){
+        catalogPage.clickMediaType(type);
+    }
 
 }
