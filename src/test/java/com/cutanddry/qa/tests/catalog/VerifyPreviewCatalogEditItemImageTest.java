@@ -14,6 +14,8 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyPreviewCatalogEditItemImageTest extends TestBase {
     static User user;
+    String newMediaType = "360-Degree & 3D";
+    String previousMediaType = "Primary Image Web";
 
     @BeforeMethod
     public void setUp(){
@@ -34,6 +36,10 @@ public class VerifyPreviewCatalogEditItemImageTest extends TestBase {
         Catalog.selectFirstEditItem();
         Catalog.navigateToImages();
         softAssert.assertTrue(Catalog.ProductImageDisplayed(),"product image is not displayed");
+        Catalog.clickMediaType(newMediaType);
+        Catalog.saveChanges();
+        Catalog.clickMediaType(previousMediaType);
+        Catalog.saveChanges();
         softAssert.assertAll();
     }
 

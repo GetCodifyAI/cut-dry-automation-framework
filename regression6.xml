@@ -51,6 +51,9 @@
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCreateCreditMemoInMoreActions"/>
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheMarkAsPaidInMoreActions"/>
             <class name="com.cutanddry.qa.tests.draft.ValidateDraftOrdersAreOnlyAppearing30DaysTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingAddCreditCardTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemImageTest"/>
+
         </classes>
     </test>
 </suite>
