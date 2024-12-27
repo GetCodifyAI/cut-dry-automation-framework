@@ -109,7 +109,12 @@ public class Settings {
     public static boolean isAddPaymentPopupDisplayed() throws InterruptedException {
         return settingsPage.isAddPaymentPopupDisplayed();
     }
-    public static void clickOnAddPaymentMethod() {
+    public static void clickOnAddPaymentMethod()throws InterruptedException {
+        if (settingsPage.isPaymentMethodAvailable()){
+            settingsPage.clickOnRemoveAcc();
+            settingsPage.clickYes();
+            settingsPage.clickOK();
+        }
         settingsPage.clickOnAddPaymentMethod();
     }
     public static void clickOnAddBank() {
@@ -127,11 +132,16 @@ public class Settings {
     public static boolean isAddPaymentSuccessPopupDisplayed() {
         return settingsPage.isAddPaymentSuccessPopupDisplayed();
     }
+    public static boolean isRemovePaymentSuccessPopupDisplayed() {
+        return settingsPage.isRemovePaymentSuccessPopupDisplayed();
+    }
     public static boolean isPaymentMethodAdded() {
         return settingsPage.isPaymentMethodAdded();
     }
-    public static void clickOnRemoveAcc() {
+    public static void clickOnRemoveAcc() throws InterruptedException{
+        if (settingsPage.isRemovePaymentMethodAvailable()){
         settingsPage.clickOnRemoveAcc();
+        }
     }
     public static boolean isAreYouSurePopupDisplayed() {
         return settingsPage.isAreYouSurePopupDisplayed();
@@ -239,5 +249,21 @@ public class Settings {
         settingsPage.clickOnRemoveUser();
         settingsPage.clickOK();
         return settingsPage.isUserDisplayed(user);
+    }
+    public static void clickCreditCard(){settingsPage.clickCreditCard();}
+    public static void enterCardNumber(String cardNum)throws InterruptedException{
+        settingsPage.enterCardNumber(cardNum);
+    }
+    public static void enterExpDate(String expDate){
+        settingsPage.enterExpDate(expDate);
+    }
+    public static void enterCVV(String cvv){
+        settingsPage.enterCVV(cvv);
+    }
+    public static void enterStreetAddress(String address){
+        settingsPage.enterStreetAddress(address);
+    }
+    public static void enterCity(String city){
+        settingsPage.enterCity(city);
     }
 }
