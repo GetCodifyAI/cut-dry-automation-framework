@@ -30,6 +30,8 @@
             <class name="com.cutanddry.qa.tests.credit_request.VerifyTheCreditViewItemsByDistributorTest"/>
             <class name="com.cutanddry.qa.tests.credit_request.VerifyTheCreditViewofCreditRequestIssueDetailsByDistributorTest"/>
             <class name="com.cutanddry.qa.tests.credit_request.VerifyTheCreditViewTimelineByDistributorTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowApproveCreditThenChangeItToDeclineCredit"/>
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowToDeclineCreditThenChangeItToApproveCredit"/>
             <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerBaseReportGenerationTest" />
             <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerOrdersReportGenerationTest" />
             <class name="com.cutanddry.qa.tests.reports.VerifyTheItemMovementReportGenerationTest" />
