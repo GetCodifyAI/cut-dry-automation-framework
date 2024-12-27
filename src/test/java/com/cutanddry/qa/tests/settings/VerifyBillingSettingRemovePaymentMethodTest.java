@@ -31,7 +31,9 @@ public class VerifyBillingSettingRemovePaymentMethodTest extends TestBase {
         Settings.clickOnRemoveAcc();
         softAssert.assertTrue(Settings.isAreYouSurePopupDisplayed(),"popup error");
         Settings.clickYes();
-        softAssert.assertFalse(Settings.isPaymentMethodAdded(),"payment method adding error");
+        softAssert.assertTrue(Settings.isRemovePaymentSuccessPopupDisplayed(),"Remove payment success popup error");
+        Settings.clickOK();
+        softAssert.assertFalse(Settings.isPaymentMethodAdded(),"payment method removing error");
         softAssert.assertAll();
     }
 
