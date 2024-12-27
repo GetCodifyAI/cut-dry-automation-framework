@@ -14,7 +14,8 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyChatFeatureTest extends TestBase {
     static User user;
-    static String customerName = "Restaurant(Test) - Hayes";
+//    static String customerName = "Restaurant(Test) - Hayes";
+    static String customerName = "Hayes";
     static String distributorMessage = "Test Message Distributor";
     static String restaurantMessage = "Test Message Restaurant";
 
@@ -30,6 +31,7 @@ public class VerifyChatFeatureTest extends TestBase {
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+
         Dashboard.navigateToChat();
         softAssert.assertTrue(Chat.isUserNavigatedToChat(),"navigation error");
         Chat.searchCustomerByName(customerName);
