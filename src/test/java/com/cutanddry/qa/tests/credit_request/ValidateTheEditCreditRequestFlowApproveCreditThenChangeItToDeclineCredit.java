@@ -30,6 +30,7 @@ public class ValidateTheEditCreditRequestFlowApproveCreditThenChangeItToDeclineC
     public void ValidateTheEditCreditRequestFlowApproveCreditThenChangeItToDeclineCredit() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
 
+
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "The user is unable to land on the Dashboard page.");
         Dashboard.navigateToHistory();
