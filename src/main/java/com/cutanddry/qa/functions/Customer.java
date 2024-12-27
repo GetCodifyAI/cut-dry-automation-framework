@@ -79,6 +79,9 @@ public class Customer {
             settingsPage.clickOnSaveChanges();
             customersPage.clickOnBack();
         }
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
     }
     public static void goToCatalog() throws InterruptedException {
         if (customersPage.isPreviousDraftOrderNoDisplayed()){

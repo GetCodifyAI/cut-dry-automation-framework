@@ -866,7 +866,7 @@ public class KeywordBase {
                 ZonedDateTime elementDate = elementLocalDate.atStartOfDay(ZoneOffset.UTC);
 
 
-                if (elementDate.isBefore(before31DateUTC) || elementDate.isAfter(nowUTC)) {
+                if (elementDate.isBefore(before31DateUTC) || elementDate.isAfter(nowUTC.plusDays(1))) {
                     logger.error("Validation failed for element text: " + elementText +
                             " (Date out of range. Expected between: " +
                             before31DateUTC.format(formatter) + " and " +
