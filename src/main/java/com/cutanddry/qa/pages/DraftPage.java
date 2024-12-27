@@ -2,8 +2,6 @@ package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
 
-import java.util.Objects;
-
 public class DraftPage extends LoginPage{
     By txt_drafts = By.xpath("//li[contains(text(),'Drafts')]");
     By btn_delete = By.xpath("(//button[contains(text(), 'Delete')])[1]");
@@ -11,6 +9,8 @@ public class DraftPage extends LoginPage{
     By pendingApprovalOrders = By.xpath("(//td/span[contains(text(),'Pending Approval')])[1]");
     By approveAndSubmitBtn = By.xpath("//button[contains(text(),'Approve & Submit Order')]");
     By btn_editOrder = By.xpath("//a[contains(text(),'Edit Order')]");
+    String date = "//td[text()='DATE']";
+    By draftDate = By.xpath("//tr//td[1]//div[1]");
 
 
     public boolean isDraftsTextDisplayed(){
@@ -47,5 +47,13 @@ public class DraftPage extends LoginPage{
     }
     public void clickEditOrder(){
         distributorUI.click(btn_editOrder);
+    }
+    public Boolean isDraftOrdersNotOlder30Days(String before31Date) {
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return distributorUI.isDraftOrdersNotOlder30Days(draftDate,before31Date);
     }
 }
