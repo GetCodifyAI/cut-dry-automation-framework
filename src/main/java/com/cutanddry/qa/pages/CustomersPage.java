@@ -24,9 +24,11 @@ public class CustomersPage extends LoginPage {
     By btn_catalog = By.xpath("//div[text()='Catalog']");
     By tbx_catalogSearch = By.xpath("//input[@placeholder='Search catalog...']");
 //    String lbl_catalogSearchItemList = "//button[contains(@data-for,'tooltipundefined')]/ancestor::div[2]/following-sibling::div[2]/div/div[contains(text(),'NAME')]";
-    String lbl_catalogSearchItemList = "//button[contains(text(), 'Add to Cart')]/ancestor::div//*[contains(text(), 'NAME')]";
+//    String lbl_catalogSearchItemList = "//button[contains(text(), 'Add to Cart')]/ancestor::div//*[contains(text(), 'NAME')]";
+    String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[contains(text(),'NAME')])[last()]";
 //    String btn_addToCart = "//div[contains(@class, '_13kb1gk')]//div[text()= 'ITEMNAME']//ancestor::div[contains(@class, '_13kb1gk')]//div[@class='_btf6h0']//button[contains(@class, 'btn-outline-primary')]";
-    String btn_addToCart = "//*[contains(text(), 'ITEMNAME')]/ancestor::div[contains(@class, 'card')]//button[contains(text(), 'Add to Cart')]";
+//    String btn_addToCart = "//*[contains(text(), 'ITEMNAME')]/ancestor::div[contains(@class, 'card')]//button[contains(text(), 'Add to Cart')]";
+    String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(text(),'ITEMNAME')])[last()]/ancestor::div[contains(@class, 'card')]//*[name()='svg' and @data-icon='plus']";
     By tbx_itemQuantityFirstRow = By.xpath("//tr[1]//td[8]//input");
     By lbl_itemPriceFirstRow = By.xpath("//tr[1]//td[7]/span");
     By lbl_itemPriceSecondRow = By.xpath("//tr[2]//td[7]//input");
