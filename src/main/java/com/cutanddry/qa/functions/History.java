@@ -11,4 +11,60 @@ public class History {
     public static void clickFirstItemFrmHistory(){
          historyPage.clickFirstItemFrmHistory();
     }
+
+    public static void clickOnOrderFromOrderList(){
+        historyPage.clickOnOrderFromOrderList();
+    }
+
+    public static boolean isUserNavigatedOrder(){
+        return historyPage.isOrderTextDisplayed();
+    }
+
+    public static void clickBtnEditCheckIn(){
+        historyPage.clickBtnEditCheckIn();
+    }
+
+    public static boolean isCheckInTextDisplayed(){
+        return historyPage.isCheckInTextDisplayed();
+    }
+
+    public static void clickBtnReportIssue(){
+        historyPage.clickBtnReportIssue();
+    }
+
+    public static void clickOnFirstRowTableOrderIssues(){
+        historyPage.clickOnFirstRowTableOrderIssues();
+    }
+
+    public static boolean isPopupWindowReportIssueDisplayed(){
+        return historyPage.isPopupWindowReportIssueDisplayed();
+    }
+
+    public static void clickOnFirstOptionDropDownWhatIsWrong(){
+        historyPage.clickOnDropDownWhatIsWrong();
+        historyPage.clickOnFirstRowDropDownWhatIsWrong();
+    }
+
+    public static void clickBtnContinue(){
+        historyPage.clickOnBtnContinue();
+    }
+
+    public static void clickBtnSaveCheckIn(){
+        historyPage.clickBtnSaveCheckIn();
+    }
+
+    public static void clickOnYes(){
+        historyPage.clickOnYes();
+    }
+
+    public static void clickClose(){
+        historyPage.clickClose();
+    }
+
+    public static boolean isTxtWhichItemsHasError(){
+        return historyPage.isTxtWhichItemsHasError();
+    }
+
+
+
 }
