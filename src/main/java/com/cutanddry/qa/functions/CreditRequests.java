@@ -109,4 +109,88 @@ public class CreditRequests {
             return true;
         }
         return false;
-    }}
+    }
+
+    public static void clickCreditRequest(){
+        creditRequestsPage.clickCreditRequest();
+    }
+
+    public static void clickBtnProcessCredit(){
+        creditRequestsPage.clickBtnProcessCredit();
+    }
+
+    public static void clickCheckBox(){
+        creditRequestsPage.clickCheckBox();
+    }
+
+    public static void clickBtnDeclineDraft(){
+        creditRequestsPage.clickBtnDeclineDraft();
+    }
+
+    public static void clickSubmit(){
+        creditRequestsPage.clickSubmit();
+    }
+
+    public static void clickConfirm(){
+        creditRequestsPage.clickConfirm();
+    }
+
+    public static void clickClose(){
+        creditRequestsPage.clickClose();
+    }
+
+    public static boolean isTxtCreditDeclinedDisplayed(){
+        return creditRequestsPage.isTxtCreditDeclinedDisplayed();
+    }
+
+    public static void clickBtnEditCredit(){
+        creditRequestsPage.clickBtnEditCredit();
+    }
+
+    public static void clickApproveCredit(){
+        creditRequestsPage.clickApproveCredit();
+    }
+
+    public static boolean isTxtCreditApprovedDisplayed(){
+        return creditRequestsPage.isTxtCreditApprovedDisplayed();
+    }
+
+    public static void process(){
+        if (creditRequestsPage.isBtnProcessCreditVisible()){
+            creditRequestsPage.clickBtnProcessCredit();
+            creditRequestsPage.clickBtnDeclineDraft();
+            creditRequestsPage.clickSubmit();
+            creditRequestsPage.clickConfirm();
+            creditRequestsPage.clickClose();
+        }
+        else if(creditRequestsPage.isBtnEditCreditVisible()){
+            creditRequestsPage.clickBtnEditCredit();
+            creditRequestsPage.clickConfirm();
+            creditRequestsPage.clickBtnDeclineDraft();
+            creditRequestsPage.clickSubmit();
+            creditRequestsPage.clickConfirm();
+            creditRequestsPage.clickClose();
+        }
+    }
+
+    public static void process1(){
+        if (creditRequestsPage.isBtnProcessCreditVisible()){
+            creditRequestsPage.clickBtnProcessCredit();
+            creditRequestsPage.clickCheckBox();
+            creditRequestsPage.clickApproveCredit();
+            creditRequestsPage.clickSubmit();
+            creditRequestsPage.clickConfirm();
+            creditRequestsPage.clickClose();
+        }
+        else if(creditRequestsPage.isBtnEditCreditVisible()){
+            creditRequestsPage.clickBtnEditCredit();
+            creditRequestsPage.clickConfirm();
+            creditRequestsPage.clickCheckBox();
+            creditRequestsPage.clickApproveCredit();
+            creditRequestsPage.clickSubmit();
+            creditRequestsPage.clickConfirm();
+            creditRequestsPage.clickClose();
+        }
+    }
+}
+
