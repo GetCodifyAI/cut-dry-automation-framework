@@ -109,11 +109,11 @@ public class Settings {
     public static boolean isAddPaymentPopupDisplayed() throws InterruptedException {
         return settingsPage.isAddPaymentPopupDisplayed();
     }
-    public static void clickOnAddPaymentMethod()throws InterruptedException {
-        if (settingsPage.isPaymentMethodAvailable()){
+    public static void clickOnAddPaymentMethod() throws InterruptedException {
+        if(settingsPage.isRemoveAccountBtnDisplayed()){
             settingsPage.clickOnRemoveAcc();
             settingsPage.clickYes();
-            settingsPage.clickOK();
+            Settings.clickOK();
         }
         settingsPage.clickOnAddPaymentMethod();
     }
