@@ -73,9 +73,11 @@ public class BoostPage extends LoginPage {
     By deleteListOverlayTxt = By.xpath("//div[contains(@class,'_1j771rs _5x3l6t mt-3 mb-2') and text()='Delete List?']");
     By OverlayDeleteBtn = By.xpath("//button[contains(@class,'w-100 _len1zh btn btn-danger') and text()='Delete']");
     By toggleCarouselDisplayStatus = By.xpath("//div[@class='ml-4']//input[@type='checkbox' and @role='switch' and @checked]");
-
-
-
+    By dropdown_status = By.xpath("//div[contains(@class, 'themed_select__control')]");
+    String dropdown_statusOptionActive = "//div[contains(@class, 'themed_select__single-value') and contains(text(), 'Active')]";
+    String dropdown_statusOptionInactive = "//div[contains(@class, 'themed_select__single-value') and contains(text(), 'Inactive')]";
+    By table_boost = By.xpath("//table[@class='mt-4 table table-hover']");
+    By status_firstRow = By.xpath("//table[@class='mt-4 table table-hover']/tbody/tr[1]/td[5]");
 
     public boolean isBoostTextDisplayed() {
         try {
@@ -351,4 +353,27 @@ public class BoostPage extends LoginPage {
         }
         distributorUI.waitForCustom(2000);
     }
+
+    public String getStatusFirstRow(){
+        return distributorUI.getText(status_firstRow);
+    }
+
+    public int rowsInBoostTable(){
+        return distributorUI.getRowCount(table_boost);
+    }
+
+    public void clickDropDownStatusActive() {
+        By option = By.xpath(dropdown_statusOptionActive);
+        distributorUI.click(option);
+    }
+
+    public void clickDropDownStatusInaActive() {
+        By option = By.xpath(dropdown_statusOptionInactive);
+        distributorUI.click(option);
+    }
+
+    public void clickDropDownStatus(){
+        distributorUI.click(dropdown_status);
+    }
+
 }

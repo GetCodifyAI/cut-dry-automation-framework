@@ -232,4 +232,32 @@ public class Boost {
         boostPage.clickDeleteBtnInDeleteListOverlay();
     }
 
+    public static void selectDropDownStatus(){
+        boostPage.clickDropDownStatus();
+    }
+
+    public static void selectDropDownStatusActive(){
+        boostPage.clickDropDownStatusActive();
+    }
+
+    public static void selectDropDownStatusInactive(){
+        boostPage.clickDropDownStatusInaActive();
+    }
+
+
+    public static boolean isStatusInTableCorrect(String expectedStatus){
+        int rowCount = boostPage.rowsInBoostTable()-1;
+        System.out.println("There are "+rowCount+" rows");
+        if (rowCount==0){
+            return true;
+        }
+        else{
+            String status = boostPage.getStatusFirstRow();
+            System.out.println("The status is "+status);
+            if (status.equals(expectedStatus)){
+                return true;
+            }
+            return false;
+        }
+    }
 }
