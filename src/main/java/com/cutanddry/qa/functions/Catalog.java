@@ -403,4 +403,11 @@ public class Catalog {
         catalogPage.clickMediaType(type);
     }
 
+    public static void addSubstitutionsStable(String itemCode){
+        if(catalogPage.isSubstituteItemDisplayed(itemCode)){
+            catalogPage.clickOnDeleteSubstituteItemBtn(itemCode);
+        }
+        catalogPage.clickAddSubstitutionBtn();
+    }
+
 }

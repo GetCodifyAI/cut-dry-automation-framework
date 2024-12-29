@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 public class ChatPage extends LoginPage{
     By txt_chat = By.xpath("//h2[contains(text(),'Chat')]");
     By tbx_searchCustomers = By.xpath("//input[@placeholder='Search Customers']");
-    String customerName = "//div[text()='NAME']";
+    String customerName = "//div[contains(text(),'NAME')]";
     By tbx_Message = By.xpath("//input[@placeholder='Message...']");
     By icon_send = By.xpath("//span[contains(@class, '_1j33wau')]");
     By txt_lastMessage = By.xpath("(//div[contains(@class, 'card-body')])[last()]");

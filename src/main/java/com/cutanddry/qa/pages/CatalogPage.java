@@ -136,6 +136,7 @@ public class CatalogPage extends LoginPage{
     By lbl_firstRowItemName = By.xpath("(//tbody/tr[1]/td[3])[1]");
     By mediaTypeDropDown = By.xpath("//label[contains(text(), 'Media Type')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     String mediaTypeOption = "(//div[text()='TYPE' and contains(@class,'themed_select__option')])[last()]";
+    String addedSubstitutionsCode = "//div[contains(text(),'CODE')]";
 
 
 
@@ -307,6 +308,7 @@ public class CatalogPage extends LoginPage{
         distributorUI.click(substituteTab);
     }
     public void clickAddSubstitutionBtn(){
+        distributorUI.waitForVisibility(addSubstitutionsBtn);
         distributorUI.scrollToElement(addSubstitutionsBtn);
         distributorUI.click(addSubstitutionsBtn);
     }

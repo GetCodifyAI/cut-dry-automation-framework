@@ -1300,8 +1300,13 @@ public class Customer {
         customersPage.clickEditOrderInReviewScreen();
     }
 
-    public static void clickOnAddPaymentMethod() {
-        customersPage.clickOnAddPaymentMethod();
+    public static void clickOnAddPaymentMethod() throws InterruptedException {
+        if(customersPage.isAddPaymentMethodButtonDisplayed()){
+            customersPage.clickOnAddPaymentMethod();
+        } else {
+            customersPage.editPaymentMethod();
+            customersPage.clickOnAddNewPaymentMethod();
+        }
     }
 
     public static void clickOnAddBankAccount() {
@@ -1332,7 +1337,7 @@ public class Customer {
         return customersPage.getItemCodeFirstRow();
     }
 
-    public static void editPaymentMethod(){
+    public static void editPaymentMethod() throws InterruptedException {
         customersPage.editPaymentMethod();
     }
 
@@ -1344,7 +1349,12 @@ public class Customer {
         return customersPage.isPaymentMethodRemovedDisplayed();
     }
 
-    public static void clickOnEnable(){
+    public static void clickOnEnable() throws InterruptedException {
+        if(customersPage.isAutoPayEnabled()){
+            customersPage.editAutoPay();
+            customersPage.clickOnCancelAutopay();
+            customersPage.clickOnYes();
+        }
         customersPage.clickOnEnable();
     }
 

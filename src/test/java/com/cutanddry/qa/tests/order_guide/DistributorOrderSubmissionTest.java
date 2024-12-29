@@ -34,7 +34,7 @@ public class    DistributorOrderSubmissionTest extends TestBase {
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
         itemName = Customer.getItemNameFirstRow();
-        Customer.increaseFirstRowQtyCustom(8);
+        Customer.increaseFirstRowQtyCustom(2);
         Customer.checkoutItems();
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
         Customer.submitOrder();

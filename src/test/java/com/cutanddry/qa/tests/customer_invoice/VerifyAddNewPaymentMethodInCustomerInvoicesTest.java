@@ -34,7 +34,9 @@ public class VerifyAddNewPaymentMethodInCustomerInvoicesTest extends TestBase {
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"The user is unable to land on the Dashboard page.");
         Dashboard.navigateToCustomers();
+//        Customer.searchCustomerByCode(CustomerCode);
         Customer.searchCustomerByCode(CustomerCode);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode), "Unable to find the customer Id");
         Customer.clickOnFirstItemOfCustomerRequests();
         Customer.clickonInvoice();
         Customer.clickOnAddPaymentMethod();
