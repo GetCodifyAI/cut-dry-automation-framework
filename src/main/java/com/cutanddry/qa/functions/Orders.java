@@ -194,6 +194,32 @@ public class Orders {
         return ordersPage.isOrderStatusUpdatedDisplayed(status);
     }
 
+    public static void clickTimeline(){
+        ordersPage.clickTimeline();
+    }
 
+    public static String[] getTimelineData(){
+        return ordersPage.getTimelineData();
+    }
 
+    public static void clickReportIssue(){
+        ordersPage.clickReportIssue();
+    }
+
+    public static void clickOnFirstOptionDropDownWhatIsWrong(){
+        ordersPage.clickOnDropDownWhatIsWrong();
+        ordersPage.clickOnFirstRowDropDownWhatIsWrong();
+    }
+
+    public static void clickOnFirstRowTableOrderIssues(){
+        ordersPage.clickOnFirstRowTableOrderIssues();
+    }
+
+    public static void clickOnBtnContinue(){
+        ordersPage.clickOnBtnContinue();
+    }
+
+    public static void clickBtnSaveCheckIn(){
+        ordersPage.clickBtnSaveCheckIn();
+    }
 }

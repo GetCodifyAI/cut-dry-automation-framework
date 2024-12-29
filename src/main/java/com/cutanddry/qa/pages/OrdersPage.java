@@ -70,7 +70,59 @@ public class OrdersPage extends LoginPage{
     By btn_orderStatus = By.xpath("//div[contains(@class, 'themed_select__single-value css-1uccc91-singleValue') and contains(text(),'Order Status:')]");
     String lbl_orderStatusOption = "//div[contains(@class, 'themed_select__option') and contains(text(),'STATUS')]";
     By txt_description = By.xpath("(//textarea[@class='form-control'])[1]");
+    By btn_timeline = By.xpath("//a[text()='Timeline' and @role='tab']");
+    By timestampTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[1]");
+    By statusTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[2]");
+    By organizationTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[3]");
+    By userTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[4]");
+    By btnReportIssue = By.xpath("//button[@type='button' and @class='mr-3 btn btn-outline-danger' and contains(., 'Report Issue')]");
+    By firstCheckBox_tbleOrderIssues = By.xpath("//table[@class='mt-3 table table-hover']/tbody/tr[1]");
+    By dropDown_whatIsWrong = By.xpath("//div[contains(@class, 'themed_select__control')]");
+    By dropDownFirstOption_whatIsWrong = By.xpath("//div[contains(@class, 'themed_select__control')]//div[@class='themed_select__option'][1]");
+    String dropDownWhatIsWrongOption = "//div[contains(@class, 'themed_select__option') and text()='Missing']";
+    By btn_continue = By.xpath("//button[@type='submit' and @class='btn btn-primary btn-block' and contains(text(), 'Continue')]");
+    By btn_saveCheckIn = By.xpath("//button[contains(text(), 'Save Check-In')]");
 
+    public void clickBtnSaveCheckIn(){
+        distributorUI.click(btn_saveCheckIn);
+    }
+
+    public void clickOnBtnContinue(){
+        distributorUI.click(btn_continue);
+    }
+
+    public void clickOnDropDownWhatIsWrong(){
+        distributorUI.waitForVisibility(dropDown_whatIsWrong);
+        distributorUI.click(dropDown_whatIsWrong);
+    }
+
+    public void clickOnFirstRowDropDownWhatIsWrong(){
+        By dropDownOption = By.xpath(dropDownWhatIsWrongOption);
+        distributorUI.click(dropDownOption);
+    }
+
+    public void clickOnFirstRowTableOrderIssues(){
+        distributorUI.waitForVisibility(firstCheckBox_tbleOrderIssues);
+        distributorUI.click(firstCheckBox_tbleOrderIssues);
+    }
+
+
+    public void clickReportIssue(){
+        distributorUI.click(btnReportIssue);
+    }
+
+    public String[] getTimelineData(){
+        String timeStamp = distributorUI.getText(timestampTimeline);
+        String status = distributorUI.getText(statusTimeline);
+        String organization = distributorUI.getText(organizationTimeline);
+        String user = distributorUI.getText(userTimeline);
+
+        return new String[]{timeStamp, status, organization, user};
+    }
+
+    public void clickTimeline(){
+        distributorUI.click(btn_timeline);
+    }
 
 
 
