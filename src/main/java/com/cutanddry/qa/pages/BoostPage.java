@@ -78,6 +78,11 @@ public class BoostPage extends LoginPage {
     String dropdown_statusOptionInactive = "//div[contains(@class, 'themed_select__single-value') and contains(text(), 'Inactive')]";
     By table_boost = By.xpath("//table[@class='mt-4 table table-hover']");
     By status_firstRow = By.xpath("//table[@class='mt-4 table table-hover']/tbody/tr[1]/td[5]");
+    By displayStatusToggle = By.xpath("//div[contains(@class, 'ml-4')]");
+
+    public void clickOnDisplayStatusToggle(){
+        distributorUI.click(displayStatusToggle);
+    }
 
     public boolean isBoostTextDisplayed() {
         try {

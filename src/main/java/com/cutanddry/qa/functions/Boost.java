@@ -260,4 +260,8 @@ public class Boost {
             return false;
         }
     }
+
+    public static void clickOnDisplayStatusToggle(){
+        boostPage.clickOnDisplayStatusToggle();
+    }
 }
