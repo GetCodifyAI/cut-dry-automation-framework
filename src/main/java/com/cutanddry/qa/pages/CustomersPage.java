@@ -501,7 +501,13 @@ public class CustomersPage extends LoginPage {
     By tbx_editMarginValue = By.xpath("//input[@type='text' and @class='_1dq0frk form-control']");
     By btn_reset = By.xpath("//button[@type='button' and contains(@class, 'btn-primary') and text()='Reset Values']");
     By section_dontForgetToBuy = By.xpath("//div[text()=\"Don't Forget to Buy\"]");
+    By txt_duplicateOrder = By.xpath("//h2[@class='swal2-title' and @id='swal2-title' and text()='Duplicate Order']");
 
+    public void ifDuplicateOrderDisplayed(){
+        if (distributorUI.isDisplayed(txt_duplicateOrder)) {
+            distributorUI.click(btn_yes);
+        }
+    }
     public void clickPreviousDraftOrderNo() throws InterruptedException {
         distributorUI.click(btn_previousDraftOrderNo);
     }
