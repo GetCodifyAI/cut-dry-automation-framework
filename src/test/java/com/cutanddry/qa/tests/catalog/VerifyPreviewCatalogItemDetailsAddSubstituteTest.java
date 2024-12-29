@@ -36,7 +36,7 @@ public class VerifyPreviewCatalogItemDetailsAddSubstituteTest extends TestBase {
         softAssert.assertTrue(Catalog.isProductOverviewDisplayed(),"select product error");
         Catalog.clickOnEditProduct();
         Catalog.navigateToSubstituteTab();
-        Catalog.addSubstitutions();
+        Catalog.addSubstitutionsStable(substituteItemCode);
         String SubstituteItemName = Catalog.getSubstituteItemName(substituteItemCode);
         Catalog.searchAndAddSubstituteItem(substituteItemCode);
         Catalog.saveChanges();

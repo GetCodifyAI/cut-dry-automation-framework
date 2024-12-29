@@ -502,6 +502,7 @@ public class CustomersPage extends LoginPage {
     By btn_reset = By.xpath("//button[@type='button' and contains(@class, 'btn-primary') and text()='Reset Values']");
     By section_dontForgetToBuy = By.xpath("//div[text()=\"Don't Forget to Buy\"]");
     By txt_duplicateOrder = By.xpath("//h2[@class='swal2-title' and @id='swal2-title' and text()='Duplicate Order']");
+    By btn_addNewPaymentMtd = By.xpath("//div[contains(text(),'Add a new payment method')]");
 
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
@@ -2493,16 +2494,17 @@ public class CustomersPage extends LoginPage {
     }
 
     public boolean isPaymentMethodRemovedDisplayed() throws InterruptedException {
-        distributorUI.waitForElementEnabledState(txt_payment_method_removed, true);
+//        distributorUI.waitForElementEnabledState(txt_payment_method_removed, true);
         distributorUI.waitForCustom(1000);
-        return distributorUI.isDisplayed(btn_previousDraftOrderNo);
+        return distributorUI.isDisplayed(txt_payment_method_removed);
     }
 
     public void clickOnTrashCan(){
         distributorUI.click(btn_trash_can);
     }
 
-    public void editPaymentMethod(){
+    public void editPaymentMethod() throws InterruptedException {
+        distributorUI.waitForCustom(4000);
         distributorUI.click(icon_edit_payment_method);
     }
 
@@ -2878,5 +2880,13 @@ public class CustomersPage extends LoginPage {
 
     public boolean isDontForgetToBuyDisplayed() {
         return distributorUI.isDisplayed(section_dontForgetToBuy);
+    }
+
+    public boolean isAddPaymentMethodButtonDisplayed() {
+        return distributorUI.isDisplayed(addPaymentMethodButton);
+    }
+
+    public void clickOnAddNewPaymentMethod() {
+        distributorUI.click(btn_addNewPaymentMtd);
     }
 }

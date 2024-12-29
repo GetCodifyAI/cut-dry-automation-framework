@@ -16,6 +16,9 @@ import org.testng.asserts.SoftAssert;
 public class VerifyDeletePaymentMethodInCustomerInvoicesTest extends TestBase {
     static User user;
     String CustomerCode = CustomerInvoiceData.CUSTOMER_CODE;
+    String AccountNumber = CustomerInvoiceData.ACCOUNT_NUMBER;
+    String RoutingNumber = CustomerInvoiceData.ROUTING_NUMBER;
+    String AccountType = CustomerInvoiceData.ACCOUNT_TYPE;
 
     @BeforeMethod
     public void setUp() {
@@ -31,9 +34,22 @@ public class VerifyDeletePaymentMethodInCustomerInvoicesTest extends TestBase {
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"The user is unable to land on the Dashboard page.");
         Dashboard.navigateToCustomers();
+
         Customer.searchCustomerByCode(CustomerCode);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode), "Unable to find the customer Id");
         Customer.clickOnFirstItemOfCustomerRequests();
         Customer.clickonInvoice();
+        // Add the payment method as pre-request
+        Customer.clickOnAddPaymentMethod();
+        Customer.clickOnAddBankAccount();
+        Customer.typeAccountNumber(AccountNumber);
+        Customer.typeRoutingNumber(RoutingNumber);
+        Customer.selectAccountType(AccountType);
+        Customer.clickBtnNext();
+        softAssert.assertTrue(Customer.isPaymentMethodAddedSuccessfully(), "There has been an error adding the payment method");
+        Customer.clickOK();
+
+        // Edit AutoPay Details Enabled State flow
         Customer.editPaymentMethod();
         Customer.clickOnTrashCan();
         Customer.clickOnYes();

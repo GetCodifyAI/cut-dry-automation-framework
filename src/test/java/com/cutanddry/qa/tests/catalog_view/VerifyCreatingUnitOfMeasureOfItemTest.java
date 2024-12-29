@@ -28,7 +28,7 @@ public class VerifyCreatingUnitOfMeasureOfItemTest {
     }
 
     @Test(groups = "DOT-TC-372")
-    public void VerifyCreatingUnitOfMeasureOfItem() {
+    public void VerifyCreatingUnitOfMeasureOfItem() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
@@ -49,6 +49,12 @@ public class VerifyCreatingUnitOfMeasureOfItemTest {
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in creating UOM");
         softAssert.assertEquals(Catalog.getUnitOfMeasureCount(),UOMCount+1,"Error in increasing UOM");
         softAssert.assertTrue(Catalog.isAddedUOMDisplayed(),"Error in deleting the UOM");
+
+        Catalog.deleteUOMFromCatalog();
+        softAssert.assertTrue(Catalog.deleteUOMOverlayDisplayed(),"UOM delete overlay displaying ERROR");
+        Catalog.DeleteConfirm();
+        Catalog.saveChanges();
+        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving the changes after UOM Delete");
 
         softAssert.assertAll();
     }

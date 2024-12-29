@@ -32,9 +32,18 @@ public class VerifyCancelAutoPayFlowinCustomerInvoices extends TestBase {
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"The user is unable to land on the Dashboard page.");
         Dashboard.navigateToCustomers();
+//        Customer.searchCustomerByCode(CustomerCode);
+        // Enable the auto pay 1st
         Customer.searchCustomerByCode(CustomerCode);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode), "Unable to find the customer Id");
         Customer.clickOnFirstItemOfCustomerRequests();
         Customer.clickonInvoice();
+        Customer.clickOnEnable();
+        Customer.clickOnIAgree();
+        Customer.clickOnEnableAutoPay();
+        softAssert.assertTrue(Customer.isAutoPayEnabled(), "Auto pay has not been enabled properly");
+
+        // Cancel AutoPay Flow
         Customer.editAutoPay();
         Customer.clickOnCancelAutopay();
         Customer.clickOnYes();

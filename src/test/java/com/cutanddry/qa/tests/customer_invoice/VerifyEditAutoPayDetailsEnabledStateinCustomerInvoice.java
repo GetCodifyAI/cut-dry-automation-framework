@@ -32,9 +32,18 @@ public class VerifyEditAutoPayDetailsEnabledStateinCustomerInvoice extends TestB
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"The user is unable to land on the Dashboard page.");
         Dashboard.navigateToCustomers();
+
+        // Enable the auto pay 1st
         Customer.searchCustomerByCode(CustomerCode);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode), "Unable to find the customer Id");
         Customer.clickOnFirstItemOfCustomerRequests();
         Customer.clickonInvoice();
+        Customer.clickOnEnable();
+        Customer.clickOnIAgree();
+        Customer.clickOnEnableAutoPay();
+        softAssert.assertTrue(Customer.isAutoPayEnabled(), "Auto pay has not been enabled properly");
+
+        // Edit AutoPay Details Enabled State flow
         Customer.editAutoPay();
         Customer.clickOnAutoPayScheduleDropdown();
         Customer.selectDropdownOption(ScheduleOption);
