@@ -2,10 +2,7 @@ package com.cutanddry.qa.pages;
 
 import com.cutanddry.qa.base.TestBase;
 import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import java.time.Duration;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CreditRequestsPage extends TestBase {
 
@@ -42,10 +39,94 @@ public class CreditRequestsPage extends TestBase {
     String optionSalesperson = "//div[contains(@class, 'themed_select__menu')]//div[contains(text(), 'SALESPERSON')]";
     By txt_priceColumnItems = By.xpath("//table[@class='mt-3 table table-hover']//tbody/tr[1]/td[4]");
     By txt_QtyColumnItems = By.xpath("//table[@class='mt-3 table table-hover']//tbody/tr[1]/td[5]");
-    By txt_totalValueOfItems =  By.xpath("//tr[contains(@class, 'font-weight-bold')]//td[div[text()='Total']]/following-sibling::td");
     By txt_Order = By.xpath("//h2[contains(text(), 'Order')]");
     By txt_CreditRequestTableCrQty = By.xpath("//table[@class='table table-hover']//tbody/tr[1]/td[6]");
     By txt_CreditRequestTableCrValue = By.xpath("//table[@class='table table-hover']//tbody/tr[1]/td[7]");
+    By btn_creditRequest = By.xpath("//a[@role='tab' and contains(@class, '_xh5xl28') and text()='Credit Request']");
+    By btn_processCredit= By.xpath("//button[@type='button' and contains(@class, 'btn-primary') and contains(text(), 'Process Credit')]");
+    By checkbox_creditReqTable = By.xpath("//table[@class='table table-hover']/tbody/tr[1]/td[1]");
+    By btn_declineDraft = By.xpath("//button[@type='button' and contains(@class, 'btn-outline-primary') and contains(text(), 'Decline Credit')]");
+    By btn_submit = By.xpath("//button[contains(text(), 'Submit')]");
+    By btn_confirm = By.xpath("//button[contains(text(), 'Confirm')]");
+    By btn_close = By.xpath("//button[contains(text(), 'Close')]");
+    By txt_credictDeclined = By.xpath("//span[@class='_1a5re9s' and text()='Credit Declined'");
+    By btn_editCredit = By.xpath("//button[@type='button' and contains(text(), 'Edit Credit')]");
+    By btn_approveCredit = By.xpath("//button[@type='button' and contains(text(), 'Approve Credit')]");
+    By txt_creditApproved = By.xpath("//span[@class='_1a5re9s' and text()='Credit Approved']");
+    By timestampTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[1]");
+    By statusTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[2]");
+    By organizationTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[3]");
+    By userTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[4]");
+
+    public String[] getTimelineData(){
+        String timeStamp = distributorUI.getText(timestampTimeline);
+        String status = distributorUI.getText(statusTimeline);
+        String organization = distributorUI.getText(organizationTimeline);
+        String user = distributorUI.getText(userTimeline);
+
+        return new String[]{timeStamp, status, organization, user};
+    }
+
+    public boolean isTxtCreditApprovedDisplayed(){
+        distributorUI.waitForVisibility(txt_creditApproved);
+        return distributorUI.isDisplayed(txt_creditApproved);
+    }
+
+    public void clickApproveCredit(){
+        distributorUI.click(btn_approveCredit);
+    }
+
+    public void clickBtnEditCredit(){
+        distributorUI.click(btn_editCredit);
+    }
+
+    public boolean isTxtCreditDeclinedDisplayed(){
+        distributorUI.waitForClickability(txt_credictDeclined);
+        return distributorUI.isDisplayed(txt_credictDeclined);
+    }
+
+    public void clickClose(){
+        distributorUI.click(btn_close);
+    }
+
+    public void clickConfirm(){
+        distributorUI.click(btn_confirm);
+    }
+
+    public void clickSubmit(){
+        distributorUI.click(btn_submit);
+    }
+
+    public void clickBtnDeclineDraft(){
+        distributorUI.click(btn_declineDraft);
+    }
+
+    public void clickCheckBox(){
+        distributorUI.click(checkbox_creditReqTable);
+    }
+
+    public boolean isBtnEditCreditVisible(){
+        distributorUI.waitForVisibility(btn_editCredit);
+        return distributorUI.isDisplayed(btn_editCredit);
+    }
+
+
+    public boolean isBtnProcessCreditVisible(){
+        distributorUI.waitForVisibility(btn_processCredit);
+        return distributorUI.isDisplayed(btn_processCredit);
+    }
+
+    public void clickBtnProcessCredit(){
+        distributorUI.click(btn_processCredit);
+    }
+
+    public void clickBtnProcessCredits(){
+        distributorUI.click(btn_processCredit);
+    }
+
+    public void clickCreditRequest(){
+        distributorUI.click(btn_creditRequest);
+    }
 
     public String[] getCrQtyCrValue() {
         String CrQty = distributorUI.getText(txt_CreditRequestTableCrQty);

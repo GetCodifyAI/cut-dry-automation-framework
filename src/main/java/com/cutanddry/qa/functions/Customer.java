@@ -1640,4 +1640,7 @@ public class Customer {
         boostPage.clickClose();
     }
 
+    public static void ifDuplicateOrderDisplayed(){
+        customersPage.ifDuplicateOrderDisplayed();
+    }
 }
