@@ -38,6 +38,7 @@
             <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromRequestDateTest"/>
             <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromCreditStatusTest"/>
             <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromSalespersonTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheTimelineInCreditRequestUsingTimestampStatusOrganizationAndUser"/>
             <class name="com.cutanddry.qa.tests.order_guide.ValidateTheFunctionalityOfEditMarginOfAnItem" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheViewMultipleOrderGuidesUnderOrderGuideAndMoveBetweenDifferentOrderGuides" />
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCutAndDryPayInCustomerInvoices"/>
