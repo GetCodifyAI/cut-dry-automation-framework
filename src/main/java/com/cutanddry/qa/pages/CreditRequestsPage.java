@@ -53,6 +53,19 @@ public class CreditRequestsPage extends TestBase {
     By btn_editCredit = By.xpath("//button[@type='button' and contains(text(), 'Edit Credit')]");
     By btn_approveCredit = By.xpath("//button[@type='button' and contains(text(), 'Approve Credit')]");
     By txt_creditApproved = By.xpath("//span[@class='_1a5re9s' and text()='Credit Approved']");
+    By timestampTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[1]");
+    By statusTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[2]");
+    By organizationTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[3]");
+    By userTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[4]");
+
+    public String[] getTimelineData(){
+        String timeStamp = distributorUI.getText(timestampTimeline);
+        String status = distributorUI.getText(statusTimeline);
+        String organization = distributorUI.getText(organizationTimeline);
+        String user = distributorUI.getText(userTimeline);
+
+        return new String[]{timeStamp, status, organization, user};
+    }
 
     public boolean isTxtCreditApprovedDisplayed(){
         distributorUI.waitForVisibility(txt_creditApproved);
