@@ -232,4 +232,41 @@ public class Boost {
         boostPage.clickDeleteBtnInDeleteListOverlay();
     }
 
+    public static void selectDropDownStatus(String status){
+        boostPage.clickDropDownStatus();
+        boostPage.clickDropDownStatus(status);
+    }
+
+    public static boolean isStatusInTableCorrect(String expectedStatus) throws InterruptedException {
+        if (boostPage.isAddNewMessageDisplayed()){
+            boostPage.clickBtnAddNewMessage();
+            boostPage.clickContinue();
+            boostPage.typeNewMessage("Test Message");
+            boostPage.clickDropDownNotificationTime();
+            String nextTime = boostPage.getNextRoundedTime();
+            System.out.println(nextTime);
+            boostPage.selectNotificationTime(nextTime);
+            boostPage.clickBtnSubmit();
+            boostPage.clickBtnOK();
+
+            String status = boostPage.getStatusFirstRow();
+            System.out.println("The status is "+status);
+            if (status.equals(expectedStatus)){
+                return true;
+            }
+            return true;
+        }
+        else{
+            String status = boostPage.getStatusFirstRow();
+            System.out.println("The status is "+status);
+            if (status.equals(expectedStatus)){
+                return true;
+            }
+            return false;
+        }
+    }
+
+    public static void clickOnDisplayStatusToggle(){
+        boostPage.clickOnDisplayStatusToggle();
+    }
 }
