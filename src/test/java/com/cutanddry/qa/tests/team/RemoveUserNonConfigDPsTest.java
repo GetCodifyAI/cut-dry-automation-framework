@@ -12,9 +12,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.util.Random;
+
 public class RemoveUserNonConfigDPsTest extends TestBase {
     static User user;
-    static String name = "Test 99";
+    //static String name = "Test 99";
+    static int randomNumber = new Random().nextInt(1000);
+    static String name = "Testnoconfig" + randomNumber;
+    static String email = "test"+randomNumber+"@email.com";
 
     @BeforeMethod
     public void setUp(){
@@ -28,8 +33,18 @@ public class RemoveUserNonConfigDPsTest extends TestBase {
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+
         Dashboard.navigateToTeamSettings();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");
+
+        // Create a new user as pre-request
+        Settings.clickOnAddUser();
+        Settings.enterName(name);
+        Settings.enterEmail(email);
+        Settings.clickOnInviteUser();
+        softAssert.assertTrue(Settings.isUserDisplayed(name),"user adding error");
+
+        // Testing flow as Delete user
         Settings.clickOnEditUser(name);
         Settings.clickOnRemoveUserLabel();
         softAssert.assertTrue(Settings.isRemoveUserPopupDisplayed(),"remove pop up error");

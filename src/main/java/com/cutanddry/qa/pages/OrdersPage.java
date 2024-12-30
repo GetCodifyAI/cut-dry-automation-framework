@@ -287,9 +287,11 @@ public class OrdersPage extends LoginPage{
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        String d = distributorUI.getText(txt_date);
-        distributorUI.scrollToElement(By.xpath("("+ date.replace("DATE", d) + ")" + "[last()]"));
-        return distributorUI.validateFilteredElements(By.xpath(date.replace("DATE", d)),OrdersDate);
+//        String d = distributorUI.getText(txt_date);
+//        distributorUI.scrollToElement(By.xpath("("+ date.replace("DATE", OrdersDate) + ")" + "[last()]"));
+        distributorUI.scrollToElementStable(By.xpath("("+ date.replace("DATE", OrdersDate) + ")" + "[last()]"));
+//        return distributorUI.validateFilteredElements(By.xpath(date.replace("DATE", OrdersDate)),OrdersDate);
+        return distributorUI.isDisplayed(By.xpath("("+ date.replace("DATE", OrdersDate) + ")" + "[last()]"));
     }
 
     public Boolean isFilteredOrderStatusCorrect(String OrdersStatus){
@@ -443,7 +445,9 @@ public class OrdersPage extends LoginPage{
         }
         return distributorUI.isDisplayed(By.xpath(lbl_orderStatus.replace("STATUSVALUE",status)));
     }
-
+    public String getLastWorkingDate() {
+        return distributorUI.getLastWorkingDay();
+    }
 
 
 }
