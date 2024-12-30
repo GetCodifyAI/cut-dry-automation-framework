@@ -16,6 +16,9 @@ public class VerifyDeletingUnitOfMeasureOfItemTest extends TestBase {
     static User user;
     String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
     String itemCode = "00475";
+    String UOM = "Bag";
+    String itemPrice = "20.00";
+    String saleValue = "30.00";
 
     @BeforeMethod
     public void setUp(){
@@ -35,6 +38,18 @@ public class VerifyDeletingUnitOfMeasureOfItemTest extends TestBase {
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
         Catalog.navigateToPricingAndPromotions();
+
+        // Pre-request
+        int UOMCount = Catalog.getUnitOfMeasureCount();
+        Catalog.addUnitOfMeasure();
+        Catalog.selectUnitFromDropdown(UOM);
+        Catalog.setItemUnitPrice(itemPrice);
+        Catalog.selectPercentageAsSalesTypeFrmDropdown();
+        Catalog.setSaleValue(saleValue);
+        Catalog.saveChanges();
+        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in creating UOM");
+
+        // Testing flow
         Catalog.deleteUOMFromCatalog();
         softAssert.assertTrue(Catalog.deleteUOMOverlayDisplayed(),"UOM delete overlay displaying ERROR");
         Catalog.DeleteConfirm();
