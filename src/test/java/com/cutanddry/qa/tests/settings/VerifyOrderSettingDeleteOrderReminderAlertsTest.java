@@ -25,8 +25,8 @@ public class VerifyOrderSettingDeleteOrderReminderAlertsTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-861")
-    public void VerifyOrderSettingAddOrderReminderAlerts() throws InterruptedException, URISyntaxException {
+    @Test(groups = "DOT-TC-863")
+    public void VerifyOrderSettingDeleteOrderReminderAlerts() throws InterruptedException, URISyntaxException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
