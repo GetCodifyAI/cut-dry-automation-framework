@@ -68,6 +68,7 @@
             <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingExportOrderSettingTest"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingImportOrderSettingTest"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingAddOrderReminderAlertsTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingEditOrderReminderAlertsTest"/>
 
         </classes>
     </test>
