@@ -42,5 +42,4 @@ public class VerifyTheBoostMessageFilteringFromTheStatusOption extends TestBase 
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }
-
 }
