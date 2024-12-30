@@ -21,6 +21,7 @@ public class VerifyTheBoostMessageFilteringFromTheStatusOption extends TestBase 
         initialization();
         user = JsonUtil.readUserLogin();
     }
+
     @Test(groups = "DOT-TC-832")
     public void VerifyTheBoostMessageFilteringFromTheStatusOption() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
@@ -29,12 +30,10 @@ public class VerifyTheBoostMessageFilteringFromTheStatusOption extends TestBase 
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
-        Boost.selectDropDownStatus();
-        Boost.selectDropDownStatusActive();
-        Boost.isStatusInTableCorrect("Active");
-        Boost.selectDropDownStatus();
-        Boost.selectDropDownStatusInactive();
-        Boost.isStatusInTableCorrect("Inactive");
+        Boost.selectDropDownStatus("Active");
+        softAssert.assertTrue(Boost.isStatusInTableCorrect("Active"), "There is an error with the status");
+        Boost.selectDropDownStatus("Inactive");
+        softAssert.assertTrue(Boost.isStatusInTableCorrect("Inactive"),"There is an error with the status");
         softAssert.assertAll();
     }
 
@@ -43,4 +42,5 @@ public class VerifyTheBoostMessageFilteringFromTheStatusOption extends TestBase 
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }
+
 }
