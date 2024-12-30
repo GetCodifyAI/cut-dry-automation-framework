@@ -66,6 +66,7 @@
             <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingPayButtonAddBankAccountTest"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingPayButtonAddCreditCardTest"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingExportOrderSettingTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingImportOrderSettingTest"/>
 
         </classes>
     </test>
