@@ -1,8 +1,16 @@
 package com.cutanddry.qa.pages;
 
+
+
 import com.cutanddry.qa.data.models.Broadcast;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class BoostPage extends LoginPage {
     By txt_boost = By.xpath("//li[contains(text(),'Boost')]");
@@ -17,7 +25,6 @@ public class BoostPage extends LoginPage {
     By btn_continue = By.xpath("//button[text()='Continue']");
     By dropdown_search = By.xpath("//div[contains(@class, 'themed_select__placeholder') and text()='Search...']/following-sibling::div//input");
     By txt_step2 = By.xpath("//div[text()='Step 2 - Customise your message']");
-    By btn_submit = By.xpath("//button[text()='Submit']");
     By type_message = By.xpath("//textarea[@placeholder='Type your message here...']");
     By add_url = By.xpath("//input[@placeholder='Add a URL to your message...']");
     By btn_clear = By.xpath("//div[contains(@class, 'themed_select__clear-indicator')]");
@@ -73,15 +80,24 @@ public class BoostPage extends LoginPage {
     By deleteListOverlayTxt = By.xpath("//div[contains(@class,'_1j771rs _5x3l6t mt-3 mb-2') and text()='Delete List?']");
     By OverlayDeleteBtn = By.xpath("//button[contains(@class,'w-100 _len1zh btn btn-danger') and text()='Delete']");
     By toggleCarouselDisplayStatus = By.xpath("//div[@class='ml-4']//input[@type='checkbox' and @role='switch' and @checked]");
-    By dropdown_status = By.xpath("//div[contains(@class, 'themed_select__control')]");
-    String dropdown_statusOptionActive = "//div[contains(@class, 'themed_select__single-value') and contains(text(), 'Active')]";
-    String dropdown_statusOptionInactive = "//div[contains(@class, 'themed_select__single-value') and contains(text(), 'Inactive')]";
+    By dropdown_status = By.xpath("//div[contains(text(),'Status')]");
+    String dropdown_statusOption = "//div[contains(text(), 'option')]";
     By table_boost = By.xpath("//table[@class='mt-4 table table-hover']");
+    By firstRow_tableBost = By.xpath("//table[contains(@class, 'table-hover')]/tbody/tr[1]");
     By status_firstRow = By.xpath("//table[@class='mt-4 table table-hover']/tbody/tr[1]/td[5]");
     By displayStatusToggle = By.xpath("//div[contains(@class, 'ml-4')]");
+    By btn_addNewMessage = By.xpath("//a[normalize-space(text()) = 'Add a new message']");
+    By tbx_newMessage = By.xpath("//textarea[@placeholder='Type your message here...']");
+    By dropdown_notificationTime = By.xpath("//div[contains(text(),'Select time')]");
+    By btn_OK = By.xpath("//button[text()='OK']");
+    By btn_submit = By.xpath("//button[text()='Submit']");
 
-    public void clickOnDisplayStatusToggle(){
-        distributorUI.click(displayStatusToggle);
+    public void clickBtnOK(){
+        distributorUI.click(btn_OK);
+    }
+
+    public void clickBtnSubmit(){
+        distributorUI.click(btn_submit);
     }
 
     public boolean isBoostTextDisplayed() {
@@ -363,22 +379,55 @@ public class BoostPage extends LoginPage {
         return distributorUI.getText(status_firstRow);
     }
 
-    public int rowsInBoostTable(){
-        return distributorUI.getRowCount(table_boost);
+    public boolean isAddNewMessageDisplayed(){
+        return distributorUI.isDisplayed(btn_addNewMessage);
     }
 
-    public void clickDropDownStatusActive() {
-        By option = By.xpath(dropdown_statusOptionActive);
+    public void clickDropDownStatus () {
+            distributorUI.click(dropdown_status);
+        }
+
+    public String getNextRoundedTime() {
+        // Get the current time
+        Calendar calendar = Calendar.getInstance();
+
+        // Round to the next hour
+        calendar.add(Calendar.MINUTE, 30); // Add 30 minutes to decide the next hour
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+
+        // Format the time
+        SimpleDateFormat sdf = new SimpleDateFormat("h:mm a"); // Format as "5:00 PM" or "11:00 AM"
+        return sdf.format(calendar.getTime());
+    }
+
+    public void clickDropDownStatus(String status) {
+        By option = By.xpath(dropdown_statusOption.replace("option",status));
         distributorUI.click(option);
     }
 
-    public void clickDropDownStatusInaActive() {
-        By option = By.xpath(dropdown_statusOptionInactive);
-        distributorUI.click(option);
+    public void selectNotificationTime(String time){
+//        By notificationTime = By.xpath(dropdown_notificationTimeOption.replace("TIME_OPTION",time));
+        distributorUI.sendKeysAndEnter(dropdown_notificationTime,time);
+//        distributorUI.click(notificationTime);
     }
 
-    public void clickDropDownStatus(){
-        distributorUI.click(dropdown_status);
+    public void clickDropDownNotificationTime(){
+        distributorUI.click(dropdown_notificationTime);
+    }
+
+    public void typeNewMessage(String testMessage){
+        distributorUI.waitForVisibility(tbx_newMessage);
+        distributorUI.sendKeys(tbx_newMessage,testMessage);
+    }
+
+    public void clickBtnAddNewMessage(){
+        distributorUI.waitForVisibility(btn_addNewMessage);
+        distributorUI.click(btn_addNewMessage);
+    }
+    public void clickOnDisplayStatusToggle(){
+        distributorUI.click(displayStatusToggle);
     }
 
 }

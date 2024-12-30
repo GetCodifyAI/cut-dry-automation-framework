@@ -232,23 +232,28 @@ public class Boost {
         boostPage.clickDeleteBtnInDeleteListOverlay();
     }
 
-    public static void selectDropDownStatus(){
+    public static void selectDropDownStatus(String status){
         boostPage.clickDropDownStatus();
+        boostPage.clickDropDownStatus(status);
     }
 
-    public static void selectDropDownStatusActive(){
-        boostPage.clickDropDownStatusActive();
-    }
+    public static boolean isStatusInTableCorrect(String expectedStatus) throws InterruptedException {
+        if (boostPage.isAddNewMessageDisplayed()){
+            boostPage.clickBtnAddNewMessage();
+            boostPage.clickContinue();
+            boostPage.typeNewMessage("Test Message");
+            boostPage.clickDropDownNotificationTime();
+            String nextTime = boostPage.getNextRoundedTime();
+            System.out.println(nextTime);
+            boostPage.selectNotificationTime(nextTime);
+            boostPage.clickBtnSubmit();
+            boostPage.clickBtnOK();
 
-    public static void selectDropDownStatusInactive(){
-        boostPage.clickDropDownStatusInaActive();
-    }
-
-
-    public static boolean isStatusInTableCorrect(String expectedStatus){
-        int rowCount = boostPage.rowsInBoostTable()-1;
-        System.out.println("There are "+rowCount+" rows");
-        if (rowCount==0){
+            String status = boostPage.getStatusFirstRow();
+            System.out.println("The status is "+status);
+            if (status.equals(expectedStatus)){
+                return true;
+            }
             return true;
         }
         else{

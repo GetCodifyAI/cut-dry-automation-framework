@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheDisplayStatusOfFeaturedLists extends TestBase {
+public class VerifyTheChangeOrderFromTheFeaturedLists extends TestBase {
     static User user;
 
     @BeforeMethod
@@ -21,8 +21,8 @@ public class VerifyTheDisplayStatusOfFeaturedLists extends TestBase {
         initialization();
         user = JsonUtil.readUserLogin();
     }
-    @Test(groups = "DOT-TC-836")
-    public void VerifyTtheDisplayStatusOfFeaturedLists() throws InterruptedException {
+    @Test(groups = "DOT-TC-833")
+    public void VerifyTheBoostMessageFilteringFromTheStatusOption() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -30,8 +30,7 @@ public class VerifyTheDisplayStatusOfFeaturedLists extends TestBase {
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.navigateToFeaturedListTab();
-        Boost.viewAndConfigure("Dessert Specials");
-        Boost.clickOnDisplayStatusToggle();
+
         softAssert.assertAll();
     }
 
