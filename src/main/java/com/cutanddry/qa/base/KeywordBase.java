@@ -18,14 +18,11 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
+import java.time.*;
 import java.util.*;
 import java.util.List;
 
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.LocalDate;
 
 
 @SuppressWarnings("UnusedReturnValue")
@@ -936,5 +933,42 @@ public class KeywordBase {
             return false;
         }
     }
+
+    public static String getLastWorkingDay() {
+
+        ZonedDateTime yesterdayUTC = ZonedDateTime.now(ZoneOffset.UTC).minusDays(1);
+        if (yesterdayUTC.getDayOfWeek() == DayOfWeek.SUNDAY) {
+            yesterdayUTC = yesterdayUTC.minusDays(2);
+        } else if (yesterdayUTC.getDayOfWeek() == DayOfWeek.SATURDAY) {
+            yesterdayUTC = yesterdayUTC.minusDays(1);
+        }
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        return yesterdayUTC.format(formatter);
+    }
+
+    public void scrollToElementStable(By by) {
+        try {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            boolean elementFound = false;
+
+            while (!elementFound) {
+                js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+                Thread.sleep(1000);
+
+                if (driver.findElements(by).size() > 0) {
+                    elementFound = true;
+                }
+            }
+
+            WebElement targetElement = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+            js.executeScript("arguments[0].scrollIntoView(true);", targetElement);
+
+            logger.info("Scrolled to and found the element: {}", by);
+        } catch (Exception e) {
+            logger.error("Failed to find and scroll to the element: {}", by, e);
+        }
+    }
+
 
 }

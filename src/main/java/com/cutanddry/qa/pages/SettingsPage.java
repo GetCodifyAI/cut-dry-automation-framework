@@ -121,6 +121,7 @@ public class SettingsPage extends LoginPage{
     public boolean isTeamSettingsTextDisplayed() throws InterruptedException {
         try {
             distributorUI.waitForVisibility(txt_teamSettings);
+            distributorUI.click(txt_teamSettings);
         } catch (Exception e){
             return false;
         }
@@ -172,7 +173,9 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForCustom(3000);
         distributorUI.waitForVisibility(btn_inviteUser);
         distributorUI.click(btn_inviteUser);
-        distributorUI.clickUsingJavaScript(btn_inviteUser);
+        if(distributorUI.isDisplayed(btn_inviteUser)){
+            distributorUI.clickUsingJavaScript(btn_inviteUser);
+        }
         if(distributorUI.isDisplayed(lbl_InvalidEmail)){
             distributorUI.waitForClickability(btn_OK);
             distributorUI.click(btn_OK);
