@@ -18,7 +18,8 @@ import java.time.format.DateTimeFormatter;
 
 public class VerifyTheOrderViewDateDropdownTest extends TestBase {
     static User user;
-    String date = "Yesterday";
+    String date = "Last 7 Days";
+    static String expectedDate;
 
     @BeforeMethod
     public void setUp() {
@@ -30,9 +31,10 @@ public class VerifyTheOrderViewDateDropdownTest extends TestBase {
     public void VerifyTheOrderViewDateDropdown() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
 
-        ZonedDateTime yesterdayUTC = ZonedDateTime.now(ZoneOffset.UTC).minusDays(1);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        String yesterdayDate = yesterdayUTC.format(formatter);
+//        ZonedDateTime yesterdayUTC = ZonedDateTime.now(ZoneOffset.UTC).minusDays(1);
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+//        String yesterdayDate = yesterdayUTC.format(formatter);
+        expectedDate = Orders.getLastWorkingDate();
 
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
@@ -40,7 +42,7 @@ public class VerifyTheOrderViewDateDropdownTest extends TestBase {
         softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"navigation error");
         Orders.selectOrderDate(date);
         softAssert.assertTrue(Orders.isOrderDateChanged(date),"dropdown error");
-        softAssert.assertTrue(Orders.validateFilteredOrders(yesterdayDate),"Error in filtering order dates");
+        softAssert.assertTrue(Orders.validateFilteredOrders(expectedDate),"Error in filtering order dates");
         softAssert.assertAll();
     }
 

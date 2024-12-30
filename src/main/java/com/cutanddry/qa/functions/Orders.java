@@ -222,4 +222,8 @@ public class Orders {
     public static void clickBtnSaveCheckIn(){
         ordersPage.clickBtnSaveCheckIn();
     }
+
+    public static String getLastWorkingDate(){
+        return ordersPage.getLastWorkingDate();
+    }
 }

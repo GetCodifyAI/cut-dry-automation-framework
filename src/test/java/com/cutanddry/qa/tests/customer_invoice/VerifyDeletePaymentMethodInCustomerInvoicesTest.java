@@ -49,7 +49,7 @@ public class VerifyDeletePaymentMethodInCustomerInvoicesTest extends TestBase {
         softAssert.assertTrue(Customer.isPaymentMethodAddedSuccessfully(), "There has been an error adding the payment method");
         Customer.clickOK();
 
-        // Edit AutoPay Details Enabled State flow
+        // Delete the payment method in customer invoice test flow
         Customer.editPaymentMethod();
         Customer.clickOnTrashCan();
         Customer.clickOnYes();
