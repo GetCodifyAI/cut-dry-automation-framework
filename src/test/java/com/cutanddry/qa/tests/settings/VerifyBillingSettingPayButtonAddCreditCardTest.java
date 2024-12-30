@@ -27,7 +27,7 @@ public class VerifyBillingSettingPayButtonAddCreditCardTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-848")
-    public void VerifyBillingSettingAddCreditCard() throws InterruptedException {
+    public void VerifyBillingSettingPayButtonAddCreditCard() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
