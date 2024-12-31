@@ -105,6 +105,25 @@ public class SettingsPage extends LoginPage{
     By btn_addNew = By.xpath("//button[@type='button' and text()='Add New']");
     By tbx_newWarehouseName = By.xpath("//input[@placeholder='Name' and contains(@class, 'form-control') and contains(@class, 'is-invalid')]");
     By btnSaveChanges = By.xpath("//div[@class='pt-3 form-row']/div/button[@type='button' and text()='Save Changes']");
+    By btn_pay = By.xpath("//button[text()='Pay']");
+    By btn_export = By.xpath("//a[text()='Export']");
+    By btn_import = By.xpath("//button[text()='Import']");
+    By btn_downloadSample = By.xpath("//a[text()='Download Sample']");
+    By txt_importSuccess = By.xpath("//h2[text()='Import Completed!']");
+    By btn_close = By.xpath("//button[text()='Close']");
+    By btn_addAlert = By.xpath("//button[text()='Add Alert']");
+    By txt_orderRemindAlert = By.xpath("//div[text()='Order Reminder Alert']");
+    By sendAlertDropDown = By.xpath("//label[text()='Send Alert']//following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    String sendAlertOption = "//div[contains(@class,'themed_select__option') and text()='OPTION']";
+    By txt_setAlert = By.xpath("//h2[text()= 'Setting Your Order Reminder']");
+    By btn_OkAlert = By.xpath("//button[text()='Ok']");
+    By btn_deleteAlert = By.xpath("//button[text()='Delete Alert']");
+
+
+
+
+
+
 
     public boolean isOrderSettingsTextDisplayed() throws InterruptedException {
         try {
@@ -129,6 +148,7 @@ public class SettingsPage extends LoginPage{
     public boolean isTeamSettingsTextDisplayed() throws InterruptedException {
         try {
             distributorUI.waitForVisibility(txt_teamSettings);
+            distributorUI.click(txt_teamSettings);
         } catch (Exception e){
             return false;
         }
@@ -180,7 +200,9 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForCustom(3000);
         distributorUI.waitForVisibility(btn_inviteUser);
         distributorUI.click(btn_inviteUser);
-        distributorUI.clickUsingJavaScript(btn_inviteUser);
+        if(distributorUI.isDisplayed(btn_inviteUser)){
+            distributorUI.clickUsingJavaScript(btn_inviteUser);
+        }
         if(distributorUI.isDisplayed(lbl_InvalidEmail)){
             distributorUI.waitForClickability(btn_OK);
             distributorUI.click(btn_OK);
@@ -601,6 +623,67 @@ public class SettingsPage extends LoginPage{
         distributorUI.clear(cityName);
         distributorUI.sendKeys(cityName,city);
     }
+    public void clickPayButton()throws InterruptedException{
+        distributorUI.click(btn_pay);
+    }
+    public void clickExportButton()throws InterruptedException{
+        distributorUI.click(btn_export);
+    }
+    public void clickImportButton(){
+        distributorUI.click(btn_import);
+    }
+    public void clickDownloadSample(){
+        distributorUI.click(btn_downloadSample);
+    }
+    public boolean isImportSuccessTextDisplayed() throws InterruptedException {
+        try {
+            distributorUI.waitForVisibility(txt_importSuccess);
+        } catch (Exception e){
+            return false;
+        }
+        distributorUI.waitForCustom(4000);
+        return distributorUI.isDisplayed(txt_importSuccess);
+    }
+    public void clickClose(){
+        distributorUI.click(btn_close);
+    }
+    public void clickAddAlert(){
+        distributorUI.waitForVisibility(btn_addAlert);
+        distributorUI.click(btn_addAlert);
+    }
+    public boolean isOrderRemindAlertTextDisplayed() throws InterruptedException {
+        try {
+            distributorUI.waitForVisibility(txt_orderRemindAlert);
+        } catch (Exception e){
+            return false;
+        }
+        distributorUI.waitForCustom(4000);
+        return distributorUI.isDisplayed(txt_orderRemindAlert);
+    }
+    public void clickSendAlertDropDown(){
+        distributorUI.click(sendAlertDropDown);
+    }
+    public void clickSendAlertOption(String option) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        distributorUI.waitForVisibility(By.xpath(sendAlertOption.replace("OPTION", option)));
+        distributorUI.click(By.xpath(sendAlertOption.replace("OPTION", option)));
+    }
+    public boolean isSettingOrderReminderTextDisplayed() throws InterruptedException {
+        try {
+            distributorUI.waitForVisibility(txt_setAlert);
+        } catch (Exception e){
+            return false;
+        }
+        distributorUI.waitForCustom(4000);
+        return distributorUI.isDisplayed(txt_setAlert);
+    }
+    public void clickOkAlert(){
+        distributorUI.click(btn_OkAlert);
+    }
+    public void clickDeleteAlert(){
+        distributorUI.click(btn_deleteAlert);
+    }
+
 
     public static String generateWarehouseCode() {
         Random random = new Random();

@@ -169,6 +169,11 @@ public class CatalogPage extends LoginPage{
         distributorUI.waitForVisibility(btn_downloadPdf);
     }
     public void TypeSearchInCatalogSearch(String ItemName){
+        try{
+            distributorUI.waitForCustom(4000);
+        }catch(InterruptedException e){
+            throw new RuntimeException(e);
+        }
         distributorUI.sendKeys(ItemCatalogSearchBtn,ItemName);
         distributorUI.waitForVisibility(By.xpath(SearchedItemItemCode.replace("ITEMCODE",ItemName)));
     }
@@ -207,6 +212,7 @@ public class CatalogPage extends LoginPage{
     public String getItemDetailsFirstRow() throws InterruptedException {
         distributorUI.waitForElementEnabledState(txt_firstItemDetails,true);
         distributorUI.waitForCustom(3000);
+        distributorUI.waitForVisibility(txt_firstItemDetails);
         return distributorUI.getText(txt_firstItemDetails);
     }
     public void clickonItemOnCatalogPage(String itemCode){
