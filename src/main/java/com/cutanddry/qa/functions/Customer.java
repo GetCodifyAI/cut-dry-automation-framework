@@ -240,6 +240,9 @@ public class Customer {
         customersPage.clickNext();
         customersPage.clickConfirm();
     }
+    public static void uploadFileOnly(String path){
+        customersPage.giveFilePath(path);
+    }
     public static boolean isOrderGuideCreateSuccessPopupDisplayed(){
         return customersPage.isOrderGuideCreateSuccessPopupDisplayed();
     }

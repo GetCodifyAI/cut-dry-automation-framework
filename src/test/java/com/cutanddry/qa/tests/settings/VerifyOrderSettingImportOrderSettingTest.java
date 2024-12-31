@@ -2,10 +2,7 @@ package com.cutanddry.qa.tests.settings;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
-import com.cutanddry.qa.functions.Customer;
-import com.cutanddry.qa.functions.Dashboard;
-import com.cutanddry.qa.functions.Login;
-import com.cutanddry.qa.functions.Settings;
+import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -19,6 +16,7 @@ import java.util.Objects;
 
 public class VerifyOrderSettingImportOrderSettingTest extends TestBase {
     static User user;
+    static String downloadPath = System.getProperty("user.dir") + "/downloads";
 
 
     @BeforeMethod
@@ -35,8 +33,8 @@ public class VerifyOrderSettingImportOrderSettingTest extends TestBase {
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");
         Settings.ClickImport();
-        Settings.clickDownloadSample();
-        Customer.uploadFile(Paths.get(Objects.requireNonNull(ClassLoader.getSystemClassLoader().getResource("excelFiles/order_settings.csv")).toURI()).toString());
+        /*Settings.clickDownloadSample();*/
+        Customer.uploadFileOnly(Paths.get(Objects.requireNonNull(ClassLoader.getSystemClassLoader().getResource("csvFiles/order_settings.csv")).toURI()).toString());
         softAssert.assertTrue(Settings.isImportSuccessTextDisplayed(),"import order setting successfully");
         Settings.clickClose();
         softAssert.assertAll();
@@ -45,6 +43,7 @@ public class VerifyOrderSettingImportOrderSettingTest extends TestBase {
     @AfterMethod
     public void tearDown(ITestResult result) {
         takeScreenshotOnFailure(result);
+        Reports.cleanUpDownloads(downloadPath);
         closeAllBrowsers();
     }
 }
