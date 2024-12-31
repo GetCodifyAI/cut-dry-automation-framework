@@ -20,6 +20,7 @@
             <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowApproveCreditThenChangeItToDeclineCredit"/>
             <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowToDeclineCreditThenChangeItToApproveCredit"/>
             <class name="com.cutanddry.qa.tests.credit_request.ValidateTheTimelineInCreditRequestUsingTimestampStatusOrganizationAndUser"/>
+            <class name="com.cutanddry.qa.tests.pay.ValidateSearchCustomerPaymentTest"/>
         </classes>
     </test>
 </suite>
