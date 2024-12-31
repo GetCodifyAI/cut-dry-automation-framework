@@ -2,6 +2,7 @@ package com.cutanddry.qa.tests.settings;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.SettingData;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.functions.Settings;
@@ -16,8 +17,7 @@ import java.net.URISyntaxException;
 
 public class VerifyOrderSettingDeleteOrderReminderAlertsTest extends TestBase {
     static User user;
-    String DistributorName ="96939129 - Cut+Dry Agent - Hillcrest Foodservice";
-
+    static String distributorName = SettingData.DISTRIBUTOR_NAME;
 
     @BeforeMethod
     public void setUp() {
@@ -30,7 +30,7 @@ public class VerifyOrderSettingDeleteOrderReminderAlertsTest extends TestBase {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-        Login.navigateToDistributorPortal(DistributorName);
+        Login.navigateToDistributorPortal(distributorName);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");
