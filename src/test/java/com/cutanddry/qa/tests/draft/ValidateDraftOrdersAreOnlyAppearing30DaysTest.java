@@ -28,16 +28,12 @@ public class ValidateDraftOrdersAreOnlyAppearing30DaysTest extends TestBase {
     @Test(groups = "DOT-TC-799")
     public void ValidateDraftOrdersAreOnlyAppearing30Days() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
-        ZonedDateTime before31DateUTC = ZonedDateTime.now(ZoneOffset.UTC).minusDays(31);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        String before31Date = before31DateUTC.format(formatter);
-
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToDrafts();
         softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
-        softAssert.assertTrue(Draft.isDraftOrdersNotOlder30Days(before31Date),"Not delete draft older than 30 days");
+        softAssert.assertTrue(Draft.isDraftOrdersNotOlder30Days(),"Not delete draft older than 30 days");
         softAssert.assertAll();
     }
 

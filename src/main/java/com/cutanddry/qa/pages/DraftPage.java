@@ -48,12 +48,12 @@ public class DraftPage extends LoginPage{
     public void clickEditOrder(){
         distributorUI.click(btn_editOrder);
     }
-    public Boolean isDraftOrdersNotOlder30Days(String before31Date) {
+    public Boolean isDraftOrdersNotOlder30Days() {
         try {
             distributorUI.waitForCustom(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        return distributorUI.isDraftOrdersNotOlder30Days(draftDate,before31Date);
+        return distributorUI.isDraftOrdersNotOlder30Days(draftDate);
     }
 }

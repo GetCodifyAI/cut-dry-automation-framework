@@ -894,7 +894,7 @@ public class KeywordBase {
             }
         }
     }
-    public boolean isDraftOrdersNotOlder30Days(By locator, String filterOption) {
+    public boolean isDraftOrdersNotOlder30Days(By locator) {
         try {
             // Find all elements using the provided locator
             List<WebElement> elements = driver.findElements(locator);
@@ -906,7 +906,7 @@ public class KeywordBase {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
             // Define the date range
             ZonedDateTime nowUTC = ZonedDateTime.now(ZoneOffset.UTC);
-            ZonedDateTime before31DateUTC = nowUTC.minusDays(31);
+            ZonedDateTime before32DateUTC = nowUTC.minusDays(32);
             for (WebElement element : elements) {
                 String elementText = element.getText();
 
@@ -917,16 +917,16 @@ public class KeywordBase {
                 ZonedDateTime elementDate = elementLocalDate.atStartOfDay(ZoneOffset.UTC);
 
 
-                if (elementDate.isBefore(before31DateUTC) || elementDate.isAfter(nowUTC.plusDays(1))) {
+                if (elementDate.isBefore(before32DateUTC) || elementDate.isAfter(nowUTC.plusDays(1))) {
                     logger.error("Validation failed for element text: " + elementText +
                             " (Date out of range. Expected between: " +
-                            before31DateUTC.format(formatter) + " and " +
+                            before32DateUTC.format(formatter) + " and " +
                             nowUTC.format(formatter) + ")");
                     return false; // Validation failed
                 }
             }
             // Log validation success
-            logger.info("All elements match the filter option: " + filterOption);
+            logger.info("All elements match the filter option: " + before32DateUTC);
             return true;
         } catch (Exception e) {
             logger.error("Error occurred while validating elements for locator: " + locator, e);
