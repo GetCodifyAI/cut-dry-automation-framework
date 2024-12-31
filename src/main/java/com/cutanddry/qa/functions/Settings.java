@@ -266,4 +266,46 @@ public class Settings {
     public static void enterCity(String city){
         settingsPage.enterCity(city);
     }
+    public static void clickPayButton() throws InterruptedException{
+        if(settingsPage.isRemoveAccountBtnDisplayed()){
+            settingsPage.clickOnRemoveAcc();
+            settingsPage.clickYes();
+            Settings.clickOK();
+        }
+        settingsPage.clickPayButton();
+    }
+    public static void clickExport()throws InterruptedException{
+        settingsPage.clickExportButton();
+    }
+    public static void ClickImport(){
+        settingsPage.clickImportButton();
+    }
+    public static void clickDownloadSample(){
+        settingsPage.clickDownloadSample();
+    }
+    public static boolean isImportSuccessTextDisplayed()throws InterruptedException{
+        return settingsPage.isImportSuccessTextDisplayed();
+    }
+    public static void clickClose(){
+        settingsPage.clickClose();
+    }
+    public static void clickAddAlert(){settingsPage.clickAddAlert();}
+    public static boolean isOrderRemindAlertTextDisplayed()throws InterruptedException{
+        return settingsPage.isOrderRemindAlertTextDisplayed();
+    }
+    public static void clickSendAlertDropDown(){
+        settingsPage.clickSendAlertDropDown();
+    }
+    public static void clickSendAlertOption(String option)throws InterruptedException{
+        settingsPage.clickSendAlertOption(option);
+    }
+    public static boolean isSettingOrderReminderTextDisplayed()throws InterruptedException{
+        return settingsPage.isSettingOrderReminderTextDisplayed();
+    }
+    public static void clickOkAlert(){
+        settingsPage.clickOkAlert();
+    }
+    public static void clickDeleteAlert(){
+        settingsPage.clickDeleteAlert();
+    }
 }

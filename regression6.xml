@@ -63,6 +63,13 @@
             <class name="com.cutanddry.qa.tests.draft.ValidateDraftOrdersAreOnlyAppearing30DaysTest"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingAddCreditCardTest"/>
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemImageTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingPayButtonAddBankAccountTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingPayButtonAddCreditCardTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingExportOrderSettingTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingImportOrderSettingTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingAddOrderReminderAlertsTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingEditOrderReminderAlertsTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingDeleteOrderReminderAlertsTest"/>
 
         </classes>
     </test>
