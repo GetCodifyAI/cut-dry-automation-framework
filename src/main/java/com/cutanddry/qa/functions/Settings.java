@@ -287,4 +287,24 @@ public class Settings {
     public static void typeUserInfo(String user_info) throws InterruptedException {
         settingsPage.typeUserInfo(user_info);
     }
+
+    public static void clickBtnManageWarehouse(){
+        settingsPage.clickBtnManageWarehouse();
+    }
+
+    public static void clickBtnAddNew(){
+        settingsPage.clickBtnAddNew();
+    }
+
+    public static void typeNewWarehouseName(String name){
+        settingsPage.typeNewWarehouseName(name);
+    }
+
+    public static void clickBtnSaveChanges(){
+        settingsPage.clickBtnSaveChanges();
+    }
+
+    public static String generateWarehouseCode(){
+        return settingsPage.generateWarehouseCode();
+    }
 }

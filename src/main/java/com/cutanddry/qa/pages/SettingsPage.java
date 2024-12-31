@@ -9,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Random;
 
 public class SettingsPage extends LoginPage{
     By txt_orderSettings = By.xpath("//li[contains(text(),'Order Settings')]");
@@ -100,40 +101,10 @@ public class SettingsPage extends LoginPage{
     By txt_name = By.xpath("//table[contains(@class, 'table-hover')]/tbody/tr[1]/td[1]");
     By txt_email = By.xpath("//table[contains(@class, 'table-hover')]/tbody/tr[1]/td[2]");
     By tbx_searchUsers = By.xpath("//input[@placeholder='Search Users']");
-
-    public void typeUserInfo(String user_info) throws InterruptedException {
-        distributorUI.clear(tbx_searchUsers);
-//        distributorUI.sendKeys(tbx_searchUsers,user_info);
-        distributorUI.sendKeysAndEnter(tbx_searchUsers,user_info);
-        distributorUI.waitForCustom(1000);
-    }
-
-    public boolean isDisplayedRoleCorrect(String expectedRole){
-        distributorUI.waitForVisibility(txt_role);
-        String givenRole = distributorUI.getText(txt_role);
-        return givenRole.equals(expectedRole);
-    }
-
-    public boolean isDisplayedNameCorrect(String expectedName){
-        distributorUI.waitForVisibility(txt_name);
-        String givenName = distributorUI.getText(txt_name);
-        return givenName.equals(expectedName);
-    }
-    public boolean isDisplayedEmailCorrect(String expectedEmail){
-        distributorUI.waitForVisibility(txt_email);
-        String givenEmail = distributorUI.getText(txt_email);
-        return givenEmail.equals(expectedEmail);
-    }
-
-    public void clickDropDownSelectRole(){
-        distributorUI.click(dropdown_selectRole);
-    }
-
-    public void selectRole(String role){
-        By dropdown_selectRoleOption = By.xpath(dropdown_RoleOption.replace("ROLE",role));
-        distributorUI.click(dropdown_selectRoleOption);
-    }
-
+    By btn_manageWarehouse = By.xpath("//button[@type='button' and text()='Manage Warehouses']");
+    By btn_addNew = By.xpath("//button[@type='button' and text()='Add New']");
+    By tbx_newWarehouseName = By.xpath("//input[@placeholder='Name' and contains(@class, 'form-control') and contains(@class, 'is-invalid')]");
+    By btnSaveChanges = By.xpath("//div[@class='pt-3 form-row']/div/button[@type='button' and text()='Save Changes']");
 
     public boolean isOrderSettingsTextDisplayed() throws InterruptedException {
         try {
@@ -631,4 +602,59 @@ public class SettingsPage extends LoginPage{
         distributorUI.sendKeys(cityName,city);
     }
 
+    public static String generateWarehouseCode() {
+        Random random = new Random();
+        int randomNumber = 10000 + random.nextInt(90000); // Generates a random 5-digit number
+        return "WH - " + randomNumber;
+    }
+
+    public void clickBtnSaveChanges(){
+        distributorUI.click(btnSaveChanges);
+    }
+
+    public void typeNewWarehouseName(String name){
+        distributorUI.clear(tbx_newWarehouseName);
+        distributorUI.sendKeysAndEnter(tbx_newWarehouseName,name);
+    }
+
+    public void clickBtnAddNew(){
+        distributorUI.click(btn_addNew);
+    }
+
+    public void clickBtnManageWarehouse(){
+        distributorUI.click(btn_manageWarehouse);
+    }
+
+    public void typeUserInfo(String user_info) throws InterruptedException {
+        distributorUI.clear(tbx_searchUsers);
+//        distributorUI.sendKeys(tbx_searchUsers,user_info);
+        distributorUI.sendKeysAndEnter(tbx_searchUsers,user_info);
+        distributorUI.waitForCustom(1000);
+    }
+
+    public boolean isDisplayedRoleCorrect(String expectedRole){
+        distributorUI.waitForVisibility(txt_role);
+        String givenRole = distributorUI.getText(txt_role);
+        return givenRole.equals(expectedRole);
+    }
+
+    public boolean isDisplayedNameCorrect(String expectedName){
+        distributorUI.waitForVisibility(txt_name);
+        String givenName = distributorUI.getText(txt_name);
+        return givenName.equals(expectedName);
+    }
+    public boolean isDisplayedEmailCorrect(String expectedEmail){
+        distributorUI.waitForVisibility(txt_email);
+        String givenEmail = distributorUI.getText(txt_email);
+        return givenEmail.equals(expectedEmail);
+    }
+
+    public void clickDropDownSelectRole(){
+        distributorUI.click(dropdown_selectRole);
+    }
+
+    public void selectRole(String role){
+        By dropdown_selectRoleOption = By.xpath(dropdown_RoleOption.replace("ROLE",role));
+        distributorUI.click(dropdown_selectRoleOption);
+    }
 }
