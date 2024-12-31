@@ -266,4 +266,25 @@ public class Settings {
     public static void enterCity(String city){
         settingsPage.enterCity(city);
     }
+
+    public static void selectRoleDropDown(String role){
+        settingsPage.clickDropDownSelectRole();
+        settingsPage.selectRole(role);
+    }
+
+    public static boolean isDisplayedRoleCorrect(String expectedRole){
+        return settingsPage.isDisplayedRoleCorrect(expectedRole);
+    }
+
+    public static boolean isDisplayedNameCorrect(String expectedName){
+        return settingsPage.isDisplayedNameCorrect(expectedName);
+    }
+
+    public static boolean isDisplayedEmailCorrect(String expectedEmail){
+        return settingsPage.isDisplayedEmailCorrect(expectedEmail);
+    }
+
+    public static void typeUserInfo(String user_info) throws InterruptedException {
+        settingsPage.typeUserInfo(user_info);
+    }
 }

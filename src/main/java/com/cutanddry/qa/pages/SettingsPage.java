@@ -94,8 +94,45 @@ public class SettingsPage extends LoginPage{
     By cardCVV = By.xpath("//input[@id='cvv']");
     By streetAddress = By.xpath("//input[@placeHolder='Street Address']");
     By cityName = By.xpath("//input[@placeHolder='City']");
+    By dropdown_selectRole = By.xpath("//div[contains(@class, 'themed_select__control')]");
+    String dropdown_RoleOption = "//div[contains(@class, 'themed_select__menu')]//div[text()='ROLE']";
+    By txt_role = By.xpath("//table[contains(@class, 'table-hover')]/tbody/tr[1]/td[4]");
+    By txt_name = By.xpath("//table[contains(@class, 'table-hover')]/tbody/tr[1]/td[1]");
+    By txt_email = By.xpath("//table[contains(@class, 'table-hover')]/tbody/tr[1]/td[2]");
+    By tbx_searchUsers = By.xpath("//input[@placeholder='Search Users']");
 
+    public void typeUserInfo(String user_info) throws InterruptedException {
+        distributorUI.clear(tbx_searchUsers);
+//        distributorUI.sendKeys(tbx_searchUsers,user_info);
+        distributorUI.sendKeysAndEnter(tbx_searchUsers,user_info);
+        distributorUI.waitForCustom(1000);
+    }
 
+    public boolean isDisplayedRoleCorrect(String expectedRole){
+        distributorUI.waitForVisibility(txt_role);
+        String givenRole = distributorUI.getText(txt_role);
+        return givenRole.equals(expectedRole);
+    }
+
+    public boolean isDisplayedNameCorrect(String expectedName){
+        distributorUI.waitForVisibility(txt_name);
+        String givenName = distributorUI.getText(txt_name);
+        return givenName.equals(expectedName);
+    }
+    public boolean isDisplayedEmailCorrect(String expectedEmail){
+        distributorUI.waitForVisibility(txt_email);
+        String givenEmail = distributorUI.getText(txt_email);
+        return givenEmail.equals(expectedEmail);
+    }
+
+    public void clickDropDownSelectRole(){
+        distributorUI.click(dropdown_selectRole);
+    }
+
+    public void selectRole(String role){
+        By dropdown_selectRoleOption = By.xpath(dropdown_RoleOption.replace("ROLE",role));
+        distributorUI.click(dropdown_selectRoleOption);
+    }
 
 
     public boolean isOrderSettingsTextDisplayed() throws InterruptedException {
