@@ -21,6 +21,7 @@
             <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowToDeclineCreditThenChangeItToApproveCredit"/>
             <class name="com.cutanddry.qa.tests.credit_request.ValidateTheTimelineInCreditRequestUsingTimestampStatusOrganizationAndUser"/>
             <class name="com.cutanddry.qa.tests.pay.ValidateSearchCustomerPaymentTest"/>
+            <class name="com.cutanddry.qa.tests.pay.ValidateTheSendPaymentReminderTest"/>
         </classes>
     </test>
 </suite>
