@@ -118,12 +118,9 @@ public class SettingsPage extends LoginPage{
     By txt_setAlert = By.xpath("//h2[text()= 'Setting Your Order Reminder']");
     By btn_OkAlert = By.xpath("//button[text()='Ok']");
     By btn_deleteAlert = By.xpath("//button[text()='Delete Alert']");
-
-
-
-
-
-
+    By dropDown_warehouseLocation = By.xpath("//div[contains(@class, 'themed_select__control') and contains(@class, 'css-yk16xz-control')]");
+    String dropdown_warehouseLocationOption = "//div[contains(@class, 'themed_select__option') and text()='Option Text']";
+    String txt_warehouseLocation = "//h2[contains(text(), 'TARGET')]";
 
     public boolean isOrderSettingsTextDisplayed() throws InterruptedException {
         try {
@@ -739,5 +736,18 @@ public class SettingsPage extends LoginPage{
     public void selectRole(String role){
         By dropdown_selectRoleOption = By.xpath(dropdown_RoleOption.replace("ROLE",role));
         distributorUI.click(dropdown_selectRoleOption);
+    }
+
+    public void selectWarehouseLocation(String warehouse){
+        By warehouseLocation = By.xpath(dropdown_warehouseLocationOption.replace("Option Text", warehouse));
+        distributorUI.click(warehouseLocation);
+    }
+    public void clickOnWarehouseLocationDropDown(){
+        distributorUI.click(dropDown_warehouseLocation);
+    }
+
+    public boolean isWarehouseNameDisplayed(String name) throws InterruptedException {
+        String warehouseLocation = txt_warehouseLocation.replace("TARGET",name);
+        return distributorUI.isDisplayed(By.xpath(warehouseLocation));
     }
 }

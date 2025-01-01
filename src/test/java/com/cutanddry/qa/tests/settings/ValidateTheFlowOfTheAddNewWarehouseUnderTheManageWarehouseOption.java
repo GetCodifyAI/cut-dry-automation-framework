@@ -34,6 +34,10 @@ public class ValidateTheFlowOfTheAddNewWarehouseUnderTheManageWarehouseOption ex
         String warehouseName = Settings.generateWarehouseCode();
         Settings.typeNewWarehouseName(warehouseName);
         Settings.clickBtnSaveChanges();
+        Settings.clickOnWarehouseLocationDropDown();
+        Settings.selectWarehouseLocation(warehouseName);
+        String lastFiveDigits = warehouseName.substring(warehouseName.length() - 5);
+        softAssert.assertTrue(Settings.isWarehouseNameDisplayed(lastFiveDigits),"The warehouse name is not displayed");
         softAssert.assertAll();
     }
 

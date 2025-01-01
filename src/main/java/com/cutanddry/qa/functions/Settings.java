@@ -1,6 +1,7 @@
 package com.cutanddry.qa.functions;
 
 import com.cutanddry.qa.pages.SettingsPage;
+import org.openqa.selenium.By;
 
 import java.text.ParseException;
 
@@ -348,5 +349,17 @@ public class Settings {
     }
     public static void clickDeleteAlert(){
         settingsPage.clickDeleteAlert();
+    }
+
+    public static void clickOnWarehouseLocationDropDown(){
+        settingsPage.clickOnWarehouseLocationDropDown();
+    }
+
+    public static boolean isWarehouseNameDisplayed(String name) throws InterruptedException {
+        return settingsPage.isWarehouseNameDisplayed(name);
+    }
+
+    public static void selectWarehouseLocation(String warehouse){
+        settingsPage.selectWarehouseLocation(warehouse);
     }
 }
