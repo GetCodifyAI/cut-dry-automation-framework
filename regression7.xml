@@ -23,6 +23,11 @@
             <class name="com.cutanddry.qa.tests.settings.ValidateTheFlowOfTheAddNewWarehouseUnderTheManageWarehouseOption" />
             <class name="com.cutanddry.qa.tests.team.VerifyTheFunctionalityOfFilteringUsersByUserRoles" />
             <class name="com.cutanddry.qa.tests.team.VerifyTheFunctionalityOfSearchingUsersByUsers" />
+            <class name="com.cutanddry.qa.tests.pay.ValidateSearchCustomerPaymentTest"/>
+            <class name="com.cutanddry.qa.tests.pay.ValidateTheSendPaymentReminderTest"/>
+            <class name="com.cutanddry.qa.tests.pay.ValidateTheSendEmailStatementTest"/>
+            <class name="com.cutanddry.qa.tests.pay.ValidateTheDownloadStatementTest"/>
+            <class name="com.cutanddry.qa.tests.pay.ValidateTheNavigateToCustomerInvoicesSectionTest"/>
         </classes>
     </test>
 </suite>

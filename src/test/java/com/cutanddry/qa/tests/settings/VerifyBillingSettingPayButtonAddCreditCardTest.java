@@ -2,6 +2,7 @@ package com.cutanddry.qa.tests.settings;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.SettingData;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.functions.Settings;
@@ -14,11 +15,11 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyBillingSettingPayButtonAddCreditCardTest extends TestBase {
     static User user;
-    static String card_num = "4111111111111111";
-    static String exp_date = "10/25";
-    static String cvv = "999";
-    static String address = "N0 07 Beakers' street";
-    static String city = "California";
+    static String card_num = SettingData.CREDIT_CARD_NUMBER;
+    static String exp_date = SettingData.EXP_DATE;
+    static String cvv = SettingData.CVV;
+    static String address = SettingData.ADDRESS;
+    static String city = SettingData.CITY;
 
     @BeforeMethod
     public void setUp() {
