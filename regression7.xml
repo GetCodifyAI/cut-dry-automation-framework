@@ -28,6 +28,7 @@
             <class name="com.cutanddry.qa.tests.pay.ValidateTheSendEmailStatementTest"/>
             <class name="com.cutanddry.qa.tests.pay.ValidateTheDownloadStatementTest"/>
             <class name="com.cutanddry.qa.tests.pay.ValidateTheNavigateToCustomerInvoicesSectionTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateDetailsOnRouteRecordTest"/>
         </classes>
     </test>
 </suite>
