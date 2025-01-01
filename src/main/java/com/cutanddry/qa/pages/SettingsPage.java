@@ -136,6 +136,31 @@ public class SettingsPage extends LoginPage{
     By toggle_shareDeliveryImages = By.xpath("//div[label[contains(text(), 'Share Delivery Images with Customer')]]//div[contains(@class, 'react-switch-bg')]");
     By toggle_shareDeliveryNotes = By.xpath("//div[label[contains(text(), 'Share Delivery Notes with Customer')]]//div[contains(@class, 'react-switch-bg')]");
     By txt_updatedSuccessfully = By.xpath("//h2[text()='Updated Successfully']");
+    By txt_notificationPreference = By.xpath("//h6[contains(text(), 'Notification Preferences')]");
+    By checkbox_emailAutoOrderDeskAlert = By.xpath("//tr[td[text()='Auto Order Desk Alerts']]//td[2]//input[@type='checkbox']");
+    By checkbox_smsAutoOrderDeskAlert = By.xpath("//tr[td[text()='Auto Order Desk Alerts']]//td[3]//input[@type='checkbox']");
+    By txt_h2Success = By.xpath("//h2[text()='Success']");
+
+    public void clickSaveChanges(){
+        distributorUI.waitForVisibility(btn_saveChange);
+        distributorUI.click(btn_saveChange);
+    }
+
+    public boolean isSuccessTextDisplayed(){
+        return distributorUI.isDisplayed(txt_h2Success);
+    }
+
+    public void click_checkboxEmailAutoOrderDeskAlert(){
+        distributorUI.click(checkbox_emailAutoOrderDeskAlert);
+    }
+
+    public void click_checkboxSMSAutoOrderDeskAlert(){
+        distributorUI.click(checkbox_smsAutoOrderDeskAlert);
+    }
+
+    public void scrollNotificationPreference(){
+        distributorUI.scrollToElement(txt_notificationPreference);
+    }
 
     public boolean isUpdatedSuccessfullyDisplayed(){
         return distributorUI.isDisplayed(txt_updatedSuccessfully);

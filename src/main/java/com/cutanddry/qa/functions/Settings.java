@@ -392,4 +392,21 @@ public class Settings {
     public static boolean isUpdatedSuccessfullyDisplayed(){
         return settingsPage.isUpdatedSuccessfullyDisplayed();
     }
+
+    public static void scrollNotificationPreference(){
+        settingsPage.scrollNotificationPreference();
+    }
+
+    public static void clickCheckboxesNotification(){
+        settingsPage.click_checkboxEmailAutoOrderDeskAlert();
+        settingsPage.click_checkboxSMSAutoOrderDeskAlert();
+    }
+
+    public static boolean isSuccessTextDisplayed(){
+        return settingsPage.isSuccessTextDisplayed();
+    }
+
+    public static void clickSaveChanges(){
+        settingsPage.clickSaveChanges();
+    }
 }
