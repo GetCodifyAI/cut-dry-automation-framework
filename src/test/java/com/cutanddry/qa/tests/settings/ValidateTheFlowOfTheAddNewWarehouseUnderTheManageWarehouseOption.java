@@ -29,9 +29,9 @@ public class ValidateTheFlowOfTheAddNewWarehouseUnderTheManageWarehouseOption ex
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToTrackSettings();
         softAssert.assertTrue(Settings.isTrackSettingsTextDisplayed(),"navigation error");
+        String warehouseName = Settings.generateWarehouseCode();
         Settings.clickBtnManageWarehouse();
         Settings.clickBtnAddNew();
-        String warehouseName = Settings.generateWarehouseCode();
         Settings.typeNewWarehouseName(warehouseName);
         Settings.clickBtnSaveChanges();
         Settings.clickOnWarehouseLocationDropDown();
