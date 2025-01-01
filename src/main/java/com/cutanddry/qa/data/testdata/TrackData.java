@@ -11,5 +11,8 @@ public class TrackData {
     public static final String ADD_ADDRESS_CITY = "Kingston";
     public static final String ADD_ADDRESS_STATE = "New York";
     public static final String ADD_ADDRESS_ZIPCODE = "10300";
+    public static final String ADD_BREAK_TO_ROUTE = "mug-saucer";
+    public static final String ADD_PLACE_BREAK_AFTER_STOP = "pause";
+    public static final String ROUTE_DROP_DOWN_LIST = "chevron-down";
 
 }

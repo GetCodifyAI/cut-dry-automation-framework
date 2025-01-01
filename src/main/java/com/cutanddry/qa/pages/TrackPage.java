@@ -58,7 +58,9 @@ public class TrackPage extends LoginPage{
     By lbl_state = By.xpath("//label[text()='Address:']//following-sibling::div//input[contains(@placeholder, 'State')]");
     By lbl_zipCode = By.xpath("//label[text()='Address:']//following-sibling::div//input[contains(@placeholder, 'Zip')]");
     String addStop = "//td[2]//div[contains(text(), 'CODE')]";
-
+    By lbl_placeBreakAfterStop = By.xpath("//label[text()='Place break after stop...']//following-sibling::div");
+    By placeBreakAfterStopOption = By.xpath("//div[contains(text(),'Nova')]");
+    By btn_addBreak = By.xpath("//button[contains(text(), 'Add Break')]");
 
 
 
@@ -352,7 +354,24 @@ public class TrackPage extends LoginPage{
         return distributorUI.isDisplayed(By.xpath(addStop.replace("CODE", code)));
     }
     public void clickRouteName(String name){
+        distributorUI.refreshPage();
+        distributorUI.waitForVisibility(By.xpath(editRouteName.replace("NAME", name)));
         distributorUI.click(By.xpath(editRouteName.replace("NAME", name)));
+    }
+    public void addBreak(){
+        distributorUI.click(lbl_placeBreakAfterStop);
+        distributorUI.waitForVisibility(placeBreakAfterStopOption);
+        distributorUI.click(placeBreakAfterStopOption);
+        distributorUI.click(btn_addBreak);
+        distributorUI.refreshPage();
+    }
+    public boolean isPlaceBreakAfterStopAdded(String name){
+        try {
+            distributorUI.waitForVisibility(By.xpath(btn_editRoute.replace("EDIT_FUNCTION", name)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(btn_editRoute.replace("EDIT_FUNCTION", name)));
     }
 
 }

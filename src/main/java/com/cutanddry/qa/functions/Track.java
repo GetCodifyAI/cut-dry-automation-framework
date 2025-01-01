@@ -158,4 +158,10 @@ public class Track {
     public static void clickRouteName(String name){
         trackPage.clickRouteName(name);
     }
+    public static void addBreak(){
+        trackPage.addBreak();
+    }
+    public static boolean isPlaceBreakAfterStopAdded(String name){
+        return trackPage.isPlaceBreakAfterStopAdded(name);
+    }
 }
