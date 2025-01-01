@@ -2,6 +2,8 @@ package com.cutanddry.qa.tests.settings;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.PayData;
+import com.cutanddry.qa.data.testdata.SettingData;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.functions.Settings;
@@ -14,8 +16,8 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyBillingSettingPayButtonAddBankAccountTest extends TestBase {
     static User user;
-    static String acc_num = "2222220";
-    static String routing_num = "321081669";
+    static String acc_num = SettingData.ACCOUNT_NUMBER;
+    static String routing_num = SettingData.ROUTING_NUMBER;
 
     @BeforeMethod
     public void setUp() {

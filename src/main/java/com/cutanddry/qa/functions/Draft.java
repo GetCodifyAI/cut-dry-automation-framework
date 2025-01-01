@@ -36,8 +36,8 @@ public class Draft {
     public static void clickEditOrder(){
         draftPage.clickEditOrder();
     }
-    public static boolean isDraftOrdersNotOlder30Days(String before31Date){
-        return draftPage.isDraftOrdersNotOlder30Days(before31Date);
+    public static boolean isDraftOrdersNotOlder30Days(){
+        return draftPage.isDraftOrdersNotOlder30Days();
     }
 
 

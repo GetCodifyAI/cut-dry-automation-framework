@@ -27,6 +27,11 @@
             <class name="com.cutanddry.qa.tests.settings.VerifyTheFlowOfAddingTheConfigurationSettingsForTheNewlyAddedWarehouse" />
             <class name="com.cutanddry.qa.tests.settings.VerifyTheFlowOfEditingTheConfigurationSettingsForTheNewlyAddedWarehouse" />
 
+            <class name="com.cutanddry.qa.tests.pay.ValidateSearchCustomerPaymentTest"/>
+            <class name="com.cutanddry.qa.tests.pay.ValidateTheSendPaymentReminderTest"/>
+            <class name="com.cutanddry.qa.tests.pay.ValidateTheSendEmailStatementTest"/>
+            <class name="com.cutanddry.qa.tests.pay.ValidateTheDownloadStatementTest"/>
+            <class name="com.cutanddry.qa.tests.pay.ValidateTheNavigateToCustomerInvoicesSectionTest"/>
         </classes>
     </test>
 </suite>

@@ -34,7 +34,7 @@ public class TestBase {
 
                     // Set custom download directory
                     Map<String, Object> prefs = new HashMap<>();
-                    prefs.put("download.default_directory", System.getProperty("user.dir") + "/Downloads");
+                    prefs.put("download.default_directory", System.getProperty("user.dir") + "/src/test/resources/downloads");
 //                    prefs.put("download.prompt_for_download", false);    // Disable the download prompt
                     prefs.put("profile.default_content_settings.popups", 0);
 //                    prefs.put("safebrowsing.enabled", "true");            // Enable safe browsing
