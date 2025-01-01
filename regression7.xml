@@ -30,6 +30,7 @@
             <class name="com.cutanddry.qa.tests.pay.ValidateTheNavigateToCustomerInvoicesSectionTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateDetailsOnRouteRecordTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateGettingRouteCodeFlowTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateGettingEditRouteFlowTest"/>
         </classes>
     </test>
 </suite>
