@@ -1,6 +1,9 @@
 package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class PayPage extends LoginPage{
     By txt_pay = By.xpath("//li[contains(text(),'Pay')]");
@@ -33,11 +36,24 @@ public class PayPage extends LoginPage{
     String dynamicToXPath = "//div[contains(@class,'react-datepicker__day--keyboard-selected')]/preceding::div[contains(@class, 'react-datepicker__day')][DAY]";
     By toDayXPath = By.xpath("//div[contains(@class,'react-datepicker__day--today')]");
     By dd_invoiceAuthStatusFilter = By.xpath("(//div[text()='Auth Status']/following-sibling::div//*[name()='svg'])[1]");
-    String sel_invoiceAuthStatusFilter = "(//div[text()='Auth Status']/following-sibling::div//*[name()='svg'])[1]//div[text()='STATUS']";
+    String sel_invoiceAuthStatusFilter = "//div[contains(@class, 'themed_select__option') and text()='STATUS']";
     By txt_invoiceIDFilter = By.xpath("//div[text()='Invoice ID']/following-sibling::div//*[@placeholder='Search']");
     By btn_invoiceBulkAction = By.xpath("//button/*[text()='Bulk Actions']");
+    String lbl_bulkOption = "//button/*[text()='Bulk Actions']/parent::button/following-sibling::div/a[contains(text(),'OPTION')]";
+    By lbl_pastDuePopupTitle = By.xpath("//h4[contains(text(),'Past Due Invoice Details')]");
+    By btn_invoiceSendReminders = By.xpath("//button[contains(text(),'Send Reminders')]");
+    By txt_invoiceEmailSent = By.xpath("//h2[contains(text(),'Emails Sent!')]");
+    By btn_invoiceOk = By.xpath("//button[contains(text(),'OK')]");
+    By lbl_markInvoicePaidPopupTitle = By.xpath("//div[contains(text(),'Are you sure you want to mark this invoice as Paid ?')]");
+    By btn_markInvoiceYes = By.xpath("//button[contains(text(),'Yes')]");
+    By btn_markInvoiceCancel = By.xpath("//button[contains(text(),'Cancel')]");
+    By lbl_invoiceCaptureFundTitle = By.xpath("//div[contains(text(),'Are you sure you want capture funds for these invoices?')]");
+    By lbl_invoiceCaptureFundPopupTitle = By.xpath("//div[contains(text(),'Capture Funds')]");
+    By btn_invoiceCapturePay = By.xpath("//button[contains(text(),'Pay')]");
+    By txt_error = By.xpath("//h2[contains(text(),'An error occurred while trying to charge the customer. Transaction was rejected by gateway.')]");
     By cbox_invoiceFirstRecord = By.xpath("//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[1]/td[1]//*[name()='svg']");
     By cbox_invoiceFirstRecordSetting = By.xpath("//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[ROW_COUNT]/td[10]//button");
+    By elements_invoiceRecords = By.xpath("//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr");
     String cbox_invoiceRecord = "//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[ROW_COUNT]/td[1]//*[name()='svg']";
     String lbl_invoiceRecordID = "//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[ROW_COUNT]/td[2]";
     String lbl_invoiceRecordCustomerName = "//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[ROW_COUNT]/td[3]/div/span[1]";
@@ -208,12 +224,71 @@ public class PayPage extends LoginPage{
     public void typeInvoiceIDViaFilter(String id) throws InterruptedException {
         distributorUI.clear(txt_invoiceIDFilter);
         distributorUI.waitForCustom(1000);
-        distributorUI.sendKeys(txt_invoiceIDFilter, id);
+//        distributorUI.sendKeys(txt_invoiceIDFilter, id);
+        distributorUI.sendKeysAndEnter(txt_invoiceIDFilter, id);
     }
 
     public void clickOnInvoiceBulkActionButton() {
         distributorUI.waitForVisibility(btn_invoiceBulkAction);
         distributorUI.click(btn_invoiceBulkAction);
+    }
+
+    public void selectInvoiceBulkOption(String option) {
+        By lbl_options = By.xpath(lbl_bulkOption.replace("OPTION", option));
+        distributorUI.waitForVisibility(lbl_options);
+        distributorUI.click(lbl_options);
+    }
+
+    public boolean isPastDueInvoicePopupDisplayed(){
+        distributorUI.waitForVisibility(lbl_pastDuePopupTitle);
+        return distributorUI.isDisplayed(lbl_pastDuePopupTitle);
+    }
+
+    public boolean isMarkPaidInvoicePopupDisplayed(){
+        distributorUI.waitForVisibility(lbl_markInvoicePaidPopupTitle);
+        return distributorUI.isDisplayed(lbl_markInvoicePaidPopupTitle);
+    }
+
+    public boolean isInvoiceCaptureFundDisplayed(){
+        distributorUI.waitForVisibility(lbl_invoiceCaptureFundTitle);
+        return distributorUI.isDisplayed(lbl_invoiceCaptureFundTitle);
+    }
+
+    public boolean isErrorPopUpDisplayed() {
+        distributorUI.waitForVisibility(txt_error);
+        return distributorUI.isDisplayed(txt_error);
+    }
+
+    public boolean isInvoiceCaptureFundPopupDisplayed(){
+        distributorUI.waitForVisibility(lbl_invoiceCaptureFundPopupTitle);
+        return distributorUI.isDisplayed(lbl_invoiceCaptureFundPopupTitle);
+    }
+
+    public void clickOnMarkPaidInvoicePopupYesButton() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_markInvoiceYes);
+        distributorUI.click(btn_markInvoiceYes);
+        distributorUI.waitForCustom(3000);
+    }
+
+    public void clickOnInvoiceCaptureFundPayButton() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_invoiceCapturePay);
+        distributorUI.click(btn_invoiceCapturePay);
+        distributorUI.waitForCustom(3000);
+    }
+
+    public void clickOnInvoiceSendRemindersButton() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_invoiceSendReminders);
+        distributorUI.click(btn_invoiceSendReminders);
+        distributorUI.waitForCustom(3000);
+    }
+
+    public boolean isInvoiceEmailSentPopupDisplayed() {
+        distributorUI.waitForVisibility(txt_invoiceEmailSent);
+        return distributorUI.isDisplayed(txt_invoiceEmailSent);
+    }
+
+    public void clickOnInvoiceOkButton() {
+        distributorUI.click(btn_invoiceOk);
     }
 
     public void clickOnInvoiceFirstRecord() {
@@ -255,6 +330,23 @@ public class PayPage extends LoginPage{
         distributorUI.waitForElementEnabledState(lbl_invoiceCustomerStatus,true);
         distributorUI.waitForCustom(3000);
         return distributorUI.getText(lbl_invoiceCustomerStatus);
+    }
+
+    public boolean isInvoiceRecordCustomerStatusExist(String status) {
+        try {
+            int records_count = distributorUI.countElements(elements_invoiceRecords);
+            for (int i = 1; i <= records_count; i++) {
+                By lbl_invoiceCustomerStatus = By.xpath(lbl_invoiceRecordCustomerStatus.replace("ROW_COUNT", String.valueOf(i)));
+                String statusTxt = distributorUI.getText(lbl_invoiceCustomerStatus).trim();
+                if (!statusTxt.equalsIgnoreCase(status)) {
+                    return false;
+                }
+            }
+            return true;
+        } catch (Exception e) {
+            System.err.println("Element is not found");
+            return false;
+        }
     }
 
     public String getInvoiceRecordCodeValue(int rowNo) throws InterruptedException {
