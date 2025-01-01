@@ -31,6 +31,7 @@
             <class name="com.cutanddry.qa.tests.track.ValidateDetailsOnRouteRecordTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateGettingRouteCodeFlowTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateGettingEditRouteFlowTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateAddStopToRouteFlowTest"/>
         </classes>
     </test>
 </suite>

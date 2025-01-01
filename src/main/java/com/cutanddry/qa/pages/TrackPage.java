@@ -39,6 +39,27 @@ public class TrackPage extends LoginPage{
     By txt_smsPrev = By.xpath("//h6[contains(text(),'SMS Preview')]");
     By txt_emailPrev = By.xpath("//h6[contains(text(),'Email Preview')]");
     By txt_pushPrev = By.xpath("//h6[contains(text(),'Push Preview')]");
+    By manageRoutesDropDown = By.xpath("//button[@type='button' and contains(text(), 'Manage Routes')]");
+    By importRoutesOption = By.xpath("//a[contains(text(), 'Import Routes (.csv, .xlsx)')]");
+    By deleteRoutes = By.xpath("//a[contains(text(), 'Delete Routes')]");
+    By btn_deleteRoutes = By.xpath("//button[contains(text(), 'Delete Routes ')]");
+    String btn_editRoute = "(//*[name()='svg' and @data-icon='EDIT_FUNCTION'])[1]";
+    By btn_routeCode = By.xpath("//button[contains(text(), '123')]");
+    By txt_routeCodePopUp = By.xpath("//div[contains(text(), 'Code copied to clipboard!')]");
+    By lbl_routeName = By.xpath("//label[text()='Route Name:']//following-sibling::input[contains(@class, 'form-control')]");
+    By txt_editRoute = By.xpath("//div[contains(text(), 'Edit Route')]");
+    String editRouteName = "//strong[text()='NAME']";
+    By txt_routeEditedPopup = By.xpath("//h2[contains(text(), 'Route Edited!')]");
+    By txt_addStop = By.xpath("//div[contains(text(), 'Add Stop')]");
+    By lbl_customerName = By.xpath("//label[text()='Customer Name:']//following-sibling::input[contains(@class, 'form-control')]");
+    By lbl_customerCode = By.xpath("//label[text()='Customer Code:']//following-sibling::input[contains(@class, 'form-control')]");
+    By lbl_addressStreet = By.xpath("//label[text()='Address:']//following-sibling::input[contains(@class, 'form-control')]");
+    By lbl_city = By.xpath("//label[text()='Address:']//following-sibling::div//input[contains(@placeholder, 'City')]");
+    By lbl_state = By.xpath("//label[text()='Address:']//following-sibling::div//input[contains(@placeholder, 'State')]");
+    By lbl_zipCode = By.xpath("//label[text()='Address:']//following-sibling::div//input[contains(@placeholder, 'Zip')]");
+    String addStop = "//td[2]//div[contains(text(), 'CODE')]";
+
+
 
 
     public boolean isTrackResourcesTextDisplayed(){
@@ -240,4 +261,98 @@ public class TrackPage extends LoginPage{
         distributorUI.waitForVisibility(txt_pushPrev);
         return distributorUI.isDisplayed(txt_pushTemp) && distributorUI.isDisplayed(txt_pushPrev);
     }
+    public void clickRouteCode(){
+        distributorUI.click(btn_routeCode);
+    }
+    public boolean isRouteCodePopupDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_routeCodePopUp);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_routeCodePopUp);
+    }
+    public void clickEditRouteFunction(String editFunction){
+        distributorUI.waitForVisibility(By.xpath(btn_editRoute.replace("EDIT_FUNCTION", editFunction)));
+        distributorUI.click(By.xpath(btn_editRoute.replace("EDIT_FUNCTION", editFunction)));
+    }
+    public boolean isEditRoutePopupDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_editRoute);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_editRoute);
+    }
+    public void editRouteName(String name){
+        distributorUI.click(lbl_routeName);
+        distributorUI.clear(lbl_routeName);
+        distributorUI.sendKeys(lbl_routeName,name);
+    }
+    public boolean isRouteEditedPopupDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_routeEditedPopup);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_routeEditedPopup);
+    }
+    public boolean isEditRouteNameDisplayed(String name){
+        try {
+            distributorUI.waitForVisibility(By.xpath(editRouteName.replace("NAME", name)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(editRouteName.replace("NAME", name)));
+    }
+    public boolean isAddStopPopupDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_addStop);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_addStop);
+    }
+    public void addCustomerName(String name){
+        distributorUI.click(lbl_customerName);
+        distributorUI.clear(lbl_customerName);
+        distributorUI.sendKeys(lbl_customerName,name);
+    }
+    public void addCustomerCode(String code){
+        distributorUI.click(lbl_customerCode);
+        distributorUI.clear(lbl_customerCode);
+        distributorUI.sendKeys(lbl_customerCode,code);
+    }
+    public void addAddressStreet(String street){
+        distributorUI.click(lbl_addressStreet);
+        distributorUI.clear(lbl_addressStreet);
+        distributorUI.sendKeys(lbl_addressStreet,street);
+    }
+    public void addAddressCity(String city){
+        distributorUI.click(lbl_city);
+        distributorUI.clear(lbl_city);
+        distributorUI.sendKeys(lbl_city,city);
+    }
+    public void addAddressState(String state){
+        distributorUI.click(lbl_state);
+        distributorUI.clear(lbl_state);
+        distributorUI.sendKeys(lbl_state,state);
+    }
+    public void addAddressZipCode(String zipCode){
+        distributorUI.click(lbl_zipCode);
+        distributorUI.clear(lbl_zipCode);
+        distributorUI.sendKeys(lbl_zipCode,zipCode);
+    }
+    public boolean isRouteStopAdded(String code){
+        try {
+            distributorUI.waitForVisibility(By.xpath(addStop.replace("CODE", code)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(addStop.replace("CODE", code)));
+    }
+    public void clickRouteName(String name){
+        distributorUI.click(By.xpath(editRouteName.replace("NAME", name)));
+    }
+
 }

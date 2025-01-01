@@ -1,0 +1,15 @@
+package com.cutanddry.qa.data.testdata;
+
+public class TrackData {
+    public static final String DISTRIBUTOR_NAME = "47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    public static final String EDIT_ROUTE = "pencil";
+    public static final String ADD_STOP_TO_ROUTE = "location-dot";
+    public static final String EDIT_ROUTE_NAME = "South 07";
+    public static final String ADD_CUSTOMER_NAME = "Nova Test";
+    public static final String ADD_CUSTOMER_CODE = "Test007";
+    public static final String ADD_ADDRESS_STREET = "132 My Street";
+    public static final String ADD_ADDRESS_CITY = "Kingston";
+    public static final String ADD_ADDRESS_STATE = "New York";
+    public static final String ADD_ADDRESS_ZIPCODE = "10300";
+
+}
