@@ -1,6 +1,7 @@
 package com.cutanddry.qa.functions;
 
 import com.cutanddry.qa.pages.SettingsPage;
+import org.openqa.selenium.By;
 
 import java.text.ParseException;
 
@@ -266,6 +267,47 @@ public class Settings {
     public static void enterCity(String city){
         settingsPage.enterCity(city);
     }
+
+    public static void selectRoleDropDown(String role){
+        settingsPage.clickDropDownSelectRole();
+        settingsPage.selectRole(role);
+    }
+
+    public static boolean isDisplayedRoleCorrect(String expectedRole){
+        return settingsPage.isDisplayedRoleCorrect(expectedRole);
+    }
+
+    public static boolean isDisplayedNameCorrect(String expectedName){
+        return settingsPage.isDisplayedNameCorrect(expectedName);
+    }
+
+    public static boolean isDisplayedEmailCorrect(String expectedEmail){
+        return settingsPage.isDisplayedEmailCorrect(expectedEmail);
+    }
+
+    public static void typeUserInfo(String user_info) throws InterruptedException {
+        settingsPage.typeUserInfo(user_info);
+    }
+
+    public static void clickBtnManageWarehouse(){
+        settingsPage.clickBtnManageWarehouse();
+    }
+
+    public static void clickBtnAddNew(){
+        settingsPage.clickBtnAddNew();
+    }
+
+    public static void typeNewWarehouseName(String name){
+        settingsPage.typeNewWarehouseName(name);
+    }
+
+    public static void clickBtnSaveChanges(){
+        settingsPage.clickBtnSaveChanges();
+    }
+
+    public static String generateWarehouseCode(){
+        return settingsPage.generateWarehouseCode();
+    }
     public static void clickPayButton() throws InterruptedException{
         if(settingsPage.isRemoveAccountBtnDisplayed()){
             settingsPage.clickOnRemoveAcc();
@@ -307,5 +349,17 @@ public class Settings {
     }
     public static void clickDeleteAlert(){
         settingsPage.clickDeleteAlert();
+    }
+
+    public static void clickOnWarehouseLocationDropDown(){
+        settingsPage.clickOnWarehouseLocationDropDown();
+    }
+
+    public static boolean isWarehouseNameDisplayed(String name) throws InterruptedException {
+        return settingsPage.isWarehouseNameDisplayed(name);
+    }
+
+    public static void selectWarehouseLocation(String warehouse){
+        settingsPage.selectWarehouseLocation(warehouse);
     }
 }
