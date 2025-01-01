@@ -32,9 +32,7 @@
             <class name="com.cutanddry.qa.tests.team.RemoveUserNonConfigDPsTest" />
             <class name="com.cutanddry.qa.tests.team.AddUserWhiteLabelPortalTest" />
             <class name="com.cutanddry.qa.tests.team.UpdateUserWhiteLabelPortalTest" />
-            <class name="com.cutanddry.qa.tests.team.RemoveUserWhiteLabelPortalTest" />
-            <class name="com.cutanddry.qa.tests.team.VerifyTheFunctionalityOfFilteringUsersByUserRoles" />
-            <class name="com.cutanddry.qa.tests.team.VerifyTheFunctionalityOfSearchingUsersByUsers" />
+            <class name="com.cutanddry.qa.tests.team.RemoveUserWhiteLabelPortalTest" />S
             <class name="com.cutanddry.qa.tests.multi_cart.VerifyGroupingProductsIntoTwoCartsTest" />
             <class name="com.cutanddry.qa.tests.multi_cart.VerifyCreatedOrdersFromMultipleCartsTest" />
             <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderGuideOrderApprovalUIFeatureTest" />
