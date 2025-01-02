@@ -14,5 +14,8 @@ public class TrackData {
     public static final String ADD_BREAK_TO_ROUTE = "mug-saucer";
     public static final String ADD_PLACE_BREAK_AFTER_STOP = "pause";
     public static final String ROUTE_DROP_DOWN_LIST = "chevron-down";
+    public static final String MAP_HIDDEN_ROUTES = "Map Hidden Routes";
+    public static final String MAP_VISIBLE_ROUTES = "Map Visible Routes";
+    public static final String EDIT_CUSTOMER_CODE = "Test0010";
 
 }

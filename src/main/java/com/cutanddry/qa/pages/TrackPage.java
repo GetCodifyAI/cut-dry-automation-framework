@@ -68,6 +68,15 @@ public class TrackPage extends LoginPage{
     By btn_addBreak = By.xpath("//button[contains(text(), 'Add Break')]");
     By upload_file = By.xpath("//input[@type='file']");
     By txt_uploadRoute = By.xpath("//h5[contains(text(),'Click here to upload or drag and drop a CSV or Excel file to add routes')]");
+    String txt_visibilityMap = "//strong[contains(text(),'STATUS')]";
+    By mapHiddenStatus = By.xpath("//span[@data-tip='Hidden on map. Click to show']");
+    By mapVisibleStatus = By.xpath("//span[@data-tip='Visible on map. Click to hide']");
+    By btn_addStop = By.xpath("//span[contains(text(),'add stops')]");
+    String unassignedStop = "//strong[contains(text(),'Unassigned Stops')]/parent::div/following-sibling::*//div[contains(text(),'CODE')]";
+    By btn_editUnassignedStop = By.xpath("//strong[contains(text(),'Unassigned Stops')]/parent::div/following-sibling::*//*[name()='svg' and @data-icon='pencil']");
+    By btn_deleteStop = By.xpath("//button[text()='Delete Stop']");
+    By txt_removeStopPopUp = By.xpath("//div[contains(text(),'remove this stop?')]");
+    By btn_yes = By.xpath("//button[contains(text(),'Yes')]");
 
 
 
@@ -436,6 +445,72 @@ public class TrackPage extends LoginPage{
         distributorUI.waitForVisibility(btn_delete);
         distributorUI.click(btn_delete);
         distributorUI.waitForCustom(2000);
+    }
+    public void clickToShowMap(){
+        distributorUI.click(mapHiddenStatus);
+    }
+    public void clickToHiddenMap(){
+        distributorUI.click(mapVisibleStatus);
+    }
+    public boolean isMapVisible(){
+        try {
+            distributorUI.waitForVisibility(mapVisibleStatus);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(mapVisibleStatus);
+    }
+    public boolean isMapHidden(){
+        try {
+            distributorUI.waitForVisibility(mapHiddenStatus);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(mapHiddenStatus);
+    }
+    public boolean mapVisibleStatus(String status){
+        try {
+            distributorUI.waitForVisibility(By.xpath(txt_visibilityMap.replace("STATUS", status)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(txt_visibilityMap.replace("STATUS", status)));
+    }
+    public void clickAddStop(){
+        distributorUI.click(btn_addStop);
+    }
+    public boolean isUnassignedStopAdded(String code){
+        try {
+            distributorUI.waitForVisibility(By.xpath(unassignedStop.replace("CODE", code)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(unassignedStop.replace("CODE", code)));
+    }
+    public void clickEditUnassignStop(){
+        distributorUI.click(btn_editUnassignedStop);
+    }
+    public void clickDeleteStop(){
+        distributorUI.click(btn_deleteStop);
+    }
+    public boolean isRemoveStopPopUpDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_removeStopPopUp);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_removeStopPopUp);
+    }
+    public void clickYesButton(){
+        distributorUI.click(btn_yes);
+    }
+    public boolean isRemoveStopSuccessfully(){
+        try {
+            distributorUI.waitForVisibility(btn_addStop);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(btn_addStop);
     }
 
 

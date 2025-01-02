@@ -184,5 +184,41 @@ public class Track {
             trackPage.giveFilePath(path);
         }
     }
+    public static boolean checkMapVisible(String status){
+        if (trackPage.isMapVisible()){
+            return trackPage.mapVisibleStatus(status);
+        }else trackPage.isMapHidden();{
+            trackPage.clickToShowMap();
+            return trackPage.mapVisibleStatus(status);
+        }
+    }
+    public static boolean checkMapHidden(String status){
+        if (trackPage.isMapHidden()){
+            return trackPage.mapVisibleStatus(status);
+        }else trackPage.isMapVisible();{
+            trackPage.clickToHiddenMap();
+            return trackPage.mapVisibleStatus(status);
+        }
+    }
+    public static void clickAddStop(){trackPage.clickAddStop();}
+    public static boolean isUnassignedStopAdded(String code){
+        return trackPage.isUnassignedStopAdded(code);
+    }
+    public static void clickEditUnassignStop(){
+        trackPage.clickEditUnassignStop();
+    }
+    public static void clickDeleteStop(){
+        trackPage.clickDeleteStop();
+    }
+    public static boolean isRemoveStopPopUpDisplayed(){
+        return trackPage.isRemoveStopPopUpDisplayed();
+    }
+    public static void clickYesButton(){
+        trackPage.clickYesButton();
+    }
+    public static boolean isRemoveStopSuccessfully(){
+        return trackPage.isRemoveStopSuccessfully();
+    }
+
 
 }
