@@ -26,7 +26,7 @@ public class ValidateGettingEditRouteFlowTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-884")
-    public void ValidateGettingRouteCodeFlow() throws InterruptedException {
+    public void ValidateGettingEditRouteFlow() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
