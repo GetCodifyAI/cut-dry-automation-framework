@@ -57,6 +57,6 @@ public class VerifyTheCatalogExportDownloadReportTest extends TestBase {
     public void tearDown(ITestResult result) {
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
-        Reports.cleanUpDownloads(downloadPath);
+//        Reports.cleanUpDownloads(downloadPath);
     }
 }
