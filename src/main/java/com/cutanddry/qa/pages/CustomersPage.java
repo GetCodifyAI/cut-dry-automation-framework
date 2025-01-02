@@ -39,7 +39,7 @@ public class CustomersPage extends LoginPage {
     By btn_decreaseQtyCatalogSearchValueThree = By.xpath("(//input[@type='number' and @value='3']/../preceding-sibling::div)[last()]");
     By tbx_itemQuantityCatalogSearch = By.xpath("//input[@type='number']");
     By lbl_itemPriceSearchCatalogList = By.xpath("(//div[contains(., 'Artichoke') and not(contains(., '-24ct')) and not(contains(., 'Bottoms'))]//span[contains(text(),'$') and not(contains(text(),' ')) and not(@class='text-muted')])[last()]");
-    By btn_decreaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../preceding-sibling::div");
+    By btn_decreaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../preceding-sibling::div//*[@data-icon='minus']");
     By btn_increaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../following-sibling::div");
     By tbx_itemQuantityCartRowOne = By.xpath("//tr[2]/td//input/");
     By lbl_itemPriceCartRowOne = By.xpath("//tr[2]/td//span[contains(text(),'$')]");

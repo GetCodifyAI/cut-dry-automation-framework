@@ -5,12 +5,9 @@ package com.cutanddry.qa.pages;
 import com.cutanddry.qa.data.models.Broadcast;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class BoostPage extends LoginPage {
     By txt_boost = By.xpath("//li[contains(text(),'Boost')]");
@@ -91,6 +88,14 @@ public class BoostPage extends LoginPage {
     By dropdown_notificationTime = By.xpath("//div[contains(text(),'Select time')]");
     By btn_OK = By.xpath("//button[text()='OK']");
     By btn_submit = By.xpath("//button[text()='Submit']");
+    By boostMsgExist = By.xpath("//h2[contains(text(),'Boost')]/..//tbody/tr//*[contains(@data-icon,'circle-xmark')]");
+    By clearMessageBtn = By.xpath("//button/*[contains(@data-icon,'circle-xmark')]");
+    By sourceRowDragHandle = By.xpath("//tr[@data-rbd-draggable-id='340446843']//td[5]//*[name()='svg']");
+    By targetRowDragHandle = By.xpath("//tr[@data-rbd-draggable-id='294915282']//td[5]//*[name()='svg']");
+
+    public void changeOrderDragAndDrop(){
+        distributorUI.dragAndDrop(sourceRowDragHandle,targetRowDragHandle);
+    }
 
     public void clickBtnOK(){
         distributorUI.click(btn_OK);
@@ -430,4 +435,16 @@ public class BoostPage extends LoginPage {
         distributorUI.click(displayStatusToggle);
     }
 
+    public boolean containsBoostMsg(){
+        return distributorUI.isDisplayed(boostMsgExist);
+    }
+
+    public void removeBroadCastMsg(){
+        distributorUI.click(clearMessageBtn);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

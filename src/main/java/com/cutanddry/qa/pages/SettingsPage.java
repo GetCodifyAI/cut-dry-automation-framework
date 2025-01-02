@@ -121,6 +121,108 @@ public class SettingsPage extends LoginPage{
     By dropDown_warehouseLocation = By.xpath("//div[contains(@class, 'themed_select__control') and contains(@class, 'css-yk16xz-control')]");
     String dropdown_warehouseLocationOption = "//div[contains(@class, 'themed_select__option') and text()='Option Text']";
     String txt_warehouseLocation = "//h2[contains(text(), 'TARGET')]";
+    By tbx_warehouseNickName = By.xpath("//input[@placeholder='Nickname']");
+    By tbx_warehouseName= By.xpath("//input[@placeholder='Name']");
+    By notification_status = By.xpath("//div[contains(@class, 'mh-2 col-sm-8')]//div[contains(@class, 'react-switch-bg') and (contains(@style, 'background: rgb(220, 254, 7)') or contains(@style, 'background: rgb(59, 43, 79)'))]");
+    By tbx_streetAddress= By.xpath("//input[@placeholder='Street Address']");
+    By tbx_apartment= By.xpath("//input[@placeholder='Apartment or Unit Number']");
+    By tbx_city= By.xpath("//input[@placeholder='City']");
+    By tbx_state= By.xpath("//input[@placeholder='State']");
+    By tbx_zip= By.xpath("//input[@placeholder='Zip']");
+    By alertEmail = By.xpath("//input[@placeholder='alerts@email.com']");
+    By supportEmail = By.xpath("//input[@placeholder='support@email.com']");
+    By toggle_showDispatchData = By.xpath("//div[label[contains(text(), 'Show Dispatch Date')]]//div[contains(@class, 'react-switch-bg')]");
+    By toggle_addWarehouseAsLastStop = By.xpath("//div[label[contains(text(), 'Add Warehouse as Last Stop')]]//div[contains(@class, 'react-switch-bg')]");
+    By toggle_shareDeliveryImages = By.xpath("//div[label[contains(text(), 'Share Delivery Images with Customer')]]//div[contains(@class, 'react-switch-bg')]");
+    By toggle_shareDeliveryNotes = By.xpath("//div[label[contains(text(), 'Share Delivery Notes with Customer')]]//div[contains(@class, 'react-switch-bg')]");
+    By txt_updatedSuccessfully = By.xpath("//h2[text()='Updated Successfully']");
+    By txt_notificationPreference = By.xpath("//h6[contains(text(), 'Notification Preferences')]");
+    By checkbox_emailAutoOrderDeskAlert = By.xpath("//tr[td[text()='Auto Order Desk Alerts']]//td[2]//input[@type='checkbox']");
+    By checkbox_smsAutoOrderDeskAlert = By.xpath("//tr[td[text()='Auto Order Desk Alerts']]//td[3]//input[@type='checkbox']");
+    By txt_h2Success = By.xpath("//h2[text()='Success']");
+
+    public void clickSaveChanges(){
+        distributorUI.waitForVisibility(btn_saveChange);
+        distributorUI.click(btn_saveChange);
+    }
+
+    public boolean isSuccessTextDisplayed(){
+        return distributorUI.isDisplayed(txt_h2Success);
+    }
+
+    public void click_checkboxEmailAutoOrderDeskAlert(){
+        distributorUI.click(checkbox_emailAutoOrderDeskAlert);
+    }
+
+    public void click_checkboxSMSAutoOrderDeskAlert(){
+        distributorUI.click(checkbox_smsAutoOrderDeskAlert);
+    }
+
+    public void scrollNotificationPreference(){
+        distributorUI.scrollToElement(txt_notificationPreference);
+    }
+
+    public boolean isUpdatedSuccessfullyDisplayed(){
+        return distributorUI.isDisplayed(txt_updatedSuccessfully);
+    }
+    public void toggleShowDispatchData(){
+        distributorUI.click(toggle_showDispatchData);
+    }
+
+    public void toggleAddWarehouseAsLastStop(){
+        distributorUI.click(toggle_addWarehouseAsLastStop);
+    }
+
+    public void toggleShareDeliveryImages(){
+        distributorUI.click(toggle_shareDeliveryImages);
+    }
+
+    public void toggleShareDeliveryNotes(){
+        distributorUI.click(toggle_shareDeliveryNotes);
+    }
+
+    public void typeWarehouseNickName(String nickname){
+        distributorUI.sendKeys(tbx_warehouseNickName, nickname);
+    }
+
+    public void typeWarehouseName(String name){
+        distributorUI.sendKeys(tbx_warehouseName, name);
+    }
+
+    public void toggleNotificationStatus(){
+        distributorUI.click(notification_status);
+    }
+
+    public void typeStreetAddress(String streetAddress){
+        distributorUI.scrollToElement(tbx_streetAddress);
+        distributorUI.sendKeysAndEnter(tbx_streetAddress, streetAddress);
+    }
+
+    public void typeApartment(String apartment){
+        distributorUI.scrollToElement(tbx_apartment);
+        distributorUI.sendKeys(tbx_apartment, apartment);
+    }
+
+    public void typeCity(String city){
+        distributorUI.sendKeys(tbx_city, city);
+    }
+
+    public void typeState(String state){
+        distributorUI.sendKeys(tbx_state, state);
+    }
+
+    public void typeZip(String zip){
+        distributorUI.sendKeys(tbx_zip, zip);
+    }
+
+    public void typeAlertEmail(String email){
+        distributorUI.scrollToElement(alertEmail);
+        distributorUI.sendKeys(alertEmail, email);
+    }
+
+    public void typeSupportEmail(String email){
+        distributorUI.sendKeys(supportEmail, email);
+    }
 
     public boolean isOrderSettingsTextDisplayed() throws InterruptedException {
         try {

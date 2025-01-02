@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class ValidateTheFlowOfTheAddNewWarehouseUnderTheManageWarehouseOption extends TestBase {
+public class VerifyTheFunctionalityOfProfileAccountInformation extends TestBase {
     static User user;
 
     @BeforeMethod
@@ -21,23 +21,21 @@ public class ValidateTheFlowOfTheAddNewWarehouseUnderTheManageWarehouseOption ex
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-852")
-    public void ValidateTheFlowOfTheAddNewWarehouseUnderTheManageWarehouseOption() throws InterruptedException {
+    @Test(groups = "DOT-TC-868")
+    public void VerifyTheFunctionalityOfProfileAccountInformation() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
-        Dashboard.navigateToTrackSettings();
-        softAssert.assertTrue(Settings.isTrackSettingsTextDisplayed(),"navigation error");
-        String warehouseName = Settings.generateWarehouseCode();
-        Settings.clickBtnManageWarehouse();
-        Settings.clickBtnAddNew();
-        Settings.typeNewWarehouseName(warehouseName);
-        Settings.clickBtnSaveChanges();
-        Settings.clickOnWarehouseLocationDropDown();
-        Settings.selectWarehouseLocation(warehouseName);
-        String lastFiveDigits = warehouseName.substring(warehouseName.length() - 5);
-        softAssert.assertTrue(Settings.isWarehouseNameDisplayed(lastFiveDigits),"The warehouse name is not displayed");
+        Dashboard.navigateToProfileSettings();
+        softAssert.assertTrue(Settings.isProfileSettingsTextDisplayed(),"navigation error");
+        Settings.scrollNotificationPreference();
+        Settings.clickCheckboxesNotification();
+        Settings.clickSaveChanges();
+        softAssert.assertTrue(Settings.isSuccessTextDisplayed(),"Error in updating notification preferences");
+        Settings.clickCheckboxesNotification();
+        Settings.clickSaveChanges();
+        softAssert.assertTrue(Settings.isSuccessTextDisplayed(),"Error in updating notification preferences");
         softAssert.assertAll();
     }
 

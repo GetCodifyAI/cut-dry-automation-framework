@@ -362,4 +362,51 @@ public class Settings {
     public static void selectWarehouseLocation(String warehouse){
         settingsPage.selectWarehouseLocation(warehouse);
     }
+
+    public static void fillWarehouseInfo(String nickname, String name, String streetAddress, String apartment, String city, String state, String zip, String alertEmailInput, String supportEmailInput) throws InterruptedException {
+        settingsPage.typeWarehouseNickName(nickname);
+        settingsPage.typeWarehouseName(name);
+        settingsPage.toggleNotificationStatus();
+        settingsPage.clickYes();
+        settingsPage.typeStreetAddress(streetAddress);
+        settingsPage.typeApartment(apartment);
+        settingsPage.typeCity(city);
+        settingsPage.typeState(state);
+        settingsPage.typeZip(zip);
+//        settingsPage.typeAlertEmail(alertEmailInput);
+//        settingsPage.typeSupportEmail(supportEmailInput);
+        settingsPage.toggleShowDispatchData();
+        settingsPage.toggleAddWarehouseAsLastStop();
+        settingsPage.toggleShareDeliveryImages();
+        settingsPage.toggleShareDeliveryNotes();
+    }
+
+    public static void fillWarehouseName(String name){
+        settingsPage.typeWarehouseName(name);
+    }
+
+    public static void fillWarehouseNickName(String nickname){
+        settingsPage.typeWarehouseNickName(nickname);
+    }
+
+    public static boolean isUpdatedSuccessfullyDisplayed(){
+        return settingsPage.isUpdatedSuccessfullyDisplayed();
+    }
+
+    public static void scrollNotificationPreference(){
+        settingsPage.scrollNotificationPreference();
+    }
+
+    public static void clickCheckboxesNotification(){
+        settingsPage.click_checkboxEmailAutoOrderDeskAlert();
+        settingsPage.click_checkboxSMSAutoOrderDeskAlert();
+    }
+
+    public static boolean isSuccessTextDisplayed(){
+        return settingsPage.isSuccessTextDisplayed();
+    }
+
+    public static void clickSaveChanges(){
+        settingsPage.clickSaveChanges();
+    }
 }

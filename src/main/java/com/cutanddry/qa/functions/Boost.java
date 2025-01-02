@@ -269,4 +269,17 @@ public class Boost {
     public static void clickOnDisplayStatusToggle(){
         boostPage.clickOnDisplayStatusToggle();
     }
+
+    public static void changeOrderDragAndDrop(){
+        boostPage.changeOrderDragAndDrop();
+    }
+
+    public static void clearExistingBoostMessageIfExists(){
+        while(boostPage.containsBoostMsg()) {
+            boostPage.removeBroadCastMsg();
+            boostPage.clickYes();
+            boostPage.clickBtnOK();
+        }
+    }
+
 }
