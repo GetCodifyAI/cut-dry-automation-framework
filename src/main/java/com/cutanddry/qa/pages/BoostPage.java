@@ -91,6 +91,12 @@ public class BoostPage extends LoginPage {
     By dropdown_notificationTime = By.xpath("//div[contains(text(),'Select time')]");
     By btn_OK = By.xpath("//button[text()='OK']");
     By btn_submit = By.xpath("//button[text()='Submit']");
+    By sourceRowDragHandle = By.xpath("//tr[@data-rbd-draggable-id='340446843']//td[5]//*[name()='svg']");
+    By targetRowDragHandle = By.xpath("//tr[@data-rbd-draggable-id='294915282']//td[5]//*[name()='svg']");
+
+    public void changeOrderDragAndDrop(){
+        distributorUI.dragAndDrop(sourceRowDragHandle,targetRowDragHandle);
+    }
 
     public void clickBtnOK(){
         distributorUI.click(btn_OK);

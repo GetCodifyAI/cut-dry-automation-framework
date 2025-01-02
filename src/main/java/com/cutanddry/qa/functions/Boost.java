@@ -269,4 +269,8 @@ public class Boost {
     public static void clickOnDisplayStatusToggle(){
         boostPage.clickOnDisplayStatusToggle();
     }
+
+    public static void changeOrderDragAndDrop(){
+        boostPage.changeOrderDragAndDrop();
+    }
 }
