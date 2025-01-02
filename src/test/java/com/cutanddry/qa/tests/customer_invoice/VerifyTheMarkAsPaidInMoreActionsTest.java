@@ -13,13 +13,9 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import com.cutanddry.qa.base.TestBase;
 
-public class VerifyTheCreateCreditMemoInMoreActions extends TestBase {
+public class VerifyTheMarkAsPaidInMoreActionsTest extends TestBase {
     static User user;
     String CustomerCode = CustomerInvoiceData.CUSTOMER_CODE;
-    String CreditMemoNumber = CustomerInvoiceData.CREDIT_MEMO_NUMBER;
-    String AssociatedInvoive = CustomerInvoiceData.ASSOCIATED_INVOICE;
-    String CreditMemoAmount = CustomerInvoiceData.CREDIT_MEMO_AMOUNT;
-    String CreditMemoDescription = CustomerInvoiceData.CREDIT_MEMO_DESCRIPTION;
 
     @BeforeMethod
     public void setUp() {
@@ -28,7 +24,7 @@ public class VerifyTheCreateCreditMemoInMoreActions extends TestBase {
     }
 
     @Test(groups = "DOT-TC-702")
-    public void VerifyTheCreateCreditMemoInMoreActions() throws InterruptedException {
+    public void VerifyTheMarkAsPaidInMoreActions() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -38,14 +34,11 @@ public class VerifyTheCreateCreditMemoInMoreActions extends TestBase {
         softAssert.assertTrue(Customer.isSearchedRowDisplayed(CustomerCode),"The searched customer is not displayed");
         Customer.clickOnFirstItemOfCustomerRequests();
         Customer.clickonInvoice();
+        Customer.clickOnCheckBox(1);
         Customer.clickDropdownMoreActions();
-        Customer.clickCreateCreditMemo();
-        Customer.typeCreditMemoNumber(CreditMemoNumber);
-        Customer.fillDropdownAssociatedInvoice(AssociatedInvoive);
-        Customer.typeCreditMemoAmount(CreditMemoAmount);
-        Customer.typeCreditMemoDescription(CreditMemoDescription);
-        Customer.clickBtnCreateCreditMemo();
-        softAssert.assertTrue(Customer.isCreditMemoFinalized(CreditMemoNumber),"There has been an error creating the credit memo");
+        Customer.clickMarkAsPaid();
+        Customer.clickOnYes();
+        softAssert.assertTrue(Customer.isMarkedAsPaidSuccessfullyDisplayed(),"There has been an error marking invoices as paid");
         Customer.clickOK();
         softAssert.assertAll();
     }

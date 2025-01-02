@@ -45,6 +45,6 @@ public class VerifyThePayCustomersDownloadReportTest extends TestBase {
     public void tearDown(ITestResult result) {
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
-        Reports.cleanUpDownloads(downloadPath);
+//        Reports.cleanUpDownloads(downloadPath);
     }
 }

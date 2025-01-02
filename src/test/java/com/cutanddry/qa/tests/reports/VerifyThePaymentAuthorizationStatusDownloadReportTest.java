@@ -45,6 +45,6 @@ public class VerifyThePaymentAuthorizationStatusDownloadReportTest extends TestB
     public void tearDown(ITestResult result) {
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
-        Reports.cleanUpDownloads(downloadPath);
+//        Reports.cleanUpDownloads(downloadPath);
     }
 }
