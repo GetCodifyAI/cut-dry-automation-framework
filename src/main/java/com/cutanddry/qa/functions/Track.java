@@ -164,4 +164,25 @@ public class Track {
     public static boolean isPlaceBreakAfterStopAdded(String name){
         return trackPage.isPlaceBreakAfterStopAdded(name);
     }
+    public static boolean validateStops(){
+        return trackPage.validateStops();
+    }
+    public static boolean validateStartDateAndTime(){
+        return trackPage.validateStartDateAndTime();
+    }
+    public static boolean validateDriver(){
+        return trackPage.validateDriver();
+    }
+    public static boolean validateTruckDistanceAndValue(){
+        return trackPage.validateTruckDistanceAndValue();
+    }
+    public static void uploadRoute(String path)throws InterruptedException{
+        if (trackPage.isUploadRouteTextDisplayed()){
+        trackPage.giveFilePath(path);
+        }else {
+            trackPage.clickDeleteRoute();
+            trackPage.giveFilePath(path);
+        }
+    }
+
 }

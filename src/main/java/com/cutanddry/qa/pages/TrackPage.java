@@ -43,6 +43,11 @@ public class TrackPage extends LoginPage{
     By importRoutesOption = By.xpath("//a[contains(text(), 'Import Routes (.csv, .xlsx)')]");
     By deleteRoutes = By.xpath("//a[contains(text(), 'Delete Routes')]");
     By btn_deleteRoutes = By.xpath("//button[contains(text(), 'Delete Routes ')]");
+    By btn_delete =By.xpath("//button[text()= 'Delete']");
+    By txt_stops = By.xpath("//div//span[text()='2' and contains(@class,'font-weight-bold')]");
+    By txt_startDateAndTime =By.xpath("//div/span[contains(text(), '4:30 AM')]");
+    By txt_driverName = By.xpath("//div[contains(@class, 'text-align-left') and contains(@class, 'col')]//text()[contains(., 'Enlightened Ekadant')]");
+    By txt_truckDistanceAndValue = By.xpath("//text()[preceding-sibling::text()[contains(., 'Enlightened Ekadant')]]");
     String btn_editRoute = "(//*[name()='svg' and @data-icon='EDIT_FUNCTION'])[1]";
     By btn_routeCode = By.xpath("//button[contains(text(), '123')]");
     By txt_routeCodePopUp = By.xpath("//div[contains(text(), 'Code copied to clipboard!')]");
@@ -61,6 +66,8 @@ public class TrackPage extends LoginPage{
     By lbl_placeBreakAfterStop = By.xpath("//label[text()='Place break after stop...']//following-sibling::div");
     By placeBreakAfterStopOption = By.xpath("//div[contains(text(),'Nova')]");
     By btn_addBreak = By.xpath("//button[contains(text(), 'Add Break')]");
+    By upload_file = By.xpath("//input[@type='file']");
+    By txt_uploadRoute = By.xpath("//h5[contains(text(),'Click here to upload or drag and drop a CSV or Excel file to add routes')]");
 
 
 
@@ -373,5 +380,64 @@ public class TrackPage extends LoginPage{
         }
         return distributorUI.isDisplayed(By.xpath(btn_editRoute.replace("EDIT_FUNCTION", name)));
     }
+    public void clickManageRoute(){
+        distributorUI.click(manageRoutesDropDown);
+    }
+    public void clickImportRoute(){
+        distributorUI.click(importRoutesOption);
+    }
+    public boolean validateStops(){
+        try {
+            distributorUI.waitForVisibility(txt_stops);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_stops);
+    }
+    public boolean validateStartDateAndTime(){
+        try {
+            distributorUI.waitForVisibility(txt_startDateAndTime);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_startDateAndTime);
+    }
+    public boolean validateDriver(){
+        try {
+            distributorUI.waitForVisibility(txt_driverName);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_driverName);
+    }
+    public boolean validateTruckDistanceAndValue(){
+        try {
+            distributorUI.waitForVisibility(txt_truckDistanceAndValue);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_truckDistanceAndValue);
+    }
+    public void giveFilePath(String path){
+        distributorUI.sendKeysToHiddenElements(upload_file, path);
+    }
+    public boolean isUploadRouteTextDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_uploadRoute);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_uploadRoute);
+    }
+    public void clickDeleteRoute()throws InterruptedException{
+        distributorUI.click(deleteRoutes);
+        distributorUI.waitForVisibility(btn_deleteRoutes);
+        distributorUI.click(btn_deleteRoutes);
+        distributorUI.waitForVisibility(btn_delete);
+        distributorUI.click(btn_delete);
+        distributorUI.waitForCustom(2000);
+    }
+
+
 
 }
