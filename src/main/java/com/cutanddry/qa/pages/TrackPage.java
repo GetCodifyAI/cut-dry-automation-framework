@@ -46,7 +46,7 @@ public class TrackPage extends LoginPage{
     By btn_delete =By.xpath("//button[text()= 'Delete']");
     By txt_stops = By.xpath("//div//span[text()='2' and contains(@class,'font-weight-bold')]");
     By txt_startDateAndTime =By.xpath("//div/span[contains(text(), '4:30 AM')]");
-    By txt_driverName = By.xpath("//div[contains(@class, 'text-align-left') and contains(@class, 'col')]//text()[contains(., 'Enlightened Ekadant')]");
+    By txt_driverName = By.xpath("//div[@class='text-align-left col']/text()[normalize-space()]");
     By txt_truckDistanceAndValue = By.xpath("//text()[preceding-sibling::text()[contains(., 'Enlightened Ekadant')]]");
     String btn_editRoute = "(//*[name()='svg' and @data-icon='EDIT_FUNCTION'])[1]";
     By btn_routeCode = By.xpath("//button[contains(text(), '123')]");

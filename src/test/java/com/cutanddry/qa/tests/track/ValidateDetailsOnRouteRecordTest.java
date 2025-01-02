@@ -41,8 +41,6 @@ public class ValidateDetailsOnRouteRecordTest extends TestBase {
         Track.uploadRoute(Paths.get(Objects.requireNonNull(ClassLoader.getSystemClassLoader().getResource("csvFiles/Sample_Route_Template.csv")).toURI()).toString());
         softAssert.assertTrue(Track.validateStops(),"stops are not validate");
         softAssert.assertTrue(Track.validateStartDateAndTime(),"Start Date And Time is not validate");
-//        softAssert.assertTrue(Track.validateDriver(),"Driver is not validate");
-//        softAssert.assertTrue(Track.validateTruckDistanceAndValue(),"Truck Distance And Value are not validate");
         softAssert.assertAll();
     }
 
