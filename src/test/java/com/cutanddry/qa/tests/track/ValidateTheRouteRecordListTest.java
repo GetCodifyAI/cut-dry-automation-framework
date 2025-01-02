@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class ValidateTheRouteRecordTest extends TestBase {
+public class ValidateTheRouteRecordListTest extends TestBase {
     static User user;
     static String distributorName = TrackData.DISTRIBUTOR_NAME;
     static String addCustomerCode = TrackData.ADD_CUSTOMER_CODE;
@@ -28,7 +28,7 @@ public class ValidateTheRouteRecordTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-905")
-    public void ValidateTheRouteRecord() throws InterruptedException {
+    public void ValidateTheRouteRecordList() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
