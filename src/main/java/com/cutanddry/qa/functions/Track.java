@@ -219,6 +219,21 @@ public class Track {
     public static boolean isRemoveStopSuccessfully(){
         return trackPage.isRemoveStopSuccessfully();
     }
+    public static boolean isDispatchRoutePopupDisplayed(){
+        return trackPage.isDispatchRoutePopupDisplayed();
+    }
+    public static void clickDispatch(){
+        trackPage.clickDispatch();
+    }
+    public static boolean AreYouSureToDispatchDisplayed(){
+        return trackPage.AreYouSureToDispatchDisplayed();
+    }
+    public static boolean dispatchSuccessDisplayed(){
+        return trackPage.dispatchSuccessDisplayed();
+    }
+    public static boolean isDispatchedTextDisplayed(){
+        return trackPage.isDispatchedTextDisplayed();
+    }
 
 
 }
