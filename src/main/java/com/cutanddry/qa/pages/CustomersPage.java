@@ -1231,7 +1231,7 @@ public class CustomersPage extends LoginPage {
     }
     public boolean isAddedSectionDisplayed(String name) throws InterruptedException {
         distributorUI.refreshPage();
-        distributorUI.waitForCustom(1000);
+        distributorUI.waitForCustom(3000);
         distributorUI.waitForVisibility(By.xpath(txt_addedSection.replace("NAME", name)));
         return distributorUI.isDisplayed(By.xpath(txt_addedSection.replace("NAME", name)));
     }
