@@ -32,6 +32,7 @@ public class VerifyBroadcastMessageTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
+        Boost.clearExistingBoostMessageIfExists();
         Boost.addMessage();
         softAssert.assertTrue(Boost.isStepOneDisplayed(),"add Message display error");
         Boost.selectCustomList();
