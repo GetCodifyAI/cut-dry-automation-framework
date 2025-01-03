@@ -1656,4 +1656,13 @@ public class Customer {
     public static void ifDuplicateOrderDisplayed(){
         customersPage.ifDuplicateOrderDisplayed();
     }
+
+    public static boolean isLastOrderedPoundPriceDisplayed(){
+        return customersPage.isLastOrderedPriceDisplayed();
+    }
+
+    public static boolean isLastOrderedPriceNotSameAfterToggleOff(){
+        return customersPage.isLastOrderedPriceNotSameAfterToggle();
+    }
+
 }

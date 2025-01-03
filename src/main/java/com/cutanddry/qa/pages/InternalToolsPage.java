@@ -13,6 +13,7 @@ public class InternalToolsPage extends LoginPage {
     By disableCatalogDropDown = By.xpath("(//div[contains(text(), 'Disable catalog for:')]/following-sibling::div//div)[2]");
     String catalogOptionSelect = "(//div[text()='CATALOGDROPDOWNOPTION'])[last()]";
     By catalogSettingsSaveBtn = By.xpath("//div[h5[text()='Catalog']]/following-sibling::div//button[contains(text(), 'Save')]");
+    By lastOrderedPoundPriceToggle = By.xpath("//div[contains(text(), 'Show Last Ordered Pound Price in Order Guide')]/following-sibling::div//div[@class='react-switch-bg']");
 
     public void clickConfigureSupplier(){
         distributorUI.click(configureSupplierTxt);
@@ -57,5 +58,19 @@ public class InternalToolsPage extends LoginPage {
         distributorUI.scrollToElement(catalogSettingsSaveBtn);
         distributorUI.waitForVisibility(catalogSettingsSaveBtn);
         distributorUI.clickUsingJavaScript(catalogSettingsSaveBtn);
+    }
+
+    public void clickTurnOnLastOrderedPoundPriceToggle(){
+        distributorUI.click(lastOrderedPoundPriceToggle);
+    }
+
+    public void clickTurnOnLastOrderedPoundPriceSave(){
+        distributorUI.scrollToElement(SaveBtn);
+        distributorUI.waitForVisibility(SaveBtn);
+        distributorUI.clickUsingJavaScript(SaveBtn);
+    }
+
+    public void clickTurnOffLastOrderedPoundPriceToggle(){
+        distributorUI.click(lastOrderedPoundPriceToggle);
     }
 }

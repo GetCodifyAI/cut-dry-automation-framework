@@ -45,4 +45,17 @@ public class InternalTools {
         internalToolsPage.clickCatalogSettingsSaveBtn();
     }
 
+    public static void TurnOnLastOrderedPoundPrice(){
+        internalToolsPage.clickTurnOnLastOrderedPoundPriceToggle();
+    }
+
+    public static void SaveLastOrderedPoundPriceTurnOn(){
+        internalToolsPage.clickTurnOnLastOrderedPoundPriceSave();
+    }
+
+    public static void TurnOffLastOrderedPoundPrice(){
+        internalToolsPage.clickTurnOffLastOrderedPoundPriceToggle();
+    }
+
+
 }

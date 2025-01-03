@@ -503,6 +503,8 @@ public class CustomersPage extends LoginPage {
     By section_dontForgetToBuy = By.xpath("//div[text()=\"Don't Forget to Buy\"]");
     By txt_duplicateOrder = By.xpath("//h2[@class='swal2-title' and @id='swal2-title' and text()='Duplicate Order']");
     By btn_addNewPaymentMtd = By.xpath("//div[contains(text(),'Add a new payment method')]");
+    By txt_lastOrderedPrice = By.xpath("//td[contains(@class,'font-weight-light py-3 text-nowrap') and contains(text(),'/lb')]");
+    By txt_lastOrderedPriceOff = By.xpath("//td[contains(@class, 'py-3') and div[contains(text(), '1 CS')]]");
 
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
@@ -2889,4 +2891,32 @@ public class CustomersPage extends LoginPage {
     public void clickOnAddNewPaymentMethod() {
         distributorUI.click(btn_addNewPaymentMtd);
     }
+
+    public String getLastOrderedPoundPrice() {
+        String lastOrderedPoundPriceText = distributorUI.getText(txt_lastOrderedPrice);
+        String lbPriceOnly;
+        lbPriceOnly = lastOrderedPoundPriceText.split("\\s+")[0];
+        return lbPriceOnly;
+    }
+
+    public boolean isLastOrderedPriceDisplayed() {
+        String lastOrderedPoundPrice = getLastOrderedPoundPrice();
+        System.out.println(lastOrderedPoundPrice);
+        return lastOrderedPoundPrice != null && !lastOrderedPoundPrice.isEmpty();
+    }
+
+    public boolean isLastOrderedPriceNotSameAfterToggle() {
+        distributorUI.waitForVisibility(txt_lastOrderedPriceOff);
+        String lastOrderedPoundPriceTextOff = distributorUI.getText(txt_lastOrderedPriceOff);
+        System.out.println(lastOrderedPoundPriceTextOff);
+        if (distributorUI.isDisplayed(txt_lastOrderedPriceOff)){
+            System.out.println("LB price is not displayed");
+            return true;
+        }
+        else{
+            System.out.println("LB price is still displaying");
+            return false;
+        }
+    }
+
 }
