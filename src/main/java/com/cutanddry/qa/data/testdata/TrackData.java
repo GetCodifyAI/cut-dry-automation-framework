@@ -17,5 +17,6 @@ public class TrackData {
     public static final String MAP_HIDDEN_ROUTES = "Map Hidden Routes";
     public static final String MAP_VISIBLE_ROUTES = "Map Visible Routes";
     public static final String EDIT_CUSTOMER_CODE = "Test0010";
+    public static final String DISPATCH_ROUTE = "paper-plane";
 
 }

@@ -62,7 +62,7 @@ public class TrackPage extends LoginPage{
     By lbl_city = By.xpath("//label[text()='Address:']//following-sibling::div//input[contains(@placeholder, 'City')]");
     By lbl_state = By.xpath("//label[text()='Address:']//following-sibling::div//input[contains(@placeholder, 'State')]");
     By lbl_zipCode = By.xpath("//label[text()='Address:']//following-sibling::div//input[contains(@placeholder, 'Zip')]");
-    String addStop = "//td[2]//div[contains(text(), 'CODE')]";
+    String addStop = "//td//div[contains(text(), 'CODE')]";
     By lbl_placeBreakAfterStop = By.xpath("//label[text()='Place break after stop...']//following-sibling::div");
     By placeBreakAfterStopOption = By.xpath("//div[contains(text(),'Nova')]");
     By btn_addBreak = By.xpath("//button[contains(text(), 'Add Break')]");
@@ -77,6 +77,12 @@ public class TrackPage extends LoginPage{
     By btn_deleteStop = By.xpath("//button[text()='Delete Stop']");
     By txt_removeStopPopUp = By.xpath("//div[contains(text(),'remove this stop?')]");
     By btn_yes = By.xpath("//button[contains(text(),'Yes')]");
+    By txt_dispatchToDrivers = By.xpath("//div[contains(text(),'Dispatch to Drivers')]");
+    By btn_dispatch = By.xpath("//button[contains(text(),'Dispatch')]//*[name()='svg' and @data-icon='paper-plane']");
+    By txt_areYouSureToDispatch = By.xpath("//h2[contains(text(),'Are you sure you want to dispatch?')]");
+    By txt_dispatchSuccess = By.xpath("//h2[contains(text(),'Drivers Dispatched Successfully')]");
+    By lbl_dispatch = By.xpath("//span[text()='Dispatched']");
+
 
 
 
@@ -511,6 +517,41 @@ public class TrackPage extends LoginPage{
             return false;
         }
         return distributorUI.isDisplayed(btn_addStop);
+    }
+    public boolean isDispatchRoutePopupDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_dispatchToDrivers);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_dispatchToDrivers);
+    }
+    public void clickDispatch(){
+        distributorUI.click(btn_dispatch);
+    }
+    public boolean AreYouSureToDispatchDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_areYouSureToDispatch);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_areYouSureToDispatch);
+    }
+    public boolean dispatchSuccessDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_dispatchSuccess);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_dispatchSuccess);
+    }
+    public boolean isDispatchedTextDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_dispatch);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_dispatch);
     }
 
 
