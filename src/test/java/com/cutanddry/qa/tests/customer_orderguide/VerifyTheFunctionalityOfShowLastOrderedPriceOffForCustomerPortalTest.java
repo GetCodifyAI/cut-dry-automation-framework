@@ -16,7 +16,6 @@ public class VerifyTheFunctionalityOfShowLastOrderedPriceOffForCustomerPortalTes
     static String itemName = "bacon, uncured maple, e&p, food service";
     String SupplierName = "Independent Foods Co";
 
-
     @BeforeMethod
     public void setUp(){
         initialization();
