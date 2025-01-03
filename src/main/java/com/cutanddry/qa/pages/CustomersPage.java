@@ -427,7 +427,9 @@ public class CustomersPage extends LoginPage {
     By btn_i_agree = By.xpath("//button[text()='I Agree' and contains(@class, 'btn-primary')]");
     By btn_enable_auto_pay = By.xpath("//button[text()='Enable Auto Pay' and contains(@class, 'btn-primary')]");
     By txt_under_auto_pay = By.xpath("//div[div[contains(@class, 'font-weight-bold') and text()='Auto Pay']]/div[@class='_jehyy2']");
-    By lbl_itemPriceList = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]//span)[1]");
+//    By lbl_itemPriceList = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]//span)[1]");
+    By lbl_itemPriceList = By.xpath("((//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-1]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-1]//span)[1])[1]");
+    By lbl_itemPriceList1 = By.xpath("((//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-1]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-1]//span)[1])[2]");
     By btn_minusQtyFirstRow = By.xpath("(//*[name()='svg' and @data-icon='minus'])[1]");
     By tbx_itemQuantityinFirstRow = By.xpath("(//*[@data-input ='quantityInput'])[1]");
     By lbl_cartItemUnitPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//span)[1]");
@@ -2538,7 +2540,7 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_catalogMinus);
     }
 
-    public double getActiveItemPriceFirstRow() throws InterruptedException {
+    /*public double getActiveItemPriceFirstRow() throws InterruptedException {
         distributorUI.waitForVisibility(lbl_itemPriceList);
         String tagName = distributorUI.getElement(lbl_itemPriceList).getTagName();
         String priceText;
@@ -2549,6 +2551,30 @@ public class CustomersPage extends LoginPage {
         }
 
         return Double.valueOf(priceText.replace("$", "").trim());
+    }*/
+
+    public double getActiveItemPriceFirstRow() throws InterruptedException {
+        try {
+            return extractPrice(lbl_itemPriceList);
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPrice(lbl_itemPriceList1);
+        }
+    }
+
+    private double extractPrice(By priceLocator) throws InterruptedException {
+        distributorUI.waitForVisibility(priceLocator);
+        String tagName = distributorUI.getElement(priceLocator).getTagName();
+        String priceText;
+
+        if (tagName.equals("input")) {
+            priceText = distributorUI.getText(priceLocator, "value");
+        } else {
+            priceText = distributorUI.getText(priceLocator);
+        }
+
+        System.out.println("Extracted Price: " + priceText);
+        return Double.valueOf(priceText.replace("$", "").replace("/cs", "").trim());
     }
 
     public Double getItemPriceOnCheckoutButtonViaPDP() throws InterruptedException {
