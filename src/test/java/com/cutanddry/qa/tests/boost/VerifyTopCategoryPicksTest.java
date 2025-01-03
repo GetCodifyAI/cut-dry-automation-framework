@@ -35,6 +35,7 @@ public class VerifyTopCategoryPicksTest extends TestBase{
         softAssert.assertTrue(Boost.isSuggestiveTabDisplayed(),"navigate to suggestive sales error");
         Boost.clickTopCategoryPicksConfig();
         softAssert.assertTrue(Boost.isTopCategoryPopupDisplayed(),"top category popup error");
+        Boost.ensureTopCategoryPicksDisplayStatus(true);
         Boost.clickAllItemsConfig();
         Boost.clickAddItems();
         Boost.addItem(itemCode);
