@@ -13,9 +13,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import java.io.DataInput;
-
-public class ValidateTheEditCreditRequestFlowApproveCreditThenChangeItToDeclineCredit extends TestBase {
+public class ValidateTheEditCreditRequestFlowApproveCreditThenChangeItToDeclineCreditTest extends TestBase {
     static User user;
     String orderID = "316727041";
     String timeRange = "All";

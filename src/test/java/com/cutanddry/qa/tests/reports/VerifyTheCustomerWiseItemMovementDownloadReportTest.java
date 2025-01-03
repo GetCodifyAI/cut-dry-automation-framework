@@ -27,7 +27,7 @@ public class VerifyTheCustomerWiseItemMovementDownloadReportTest extends TestBas
         user = JsonUtil.readUserLogin();
     }
     @Test(groups = "DOT-TC-825")
-    public void VerifyTheCustomerWiseItemMovementDownloadReport() throws InterruptedException, ParseException {
+    public void VerifyTheCustomerWiseItemMovementDownloadReport() throws InterruptedException {
         softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
@@ -47,6 +47,6 @@ public class VerifyTheCustomerWiseItemMovementDownloadReportTest extends TestBas
     public void tearDown(ITestResult result) {
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
-        Reports.cleanUpDownloads(downloadPath);
+//        Reports.cleanUpDownloads(downloadPath);
     }
 }
