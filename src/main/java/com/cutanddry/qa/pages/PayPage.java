@@ -1,6 +1,9 @@
 package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 
 public class PayPage extends LoginPage{
     By txt_pay = By.xpath("//li[contains(text(),'Pay')]");
@@ -49,6 +52,161 @@ public class PayPage extends LoginPage{
     String lbl_invoiceRecordAmount = "//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[ROW_COUNT]/td[8]";
     String lbl_invoiceRecordBalanceDue = "//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[ROW_COUNT]/td[9]";
     String btn_invoiceRecordSetting = "//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[ROW_COUNT]/td[10]//button";
+    By dropDown_customer = By.xpath("//div[contains(@class, 'col-sm-2') and contains(., 'Customer')]//div[contains(@class, 'themed_select__control')]");
+    String option_customerDropdown = "//div[contains(@class, 'col-sm-2') and contains(., 'Customer')]//div[contains(@class, 'themed_select__menu')]//div[contains(text(), 'OPTION')]";
+    By customerNameFirstRow = By.xpath("//table[contains(@class, 'table-hover') and contains(@class, 'my-3')]//tbody/tr[1]/td[4]");
+    By txt_noResultsFound = By.xpath("//div[text()='No results found.']");
+    By dropDown_paymentStatus = By.xpath("//div[contains(@class, 'col-sm-2') and contains(., 'Payment Status')]//div[contains(@class, 'themed_select__control')]");
+    String option_paymentStatusDropdown = "//div[contains(@class, 'col-sm-2') and contains(., 'Payment Status')]//div[contains(@class, 'themed_select__menu')]//div[contains(text(), 'OPTION')]";
+    By paymentStatusFirstRow = By.xpath("//table[contains(@class, 'table-hover') and contains(@class, 'my-3')]//tbody/tr[1]/td[6]");
+    By dropDown_payoutStatus = By.xpath("//div[contains(@class, 'col-sm-2') and contains(., 'Payout Status')]//div[contains(@class, 'themed_select__control')]");
+    String option_payoutStatusDropdown = "//div[contains(@class, 'col-sm-2') and contains(., 'Payout Status')]//div[contains(@class, 'themed_select__menu')]//div[contains(text(), 'OPTION')]";
+    By payoutStatusFirstRow = By.xpath("//table[contains(@class, 'table-hover') and contains(@class, 'my-3')]//tbody/tr[1]/td[6]");
+    By dateRange_Pay = By.xpath("//div[contains(@class, 'col-sm-6')]//div[contains(@class, '_64fwrw') and contains(., 'Date Range')]//following-sibling::div//input[@type='text' and contains(@class, 'form-control')]");
+//    By startDate = By.xpath("//div[@class='react-datepicker']//div[@aria-label='Choose Sunday, December 22nd, 2024']");
+//    By endDate = By.xpath("//div[@class='react-datepicker']//div[@aria-label='Choose Sunday, January 5th, 2025']");
+    String datePicker = "//div[@class='react-datepicker']//div[@aria-label='Choose %s, %s %s%s, %s']";
+    By btn_previousMonth = By.xpath("//button[@type='button' and @aria-label='Previous Month']");
+    By btn_nextMonth = By.xpath("//button[@type='button' and @aria-label='Next Month']");
+
+    public static boolean isDateInRange(String targetDay, String targetMonth, String targetDate, String targetYear,
+                                        String startDay, String startMonth, String startDate, String startYear,
+                                        String endDay, String endMonth, String endDate, String endYear) {
+        // Format the input dates
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+
+        LocalDate startDateObj = LocalDate.parse(startDate + " " + startMonth + " " + startYear, formatter);
+        LocalDate endDateObj = LocalDate.parse(endDate + " " + endMonth + " " + endYear, formatter);
+        LocalDate targetDateObj = LocalDate.parse(targetDate + " " + targetMonth + " " + targetYear, formatter);
+
+        // Check if the target date is within the range
+        return (targetDateObj.isEqual(startDateObj) || targetDateObj.isAfter(startDateObj)) &&
+                (targetDateObj.isEqual(endDateObj) || targetDateObj.isBefore(endDateObj));
+    }
+
+    private String getDateSuffix(String date) {
+        int day = Integer.parseInt(date);
+        if (day >= 11 && day <= 13) {
+            return "th"; // Special case for 11th, 12th, 13th
+        }
+        switch (day % 10) {
+            case 1: return "st";
+            case 2: return "nd";
+            case 3: return "rd";
+            default: return "th";
+        }
+    }
+
+    public void clickBtnNextMonth(){
+        distributorUI.click(btn_nextMonth);
+    }
+
+    public void clickBtnPreviousMonth(){
+        distributorUI.click(btn_previousMonth);
+    }
+
+    public void selectStartDate(String day, String month, String date, String year) {
+        String suffix = getDateSuffix(date);
+        String formattedDate = String.format(datePicker, day, month, date, suffix, year);
+        By startDate = By.xpath(formattedDate);
+        int maxAttempts = 12;
+        boolean dateFound = false;
+
+        for (int i = 0; i < maxAttempts; i++) {
+            if (distributorUI.isDisplayed(startDate)) {
+                distributorUI.click(startDate);
+                dateFound = true;
+                break;
+            }
+
+            if (i < 4) {
+                clickBtnPreviousMonth(); // Try navigating backward in the first few attempts
+            } else {
+                clickBtnNextMonth(); // Switch to navigating forward
+            }
+        }
+
+        if (!dateFound) {
+            throw new RuntimeException("Start date could not be found within the allowed attempts.");
+        }
+    }
+
+    public void selectEndDate(String day, String month, String date, String year) {
+        String suffix = getDateSuffix(date);
+        String formattedDate = String.format(datePicker, day, month, date, suffix, year);
+        By endDate = By.xpath(formattedDate);
+        int maxAttempts = 12; //Max attempts
+        boolean dateFound = false;
+
+        for (int i = 0; i < maxAttempts; i++) {
+            if (distributorUI.isDisplayed(endDate)) {
+                distributorUI.click(endDate);
+                dateFound = true;
+                break;
+            }
+
+            if (i < 4) {
+                clickBtnNextMonth(); // Try navigating forward in the first few attempts
+            } else {
+                clickBtnPreviousMonth(); // Switch to navigating backward
+            }
+        }
+
+        if (!dateFound) {
+            throw new RuntimeException("End date could not be found within the allowed attempts.");
+        }
+    }
+
+
+    public void clickDateRangeSelector(){
+        distributorUI.click(dateRange_Pay);
+    }
+
+    public boolean isPayoutStatusCorrect(String expectedPaymentStatus){
+        String paymentStatus = distributorUI.getText(payoutStatusFirstRow);
+        return expectedPaymentStatus.equals(paymentStatus);
+    }
+
+    public void selectOptionPayoutStatusDropdown(String paymentStatus){
+        By dropdownOption = By.xpath(option_payoutStatusDropdown.replace("OPTION", paymentStatus));
+        distributorUI.click(dropdownOption);
+    }
+
+    public void click_payoutStatusDropdown(){
+        distributorUI.click(dropDown_payoutStatus);
+    }
+
+    public boolean isNoResultTextDisplayed(){
+        return distributorUI.isDisplayed(txt_noResultsFound);
+    }
+
+    public boolean isCustomerNameCorrect(String expectedCustomerName){
+        String customerName = distributorUI.getText(customerNameFirstRow);
+        return expectedCustomerName.equals(customerName);
+    }
+
+    public void click_customerDropdown(){
+        distributorUI.click(dropDown_customer);
+    }
+
+    public boolean isPaymentStatusCorrect(String expectedPaymentStatus){
+        String paymentStatus = distributorUI.getText(paymentStatusFirstRow);
+        return expectedPaymentStatus.equals(paymentStatus);
+    }
+
+    public void selectOptionPaymentStatusDropdown(String paymentStatus){
+        By dropdownOption = By.xpath(option_paymentStatusDropdown.replace("OPTION", paymentStatus));
+        distributorUI.click(dropdownOption);
+    }
+
+    public void click_paymentStatusDropdown(){
+        distributorUI.click(dropDown_paymentStatus);
+    }
+
+    public void selectOptionCustomerDropdown(String customerOption){
+        By dropdownOption = By.xpath(option_customerDropdown.replace("OPTION", customerOption));
+        distributorUI.click(dropdownOption);
+    }
 
 
     public boolean isPayTextDisplayed(){
