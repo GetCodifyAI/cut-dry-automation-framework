@@ -27,15 +27,17 @@ public class ValidateTheCreditRequestPriceQuantityTotalInItemsSection extends Te
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+
         Dashboard.navigateToCreditRequests();
         softAssert.assertFalse(CreditRequests.isErrorTextDisplayed(),"Error Message Displayed");
         String[] CrResult = CreditRequests.getCrQtyCrValue();
         String CrQty = CrResult[0];
         String CrValue = CrResult[1];
         CreditRequests.clickOnFirstItemOfCreditRequests();
+        String CrItemName = CreditRequests.getItemNameInCR();
         CreditRequests.clickOnItems();
         softAssert.assertFalse(CreditRequests.isErrorTextDisplayed(),"Error Message Displayed");
-        softAssert.assertTrue(CreditRequests.getItemQtyItemPrice(CrQty, CrValue),"ERROR");
+        softAssert.assertTrue(CreditRequests.getItemQtyItemPrice(CrQty, CrValue, CrItemName),"The values in the Item Section CR are different from those in the Credit Request section.");
         softAssert.assertAll();
     }
 

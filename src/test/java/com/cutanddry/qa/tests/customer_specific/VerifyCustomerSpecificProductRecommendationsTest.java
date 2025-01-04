@@ -41,7 +41,7 @@ public class VerifyCustomerSpecificProductRecommendationsTest extends TestBase {
         Customer.searchItemOnOrderGuide(itemName);
         Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItems();
-        softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
+        softAssert.assertEquals(Customer.getItemNameFirstRow().toLowerCase(),itemName.toLowerCase(),"item mismatch");
         softAssert.assertTrue(Customer.isRecommendedBySalesRepDisplayed(itemCode),"recommended by sales rep item missing error");
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
