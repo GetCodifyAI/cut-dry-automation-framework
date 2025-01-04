@@ -91,7 +91,7 @@ public class CustomersPage extends LoginPage {
     By dropdown_alphabetical = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Alphabetical (A-Z)')]");
     By dropdown_itemCategories = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Item Categories')]");
     By txt_produce = By.xpath("//div[@class='flex-grow-1' and starts-with(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'produce')]");
-    By txt_firstItem = By.xpath("//div[text()='artichoke -24ct']");
+    By txt_firstItem = By.xpath("//div[translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'artichoke -24ct']");
     By txt_minOrderBanner = By.xpath("//div[contains(text(), 'Add a few more items worth') and contains(text(), 'to meet minimum order amount')]");
     By txt_popupAlertOrderMin = By.xpath("//h2[text()='Order Minimum Not Met']");
     By btn_previousDraftOrderNo = By.xpath("//div[contains(text(),'previous draft order')]/..//div[text()='No']");
@@ -878,10 +878,20 @@ public class CustomersPage extends LoginPage {
     public void selectAlphabetical(){
         distributorUI.waitForVisibility(dropdown_alphabetical);
         distributorUI.click(dropdown_alphabetical);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void selectItemCategories(){
         distributorUI.waitForVisibility(dropdown_itemCategories);
         distributorUI.click(dropdown_itemCategories);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public boolean isProduceTextDisplayed(){
         distributorUI.waitForVisibility(txt_produce);
