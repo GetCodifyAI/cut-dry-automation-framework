@@ -52,6 +52,10 @@
             <class name="com.cutanddry.qa.tests.track.ValidateEditUnassignedStopsTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateDeleteUnassignedStopsTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateTheDispatchRouteFlowTest"/>
+            <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfShowLastOrderedPriceOnTest"/>
+            <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfShowLastOrderedPriceOffTest"/>
+            <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfShowLastOrderedPriceOnForCustomerPortalTest"/>
+            <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfShowLastOrderedPriceOffForCustomerPortalTest"/>
         </classes>
     </test>
 </suite>
