@@ -10,7 +10,7 @@ public class CreditRequestsPage extends TestBase {
     By btn_search = By.xpath("//input[@placeholder='Search' and contains(@class, 'form-control')]");
     By first_row_credit_requests = By.xpath("//table[@class='table table-hover']//tbody//tr[1]");
     By first_row_credit_view = By.xpath("//table[@class='table table-hover']//tbody//tr[1]");
-    By txt_error = By.xpath("//*[contains(translate(text(), 'ERROR', 'error'), 'error')]");
+    By txt_error = By.xpath("//*[contains(translate(normalize-space(text()), 'ERROR', 'error'), 'error')]");
     By btn_items = By.xpath("//a[@role='tab' and @data-rb-event-key='Items']");
     By header_items_table = By.xpath("//thead/tr[@class='_jg41os']");
     By btn_timeline = By.xpath("//a[@role='tab' and @data-rb-event-key='Timeline']");
@@ -37,9 +37,17 @@ public class CreditRequestsPage extends TestBase {
     By txt_status = By.xpath("(//td[9])[1]");
     By btn_salesperson = By.xpath("//label[text()='Salesperson:']/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     String optionSalesperson = "//div[contains(@class, 'themed_select__menu')]//div[contains(text(), 'SALESPERSON')]";
-    By txt_priceColumnItems = By.xpath("//table[@class='mt-3 table table-hover']//tbody/tr[1]/td[4]");
-    By txt_QtyColumnItems = By.xpath("//table[@class='mt-3 table table-hover']//tbody/tr[1]/td[5]");
+//    By txt_priceColumnItems = By.xpath("//table[@class='mt-3 table table-hover']//tbody/tr[1]/td[4]");
+//    By txt_QtyColumnItems = By.xpath("//table[@class='mt-3 table table-hover']//tbody/tr[1]/td[5]");
+
+    String lbl_priceColumnItems = "//table[@class='mt-3 table table-hover']//tbody/tr[ROW]/td[4]";
+    String lbl_QtyColumnItems = "//table[@class='mt-3 table table-hover']//tbody/tr[ROW]/td[5]";
+    By lbl_itemRowCount = By.xpath("//table[@class='mt-3 table table-hover']//tbody/tr");
+    String lbl_itemName = "//table[@class='mt-3 table table-hover']//tbody/tr[ROW]/td//div[contains(text(), 'NAME')]";
+
+
     By txt_Order = By.xpath("//h2[contains(text(), 'Order')]");
+    By txt_CreditRequestTableItemNameValue = By.xpath("//table[@class='table table-hover']//tbody/tr[1]/td[2]");
     By txt_CreditRequestTableCrQty = By.xpath("//table[@class='table table-hover']//tbody/tr[1]/td[6]");
     By txt_CreditRequestTableCrValue = By.xpath("//table[@class='table table-hover']//tbody/tr[1]/td[7]");
     By btn_creditRequest = By.xpath("//a[@role='tab' and contains(@class, '_xh5xl28') and text()='Credit Request']");
@@ -138,12 +146,32 @@ public class CreditRequestsPage extends TestBase {
         return new String[] { CrQty, CrValue };
     }
 
-    public String[] getItemQtyItemPrice() {
-        String ItemQty = distributorUI.getText(txt_QtyColumnItems);
-        String ItemPrice = distributorUI.getText(txt_priceColumnItems);
+//    public String[] getItemQtyItemPrice() {
+//        String ItemQty = distributorUI.getText(txt_QtyColumnItems);
+//        String ItemPrice = distributorUI.getText(txt_priceColumnItems);
+//
+//        System.out.println(ItemQty);
+//        System.out.println(ItemPrice);
+//
+//        return new String[] { ItemQty, ItemPrice };
+//    }
+
+    public String[] getItemQtyItemPrice(String itemName ) {
+        String ItemQty = "";
+        String ItemPrice = "";
+
+        int rowCount = distributorUI.countElements(lbl_itemRowCount);
+        for (int i = 1; i <= rowCount ; i++) {
+            String actualItemName = distributorUI.getText(By.xpath(lbl_itemName.replace("ROW",String.valueOf(i)).replace("NAME",itemName)));
+            if (actualItemName.equalsIgnoreCase(itemName)) {
+                 ItemQty = distributorUI.getText(By.xpath(lbl_QtyColumnItems.replace("ROW",String.valueOf(i))));
+                 ItemPrice = distributorUI.getText(By.xpath(lbl_priceColumnItems.replace("ROW",String.valueOf(i))));
+            }
+        }
 
         System.out.println(ItemQty);
         System.out.println(ItemPrice);
+        System.out.println(itemName);
 
         return new String[] { ItemQty, ItemPrice };
     }
@@ -192,6 +220,9 @@ public class CreditRequestsPage extends TestBase {
     public void clickOnFirstItemOfCreditRequests() {
         distributorUI.waitForVisibility(first_row_credit_requests);
         distributorUI.click(first_row_credit_requests);
+    }
+    public String getItemNameInCR() {
+        return distributorUI.getText(txt_CreditRequestTableItemNameValue);
     }
 
     public void clickOnItems() {

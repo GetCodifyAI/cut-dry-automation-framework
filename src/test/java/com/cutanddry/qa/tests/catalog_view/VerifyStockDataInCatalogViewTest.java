@@ -27,8 +27,13 @@ public class VerifyStockDataInCatalogViewTest extends TestBase {
     @Test(groups = "DOT-TC-246")
     public void VerifyStockDataInCatalogView() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
+        // Pre-request
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        InternalTools.TurnOnTheDisplayingStockCount(true);
+
+//        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
+//        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DistributerName);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToCustomers();
@@ -37,19 +42,20 @@ public class VerifyStockDataInCatalogViewTest extends TestBase {
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"search error");
         Customer.clickOnOrderGuide(CustomerCode);
         Customer.SelectTestAutomationOrderGuide();
-        softAssert.assertTrue(Customer.isStockCountDisplayed(),"ERROR in Displaying Stock Count");
+        softAssert.assertTrue(Customer.isStockCountDisplayed(),"Not Displaying Stock Count");
 
         //Turning Off the Displaying Stock Count
-        Login.navigateToInternalToolsPage();
+       /* Login.navigateToInternalToolsPage();
         InternalTools.navigateToConfigureSupplier();
         InternalTools.navigateToIndependentCompEditDetails();
         InternalTools.navigateToOrderingSettingsTab();
         InternalTools.TurnOffStockLevelInPortal();
         InternalTools.SaveStockLevelTurnOffInPortal();
-        InternalTools.AccepSuccessfulOverlayByOK();
+        InternalTools.AccepSuccessfulOverlayByOK();*/
+        InternalTools.TurnOnTheDisplayingStockCount(false);
 
-        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+//        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
+//        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DistributerName);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToCustomers();
@@ -58,7 +64,7 @@ public class VerifyStockDataInCatalogViewTest extends TestBase {
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"search error");
         Customer.clickOnOrderGuide(CustomerCode);
         Customer.SelectTestAutomationOrderGuide();
-        softAssert.assertFalse(Customer.isStockCountDisplayed(),"ERROR in Displaying Stock Count");
+        softAssert.assertFalse(Customer.isStockCountDisplayed(),"Displaying Stock Count");
 
 
         softAssert.assertAll();
@@ -66,16 +72,17 @@ public class VerifyStockDataInCatalogViewTest extends TestBase {
 
     @AfterMethod
 
-    public void teardown(ITestResult result){
+    public void teardown(ITestResult result) throws InterruptedException {
 
         //Turning on the Displaying Stock Count
-        Login.navigateToInternalToolsPage();
+        /*Login.navigateToInternalToolsPage();
         InternalTools.navigateToConfigureSupplier();
         InternalTools.navigateToIndependentCompEditDetails();
         InternalTools.navigateToOrderingSettingsTab();
         InternalTools.TurnOnStockLevelInPortal();
         InternalTools.SaveStockLevelTurnOffInPortal();
-        InternalTools.AccepSuccessfulOverlayByOK();
+        InternalTools.AccepSuccessfulOverlayByOK();*/
+        InternalTools.TurnOnTheDisplayingStockCount(true);
 
 
         takeScreenshotOnFailure(result);
