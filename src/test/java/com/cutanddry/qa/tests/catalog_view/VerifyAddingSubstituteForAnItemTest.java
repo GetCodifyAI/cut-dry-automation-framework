@@ -37,6 +37,7 @@ public class VerifyAddingSubstituteForAnItemTest extends TestBase {
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
         Catalog.navigateToSubstituteTab();
+        Catalog.removeExistingItem(substituteItemCode);
         Catalog.addSubstitutions();
         String SubstituteItemName = Catalog.getSubstituteItemName(substituteItemCode);
         Catalog.searchAndAddSubstituteItem(substituteItemCode);

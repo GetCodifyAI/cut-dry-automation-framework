@@ -34,6 +34,7 @@ public class VerifyPreviewCatalogEditItemAddSubstituteTest extends TestBase {
         softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
         Catalog.selectFirstEditItem();
         Catalog.navigateToSubstituteTab();
+        Catalog.removeExistingItem(substituteItemCode);
         Catalog.addSubstitutions();
         String SubstituteItemName = Catalog.getSubstituteItemName(substituteItemCode);
         Catalog.searchAndAddSubstituteItem(substituteItemCode);
