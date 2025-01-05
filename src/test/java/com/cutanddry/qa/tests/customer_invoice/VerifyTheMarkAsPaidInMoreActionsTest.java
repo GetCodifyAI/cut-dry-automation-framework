@@ -15,7 +15,8 @@ import com.cutanddry.qa.base.TestBase;
 
 public class VerifyTheMarkAsPaidInMoreActionsTest extends TestBase {
     static User user;
-    String CustomerCode = CustomerInvoiceData.CUSTOMER_CODE;
+    String CustomerCode = CustomerInvoiceData.RESTAURANT_TEST_HAYES_ID;
+    String CustomerFilterOption = CustomerInvoiceData.CUSTOMER_FILTER_OPTION_PAST_DUE;
 
     @BeforeMethod
     public void setUp() {
@@ -34,6 +35,8 @@ public class VerifyTheMarkAsPaidInMoreActionsTest extends TestBase {
         softAssert.assertTrue(Customer.isSearchedRowDisplayed(CustomerCode),"The searched customer is not displayed");
         Customer.clickOnFirstItemOfCustomerRequests();
         Customer.clickonInvoice();
+        Customer.clickOnDropDownFilter();
+        Customer.selectFilterDropDown(CustomerFilterOption);
         Customer.clickOnCheckBox(1);
         Customer.clickDropdownMoreActions();
         Customer.clickMarkAsPaid();

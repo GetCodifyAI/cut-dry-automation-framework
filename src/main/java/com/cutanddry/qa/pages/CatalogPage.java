@@ -364,6 +364,9 @@ public class CatalogPage extends LoginPage{
         }
         distributorUI.click(By.xpath(deleteSubstituteItemBtn.replace("ITEMCODE",itemCode)));
     }
+    public boolean isDeleteSubstituteItemDisplayed(String itemCode){
+        return  distributorUI.isDisplayed(By.xpath(deleteSubstituteItemBtn.replace("ITEMCODE",itemCode)));
+    }
     public void clickSearchItemInCatalog(String itemName){
         distributorUI.click(searchField);
         distributorUI.sendKeys(searchField,itemName);
