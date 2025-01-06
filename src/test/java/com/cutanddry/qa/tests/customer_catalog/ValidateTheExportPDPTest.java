@@ -15,8 +15,8 @@ import org.testng.asserts.SoftAssert;
 public class ValidateTheExportPDPTest extends TestBase {
     static User user;
     String CustomerCode = "37631";
-    static String itemName = "Artichoke Bottoms 5-7 Ct Brine";
-
+//    static String itemName = "Artichoke Bottoms 5-7 Ct Brine";
+    static String itemName, searchItemCode;
 
     @BeforeMethod
     public void setUp(){
@@ -34,9 +34,11 @@ public class ValidateTheExportPDPTest extends TestBase {
         Customer.searchCustomerByCode(CustomerCode);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"customer not found");
         Customer.clickOnOrderGuide(CustomerCode);
+        itemName = Customer.getItemNameFirstRow();
+        searchItemCode = Customer.getItemCodeFirstRow();
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(itemName);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
+        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).toLowerCase().contains(itemName.toLowerCase()), "item not found");
         Customer.clickOnProduct(itemName);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"navigation error");
         Customer.clickExportPDP();

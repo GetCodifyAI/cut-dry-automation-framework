@@ -10,7 +10,7 @@ public class DraftPage extends LoginPage{
     By approveAndSubmitBtn = By.xpath("//button[contains(text(),'Approve & Submit Order')]");
     By btn_editOrder = By.xpath("//a[contains(text(),'Edit Order')]");
     String date = "//td[text()='DATE']";
-    By draftDate = By.xpath("//tr//td[1]//div[1]");
+    By draftDate = By.xpath("//tr//td[6]");
 
 
     public boolean isDraftsTextDisplayed(){

@@ -110,4 +110,130 @@ public class Track {
     public static boolean isPushTemplateAndPreviewDisplayed(){
         return trackPage.isPushTemplateAndPreviewDisplayed();
     }
+    public static void clickRouteCode(){
+        trackPage.clickRouteCode();
+    }
+    public static boolean isRouteCodePopupDisplayed(){
+        return trackPage.isRouteCodePopupDisplayed();
+    }
+    public static void clickEditRouteFunction(String editFunction){
+        trackPage.clickEditRouteFunction(editFunction);
+    }
+    public static boolean isEditRoutePopupDisplayed(){
+        return trackPage.isEditRoutePopupDisplayed();
+    }
+    public static void editRouteName(String name){
+        trackPage.editRouteName(name);
+    }
+    public static boolean isRouteEditedPopupDisplayed (){
+        return trackPage.isRouteEditedPopupDisplayed();
+    }
+    public static boolean isEditRouteNameDisplayed(String name){
+        return trackPage.isEditRouteNameDisplayed(name);
+    }
+    public static boolean isAddStopPopupDisplayed(){
+        return trackPage.isAddStopPopupDisplayed();
+    }
+    public static void addCustomerName(String name){
+        trackPage.addCustomerName(name);
+    }
+    public static void addCustomerCode(String code){
+        trackPage.addCustomerCode(code);
+    }
+    public static void addAddressStreet(String street){
+        trackPage.addAddressStreet(street);
+    }
+    public static void addAddressCity(String city){
+        trackPage.addAddressCity(city);
+    }
+    public static void addAddressState(String state){
+        trackPage.addAddressState(state);
+    }
+    public static void addAddressZipCode(String zipCode){
+        trackPage.addAddressZipCode(zipCode);
+    }
+    public static boolean isRouteStopAdded(String code){
+        return trackPage.isRouteStopAdded(code);
+    }
+    public static void clickRouteName(String name){
+        trackPage.clickRouteName(name);
+    }
+    public static void addBreak(){
+        trackPage.addBreak();
+    }
+    public static boolean isPlaceBreakAfterStopAdded(String name){
+        return trackPage.isPlaceBreakAfterStopAdded(name);
+    }
+    public static boolean validateStops(){
+        return trackPage.validateStops();
+    }
+    public static boolean validateStartDateAndTime(){
+        return trackPage.validateStartDateAndTime();
+    }
+    public static boolean validateDriver(){
+        return trackPage.validateDriver();
+    }
+    public static boolean validateTruckDistanceAndValue(){
+        return trackPage.validateTruckDistanceAndValue();
+    }
+    public static void uploadRoute(String path)throws InterruptedException{
+        if (trackPage.isUploadRouteTextDisplayed()){
+        trackPage.giveFilePath(path);
+        }else {
+            trackPage.clickDeleteRoute();
+            trackPage.giveFilePath(path);
+        }
+    }
+    public static boolean checkMapVisible(String status){
+        if (trackPage.isMapVisible()){
+            return trackPage.mapVisibleStatus(status);
+        }else trackPage.isMapHidden();{
+            trackPage.clickToShowMap();
+            return trackPage.mapVisibleStatus(status);
+        }
+    }
+    public static boolean checkMapHidden(String status){
+        if (trackPage.isMapHidden()){
+            return trackPage.mapVisibleStatus(status);
+        }else trackPage.isMapVisible();{
+            trackPage.clickToHiddenMap();
+            return trackPage.mapVisibleStatus(status);
+        }
+    }
+    public static void clickAddStop(){trackPage.clickAddStop();}
+    public static boolean isUnassignedStopAdded(String code){
+        return trackPage.isUnassignedStopAdded(code);
+    }
+    public static void clickEditUnassignStop(){
+        trackPage.clickEditUnassignStop();
+    }
+    public static void clickDeleteStop(){
+        trackPage.clickDeleteStop();
+    }
+    public static boolean isRemoveStopPopUpDisplayed(){
+        return trackPage.isRemoveStopPopUpDisplayed();
+    }
+    public static void clickYesButton(){
+        trackPage.clickYesButton();
+    }
+    public static boolean isRemoveStopSuccessfully(){
+        return trackPage.isRemoveStopSuccessfully();
+    }
+    public static boolean isDispatchRoutePopupDisplayed(){
+        return trackPage.isDispatchRoutePopupDisplayed();
+    }
+    public static void clickDispatch(){
+        trackPage.clickDispatch();
+    }
+    public static boolean AreYouSureToDispatchDisplayed(){
+        return trackPage.AreYouSureToDispatchDisplayed();
+    }
+    public static boolean dispatchSuccessDisplayed(){
+        return trackPage.dispatchSuccessDisplayed();
+    }
+    public static boolean isDispatchedTextDisplayed(){
+        return trackPage.isDispatchedTextDisplayed();
+    }
+
+
 }

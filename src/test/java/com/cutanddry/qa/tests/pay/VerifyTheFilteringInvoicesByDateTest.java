@@ -42,7 +42,7 @@ public class VerifyTheFilteringInvoicesByDateTest extends TestBase {
 
         expectedDate = generateUTCCurrentDateFormatted();
         Pay.selectInvoiceDateViaFilter(3);
-        softAssert.assertTrue(Pay.getInvoiceRecordDate(1).trim().contains(expectedDate.trim()), "The customer name in the first invoice record does not match the expected value.");
+        softAssert.assertTrue(Pay.getInvoiceRecordDate(1).trim().contains(expectedDate.trim()), "The Date in the first invoice record does not match the expected value.");
 
         softAssert.assertAll();
     }

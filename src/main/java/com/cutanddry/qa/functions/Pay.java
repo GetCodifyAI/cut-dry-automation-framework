@@ -104,6 +104,51 @@ public class Pay {
         payPage.clickOnInvoiceBulkActionButton();
     }
 
+    public static void selectTheBulkInvoiceOption(String option) {
+        payPage.selectInvoiceBulkOption(option);
+    }
+
+    public static boolean isPastDueInvoicePopupDisplayed(){
+        return payPage.isPastDueInvoicePopupDisplayed();
+    }
+
+    public static boolean isMarkPaidInvoicePopupDisplayed(){
+       return payPage.isMarkPaidInvoicePopupDisplayed();
+    }
+
+    public static boolean isInvoiceCaptureFundDisplayed(){
+        return payPage.isInvoiceCaptureFundDisplayed();
+    }
+
+    public static boolean isErrorPopUpDisplayed(){
+        return payPage.isErrorPopUpDisplayed();
+    }
+
+    public static boolean isInvoiceCaptureFundPopupDisplayed(){
+        return payPage.isInvoiceCaptureFundPopupDisplayed();
+    }
+
+
+    public static void clickOnYes() throws InterruptedException {
+        payPage.clickOnMarkPaidInvoicePopupYesButton();
+    }
+
+    public static void clickOnInvoiceCaptureFundPay() throws InterruptedException {
+        payPage.clickOnInvoiceCaptureFundPayButton();
+    }
+
+    public static void clickOnInvoiceSendReminders() throws InterruptedException {
+        payPage.clickOnInvoiceSendRemindersButton();
+    }
+
+    public static boolean isInvoiceEmailSentPopupDisplayed() {
+        return payPage.isInvoiceEmailSentPopupDisplayed();
+    }
+
+    public static void clickOnInvoiceOkButton() {
+        payPage.clickOnInvoiceOkButton();
+    }
+
     public static void clickOnInvoiceFirstRecord() {
         payPage.clickOnInvoiceFirstRecord();
     }
@@ -112,8 +157,10 @@ public class Pay {
         payPage.clickOnInvoiceFirstRecordSetting();
     }
 
-    public static void clickOnInvoiceRecord(int rowNo) {
-        payPage.clickOnInvoiceRecord(rowNo);
+    public static void clickOnInvoiceRecord(int rowCount) {
+        for (int i = 1; i <= rowCount; i++) {
+            payPage.clickOnInvoiceRecord(i);
+        }
     }
 
     public static String getInvoiceRecordID(int rowNo) throws InterruptedException {
@@ -144,6 +191,10 @@ public class Pay {
         return payPage.getInvoiceRecordStatusValue(rowNo);
     }
 
+    public static boolean isInvoiceRecordCustomerStatusExist(String status) {
+        return payPage.isInvoiceRecordCustomerStatusExist(status);
+    }
+
     public static String getInvoiceRecordAmount(int rowNo) throws InterruptedException {
         return payPage.getInvoiceRecordAmountValue(rowNo);
     }
@@ -158,6 +209,9 @@ public class Pay {
 
     public static String getLastWorkingDate(){
         return payPage.getLastWorkingDate();
+    }
+    public static void clickExportPayout(){
+        payPage.clickExportPayout();
     }
 
     public static void selectOptionCustomerDropdown(String customer){

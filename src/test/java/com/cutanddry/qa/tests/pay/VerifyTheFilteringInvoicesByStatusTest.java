@@ -44,20 +44,20 @@ public class VerifyTheFilteringInvoicesByStatusTest extends TestBase {
         softAssert.assertTrue(Pay.isEmptyInvoiceMsgDisplayed(), "Invoices are not cleared.");
 
         Pay.selectInvoiceStatusViaFilter(status_past_due);
-        softAssert.assertTrue(Pay.getInvoiceRecordStatus(1).trim().contains(status_past_due.trim()), "The customer name in the first invoice record does not match the expected value.");
+        softAssert.assertTrue(Pay.getInvoiceRecordStatus(1).trim().contains(status_past_due.trim()), "The past due status in the first invoice record does not match the expected value.");
 
         Pay.selectInvoiceStatusViaFilter(status_unpaid);
-        softAssert.assertTrue(Pay.getInvoiceRecordStatus(1).trim().contains(status_unpaid.trim()), "The customer name in the first invoice record does not match the expected value.");
+        softAssert.assertTrue(Pay.getInvoiceRecordStatus(1).trim().contains(status_unpaid.trim()), "The unpaid status in the first invoice record does not match the expected value.");
 
         // TODO: Need to uncomment the following status_scheduled test steps after fixing the prerequisite for status_scheduled creation.
 //        Pay.selectInvoiceStatusViaFilter(status_scheduled);
-//        softAssert.assertTrue(Pay.getInvoiceRecordStatus(1).trim().contains(status_scheduled.trim()), "The customer name in the first invoice record does not match the expected value.");
+//        softAssert.assertTrue(Pay.getInvoiceRecordStatus(1).trim().contains(status_scheduled.trim()), "The scheduled status in the first invoice record does not match the expected value.");
 
         Pay.selectInvoiceStatusViaFilter(status_processing);
-        softAssert.assertTrue(Pay.getInvoiceRecordStatus(1).trim().contains(status_processing.trim()), "The customer name in the first invoice record does not match the expected value.");
+        softAssert.assertTrue(Pay.getInvoiceRecordStatus(1).trim().contains(status_processing.trim()), "The processing status in the first invoice record does not match the expected value.");
 
         Pay.selectInvoiceStatusViaFilter(status_paid);
-        softAssert.assertTrue(Pay.getInvoiceRecordStatus(1).trim().contains(status_paid.trim()), "The customer name in the first invoice record does not match the expected value.");
+        softAssert.assertTrue(Pay.getInvoiceRecordStatus(1).trim().contains(status_paid.trim()), "The paid status in the first invoice record does not match the expected value.");
 
         softAssert.assertAll();
     }

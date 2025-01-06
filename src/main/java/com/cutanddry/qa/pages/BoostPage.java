@@ -5,12 +5,9 @@ package com.cutanddry.qa.pages;
 import com.cutanddry.qa.data.models.Broadcast;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class BoostPage extends LoginPage {
     By txt_boost = By.xpath("//li[contains(text(),'Boost')]");
@@ -80,6 +77,9 @@ public class BoostPage extends LoginPage {
     By deleteListOverlayTxt = By.xpath("//div[contains(@class,'_1j771rs _5x3l6t mt-3 mb-2') and text()='Delete List?']");
     By OverlayDeleteBtn = By.xpath("//button[contains(@class,'w-100 _len1zh btn btn-danger') and text()='Delete']");
     By toggleCarouselDisplayStatus = By.xpath("//div[@class='ml-4']//input[@type='checkbox' and @role='switch' and @checked]");
+    By enableSwitch = By.xpath("//td[text()='All Items']/parent::tr//div[contains(@class, 'react-switch-handle') and contains(@style, 'transform: translateX(19px);')]");
+    By disableSwitch = By.xpath("//td[text()='All Items']/parent::tr//div[contains(@class, 'react-switch-handle') and contains(@style, 'transform: translateX(1px);')]");
+    By toggleSwitch = By.xpath(" //td[text()='All Items']/parent::tr//div[contains(@class, 'react-switch-handle')]");
     By dropdown_status = By.xpath("//div[contains(text(),'Status')]");
     String dropdown_statusOption = "//div[contains(text(), 'option')]";
     By table_boost = By.xpath("//table[@class='mt-4 table table-hover']");
@@ -91,6 +91,8 @@ public class BoostPage extends LoginPage {
     By dropdown_notificationTime = By.xpath("//div[contains(text(),'Select time')]");
     By btn_OK = By.xpath("//button[text()='OK']");
     By btn_submit = By.xpath("//button[text()='Submit']");
+    By boostMsgExist = By.xpath("//h2[contains(text(),'Boost')]/..//tbody/tr//*[contains(@data-icon,'circle-xmark')]");
+    By clearMessageBtn = By.xpath("//button/*[contains(@data-icon,'circle-xmark')]");
     By sourceRowDragHandle = By.xpath("//tr[@data-rbd-draggable-id='340446843']//td[5]//*[name()='svg']");
     By targetRowDragHandle = By.xpath("//tr[@data-rbd-draggable-id='294915282']//td[5]//*[name()='svg']");
 
@@ -189,6 +191,14 @@ public class BoostPage extends LoginPage {
     }
     public boolean isSuggestiveTabDisplayed() {
         return distributorUI.isDisplayed(txt_topCategoryPicks);
+    }
+    public void ensureTopCategoryPicksDisplayStatus(boolean enable) throws InterruptedException {
+        distributorUI.waitForClickability(toggleSwitch);
+        boolean isCurrentlyEnabled = distributorUI.isDisplayed(enableSwitch);
+        if (isCurrentlyEnabled != enable) {
+            distributorUI.click(toggleSwitch);
+            distributorUI.waitForCustom(2000);
+        }
     }
     public void clickTopCategoryPicksConfig() {
         distributorUI.click(btn_topPicks_config);
@@ -436,4 +446,16 @@ public class BoostPage extends LoginPage {
         distributorUI.click(displayStatusToggle);
     }
 
+    public boolean containsBoostMsg(){
+        return distributorUI.isDisplayed(boostMsgExist);
+    }
+
+    public void removeBroadCastMsg(){
+        distributorUI.click(clearMessageBtn);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

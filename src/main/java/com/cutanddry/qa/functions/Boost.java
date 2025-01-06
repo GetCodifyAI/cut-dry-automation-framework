@@ -71,6 +71,9 @@ public class Boost {
     public static boolean isSuggestiveTabDisplayed(){
         return boostPage.isSuggestiveTabDisplayed();
     }
+    public static void ensureTopCategoryPicksDisplayStatus(boolean status) throws InterruptedException {
+        boostPage.ensureTopCategoryPicksDisplayStatus(status);
+    }
     public static void clickTopCategoryPicksConfig(){
         boostPage.clickTopCategoryPicksConfig();
     }
@@ -273,4 +276,13 @@ public class Boost {
     public static void changeOrderDragAndDrop(){
         boostPage.changeOrderDragAndDrop();
     }
+
+    public static void clearExistingBoostMessageIfExists(){
+        while(boostPage.containsBoostMsg()) {
+            boostPage.removeBroadCastMsg();
+            boostPage.clickYes();
+            boostPage.clickBtnOK();
+        }
+    }
+
 }

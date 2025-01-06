@@ -140,6 +140,16 @@ public class SettingsPage extends LoginPage{
     By checkbox_emailAutoOrderDeskAlert = By.xpath("//tr[td[text()='Auto Order Desk Alerts']]//td[2]//input[@type='checkbox']");
     By checkbox_smsAutoOrderDeskAlert = By.xpath("//tr[td[text()='Auto Order Desk Alerts']]//td[3]//input[@type='checkbox']");
     By txt_h2Success = By.xpath("//h2[text()='Success']");
+    String detailsARContacts = "//div[contains(text(),'CONTACTS')]//*[name()='svg' and @data-icon='circle-info']";
+    String messageContacts = "//div[contains(text(),'MESSAGE')]";
+    By lbl_arContact = By.xpath("//div[contains(text(),'AR Contacts')]/../following-sibling::div[1]//input[@type='email']");
+    By lbl_technicalContact = By.xpath("//div[contains(text(),'Technical Contacts')]/../following-sibling::div[1]//input[@type='email']");
+    String invalidContactPopUp = "//h2[text()='MESSAGE']";
+    By txt_customerRestriction =By.xpath("//div[contains(text(),'Customer Restrictions')]");
+    By sponsorProdAdsToggle = By.xpath("//div[contains(text(), 'Allow Sponsored Product Advertisements')]/../../following-sibling::div//div[@class='react-switch-bg']");
+    By generalSettingSaveChanges = By.xpath("(//button[text()='Save Changes'])[1]");
+    By buyerEdgePlatformRebateToggle = By.xpath("//div[contains(text(), 'Allow Buyers Edge Platform Rebate Tags')]/../../following-sibling::div//div[@class='react-switch-bg']");
+
 
     public void clickSaveChanges(){
         distributorUI.waitForVisibility(btn_saveChange);
@@ -852,4 +862,53 @@ public class SettingsPage extends LoginPage{
         String warehouseLocation = txt_warehouseLocation.replace("TARGET",name);
         return distributorUI.isDisplayed(By.xpath(warehouseLocation));
     }
+    public void hoverContacts(String contacts) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        distributorUI.hoverOverElement(By.xpath(detailsARContacts.replace("CONTACTS", contacts)));
+    }
+    public boolean isContactMessageDisplayed(String message){
+        distributorUI.waitForVisibility(By.xpath(messageContacts.replace("MESSAGE",message)));
+        return distributorUI.isDisplayed(By.xpath(messageContacts.replace("MESSAGE",message)));
+    }
+    public void enterEmailToARContact(String email){
+        distributorUI.clear(lbl_arContact);
+        if (email != null && !email.isEmpty()) {  // Only send keys if email is provided
+            distributorUI.sendKeys(lbl_arContact, email);
+        }
+    }
+    public void enterEmailToTechnicalContact(String email){
+        distributorUI.clear(lbl_technicalContact);
+        if (email != null && !email.isEmpty()) {  // Only send keys if email is provided
+            distributorUI.sendKeys(lbl_technicalContact, email);
+        }
+    }
+    public boolean isInvalidPopUpDisplayed(String message){
+        try {
+            distributorUI.waitForVisibility(By.xpath(invalidContactPopUp.replace("MESSAGE", message)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(invalidContactPopUp.replace("MESSAGE", message)));
+    }
+    public boolean isCustomerRestrictionTextDisplayed() throws InterruptedException {
+        try {
+            distributorUI.waitForVisibility(txt_customerRestriction);
+        } catch (Exception e){
+            return false;
+        }
+        distributorUI.waitForCustom(4000);
+        return distributorUI.isDisplayed(txt_customerRestriction);
+    }
+    public void clickSponsorProdAdsToggle(){
+        distributorUI.waitForVisibility(sponsorProdAdsToggle);
+        distributorUI.clickUsingJavaScript(sponsorProdAdsToggle);
+    }
+    public void clickGeneralSettingSaveChanges(){
+        distributorUI.click(generalSettingSaveChanges);
+    }
+    public void clickBuyerEdgePlatformRebateToggle(){
+        distributorUI.waitForVisibility(buyerEdgePlatformRebateToggle);
+        distributorUI.clickUsingJavaScript(buyerEdgePlatformRebateToggle);
+    }
+
 }

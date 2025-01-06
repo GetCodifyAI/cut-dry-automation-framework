@@ -12,11 +12,14 @@ import org.testng.ITestResult;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import com.cutanddry.qa.base.TestBase;
-import org.testng.reporters.ICustomizeXmlReport;
 
-public class VerifyTheMarkAsPaidInMoreActions extends TestBase {
+public class VerifyTheCreateCreditMemoInMoreActionsTest extends TestBase {
     static User user;
     String CustomerCode = CustomerInvoiceData.CUSTOMER_CODE;
+    String CreditMemoNumber = CustomerInvoiceData.CREDIT_MEMO_NUMBER;
+    String AssociatedInvoive = CustomerInvoiceData.ASSOCIATED_INVOICE;
+    String CreditMemoAmount = CustomerInvoiceData.CREDIT_MEMO_AMOUNT;
+    String CreditMemoDescription = CustomerInvoiceData.CREDIT_MEMO_DESCRIPTION;
 
     @BeforeMethod
     public void setUp() {
@@ -35,11 +38,14 @@ public class VerifyTheMarkAsPaidInMoreActions extends TestBase {
         softAssert.assertTrue(Customer.isSearchedRowDisplayed(CustomerCode),"The searched customer is not displayed");
         Customer.clickOnFirstItemOfCustomerRequests();
         Customer.clickonInvoice();
-        Customer.clickOnCheckBox(1);
         Customer.clickDropdownMoreActions();
-        Customer.clickMarkAsPaid();
-        Customer.clickOnYes();
-        softAssert.assertTrue(Customer.isMarkedAsPaidSuccessfullyDisplayed(),"There has been an error marking invoices as paid");
+        Customer.clickCreateCreditMemo();
+        Customer.typeCreditMemoNumber(CreditMemoNumber);
+        Customer.fillDropdownAssociatedInvoice(AssociatedInvoive);
+        Customer.typeCreditMemoAmount(CreditMemoAmount);
+        Customer.typeCreditMemoDescription(CreditMemoDescription);
+        Customer.clickBtnCreateCreditMemo();
+        softAssert.assertTrue(Customer.isCreditMemoFinalized(CreditMemoNumber),"There has been an error creating the credit memo");
         Customer.clickOK();
         softAssert.assertAll();
     }

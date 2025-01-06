@@ -970,5 +970,9 @@ public class KeywordBase {
         }
     }
 
+    public String getCssValue(By locator, String propertyName) {
+        WebElement element = driver.findElement(locator);
+        return element.getCssValue(propertyName);
+    }
 
 }
