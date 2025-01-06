@@ -446,6 +446,9 @@ String lbl_orderGuideItem = "//div[contains(@data-tip, 'View Product Details') a
     By btn_cancelAutoPay = By.xpath("//button[text()='Cancel Auto Pay' and contains(@class, 'btn-outline-primary')]");
     By lbl_itemCodeList = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[2])[1]");
     By btn_catalogPlus = By.xpath("//*[name()='svg' and @data-icon='plus']");
+    String btn_catalogPDPPlusStable = "(//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')]/following::div//*[name()='svg' and contains(@data-icon, 'plus')])[1]";
+
+
     By btn_catalogMinus = By.xpath("//*[name()='svg' and @data-icon='minus']");
     By sel_visibleOption = By.xpath("//div[contains(text(),'Visible')]");
     By txt_visible = By.xpath("//div[contains(text(),'Visible')]");
@@ -2553,6 +2556,11 @@ String lbl_orderGuideItem = "//div[contains(@data-tip, 'View Product Details') a
 
     public void clickPlusSearchedSingleItem(){
         distributorUI.click(btn_catalogPlus);
+    }
+
+    public void clickOnPlusIconInCatalogPDP(String name){
+        distributorUI.waitForVisibility(By.xpath(btn_catalogPDPPlusStable.replace("NAME", name)));
+        distributorUI.click(By.xpath(btn_catalogPDPPlusStable.replace("NAME", name)));
     }
 
     public void clickMinusSearchedSingleItem(){

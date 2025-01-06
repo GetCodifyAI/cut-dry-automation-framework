@@ -46,7 +46,8 @@ public class PlaceAnCustomerDeliveryOrderViaCatalogTest extends TestBase {
 
         Customer.searchItemOnCatalog(searchItemCode);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
-        Customer.clickPlusSearchedSingleItem(1);
+//        Customer.clickPlusSearchedSingleItem(1);
+        Customer.clickOnPlusIconInCatalogPDP(1, itemName);
         softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice,"The item has not been selected.");
         Customer.checkoutItems();
 
