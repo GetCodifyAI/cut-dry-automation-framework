@@ -65,6 +65,7 @@ public class PayPage extends LoginPage{
     String lbl_invoiceRecordAmount = "//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[ROW_COUNT]/td[8]";
     String lbl_invoiceRecordBalanceDue = "//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[ROW_COUNT]/td[9]";
     String btn_invoiceRecordSetting = "//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[ROW_COUNT]/td[10]//button";
+    By btn_exportPayout = By.xpath("//a[contains(text(),'Export Payouts')]");
 
 
     public boolean isPayTextDisplayed(){
@@ -413,6 +414,9 @@ public class PayPage extends LoginPage{
 
     public String getLastWorkingDate() {
         return distributorUI.getLastWorkingDay();
+    }
+    public void clickExportPayout(){
+        distributorUI.click(btn_exportPayout);
     }
 
 

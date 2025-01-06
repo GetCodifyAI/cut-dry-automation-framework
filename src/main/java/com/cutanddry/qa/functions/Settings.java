@@ -409,4 +409,32 @@ public class Settings {
     public static void clickSaveChanges(){
         settingsPage.clickSaveChanges();
     }
+    public static void hoverContacts(String contacts)throws InterruptedException{
+        settingsPage.hoverContacts(contacts);
+    }
+    public static boolean isContactMessageDisplayed(String message){
+        return settingsPage.isContactMessageDisplayed(message);
+    }
+    public static void enterEmailToARContact(String email){
+        settingsPage.enterEmailToARContact(email);
+    }
+    public static void enterEmailToTechnicalContact(String email){
+        settingsPage.enterEmailToTechnicalContact(email);
+    }
+    public static boolean isInvalidPopUpDisplayed(String message){
+        return settingsPage.isInvalidPopUpDisplayed(message);
+    }
+    public static boolean isCustomerRestrictionTextDisplayed()throws InterruptedException{
+        return settingsPage.isCustomerRestrictionTextDisplayed();
+    }
+    public static void clickSponsorProdAdsToggle(){
+        settingsPage.clickSponsorProdAdsToggle();
+    }
+    public static void clickGeneralSettingSaveChanges(){
+        settingsPage.clickGeneralSettingSaveChanges();
+    }
+    public static void clickBuyerEdgePlatformRebateToggle(){
+        settingsPage.clickBuyerEdgePlatformRebateToggle();
+    }
+
 }
