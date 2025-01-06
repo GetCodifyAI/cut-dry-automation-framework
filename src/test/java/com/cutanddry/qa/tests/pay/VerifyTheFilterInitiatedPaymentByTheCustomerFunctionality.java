@@ -18,6 +18,16 @@ public class VerifyTheFilterInitiatedPaymentByTheCustomerFunctionality extends T
     SoftAssert softAssert;
     static String customerName = "Cafe Pay Demo";
 
+    String startDay = "Sunday";
+    String startMonth = "December";
+    String startDate = "1";
+    String startYear = "2024";
+
+    String endDay = "Saturday";
+    String endMonth = "January";
+    String endDate = "4";
+    String endYear = "2025";
+
     @BeforeMethod
     public void setUp() {
         initialization();
@@ -33,6 +43,7 @@ public class VerifyTheFilterInitiatedPaymentByTheCustomerFunctionality extends T
         Pay.clickOnPaymentsInit();
         softAssert.assertTrue(Pay.isPaymentsInitBtnSelected(), "The user is unable to land on the Invoice tab.");
         Pay.selectOptionCustomerDropdown(customerName);
+        Pay.selectTimeRange(startDay,  startMonth,  startDate,  startYear, endDay,  endMonth,  endDate,  endYear);
         softAssert.assertTrue(Pay.isCustomerNameCorrect(customerName), "The correct customer name is not displayed");
         softAssert.assertAll();
     }

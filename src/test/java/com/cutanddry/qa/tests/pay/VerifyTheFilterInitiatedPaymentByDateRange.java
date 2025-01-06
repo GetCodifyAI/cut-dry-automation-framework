@@ -19,13 +19,15 @@ public class VerifyTheFilterInitiatedPaymentByDateRange extends TestBase {
     SoftAssert softAssert;
     String startDay = "Sunday";
     String startMonth = "December";
-    String startDate = "22";
+    String startDate = "1";
     String startYear = "2024";
 
     String endDay = "Saturday";
     String endMonth = "January";
     String endDate = "4";
     String endYear = "2025";
+
+    String payoutStatus = "All";
 
     @BeforeMethod
     public void setUp() {
@@ -41,8 +43,9 @@ public class VerifyTheFilterInitiatedPaymentByDateRange extends TestBase {
         Dashboard.navigateToPay();
         Pay.clickOnPaymentsInit();
         softAssert.assertTrue(Pay.isPaymentsInitBtnSelected(), "The user is unable to land on the Invoice tab.");
+        Pay.selectOptionPayoutStatusDropdown(payoutStatus);
         Pay.selectTimeRange(startDay,  startMonth,  startDate,  startYear, endDay,  endMonth,  endDate,  endYear);
-        softAssert.assertTrue(Pay.isDateRangeCorrect(), "The date range is not selected correctly");
+        softAssert.assertTrue(Pay.isDateRangeCorrect(startMonth, startDate, startYear, endMonth, endDate, endYear), "The date range is not selected correctly");
         softAssert.assertAll();
     }
 

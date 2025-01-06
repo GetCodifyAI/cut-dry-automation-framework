@@ -243,13 +243,6 @@ public class Pay {
         payPage.selectOptionPayoutStatusDropdown(paymentStatus);
     }
 
-    public static boolean isPayoutStatusCorrect(String expectedStatus){
-        if (payPage.isNoResultTextDisplayed()){
-            return true;
-        }
-        else return payPage.isPayoutStatusCorrect(expectedStatus);
-    }
-
     public static void selectTimeRange(String startDay, String startMonth, String startDate, String startYear,
                                        String endDay, String endMonth, String endDate, String endYear) {
         payPage.clickDateRangeSelector();
@@ -257,14 +250,16 @@ public class Pay {
         payPage.selectEndDate(endDay, endMonth, endDate, endYear);
     }
 
-    public static boolean isDateRangeCorrect(){
-        if (payPage.isNoResultTextDisplayed()){
+    public static boolean isDateRangeCorrect(String startMonth, String startDate, String startYear, String endMonth, String endDate, String endYear){
+        if (payPage.isTimestampInRange(startMonth, startDate, startYear, endMonth, endDate, endYear)){
             return true;
         }
-        else{
-            return false; //Need to update this based on the format of the timestamp
+        else {
+            return payPage.isNoResultTextDisplayed();
         }
     }
 
-
+    public static void clearDateRangeSelector(){
+        payPage.clearDateRangeSelector();
+    }
 }

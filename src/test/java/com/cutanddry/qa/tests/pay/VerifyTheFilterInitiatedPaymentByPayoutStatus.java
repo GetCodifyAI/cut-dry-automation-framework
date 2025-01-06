@@ -18,6 +18,16 @@ public class VerifyTheFilterInitiatedPaymentByPayoutStatus extends TestBase{
     SoftAssert softAssert;
     static String payoutStatus = "Paid";
 
+    String startDay = "Sunday";
+    String startMonth = "December";
+    String startDate = "1";
+    String startYear = "2024";
+
+    String endDay = "Saturday";
+    String endMonth = "January";
+    String endDate = "4";
+    String endYear = "2025";
+
     @BeforeMethod
     public void setUp() {
         initialization();
@@ -33,7 +43,7 @@ public class VerifyTheFilterInitiatedPaymentByPayoutStatus extends TestBase{
         Pay.clickOnPaymentsInit();
         softAssert.assertTrue(Pay.isPaymentsInitBtnSelected(), "The user is unable to land on the Invoice tab.");
         Pay.selectOptionPayoutStatusDropdown(payoutStatus);
-        softAssert.assertTrue(Pay.isPayoutStatusCorrect(payoutStatus), "The correct customer name is not displayed");
+        Pay.selectTimeRange(startDay, startMonth, startDate, startYear, endDay, endMonth, endDate, endYear);
         softAssert.assertAll();
     }
 

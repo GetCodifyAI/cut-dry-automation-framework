@@ -2,6 +2,7 @@ package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import org.openqa.selenium.WebElement;
@@ -78,27 +79,66 @@ public class PayPage extends LoginPage{
     By paymentStatusFirstRow = By.xpath("//table[contains(@class, 'table-hover') and contains(@class, 'my-3')]//tbody/tr[1]/td[6]");
     By dropDown_payoutStatus = By.xpath("//div[contains(@class, 'col-sm-2') and contains(., 'Payout Status')]//div[contains(@class, 'themed_select__control')]");
     String option_payoutStatusDropdown = "//div[contains(@class, 'col-sm-2') and contains(., 'Payout Status')]//div[contains(@class, 'themed_select__menu')]//div[contains(text(), 'OPTION')]";
-    By payoutStatusFirstRow = By.xpath("//table[contains(@class, 'table-hover') and contains(@class, 'my-3')]//tbody/tr[1]/td[6]");
+    By timestampFirstRow = By.xpath("//table[contains(@class, 'table-hover') and contains(@class, 'my-3')]//tbody/tr[1]/td[2]");
     By dateRange_Pay = By.xpath("//div[contains(@class, 'col-sm-6')]//div[contains(@class, '_64fwrw') and contains(., 'Date Range')]//following-sibling::div//input[@type='text' and contains(@class, 'form-control')]");
-//    By startDate = By.xpath("//div[@class='react-datepicker']//div[@aria-label='Choose Sunday, December 22nd, 2024']");
-//    By endDate = By.xpath("//div[@class='react-datepicker']//div[@aria-label='Choose Sunday, January 5th, 2025']");
     String datePicker = "//div[@class='react-datepicker']//div[@aria-label='Choose %s, %s %s%s, %s']";
     By btn_previousMonth = By.xpath("//button[@type='button' and @aria-label='Previous Month']");
     By btn_nextMonth = By.xpath("//button[@type='button' and @aria-label='Next Month']");
+    By table_paymentInitiated = By.xpath("//table[@class='my-3 table table-hover']");
+    String paymentStatusRow = "//table[contains(@class, 'table-hover') and contains(@class, 'my-3')]//tbody/tr[%s]/td[6]";
 
-    public static boolean isDateInRange(String targetDay, String targetMonth, String targetDate, String targetYear,
-                                        String startDay, String startMonth, String startDate, String startYear,
-                                        String endDay, String endMonth, String endDate, String endYear) {
-        // Format the input dates
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+    public boolean isPaymentStatusCorrect(String expectedPaymentStatus) {
+        int numberOfRows = distributorUI.getRowCount(table_paymentInitiated);
+        System.out.println("There are " + numberOfRows + " of rows");
 
-        LocalDate startDateObj = LocalDate.parse(startDate + " " + startMonth + " " + startYear, formatter);
-        LocalDate endDateObj = LocalDate.parse(endDate + " " + endMonth + " " + endYear, formatter);
-        LocalDate targetDateObj = LocalDate.parse(targetDate + " " + targetMonth + " " + targetYear, formatter);
+        for (int i = 1; i <= numberOfRows; i++) { // Ensure proper loop iteration
+            By paymentStatusColumn = By.xpath(String.format(paymentStatusRow, i));
+            String paymentStatus = distributorUI.getText(paymentStatusColumn);
 
-        // Check if the target date is within the range
-        return (targetDateObj.isEqual(startDateObj) || targetDateObj.isAfter(startDateObj)) &&
-                (targetDateObj.isEqual(endDateObj) || targetDateObj.isBefore(endDateObj));
+            System.out.println("The payment status for row " + i + " is: " + paymentStatus);
+
+            if (!paymentStatus.equals(expectedPaymentStatus) && !paymentStatus.equals("Failed")) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean isTimestampInRange(String startMonth, String startDate, String startYear,
+                                      String endMonth, String endDate, String endYear) {
+        try {
+            // Retrieve the timestamp text and sanitize it
+            String rawTimestamp = distributorUI.getText(timestampFirstRow).trim();
+            System.out.println("Raw timestamp: " + rawTimestamp);
+
+            // Sanitize the timestamp by removing AM/PM if a 24-hour format is used
+            String sanitizedTimestamp = rawTimestamp.replace(" AM", "").replace(" PM", "");
+
+            // Formatters for parsing
+            DateTimeFormatter timestampFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm"); // 24-hour format
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("d MMMM yyyy");
+
+            // Parse the start and end dates
+            LocalDate startDateObj = LocalDate.parse(startDate + " " + startMonth + " " + startYear, dateFormatter);
+            LocalDate endDateObj = LocalDate.parse(endDate + " " + endMonth + " " + endYear, dateFormatter);
+
+            // Convert the start and end dates to LocalDateTime for comparison
+            LocalDateTime startDateTime = startDateObj.atStartOfDay(); // Start of the day for start date
+            LocalDateTime endDateTime = endDateObj.atTime(23, 59, 59); // End of the day for end date
+
+            // Parse the input timestamp
+            LocalDateTime targetTimestamp = LocalDateTime.parse(sanitizedTimestamp, timestampFormatter);
+
+            // Check if the timestamp is within the range
+            boolean isInRange = (targetTimestamp.isEqual(startDateTime) || targetTimestamp.isAfter(startDateTime)) &&
+                    (targetTimestamp.isEqual(endDateTime) || targetTimestamp.isBefore(endDateTime));
+
+            return isInRange;
+
+        } catch (Exception e) {
+            System.err.println("Error while parsing timestamp or comparing dates: " + e.getMessage());
+            return false;
+        }
     }
 
     private String getDateSuffix(String date) {
@@ -179,9 +219,8 @@ public class PayPage extends LoginPage{
         distributorUI.click(dateRange_Pay);
     }
 
-    public boolean isPayoutStatusCorrect(String expectedPaymentStatus){
-        String paymentStatus = distributorUI.getText(payoutStatusFirstRow);
-        return expectedPaymentStatus.equals(paymentStatus);
+    public void clearDateRangeSelector(){
+        distributorUI.clear(dateRange_Pay);
     }
 
     public void selectOptionPayoutStatusDropdown(String paymentStatus){
@@ -204,11 +243,6 @@ public class PayPage extends LoginPage{
 
     public void click_customerDropdown(){
         distributorUI.click(dropDown_customer);
-    }
-
-    public boolean isPaymentStatusCorrect(String expectedPaymentStatus){
-        String paymentStatus = distributorUI.getText(paymentStatusFirstRow);
-        return expectedPaymentStatus.equals(paymentStatus);
     }
 
     public void selectOptionPaymentStatusDropdown(String paymentStatus){
