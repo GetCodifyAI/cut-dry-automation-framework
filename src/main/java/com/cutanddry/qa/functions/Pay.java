@@ -210,5 +210,8 @@ public class Pay {
     public static String getLastWorkingDate(){
         return payPage.getLastWorkingDate();
     }
+    public static void clickExportPayout(){
+        payPage.clickExportPayout();
+    }
 
 }
