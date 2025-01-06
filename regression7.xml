@@ -52,6 +52,10 @@
             <class name="com.cutanddry.qa.tests.track.ValidateEditUnassignedStopsTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateDeleteUnassignedStopsTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateTheDispatchRouteFlowTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingContactDetailsTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyTheAllowSponsoredProductAdvertisementsFlowTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyTheAllowBuyersEdgePlatformRebateTagsFlowTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheExportPayoutsFunctionalityTest"/>
         </classes>
     </test>
 </suite>
