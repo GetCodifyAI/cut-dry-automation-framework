@@ -42,6 +42,8 @@ public class VerifySubmitDraftOrderByAddingItemsViaOrderGuideCatalogPDPTest exte
         itemPrice = Customer.getActiveItemPriceFirstRow();
         Customer.searchItemOnOrderGuide(searchItemCode);
         Customer.increaseFirstRowQtyCustom(1);
+        System.out.println(Customer.getItemPriceOnCheckoutButton());
+        System.out.println(itemPrice);
         softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice,"The item has not been selected.");
         Customer.checkoutItems();
 
@@ -54,12 +56,14 @@ public class VerifySubmitDraftOrderByAddingItemsViaOrderGuideCatalogPDPTest exte
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         Draft.clickEditOrder();
         Customer.increaseFirstRowQtyCustom(1);
+        System.out.println(Customer.getItemPriceOnCheckoutButton());
+        System.out.println(itemPrice);
         softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice*2,"The item has not been selected.");
 
         // Add the product via Catalog
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(searchItemCode);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
+        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
         Customer.clickPlusSearchedSingleItem(1);
         softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice*3,"The item has not been selected.");
 

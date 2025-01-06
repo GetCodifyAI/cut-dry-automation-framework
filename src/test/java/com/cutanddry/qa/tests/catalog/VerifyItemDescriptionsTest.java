@@ -44,7 +44,7 @@ public class VerifyItemDescriptionsTest extends TestBase {
 
 //        Customer.searchItemOnCatalog(item);
         Customer.searchItemOnCatalog(searchItemCode);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
+        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found in catalog");
         Customer.clickOnProduct(itemName);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
 //        itemName = Customer.getFirstElementFrmSearchResults(item);
@@ -52,7 +52,7 @@ public class VerifyItemDescriptionsTest extends TestBase {
 //        softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"navigation error");
 //        itemNamePDP = Customer.getItemNamePDPView();
 //        softAssert.assertEquals(itemName,itemNamePDP,"name mismatch");
-        softAssert.assertTrue(Customer.getItemNamePDPView().contains(itemName), "item not found");
+        softAssert.assertTrue(Customer.getItemNamePDPView(itemName).contains(itemName.toLowerCase()), "item name not found in PDP View");
         softAssert.assertAll();
     }
 
