@@ -65,6 +65,7 @@
             <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByStatusFunctionality"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByTheCustomerFunctionality"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheDetailsByClickingOnOnePayoutRecordTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterPayoutPaymentsByDateTest"/>
         </classes>
     </test>
 </suite>
