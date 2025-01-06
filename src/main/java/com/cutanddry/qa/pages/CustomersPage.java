@@ -30,7 +30,8 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
 
 //    String btn_addToCart = "//div[contains(@class, '_13kb1gk')]//div[text()= 'ITEMNAME']//ancestor::div[contains(@class, '_13kb1gk')]//div[@class='_btf6h0']//button[contains(@class, 'btn-outline-primary')]";
 //    String btn_addToCart = "//*[contains(text(), 'ITEMNAME')]/ancestor::div[contains(@class, 'card')]//button[contains(text(), 'Add to Cart')]";
-    String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(text(),'ITEMNAME')])[last()]/ancestor::div[contains(@class, 'card')]//*[name()='svg' and @data-icon='plus']";
+//    String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(text(),'ITEMNAME')])[last()]/ancestor::div[contains(@class, 'card')]//*[name()='svg' and @data-icon='plus']";
+    String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate('ITEMNAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')])[last()]/ancestor::div[contains(@class, 'card')]//*[name()='svg' and @data-icon='plus']";
     By tbx_itemQuantityFirstRow = By.xpath("//tr[1]//td[8]//input");
     By lbl_itemPriceFirstRow = By.xpath("//tr[1]//td[7]/span");
     By lbl_itemPriceSecondRow = By.xpath("//tr[2]//td[7]//input");
@@ -206,7 +207,8 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By txt_pricePDP = By.xpath("//span[contains(text(), '$')]");
     By img_catalog = By.xpath("//img[contains(@class, 'card-img-top')]");
     String txt_catalogItem ="(//div[contains(text(), 'NAME')])[last()]";
-    By txt_namePDP = By.xpath("//div[contains(@class, 'd-flex align-items-center mont') and contains(@class, '_1wrelxt') and contains(@class, '_1vlidrf')]");
+//    By txt_namePDP = By.xpath("//div[contains(@class, 'd-flex align-items-center mont') and contains(@class, '_1wrelxt') and contains(@class, '_1vlidrf')]");
+    String txt_namePDP = "//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'ITEMNAME']";
     By lbl_orders = By.xpath("//li[contains(text(),'Orders')]");
     By txt_allItems = By.xpath("//div[text()='All Items']");
     By txt_priceZero = By.xpath("//tbody//span[contains(text(), '$0.00')]");
@@ -586,7 +588,7 @@ String lbl_orderGuideItem = "//div[contains(@data-tip, 'View Product Details') a
             throw new RuntimeException(e);
         }
         distributorUI.waitForVisibility(By.xpath(lbl_catalogSearchItemList.replace("NAME", name)));
-        return distributorUI.getText(By.xpath(lbl_catalogSearchItemList.replace("NAME", name)));
+        return distributorUI.getText(By.xpath(lbl_catalogSearchItemList.replace("NAME", name))).toLowerCase();
     }
     public void clickAddToCartCatalog(String ItemName) throws InterruptedException {
         distributorUI.waitForClickability(By.xpath(btn_addToCart.replace("ITEMNAME",ItemName)));
@@ -627,9 +629,9 @@ String lbl_orderGuideItem = "//div[contains(@data-tip, 'View Product Details') a
     }
     public void clickPlusQryCatalogSearchValueTwo() throws InterruptedException {
         distributorUI.click(btn_increaseQtyCatalogSearchValueTwo);
-        distributorUI.waitForCustom(2000);
-        distributorUI.waitForClickability(btn_checkout);
         distributorUI.waitForCustom(4000);
+        distributorUI.waitForClickability(btn_checkout);
+        distributorUI.waitForCustom(2000);
     }
     public void clickMinusQryCatalogSearchValueOne(){
         distributorUI.click(btn_decreaseQtyCatalogSearchValueOne);
@@ -1403,9 +1405,10 @@ String lbl_orderGuideItem = "//div[contains(@data-tip, 'View Product Details') a
         distributorUI.waitForVisibility(By.xpath(txt_catalogItem.replace("NAME", name)));
         distributorUI.clickUsingJavaScript(By.xpath(txt_catalogItem.replace("NAME", name)));
     }
-    public String getItemNamePDPView() throws InterruptedException {
+    public String getItemNamePDPView(String itemName) throws InterruptedException {
         distributorUI.waitForCustom(4000);
-        return distributorUI.getText(txt_namePDP);
+        return distributorUI.getText(By.xpath(txt_namePDP.replace("ITEMNAME",itemName.toLowerCase()))).toLowerCase();
+//        return distributorUI.getText(txt_namePDP);
     }
     public boolean isOrdersTxtDisplayed(){
         return distributorUI.isDisplayed(lbl_orders);

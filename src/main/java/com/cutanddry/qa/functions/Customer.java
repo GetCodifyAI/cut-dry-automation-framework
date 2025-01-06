@@ -652,8 +652,8 @@ public class Customer {
     public static void clickOnCatalogItem(String name){
         customersPage.clickOnCatalogItem(name);
     }
-    public static String getItemNamePDPView() throws InterruptedException {
-        return customersPage.getItemNamePDPView();
+    public static String getItemNamePDPView(String itemName) throws InterruptedException {
+        return customersPage.getItemNamePDPView(itemName);
     }
     public static boolean isNavigatedToOrderGuide(){
         return customersPage.isOrdersTxtDisplayed();

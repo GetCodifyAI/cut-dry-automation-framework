@@ -57,7 +57,7 @@ public class VerifySubmitDraftOrderByAddingItemsFromCatalogTest extends TestBase
 
         // Add the product via Catalog
         Customer.searchItemOnCatalog(searchItemCode);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
+        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
         Customer.clickPlusSearchedSingleItem(1);
         softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice*2,"The item has not been selected.");
 

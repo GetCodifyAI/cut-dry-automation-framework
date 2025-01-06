@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyCashAndCarryAppSimulatingAVSMatchTest extends TestBase {
     static CashAndCarryAppUser user;
     static String appURL = "https://dicarlo-uat.staging.cutanddry.com/market/dicarlo";
-    static String itemName = "Alfalfa Sprouts";
+    static String itemName = "Alfalfa Sprouts Cups";
 
     @BeforeMethod
     public void setUp() {
@@ -28,7 +28,7 @@ public class VerifyCashAndCarryAppSimulatingAVSMatchTest extends TestBase {
         CashAndCarry.navigateToCashAndCarryApp(appURL);
         softAssert.assertTrue(CashAndCarry.isUserNavigatedToCashAndCarry(),"navigation error");
         Customer.searchItemOnCatalog(itemName);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
+        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
         Customer.addItemToCartCatalog(itemName);
         Customer.checkoutItemsDist();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");

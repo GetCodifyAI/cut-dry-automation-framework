@@ -44,7 +44,7 @@ public class PlaceAnCustomerDeliveryOrderViaPDPTest extends TestBase {
         Customer.goToCatalog();
 
         Customer.searchItemOnCatalog(searchItemCode);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
+        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
         Customer.clickOnProduct(itemName);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
         Customer.clickAddToCartPDP();
