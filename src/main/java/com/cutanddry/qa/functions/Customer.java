@@ -1379,6 +1379,12 @@ public class Customer {
         }
     }
 
+    public static void clickOnPlusIconInCatalogPDP(int count, String name) {
+        for (int i=0; i<count;i++){
+            customersPage.clickOnPlusIconInCatalogPDP(name);
+        }
+    }
+
     public static void clickMinusSearchedSingleItem(int count) {
         for (int i=0; i<count;i++){
             customersPage.clickMinusSearchedSingleItem();
