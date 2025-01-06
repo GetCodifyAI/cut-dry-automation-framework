@@ -1,6 +1,10 @@
 package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -66,6 +70,194 @@ public class PayPage extends LoginPage{
     String lbl_invoiceRecordBalanceDue = "//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[ROW_COUNT]/td[9]";
     String btn_invoiceRecordSetting = "//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[ROW_COUNT]/td[10]//button";
     By btn_exportPayout = By.xpath("//a[contains(text(),'Export Payouts')]");
+    By dropDown_customer = By.xpath("//div[contains(@class, 'col-sm-2') and contains(., 'Customer')]//div[contains(@class, 'themed_select__control')]");
+    String option_customerDropdown = "//div[contains(@class, 'col-sm-2') and contains(., 'Customer')]//div[contains(@class, 'themed_select__menu')]//div[contains(text(), 'OPTION')]";
+    By customerNameFirstRow = By.xpath("//table[contains(@class, 'table-hover') and contains(@class, 'my-3')]//tbody/tr[1]/td[4]");
+    By txt_noResultsFound = By.xpath("//div[text()='No results found.']");
+    By dropDown_paymentStatus = By.xpath("//div[contains(@class, 'col-sm-2') and contains(., 'Payment Status')]//div[contains(@class, 'themed_select__control')]");
+    String option_paymentStatusDropdown = "//div[contains(@class, 'col-sm-2') and contains(., 'Payment Status')]//div[contains(@class, 'themed_select__menu')]//div[contains(text(), 'OPTION')]";
+    By paymentStatusFirstRow = By.xpath("//table[contains(@class, 'table-hover') and contains(@class, 'my-3')]//tbody/tr[1]/td[6]");
+    By dropDown_payoutStatus = By.xpath("//div[contains(@class, 'col-sm-2') and contains(., 'Payout Status')]//div[contains(@class, 'themed_select__control')]");
+    String option_payoutStatusDropdown = "//div[contains(@class, 'col-sm-2') and contains(., 'Payout Status')]//div[contains(@class, 'themed_select__menu')]//div[contains(text(), 'OPTION')]";
+    By timestampFirstRow = By.xpath("//table[contains(@class, 'table-hover') and contains(@class, 'my-3')]//tbody/tr[1]/td[2]");
+    By dateRange_Pay = By.xpath("//div[contains(@class, 'col-sm-6')]//div[contains(@class, '_64fwrw') and contains(., 'Date Range')]//following-sibling::div//input[@type='text' and contains(@class, 'form-control')]");
+    String datePicker = "//div[@class='react-datepicker']//div[@aria-label='Choose %s, %s %s%s, %s']";
+    By btn_previousMonth = By.xpath("//button[@type='button' and @aria-label='Previous Month']");
+    By btn_nextMonth = By.xpath("//button[@type='button' and @aria-label='Next Month']");
+    By table_paymentInitiated = By.xpath("//table[@class='my-3 table table-hover']");
+    String paymentStatusRow = "//table[contains(@class, 'table-hover') and contains(@class, 'my-3')]//tbody/tr[%s]/td[6]";
+
+    public boolean isPaymentStatusCorrect(String expectedPaymentStatus) {
+        int numberOfRows = distributorUI.getRowCount(table_paymentInitiated);
+        System.out.println("There are " + numberOfRows + " of rows");
+
+        for (int i = 1; i <= numberOfRows; i++) { // Ensure proper loop iteration
+            By paymentStatusColumn = By.xpath(String.format(paymentStatusRow, i));
+            String paymentStatus = distributorUI.getText(paymentStatusColumn);
+
+            System.out.println("The payment status for row " + i + " is: " + paymentStatus);
+
+            if (!paymentStatus.equals(expectedPaymentStatus) && !paymentStatus.equals("Failed")) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean isTimestampInRange(String startMonth, String startDate, String startYear,
+                                      String endMonth, String endDate, String endYear) {
+        try {
+            // Retrieve the timestamp text and sanitize it
+            String rawTimestamp = distributorUI.getText(timestampFirstRow).trim();
+            System.out.println("Raw timestamp: " + rawTimestamp);
+
+            // Sanitize the timestamp by removing AM/PM if a 24-hour format is used
+            String sanitizedTimestamp = rawTimestamp.replace(" AM", "").replace(" PM", "");
+
+            // Formatters for parsing
+            DateTimeFormatter timestampFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm"); // 24-hour format
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("d MMMM yyyy");
+
+            // Parse the start and end dates
+            LocalDate startDateObj = LocalDate.parse(startDate + " " + startMonth + " " + startYear, dateFormatter);
+            LocalDate endDateObj = LocalDate.parse(endDate + " " + endMonth + " " + endYear, dateFormatter);
+
+            // Convert the start and end dates to LocalDateTime for comparison
+            LocalDateTime startDateTime = startDateObj.atStartOfDay(); // Start of the day for start date
+            LocalDateTime endDateTime = endDateObj.atTime(23, 59, 59); // End of the day for end date
+
+            // Parse the input timestamp
+            LocalDateTime targetTimestamp = LocalDateTime.parse(sanitizedTimestamp, timestampFormatter);
+
+            // Check if the timestamp is within the range
+            boolean isInRange = (targetTimestamp.isEqual(startDateTime) || targetTimestamp.isAfter(startDateTime)) &&
+                    (targetTimestamp.isEqual(endDateTime) || targetTimestamp.isBefore(endDateTime));
+
+            return isInRange;
+
+        } catch (Exception e) {
+            System.err.println("Error while parsing timestamp or comparing dates: " + e.getMessage());
+            return false;
+        }
+    }
+
+    private String getDateSuffix(String date) {
+        int day = Integer.parseInt(date);
+        if (day >= 11 && day <= 13) {
+            return "th"; // Special case for 11th, 12th, 13th
+        }
+        switch (day % 10) {
+            case 1: return "st";
+            case 2: return "nd";
+            case 3: return "rd";
+            default: return "th";
+        }
+    }
+
+    public void clickBtnNextMonth(){
+        distributorUI.click(btn_nextMonth);
+    }
+
+    public void clickBtnPreviousMonth(){
+        distributorUI.click(btn_previousMonth);
+    }
+
+    public void selectStartDate(String day, String month, String date, String year) {
+        String suffix = getDateSuffix(date);
+        String formattedDate = String.format(datePicker, day, month, date, suffix, year);
+        By startDate = By.xpath(formattedDate);
+        int maxAttempts = 12;
+        boolean dateFound = false;
+
+        for (int i = 0; i < maxAttempts; i++) {
+            if (distributorUI.isDisplayed(startDate)) {
+                distributorUI.click(startDate);
+                dateFound = true;
+                break;
+            }
+
+            if (i < 4) {
+                clickBtnPreviousMonth(); // Try navigating backward in the first few attempts
+            } else {
+                clickBtnNextMonth(); // Switch to navigating forward
+            }
+        }
+
+        if (!dateFound) {
+            throw new RuntimeException("Start date could not be found within the allowed attempts.");
+        }
+    }
+
+    public void selectEndDate(String day, String month, String date, String year) {
+        String suffix = getDateSuffix(date);
+        String formattedDate = String.format(datePicker, day, month, date, suffix, year);
+        By endDate = By.xpath(formattedDate);
+        int maxAttempts = 12; //Max attempts
+        boolean dateFound = false;
+
+        for (int i = 0; i < maxAttempts; i++) {
+            if (distributorUI.isDisplayed(endDate)) {
+                distributorUI.click(endDate);
+                dateFound = true;
+                break;
+            }
+
+            if (i < 4) {
+                clickBtnNextMonth(); // Try navigating forward in the first few attempts
+            } else {
+                clickBtnPreviousMonth(); // Switch to navigating backward
+            }
+        }
+
+        if (!dateFound) {
+            throw new RuntimeException("End date could not be found within the allowed attempts.");
+        }
+    }
+
+
+    public void clickDateRangeSelector(){
+        distributorUI.click(dateRange_Pay);
+    }
+
+    public void clearDateRangeSelector(){
+        distributorUI.clear(dateRange_Pay);
+    }
+
+    public void selectOptionPayoutStatusDropdown(String paymentStatus){
+        By dropdownOption = By.xpath(option_payoutStatusDropdown.replace("OPTION", paymentStatus));
+        distributorUI.click(dropdownOption);
+    }
+
+    public void click_payoutStatusDropdown(){
+        distributorUI.click(dropDown_payoutStatus);
+    }
+
+    public boolean isNoResultTextDisplayed(){
+        return distributorUI.isDisplayed(txt_noResultsFound);
+    }
+
+    public boolean isCustomerNameCorrect(String expectedCustomerName){
+        String customerName = distributorUI.getText(customerNameFirstRow);
+        return expectedCustomerName.equals(customerName);
+    }
+
+    public void click_customerDropdown(){
+        distributorUI.click(dropDown_customer);
+    }
+
+    public void selectOptionPaymentStatusDropdown(String paymentStatus){
+        By dropdownOption = By.xpath(option_paymentStatusDropdown.replace("OPTION", paymentStatus));
+        distributorUI.click(dropdownOption);
+    }
+
+    public void click_paymentStatusDropdown(){
+        distributorUI.click(dropDown_paymentStatus);
+    }
+
+    public void selectOptionCustomerDropdown(String customerOption){
+        By dropdownOption = By.xpath(option_customerDropdown.replace("OPTION", customerOption));
+        distributorUI.click(dropdownOption);
+    }
 
 
     public boolean isPayTextDisplayed(){

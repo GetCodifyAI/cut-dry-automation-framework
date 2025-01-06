@@ -214,4 +214,52 @@ public class Pay {
         payPage.clickExportPayout();
     }
 
+    public static void selectOptionCustomerDropdown(String customer){
+        payPage.click_customerDropdown();
+        payPage.selectOptionCustomerDropdown(customer);
+    }
+
+    public static boolean isCustomerNameCorrect(String expectedCustomer){
+        if (payPage.isNoResultTextDisplayed()){
+            return true;
+        }
+        else return payPage.isCustomerNameCorrect(expectedCustomer);
+    }
+
+    public static void selectOptionPaymentStatusDropdown(String paymentStatus){
+        payPage.click_paymentStatusDropdown();
+        payPage.selectOptionPaymentStatusDropdown(paymentStatus);
+    }
+
+    public static boolean isPaymentStatusCorrect(String expectedStatus){
+        if (payPage.isNoResultTextDisplayed()){
+            return true;
+        }
+        else return payPage.isPaymentStatusCorrect(expectedStatus);
+    }
+
+    public static void selectOptionPayoutStatusDropdown(String paymentStatus){
+        payPage.click_payoutStatusDropdown();
+        payPage.selectOptionPayoutStatusDropdown(paymentStatus);
+    }
+
+    public static void selectTimeRange(String startDay, String startMonth, String startDate, String startYear,
+                                       String endDay, String endMonth, String endDate, String endYear) {
+        payPage.clickDateRangeSelector();
+        payPage.selectStartDate(startDay, startMonth, startDate, startYear);
+        payPage.selectEndDate(endDay, endMonth, endDate, endYear);
+    }
+
+    public static boolean isDateRangeCorrect(String startMonth, String startDate, String startYear, String endMonth, String endDate, String endYear){
+        if (payPage.isTimestampInRange(startMonth, startDate, startYear, endMonth, endDate, endYear)){
+            return true;
+        }
+        else {
+            return payPage.isNoResultTextDisplayed();
+        }
+    }
+
+    public static void clearDateRangeSelector(){
+        payPage.clearDateRangeSelector();
+    }
 }
