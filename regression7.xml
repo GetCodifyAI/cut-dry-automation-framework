@@ -60,6 +60,10 @@
             <class name="com.cutanddry.qa.tests.settings.VerifyTheAllowSponsoredProductAdvertisementsFlowTest"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyTheAllowBuyersEdgePlatformRebateTagsFlowTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheExportPayoutsFunctionalityTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByDateRange"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByPayoutStatus"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByStatusFunctionality"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByTheCustomerFunctionality"/>
         </classes>
     </test>
 </suite>
