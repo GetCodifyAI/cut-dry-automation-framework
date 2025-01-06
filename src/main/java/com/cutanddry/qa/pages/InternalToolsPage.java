@@ -13,6 +13,12 @@ public class InternalToolsPage extends LoginPage {
     By disableCatalogDropDown = By.xpath("(//div[contains(text(), 'Disable catalog for:')]/following-sibling::div//div)[2]");
     String catalogOptionSelect = "(//div[text()='CATALOGDROPDOWNOPTION'])[last()]";
     By catalogSettingsSaveBtn = By.xpath("//div[h5[text()='Catalog']]/following-sibling::div//button[contains(text(), 'Save')]");
+    By sponsoredAdsRebatesTab = By.xpath("//a[contains(text(),'Sponsored Ads + Rebates')]");
+    By sponsoredProductAdsToggle =By.xpath("//div[contains(text(), 'Enable Sponsored Product Advertisements')]/../following-sibling::div//div[@class='react-switch-bg']");
+    By btn_saveProductAds = By.xpath("//div[contains(h4, 'Sponsored Ads')]/button[contains(@class, 'btn') and text()='Save']");
+    By buyerEdgePlatformRebateToggle =By.xpath("//div[contains(text(), 'Buyers Edge Platform Rebates')]/../following-sibling::div//div[@class='react-switch-bg']");
+    By btn_saveRebate = By.xpath("//div[contains(h4, 'Rebates')]/button[contains(@class, 'btn') and text()='Save']");
+
 
     public void clickConfigureSupplier(){
         distributorUI.click(configureSupplierTxt);
@@ -57,5 +63,21 @@ public class InternalToolsPage extends LoginPage {
         distributorUI.scrollToElement(catalogSettingsSaveBtn);
         distributorUI.waitForVisibility(catalogSettingsSaveBtn);
         distributorUI.clickUsingJavaScript(catalogSettingsSaveBtn);
+    }
+    public void clickOnSponsoredAdsRebates(){
+        distributorUI.waitForVisibility(sponsoredAdsRebatesTab);
+        distributorUI.click(sponsoredAdsRebatesTab);
+    }
+    public void clickSponsoredProductAdsToggle(){
+        distributorUI.click(sponsoredProductAdsToggle);
+    }
+    public void clickProductAdsSave(){
+        distributorUI.click(btn_saveProductAds);
+    }
+    public void clickBuyerEdgePlatformRebateToggle(){
+        distributorUI.click(buyerEdgePlatformRebateToggle);
+    }
+    public void clickRebateSave(){
+        distributorUI.click(btn_saveRebate);
     }
 }

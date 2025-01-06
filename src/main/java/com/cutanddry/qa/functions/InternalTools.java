@@ -44,5 +44,20 @@ public class InternalTools {
     public static void catalogSettingsSave(){
         internalToolsPage.clickCatalogSettingsSaveBtn();
     }
+    public static void navigateToSponsoredAdsRebatesTab(){
+        internalToolsPage.clickOnSponsoredAdsRebates();
+    }
+    public static void clickSponsoredProductAdsToggle(){
+        internalToolsPage.clickSponsoredProductAdsToggle();
+    }
+    public static void clickProductAdsSave(){
+        internalToolsPage.clickProductAdsSave();
+    }
+    public static void clickBuyerEdgePlatformRebateToggle(){
+        internalToolsPage.clickBuyerEdgePlatformRebateToggle();
+    }
+    public static void clickRebateSave(){
+        internalToolsPage.clickRebateSave();
+    }
 
 }
