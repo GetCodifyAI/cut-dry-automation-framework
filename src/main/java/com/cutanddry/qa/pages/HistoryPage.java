@@ -21,6 +21,7 @@ public class HistoryPage extends LoginPage{
     By btn_yes = By.xpath("//button[text()='Yes']");
     By btn_close = By.xpath("//button[text()='Close']");
     By txt_whichItemsHasError = By.xpath("//h2[contains(text(),'Which items had an issue')]");
+    By btn_checkInOrder = By.xpath("//button[contains(@class, 'btn') and contains(., 'Check-In Order')]");
 
     public boolean isTxtWhichItemsHasError() {
         try {
@@ -131,8 +132,12 @@ public class HistoryPage extends LoginPage{
         }
         return distributorUI.isDisplayed(txt_orderHistory);
     }
-    public void clickFirstItemFrmHistory(){
+    public void clickFirstItemFrmHistory()throws InterruptedException{
+        distributorUI.waitForCustom(2000);
         distributorUI.waitForClickability(lbl_firstItemInHistory);
         distributorUI.click(lbl_firstItemInHistory);
+    }
+    public void clickCheckInOrder(){
+        distributorUI.click(btn_checkInOrder);
     }
 }

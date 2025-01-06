@@ -1664,5 +1664,9 @@ public class Customer {
     public static boolean isLastOrderedPriceNotSameAfterToggleOff(){
         return customersPage.isLastOrderedPriceNotSameAfterToggle();
     }
+    public static void clickOnCheckoutButtonOperator()throws InterruptedException{
+        customersPage.clickOnCheckoutButtonOperator();
+        Thread.sleep(4000);
+    }
 
 }
