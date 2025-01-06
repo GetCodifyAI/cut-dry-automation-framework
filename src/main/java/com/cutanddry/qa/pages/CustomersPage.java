@@ -25,7 +25,9 @@ public class CustomersPage extends LoginPage {
     By tbx_catalogSearch = By.xpath("//input[@placeholder='Search catalog...']");
 //    String lbl_catalogSearchItemList = "//button[contains(@data-for,'tooltipundefined')]/ancestor::div[2]/following-sibling::div[2]/div/div[contains(text(),'NAME')]";
 //    String lbl_catalogSearchItemList = "//button[contains(text(), 'Add to Cart')]/ancestor::div//*[contains(text(), 'NAME')]";
-    String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[contains(text(),'NAME')])[last()]";
+//    String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[contains(text(),'NAME')])[last()]";
+String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]";
+
 //    String btn_addToCart = "//div[contains(@class, '_13kb1gk')]//div[text()= 'ITEMNAME']//ancestor::div[contains(@class, '_13kb1gk')]//div[@class='_btf6h0']//button[contains(@class, 'btn-outline-primary')]";
 //    String btn_addToCart = "//*[contains(text(), 'ITEMNAME')]/ancestor::div[contains(@class, 'card')]//button[contains(text(), 'Add to Cart')]";
     String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(text(),'ITEMNAME')])[last()]/ancestor::div[contains(@class, 'card')]//*[name()='svg' and @data-icon='plus']";
@@ -91,7 +93,7 @@ public class CustomersPage extends LoginPage {
     By dropdown_alphabetical = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Alphabetical (A-Z)')]");
     By dropdown_itemCategories = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Item Categories')]");
     By txt_produce = By.xpath("//div[@class='flex-grow-1' and starts-with(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'produce')]");
-    By txt_firstItem = By.xpath("//div[text()='artichoke -24ct']");
+    By txt_firstItem = By.xpath("//div[translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'artichoke -24ct']");
     By txt_minOrderBanner = By.xpath("//div[contains(text(), 'Add a few more items worth') and contains(text(), 'to meet minimum order amount')]");
     By txt_popupAlertOrderMin = By.xpath("//h2[text()='Order Minimum Not Met']");
     By btn_previousDraftOrderNo = By.xpath("//div[contains(text(),'previous draft order')]/..//div[text()='No']");
@@ -367,27 +369,28 @@ public class CustomersPage extends LoginPage {
     By allItemsOption = By.xpath("//div[contains(text(), 'All Items')]");
     By brandDropDown = By.xpath("//div[contains(text(), 'Brand')]");
     By brandDropDownOption = By.xpath("//div[contains(text(), 'Bob')]");
-    By txt_filterByBrand =By.xpath("//button[@data-tip='View Brand Page']//*[contains(text(), 'Red Mill')]");
+    By txt_filterByBrand =By.xpath("//button[@data-tip='View Brand Page']//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'red mill')]");
     By itemStatusDropDown = By.xpath("//div[contains(text(), 'Item Status')]");
     By itemStatusDropDownOption = By.xpath("//div[contains(text(), 'Stocked')]");
     By storageTypeDropDown = By.xpath("//div[contains(text(), 'Storage Type')]");
     By storageTypeDropDownOption = By.xpath("//div[@class='_du1frc _17ct4f8 w-100 pr-1' and contains(text(), 'Dry')]");
     By dietTypeDropDown = By.xpath("//div[contains(text(), 'Diet Type')]");
     By dietTypeDropDownOption = By.xpath("//div[@class='_du1frc _17ct4f8 w-100 pr-1' and contains(text(), 'Kosher')]");
-    By txt_filterItem = By.xpath("//div[contains(text(), 'Family Kitchen Baked Potato Soup 4/4lb Frozen')]");
+    By txt_filterItem = By.xpath("//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'family kitchen baked potato soup 4/4lb frozen')]");
     By processingTypeDropDown = By.xpath("//div[contains(text(), 'Processing & Formulation')]");
     By processingTypeDropOption = By.xpath("//div[contains(text(), 'Non-GMO')]");
     By txt_noItems = By.xpath("//div[contains(text(), '0 Results')]");
     By btn_clearAllFilters = By.xpath("//button[contains(text(), 'Clear All Filters')]");
     By radioButton =By.xpath("//div[@class = 'align-middle']");
-    String txt_product = "//div[contains(@class,'_3quvq7 _1vlidrf' ) and contains(text(), 'NAME')]";
+//    String txt_product = "//div[contains(@class,'_3quvq7 _1vlidrf' ) and contains(text(), 'NAME')]";
+String txt_product = "//div[contains(@class,'_3quvq7 _1vlidrf' ) and contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]";
     By btn_addToCartPDP = By.xpath("//button[contains(@class,'d-flex align-items-center justify-content-center cdbutton _1g89unu _du1frc text-nowrap w-100 btn btn-outline-primary btn-sm' ) and contains(text(), 'Add to Cart')]");
     By btn_checkOutPDP = By.xpath("//button[@data-for='cartCheckoutButton' and contains(text(),'$')]");
     By txt_orderConfirmationPopUp = By.xpath("//strong[contains(text(), 'Thank you for your order!')]");
     By btn_addOrderGuideHeart = By.xpath("//button[@class='d-flex align-items-center justify-content-center cdbutton w-100 _fousr2 fa-stack btn btn-primary btn-sm' and @data-tip='Add to Order Guide']");
     By btn_catalogToOrderGuide = By.xpath("//div[text()='Order Guide']");
-    String lbl_orderGuideItem = "//div[contains(@class, 'text-capitalize _1i69w9z') and contains(text(),'NAME')]";
-    By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items-center justify-content-center cdbutton w-100 _fousr2 fa-stack btn btn-primary btn-sm' and @data-tip='Remove from Order Guide']");
+//    String lbl_orderGuideItem = "//div[contains(@class, 'text-capitalize _1i69w9z') and contains(text(),'NAME')]";
+String lbl_orderGuideItem = "//div[contains(@data-tip, 'View Product Details') and contains(translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]";    By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items-center justify-content-center cdbutton w-100 _fousr2 fa-stack btn btn-primary btn-sm' and @data-tip='Remove from Order Guide']");
     By btn_rightArrow = By.xpath("(//div[@class='_1gmghi1'])[1]");
     By btn_leftArrow = By.xpath("(//div[@class='_35991e'])[1]");
     By btn_exportPDP = By.xpath("//button[contains(text(), 'Export PDP (pdf)')]");
@@ -427,7 +430,9 @@ public class CustomersPage extends LoginPage {
     By btn_i_agree = By.xpath("//button[text()='I Agree' and contains(@class, 'btn-primary')]");
     By btn_enable_auto_pay = By.xpath("//button[text()='Enable Auto Pay' and contains(@class, 'btn-primary')]");
     By txt_under_auto_pay = By.xpath("//div[div[contains(@class, 'font-weight-bold') and text()='Auto Pay']]/div[@class='_jehyy2']");
-    By lbl_itemPriceList = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]//span)[1]");
+//    By lbl_itemPriceList = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]//span)[1]");
+    By lbl_itemPriceList = By.xpath("((//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-1]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-1]//span)[1])[1]");
+    By lbl_itemPriceList1 = By.xpath("((//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-1]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-1]//span)[1])[2]");
     By btn_minusQtyFirstRow = By.xpath("(//*[name()='svg' and @data-icon='minus'])[1]");
     By tbx_itemQuantityinFirstRow = By.xpath("(//*[@data-input ='quantityInput'])[1]");
     By lbl_cartItemUnitPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//span)[1]");
@@ -503,6 +508,8 @@ public class CustomersPage extends LoginPage {
     By section_dontForgetToBuy = By.xpath("//div[text()=\"Don't Forget to Buy\"]");
     By txt_duplicateOrder = By.xpath("//h2[@class='swal2-title' and @id='swal2-title' and text()='Duplicate Order']");
     By btn_addNewPaymentMtd = By.xpath("//div[contains(text(),'Add a new payment method')]");
+    By txt_lastOrderedPrice = By.xpath("//td[contains(@class,'font-weight-light py-3 text-nowrap') and contains(text(),'/lb')]");
+    By txt_lastOrderedPriceOff = By.xpath("//td[contains(@class, 'py-3') and div[contains(text(), '1 CS')]]");
 
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
@@ -874,10 +881,20 @@ public class CustomersPage extends LoginPage {
     public void selectAlphabetical(){
         distributorUI.waitForVisibility(dropdown_alphabetical);
         distributorUI.click(dropdown_alphabetical);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void selectItemCategories(){
         distributorUI.waitForVisibility(dropdown_itemCategories);
         distributorUI.click(dropdown_itemCategories);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public boolean isProduceTextDisplayed(){
         distributorUI.waitForVisibility(txt_produce);
@@ -2538,7 +2555,7 @@ public class CustomersPage extends LoginPage {
         distributorUI.click(btn_catalogMinus);
     }
 
-    public double getActiveItemPriceFirstRow() throws InterruptedException {
+    /*public double getActiveItemPriceFirstRow() throws InterruptedException {
         distributorUI.waitForVisibility(lbl_itemPriceList);
         String tagName = distributorUI.getElement(lbl_itemPriceList).getTagName();
         String priceText;
@@ -2549,6 +2566,30 @@ public class CustomersPage extends LoginPage {
         }
 
         return Double.valueOf(priceText.replace("$", "").trim());
+    }*/
+
+    public double getActiveItemPriceFirstRow() throws InterruptedException {
+        try {
+            return extractPrice(lbl_itemPriceList);
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPrice(lbl_itemPriceList1);
+        }
+    }
+
+    private double extractPrice(By priceLocator) throws InterruptedException {
+        distributorUI.waitForVisibility(priceLocator);
+        String tagName = distributorUI.getElement(priceLocator).getTagName();
+        String priceText;
+
+        if (tagName.equals("input")) {
+            priceText = distributorUI.getText(priceLocator, "value");
+        } else {
+            priceText = distributorUI.getText(priceLocator);
+        }
+
+        System.out.println("Extracted Price: " + priceText);
+        return Double.valueOf(priceText.replace("$", "").replace("/cs", "").trim());
     }
 
     public Double getItemPriceOnCheckoutButtonViaPDP() throws InterruptedException {
@@ -2889,4 +2930,32 @@ public class CustomersPage extends LoginPage {
     public void clickOnAddNewPaymentMethod() {
         distributorUI.click(btn_addNewPaymentMtd);
     }
+
+    public String getLastOrderedPoundPrice() {
+        String lastOrderedPoundPriceText = distributorUI.getText(txt_lastOrderedPrice);
+        String lbPriceOnly;
+        lbPriceOnly = lastOrderedPoundPriceText.split("\\s+")[0];
+        return lbPriceOnly;
+    }
+
+    public boolean isLastOrderedPriceDisplayed() {
+        String lastOrderedPoundPrice = getLastOrderedPoundPrice();
+        System.out.println(lastOrderedPoundPrice);
+        return lastOrderedPoundPrice != null && !lastOrderedPoundPrice.isEmpty();
+    }
+
+    public boolean isLastOrderedPriceNotSameAfterToggle() {
+        distributorUI.waitForVisibility(txt_lastOrderedPriceOff);
+        String lastOrderedPoundPriceTextOff = distributorUI.getText(txt_lastOrderedPriceOff);
+        System.out.println(lastOrderedPoundPriceTextOff);
+        if (distributorUI.isDisplayed(txt_lastOrderedPriceOff)){
+            System.out.println("LB price is not displayed");
+            return true;
+        }
+        else{
+            System.out.println("LB price is still displaying");
+            return false;
+        }
+    }
+
 }

@@ -71,6 +71,9 @@ public class Boost {
     public static boolean isSuggestiveTabDisplayed(){
         return boostPage.isSuggestiveTabDisplayed();
     }
+    public static void ensureTopCategoryPicksDisplayStatus(boolean status) throws InterruptedException {
+        boostPage.ensureTopCategoryPicksDisplayStatus(status);
+    }
     public static void clickTopCategoryPicksConfig(){
         boostPage.clickTopCategoryPicksConfig();
     }

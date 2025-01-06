@@ -152,6 +152,14 @@ public class Catalog {
         catalogPage.clickOnSubstituteTab();
     }
 
+    public static void removeExistingItem(String ItemCode){
+        if (catalogPage.isDeleteSubstituteItemDisplayed(ItemCode)) {
+            catalogPage.clickOnDeleteSubstituteItemBtn(ItemCode);
+            catalogPage.clickOnSaveChangesBtn();
+        }
+
+    }
+
     public static void addSubstitutions(){
         catalogPage.clickAddSubstitutionBtn();
     }
