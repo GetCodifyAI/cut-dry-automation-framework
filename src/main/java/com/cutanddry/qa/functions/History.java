@@ -8,7 +8,7 @@ public class History {
     public static boolean isUserNavigatedToHistory(){
         return historyPage.isOrderHistoryTextDisplayed();
     }
-    public static void clickFirstItemFrmHistory(){
+    public static void clickFirstItemFrmHistory()throws InterruptedException{
          historyPage.clickFirstItemFrmHistory();
     }
 
@@ -63,6 +63,9 @@ public class History {
 
     public static boolean isTxtWhichItemsHasError(){
         return historyPage.isTxtWhichItemsHasError();
+    }
+    public static void clickCheckInOrder(){
+        historyPage.clickCheckInOrder();
     }
 
 

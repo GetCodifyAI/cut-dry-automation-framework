@@ -510,6 +510,7 @@ String lbl_orderGuideItem = "//div[contains(@data-tip, 'View Product Details') a
     By btn_addNewPaymentMtd = By.xpath("//div[contains(text(),'Add a new payment method')]");
     By txt_lastOrderedPrice = By.xpath("//td[contains(@class,'font-weight-light py-3 text-nowrap') and contains(text(),'/lb')]");
     By txt_lastOrderedPriceOff = By.xpath("//td[contains(@class, 'py-3') and div[contains(text(), '1 CS')]]");
+    By btn_checkoutOperator = By.xpath("//button[@data-for='cartCheckoutButton']");
 
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
@@ -2956,6 +2957,11 @@ String lbl_orderGuideItem = "//div[contains(@data-tip, 'View Product Details') a
             System.out.println("LB price is still displaying");
             return false;
         }
+    }
+    public void clickOnCheckoutButtonOperator() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(btn_checkoutOperator, true);
+        distributorUI.click(btn_checkoutOperator);
+        distributorUI.waitForCustom(4000);
     }
 
 }
