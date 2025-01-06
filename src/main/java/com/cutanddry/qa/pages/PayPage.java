@@ -86,6 +86,15 @@ public class PayPage extends LoginPage{
     By btn_nextMonth = By.xpath("//button[@type='button' and @aria-label='Next Month']");
     By table_paymentInitiated = By.xpath("//table[@class='my-3 table table-hover']");
     String paymentStatusRow = "//table[contains(@class, 'table-hover') and contains(@class, 'my-3')]//tbody/tr[%s]/td[6]";
+    By payOutStatusDropDown = By.xpath("//div[contains(@class, 'col-sm-3') and contains(., 'Payout Status')]//div[contains(@class, 'themed_select__control')]");
+    String payoutStatusDropdownOption = "//div[contains(@class, 'col-sm-3') and contains(., 'Payout Status')]//div[contains(@class, 'themed_select__menu')]//div[contains(text(), 'OPTION')]";
+    By txt_payoutDateFilter = By.xpath("//div[contains(@class, 'col-sm-5')]//div[contains(@class, '_64fwrw') and contains(., 'Date Range')]//following-sibling::div//input[@type='text' and contains(@class, 'form-control')]");
+    By payoutStatus = By.xpath("//table[@class='my-3 table table-hover']/tbody/tr/td[text()='Paid']");
+    By onePayout = By.xpath("//thead/tr/th[normalize-space()='Payout ID']/../../following-sibling::tbody//tr[1]//td[1]");
+    String payoutRecode = "//h2[contains(text(),'CODE')]";
+    By btn_threeDotPayout = By.xpath("//thead/tr/th[normalize-space()='Payout ID']/../../following-sibling::tbody//tr[1]//td[7]//*[local-name()='svg' and @data-icon='ellipsis-vertical']");
+    By viewDropDownOption = By.xpath("//span[text()='View']");
+    By downloadDropDownOption = By.xpath("//span[text()='Download']");
 
     public boolean isPaymentStatusCorrect(String expectedPaymentStatus) {
         int numberOfRows = distributorUI.getRowCount(table_paymentInitiated);
@@ -610,6 +619,78 @@ public class PayPage extends LoginPage{
     public void clickExportPayout(){
         distributorUI.click(btn_exportPayout);
     }
+    public void clickPayoutStatusDropdown(){
+        distributorUI.click(payOutStatusDropDown);
+    }
+    public void selectPayoutStatusDropdownOption(String paymentStatus){
+        By dropdownOption = By.xpath(payoutStatusDropdownOption.replace("OPTION", paymentStatus));
+        distributorUI.click(dropdownOption);
+    }
+    public void clickDateRangeFilter(){
+        distributorUI.click(txt_payoutDateFilter);
+    }
+    public boolean isTimestampInDateRange(String startMonth, String startDate, String startYear,
+                                      String endMonth, String endDate, String endYear) {
+        try {
+            // Retrieve the timestamp text and sanitize it
+            String rawTimestamp = distributorUI.getText(timestampFirstRow).trim();
+            System.out.println("Raw timestamp: " + rawTimestamp);
+
+            // Sanitize the timestamp by removing AM/PM if present
+            String sanitizedTimestamp = rawTimestamp.replace(" AM", "").replace(" PM", "");
+
+            // Formatters for parsing
+            DateTimeFormatter timestampFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy"); // Date only format
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("d MMMM yyyy");
+
+            // Parse the start and end dates
+            LocalDate startDateObj = LocalDate.parse(startDate + " " + startMonth + " " + startYear, dateFormatter);
+            LocalDate endDateObj = LocalDate.parse(endDate + " " + endMonth + " " + endYear, dateFormatter);
+
+            // Parse the input timestamp
+            LocalDate targetDate = LocalDate.parse(sanitizedTimestamp.split(" ")[0], timestampFormatter);
+
+            // Check if the date is within the range
+            boolean isInRange = (targetDate.isEqual(startDateObj) || targetDate.isAfter(startDateObj)) &&
+                    (targetDate.isEqual(endDateObj) || targetDate.isBefore(endDateObj));
+
+            return isInRange;
+
+        } catch (Exception e) {
+            System.err.println("Error while parsing date or comparing dates: " + e.getMessage());
+            return false;
+        }
+    }
+    public boolean isPayoutStatusDisplayed() {
+        try {
+            distributorUI.waitForVisibility(payoutStatus);
+        } catch (Exception e) {
+            return false;
+        }
+        return distributorUI.isDisplayed(payoutStatus);
+    }
+    public String getPayOutCode() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(onePayout,true);
+        distributorUI.waitForCustom(3000);
+        return distributorUI.getText(onePayout);
+    }
+    public void clickOnePayout(){
+        distributorUI.click(onePayout);
+    }
+    public boolean isPayoutRecordDisplayed(String code) {
+        distributorUI.waitForVisibility(By.xpath(payoutRecode.replace("CODE",code)));
+        return distributorUI.isDisplayed(By.xpath(payoutRecode.replace("CODE",code)));
+    }
+    public void clickThreeDotButton(){
+        distributorUI.click(btn_threeDotPayout);
+    }
+    public void clickViewPayout(){
+        distributorUI.click(viewDropDownOption);
+    }
+    public void clickDownloadPayout(){
+        distributorUI.click(downloadDropDownOption);
+    }
+
 
 
 }
