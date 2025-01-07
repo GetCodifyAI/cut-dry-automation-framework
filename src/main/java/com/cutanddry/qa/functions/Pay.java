@@ -262,4 +262,43 @@ public class Pay {
     public static void clearDateRangeSelector(){
         payPage.clearDateRangeSelector();
     }
+    public static void selectPayoutStatusDropdown(String paymentStatus){
+        payPage.clickPayoutStatusDropdown();
+        payPage.selectPayoutStatusDropdownOption(paymentStatus);
+    }
+    public static void selectDateRange(String startDay, String startMonth, String startDate, String startYear,
+                                       String endDay, String endMonth, String endDate, String endYear) {
+        payPage.clickDateRangeFilter();
+        payPage.selectStartDate(startDay, startMonth, startDate, startYear);
+        payPage.selectEndDate(endDay, endMonth, endDate, endYear);
+    }
+    public static boolean isPayOutDateRangeCorrect(String startMonth, String startDate, String startYear, String endMonth, String endDate, String endYear){
+        if (payPage.isTimestampInDateRange(startMonth, startDate, startYear, endMonth, endDate, endYear)){
+            return true;
+        }
+        else {
+            return payPage.isNoResultTextDisplayed();
+        }
+    }
+    public static boolean isPayoutStatusDisplayed(){
+        return payPage.isPayoutStatusDisplayed();
+    }
+    public static String getPayOutCode() throws InterruptedException {
+        return payPage.getPayOutCode();
+    }
+    public static void clickOnePayout(){
+        payPage.clickOnePayout();
+    }
+    public static boolean isPayoutRecordDisplayed(String code){
+        return payPage.isPayoutRecordDisplayed(code);
+    }
+    public static void clickThreeDotButton(){
+        payPage.clickThreeDotButton();
+    }
+    public static void clickViewPayout(){
+        payPage.clickViewPayout();
+    }
+    public static void clickDownloadPayout(){
+        payPage.clickDownloadPayout();
+    }
 }
