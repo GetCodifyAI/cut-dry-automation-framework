@@ -50,7 +50,7 @@ public class AddProductsFrmCatalogTest extends TestBase {
 //        Customer.checkoutItems();
 //        softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         Customer.searchItemOnCatalog(searchItemCode);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
+        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
         Customer.addItemToCartCatalog(itemName);
         softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice,"The item has not been selected.");
         Customer.checkoutItems();
