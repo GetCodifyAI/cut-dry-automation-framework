@@ -906,7 +906,7 @@ public class KeywordBase {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
             // Define the date range
             ZonedDateTime nowUTC = ZonedDateTime.now(ZoneOffset.UTC);
-            ZonedDateTime before32DateUTC = nowUTC.minusDays(32);
+            ZonedDateTime before32DateUTC = nowUTC.minusDays(33);
             for (WebElement element : elements) {
                 String elementText = element.getText();
 
@@ -917,7 +917,7 @@ public class KeywordBase {
                 ZonedDateTime elementDate = elementLocalDate.atStartOfDay(ZoneOffset.UTC);
 
 
-                if (elementDate.isBefore(before32DateUTC) || elementDate.isAfter(nowUTC.plusDays(1))) {
+                if (elementDate.isBefore(before32DateUTC) || elementDate.isAfter(nowUTC)) {
                     logger.error("Validation failed for element text: " + elementText +
                             " (Date out of range. Expected between: " +
                             before32DateUTC.format(formatter) + " and " +

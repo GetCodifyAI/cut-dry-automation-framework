@@ -2093,6 +2093,11 @@ String lbl_orderGuideItem = "//div[contains(@data-tip, 'View Product Details') a
 
     public double getTotalOrderValue() {
         distributorUI.waitForVisibility(txt_totalOrderValue);
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         String orderValueText = distributorUI.getText(txt_totalOrderValue).replace("$", "");
         double orderValue = Double.valueOf(orderValueText);
         return orderValue;
