@@ -30,6 +30,12 @@ public class Boost {
         boostPage.clickSelectCustomersDropdown();
         boostPage.selectCustomer(name);
     }
+    public static String selectFirstCustomer() throws InterruptedException {
+        boostPage.clickSelectCustomersDropdown();
+        String selectedCustomer = boostPage.selectFirstDropdownOption();
+        System.out.println("Selected Customer: " + selectedCustomer);
+        return selectedCustomer;
+    }
     public static boolean isSelectionCountDisplayed() {
         return boostPage.isSelectionCountDisplayed();
     }

@@ -95,6 +95,10 @@ public class BoostPage extends LoginPage {
     By clearMessageBtn = By.xpath("//button/*[contains(@data-icon,'circle-xmark')]");
     By sourceRowDragHandle = By.xpath("//tr[@data-rbd-draggable-id='340446843']//td[5]//*[name()='svg']");
     By targetRowDragHandle = By.xpath("//tr[@data-rbd-draggable-id='294915282']//td[5]//*[name()='svg']");
+    // Locator for the dropdown menu
+    By dropdown_menu = By.xpath("//div[contains(@class, 'themed_select__menu-list')]");
+    By firstOptionLocator = By.xpath("//div[contains(@class, 'themed_select__menu-list')]//div[contains(@class, 'themed_select__option')][1]");
+    By lbl_selectCustomer = By.xpath("//label[contains(text(),'Select Customers:')]");
 
     public void changeOrderDragAndDrop(){
         distributorUI.dragAndDrop(sourceRowDragHandle,targetRowDragHandle);
@@ -138,6 +142,15 @@ public class BoostPage extends LoginPage {
     public void selectCustomer(String name) {
         distributorUI.sendKeys(dropdown_search, name);
         distributorUI.click(By.xpath(txt_customerName.replace("NAME", name)));
+    }
+
+    public String selectFirstDropdownOption() throws InterruptedException {
+        distributorUI.waitForVisibility(dropdown_menu);
+        String selectedOptionName = distributorUI.getText(firstOptionLocator).trim();
+        distributorUI.click(firstOptionLocator);
+        distributorUI.waitForCustom(2000);
+        distributorUI.click(lbl_selectCustomer);
+        return selectedOptionName;
     }
     public boolean isSelectionCountDisplayed() {
         return distributorUI.isDisplayed(txt_selectionCount);
