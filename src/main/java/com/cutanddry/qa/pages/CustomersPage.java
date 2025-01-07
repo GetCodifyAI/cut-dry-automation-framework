@@ -280,7 +280,8 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By btn_editOrderGuide = By.xpath("//a[contains(text(), 'Edit Order Guide')]");
     By btn_previewCatalog = By.xpath("//a[contains(text(), 'Preview Catalog')]");
     By txt_orderGuide = By.xpath("//div[contains(text(), 'Kafe Layers')]");
-    By txt_customerProfile = By.xpath("//div[contains(@class, 'd-flex') and contains(text(), 'Kafe Layers')]");
+    String businessName = "//td/following-sibling::td[contains(text(),'CUSTOMERID')]/following-sibling::td[1]";
+    String txt_customerProfile = "//div[contains(@class, 'd-flex') and contains(text(), 'BUSINESSNAME')]";
     By btn_no = By.xpath("//div[contains(text(), 'No')]");
     By txt_previewCatalog = By.xpath("//div[contains(text(), 'Catalog Preview')]");
     By btn_chat = By.xpath("//button[contains(text(), 'Chat')]");
@@ -1726,13 +1727,18 @@ String lbl_orderGuideItem = "//div[contains(@data-tip, 'View Product Details') a
     public void clickInviteEmail(){
         distributorUI.click(btn_inviteEmail);
     }
-    public boolean isCustomerProfileDisplayed(){
+
+    public String getBusinessName(String customerId){
+        distributorUI.waitForVisibility(By.xpath(businessName.replace("CUSTOMERID",customerId)));
+        return distributorUI.getText(By.xpath(businessName.replace("CUSTOMERID",customerId)));
+    }
+    public boolean isCustomerProfileDisplayed(String businessName){
         try {
-            distributorUI.waitForVisibility(txt_customerProfile);
+            distributorUI.waitForVisibility(By.xpath(txt_customerProfile.replace("BUSINESSNAME",businessName)));
         } catch (Exception e){
             return false;
         }
-        return distributorUI.isDisplayed(txt_customerProfile);
+        return distributorUI.isDisplayed(By.xpath(txt_customerProfile.replace("BUSINESSNAME",businessName)));
     }
     public void clickMoreOption(){
         distributorUI.click(btn_moreOption);

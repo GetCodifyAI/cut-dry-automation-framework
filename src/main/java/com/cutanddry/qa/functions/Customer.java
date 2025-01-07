@@ -861,8 +861,12 @@ public class Customer {
     public static boolean isSuccessPopUpDisplayed(){
         return customersPage.isStandingOrderSuccessPopupDisplayed();
     }
-    public static boolean isCustomerProfileDisplayed(){
-        return customersPage.isCustomerProfileDisplayed();
+
+    public static String getBusinessNameFromCustomers(String CustomerCode){
+        return customersPage.getBusinessName(CustomerCode);
+    }
+    public static boolean isCustomerProfileDisplayed(String CustomerName){
+        return customersPage.isCustomerProfileDisplayed(CustomerName);
     }
     public static void clickMoreOption(){customersPage.clickMoreOption();}
     public static void clickEditOrderGuide(){customersPage.clickEditOrderGuide();}
