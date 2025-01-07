@@ -30,8 +30,9 @@ public class VerifyAddTagTest extends TestBase {
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(CustomerCode);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"Error in displaying the customer");
+        String BusinessName = Customer.getBusinessNameFromCustomers(CustomerCode);
         Customer.SelectCustomer(CustomerCode);
-        softAssert.assertTrue(Customer.isCustomerProfileDisplayed(),"Error in navigation to customer page");
+        softAssert.assertTrue(Customer.isCustomerProfileDisplayed(BusinessName),"Error in navigation to customer page");
         Customer.clickOnAddTagDropdownMenu();
         softAssert.assertTrue(Customer.isDropdownMenuDisplayed(), "visibility error");
         Customer.selectToAddTagOption();
