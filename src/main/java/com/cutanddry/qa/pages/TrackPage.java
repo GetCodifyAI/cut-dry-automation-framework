@@ -97,16 +97,58 @@ public class TrackPage extends LoginPage{
     By dropDown_truck = By.xpath("//div[label[text()='Truck:']]//div[contains(@class, 'css-yk16xz-control')]");
     String option_dropDownTruck = "//div[contains(@class, 'css-2b097c-container')]//div[text()='Item Name']";
     By txt_thereWasAnError = By.xpath("//h2[text()='There was an error, please try again.']");
-    By btn_saveChanges = By.xpath("//button[@type='button' and contains(text(), 'Save ChangesSave Changes')]");
+    By btn_saveChanges = By.xpath("//button[@type='button' and contains(text(), 'Save Changes')]");
     By map_routes = By.xpath("//div[contains(@style, 'z-index: 3; position: absolute;') and contains(@style, 'height: 100%; width: 100%;')]");
     String eyeMark_FieldManager = "//table[@class='table']/tbody/tr[ROW_NUMBER]/td[5]";
     By txt_settings = By.xpath("//h2[contains(text(), ' Settings')]");
-    
+    By btn_Dispatch = By.xpath("//button[contains(@class, 'btn-primary') and contains(text(), 'Dispatch')]");
+    By tbx_startTimeDispatch = By.xpath("//input[@type='time' and contains(@class, 'form-control')]");
+    By dropDown_truckNameDispatch = By.xpath("//th[contains(@class, '_legy2v')]//div[contains(@class, 'themed_select__control') and .//div[contains(@class, 'themed_select__single-value')]]");
+    String optionDropDown_truckNameDispatch = "//div[contains(@class, 'themed_select__menu')]//div[contains(@class, 'themed_select__option') and normalize-space()='ITEM_TEXT']";
+    By dropDown_driverDispatched = By.xpath("//th[contains(@class, '_legy2v')]//div[contains(@class, 'themed_select__control') and .//div[contains(@class, 'themed_select__single-value') and normalize-space()='Enlightened Ekadant']]");
+    String optionDropDown_driverDispatched = "//div[contains(@class, 'themed_select__menu')]//div[contains(@class, 'themed_select__option') and normalize-space()='ITEM_TEXT']";
+    By btn_dispatch1 = By.xpath("//button[contains(@class, 'btn btn-primary') and contains(., 'Dispatch (1)')]");
+    By txt_areYouSure= By.xpath("//h2[@class='swal2-title' and contains(text(), 'Are you sure')]");
+
+    public boolean isAreYouSureDisplayed(){
+        return distributorUI.isDisplayed(txt_areYouSure);
+    }
+
+    public void clickBtnDispatch1(){
+        distributorUI.click(btn_dispatch1);
+    }
+
+    public void clickDriverDispatchedDropDown(){
+        distributorUI.click(dropDown_driverDispatched);
+    }
+
+    public void selectDriverDispatch(String trackName){
+        By driverOption = By.xpath(optionDropDown_driverDispatched.replace("ITEM_TEXT",trackName));
+        distributorUI.click(driverOption);
+    }
+
+
+    public void clickTruckNameDispatchDropDown(){
+        distributorUI.click(dropDown_truckNameDispatch);
+    }
+
+    public void selectTruckNameDispatch(String trackName){
+        By truckNameOption = By.xpath(optionDropDown_truckNameDispatch.replace("ITEM_TEXT",trackName));
+        distributorUI.click(truckNameOption);
+    }
+
+    public void typeStartTimeDispatched(String time){
+        distributorUI.sendKeys(tbx_startTimeDispatch, time);
+    }
+
+    public void clickBtnDispatch(){
+        distributorUI.click(btn_Dispatch);
+    }
     public boolean isTxtSettingsDisplayed(){
         return distributorUI.isDisplayed(txt_settings);
     }
     
-    
+
     public void clickUnhideButton() {
         for (int i = 1; i <= 20; i++) { // Fixed loop syntax
             By eyeMark = By.xpath(eyeMark_FieldManager.replace("ROW_NUMBER", String.valueOf(i)));
@@ -323,6 +365,7 @@ public class TrackPage extends LoginPage{
         distributorUI.waitForVisibility(btn_saveChange);
         distributorUI.waitForCustom(1000);
     }
+
     public void searchDriver(String name){
         distributorUI.clear(lbl_searchDriver);
         distributorUI.sendKeys(lbl_searchDriver,name);

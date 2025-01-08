@@ -286,4 +286,36 @@ public class Track {
     public static boolean isTxtSettingsDisplayed(){
         return trackPage.isTxtSettingsDisplayed();
     }
+
+    public static void clickBtnDispatch(){
+        trackPage.clickBtnDispatch();
+    }
+
+    public static void typeStartTimeDispatched(String time){
+        trackPage.typeStartTimeDispatched(time);
+    }
+
+    public static void selectTruckNameDispatch(String truckName){
+        trackPage.clickTruckNameDispatchDropDown();
+        trackPage.selectTruckNameDispatch(truckName);
+    }
+
+    public static void selectDriverDispatch(String driverName){
+        trackPage.clickDriverDispatchedDropDown();
+        trackPage.selectDriverDispatch(driverName);
+    }
+
+    public static void clickBtnDispatch1(){
+        trackPage.clickBtnDispatch1();
+    }
+
+    public static void ifAreYouSureDisplayed(){
+        if (trackPage.isAreYouSureDisplayed()){
+            trackPage.clickYesButton();
+        }
+    }
+
+    public static void clickBtnSaveChanges(){
+        trackPage.clickBtnSaveChanges();
+    }
 }
