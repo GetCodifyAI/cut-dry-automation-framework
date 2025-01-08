@@ -14,9 +14,10 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheOrderViewMoreFiltersTest extends TestBase {
     static User user;
-    String date = "This Month";
+    String date = "Last 30 Days";
     String creditStatus = "Credit Requested";
     static String type = "Requested";
+    static String salesPersonType = "All";
 
     @BeforeMethod
     public void setUp() {
@@ -36,6 +37,7 @@ public class VerifyTheOrderViewMoreFiltersTest extends TestBase {
         Orders.clickOnMoreFilters();
         softAssert.assertTrue(Orders.isFilterOrdersPopupDisplayed(),"popup error");
 //        Orders.selectCreditReqStatus();
+        Orders.selectSalespersonStatusStable(salesPersonType);
         Orders.selectCreditReqStatusStable(type);
         softAssert.assertTrue(Orders.checkFiltersCorrectlyDisplayed(creditStatus),"Error in adding more filters");
         softAssert.assertAll();
