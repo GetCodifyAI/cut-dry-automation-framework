@@ -2,6 +2,8 @@ package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
 
+import java.util.Random;
+
 public class TrackPage extends LoginPage{
     By txt_trackResources = By.xpath("//li[contains(text(),'Resources')]");
     By btn_addDriver = By.xpath("//button[@type='button' and contains(text(), 'Add Driver')]");
@@ -82,9 +84,101 @@ public class TrackPage extends LoginPage{
     By txt_areYouSureToDispatch = By.xpath("//h2[contains(text(),'Are you sure you want to dispatch?')]");
     By txt_dispatchSuccess = By.xpath("//h2[contains(text(),'Drivers Dispatched Successfully')]");
     By lbl_dispatch = By.xpath("//span[text()='Dispatched']");
+    By btn_manageRoutes = By.xpath("//button[text()='Manage Routes']");
+    By btn_importRoutes = By.xpath("//a[text()='Import Routes (.csv, .xlsx)']");
+    By btn_addNewRoute = By.xpath("//a[text()='Add a New Route']");
+    By btn_downloadExampleFile= By.xpath("//a[text()='Download Example File']");
+    By btn_trackFieldManager= By.xpath("//a[text()='Track Field Manager']");
+    By btn_trackSettings= By.xpath("//a[text()='Track Settings']");
+    By tbx_routeName = By.xpath("//div[label[text()='Route Name:']]//input[@class='form-control']");
+    By dropDown_driver = By.xpath("//div[label[text()='Driver:']]//div[contains(@class, 'css-yk16xz-control')]");
+    String option_dropDownDriver = "//div[contains(@class, 'css-2b097c-container')]//div[text()='Item Name']";
+    By tbx_startTime = By.xpath("//div[label[text()='Start Time:']]//input[@type='time']");
+    By dropDown_truck = By.xpath("//div[label[text()='Truck:']]//div[contains(@class, 'css-yk16xz-control')]");
+    String option_dropDownTruck = "//div[contains(@class, 'css-2b097c-container')]//div[text()='Item Name']";
+    By txt_thereWasAnError = By.xpath("//h2[text()='There was an error, please try again.']");
+    By btn_saveChanges = By.xpath("//button[@type='button' and contains(text(), 'Save ChangesSave Changes')]");
+    By map_routes = By.xpath("//div[contains(@style, 'z-index: 3; position: absolute;') and contains(@style, 'height: 100%; width: 100%;')]");
+    String eyeMark_FieldManager = "//table[@class='table']/tbody/tr[ROW_NUMBER]/td[5]";
+    By txt_settings = By.xpath("//h2[contains(text(), ' Settings')]");
+    
+    public boolean isTxtSettingsDisplayed(){
+        return distributorUI.isDisplayed(txt_settings);
+    }
+    
+    
+    public void clickUnhideButton() {
+        for (int i = 1; i <= 20; i++) { // Fixed loop syntax
+            By eyeMark = By.xpath(eyeMark_FieldManager.replace("ROW_NUMBER", String.valueOf(i)));
 
+            try {
+                distributorUI.click(eyeMark);
+            } catch (Exception e) {
+                System.out.println("Failed to click element on row: " + i + ". " + e.getMessage());
+            }
+        }
+    }
 
+    public void clickTrackFieldManager(){
+        distributorUI.click(btn_trackFieldManager);
+    }
 
+    public void clickTrackSettings(){
+        distributorUI.click(btn_trackSettings);
+    }
+
+    public boolean isMapDisplayed(){
+        return distributorUI.isDisplayed(map_routes);
+    }
+
+    public void clickBtnSaveChanges(){
+        distributorUI.click(btn_saveChanges);
+    }
+    public boolean isErrorTextDisplayed(){
+        return distributorUI.isDisplayed(txt_thereWasAnError);
+    }
+
+    public void typeRouteName(String routeName){
+        distributorUI.sendKeys(tbx_routeName,routeName);
+    }
+
+    public void clickDriverDropDown(){
+        distributorUI.click(dropDown_driver);
+    }
+
+    public void selectOptionDriverDropDown(String driver){
+        By optionDriver = By.xpath(option_dropDownDriver.replace("Item Name",driver));
+        distributorUI.click(optionDriver);
+    }
+
+    public void typeStartTime(String startTime){
+        distributorUI.sendKeys(tbx_startTime,startTime);
+    }
+
+    public void clickTruckDropDown(){
+        distributorUI.click(dropDown_truck);
+    }
+
+    public void selectOptionTruckDropDown(String truck){
+        By optionTruck = By.xpath(option_dropDownTruck.replace("Item Name",truck));
+        distributorUI.click(optionTruck);
+    }
+
+    public void clickBtnAddNewRoutes(){
+        distributorUI.click(btn_addNewRoute);
+    }
+
+    public void clickBtnDownloadExampleFile(){
+        distributorUI.click(btn_downloadExampleFile);
+    }
+
+    public void clickBtnImportRoutes(){
+        distributorUI.click(btn_importRoutes);
+    }
+
+    public void clickBtnManageRoutes(){
+        distributorUI.click(btn_manageRoutes);
+    }
 
     public boolean isTrackResourcesTextDisplayed(){
         try {
@@ -93,7 +187,7 @@ public class TrackPage extends LoginPage{
             return false;
         }
         return distributorUI.isDisplayed(txt_trackResources);
-    }
+    };
     public boolean isAddDriversBtnDisplayed(){
         distributorUI.waitForVisibility(btn_addDriver);
         return distributorUI.isDisplayed(btn_addDriver);
@@ -552,6 +646,12 @@ public class TrackPage extends LoginPage{
             return false;
         }
         return distributorUI.isDisplayed(lbl_dispatch);
+    }
+
+    public String generateRandomCode() {
+        Random random = new Random();
+        int randomCode = 10000 + random.nextInt(90000); // Generates a number between 10000 and 99999
+        return String.valueOf(randomCode);
     }
 
 
