@@ -743,6 +743,7 @@ String lbl_orderGuideItem = "//div[contains(@data-tip, 'View Product Details') a
         distributorUI.click(btn_submitOrderGuide);
     }
     public void clickOnAddFromCatalog() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.waitForVisibility(btn_addFromCatalog);
         distributorUI.click(btn_addFromCatalog);
         distributorUI.waitForCustom(4000);
@@ -2720,6 +2721,11 @@ String lbl_orderGuideItem = "//div[contains(@data-tip, 'View Product Details') a
         By dropdownValueLocator = By.xpath(dropdown_FilterOption.replace("PLACEHOLDER", FilterOption));
         distributorUI.waitForVisibility(dropdownValueLocator);
         distributorUI.click(dropdownValueLocator);
+        try {
+            distributorUI.waitForCustom(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public boolean isNoDueInvoicesDisplayed(){
