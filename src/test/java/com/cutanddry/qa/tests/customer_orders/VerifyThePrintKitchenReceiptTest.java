@@ -32,8 +32,9 @@ public class VerifyThePrintKitchenReceiptTest extends TestBase {
         softAssert.assertTrue(Customer.isCustomersTextDisplayed(),"customer section not display");
         Customer.searchCustomerByCode(CustomerCode);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"customer not found");
+        String BusinessName = Customer.getBusinessNameFromCustomers(CustomerCode);
         Customer.SelectCustomer(CustomerCode);
-        softAssert.assertTrue(Customer.isCustomerProfileDisplayed(),"customer profile not display ");
+        softAssert.assertTrue(Customer.isCustomerProfileDisplayed(BusinessName),"customer profile not display ");
         Customer.clickOnOrdersTab();
         Customer.clickPrintReceipt();
         softAssert.assertAll();

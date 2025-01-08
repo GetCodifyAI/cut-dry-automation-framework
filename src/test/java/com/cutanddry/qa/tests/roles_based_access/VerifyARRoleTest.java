@@ -46,7 +46,7 @@ public class VerifyARRoleTest extends TestBase {
         Customer.increaseFirstRowQtyByOne();
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(itemName);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName), "item not found");
+        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
         Customer.addItemToCartCatalog(itemName);
         Customer.checkoutItems();
         Customer.submitOrder();

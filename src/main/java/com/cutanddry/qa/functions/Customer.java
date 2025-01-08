@@ -652,8 +652,8 @@ public class Customer {
     public static void clickOnCatalogItem(String name){
         customersPage.clickOnCatalogItem(name);
     }
-    public static String getItemNamePDPView() throws InterruptedException {
-        return customersPage.getItemNamePDPView();
+    public static String getItemNamePDPView(String itemName) throws InterruptedException {
+        return customersPage.getItemNamePDPView(itemName);
     }
     public static boolean isNavigatedToOrderGuide(){
         return customersPage.isOrdersTxtDisplayed();
@@ -861,8 +861,12 @@ public class Customer {
     public static boolean isSuccessPopUpDisplayed(){
         return customersPage.isStandingOrderSuccessPopupDisplayed();
     }
-    public static boolean isCustomerProfileDisplayed(){
-        return customersPage.isCustomerProfileDisplayed();
+
+    public static String getBusinessNameFromCustomers(String CustomerCode){
+        return customersPage.getBusinessName(CustomerCode);
+    }
+    public static boolean isCustomerProfileDisplayed(String CustomerName){
+        return customersPage.isCustomerProfileDisplayed(CustomerName);
     }
     public static void clickMoreOption(){customersPage.clickMoreOption();}
     public static void clickEditOrderGuide(){customersPage.clickEditOrderGuide();}
@@ -1379,6 +1383,12 @@ public class Customer {
         }
     }
 
+    public static void clickOnPlusIconInCatalogPDP(int count, String name) {
+        for (int i=0; i<count;i++){
+            customersPage.clickOnPlusIconInCatalogPDP(name);
+        }
+    }
+
     public static void clickMinusSearchedSingleItem(int count) {
         for (int i=0; i<count;i++){
             customersPage.clickMinusSearchedSingleItem();
@@ -1663,6 +1673,10 @@ public class Customer {
 
     public static boolean isLastOrderedPriceNotSameAfterToggleOff(){
         return customersPage.isLastOrderedPriceNotSameAfterToggle();
+    }
+    public static void clickOnCheckoutButtonOperator()throws InterruptedException{
+        customersPage.clickOnCheckoutButtonOperator();
+        Thread.sleep(4000);
     }
 
 }

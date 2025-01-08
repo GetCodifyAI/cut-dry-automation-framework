@@ -37,8 +37,9 @@ public class VerifyTheCreatedDraftsTest extends TestBase {
         Customer.checkoutItemsDist();
         Dashboard.navigateToCustomers();
         softAssert.assertTrue(Customer.isCustomersTextDisplayed(),"customer section not display");
+        String BusinessName = Customer.getBusinessNameFromCustomers(CustomerCode);
         Customer.SelectCustomer(CustomerCode);
-        softAssert.assertTrue(Customer.isCustomerProfileDisplayed(),"customer profile not display ");
+        softAssert.assertTrue(Customer.isCustomerProfileDisplayed(BusinessName),"customer profile not display ");
         Customer.clickDraftsTab();
         softAssert.assertTrue(Customer.isOrderDraftDisplayed(),"not create a draft order");
         softAssert.assertAll();

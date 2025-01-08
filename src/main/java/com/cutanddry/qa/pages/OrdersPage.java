@@ -46,6 +46,7 @@ public class OrdersPage extends LoginPage{
     By lbl_credReqStat = By.xpath("(//label[contains(text(), 'Credit Request Status')]/following-sibling::div//div)[1]");
     By lbl_req = By.xpath("//div[text()='Requested']");
     String sel_CreditRequestStatus = "//div[text()='TYPE']";
+    String sel_SalesPersonStatus = "//div[text()='TYPE']";
     By btn_save = By.xpath("//button[contains(text(),'Save')]");
     String lbl_credReq = "//div[contains(text(),'MOREFILTERSTATUS')]";
     By lbl_salesperson = By.xpath("//label[contains(text(), 'Salesperson')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
@@ -354,6 +355,15 @@ public class OrdersPage extends LoginPage{
         distributorUI.click(txt_salesperson);
         distributorUI.waitForCustom(1000);
     }
+
+    public void selectSalespersonStatusStable(String type) throws InterruptedException {
+        distributorUI.click(lbl_salesperson);
+        By lbl_SalespersonType = By.xpath(sel_SalesPersonStatus.replace("TYPE", type));
+        distributorUI.waitForVisibility(lbl_SalespersonType);
+        distributorUI.click(lbl_SalespersonType);
+        distributorUI.waitForCustom(3000);
+    }
+
     public boolean checkFiltersCorrectlyDisplayed(String status) {
 
         return distributorUI.isDisplayed(By.xpath(lbl_creditRequested.replace("STATUS",status)));

@@ -1,9 +1,11 @@
 package com.cutanddry.qa.functions;
 
+import com.cutanddry.qa.pages.DashboardPage;
 import com.cutanddry.qa.pages.OrderDeskPage;
 
 public class OrderDesk {
     static OrderDeskPage orderDeskPage = new OrderDeskPage();
+    static DashboardPage dashboardPage = new DashboardPage();
 
     public static boolean isUsernavigatedToOrderDeskPage(){
         return orderDeskPage.isOrderDeskTextDisplayed();
@@ -23,6 +25,10 @@ public class OrderDesk {
 
     public static void navigateToDraftOrderReviewPage(){
         orderDeskPage.clickOnDraftOrderPageReviewBtn();
+        if(orderDeskPage.isDateErrorDisplayedInDraftOrder()){
+            dashboardPage.clickOnOrderDesk();
+            orderDeskPage.clickOnDraftOrderPageReviewBtn2();
+        }
     }
 
     public static void AddItemQuantityDraftOrderReviewPage(){
