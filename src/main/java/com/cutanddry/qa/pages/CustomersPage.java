@@ -370,7 +370,7 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By enabledStatusLocator = By.xpath("//div[@class='_jehyy2' and text()='Enabled']");
     By defaultTermStatusLocator = By.xpath("//div[@class='_jehyy2' and text()='Default']");
     By newArrivalsOption = By.xpath("//div[contains(text(), 'New Arrivals (')]");
-    By allItemsOption = By.xpath("//div[contains(text(), 'All Items')]");
+    By allItemsOption = By.xpath("(//div[contains(text(), 'Category')]/ancestor::div[2]/following-sibling::div//div[contains(text(), 'All Items')])[1]");
     By brandDropDown = By.xpath("//div[contains(text(), 'Brand')]");
     By brandDropDownOption = By.xpath("//div[contains(text(), 'Bob')]");
     By txt_filterByBrand =By.xpath("//button[@data-tip='View Brand Page']//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'red mill')]");
