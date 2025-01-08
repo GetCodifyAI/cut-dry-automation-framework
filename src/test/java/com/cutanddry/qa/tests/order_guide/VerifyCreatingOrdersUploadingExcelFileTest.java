@@ -20,7 +20,8 @@ public class VerifyCreatingOrdersUploadingExcelFileTest extends TestBase {
     static User user;
     static String OrderGuideName = "Test_Guide_1";
     static String customerId = "16579";
-    static String itemName = "Artichoke -24ct";
+//    static String itemName = "Artichoke -24ct";
+    static String itemName;
 
     @BeforeMethod
     public void setUp(){
@@ -38,6 +39,7 @@ public class VerifyCreatingOrdersUploadingExcelFileTest extends TestBase {
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
+        itemName = Customer.getItemNameFirstRow();
         Customer.goToCreatePopup();
         Customer.createOrderGuide(OrderGuideName);
         Customer.createOrderByUploading();

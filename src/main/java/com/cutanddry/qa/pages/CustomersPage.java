@@ -220,7 +220,8 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By catalogAccessDisableOption = By.xpath("//div[contains(text(),'Disabled')]");
     By catalogAccessEnableOption = By.xpath("//div[contains(text(),'Enabled')]");
     By orderApprovalTxt = By.xpath("//div[contains(text(),'Order Approval')]");
-    By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']");
+//    By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']");
+By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/following-sibling::div//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
     By orderApprovalSettingsOverlayTxt = By.xpath("//div[contains(text(),'Order Approval Settings')]");
     By orderApprovalSettingsOverlayNewlyCreatedOGOptionsEnabledOrDisabled = By.xpath("//div[contains(@class,'themed_select') and contains(text(),'Enabled') or contains(text(),'Disabled')]");
     String orderApprovalSettingsOverlayOrderGuideTxt = "//div[contains(text(),'Existing Order Guide(s)')]/following-sibling::div//div[contains(text(),'ORDERGUIDE')]";
@@ -369,7 +370,7 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By enabledStatusLocator = By.xpath("//div[@class='_jehyy2' and text()='Enabled']");
     By defaultTermStatusLocator = By.xpath("//div[@class='_jehyy2' and text()='Default']");
     By newArrivalsOption = By.xpath("//div[contains(text(), 'New Arrivals (')]");
-    By allItemsOption = By.xpath("//div[contains(text(), 'All Items')]");
+    By allItemsOption = By.xpath("(//div[contains(text(), 'Category')]/ancestor::div[2]/following-sibling::div//div[contains(text(), 'All Items')])[1]");
     By brandDropDown = By.xpath("//div[contains(text(), 'Brand')]");
     By brandDropDownOption = By.xpath("//div[contains(text(), 'Bob')]");
     By txt_filterByBrand =By.xpath("//button[@data-tip='View Brand Page']//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'red mill')]");
@@ -742,6 +743,7 @@ String lbl_orderGuideItem = "//div[contains(@data-tip, 'View Product Details') a
         distributorUI.click(btn_submitOrderGuide);
     }
     public void clickOnAddFromCatalog() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.waitForVisibility(btn_addFromCatalog);
         distributorUI.click(btn_addFromCatalog);
         distributorUI.waitForCustom(4000);
@@ -2719,6 +2721,11 @@ String lbl_orderGuideItem = "//div[contains(@data-tip, 'View Product Details') a
         By dropdownValueLocator = By.xpath(dropdown_FilterOption.replace("PLACEHOLDER", FilterOption));
         distributorUI.waitForVisibility(dropdownValueLocator);
         distributorUI.click(dropdownValueLocator);
+        try {
+            distributorUI.waitForCustom(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public boolean isNoDueInvoicesDisplayed(){

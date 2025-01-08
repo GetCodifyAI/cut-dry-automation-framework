@@ -166,6 +166,13 @@ public class Customer {
         return customersPage.isThankingForOrderPopupDisplayed();
     }
     public static boolean isBroadcastMessageDisplayed(String message) {
+        try {
+            if (customersPage.isPreviousDraftOrderNoDisplayed()){
+                customersPage.clickPreviousDraftOrderNo();
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return customersPage.isBroadcastMessageDisplayed(message);
     }
     public static void clickMessage(String message) {
@@ -385,6 +392,9 @@ public class Customer {
         return customersPage.getOrderCount(num);
     }
     public static void clickOnBack() throws InterruptedException {
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
         customersPage.clickOnBack();
         if (customersPage.isPreviousDraftOrderNoDisplayed()){
             customersPage.clickPreviousDraftOrderNo();
