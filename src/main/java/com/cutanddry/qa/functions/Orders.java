@@ -143,6 +143,9 @@ public class Orders {
     public static void selectSalespersonStatus() throws InterruptedException{
         ordersPage.selectSalespersonStatus();
     }
+    public static void selectSalespersonStatusStable(String type) throws InterruptedException {
+        ordersPage.selectSalespersonStatusStable(type);
+    }
     public static void clickOrder(){ordersPage.clickOrder();}
     public static void clickCheckIn(){
         ordersPage.clickCheckIn();
