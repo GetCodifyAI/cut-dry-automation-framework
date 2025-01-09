@@ -13,6 +13,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.net.URISyntaxException;
+import java.nio.file.Paths;
+import java.util.Objects;
+
 public class ValidateAddStopToRouteFlowTest extends TestBase {
     static User user;
     static String distributorName = TrackData.DISTRIBUTOR_NAME;
@@ -23,7 +27,7 @@ public class ValidateAddStopToRouteFlowTest extends TestBase {
     static String addAddressCity = TrackData.ADD_ADDRESS_CITY;
     static String addAddressState = TrackData.ADD_ADDRESS_STATE;
     static String addAddressZipCode = TrackData.ADD_ADDRESS_ZIPCODE;
-    static String editRouteName = TrackData.EDIT_ROUTE_NAME;
+    static String routeName = TrackData.ROUTE_NAME;
 
 
     @BeforeMethod
@@ -33,7 +37,7 @@ public class ValidateAddStopToRouteFlowTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-886")
-    public void ValidateAddStopToRouteFlow() throws InterruptedException {
+    public void ValidateAddStopToRouteFlow() throws InterruptedException, URISyntaxException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
@@ -41,6 +45,7 @@ public class ValidateAddStopToRouteFlowTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToTrackRoutes();
         softAssert.assertTrue(Track.isRoutesTextDisplayed(),"navigation to track routes error");
+        Track.uploadRoute(Paths.get(Objects.requireNonNull(ClassLoader.getSystemClassLoader().getResource("csvFiles/Sample_Route_Template.csv")).toURI()).toString());
         Track.clickEditRouteFunction(addStopToRoute);
         softAssert.assertTrue(Track.isAddStopPopupDisplayed(),"Add stop pop up window not display");
         Track.addCustomerName(addCustomerName);
@@ -50,8 +55,8 @@ public class ValidateAddStopToRouteFlowTest extends TestBase {
         Track.addAddressState(addAddressState);
         Track.addAddressZipCode(addAddressZipCode);
         Track.clickOnSaveChanges();
-        Track.clickRouteName(editRouteName);
-        softAssert.assertTrue(Track.isRouteStopAdded(addCustomerCode),"Route stop not added");
+        Track.clickRouteName(routeName);
+        softAssert.assertTrue(Track.isRouteStopAdded(addAddressStreet),"Route stop not added");
         softAssert.assertAll();
     }
 
