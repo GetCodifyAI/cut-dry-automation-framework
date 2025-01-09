@@ -33,7 +33,7 @@ public class VerifyCustomerSpecificProductRecommendationsTest extends TestBase {
         Customer.clickOnCustomerCode(customerId);
         Customer.clickOnBoostTab();
         softAssert.assertTrue(Customer.isBroadcastTextDisplayed(),"navigation error");
-        Customer.clickOnAddItems();
+        Customer.clickOnAddItems(itemCode);
         Customer.selectItem(itemCode);
         Customer.clickOnAdd();
         softAssert.assertTrue(Customer.isItemAdded(itemCode),"item adding error");

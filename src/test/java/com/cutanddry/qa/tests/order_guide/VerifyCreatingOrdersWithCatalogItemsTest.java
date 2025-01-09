@@ -40,12 +40,6 @@ public class VerifyCreatingOrdersWithCatalogItemsTest extends TestBase {
         Customer.searchItemOnCatalog(itemName);
         Customer.addItemFromCatalog();
         Customer.closeEditorCatalog();
-
-        Dashboard.navigateToCustomers();
-        softAssert.assertTrue(Customer.isCustomersTextDisplayed(),"customer section not display");
-        Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"customer not found");
-        Customer.clickOnOrderGuide(customerId);
         Customer.searchItemOnOrderGuide(itemName);
         softAssert.assertTrue(Customer.getItemNameFirstRow().toLowerCase().contains(itemName.toLowerCase()),"item mismatch");
         softAssert.assertAll();

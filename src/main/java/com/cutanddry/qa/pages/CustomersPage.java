@@ -215,7 +215,7 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By minimumOrderOverlay = By.xpath("//h2[@id='swal2-title' and contains(text(),'Order Minimum Not Met')]");
     By catalogAccessEnableTxt = By.xpath("//div[@class='list-group-item']//div[text()='Enabled']");
     By catalogAccessDisableTxt = By.xpath("//div[@class='list-group-item']//div[text()='Disabled']");
-    By catalogAccessEditBtn = By.xpath("//div[contains(text(), 'Catalog Access')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']");
+    By catalogAccessEditBtn = By.xpath("//div[contains(text(), 'Catalog Access')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
     By catalogSectionInOrderGuide = By.xpath("//div[contains(text(),'Catalog')]");
     By catalogAccessDisableOption = By.xpath("//div[contains(text(),'Disabled')]");
     By catalogAccessEnableOption = By.xpath("//div[contains(text(),'Enabled')]");
@@ -1216,7 +1216,8 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         distributorUI.click(txtArea);
         distributorUI.sendKeys(txtArea, msg);
     }
-    public void selectItem(String code) {
+    public void selectItem(String code) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.click(input_selectItem);
         distributorUI.sendKeys(input_selectItem, code);
         distributorUI.hoverOverElement(By.xpath(txt_item.replace("CODE", code+':')));
@@ -1233,7 +1234,13 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         distributorUI.waitForVisibility(By.xpath(btn_removeItem.replace("ITEMCODE",Itemcode)));
         distributorUI.click(By.xpath(btn_removeItem.replace("ITEMCODE",Itemcode)));
         distributorUI.waitForInvisibility(By.xpath(btn_removeItem.replace("ITEMCODE",Itemcode)));
+        distributorUI.refreshPage();
     }
+
+    public boolean isExistItemDisplayed(String Itemcode){
+        return distributorUI.isDisplayed(By.xpath(btn_removeItem.replace("ITEMCODE",Itemcode)));
+    }
+
     public void addSection(){
         distributorUI.waitForClickability(btn_addSection);
         distributorUI.click(btn_addSection);
