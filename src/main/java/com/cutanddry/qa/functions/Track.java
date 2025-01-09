@@ -234,6 +234,88 @@ public class Track {
     public static boolean isDispatchedTextDisplayed(){
         return trackPage.isDispatchedTextDisplayed();
     }
+    public static void clickBtnManageRoutes(){trackPage.clickBtnManageRoutes();}
+    public static void clickBtnImportRoutes(){trackPage.clickBtnImportRoutes();}
+    public static void clickBtnAddNewRoutes(){trackPage.clickBtnAddNewRoutes();}
+    public static void clickBtnDownloadExampleFile(){trackPage.clickBtnDownloadExampleFile();}
+    public static void clickTrackFieldManager(){trackPage.clickTrackFieldManager();}
+    public static void clickTrackSettings(){trackPage.clickTrackSettings();}
 
+    public static void typeRouteName(String routeName){
+        trackPage.typeRouteName(routeName);
+    }
 
+    public static void selectOptionDriverDropDown(String driverName){
+        trackPage.clickDriverDropDown();
+        trackPage.selectOptionDriverDropDown(driverName);
+    }
+
+    public static void typeStartTime(String routeName){
+        trackPage.typeStartTime(routeName);
+    }
+
+    public static void selectOptionTruckDropDown(String truckName){
+        trackPage.clickTruckDropDown();
+        trackPage.selectOptionTruckDropDown(truckName);
+    }
+
+    public static void deleteExistingRoute() throws InterruptedException {
+        if (!trackPage.isUploadRouteTextDisplayed()) {
+            trackPage.clickDeleteRoute();
+        }
+    }
+
+    public static void clickOkIfErrorTextDisplayed() throws InterruptedException {
+        if (trackPage.isErrorTextDisplayed()){
+            trackPage.clickOK();
+        }
+    }
+
+    public static String generateRandomCode(){
+        return trackPage.generateRandomCode();
+    }
+
+    public static boolean isMapDisplayed(){
+        return trackPage.isMapDisplayed();
+    }
+
+    public static void clickUnhideButton(){
+        trackPage.clickUnhideButton();
+    }
+
+    public static boolean isTxtSettingsDisplayed(){
+        return trackPage.isTxtSettingsDisplayed();
+    }
+
+    public static void clickBtnDispatch(){
+        trackPage.clickBtnDispatch();
+    }
+
+    public static void typeStartTimeDispatched(String time){
+        trackPage.typeStartTimeDispatched(time);
+    }
+
+    public static void selectTruckNameDispatch(String truckName){
+        trackPage.clickTruckNameDispatchDropDown();
+        trackPage.selectTruckNameDispatch(truckName);
+    }
+
+    public static void selectDriverDispatch(String driverName){
+        trackPage.clickDriverDispatchedDropDown();
+        trackPage.selectDriverDispatch(driverName);
+    }
+
+    public static void clickBtnDispatch1(){
+        trackPage.clickBtnDispatch1();
+    }
+
+    public static void ifAreYouSureDisplayed(){
+        if (trackPage.isAreYouSureDisplayed()){
+            trackPage.clickYesButton();
+        }
+    }
+
+    public static void clickBtnSaveChanges(){
+        trackPage.clickBtnSaveChanges();
+    }
 }
