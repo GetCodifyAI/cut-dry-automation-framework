@@ -13,6 +13,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.net.URISyntaxException;
+import java.nio.file.Paths;
+import java.util.Objects;
+
 public class ValidateAddUnassignedStopsTest extends TestBase {
     static User user;
     static String distributorName = TrackData.DISTRIBUTOR_NAME;
@@ -32,7 +36,7 @@ public class ValidateAddUnassignedStopsTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-907")
-    public void ValidateAddUnassignedStops() throws InterruptedException {
+    public void ValidateAddUnassignedStops() throws InterruptedException, URISyntaxException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
@@ -40,6 +44,7 @@ public class ValidateAddUnassignedStopsTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToTrackRoutes();
         softAssert.assertTrue(Track.isRoutesTextDisplayed(),"navigation to track routes error");
+        Track.uploadRoute(Paths.get(Objects.requireNonNull(ClassLoader.getSystemClassLoader().getResource("csvFiles/Sample_Route_Template.csv")).toURI()).toString());
         Track.clickAddStop();
         softAssert.assertTrue(Track.isAddStopPopupDisplayed(),"Add stop pop up window not display");
         Track.addCustomerName(addCustomerName);
@@ -49,7 +54,7 @@ public class ValidateAddUnassignedStopsTest extends TestBase {
         Track.addAddressState(addAddressState);
         Track.addAddressZipCode(addAddressZipCode);
         Track.clickOnSaveChanges();
-        softAssert.assertTrue(Track.isUnassignedStopAdded(addCustomerCode),"Unassigned stop not added");
+        softAssert.assertTrue(Track.isUnassignedStopAdded(addAddressStreet),"Unassigned stop not added");
         softAssert.assertAll();
     }
 
