@@ -517,7 +517,10 @@ public class Customer {
     public static void clickOnClearMessage() throws InterruptedException {
         customersPage.clickOnClearMessage();
     }
-    public static void clickOnAddItems(){
+    public static void clickOnAddItems(String code){
+        if(customersPage.isExistItemDisplayed(code)){
+            customersPage.clickOnRemoveItem(code);
+        }
         customersPage.clickOnAddItems();
     }
     public static void clickOnSaveMessage() throws InterruptedException {
@@ -526,7 +529,7 @@ public class Customer {
     public static void typeBroadcastMessage(String msg){
         customersPage.typeBroadcastMessage(msg);
     }
-    public static void selectItem(String code){
+    public static void selectItem(String code) throws InterruptedException {
         customersPage.selectItem(code);
     }
     public static void clickOnAdd(){
@@ -879,7 +882,15 @@ public class Customer {
         return customersPage.isCustomerProfileDisplayed(CustomerName);
     }
     public static void clickMoreOption(){customersPage.clickMoreOption();}
-    public static void clickEditOrderGuide(){customersPage.clickEditOrderGuide();}
+    public static void clickEditOrderGuide(){customersPage.clickEditOrderGuide();
+        try {
+            if (customersPage.isPreviousDraftOrderNoDisplayed()){
+                customersPage.clickPreviousDraftOrderNo();
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public static void clickNo()throws InterruptedException{customersPage.clickNo();}
     public static boolean isCustomerOrderGuideDisplayed(){
         return customersPage.isCustomerOrderGuideDisplayed();
