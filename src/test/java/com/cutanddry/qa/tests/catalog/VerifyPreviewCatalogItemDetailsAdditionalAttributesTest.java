@@ -34,7 +34,7 @@ public class VerifyPreviewCatalogItemDetailsAdditionalAttributesTest extends Tes
         Catalog.clickOnPreviewCatalog();
         softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
         Catalog.selectFirstItem();
-        softAssert.assertTrue(Catalog.isProductOverviewDisplayed(),"select product error");
+        softAssert.assertTrue(Catalog.isProductDescriptionDisplayed(),"select product error");
         Catalog.clickOnEditProduct();
         Catalog.navigateToAdditionalAttributes();
         softAssert.assertTrue(Catalog.isAdditionalAttributesTabDisplayed(),"Error in displaying Additional attributes tab");

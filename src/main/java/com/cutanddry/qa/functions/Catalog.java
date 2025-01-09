@@ -320,8 +320,8 @@ public class Catalog {
     public static void selectFirstItem(){
         catalogPage.selectFirstItem();
     }
-    public static boolean isProductOverviewDisplayed(){
-        return catalogPage.isProductOverviewDisplayed();
+    public static boolean isProductDescriptionDisplayed(){
+        return catalogPage.isProductDescriptionDisplayed();
     }
     public static void clickOnEditProduct(){
         catalogPage.clickOnEditProduct();
