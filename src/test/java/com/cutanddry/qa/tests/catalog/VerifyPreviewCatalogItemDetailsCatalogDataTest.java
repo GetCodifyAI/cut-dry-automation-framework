@@ -34,7 +34,7 @@ public class VerifyPreviewCatalogItemDetailsCatalogDataTest extends TestBase {
         Catalog.clickOnPreviewCatalog();
         softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
         Catalog.selectFirstItem();
-        softAssert.assertTrue(Catalog.isProductOverviewDisplayed(),"select product error");
+        softAssert.assertTrue(Catalog.isProductDescriptionDisplayed(),"select product error");
         Catalog.clickOnEditProduct();
         Catalog.selectProductActiveInactiveStatus(Active);
         Catalog.saveChanges();

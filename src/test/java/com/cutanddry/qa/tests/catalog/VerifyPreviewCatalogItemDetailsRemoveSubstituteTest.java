@@ -33,9 +33,19 @@ public class VerifyPreviewCatalogItemDetailsRemoveSubstituteTest extends TestBas
         Catalog.clickOnPreviewCatalog();
         softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
         Catalog.selectFirstItem();
-        softAssert.assertTrue(Catalog.isProductOverviewDisplayed(),"select product error");
+        softAssert.assertTrue(Catalog.isProductDescriptionDisplayed(),"select product error");
         Catalog.clickOnEditProduct();
         Catalog.navigateToSubstituteTab();
+
+        // Pre-request
+        Catalog.addSubstitutionsStable(substituteItemCode);
+        String SubstituteItemName = Catalog.getSubstituteItemName(substituteItemCode);
+        Catalog.searchAndAddSubstituteItem(substituteItemCode);
+        Catalog.saveChanges();
+        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving the changes after adding  substitute");
+        softAssert.assertTrue(Catalog.isAddedSubstituteItemDisplayedInPage(SubstituteItemName),"Error in adding substitute items");
+
+        // Test Flow
         Catalog.deleteSubstituteItem(substituteItemCode);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in Removing substitute item");
