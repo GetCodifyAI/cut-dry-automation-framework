@@ -394,7 +394,8 @@ String txt_product = "//div[contains(@class,'_3quvq7 _1vlidrf' ) and contains(tr
     By btn_addOrderGuideHeart = By.xpath("//button[@class='d-flex align-items-center justify-content-center cdbutton w-100 _fousr2 fa-stack btn btn-primary btn-sm' and @data-tip='Add to Order Guide']");
     By btn_catalogToOrderGuide = By.xpath("//div[text()='Order Guide']");
 //    String lbl_orderGuideItem = "//div[contains(@class, 'text-capitalize _1i69w9z') and contains(text(),'NAME')]";
-String lbl_orderGuideItem = "//div[contains(@data-tip, 'View Product Details') and contains(translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]";    By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items-center justify-content-center cdbutton w-100 _fousr2 fa-stack btn btn-primary btn-sm' and @data-tip='Remove from Order Guide']");
+String lbl_orderGuideItem = "//div[contains(@data-tip, 'View Product Details') and contains(translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]";
+By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items-center justify-content-center cdbutton w-100 _fousr2 fa-stack btn btn-primary btn-sm' and @data-tip='Remove from Order Guide']");
     By btn_rightArrow = By.xpath("(//div[@class='_1gmghi1'])[1]");
     By btn_leftArrow = By.xpath("(//div[@class='_35991e'])[1]");
     By btn_exportPDP = By.xpath("//button[contains(text(), 'Export PDP (pdf)')]");
@@ -2077,9 +2078,17 @@ String lbl_orderGuideItem = "//div[contains(@data-tip, 'View Product Details') a
         return distributorUI.isDisplayed(txt_orderConfirmationPopUp);
     }
     public void clickOrderGuide(){
-        distributorUI.click(btn_addOrderGuideHeart);
+        if(distributorUI.isDisplayed(btn_addOrderGuideHeart)){
+            distributorUI.click(btn_addOrderGuideHeart);
+        }
     }
     public void clickOrderGuideTab(){
+        distributorUI.waitForVisibility(btn_catalogToOrderGuide);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.click(btn_catalogToOrderGuide);
     }
     public boolean addedItemDisplayOnOrderGuide(String name){

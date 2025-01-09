@@ -41,7 +41,13 @@ public class ValidateAddProductToOrderGuideByClickPDPHeartIconTest extends TestB
         Customer.clickOnProduct(itemName);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"navigation error");
         Customer.clickOrderGuide();
-        Customer.goToOrderGuide();
+//        Customer.goToOrderGuide();
+        Dashboard.navigateToCustomers();
+        softAssert.assertTrue(Customer.isCustomersTextDisplayed(),"customer section not display");
+        Customer.searchCustomerByCode(CustomerCode);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"customer not found");
+        Customer.clickOnOrderGuide(CustomerCode);
+
         softAssert.assertTrue(Customer.addedItemDisplayOnOrderGuide(OrderGuideProductName),"product not found");
         Customer.clickOrderGuideProduct(OrderGuideProductName);
         Customer.clickRemoveOrderGuide();
