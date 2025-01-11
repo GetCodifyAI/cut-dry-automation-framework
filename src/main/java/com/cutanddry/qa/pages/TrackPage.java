@@ -109,6 +109,65 @@ public class TrackPage extends LoginPage{
     String optionDropDown_driverDispatched = "//div[contains(@class, 'themed_select__menu')]//div[contains(@class, 'themed_select__option') and normalize-space()='ITEM_TEXT']";
     By btn_dispatch1 = By.xpath("//button[contains(@class, 'btn btn-primary') and contains(., 'Dispatch (1)')]");
     By txt_areYouSure= By.xpath("//h2[@class='swal2-title' and contains(text(), 'Are you sure')]");
+    By btn_datePicker = By.xpath("//input[@type='text' and @name='date' and @class='form-control']");
+    String datePicker = "//div[@class='react-datepicker']//div[@aria-label='Choose %s, %s %s%s, %s']";
+    By btn_previousMonth = By.xpath("//button[@type='button' and @aria-label='Previous Month']");
+    By btn_nextMonth = By.xpath("//button[@type='button' and @aria-label='Next Month']");
+
+    public void getDisplayedDate(){
+        String displayedDate = distributorUI.getText(btn_datePicker);
+        System.out.println("The date is " + displayedDate);
+    }
+    public void clickBtnNextMonth(){
+        distributorUI.click(btn_nextMonth);
+    }
+
+    public void clickBtnPreviousMonth(){
+        distributorUI.click(btn_previousMonth);
+    }
+
+    private String getDateSuffix(String date) {
+        int day = Integer.parseInt(date);
+        if (day >= 11 && day <= 13) {
+            return "th"; // Special case for 11th, 12th, 13th
+        }
+        switch (day % 10) {
+            case 1: return "st";
+            case 2: return "nd";
+            case 3: return "rd";
+            default: return "th";
+        }
+    }
+
+    public void selectDate(String day, String month, String date, String year) {
+        String suffix = getDateSuffix(date);
+        String formattedDate = String.format(datePicker, day, month, date, suffix, year);
+        By startDate = By.xpath(formattedDate);
+        int maxAttempts = 20;
+        boolean dateFound = false;
+
+        for (int i = 0; i < maxAttempts; i++) {
+            if (distributorUI.isDisplayed(startDate)) {
+                distributorUI.click(startDate);
+                dateFound = true;
+                break;
+            }
+
+            if (i < 12) {
+                clickBtnPreviousMonth(); // Try navigating backward in the first few attempts
+            } else {
+                clickBtnNextMonth(); // Switch to navigating forward
+            }
+        }
+
+        if (!dateFound) {
+            throw new RuntimeException("Start date could not be found within the allowed attempts.");
+        }
+    }
+
+    public void clickDatePicker(){
+        distributorUI.click(btn_datePicker);
+    }
 
     public boolean isAreYouSureDisplayed(){
         return distributorUI.isDisplayed(txt_areYouSure);

@@ -318,4 +318,13 @@ public class Track {
     public static void clickBtnSaveChanges(){
         trackPage.clickBtnSaveChanges();
     }
+
+    public static void selectDate(String Day, String Month, String Date, String Year) {
+        trackPage.clickDatePicker();
+        trackPage.selectDate(Day, Month, Date, Year);
+    }
+
+    public static void getDisplayedDate(){
+        trackPage.getDisplayedDate();
+    }
 }
