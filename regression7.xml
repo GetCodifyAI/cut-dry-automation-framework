@@ -69,6 +69,8 @@
             <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterPayoutPaymentByPayoutStatusTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheViewFeatureInThePayoutSectionTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheDownloadFeatureInThePayoutSectionTest"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyAddNewRouteUsingTrackFeature"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyDownloadExampleRouteUsingTrackFeature"/>
         </classes>
     </test>
 </suite>
