@@ -49,6 +49,7 @@ public class TrackerPage extends LoginPage{
         return distributorUI.isDisplayed(txt_task_tracker);
     }
     public void clickNewTicket(){
+        distributorUI.waitForVisibility(btn_new_ticket);
         distributorUI.click(btn_new_ticket);
     }
     public boolean isCreateNewIssueDisplayed(){
@@ -107,6 +108,7 @@ public class TrackerPage extends LoginPage{
         distributorUI.click(priorityOption);
     }
     public void clickCreateTicket()throws InterruptedException{
+        distributorUI.waitForVisibility(btn_createTicket);
         distributorUI.click(btn_createTicket);
         distributorUI.waitForCustom(2000);
     }

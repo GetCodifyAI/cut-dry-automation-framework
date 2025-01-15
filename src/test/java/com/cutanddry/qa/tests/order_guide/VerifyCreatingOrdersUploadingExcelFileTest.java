@@ -47,6 +47,8 @@ public class VerifyCreatingOrdersUploadingExcelFileTest extends TestBase {
         softAssert.assertTrue(Customer.isOrderGuideCreateSuccessPopupDisplayed(),"order guide create error");
         Customer.clickOK();
         Customer.closeEditor();
+        Customer.goToCatalog();
+        Customer.clickOnOrderGuideTab();
         Customer.searchItemOnOrderGuide(itemName);
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         softAssert.assertAll();

@@ -40,6 +40,8 @@ public class VerifyCreatingOrdersWithCatalogItemsTest extends TestBase {
         Customer.searchItemOnCatalog(itemName);
         Customer.addItemFromCatalog();
         Customer.closeEditorCatalog();
+        Customer.goToCatalog();
+        Customer.clickOnOrderGuideTab();
         Customer.searchItemOnOrderGuide(itemName);
         softAssert.assertTrue(Customer.getItemNameFirstRow().toLowerCase().contains(itemName.toLowerCase()),"item mismatch");
         softAssert.assertAll();
