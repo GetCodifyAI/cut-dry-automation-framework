@@ -1252,6 +1252,9 @@ public class Customer {
         customersPage.clickOnBack();
         customersPage.clickOrderGuideTab();
     }
+    public static void clickOnOrderGuideTab() {
+        customersPage.clickOrderGuideTab();
+    }
     public static boolean addedItemDisplayOnOrderGuide(String name){
          return customersPage.addedItemDisplayOnOrderGuide(name);
     }
