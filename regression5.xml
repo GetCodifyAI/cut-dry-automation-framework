@@ -23,16 +23,6 @@
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifythePaymentTermsincustomerInvoices" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaOrderGuideTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaOrderGuideTest" />
-            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerMailDeliveryOrderViaOrderGuideTest" />
-            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaCatalogTest" />
-            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaCatalogTest" />
-            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerMailDeliveryOrderViaCatalogTest" />
-            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaPDPTest" />
-            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaPDPTest" />
-            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerMailDeliveryOrderViaPDPTest" />
-            <class name="com.cutanddry.qa.tests.e2e.PlaceCustomerDeliveryOrderViaOrderGuideCatalogPDPTest" />
-            <class name="com.cutanddry.qa.tests.e2e.PlaceCustomerPickUpOrderViaOrderGuideCatalogPDPTest" />
-            <class name="com.cutanddry.qa.tests.e2e.PlaceCustomerMailDeliveryOrderViaOrderGuideCatalogPDPTest" />
             <class name="com.cutanddry.qa.tests.orders.VerifyMoreFiltersSalesPersonAndCreditRequestTest" />
             <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsPrintKitchenReceiptTest" />
             <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsPrintOrderConfirmationTest" />
