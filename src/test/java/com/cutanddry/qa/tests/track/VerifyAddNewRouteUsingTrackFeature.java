@@ -24,7 +24,7 @@ public class VerifyAddNewRouteUsingTrackFeature extends TestBase {
     }
 
     @Test(groups = "DOT-TC-866")
-    public void VerifyImportingRoutesUsingTrackFeature() throws InterruptedException {
+    public void VerifyAddNewRouteUsingTrackFeature() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
