@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="Part Eight"/>
+        <classes>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByPayoutStatus"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByStatusFunctionality"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByTheCustomerFunctionality"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheDetailsByClickingOnOnePayoutRecordTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterPayoutPaymentsByDateTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterPayoutPaymentByPayoutStatusTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheViewFeatureInThePayoutSectionTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheDownloadFeatureInThePayoutSectionTest"/>
+        </classes>
+    </test>
+</suite>

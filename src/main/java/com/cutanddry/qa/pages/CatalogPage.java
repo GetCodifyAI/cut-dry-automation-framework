@@ -99,6 +99,7 @@ public class CatalogPage extends LoginPage{
     By lbl_noImage = By.xpath("//div[@class='_hm9gs6 text-center']/img[not(@src='https://d3stps52o2e9nv.cloudfront.net/consumer/placeholder-img-product-v2.svg')]");
     By firstItem = By.xpath("(//div[contains(@class, 'card')]//div[@class='_3quvq7 _1vlidrf'])[1]");
     By txt_productOverview= By.xpath("//div[contains(text(),'Product Overview')]");
+    By txt_productDescription= By.xpath("//div[contains(text(),'Description')]");
     By btn_editProduct = By.xpath("//a[text()='Edit Product']");
     By btn_firstEditItem = By.xpath("(//a[text()='Edit Item'])[1]");
     By btn_3dots = By.xpath("//button[contains(@class, 'dropdown-toggle') and @aria-haspopup=\"true\"]");
@@ -525,8 +526,10 @@ public class CatalogPage extends LoginPage{
     public void selectFirstItem() {
         distributorUI.click(firstItem);
     }
-    public boolean isProductOverviewDisplayed(){
-        return  distributorUI.isDisplayed(txt_productOverview);
+    public boolean isProductDescriptionDisplayed(){
+//        return  distributorUI.isDisplayed(txt_productOverview);
+        return  distributorUI.isDisplayed(txt_productDescription);
+
     }
     public void clickOnEditProduct() {
         distributorUI.click(btn_editProduct);

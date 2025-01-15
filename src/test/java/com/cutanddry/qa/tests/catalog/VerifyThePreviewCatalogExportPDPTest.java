@@ -22,7 +22,7 @@ public class VerifyThePreviewCatalogExportPDPTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-518")
-    public void VerifyThePreviewCatalogCopyPDP() throws InterruptedException {
+    public void VerifyThePreviewCatalogExportPDP() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -32,7 +32,7 @@ public class VerifyThePreviewCatalogExportPDPTest extends TestBase {
         Catalog.clickOnPreviewCatalog();
         softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
         Catalog.selectFirstItem();
-        softAssert.assertTrue(Catalog.isProductOverviewDisplayed(),"select product error");
+        softAssert.assertTrue(Catalog.isProductDescriptionDisplayed(),"select product error");
         Catalog.selectExportPDP();
         softAssert.assertTrue(Catalog.isPDFExported(),"export error");
         softAssert.assertAll();

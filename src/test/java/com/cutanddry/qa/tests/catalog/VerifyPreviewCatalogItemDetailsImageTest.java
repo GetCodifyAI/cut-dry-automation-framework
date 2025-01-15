@@ -32,7 +32,7 @@ public class VerifyPreviewCatalogItemDetailsImageTest extends TestBase {
         Catalog.clickOnPreviewCatalog();
         softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
         Catalog.selectFirstItem();
-        softAssert.assertTrue(Catalog.isProductOverviewDisplayed(),"select product error");
+        softAssert.assertTrue(Catalog.isProductDescriptionDisplayed(),"select product error");
         Catalog.clickOnEditProduct();
         Catalog.navigateToImages();
         softAssert.assertTrue(Catalog.ProductImageDisplayed(),"product image is not displayed");

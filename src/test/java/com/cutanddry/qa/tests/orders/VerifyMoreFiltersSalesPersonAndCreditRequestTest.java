@@ -14,6 +14,7 @@ public class VerifyMoreFiltersSalesPersonAndCreditRequestTest extends TestBase {
     static User user;
     String date = "Last 90 Days";
     String creditStatus = "Credit Requested";
+    static String salesPersonType = "All";
 
     @BeforeMethod
     public void setUp() throws InterruptedException {
@@ -33,7 +34,7 @@ public class VerifyMoreFiltersSalesPersonAndCreditRequestTest extends TestBase {
         softAssert.assertTrue(Orders.isOrderDateChanged(date),"dropdown error");
         Orders.clickOnMoreFilters();
         softAssert.assertTrue(Orders.isFilterOrdersPopupDisplayed(),"popup error");
-        Orders.selectSalespersonStatus();
+        Orders.selectSalespersonStatusStable(salesPersonType);
         Orders.selectCreditReqStatus();
         softAssert.assertTrue(Orders.checkFiltersCorrectlyDisplayed(creditStatus),"Error in adding more filters");
         softAssert.assertAll();

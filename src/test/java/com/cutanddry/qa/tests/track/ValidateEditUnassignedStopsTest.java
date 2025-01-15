@@ -18,7 +18,7 @@ public class ValidateEditUnassignedStopsTest extends TestBase {
     static String distributorName = TrackData.DISTRIBUTOR_NAME;
     static String addCustomerName = TrackData.ADD_CUSTOMER_NAME;
     static String editCustomerCode = TrackData.EDIT_CUSTOMER_CODE;
-    static String addAddressStreet = TrackData.ADD_ADDRESS_STREET;
+    static String editAddressStreet = TrackData.EDIT_ADDRESS_STREET;
     static String addAddressCity = TrackData.ADD_ADDRESS_CITY;
     static String addAddressState = TrackData.ADD_ADDRESS_STATE;
     static String addAddressZipCode = TrackData.ADD_ADDRESS_ZIPCODE;
@@ -43,12 +43,12 @@ public class ValidateEditUnassignedStopsTest extends TestBase {
         Track.clickEditUnassignStop();
         Track.addCustomerName(addCustomerName);
         Track.addCustomerCode(editCustomerCode);
-        Track.addAddressStreet(addAddressStreet);
+        Track.addAddressStreet(editAddressStreet);
         Track.addAddressCity(addAddressCity);
         Track.addAddressState(addAddressState);
         Track.addAddressZipCode(addAddressZipCode);
         Track.clickOnSaveChanges();
-        softAssert.assertTrue(Track.isUnassignedStopAdded(editCustomerCode),"Unassigned stop not added");
+        softAssert.assertTrue(Track.isUnassignedStopAdded(editAddressStreet),"Unassigned stop not added");
         softAssert.assertAll();
     }
 

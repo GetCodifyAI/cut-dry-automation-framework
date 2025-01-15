@@ -66,7 +66,9 @@ public class OrdersPage extends LoginPage{
     By btn_yes = By.xpath("//button[contains(@class, 'swal2-confirm _1fmw5qi order-2 swal2-styled') and text() = 'Yes']");
     By orderStatusUpdatedPopUp = By.xpath("//h2[contains(text(),'Order Status Updated!')]");
     By btn_ok = By.xpath("//button[contains(@class, 'swal2-confirm swal2-styled') and text() = 'OK']");
-    String lbl_creditRequested = "//tr//td[10]//div[contains(text(),'STATUS')]";
+    By lbl_orderTableColumn = By.xpath("//table/thead/tr/th");
+    String lbl_orderTableColumnName = "//table/thead/tr/th[COUNT]/span";
+    String lbl_creditRequested = "//tr//td[COUNT]//div[contains(text(),'STATUS')]";
     String lbl_orderStatus = "//div[contains(@class, 'themed_select__single-value css-1uccc91-singleValue') and contains(text(),'STATUSVALUE')]";
     By btn_orderStatus = By.xpath("//div[contains(@class, 'themed_select__single-value css-1uccc91-singleValue') and contains(text(),'Order Status:')]");
     String lbl_orderStatusOption = "//div[contains(@class, 'themed_select__option') and contains(text(),'STATUS')]";
@@ -137,6 +139,7 @@ public class OrdersPage extends LoginPage{
     }
 
     public void clickOnSupplier(String supplierName){
+        distributorUI.waitForVisibility(By.xpath(supplierNameInPlaceOrder.replace("SUPPLIERNAME",supplierName)));
         distributorUI.click(By.xpath(supplierNameInPlaceOrder.replace("SUPPLIERNAME",supplierName)));
     }
 
@@ -364,10 +367,26 @@ public class OrdersPage extends LoginPage{
         distributorUI.waitForCustom(3000);
     }
 
-    public boolean checkFiltersCorrectlyDisplayed(String status) {
+    /*public boolean checkFiltersCorrectlyDisplayed(String status) {
 
         return distributorUI.isDisplayed(By.xpath(lbl_creditRequested.replace("STATUS",status)));
+    }*/
+
+    public boolean checkFiltersCorrectlyDisplayed(String status) {
+        int totalColumnCount = distributorUI.countElements(lbl_orderTableColumn);
+
+        for (int i = 1; i <= totalColumnCount; i++) {
+            String columnName = distributorUI.getText(By.xpath(lbl_orderTableColumnName.replace("COUNT", String.valueOf(i))));
+            if ("Status".equalsIgnoreCase(columnName)) {
+                By creditRequestedLocator = By.xpath(
+                        lbl_creditRequested.replace("COUNT", String.valueOf(i)).replace("STATUS", status)
+                );
+                return distributorUI.isDisplayed(creditRequestedLocator);
+            }
+        }
+        return false;
     }
+
     public void clickOrder(){
         distributorUI.click(first_row_order_details);
     }
