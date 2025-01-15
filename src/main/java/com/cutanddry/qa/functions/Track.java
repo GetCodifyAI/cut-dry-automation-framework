@@ -324,7 +324,21 @@ public class Track {
         trackPage.selectDate(Day, Month, Date, Year);
     }
 
+    public static void selectDateMonitoring(String Day, String Month, String Date, String Year) {
+        trackPage.clickDatePickerMonitoring();
+        trackPage.selectDate(Day, Month, Date, Year);
+    }
+
     public static void getDisplayedDate(){
         trackPage.getDisplayedDate();
+    }
+
+    public static void selectOptionWarehouse(String warehouse){
+        trackPage.clickDropdownWarehouse();
+        trackPage.selectDropdownItem(warehouse);
+    }
+
+    public static void clickDatePickerMonitoring(){
+        trackPage.clickDatePickerMonitoring();
     }
 }

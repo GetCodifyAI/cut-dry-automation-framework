@@ -113,6 +113,32 @@ public class TrackPage extends LoginPage{
     String datePicker = "//div[@class='react-datepicker']//div[@aria-label='Choose %s, %s %s%s, %s']";
     By btn_previousMonth = By.xpath("//button[@type='button' and @aria-label='Previous Month']");
     By btn_nextMonth = By.xpath("//button[@type='button' and @aria-label='Next Month']");
+    By dropdown_warehouse = By.xpath("//div[contains(@class, 'themed_select__control') and contains(@class, 'css-yk16xz-control')]");
+    String dropdownItemXPath = "//div[contains(@class, 'themed_select__menu')]//div[text()='{}']";
+    By datePicker_monitoring = By.xpath("//input[@type='text' and contains(@class, 'form-control') and contains(@class, '_rfglfk')]");
+
+    public void clickDatePickerMonitoring(){
+        distributorUI.click(datePicker_monitoring);
+    }
+
+    public void selectDropdownItem(String item) {
+        By dropdownItem = By.xpath(dropdownItemXPath.replace("{}", item));
+        distributorUI.click(dropdownItem);
+    }
+
+    public String getDisplayedWarehouse(){
+        String warehouse = distributorUI.getText(dropdown_warehouse);
+        return warehouse;
+    }
+
+    public void clickDropdownWarehouse(){
+        distributorUI.click(dropdown_warehouse);
+    }
+
+//    public void selectOptionDropdownWarehouse(String warehouse){
+//        By optionWarehouse = By.xpath(option_dropdownWarehouse.replace("ITEM_TEXT",warehouse));
+//        distributorUI.click(optionWarehouse);
+//    }
 
     public void getDisplayedDate(){
         String displayedDate = distributorUI.getText(btn_datePicker);

@@ -69,8 +69,13 @@
             <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterPayoutPaymentByPayoutStatusTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheViewFeatureInThePayoutSectionTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheDownloadFeatureInThePayoutSectionTest"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTheDatePickerFunctionality"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyDateChangeFunctionalityUnderMonitoring"/>
             <class name="com.cutanddry.qa.tests.track.VerifyAddNewRouteUsingTrackFeature"/>
             <class name="com.cutanddry.qa.tests.track.VerifyDownloadExampleRouteUsingTrackFeature"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTheDispatchButtonFunctionalityForMultipleRoutes"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTrackFieldManagerUsingTrackFeature"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTrackSettingsUnderRoutes"/>
         </classes>
     </test>
 </suite>
