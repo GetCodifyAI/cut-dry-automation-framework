@@ -341,4 +341,8 @@ public class Track {
     public static void clickDatePickerMonitoring(){
         trackPage.clickDatePickerMonitoring();
     }
+
+    public static void searchTrackMonitoring(String searchName){
+        trackPage.searchTrackMonitoring(searchName);
+    }
 }

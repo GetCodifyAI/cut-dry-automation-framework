@@ -116,7 +116,11 @@ public class TrackPage extends LoginPage{
     By dropdown_warehouse = By.xpath("//div[contains(@class, 'themed_select__control') and contains(@class, 'css-yk16xz-control')]");
     String dropdownItemXPath = "//div[contains(@class, 'themed_select__menu')]//div[text()='{}']";
     By datePicker_monitoring = By.xpath("//input[@type='text' and contains(@class, 'form-control') and contains(@class, '_rfglfk')]");
+    By trackMonitoring_search = By.xpath("//input[@placeholder='Search for Drivers, Customers, Routes, or Orders...' and contains(@class, '_sxiopc') and contains(@class, 'form-control')]");
 
+    public void searchTrackMonitoring(String searchName){
+        distributorUI.sendKeys(trackMonitoring_search, searchName);
+    }
     public void clickDatePickerMonitoring(){
         distributorUI.click(datePicker_monitoring);
     }
