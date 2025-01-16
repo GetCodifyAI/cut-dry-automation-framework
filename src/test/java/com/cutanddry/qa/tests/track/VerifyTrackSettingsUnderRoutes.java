@@ -32,7 +32,7 @@ public class VerifyTrackSettingsUnderRoutes extends TestBase{
         Track.clickOkIfErrorTextDisplayed();
         Track.deleteExistingRoute();
         Track.clickBtnManageRoutes();
-        Track.clickTrackFieldManager();
+//        Track.clickTrackFieldManager();
         Track.clickTrackSettings();
         softAssert.assertTrue(Track.isTxtSettingsDisplayed(),"Not navigated to settings page properly");
         softAssert.assertAll();
