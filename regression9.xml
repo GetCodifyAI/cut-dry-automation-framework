@@ -6,8 +6,12 @@
         <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
     </listeners>
     <test name="distributor tests">
-        <parameter name="PART" value="Part Eight"/>
+        <parameter name="PART" value="Part Nine"/>
         <classes>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheViewFeatureInThePayoutSectionTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheDownloadFeatureInThePayoutSectionTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingAddOrderReminderAlertsTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingEditOrderReminderAlertsTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByPayoutStatus"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByStatusFunctionality"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByTheCustomerFunctionality"/>
@@ -16,6 +20,14 @@
             <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterPayoutPaymentByPayoutStatusTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheViewFeatureInThePayoutSectionTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheDownloadFeatureInThePayoutSectionTest"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTheDatePickerFunctionality"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyDateChangeFunctionalityUnderMonitoring"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyAddNewRouteUsingTrackFeature"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyDownloadExampleRouteUsingTrackFeature"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTheDispatchButtonFunctionalityForMultipleRoutes"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTrackFieldManagerUsingTrackFeature"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTrackSettingsUnderRoutes"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTheWarehouseSelectionFromTheDropdown"/>
         </classes>
     </test>
 </suite>
