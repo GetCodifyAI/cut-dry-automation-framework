@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyImageOfItemTest extends TestBase {
     static User user;
     String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
-    String itemCode = "00475";
+    String itemCode = "00470";
 
     @BeforeMethod
     public void setUp(){

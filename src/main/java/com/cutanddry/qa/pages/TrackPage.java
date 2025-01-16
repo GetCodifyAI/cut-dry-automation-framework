@@ -67,6 +67,8 @@ public class TrackPage extends LoginPage{
     String addStop = "//td//div[contains(text(), 'CODE')]";
     By lbl_placeBreakAfterStop = By.xpath("//label[text()='Place break after stop...']//following-sibling::div");
     By placeBreakAfterStopOption = By.xpath("//div[contains(text(),'Nova')]");
+    By dropdownOptionsContainer = By.xpath("//div[contains(@class, '-menu')]");
+    By firstOption = By.xpath("(//div[contains(@id, 'react-select') and contains(@class, '-option')])[1]");
     By btn_addBreak = By.xpath("//button[contains(text(), 'Add Break')]");
     By upload_file = By.xpath("//input[@type='file']");
     By txt_uploadRoute = By.xpath("//h5[contains(text(),'Click here to upload or drag and drop a CSV or Excel file to add routes')]");
@@ -604,8 +606,10 @@ public class TrackPage extends LoginPage{
     }
     public void addBreak(){
         distributorUI.click(lbl_placeBreakAfterStop);
-        distributorUI.waitForVisibility(placeBreakAfterStopOption);
-        distributorUI.click(placeBreakAfterStopOption);
+//        distributorUI.waitForVisibility(placeBreakAfterStopOption);
+//        distributorUI.click(placeBreakAfterStopOption);
+        distributorUI.waitForVisibility(dropdownOptionsContainer);
+        distributorUI.click(firstOption);
         distributorUI.click(btn_addBreak);
         distributorUI.refreshPage();
     }

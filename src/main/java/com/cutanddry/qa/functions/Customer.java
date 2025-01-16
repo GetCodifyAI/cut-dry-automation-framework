@@ -82,6 +82,9 @@ public class Customer {
         if (customersPage.isPreviousDraftOrderNoDisplayed()){
             customersPage.clickPreviousDraftOrderNo();
         }
+        if(customersPage.isSubstitutesPopupDisplayed()){
+            customersPage.clickDoNotSubstitute();
+        }
     }
     public static void goToCatalog() throws InterruptedException {
         if (customersPage.isPreviousDraftOrderNoDisplayed()){

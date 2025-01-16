@@ -801,6 +801,7 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         return distributorUI.isDisplayed(By.xpath(lbl_recommendedBySalesRep.replace("CODE", '#'+code)));
     }
     public boolean isDontForgetToOrderDisplayed(){
+        distributorUI.scrollToElement(section_dontForget);
         return distributorUI.isDisplayed(section_dontForget);
     }
     public boolean isMoreFromThisBrandDisplayed(){
