@@ -33,12 +33,12 @@ public class OrdersPage extends LoginPage{
     By lbl_orderDateDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[1]");
     By lbl_statusDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[2]");
     By txt_date = By.xpath("(//td[2])[1]");
-    By txt_status = By.xpath("(//td[10])[1]/div[1]");
+    By txt_status = By.xpath("(//td[10])[1]/span");
     By moreFilterStatus = By.xpath("(//td[10])[1]/div[1]/following-sibling::div[1]");
     String days = "//div[text()='DATE']";
     String sts = "//div[text()='STATUS']";
     String date = "//td[text()='DATE']";
-    String status = "//td/div[text()='STATUS']";
+    String status = "//td/span[text()='STATUS']";
     By txt_resultsCount = By.xpath("//div[contains(text(), 'results')]");
     By btn_moreFilters = By.xpath("//button[contains(., 'More Filters')]");
     By txt_filterOrders= By.xpath("//div[contains(text(),'Filter Orders')]");
