@@ -287,6 +287,9 @@ public class Customer {
         customersPage.clickOnUploadToOrder();
     }
     public static boolean isReviewOrderTextDisplayed(){
+        if(customersPage.isSubstitutesPopupDisplayed()){
+            customersPage.clickDoNotSubstitute();
+        }
         return customersPage.isReviewOrderTextDisplayed();
     }
     public static boolean isOrderGuideUpdatedTextDisplayed(){
