@@ -757,8 +757,14 @@ public class SettingsPage extends LoginPage{
         distributorUI.click(btn_close);
     }
     public void clickAddAlert(){
-        distributorUI.waitForVisibility(btn_addAlert);
-        distributorUI.click(btn_addAlert);
+        for (int i = 0; i < 3; i++) {
+            if (distributorUI.isDisplayed(btn_addAlert)) {
+                distributorUI.waitForVisibility(btn_addAlert);
+                distributorUI.click(btn_addAlert);
+                return;
+            }
+            distributorUI.refreshPage();
+        }
     }
     public boolean isOrderRemindAlertTextDisplayed() throws InterruptedException {
         try {
