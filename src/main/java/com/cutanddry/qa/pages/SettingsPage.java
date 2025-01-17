@@ -796,6 +796,7 @@ public class SettingsPage extends LoginPage{
         distributorUI.click(btn_OkAlert);
     }
     public void clickDeleteAlert(){
+        distributorUI.waitForElementEnabledState(btn_deleteAlert,true);
         distributorUI.click(btn_deleteAlert);
     }
 
