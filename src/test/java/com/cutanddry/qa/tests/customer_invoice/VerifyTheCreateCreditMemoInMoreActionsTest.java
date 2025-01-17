@@ -40,7 +40,8 @@ public class VerifyTheCreateCreditMemoInMoreActionsTest extends TestBase {
         Customer.clickonInvoice();
         Customer.clickDropdownMoreActions();
         Customer.clickCreateCreditMemo();
-        Customer.typeCreditMemoNumber(CreditMemoNumber);
+        String generateCreditMemoNumber = CreditMemoNumber + generateThreeDigitValue();
+        Customer.typeCreditMemoNumber(generateCreditMemoNumber);
         Customer.fillDropdownAssociatedInvoice(AssociatedInvoive);
         Customer.typeCreditMemoAmount(CreditMemoAmount);
         Customer.typeCreditMemoDescription(CreditMemoDescription);

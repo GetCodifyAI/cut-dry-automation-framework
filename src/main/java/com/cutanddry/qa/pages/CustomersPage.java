@@ -372,15 +372,15 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By newArrivalsOption = By.xpath("//div[contains(text(), 'New Arrivals (')]");
     By allItemsOption = By.xpath("(//div[contains(text(), 'Category')]/ancestor::div[2]/following-sibling::div//div[contains(text(), 'All Items')])[1]");
     By brandDropDown = By.xpath("//div[contains(text(), 'Brand')]");
-    By brandDropDownOption = By.xpath("//div[contains(text(), 'Bob')]");
-    By txt_filterByBrand =By.xpath("//button[@data-tip='View Brand Page']//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'red mill')]");
+    By brandDropDownOption = By.xpath("//div[contains(text(), 'J Hungerford Smith')]");
+    By txt_filterByBrand =By.xpath("//button[@data-tip='View Brand Page']//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'j hungerford smith')]");
     By itemStatusDropDown = By.xpath("//div[contains(text(), 'Item Status')]");
     By itemStatusDropDownOption = By.xpath("//div[contains(text(), 'Stocked')]");
     By storageTypeDropDown = By.xpath("//div[contains(text(), 'Storage Type')]");
     By storageTypeDropDownOption = By.xpath("//div[@class='_du1frc _17ct4f8 w-100 pr-1' and contains(text(), 'Dry')]");
     By dietTypeDropDown = By.xpath("//div[contains(text(), 'Diet Type')]");
     By dietTypeDropDownOption = By.xpath("//div[@class='_du1frc _17ct4f8 w-100 pr-1' and contains(text(), 'Kosher')]");
-    By txt_filterItem = By.xpath("//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'family kitchen baked potato soup 4/4lb frozen')]");
+    By txt_filterItem = By.xpath("//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'j hungerford smith')]");
     By processingTypeDropDown = By.xpath("//div[contains(text(), 'Processing & Formulation')]");
     By processingTypeDropOption = By.xpath("//div[contains(text(), 'Non-GMO')]");
     By txt_noItems = By.xpath("//div[contains(text(), '0 Results')]");
@@ -958,7 +958,13 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         distributorUI.waitForElementEnabledState(By.xpath(txt_deliveryDay.replace("DAY", day)),true);
     }
     public void setStandingOrder(){
+        distributorUI.waitForElementEnabledState(btn_setStandingOrder,true);
         distributorUI.waitForClickability(btn_setStandingOrder);
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.click(btn_setStandingOrder);
     }
     public boolean isStandingOrderEmailPopupDisplayed(){
@@ -2848,6 +2854,7 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     }
 
     public void clickBtnCreateCreditMemo(){
+        distributorUI.waitForElementEnabledState(btn_CreateCreditMemo,true);
         distributorUI.click(btn_CreateCreditMemo);
     }
 

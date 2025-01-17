@@ -104,6 +104,11 @@ public class TestBase {
         return (int) (Math.random() * 1000) + 1;
     }
 
+    public static String generateThreeDigitValue() {
+        int randomNumber = (int) (Math.random() * 1000) + 1;
+        return String.format("%03d", randomNumber);
+    }
+
     public static String generateUTCCurrentDateFormatted() {
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         formatter.setTimeZone(TimeZone.getTimeZone("UTC"));

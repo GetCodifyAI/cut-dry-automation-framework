@@ -39,6 +39,7 @@ public class OrdersPage extends LoginPage{
     String sts = "//div[text()='STATUS']";
     String date = "//td[text()='DATE']";
     String status = "//td/span[text()='STATUS']";
+    String lbl_status = "//td[COUNT]/span[text()='STATUS']";
     By txt_resultsCount = By.xpath("//div[contains(text(), 'results')]");
     By btn_moreFilters = By.xpath("//button[contains(., 'More Filters')]");
     By txt_filterOrders= By.xpath("//div[contains(text(),'Filter Orders')]");
@@ -298,7 +299,7 @@ public class OrdersPage extends LoginPage{
         return distributorUI.isDisplayed(By.xpath("("+ date.replace("DATE", OrdersDate) + ")" + "[last()]"));
     }
 
-    public Boolean isFilteredOrderStatusCorrect(String OrdersStatus){
+    /*public Boolean isFilteredOrderStatusCorrect(String OrdersStatus){
         try {
             distributorUI.waitForCustom(2000);
         } catch (InterruptedException e) {
@@ -307,6 +308,21 @@ public class OrdersPage extends LoginPage{
         String s = distributorUI.getText(txt_status);
         distributorUI.scrollToElement(By.xpath("("+ status.replace("STATUS", s) + ")" + "[last()]"));
         return distributorUI.validateFilteredElements(By.xpath(status.replace("STATUS", s)),OrdersStatus);
+    }
+*/
+    public boolean isFilteredOrderStatusCorrect(String status) {
+        int totalColumnCount = distributorUI.countElements(lbl_orderTableColumn);
+
+        for (int i = 1; i <= totalColumnCount; i++) {
+            String columnName = distributorUI.getText(By.xpath(lbl_orderTableColumnName.replace("COUNT", String.valueOf(i))));
+            if ("Status".equalsIgnoreCase(columnName)) {
+                By creditRequestedLocator = By.xpath(
+                        lbl_status.replace("COUNT", String.valueOf(i)).replace("STATUS", status)
+                );
+                return distributorUI.isDisplayed(creditRequestedLocator);
+            }
+        }
+        return false;
     }
 
     public Boolean isMoreFiltersDisplayedCorrect(String OrdersStatus){
