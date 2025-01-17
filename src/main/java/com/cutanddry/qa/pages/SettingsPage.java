@@ -757,7 +757,7 @@ public class SettingsPage extends LoginPage{
         distributorUI.click(btn_close);
     }
     public void clickAddAlert(){
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
             if (distributorUI.isDisplayed(btn_addAlert)) {
                 distributorUI.waitForVisibility(btn_addAlert);
                 distributorUI.click(btn_addAlert);

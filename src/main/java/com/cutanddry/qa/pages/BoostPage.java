@@ -78,6 +78,7 @@ public class BoostPage extends LoginPage {
     By OverlayDeleteBtn = By.xpath("//button[contains(@class,'w-100 _len1zh btn btn-danger') and text()='Delete']");
     By toggleCarouselDisplayStatus = By.xpath("//div[@class='ml-4']//input[@type='checkbox' and @role='switch' and @checked]");
     By enableSwitch = By.xpath("//td[text()='All Items']/parent::tr//div[contains(@class, 'react-switch-handle') and contains(@style, 'transform: translateX(19px);')]");
+    By enableSwitchDontForgot = By.xpath("//div[contains(@class,'react-switch-handle')  and contains(@style, 'transform: translateX(19px)')]");
     By disableSwitch = By.xpath("//td[text()='All Items']/parent::tr//div[contains(@class, 'react-switch-handle') and contains(@style, 'transform: translateX(1px);')]");
     By toggleSwitch = By.xpath(" //td[text()='All Items']/parent::tr//div[contains(@class, 'react-switch-handle')]");
     By dropdown_status = By.xpath("//div[contains(text(),'Status')]");
@@ -261,6 +262,14 @@ public class BoostPage extends LoginPage {
             distributorUI.click(toggle_carouselDisplayStatus);
         }
         distributorUI.waitForCustom(1000);
+    }
+    public void ensureDontForgetToOrderDisplayStatus(boolean enable) throws InterruptedException {
+        distributorUI.waitForClickability(toggle_carouselDisplayStatus);
+        boolean isCurrentlyEnabled = distributorUI.isDisplayed(enableSwitchDontForgot);
+        if (isCurrentlyEnabled != enable) {
+            distributorUI.click(toggle_carouselDisplayStatus);
+            distributorUI.waitForCustom(2000);
+        }
     }
     public void toggleOffCarouselDisplayStatus() {
             distributorUI.click(toggle_carouselDisplayStatus);

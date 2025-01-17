@@ -117,6 +117,9 @@ public class Boost {
     public static void toggleOnCarouselDisplayStatus(boolean inactive) throws InterruptedException {
         boostPage.toggleOnCarouselDisplayStatus(inactive);
     }
+    public static void ensureDontForgetToOrderDisplayStatus(boolean status) throws InterruptedException {
+        boostPage.ensureDontForgetToOrderDisplayStatus(status);
+    }
     public static void toggleOffCarouselDisplayStatus(){
         boostPage.toggleOffCarouselDisplayStatus();
     }

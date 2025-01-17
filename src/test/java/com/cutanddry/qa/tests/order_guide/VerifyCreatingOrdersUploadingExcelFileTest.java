@@ -49,7 +49,8 @@ public class VerifyCreatingOrdersUploadingExcelFileTest extends TestBase {
         Customer.closeEditor();
         Customer.goToCatalog();
         Customer.clickOnOrderGuideTab();
-        Customer.searchItemOnOrderGuide(itemName);
+        String serchItemName = itemName.replace("-","");
+        Customer.searchItemOnOrderGuide(serchItemName);
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         softAssert.assertAll();
     }
