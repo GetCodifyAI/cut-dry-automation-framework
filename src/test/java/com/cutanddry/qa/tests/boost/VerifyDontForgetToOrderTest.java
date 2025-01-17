@@ -36,7 +36,8 @@ public class VerifyDontForgetToOrderTest extends TestBase {
         inactiveState = Boost.checkInactiveState("Don't Forget to Order");
         Boost.clickDontForgetToOrderConfig();
         softAssert.assertTrue(Boost.isDontForgetPopupDisplayed(),"don't forget popup error");
-        Boost.toggleOnCarouselDisplayStatus(inactiveState); //assuming default inactive
+        Boost.ensureDontForgetToOrderDisplayStatus(true);
+//        Boost.toggleOnCarouselDisplayStatus(inactiveState); //assuming default inactive
         Boost.clickClose();
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
