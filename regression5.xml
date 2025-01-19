@@ -6,7 +6,7 @@
         <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
     </listeners>
     <test name="distributor tests">
-        <parameter name="PART" value="Part Five" />
+        <parameter name="PART" value="Part_Five" />
         <classes>
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyEditCustomerNameTest" />
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheCatalogFilterSidebarTest" />

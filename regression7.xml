@@ -6,7 +6,7 @@
         <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
     </listeners>
     <test name="distributor tests">
-        <parameter name="PART" value="Part Seven"/>
+        <parameter name="PART" value="Part_Seven"/>
         <classes>
             <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingAddCreditCardTest"/>
 <!--            TODO: Billing test cases are failing due to the lack of paid due invoices and the inability to create new ones. sComment out the test cases until a solution is provided.-->

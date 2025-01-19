@@ -6,7 +6,7 @@
         <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
     </listeners>
     <test name="distributor tests">
-        <parameter name="PART" value="Part Two" />
+        <parameter name="PART" value="Part_Two" />
         <classes>
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyCreatingStandingOrdersTest" />
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyEditingStandingOrdersTest" />
