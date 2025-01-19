@@ -6,7 +6,7 @@
         <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
     </listeners>
     <test name="distributor tests">
-        <parameter name="PART" value="Part Eight"/>
+        <parameter name="PART" value="Part_Eight"/>
         <classes>
             <class name="com.cutanddry.qa.tests.multi_cart.VerifyGroupingProductsIntoTwoCartsTest" />
             <class name="com.cutanddry.qa.tests.multi_cart.VerifyCreatedOrdersFromMultipleCartsTest" />

@@ -6,7 +6,7 @@
         <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
     </listeners>
     <test name="distributor tests">
-        <parameter name="PART" value="Part Nine"/>
+        <parameter name="PART" value="Part_Nine"/>
         <classes>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheViewFeatureInThePayoutSectionTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheDownloadFeatureInThePayoutSectionTest"/>
