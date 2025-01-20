@@ -168,5 +168,8 @@ public class Dashboard {
         dashboardPage.clickOnPlaceOrderBtn();
     }
 
+    public static void navigateToApprovalsTab(){
+        dashboardPage.clickOnApproval();
+    }
 
 }

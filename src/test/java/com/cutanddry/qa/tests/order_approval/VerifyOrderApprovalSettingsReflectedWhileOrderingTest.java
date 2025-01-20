@@ -68,8 +68,10 @@ public class VerifyOrderApprovalSettingsReflectedWhileOrderingTest {
         Login.navigateToLoginAsPortal(AdminUserCode);
         Dashboard.navigateToDrafts();
         softAssert.assertTrue(Draft.isApprovalRequestedOrderDisplayed(),"Approval Requested order doesn't get displayed");
-        Draft.selectApprovalRequestedOrder();
-        Draft.approveAndSubmitOrder();
+        Dashboard.navigateToApprovalsTab();
+        softAssert.assertTrue(Approvals.isNavigatedToApprovalPage(),"ERROR in navigating to approvals Page");
+        Approvals.selectFirstApprovalOrder();
+        Approvals.approveAndSubmitOrder();
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(),"Error in approving the order");
 
         //Turning the order approval off for specific order guide
