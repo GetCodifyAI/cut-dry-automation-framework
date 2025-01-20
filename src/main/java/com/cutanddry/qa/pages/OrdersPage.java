@@ -379,15 +379,7 @@ public class OrdersPage extends LoginPage{
         distributorUI.click(lbl_salesperson);
         By lbl_SalespersonType = By.xpath(sel_SalesPersonStatus.replace("TYPE", type));
         distributorUI.waitForVisibility(lbl_SalespersonType);
-        for (int i = 0; i < 3; i++) {
-            try {
-                distributorUI.click(lbl_SalespersonType);
-                break;
-            } catch (Exception e) {
-                distributorUI.waitForCustom(3000);
-            }
-        }
-
+        distributorUI.click(lbl_SalespersonType);
     }
 
     /*public boolean checkFiltersCorrectlyDisplayed(String status) {

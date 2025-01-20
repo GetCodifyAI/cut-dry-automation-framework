@@ -777,6 +777,11 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         distributorUI.click(By.xpath(msg_banner.replace("TESTMESSAGE",message)));
     }
     public boolean isProductDetailsDisplayed(){
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return distributorUI.isDisplayed(lbl_productDetails);
     }
     public boolean isTopCategoryPicksDisplayed(){
@@ -2091,8 +2096,17 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         }
         return distributorUI.isDisplayed(txt_orderConfirmationPopUp);
     }
-    public void clickOrderGuide(){
-        if(distributorUI.isDisplayed(btn_addOrderGuideHeart)){
+
+    public void clickOrderGuide() {
+        if (distributorUI.isDisplayed(btn_addOrderGuideHeart)) {
+            distributorUI.click(btn_addOrderGuideHeart);
+        } else {
+            distributorUI.click(btn_removeFromOrderGuideHeart);
+            try {
+                distributorUI.waitForCustom(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             distributorUI.click(btn_addOrderGuideHeart);
         }
     }
@@ -2723,6 +2737,7 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         distributorUI.clear(tbx_editNotes);
         distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(tbx_editNotes, note);
+        distributorUI.waitForCustom(3000);
     }
 
     public void clickOnEditNotes(){
