@@ -14,7 +14,6 @@
 <!--            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingPayButtonAddCreditCardTest"/>-->
             <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingExportOrderSettingTest"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingImportOrderSettingTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingDeleteOrderReminderAlertsTest"/>
             <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowApproveCreditThenChangeItToDeclineCreditTest"/>
             <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowToDeclineCreditThenChangeItToApproveCreditTest"/>
             <class name="com.cutanddry.qa.tests.credit_request.ValidateTheTimelineInCreditRequestUsingTimestampStatusOrganizationAndUser"/>
@@ -39,6 +38,7 @@
             <class name="com.cutanddry.qa.tests.pay.VerifyTheFilteringInvoicesByStatusTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheMarkAsPaidForBulkInvoicesTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheSendingPaymentsReminderForBulkInvoicesTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheViewFeatureInThePayoutSectionTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateDetailsOnRouteRecordTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateGettingRouteCodeFlowTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateGettingEditRouteFlowTest"/>
