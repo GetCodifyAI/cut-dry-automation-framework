@@ -7,7 +7,6 @@ public class DraftPage extends LoginPage{
     By btn_delete = By.xpath("(//button[contains(text(), 'Delete')])[1]");
     String txt_lastDraft = "(//tbody/tr[contains(@href, '/customers/place_order/') and contains(@href, 'draftId')]/td[8][contains(text(), 'TOTAL')])[1]";
     By pendingApprovalOrders = By.xpath("(//td/span[contains(text(),'Pending Approval')])[1]");
-    By approveAndSubmitBtn = By.xpath("//button[contains(text(),'Approve & Submit Order')]");
     By btn_editOrder = By.xpath("//a[contains(text(),'Edit Order')]");
     String date = "//td[text()='DATE']";
     By draftDate = By.xpath("//tr//td[6]");
@@ -39,9 +38,6 @@ public class DraftPage extends LoginPage{
         distributorUI.click(pendingApprovalOrders);
     }
 
-    public void clickOnApproveAndSubmitBtn(){
-        distributorUI.click(approveAndSubmitBtn);
-    }
     public void clickDraft(String total){
         distributorUI.click(By.xpath(txt_lastDraft.replace("TOTAL", total)));
     }

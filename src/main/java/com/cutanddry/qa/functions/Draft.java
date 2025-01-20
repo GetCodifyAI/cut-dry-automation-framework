@@ -24,12 +24,6 @@ public class Draft {
         draftPage.clickOnApprovalPendingOrder();
     }
 
-    public static void approveAndSubmitOrder(){
-        draftPage.clickOnApproveAndSubmitBtn();
-        if (customersPage.isDuplicatePopupDisplayed()){
-            customersPage.clickYesDuplicatePopup();
-        }
-    }
     public static void clickDraft(String total){
         draftPage.clickDraft(total);
     }

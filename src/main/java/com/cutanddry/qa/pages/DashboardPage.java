@@ -62,6 +62,8 @@ public class DashboardPage extends LoginPage{
     static By dropdownToggle = By.xpath("//span[text()='Company:']/ancestor::button[contains(@class, 'dropdown-toggle')]");
     static By independentFoodOption = By.xpath("//a[text()='Independent Foods Co']");
     By btn_PlaceOrder = By.xpath("(//button[text()='Place Order'])[1]");
+    By approvalsBtn = By.xpath("//a[contains(@data-tip,'Approvals')]");
+
 
     public boolean isDashboardTextDisplayed(){
         try {
@@ -316,6 +318,10 @@ public class DashboardPage extends LoginPage{
 
     public void clickOnPlaceOrderBtn(){
         distributorUI.click(btn_PlaceOrder);
+    }
+
+    public void clickOnApproval(){
+        distributorUI.click(approvalsBtn);
     }
 
 }

@@ -133,7 +133,7 @@ public class HistoryPage extends LoginPage{
         return distributorUI.isDisplayed(txt_orderHistory);
     }
     public void clickFirstItemFrmHistory()throws InterruptedException{
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(4000);
         distributorUI.waitForClickability(lbl_firstItemInHistory);
         distributorUI.click(lbl_firstItemInHistory);
     }
