@@ -38,6 +38,8 @@ public class VerifyRemovingSubstituteFromAnItemTest extends TestBase{
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
         Catalog.navigateToSubstituteTab();
+        // Pre-request
+        Catalog.addingItemAtZeroItem(substituteItemCode);
         Catalog.deleteSubstituteItem(substituteItemCode);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in Removing substitute item");

@@ -160,6 +160,17 @@ public class Catalog {
 
     }
 
+    public static void addingItemAtZeroItem(String ItemCode){
+        if (!catalogPage.isDeleteSubstituteItemDisplayed(ItemCode)) {
+            catalogPage.clickAddSubstitutionBtn();
+            String SubstituteItemName = catalogPage.getSubstituteItemName(ItemCode);
+            catalogPage.searchSubstituteItem(SubstituteItemName);
+            catalogPage.addSubstitutionsBtn();
+            catalogPage.clickOnSaveChangesBtn();
+        }
+
+    }
+
     public static void addSubstitutions(){
         catalogPage.clickAddSubstitutionBtn();
     }
