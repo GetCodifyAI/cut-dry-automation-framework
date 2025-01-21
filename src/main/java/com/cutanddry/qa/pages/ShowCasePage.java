@@ -6,7 +6,7 @@ public class ShowCasePage extends LoginPage {
     By productShowcaseTxt = By.xpath("//h1[contains(text(),'Cut+Dry Product Showcase')]");
     By productSearchBar = By.xpath("//input[@id='order_flow_search']");
 //    By productDisplayed = By.xpath("//div[contains(@class,'_3quvq7') and contains(@class,'_1vlidrf') and contains(text(),'Andy Capps Hot Fries, 0.85 Oz')]");
-    By productDisplayed = By.xpath("//div[contains(@class,'_3quvq7') and contains(@class,'_1vlidrf') and contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'andy capps hot fries, 0.85 oz')]");
+    By productDisplayed = By.xpath("//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'andy capps hot fries, 0.85 oz')]");
     By ManufacturerTxt = By.xpath("(//*[contains(text(),'Conagra Foodservice')])[1]");
     String ConagraFoodServiceTxt = "//div[contains(text(),'BRANDPAGE')]";
     By OurBrandBtn = By.xpath("//img[contains(@class,'img-fluid') and contains(@src,'angela-mia-logo')]");
