@@ -31,7 +31,7 @@ public class ValidateAddBreakToRouteFlowTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-895")
-    public void ValidateAddBreakToRouteFlow() throws InterruptedException{
+    public void ValidateAddBreakToRouteFlow() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
