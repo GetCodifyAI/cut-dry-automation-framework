@@ -33,6 +33,17 @@ public class VerifyTheAllowSponsoredProductAdvertisementsFlowTest extends TestBa
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToAdsSettings();
         softAssert.assertTrue(Settings.isAdsSettingsTextDisplayed(),"navigation to ads settings error");
+        //pre-requisites
+        if (Settings.isCustomerRestrictionTextDisplayed()){
+            Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
+            softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+            Login.navigateToInternalToolsPage();
+            InternalTools.navigateToConfigureSupplier();
+            InternalTools.navigateToIndependentCompEditDetails();
+            InternalTools.navigateToSponsoredAdsRebatesTab();
+            InternalTools.clickSponsoredProductAdsToggle();
+            InternalTools.clickProductAdsSave();
+        }
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToInternalToolsPage();
