@@ -89,6 +89,12 @@ public class Login {
         loginPage.navigateToRestaurantPortal(phoneNo);
     }
 
+    public static void navigateToGateKeeperAdmin(){
+        loginPage.navigateToGateKeeperAdmin();
+    }
 
+    public static void updateCompanyIDs(String featureName, String companyID) throws InterruptedException {
+        loginPage.updateCompanyIDs(featureName, companyID);
+    }
 
 }

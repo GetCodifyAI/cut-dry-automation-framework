@@ -14,6 +14,7 @@ public class Constants {
     public static String BASE_URI = "https://supplier-uat.staging.cutanddry.com/GraphQLController";
     public static String SLACK_WEBHOOK = System.getenv("SLACK_WEBHOOK");
     public static String CONFIG_SUPPLIER = "https://app-uat.staging.cutanddry.com/internaltools/configure-supplier";
+    public static String GATE_KEEPER_ADMIN = "https://app-uat.staging.cutanddry.com/gatekeeperadmin";
 
     public static String PROD_LOGIN_AS = "https://internal.cutanddry.com/internaltools/loginas";
 
