@@ -331,7 +331,17 @@ public class Settings {
     public static void clickClose(){
         settingsPage.clickClose();
     }
-    public static void clickAddAlert(){settingsPage.clickAddAlert();}
+    public static void clickAddAlert(){
+        if (settingsPage.isEditAlertBtnDisplayed()) {
+            settingsPage.clickEditAlert();
+            settingsPage.clickDeleteAlert();
+            settingsPage.clickOkAlert();
+        }
+        settingsPage.clickAddAlert();}
+    public static void clickEditAlert(){settingsPage.clickEditAlert();}
+    public static boolean isEditAlertBtnDisplayed() {
+        return settingsPage.isEditAlertBtnDisplayed();
+    }
     public static boolean isOrderRemindAlertTextDisplayed()throws InterruptedException{
         return settingsPage.isOrderRemindAlertTextDisplayed();
     }

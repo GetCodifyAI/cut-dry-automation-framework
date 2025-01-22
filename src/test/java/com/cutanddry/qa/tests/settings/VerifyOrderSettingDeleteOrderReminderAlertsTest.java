@@ -34,7 +34,7 @@ public class VerifyOrderSettingDeleteOrderReminderAlertsTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");
-        Settings.clickAddAlert();
+        Settings.clickEditAlert();
         softAssert.assertTrue(Settings.isOrderRemindAlertTextDisplayed(),"Order remind alert pop up not display");
         Settings.clickDeleteAlert();
         softAssert.assertTrue(Settings.isSettingOrderReminderTextDisplayed(),"Settings yor order reminder pop up not displayed");

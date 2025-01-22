@@ -112,6 +112,7 @@ public class SettingsPage extends LoginPage{
     By txt_importSuccess = By.xpath("//h2[text()='Import Completed!']");
     By btn_close = By.xpath("//button[text()='Close']");
     By btn_addAlert = By.xpath("//button[text()='Add Alert']");
+    By btn_editAlert = By.xpath("//button[text()='Edit Alert']");
     By txt_orderRemindAlert = By.xpath("//div[text()='Order Reminder Alert']");
     By sendAlertDropDown = By.xpath("//label[text()='Send Alert']//following-sibling::div//div[contains(@class, 'themed_select__control')]");
     String sendAlertOption = "//div[contains(@class,'themed_select__option') and text()='OPTION']";
@@ -761,6 +762,19 @@ public class SettingsPage extends LoginPage{
             if (distributorUI.isDisplayed(btn_addAlert)) {
                 distributorUI.waitForVisibility(btn_addAlert);
                 distributorUI.click(btn_addAlert);
+                return;
+            }
+            distributorUI.refreshPage();
+        }
+    }
+    public boolean isEditAlertBtnDisplayed() {
+        return distributorUI.isDisplayed(btn_editAlert);
+    }
+    public void clickEditAlert(){
+        for (int i = 0; i < 5; i++) {
+            if (distributorUI.isDisplayed(btn_editAlert)) {
+                distributorUI.waitForVisibility(btn_editAlert);
+                distributorUI.click(btn_editAlert);
                 return;
             }
             distributorUI.refreshPage();
