@@ -33,6 +33,10 @@ public class LoginPage extends TestBase {
     By lbl_loginAsCustomer = By.xpath("//button[contains(text(),'Re-Index')]/following-sibling::div//div[contains(text(),'Select')]/following::input[@type='text'][1]");
     String txt_customer = "//div[@id='react-select-5-option-0' and contains(text(), 'PHONE_NO')]";
     By btn_loginAsCustomer = By.xpath("//a[contains(text(), 'Login As (classic)')]");
+    By lbl_gateKeeper = By.xpath("//h1[contains(text(),'Gatekeeper')]");
+    By row_count = By.xpath("//table[@class='table table-striped']/tbody/tr");
+    String row_feature ="//table[@class='table table-striped']/tbody/tr[ROW]//td/input[@type='text']";
+    String row_Companies ="//table[@class='table table-striped']/tbody/tr[ROW]//textarea[@data-href='/gatekeeperadminajax/edit/companyIDs']";
 
 
     public void typeEmailOrMobile(String emailOrMobile){
@@ -134,4 +138,44 @@ public class LoginPage extends TestBase {
         distributorUI.click(By.xpath(txt_customer.replace("PHONE_NO", phoneNo)));
         distributorUI.navigateToURL(distributorUI.getText(btn_loginAsCustomer, "href"));
     }
+
+    public void navigateToGateKeeperAdmin(){
+        distributorUI.navigateToURL(Constants.GATE_KEEPER_ADMIN);
+        distributorUI.waitForVisibility(lbl_gateKeeper);
+    }
+
+    public void updateCompanyIDs(String featureName, String newCompanyID) throws InterruptedException {
+        int rowCount = distributorUI.countElements(row_count);
+
+        for (int i = 1; i <= rowCount; i++) {
+            String featureValue = distributorUI.getText(By.xpath(row_feature.replace("ROW", String.valueOf(i))), "value");
+            if (featureValue.equalsIgnoreCase(featureName)) {
+                String existingCompanyIDs = distributorUI.getText(By.xpath(row_Companies.replace("ROW", String.valueOf(i))));
+
+                if (existingCompanyIDs == null || existingCompanyIDs.isEmpty()) {
+                    distributorUI.sendKeysCharByChar(By.xpath(row_Companies.replace("ROW", String.valueOf(i))), newCompanyID);
+                } else {
+                    String[] companyIDArray = existingCompanyIDs.split(",");
+                    boolean idExists = false;
+
+                    for (String id : companyIDArray) {
+                        if (id.trim().equals(newCompanyID)) {
+                            idExists = true;
+                            break;
+                        }
+                    }
+
+                    if (!idExists) {
+                        String updatedCompanyIDs = existingCompanyIDs + "," + newCompanyID;
+                        distributorUI.sendKeysCharByChar(By.xpath(row_Companies.replace("ROW", String.valueOf(i))), updatedCompanyIDs);
+                    }
+                }
+
+                distributorUI.waitForCustom(3000);
+                break;
+            }
+        }
+    }
+
+
 }
