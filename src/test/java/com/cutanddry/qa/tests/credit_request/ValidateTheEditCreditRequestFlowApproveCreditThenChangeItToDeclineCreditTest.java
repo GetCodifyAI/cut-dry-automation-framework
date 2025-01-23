@@ -79,6 +79,6 @@ public class ValidateTheEditCreditRequestFlowApproveCreditThenChangeItToDeclineC
     @AfterMethod
     public void tearDown(ITestResult result) {
         takeScreenshotOnFailure(result);
-        closeAllBrowsers();
+        closeAllBrowsersAtOnce();
     }
 }

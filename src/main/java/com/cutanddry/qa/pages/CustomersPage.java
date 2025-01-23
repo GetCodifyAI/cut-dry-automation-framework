@@ -377,9 +377,9 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By itemStatusDropDown = By.xpath("//div[contains(text(), 'Item Status')]");
     By itemStatusDropDownOption = By.xpath("//div[contains(text(), 'Stocked')]");
     By storageTypeDropDown = By.xpath("//div[contains(text(), 'Storage Type')]");
-    By storageTypeDropDownOption = By.xpath("//div[@class='_du1frc _17ct4f8 w-100 pr-1' and contains(text(), 'Dry')]");
+    By storageTypeDropDownOption = By.xpath("//div[contains(text(), 'Dry')]");
     By dietTypeDropDown = By.xpath("//div[contains(text(), 'Diet Type')]");
-    By dietTypeDropDownOption = By.xpath("//div[@class='_du1frc _17ct4f8 w-100 pr-1' and contains(text(), 'Kosher')]");
+    By dietTypeDropDownOption = By.xpath("//div[contains(text(), 'Kosher')]");
     By txt_filterItem = By.xpath("//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'j hungerford smith')]");
     By processingTypeDropDown = By.xpath("//div[contains(text(), 'Processing & Formulation')]");
     By processingTypeDropOption = By.xpath("//div[contains(text(), 'Non-GMO')]");

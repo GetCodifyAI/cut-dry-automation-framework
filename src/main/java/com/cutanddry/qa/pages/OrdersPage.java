@@ -18,6 +18,7 @@ public class OrdersPage extends LoginPage{
     By lbl_firstOrderTickBox = By.xpath("//tbody/tr[2]/td[1]");
     By lbl_firstOrder = By.xpath("//tbody/tr[2]/td[2]");
     By btn_editOrder = By.xpath("//button[contains(text(),'Edit Order')]");
+    By lbl_editOrderTitle = By.xpath("//h2[contains(text(),'Order')]");
     By txt_editOrderPopup = By.xpath("//h2[contains(text(),'Edit Order?')]");
     By btn_confirm= By.xpath("//button[contains(text(),'Confirm')]");
     By txt_editOrder = By.xpath("//span/div[contains(text(),'Edit Order')]");
@@ -197,11 +198,30 @@ public class OrdersPage extends LoginPage{
             distributorUI.click(By.xpath(orderGuide.replace("ORDERGUIDE",OrderGuideName)));
         }
     }
-    public void clickOnFirstOrder(){
+    public void clickOnFirstOrder() throws InterruptedException {
         distributorUI.click(lbl_firstOrder);
+        distributorUI.waitForCustom(3000);
     }
-    public void clickOnEditOrder(){
+
+    public void clickOnFirstOrder(String status) {
+        int totalColumnCount = distributorUI.countElements(lbl_orderTableColumn);
+
+        for (int i = 1; i <= totalColumnCount; i++) {
+            String columnName = distributorUI.getText(By.xpath(lbl_orderTableColumnName.replace("COUNT", String.valueOf(i))));
+            if ("Status".equalsIgnoreCase(columnName)) {
+                By creditRequestedLocator = By.xpath(
+                        lbl_status.replace("COUNT", String.valueOf(i)).replace("STATUS", status)
+                );
+               distributorUI.click(creditRequestedLocator);
+               break;
+            }
+        }
+    }
+
+    public void clickOnEditOrder() throws InterruptedException {
         distributorUI.click(btn_editOrder);
+        distributorUI.waitForVisibility(lbl_editOrderTitle);
+        System.out.println("Order Ref No: "+distributorUI.getText(lbl_editOrderTitle));
     }
     public boolean isEditOrderPopupDisplayed(){
         return distributorUI.isDisplayed(txt_editOrderPopup);
