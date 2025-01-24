@@ -49,10 +49,13 @@ public class Orders {
     public static void selectOrderGuide(String OrderGuide) {
         ordersPage.clickOnOrderGuide(OrderGuide);
     }
-    public static void clickOnFirstOrder(){
+    public static void clickOnFirstOrder() throws InterruptedException {
         ordersPage.clickOnFirstOrder();
     }
-    public static void clickOnEditOrder(){
+    public static void clickOnFirstOrder(String status){
+        ordersPage.clickOnFirstOrder(status);
+    }
+    public static void clickOnEditOrder() throws InterruptedException {
         ordersPage.clickOnEditOrder();
     }
     public static boolean isEditOrderPopupDisplayed(){

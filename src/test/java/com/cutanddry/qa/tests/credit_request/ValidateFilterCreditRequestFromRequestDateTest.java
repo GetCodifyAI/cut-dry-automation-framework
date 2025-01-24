@@ -19,6 +19,7 @@ public class ValidateFilterCreditRequestFromRequestDateTest extends TestBase {
     static User user;
     String date = "Today";
     String CustomerCode = CustomerInvoiceData.CUSTOMER_CODE;
+    String creditStatus = "Submitted";
 
     @BeforeMethod
     public void setUp(){
@@ -46,7 +47,8 @@ public class ValidateFilterCreditRequestFromRequestDateTest extends TestBase {
         Customer.clickClose();
         Dashboard.navigateToOrders();
         softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"Error navigating to orders page");
-        Orders.clickOnFirstOrder();
+//        Orders.clickOnFirstOrder();
+        Orders.clickOnFirstOrder(creditStatus);
         Orders.clickCheckIn();
         Orders.clickReportIssue();
         Orders.clickOnFirstRowTableOrderIssues();
