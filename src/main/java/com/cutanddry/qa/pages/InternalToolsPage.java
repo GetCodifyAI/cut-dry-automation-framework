@@ -117,8 +117,14 @@ public class InternalToolsPage extends LoginPage {
     }
     public void clickSponsoredProductAdsToggle(){
         distributorUI.click(sponsoredProductAdsToggle);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void clickProductAdsSave(){
+        distributorUI.waitForVisibility(btn_saveProductAds);
         distributorUI.click(btn_saveProductAds);
     }
     public void clickBuyerEdgePlatformRebateToggle(){

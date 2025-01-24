@@ -63,6 +63,25 @@ public class KeywordBase {
         return this;
     }
 
+    // Click on an element using By object
+    public KeywordBase clickWithFallback(By by) {
+        try {
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
+            element.click();
+            logger.info("Clicked on element: {}", by);
+        } catch (Exception e1) {
+            logger.warn("Standard click failed on element: {}. Attempting JavaScript click...", by, e1);
+            try {
+                WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(by));
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+                logger.info("Clicked using JavaScript on element: {}", by);
+            } catch (Exception e2) {
+                logger.error("Failed to click on element: {} using both standard and JavaScript methods.", by, e2);
+            }
+        }
+        return this;
+    }
+
     //Get row count in a table
     public int getRowCount(By tableXPath) {
         int rowCount = 0;
