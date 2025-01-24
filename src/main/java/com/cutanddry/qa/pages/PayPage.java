@@ -95,6 +95,13 @@ public class PayPage extends LoginPage{
     By btn_threeDotPayout = By.xpath("//thead/tr/th[normalize-space()='Payout ID']/../../following-sibling::tbody//tr[1]//td[7]//*[local-name()='svg' and @data-icon='ellipsis-vertical']");
     By viewDropDownOption = By.xpath("//span[text()='View']");
     By downloadDropDownOption = By.xpath("//span[text()='Download']");
+    By invoiceCode = By.xpath("//th[contains(text(),'Invoice')]/ancestor::table/tbody/tr[1]/td[4]");
+    By invoiceDate = By.xpath("//th[contains(text(),'Invoice Date')]/ancestor::table/tbody/tr[1]/td[5]");
+    String invoiceDetails = "//div[text()='DETAILS']";
+    String invoiceId = "//h2[contains(text(),'ID')]";
+    By btn_downloadInvoice = By.xpath("//div[contains(@class,'justify-content-end col')]//*[name()='svg' and contains(@class,'mr-2')]");
+    By btn_printInvoice = By.xpath("//div[contains(@class,'justify-content-end col')]//*[name()='svg' and contains(@class,'mr-5')]");
+
 
     public boolean isPaymentStatusCorrect(String expectedPaymentStatus) {
         int numberOfRows = distributorUI.getRowCount(table_paymentInitiated);
@@ -689,6 +696,37 @@ public class PayPage extends LoginPage{
     }
     public void clickDownloadPayout(){
         distributorUI.click(downloadDropDownOption);
+    }
+    public String getInvoiceCode()throws InterruptedException{
+       return distributorUI.getText(invoiceCode);
+    }
+    public String getInvoiceDate()throws InterruptedException{
+        return distributorUI.getText(invoiceDate);
+    }
+    public void clickOneInvoice(){
+        distributorUI.click(invoiceCode);
+    }
+    public boolean isInvoiceDisplayed(String id)throws InterruptedException {
+        try {
+            distributorUI.waitForVisibility(By.xpath(invoiceId.replace("ID",id)));
+        } catch (Exception e) {
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(invoiceId.replace("ID",id)));
+    }
+    public boolean isInvoiceDetailsDisplayed(String details)throws InterruptedException {
+        try {
+            distributorUI.waitForVisibility(By.xpath(invoiceDetails.replace("DETAILS",details)));
+        } catch (Exception e) {
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(invoiceDetails.replace("DETAILS",details)));
+    }
+    public void downloadInvoice()throws InterruptedException{
+        distributorUI.click(btn_downloadInvoice);
+    }
+    public void clickPrintInvoice()throws InterruptedException{
+        distributorUI.click(btn_printInvoice);
     }
 
 

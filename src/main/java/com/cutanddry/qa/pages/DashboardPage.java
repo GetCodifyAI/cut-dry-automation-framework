@@ -63,6 +63,8 @@ public class DashboardPage extends LoginPage{
     static By independentFoodOption = By.xpath("//a[text()='Independent Foods Co']");
     By btn_PlaceOrder = By.xpath("(//button[text()='Place Order'])[1]");
     By approvalsBtn = By.xpath("//a[contains(@data-tip,'Approvals')]");
+    By locationFilter = By.xpath("(//div[text()='Place Order']/following-sibling::div//div)[1]");
+    By locationOption = By.xpath("//div[text()='Place Order']/following-sibling::*//div[contains(@id,'react-select') and contains(text(), 'All Locations')]");
 
 
     public boolean isDashboardTextDisplayed(){
@@ -100,13 +102,13 @@ public class DashboardPage extends LoginPage{
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_orderSettings);
-        distributorUI.click(btn_orderSettings);
+        distributorUI.clickWithFallback(btn_orderSettings);
     }
     public void clickOnTeamSettings(){
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_teamSettings);
-        distributorUI.click(btn_teamSettings);
+        distributorUI.clickWithFallback(btn_teamSettings);
     }
     public boolean isWhiteLabelDashboardTextDisplayed(){
         try {
@@ -118,13 +120,13 @@ public class DashboardPage extends LoginPage{
     }
     public void clickOnUsers(){
         distributorUI.waitForVisibility(btn_users);
-        distributorUI.click(btn_users);
+        distributorUI.clickWithFallback(btn_users);
     }
     public void clickOnOrders(){
-        distributorUI.click(btn_viewOrders);
+        distributorUI.clickWithFallback(btn_viewOrders);
     }
     public void clickOnOrderDesk(){
-        distributorUI.click(btn_orderDesk);
+        distributorUI.clickWithFallback(btn_orderDesk);
     }
     public boolean isDashboardDefaultValuesDisplayed(){
         try {
@@ -138,7 +140,7 @@ public class DashboardPage extends LoginPage{
     public void selectSalesperson(String name){
         distributorUI.click(lbl_salespersonDropdown);
         distributorUI.waitForVisibility(By.xpath(txt_salesperson.replace("NAME", name)));
-        distributorUI.click(By.xpath(txt_salesperson.replace("NAME", name)));
+        distributorUI.clickWithFallback(By.xpath(txt_salesperson.replace("NAME", name)));
     }
     public void selectDuration(String days){
         distributorUI.click(lbl_durationDropdown);
@@ -180,77 +182,77 @@ public class DashboardPage extends LoginPage{
         return totals;
     }
     public void clickOnHistory(){
-        distributorUI.click(btn_history);
+        distributorUI.clickWithFallback(btn_history);
     }
     public void clickOnDrafts(){
-        distributorUI.click(btn_drafts);
+        distributorUI.clickWithFallback(btn_drafts);
     }
 
     public void clickOnTrackResources(){
         distributorUI.scrollToElement(btn_track);
         distributorUI.clickUsingJavaScript(btn_track);
         distributorUI.hoverOverElement(btn_trackResources);
-        distributorUI.click(btn_trackResources);
+        distributorUI.clickWithFallback(btn_trackResources);
     }
     public void clickOnTrackRoutes(){
         distributorUI.scrollToElement(btn_track);
         distributorUI.clickUsingJavaScript(btn_track);
         distributorUI.hoverOverElement(btn_trackRoutes);
-        distributorUI.click(btn_trackRoutes);
+        distributorUI.clickWithFallback(btn_trackRoutes);
     }
     public void clickOnTrackMonitoring(){
         distributorUI.scrollToElement(btn_track);
         distributorUI.clickUsingJavaScript(btn_track);
         distributorUI.hoverOverElement(btn_trackMonitoring);
-        distributorUI.click(btn_trackMonitoring);
+        distributorUI.clickWithFallback(btn_trackMonitoring);
     }
     public void clickOnTrackNotifications(){
         distributorUI.scrollToElement(btn_track);
         distributorUI.clickUsingJavaScript(btn_track);
         distributorUI.hoverOverElement(btn_trackNotifications);
-        distributorUI.click(btn_trackNotifications);
+        distributorUI.clickWithFallback(btn_trackNotifications);
     }
     public void clickOnPay(){
-        distributorUI.click(btn_pay);
+        distributorUI.clickWithFallback(btn_pay);
     }
     public void clickOnReports(){
-        distributorUI.click(btn_reports);
+        distributorUI.clickWithFallback(btn_reports);
     }
     public void clickOnBillingSettings(){
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_billingSettings);
-        distributorUI.click(btn_billingSettings);
+        distributorUI.clickWithFallback(btn_billingSettings);
     }
     public void clickOnCompanySettings(){
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_companySettings);
-        distributorUI.click(btn_companySettings);
+        distributorUI.clickWithFallback(btn_companySettings);
     }
     public void clickOnTrackSettings(){
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_trackSettings);
-        distributorUI.click(btn_trackSettings);
+        distributorUI.clickWithFallback(btn_trackSettings);
     }
     public void clickOnProfileSettings(){
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_profSettings);
-        distributorUI.click(btn_profSettings);
+        distributorUI.clickWithFallback(btn_profSettings);
     }
     public void clickOnAdsSettings(){
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_adsSettings);
-        distributorUI.click(btn_adsSettings);
+        distributorUI.clickWithFallback(btn_adsSettings);
     }
     public void clickOnPaySettings(){
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_paySettings);
-        distributorUI.click(btn_paySettings);
+        distributorUI.clickWithFallback(btn_paySettings);
     }
     public void clickOnSupport(){
         String url = distributorUI.getText(btn_support,"href");
@@ -322,6 +324,14 @@ public class DashboardPage extends LoginPage{
 
     public void clickOnApproval(){
         distributorUI.click(approvalsBtn);
+    }
+    public void clickLocationFilter(){
+        distributorUI.click(locationFilter);
+    }
+    public void clickOnLocationOption() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        distributorUI.waitForVisibility(locationOption);
+        distributorUI.click(locationOption);
     }
 
 }

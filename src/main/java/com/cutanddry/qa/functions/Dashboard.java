@@ -129,7 +129,9 @@ public class Dashboard {
     public static void navigateToCreditRequests(){
         dashboardPage.clickOnCreditRequests();
     }
-    public static void navigateToIndependentFoodsCo() {
+    public static void navigateToIndependentFoodsCo()throws InterruptedException{
+        dashboardPage.clickLocationFilter();
+        dashboardPage.clickOnLocationOption();
         dashboardPage.clickOnPlaceOrder();
     }
     public static void navigateToOrderGuide() throws InterruptedException {

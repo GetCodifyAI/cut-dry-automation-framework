@@ -14,6 +14,7 @@ import org.testng.asserts.SoftAssert;
 public class ValidateTheTimelineInCreditRequestUsingTimestampStatusOrganizationAndUser extends TestBase {
     static User user;
     String CustomerCode = CustomerInvoiceData.CUSTOMER_CODE;
+    String creditStatus = "Submitted";
 
     @BeforeMethod
     public void setUp(){
@@ -37,7 +38,8 @@ public class ValidateTheTimelineInCreditRequestUsingTimestampStatusOrganizationA
         Customer.clickClose();
         Dashboard.navigateToOrders();
         softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"Error navigating to orders page");
-        Orders.clickOnFirstOrder();
+//        Orders.clickOnFirstOrder();
+        Orders.clickOnFirstOrder(creditStatus);
         Orders.clickTimeline();
         String[] timelineData = Orders.getTimelineData();
         Orders.clickCheckIn();
