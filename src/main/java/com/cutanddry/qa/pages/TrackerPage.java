@@ -109,7 +109,7 @@ public class TrackerPage extends LoginPage{
     }
     public void clickCreateTicket()throws InterruptedException{
         distributorUI.waitForVisibility(btn_createTicket);
-        distributorUI.click(btn_createTicket);
+        distributorUI.clickWithScrollAndHover(btn_createTicket);
         distributorUI.waitForCustom(2000);
     }
     public boolean isTaskTitleDisplayed(String title){

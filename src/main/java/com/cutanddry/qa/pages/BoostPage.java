@@ -225,7 +225,7 @@ public class BoostPage extends LoginPage {
         distributorUI.click(btn_allItemConfig);
     }
     public void clickAddItems() {
-        distributorUI.click(btn_addItems);
+        distributorUI.clickWithScrollAndHover(btn_addItems);
     }
     public void addItem(String code) {
         distributorUI.waitForVisibility(input_addItem);
@@ -246,7 +246,7 @@ public class BoostPage extends LoginPage {
         distributorUI.waitForCustom(2000);
     }
     public void removeItem(String code) {
-        distributorUI.click(By.xpath(btn_removeItem.replace("CODE", code)));
+        distributorUI.clickWithScrollAndHover(By.xpath(btn_removeItem.replace("CODE", code)));
     }
     public boolean isItemInCarouselPreview(String code) {
         return distributorUI.isDisplayed(By.xpath(txt_itemAdded.replace("CODE", code)));
