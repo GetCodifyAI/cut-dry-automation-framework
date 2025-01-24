@@ -28,6 +28,7 @@
             <class name="com.cutanddry.qa.tests.track.VerifyTrackSettingsUnderRoutes"/>
             <class name="com.cutanddry.qa.tests.track.VerifyTheWarehouseSelectionFromTheDropdown"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingDeleteOrderReminderAlertsTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifySelectInvoiceFromInvoiceGridTest"/>
         </classes>
     </test>
 </suite>

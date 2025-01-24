@@ -301,4 +301,25 @@ public class Pay {
     public static void clickDownloadPayout(){
         payPage.clickDownloadPayout();
     }
+    public static String getInvoiceCode() throws InterruptedException {
+        return payPage.getInvoiceCode();
+    }
+    public static String getInvoiceDate() throws InterruptedException {
+        return payPage.getInvoiceDate();
+    }
+    public static void clickOneInvoice(){
+        payPage.clickOneInvoice();
+    }
+    public static boolean navigateInvoice(String id)throws InterruptedException{
+        return payPage.isInvoiceDisplayed(id);
+    }
+    public static boolean isInvoiceDetailsDisplayed(String details)throws InterruptedException{
+        return payPage.isInvoiceDetailsDisplayed(details);
+    }
+    public static void clickDownloadInvoice()throws InterruptedException{
+        payPage.downloadInvoice();
+    }
+    public static void clickPrintInvoice()throws InterruptedException{
+        payPage.clickPrintInvoice();
+    }
 }
