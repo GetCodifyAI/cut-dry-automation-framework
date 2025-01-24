@@ -10,7 +10,7 @@ public class Reports {
     public static boolean isUserNavigatedToReports(){
         return reportsPage.isReportingTextDisplayed();
     }
-    public static void clickEmailReport(){
+    public static void clickEmailReport() throws InterruptedException {
         reportsPage.clickEmailReport();
     }
     public static boolean isGeneratingReportPopupDisplayed(){

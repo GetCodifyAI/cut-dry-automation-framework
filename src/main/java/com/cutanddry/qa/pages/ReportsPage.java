@@ -74,8 +74,9 @@ public class ReportsPage extends LoginPage{
         }
         return distributorUI.isDisplayed(txt_reporting);
     }
-    public void clickEmailReport(){
+    public void clickEmailReport() throws InterruptedException {
         distributorUI.click(btn_email_report);
+        distributorUI.waitForCustom(2000);
     }
     public boolean isGeneratingReportPopupDisplayed(){
         try {
@@ -95,7 +96,7 @@ public class ReportsPage extends LoginPage{
 
     public void typeOnOrderGuidesEmail(String email) throws InterruptedException {
         distributorUI.clear(txt_OrderGuidesEmail);
-        distributorUI.waitForCustom(1000);
+        distributorUI.waitForCustom(2000);
         distributorUI.sendKeys(txt_OrderGuidesEmail, email);
     }
 

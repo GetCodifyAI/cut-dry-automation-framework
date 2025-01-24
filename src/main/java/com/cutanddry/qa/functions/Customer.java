@@ -840,9 +840,9 @@ public class Customer {
     public static boolean isFilterCustomersPopUpDisplayed(){
         return customersPage.isFilterCustomersPopUpDisplayed();
     }
-    public static void clickSignUpStatus(){customersPage.clickSignUpStatus();}
+    public static void clickSignUpStatus() throws InterruptedException {customersPage.clickSignUpStatus();}
     public static void clickSignUpOption(){customersPage.clickSignUpOption();}
-    public static void clickApply(){customersPage.clickApply();}
+    public static void clickApply() throws InterruptedException {customersPage.clickApply();}
     public static boolean isStatusDisplayed(String status){
         return customersPage.isStatusDisplayed(status);
     }
