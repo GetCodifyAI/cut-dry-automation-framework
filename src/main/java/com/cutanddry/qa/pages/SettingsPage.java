@@ -767,6 +767,9 @@ public class SettingsPage extends LoginPage{
             distributorUI.refreshPage();
         }
     }
+    public boolean isAddAlertBtnDisplayed() {
+        return distributorUI.isDisplayed(btn_addAlert);
+    }
     public boolean isEditAlertBtnDisplayed() {
         return distributorUI.isDisplayed(btn_editAlert);
     }

@@ -450,7 +450,7 @@ public class TrackPage extends LoginPage{
         distributorUI.waitForVisibility(btn_saveChange);
         distributorUI.click(btn_saveChange);
         distributorUI.waitForVisibility(btn_saveChange);
-        distributorUI.waitForCustom(1000);
+        distributorUI.waitForCustom(3000);
     }
 
     public void searchDriver(String name){
