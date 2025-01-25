@@ -14,8 +14,8 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheTrackResourcesAfterEditingTruckTest extends TestBase {
     static User user;
-    static String name = "Jordan Truck";
-    static String edited_name = "Jor Truck";
+    static String name = "Jordan Truck"+ generateDynamicValue();
+    static String edited_name = "Jor Truck edited"+ generateDynamicValue();
 
     @BeforeMethod
     public void setUp() {
@@ -32,11 +32,21 @@ public class VerifyTheTrackResourcesAfterEditingTruckTest extends TestBase {
         softAssert.assertTrue(Track.isResourcesTextDisplayed(),"navigation to track resources error");
         Track.clickOnTrucks();
         softAssert.assertTrue(Track.isAddTrucksBtnDisplayed(),"navigation to trucks error");
+        //Pre-request
+        Track.clickOnAddTrucks();
+        Track.enterTruckName(name);
+        Track.clickOnSaveChanges();
+
         Track.clickOnEditUser(name);
         softAssert.assertTrue(Track.isEditUserPopupDisplayed(),"edit truck popup error");
         Track.enterTruckName(edited_name);
         Track.clickOnSaveChanges();
         softAssert.assertTrue(Track.isUserDisplayed(edited_name),"add driver error");
+
+        //Post-request
+        Track.clickOnEditUser(edited_name);
+        Track.clickOnRemoveUserLabel();
+        Track.clickOnRemoveUser();
         softAssert.assertAll();
     }
 

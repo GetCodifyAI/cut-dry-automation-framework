@@ -400,6 +400,7 @@ public class OrdersPage extends LoginPage{
         By lbl_SalespersonType = By.xpath(sel_SalesPersonStatus.replace("TYPE", type));
         distributorUI.waitForVisibility(lbl_SalespersonType);
         distributorUI.clickWithFallback(lbl_SalespersonType);
+        distributorUI.sendKeysAndEnter(lbl_SalespersonType,"All");
     }
 
     /*public boolean checkFiltersCorrectlyDisplayed(String status) {

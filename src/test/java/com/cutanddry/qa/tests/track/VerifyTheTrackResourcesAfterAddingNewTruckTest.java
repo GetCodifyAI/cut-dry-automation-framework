@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheTrackResourcesAfterAddingNewTruckTest extends TestBase {
     static User user;
-    static String name = "Jordan Truck";
+    static String name = "Jordan Truck"+ generateDynamicValue();
 
     @BeforeMethod
     public void setUp() {
@@ -36,6 +36,11 @@ public class VerifyTheTrackResourcesAfterAddingNewTruckTest extends TestBase {
         Track.enterTruckName(name);
         Track.clickOnSaveChanges();
         softAssert.assertTrue(Track.isUserDisplayed(name),"add driver error");
+
+        //Post-request
+        Track.clickOnEditUser(name);
+        Track.clickOnRemoveUserLabel();
+        Track.clickOnRemoveUser();
         softAssert.assertAll();
     }
 
