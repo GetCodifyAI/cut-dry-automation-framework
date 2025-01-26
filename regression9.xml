@@ -32,6 +32,7 @@
             <class name="com.cutanddry.qa.tests.pay.VerifyDownloadInvoiceTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyPrintInvoiceTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheInvoiceDisplayCorrectDataTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyDraftOrderSubmittedByOperatorTest"/>
         </classes>
     </test>
 </suite>
