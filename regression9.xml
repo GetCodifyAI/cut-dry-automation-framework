@@ -31,6 +31,7 @@
             <class name="com.cutanddry.qa.tests.pay.VerifySelectInvoiceFromInvoiceGridTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyDownloadInvoiceTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyPrintInvoiceTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheInvoiceDisplayCorrectDataTest"/>
         </classes>
     </test>
 </suite>
