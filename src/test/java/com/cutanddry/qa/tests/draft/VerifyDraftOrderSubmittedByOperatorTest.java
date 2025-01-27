@@ -46,7 +46,7 @@ public class VerifyDraftOrderSubmittedByOperatorTest extends TestBase{
 
         Dashboard.navigateToDrafts();
         softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
-        referenceNum = Draft.getReferenceNumOP();
+        referenceNum = Draft.getReferenceNumOP().replace("#","");
         softAssert.assertTrue(Draft.isRestaurantLastDraftDisplayed(String.valueOf(itemPrice)),"draft creating error");
 
         Login.navigateToDistributorPortal(distributorName);
