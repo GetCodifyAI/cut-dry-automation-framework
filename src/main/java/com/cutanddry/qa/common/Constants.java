@@ -28,7 +28,7 @@ public class Constants {
         } else if (TEST_ENV.equalsIgnoreCase("PROD")){
             MAIN_URL = "https://supplier.cutanddry.com/";
         } else if (TEST_ENV.equalsIgnoreCase("STAG")) {
-            MAIN_URL = "https://supplier-essendant.staging.cutanddry.com/";
+            MAIN_URL = "https://supplier-guava.staging.cutanddry.com/";
         }
         return MAIN_URL;
     }
@@ -38,7 +38,7 @@ public class Constants {
         } else if (TEST_ENV.equalsIgnoreCase("PROD")){
             SEC_URL = "https://app.cutanddry.com/";
         } else if (TEST_ENV.equalsIgnoreCase("STAG")){
-            SEC_URL = "https://app-essendant.staging.cutanddry.com/";
+            SEC_URL = "https://app-guava.staging.cutanddry.com/";
         }
         return SEC_URL;
     }
@@ -49,7 +49,7 @@ public class Constants {
         } else if (TEST_ENV.equalsIgnoreCase("PROD")) {
             LOGIN_AS = "https://app.cutanddry.com/internaltools/loginas";
         } else if (TEST_ENV.equalsIgnoreCase("STAG")) {
-            LOGIN_AS = "https://app-essendant.staging.cutanddry.com/internaltools/loginas";
+            LOGIN_AS = "https://app-guava.staging.cutanddry.com/internaltools/loginas";
         }
         return LOGIN_AS;
     }
@@ -60,7 +60,7 @@ public class Constants {
         } else if (TEST_ENV.equalsIgnoreCase("PROD")) {
             NODE_EXPLORER = "https://app.cutanddry.com/admin";
         } else if (TEST_ENV.equalsIgnoreCase("STAG")) {
-            NODE_EXPLORER = "https://app-essendant.staging.cutanddry.com/admin";
+            NODE_EXPLORER = "https://app-guava.staging.cutanddry.com/admin";
         }
         return NODE_EXPLORER;
     }
@@ -71,7 +71,7 @@ public class Constants {
         } else if (TEST_ENV.equalsIgnoreCase("PROD")) {
             CONFIG_SUPPLIER = "https://app.cutanddry.com/internaltools/configure-supplier";
         } else if (TEST_ENV.equalsIgnoreCase("STAG")) {
-            CONFIG_SUPPLIER = "https://app-essendant.staging.cutanddry.com/internaltools/configure-supplier";
+            CONFIG_SUPPLIER = "https://app-guava.staging.cutanddry.com/internaltools/configure-supplier";
         }
         return CONFIG_SUPPLIER;
     }
