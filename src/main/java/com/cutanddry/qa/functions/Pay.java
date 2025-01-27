@@ -322,4 +322,13 @@ public class Pay {
     public static void clickPrintInvoice()throws InterruptedException{
         payPage.clickPrintInvoice();
     }
+    public static String getOnFirstOrder(String status){
+       return payPage.getOnFirstOrder(status);
+    }
+    public static String getCustomerNamePayment() throws InterruptedException {
+        return payPage.getCustomerNamePaymentInitiated();
+    }
+    public static void clickOnePaymentInitiate(){
+        payPage.clickOnePaymentInitiate();
+    }
 }

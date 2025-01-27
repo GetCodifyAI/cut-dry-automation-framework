@@ -1,17 +1,22 @@
 package com.cutanddry.qa.functions;
 
+import com.cutanddry.qa.pages.CustomersPage;
 import com.cutanddry.qa.pages.OrdersPage;
 import static com.cutanddry.qa.functions.Customer.customersPage;
 
 public class Orders {
     static OrdersPage ordersPage = new OrdersPage();
+    static CustomersPage customersPage = new CustomersPage();
 
     public static boolean isUserNavigatedToOrder(){
         return ordersPage.isOrdersTextDisplayed();
     }
 
-    public static void SelectSupplierFromPlaceOrderPage(String supplierName){
+    public static void SelectSupplierFromPlaceOrderPage(String supplierName) throws InterruptedException {
         ordersPage.clickOnSupplier(supplierName);
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
     }
 
     public static void increaseItemQuantity(String ItemCode, int Quantity){

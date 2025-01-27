@@ -97,10 +97,14 @@ public class PayPage extends LoginPage{
     By downloadDropDownOption = By.xpath("//span[text()='Download']");
     By invoiceCode = By.xpath("//th[contains(text(),'Invoice')]/ancestor::table/tbody/tr[1]/td[4]");
     By invoiceDate = By.xpath("//th[contains(text(),'Invoice Date')]/ancestor::table/tbody/tr[1]/td[5]");
-    String invoiceDetails = "//div[text()='DETAILS']";
+    String invoiceDetails = "//div[contains(text(),'DETAILS')]";
     String invoiceId = "//h2[contains(text(),'ID')]";
     By btn_downloadInvoice = By.xpath("//div[contains(@class,'justify-content-end col')]//*[name()='svg' and contains(@class,'mr-2')]");
     By btn_printInvoice = By.xpath("//div[contains(@class,'justify-content-end col')]//*[name()='svg' and contains(@class,'mr-5')]");
+    By lbl_orderTableColumn = By.xpath("//table/thead/tr/th");
+    String lbl_orderTableColumnName = "//table/thead/tr/th[COUNT]";
+    String lbl_status = "//th[COUNT][text()='STATUS']";
+    By customerName = By.xpath("//th[contains(text(),'Customer Name')]/ancestor::table/tbody/tr[1]/td[4]");
 
 
     public boolean isPaymentStatusCorrect(String expectedPaymentStatus) {
@@ -727,6 +731,28 @@ public class PayPage extends LoginPage{
     }
     public void clickPrintInvoice()throws InterruptedException{
         distributorUI.click(btn_printInvoice);
+    }
+    public String getOnFirstOrder(String status) {
+        int totalColumnCount = distributorUI.countElements(lbl_orderTableColumn);
+
+        for (int i = 1; i <= totalColumnCount; i++) {
+            String columnName = distributorUI.getText(By.xpath(lbl_orderTableColumnName.replace("COUNT", String.valueOf(i))));
+            if ("Code".equalsIgnoreCase(columnName)) {
+                By creditRequestedLocator = By.xpath(
+                        lbl_status.replace("COUNT", String.valueOf(i)).replace("STATUS", status)
+                );
+                return distributorUI.getText(creditRequestedLocator);
+
+            }
+        }
+        return "Status not found";
+
+    }
+    public String getCustomerNamePaymentInitiated()throws InterruptedException{
+        return distributorUI.getText(customerName);
+    }
+    public void clickOnePaymentInitiate(){
+        distributorUI.click(customerName);
     }
 
 
