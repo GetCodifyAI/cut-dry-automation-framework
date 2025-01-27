@@ -296,14 +296,8 @@ public class DashboardPage extends LoginPage{
     }
 
     public static String getTextAfterCompany() {
-        // Call the external waitForVisibility method
         distributorUI.waitForVisibility(wordAfterCompanyLocator);
-
-        // Locate the element
-        WebElement wordAfterCompanyElement = driver.findElement(wordAfterCompanyLocator);
-
-        // Get and return the text content
-        return wordAfterCompanyElement.getText();
+        return distributorUI.getText(wordAfterCompanyLocator);
     }
 
     public static void selectIndependentFoodCo() {

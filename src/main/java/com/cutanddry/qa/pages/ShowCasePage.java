@@ -14,6 +14,7 @@ public class ShowCasePage extends LoginPage {
     By OurBrands = By.xpath("//div[contains(text(),'Our Brands')]");
     By HungerfordSmithBrand = By.xpath("//img[contains(@class,'img-fluid') and contains(@src,'e1709cd4888480e1b60d1b64da314fc8')]");
     By HungerfordSmithText =By.xpath("//div[@class='_12lmd5r8' and contains(text(),'J Hungerford Smith')]");
+    By icon_OurBrandRightArrow =By.xpath("(//div[contains(text(),'Our Brands')]/following::div//*[name()='svg' and @data-icon='chevron-right']//*[name()='path'])[1]");
 
 
     public boolean isProductShowcaseTxtDisplayed(){
@@ -39,10 +40,13 @@ public class ShowCasePage extends LoginPage {
     }
 
     public void ClickOnOurBrandBtn() throws InterruptedException {
+        if (!distributorUI.isDisplayed(HungerfordSmithBrand)) {
+            distributorUI.click(icon_OurBrandRightArrow);
+        }
         distributorUI.waitForClickability(HungerfordSmithBrand);
         distributorUI.waitForCustom(3000);
 //        distributorUI.scrollToElement(OurBrands);
-        distributorUI.click(OurBrandBtn);
+        distributorUI.clickWithScrollAndHover(OurBrandBtn);
     }
 
     public boolean isOurBrandPageisDisplayed(){
@@ -51,9 +55,12 @@ public class ShowCasePage extends LoginPage {
     }
 
     public void ClickOnHungerfordSmith() throws InterruptedException {
+        if (!distributorUI.isDisplayed(HungerfordSmithBrand)) {
+            distributorUI.click(icon_OurBrandRightArrow);
+        }
         distributorUI.waitForClickability(HungerfordSmithBrand);
         distributorUI.waitForCustom(3000);
-        distributorUI.click(HungerfordSmithBrand);
+        distributorUI.clickWithScrollAndHover(HungerfordSmithBrand);
     }
 
     public boolean isHungerFordSmithtxtDisplayed(){
