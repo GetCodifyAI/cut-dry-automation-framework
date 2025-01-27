@@ -20,7 +20,7 @@ public class VerifyOrderSettingEditOrderReminderAlertsTest extends TestBase {
     static User user;
     static String distributorName = SettingData.DISTRIBUTOR_NAME;
     static String editOption = SettingData.EDIT_SEND_ALERT;
-
+    static String option = SettingData.SEND_ALERT;
 
     @BeforeMethod
     public void setUp() {
@@ -37,7 +37,7 @@ public class VerifyOrderSettingEditOrderReminderAlertsTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");
-        Settings.clickEditAlert();
+        Settings.clickEditAlert(option);
         softAssert.assertTrue(Settings.isOrderRemindAlertTextDisplayed(),"Order remind alert pop up not display");
         Settings.clickSendAlertDropDown();
         Settings.clickSendAlertOption(editOption);

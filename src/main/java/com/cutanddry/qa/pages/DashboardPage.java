@@ -270,7 +270,9 @@ public class DashboardPage extends LoginPage{
     public void clickOnShowCase(){
         distributorUI.click(btn_showcase);
     }
-    public void clickOnCreditRequests(){distributorUI.click(btn_credit_requests);}
+    public void clickOnCreditRequests(){
+        distributorUI.waitForElementEnabledState(btn_credit_requests,true);
+        distributorUI.clickWithFallback(btn_credit_requests);}
     public void clickOnPlaceOrder() {
         distributorUI.click(btn_placeOrder);}
     public void clickOnHayes() {
@@ -296,14 +298,8 @@ public class DashboardPage extends LoginPage{
     }
 
     public static String getTextAfterCompany() {
-        // Call the external waitForVisibility method
         distributorUI.waitForVisibility(wordAfterCompanyLocator);
-
-        // Locate the element
-        WebElement wordAfterCompanyElement = driver.findElement(wordAfterCompanyLocator);
-
-        // Get and return the text content
-        return wordAfterCompanyElement.getText();
+        return distributorUI.getText(wordAfterCompanyLocator);
     }
 
     public static void selectIndependentFoodCo() {

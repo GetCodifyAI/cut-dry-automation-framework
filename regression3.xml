@@ -38,8 +38,6 @@
             <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingDownloadInvoicesTest" />
             <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingLinkBankAccountTest" />
             <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingRemoveBankAccountTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountHardHoldTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountRemoveHardHoldTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyRecentlyAddedTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyCategorySelectionTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyMoreFiltersTest" />
@@ -58,6 +56,8 @@
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemPricingPromotionsTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemAddSubstituteTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemRemoveSubstituteTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.ValidateTheFunctionalityOfEditMarginOfAnItem"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheViewMultipleOrderGuidesUnderOrderGuideAndMoveBetweenDifferentOrderGuides"/>
         </classes>
     </test>
 </suite>

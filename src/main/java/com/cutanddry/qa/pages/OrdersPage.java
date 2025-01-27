@@ -90,6 +90,11 @@ public class OrdersPage extends LoginPage{
 
     public void clickBtnSaveCheckIn(){
         distributorUI.click(btn_saveCheckIn);
+        try {
+            distributorUI.waitForCustom(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void clickOnBtnContinue(){
@@ -399,7 +404,8 @@ public class OrdersPage extends LoginPage{
         distributorUI.click(lbl_salesperson);
         By lbl_SalespersonType = By.xpath(sel_SalesPersonStatus.replace("TYPE", type));
         distributorUI.waitForVisibility(lbl_SalespersonType);
-        distributorUI.click(lbl_SalespersonType);
+        distributorUI.clickWithFallback(lbl_SalespersonType);
+        distributorUI.sendKeysAndEnter(lbl_SalespersonType,"All");
     }
 
     /*public boolean checkFiltersCorrectlyDisplayed(String status) {

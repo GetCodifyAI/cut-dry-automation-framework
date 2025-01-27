@@ -18,6 +18,7 @@ import java.net.URISyntaxException;
 public class VerifyOrderSettingDeleteOrderReminderAlertsTest extends TestBase {
     static User user;
     static String distributorName = SettingData.DISTRIBUTOR_NAME;
+    static String option = SettingData.SEND_ALERT;
 
     @BeforeMethod
     public void setUp() {
@@ -34,7 +35,7 @@ public class VerifyOrderSettingDeleteOrderReminderAlertsTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");
-        Settings.clickEditAlert();
+        Settings.clickEditAlert(option);
         softAssert.assertTrue(Settings.isOrderRemindAlertTextDisplayed(),"Order remind alert pop up not display");
         Settings.clickDeleteAlert();
         softAssert.assertTrue(Settings.isSettingOrderReminderTextDisplayed(),"Settings yor order reminder pop up not displayed");

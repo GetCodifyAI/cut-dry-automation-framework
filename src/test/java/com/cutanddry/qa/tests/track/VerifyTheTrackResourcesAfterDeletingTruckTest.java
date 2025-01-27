@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheTrackResourcesAfterDeletingTruckTest extends TestBase {
     static User user;
-    static String name = "Jor Truck";
+    static String name = "Jor Truck"+ generateDynamicValue();
 
     @BeforeMethod
     public void setUp() {
@@ -31,6 +31,11 @@ public class VerifyTheTrackResourcesAfterDeletingTruckTest extends TestBase {
         softAssert.assertTrue(Track.isResourcesTextDisplayed(),"navigation to track resources error");
         Track.clickOnTrucks();
         softAssert.assertTrue(Track.isAddTrucksBtnDisplayed(),"navigation to trucks error");
+        //Pre-request
+        Track.clickOnAddTrucks();
+        Track.enterTruckName(name);
+        Track.clickOnSaveChanges();
+
         Track.clickOnEditUser(name);
         softAssert.assertTrue(Track.isEditUserPopupDisplayed(),"edit truck popup error");
         Track.clickOnRemoveUserLabel();

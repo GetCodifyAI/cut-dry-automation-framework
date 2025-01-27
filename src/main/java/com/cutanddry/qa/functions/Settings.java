@@ -338,7 +338,15 @@ public class Settings {
             settingsPage.clickOkAlert();
         }
         settingsPage.clickAddAlert();}
-    public static void clickEditAlert(){settingsPage.clickEditAlert();}
+    public static void clickEditAlert(String option) throws InterruptedException {
+        if (settingsPage.isAddAlertBtnDisplayed()) {
+            settingsPage.clickAddAlert();
+            settingsPage.clickSendAlertDropDown();
+            settingsPage.clickSendAlertOption(option);
+            settingsPage.clickOnSave();
+            settingsPage.clickOkAlert();
+        }
+        settingsPage.clickEditAlert();}
     public static boolean isEditAlertBtnDisplayed() {
         return settingsPage.isEditAlertBtnDisplayed();
     }
