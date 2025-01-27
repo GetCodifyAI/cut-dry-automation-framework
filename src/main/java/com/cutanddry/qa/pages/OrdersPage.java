@@ -90,6 +90,11 @@ public class OrdersPage extends LoginPage{
 
     public void clickBtnSaveCheckIn(){
         distributorUI.click(btn_saveCheckIn);
+        try {
+            distributorUI.waitForCustom(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void clickOnBtnContinue(){
