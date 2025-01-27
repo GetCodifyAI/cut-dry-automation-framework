@@ -253,6 +253,7 @@ public class TrackPage extends LoginPage{
     }
 
     public void clickTrackSettings(){
+        distributorUI.waitForVisibility(btn_trackSettings);
         distributorUI.click(btn_trackSettings);
     }
 
