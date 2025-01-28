@@ -341,4 +341,22 @@ public class Track {
     public static void clickDatePickerMonitoring(){
         trackPage.clickDatePickerMonitoring();
     }
+    public static void clickMonitorRouteName(String name)throws InterruptedException{
+        trackPage.clickMonitorRouteName(name);
+    }
+    public static boolean isCustomerColumnTextDisplayed(String name)throws InterruptedException{
+       return trackPage.isCustomerColumnTextDisplayed(name);
+    }
+    public static void clickMonitorCustomer(String name)throws InterruptedException{
+        trackPage.clickMonitorCustomer(name);
+    }
+    public static boolean isMonitorCustomerNameDisplayed(String name)throws InterruptedException{
+        return trackPage.isMonitorCustomerNameDisplayed(name);
+    }
+    public static void clickCloseCustomerDetails()throws InterruptedException{
+        trackPage.clickCloseCustomerDetails();
+    }
+    public static boolean isMonitorDateDisplayed(String date)throws InterruptedException{
+        return trackPage.isMonitorDateDisplayed(date);
+    }
 }
