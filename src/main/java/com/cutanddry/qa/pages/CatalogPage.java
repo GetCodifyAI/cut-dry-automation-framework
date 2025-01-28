@@ -527,6 +527,11 @@ public class CatalogPage extends LoginPage{
     }
     public void selectFirstItem() {
         distributorUI.click(firstItem);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public boolean isProductDescriptionDisplayed(){
 //        return  distributorUI.isDisplayed(txt_productOverview);
