@@ -36,6 +36,7 @@
             <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsSearchFunctionTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifyTheDraftDeleteConfirmationModalTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifyDeleteDraftOrderByOperatorTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyThePayDetailsSummeryTest"/>
         </classes>
     </test>
 </suite>

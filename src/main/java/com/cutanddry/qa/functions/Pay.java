@@ -331,4 +331,19 @@ public class Pay {
     public static void clickOnePaymentInitiate(){
         payPage.clickOnePaymentInitiate();
     }
+    public static boolean isPayDetailsDisplayed(String details){
+        return payPage.isPayDetailsDisplayed(details);
+    }
+    public static boolean isPayDetailsAmountDisplayed(String details){
+        return payPage.isPayDetailsAmountDisplayed(details);
+    }
+    public static boolean isPaymentProcessingDisplayed(){
+        return payPage.isPaymentProcessingDisplayed();
+    }
+    public static boolean isPaymentProcessingAmountDisplayed(){
+        return payPage.isPaymentProcessingAmountDisplayed();
+    }
+    public static boolean isPastDueAmountDisplayed(){
+        return payPage.isPastDueAmountDisplayed();
+    }
 }
