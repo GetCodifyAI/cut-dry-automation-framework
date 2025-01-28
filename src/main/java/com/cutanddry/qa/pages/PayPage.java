@@ -105,6 +105,11 @@ public class PayPage extends LoginPage{
     String lbl_orderTableColumnName = "//table/thead/tr/th[COUNT]";
     String lbl_status = "//th[COUNT][text()='STATUS']";
     By customerName = By.xpath("//th[contains(text(),'Customer Name')]/ancestor::table/tbody/tr[1]/td[4]");
+    String payDetails = "//span[contains(text(),'DETAILS')]";
+    String payDetailsAmount = "//span[contains(text(),'DETAILS')]/../following-sibling::div[contains(text(),'$')]";
+    By paymentProcessingDetailAmount = By.xpath("//div[contains(text(),'Payments Processing')]/following-sibling::div[contains(text(),'$')]");
+    By paymentProcessingDetail = By.xpath("//div[contains(text(),'Payments Processing')]");
+    By pastDueDetailsAmount = By.xpath("//span[contains(text(),'Past Due')]/preceding-sibling::span[contains(text(),'$')]");
 
 
     public boolean isPaymentStatusCorrect(String expectedPaymentStatus) {
@@ -753,6 +758,46 @@ public class PayPage extends LoginPage{
     }
     public void clickOnePaymentInitiate(){
         distributorUI.click(customerName);
+    }
+    public boolean isPayDetailsDisplayed(String details){
+        try {
+            distributorUI.waitForVisibility(By.xpath(payDetails.replace("DETAILS", details)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(payDetails.replace("DETAILS", details)));
+    }
+    public boolean isPayDetailsAmountDisplayed(String amount){
+        try {
+            distributorUI.waitForVisibility(By.xpath(payDetailsAmount.replace("DETAILS", amount)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(payDetailsAmount.replace("DETAILS", amount)));
+    }
+    public boolean isPaymentProcessingDisplayed() {
+        try {
+            distributorUI.waitForVisibility(paymentProcessingDetail);
+        } catch (Exception e) {
+            return false;
+        }
+        return distributorUI.isDisplayed(paymentProcessingDetail);
+    }
+    public boolean isPaymentProcessingAmountDisplayed() {
+        try {
+            distributorUI.waitForVisibility(paymentProcessingDetailAmount);
+        } catch (Exception e) {
+            return false;
+        }
+        return distributorUI.isDisplayed(paymentProcessingDetailAmount);
+    }
+    public boolean isPastDueAmountDisplayed() {
+        try {
+            distributorUI.waitForVisibility(pastDueDetailsAmount);
+        } catch (Exception e) {
+            return false;
+        }
+        return distributorUI.isDisplayed(pastDueDetailsAmount);
     }
 
 

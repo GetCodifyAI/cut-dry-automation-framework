@@ -111,13 +111,18 @@ public class TrackPage extends LoginPage{
     String optionDropDown_driverDispatched = "//div[contains(@class, 'themed_select__menu')]//div[contains(@class, 'themed_select__option') and normalize-space()='ITEM_TEXT']";
     By btn_dispatch1 = By.xpath("//button[contains(@class, 'btn btn-primary') and contains(., 'Dispatch (1)')]");
     By txt_areYouSure= By.xpath("//h2[@class='swal2-title' and contains(text(), 'Are you sure')]");
-    By btn_datePicker = By.xpath("//input[@type='text' and @name='date' and @class='form-control']");
+    By btn_datePicker = By.xpath("//input[@type='text' and contains(@class,'form-control')]");
     String datePicker = "//div[@class='react-datepicker']//div[@aria-label='Choose %s, %s %s%s, %s']";
     By btn_previousMonth = By.xpath("//button[@type='button' and @aria-label='Previous Month']");
     By btn_nextMonth = By.xpath("//button[@type='button' and @aria-label='Next Month']");
     By dropdown_warehouse = By.xpath("//div[contains(@class, 'themed_select__control') and contains(@class, 'css-yk16xz-control')]");
     String dropdownItemXPath = "//div[contains(@class, 'themed_select__menu')]//div[text()='{}']";
     By datePicker_monitoring = By.xpath("//input[@type='text' and contains(@class, 'form-control') and contains(@class, '_rfglfk')]");
+    String monitorRouteName = "//div[contains(text(),'NAME')]";
+    String customerColumn = "//th[contains(text(),'Customer')]/../../following-sibling::*//td[text()='NAME']";
+    String customerName = "//div[contains(text(),'NAME')]";
+    By clickClose = By.xpath("//span[contains(text(),'×')]");
+    String dateMonitor = "//input[@type='text' and contains(@class,'form-control') and @value='DATE']";
 
     public void clickDatePickerMonitoring(){
         distributorUI.click(datePicker_monitoring);
@@ -785,6 +790,41 @@ public class TrackPage extends LoginPage{
         Random random = new Random();
         int randomCode = 10000 + random.nextInt(90000); // Generates a number between 10000 and 99999
         return String.valueOf(randomCode);
+    }
+    public void clickMonitorRouteName(String name)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(monitorRouteName.replace("NAME", name)));
+        distributorUI.click(By.xpath(monitorRouteName.replace("NAME", name)));
+    }
+    public boolean isCustomerColumnTextDisplayed(String name)throws InterruptedException{
+        try {
+            distributorUI.waitForVisibility(By.xpath(customerColumn.replace("NAME", name)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(customerColumn.replace("NAME", name)));
+    }
+    public void clickMonitorCustomer(String name)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(customerColumn.replace("NAME", name)));
+        distributorUI.click(By.xpath(customerColumn.replace("NAME", name)));
+    }
+    public boolean isMonitorCustomerNameDisplayed(String name)throws InterruptedException{
+        try {
+            distributorUI.waitForVisibility(By.xpath(customerName.replace("NAME", name)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(customerName.replace("NAME", name)));
+    }
+    public void clickCloseCustomerDetails()throws InterruptedException{
+        distributorUI.click(clickClose);
+    }
+    public boolean isMonitorDateDisplayed(String date)throws InterruptedException{
+        try {
+            distributorUI.waitForVisibility(By.xpath(dateMonitor.replace("DATE", date)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(dateMonitor.replace("DATE", date)));
     }
 
 
