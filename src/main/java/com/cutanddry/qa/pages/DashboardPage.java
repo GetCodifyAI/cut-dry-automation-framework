@@ -270,7 +270,9 @@ public class DashboardPage extends LoginPage{
     public void clickOnShowCase(){
         distributorUI.click(btn_showcase);
     }
-    public void clickOnCreditRequests(){distributorUI.click(btn_credit_requests);}
+    public void clickOnCreditRequests(){
+        distributorUI.waitForElementEnabledState(btn_credit_requests,true);
+        distributorUI.clickWithFallback(btn_credit_requests);}
     public void clickOnPlaceOrder() {
         distributorUI.click(btn_placeOrder);}
     public void clickOnHayes() {
