@@ -359,4 +359,13 @@ public class Track {
     public static boolean isMonitorDateDisplayed(String date)throws InterruptedException{
         return trackPage.isMonitorDateDisplayed(date);
     }
+    public static boolean isOrderIdColumnTextDisplayed(String id)throws InterruptedException{
+        return trackPage.isOrderIdColumnTextDisplayed(id);
+    }
+    public static boolean isCustomerStopColumnTextDisplayed(String STOP)throws InterruptedException{
+        return trackPage.isCustomerStopColumnTextDisplayed(STOP);
+    }
+    public static boolean isMonitorCustomerStopDisplayed(String stop)throws InterruptedException{
+        return trackPage.isMonitorCustomerStopDisplayed(stop);
+    }
 }
