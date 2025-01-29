@@ -39,6 +39,7 @@
             <class name="com.cutanddry.qa.tests.track.ValidateCustomerWarehouseMonitoringTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateMonitoringFunctionalityDetailsTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsSearchAndFilterFunctionTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyErrorMessageDisplayTest"/>
         </classes>
     </test>
 </suite>
