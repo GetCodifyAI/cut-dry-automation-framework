@@ -123,6 +123,9 @@ public class TrackPage extends LoginPage{
     String customerName = "//div[contains(text(),'NAME')]";
     By clickClose = By.xpath("//span[contains(text(),'×')]");
     String dateMonitor = "//input[@type='text' and contains(@class,'form-control') and @value='DATE']";
+    String orderId = "//th[contains(text(),'Order')]/../../following-sibling::*//td[text()='ID']";
+    String customerStop = "//th[contains(text(),'Stop')]/../../following-sibling::*//td[text()='STOP']";
+    String stopDisplay = "//h4[contains(text(),'STOP')]";
 
     public void clickDatePickerMonitoring(){
         distributorUI.click(datePicker_monitoring);
@@ -825,6 +828,30 @@ public class TrackPage extends LoginPage{
             return false;
         }
         return distributorUI.isDisplayed(By.xpath(dateMonitor.replace("DATE", date)));
+    }
+    public boolean isOrderIdColumnTextDisplayed(String id)throws InterruptedException{
+        try {
+            distributorUI.waitForVisibility(By.xpath(orderId.replace("ID", id)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(orderId.replace("ID", id)));
+    }
+    public boolean isCustomerStopColumnTextDisplayed(String stop)throws InterruptedException{
+        try {
+            distributorUI.waitForVisibility(By.xpath(customerStop.replace("STOP", stop)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(customerStop.replace("STOP", stop)));
+    }
+    public boolean isMonitorCustomerStopDisplayed(String stop)throws InterruptedException{
+        try {
+            distributorUI.waitForVisibility(By.xpath(stopDisplay.replace("STOP", stop)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(stopDisplay.replace("STOP", stop)));
     }
 
 
