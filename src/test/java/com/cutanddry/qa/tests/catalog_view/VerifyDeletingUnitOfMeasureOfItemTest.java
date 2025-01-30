@@ -41,7 +41,7 @@ public class VerifyDeletingUnitOfMeasureOfItemTest extends TestBase {
 
         // Pre-request
         int UOMCount = Catalog.getUnitOfMeasureCount();
-        Catalog.addUnitOfMeasure();
+        Catalog.addUnitOfMeasure(UOM);
         Catalog.selectUnitFromDropdown(UOM);
         Catalog.setItemUnitPrice(itemPrice);
         Catalog.selectPercentageAsSalesTypeFrmDropdown();

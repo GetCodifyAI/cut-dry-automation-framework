@@ -140,6 +140,7 @@ public class CatalogPage extends LoginPage{
     By mediaTypeDropDown = By.xpath("//label[contains(text(), 'Media Type')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     String mediaTypeOption = "(//div[text()='TYPE' and contains(@class,'themed_select__option')])[last()]";
     String addedSubstitutionsCode = "//div[contains(text(),'CODE')]";
+    String deleteUom = "//label[text()='UOM']/../following-sibling::td//*[local-name() = 'svg' and @data-icon='trash-can']";
 
 
 
@@ -266,7 +267,9 @@ public class CatalogPage extends LoginPage{
     public void clickOnPricingAndPromotionsTab(){
         distributorUI.click(priceAndPromotions);
     }
-    public void clickOnUnitOfMeasure(){
+    public void clickOnUnitOfMeasure()throws InterruptedException{
+        distributorUI.waitForVisibility(unitOfMeasure);
+        distributorUI.waitForCustom(3000);
         distributorUI.click(unitOfMeasure);
     }
     public int getUnitOfMeasureCount(){
@@ -676,6 +679,17 @@ public class CatalogPage extends LoginPage{
         distributorUI.click(mediaTypeDropDown);
         distributorUI.waitForVisibility(By.xpath(mediaTypeOption.replace("TYPE",type)));
         distributorUI.click(By.xpath(mediaTypeOption.replace("TYPE",type)));
+    }
+    public boolean isSameUomDisplayed(String uom)throws InterruptedException{
+        try {
+            distributorUI.waitForVisibility(By.xpath(deleteUom.replace("UOM",uom)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(deleteUom.replace("UOM",uom)));
+    }
+    public void refreshPage(){
+        distributorUI.refreshPage();
     }
 
 }

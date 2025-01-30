@@ -103,7 +103,13 @@ public class Catalog {
         catalogPage.clickOnPricingAndPromotionsTab();
     }
 
-    public static void addUnitOfMeasure(){
+    public static void addUnitOfMeasure(String uom)throws InterruptedException{
+        if (catalogPage.isSameUomDisplayed(uom)){
+            catalogPage.deleteUOMinCatalog();
+            catalogPage.clickOnConfirmBtn();
+            catalogPage.clickOnSaveChangesBtn();
+//            catalogPage.refreshPage();
+        }
         catalogPage.clickOnUnitOfMeasure();
     }
 
