@@ -23,6 +23,9 @@ public class DraftPage extends LoginPage{
     By btn_yes = By.xpath("//button[contains(text(),'Yes')]");
     String referenceNumberDisplay = "//td[text()='#' and text()='REFERENCE']";
     By txt_noRecord = By.xpath("//div[contains(text(),'No Records Available.')]");
+    String dropDownFilter = "//label[contains(text(),'FILTER')]/following-sibling::div";
+    String dropDownOption = "//label[contains(text(),'')]/following-sibling::*//div[contains(text(),'OPTION')]";
+    By clearFilter = By.xpath("//span[contains(text(),'Clear Filters')]");
 
 
 
@@ -152,6 +155,18 @@ public class DraftPage extends LoginPage{
             return false;
         }
         return distributorUI.isDisplayed(txt_noRecord);
+    }
+    public void clickDropDownFilter(String filter)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(dropDownFilter.replace("FILTER", filter)));
+        distributorUI.click(By.xpath(dropDownFilter.replace("FILTER", filter)));
+    }
+    public void clickDropDownFilterOption(String option)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(dropDownOption.replace("OPTION", option)));
+        distributorUI.click(By.xpath(dropDownOption.replace("OPTION", option)));
+    }
+    public void clickClearFilter()throws InterruptedException{
+        distributorUI.waitForVisibility(clearFilter);
+        distributorUI.click(clearFilter);
     }
 
 

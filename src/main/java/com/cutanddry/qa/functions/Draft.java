@@ -75,6 +75,15 @@ public class Draft {
     public static boolean isDraftsDeleted(){
         return draftPage.isDraftsDeleted();
     }
+    public static void clickDropDownFilter(String filter)throws InterruptedException{
+        draftPage.clickDropDownFilter(filter);
+    }
+    public static void clickDropDownFilterOption(String option)throws InterruptedException{
+        draftPage.clickDropDownFilterOption(option);
+    }
+    public static void clickClearFilter()throws InterruptedException{
+        draftPage.clickClearFilter();
+    }
 
 
 }

@@ -9,7 +9,6 @@
         <parameter name="PART" value="Part_Nine"/>
         <classes>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheDownloadFeatureInThePayoutSectionTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingAddOrderReminderAlertsTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByPayoutStatus"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByStatusFunctionality"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByTheCustomerFunctionality"/>
@@ -35,6 +34,12 @@
             <class name="com.cutanddry.qa.tests.draft.VerifyDraftOrderSubmittedByOperatorTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsSearchFunctionTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifyTheDraftDeleteConfirmationModalTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyDeleteDraftOrderByOperatorTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyThePayDetailsSummeryTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateCustomerWarehouseMonitoringTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateMonitoringFunctionalityDetailsTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsSearchAndFilterFunctionTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyErrorMessageDisplayTest"/>
         </classes>
     </test>
 </suite>

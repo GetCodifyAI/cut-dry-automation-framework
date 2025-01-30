@@ -15,6 +15,8 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheOrderViewOrderEditTest extends TestBase {
     static User user;
+    String creditStatus = "Submitted";
+
     @BeforeMethod
     public void setUp() {
         initialization();
@@ -28,7 +30,7 @@ public class VerifyTheOrderViewOrderEditTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToOrders();
         softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"navigation error");
-        Orders.clickOnFirstOrder();
+        Orders.clickOnFirstOrder(creditStatus);
         Orders.clickOnEditOrder();
         softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(),"edit popup error");
         Orders.clickOnConfirm();

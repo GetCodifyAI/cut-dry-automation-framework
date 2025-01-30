@@ -17,7 +17,6 @@
             <class name="com.cutanddry.qa.tests.roles_based_access.VerifyARRoleTest" />
             <class name="com.cutanddry.qa.tests.roles_based_access.VerifySalespersonRoleTest" />
             <class name="com.cutanddry.qa.tests.roles_based_access.VerifyDispatcherRoleTest" />
-            <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessRestrictedViaCustomerProfileTest" />
             <class name="com.cutanddry.qa.tests.order_desk.VerifySavingSubmittedVoiceOrderTest" />
             <class name="com.cutanddry.qa.tests.order_desk.VerifyEditingSubmittedVoiceOrderTest" />
             <class name="com.cutanddry.qa.tests.order_desk.VerifyDeletingVoiceOrderSubmitLineItemTest" />
@@ -33,6 +32,7 @@
             <class name="com.cutanddry.qa.tests.team.AddUserWhiteLabelPortalTest" />
             <class name="com.cutanddry.qa.tests.team.UpdateUserWhiteLabelPortalTest" />
             <class name="com.cutanddry.qa.tests.team.RemoveUserWhiteLabelPortalTest" />
+            <class name="com.cutanddry.qa.tests.integration.VerifyChatFeatureTest" />
         </classes>
     </test>
 </suite>

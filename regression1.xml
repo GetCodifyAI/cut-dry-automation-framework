@@ -41,7 +41,6 @@
             <class name="com.cutanddry.qa.tests.boost.VerifyAddingFeaturedListTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyEditingFeaturedListTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRemovingFeaturedListTest" />
-            <class name="com.cutanddry.qa.tests.integration.VerifyChatFeatureTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyPDFGenerationForCatalogPDPTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyHardOrderMinimumWarningTest" />
             <class name="com.cutanddry.qa.tests.catalog.BrandPageForAllPortalsTest" />
