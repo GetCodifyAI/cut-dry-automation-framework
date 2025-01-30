@@ -888,7 +888,8 @@ public class Customer {
         return customersPage.isCustomerProfileDisplayed(CustomerName);
     }
     public static void clickMoreOption(){customersPage.clickMoreOption();}
-    public static void clickEditOrderGuide(){customersPage.clickEditOrderGuide();
+    public static void clickEditOrderGuide(){
+        customersPage.clickEditOrderGuide();
         try {
             if (customersPage.isPreviousDraftOrderNoDisplayed()){
                 customersPage.clickPreviousDraftOrderNo();

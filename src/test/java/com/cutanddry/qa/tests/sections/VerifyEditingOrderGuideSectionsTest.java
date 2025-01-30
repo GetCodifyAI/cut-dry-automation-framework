@@ -52,6 +52,7 @@ public class VerifyEditingOrderGuideSectionsTest extends TestBase {
         Customer.clickOnDelete();
         softAssert.assertTrue(Customer.isAreYouSurePopupDisplayed(),"are you sure popup error");
         Customer.clickOnYes();
+        softAssert.assertFalse(Customer.isAddedSectionDisplayed(sectionName),"delete section error");
 
 //        Customer.clickOnBack();
 //        Customer.clickSortOptionsDropdown();
