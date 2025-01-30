@@ -861,11 +861,12 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         distributorUI.clickWithFallback(btn_edit);
     }
     public boolean isEditOrderGuideTextDisplayed(){
-        try {
+       /* try {
             distributorUI.waitForVisibility(txt_editOrderGuide);
         } catch (Exception e){
             return false;
-        }
+        }*/
+        distributorUI.waitForVisibility(txt_editOrderGuide);
         return distributorUI.isDisplayed(txt_editOrderGuide);
     }
     public void clickOnMoreOptions(){
@@ -1787,6 +1788,11 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     }
     public void clickMoreOption(){
         distributorUI.click(btn_moreOption);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void clickEditOrderGuide(){
         distributorUI.click(btn_editOrderGuide);
@@ -1797,11 +1803,11 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     }
     public boolean isCustomerOrderGuideDisplayed(){
         try {
-            distributorUI.waitForVisibility(txt_orderGuide);
+            distributorUI.waitForVisibility(btn_catalogToOrderGuide);
         } catch (Exception e){
             return false;
         }
-        return distributorUI.isDisplayed(txt_orderGuide);
+        return distributorUI.isDisplayed(btn_catalogToOrderGuide);
     }
     public void clickPreviewCatalog(){
         distributorUI.click(btn_previewCatalog);

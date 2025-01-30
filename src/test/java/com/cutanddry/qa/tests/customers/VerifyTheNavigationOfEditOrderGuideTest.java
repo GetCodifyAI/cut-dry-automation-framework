@@ -37,7 +37,7 @@ public class VerifyTheNavigationOfEditOrderGuideTest extends TestBase {
         softAssert.assertTrue(Customer.isCustomerProfileDisplayed(BusinessName),"customer profile not display ");
         Customer.clickMoreOption();
         Customer.clickEditOrderGuide();
-        Customer.clickNo();
+//        Customer.clickNo();
         softAssert.assertTrue(Customer.isCustomerOrderGuideDisplayed(),"customer order guide not display");
         softAssert.assertAll();
     }
