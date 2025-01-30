@@ -11,13 +11,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyDraftOrderSubmittedByOperatorTest extends TestBase{
+public class VerifyDeleteDraftOrderByOperatorTest extends TestBase{
     static User user;
     static String RestaurantUserCode = DraftsData.RESTAURANT_USER_CODE;
     static String SupplierName = DraftsData.SUPPLIER_NAME;
     static String itemName, searchItemCode,referenceNum;
     static double itemPrice;
-    static String distributorName = DraftsData.DISTRIBUTOR_NAME;
+    static String draftConfirmation = DraftsData.DRAFT_CONFIRMATION_OP;
 
 
     @BeforeMethod
@@ -26,8 +26,8 @@ public class VerifyDraftOrderSubmittedByOperatorTest extends TestBase{
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-967")
-    public void VerifyDraftOrderSubmittedByOperator() throws InterruptedException {
+    @Test(groups = "DOT-TC-986")
+    public void VerifyDeleteDraftOrderByOperator() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
@@ -46,15 +46,14 @@ public class VerifyDraftOrderSubmittedByOperatorTest extends TestBase{
 
         Dashboard.navigateToDrafts();
         softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
-        referenceNum = Draft.getReferenceNumOP().replace("#","");
+        referenceNum = Draft.getReferenceNumOP();
         softAssert.assertTrue(Draft.isRestaurantLastDraftDisplayed(String.valueOf(itemPrice)),"draft creating error");
 
-        Login.navigateToDistributorPortal(distributorName);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
-        Dashboard.navigateToDrafts();
-        softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
-        softAssert.assertTrue(Draft.isLastDraftDisplayed(String.valueOf(itemPrice)),"draft creating error");
-        softAssert.assertEquals(Draft.getReferenceNumDP(), referenceNum, "draft order create not successfully");
+        referenceNum = Draft.getReferenceNumOP();
+        Draft.clickTrashIcon();
+        softAssert.assertTrue(Draft.isDraftsDeleteTextDisplayed(),"delete draft pop up not display");
+        softAssert.assertTrue(Draft.isDraftDeleteConfirmationDisplayed(draftConfirmation),"draft confirmation not display");
+        Draft.clickYesButton();
         softAssert.assertAll();
     }
 

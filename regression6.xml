@@ -58,6 +58,7 @@
             <class name="com.cutanddry.qa.tests.e2e.PlaceCustomerMailDeliveryOrderViaOrderGuideCatalogPDPTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountHardHoldTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountRemoveHardHoldTest" />
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessRestrictedViaCustomerProfileTest" />
         </classes>
     </test>
 </suite>

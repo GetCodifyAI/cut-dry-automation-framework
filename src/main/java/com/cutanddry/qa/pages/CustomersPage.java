@@ -182,7 +182,7 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     String btn_removeItem ="//div[text()='ITEMCODE']/following-sibling::div[2]/*";
     By EditCustomerGroupBtn = By.xpath("//div[contains(text(), 'Customer Group')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']");
     By CreateCutomerGroupTextField = By.xpath("//input[@id='react-select-6-input']");
-    By Savebtn = By.xpath("//button[contains(text(),'Save')]");
+    By Savebtn = By.xpath("//button[normalize-space(text())='Save']");
     String CustomerGroupName = "//div[contains(text(),'Customer Group')]/following-sibling::div//div[contains(text(),'GROUPNAME')]";
     By ClearAllCustomerGroupBtn = By.xpath("//div[contains(@class,'themed_select__indicator themed_select__clear-indicator css-tlfecz-indicatorContainer')]");
     By InviteNewUsersBtn = By.xpath("//button[contains(text(),'Invite New Users')]");
@@ -208,7 +208,7 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By img_catalog = By.xpath("//img[contains(@class, 'card-img-top')]");
     String txt_catalogItem ="(//div[contains(text(), 'NAME')])[last()]";
 //    By txt_namePDP = By.xpath("//div[contains(@class, 'd-flex align-items-center mont') and contains(@class, '_1wrelxt') and contains(@class, '_1vlidrf')]");
-    String txt_namePDP = "//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'ITEMNAME']";
+    String txt_namePDP = "(//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'ITEMNAME'])[last()]";
     By lbl_orders = By.xpath("//li[contains(text(),'Orders')]");
     By txt_allItems = By.xpath("//div[text()='All Items']");
     By txt_priceZero = By.xpath("//tbody//span[contains(text(), '$0.00')]");
@@ -632,6 +632,11 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     public void clickPlusQryCatalogSearchValueOne(){
         distributorUI.click(btn_increaseQtyCatalogSearchValueOne);
         distributorUI.waitForClickability(btn_checkout);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void clickPlusQryCatalogSearchValueTwo() throws InterruptedException {
         distributorUI.click(btn_increaseQtyCatalogSearchValueTwo);
@@ -655,6 +660,11 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     public void clickMinusQryCatalogSearchValueThree(){
         distributorUI.click(btn_decreaseQtyCatalogSearchValueThree);
         distributorUI.waitForClickability(btn_checkout);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public String getItemQryCatalogSearch(){
        return distributorUI.getText(tbx_itemQuantityCatalogSearch, "value");
@@ -851,11 +861,12 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         distributorUI.clickWithFallback(btn_edit);
     }
     public boolean isEditOrderGuideTextDisplayed(){
-        try {
+       /* try {
             distributorUI.waitForVisibility(txt_editOrderGuide);
         } catch (Exception e){
             return false;
-        }
+        }*/
+        distributorUI.waitForVisibility(txt_editOrderGuide);
         return distributorUI.isDisplayed(txt_editOrderGuide);
     }
     public void clickOnMoreOptions(){
@@ -1263,7 +1274,7 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     }
     public void clickOnSave(){
         distributorUI.waitForVisibility(btn_save);
-        distributorUI.click(btn_save);
+        distributorUI.clickWithFallback(btn_save);
         try {
             distributorUI.waitForCustom(3000);
         } catch (InterruptedException e) {
@@ -1470,7 +1481,12 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     }
 
     public void saveCatalogAccessChanges(){
-        distributorUI.click(Savebtn);
+        distributorUI.clickWithScrollAndHover(Savebtn);
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public boolean isCatalogSectionDisplayInOrderGuide(){
@@ -1570,6 +1586,11 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         }
     }
     public void clickOnEditAccHolds(){
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.waitForVisibility(btn_editAccHold);
         distributorUI.click(btn_editAccHold);
     }
@@ -1767,6 +1788,11 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     }
     public void clickMoreOption(){
         distributorUI.click(btn_moreOption);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void clickEditOrderGuide(){
         distributorUI.click(btn_editOrderGuide);
@@ -1777,11 +1803,11 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     }
     public boolean isCustomerOrderGuideDisplayed(){
         try {
-            distributorUI.waitForVisibility(txt_orderGuide);
+            distributorUI.waitForVisibility(btn_catalogToOrderGuide);
         } catch (Exception e){
             return false;
         }
-        return distributorUI.isDisplayed(txt_orderGuide);
+        return distributorUI.isDisplayed(btn_catalogToOrderGuide);
     }
     public void clickPreviewCatalog(){
         distributorUI.click(btn_previewCatalog);

@@ -21,5 +21,8 @@ public class TrackData {
     public static final String MAP_VISIBLE_ROUTES = "Map Visible Routes";
     public static final String EDIT_CUSTOMER_CODE = "Test0010";
     public static final String DISPATCH_ROUTE = "paper-plane";
+    public static final String CUSTOMER_NAME = "Hot Spot";
+    public static final String ORDER_ID = "123456";
+    public static final String CUSTOMER_STOP = "1";
 
 }

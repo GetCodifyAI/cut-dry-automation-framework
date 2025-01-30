@@ -8,6 +8,7 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part_Four" />
         <classes>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingAddOrderReminderAlertsTest"/>
             <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerOrderGuideReportGenerationTest" />
             <class name="com.cutanddry.qa.tests.reports.VerifyThePickListDownloadReportTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogCopyPDPTest" />
@@ -19,7 +20,6 @@
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerIssuesTest" />
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerFeatureRequestsTest" />
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerEditFeatureRequestsTest" />
-            <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessRestrictedViaCustomerProfileTest" />
             <class name="com.cutanddry.qa.tests.banner.VerifyTheBannerFeatureTest" />
             <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingGlobalHolidayTest" />
             <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingGlobalHolidayPickupWillCallMailDeliveryTest" />
