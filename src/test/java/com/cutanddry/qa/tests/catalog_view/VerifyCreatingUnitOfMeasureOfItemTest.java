@@ -40,7 +40,7 @@ public class VerifyCreatingUnitOfMeasureOfItemTest {
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
         Catalog.navigateToPricingAndPromotions();
         int UOMCount = Catalog.getUnitOfMeasureCount();
-        Catalog.addUnitOfMeasure();
+        Catalog.addUnitOfMeasure(UOM);
         Catalog.selectUnitFromDropdown(UOM);
         Catalog.setItemUnitPrice(itemPrice);
         Catalog.selectPercentageAsSalesTypeFrmDropdown();

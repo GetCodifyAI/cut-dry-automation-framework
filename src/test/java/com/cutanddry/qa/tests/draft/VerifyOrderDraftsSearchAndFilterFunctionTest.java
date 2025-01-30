@@ -30,7 +30,7 @@ public class VerifyOrderDraftsSearchAndFilterFunctionTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-969")
-    public void VerifyOrderDraftsSearchFunction() throws InterruptedException {
+    public void VerifyOrderDraftsSearchAndFilterFunction() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();

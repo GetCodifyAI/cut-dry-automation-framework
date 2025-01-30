@@ -35,7 +35,7 @@ public class VerifyPreviewCatalogEditItemPricingPromotionsTest extends TestBase 
         softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
         Catalog.selectFirstEditItem();
         Catalog.navigateToPricingAndPromotions();
-        Catalog.addUnitOfMeasure();
+        Catalog.addUnitOfMeasure(UOM);
         Catalog.selectUnitFromDropdown(UOM);
         Catalog.setItemUnitPrice(itemPrice);
         Catalog.saveChanges();
