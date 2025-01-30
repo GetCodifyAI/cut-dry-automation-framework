@@ -12,7 +12,7 @@ public class Constants {
     public static String LOGIN_AS = loginAsDomain();
     public static String NODE_EXPLORER = nodeExplorerDomain();
     public static String BASE_URI = "https://supplier-uat.staging.cutanddry.com/GraphQLController";
-    public static String SLACK_WEBHOOK = System.getenv("SLACK_WEBHOOK");
+    public static String SLACK_WEBHOOK = System.getenv("STAGING_SLACK_WEBHOOK");
     public static String CONFIG_SUPPLIER = configSupplierDomain();
     public static String GATE_KEEPER_ADMIN = "https://app-uat.staging.cutanddry.com/gatekeeperadmin";
 
