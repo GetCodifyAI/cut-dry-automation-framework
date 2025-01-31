@@ -34,6 +34,7 @@ public class ConfigSupplierPage extends LoginPage{
     public void toggleOnOGSuggestiveTool() throws InterruptedException {
         if (!distributorUI.isDisplayed(st_activeOGSugTool)){
             distributorUI.waitForVisibility(lbl_OGSugTool);
+            distributorUI.waitForCustom(2000);
             distributorUI.click(lbl_OGSugTool);
             distributorUI.waitForCustom(2000);
         }
