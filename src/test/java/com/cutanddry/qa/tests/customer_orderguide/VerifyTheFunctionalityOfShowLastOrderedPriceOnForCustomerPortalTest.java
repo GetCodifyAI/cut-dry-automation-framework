@@ -34,6 +34,7 @@ public class VerifyTheFunctionalityOfShowLastOrderedPriceOnForCustomerPortalTest
         InternalTools.navigateToOrderingSettingsTab();
         InternalTools.TurnOnLastOrderedPoundPrice();
         InternalTools.SaveLastOrderedPoundPriceTurnOn();
+        Login.switchIntoNewTab();
         Login.navigateToLoginAsPortal(RestaurantUserCode);
         Orders.SelectSupplierFromPlaceOrderPage(SupplierName);
         Customer.searchItemOnOrderGuide(itemName);
@@ -44,7 +45,7 @@ public class VerifyTheFunctionalityOfShowLastOrderedPriceOnForCustomerPortalTest
    @AfterMethod
     public void tearDown(ITestResult result) {
         takeScreenshotOnFailure(result);
-        closeAllBrowsers();
+        closeAllBrowsersAtOnce();
     }
 
 }
