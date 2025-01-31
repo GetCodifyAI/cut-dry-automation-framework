@@ -22,7 +22,7 @@ public class VerifyPDFGenerationForCatalogPDPTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-133")
-    public void verifyCreatingOrdersUploadingExcelFile() throws InterruptedException {
+    public void VerifyPDFGenerationForCatalogPDP() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();

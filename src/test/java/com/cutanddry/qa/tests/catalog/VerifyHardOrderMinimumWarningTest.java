@@ -26,7 +26,7 @@ public class VerifyHardOrderMinimumWarningTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-85")
-    public void verifyCreatingOrdersUploadingExcelFile() throws InterruptedException {
+    public void VerifyHardOrderMinimumWarning() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
