@@ -248,6 +248,7 @@ public class SettingsPage extends LoginPage{
         distributorUI.clear(tbx_orderMinimum);
         distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(tbx_orderMinimum, amount);
+        distributorUI.waitForCustom(3000);
     }
     public void clickOnSaveChanges() throws InterruptedException {
         distributorUI.waitForVisibility(btn_saveChange);
@@ -656,6 +657,11 @@ public class SettingsPage extends LoginPage{
             distributorUI.click(sel_OrderMinimums); // Select the checkbox
         } else if (!select && isSelected) {
             distributorUI.click(sel_OrderMinimums); // Deselect the checkbox
+        }
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
