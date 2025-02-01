@@ -117,7 +117,7 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By btn_deleteStandingOrders = By.xpath("//div[text()='Delete']");
     By txt_deletePopup = By.xpath("//h2[text()='Are you sure?']");
     By btn_yes = By.xpath("//button[text()='Yes']");
-    By btn_increaseQtyFirstRowInDist = By.xpath("//tbody/tr/td[6]/div/div/div/div[3]");
+    By btn_increaseQtyFirstRowInDist = By.xpath("//tbody/tr/td[7]/div/div/div/div[3]");
     By btn_decreaseQtyFirstRowInDist = By.xpath("//tbody/tr[2]/td[6]/div/div/div/div[1]");
     By btn_checkoutCashCarry = By.xpath("//button[@data-tip='Click here to checkout']");
     By txt_foodServiceDistCenter = By.xpath("//span[text()='Food Service Distribution Centre']");

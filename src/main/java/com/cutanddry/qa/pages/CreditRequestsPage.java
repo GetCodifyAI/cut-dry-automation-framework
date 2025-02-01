@@ -57,10 +57,10 @@ public class CreditRequestsPage extends TestBase {
     By btn_submit = By.xpath("//button[contains(text(), 'Submit')]");
     By btn_confirm = By.xpath("//button[contains(text(), 'Confirm')]");
     By btn_close = By.xpath("//button[contains(text(), 'Close')]");
-    By txt_credictDeclined = By.xpath("//span[@class='_1a5re9s' and text()='Credit Declined']");
+    By txt_credictDeclined = By.xpath("//span[text()='Credit Declined']");
     By btn_editCredit = By.xpath("//button[@type='button' and contains(text(), 'Edit Credit')]");
     By btn_approveCredit = By.xpath("//button[@type='button' and contains(text(), 'Approve Credit')]");
-    By txt_creditApproved = By.xpath("//span[@class='_1a5re9s' and text()='Credit Approved']");
+    By txt_creditApproved = By.xpath("(//span[text()='Credit Approved'])[last()]");
     By timestampTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[1]");
     By statusTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[2]");
     By organizationTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[3]");
