@@ -285,6 +285,17 @@ public class KeywordBase {
         return this;
     }
 
+    public KeywordBase waitForVisibility(By by, int timeoutInSeconds) {
+        try {
+            new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds))
+                    .until(ExpectedConditions.visibilityOfElementLocated(by));
+            logger.info("Element is visible: {}", by);
+        } catch (Exception e) {
+            logger.error("Failed to wait for visibility of element: {}", by, e);
+        }
+        return this;
+    }
+
     // Wait for an element to be clickable
     public KeywordBase waitForClickability(By by) {
         try {
