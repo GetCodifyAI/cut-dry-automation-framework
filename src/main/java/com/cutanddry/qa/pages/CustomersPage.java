@@ -1110,7 +1110,7 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         }
     }
     public boolean isSubstitutesPopupDisplayed(){
-        distributorUI.waitForVisibility(txt_substitutions);
+//        distributorUI.waitForVisibility(txt_substitutions);
         return distributorUI.isDisplayed(txt_substitutions);
     }
     public void clickSaveSelection(){
@@ -2830,8 +2830,8 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     }
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
-        distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
-        distributorUI.waitForCustom(2000);
+       /* distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
+        distributorUI.waitForCustom(2000);*/
         return distributorUI.isDisplayed(btn_previousDraftOrderNo);
     }
 

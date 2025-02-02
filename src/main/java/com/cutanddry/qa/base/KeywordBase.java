@@ -259,6 +259,21 @@ public class KeywordBase {
         }
     }
 
+    // Verify if an element is present
+    public boolean isElementPresent(By by) {
+        try {
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+            logger.info("Element is displayed: {}", by);
+            return element.isDisplayed();
+        } catch (TimeoutException e) {
+            logger.warn("Element not found within timeout: {}", by);
+            return false;
+        } catch (Exception e) {
+            logger.error("Failed to check if element is displayed: {}", by, e);
+            return false;
+        }
+    }
+
     // Wait for an element to be visible
     public KeywordBase waitForVisibility(By by) {
         try {
