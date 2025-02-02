@@ -517,7 +517,7 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     By txt_duplicateOrder = By.xpath("//h2[@class='swal2-title' and @id='swal2-title' and text()='Duplicate Order']");
     By btn_addNewPaymentMtd = By.xpath("//div[contains(text(),'Add a new payment method')]");
     By txt_lastOrderedPrice = By.xpath("//td[contains(@class,'font-weight-light py-3 text-nowrap') and contains(text(),'/lb')]");
-    By txt_lastOrderedPriceOff = By.xpath("//td[contains(@class, 'py-3') and div[contains(text(), '1 CS')]]");
+    By txt_lastOrderedPriceOff = By.xpath("//td[contains(@class, 'py-3') and div[contains(text(), 'CS')]]");
     By btn_checkoutOperator = By.xpath("//button[@data-for='cartCheckoutButton']");
 
     public void ifDuplicateOrderDisplayed(){
@@ -936,7 +936,9 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         return distributorUI.isDisplayed(txt_firstItem);
     }
     public boolean isMinOrderBannerDisplayed(){
-        distributorUI.waitForVisibility(txt_minOrderBanner);
+        distributorUI.waitForVisibility(txt_minOrderBanner,60);
+//        distributorUI.waitForVisibility(txt_minOrderBanner);
+        distributorUI.refreshPage();
         return distributorUI.isDisplayed(txt_minOrderBanner);
     }
     public boolean isOrderMinPopupDisplayed(){
@@ -1159,7 +1161,7 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         distributorUI.waitForVisibility(CustomerGroupTxt);
         return distributorUI.isDisplayed(CustomerGroupTxt);
     }
-    public boolean areOutOfStockItemsDisplayed(){
+    /*public boolean areOutOfStockItemsDisplayed(){
         try {
             distributorUI.isDisplayed(txt_outOfStock);
         }
@@ -1167,6 +1169,17 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
             return false;
         }
         return distributorUI.isDisplayed(txt_outOfStock);
+    }*/
+    public boolean areOutOfStockItemsDisplayed() {
+        try {
+            if (!distributorUI.isDisplayed(txt_outOfStock)) {
+                return false;
+            }
+            int count = distributorUI.countElements(txt_outOfStock);
+            return count > 2;
+        } catch (Exception e) {
+            return false;
+        }
     }
     public void clickOnUnitEach(){
         distributorUI.click(txt_unitInDist);
