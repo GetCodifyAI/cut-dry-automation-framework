@@ -37,6 +37,7 @@ public class LoginPage extends TestBase {
     By row_count = By.xpath("//table[@class='table table-striped']/tbody/tr");
     String row_feature ="//table[@class='table table-striped']/tbody/tr[ROW]//td/input[@type='text']";
     String row_Companies ="//table[@class='table table-striped']/tbody/tr[ROW]//textarea[@data-href='/gatekeeperadminajax/edit/companyIDs']";
+    String row_Status ="//table[@class='table table-striped']//tbody//tr[ROW]//div[contains(text(),'Verified Vendor')]/following-sibling::ul//input[contains(@value,'active_for_all_vv')]";
 
 
     public void typeEmailOrMobile(String emailOrMobile){
@@ -150,6 +151,12 @@ public class LoginPage extends TestBase {
         for (int i = 1; i <= rowCount; i++) {
             String featureValue = distributorUI.getText(By.xpath(row_feature.replace("ROW", String.valueOf(i))), "value");
             if (featureValue.equalsIgnoreCase(featureName)) {
+
+                if (distributorUI.isCheckboxOrRadioBtnSelected(By.xpath(row_Status.replace("ROW", String.valueOf(i))))) {
+                    distributorUI.click(By.xpath(row_Status.replace("ROW", String.valueOf(i))));
+                    System.out.println("Checkbox was selected. Now deselected.");
+                }
+
                 String existingCompanyIDs = distributorUI.getText(By.xpath(row_Companies.replace("ROW", String.valueOf(i))));
 
                 if (existingCompanyIDs == null || existingCompanyIDs.isEmpty()) {

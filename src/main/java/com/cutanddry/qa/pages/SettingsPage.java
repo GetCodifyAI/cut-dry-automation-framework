@@ -559,10 +559,27 @@ public class SettingsPage extends LoginPage{
         distributorUI.click(txt_global);
     }
 
+    /*public void selectHolidayDate(int nextDayCount) throws InterruptedException {
+        distributorUI.click(dropdown_selectHolidayDate);
+        String day = String.valueOf(nextDayCount);
+        By lbl_selectHolidayDate = By.xpath(dynamicXPath.replace("DAY", day));
+        distributorUI.waitForVisibility(lbl_selectHolidayDate);
+        distributorUI.click(lbl_selectHolidayDate);
+        distributorUI.waitForCustom(3000);
+    }*/
+
     public void selectHolidayDate(int nextDayCount) throws InterruptedException {
         distributorUI.click(dropdown_selectHolidayDate);
         String day = String.valueOf(nextDayCount);
         By lbl_selectHolidayDate = By.xpath(dynamicXPath.replace("DAY", day));
+        boolean isDateInCurrentMonth = distributorUI.isElementPresent(lbl_selectHolidayDate);
+        if (!isDateInCurrentMonth) {
+            By nextMonthButton = By.xpath("//button[contains(@class, 'react-datepicker__navigation--next')]");
+            distributorUI.click(nextMonthButton);
+            distributorUI.waitForCustom(1000);
+            lbl_selectHolidayDate = By.xpath(dynamicXPath.replace("DAY", day));
+        }
+
         distributorUI.waitForVisibility(lbl_selectHolidayDate);
         distributorUI.click(lbl_selectHolidayDate);
         distributorUI.waitForCustom(3000);
