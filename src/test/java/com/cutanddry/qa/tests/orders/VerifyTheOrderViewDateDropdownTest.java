@@ -35,6 +35,7 @@ public class VerifyTheOrderViewDateDropdownTest extends TestBase {
 //        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 //        String yesterdayDate = yesterdayUTC.format(formatter);
         expectedDate = Orders.getLastWorkingDate();
+        System.out.println(expectedDate);
 
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");

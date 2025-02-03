@@ -53,6 +53,7 @@ public class VerifyDraftOrderSubmittedByOperatorTest extends TestBase{
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToDrafts();
         softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
+        Draft.typeOnSearchDrafts(referenceNum);
         softAssert.assertTrue(Draft.isLastDraftDisplayed(String.valueOf(itemPrice)),"draft creating error");
         softAssert.assertEquals(Draft.getReferenceNumDP(), referenceNum, "draft order create not successfully");
         softAssert.assertAll();
