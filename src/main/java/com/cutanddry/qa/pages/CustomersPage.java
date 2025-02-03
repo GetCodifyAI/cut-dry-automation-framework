@@ -118,6 +118,9 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By txt_deletePopup = By.xpath("//h2[text()='Are you sure?']");
     By btn_yes = By.xpath("//button[text()='Yes']");
     By btn_increaseQtyFirstRowInDist = By.xpath("//tbody/tr/td[6]/div/div/div/div[3]");
+    String btn_PlusQtyFirstRowInDist = "//tbody/tr/td[COLUMN]/div/div/div/div[3]";
+    By lbl_itemRowCount = By.xpath("//td[text()='Item']/parent::tr/td");
+    String lbl_columnName = "//td[text()='Item']/parent::tr/td[COLUMN]";
     By btn_decreaseQtyFirstRowInDist = By.xpath("//tbody/tr[2]/td[6]/div/div/div/div[1]");
     By btn_checkoutCashCarry = By.xpath("//button[@data-tip='Click here to checkout']");
     By txt_foodServiceDistCenter = By.xpath("//span[text()='Food Service Distribution Centre']");
@@ -1036,8 +1039,14 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         return distributorUI.isDisplayed(btn_deleteStandingOrders);
     }
     public void clickPlusQryFirstRowInDist() throws InterruptedException {
-        distributorUI.waitForCustom(1000);
-        distributorUI.click(btn_increaseQtyFirstRowInDist);
+        int columnCount = distributorUI.countElements(lbl_itemRowCount);
+        for (int i = 1; i <= columnCount ; i++) {
+            String actualColumnName = distributorUI.getText(By.xpath(lbl_columnName.replace("COLUMN",String.valueOf(i))));
+            if (actualColumnName.equalsIgnoreCase("Quantity")) {
+                distributorUI.waitForCustom(1000);
+                distributorUI.click(By.xpath(btn_PlusQtyFirstRowInDist.replace("COLUMN",String.valueOf(i))));
+            }
+        }
     }
     public void clickOnCheckoutButtonInDist() throws InterruptedException {
         distributorUI.waitForCustom(3000);

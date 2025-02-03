@@ -12,11 +12,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.util.Random;
+
 public class UpdateUserWithExistingUserReferenceTest extends TestBase {
     static User user;
-    static String name_1 = "Test";
-    static String name_2 = "Test3";
-    static String email_2 = "test3@email.com";
+    static int randomNumber = new Random().nextInt(1000);
+    static String name_1 = "Test" + randomNumber;
+    static String name_2 = "Test3" + randomNumber;
+    static String email_2 = "test"+randomNumber+"@email.com";
     static String userRef = "KF";
 
     @BeforeMethod
@@ -39,7 +42,7 @@ public class UpdateUserWithExistingUserReferenceTest extends TestBase {
         Settings.enterUserRef(userRef);
         Settings.clickOnInviteUser();
         softAssert.assertTrue(Settings.isUserDisplayed(name_2),"user adding error");
-        Settings.clickOnEditUser(name_1);
+        Settings.clickOnEditUser(name_2);
         Settings.enterUserRef(userRef);
         Settings.clickOnSaveChanges();
         softAssert.assertTrue(Settings.isUserRefErrorDisplayed(),"user ref error");
@@ -59,9 +62,9 @@ public class UpdateUserWithExistingUserReferenceTest extends TestBase {
     public void tearDown(ITestResult result) throws InterruptedException {
 
         //Reverting back the Ref id Since it will be used in TC:141
-        Settings.clickOnEditUser(name_1);
+       /* Settings.clickOnEditUser(name_1);
         Settings.enterUserRef(userRef);
-        Settings.clickOnSaveChanges();
+        Settings.clickOnSaveChanges();*/
 
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
