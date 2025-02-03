@@ -19,6 +19,7 @@ public class InternalToolsPage extends LoginPage {
     By sponsoredProductAdsToggle =By.xpath("//div[contains(text(), 'Enable Sponsored Product Advertisements')]/../following-sibling::div//div[@class='react-switch-bg']");
     By btn_saveProductAds = By.xpath("//div[contains(h4, 'Sponsored Ads')]/button[contains(@class, 'btn') and text()='Save']");
     By buyerEdgePlatformRebateToggle =By.xpath("//div[contains(text(), 'Buyers Edge Platform Rebates')]/../following-sibling::div//div[@class='react-switch-bg']");
+    By buyerEdgePlatformRebateHandle = By.xpath("//div[contains(text(), 'Buyers Edge Platform Rebates')]/../following-sibling::div//div[@class='react-switch-handle']");
     By btn_saveRebate = By.xpath("//div[contains(h4, 'Rebates')]/button[contains(@class, 'btn') and text()='Save']");
 
 
@@ -130,7 +131,19 @@ public class InternalToolsPage extends LoginPage {
     public void clickBuyerEdgePlatformRebateToggle(){
         distributorUI.click(buyerEdgePlatformRebateToggle);
     }
+
+    public void clickBuyerEdgePlatformRebateToggle(boolean enable) {
+        String handlePosition = distributorUI.getElement(buyerEdgePlatformRebateHandle).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(buyerEdgePlatformRebateToggle);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(buyerEdgePlatformRebateToggle);
+        }
+    }
+
     public void clickRebateSave(){
-        distributorUI.click(btn_saveRebate);
+        distributorUI.clickWithScrollAndHover(btn_saveRebate);
     }
 }
