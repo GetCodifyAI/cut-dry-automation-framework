@@ -62,6 +62,9 @@ public class InternalTools {
     public static void clickBuyerEdgePlatformRebateToggle(){
         internalToolsPage.clickBuyerEdgePlatformRebateToggle();
     }
+    public static void clickBuyerEdgePlatformRebateToggle(boolean enable){
+        internalToolsPage.clickBuyerEdgePlatformRebateToggle(enable);
+    }
     public static void clickRebateSave(){
         internalToolsPage.clickRebateSave();
     }
