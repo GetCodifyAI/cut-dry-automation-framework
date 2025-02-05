@@ -38,9 +38,10 @@ public class OrderDeskPage extends LoginPage{
     By DeliveryDateInput = By.xpath("//div[text()='Delivery Date']/following-sibling::div//div[contains(@class,'cd_themed_select__control')]");
     String DeliveryDateSelect = "//div[contains(text(),'DELIVERYDATE')]";
     By DeliveryDateNotValidTxt = By.xpath("//div[@class='text-danger']");
-    By ReviewTxt = By.xpath("//h2[contains(text(),'pending_review')]");
+//    By ReviewTxt = By.xpath("//h2[contains(text(),'pending_review')]");
+    By ReviewTxt = By.xpath("//*[contains(text(),'PENDING REVIEW')]");
     By SubmittedOrderPageReViewBtn = By.xpath("(//div[contains(@class, '_10q9czs row')]//div//a[text()='Review' and contains(@href,'/order-desk')])[last()]");
-    By SubmitTxt = By.xpath("//h2[contains(text(),'submitted')]");
+    By SubmitTxt = By.xpath("//*[contains(text(),'Submit Order')]");
 
     public boolean isOrderDeskTextDisplayed(){
         try{
@@ -97,6 +98,11 @@ public class OrderDeskPage extends LoginPage{
             distributorUI.click(SubmitTxt);
         }
         distributorUI.click(SaveDraftBtn);
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public boolean isSaveDraftsucessfullytextisDisplayed(){
