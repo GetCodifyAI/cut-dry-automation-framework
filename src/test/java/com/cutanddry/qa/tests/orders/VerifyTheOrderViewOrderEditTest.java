@@ -16,6 +16,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheOrderViewOrderEditTest extends TestBase {
     static User user;
     String creditStatus = "Submitted";
+    String date = "Last 90 Days";
 
     @BeforeMethod
     public void setUp() {
@@ -30,6 +31,8 @@ public class VerifyTheOrderViewOrderEditTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToOrders();
         softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"navigation error");
+        Orders.selectOrderDate(date);
+        Orders.selectOrderStatus(creditStatus);
         Orders.clickOnFirstOrder(creditStatus);
         Orders.clickOnEditOrder();
         softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(),"edit popup error");
