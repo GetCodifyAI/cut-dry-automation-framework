@@ -702,6 +702,11 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         return Double.valueOf(distributorUI.getText(lbl_cartTotal).split("\\$")[1]);
     }
     public void submitOrder(){
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.waitForClickability(btn_submitOrder);
         distributorUI.click(btn_submitOrder);
     }
@@ -2401,16 +2406,20 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     public void clickSecondImage(){
         distributorUI.click(btn_secondImage);
     }
-    public void typeSpecialInstruction(String specialInstruction){
+    public void typeSpecialInstruction(String specialInstruction) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.sendKeys(txt_specialInstruction,specialInstruction);
     }
-    public void typeInternalNote(String internalNote){
+    public void typeInternalNote(String internalNote) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.sendKeys(txt_internalNote,internalNote);
     }
-    public void typeNoteToCustomer(String noteToCustomer){
+    public void typeNoteToCustomer(String noteToCustomer) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.sendKeys(txt_noteToCustomer,noteToCustomer);
     }
-    public void typePONumber(String poNumber){
+    public void typePONumber(String poNumber) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.sendKeys(txt_poNumber,poNumber);
     }
     public boolean isSpecialInstructionDisplayed(String specialInstruction) {

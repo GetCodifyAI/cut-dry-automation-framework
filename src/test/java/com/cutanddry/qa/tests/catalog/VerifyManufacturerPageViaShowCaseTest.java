@@ -16,8 +16,9 @@ import org.testng.asserts.SoftAssert;
 public class VerifyManufacturerPageViaShowCaseTest extends TestBase {
     static User user;
     String DistributerName = "185556964 - Brandon Cheney - Cheney Brothers";
-    String ProductName = "andy capps hot fries, 0.85 oz";
+//    String ProductName = "andy capps hot fries, 0.85 oz";
     String BrandPage = "Conagra Foodservice";
+    String ProductName = "Ac Hot On Rng 12/2Z";
 
     @BeforeMethod
     public void setUp(){
@@ -35,7 +36,7 @@ public class VerifyManufacturerPageViaShowCaseTest extends TestBase {
         Catalog.NavigateToShowCasePage();
         softAssert.assertTrue(ShowCase.isNavigateToShowCase(),"ERROR in Navigating to Show Case Page");
         ShowCase.SearchProductInProductSearhBar(ProductName);
-        ShowCase.SelectProductFromShowCase();
+        ShowCase.SelectProductFromShowCase(ProductName);
         ShowCase.NavigateToManufacturerPage();
         softAssert.assertTrue(ShowCase.isNavigatedToManufacturerPage(BrandPage),"ERROR in Navigating to Manufacturer Page");
         ShowCase.NavigateToOurBrandsPage();

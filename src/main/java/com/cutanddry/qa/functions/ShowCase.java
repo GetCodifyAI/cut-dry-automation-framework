@@ -13,8 +13,8 @@ public class ShowCase {
         showCasePage.SearchInProductSearchBar(ProductName);
     }
 
-    public static void SelectProductFromShowCase(){
-        showCasePage.SelectProductInShowCase();
+    public static void SelectProductFromShowCase(String productName){
+        showCasePage.SelectProductInShowCase(productName);
     }
 
     public static void NavigateToManufacturerPage(){
