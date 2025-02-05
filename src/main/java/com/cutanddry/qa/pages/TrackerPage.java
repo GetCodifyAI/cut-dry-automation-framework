@@ -92,6 +92,7 @@ public class TrackerPage extends LoginPage{
     public void clickStatusOption()throws InterruptedException{
         distributorUI.waitForVisibility(statusOption);
         distributorUI.click(statusOption);
+        distributorUI.waitForCustom(3000);
     }
     public void clickCategoryDropDown(){
         distributorUI.click(categoryDropDown);
@@ -99,6 +100,7 @@ public class TrackerPage extends LoginPage{
     public void clickCategoryOption()throws InterruptedException{
         distributorUI.waitForVisibility(catalogOption);
         distributorUI.click(catalogOption);
+        distributorUI.waitForCustom(3000);
     }
     public void clickPriorityDropDown(){
         distributorUI.click(priorityDropDown);
@@ -106,13 +108,15 @@ public class TrackerPage extends LoginPage{
     public void clickPriorityOption()throws InterruptedException{
         distributorUI.waitForVisibility(priorityOption);
         distributorUI.click(priorityOption);
+        distributorUI.waitForCustom(3000);
     }
     public void clickCreateTicket()throws InterruptedException{
         distributorUI.waitForVisibility(btn_createTicket);
         distributorUI.clickWithScrollAndHover(btn_createTicket);
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(3000);
     }
     public boolean isTaskTitleDisplayed(String title){
+        distributorUI.refreshPage();
         distributorUI.waitForVisibility(By.xpath(taskTitle.replace("TITLE",title)));
         return distributorUI.isDisplayed(By.xpath(taskTitle.replace("TITLE",title)));
     }

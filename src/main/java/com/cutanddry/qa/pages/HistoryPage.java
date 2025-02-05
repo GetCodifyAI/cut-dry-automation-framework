@@ -39,14 +39,29 @@ public class HistoryPage extends LoginPage{
 
     public void clickOnYes(){
         distributorUI.click(btn_yes);
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void clickBtnSaveCheckIn(){
         distributorUI.click(btn_saveCheckIn);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void clickOnBtnContinue(){
         distributorUI.click(btn_continue);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void clickOnDropDownWhatIsWrong(){
@@ -57,6 +72,11 @@ public class HistoryPage extends LoginPage{
     public void clickOnFirstRowDropDownWhatIsWrong(){
         By dropDownOption = By.xpath(dropDownWhatIsWrongOption);
         distributorUI.click(dropDownOption);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public boolean isPopupWindowReportIssueDisplayed() {
