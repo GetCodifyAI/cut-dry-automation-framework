@@ -515,8 +515,12 @@ public class OrdersPage extends LoginPage{
         }
         return distributorUI.isDisplayed(By.xpath(lbl_orderStatus.replace("STATUSVALUE",status)));
     }
-    public String getLastWorkingDate() {
-        return distributorUI.getLastWorkingDay();
+    public String getLastWorkingDateEST() {
+        return distributorUI.getLastWorkingDayEST();
+    }
+
+    public String getLastWorkingDateUST() {
+        return distributorUI.getLastWorkingDayUST();
     }
 
 
