@@ -5,10 +5,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
-
 public class PayPage extends LoginPage{
     By txt_pay = By.xpath("//li[contains(text(),'Pay')]");
     By tb_invoices =By.xpath("//a[@role='tab' and text()='Invoices']");
@@ -630,7 +626,7 @@ public class PayPage extends LoginPage{
     }
 
     public String getLastWorkingDate() {
-        return distributorUI.getLastWorkingDay();
+        return distributorUI.getLastWorkingDayEST();
     }
     public void clickExportPayout(){
         distributorUI.click(btn_exportPayout);
