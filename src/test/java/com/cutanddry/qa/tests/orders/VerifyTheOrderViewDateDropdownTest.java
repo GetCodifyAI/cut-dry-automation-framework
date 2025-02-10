@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheOrderViewDateDropdownTest extends TestBase {
     static User user;
-    String date = "Yesterday";
+    String date = "Last 7 Days";
     static String expectedDate;
     String status = "All";
 
