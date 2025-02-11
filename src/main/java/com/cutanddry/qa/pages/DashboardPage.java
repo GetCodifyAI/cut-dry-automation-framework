@@ -65,6 +65,7 @@ public class DashboardPage extends LoginPage{
     By approvalsBtn = By.xpath("//a[contains(@data-tip,'Approvals')]");
     By locationFilter = By.xpath("(//div[text()='Place Order']/following-sibling::div//div)[1]");
     By locationOption = By.xpath("//div[text()='Place Order']/following-sibling::*//div[contains(@id,'react-select') and contains(text(), 'All Locations')]");
+    By btn_order = By.xpath("//a[@data-tip='Place Order']");
 
 
     public boolean isDashboardTextDisplayed(){
@@ -328,6 +329,10 @@ public class DashboardPage extends LoginPage{
         distributorUI.waitForCustom(2000);
         distributorUI.waitForVisibility(locationOption);
         distributorUI.click(locationOption);
+    }
+    public void clickOnOrder() throws InterruptedException {
+        distributorUI.click(btn_order);
+        distributorUI.waitForCustom(2000);
     }
 
 }
