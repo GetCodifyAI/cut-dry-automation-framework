@@ -39,6 +39,8 @@ public class TestBase {
                     prefs.put("profile.default_content_settings.popups", 0);
 //                    prefs.put("safebrowsing.enabled", "true");            // Enable safe browsing
                     chromeOptions.setExperimentalOption("prefs", prefs);
+                    // Only for Perf
+                    chromeOptions.addArguments("--remote-debugging-port=9222");
 
                     driver = new ChromeDriver(chromeOptions);
                     js = (JavascriptExecutor) driver;

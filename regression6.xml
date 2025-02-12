@@ -13,13 +13,12 @@
             <class name="com.cutanddry.qa.tests.credit_request.VerifyTheCreditViewItemsByDistributorTest"/>
             <class name="com.cutanddry.qa.tests.credit_request.VerifyTheCreditViewofCreditRequestIssueDetailsByDistributorTest"/>
             <class name="com.cutanddry.qa.tests.credit_request.VerifyTheCreditViewTimelineByDistributorTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerBaseReportGenerationTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerOrdersReportGenerationTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyTheItemMovementReportGenerationTest"/>
             <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromRequestDateTest"/>
             <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromCreditStatusTest"/>
             <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromSalespersonTest"/>
-            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheMarkAsPaidInMoreActionsTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowApproveCreditThenChangeItToDeclineCreditTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowToDeclineCreditThenChangeItToApproveCreditTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheTimelineInCreditRequestUsingTimestampStatusOrganizationAndUser"/>
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerMailDeliveryOrderViaOrderGuideTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaCatalogTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaCatalogTest" />
@@ -30,9 +29,21 @@
             <class name="com.cutanddry.qa.tests.e2e.PlaceCustomerDeliveryOrderViaOrderGuideCatalogPDPTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceCustomerPickUpOrderViaOrderGuideCatalogPDPTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceCustomerMailDeliveryOrderViaOrderGuideCatalogPDPTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountHardHoldTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountRemoveHardHoldTest" />
+            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaOrderGuideTest" />
+            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaOrderGuideTest" />
             <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessRestrictedViaCustomerProfileTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerOrderGuideReportGenerationTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyThePickListDownloadReportTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerBaseReportGenerationTest"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerOrdersReportGenerationTest"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheItemMovementReportGenerationTest"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerWiseItemMovementDownloadReportTest"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheCatalogExportDownloadReportTest"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyThePayCustomersDownloadReportTest"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheAtRiskAccountsDownloadReportTest"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyThePaymentTransactionDownloadReportTest"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyThePaymentAuthorizationStatusDownloadReportTest"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheTrackReadyOrdersDownloadReportTest"/>
         </classes>
     </test>
 </suite>

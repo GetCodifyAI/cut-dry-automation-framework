@@ -14,6 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheOrderViewDateDropdownTest extends TestBase {
     static User user;
+    SoftAssert softAssert;
     String date = "Last 7 Days";
     static String expectedDate;
     String status = "All";
@@ -26,22 +27,19 @@ public class VerifyTheOrderViewDateDropdownTest extends TestBase {
 
     @Test(groups = "DOT-TC-543")
     public void VerifyTheOrderViewDateDropdown() throws InterruptedException {
-        SoftAssert softAssert = new SoftAssert();
+        softAssert = new SoftAssert();
 
-//        ZonedDateTime yesterdayUTC = ZonedDateTime.now(ZoneOffset.UTC).minusDays(1);
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-//        String yesterdayDate = yesterdayUTC.format(formatter);
         expectedDate = Orders.getLastWorkingDateUST();
         System.out.println(expectedDate);
 
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "login error");
         Dashboard.navigateToOrders();
-        softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"navigation error");
+        softAssert.assertTrue(Orders.isUserNavigatedToOrder(), "navigation error");
         Orders.selectOrderDate(date);
         Orders.selectOrderStatus(status);
-        softAssert.assertTrue(Orders.isOrderDateChanged(date),"dropdown error");
-        softAssert.assertTrue(Orders.validateFilteredOrders(expectedDate),"Error in filtering order dates");
+        softAssert.assertTrue(Orders.isOrderDateChanged(date), "dropdown error");
+        softAssert.assertTrue(Orders.validateFilteredOrders(expectedDate), "Error in filtering order dates");
         softAssert.assertAll();
     }
 

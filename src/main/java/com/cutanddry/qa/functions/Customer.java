@@ -1710,4 +1710,8 @@ public class Customer {
         Thread.sleep(4000);
     }
 
+    public static void scrollBottomOfPage()throws InterruptedException{
+        customersPage.scrollBottomOfPage();
+    }
+
 }

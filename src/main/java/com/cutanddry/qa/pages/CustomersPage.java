@@ -3092,4 +3092,8 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         distributorUI.waitForCustom(4000);
     }
 
+    public void scrollBottomOfPage() {
+        distributorUI.uiScrollBottomOfPage();
+    }
+
 }

@@ -41,6 +41,7 @@ public class OrdersPage extends LoginPage{
     String date = "//td[text()='DATE']";
     String status = "//td/span[text()='STATUS']";
     String lbl_status = "//td[COUNT]/span[text()='STATUS']";
+    By btn_nextArrowNavigation = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-right'])[last()]");
     By txt_resultsCount = By.xpath("//div[contains(text(), 'results')]");
     By btn_moreFilters = By.xpath("//button[contains(., 'More Filters')]");
     By txt_filterOrders= By.xpath("//div[contains(text(),'Filter Orders')]");
@@ -311,17 +312,19 @@ public class OrdersPage extends LoginPage{
         return String.valueOf(distributorUI.countElements(By.xpath(date.replace("DATE", d))));
     }
 
-    public Boolean isFilteredOrdersCorrect(String OrdersDate){
-        try {
-            distributorUI.waitForCustom(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+    public Boolean isFilteredOrdersCorrect(String OrdersDate) throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        for (int i = 0; i < 3; i++) {
+            distributorUI.scrollToElementStable(By.xpath("(" + date.replace("DATE", OrdersDate) + ")" + "[last()]"),5);
+            boolean status = distributorUI.isDisplayed(By.xpath("(" + date.replace("DATE", OrdersDate) + ")" + "[last()]"),5);
+            if (status) {
+                return true;
+            } else {
+                distributorUI.clickWithScrollAndHover(btn_nextArrowNavigation);
+            }
+
         }
-//        String d = distributorUI.getText(txt_date);
-//        distributorUI.scrollToElement(By.xpath("("+ date.replace("DATE", OrdersDate) + ")" + "[last()]"));
-        distributorUI.scrollToElementStable(By.xpath("("+ date.replace("DATE", OrdersDate) + ")" + "[last()]"));
-//        return distributorUI.validateFilteredElements(By.xpath(date.replace("DATE", OrdersDate)),OrdersDate);
-        return distributorUI.isDisplayed(By.xpath("("+ date.replace("DATE", OrdersDate) + ")" + "[last()]"));
+        return false;
     }
 
     /*public Boolean isFilteredOrderStatusCorrect(String OrdersStatus){

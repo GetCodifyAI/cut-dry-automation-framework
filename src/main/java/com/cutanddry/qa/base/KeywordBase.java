@@ -258,6 +258,24 @@ public class KeywordBase {
         }
     }
 
+    // Verify if an element is displayed with a custom wait time
+    public boolean isDisplayed(By by, int timeoutInSeconds) {
+        try {
+            WebDriverWait customWait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+            WebElement element = customWait.until(ExpectedConditions.visibilityOfElementLocated(by));
+
+            boolean isDisplayed = element.isDisplayed();
+            logger.info("Element is displayed: {}", by);
+            return isDisplayed;
+        } catch (TimeoutException e) {
+            logger.warn("Element not found within {} seconds: {}", timeoutInSeconds, by);
+            return false;
+        } catch (Exception e) {
+            logger.error("Failed to check if element is displayed: {}", by, e);
+            return false;
+        }
+    }
+
     // Verify if an element is present
     public boolean isElementPresent(By by) {
         try {
@@ -495,6 +513,30 @@ public class KeywordBase {
             JavascriptExecutor jse = (JavascriptExecutor) driver;
             jse.executeScript("window.scrollTo(0, document.body.scrollHeight);");
             logger.info("Scrolled to the bottom of the page.");
+        } catch (Exception e) {
+            logger.error("Failed to scroll to the bottom of the page.", e);
+        }
+        return this;
+    }
+
+    // Scroll to the bottom of the page
+    public KeywordBase uiScrollBottomOfPage() {
+        try {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            long lastHeight = (long) js.executeScript("return document.body.scrollHeight");
+
+            while (true) {
+                js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+                Thread.sleep(2000);
+
+                long newHeight = (long) js.executeScript("return document.body.scrollHeight");
+                if (newHeight == lastHeight) {
+                    break;
+                }
+                lastHeight = newHeight;
+            }
+
+            logger.info("Scrolled to the bottom of the page successfully.");
         } catch (Exception e) {
             logger.error("Failed to scroll to the bottom of the page.", e);
         }
@@ -1052,7 +1094,7 @@ public class KeywordBase {
         }
     }*/
 
-    public void scrollToElementStable(By by) {
+    public void scrollToElementStable(By by, int timeoutInSeconds) {
         try {
             JavascriptExecutor js = (JavascriptExecutor) driver;
             boolean elementFound = false;
@@ -1079,6 +1121,7 @@ public class KeywordBase {
             }
 
             if (elementFound) {
+                WebDriverWait customWait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
                 WebElement targetElement = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
                 js.executeScript("arguments[0].scrollIntoView(true);", targetElement);
                 logger.info("Scrolled to and found the element: {}", by);
