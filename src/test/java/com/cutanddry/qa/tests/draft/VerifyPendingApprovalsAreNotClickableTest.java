@@ -11,13 +11,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyDraftOrderSubmittedByOperatorTest extends TestBase{
+public class VerifyPendingApprovalsAreNotClickableTest extends TestBase{
     static User user;
-    static String RestaurantUserCode = DraftsData.RESTAURANT_USER_CODE;
-    static String SupplierName = DraftsData.SUPPLIER_NAME;
-    static String itemName, searchItemCode,referenceNum;
-    static double itemPrice;
+    static String RestaurantUserName = DraftsData.RESTAURANT_USER_NAME;
+    static String referenceNum;
     static String distributorName = DraftsData.DISTRIBUTOR_NAME;
+    static String status = DraftsData.STATUS;
+
 
 
     @BeforeMethod
@@ -26,36 +26,33 @@ public class VerifyDraftOrderSubmittedByOperatorTest extends TestBase{
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-967")
-    public void VerifyDraftOrderSubmittedByOperator() throws InterruptedException {
+    @Test(groups = "DOT-TC-994")
+    public void VerifyPendingApprovalsAreNotClickable() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
 
-        Login.navigateToLoginAsPortal(RestaurantUserCode);
-        Orders.SelectSupplierFromPlaceOrderPage(SupplierName);
-
-        itemName = Customer.getItemNameFirstRow();
-        searchItemCode = Customer.getItemCodeFirstRow();
-        itemPrice = Customer.getActiveItemPriceFirstRow();
-        Customer.searchItemOnOrderGuide(searchItemCode);
-        Customer.increaseFirstRowQtyByOneInDist();
+        Login.navigateToLoginAsPortal(RestaurantUserName);
+        Dashboard.navigateToOrder();
+        softAssert.assertTrue(Dashboard.isUserNavigatedToOrderGuide(),"navigation error");
+        Customer.increaseFirstRowQtyInClassic(1);
         Customer.clickOnCheckoutButtonOperator();
-        softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
-        softAssert.assertEquals(Customer.getItemNameFirstRow(), itemName, "The item selected by the user is different from what is shown on the order review page.");
-
-        Dashboard.navigateToDrafts();
+        Customer.submitOrderForApproval();
+        softAssert.assertTrue(Customer.isSentApprovalDisplayed(),"sent approval pop up not display");
+        Customer.clickViewOrderInDraft();
         softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
-        referenceNum = Draft.getReferenceNumOP().replace("#","");
-        softAssert.assertTrue(Draft.isRestaurantLastDraftDisplayed(String.valueOf(itemPrice)),"draft creating error");
+        referenceNum = Draft.getReferenceNum();
+
 
         Login.navigateToDistributorPortal(distributorName);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToDrafts();
         softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
         Draft.typeOnSearchDrafts(referenceNum);
-        softAssert.assertTrue(Draft.isLastDraftDisplayed(String.valueOf(itemPrice)),"draft creating error");
         softAssert.assertEquals(Draft.getReferenceNumDP(), referenceNum, "draft order create not successfully");
+        softAssert.assertTrue(Draft.isPendingApprovalDraftDisplayed(status),"pending approval draft not display");
+        Draft.pendingApprovalDraftClick(status);
+        softAssert.assertFalse(Customer.isReviewOrderTextDisplayed(), "pending approval draft clickable");
         softAssert.assertAll();
     }
 

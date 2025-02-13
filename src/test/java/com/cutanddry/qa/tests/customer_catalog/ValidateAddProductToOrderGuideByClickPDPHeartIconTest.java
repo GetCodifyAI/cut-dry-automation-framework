@@ -17,7 +17,8 @@ public class ValidateAddProductToOrderGuideByClickPDPHeartIconTest extends TestB
     String CustomerCode = "37631";
     static String itemName = "J. Hungerford Smith Chocolate Cone Coating";
     static String OrderGuideProductName = "j. hungerford smith chocolate cone coating";
-
+    // TODO: Temporary solution for item name change
+    static String itemNameTemp = "Chocolate Cone Coating";
 
     @BeforeMethod
     public void setUp(){
@@ -36,9 +37,9 @@ public class ValidateAddProductToOrderGuideByClickPDPHeartIconTest extends TestB
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"customer not found");
         Customer.clickOnOrderGuide(CustomerCode);
         Customer.goToCatalog();
-        Customer.searchItemOnCatalog(itemName);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
-        Customer.clickOnProduct(itemName);
+        Customer.searchItemOnCatalog(itemNameTemp);
+        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemNameTemp).contains(itemNameTemp.toLowerCase()), "item not found");
+        Customer.clickOnProduct(itemNameTemp);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"navigation error");
         Customer.clickOrderGuide();
 //        Customer.goToOrderGuide();
@@ -48,8 +49,8 @@ public class ValidateAddProductToOrderGuideByClickPDPHeartIconTest extends TestB
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"customer not found");
         Customer.clickOnOrderGuide(CustomerCode);
 
-        softAssert.assertTrue(Customer.addedItemDisplayOnOrderGuide(OrderGuideProductName),"product not found");
-        Customer.clickOrderGuideProduct(OrderGuideProductName);
+        softAssert.assertTrue(Customer.addedItemDisplayOnOrderGuide(itemNameTemp),"product not found"); // OrderGuideProductName
+        Customer.clickOrderGuideProduct(itemNameTemp); // OrderGuideProductName
         Customer.clickRemoveOrderGuide();
         softAssert.assertAll();
     }

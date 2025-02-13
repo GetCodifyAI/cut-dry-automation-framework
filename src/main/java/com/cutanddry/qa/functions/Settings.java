@@ -339,14 +339,13 @@ public class Settings {
         }
         settingsPage.clickAddAlert();}
     public static void clickEditAlert(String option) throws InterruptedException {
-//        TODO: Once the issue fix for https://getcodify.atlassian.net/browse/DOT-6630 is done, we will comment out the code below
-        /*if (settingsPage.isAddAlertBtnDisplayed()) {
+        if (settingsPage.isAddAlertBtnDisplayed()) {
             settingsPage.clickAddAlert();
             settingsPage.clickSendAlertDropDown();
             settingsPage.clickSendAlertOption(option);
             settingsPage.clickOnSave();
             settingsPage.clickOkAlert();
-        }*/
+        }
         settingsPage.clickEditAlert();}
     public static boolean isEditAlertBtnDisplayed() {
         return settingsPage.isEditAlertBtnDisplayed();

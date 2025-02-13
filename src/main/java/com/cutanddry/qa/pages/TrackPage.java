@@ -670,6 +670,11 @@ public class TrackPage extends LoginPage{
     }
     public void giveFilePath(String path){
         distributorUI.sendKeysToHiddenElements(upload_file, path);
+        try {
+            distributorUI.waitForCustom(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public boolean isUploadRouteTextDisplayed(){
         try {
@@ -797,6 +802,7 @@ public class TrackPage extends LoginPage{
     public void clickMonitorRouteName(String name)throws InterruptedException{
         distributorUI.waitForVisibility(By.xpath(monitorRouteName.replace("NAME", name)));
         distributorUI.click(By.xpath(monitorRouteName.replace("NAME", name)));
+        distributorUI.waitForCustom(5000);
     }
     public boolean isCustomerColumnTextDisplayed(String name)throws InterruptedException{
         try {
@@ -809,6 +815,7 @@ public class TrackPage extends LoginPage{
     public void clickMonitorCustomer(String name)throws InterruptedException{
         distributorUI.waitForVisibility(By.xpath(customerColumn.replace("NAME", name)));
         distributorUI.click(By.xpath(customerColumn.replace("NAME", name)));
+        distributorUI.waitForCustom(5000);
     }
     public boolean isMonitorCustomerNameDisplayed(String name)throws InterruptedException{
         try {

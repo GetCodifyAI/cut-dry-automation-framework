@@ -173,5 +173,11 @@ public class Dashboard {
     public static void navigateToApprovalsTab(){
         dashboardPage.clickOnApproval();
     }
+    public static void navigateToOrder() throws InterruptedException {
+        dashboardPage.clickOnOrder();
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+    }
 
 }

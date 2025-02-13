@@ -117,7 +117,10 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By btn_deleteStandingOrders = By.xpath("//div[text()='Delete']");
     By txt_deletePopup = By.xpath("//h2[text()='Are you sure?']");
     By btn_yes = By.xpath("//button[text()='Yes']");
-    By btn_increaseQtyFirstRowInDist = By.xpath("//tbody/tr/td[7]/div/div/div/div[3]");
+    By btn_increaseQtyFirstRowInDist = By.xpath("//tbody/tr/td[6]/div/div/div/div[3]");
+    String btn_PlusQtyFirstRowInDist = "//tbody/tr/td[COLUMN]/div/div/div/div[3]";
+    By lbl_itemRowCount = By.xpath("//td[text()='Item']/parent::tr/td");
+    String lbl_columnName = "//td[text()='Item']/parent::tr/td[COLUMN]";
     By btn_decreaseQtyFirstRowInDist = By.xpath("//tbody/tr[2]/td[6]/div/div/div/div[1]");
     By btn_checkoutCashCarry = By.xpath("//button[@data-tip='Click here to checkout']");
     By txt_foodServiceDistCenter = By.xpath("//span[text()='Food Service Distribution Centre']");
@@ -372,22 +375,22 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By newArrivalsOption = By.xpath("//div[contains(text(), 'New Arrivals (')]");
     By allItemsOption = By.xpath("(//div[contains(text(), 'Category')]/ancestor::div[2]/following-sibling::div//div[contains(text(), 'All Items')])[1]");
     By brandDropDown = By.xpath("//div[contains(text(), 'Brand')]");
-    By brandDropDownOption = By.xpath("//div[contains(text(), 'J Hungerford Smith')]");
-    By txt_filterByBrand =By.xpath("//button[@data-tip='View Brand Page']//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'j hungerford smith')]");
-    By itemStatusDropDown = By.xpath("//div[contains(text(), 'Item Status')]");
+    By brandDropDownOption = By.xpath("//div[contains(text(), 'Hungerford Smith')]");
+    By txt_filterByBrand =By.xpath("//button[@data-tip='View Brand Page']//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'hungerford smith')]");
+    By itemStatusDropDown = By.xpath("//div[contains(text(), 'Item Type')]");
     By itemStatusDropDownOption = By.xpath("//div[contains(text(), 'Stocked')]");
     By storageTypeDropDown = By.xpath("//div[contains(text(), 'Storage Type')]");
-    By storageTypeDropDownOption = By.xpath("//div[contains(text(), 'Dry')]");
+    By storageTypeDropDownOption = By.xpath("//div[contains(text(), 'Frozen')]");
     By dietTypeDropDown = By.xpath("//div[contains(text(), 'Diet Type')]");
     By dietTypeDropDownOption = By.xpath("//div[contains(text(), 'Kosher')]");
-    By txt_filterItem = By.xpath("//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'j hungerford smith')]");
+    By txt_filterItem = By.xpath("//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'hungerford smith')]");
     By processingTypeDropDown = By.xpath("//div[contains(text(), 'Processing & Formulation')]");
     By processingTypeDropOption = By.xpath("//div[contains(text(), 'Non-GMO')]");
     By txt_noItems = By.xpath("//div[contains(text(), '0 Results')]");
     By btn_clearAllFilters = By.xpath("//button[contains(text(), 'Clear All Filters')]");
     By radioButton =By.xpath("//div[@class = 'align-middle']");
 //    String txt_product = "//div[contains(@class,'_3quvq7 _1vlidrf' ) and contains(text(), 'NAME')]";
-String txt_product = "//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]";
+String txt_product = "//div[contains(@class,'_3quvq7 _1vlidrf' ) and contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]";
     By btn_addToCartPDP = By.xpath("//button[contains(@class,'d-flex align-items-center justify-content-center cdbutton _1g89unu _du1frc text-nowrap w-100 btn btn-outline-primary btn-sm' ) and contains(text(), 'Add to Cart')]");
     By btn_checkOutPDP = By.xpath("//button[@data-for='cartCheckoutButton' and contains(text(),'$')]");
     By txt_orderConfirmationPopUp = By.xpath("//strong[contains(text(), 'Thank you for your order!')]");
@@ -519,6 +522,10 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     By txt_lastOrderedPrice = By.xpath("//td[contains(@class,'font-weight-light py-3 text-nowrap') and contains(text(),'/lb')]");
     By txt_lastOrderedPriceOff = By.xpath("//td[contains(@class, 'py-3') and div[contains(text(), 'CS')]]");
     By btn_checkoutOperator = By.xpath("//button[@data-for='cartCheckoutButton']");
+    By btn_increaseQtyFirstRowClassic = By.xpath("(//tr/td//div[contains(@data-tip,'View Product Details')]/following::td//div/*[contains(@data-icon,'plus')])[1]");
+    By btn_submitOrderForApproval = By.xpath("//button[contains(text(),'Submit')]");
+    By txt_sentApproval = By.xpath("//strong[contains(text(),'Sent for approval!')]");
+    By btn_viewOrderInDraft = By.xpath("//button[text()='View Order in Drafts']");
 
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
@@ -699,6 +706,11 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         return Double.valueOf(distributorUI.getText(lbl_cartTotal).split("\\$")[1]);
     }
     public void submitOrder(){
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.waitForClickability(btn_submitOrder);
         distributorUI.click(btn_submitOrder);
     }
@@ -1036,8 +1048,14 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         return distributorUI.isDisplayed(btn_deleteStandingOrders);
     }
     public void clickPlusQryFirstRowInDist() throws InterruptedException {
-        distributorUI.waitForCustom(1000);
-        distributorUI.click(btn_increaseQtyFirstRowInDist);
+        int columnCount = distributorUI.countElements(lbl_itemRowCount);
+        for (int i = 1; i <= columnCount ; i++) {
+            String actualColumnName = distributorUI.getText(By.xpath(lbl_columnName.replace("COLUMN",String.valueOf(i))));
+            if (actualColumnName.equalsIgnoreCase("Quantity")) {
+                distributorUI.waitForCustom(1000);
+                distributorUI.click(By.xpath(btn_PlusQtyFirstRowInDist.replace("COLUMN",String.valueOf(i))));
+            }
+        }
     }
     public void clickOnCheckoutButtonInDist() throws InterruptedException {
         distributorUI.waitForCustom(3000);
@@ -2392,16 +2410,20 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     public void clickSecondImage(){
         distributorUI.click(btn_secondImage);
     }
-    public void typeSpecialInstruction(String specialInstruction){
+    public void typeSpecialInstruction(String specialInstruction) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.sendKeys(txt_specialInstruction,specialInstruction);
     }
-    public void typeInternalNote(String internalNote){
+    public void typeInternalNote(String internalNote) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.sendKeys(txt_internalNote,internalNote);
     }
-    public void typeNoteToCustomer(String noteToCustomer){
+    public void typeNoteToCustomer(String noteToCustomer) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.sendKeys(txt_noteToCustomer,noteToCustomer);
     }
-    public void typePONumber(String poNumber){
+    public void typePONumber(String poNumber) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.sendKeys(txt_poNumber,poNumber);
     }
     public boolean isSpecialInstructionDisplayed(String specialInstruction) {
@@ -3072,6 +3094,31 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         distributorUI.waitForElementEnabledState(btn_checkoutOperator, true);
         distributorUI.click(btn_checkoutOperator);
         distributorUI.waitForCustom(4000);
+    }
+    public void clickPlusQryFirstRowClassic() throws InterruptedException {
+        distributorUI.click(btn_increaseQtyFirstRowClassic);
+        distributorUI.waitForCustom(4000);
+    }
+    public void submitOrderForApproval(){
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        distributorUI.waitForClickability(btn_submitOrderForApproval);
+        distributorUI.click(btn_submitOrderForApproval);
+    }
+    public boolean isSentApprovalDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_sentApproval);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_sentApproval);
+    }
+    public void clickViewOrderInDraft() {
+        distributorUI.waitForVisibility(btn_viewOrderInDraft);
+        distributorUI.click(btn_viewOrderInDraft);
     }
 
 }

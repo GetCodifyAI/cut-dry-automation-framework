@@ -2,7 +2,6 @@ package com.cutanddry.qa.base;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -1004,7 +1003,7 @@ public class KeywordBase {
         }
     }
 
-    public static String getLastWorkingDay() {
+    public static String getLastWorkingDayUST() {
 
         ZonedDateTime yesterdayUTC = ZonedDateTime.now(ZoneOffset.UTC).minusDays(1);
         if (yesterdayUTC.getDayOfWeek() == DayOfWeek.SUNDAY) {
@@ -1015,6 +1014,19 @@ public class KeywordBase {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         return yesterdayUTC.format(formatter);
+    }
+
+    public static String getLastWorkingDayEST() {
+        ZonedDateTime yesterdayEST = ZonedDateTime.now(ZoneId.of("America/New_York")).minusDays(1);
+
+        if (yesterdayEST.getDayOfWeek() == DayOfWeek.SUNDAY) {
+            yesterdayEST = yesterdayEST.minusDays(2); // Move to Friday
+        } else if (yesterdayEST.getDayOfWeek() == DayOfWeek.SATURDAY) {
+            yesterdayEST = yesterdayEST.minusDays(1); // Move to Friday
+        }
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        return yesterdayEST.format(formatter);
     }
 
     /*public void scrollToElementStable(By by) {
@@ -1081,6 +1093,20 @@ public class KeywordBase {
     public String getCssValue(By locator, String propertyName) {
         WebElement element = driver.findElement(locator);
         return element.getCssValue(propertyName);
+    }
+    public void switchToNewTab() {
+        String originalWindow = driver.getWindowHandle();
+
+        // Wait for the new tab to open (optional, depending on your application)
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(driver -> driver.getWindowHandles().size() > 1);
+
+        // Switch to the new tab
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!windowHandle.equals(originalWindow)) {
+                driver.switchTo().window(windowHandle);
+                break; // Exit loop once switched to new tab
+            }
+        }
     }
 
 }

@@ -2,7 +2,6 @@ package com.cutanddry.qa.functions;
 
 import com.cutanddry.qa.pages.CustomersPage;
 import com.cutanddry.qa.pages.OrdersPage;
-import static com.cutanddry.qa.functions.Customer.customersPage;
 
 public class Orders {
     static OrdersPage ordersPage = new OrdersPage();
@@ -234,7 +233,11 @@ public class Orders {
         ordersPage.clickBtnSaveCheckIn();
     }
 
-    public static String getLastWorkingDate(){
-        return ordersPage.getLastWorkingDate();
+    public static String getLastWorkingDateEST(){
+        return ordersPage.getLastWorkingDateEST();
+    }
+
+    public static String getLastWorkingDateUST(){
+        return ordersPage.getLastWorkingDateUST();
     }
 }

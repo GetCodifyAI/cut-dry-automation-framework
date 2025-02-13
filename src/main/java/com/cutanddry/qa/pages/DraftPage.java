@@ -26,6 +26,8 @@ public class DraftPage extends LoginPage{
     String dropDownFilter = "//label[contains(text(),'FILTER')]/following-sibling::div";
     String dropDownOption = "//label[contains(text(),'')]/following-sibling::*//div[contains(text(),'OPTION')]";
     By clearFilter = By.xpath("//span[contains(text(),'Clear Filters')]");
+    By referenceNum = By.xpath("(//tbody/tr[contains(@href, 'place-order') and contains(@href, 'draftId')]//td[3])[1]");
+    String pendingApproval = "(//tbody/tr[contains(@href, '/customers/place_order/') and contains(@href, 'draftId')]/td[9]/span[contains(text(), 'STATUS')])[1]";
 
 
 
@@ -167,6 +169,20 @@ public class DraftPage extends LoginPage{
     public void clickClearFilter()throws InterruptedException{
         distributorUI.waitForVisibility(clearFilter);
         distributorUI.click(clearFilter);
+    }
+    public String getReferenceNum() throws InterruptedException {
+        distributorUI.waitForVisibility(referenceNum);
+        distributorUI.waitForCustom(3000);
+        String referenceNumOP = distributorUI.getText(referenceNum);
+        return referenceNumOP.substring(1);
+    }
+    public boolean isPendingApprovalDraftDisplayed(String status){
+        distributorUI.waitForVisibility(By.xpath(pendingApproval.replace("STATUS", status)));
+        return distributorUI.isDisplayed(By.xpath(pendingApproval.replace("STATUS", status)));
+    }
+    public void pendingApprovalDraftClick(String status){
+        distributorUI.waitForVisibility(By.xpath(pendingApproval.replace("STATUS", status)));
+        distributorUI.click(By.xpath(pendingApproval.replace("STATUS", status)));
     }
 
 

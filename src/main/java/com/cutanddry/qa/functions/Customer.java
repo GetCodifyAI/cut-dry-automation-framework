@@ -1280,16 +1280,16 @@ public class Customer {
     }
     public static void clickFirstImage(){customersPage.clickFirstImage();}
     public static void clickSecondImage(){customersPage.clickSecondImage();}
-    public static void typeSpecialInstruction(String specialInstruction){
+    public static void typeSpecialInstruction(String specialInstruction) throws InterruptedException {
         customersPage.typeSpecialInstruction(specialInstruction);
     }
-    public static void typeInternalNote(String internalNote){
+    public static void typeInternalNote(String internalNote) throws InterruptedException {
         customersPage.typeInternalNote(internalNote);
     }
-    public static void typeNoteToCustomer(String noteToCustomer){
+    public static void typeNoteToCustomer(String noteToCustomer) throws InterruptedException {
         customersPage.typeNoteToCustomer(noteToCustomer);
     }
-    public static void typePONumber(String poNumber){
+    public static void typePONumber(String poNumber) throws InterruptedException {
         customersPage.typePONumber(poNumber);
     }
     public static boolean isSpecialInstructionDisplayed(String specialInstruction){
@@ -1708,6 +1708,26 @@ public class Customer {
     public static void clickOnCheckoutButtonOperator()throws InterruptedException{
         customersPage.clickOnCheckoutButtonOperator();
         Thread.sleep(4000);
+    }
+    public static void increaseFirstRowQtyInClassic(int count) throws InterruptedException {
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+        for(int i=0;i<count;i++){
+            customersPage.clickPlusQryFirstRowClassic();
+        }
+    }
+    public static void submitOrderForApproval(){
+        customersPage.submitOrderForApproval();
+        if (customersPage.isDuplicatePopupDisplayed()){
+            customersPage.clickYesDuplicatePopup();
+        }
+    }
+    public static boolean isSentApprovalDisplayed(){
+        return customersPage.isSentApprovalDisplayed();
+    }
+    public static void clickViewOrderInDraft(){
+        customersPage.clickViewOrderInDraft();
     }
 
 }
