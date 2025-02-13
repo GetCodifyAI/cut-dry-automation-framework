@@ -187,6 +187,21 @@ public class KeywordBase {
         }
         return this;
     }
+    // Send keys to an element using By object and press enter
+    public KeywordBase sendKeysAndEnterMac(By by, String data) {
+        try {
+            Actions actions = new Actions(driver);
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
+//            Thread.sleep(500);
+
+            actions.moveToElement(element).click().keyDown(Keys.COMMAND).sendKeys("a").keyUp(Keys.COMMAND)
+                    .sendKeys(Keys.BACK_SPACE).sendKeys(data).sendKeys(Keys.ENTER).perform();
+            logger.info("Sent keys to element: {} with data: {} and enter", by, data);
+        } catch (Exception e) {
+            logger.error("Failed to send keys to element: {} with data: {}", by, data, e);
+        }
+        return this;
+    }
 
     // Clear an input field
     public KeywordBase clear(By by) {

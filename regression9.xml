@@ -57,6 +57,10 @@
             <class name="com.cutanddry.qa.tests.reports.VerifyThePaymentAuthorizationStatusDownloadReportTest"/>
             <class name="com.cutanddry.qa.tests.reports.VerifyTheTrackReadyOrdersDownloadReportTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifyPendingApprovalsAreNotClickableTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateTheFinalWeightTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPoundPriceTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingByPricingEngineTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateThePoundSpotPricingTest"/>
         </classes>
     </test>
 </suite>
