@@ -58,6 +58,7 @@
             <class name="com.cutanddry.qa.tests.reports.VerifyTheTrackReadyOrdersDownloadReportTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifyPendingApprovalsAreNotClickableTest"/>
             <class name="com.cutanddry.qa.tests.price.ValidateTheFinalWeightTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPoundPriceTest"/>
         </classes>
     </test>
 </suite>
