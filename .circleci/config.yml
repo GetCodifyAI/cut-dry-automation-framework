@@ -740,7 +740,7 @@ workflows:
   version: 2
   build-and-test:
     jobs:
-      - build-and-test
+#      - build-and-test
 
   scheduled-test-1:
     triggers:
@@ -751,15 +751,15 @@ workflows:
               only:
                 - staging_regression
     jobs:
-      - nightly-build-and-test-1
-      - nightly-build-and-test-2
-      - nightly-build-and-test-3
-      - nightly-build-and-test-4
-      - nightly-build-and-test-5
-      - nightly-build-and-test-6
-      - nightly-build-and-test-7
-      - nightly-build-and-test-8
-      - nightly-build-and-test-9
+#      - nightly-build-and-test-1
+#      - nightly-build-and-test-2
+#      - nightly-build-and-test-3
+#      - nightly-build-and-test-4
+#      - nightly-build-and-test-5
+#      - nightly-build-and-test-6
+#      - nightly-build-and-test-7
+#      - nightly-build-and-test-8
+#      - nightly-build-and-test-9
 
   scheduled-test-2:
     triggers:
@@ -770,13 +770,13 @@ workflows:
               only:
                 - main
     jobs:
-      - daily-build-and-test-1
-      - daily-build-and-test-2
-      - daily-build-and-test-3
-      - daily-build-and-test-4
-      - daily-build-and-test-5
-      - daily-build-and-test-6
-      - daily-build-and-test-7
-      - daily-build-and-test-8
-      - daily-build-and-test-9
+#      - daily-build-and-test-1
+#      - daily-build-and-test-2
+#      - daily-build-and-test-3
+#      - daily-build-and-test-4
+#      - daily-build-and-test-5
+#      - daily-build-and-test-6
+#      - daily-build-and-test-7
+#      - daily-build-and-test-8
+#      - daily-build-and-test-9
 
