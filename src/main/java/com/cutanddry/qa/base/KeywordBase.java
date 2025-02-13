@@ -62,6 +62,19 @@ public class KeywordBase {
         return this;
     }
 
+    // Click on an element using By object with Actions class
+    public KeywordBase clickAction(By by) {
+        try {
+            Actions actions = new Actions(driver);
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
+            actions.moveToElement(element).click().perform();
+            logger.info("Clicked on element: {}", by);
+        } catch (Exception e) {
+            logger.error("Failed to click on element: {}", by, e);
+        }
+        return this;
+    }
+
     // Click on an element using By object
     public KeywordBase clickWithFallback(By by) {
         try {

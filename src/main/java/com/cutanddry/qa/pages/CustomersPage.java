@@ -346,11 +346,12 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By btn_draftNo =By.xpath("//div[contains(text(),'No')]");
     By txt_orderSuccessMsg = By.xpath("//strong[contains(text(),'Thank you for your order!')]");
     By btn_closeMsg = By.xpath("//span[text()='×']");
-    By dropdown_selTags = By.xpath("(//*[local-name() = 'svg' and @class='css-19bqh2r'])");
+    By dropdown_selTags = By.xpath("//div[contains(text(),'Tags')]/parent::div//*[contains(@class,'themed_select__dropdown')]");
     By dropdown_list = By.xpath("//div[contains(@class,'themed_select__menu-list themed_select')]");
-    By sel_tagOption = By.xpath("//div[contains(text(),'Rep Orders')]");
+    By sel_tagOption = By.xpath("//div[contains(@class, 'themed_select__option') and normalize-space(.)='Rep Orders']");
+    By lbl_tagName = By.xpath("//div[contains(text(),'Tags')]");
     By sel_tagName = By.xpath("//div[contains(@class,'css-12jo7m5 theme')]");
-    By icon_removeTag = By.xpath("((//*[local-name() = 'svg' and @class='css-19bqh2r']))[1]");
+    By icon_removeTag = By.xpath("//div[contains(text(),'Rep Orders')]/following-sibling::div");
     By txt_lastOrderDate = By.xpath("//div[contains(text(),'Last ordered on')]");
     By customersText = By.xpath("//h2[contains(text(),'Customers')]");
     By btn_accountVisibility = By.xpath("//div[contains(text(),'Visibility')]/following-sibling::div//*[@data-icon='pen-to-square']");
@@ -2258,19 +2259,35 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
 
     public void clickCloseSuccessMsg(){distributorUI.click(btn_closeMsg);}
 
-    public void clickAddTagsDropdown(){distributorUI.click(dropdown_selTags);}
+    public void clickAddTagsDropdown() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        distributorUI.clickWithScrollAndHover(dropdown_selTags);}
 
     public boolean isDropdownListDisplayed(){
         return distributorUI.isDisplayed(dropdown_list);
     }
 
-    public void selectTagOption(){distributorUI.click(sel_tagOption);}
+    public void selectTagOption() throws InterruptedException {
+        distributorUI.clickWithScrollAndHover(dropdown_selTags);
+        distributorUI.waitForVisibility(sel_tagOption);
+        distributorUI.clickAction(sel_tagOption);
+        distributorUI.waitForCustom(3000);
+    distributorUI.click(lbl_tagName);}
 
     public boolean isAddedTagDisplayed(){
         return distributorUI.isDisplayed(sel_tagName);
     }
 
-    public void clickRemoveTagOption(){distributorUI.click(icon_removeTag);}
+    public void clickRemoveTagOption(){distributorUI.clickWithScrollAndHover(icon_removeTag);}
+
+    public boolean isTagExist() {
+        return distributorUI.isDisplayed(icon_removeTag);
+    }
+
+    public boolean isAddedTagDeletedStable() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        return distributorUI.isDisplayed(icon_removeTag);
+    }
 
     public boolean isAddedTagDeleted() {
         try {

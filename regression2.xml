@@ -12,12 +12,15 @@
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyEditingStandingOrdersTest" />
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyAddingAnotherStandingOrderTest" />
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyDeletingStandingOrdersTest" />
+
             <class name="com.cutanddry.qa.tests.integration.VerifyCashAndCarryAppPassingInvalidAccountTest" />
             <class name="com.cutanddry.qa.tests.integration.VerifyChatFeatureTest" />
+
             <class name="com.cutanddry.qa.tests.roles_based_access.VerifyAdminRoleTest" />
             <class name="com.cutanddry.qa.tests.roles_based_access.VerifyARRoleTest" />
             <class name="com.cutanddry.qa.tests.roles_based_access.VerifySalespersonRoleTest" />
             <class name="com.cutanddry.qa.tests.roles_based_access.VerifyDispatcherRoleTest" />
+
             <class name="com.cutanddry.qa.tests.team.VerifyTheFunctionalityOfFilteringUsersByUserRoles"/>
             <class name="com.cutanddry.qa.tests.team.VerifyTheFunctionalityOfSearchingUsersByUsers"/>
             <class name="com.cutanddry.qa.tests.team.AddNewUserWithoutUserReferenceTest" />
@@ -32,17 +35,22 @@
             <class name="com.cutanddry.qa.tests.team.AddUserWhiteLabelPortalTest" />
             <class name="com.cutanddry.qa.tests.team.UpdateUserWhiteLabelPortalTest" />
             <class name="com.cutanddry.qa.tests.team.RemoveUserWhiteLabelPortalTest" />
+
             <class name="com.cutanddry.qa.tests.sections.VerifyAddingOrderGuideSectionsTest"/>
             <class name="com.cutanddry.qa.tests.sections.VerifyEditingOrderGuideSectionsTest"/>
             <class name="com.cutanddry.qa.tests.sections.VerifyDeletingOrderGuideSectionsTest"/>
+
             <class name="com.cutanddry.qa.tests.customer_specific.VerifyCustomerSpecificBroadcastMessageTest"/>
             <class name="com.cutanddry.qa.tests.customer_specific.VerifyCustomerSpecificProductRecommendationsTest"/>
+
             <class name="com.cutanddry.qa.tests.archive.VerifyHidingAnItemFromTheOrderGuideTest"/>
             <class name="com.cutanddry.qa.tests.archive.VerifySavingAndUnhideItemFromOrderGuideTest"/>
+
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerOnboardingDocsTest" />
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerIssuesTest" />
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerFeatureRequestsTest" />
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerEditFeatureRequestsTest" />
+
             <class name="com.cutanddry.qa.tests.banner.VerifyTheBannerFeatureTest" />
         </classes>
     </test>

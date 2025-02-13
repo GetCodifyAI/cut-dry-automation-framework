@@ -35,9 +35,11 @@
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountRemoveHardHoldTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyOutOfStockItemsShowingAndNotOnSuggestiveSalesTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest" />
+
             <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordValidTest" />
             <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordInvalidTest" />
             <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />
+
             <class name="com.cutanddry.qa.tests.boost.VerifyBroadcastMessageTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyTopCategoryPicksTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyCompareSimilarItemsTest" />
@@ -48,6 +50,7 @@
             <class name="com.cutanddry.qa.tests.boost.VerifyAddingFeaturedListTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyEditingFeaturedListTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRemovingFeaturedListTest" />
+
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyStockDataInCatalogViewTest" />
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyImageOfItemTest" />
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyAdditionalAttributeOfItemTest" />
@@ -56,6 +59,7 @@
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyDeletingUnitOfMeasureOfItemTest" />
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyAddingSubstituteForAnItemTest" />
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyRemovingSubstituteFromAnItemTest" />
+
             <class name="com.cutanddry.qa.tests.customer_groups.VerifyCustomerGroupIsAssignedWhenSelectedTest" />
             <class name="com.cutanddry.qa.tests.customer_groups.VerifyCustomerGroupVisibleTest" />
         </classes>

@@ -3,7 +3,7 @@ package com.cutanddry.qa.pages;
 import org.openqa.selenium.By;
 
 public class CatalogPage extends LoginPage{
-    By txt_catalog = By.xpath("//a[contains(@data-tip,'View Catalog')]");
+    By txt_catalog = By.xpath("//div[contains(text(),'Manage Catalog')]");
     By txt_catalogFirstItem = By.xpath("//tbody/tr[contains(@class, '_du1frc')][1]");
     By txt_editItem = By.xpath("//li[contains(text(),'Edit Item')]");
     By btn_preview = By.xpath("//a[.//button[contains(text(), 'Preview')]]");
@@ -19,7 +19,7 @@ public class CatalogPage extends LoginPage{
     By ConagaraBrandPage= By.xpath("//div[contains(text(),'Conagra Foodservice ') and @class='mt-5 mb-1 _mojmdw']");
     By OtherBrandText = By.xpath("//h2[contains(text(),'Andy Capp’s®')]");
     By ShowCaseBtn = By.xpath("//a[contains(@data-tip,'Cut+Dry Product Showcase')]");
-    By btn_previewCat = By.xpath("//button[contains(text(), 'Preview Catalog')]");
+    By btn_previewCat = By.xpath("//button[contains(text(), 'Switch to Grid View')]");
     By txt_previewCat = By.xpath("//div[text()='Catalog Preview']");
     By txt_firstItemDetails = By.xpath("//tbody/tr[1]");
     String itemInTheGrid = "//tr[contains(@class,'_du1frc')]//td[text()='ITEMCODE']";

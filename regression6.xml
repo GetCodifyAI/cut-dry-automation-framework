@@ -19,6 +19,7 @@
             <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowApproveCreditThenChangeItToDeclineCreditTest"/>
             <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowToDeclineCreditThenChangeItToApproveCreditTest"/>
             <class name="com.cutanddry.qa.tests.credit_request.ValidateTheTimelineInCreditRequestUsingTimestampStatusOrganizationAndUser"/>
+
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerMailDeliveryOrderViaOrderGuideTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaCatalogTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaCatalogTest" />
@@ -31,7 +32,9 @@
             <class name="com.cutanddry.qa.tests.e2e.PlaceCustomerMailDeliveryOrderViaOrderGuideCatalogPDPTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaOrderGuideTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaOrderGuideTest" />
+
             <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessRestrictedViaCustomerProfileTest" />
+
             <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerOrderGuideReportGenerationTest" />
             <class name="com.cutanddry.qa.tests.reports.VerifyThePickListDownloadReportTest" />
             <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerBaseReportGenerationTest"/>

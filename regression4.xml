@@ -17,16 +17,21 @@
             <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfEditOrderGuideTest" />
             <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfPreviewCatalogTest" />
             <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfChatFlowTest" />
+
             <class name="com.cutanddry.qa.tests.customer_orders.VerifyThePauseStandingOrderTest" />
             <class name="com.cutanddry.qa.tests.customer_orders.VerifyThePrintKitchenReceiptTest" />
             <class name="com.cutanddry.qa.tests.customer_orders.VerifyThePrintOrderConfirmationTest" />
             <class name="com.cutanddry.qa.tests.customer_orders.VerifyTheNavigatesToOrderSectionTest" />
+
             <class name="com.cutanddry.qa.tests.customer_drafts.VerifyTheCreatedDraftsTest" />
             <class name="com.cutanddry.qa.tests.customer_drafts.VerifyTheDeleteDraftsTest" />
+
             <class name="com.cutanddry.qa.tests.customer_track.VerifyTheAddingTrackProfileTest" />
             <class name="com.cutanddry.qa.tests.customer_track.VerifyTheRemovingTrackProfileTest" />
+
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyEditCustomerNameTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyLastOrderDateTest" />
+            <!--TODO: Couldn't grandee to get the exact total order value from below TC. Bcs may impact other flow while running concurrently  -->
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyTotalOrderValueTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyEditCustomerShippingAddressTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyAddNoteTest" />
@@ -38,6 +43,7 @@
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileNewUserInviteTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileEditTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileDeleteTest" />
+
             <class name="com.cutanddry.qa.tests.orders.VerifyMoreFiltersSalesPersonAndCreditRequestTest" />
             <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsPrintKitchenReceiptTest" />
             <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsPrintOrderConfirmationTest" />
