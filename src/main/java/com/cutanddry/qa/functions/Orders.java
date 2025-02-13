@@ -117,7 +117,7 @@ public class Orders {
         return ordersPage.getCountDates();
     }
 
-    public static boolean validateFilteredOrders(String OrdersDate){
+    public static boolean validateFilteredOrders(String OrdersDate) throws InterruptedException {
         return ordersPage.isFilteredOrdersCorrect(OrdersDate);
     }
 
