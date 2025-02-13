@@ -1137,5 +1137,19 @@ public class KeywordBase {
         WebElement element = driver.findElement(locator);
         return element.getCssValue(propertyName);
     }
+    public void switchToNewTab() {
+        String originalWindow = driver.getWindowHandle();
+
+        // Wait for the new tab to open (optional, depending on your application)
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(driver -> driver.getWindowHandles().size() > 1);
+
+        // Switch to the new tab
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!windowHandle.equals(originalWindow)) {
+                driver.switchTo().window(windowHandle);
+                break; // Exit loop once switched to new tab
+            }
+        }
+    }
 
 }

@@ -1709,6 +1709,26 @@ public class Customer {
         customersPage.clickOnCheckoutButtonOperator();
         Thread.sleep(4000);
     }
+    public static void increaseFirstRowQtyInClassic(int count) throws InterruptedException {
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+        for(int i=0;i<count;i++){
+            customersPage.clickPlusQryFirstRowClassic();
+        }
+    }
+    public static void submitOrderForApproval(){
+        customersPage.submitOrderForApproval();
+        if (customersPage.isDuplicatePopupDisplayed()){
+            customersPage.clickYesDuplicatePopup();
+        }
+    }
+    public static boolean isSentApprovalDisplayed(){
+        return customersPage.isSentApprovalDisplayed();
+    }
+    public static void clickViewOrderInDraft(){
+        customersPage.clickViewOrderInDraft();
+    }
 
     public static void scrollBottomOfPage()throws InterruptedException{
         customersPage.scrollBottomOfPage();

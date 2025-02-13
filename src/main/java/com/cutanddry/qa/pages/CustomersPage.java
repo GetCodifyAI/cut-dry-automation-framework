@@ -522,6 +522,10 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     By txt_lastOrderedPrice = By.xpath("//td[contains(@class,'font-weight-light py-3 text-nowrap') and contains(text(),'/lb')]");
     By txt_lastOrderedPriceOff = By.xpath("//td[contains(@class, 'py-3') and div[contains(text(), 'CS')]]");
     By btn_checkoutOperator = By.xpath("//button[@data-for='cartCheckoutButton']");
+    By btn_increaseQtyFirstRowClassic = By.xpath("(//tr/td//div[contains(@data-tip,'View Product Details')]/following::td//div/*[contains(@data-icon,'plus')])[1]");
+    By btn_submitOrderForApproval = By.xpath("//button[contains(text(),'Submit')]");
+    By txt_sentApproval = By.xpath("//strong[contains(text(),'Sent for approval!')]");
+    By btn_viewOrderInDraft = By.xpath("//button[text()='View Order in Drafts']");
 
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
@@ -3090,6 +3094,31 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         distributorUI.waitForElementEnabledState(btn_checkoutOperator, true);
         distributorUI.click(btn_checkoutOperator);
         distributorUI.waitForCustom(4000);
+    }
+    public void clickPlusQryFirstRowClassic() throws InterruptedException {
+        distributorUI.click(btn_increaseQtyFirstRowClassic);
+        distributorUI.waitForCustom(4000);
+    }
+    public void submitOrderForApproval(){
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        distributorUI.waitForClickability(btn_submitOrderForApproval);
+        distributorUI.click(btn_submitOrderForApproval);
+    }
+    public boolean isSentApprovalDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_sentApproval);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_sentApproval);
+    }
+    public void clickViewOrderInDraft() {
+        distributorUI.waitForVisibility(btn_viewOrderInDraft);
+        distributorUI.click(btn_viewOrderInDraft);
     }
 
     public void scrollBottomOfPage() {
