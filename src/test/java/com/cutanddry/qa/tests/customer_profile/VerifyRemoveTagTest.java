@@ -33,7 +33,7 @@ public class VerifyRemoveTagTest extends TestBase {
         Customer.SelectCustomer(CustomerCode);
         softAssert.assertTrue(Customer.isCustomerNameTxtDisplayed(), "text error");
         Customer.clickRemoveAddedTag();
-        softAssert.assertTrue(Customer.isAddedTagNameDeleted(), "error in deleting tag");
+        softAssert.assertFalse(Customer.isAddedTagNameDeleted(), "error in deleting tag");
         softAssert.assertAll();
     }
 

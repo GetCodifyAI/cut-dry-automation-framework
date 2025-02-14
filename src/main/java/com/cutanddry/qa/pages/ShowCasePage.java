@@ -14,7 +14,7 @@ public class ShowCasePage extends LoginPage {
     By OurBrandPageTxt = By.xpath("//div[contains(@class,'_12lmd5r8') and contains(text(),'Angela Mia')]");
     By OurBrands = By.xpath("//div[contains(text(),'Our Brands')]");
     By HungerfordSmithBrand = By.xpath("//img[contains(@class,'img-fluid') and contains(@src,'e1709cd4888480e1b60d1b64da314fc8')]");
-    By HungerfordSmithText =By.xpath("//div[@class='_12lmd5r8' and contains(text(),'J Hungerford Smith')]");
+    By HungerfordSmithText =By.xpath("//div[@class='_12lmd5r8' and contains(text(),'J. Hungerford Smith')]");
     By icon_OurBrandRightArrow =By.xpath("(//div[contains(text(),'Our Brands')]/following::div//*[name()='svg' and @data-icon='chevron-right']//*[name()='path'])[1]");
 
 

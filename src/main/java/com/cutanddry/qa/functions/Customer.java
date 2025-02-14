@@ -1098,7 +1098,11 @@ public class Customer {
         return customersPage.getTotalOrderValue();
     }
 
-    public static void clickOnAddTagDropdownMenu(){customersPage.clickAddTagsDropdown();}
+    public static void clickOnAddTagDropdownMenu() throws InterruptedException {
+        if (customersPage.isTagExist()) {
+            customersPage.clickRemoveTagOption();
+        }
+        customersPage.clickAddTagsDropdown();}
 
 
     public static boolean isDropdownMenuDisplayed(){
@@ -1106,7 +1110,12 @@ public class Customer {
     }
 
 
-    public static void selectToAddTagOption(){customersPage.selectTagOption();}
+    public static void selectToAddTagOption() throws InterruptedException {
+        if (customersPage.isTagExist()) {
+            customersPage.clickRemoveTagOption();
+        }
+        customersPage.selectTagOption();
+    }
 
 
     public static boolean isAddedTagNameDisplayed(){
@@ -1117,8 +1126,8 @@ public class Customer {
     public static void clickRemoveAddedTag(){customersPage.clickRemoveTagOption();}
 
 
-    public static boolean isAddedTagNameDeleted(){
-        return customersPage.isAddedTagDeleted();
+    public static boolean isAddedTagNameDeleted() throws InterruptedException {
+        return customersPage.isAddedTagDeletedStable();
     }
 
 
@@ -1812,6 +1821,10 @@ public class Customer {
     }
     public static String getSplitFinalWeightPrice() throws InterruptedException {
         return customersPage.getSplitFinalWeightPrice();
+    }
+
+    public static void scrollBottomOfPage()throws InterruptedException{
+        customersPage.scrollBottomOfPage();
     }
 
 }
