@@ -56,13 +56,6 @@
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromPDPTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsViaOrderGuideCatalogPDPTest"/>
             <class name="com.cutanddry.qa.tests.draft.ValidateDraftOrdersAreOnlyAppearing30DaysTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerWiseItemMovementDownloadReportTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyTheCatalogExportDownloadReportTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyThePayCustomersDownloadReportTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyTheAtRiskAccountsDownloadReportTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyThePaymentTransactionDownloadReportTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyThePaymentAuthorizationStatusDownloadReportTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyTheTrackReadyOrdersDownloadReportTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifyPendingApprovalsAreNotClickableTest"/>
             <class name="com.cutanddry.qa.tests.price.ValidateTheFinalWeightTest"/>
             <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPoundPriceTest"/>
