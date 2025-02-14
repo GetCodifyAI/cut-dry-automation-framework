@@ -539,7 +539,11 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     String spotPriceValue = "//td[7]/div/input[@value='VALUE']";
     By btn_splitWeight = By.xpath("//td/div/*[local-name() = 'svg' and @data-icon='pen-to-square']");
     By txt_splitWeight = By.xpath("//div[text()='Add Weight Details']");
-
+    By lbl_cases = By.xpath("(//th[text()='No of Cases']/../../following-sibling::*//input)[1]");
+    By lbl_weight = By.xpath("(//th[text()='Weight /cs']/../../following-sibling::*//input)[2]");
+    By btn_updateWeight = By.xpath("//button[text()='Update Weight']");
+    By splitFinalWeight = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[8]//input)[1]");
+    By splitFinalWeightPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[9])[1]");
 
 
     public void ifDuplicateOrderDisplayed(){
@@ -3220,6 +3224,27 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     }
     public boolean isSplitWeightPopupDisplayed(){
         return distributorUI.isDisplayed(txt_splitWeight);
+    }
+    public void enterCasesValue(String num) throws InterruptedException {
+        distributorUI.clear(lbl_cases);
+        distributorUI.sendKeys(lbl_cases, num);
+        distributorUI.waitForCustom(1000);
+    }
+    public void enterWeightValue(String num) throws InterruptedException {
+        distributorUI.clear(lbl_weight);
+        distributorUI.sendKeys(lbl_weight, num);
+        distributorUI.waitForCustom(1000);
+    }
+    public void clickUpdateWeight(){
+        distributorUI.click(btn_updateWeight);
+    }
+    public String getItemSplitFinalWeight(){
+        return distributorUI.getText(splitFinalWeight, "value");
+    }
+    public String getSplitFinalWeightPrice() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(splitFinalWeightPrice,true);
+        distributorUI.waitForCustom(3000);
+        return distributorUI.getText(splitFinalWeightPrice);
     }
 
 

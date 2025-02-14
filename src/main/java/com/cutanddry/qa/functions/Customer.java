@@ -1798,5 +1798,20 @@ public class Customer {
     public static boolean isSplitWeightPopupDisplayed(){
         return customersPage.isSplitWeightPopupDisplayed();
     }
+    public static void enterCasesValue(String val) throws InterruptedException {
+        customersPage.enterCasesValue(val);
+    }
+    public static void enterWeightValue(String val) throws InterruptedException {
+        customersPage.enterWeightValue(val);
+    }
+    public static void clickUpdateWeight(){
+        customersPage.clickUpdateWeight();
+    }
+    public static String getItemSplitFinalWeight() throws InterruptedException {
+        return customersPage.getItemSplitFinalWeight();
+    }
+    public static String getSplitFinalWeightPrice() throws InterruptedException {
+        return customersPage.getSplitFinalWeightPrice();
+    }
 
 }

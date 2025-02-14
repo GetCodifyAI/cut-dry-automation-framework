@@ -61,6 +61,7 @@
             <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPoundPriceTest"/>
             <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingByPricingEngineTest"/>
             <class name="com.cutanddry.qa.tests.price.ValidateThePoundSpotPricingTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingNotFromPricingEngineTest"/>
         </classes>
     </test>
 </suite>
