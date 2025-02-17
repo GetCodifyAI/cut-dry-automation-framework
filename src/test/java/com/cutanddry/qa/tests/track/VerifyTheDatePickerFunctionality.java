@@ -35,6 +35,7 @@ public class VerifyTheDatePickerFunctionality extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToLoginAsPortal(distributorName);
         Dashboard.navigateToTrackRoutes();
+        softAssert.assertTrue(Track.isRoutesTextDisplayed(),"navigation to track routes error");
         Track.clickOkIfErrorTextDisplayed();
         Track.selectDate(startDay,  startMonth,  startDate,  startYear);
         softAssert.assertAll();

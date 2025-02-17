@@ -1232,6 +1232,7 @@ public class Customer {
 
     public static void clickonInvoice(){
         customersPage.clickonInvoice();
+        customersPage.isFirstRecordDisplayed();
     }
 
     public static boolean verifyEnabledStatus(){

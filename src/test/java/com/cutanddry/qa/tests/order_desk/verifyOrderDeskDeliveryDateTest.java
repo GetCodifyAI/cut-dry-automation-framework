@@ -36,11 +36,12 @@ public class verifyOrderDeskDeliveryDateTest extends TestBase {
         OrderDesk.navigateToDraftOrders();
         OrderDesk.navigateToDraftOrderReviewPage();
 
-        //Today Delivery Date
+        //Tomorrow Delivery Date
         LocalDate today = LocalDate.now();
+        LocalDate OneDaysLater = today.plusDays(1);
         DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("EEE, MMM d");
-        String TodayDate = customFormatter.format(today);
-        OrderDesk.SelectDeliveryDate(TodayDate);
+        String OneDaysLaterDate = customFormatter.format(OneDaysLater);
+        OrderDesk.SelectDeliveryDate(OneDaysLaterDate);
         OrderDesk.SaveDraftOrder();
         softAssert.assertTrue(OrderDesk.isSaveDraftSucessful(),"Error in Saving Delivery Date Draft");
         OrderDesk.CloseTheSucessfulOverlayByOK();

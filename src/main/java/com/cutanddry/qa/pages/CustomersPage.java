@@ -545,6 +545,7 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     By btn_updateWeight = By.xpath("//button[text()='Update Weight']");
     By splitFinalWeight = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[8]//input)[1]");
     By splitFinalWeightPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[9])[1]");
+    By cb_inInvoiceTable = By.xpath("//table/tbody/tr[1]/td[1]//div[contains(@class, '_du1frc')]");
 
 
     public void ifDuplicateOrderDisplayed(){
@@ -3267,6 +3268,10 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
 
     public void scrollBottomOfPage() {
         distributorUI.uiScrollBottomOfPage();
+    }
+
+    public boolean isFirstRecordDisplayed(){
+        return distributorUI.isDisplayed(cb_inInvoiceTable);
     }
 
 }
