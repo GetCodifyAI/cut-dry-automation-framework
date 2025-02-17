@@ -207,7 +207,7 @@ public class KeywordBase {
             WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
 //            Thread.sleep(500);
 
-            actions.moveToElement(element).click().keyDown(Keys.COMMAND).sendKeys("a").keyUp(Keys.COMMAND)
+            actions.moveToElement(element).click().keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL)
                     .sendKeys(Keys.BACK_SPACE).sendKeys(data).sendKeys(Keys.ENTER).perform();
             logger.info("Sent keys to element: {} with data: {} and enter", by, data);
         } catch (Exception e) {

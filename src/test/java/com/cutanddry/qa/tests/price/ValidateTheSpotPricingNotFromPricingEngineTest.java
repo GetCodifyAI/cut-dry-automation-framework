@@ -6,7 +6,6 @@ import com.cutanddry.qa.data.testdata.PriceData;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
-import com.cutanddry.qa.functions.Orders;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -14,12 +13,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class ValidateTheSpotPricingByPricingEngineTest extends TestBase{
+public class ValidateTheSpotPricingNotFromPricingEngineTest extends TestBase{
     static User user;
-    static String distributorCheeseImp = PriceData.DISTRIBUTOR_CHEESE_IMP;
-    static String customerId3 = PriceData.CUSTOMER_ID_3;
+    static String distributorVitco = PriceData.DISTRIBUTOR_VITCO;
+    static String customerId5 = PriceData.CUSTOMER_ID_5;
     static String searchItemCode;
-    static String itemName = PriceData.ITEM_NAME_SPOT_PRICE;
+    static String itemName = PriceData.ITEM_NAME_SPOT_PRICE2;
     static String itemPrice;
 
     @BeforeMethod
@@ -28,20 +27,20 @@ public class ValidateTheSpotPricingByPricingEngineTest extends TestBase{
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-1081")
-    public void ValidateTheSpotPricingByPricingEngine() throws InterruptedException {
+    @Test(groups = "DOT-TC-1082")
+    public void ValidateTheSpotPricingNotFromPricingEngine() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
 
-        Login.navigateToDistributorPortal(distributorCheeseImp);
+        Login.navigateToDistributorPortal(distributorVitco);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
 
 
         Dashboard.navigateToCustomers();
-        Customer.searchCustomerByCode(customerId3);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId3), "Unable to find the customer Id");
-        Customer.clickOnOrderGuide(customerId3);
+        Customer.searchCustomerByCode(customerId5);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId5), "Unable to find the customer Id");
+        Customer.clickOnOrderGuide(customerId5);
         Customer.searchItemOnOrderGuide(itemName);
         searchItemCode = Customer.getItemCodeFirstRow();
 
@@ -50,22 +49,22 @@ public class ValidateTheSpotPricingByPricingEngineTest extends TestBase{
         Customer.enterMarginValue("8.05");
         Customer.updateMarginValues();
         softAssert.assertTrue(Customer.isItemAdded("$8.05"),"update error");
-        softAssert.assertTrue(Customer.isItemPercentageAdded("8%"),"update error percentage");
-        softAssert.assertTrue(Customer.isSpotPriceAdded("$100.45"),"update error price");
+        softAssert.assertTrue(Customer.isItemPercentageAdded("22%"),"update error");
+        softAssert.assertTrue(Customer.isSpotPriceAdded("$36.49"),"update error");
 
         Customer.editMargin();
         softAssert.assertTrue(Customer.isMarginValuePopupDisplayed(),"popup error");
         Customer.enterMarginPercentage("30");
         Customer.updateMarginValues();
-        softAssert.assertTrue(Customer.isItemAdded("$39.60"),"update error");
-        softAssert.assertTrue(Customer.isItemPercentageAdded("30%"),"update error percentage");
-        softAssert.assertTrue(Customer.isSpotPriceAdded("$132.00"),"update error price");
+        softAssert.assertTrue(Customer.isItemAdded("$12.19"),"update error");
+        softAssert.assertTrue(Customer.isItemPercentageAdded("30%"),"update error");
+        softAssert.assertTrue(Customer.isSpotPriceAdded("$40.63"),"update error");
 
-        Customer.enterSpotPrice("200");
+        Customer.enterSpotPrice("50");
         Customer.increaseFirstRowQtyCustom(1);
-        softAssert.assertTrue(Customer.isItemAdded("$107.60"),"update error");
-        softAssert.assertTrue(Customer.isItemPercentageAdded("54%"),"update error percentage");
-        softAssert.assertTrue(Customer.isSpotPriceAdded("$200.00"),"update error price");
+        softAssert.assertTrue(Customer.isItemAdded("$21.56"),"update error");
+        softAssert.assertTrue(Customer.isItemPercentageAdded("43%"),"update error");
+        softAssert.assertTrue(Customer.isSpotPriceAdded("$50.00"),"update error");
 
         itemPrice = Customer.getItemFinalSpotPrice();
         softAssert.assertEquals(Customer.getItemPriceOnEditOrderCheckout(),itemPrice,"The item has not been selected.");
@@ -76,9 +75,9 @@ public class ValidateTheSpotPricingByPricingEngineTest extends TestBase{
         Customer.clickClose();
 
         Dashboard.navigateToCustomers();
-        Customer.searchCustomerByCode(customerId3);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId3), "Unable to find the customer Id");
-        Customer.SelectCustomer(customerId3);
+        Customer.searchCustomerByCode(customerId5);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId5), "Unable to find the customer Id");
+        Customer.SelectCustomer(customerId5);
         Customer.clickOnOrdersTab();
         softAssert.assertEquals(Customer.getPriceInCustomerOrder(),itemPrice,"The item has not been selected.");
         softAssert.assertAll();
