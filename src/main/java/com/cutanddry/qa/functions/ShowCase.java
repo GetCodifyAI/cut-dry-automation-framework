@@ -17,7 +17,7 @@ public class ShowCase {
         showCasePage.SelectProductInShowCase(productName);
     }
 
-    public static void NavigateToManufacturerPage(){
+    public static void NavigateToManufacturerPage() throws InterruptedException {
         showCasePage.ClickOnManufacturer();
     }
 

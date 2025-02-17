@@ -29,6 +29,7 @@ public class VerifyTrackSettingsUnderRoutes extends TestBase{
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(distributorName);
         Dashboard.navigateToTrackRoutes();
+        softAssert.assertTrue(Track.isRoutesTextDisplayed(),"navigation to track routes error");
         Track.clickOkIfErrorTextDisplayed();
         Track.deleteExistingRoute();
         Track.clickBtnManageRoutes();
