@@ -51,6 +51,8 @@ public class ValidateTheFinalWeightTest extends TestBase{
         Customer.submitOrder();
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "The order was not completed successfully.");
         Customer.clickClose();
+        Customer.searchCustomerByCode(customerId);
+        Customer.clickOnCustomerCode(customerId);
 
         //test
         Customer.clickOnOrdersTab();

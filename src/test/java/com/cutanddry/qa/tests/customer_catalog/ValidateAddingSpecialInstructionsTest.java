@@ -46,6 +46,8 @@ public class ValidateAddingSpecialInstructionsTest extends TestBase {
         Customer.submitOrder();
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(),"Error in turning the approval off");
         Customer.clickClose();
+        Customer.searchCustomerByCode(customerId);
+        Customer.clickOnCustomerCode(customerId);
         Customer.clickOnOrdersTab();
         Customer.clickOrder();
         softAssert.assertTrue(Customer.isOrderSectionDisplayed(),"order section not navigate");

@@ -52,6 +52,8 @@ public class ValidateTheSpotPoundPriceTest extends TestBase{
         Customer.submitOrder();
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "The order was not completed successfully.");
         Customer.clickClose();
+        Customer.searchCustomerByCode(customerId2);
+        Customer.clickOnCustomerCode(customerId2);
 
         //test
         Customer.clickOnOrdersTab();

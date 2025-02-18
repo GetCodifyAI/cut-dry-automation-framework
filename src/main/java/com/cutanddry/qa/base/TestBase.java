@@ -116,4 +116,15 @@ public class TestBase {
         return formatter.format(today);
     }
 
+    public static String generateUTCYesterdayDateFormatted() {
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
+        calendar.add(Calendar.DAY_OF_YEAR, -1); // Subtract 1 day
+
+        return formatter.format(calendar.getTime());
+    }
+
 }
