@@ -106,6 +106,9 @@ public class PayPage extends LoginPage{
     By paymentProcessingDetailAmount = By.xpath("//div[contains(text(),'Payments Processing')]/following-sibling::div[contains(text(),'$')]");
     By paymentProcessingDetail = By.xpath("//div[contains(text(),'Payments Processing')]");
     By pastDueDetailsAmount = By.xpath("//span[contains(text(),'Past Due')]/preceding-sibling::span[contains(text(),'$')]");
+    By lbl_payInvoiceTableColumn = By.xpath("//table/thead/tr/th[contains(text(),'Invoice ID')]/parent::tr/th");
+    String lbl_payInvoiceTableColumnName = "//table/thead/tr/th[contains(text(),'Invoice ID')]/parent::tr/th[COUNT]";
+    String lbl_payInvoiceDate = "//table/thead/tr/th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[ROW]/td[COUNT]";
 
 
     public boolean isPaymentStatusCorrect(String expectedPaymentStatus) {
@@ -572,11 +575,27 @@ public class PayPage extends LoginPage{
     }
 
     public String getInvoiceRecordDateValue(int rowNo) throws InterruptedException {
-        String row_count = String.valueOf(rowNo);
+        /*String row_count = String.valueOf(rowNo);
         By lbl_invoiceDate = By.xpath(lbl_invoiceRecordDate.replace("ROW_COUNT", row_count));
         distributorUI.waitForElementEnabledState(lbl_invoiceDate,true);
         distributorUI.waitForCustom(3000);
-        return distributorUI.getText(lbl_invoiceDate);
+        return distributorUI.getText(lbl_invoiceDate);*/
+
+
+        String row_count = String.valueOf(rowNo);
+        int totalColumnCount = distributorUI.countElements(lbl_payInvoiceTableColumn);
+
+        for (int i = 1; i <= totalColumnCount; i++) {
+            String columnName = distributorUI.getText(By.xpath(lbl_payInvoiceTableColumnName.replace("COUNT", String.valueOf(i))));
+            if ("Invoice Date".equalsIgnoreCase(columnName)) {
+                By invoiceDateLocator = By.xpath(
+                        lbl_payInvoiceDate.replace("COUNT", String.valueOf(i)).replace("ROW", row_count)
+                );
+                return distributorUI.getText(invoiceDateLocator);
+
+            }
+        }
+        return "Status not found";
     }
 
     public String getInvoiceRecordDueDateValue(int rowNo) throws InterruptedException {

@@ -21,6 +21,9 @@ public class Track {
         return trackPage.isAddTrucksBtnDisplayed();
     }
     public static boolean isRoutesTextDisplayed(){
+        if (trackPage.isTrackRoutesTextDisplayed()) {
+            trackPage.clickOnTitle();
+        }
         return trackPage.isTrackRoutesTextDisplayed();
     }
     public static boolean isMonitoringTextDisplayed(){

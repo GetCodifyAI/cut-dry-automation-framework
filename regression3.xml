@@ -6,58 +6,49 @@
         <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
     </listeners>
     <test name="distributor tests">
-        <parameter name="PART" value="Part_Three" />
+        <parameter name="PART" value="Part_Three"/>
         <classes>
-            <class name="com.cutanddry.qa.tests.sections.VerifyAddingOrderGuideSectionsTest" />
-            <class name="com.cutanddry.qa.tests.sections.VerifyEditingOrderGuideSectionsTest" />
-            <class name="com.cutanddry.qa.tests.sections.VerifyDeletingOrderGuideSectionsTest" />
-            <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsTest" />
-            <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsDeleteTest" />
-            <class name="com.cutanddry.qa.tests.customer_specific.VerifyCustomerSpecificBroadcastMessageTest" />
-            <class name="com.cutanddry.qa.tests.customer_specific.VerifyCustomerSpecificProductRecommendationsTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderItemUnitsTest" />
-            <class name="com.cutanddry.qa.tests.archive.VerifyHidingAnItemFromTheOrderGuideTest" />
-            <class name="com.cutanddry.qa.tests.archive.VerifySavingAndUnhideItemFromOrderGuideTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyCatalogItemImagesTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyItemDescriptionsTest" />
-            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterAddingNewDriverTest" />
-            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterEditingDriverTest" />
-            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterDeletingDriverTest" />
-            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesSearchDriverTest" />
-            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterAddingNewTruckTest" />
-            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterEditingTruckTest" />
-            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterDeletingTruckTest" />
-            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesSearchTruckTest" />
-            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsSMSTest" />
-            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsEmailTest" />
-            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsPushTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogGetLinkTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogSearchTest" />
-            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingAddPaymentMethodTest" />
-            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingRemovePaymentMethodTest" />
-            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingDownloadInvoicesTest" />
-            <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingLinkBankAccountTest" />
-            <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingRemoveBankAccountTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyRecentlyAddedTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyCategorySelectionTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyMoreFiltersTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyUpdateImagesTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyItemStatusTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyManageCatalogCreateNewItemTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsCatalogDataTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsAdditionalAttributesTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsImageTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsPricingPromotionsTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsAddSubstituteTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsRemoveSubstituteTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemCatalogDataTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemAdditionalAttributesTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemImageTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemPricingPromotionsTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemAddSubstituteTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemRemoveSubstituteTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.ValidateTheFunctionalityOfEditMarginOfAnItem"/>
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheViewMultipleOrderGuidesUnderOrderGuideAndMoveBetweenDifferentOrderGuides"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogCopyPDPTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogExportPDPTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheSearchTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyManageCatalogExportCatalogTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyManageCatalogExportPromotionFileTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyCatalogItemImagesTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyItemDescriptionsTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogGetLinkTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogSearchTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyRecentlyAddedTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyCategorySelectionTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyMoreFiltersTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyUpdateImagesTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyItemStatusTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyManageCatalogCreateNewItemTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsCatalogDataTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsAdditionalAttributesTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsImageTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsPricingPromotionsTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsAddSubstituteTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsRemoveSubstituteTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemCatalogDataTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemAdditionalAttributesTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemPricingPromotionsTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemAddSubstituteTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemRemoveSubstituteTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPDFGenerationForCatalogPDPTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyHardOrderMinimumWarningTest" />
+            <class name="com.cutanddry.qa.tests.catalog.BrandPageForAllPortalsTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyManufacturerPageViaShowCaseTest" />
+            <class name="com.cutanddry.qa.tests.catalog.ValidateTheMainCatalogFilterSidebarFiltersTest" />
+            <class name="com.cutanddry.qa.tests.catalog.ValidateTheMainCatalogClearAllFiltersTest" />
+            <class name="com.cutanddry.qa.tests.catalog.ValidateTheViewCatalogAsCustomerRadioButtonInMainCatalogTest" />
+            <class name="com.cutanddry.qa.tests.catalog.ValidateFilterItemsByCategoryInCatalogTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemImageTest"/>
+
+            <class name="com.cutanddry.qa.tests.multi_cart.VerifyGroupingProductsIntoTwoCartsTest" />
+            <class name="com.cutanddry.qa.tests.multi_cart.VerifyCreatedOrdersFromMultipleCartsTest" />
+
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderGuideOrderApprovalUIFeatureTest" />
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderApprovalSettingsReflectedWhileOrderingTest" />
         </classes>
     </test>
 </suite>

@@ -118,6 +118,9 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By txt_deletePopup = By.xpath("//h2[text()='Are you sure?']");
     By btn_yes = By.xpath("//button[text()='Yes']");
     By btn_increaseQtyFirstRowInDist = By.xpath("//tbody/tr/td[6]/div/div/div/div[3]");
+    String btn_PlusQtyFirstRowInDist = "//tbody/tr/td[COLUMN]/div/div/div/div[3]";
+    By lbl_itemRowCount = By.xpath("//td[text()='Item']/parent::tr/td");
+    String lbl_columnName = "//td[text()='Item']/parent::tr/td[COLUMN]";
     By btn_decreaseQtyFirstRowInDist = By.xpath("//tbody/tr[2]/td[6]/div/div/div/div[1]");
     By btn_checkoutCashCarry = By.xpath("//button[@data-tip='Click here to checkout']");
     By txt_foodServiceDistCenter = By.xpath("//span[text()='Food Service Distribution Centre']");
@@ -140,6 +143,7 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By btn_donotsubs = By.xpath("//button[normalize-space(text())='Do Not Substitute']");
     By txt_replacement = By.xpath("//div[contains(normalize-space(text()), 'If out of stock, sub with')]");
     String txt_item = "//div[contains(text(), 'CODE')]";
+    String txt_itemPercentage = "//span[contains(text(), 'CODE')]";
     By btn_increaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div[3]");
     By btn_decreaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div[1]");
     String txt_subItems = "(//div[contains(text(), 'Available Substitutes')]/following-sibling::div//div[contains(text(), '1 x $')])[NUM]";
@@ -310,6 +314,7 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By btn_resetValues = By.xpath("//button[contains(text(), 'Reset Values')]");
     By btn_updateValues = By.xpath("//button[contains(text(), 'Update')]");
     By lbl_margin = By.xpath("//label[text()='Margin ($)']/following-sibling::input");
+    By lbl_marginPercentage = By.xpath("//label[text()='Margin (%)']/following-sibling::input");
     String sel_customer ="//td[contains(text(),'CUSTOMERCODE')";
     By txt_cusName = By.xpath("(//div[contains(@class,'d-flex align-items-center')])[1]");
     By btn_editCusName = By.xpath("(//*[local-name() = 'svg' and @data-icon='pen-to-square'])[1]");
@@ -341,11 +346,12 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By btn_draftNo =By.xpath("//div[contains(text(),'No')]");
     By txt_orderSuccessMsg = By.xpath("//strong[contains(text(),'Thank you for your order!')]");
     By btn_closeMsg = By.xpath("//span[text()='×']");
-    By dropdown_selTags = By.xpath("(//*[local-name() = 'svg' and @class='css-19bqh2r'])");
+    By dropdown_selTags = By.xpath("//div[contains(text(),'Tags')]/parent::div//*[contains(@class,'themed_select__dropdown')]");
     By dropdown_list = By.xpath("//div[contains(@class,'themed_select__menu-list themed_select')]");
-    By sel_tagOption = By.xpath("//div[contains(text(),'Rep Orders')]");
+    By sel_tagOption = By.xpath("//div[contains(@class, 'themed_select__option') and normalize-space(.)='Rep Orders']");
+    By lbl_tagName = By.xpath("//div[contains(text(),'Tags')]");
     By sel_tagName = By.xpath("//div[contains(@class,'css-12jo7m5 theme')]");
-    By icon_removeTag = By.xpath("((//*[local-name() = 'svg' and @class='css-19bqh2r']))[1]");
+    By icon_removeTag = By.xpath("//div[contains(text(),'Rep Orders')]/following-sibling::div");
     By txt_lastOrderDate = By.xpath("//div[contains(text(),'Last ordered on')]");
     By customersText = By.xpath("//h2[contains(text(),'Customers')]");
     By btn_accountVisibility = By.xpath("//div[contains(text(),'Visibility')]/following-sibling::div//*[@data-icon='pen-to-square']");
@@ -372,22 +378,22 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By newArrivalsOption = By.xpath("//div[contains(text(), 'New Arrivals (')]");
     By allItemsOption = By.xpath("(//div[contains(text(), 'Category')]/ancestor::div[2]/following-sibling::div//div[contains(text(), 'All Items')])[1]");
     By brandDropDown = By.xpath("//div[contains(text(), 'Brand')]");
-    By brandDropDownOption = By.xpath("//div[contains(text(), 'J Hungerford Smith')]");
-    By txt_filterByBrand =By.xpath("//button[@data-tip='View Brand Page']//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'j hungerford smith')]");
-    By itemStatusDropDown = By.xpath("//div[contains(text(), 'Item Status')]");
+    By brandDropDownOption = By.xpath("//div[contains(text(), 'Hungerford Smith')]");
+    By txt_filterByBrand =By.xpath("//button[@data-tip='View Brand Page']//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'hungerford smith')]");
+    By itemStatusDropDown = By.xpath("//div[contains(text(), 'Item Type')]");
     By itemStatusDropDownOption = By.xpath("//div[contains(text(), 'Stocked')]");
     By storageTypeDropDown = By.xpath("//div[contains(text(), 'Storage Type')]");
-    By storageTypeDropDownOption = By.xpath("//div[contains(text(), 'Dry')]");
+    By storageTypeDropDownOption = By.xpath("//div[contains(text(), 'Frozen')]");
     By dietTypeDropDown = By.xpath("//div[contains(text(), 'Diet Type')]");
     By dietTypeDropDownOption = By.xpath("//div[contains(text(), 'Kosher')]");
-    By txt_filterItem = By.xpath("//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'j hungerford smith')]");
+    By txt_filterItem = By.xpath("//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'hungerford smith')]");
     By processingTypeDropDown = By.xpath("//div[contains(text(), 'Processing & Formulation')]");
     By processingTypeDropOption = By.xpath("//div[contains(text(), 'Non-GMO')]");
     By txt_noItems = By.xpath("//div[contains(text(), '0 Results')]");
     By btn_clearAllFilters = By.xpath("//button[contains(text(), 'Clear All Filters')]");
     By radioButton =By.xpath("//div[@class = 'align-middle']");
 //    String txt_product = "//div[contains(@class,'_3quvq7 _1vlidrf' ) and contains(text(), 'NAME')]";
-String txt_product = "//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]";
+String txt_product = "//div[contains(@class,'_3quvq7 _1vlidrf' ) and contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]";
     By btn_addToCartPDP = By.xpath("//button[contains(@class,'d-flex align-items-center justify-content-center cdbutton _1g89unu _du1frc text-nowrap w-100 btn btn-outline-primary btn-sm' ) and contains(text(), 'Add to Cart')]");
     By btn_checkOutPDP = By.xpath("//button[@data-for='cartCheckoutButton' and contains(text(),'$')]");
     By txt_orderConfirmationPopUp = By.xpath("//strong[contains(text(), 'Thank you for your order!')]");
@@ -519,6 +525,28 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     By txt_lastOrderedPrice = By.xpath("//td[contains(@class,'font-weight-light py-3 text-nowrap') and contains(text(),'/lb')]");
     By txt_lastOrderedPriceOff = By.xpath("//td[contains(@class, 'py-3') and div[contains(text(), 'CS')]]");
     By btn_checkoutOperator = By.xpath("//button[@data-for='cartCheckoutButton']");
+    By btn_increaseQtyFirstRowClassic = By.xpath("(//tr/td//div[contains(@data-tip,'View Product Details')]/following::td//div/*[contains(@data-icon,'plus')])[1]");
+    By btn_submitOrderForApproval = By.xpath("//button[contains(text(),'Submit')]");
+    By txt_sentApproval = By.xpath("//strong[contains(text(),'Sent for approval!')]");
+    By btn_viewOrderInDraft = By.xpath("//button[text()='View Order in Drafts']");
+    By finalWeight = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]//input)[1]");
+    By finalItemPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[8])[1]");
+    By confirmPrice = By.xpath("(//tbody/tr/td[9])[1]");
+    By poundPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]/div)[1]");
+    By txt_lbPricePopUP = By.xpath("//div[text()='Edit Per LB Price']");
+    By perLbPrice = By.xpath("//b[text()='Per LB Price ($)']/../following-sibling::td/input");
+    By priceInCustomerOrder = By.xpath("(//tbody/tr/td[6])[1]");
+    By editSpotPrice = By.xpath("//td[7]/div/input");
+    String spotPriceValue = "//td[7]/div/input[@value='VALUE']";
+    By btn_splitWeight = By.xpath("//td/div/*[local-name() = 'svg' and @data-icon='pen-to-square']");
+    By txt_splitWeight = By.xpath("//div[text()='Add Weight Details']");
+    By lbl_cases = By.xpath("(//th[text()='No of Cases']/../../following-sibling::*//input)[1]");
+    By lbl_weight = By.xpath("(//th[text()='Weight /cs']/../../following-sibling::*//input)[2]");
+    By btn_updateWeight = By.xpath("//button[text()='Update Weight']");
+    By splitFinalWeight = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[8]//input)[1]");
+    By splitFinalWeightPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[9])[1]");
+    By cb_inInvoiceTable = By.xpath("//table/tbody/tr[1]/td[1]//div[contains(@class, '_du1frc')]");
+
 
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
@@ -699,6 +727,11 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         return Double.valueOf(distributorUI.getText(lbl_cartTotal).split("\\$")[1]);
     }
     public void submitOrder(){
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.waitForClickability(btn_submitOrder);
         distributorUI.click(btn_submitOrder);
     }
@@ -1036,8 +1069,14 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         return distributorUI.isDisplayed(btn_deleteStandingOrders);
     }
     public void clickPlusQryFirstRowInDist() throws InterruptedException {
-        distributorUI.waitForCustom(1000);
-        distributorUI.click(btn_increaseQtyFirstRowInDist);
+        int columnCount = distributorUI.countElements(lbl_itemRowCount);
+        for (int i = 1; i <= columnCount ; i++) {
+            String actualColumnName = distributorUI.getText(By.xpath(lbl_columnName.replace("COLUMN",String.valueOf(i))));
+            if (actualColumnName.equalsIgnoreCase("Quantity")) {
+                distributorUI.waitForCustom(1000);
+                distributorUI.click(By.xpath(btn_PlusQtyFirstRowInDist.replace("COLUMN",String.valueOf(i))));
+            }
+        }
     }
     public void clickOnCheckoutButtonInDist() throws InterruptedException {
         distributorUI.waitForCustom(3000);
@@ -1265,6 +1304,9 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     }
     public boolean isItemAdded(String code){
         return distributorUI.isDisplayed(By.xpath(txt_item.replace("CODE", code)));
+    }
+    public boolean isItemPercentageAdded(String code){
+        return distributorUI.isDisplayed(By.xpath(txt_itemPercentage.replace("CODE", code)));
     }
     public void clickOnRemoveItem(String Itemcode) {
         distributorUI.waitForVisibility(By.xpath(btn_removeItem.replace("ITEMCODE",Itemcode)));
@@ -1953,6 +1995,11 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         distributorUI.sendKeys(lbl_margin, num);
         distributorUI.waitForCustom(1000);
     }
+    public void enterMarginPercentage(String num) throws InterruptedException {
+        distributorUI.clear(lbl_marginPercentage);
+        distributorUI.sendKeys(lbl_marginPercentage, num);
+        distributorUI.waitForCustom(1000);
+    }
     public void clickPlusQryFirstRowBySix() {
         for (int i = 0; i < 6; i++) {
             distributorUI.click(btn_increaseQtyFirstRow);
@@ -2217,19 +2264,35 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
 
     public void clickCloseSuccessMsg(){distributorUI.click(btn_closeMsg);}
 
-    public void clickAddTagsDropdown(){distributorUI.click(dropdown_selTags);}
+    public void clickAddTagsDropdown() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        distributorUI.clickWithScrollAndHover(dropdown_selTags);}
 
     public boolean isDropdownListDisplayed(){
         return distributorUI.isDisplayed(dropdown_list);
     }
 
-    public void selectTagOption(){distributorUI.click(sel_tagOption);}
+    public void selectTagOption() throws InterruptedException {
+        distributorUI.clickWithScrollAndHover(dropdown_selTags);
+        distributorUI.waitForVisibility(sel_tagOption);
+        distributorUI.clickAction(sel_tagOption);
+        distributorUI.waitForCustom(3000);
+    distributorUI.click(lbl_tagName);}
 
     public boolean isAddedTagDisplayed(){
         return distributorUI.isDisplayed(sel_tagName);
     }
 
-    public void clickRemoveTagOption(){distributorUI.click(icon_removeTag);}
+    public void clickRemoveTagOption(){distributorUI.clickWithScrollAndHover(icon_removeTag);}
+
+    public boolean isTagExist() {
+        return distributorUI.isDisplayed(icon_removeTag);
+    }
+
+    public boolean isAddedTagDeletedStable() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        return distributorUI.isDisplayed(icon_removeTag);
+    }
 
     public boolean isAddedTagDeleted() {
         try {
@@ -2392,16 +2455,20 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     public void clickSecondImage(){
         distributorUI.click(btn_secondImage);
     }
-    public void typeSpecialInstruction(String specialInstruction){
+    public void typeSpecialInstruction(String specialInstruction) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.sendKeys(txt_specialInstruction,specialInstruction);
     }
-    public void typeInternalNote(String internalNote){
+    public void typeInternalNote(String internalNote) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.sendKeys(txt_internalNote,internalNote);
     }
-    public void typeNoteToCustomer(String noteToCustomer){
+    public void typeNoteToCustomer(String noteToCustomer) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.sendKeys(txt_noteToCustomer,noteToCustomer);
     }
-    public void typePONumber(String poNumber){
+    public void typePONumber(String poNumber) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.sendKeys(txt_poNumber,poNumber);
     }
     public boolean isSpecialInstructionDisplayed(String specialInstruction) {
@@ -3072,6 +3139,139 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         distributorUI.waitForElementEnabledState(btn_checkoutOperator, true);
         distributorUI.click(btn_checkoutOperator);
         distributorUI.waitForCustom(4000);
+    }
+    public void clickPlusQryFirstRowClassic() throws InterruptedException {
+        distributorUI.click(btn_increaseQtyFirstRowClassic);
+        distributorUI.waitForCustom(4000);
+    }
+    public void submitOrderForApproval(){
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        distributorUI.waitForClickability(btn_submitOrderForApproval);
+        distributorUI.click(btn_submitOrderForApproval);
+    }
+    public boolean isSentApprovalDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_sentApproval);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_sentApproval);
+    }
+    public void clickViewOrderInDraft() {
+        distributorUI.waitForVisibility(btn_viewOrderInDraft);
+        distributorUI.click(btn_viewOrderInDraft);
+    }
+    public void clickCheckOutOrderGuide(){
+        distributorUI.click(btn_orderCheckout);
+    }
+    public String getItemFinalPrice() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(finalItemPrice,true);
+        distributorUI.waitForCustom(3000);
+        return distributorUI.getText(finalItemPrice);
+    }
+    public void typeOnFinalWeight(String weight) throws InterruptedException {
+        distributorUI.clear(finalWeight);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(finalWeight, weight);
+    }
+    public String getItemFinalWeight(){
+        return distributorUI.getText(finalWeight, "value");
+    }
+    public String getItemPriceOnEditOrderCheckout() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_orderCheckout);
+        distributorUI.waitForCustom(4000);
+        return distributorUI.getText(btn_orderCheckout);
+    }
+    public void clickEditOrderCheckout(){
+        distributorUI.click(btn_orderCheckout);
+    }
+    public String getConfirmFinalPrice(){
+        return distributorUI.getText(confirmPrice);
+    }
+    public String getPriceInCustomerOrder(){
+        return distributorUI.getText(priceInCustomerOrder);
+    }
+    public String getPoundPrice(){
+        return distributorUI.getText(poundPrice);
+    }
+    public void clickPoundPrice(){
+        distributorUI.click(poundPrice);
+    }
+    public boolean isPoundPricePopUpDisplay(){
+        try {
+            distributorUI.waitForVisibility(txt_lbPricePopUP);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_lbPricePopUP);
+    }
+    public void typeOnPerLBPrice(String lbPrice) throws InterruptedException {
+        distributorUI.clear(perLbPrice);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(perLbPrice, lbPrice);
+    }
+    public void clickSave()throws InterruptedException{
+        distributorUI.waitForVisibility(Savebtn);
+        distributorUI.click(Savebtn);
+    }
+    public void enterSpotPrice(String num) throws InterruptedException {
+        distributorUI.click(editSpotPrice);
+        distributorUI.sendKeysAndEnterMac(editSpotPrice, num);
+        distributorUI.waitForCustom(1000);
+    }
+    public boolean isSpotPriceAdded(String value){
+        return distributorUI.isDisplayed(By.xpath(spotPriceValue.replace("VALUE", value)));
+    }
+    public String getItemFinalSpotPrice() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(lbl_itemPriceList,true);
+        distributorUI.waitForCustom(3000);
+        return distributorUI.getText(lbl_itemPriceList, "value");
+    }
+    public String getItemFinalPoundSpotPrice() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(lbl_itemPriceList, true);
+        distributorUI.waitForCustom(3000);
+        String fullPrice = distributorUI.getText(lbl_itemPriceList, "value");
+        return fullPrice.replaceAll("/lb", "").trim();
+    }
+    public void splitWeight(){
+        distributorUI.click(btn_splitWeight);
+    }
+    public boolean isSplitWeightPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_splitWeight);
+    }
+    public void enterCasesValue(String num) throws InterruptedException {
+        distributorUI.clear(lbl_cases);
+        distributorUI.sendKeys(lbl_cases, num);
+        distributorUI.waitForCustom(1000);
+    }
+    public void enterWeightValue(String num) throws InterruptedException {
+        distributorUI.clear(lbl_weight);
+        distributorUI.sendKeys(lbl_weight, num);
+        distributorUI.waitForCustom(1000);
+    }
+    public void clickUpdateWeight(){
+        distributorUI.click(btn_updateWeight);
+    }
+    public String getItemSplitFinalWeight(){
+        return distributorUI.getText(splitFinalWeight, "value");
+    }
+    public String getSplitFinalWeightPrice() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(splitFinalWeightPrice,true);
+        distributorUI.waitForCustom(3000);
+        return distributorUI.getText(splitFinalWeightPrice);
+    }
+
+
+    public void scrollBottomOfPage() {
+        distributorUI.uiScrollBottomOfPage();
+    }
+
+    public boolean isFirstRecordDisplayed(){
+        return distributorUI.isDisplayed(cb_inInvoiceTable);
     }
 
 }

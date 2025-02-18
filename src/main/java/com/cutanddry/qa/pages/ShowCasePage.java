@@ -3,7 +3,7 @@ package com.cutanddry.qa.pages;
 import org.openqa.selenium.By;
 
 public class ShowCasePage extends LoginPage {
-    By productShowcaseTxt = By.xpath("//h1[contains(text(),'Cut+Dry Product Showcase')]");
+    By productShowcaseTxt = By.xpath("(//div[contains(text(),'Showcase')])[last()]");
     By productSearchBar = By.xpath("//input[@id='order_flow_search']");
 //    By productDisplayed = By.xpath("//div[contains(@class,'_3quvq7') and contains(@class,'_1vlidrf') and contains(text(),'Andy Capps Hot Fries, 0.85 Oz')]");
 //    By productDisplayed = By.xpath("//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'andy capps hot fries, 0.85 oz')]");
@@ -14,7 +14,7 @@ public class ShowCasePage extends LoginPage {
     By OurBrandPageTxt = By.xpath("//div[contains(@class,'_12lmd5r8') and contains(text(),'Angela Mia')]");
     By OurBrands = By.xpath("//div[contains(text(),'Our Brands')]");
     By HungerfordSmithBrand = By.xpath("//img[contains(@class,'img-fluid') and contains(@src,'e1709cd4888480e1b60d1b64da314fc8')]");
-    By HungerfordSmithText =By.xpath("//div[@class='_12lmd5r8' and contains(text(),'J Hungerford Smith')]");
+    By HungerfordSmithText =By.xpath("//div[@class='_12lmd5r8' and contains(text(),'J. Hungerford Smith')]");
     By icon_OurBrandRightArrow =By.xpath("(//div[contains(text(),'Our Brands')]/following::div//*[name()='svg' and @data-icon='chevron-right']//*[name()='path'])[1]");
 
 
@@ -28,12 +28,13 @@ public class ShowCasePage extends LoginPage {
 
     public void SelectProductInShowCase(String productName){
         distributorUI.isDisplayed(By.xpath(productDisplayed.replace("BRANDPAGE",productName)));
-        distributorUI.click(By.xpath(productDisplayed.replace("BRANDPAGE",productName)));
+        distributorUI.clickWithScrollAndHover(By.xpath(productDisplayed.replace("BRANDPAGE",productName)));
     }
 
-    public void ClickOnManufacturer(){
+    public void ClickOnManufacturer() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.isDisplayed(ManufacturerTxt);
-        distributorUI.click(ManufacturerTxt);
+        distributorUI.clickWithScrollAndHover(ManufacturerTxt);
     }
 
     public boolean isConagraFoodServiceTxtDisplayed(String brand){

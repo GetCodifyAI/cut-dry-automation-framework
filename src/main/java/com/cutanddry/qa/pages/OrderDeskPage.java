@@ -30,6 +30,7 @@ public class OrderDeskPage extends LoginPage{
     By lbl_SearchProductPopup = By.xpath("//div[contains(text(),'Update Item')]");
     By SearchProduct = By.xpath("//div[@class='themed_select__placeholder css-1wa3eu0-placeholder']");
     By SelectedswapItem = By.xpath("//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'dmab : almond milk barista-6x32oz-califia')]");
+    By firstDropdownItem = By.xpath("(//div[contains(@class, 'themed_select__option')])[1]");
     By SwapConfirmBtn = By.xpath("//button[contains(text(),'Confirm')]");
     By CustomerSelectionDropdown = By.xpath(" //div[contains(text(),'Customer')]/..//div[contains(@class,'select__dropdown-indicator')]");
     By CustomerName = By.cssSelector(".cd_themed_select__option.css-yt9ioa-option");
@@ -174,7 +175,9 @@ public class OrderDeskPage extends LoginPage{
     }
 
     public void ClickProductForSwap(){
-        distributorUI.click(SelectedswapItem);
+//        distributorUI.click(SelectedswapItem);
+        distributorUI.click(firstDropdownItem);
+
     }
 
     public void ClickSwapConfirmBtn(){

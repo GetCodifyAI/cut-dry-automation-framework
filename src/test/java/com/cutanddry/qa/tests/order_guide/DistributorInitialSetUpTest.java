@@ -1,8 +1,7 @@
-package com.cutanddry.qa.tests.settings;
+package com.cutanddry.qa.tests.order_guide;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
-import com.cutanddry.qa.data.testdata.DistributorOrderData;
 import com.cutanddry.qa.data.testdata.GatekeeperData;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;

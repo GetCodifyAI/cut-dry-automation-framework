@@ -32,6 +32,7 @@ public class VerifyManufacturerPageViaShowCaseTest extends TestBase {
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DistributerName);
+        Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.NavigateToShowCasePage();
         softAssert.assertTrue(ShowCase.isNavigateToShowCase(),"ERROR in Navigating to Show Case Page");

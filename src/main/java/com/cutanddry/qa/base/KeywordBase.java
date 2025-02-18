@@ -62,6 +62,19 @@ public class KeywordBase {
         return this;
     }
 
+    // Click on an element using By object with Actions class
+    public KeywordBase clickAction(By by) {
+        try {
+            Actions actions = new Actions(driver);
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
+            actions.moveToElement(element).click().perform();
+            logger.info("Clicked on element: {}", by);
+        } catch (Exception e) {
+            logger.error("Failed to click on element: {}", by, e);
+        }
+        return this;
+    }
+
     // Click on an element using By object
     public KeywordBase clickWithFallback(By by) {
         try {
@@ -187,6 +200,21 @@ public class KeywordBase {
         }
         return this;
     }
+    // Send keys to an element using By object and press enter
+    public KeywordBase sendKeysAndEnterMac(By by, String data) {
+        try {
+            Actions actions = new Actions(driver);
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
+//            Thread.sleep(500);
+
+            actions.moveToElement(element).click().keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL)
+                    .sendKeys(Keys.BACK_SPACE).sendKeys(data).sendKeys(Keys.ENTER).perform();
+            logger.info("Sent keys to element: {} with data: {} and enter", by, data);
+        } catch (Exception e) {
+            logger.error("Failed to send keys to element: {} with data: {}", by, data, e);
+        }
+        return this;
+    }
 
     // Clear an input field
     public KeywordBase clear(By by) {
@@ -251,6 +279,24 @@ public class KeywordBase {
             return isDisplayed;
         } catch (NoSuchElementException e) {
             logger.warn("Element not found: {}", by, e);
+            return false;
+        } catch (Exception e) {
+            logger.error("Failed to check if element is displayed: {}", by, e);
+            return false;
+        }
+    }
+
+    // Verify if an element is displayed with a custom wait time
+    public boolean isDisplayed(By by, int timeoutInSeconds) {
+        try {
+            WebDriverWait customWait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+            WebElement element = customWait.until(ExpectedConditions.visibilityOfElementLocated(by));
+
+            boolean isDisplayed = element.isDisplayed();
+            logger.info("Element is displayed: {}", by);
+            return isDisplayed;
+        } catch (TimeoutException e) {
+            logger.warn("Element not found within {} seconds: {}", timeoutInSeconds, by);
             return false;
         } catch (Exception e) {
             logger.error("Failed to check if element is displayed: {}", by, e);
@@ -495,6 +541,30 @@ public class KeywordBase {
             JavascriptExecutor jse = (JavascriptExecutor) driver;
             jse.executeScript("window.scrollTo(0, document.body.scrollHeight);");
             logger.info("Scrolled to the bottom of the page.");
+        } catch (Exception e) {
+            logger.error("Failed to scroll to the bottom of the page.", e);
+        }
+        return this;
+    }
+
+    // Scroll to the bottom of the page
+    public KeywordBase uiScrollBottomOfPage() {
+        try {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            long lastHeight = (long) js.executeScript("return document.body.scrollHeight");
+
+            while (true) {
+                js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+                Thread.sleep(2000);
+
+                long newHeight = (long) js.executeScript("return document.body.scrollHeight");
+                if (newHeight == lastHeight) {
+                    break;
+                }
+                lastHeight = newHeight;
+            }
+
+            logger.info("Scrolled to the bottom of the page successfully.");
         } catch (Exception e) {
             logger.error("Failed to scroll to the bottom of the page.", e);
         }
@@ -1052,7 +1122,7 @@ public class KeywordBase {
         }
     }*/
 
-    public void scrollToElementStable(By by) {
+    public void scrollToElementStable(By by, int timeoutInSeconds) {
         try {
             JavascriptExecutor js = (JavascriptExecutor) driver;
             boolean elementFound = false;
@@ -1079,6 +1149,7 @@ public class KeywordBase {
             }
 
             if (elementFound) {
+                WebDriverWait customWait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
                 WebElement targetElement = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
                 js.executeScript("arguments[0].scrollIntoView(true);", targetElement);
                 logger.info("Scrolled to and found the element: {}", by);
