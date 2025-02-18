@@ -46,7 +46,13 @@ static String itemNameTemp = "Chocolate Cone Coating";
         Customer.submitOrder();
         softAssert.assertTrue(Customer.isOrderSubmitSuccessfully(),"order not submit ");
         Customer.clickClose();
-        Customer.clickOnBack();
+//        Customer.clickOnBack();
+
+        Customer.searchCustomerByCode(CustomerCode);
+        Customer.clickOnOrderGuide(CustomerCode);
+        Customer.goToCatalog();
+        Customer.searchItemOnCatalog(itemName);
+        Customer.clickOnProduct(itemNameTemp);
         Customer.clickRemoveOrderGuide();
         softAssert.assertAll();
     }

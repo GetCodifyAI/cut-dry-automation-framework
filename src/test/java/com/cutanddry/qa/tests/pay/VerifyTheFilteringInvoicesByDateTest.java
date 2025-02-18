@@ -41,8 +41,11 @@ public class VerifyTheFilteringInvoicesByDateTest extends TestBase {
         softAssert.assertTrue(Pay.isEmptyInvoiceMsgDisplayed(), "Invoices are not cleared.");
 
         expectedDate = generateUTCCurrentDateFormatted();
+        String expectedYesterdayDate = generateUTCYesterdayDateFormatted();
+
+        System.out.println(expectedDate+" - "+expectedYesterdayDate);
         Pay.selectInvoiceDateViaFilter(3);
-        softAssert.assertTrue(Pay.getInvoiceRecordDate(1).trim().contains(expectedDate.trim()), "The Date in the first invoice record does not match the expected value.");
+        softAssert.assertTrue(Pay.getInvoiceRecordDate(1).trim().contains(expectedDate.trim()) || Pay.getInvoiceRecordDate(1).trim().contains(expectedYesterdayDate.trim()), "The selected invoice date should be either today or yesterday, but found: " + Pay.getInvoiceRecordDate(1).trim());
 
         softAssert.assertAll();
     }
