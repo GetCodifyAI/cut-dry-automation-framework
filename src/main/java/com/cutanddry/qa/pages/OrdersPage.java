@@ -314,7 +314,7 @@ public class OrdersPage extends LoginPage{
 
     public Boolean isFilteredOrdersCorrect(String OrdersDate) throws InterruptedException {
         distributorUI.waitForCustom(2000);
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
             distributorUI.scrollToElementStable(By.xpath("(" + date.replace("DATE", OrdersDate) + ")" + "[last()]"),5);
             boolean status = distributorUI.isDisplayed(By.xpath("(" + date.replace("DATE", OrdersDate) + ")" + "[last()]"),5);
             if (status) {
