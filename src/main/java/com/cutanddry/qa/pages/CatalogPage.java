@@ -8,7 +8,7 @@ public class CatalogPage extends LoginPage{
     By txt_editItem = By.xpath("//li[contains(text(),'Edit Item')]");
     By btn_preview = By.xpath("//a[.//button[contains(text(), 'Preview')]]");
     By txt_preview = By.xpath("//a[contains(text(),'Preview')]");
-    By btn_downloadPdf = By.xpath("//div[text()='Export PDP (Pdf)']");
+    By btn_downloadPdf = By.xpath("(//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ ', 'abcdefghijklmnopqrstuvwxyz')='exportpdp(pdf)'])[1]");
     By btn_dropdown = By.xpath("//button[@aria-haspopup='true']");
     By ItemCatalogSearchBtn = By.xpath("//input[@placeholder=\"Find Item in Catalog\"]");
     String SearchedItemItemCode = "//tr[contains(@class, '_du1frc')][td[1]='ITEMCODE']";

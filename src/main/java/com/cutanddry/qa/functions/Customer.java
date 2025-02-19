@@ -872,7 +872,7 @@ public class Customer {
     public static boolean isNewCustomerDisplayed(String customerName)throws InterruptedException{
         return customersPage.isNewCustomerDisplayed(customerName);
     }
-    public static void selectCustomer(){customersPage.selectCustomer();}
+    public static void selectCustomer() throws InterruptedException {customersPage.selectCustomer();}
     public static void clickBulkActions(){customersPage.clickBulkActions();}
     public static void clickInviteUser(){customersPage.clickInviteUser();}
     public static boolean isInviteUserPopUpDisplayed(){

@@ -51,6 +51,8 @@ public class VerifySalespersonRoleTest extends TestBase {
         Customer.submitOrder();
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(),"order not completed");
         Customer.clickClose();
+        Customer.searchCustomerByCode(customerId);
+        Customer.clickOnCustomerCode(customerId);
         Customer.clickOnBoostTab();
         softAssert.assertTrue(Customer.isAbleToEditMsg(),"edit boost msg error");
         Dashboard.navigateToOrders();
