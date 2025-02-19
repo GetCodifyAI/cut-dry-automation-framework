@@ -276,6 +276,7 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By btn_closePopUp = By.xpath("//button[contains(text(), 'Close')]");
     String NewCustomerName = "//tr//td[3][text()='CUSTOMERNAME']";
     By btn_selectCustomer = By.xpath("(//div[@class= '_du1frc'])[2]");
+    By lbl_firstRecord = By.xpath("//*[contains(text(),'Code')]/ancestor::table/tbody/tr[2]");
     By btn_bulkAction = By.xpath("//span[contains(text(), 'Bulk Actions')]");
     By btn_inviteUser = By.xpath("//a[contains(text(), 'Invite Users')]");
     By txt_inviteUserPopUp = By.xpath("//div[contains(text(), 'Invite Users')]");
@@ -1805,8 +1806,11 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     public boolean isNewCustomerDisplayed(String customerName){
         return distributorUI.isDisplayed(By.xpath(NewCustomerName.replace("CUSTOMERNAME",customerName)));
     }
-    public void selectCustomer(){
+
+    public void selectCustomer() throws InterruptedException {
+        distributorUI.waitForVisibility(lbl_firstRecord);
         distributorUI.click(btn_selectCustomer);
+        distributorUI.waitForCustom(2000);
     }
     public void clickBulkActions(){
         distributorUI.click(btn_bulkAction);
