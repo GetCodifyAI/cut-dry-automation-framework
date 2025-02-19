@@ -2521,10 +2521,10 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     }
 
     public void clickOnFirstItemOfCustomerRequests() throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(first_row));
-//        distributorUI.wait(10);
-//        distributorUI.waitForClickability(first_row);
+        /*WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(first_row));*/
+        distributorUI.waitForCustom(5000);
+        distributorUI.waitForVisibility(first_row);
         distributorUI.click(first_row);
     }
 
@@ -2860,8 +2860,8 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     public boolean isFilterSelectedCorrectly(String expectedFilter){
         String filterType = distributorUI.getText(txt_Filter);
         System.out.println("The type displayed is "+filterType);
-        String expectedFilterDisplay = "Filter: " + expectedFilter;
-        return filterType.equals(expectedFilterDisplay);
+//        String expectedFilterDisplay = "Filter: " + expectedFilter;
+        return filterType.equals(expectedFilter);
     }
 
     public void clickOnDropDownFilter(){
