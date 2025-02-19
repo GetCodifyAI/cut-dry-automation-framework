@@ -88,6 +88,7 @@ public class OrderDeskPage extends LoginPage{
     }
 
     public void editItemQuantityOnDraftOrderReviewPage(String itemQuantity) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.clearUsingJavaScript(DraftOrderReviewPageQuantityEdit);
         distributorUI.sendKeys(DraftOrderReviewPageQuantityEdit, itemQuantity);
         distributorUI.waitForCustom(4000);

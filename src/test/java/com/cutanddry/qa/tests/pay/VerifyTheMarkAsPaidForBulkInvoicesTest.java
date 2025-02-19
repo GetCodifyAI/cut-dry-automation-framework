@@ -40,7 +40,7 @@ public class VerifyTheMarkAsPaidForBulkInvoicesTest extends TestBase {
         softAssert.assertTrue(Pay.isEmptyInvoiceMsgDisplayed(), "Invoices are not cleared.");
 
         Pay.selectInvoiceStatusViaFilter(status_past_due);
-        softAssert.assertTrue(Pay.getInvoiceRecordStatus(1).trim().contains(status_past_due.trim()), "The past due status in the first invoice record does not match the expected value.");
+        softAssert.assertTrue(Pay.getInvoiceRecordStatus(1).trim().contains(status_past_due.replace("- ","").trim()), "The past due status in the first invoice record does not match the expected value.");
 
         Pay.clickOnInvoiceRecord(1);
         Pay.clickOnInvoiceBulkActionButton();

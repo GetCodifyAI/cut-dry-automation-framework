@@ -135,10 +135,10 @@ public class CatalogPage extends LoginPage{
     By onSaleDropDown = By.xpath("//label[contains(text(), 'On Sale')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     By newArrivalDropDown = By.xpath("//label[contains(text(), 'New Arrivals')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     String categoryOptionInCatalog = "//div[contains(text(),'Category')]/../../following-sibling::div//div[contains(text(),'CATEGORY')]";
-    String categoryName = "//div[contains(@class,'mt-3 mb-2 _4ffx9r8') and contains(text(),'CATEGORY')]";
+    String categoryName = "(//div[ contains(text(),'CATEGORY')])[1]";
     By lbl_firstRowItemCode = By.xpath("(//tbody/tr[1]/td[1])[1]");
     By lbl_firstRowItemName = By.xpath("(//tbody/tr[1]/td[3])[1]");
-    By mediaTypeDropDown = By.xpath("//label[contains(text(), 'Media Type')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    By mediaTypeDropDown = By.xpath("//label[contains(text(), 'Media Type')]/../following-sibling::div//div[contains(@class, 'themed_select__control')]");
     String mediaTypeOption = "(//div[text()='TYPE' and contains(@class,'themed_select__option')])[last()]";
     String addedSubstitutionsCode = "//div[contains(text(),'CODE')]";
     String deleteUom = "//label[text()='UOM']/../following-sibling::td//*[local-name() = 'svg' and @data-icon='trash-can']";
