@@ -15,8 +15,8 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheFilterCustomerInvoices extends TestBase {
     static User user;
-    String CustomerCode = CustomerInvoiceData.CUSTOMER_CODE;
-    String CustomerFilterOption = CustomerInvoiceData.CUSTOMER_FILTER_OPTION;
+    String CustomerCode = CustomerInvoiceData.RESTAURANT_TEST_HAYES_ID;
+    String CustomerFilterOption = CustomerInvoiceData.CUSTOMER_FILTER_OPTION_PAST_DUE;
 
     @BeforeMethod
     public void setUp() {
@@ -36,7 +36,7 @@ public class VerifyTheFilterCustomerInvoices extends TestBase {
         Customer.clickonInvoice();
         Customer.clickOnDropDownFilter();
         Customer.selectFilterDropDown(CustomerFilterOption);
-        softAssert.assertTrue(Customer.isFilterSelectedCorrectly(CustomerFilterOption),"The filter hasn't selected correctly");
+        softAssert.assertTrue(Customer.isFilterSelectedCorrectly(CustomerFilterOption.replace("- ","").trim()),"The filter hasn't selected correctly");
         softAssert.assertAll();
     }
 

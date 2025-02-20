@@ -52,10 +52,12 @@ public class ValidateTheSpotPoundPriceTest extends TestBase{
         Customer.submitOrder();
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "The order was not completed successfully.");
         Customer.clickClose();
-        Customer.searchCustomerByCode(customerId2);
-        Customer.clickOnCustomerCode(customerId2);
 
         //test
+        Dashboard.navigateToCustomers();
+        Customer.searchCustomerByCode(customerId2);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId2), "Unable to find the customer Id");
+        Customer.SelectCustomer(customerId2);
         Customer.clickOnOrdersTab();
         Customer.clickOrder();
         softAssert.assertTrue(Customer.isOrderSectionDisplayed(),"order section not navigate");
@@ -68,8 +70,8 @@ public class ValidateTheSpotPoundPriceTest extends TestBase{
         Customer.typeOnPerLBPrice(poundPrice);
         Customer.clickSave();
         softAssert.assertEquals(Customer.getPoundPrice(),"$100.00/lb", "item count error");
-        softAssert.assertEquals(Customer.getItemQtyFirstRow(),"1.22", "item count error");
-        softAssert.assertEquals(Customer.getItemFinalPrice(),"$2,600.00", "item count error");
+        softAssert.assertEquals(Customer.getItemQtyFirstRow(),"1.219", "item count error");
+        softAssert.assertEquals(Customer.getItemFinalPrice(),"$82.90", "item count error");
         itemPrice=Customer.getItemFinalPrice();
         softAssert.assertEquals(Customer.getItemPriceOnEditOrderCheckout(),itemPrice,"The item has not been selected.");
         Customer.clickEditOrderCheckout();

@@ -20,6 +20,6 @@ public class CustomerInvoiceData
         public static final String ASSOCIATED_INVOICE = "51286300 - $351.00";
         public static final String CREDIT_MEMO_AMOUNT = "100";
         public static final String CREDIT_MEMO_DESCRIPTION = "Test Description";
-        public static final String CUSTOMER_FILTER_OPTION_PAST_DUE = "Past due";
+        public static final String CUSTOMER_FILTER_OPTION_PAST_DUE = "- Past due";
 
     }

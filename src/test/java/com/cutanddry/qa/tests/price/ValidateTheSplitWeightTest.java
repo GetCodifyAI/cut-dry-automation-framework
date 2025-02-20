@@ -52,9 +52,12 @@ public class ValidateTheSplitWeightTest extends TestBase{
         Customer.submitOrder();
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "The order was not completed successfully.");
         Customer.clickClose();
-        Customer.SelectCustomer(customerId);
 
         //test
+        Dashboard.navigateToCustomers();
+        Customer.searchCustomerByCode(customerId);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
+        Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
         Customer.clickOrder();
         softAssert.assertTrue(Customer.isOrderSectionDisplayed(),"order section not navigate");

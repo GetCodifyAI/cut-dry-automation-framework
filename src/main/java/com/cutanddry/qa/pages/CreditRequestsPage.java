@@ -43,8 +43,8 @@ public class CreditRequestsPage extends TestBase {
     String lbl_priceColumnItems = "//table[@class='mt-3 table table-hover']//tbody/tr[ROW]/td[4]";
     String lbl_QtyColumnItems = "//table[@class='mt-3 table table-hover']//tbody/tr[ROW]/td[5]";
     By lbl_itemRowCount = By.xpath("//table[@class='mt-3 table table-hover']//tbody/tr");
-    String lbl_itemName = "//table[@class='mt-3 table table-hover']//tbody/tr[ROW]/td//div[contains(text(), 'NAME')]";
-
+//    String lbl_itemName = "//table[@class='mt-3 table table-hover']//tbody/tr[ROW]/td//div[contains(text(), 'NAME')]";
+String lbl_itemName = "(//table[@class='mt-3 table table-hover']//tbody/tr[ROW]/td[2]//div[1])[last()]";
 
     By txt_Order = By.xpath("//h2[contains(text(), 'Order')]");
     By txt_CreditRequestTableItemNameValue = By.xpath("//table[@class='table table-hover']//tbody/tr[1]/td[2]");
@@ -166,6 +166,7 @@ public class CreditRequestsPage extends TestBase {
             if (actualItemName.equalsIgnoreCase(itemName)) {
                  ItemQty = distributorUI.getText(By.xpath(lbl_QtyColumnItems.replace("ROW",String.valueOf(i))));
                  ItemPrice = distributorUI.getText(By.xpath(lbl_priceColumnItems.replace("ROW",String.valueOf(i))));
+                 break;
             }
         }
 
