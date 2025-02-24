@@ -57,12 +57,6 @@
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsViaOrderGuideCatalogPDPTest"/>
             <class name="com.cutanddry.qa.tests.draft.ValidateDraftOrdersAreOnlyAppearing30DaysTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifyPendingApprovalsAreNotClickableTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateTheFinalWeightTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPoundPriceTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingByPricingEngineTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateThePoundSpotPricingTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingNotFromPricingEngineTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateTheSplitWeightTest"/>
         </classes>
     </test>
 </suite>
