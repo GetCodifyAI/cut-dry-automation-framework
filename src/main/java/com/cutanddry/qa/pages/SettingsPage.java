@@ -72,7 +72,7 @@ public class SettingsPage extends LoginPage{
     By txt_global = By.xpath("//div[text()='Global']");
     By txt_customerSpecific = By.xpath("//div[text()='Customer Specific']");
     By btn_save_= By.xpath("//button[text()= 'Save']");
-    By txt_lastDate = By.xpath("(//div[@class='px-0 _c1780 col'])[last()]");
+    By txt_lastDate = By.xpath("((//button[*[local-name()='svg' and @data-icon='minus']])[last()]/parent::div/following-sibling::div)[1]");
     By dropdown_items = By.xpath("//div[@class='cd_themed_select__menu css-26l3qy-menu']");
     By dropdown_deliveryDate = By.xpath("//div[@class='text-truncate']");
     By btn_minus = By.xpath("(//button[*[local-name()='svg' and @data-icon='minus']])[last()]");
