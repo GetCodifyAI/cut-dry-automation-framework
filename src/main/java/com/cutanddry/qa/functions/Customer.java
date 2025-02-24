@@ -355,6 +355,11 @@ public class Customer {
         customersPage.clickOnDropdownDelivery();
         customersPage.clickOnDeliveryDate(day);
     }
+    public static void selectDeliveryDateAsLast(){
+        customersPage.clickOnRemoveDelivery();
+        customersPage.clickOnDropdownDelivery();
+        customersPage.clickOnDeliveryDateAsLast();
+    }
     public static void setStandingOrder(){
         customersPage.setStandingOrder();
     }

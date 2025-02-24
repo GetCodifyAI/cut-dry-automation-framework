@@ -15,6 +15,7 @@ public class VerifyTheFunctionalityOfShowLastOrderedPriceOffForCustomerPortalTes
     String RestaurantUserCode = "103430764";
     static String itemName = "bacon, uncured maple, e&p, food service";
     String SupplierName = "Independent Foods Co";
+    static String itemId ="24857";
 
     @BeforeMethod
     public void setUp(){
@@ -36,7 +37,7 @@ public class VerifyTheFunctionalityOfShowLastOrderedPriceOffForCustomerPortalTes
         Login.switchIntoNewTab();
         Login.navigateToLoginAsPortal(RestaurantUserCode);
         Orders.SelectSupplierFromPlaceOrderPage(SupplierName);
-        Customer.searchItemOnOrderGuide(itemName);
+        Customer.searchItemOnOrderGuide(itemId);
         softAssert.assertTrue(Customer.isLastOrderedPriceNotSameAfterToggleOff(),"error");
         softAssert.assertAll();
     }

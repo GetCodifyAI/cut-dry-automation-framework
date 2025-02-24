@@ -37,7 +37,8 @@ public class VerifyEditingStandingOrdersTest extends TestBase {
         softAssert.assertTrue(Customer.isStandingOrdersDisplayed(),"navigation error");
         Customer.clickOnEditStandingOrder();
         Customer.editOrderFromReviewScreen();
-        Customer.selectDeliveryDate(deliveryDay);
+//        Customer.selectDeliveryDate(deliveryDay);
+        Customer.selectDeliveryDateAsLast();
         itemName = Customer.getItemNameFirstRow();
         Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItems();
