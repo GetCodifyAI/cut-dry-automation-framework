@@ -70,7 +70,8 @@ public class InternalTools {
     }
 
     public static void TurnOnLastOrderedPoundPrice(){
-        internalToolsPage.clickTurnOnLastOrderedPoundPriceToggle();
+//        internalToolsPage.clickTurnOnLastOrderedPoundPriceToggle();
+        internalToolsPage.clickTurnOnLastOrderedPoundPriceToggle(true);
     }
 
     public static void SaveLastOrderedPoundPriceTurnOn(){
@@ -78,7 +79,8 @@ public class InternalTools {
     }
 
     public static void TurnOffLastOrderedPoundPrice(){
-        internalToolsPage.clickTurnOffLastOrderedPoundPriceToggle();
+//        internalToolsPage.clickTurnOffLastOrderedPoundPriceToggle();
+        internalToolsPage.clickTurnOnLastOrderedPoundPriceToggle(false);
     }
 
     public static void TurnOnTheDisplayingStockCount(boolean status) throws InterruptedException {

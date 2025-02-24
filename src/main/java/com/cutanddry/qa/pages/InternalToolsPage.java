@@ -21,7 +21,7 @@ public class InternalToolsPage extends LoginPage {
     By buyerEdgePlatformRebateToggle =By.xpath("//div[contains(text(), 'Buyers Edge Platform Rebates')]/../following-sibling::div//div[@class='react-switch-bg']");
     By buyerEdgePlatformRebateHandle = By.xpath("//div[contains(text(), 'Buyers Edge Platform Rebates')]/../following-sibling::div//div[@class='react-switch-handle']");
     By btn_saveRebate = By.xpath("//div[contains(h4, 'Rebates')]/button[contains(@class, 'btn') and text()='Save']");
-
+    By lastOrderedPoundPriceToggleStable = By.xpath("//div[contains(text(), 'Show Last Ordered Pound Price in Order Guide')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
 
     public void clickConfigureSupplier(){
         distributorUI.click(configureSupplierTxt);
@@ -101,6 +101,18 @@ public class InternalToolsPage extends LoginPage {
 
     public void clickTurnOnLastOrderedPoundPriceToggle(){
         distributorUI.click(lastOrderedPoundPriceToggle);
+    }
+
+    public void clickTurnOnLastOrderedPoundPriceToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(lastOrderedPoundPriceToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(lastOrderedPoundPriceToggleStable);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(lastOrderedPoundPriceToggleStable);
+        }
     }
 
     public void clickTurnOnLastOrderedPoundPriceSave(){
