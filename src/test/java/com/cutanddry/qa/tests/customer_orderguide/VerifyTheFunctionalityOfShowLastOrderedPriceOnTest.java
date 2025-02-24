@@ -18,6 +18,7 @@ public class VerifyTheFunctionalityOfShowLastOrderedPriceOnTest extends TestBase
     String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
     static String customerId = "16579";
     static String itemName = "bacon, uncured maple, e&p, food service";
+    static String itemId ="24857";
 
 
 
@@ -46,7 +47,7 @@ public class VerifyTheFunctionalityOfShowLastOrderedPriceOnTest extends TestBase
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
-        Customer.searchItemOnOrderGuide(itemName);
+        Customer.searchItemOnOrderGuide(itemId);
         softAssert.assertTrue(Customer.isLastOrderedPoundPriceDisplayed(),"display error");
         softAssert.assertAll();
     }

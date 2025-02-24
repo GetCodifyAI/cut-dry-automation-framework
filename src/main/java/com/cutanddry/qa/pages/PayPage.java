@@ -555,6 +555,10 @@ public class PayPage extends LoginPage{
             for (int i = 1; i <= records_count; i++) {
                 By lbl_invoiceCustomerStatus = By.xpath(lbl_invoiceRecordCustomerStatus.replace("ROW_COUNT", String.valueOf(i)));
                 String statusTxt = distributorUI.getText(lbl_invoiceCustomerStatus).trim();
+                if (statusTxt == null || statusTxt.isEmpty()) {
+                    System.err.println("Status text is null or empty at row " + i);
+                    return false;
+                }
                 if (!statusTxt.equalsIgnoreCase(status)) {
                     return false;
                 }
