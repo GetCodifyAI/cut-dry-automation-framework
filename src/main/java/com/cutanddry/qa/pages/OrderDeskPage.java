@@ -24,8 +24,9 @@ public class OrderDeskPage extends LoginPage{
     By SelectRandomOption = By.cssSelector(".themed_select__option");
     By AddItemBtn = By.xpath("//button[@class='btn btn-outline-primary']");
     By ItemAddDeleteSucessfulTxt = By.xpath("//h2[contains(text(),'Saved Successfully')]");
-    By DeleteItemBtn = By.xpath("(//td[@class='_pe8div'])[last()]");
-    By DeleteConfirmationOverlayYesBtn = By.xpath("//button[@class='swal2-confirm _1fmw5qi order-2 swal2-styled']");
+//    By DeleteItemBtn = By.xpath("(//td[@class='_pe8div'])[last()]");
+By DeleteItemBtn = By.xpath("(//*[local-name()='svg' and @data-icon='trash-can'])[last()]");
+    By DeleteConfirmationOverlayYesBtn = By.xpath("//button[contains(text(),'Yes')]");
     By ItemNameTxt = By.xpath("(//div[@class='_12e4m8i'])[1]");
     By lbl_SearchProductPopup = By.xpath("//div[contains(text(),'Update Item')]");
     By SearchProduct = By.xpath("//div[@class='themed_select__placeholder css-1wa3eu0-placeholder']");

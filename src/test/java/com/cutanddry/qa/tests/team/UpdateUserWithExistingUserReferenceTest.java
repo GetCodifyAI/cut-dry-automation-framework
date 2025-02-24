@@ -20,7 +20,7 @@ public class UpdateUserWithExistingUserReferenceTest extends TestBase {
     static String name_1 = "Test" + randomNumber;
     static String name_2 = "Test3" + randomNumber;
     static String email_2 = "test"+randomNumber+"@email.com";
-    static String userRef = "KF";
+    static String userRef = "KF"+randomNumber;
 
     @BeforeMethod
     public void setUp(){
