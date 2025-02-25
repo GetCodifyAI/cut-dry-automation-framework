@@ -459,8 +459,17 @@ public class Customer {
     public static boolean isReplacementDisplayed(){
         return customersPage.isReplacementDisplayed();
     }
+    public static boolean isReplacementNotDisplayed(){
+        return customersPage.isReplacementNotDisplayed();
+    }
+    public static boolean isDoNotSubstituteDisplayed(){
+        return customersPage.isDoNotSubstituteDisplayed();
+    }
     public static void clickOnItem(String code){
         customersPage.clickOnItem(code);
+    }
+    public static void clickOnSingleItem(){
+        customersPage.clickOnSingleItem();
     }
     public static void increaseFirstRowQtyByOneInCheckout(){
         customersPage.clickPlusQryFirstRowInCheckout();
@@ -470,6 +479,9 @@ public class Customer {
     }
     public static int getSubstituteItemsCount(int num){
         return customersPage.getSubstituteItemsCount(num);
+    }
+    public static int getSubstituteItemsCount(){
+        return customersPage.getSubstituteItemsCount();
     }
     public static boolean isNavigatedToCustomerPage(){
         return customersPage.isCutomerTxtDisplayed();

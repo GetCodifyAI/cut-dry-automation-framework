@@ -25,10 +25,10 @@ public class OrderDesk {
 
     public static void navigateToDraftOrderReviewPage(){
         orderDeskPage.clickOnDraftOrderPageReviewBtn();
-        if(orderDeskPage.isDateErrorDisplayedInDraftOrder()){
+        /*if(orderDeskPage.isDateErrorDisplayedInDraftOrder()){
             dashboardPage.clickOnOrderDesk();
             orderDeskPage.clickOnDraftOrderPageReviewBtn2();
-        }
+        }*/
     }
 
     public static void AddItemQuantityDraftOrderReviewPage(){
