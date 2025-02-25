@@ -312,10 +312,11 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By lbl_orderGuide = By.xpath("//div[text()='Order Guide:']/following-sibling::div//div[@class='cd_themed_select__single-value css-1uccc91-singleValue']");
     By dropdown_testGuide1 =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Test_Guide_01')]");
     By dropdown_testAutomation =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Test_Automation')]");
-    By btn_editMargin = By.xpath("//td/div/button/*[local-name() = 'svg' and @data-icon='cdEdit']");
+//    By btn_editMargin = By.xpath("//td/div/button/*[local-name() = 'svg' and @data-icon='cdEdit']");
+    By btn_editMargin = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[6])[1]");
     By btn_resetValues = By.xpath("//button[contains(text(), 'Reset Values')]");
     By btn_updateValues = By.xpath("//button[contains(text(), 'Update')]");
-    By lbl_margin = By.xpath("//label[text()='Margin ($)']/following-sibling::input");
+    By lbl_margin = By.xpath("//div[text()='Margin ($)']/following-sibling::input");
     By lbl_marginPercentage = By.xpath("//label[text()='Margin (%)']/following-sibling::input");
     String sel_customer ="//td[contains(text(),'CUSTOMERCODE')";
     By txt_cusName = By.xpath("(//div[contains(@class,'d-flex align-items-center')])[1]");
@@ -396,7 +397,7 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By radioButton =By.xpath("//div[@class = 'align-middle']");
 //    String txt_product = "//div[contains(@class,'_3quvq7 _1vlidrf' ) and contains(text(), 'NAME')]";
 String txt_product = "//div[contains(@class,'_3quvq7 _1vlidrf' ) and contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]";
-    By btn_addToCartPDP = By.xpath("//button[contains(@class,'d-flex align-items-center justify-content-center cdbutton _1g89unu _du1frc text-nowrap w-100 btn btn-outline-primary btn-sm' ) and contains(text(), 'Add to Cart')]");
+    By btn_addToCartPDP = By.xpath("//button[contains(text(), 'Add to Cart')]");
     By btn_checkOutPDP = By.xpath("//button[@data-for='cartCheckoutButton' and contains(text(),'$')]");
     By txt_orderConfirmationPopUp = By.xpath("//strong[contains(text(), 'Thank you for your order!')]");
     By btn_addOrderGuideHeart = By.xpath("//button[@class='d-flex align-items-center justify-content-center cdbutton w-100 _fousr2 fa-stack btn btn-primary btn-sm' and @data-tip='Add to Order Guide']");
@@ -418,8 +419,8 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     String specialInstructionText = "//span[contains(text(),'SPECIALINSTRUCTION')]";
     String internalNoteText = "//span[contains(text(),'INTERNALNOTE')]";
     String noteToCustomerText = "//span[contains(text(),'NOTETOCUSTOMER')]";
-    By quantityValue = By.xpath("(//input[contains(@class, '_hk3n6z form-control _qxqnfl6')])[1]");
-    By Value = By.xpath("//td[@class='_xigbpq4 border-top border-bottom py-3' and contains(text(),'$')]");
+    By quantityValue = By.xpath("(//input[contains(@data-input, 'quantityInput')])[1]");
+    By Value = By.xpath("(//td[contains(@class,'py-3 _xigbpq4 border-top border-bottom')]//div[contains(text(),'$')])[last()]");
     By totalQuantity = By.xpath("//td[@class='_ygdk15 align-bottom pb-1']");
     By totalValue=By.xpath("//td[@class='border-0 pt-1' and contains(text(),'$')]");
     By txt_orderId = By.xpath("//div[contains(text(),'Order #')]");
@@ -524,8 +525,9 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     By section_dontForgetToBuy = By.xpath("//div[text()=\"Don't Forget to Buy\"]");
     By txt_duplicateOrder = By.xpath("//h2[@class='swal2-title' and @id='swal2-title' and text()='Duplicate Order']");
     By btn_addNewPaymentMtd = By.xpath("//div[contains(text(),'Add a new payment method')]");
-    By txt_lastOrderedPrice = By.xpath("//td[contains(@class,'font-weight-light py-3 text-nowrap') and contains(text(),'/lb')]");
-    By txt_lastOrderedPriceOff = By.xpath("//td[contains(@class, 'py-3') and div[contains(text(), 'CS')]]");
+//    By txt_lastOrderedPrice = By.xpath("//td[contains(@class,'font-weight-light py-3 text-nowrap') and contains(text(),'/lb')]");
+By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'), '/LB')])[1]/parent::div");
+    By txt_lastOrderedPriceOff = By.xpath("//td[contains(@class, 'py-3') and div/div/div[contains(text(), 'CS')]]");
     By btn_checkoutOperator = By.xpath("//button[@data-for='cartCheckoutButton']");
     By btn_increaseQtyFirstRowClassic = By.xpath("(//tr/td//div[contains(@data-tip,'View Product Details')]/following::td//div/*[contains(@data-icon,'plus')])[1]");
     By btn_submitOrderForApproval = By.xpath("//button[contains(text(),'Submit')]");
@@ -2002,6 +2004,7 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     }
     public void enterMarginValue(String num) throws InterruptedException {
         distributorUI.clear(lbl_margin);
+        distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(lbl_margin, num);
         distributorUI.waitForCustom(1000);
     }

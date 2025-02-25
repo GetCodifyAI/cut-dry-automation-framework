@@ -44,7 +44,7 @@ public class VerifyTheFilteringInvoicesByAuthStatusTest extends TestBase {
         softAssert.assertTrue(Pay.isInvoiceRecordCustomerStatusExist(status_authorized), "The auth status in the invoice record does not match the expected value.");
 
         Pay.selectInvoiceAuthStatusViaFilter(status_all);
-        softAssert.assertFalse(Pay.isInvoiceRecordCustomerStatusExist(status_authorized), "The auth status in the invoice record does match the expected value.");
+        softAssert.assertFalse(Pay.isInvoiceRecordCustomerStatusExist(status_authorized), "The status in the invoice record does match the expected.");
 
         softAssert.assertAll();
     }
