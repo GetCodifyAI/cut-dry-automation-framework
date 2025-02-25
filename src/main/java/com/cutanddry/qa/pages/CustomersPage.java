@@ -139,15 +139,20 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By txt_discountDisclaimerOrderDetails = By.xpath("//div[normalize-space() = '*Prices are subject to change. Weighed item prices are estimated. Case discounts will be reflected on your invoice.']");
     By lbl_firstRowOrderTab = By.xpath("//tr[contains(@href,'/ordersView/')][1]");
     By txt_southwest = By.xpath("//div[contains(text(),'Southwest Traders')]");
-    By txt_substitutions = By.xpath("//div[contains(normalize-space(text()), 'Substitutions')]");
+    By txt_substitutions = By.xpath("//div[contains(normalize-space(text()), 'Set a Substitute')]");
     By btn_saveSelection = By.xpath("//button[normalize-space(text())='Save Selection']");
-    By btn_donotsubs = By.xpath("//button[normalize-space(text())='Do Not Substitute']");
+    By btn_donotsubs = By.xpath("//div[normalize-space(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))='do not substitute']");
     By txt_replacement = By.xpath("//div[contains(normalize-space(text()), 'If out of stock, sub with')]");
+    By lbl_NotSelected = By.xpath("//*[contains(text(),'Not Selected')]");
+    By lbl_doNotSubstitute = By.xpath("//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'do not substitute')]");
     String txt_item = "//div[contains(text(), 'CODE')]";
+    By lbl_SubstituteItem = By.xpath("//div[contains(text(), 'Substitute with:')]");
     String txt_itemPercentage = "//span[contains(text(), 'CODE')]";
-    By btn_increaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div[3]");
-    By btn_decreaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div[1]");
+    By btn_increaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div/div[3]");
+    By btn_decreaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div/div[1]");
     String txt_subItems = "(//div[contains(text(), 'Available Substitutes')]/following-sibling::div//div[contains(text(), '1 x $')])[NUM]";
+    By subItemsCount = By.xpath("(//div[contains(@data-testid,'sliderList')])[last()]/div");
+
     By CustomerTxt = By.xpath("//h2[contains(text(),'Customers')]");
     By Test_AutomationOrderGuide = By.xpath("//div[@class='cd_themed_select__single-value css-1uccc91-singleValue' and contains(text(),'Independent Foods Co')]");
     By AutomationGuide = By.xpath("//div[contains(text(),'Test_Automation')]");
@@ -1175,9 +1180,19 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
         distributorUI.waitForVisibility(txt_replacement);
         return distributorUI.isDisplayed(txt_replacement);
     }
+    public boolean isReplacementNotDisplayed(){
+        return distributorUI.isDisplayed(lbl_NotSelected,5);
+    }
+    public boolean isDoNotSubstituteDisplayed(){
+        return distributorUI.isDisplayed(lbl_doNotSubstitute);
+    }
     public void clickOnItem(String code){
         distributorUI.waitForVisibility(By.xpath(txt_item.replace("CODE", code)));
         distributorUI.clickUsingJavaScript(By.xpath(txt_item.replace("CODE", code)));
+    }
+    public void clickOnSingleItem(){
+        distributorUI.waitForVisibility(lbl_SubstituteItem);
+        distributorUI.clickUsingJavaScript(lbl_SubstituteItem);
     }
     public void clickPlusQryFirstRowInCheckout(){
         distributorUI.click(btn_increaseQtyFirstRowInCheckout);
@@ -1193,6 +1208,9 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
             };
         }
         return count;
+    }
+    public int getSubstituteItemsCount() {
+        return distributorUI.countElements(subItemsCount);
     }
     public boolean isCutomerTxtDisplayed(){
         return distributorUI.isDisplayed(CustomerTxt);

@@ -40,7 +40,8 @@ public class VerifySubstituteItemFor1OrMoreItemsWithoutSubstitutingTest extends 
         Customer.checkoutItemsDist();
         softAssert.assertTrue(Customer.isSubstitutesPopupDisplayed(),"substitutes popup error");
         Customer.clickDoNotSubstitute();
-        softAssert.assertFalse(Customer.isReplacementDisplayed(),"replace error");
+        Customer.clickSaveSelection();
+        softAssert.assertTrue(Customer.isDoNotSubstituteDisplayed(),"replace error");
         softAssert.assertAll();
     }
 

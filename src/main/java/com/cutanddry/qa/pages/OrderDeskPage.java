@@ -11,8 +11,8 @@ public class OrderDeskPage extends LoginPage{
     By DraftOrderPageReviewBtn = By.xpath("(//div[contains(@class, '_10q9czs')]//a[text()='Review'])[1]");
     By DraftOrderPageReviewBtn2 = By.xpath("(//div[contains(@class, '_10q9czs')]//a[text()='Review'])[2]");
     By isDateErrorDisplayed = By.xpath("//div[contains(text(),'Delivery date is not valid')]");
-    By DraftOrderReviewPageQuantityIncrementBtn = By.xpath("(//div[@class='p-2 px-sm-3 _du1frc _18jhc3z py-2 ml-2 text-center align-middle'])[1]");
-    By DraftOrderReviewPageQuantityDecrementBtn = By.xpath("(//div[@class='p-2 px-sm-3 _du1frc _18jhc3z py-2 mr-2 text-center align-middle'])[1]");
+    By DraftOrderReviewPageQuantityIncrementBtn = By.xpath("(//*[local-name()='svg' and @data-icon='plus'])[1]");
+    By DraftOrderReviewPageQuantityDecrementBtn = By.xpath("(//*[local-name()='svg' and @data-icon='minus'])[1]");
     By DraftOrderReviewPageQuantityEdit = By.xpath("(//input[contains(@data-input,'quantityInput')])[1]");
     By SaveDraftBtn = By.xpath("//button[@class='mr-3 btn btn-outline-primary']");
     By DraftSavedSucessfullyText = By.xpath("//h2[@class='swal2-title']");

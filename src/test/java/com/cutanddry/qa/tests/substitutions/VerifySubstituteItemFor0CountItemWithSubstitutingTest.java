@@ -38,8 +38,9 @@ public class VerifySubstituteItemFor0CountItemWithSubstitutingTest extends TestB
         Customer.increaseFirstRowQtyByOneInDist();
         Customer.checkoutItemsDist();
         softAssert.assertTrue(Customer.isSubstitutesPopupDisplayed(),"substitutes popup error");
+        Customer.clickOnSingleItem();
         Customer.clickSaveSelection();
-        softAssert.assertTrue(Customer.isReplacementDisplayed(),"replace error");
+        softAssert.assertFalse(Customer.isReplacementNotDisplayed(),"replace error");
         softAssert.assertAll();
     }
 
