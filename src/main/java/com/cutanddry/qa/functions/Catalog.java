@@ -434,5 +434,71 @@ public class Catalog {
         }
         catalogPage.clickAddSubstitutionBtn();
     }
+    //-------------------- Multi UOM -----------------------
+    public static void ClickOnMultiUomDropDownOG(String code)throws InterruptedException{
+        catalogPage.ClickOnMultiUomDropDownOG(code);
+    }
+    public static double getOGPriceUOM(String code,String uom) throws InterruptedException {
+        return catalogPage.getOGPriceUOM(code,uom);
+    }
+    public static void clickOGAddToCartPlusIcon(int count,String code, String uom) throws InterruptedException{
+        for (int i=0; i<count;i++){
+            catalogPage.clickOGAddToCartPlusIcon(code,uom);
+        }
+    }
+    public static String getItemUOMQuantity(String code,String uom){
+        return catalogPage.getItemUOMQuantity(code,uom);
+    }
+    public static void clickOGAddToCartMinusIcon(int count,String code, String uom) throws InterruptedException{
+        for (int i=0; i<count;i++){
+            catalogPage.clickOGAddToCartMinusIcon(code,uom);
+        }
+    }
+    public static void clickSubmittedOrder(String id){
+        catalogPage.clickSubmittedOrder(id);
+    }
+    public static double getTotalPriceInOrder() throws InterruptedException {
+        return catalogPage.getTotalPriceInOrder();
+    }
+    public static String getTotalQuantityInOrder(){
+        return catalogPage.getTotalQuantityInOrder();
+    }
+    public static void ClickOnMultiUomDropDown(String name)throws InterruptedException{
+        catalogPage.ClickOnMultiUomDropDown(name);
+    }
+    public static void ClickOnMultiUomDropDownOption(String option)throws InterruptedException{
+        catalogPage.ClickOnMultiUomDropDownOption(option);
+    }
+    public static double getPDPPriceUOM(String uom) throws InterruptedException {
+        return catalogPage.getPDPPriceUOM(uom);
+    }
+    public static void clickAddToCartPlusIcon(int count, String uom) throws InterruptedException{
+        for (int i=0; i<count;i++){
+            catalogPage.clickAddToCartPlusIcon(uom);
+        }
+    }
+    public static void clickAddToCartMinusIcon(int count, String name) {
+        for (int i=0; i<count;i++){
+            catalogPage.clickAddToCartMinusIcon(name);
+        }
+    }
+    public static boolean isEditQuantitiesButtonDisplayed(String name){
+        return catalogPage.isEditQuantitiesButtonDisplayed(name);
+    }
+    public static boolean isAddedQuantitiesDisplayed(String name ,String qty){
+        return catalogPage.isAddedQuantitiesDisplayed(name,qty);
+    }
+    public static void clickOnCatalogProduct(String name){
+        catalogPage.clickOnCatalogProduct(name);
+    }
+    public static double getTotalPriceInReviewOrder() throws InterruptedException {
+        return catalogPage.getTotalPriceInReviewOrder();
+    }
+    public static String getTotalQuantityInReviewOrder(){
+        return catalogPage.getTotalQuantityInReviewOrder();
+    }
+    public static void clickReviewOrderTrashIcon(String code)throws InterruptedException{
+        catalogPage.clickReviewOrderTrashIcon(code);
+    }
 
 }
