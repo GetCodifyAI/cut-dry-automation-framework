@@ -1,7 +1,8 @@
-package com.cutanddry.qa.tests.Multi_UOM;
+package com.cutanddry.qa.tests.multi_uom;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.CatalogData;
 import com.cutanddry.qa.functions.Catalog;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
@@ -13,14 +14,15 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheEditQuantityOfMultipleUOMInOrderGuideTest extends TestBase {
+public class VerifyTheEditQuantityOfMultipleUOMInReviewOrderTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    static String customerId = "16579";
-    String searchItemCode = "01700";
-    static double itemOGPriceUOM1 ,itemOGPriceUOM2,totalOGItemPrice1;
-    String uom1 = "1";
-    String uom2 = "2";
+    static String customerId = CatalogData.CUSTOMER_ID;
+    String searchItemCode = CatalogData.ITEM_CODE;
+    static double itemOGPriceUOM1 ,itemOGPriceUOM2,totalOGItemPrice1,totalItemPriceReviewOrder;
+    String uom1 = CatalogData.MULTI_UOM_1;
+    String uom2 = CatalogData.MULTI_UOM_2;
+    static String totalItemQuantityReviewOrder;
 
     @BeforeMethod
     public void setUp() {
@@ -29,8 +31,8 @@ public class VerifyTheEditQuantityOfMultipleUOMInOrderGuideTest extends TestBase
     }
 
 
-    @Test(groups = "DOT-TC-744")
-    public void VerifyTheEditQuantityOfMultipleUOMInOrderGuide() throws InterruptedException {
+    @Test(groups = "DOT-TC-754")
+    public void VerifyTheEditQuantityOfMultipleUOMInReviewOrder() throws InterruptedException {
 
         softAssert = new SoftAssert();
 
@@ -53,10 +55,23 @@ public class VerifyTheEditQuantityOfMultipleUOMInOrderGuideTest extends TestBase
         softAssert.assertEquals(Math.round(totalOGItemPrice1 * 100.0) / 100.0,
                 ((Math.round(itemOGPriceUOM1 * 100.0) / 100.0)+(Math.round(itemOGPriceUOM2 * 100.0) / 100.0)), "The item has not been selected.");
 
+        Customer.checkoutItems();
+        softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
+        totalItemPriceReviewOrder = Catalog.getTotalPriceInReviewOrder();
+        totalItemQuantityReviewOrder = Catalog.getTotalQuantityInReviewOrder();
+        Catalog.clickOGAddToCartPlusIcon(1,searchItemCode, uom1);
+        Catalog.clickOGAddToCartPlusIcon(1,searchItemCode, uom2);
+        softAssert.assertEquals(Catalog.getItemUOMQuantity(searchItemCode, uom1),"2", "item count error");
+        softAssert.assertEquals(Catalog.getItemUOMQuantity(searchItemCode, uom2),"2", "item count error");
+        softAssert.assertEquals(Math.round(Catalog.getTotalPriceInReviewOrder() * 100.0) / 100.0,
+                ((Math.round(totalItemPriceReviewOrder *2* 100.0) / 100.0)), "The item has not been selected.");
+        softAssert.assertEquals(Catalog.getTotalQuantityInReviewOrder(),"4", "item count error");
+
+        Catalog.clickOGAddToCartMinusIcon(1,searchItemCode, uom1);
         Catalog.clickOGAddToCartMinusIcon(1,searchItemCode, uom2);
-        softAssert.assertEquals(Catalog.getItemUOMQuantity(searchItemCode, uom2),"0", "item count error");
-        softAssert.assertEquals(Math.round(Customer.getItemPriceOnCheckoutButton() * 100.0) / 100.0,
-                ((Math.round(itemOGPriceUOM1 * 100.0) / 100.0)), "The item has not been removed.");
+        softAssert.assertEquals(Math.round(Catalog.getTotalPriceInReviewOrder() * 100.0) / 100.0,
+                ((Math.round(totalItemPriceReviewOrder * 100.0) / 100.0)), "The item has not been selected.");
+        softAssert.assertEquals(Catalog.getTotalQuantityInReviewOrder(),"2", "item count error");
         softAssert.assertAll();
     }
     @AfterMethod
