@@ -1777,9 +1777,9 @@ public class Customer {
     public static void typeOnFinalWeight(String weight) throws InterruptedException {
         customersPage.typeOnFinalWeight(weight);
     }
-    public static String getItemPriceOnEditOrderCheckout() throws InterruptedException {
-        return customersPage.getItemPriceOnEditOrderCheckout();
-    }
+//    public static String getItemPriceOnEditOrderCheckout() throws InterruptedException {
+//        return customersPage.getItemPriceOnEditOrderCheckout();
+//    }
     public static void clickEditOrderCheckout()throws InterruptedException{
         if (customersPage.isPreviousDraftOrderNoDisplayed()){
             customersPage.clickPreviousDraftOrderNo();
@@ -1789,9 +1789,9 @@ public class Customer {
     public static String getConfirmFinalPrice() throws InterruptedException {
         return customersPage.getConfirmFinalPrice();
     }
-    public static String getPriceInCustomerOrder() throws InterruptedException {
-        return customersPage.getPriceInCustomerOrder();
-    }
+//    public static String getPriceInCustomerOrder() throws InterruptedException {
+//        return customersPage.getPriceInCustomerOrder();
+//    }
     public static String getPoundPrice() throws InterruptedException {
         return customersPage.getPoundPrice();
     }
@@ -1837,12 +1837,27 @@ public class Customer {
     public static String getItemSplitFinalWeight() throws InterruptedException {
         return customersPage.getItemSplitFinalWeight();
     }
-    public static String getSplitFinalWeightPrice() throws InterruptedException {
-        return customersPage.getSplitFinalWeightPrice();
+    public static String getEditSplitFinalWeightPrice() throws InterruptedException {
+        return customersPage.getEditSplitFinalWeightPrice();
     }
 
     public static void scrollBottomOfPage()throws InterruptedException{
         customersPage.scrollBottomOfPage();
+    }
+    public static boolean isItemValueAdded(String code){
+        return customersPage.isItemValueAdded(code);
+    }
+    public static void editSpotPrice(){
+        customersPage.editSpotPrice();
+    }
+    public static double getPriceInCustomerOrder() throws InterruptedException {
+        return customersPage.getPriceInCustomerOrder();
+    }
+    public static double getItemPriceOnEditOrderCheckout() throws InterruptedException {
+        return customersPage.getItemPriceOnEditOrderCheckout();
+    }
+    public static double getSplitFinalWeightPrice() throws InterruptedException {
+        return customersPage.getSplitFinalWeightPrice();
     }
 
 }

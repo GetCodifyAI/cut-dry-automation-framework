@@ -18,7 +18,7 @@ public class ValidateTheSplitWeightTest extends TestBase{
     static User user;
     static String distributorTarantino = PriceData.DISTRIBUTOR_TARANTINO;
     static String customerId = PriceData.CUSTOMER_ID_4;
-    static String itemPrice ;
+    static double itemPrice ;
     static String searchItemCode;
     static String itemName = PriceData.ITEM_NAME_SPLIT_WEIGHT;
 
@@ -73,9 +73,11 @@ public class ValidateTheSplitWeightTest extends TestBase{
         Customer.enterWeightValue("10");
         Customer.clickUpdateWeight();
         softAssert.assertEquals(Customer.getItemQtyFirstRow(),"20", "item count error");
-        softAssert.assertEquals(Customer.getItemSplitFinalWeight(),"200", "item weight error");
-        softAssert.assertEquals(Customer.getSplitFinalWeightPrice(),"$520.00", "item price error");
+        softAssert.assertEquals(Customer.getItemSplitFinalWeight(),"200 LB", "item weight error");
+        softAssert.assertEquals(Customer.getEditSplitFinalWeightPrice(),"$520.00", "item price error");
+
         itemPrice=Customer.getSplitFinalWeightPrice();
+
         softAssert.assertEquals(Customer.getItemPriceOnEditOrderCheckout(),itemPrice,"The item has not been selected.");
         Customer.clickEditOrderCheckout();
         softAssert.assertTrue(Orders.isSubmitPopupDisplayed(),"submit pop up not display");
