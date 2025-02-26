@@ -1,7 +1,8 @@
-package com.cutanddry.qa.tests.Multi_UOM;
+package com.cutanddry.qa.tests.multi_uom;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.CatalogData;
 import com.cutanddry.qa.functions.Catalog;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
@@ -16,13 +17,13 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheEditQuantityOfMultipleUOMInPDPTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    static String customerId = "16579";
-    String searchItemCode = "01700";
-    String itemName = "Artichoke -24CT";
-    String uomDropDownOption = "Multiple Units";
+    static String customerId = CatalogData.CUSTOMER_ID;
+    String searchItemCode = CatalogData.ITEM_CODE;
+    String itemName = CatalogData.ITEM_NAME;
+    String uomDropDownOption = CatalogData.UOM_DROPDOWN_OPTION;
     static double itemPriceUOM1 ,itemPriceUOM2,totalOGItemPrice1;
-    String uom1 = "1";
-    String uom2 = "2";
+    String uom1 = CatalogData.MULTI_UOM_1;
+    String uom2 = CatalogData.MULTI_UOM_2;
 
     @BeforeMethod
     public void setUp() {

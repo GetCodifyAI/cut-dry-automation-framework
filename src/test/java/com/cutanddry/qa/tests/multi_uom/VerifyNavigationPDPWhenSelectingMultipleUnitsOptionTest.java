@@ -1,7 +1,8 @@
-package com.cutanddry.qa.tests.Multi_UOM;
+package com.cutanddry.qa.tests.multi_uom;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.CatalogData;
 import com.cutanddry.qa.functions.Catalog;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
@@ -13,17 +14,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyEditedQuantitiesAfterEditingMultipleUOMInPDPTest extends TestBase {
+public class VerifyNavigationPDPWhenSelectingMultipleUnitsOptionTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    static String customerId = "16579";
-    String searchItemCode = "01700";
-    String itemName = "Artichoke -24CT";
-    String addedQuantity = "Added: 1 Packs | 1 CS";
-    String uomDropDownOption = "Multiple Units";
-    static double itemPriceUOM1 ,itemPriceUOM2,totalOGItemPrice1;
-    String uom1 = "1";
-    String uom2 = "2";
+    static String customerId = CatalogData.CUSTOMER_ID;
+    String searchItemCode = CatalogData.ITEM_CODE;
+    String itemName = CatalogData.ITEM_NAME;
+    String uomDropDownOption = CatalogData.UOM_DROPDOWN_OPTION;
 
     @BeforeMethod
     public void setUp() {
@@ -32,8 +29,8 @@ public class VerifyEditedQuantitiesAfterEditingMultipleUOMInPDPTest extends Test
     }
 
 
-    @Test(groups = "DOT-TC-751")
-    public void VerifyEditedQuantitiesAfterEditingMultipleUOMInPDP() throws InterruptedException {
+    @Test(groups = "DOT-TC-757")
+    public void VerifyNavigationPDPWhenSelectingMultipleUnitsOption() throws InterruptedException {
 
         softAssert = new SoftAssert();
 
@@ -51,18 +48,6 @@ public class VerifyEditedQuantitiesAfterEditingMultipleUOMInPDPTest extends Test
         Catalog.ClickOnMultiUomDropDown(itemName);
         Catalog.ClickOnMultiUomDropDownOption(uomDropDownOption);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
-        itemPriceUOM1 = Catalog.getPDPPriceUOM(uom1);
-        itemPriceUOM2 = Catalog.getPDPPriceUOM(uom2);
-        Catalog.clickAddToCartPlusIcon(1, uom1);
-        Catalog.clickAddToCartPlusIcon(2, uom2);
-        softAssert.assertEquals(Math.round(Customer.getItemPriceOnCheckoutButtonViaPDP() * 100.0) / 100.0,
-                ((Math.round(itemPriceUOM1 * 100.0) / 100.0)+(Math.round(itemPriceUOM2 * 2 * 100.0) / 100.0)), "The item has not been selected.");
-        Catalog.clickAddToCartMinusIcon(1, uom2);
-        softAssert.assertEquals(Math.round(Customer.getItemPriceOnCheckoutButtonViaPDP() * 100.0) / 100.0,
-                ((Math.round(itemPriceUOM1 * 100.0) / 100.0)+(Math.round(itemPriceUOM2 * 100.0) / 100.0)), "The item has not been selected.");
-        Catalog.clickBack();
-        softAssert.assertTrue(Catalog.isEditQuantitiesButtonDisplayed(itemName),"edit quantities button display error");
-        softAssert.assertTrue(Catalog.isAddedQuantitiesDisplayed(itemName,addedQuantity));
         softAssert.assertAll();
     }
     @AfterMethod
