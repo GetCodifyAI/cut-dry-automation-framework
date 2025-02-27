@@ -1,120 +1,170 @@
 version: 2.1
 
 executors:
-  ui-tests-executor:
+  default-executor:
     docker:
       - image: cimg/base:stable
-    environment:
-      MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
-    resource_class: large
 
-jobs:
-  ui-tests:
-    parameters:
-      suite:
-        type: string
-    executor: ui-tests-executor
-#    parallelism: 1
+commands:
+  install-java-maven:
     steps:
-      - checkout
-
-      # Restore cached dependencies to reduce downloads
-      - restore_cache:
-          key: dependency-cache-{{ checksum "pom.xml" }}
-
-      # Install Java (if not already installed)
       - run:
-          name: Install Java 22
+          name: Install Java 22 & Maven
           command: |
-            if ! java -version | grep "22"; then
-              sudo apt-get update && sudo apt-get install -y wget
-              wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
-              sudo mkdir -p /usr/lib/jvm
-              sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-              sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-              echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
-              source $BASH_ENV
-            fi
-            java -version
+            sudo apt-get update && sudo apt-get install -y wget maven
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version && mvn -version
 
-      # Install Maven (if not already installed)
+  install-chrome:
+    steps:
       - run:
-          name: Install Maven
+          name: Install Google Chrome
           command: |
-            if ! mvn -version | grep "Apache Maven"; then
-              sudo apt-get install -y maven
-            fi
-            mvn -version
-
-      # Install Chrome (if not already installed)
-      - run:
-          name: Install Chrome
-          command: |
-            if ! google-chrome --version | grep "Google Chrome"; then
-              wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-              sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-              sudo apt-get update
-              sudo apt-get install -y google-chrome-stable
-            fi
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+            sudo apt-get update && sudo apt-get install -y google-chrome-stable
             google-chrome --version
 
-      # Save dependencies cache to avoid repeated downloads
-      - save_cache:
-          key: dependency-cache-{{ checksum "pom.xml" }}
-          paths:
-            - ~/.m2
-            - /usr/lib/jvm
-            - /usr/bin/java
-            - /usr/bin/google-chrome
-
-      # Run UI tests in parallel mode (Dividing test cases automatically)
+jobs:
+  build-and-test:
+    executor: default-executor
+    steps:
+      - checkout
+      - install-java-maven
+      - install-chrome
       - run:
-          name: Execute UI Tests
-          command: mvn clean test -Dsurefire.suiteXmlFiles=<< parameters.suite >> -Drun.headless=true -Dtest.env=uat
-
-      # Store only failed test logs & reports to minimize network overhead
+          name: Build and run tests
+          command: mvn clean test -Dsurefire.suiteXmlFiles=bvt.xml -Drun.headless=true -Dtest.env=uat
       - store_artifacts:
           path: target/surefire-reports
-          destination: test-results
+          destination: build-and-test-artifacts
+
+  run-tests:
+    parameters:
+      suiteXmlFile:
+        type: string
+      createCycle:
+        type: boolean
+    executor: default-executor
+    steps:
+      - checkout
+      - install-java-maven
+      - install-chrome
+      - run:
+          name: Run Tests
+          command: |
+            mvn clean test -Dsurefire.suiteXmlFiles=<< parameters.suiteXmlFile >> -Drun.headless=true -Dtest.env=uat <<# parameters.createCycle >> -Dcreate.cycle=true <</ parameters.createCycle >>
+      - store_artifacts:
+          path: target/surefire-reports
+          destination: test-artifacts
 
 workflows:
   version: 2
-
   build-and-test:
     jobs:
-      - ui-tests:
-          matrix:
-            parameters:
-              suite: ["bvt.xml"]
+      - build-and-test
 
-#  scheduled-test-1:
-#    triggers:
-#      - schedule:
-#          cron: "30 20 * * *"  # Runs at 2:00 AM IST (08:30 PM UTC)
-#          filters:
-#            branches:
-#              only:
-#                - feature/circleci_execution
-#    jobs:
-#      - ui-tests:
-#          matrix:
-#            parameters:
-#              suite: ["regression1.xml", "regression2.xml", "regression3.xml",
-#                      "regression4.xml", "regression5.xml", "regression6.xml",
-#                      "regression7.xml", "regression8.xml", "regression9.xml", "regression10.xml"]
-
-  scheduled-test-2:
+  scheduled-nightly:
     triggers:
       - schedule:
-          cron: "15 14 * * 1-5"  # Runs at 7:45 PM IST (2:15 PM UTC)
+          cron: "30 15 * * *"  # 9:00 PM IST (03:30 PM UTC)
           filters:
             branches:
               only:
                 - feature/circleci_execution
     jobs:
-      - ui-tests:
-          matrix:
-            parameters:
-              suite: ["regression1.xml", "regression2.xml", "regression3.xml",
-                      "regression4.xml", "regression5.xml", "regression6.xml",
-                      "regression7.xml", "regression8.xml", "regression9.xml", "regression10.xml"]
+      - run-tests:
+          name: nightly-build-and-test-1
+          suiteXmlFile: regression1.xml
+          createCycle: false
+      - run-tests:
+          name: nightly-build-and-test-2
+          suiteXmlFile: regression2.xml
+          createCycle: false
+      - run-tests:
+          name: nightly-build-and-test-3
+          suiteXmlFile: regression3.xml
+          createCycle: false
+      - run-tests:
+          name: nightly-build-and-test-4
+          suiteXmlFile: regression4.xml
+          createCycle: false
+      - run-tests:
+          name: nightly-build-and-test-5
+          suiteXmlFile: regression5.xml
+          createCycle: false
+      - run-tests:
+          name: nightly-build-and-test-6
+          suiteXmlFile: regression6.xml
+          createCycle: false
+      - run-tests:
+          name: nightly-build-and-test-7
+          suiteXmlFile: regression7.xml
+          createCycle: false
+      - run-tests:
+          name: nightly-build-and-test-8
+          suiteXmlFile: regression8.xml
+          createCycle: false
+      - run-tests:
+          name: nightly-build-and-test-9
+          suiteXmlFile: regression9.xml
+          createCycle: false
+      - run-tests:
+          name: nightly-build-and-test-10
+          suiteXmlFile: regression10.xml
+          createCycle: false
+
+  scheduled-daily:
+    triggers:
+      - schedule:
+          cron: "45 05 * * 1-5"  # 11:15 AM IST (05:45 AM UTC)
+          filters:
+            branches:
+              only:
+                - feature/circleci_execution
+    jobs:
+      - run-tests:
+          name: daily-build-and-test-1
+          suiteXmlFile: regression1.xml
+          createCycle: true
+      - run-tests:
+          name: daily-build-and-test-2
+          suiteXmlFile: regression2.xml
+          createCycle: true
+      - run-tests:
+          name: daily-build-and-test-3
+          suiteXmlFile: regression3.xml
+          createCycle: true
+      - run-tests:
+          name: daily-build-and-test-4
+          suiteXmlFile: regression4.xml
+          createCycle: true
+      - run-tests:
+          name: daily-build-and-test-5
+          suiteXmlFile: regression5.xml
+          createCycle: true
+      - run-tests:
+          name: daily-build-and-test-6
+          suiteXmlFile: regression6.xml
+          createCycle: true
+      - run-tests:
+          name: daily-build-and-test-7
+          suiteXmlFile: regression7.xml
+          createCycle: true
+      - run-tests:
+          name: daily-build-and-test-8
+          suiteXmlFile: regression8.xml
+          createCycle: true
+      - run-tests:
+          name: daily-build-and-test-9
+          suiteXmlFile: regression9.xml
+          createCycle: true
+      - run-tests:
+          name: daily-build-and-test-10
+          suiteXmlFile: regression10.xml
+          createCycle: true
