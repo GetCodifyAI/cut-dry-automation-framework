@@ -522,7 +522,22 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     By txt_lastOrderedPrice = By.xpath("//td[contains(@class,'font-weight-light py-3 text-nowrap') and contains(text(),'/lb')]");
     By txt_lastOrderedPriceOff = By.xpath("//td[contains(@class, 'py-3') and div[contains(text(), 'CS')]]");
     By btn_checkoutOperator = By.xpath("//button[@data-for='cartCheckoutButton']");
+    By txt_previuosDraftOrderPopUp = By.xpath("//div[contains(text(), 'previous draft order')]");
+    By btn_previuosDraftOrderPopUpClose = By.xpath("//span[contains(text(), 'x')]");
+    By dropdown_option_orderguideSettings = By.xpath("//a[@class='_1ccoy1o text-decoration-none dropdown-item' and text()='Order Guide Settings']");
+//    By AddAlertButton = By.xpath("//*[name()='svg' and @data-icon='pencil']");
+    By AddAlertButton = By.xpath("//button[@type='button' and contains(@class, 'btn-outline') and text()='Add Alert']");
+    By txt_orderReminderAlertPopUp = By.xpath("//div[contains(text(), 'Order Reminder Alert')]");
+    By orderCutoffTimeDropDown = By.xpath("//label[contains(text(),'Order Cutoff Time')]/following-sibling::div");
+    String orderCutoffTimeDropDownOption = "//div[text()='CUTOFFTIME']";
+    By sendAlertDropDown = By.xpath("//label[contains(text(),'Send Alert')]/following-sibling::div");
+    String sendAlertDropDownOption = "//div[text()='ALERTTIME']";
+    By alertDaysDropDown = By.xpath("//label[contains(text(),'Alert Days')]/following-sibling::div");
+    String alertDaysDropDownOption = "//label[text()='Alert Days']/following-sibling::div//*[text()='ALERTDAYS']";
+    By btn_orderReminderAlertsave = By.xpath("//div[@class='d-flex flex-column form-group']//button[text()='Save']");
 
+///button[@type='button' and contains(@class, 'btn-primary') and text()='Reset Values']"]
+///
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
             distributorUI.click(btn_yes);
@@ -868,15 +883,28 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         }
         distributorUI.clickWithFallback(btn_edit);
     }
+//    public boolean isEditOrderGuideTextDisplayed(){
+//        try {
+//            distributorUI.waitForVisibility(txt_editOrderGuide);
+//
+//        } catch (Exception e){
+//            return false;
+//        }
+//        distributorUI.waitForVisibility(txt_editOrderGuide);
+//        return distributorUI.isDisplayed(txt_editOrderGuide);
+//    }
+
     public boolean isEditOrderGuideTextDisplayed(){
-       /* try {
+        try {
             distributorUI.waitForVisibility(txt_editOrderGuide);
+            distributorUI.waitForCustom(4000);
         } catch (Exception e){
             return false;
-        }*/
-        distributorUI.waitForVisibility(txt_editOrderGuide);
+        }
         return distributorUI.isDisplayed(txt_editOrderGuide);
     }
+
+
     public void clickOnMoreOptions(){
         distributorUI.waitForClickability(btn_moreOptions);
         distributorUI.click(btn_moreOptions);
@@ -3091,5 +3119,90 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
         distributorUI.click(btn_checkoutOperator);
         distributorUI.waitForCustom(4000);
     }
+
+    public boolean isPreviousDraftOrderPopupDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_previuosDraftOrderPopUp,20);
+//            distributorUI.waitForCustom(4000);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_previuosDraftOrderPopUp);
+    }
+
+    public void clickClosePreviousDraftOrderPopup(){
+        distributorUI.waitForClickability(btn_previuosDraftOrderPopUpClose);
+        distributorUI.click(btn_previuosDraftOrderPopUpClose);
+
+
+    }
+
+    public void clickOnOrderGuideSettings(){
+        distributorUI.waitForClickability(dropdown_option_orderguideSettings);
+        distributorUI.click(dropdown_option_orderguideSettings);
+    }
+
+    public void clickOnOrderReminderAlert(){
+        distributorUI.waitForClickability(AddAlertButton);
+        distributorUI.click(AddAlertButton);
+    }
+
+    public boolean isOrderReminderAlertPopDisplayed(){
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        distributorUI.waitForVisibility(txt_orderReminderAlertPopUp);
+        return distributorUI.isDisplayed(txt_orderReminderAlertPopUp);
+    }
+
+    public void clickOrderCutoffTime(String cutofftime)throws InterruptedException{
+        distributorUI.waitForClickability(orderCutoffTimeDropDown);
+        distributorUI.click(orderCutoffTimeDropDown);
+        distributorUI.click(By.xpath(orderCutoffTimeDropDownOption.replace("CUTOFFTIME",cutofftime)));
+    }
+
+    public void clickSendAlert(String alerttime)throws InterruptedException{
+        distributorUI.waitForClickability(sendAlertDropDown);
+        distributorUI.click(sendAlertDropDown);
+        distributorUI.click(By.xpath(sendAlertDropDownOption.replace("ALERTTIME",alerttime)));
+    }
+
+    public void clickAlertDays(String alertdays)throws InterruptedException{
+        distributorUI.waitForClickability(alertDaysDropDown);
+        distributorUI.click(alertDaysDropDown);
+        distributorUI.click(By.xpath(alertDaysDropDownOption.replace("ALERTDAYS",alertdays)));
+    }
+
+    public void clickOrderRemiderAlertSettingSave() throws InterruptedException{
+        distributorUI.waitForClickability(btn_orderReminderAlertsave);
+        distributorUI.click(btn_orderReminderAlertsave);
+    }
+
+
+
+
+
+
+
+
+
+
+//    public String getItemCodeFirstRow() throws InterruptedException {
+//        distributorUI.waitForVisibility(lbl_itemCodeList);
+//        distributorUI.waitForCustom(3000);
+//        return distributorUI.getText(lbl_itemCodeList);
+//    }
+
+//    public boolean isFilterCustomersPopUpDisplayed(){
+//        try {
+//            distributorUI.waitForVisibility(txt_filterCustomersPopUp);
+//            distributorUI.waitForCustom(2000);
+//        } catch (Exception e){
+//            return false;
+//        }
+//        return distributorUI.isDisplayed(txt_filterCustomersPopUp);
+//    }
 
 }
