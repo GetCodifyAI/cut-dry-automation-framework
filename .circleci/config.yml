@@ -11,7 +11,7 @@ executors:
 jobs:
   ui-tests:
     executor: ui-tests-executor
-    parallelism: 3  # Running 3 parallel test executions instead of 9+ separate jobs
+    parallelism: 3  # Running 3 parallel test executions instead of 10 separate jobs
     steps:
       - checkout
 
@@ -19,9 +19,9 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "pom.xml" }}
 
-      # Install Java if not available (Uses cache if available)
+      # Install Java, Maven, Chrome only if needed
       - run:
-          name: Install Java 22
+          name: Install Dependencies
           command: |
             if ! java -version | grep "22"; then
               sudo apt-get update && sudo apt-get install -y wget
@@ -34,19 +34,11 @@ jobs:
             fi
             java -version
 
-      # Install Maven (Avoids reinstalling if cached)
-      - run:
-          name: Install Maven
-          command: |
             if ! mvn -version | grep "Apache Maven"; then
               sudo apt-get install -y maven
             fi
             mvn -version
 
-      # Install Chrome (Avoids unnecessary downloads)
-      - run:
-          name: Install Chrome
-          command: |
             if ! google-chrome --version | grep "Google Chrome"; then
               wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
               sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
@@ -55,7 +47,7 @@ jobs:
             fi
             google-chrome --version
 
-      # Save dependencies cache to avoid repeated downloads
+      # Save dependencies cache
       - save_cache:
           key: dependency-cache-{{ checksum "pom.xml" }}
           paths:
@@ -64,12 +56,12 @@ jobs:
             - /usr/bin/java
             - /usr/bin/google-chrome
 
-      # Run UI tests in parallel mode (Dividing test cases automatically)
+      # Run UI tests in parallel mode
       - run:
           name: Execute UI Tests
           command: mvn clean test -Dsurefire.suiteXmlFiles=bvt.xml -Drun.headless=true -Dtest.env=uat -Dsurefire.parallel=methods -Dsurefire.threadCount=3
 
-      # Store only failed test logs & reports to minimize network overhead
+      # Store only failed test logs
       - store_artifacts:
           path: target/surefire-reports
           destination: test-results
@@ -79,3 +71,37 @@ workflows:
   build-and-test:
     jobs:
       - ui-tests
+
+  # Nightly scheduled tests (10 sets)
+#  scheduled-test-1:
+#    triggers:
+#      - schedule:
+#          cron: "30 20 * * *"  # 2:00 AM IST
+#          filters:
+#            branches:
+#              only:
+#                - main
+#    jobs:
+#      - ui-tests:
+#          name: nightly-build-and-test-1
+#          matrix:
+#            parameters:
+#              suite: ["regression1.xml", "regression2.xml", "regression3.xml", "regression4.xml", "regression5.xml",
+#                      "regression6.xml", "regression7.xml", "regression8.xml", "regression9.xml", "regression10.xml"]
+
+  # Daily scheduled tests (10 sets)
+  scheduled-test-2:
+    triggers:
+      - schedule:
+          cron: "30 12 * * 1-5"  # This will run daily-build-and-test at 6:00 PM IST (12:30 PM UTC)
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - ui-tests:
+          name: daily-build-and-test-1
+          matrix:
+            parameters:
+              suite: ["regression1.xml", "regression2.xml", "regression3.xml", "regression4.xml", "regression5.xml",
+                      "regression6.xml", "regression7.xml", "regression8.xml", "regression9.xml", "regression10.xml"]
