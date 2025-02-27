@@ -1710,4 +1710,44 @@ public class Customer {
         Thread.sleep(4000);
     }
 
+    public static void clickOnOrderGuideSettings(){
+        customersPage.clickOnOrderGuideSettings();
+    }
+
+    public static void clickOnOrderReminderAlert(){
+        customersPage.clickOnOrderReminderAlert();
+    }
+
+    public static boolean isOrderReminderAlertPopDisplayed(){
+        return customersPage.isOrderReminderAlertPopDisplayed();
+    }
+
+    public static void clickOrderCutoffTime(String cutofftime) throws InterruptedException {
+        customersPage.clickOrderCutoffTime(cutofftime);
+    }
+
+    public static void clickSendAlert(String alerttime) throws InterruptedException {
+        customersPage.clickSendAlert(alerttime);
+    }
+
+    public static void clickAlertDays(String alertdays) throws InterruptedException {
+        customersPage.clickAlertDays(alertdays);
+    }
+
+    public static void clickOrderRemiderAlertSettingSave() throws InterruptedException{
+        customersPage.clickOrderRemiderAlertSettingSave();
+    }
+
+
+
+//    public static boolean isPreviousDraftOrderPopupDisplayed(){
+//        return customersPage.isPreviousDraftOrderPopupDisplayed();
+//    }
+//
+//    public static void clickClosePreviousDraftOrderPopup(){
+//        customersPage.clickClosePreviousDraftOrderPopup();
+//    }
+
+
+
 }
