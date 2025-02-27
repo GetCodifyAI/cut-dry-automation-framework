@@ -94,7 +94,7 @@ workflows:
           filters:
             branches:
               only:
-                - main
+                - feature/circleci_execution
     jobs:
       - ui-tests:
           matrix:
