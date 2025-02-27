@@ -73,7 +73,7 @@ workflows:
   scheduled-nightly:
     triggers:
       - schedule:
-          cron: "42 15 * * *"  # 9:12 PM IST (03:42 PM UTC)
+          cron: "30 17 * * *"  # 11:00 PM IST (05:30 PM UTC)
           filters:
             branches:
               only:
