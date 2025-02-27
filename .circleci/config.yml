@@ -14,7 +14,7 @@ jobs:
       suite:
         type: string
     executor: ui-tests-executor
-    parallelism: 3  # Running 3 parallel test executions instead of 9+ separate jobs
+    parallelism: 3  # Running 3 parallel test executions instead of separate jobs
     steps:
       - checkout
 
@@ -22,7 +22,7 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "pom.xml" }}
 
-      # Install Java if not available (Uses cache if available)
+      # Install Java (if not already installed)
       - run:
           name: Install Java 22
           command: |
@@ -37,7 +37,7 @@ jobs:
             fi
             java -version
 
-      # Install Maven (Avoids reinstalling if cached)
+      # Install Maven (if not already installed)
       - run:
           name: Install Maven
           command: |
@@ -46,7 +46,7 @@ jobs:
             fi
             mvn -version
 
-      # Install Chrome (Avoids unnecessary downloads)
+      # Install Chrome (if not already installed)
       - run:
           name: Install Chrome
           command: |
@@ -106,7 +106,7 @@ workflows:
   scheduled-test-2:
     triggers:
       - schedule:
-          cron: "50 12 * * 1-5"  # Runs at 6:20 PM IST (12:50 PM UTC)
+          cron: "55 13 * * 1-5"  # Runs at 7:25 PM IST (1:55 PM UTC)
           filters:
             branches:
               only:
