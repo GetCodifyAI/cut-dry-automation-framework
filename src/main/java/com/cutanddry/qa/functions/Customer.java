@@ -161,6 +161,16 @@ public class Customer {
     }
     public static void submitOrder(){
         customersPage.submitOrder();
+        if (customersPage.isOrderMiniumErrorBannerDisplayed()){
+            dashboardPage.clickOnOrderSettings();
+            settingsPage.selectOnOrderMinimums();
+            try {
+                settingsPage.clickOnSaveChanges();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            customersPage.clickOnBack();
+        }
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
         }
@@ -1750,8 +1760,14 @@ public class Customer {
             customersPage.clickPlusQryFirstRowClassic();
         }
     }
-    public static void submitOrderForApproval(){
+    public static void submitOrderForApproval() throws InterruptedException {
         customersPage.submitOrderForApproval();
+        if (customersPage.isOrderMiniumErrorBannerDisplayed()){
+            dashboardPage.clickOnOrderSettings();
+            settingsPage.selectOnOrderMinimums();
+            settingsPage.clickOnSaveChanges();
+            customersPage.clickOnBack();
+        }
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
         }

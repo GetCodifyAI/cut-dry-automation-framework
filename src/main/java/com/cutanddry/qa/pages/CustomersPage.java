@@ -145,7 +145,7 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By txt_replacement = By.xpath("//div[contains(normalize-space(text()), 'If out of stock, sub with')]");
     By lbl_NotSelected = By.xpath("//*[contains(text(),'Not Selected')]");
     By lbl_doNotSubstitute = By.xpath("//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'do not substitute')]");
-    String txt_item = "//div[contains(text(), 'CODE')]";
+    String txt_item = "//span[contains(text(), 'CODE')]";
     By lbl_SubstituteItem = By.xpath("//div[contains(text(), 'Substitute with:')]");
     String txt_itemPercentage = "//span[contains(text(), 'CODE')]";
     By btn_increaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div/div[3]");
@@ -2029,7 +2029,7 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
         return distributorUI.isDisplayed(lbl_margin);
     }
     public void enterMarginValue(String num) throws InterruptedException {
-        distributorUI.clear(lbl_margin);
+        distributorUI.clearUsingJavaScript(lbl_margin);
         distributorUI.waitForCustom(1000);
         distributorUI.sendKeysAndEnterMac(lbl_margin, num);
         distributorUI.waitForCustom(1000);
