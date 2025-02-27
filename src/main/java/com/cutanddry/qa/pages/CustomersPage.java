@@ -560,6 +560,7 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
     String itemValue = "//span[contains(text(), 'CODE')]";
     By btn_getSplitWeight = By.xpath("(//td[8]/div/div/div/div)[1]");
 
+    By dropdown_option_orderguideSettings = By.xpath("//a[@class='_1ccoy1o text-decoration-none dropdown-item' and text()='Order Guide Settings']");
 
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
@@ -3334,6 +3335,13 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
         distributorUI.waitForCustom(4000);
         return Double.valueOf(distributorUI.getText(splitFinalWeightPrice).replace("$",""));
     }
+
+
+    public void clickOnOrderGuideSettings(){
+        distributorUI.waitForClickability(dropdown_option_orderguideSettings);
+        distributorUI.click(dropdown_option_orderguideSettings);
+    }
+
 
 
 }

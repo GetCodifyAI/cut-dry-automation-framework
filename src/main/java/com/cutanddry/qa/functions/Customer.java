@@ -1876,4 +1876,13 @@ public class Customer {
         return customersPage.getSplitFinalWeightPrice();
     }
 
+    public static void clickOnOrderGuideSettings(){
+        customersPage.clickOnOrderGuideSettings();
+    }
+
+
+
 }
+
+
+
