@@ -29,7 +29,7 @@ commands:
             # Verify installation
             java -version && mvn -version
 
-install-chrome:
+  install-chrome:
     steps:
       - run:
           name: Install Google Chrome
@@ -59,6 +59,7 @@ install-chrome:
             # Verify Chrome installation
             google-chrome --version
 
+  
 
 jobs:
   build-and-test:
