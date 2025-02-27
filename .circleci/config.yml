@@ -14,7 +14,7 @@ jobs:
       suite:
         type: string
     executor: ui-tests-executor
-    parallelism: 3  # Running 3 parallel test executions instead of separate jobs
+    parallelism: 3  # Running 3 parallel test executions
     steps:
       - checkout
 
@@ -67,10 +67,12 @@ jobs:
             - /usr/bin/java
             - /usr/bin/google-chrome
 
-      # Run UI tests in parallel mode (Dividing test cases automatically)
+      # Run UI tests with optimized test splitting for parallel execution
       - run:
-          name: Execute UI Tests
-          command: mvn clean test -Dsurefire.suiteXmlFiles=<< parameters.suite >> -Drun.headless=true -Dtest.env=uat -Dsurefire.parallel=methods -Dsurefire.threadCount=3
+          name: Execute UI Tests in Parallel
+          command: |
+            TEST_CLASSES=$(circleci tests glob "src/test/java/**/*.java" | circleci tests split --split-by=timings)
+            mvn clean test -Dtest=$TEST_CLASSES -Dsurefire.suiteXmlFiles=<< parameters.suite >> -Drun.headless=true -Dtest.env=uat -Dsurefire.parallel=methods -Dsurefire.threadCount=3
 
       # Store only failed test logs & reports to minimize network overhead
       - store_artifacts:
@@ -106,7 +108,7 @@ workflows:
   scheduled-test-2:
     triggers:
       - schedule:
-          cron: "55 13 * * 1-5"  # Runs at 7:25 PM IST (1:55 PM UTC)
+          cron: "05 14 * * 1-5"  # Runs at 7:35 PM IST (2:05 PM UTC)
           filters:
             branches:
               only:
