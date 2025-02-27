@@ -10,8 +10,11 @@ executors:
 
 jobs:
   ui-tests:
+    parameters:
+      suite:
+        type: string
     executor: ui-tests-executor
-    parallelism: 3  # Running 3 parallel test executions instead of 10 separate jobs
+    parallelism: 3  # Running 3 parallel test executions instead of 9+ separate jobs
     steps:
       - checkout
 
@@ -19,9 +22,9 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "pom.xml" }}
 
-      # Install Java, Maven, Chrome only if needed
+      # Install Java if not available (Uses cache if available)
       - run:
-          name: Install Dependencies
+          name: Install Java 22
           command: |
             if ! java -version | grep "22"; then
               sudo apt-get update && sudo apt-get install -y wget
@@ -34,11 +37,19 @@ jobs:
             fi
             java -version
 
+      # Install Maven (Avoids reinstalling if cached)
+      - run:
+          name: Install Maven
+          command: |
             if ! mvn -version | grep "Apache Maven"; then
               sudo apt-get install -y maven
             fi
             mvn -version
 
+      # Install Chrome (Avoids unnecessary downloads)
+      - run:
+          name: Install Chrome
+          command: |
             if ! google-chrome --version | grep "Google Chrome"; then
               wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
               sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
@@ -47,7 +58,7 @@ jobs:
             fi
             google-chrome --version
 
-      # Save dependencies cache
+      # Save dependencies cache to avoid repeated downloads
       - save_cache:
           key: dependency-cache-{{ checksum "pom.xml" }}
           paths:
@@ -56,52 +67,54 @@ jobs:
             - /usr/bin/java
             - /usr/bin/google-chrome
 
-      # Run UI tests in parallel mode
+      # Run UI tests in parallel mode (Dividing test cases automatically)
       - run:
           name: Execute UI Tests
-          command: mvn clean test -Dsurefire.suiteXmlFiles=bvt.xml -Drun.headless=true -Dtest.env=uat -Dsurefire.parallel=methods -Dsurefire.threadCount=3
+          command: mvn clean test -Dsurefire.suiteXmlFiles=<< parameters.suite >> -Drun.headless=true -Dtest.env=uat -Dsurefire.parallel=methods -Dsurefire.threadCount=3
 
-      # Store only failed test logs
+      # Store only failed test logs & reports to minimize network overhead
       - store_artifacts:
           path: target/surefire-reports
           destination: test-results
 
 workflows:
   version: 2
+
   build-and-test:
     jobs:
-      - ui-tests
+      - ui-tests:
+          matrix:
+            parameters:
+              suite: ["bvt.xml"]
 
-  # Nightly scheduled tests (10 sets)
-#  scheduled-test-1:
-#    triggers:
-#      - schedule:
-#          cron: "30 20 * * *"  # 2:00 AM IST
-#          filters:
-#            branches:
-#              only:
-#                - main
-#    jobs:
-#      - ui-tests:
-#          name: nightly-build-and-test-1
-#          matrix:
-#            parameters:
-#              suite: ["regression1.xml", "regression2.xml", "regression3.xml", "regression4.xml", "regression5.xml",
-#                      "regression6.xml", "regression7.xml", "regression8.xml", "regression9.xml", "regression10.xml"]
-
-  # Daily scheduled tests (10 sets)
-  scheduled-test-2:
+  scheduled-test-1:
     triggers:
       - schedule:
-          cron: "30 12 * * 1-5"  # This will run daily-build-and-test at 6:00 PM IST (12:30 PM UTC)
+          cron: "30 20 * * *"  # Runs at 2:00 AM IST (08:30 PM UTC)
           filters:
             branches:
               only:
                 - main
     jobs:
       - ui-tests:
-          name: daily-build-and-test-1
           matrix:
             parameters:
-              suite: ["regression1.xml", "regression2.xml", "regression3.xml", "regression4.xml", "regression5.xml",
-                      "regression6.xml", "regression7.xml", "regression8.xml", "regression9.xml", "regression10.xml"]
+              suite: ["regression1.xml", "regression2.xml", "regression3.xml",
+                      "regression4.xml", "regression5.xml", "regression6.xml",
+                      "regression7.xml", "regression8.xml", "regression9.xml", "regression10.xml"]
+
+  scheduled-test-2:
+    triggers:
+      - schedule:
+          cron: "30 12 * * 1-5"  # Runs at 6:00 PM IST (12:30 PM UTC)
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - ui-tests:
+          matrix:
+            parameters:
+              suite: ["regression1.xml", "regression2.xml", "regression3.xml",
+                      "regression4.xml", "regression5.xml", "regression6.xml",
+                      "regression7.xml", "regression8.xml", "regression9.xml", "regression10.xml"]
