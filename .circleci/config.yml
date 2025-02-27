@@ -12,8 +12,9 @@ commands:
       - run:
           name: Install Java 22 & Maven
           command: |
-            # Ensure system is updated and install dependencies
-            sudo apt-get update && sudo apt-get install -y wget curl tar maven
+            # Ensure system is updated and install necessary dependencies
+            apt-get update && apt-get install -y apt-utils
+            apt-get install -y sudo wget curl tar maven
 
             # Download and extract Java 22
             wget -O openjdk-22.tar.gz https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
