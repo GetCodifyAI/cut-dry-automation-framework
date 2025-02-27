@@ -35,15 +35,15 @@ commands:
           name: Install Google Chrome
           command: |
             sudo apt-get update
-            sudo apt-get install -y sudo wget gnupg
+            sudo apt-get install -y sudo wget gnupg tzdata
 
-            # Allow services to restart (fix policy-rc.d error)
-            echo '#!/bin/sh\nexit 0' | sudo tee /usr/sbin/policy-rc.d > /dev/null
-
-            # Fix non-interactive tzdata selection issue
+            # Set timezone to avoid interactive prompt
             export DEBIAN_FRONTEND=noninteractive
             sudo ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime
             sudo dpkg-reconfigure -f noninteractive tzdata
+
+            # Allow services to restart (fix policy-rc.d error)
+            echo '#!/bin/sh\nexit 0' | sudo tee /usr/sbin/policy-rc.d > /dev/null
 
             # Add Google Chrome repository & install Chrome
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -52,6 +52,7 @@ commands:
 
             # Verify Chrome installation
             google-chrome --version
+
 
 jobs:
   build-and-test:
