@@ -155,7 +155,7 @@ public class CatalogPage extends LoginPage{
     By getTotalOrderQuantity = By.xpath("//div[contains(text(),'Items')]/../following-sibling::td");
     String multiUomDropDown = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[1]";
     String multiUomDropDownOption ="//div[text()='OPTION']";
-    String getPriceUOM = "((//button[contains(@data-for,'add-to-order-guide')]/ancestor::div[2]/following-sibling::div)[1]/following-sibling::*//div//span)[UOM]";
+    String getPriceUOM = "((//button[contains(@data-for,'add-to-order-guide')]/ancestor::div[2]/following-sibling::div)[1]/following-sibling::*//div//span[contains(text(),'$')])[UOM]";
     String btn_addToCartPlusQuantity = "((//button[contains(@data-for,'add-to-order-guide')]/ancestor::div[2]/following-sibling::div)[1]/following-sibling::*//*[name()='svg' and contains(@data-icon, 'plus')])[UOM]";
     String btn_addToCartMinusQuantity = "((//button[contains(@data-for,'add-to-order-guide')]/ancestor::div[2]/following-sibling::div)[1]/following-sibling::*//*[name()='svg' and contains(@data-icon, 'minus')])[UOM]";
     String btn_editQuantities = "//div[text()='NAME']/../../following-sibling::*//div//button[text()='Edit Quantities']";
@@ -792,7 +792,7 @@ public class CatalogPage extends LoginPage{
     public void clickAddToCartPlusIcon(String uom)throws InterruptedException{
         distributorUI.waitForVisibility(By.xpath(btn_addToCartPlusQuantity.replace("UOM", uom)));
         distributorUI.click(By.xpath(btn_addToCartPlusQuantity.replace("UOM", uom)));
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(3000);
     }
     public void clickAddToCartMinusIcon(String uom){
         distributorUI.waitForVisibility(By.xpath(btn_addToCartMinusQuantity.replace("UOM", uom)));
