@@ -32,36 +32,29 @@ commands:
   install-chrome:
     steps:
       - run:
-          name: Install Google Chrome
+          name: Install Google Chrome (Headless)
           command: |
-            # Set non-interactive mode globally
             export DEBIAN_FRONTEND=noninteractive
 
-            # Preconfigure tzdata to prevent interactive prompt
-            echo "tzdata tzdata/Areas select Etc" | sudo debconf-set-selections
-            echo "tzdata tzdata/Zones/Etc select UTC" | sudo debconf-set-selections
-
-            # Force install tzdata without asking for user input
-            sudo ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime
+            # Update package lists
             sudo apt-get update
-            sudo DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata
 
-            # Confirm timezone setting
-            sudo dpkg-reconfigure -f noninteractive tzdata
+            # Install required dependencies
+            sudo apt-get install -y wget curl gnupg ca-certificates
 
-            # Allow services to restart (fix policy-rc.d error)
-            echo '#!/bin/sh\nexit 0' | sudo tee /usr/sbin/policy-rc.d > /dev/null
-
-            # Install Chrome dependencies
-            sudo apt-get install -y sudo wget gnupg
-
-            # Add Chrome repo & install Chrome
+            # Add Google Chrome repository
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-            sudo apt-get update && sudo apt-get install -y google-chrome-stable
+            
+            # Update package lists again
+            sudo apt-get update
 
-            # Verify Chrome installation
+            # Install Google Chrome in headless mode without unnecessary GUI dependencies
+            sudo apt-get install -y --no-install-recommends google-chrome-stable
+
+            # Verify installation
             google-chrome --version
+
 
 
 jobs:
