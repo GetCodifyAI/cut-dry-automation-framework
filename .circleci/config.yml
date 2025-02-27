@@ -14,7 +14,7 @@ jobs:
       suite:
         type: string
     executor: ui-tests-executor
-    parallelism: 1
+#    parallelism: 1
     steps:
       - checkout
 
@@ -70,7 +70,7 @@ jobs:
       # Run UI tests in parallel mode (Dividing test cases automatically)
       - run:
           name: Execute UI Tests
-          command: mvn clean test -Dsurefire.suiteXmlFiles=<< parameters.suite >> -Drun.headless=true -Dtest.env=uat -Dsurefire.parallel=methods -Dsurefire.threadCount=3
+          command: mvn clean test -Dsurefire.suiteXmlFiles=<< parameters.suite >> -Drun.headless=true -Dtest.env=uat
 
       # Store only failed test logs & reports to minimize network overhead
       - store_artifacts:
@@ -87,21 +87,21 @@ workflows:
             parameters:
               suite: ["bvt.xml"]
 
-  scheduled-test-1:
-    triggers:
-      - schedule:
-          cron: "30 20 * * *"  # Runs at 2:00 AM IST (08:30 PM UTC)
-          filters:
-            branches:
-              only:
-                - feature/circleci_execution
-    jobs:
-      - ui-tests:
-          matrix:
-            parameters:
-              suite: ["regression1.xml", "regression2.xml", "regression3.xml",
-                      "regression4.xml", "regression5.xml", "regression6.xml",
-                      "regression7.xml", "regression8.xml", "regression9.xml", "regression10.xml"]
+#  scheduled-test-1:
+#    triggers:
+#      - schedule:
+#          cron: "30 20 * * *"  # Runs at 2:00 AM IST (08:30 PM UTC)
+#          filters:
+#            branches:
+#              only:
+#                - feature/circleci_execution
+#    jobs:
+#      - ui-tests:
+#          matrix:
+#            parameters:
+#              suite: ["regression1.xml", "regression2.xml", "regression3.xml",
+#                      "regression4.xml", "regression5.xml", "regression6.xml",
+#                      "regression7.xml", "regression8.xml", "regression9.xml", "regression10.xml"]
 
   scheduled-test-2:
     triggers:
