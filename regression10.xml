@@ -24,6 +24,7 @@
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantityOfMultipleUOMInPDPTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantityOfMultipleUOMInReviewOrderTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromCatalogOnlyTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMUsingAddFromCatalogTest"/>
 
 
         </classes>
