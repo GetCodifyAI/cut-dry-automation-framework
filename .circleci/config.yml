@@ -106,11 +106,11 @@ workflows:
   scheduled-test-2:
     triggers:
       - schedule:
-          cron: "45 12 * * 1-5"  # Runs at 6:15 PM IST (12:45 PM UTC)
+          cron: "50 12 * * 1-5"  # Runs at 6:20 PM IST (12:50 PM UTC)
           filters:
             branches:
               only:
-                - main
+                - feature/circleci_execution
     jobs:
       - ui-tests:
           matrix:
