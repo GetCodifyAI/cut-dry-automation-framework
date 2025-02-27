@@ -29,21 +29,22 @@ commands:
             # Verify installation
             java -version && mvn -version
 
-  install-chrome:
+install-chrome:
     steps:
       - run:
           name: Install Google Chrome
           command: |
-            sudo apt-get update
-            sudo apt-get install -y sudo wget gnupg
+            export DEBIAN_FRONTEND=noninteractive
 
-            # Fix timezone selection prompt (set UTC)
+            # Preconfigure timezone selection
             echo "tzdata tzdata/Areas select Etc" | sudo debconf-set-selections
             echo "tzdata tzdata/Zones/Etc select UTC" | sudo debconf-set-selections
-            export DEBIAN_FRONTEND=noninteractive
-            sudo apt-get install -y tzdata
 
-            # Set timezone manually (backup in case preselection fails)
+            # Update system and install dependencies
+            sudo apt-get update
+            sudo apt-get install -y sudo wget gnupg tzdata
+
+            # Ensure timezone is set correctly
             sudo ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime
             sudo dpkg-reconfigure -f noninteractive tzdata
 
@@ -57,6 +58,7 @@ commands:
 
             # Verify Chrome installation
             google-chrome --version
+
 
 jobs:
   build-and-test:
