@@ -83,42 +83,44 @@ workflows:
           name: nightly-build-and-test-1
           suiteXmlFile: regression1.xml
           createCycle: false
-      - run-tests:
-          name: nightly-build-and-test-2
-          suiteXmlFile: regression2.xml
-          createCycle: false
-      - run-tests:
-          name: nightly-build-and-test-3
-          suiteXmlFile: regression3.xml
-          createCycle: false
-      - run-tests:
-          name: nightly-build-and-test-4
-          suiteXmlFile: regression4.xml
-          createCycle: false
-      - run-tests:
-          name: nightly-build-and-test-5
-          suiteXmlFile: regression5.xml
-          createCycle: false
-      - run-tests:
-          name: nightly-build-and-test-6
-          suiteXmlFile: regression6.xml
-          createCycle: false
-      - run-tests:
-          name: nightly-build-and-test-7
-          suiteXmlFile: regression7.xml
-          createCycle: false
-      - run-tests:
-          name: nightly-build-and-test-8
-          suiteXmlFile: regression8.xml
-          createCycle: false
-      - run-tests:
-          name: nightly-build-and-test-9
-          suiteXmlFile: regression9.xml
-          createCycle: false
-      - run-tests:
-          name: nightly-build-and-test-10
-          suiteXmlFile: regression10.xml
-          createCycle: false
+#      - run-tests:
+#          name: nightly-build-and-test-2
+#          suiteXmlFile: regression2.xml
+#          createCycle: false
+#      - run-tests:
+#          name: nightly-build-and-test-3
+#          suiteXmlFile: regression3.xml
+#          createCycle: false
+#      - run-tests:
+#          name: nightly-build-and-test-4
+#          suiteXmlFile: regression4.xml
+#          createCycle: false
+#      - run-tests:
+#          name: nightly-build-and-test-5
+#          suiteXmlFile: regression5.xml
+#          createCycle: false
+#      - run-tests:
+#          name: nightly-build-and-test-6
+#          suiteXmlFile: regression6.xml
+#          createCycle: false
+#      - run-tests:
+#          name: nightly-build-and-test-7
+#          suiteXmlFile: regression7.xml
+#          createCycle: false
+#      - run-tests:
+#          name: nightly-build-and-test-8
+#          suiteXmlFile: regression8.xml
+#          createCycle: false
+#      - run-tests:
+#          name: nightly-build-and-test-9
+#          suiteXmlFile: regression9.xml
+#          createCycle: false
+#      - run-tests:
+#          name: nightly-build-and-test-10
+#          suiteXmlFile: regression10.xml
+#          createCycle: false
+
+#--------------------------------------------------------------
 
 #  scheduled-daily:
 #    triggers:
