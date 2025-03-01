@@ -145,7 +145,7 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By txt_replacement = By.xpath("//div[contains(normalize-space(text()), 'If out of stock, sub with')]");
     By lbl_NotSelected = By.xpath("//*[contains(text(),'Not Selected')]");
     By lbl_doNotSubstitute = By.xpath("//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'do not substitute')]");
-    String txt_item = "//span[contains(text(), 'CODE')]";
+    String txt_item = "//*[contains(text(), 'CODE')]";
     By lbl_SubstituteItem = By.xpath("//div[contains(text(), 'Substitute with:')]");
     String txt_itemPercentage = "//span[contains(text(), 'CODE')]";
     By btn_increaseQtyFirstRowInCheckout = By.xpath("//tr[2]/td[4]/div/div/div/div/div[3]");
@@ -190,7 +190,7 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By input_selectItem = By.xpath("//div[contains(text(),'Select...')]/following-sibling::div//input");
     By btn_add = By.xpath("//button[contains(text(), 'Add')]");
     String btn_removeItem ="//div[text()='ITEMCODE']/following-sibling::div[2]/*";
-    By EditCustomerGroupBtn = By.xpath("//div[contains(text(), 'Customer Group')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']");
+    By EditCustomerGroupBtn = By.xpath("//div[contains(text(), 'Customer Group')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
     By CreateCutomerGroupTextField = By.xpath("//input[@id='react-select-6-input']");
     By Savebtn = By.xpath("//button[normalize-space(text())='Save']");
     String CustomerGroupName = "//div[contains(text(),'Customer Group')]/following-sibling::div//div[contains(text(),'GROUPNAME')]";
@@ -226,6 +226,7 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By catalogAccessEnableTxt = By.xpath("//div[@class='list-group-item']//div[text()='Enabled']");
     By catalogAccessDisableTxt = By.xpath("//div[@class='list-group-item']//div[text()='Disabled']");
     By catalogAccessEditBtn = By.xpath("//div[contains(text(), 'Catalog Access')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
+    By lbl_catalogAccessEnable = By.xpath("//div[contains(text(), 'Catalog Access')]//following-sibling::div//*[contains(text(),'Enabled')]");
     By catalogSectionInOrderGuide = By.xpath("//div[contains(text(),'Catalog')]");
     By catalogAccessDisableOption = By.xpath("//div[contains(text(),'Disabled')]");
     By catalogAccessEnableOption = By.xpath("//div[contains(text(),'Enabled')]");
@@ -245,6 +246,7 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By btn_independentFoods = By.xpath("//div[contains(text(), 'Independent Foods Co')]");
     String itemNotFoundTxt = "//div[contains(translate(text(),'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ'),'ITEMCODE')]/following-sibling::div[contains(text(),'0 Results')]";
     String catalogCardAddToOGBtn = "//div[contains(text(),'ITEMCODE')]/../..//button[@data-tip='Add to Order Guide']";
+    By lbl_AccountHoldsNone = By.xpath("//div[contains(text(), 'Account Holds')]//following-sibling::div//*[contains(text(),'None')]");
     By btn_editAccHold = By.xpath("//div[contains(text(),'Account Holds')]/..//*[local-name() = 'svg' and @data-icon='pen-to-square']");
     By dropdown_acc = By.xpath("//div[text()='Account Holds']/following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
     By txt_hardHold = By.xpath("//div[contains(@class, 'themed_select__option') and  text()='Hard Hold']");
@@ -1584,6 +1586,10 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
         return distributorUI.isDisplayed(catalogSectionInOrderGuide);
     }
 
+    public boolean isCatalogAccessEnableDisplayed(){
+        return distributorUI.isDisplayed(lbl_catalogAccessEnable,10);
+    }
+
     public void clickEditCatalogAccess(){
         distributorUI.click(catalogAccessEditBtn);
     }
@@ -1675,6 +1681,9 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+    public boolean isAccountHoldsNoneDisplayed(){
+        return distributorUI.isDisplayed(lbl_AccountHoldsNone,10);
     }
     public void clickOnEditAccHolds(){
         try {

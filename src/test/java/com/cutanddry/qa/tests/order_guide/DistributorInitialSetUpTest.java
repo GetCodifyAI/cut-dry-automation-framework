@@ -44,12 +44,11 @@ public class DistributorInitialSetUpTest extends TestBase {
         Customer.enableCatalogAccess();
         softAssert.assertTrue(Customer.catalogAccessEnabled(),"Error in catalog access enable displaying");
 
-        Customer.clickOnEditAccHolds();
+        /*Customer.clickOnEditAccHolds();
         Customer.clickOnAccDropdown();
         Customer.clickOnNone();
-        Customer.clickOnSave();
-        softAssert.assertTrue(Customer.isRemoveHoldPopupDisplayed(),"remove hard hold popup error");
-        Customer.clickOnYes();
+        Customer.clickOnSave();*/
+        Customer.disableAccHolds();
         softAssert.assertTrue(Customer.isNoneSelected(),"acc none select error");
 
         softAssert.assertAll();

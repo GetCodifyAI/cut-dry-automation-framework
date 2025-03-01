@@ -746,9 +746,11 @@ public class Customer {
     }
 
     public static void enableCatalogAccess(){
-        customersPage.clickEditCatalogAccess();
-        customersPage.clickOnEnableCatalogAccessOption();
-        customersPage.saveCatalogAccessChanges();
+        if (!customersPage.isCatalogAccessEnableDisplayed()) {
+            customersPage.clickEditCatalogAccess();
+            customersPage.clickOnEnableCatalogAccessOption();
+            customersPage.saveCatalogAccessChanges();
+        }
     }
 
     public static boolean orderApprovalTxtDisplayed(){
@@ -803,6 +805,16 @@ public class Customer {
 
     public static void addItemFromCatalogIfNotAvailableInOG(String itemCode){
         customersPage.clickItemFromCatalogIfNotAvailableInOG(itemCode);
+    }
+
+    public static void disableAccHolds(){
+        if (!customersPage.isAccountHoldsNoneDisplayed()) {
+            customersPage.clickOnEditAccHolds();
+            customersPage.clickOnAccDropdown();
+            customersPage.clickOnNone();
+            customersPage.clickOnSave();
+            customersPage.clickOnYes();
+        }
     }
 
     public static void clickOnEditAccHolds(){
