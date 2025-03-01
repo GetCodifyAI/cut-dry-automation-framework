@@ -1073,6 +1073,63 @@ public class KeywordBase {
         }
     }
 
+    public boolean isDraftOrdersNotOlder30DaysStable(By draftRowCount) {
+        try {
+            // Find all rows
+            List<WebElement> rows = driver.findElements(draftRowCount);
+            logger.info("Found " + rows.size() + " elements for locator: " + draftRowCount);
+
+            // Fetch all dates and statuses in a single JavaScript call
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            List<Map<String, String>> rowData = (List<Map<String, String>>) js.executeScript(
+                    "return Array.from(document.querySelectorAll('table tbody tr')).map(row => { " +
+                            "    let dateCell = row.querySelector('td:nth-child(6)'); " +
+                            "    let statusCell = row.querySelector('td:nth-child(9) span'); " +
+                            "    return { " +
+                            "        date: dateCell ? dateCell.innerText.trim() : '', " +
+                            "        status: statusCell ? statusCell.innerText.trim() : '' " +
+                            "    }; " +
+                            "});"
+            );
+
+            // Date format and range setup
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+            ZonedDateTime nowUTC = ZonedDateTime.now(ZoneOffset.UTC);
+            ZonedDateTime before32DateUTC = nowUTC.minusDays(33);
+
+            // Validate all rows
+            for (Map<String, String> row : rowData) {
+                String draftDate = row.get("date");
+                String draftStatus = row.get("status");
+
+                // Skip if date is empty (row might be malformed)
+                if (draftDate.isEmpty()) {
+                    logger.warn("td[6] not found in this row. Skipping...");
+                    continue;
+                }
+
+                // Parse date and compare
+                LocalDate elementLocalDate = LocalDate.parse(draftDate, formatter);
+                ZonedDateTime elementDate = elementLocalDate.atStartOfDay(ZoneOffset.UTC);
+
+                // If date is out of range AND status is empty, validation fails
+                if ((elementDate.isBefore(before32DateUTC) || elementDate.isAfter(nowUTC)) && draftStatus.isEmpty()) {
+                    logger.error("Validation failed for element date: " + draftDate +
+                            " (Date out of range. Expected between: " +
+                            before32DateUTC.format(formatter) + " and " +
+                            nowUTC.format(formatter) + ")");
+                    return false;
+                }
+            }
+
+            logger.info("All elements match the filter option: " + before32DateUTC);
+            return true;
+        } catch (Exception e) {
+            logger.error("Error occurred while validating elements for locator: " + draftRowCount, e);
+            return false;
+        }
+    }
+
     public static String getLastWorkingDayUST() {
 
         ZonedDateTime yesterdayUTC = ZonedDateTime.now(ZoneOffset.UTC).minusDays(1);

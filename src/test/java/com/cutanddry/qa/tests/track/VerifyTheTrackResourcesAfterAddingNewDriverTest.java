@@ -37,6 +37,7 @@ public class VerifyTheTrackResourcesAfterAddingNewDriverTest extends TestBase {
         Track.enterName(name);
         Track.enterPhone(phone);
         Track.clickOnInviteUser();
+        Track.clickOK();
         softAssert.assertTrue(Track.isUserDisplayed(name),"add driver error");
         softAssert.assertAll();
     }

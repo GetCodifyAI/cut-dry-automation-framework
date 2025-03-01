@@ -271,6 +271,11 @@ public class CatalogPage extends LoginPage{
     }
     public void clickOnAdditionalAttributesTab(){
         distributorUI.click(additionalAttributesTab);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public boolean isCertificationsSectionDisplayed() {
         return distributorUI.isDisplayed(certificationAttribute);
@@ -567,6 +572,11 @@ public class CatalogPage extends LoginPage{
     }
     public void clickOnEditProduct() {
         distributorUI.click(btn_editProduct);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void selectFirstEditItem() {
         distributorUI.click(btn_firstEditItem);
