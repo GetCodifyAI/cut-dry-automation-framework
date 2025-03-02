@@ -414,12 +414,12 @@ public class TrackPage extends LoginPage{
         distributorUI.clickUsingJavaScript(btn_inviteUser);
     }
     public boolean isUserDisplayed(String user) throws InterruptedException {
-        try {
+        /*try {
             distributorUI.waitForCustom(4000);
             distributorUI.waitForVisibility(By.xpath(btn_editUser.replace("USER", user)));
         } catch (Exception e){
             return false;
-        }
+        }*/
         return distributorUI.isDisplayed(By.xpath(btn_editUser.replace("USER", user)));
     }
     public void clickOnEditUser(String user) throws InterruptedException {

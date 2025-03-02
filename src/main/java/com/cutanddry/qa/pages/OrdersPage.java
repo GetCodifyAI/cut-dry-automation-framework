@@ -19,9 +19,11 @@ public class OrdersPage extends LoginPage{
     By lbl_firstOrder = By.xpath("//tbody/tr[2]/td[2]");
     By btn_editOrder = By.xpath("//button[contains(text(),'Edit Order')]");
     By lbl_editOrderTitle = By.xpath("//h2[contains(text(),'Order')]");
+    By lbl_editOrderTitleReview = By.xpath("(//*[contains(@data-tip,'Edit Order')]/div)[1]");
     By txt_editOrderPopup = By.xpath("//h2[contains(text(),'Edit Order?')]");
     By btn_confirm= By.xpath("//button[contains(text(),'Confirm')]");
     By txt_editOrder = By.xpath("//span/div[contains(text(),'Edit Order')]");
+    By link_editOrder = By.xpath("//*[contains(text(),'Edit Order')]");
     By reviewOrderText = By.xpath("//div[contains(text(),'Review Order')]");
     By orderUpdatedText = By.xpath("//h2[contains(text(),'Order Updated')]");
     By txt_submitPopup = By.xpath("//h2[contains(text(),'Submit Changes?')]");
@@ -228,6 +230,11 @@ public class OrdersPage extends LoginPage{
         distributorUI.click(btn_editOrder);
         distributorUI.waitForVisibility(lbl_editOrderTitle);
         System.out.println("Order Ref No: "+distributorUI.getText(lbl_editOrderTitle));
+    }
+    public void clickOnEditOrderInReview() throws InterruptedException {
+        distributorUI.click(link_editOrder);
+        distributorUI.waitForVisibility(lbl_editOrderTitleReview);
+        System.out.println("Order Ref No: "+distributorUI.getText(lbl_editOrderTitleReview));
     }
     public boolean isEditOrderPopupDisplayed(){
         return distributorUI.isDisplayed(txt_editOrderPopup);

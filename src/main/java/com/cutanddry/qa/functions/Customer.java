@@ -1485,6 +1485,10 @@ public class Customer {
         return customersPage.getActiveItemPriceFirstRow();
     }
 
+    public static double getActiveItemPriceFirstRowStable() throws InterruptedException {
+        return customersPage.getActiveItemPriceFirstRowStable();
+    }
+
     public static double getItemPriceOnCheckoutButtonViaPDP() throws InterruptedException {
         return customersPage.getItemPriceOnCheckoutButtonViaPDP();
     }
@@ -1878,11 +1882,17 @@ public class Customer {
     public static void editSpotPrice(){
         customersPage.editSpotPrice();
     }
-    public static double getPriceInCustomerOrder() throws InterruptedException {
+    public static String getPriceInCustomerOrder() throws InterruptedException {
         return customersPage.getPriceInCustomerOrder();
     }
     public static double getItemPriceOnEditOrderCheckout() throws InterruptedException {
         return customersPage.getItemPriceOnEditOrderCheckout();
+    }
+    public static String getItemPriceOnEditOrderReviewCheckout() throws InterruptedException {
+        return customersPage.getItemPriceOnEditOrderReviewCheckout();
+    }
+    public static void clickOnCheckOutReview(){
+        customersPage.clickOnCheckOutReview();
     }
     public static double getSplitFinalWeightPrice() throws InterruptedException {
         return customersPage.getSplitFinalWeightPrice();
