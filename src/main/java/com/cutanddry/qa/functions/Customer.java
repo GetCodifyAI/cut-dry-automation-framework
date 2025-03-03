@@ -1904,6 +1904,29 @@ public class Customer {
 
 
 
+    //----MultiUOM ---//
+
+
+    public static void selectFinalWeightFromOG(String position){
+        customersPage.clickFinalWeight(position);
+    }
+
+    public static boolean isEditWeightOverlayDisplayed(){
+        return customersPage.EditWeightOverlayDisplayed();
+    }
+
+    public static int getTotalWeight(String position){
+        return customersPage.getTotalWeight(position);
+    }
+
+    public static int getNoOfUOMsOrdered(String position){
+        return customersPage.getNoOfUOMsOrdered(position);
+    }
+
+    public static int getWeightPerUOM(String position){
+        return customersPage.getWeightPerUOM(position);
+    }
+
 }
 
 
