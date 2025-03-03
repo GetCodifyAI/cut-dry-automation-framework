@@ -64,19 +64,22 @@ public class ValidateTheSpotPoundPriceTest extends TestBase{
         Orders.clickOnEditOrder();
         softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(),"edit popup error");
         Orders.clickOnConfirm();
+        softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(),"edit error(Review Page)");
+        Orders.clickOnEditOrderInReview();
         softAssert.assertTrue(Orders.isNavigatedToEditOrder(),"edit error");
         Customer.clickPoundPrice();
         softAssert.assertTrue(Customer.isPoundPricePopUpDisplay(),"pound price pop up not display");
         Customer.typeOnPerLBPrice(poundPrice);
         Customer.clickSave();
-        softAssert.assertEquals(Customer.getPoundPrice(),"$100.00/lb", "item count error");
+        softAssert.assertEquals(Customer.getPoundPrice().toLowerCase(),"$100.00/lb", "item count error");
         softAssert.assertEquals(Customer.getItemQtyFirstRow(),"1.22", "item count error");
         softAssert.assertEquals(Customer.getItemFinalPrice(),"$2,600.00", "item count error");
         itemPrice=Customer.getItemFinalPrice();
-        softAssert.assertEquals(Customer.getItemPriceOnEditOrderCheckout(),itemPrice,"The item has not been selected.");
+        softAssert.assertEquals(Customer.getItemPriceOnEditOrderReviewCheckout(),itemPrice,"The item has not been selected.");
+        Customer.clickOnCheckOutReview();
         Customer.clickEditOrderCheckout();
-        softAssert.assertTrue(Orders.isSubmitPopupDisplayed(),"submit pop up not display");
-        Orders.clickOnConfirm();
+        /*softAssert.assertTrue(Orders.isSubmitPopupDisplayed(),"submit pop up not display");
+        Orders.clickOnConfirm();*/
         softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(),"update popup error");
         Orders.clickOnClose();
 

@@ -62,6 +62,14 @@ public class Track {
     public static void clickOnRemoveUserLabel() throws InterruptedException {
         trackPage.clickOnRemoveUserLabel();
     }
+    public static void removeExistUser(String user) throws InterruptedException {
+        if (trackPage.isUserDisplayed(user)) {
+            trackPage.clickOnEditUser(user);
+            trackPage.clickOnRemoveUserLabel();
+            trackPage.clickOnRemoveUser();
+            trackPage.clickOK();
+        }
+    }
     public static void clickOnEditUser(String user) throws InterruptedException {
         trackPage.clickOnEditUser(user);
     }

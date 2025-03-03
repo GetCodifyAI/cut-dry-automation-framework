@@ -53,7 +53,6 @@ public class ValidateTheFinalWeightTest extends TestBase{
         Customer.clickClose();
         Customer.searchCustomerByCode(customerId);
         Customer.clickOnCustomerCode(customerId);
-
         //test
         Customer.clickOnOrdersTab();
         Customer.clickOrder();
@@ -61,18 +60,21 @@ public class ValidateTheFinalWeightTest extends TestBase{
         Orders.clickOnEditOrder();
         softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(),"edit popup error");
         Orders.clickOnConfirm();
+        softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(),"edit error(Review Page)");
+        Orders.clickOnEditOrderInReview();
         softAssert.assertTrue(Orders.isNavigatedToEditOrder(),"edit error");
         Customer.typeOnFinalWeight(weight);
-        softAssert.assertEquals(Customer.getItemQtyFirstRow(),"2", "item count error");
+        softAssert.assertEquals(Customer.getItemQtyFirstRow(),"1", "item count error");
         softAssert.assertEquals(Customer.getItemFinalPrice(),"$1,891.00", "item count error");
         Customer.increaseFirstRowQtyCustom(1);
-        softAssert.assertEquals(Customer.getItemFinalPrice(),"$2,836.50", "item count error");
-        softAssert.assertEquals(Customer.getItemFinalWeight(),"46.5", "item count error");
+        softAssert.assertEquals(Customer.getItemFinalPrice(),"$3,782.00", "item count error");
+        softAssert.assertEquals(Customer.getItemFinalWeight(),"62", "item count error");
         itemPrice=Customer.getItemFinalPrice();
-        softAssert.assertEquals(Customer.getItemPriceOnEditOrderCheckout(),itemPrice,"The item has not been selected.");
+        softAssert.assertEquals(Customer.getItemPriceOnEditOrderReviewCheckout(),itemPrice,"The item has not been selected.");
+        Customer.clickOnCheckOutReview();
         Customer.clickEditOrderCheckout();
-        softAssert.assertTrue(Orders.isSubmitPopupDisplayed(),"submit pop up not display");
-        Orders.clickOnConfirm();
+        /*softAssert.assertTrue(Orders.isSubmitPopupDisplayed(),"submit pop up not display");
+        Orders.clickOnConfirm();*/
         softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(),"update popup error");
         Orders.clickOnClose();
 

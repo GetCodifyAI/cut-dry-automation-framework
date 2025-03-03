@@ -192,7 +192,7 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     String btn_removeItem ="//div[text()='ITEMCODE']/following-sibling::div[2]/*";
     By EditCustomerGroupBtn = By.xpath("//div[contains(text(), 'Customer Group')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
     By CreateCutomerGroupTextField = By.xpath("//input[@id='react-select-6-input']");
-    By Savebtn = By.xpath("//button[normalize-space(text())='Save']");
+    By Savebtn = By.xpath("//button[normalize-space(text())='Update']");
     String CustomerGroupName = "//div[contains(text(),'Customer Group')]/following-sibling::div//div[contains(text(),'GROUPNAME')]";
     By ClearAllCustomerGroupBtn = By.xpath("//div[contains(@class,'themed_select__indicator themed_select__clear-indicator css-tlfecz-indicatorContainer')]");
     By InviteNewUsersBtn = By.xpath("//button[contains(text(),'Invite New Users')]");
@@ -323,7 +323,8 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By btn_editMargin = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[6])[1]");
     By btn_resetValues = By.xpath("//button[contains(text(), 'Reset Values')]");
     By btn_updateValues = By.xpath("//button[contains(text(), 'Update')]");
-    By lbl_margin = By.xpath("//div[text()='Margin ($)']/following-sibling::input");
+//    By lbl_margin = By.xpath("//div[text()='Margin ($)']/following-sibling::input");
+By lbl_margin = By.xpath("//div[contains(text(),'Margin') and contains(text(),'$')]/following-sibling::input");
     By lbl_marginPercentage = By.xpath("//div[text()='Margin (%)']/following-sibling::input");
     String sel_customer ="//td[contains(text(),'CUSTOMERCODE')";
     By txt_cusName = By.xpath("(//div[contains(@class,'d-flex align-items-center')])[1]");
@@ -353,6 +354,8 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By sel_product = By.xpath("((//*[local-name() = 'svg' and @data-icon='plus']))[8]");
     By txt_reviewPage = By.xpath("//div[contains(text(),'Review Order')]");
     By btn_orderCheckout = By.xpath("//button[contains(@data-tip,'Click here to checkout')]");
+    By btn_submitOrderEdit = By.xpath("//button[contains(@id,'submit-order-button')]");
+    By btn_orderCheckoutReview = By.xpath("//button[contains(@data-tip, 'Click here to checkout')][normalize-space()!='']");
     By btn_draftNo =By.xpath("//div[contains(text(),'No')]");
     By txt_orderSuccessMsg = By.xpath("//strong[contains(text(),'Thank you for your order!')]");
     By btn_closeMsg = By.xpath("//span[text()='×']");
@@ -540,16 +543,19 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
     By btn_submitOrderForApproval = By.xpath("//button[contains(text(),'Submit')]");
     By txt_sentApproval = By.xpath("//strong[contains(text(),'Sent for approval!')]");
     By btn_viewOrderInDraft = By.xpath("//button[text()='View Order in Drafts']");
-    By finalWeight = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]//input)[1]");
-    By finalItemPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[8])[1]");
+//    By finalWeight = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]//input)[1]");
+    By finalWeight = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]/div)[1]");
+    By btn_finalWeightUpdate = By.xpath("//button[contains(text(),'Update Weight')]");
+    By finalWeightInput = By.xpath("(//*[contains(text(),'Edit Weight Details')]/following::div/table/tbody/tr/td[3]/input)[1]");
+    By finalItemPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[8][normalize-space()!=''])[1]");
     By confirmPrice = By.xpath("(//tbody/tr/td[9])[1]");
-    By poundPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]/div)[1]");
-    By txt_lbPricePopUP = By.xpath("//div[text()='Edit Per LB Price']");
-    By perLbPrice = By.xpath("//b[text()='Per LB Price ($)']/../following-sibling::td/input");
+    By poundPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]/div/div/div)[1]");
+    By txt_lbPricePopUP = By.xpath("//div[text()='Update Price']");
+    By perLbPrice = By.xpath("//*[text()='Price LB ($)']/following-sibling::input");
     By priceInCustomerOrder = By.xpath("(//tbody/tr/td[6])[1]");
     By editSpotPrice = By.xpath("//td[7]/div");
    // String spotPriceValue = "//td[7]/div/input[@value='VALUE']";
-    String spotPriceValue = "//td[7]/div//span[text()='VALUE']";
+    String spotPriceValue = "//td[7]/div//span[contains(text(),'VALUE')]";
     By btn_splitWeight = By.xpath("//td[8]/div");
     By txt_splitWeight = By.xpath("//div[contains(text(),'Weight Details')]");
     By lbl_cases = By.xpath("(//th[text()='No. of CS']/../../following-sibling::*//input)[1]");
@@ -558,7 +564,8 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
     By splitFinalWeight = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[8]//input)[1]");
     By splitFinalWeightPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[9])[1]");
     By cb_inInvoiceTable = By.xpath("//table/tbody/tr[1]/td[1]//div[contains(@class, '_du1frc')]");
-    By lbl_spotPrice = By.xpath("//div[text()='Price ($)']/following-sibling::input");
+//    By lbl_spotPrice = By.xpath("//div[text()='Price ($)']/following-sibling::input");
+By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),'($)')]/following-sibling::input");
     String itemValue = "//span[contains(text(), 'CODE')]";
     By btn_getSplitWeight = By.xpath("(//td[8]/div/div/div/div)[1]");
 
@@ -2040,13 +2047,15 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
     }
     public void enterMarginValue(String num) throws InterruptedException {
         distributorUI.clearUsingJavaScript(lbl_margin);
-        distributorUI.waitForCustom(1000);
-        distributorUI.sendKeysAndEnterMac(lbl_margin, num);
+//        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(lbl_margin, num);
+//        distributorUI.sendKeysAndEnterMac(lbl_margin, num);
         distributorUI.waitForCustom(1000);
     }
     public void enterMarginPercentage(String num) throws InterruptedException {
-        distributorUI.clear(lbl_marginPercentage);
-        distributorUI.sendKeysAndEnterMac(lbl_marginPercentage, num);
+        distributorUI.clearUsingJavaScript(lbl_marginPercentage);
+//        distributorUI.sendKeysAndEnterMac(lbl_marginPercentage, num);
+        distributorUI.sendKeys(lbl_marginPercentage, num);
         distributorUI.waitForCustom(1000);
     }
     public void clickPlusQryFirstRowBySix() {
@@ -2797,6 +2806,15 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
         }
     }
 
+    public double getActiveItemPriceFirstRowStable() throws InterruptedException {
+        try {
+            return extractPriceStable(lbl_itemPriceList);
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPriceStable(lbl_itemPriceList1);
+        }
+    }
+
     private double extractPrice(By priceLocator) throws InterruptedException {
         distributorUI.waitForVisibility(priceLocator);
         String tagName = distributorUI.getElement(priceLocator).getTagName();
@@ -2810,6 +2828,23 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
 
         System.out.println("Extracted Price: " + priceText);
         return Double.valueOf(priceText.replace("$", "").replace("/cs", "").trim());
+    }
+
+    private double extractPriceStable(By priceLocator) throws InterruptedException {
+        distributorUI.waitForVisibility(priceLocator);
+        String tagName = distributorUI.getElement(priceLocator).getTagName();
+        String priceText;
+
+        if (tagName.equals("input")) {
+            priceText = distributorUI.getText(priceLocator, "value");
+        } else {
+            priceText = distributorUI.getText(priceLocator);
+        }
+
+        System.out.println("Extracted Price: " + priceText);
+        priceText = priceText.replace("$", "").split("/")[0].trim();
+
+        return Double.valueOf(priceText);
     }
 
     public Double getItemPriceOnCheckoutButtonViaPDP() throws InterruptedException {
@@ -3223,12 +3258,17 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
         return distributorUI.getText(finalItemPrice);
     }
     public void typeOnFinalWeight(String weight) throws InterruptedException {
-        distributorUI.clear(finalWeight);
-        distributorUI.waitForCustom(1000);
-        distributorUI.sendKeys(finalWeight, weight);
+        distributorUI.click(finalWeight);
+        distributorUI.clearUsingJavaScript(finalWeightInput);
+//        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(finalWeightInput, weight);
+        distributorUI.click(btn_finalWeightUpdate);
     }
     public String getItemFinalWeight(){
-        return distributorUI.getText(finalWeight, "value");
+        distributorUI.click(finalWeight);
+        String value = distributorUI.getText(finalWeightInput, "value");
+        distributorUI.click(btn_finalWeightUpdate);
+        return value;
     }
 //    public String getItemPriceOnEditOrderCheckout() throws InterruptedException {
 //        distributorUI.waitForVisibility(btn_orderCheckout);
@@ -3236,7 +3276,7 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
 //        return distributorUI.getText(btn_orderCheckout);
 //    }
     public void clickEditOrderCheckout(){
-        distributorUI.click(btn_orderCheckout);
+        distributorUI.click(btn_submitOrderEdit);
     }
     public String getConfirmFinalPrice(){
         return distributorUI.getText(confirmPrice);
@@ -3259,17 +3299,19 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
         return distributorUI.isDisplayed(txt_lbPricePopUP);
     }
     public void typeOnPerLBPrice(String lbPrice) throws InterruptedException {
-        distributorUI.clear(perLbPrice);
-        distributorUI.waitForCustom(1000);
+        distributorUI.clearUsingJavaScript(perLbPrice);
+//        distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(perLbPrice, lbPrice);
     }
     public void clickSave()throws InterruptedException{
         distributorUI.waitForVisibility(Savebtn);
         distributorUI.click(Savebtn);
+        distributorUI.waitForCustom(3000);
     }
     public void enterSpotPrice(String num) throws InterruptedException {
-        distributorUI.clear(lbl_spotPrice);
-        distributorUI.sendKeysAndEnterMac(lbl_spotPrice, num);
+        distributorUI.clearUsingJavaScript(lbl_spotPrice);
+//        distributorUI.sendKeysAndEnterMac(lbl_spotPrice, num);
+        distributorUI.sendKeys(lbl_spotPrice, num);
         distributorUI.waitForCustom(1000);
     }
     public boolean isSpotPriceAdded(String value){
@@ -3294,12 +3336,12 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
         return distributorUI.isDisplayed(txt_splitWeight);
     }
     public void enterCasesValue(String num) throws InterruptedException {
-        distributorUI.clear(lbl_cases);
+        distributorUI.clearUsingJavaScript(lbl_cases);
         distributorUI.sendKeys(lbl_cases, num);
         distributorUI.waitForCustom(1000);
     }
     public void enterWeightValue(String num) throws InterruptedException {
-        distributorUI.clear(lbl_weight);
+        distributorUI.clearUsingJavaScript(lbl_weight);
         distributorUI.sendKeys(lbl_weight, num);
         distributorUI.waitForCustom(1000);
     }
@@ -3329,15 +3371,26 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
     public void editSpotPrice(){
         distributorUI.click(editSpotPrice);
     }
-    public Double getPriceInCustomerOrder() throws InterruptedException {
+    public String getPriceInCustomerOrder() throws InterruptedException {
         distributorUI.waitForVisibility(priceInCustomerOrder);
         distributorUI.waitForCustom(4000);
-        return Double.valueOf(distributorUI.getText(priceInCustomerOrder).replace("$",""));
+//        return Double.valueOf(distributorUI.getText(priceInCustomerOrder).replace("$","").replace(",", ""));
+        return distributorUI.getText(priceInCustomerOrder);
     }
     public Double getItemPriceOnEditOrderCheckout() throws InterruptedException {
         distributorUI.waitForVisibility(btn_orderCheckout);
         distributorUI.waitForCustom(4000);
         return Double.valueOf(distributorUI.getText(btn_orderCheckout).replace("$",""));
+    }
+    public String getItemPriceOnEditOrderReviewCheckout() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_orderCheckoutReview);
+        distributorUI.waitForCustom(4000);
+//        return Double.valueOf(distributorUI.getText(btn_orderCheckoutReview).replace("$","").replace(",", ""));
+        return distributorUI.getText(btn_orderCheckoutReview);
+    }
+    public void clickOnCheckOutReview(){
+        distributorUI.waitForClickability(btn_orderCheckoutReview);
+        distributorUI.click(btn_orderCheckoutReview);
     }
     public Double getSplitFinalWeightPrice() throws InterruptedException {
         distributorUI.waitForVisibility(splitFinalWeightPrice);

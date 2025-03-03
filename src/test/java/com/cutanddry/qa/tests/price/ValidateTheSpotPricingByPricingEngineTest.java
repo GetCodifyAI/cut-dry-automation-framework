@@ -84,7 +84,10 @@ public class ValidateTheSpotPricingByPricingEngineTest extends TestBase{
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId3), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId3);
         Customer.clickOnOrdersTab();
-        softAssert.assertEquals(Customer.getPriceInCustomerOrder(),itemPrice,"The item has not been selected.");
+        String priceText = Customer.getPriceInCustomerOrder().replace("$", "").replace(",", "");
+        Double actualPrice = Double.valueOf(priceText);
+        softAssert.assertEquals(actualPrice, itemPrice, "The item has not been selected.");
+//        softAssert.assertEquals(Customer.getPriceInCustomerOrder(),itemPrice,"The item has not been selected.");
         softAssert.assertAll();
     }
 

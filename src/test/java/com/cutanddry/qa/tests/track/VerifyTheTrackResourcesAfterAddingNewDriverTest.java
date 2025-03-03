@@ -32,6 +32,7 @@ public class VerifyTheTrackResourcesAfterAddingNewDriverTest extends TestBase {
         softAssert.assertTrue(Track.isResourcesTextDisplayed(),"navigation to track resources error");
         Track.clickOnDrivers();
         softAssert.assertTrue(Track.isAddDriversBtnDisplayed(),"navigation to drivers error");
+        Track.removeExistUser(name);
         Track.clickOnAddDrivers();
         softAssert.assertTrue(Track.isAddDriverPopupDisplayed(),"add driver popup error");
         Track.enterName(name);

@@ -70,7 +70,7 @@ public class ValidateTheSpotPricingNotFromPricingEngineTest extends TestBase{
 
         Customer.increaseFirstRowQtyCustom(1);
 
-        itemPrice = Customer.getActiveItemPriceFirstRow();
+        itemPrice = Customer.getActiveItemPriceFirstRowStable();
         softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice,"The item has not been selected.");
         Customer.checkoutItems();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
@@ -83,7 +83,10 @@ public class ValidateTheSpotPricingNotFromPricingEngineTest extends TestBase{
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId5), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId5);
         Customer.clickOnOrdersTab();
-        softAssert.assertEquals(Customer.getPriceInCustomerOrder(),itemPrice,"The item has not been selected.");
+        String priceText = Customer.getPriceInCustomerOrder().replace("$", "").replace(",", "");
+        Double actualPrice = Double.valueOf(priceText);
+        softAssert.assertEquals(actualPrice, itemPrice, "The item has not been selected.");
+//        softAssert.assertEquals(Customer.getPriceInCustomerOrder(),itemPrice,"The item has not been selected.");
         softAssert.assertAll();
     }
 

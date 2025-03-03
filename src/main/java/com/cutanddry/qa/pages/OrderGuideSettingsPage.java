@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 public class OrderGuideSettingsPage extends TestBase {
 
     By AddAlertButton = By.xpath("//*[name()='svg' and @data-icon='pencil']");
+    By AddAlertPrimaryButton = By.xpath("//button[contains(text(),'Add Alert')]");
     By txt_orderReminderAlertPopUp = By.xpath("//div[contains(text(), 'Order Reminder Alert')]");
     By orderCutoffTimeDropDown = By.xpath("//label[contains(text(),'Order Cutoff Time')]/following-sibling::div");
     String orderCutoffTimeDropDownOption = "//div[text()='CUTOFFTIME']";
@@ -17,8 +18,13 @@ public class OrderGuideSettingsPage extends TestBase {
     By btn_save = By.xpath("//button[normalize-space(text())='Save']");
 
     public void clickOnOrderReminderAlert(){
-        distributorUI.waitForClickability(AddAlertButton);
-        distributorUI.click(AddAlertButton);
+        if (distributorUI.isDisplayed(AddAlertButton,10)) {
+            distributorUI.waitForClickability(AddAlertButton);
+            distributorUI.click(AddAlertButton);
+        } else {
+            distributorUI.click(AddAlertPrimaryButton);
+        }
+
     }
 
     public boolean isOrderReminderAlertPopDisplayed(){
