@@ -574,6 +574,7 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     String totalNoOfUOMsOrdered = "((//th[contains(text(),'Total Weight')])[POSITION]/ancestor::table//tbody//td/input)[1]";
     String WeightPerUOM = "((//th[contains(text(),'Total Weight')])[POSITION]/ancestor::table//tbody//td/input)[2]";
     By dropdown_option_orderguideSettings = By.xpath("//a[@class='_1ccoy1o text-decoration-none dropdown-item' and text()='Order Guide Settings']");
+    String customerScreenScanToOrderBtn = "//tr/td[contains(text(),'CUSTOMERCODE')]/..//a[contains(@href,'scan-to-order')]";
 
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
@@ -3434,6 +3435,13 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
         distributorUI.click(dropdown_option_orderguideSettings);
     }
 
+    public boolean isScanToOrderBtnDisplayed(String customerCode){
+        distributorUI.waitForVisibility(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
+        return distributorUI.isDisplayed(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
+    }
 
+    public void clickCustomerScreenScanToOrderBtn(String customerCode){
+        distributorUI.click(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
+    }
 
 }

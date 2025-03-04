@@ -1927,6 +1927,14 @@ public class Customer {
         return customersPage.getWeightPerUOM(position);
     }
 
+    public static boolean isScanToOrderBtnDisplayedInCustomers(String customerId){
+        return customersPage.isScanToOrderBtnDisplayed(customerId);
+    }
+
+    public static void navigateFromCustomerScreenToScanToOrderScreen(String customerCode){
+        customersPage.clickCustomerScreenScanToOrderBtn(customerCode);
+    }
+
 }
 
 
