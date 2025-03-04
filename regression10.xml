@@ -27,6 +27,7 @@
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMUsingAddFromCatalogTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMUsingEditOrderTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyAddMultipleUOMInOGAndSubmissionThenEditOrderFlowTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyAddMultipleUOMInOGAndSubmissionThenDraftOrderFlowTest"/>
 
             <class name="com.cutanddry.qa.tests.order_reminder.VerifyEditOrderReminderTest"/>
 
