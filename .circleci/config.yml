@@ -533,7 +533,7 @@ jobs:
             sudo apt-get install -y google-chrome-stable
             google-chrome --version
       - run:
-          name: Build and run daily tests 2
+          name: Build and run daily tests 3
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression3.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true
       - store_artifacts:
           path: target/surefire-reports
@@ -571,7 +571,7 @@ jobs:
             sudo apt-get install -y google-chrome-stable
             google-chrome --version
       - run:
-          name: Build and run daily tests 2
+          name: Build and run daily tests 4
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression4.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true
       - store_artifacts:
           path: target/surefire-reports
@@ -609,7 +609,7 @@ jobs:
             sudo apt-get install -y google-chrome-stable
             google-chrome --version
       - run:
-          name: Build and run daily tests 2
+          name: Build and run daily tests 5
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression5.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true
       - store_artifacts:
           path: target/surefire-reports
@@ -821,22 +821,22 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "52 16 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * feature/e2e_mubarak
+          cron: "30 20 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * feature/e2e_mubarak
           filters:
             branches:
               only:
-                - feature/e2e_mubarak
+                - main
     jobs:
-#      - nightly-build-and-test-1
-#      - nightly-build-and-test-2
+      - nightly-build-and-test-1
+      - nightly-build-and-test-2
       - nightly-build-and-test-3
-#      - nightly-build-and-test-4
-#      - nightly-build-and-test-5
-#      - nightly-build-and-test-6
-#      - nightly-build-and-test-7
-#      - nightly-build-and-test-8
-#      - nightly-build-and-test-9
-#      - nightly-build-and-test-10
+      - nightly-build-and-test-4
+      - nightly-build-and-test-5
+      - nightly-build-and-test-6
+      - nightly-build-and-test-7
+      - nightly-build-and-test-8
+      - nightly-build-and-test-9
+      - nightly-build-and-test-10
 
   scheduled-test-2:
     triggers:
