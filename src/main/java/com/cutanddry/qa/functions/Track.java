@@ -79,7 +79,7 @@ public class Track {
     public static void clickOK() throws InterruptedException {
         trackPage.clickOK();
     }
-    public static void clickOnRemoveUser() {
+    public static void clickOnRemoveUser() throws InterruptedException {
         trackPage.clickOnRemoveUser();
     }
     public static boolean isRemoveUserPopupDisplayed(){
