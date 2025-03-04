@@ -568,7 +568,11 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
 By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),'($)')]/following-sibling::input");
     String itemValue = "//span[contains(text(), 'CODE')]";
     By btn_getSplitWeight = By.xpath("(//td[8]/div/div/div/div)[1]");
-
+    String finalWeightQuantitySelect = "(//tr//td[contains(text(),'3865')]/following-sibling::td//input[contains(@data-input,'quantityInput')])[1]//ancestor::td/following-sibling::td[1]/div/div[POSITION]";
+    By editWeightDetailsOverlay = By.xpath("//*[contains(text(),'Edit Weight Details')]");
+    String totalWeight = "((//th[contains(text(),'Total Weight')])[POSITION]/ancestor::table//tbody//td/input)[3]";
+    String totalNoOfUOMsOrdered = "((//th[contains(text(),'Total Weight')])[POSITION]/ancestor::table//tbody//td/input)[1]";
+    String WeightPerUOM = "((//th[contains(text(),'Total Weight')])[POSITION]/ancestor::table//tbody//td/input)[2]";
     By dropdown_option_orderguideSettings = By.xpath("//a[@class='_1ccoy1o text-decoration-none dropdown-item' and text()='Order Guide Settings']");
 
     public void ifDuplicateOrderDisplayed(){
@@ -3398,6 +3402,32 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
         return Double.valueOf(distributorUI.getText(splitFinalWeightPrice).replace("$",""));
     }
 
+    //----MultiUOM ---//
+
+
+    public void clickFinalWeight(String position){
+        distributorUI.click(By.xpath(finalWeightQuantitySelect.replace("POSITION",position)));
+    }
+
+    public boolean EditWeightOverlayDisplayed(){
+        return distributorUI.isDisplayed(editWeightDetailsOverlay);
+    }
+
+    public int getTotalWeight(String position){
+        String totalWeightString = distributorUI.getText(By.xpath(totalWeight.replace("POSITION",position)),"value");
+        return Integer.parseInt(totalWeightString.trim());
+
+    }
+
+    public int getNoOfUOMsOrdered(String position){
+        String NoOfUOMsOrderedString = distributorUI.getText(By.xpath(totalNoOfUOMsOrdered.replace("POSITION",position)),"value") ;
+        return Integer.parseInt(NoOfUOMsOrderedString.trim());
+    }
+
+    public int getWeightPerUOM(String position){
+        String WeightPerUOMString = distributorUI.getText(By.xpath(WeightPerUOM.replace("POSITION",position)),"value") ;
+        return Integer.parseInt(WeightPerUOMString.trim());
+    }
 
     public void clickOnOrderGuideSettings(){
         distributorUI.waitForClickability(dropdown_option_orderguideSettings);
