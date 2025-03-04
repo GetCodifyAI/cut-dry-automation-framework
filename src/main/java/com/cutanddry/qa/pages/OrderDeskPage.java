@@ -43,7 +43,7 @@ By DeleteItemBtn = By.xpath("(//*[local-name()='svg' and @data-icon='trash-can']
 //    By ReviewTxt = By.xpath("//h2[contains(text(),'pending_review')]");
 //    By ReviewTxt = By.xpath("//*[contains(text(),'PENDING REVIEW')]");
     By anyOrderTxt = By.xpath("//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'quantity')]");
-    By SubmittedOrderPageReViewBtn = By.xpath("(//div[contains(@class, '_10q9czs row')]//div//a[text()='Review' and contains(@href,'/order-desk')])[last()]");
+    By SubmittedOrderPageReViewBtn = By.xpath("(//div[contains(@class, '_10q9czs row')]//div//a[text()='View' and contains(@href,'/order-desk')])[last()]");
     By SubmitTxt = By.xpath("//*[contains(text(),'Submit Order')]");
 
     public boolean isOrderDeskTextDisplayed(){
