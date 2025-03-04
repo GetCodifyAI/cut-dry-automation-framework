@@ -192,7 +192,7 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     String btn_removeItem ="//div[text()='ITEMCODE']/following-sibling::div[2]/*";
     By EditCustomerGroupBtn = By.xpath("//div[contains(text(), 'Customer Group')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
     By CreateCutomerGroupTextField = By.xpath("//input[@id='react-select-6-input']");
-    By Savebtn = By.xpath("//button[normalize-space(text())='Update']");
+    By Savebtn = By.xpath("//button[normalize-space(text())='Save']");
     String CustomerGroupName = "//div[contains(text(),'Customer Group')]/following-sibling::div//div[contains(text(),'GROUPNAME')]";
     By ClearAllCustomerGroupBtn = By.xpath("//div[contains(@class,'themed_select__indicator themed_select__clear-indicator css-tlfecz-indicatorContainer')]");
     By InviteNewUsersBtn = By.xpath("//button[contains(text(),'Invite New Users')]");
@@ -574,6 +574,27 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     String totalNoOfUOMsOrdered = "((//th[contains(text(),'Total Weight')])[POSITION]/ancestor::table//tbody//td/input)[1]";
     String WeightPerUOM = "((//th[contains(text(),'Total Weight')])[POSITION]/ancestor::table//tbody//td/input)[2]";
     By dropdown_option_orderguideSettings = By.xpath("//a[@class='_1ccoy1o text-decoration-none dropdown-item' and text()='Order Guide Settings']");
+
+    By btn_firstMultiOUM = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]");
+    By lbl_firstMultiOUMItemName = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td//span/div[@data-tip='View Product Details']");
+    By lbl_firstMultiOUMItemCode = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[2]");
+    By lbl_itemPriceListMultiOUM = By.xpath("(((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//input)[1] | ((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//span)[1])[1]");
+    By lbl_itemPriceListMultiOUM1 = By.xpath("(((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//input)[1] | ((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//span)[1])[2]");
+
+    By lbl_itemCodeLists = By.xpath("//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[2]");
+    String lbl_ListsMultiOUMExist = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr[ROW_COUNT]/td//*[local-name()='svg' and @data-icon='chevron-down']";
+    String lbl_firstSingleOUMItemName = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr[ROW_COUNT]/td//span/div[@data-tip='View Product Details']";
+    String lbl_firstSingleOUMItemCode = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr[ROW_COUNT]/td[2]";
+
+    String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//input)[UOM] | ((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//span)[UOM]";
+
+    String multiUomDropDownOG = "(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg'])[1]";
+    By multiUomOption =By.xpath("//div[text()='Multiple Units']");
+    String btn_OGAddToCartPlusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='plus'])[UOM]";
+
+
+
+
 
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
@@ -3434,6 +3455,75 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
         distributorUI.click(dropdown_option_orderguideSettings);
     }
 
+    public String getItemNameFirstMultiOUM() throws InterruptedException {
+        distributorUI.waitForElementEnabledState(lbl_firstMultiOUMItemName,true);
+        distributorUI.waitForCustom(3000);
+        return distributorUI.getText(lbl_firstMultiOUMItemName);
+    }
 
+    public String getItemCodeFirstMultiOUM() throws InterruptedException {
+        distributorUI.waitForVisibility(lbl_firstMultiOUMItemCode);
+        distributorUI.waitForCustom(3000);
+        return distributorUI.getText(lbl_firstMultiOUMItemCode);
+    }
+
+    public double getActiveItemPriceFirstMultiOUMRowStable() throws InterruptedException {
+        try {
+            return extractPriceStable(lbl_itemPriceListMultiOUM);
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPriceStable(lbl_itemPriceListMultiOUM1);
+        }
+    }
+
+    public String getItemNameFirstSingleOUM() throws InterruptedException {
+        int rowCount = distributorUI.countElements(lbl_itemCodeLists);
+
+        for (int i = 1; i <= rowCount; i++) {
+            if (!distributorUI.isDisplayed(By.xpath(lbl_ListsMultiOUMExist.replace("ROW_COUNT",String.valueOf(i))),5)) {
+                 return distributorUI.getText(By.xpath(lbl_firstSingleOUMItemName.replace("ROW_COUNT",String.valueOf(i))));
+            }
+        }
+        return null;
+    }
+
+    public String getItemCodeFirstSingleOUM() throws InterruptedException {
+        int rowCount = distributorUI.countElements(lbl_itemCodeLists);
+
+        for (int i = 1; i <= rowCount; i++) {
+            if (!distributorUI.isDisplayed(By.xpath(lbl_ListsMultiOUMExist.replace("ROW_COUNT",String.valueOf(i))))) {
+                return distributorUI.getText(By.xpath(lbl_firstSingleOUMItemCode.replace("ROW_COUNT",String.valueOf(i))));
+            }
+        }
+        return null;
+    }
+
+    public double getActiveItemPriceMultiOUM(String position) throws InterruptedException {
+        try {
+            return extractPriceStable(By.xpath(lbl_itemPriceMultiOUM.replace("UOM",position)));
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPriceStable(lbl_itemPriceListMultiOUM);
+        }
+    }
+
+    public Double getItemPriceOnMultiOUMCheckout() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_orderCheckoutReview);
+        distributorUI.waitForCustom(4000);
+        return Double.valueOf(distributorUI.getText(btn_orderCheckoutReview).replace("$",""));
+    }
+
+    public void ClickOnMultiUomDropDownOG(String code)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(multiUomDropDownOG.replace("CODE", code)));
+        distributorUI.click(By.xpath(multiUomDropDownOG.replace("CODE", code)));
+        distributorUI.click(multiUomOption);
+        distributorUI.waitForCustom(3000);
+    }
+
+    public void clickOGAddToCartPlusIcon(String code,String uom)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(btn_OGAddToCartPlusQuantity.replace("CODE", code).replace("UOM", uom)));
+        distributorUI.click(By.xpath(btn_OGAddToCartPlusQuantity.replace("CODE", code).replace("UOM", uom)));
+        distributorUI.waitForCustom(2000);
+    }
 
 }
