@@ -64,8 +64,8 @@ public class ValidateTheSplitWeightTest extends TestBase{
         Orders.clickOnEditOrder();
         softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(),"edit popup error");
         Orders.clickOnConfirm();
-        softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(),"edit error(Review Page)");
-        Orders.clickOnEditOrderInReview();
+//        softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(),"edit error(Review Page)");
+//        Orders.clickOnEditOrderInReview();
         softAssert.assertTrue(Orders.isNavigatedToEditOrder(),"edit error");
         Customer.searchItemOnOrderGuide(searchItemCode);
 
@@ -88,8 +88,8 @@ public class ValidateTheSplitWeightTest extends TestBase{
         Customer.clickEditOrderCheckout();
 //        softAssert.assertEquals(Customer.getItemPriceOnEditOrderCheckout(),itemPrice,"The item has not been selected.");
 //        Customer.clickCheckOutOrderGuide();
-//        softAssert.assertTrue(Orders.isSubmitPopupDisplayed(),"submit pop up not display");
-//        Orders.clickOnConfirm();
+        softAssert.assertTrue(Orders.isSubmitPopupDisplayed(),"submit pop up not display");
+        Orders.clickOnConfirm();
         softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(),"update popup error");
         Orders.clickOnClose();
 
@@ -99,8 +99,12 @@ public class ValidateTheSplitWeightTest extends TestBase{
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
 
+
         String priceText1 = Customer.getPriceInCustomerOrder().replace("$", "");
-        Double actualPrice1 = Double.valueOf(priceText);
+        Double actualPrice1 = Double.valueOf(priceText1);
+
+//        String priceText2 = Customer.getPriceInCustomerOrder().replace("$", "").replace(",", "");
+//        Double actualPrice2 = Double.valueOf(priceText2);
         softAssert.assertEquals(actualPrice1, itemPrice, "The item has not been selected.");
 //        softAssert.assertEquals(Customer.getPriceInCustomerOrder(),itemPrice,"The item has not been selected.");
         softAssert.assertAll();
