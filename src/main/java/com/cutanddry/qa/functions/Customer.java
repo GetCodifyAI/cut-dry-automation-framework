@@ -1984,6 +1984,14 @@ public class Customer {
         }
     }
 
+    public static boolean isScanToOrderBtnDisplayedInCustomers(String customerId){
+        return customersPage.isScanToOrderBtnDisplayed(customerId);
+    }
+
+    public static void navigateFromCustomerScreenToScanToOrderScreen(String customerCode){
+        customersPage.clickCustomerScreenScanToOrderBtn(customerCode);
+    }
+
 }
 
 

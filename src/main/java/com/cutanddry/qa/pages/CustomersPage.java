@@ -596,6 +596,7 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
 
 
 
+    String customerScreenScanToOrderBtn = "//tr/td[contains(text(),'CUSTOMERCODE')]/..//a[contains(@href,'scan-to-order')]";
 
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
@@ -3436,17 +3437,20 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     }
 
     public int getTotalWeight(String position){
+        distributorUI.waitForVisibility(By.xpath(totalWeight.replace("POSITION",position)));
         String totalWeightString = distributorUI.getText(By.xpath(totalWeight.replace("POSITION",position)),"value");
         return Integer.parseInt(totalWeightString.trim());
 
     }
 
     public int getNoOfUOMsOrdered(String position){
+        distributorUI.waitForVisibility(By.xpath(totalNoOfUOMsOrdered.replace("POSITION",position)));
         String NoOfUOMsOrderedString = distributorUI.getText(By.xpath(totalNoOfUOMsOrdered.replace("POSITION",position)),"value") ;
         return Integer.parseInt(NoOfUOMsOrderedString.trim());
     }
 
     public int getWeightPerUOM(String position){
+        distributorUI.waitForVisibility(By.xpath(WeightPerUOM.replace("POSITION",position)));
         String WeightPerUOMString = distributorUI.getText(By.xpath(WeightPerUOM.replace("POSITION",position)),"value") ;
         return Integer.parseInt(WeightPerUOMString.trim());
     }
@@ -3466,12 +3470,25 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
         return distributorUI.getText(lbl_firstMultiOUMItemName);
     }
 
+    public boolean isScanToOrderBtnDisplayed(String customerCode){
+        distributorUI.waitForVisibility(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
+        return distributorUI.isDisplayed(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
+    }
     public String getItemCodeFirstMultiOUM() throws InterruptedException {
         distributorUI.waitForVisibility(lbl_firstMultiOUMItemCode);
         distributorUI.waitForCustom(3000);
         return distributorUI.getText(lbl_firstMultiOUMItemCode);
     }
 
+    public void clickCustomerScreenScanToOrderBtn(String customerCode){
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        distributorUI.waitForVisibility(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
+        distributorUI.click(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
+    }
     public double getActiveItemPriceFirstMultiOUMRowStable() throws InterruptedException {
         try {
             return extractPriceStable(lbl_itemPriceListMultiOUM);
