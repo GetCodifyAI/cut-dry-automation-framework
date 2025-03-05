@@ -19,9 +19,11 @@ public class OrdersPage extends LoginPage{
     By lbl_firstOrder = By.xpath("//tbody/tr[2]/td[2]");
     By btn_editOrder = By.xpath("//button[contains(text(),'Edit Order')]");
     By lbl_editOrderTitle = By.xpath("//h2[contains(text(),'Order')]");
+    By lbl_editOrderTitleReview = By.xpath("(//*[contains(@data-tip,'Edit Order')]/div)[1]");
     By txt_editOrderPopup = By.xpath("//h2[contains(text(),'Edit Order?')]");
     By btn_confirm= By.xpath("//button[contains(text(),'Confirm')]");
     By txt_editOrder = By.xpath("//span/div[contains(text(),'Edit Order')]");
+    By link_editOrder = By.xpath("//*[contains(text(),'Edit Order')]");
     By reviewOrderText = By.xpath("//div[contains(text(),'Review Order')]");
     By orderUpdatedText = By.xpath("//h2[contains(text(),'Order Updated')]");
     By txt_submitPopup = By.xpath("//h2[contains(text(),'Submit Changes?')]");
@@ -41,6 +43,7 @@ public class OrdersPage extends LoginPage{
     String date = "//td[text()='DATE']";
     String status = "//td/span[text()='STATUS']";
     String lbl_status = "//td[COUNT]/span[text()='STATUS']";
+    By btn_nextArrowNavigation = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-right'])[last()]");
     By txt_resultsCount = By.xpath("//div[contains(text(), 'results')]");
     By btn_moreFilters = By.xpath("//button[contains(., 'More Filters')]");
     By txt_filterOrders= By.xpath("//div[contains(text(),'Filter Orders')]");
@@ -228,6 +231,11 @@ public class OrdersPage extends LoginPage{
         distributorUI.waitForVisibility(lbl_editOrderTitle);
         System.out.println("Order Ref No: "+distributorUI.getText(lbl_editOrderTitle));
     }
+    public void clickOnEditOrderInReview() throws InterruptedException {
+        distributorUI.click(link_editOrder);
+        distributorUI.waitForVisibility(lbl_editOrderTitleReview);
+        System.out.println("Order Ref No: "+distributorUI.getText(lbl_editOrderTitleReview));
+    }
     public boolean isEditOrderPopupDisplayed(){
         return distributorUI.isDisplayed(txt_editOrderPopup);
     }
@@ -311,17 +319,19 @@ public class OrdersPage extends LoginPage{
         return String.valueOf(distributorUI.countElements(By.xpath(date.replace("DATE", d))));
     }
 
-    public Boolean isFilteredOrdersCorrect(String OrdersDate){
-        try {
-            distributorUI.waitForCustom(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+    public Boolean isFilteredOrdersCorrect(String OrdersDate) throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        for (int i = 0; i < 5; i++) {
+            distributorUI.scrollToElementStable(By.xpath("(" + date.replace("DATE", OrdersDate) + ")" + "[last()]"),5);
+            boolean status = distributorUI.isDisplayed(By.xpath("(" + date.replace("DATE", OrdersDate) + ")" + "[last()]"),5);
+            if (status) {
+                return true;
+            } else {
+                distributorUI.clickWithScrollAndHover(btn_nextArrowNavigation);
+            }
+
         }
-//        String d = distributorUI.getText(txt_date);
-//        distributorUI.scrollToElement(By.xpath("("+ date.replace("DATE", OrdersDate) + ")" + "[last()]"));
-        distributorUI.scrollToElementStable(By.xpath("("+ date.replace("DATE", OrdersDate) + ")" + "[last()]"));
-//        return distributorUI.validateFilteredElements(By.xpath(date.replace("DATE", OrdersDate)),OrdersDate);
-        return distributorUI.isDisplayed(By.xpath("("+ date.replace("DATE", OrdersDate) + ")" + "[last()]"));
+        return false;
     }
 
     /*public Boolean isFilteredOrderStatusCorrect(String OrdersStatus){

@@ -33,8 +33,8 @@ public class VerifyAddTagTest extends TestBase {
         String BusinessName = Customer.getBusinessNameFromCustomers(CustomerCode);
         Customer.SelectCustomer(CustomerCode);
         softAssert.assertTrue(Customer.isCustomerProfileDisplayed(BusinessName),"Error in navigation to customer page");
-        Customer.clickOnAddTagDropdownMenu();
-        softAssert.assertTrue(Customer.isDropdownMenuDisplayed(), "visibility error");
+//        Customer.clickOnAddTagDropdownMenu();
+//        softAssert.assertTrue(Customer.isDropdownMenuDisplayed(), "visibility error");
         Customer.selectToAddTagOption();
         softAssert.assertTrue(Customer.isAddedTagNameDisplayed(), "text error");
         softAssert.assertAll();

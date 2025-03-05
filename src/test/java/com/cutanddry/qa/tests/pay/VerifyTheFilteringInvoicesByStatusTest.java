@@ -19,6 +19,7 @@ public class VerifyTheFilteringInvoicesByStatusTest extends TestBase {
     SoftAssert softAssert;
     static String status_past_due = PayInvoiceData.STATUS_PAST_DUE;
     static String status_unpaid = PayInvoiceData.STATUS_UNPAID;
+    static String status_upcoming = PayInvoiceData.STATUS_UPCOMING_DUE;
     static String status_scheduled = PayInvoiceData.STATUS_SCHEDULED;
     static String status_processing = PayInvoiceData.STATUS_PROCESSING;
     static String status_paid = PayInvoiceData.STATUS_PAID;
@@ -44,9 +45,9 @@ public class VerifyTheFilteringInvoicesByStatusTest extends TestBase {
         softAssert.assertTrue(Pay.isEmptyInvoiceMsgDisplayed(), "Invoices are not cleared.");
 
         Pay.selectInvoiceStatusViaFilter(status_past_due);
-        softAssert.assertTrue(Pay.getInvoiceRecordStatus(1).trim().contains(status_past_due.trim()), "The past due status in the first invoice record does not match the expected value.");
+        softAssert.assertTrue(Pay.getInvoiceRecordStatus(1).trim().contains(status_past_due.replace("- ","").trim()), "The past due status in the first invoice record does not match the expected value.");
 
-        Pay.selectInvoiceStatusViaFilter(status_unpaid);
+        Pay.selectInvoiceStatusViaFilter(status_upcoming);
         softAssert.assertTrue(Pay.getInvoiceRecordStatus(1).trim().contains(status_unpaid.trim()), "The unpaid status in the first invoice record does not match the expected value.");
 
         // TODO: Need to uncomment the following status_scheduled test steps after fixing the prerequisite for status_scheduled creation.

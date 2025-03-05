@@ -30,6 +30,7 @@ public class VerifyTheDispatchButtonFunctionalityForMultipleRoutes extends TestB
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToLoginAsPortal(distributorName);
         Dashboard.navigateToTrackRoutes();
+        softAssert.assertTrue(Track.isRoutesTextDisplayed(),"navigation to track routes error");
         Track.clickBtnDispatch();
         Track.typeStartTimeDispatched("0400PM");
         Track.selectTruckNameDispatch("Black Longhauler");

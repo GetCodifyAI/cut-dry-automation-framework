@@ -11,8 +11,8 @@ public class OrderDeskPage extends LoginPage{
     By DraftOrderPageReviewBtn = By.xpath("(//div[contains(@class, '_10q9czs')]//a[text()='Review'])[1]");
     By DraftOrderPageReviewBtn2 = By.xpath("(//div[contains(@class, '_10q9czs')]//a[text()='Review'])[2]");
     By isDateErrorDisplayed = By.xpath("//div[contains(text(),'Delivery date is not valid')]");
-    By DraftOrderReviewPageQuantityIncrementBtn = By.xpath("(//div[@class='p-2 px-sm-3 _du1frc _18jhc3z py-2 ml-2 text-center align-middle'])[1]");
-    By DraftOrderReviewPageQuantityDecrementBtn = By.xpath("(//div[@class='p-2 px-sm-3 _du1frc _18jhc3z py-2 mr-2 text-center align-middle'])[1]");
+    By DraftOrderReviewPageQuantityIncrementBtn = By.xpath("(//*[local-name()='svg' and @data-icon='plus'])[1]");
+    By DraftOrderReviewPageQuantityDecrementBtn = By.xpath("(//*[local-name()='svg' and @data-icon='minus'])[1]");
     By DraftOrderReviewPageQuantityEdit = By.xpath("(//input[contains(@data-input,'quantityInput')])[1]");
     By SaveDraftBtn = By.xpath("//button[@class='mr-3 btn btn-outline-primary']");
     By DraftSavedSucessfullyText = By.xpath("//h2[@class='swal2-title']");
@@ -24,12 +24,14 @@ public class OrderDeskPage extends LoginPage{
     By SelectRandomOption = By.cssSelector(".themed_select__option");
     By AddItemBtn = By.xpath("//button[@class='btn btn-outline-primary']");
     By ItemAddDeleteSucessfulTxt = By.xpath("//h2[contains(text(),'Saved Successfully')]");
-    By DeleteItemBtn = By.xpath("(//td[@class='_pe8div'])[last()]");
-    By DeleteConfirmationOverlayYesBtn = By.xpath("//button[@class='swal2-confirm _1fmw5qi order-2 swal2-styled']");
+//    By DeleteItemBtn = By.xpath("(//td[@class='_pe8div'])[last()]");
+By DeleteItemBtn = By.xpath("(//*[local-name()='svg' and @data-icon='trash-can'])[last()]");
+    By DeleteConfirmationOverlayYesBtn = By.xpath("//button[contains(text(),'Yes')]");
     By ItemNameTxt = By.xpath("(//div[@class='_12e4m8i'])[1]");
     By lbl_SearchProductPopup = By.xpath("//div[contains(text(),'Update Item')]");
     By SearchProduct = By.xpath("//div[@class='themed_select__placeholder css-1wa3eu0-placeholder']");
     By SelectedswapItem = By.xpath("//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'dmab : almond milk barista-6x32oz-califia')]");
+    By firstDropdownItem = By.xpath("(//div[contains(@class, 'themed_select__option')])[1]");
     By SwapConfirmBtn = By.xpath("//button[contains(text(),'Confirm')]");
     By CustomerSelectionDropdown = By.xpath(" //div[contains(text(),'Customer')]/..//div[contains(@class,'select__dropdown-indicator')]");
     By CustomerName = By.cssSelector(".cd_themed_select__option.css-yt9ioa-option");
@@ -41,7 +43,7 @@ public class OrderDeskPage extends LoginPage{
 //    By ReviewTxt = By.xpath("//h2[contains(text(),'pending_review')]");
 //    By ReviewTxt = By.xpath("//*[contains(text(),'PENDING REVIEW')]");
     By anyOrderTxt = By.xpath("//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'quantity')]");
-    By SubmittedOrderPageReViewBtn = By.xpath("(//div[contains(@class, '_10q9czs row')]//div//a[text()='Review' and contains(@href,'/order-desk')])[last()]");
+    By SubmittedOrderPageReViewBtn = By.xpath("(//div[contains(@class, '_10q9czs row')]//div//a[text()='View' and contains(@href,'/order-desk')])[last()]");
     By SubmitTxt = By.xpath("//*[contains(text(),'Submit Order')]");
 
     public boolean isOrderDeskTextDisplayed(){
@@ -87,6 +89,7 @@ public class OrderDeskPage extends LoginPage{
     }
 
     public void editItemQuantityOnDraftOrderReviewPage(String itemQuantity) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.clearUsingJavaScript(DraftOrderReviewPageQuantityEdit);
         distributorUI.sendKeys(DraftOrderReviewPageQuantityEdit, itemQuantity);
         distributorUI.waitForCustom(4000);
@@ -174,7 +177,9 @@ public class OrderDeskPage extends LoginPage{
     }
 
     public void ClickProductForSwap(){
-        distributorUI.click(SelectedswapItem);
+//        distributorUI.click(SelectedswapItem);
+        distributorUI.click(firstDropdownItem);
+
     }
 
     public void ClickSwapConfirmBtn(){

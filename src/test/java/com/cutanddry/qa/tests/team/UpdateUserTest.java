@@ -24,8 +24,8 @@ public class UpdateUserTest extends TestBase {
     static int randomNumber = new Random().nextInt(1000);
     static String testUser = "Testupdate " + randomNumber;
     static String testEmail = "testupdate"+randomNumber+"@email.com";
-    static String testUserRef = "AZ";
-    static String userRef = "ZZ";
+    static String testUserRef = "AZ"+randomNumber;
+    static String userRef = "ZZ"+randomNumber;
 
     @BeforeMethod
     public void setUp(){

@@ -31,7 +31,8 @@ public class LoginPage extends TestBase {
     By btn_loginAsDis = By.xpath("//a[contains(text(), 'Login As (supplier)')]");
     By InternalToolsBtn = By.xpath("//a[contains(text(),'Internal Tools') and contains(@class,'active nav-link')]");
     By lbl_loginAsCustomer = By.xpath("//button[contains(text(),'Re-Index')]/following-sibling::div//div[contains(text(),'Select')]/following::input[@type='text'][1]");
-    String txt_customer = "//div[@id='react-select-5-option-0' and contains(text(), 'PHONE_NO')]";
+//    String txt_customer = "//div[@id='react-select-5-option-0' and contains(text(), 'PHONE_NO')]";
+    String txt_customer = "//div[starts-with(@id, 'react-select-') and contains(@id, '-option-0') and contains(text(), 'PHONE_NO')]";
     By btn_loginAsCustomer = By.xpath("//a[contains(text(), 'Login As (classic)')]");
     By lbl_gateKeeper = By.xpath("//h1[contains(text(),'Gatekeeper')]");
     By row_count = By.xpath("//table[@class='table table-striped']/tbody/tr");

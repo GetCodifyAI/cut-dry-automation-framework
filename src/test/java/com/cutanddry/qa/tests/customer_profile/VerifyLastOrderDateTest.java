@@ -36,6 +36,7 @@ public class VerifyLastOrderDateTest extends TestBase{
         Customer.checkoutItems();
         Customer.submitOrder();
         Customer.clickOrderSuccessMessageClose();
+        Customer.clickOnCustomerCode(customerID);
         softAssert.assertTrue(Customer.isLastOrderDateToday(), "date error");
 
         softAssert.assertAll();

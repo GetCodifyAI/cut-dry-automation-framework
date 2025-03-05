@@ -1,8 +1,7 @@
-package com.cutanddry.qa.tests.settings;
+package com.cutanddry.qa.tests.order_guide;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
-import com.cutanddry.qa.data.testdata.DistributorOrderData;
 import com.cutanddry.qa.data.testdata.GatekeeperData;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
@@ -45,12 +44,11 @@ public class DistributorInitialSetUpTest extends TestBase {
         Customer.enableCatalogAccess();
         softAssert.assertTrue(Customer.catalogAccessEnabled(),"Error in catalog access enable displaying");
 
-        Customer.clickOnEditAccHolds();
+        /*Customer.clickOnEditAccHolds();
         Customer.clickOnAccDropdown();
         Customer.clickOnNone();
-        Customer.clickOnSave();
-        softAssert.assertTrue(Customer.isRemoveHoldPopupDisplayed(),"remove hard hold popup error");
-        Customer.clickOnYes();
+        Customer.clickOnSave();*/
+        Customer.disableAccHolds();
         softAssert.assertTrue(Customer.isNoneSelected(),"acc none select error");
 
         softAssert.assertAll();

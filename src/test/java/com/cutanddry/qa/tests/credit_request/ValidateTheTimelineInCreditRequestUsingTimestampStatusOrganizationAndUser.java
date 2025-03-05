@@ -36,6 +36,8 @@ public class ValidateTheTimelineInCreditRequestUsingTimestampStatusOrganizationA
         Customer.checkoutItems();
         Customer.submitOrder();
         Customer.clickClose();
+        Customer.searchCustomerByCode(CustomerCode);
+        Customer.clickOnCustomerCode(CustomerCode);
 //        Dashboard.navigateToOrders();
 //        softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"Error navigating to orders page");
         Customer.clickOnOrdersTab();

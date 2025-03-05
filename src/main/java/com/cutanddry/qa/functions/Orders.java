@@ -62,6 +62,9 @@ public class Orders {
     public static void clickOnEditOrder() throws InterruptedException {
         ordersPage.clickOnEditOrder();
     }
+    public static void clickOnEditOrderInReview() throws InterruptedException {
+        ordersPage.clickOnEditOrderInReview();
+    }
     public static boolean isEditOrderPopupDisplayed(){
         return ordersPage.isEditOrderPopupDisplayed();
     }
@@ -117,7 +120,7 @@ public class Orders {
         return ordersPage.getCountDates();
     }
 
-    public static boolean validateFilteredOrders(String OrdersDate){
+    public static boolean validateFilteredOrders(String OrdersDate) throws InterruptedException {
         return ordersPage.isFilteredOrdersCorrect(OrdersDate);
     }
 

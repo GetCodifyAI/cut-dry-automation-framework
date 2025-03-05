@@ -45,6 +45,8 @@ public class VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest extends TestBase {
         Customer.checkoutItemsDist();
         Customer.submitOrderWithoutReachMinimum();
         Customer.clickClose();
+        Customer.searchCustomerByCode(customerId);
+        Customer.clickOnCustomerCode(customerId);
         Customer.clickOnOrderGuideInProfile();
         Customer.searchItemOnOrderGuide(itemCode);
         itemName = Customer.getItemNameFirstRow();
@@ -55,6 +57,8 @@ public class VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest extends TestBase {
         Customer.checkoutItemsDist();
         Customer.submitOrderWithoutReachMinimum();
         Customer.clickClose();
+        Customer.searchCustomerByCode(customerId);
+        Customer.clickOnCustomerCode(customerId);
         Customer.clickOnOrderGuideInProfile();
         Customer.searchItemOnOrderGuide(itemCode);
         itemName = Customer.getItemNameFirstRow();

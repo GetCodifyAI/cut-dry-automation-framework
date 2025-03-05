@@ -3,12 +3,12 @@ package com.cutanddry.qa.pages;
 import org.openqa.selenium.By;
 
 public class CatalogPage extends LoginPage{
-    By txt_catalog = By.xpath("//a[contains(@data-tip,'View Catalog')]");
+    By txt_catalog = By.xpath("//div[contains(text(),'Manage Catalog')]");
     By txt_catalogFirstItem = By.xpath("//tbody/tr[contains(@class, '_du1frc')][1]");
     By txt_editItem = By.xpath("//li[contains(text(),'Edit Item')]");
     By btn_preview = By.xpath("//a[.//button[contains(text(), 'Preview')]]");
     By txt_preview = By.xpath("//a[contains(text(),'Preview')]");
-    By btn_downloadPdf = By.xpath("//div[text()='Export PDP (Pdf)']");
+    By btn_downloadPdf = By.xpath("(//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ ', 'abcdefghijklmnopqrstuvwxyz')='exportpdp(pdf)'])[1]");
     By btn_dropdown = By.xpath("//button[@aria-haspopup='true']");
     By ItemCatalogSearchBtn = By.xpath("//input[@placeholder=\"Find Item in Catalog\"]");
     String SearchedItemItemCode = "//tr[contains(@class, '_du1frc')][td[1]='ITEMCODE']";
@@ -18,8 +18,9 @@ public class CatalogPage extends LoginPage{
     By OtherBrandBtn = By.xpath("//img[@class='_kfc3ia img-fluid' and contains(@src,\"2b4b2013cb03bd26957893f39d0783bd.jpg\")]");
     By ConagaraBrandPage= By.xpath("//div[contains(text(),'Conagra Foodservice ') and @class='mt-5 mb-1 _mojmdw']");
     By OtherBrandText = By.xpath("//h2[contains(text(),'Andy Capp’s®')]");
-    By ShowCaseBtn = By.xpath("//a[contains(@data-tip,'Cut+Dry Product Showcase')]");
-    By btn_previewCat = By.xpath("//button[contains(text(), 'Preview Catalog')]");
+    By ShowCaseBtn = By.xpath("//*[contains(text(),'Showcase')]");
+//    By ShowCaseBtn = By.xpath("//a[contains(@data-tip,'Cut+Dry Product Showcase')]");
+    By btn_previewCat = By.xpath("//button[contains(text(), 'Switch to Grid View')]");
     By txt_previewCat = By.xpath("//div[text()='Catalog Preview']");
     By txt_firstItemDetails = By.xpath("//tbody/tr[1]");
     String itemInTheGrid = "//tr[contains(@class,'_du1frc')]//td[text()='ITEMCODE']";
@@ -134,13 +135,36 @@ public class CatalogPage extends LoginPage{
     By onSaleDropDown = By.xpath("//label[contains(text(), 'On Sale')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     By newArrivalDropDown = By.xpath("//label[contains(text(), 'New Arrivals')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     String categoryOptionInCatalog = "//div[contains(text(),'Category')]/../../following-sibling::div//div[contains(text(),'CATEGORY')]";
-    String categoryName = "//div[contains(@class,'mt-3 mb-2 _4ffx9r8') and contains(text(),'CATEGORY')]";
+    String categoryName = "(//div[ contains(text(),'CATEGORY')])[1]";
     By lbl_firstRowItemCode = By.xpath("(//tbody/tr[1]/td[1])[1]");
     By lbl_firstRowItemName = By.xpath("(//tbody/tr[1]/td[3])[1]");
-    By mediaTypeDropDown = By.xpath("//label[contains(text(), 'Media Type')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    By mediaTypeDropDown = By.xpath("//label[contains(text(), 'Media Type')]/../following-sibling::div//div[contains(@class, 'themed_select__control')]");
     String mediaTypeOption = "(//div[text()='TYPE' and contains(@class,'themed_select__option')])[last()]";
     String addedSubstitutionsCode = "//div[contains(text(),'CODE')]";
     String deleteUom = "//label[text()='UOM']/../following-sibling::td//*[local-name() = 'svg' and @data-icon='trash-can']";
+
+    //multi UOM
+    String multiUomDropDownOG = "(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg'])[1]";
+    By multiUomOption =By.xpath("//div[text()='Multiple Units']");
+    String getOGPriceUOM ="(//td[text()='CODE']/ancestor::tr/td[7]/div/div/div/span)[UOM]";
+    String btn_OGAddToCartPlusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='plus'])[UOM]";
+    String tbx_itemQuantityUOM = "(//td[text()='CODE']/following-sibling::*//div/input[@data-input ='quantityInput'])[UOM]";
+    String btn_OGAddToCartMinusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='minus'])[UOM]";
+    String submittedOrder = "//td[contains(text(),'#') and text()='ID']";
+    By getTotalOrderPrice = By.xpath("//div[contains(text(),'Total')]/../following-sibling::td");
+    By getTotalOrderQuantity = By.xpath("//div[contains(text(),'Items')]/../following-sibling::td");
+    String multiUomDropDown = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[1]";
+    String multiUomDropDownOption ="//div[text()='OPTION']";
+    String getPriceUOM = "((//button[contains(@data-for,'add-to-order-guide')]/ancestor::div[2]/following-sibling::div)[1]/following-sibling::*//div//span[contains(text(),'$')])[UOM]";
+    String btn_addToCartPlusQuantity = "((//button[contains(@data-for,'add-to-order-guide')]/ancestor::div[2]/following-sibling::div)[1]/following-sibling::*//*[name()='svg' and contains(@data-icon, 'plus')])[UOM]";
+    String btn_addToCartMinusQuantity = "((//button[contains(@data-for,'add-to-order-guide')]/ancestor::div[2]/following-sibling::div)[1]/following-sibling::*//*[name()='svg' and contains(@data-icon, 'minus')])[UOM]";
+    String btn_editQuantities = "//div[text()='NAME']/../../following-sibling::*//div//button[text()='Edit Quantities']";
+    String addQtyDisplay = "//div[text()='NAME']/../../following-sibling::*//div//div[text()='QUANTITY']";
+    String txt_catalogProduct = "//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]";
+    By getTotalPriceReviewOrder = By.xpath("//td[contains(text(),'Total')]/following-sibling::td");
+    By getTotalQuantityReviewOrder = By.xpath("//td[contains(text(),'Items')]/following-sibling::td");
+    String btn_trash = "//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='trash-can']";
+
 
 
 
@@ -247,6 +271,11 @@ public class CatalogPage extends LoginPage{
     }
     public void clickOnAdditionalAttributesTab(){
         distributorUI.click(additionalAttributesTab);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public boolean isCertificationsSectionDisplayed() {
         return distributorUI.isDisplayed(certificationAttribute);
@@ -543,6 +572,11 @@ public class CatalogPage extends LoginPage{
     }
     public void clickOnEditProduct() {
         distributorUI.click(btn_editProduct);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void selectFirstEditItem() {
         distributorUI.click(btn_firstEditItem);
@@ -691,6 +725,126 @@ public class CatalogPage extends LoginPage{
     public void refreshPage(){
         distributorUI.refreshPage();
     }
+
+    // -------------------------------- Multi UOM ---------------------------
+
+    public void ClickOnMultiUomDropDownOG(String code)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(multiUomDropDownOG.replace("CODE", code)));
+        distributorUI.click(By.xpath(multiUomDropDownOG.replace("CODE", code)));
+        distributorUI.click(multiUomOption);
+        distributorUI.waitForCustom(3000);
+    }
+    public double getOGPriceUOM(String code ,String uom) throws InterruptedException {
+        try {
+            return extractPrice(By.xpath(getOGPriceUOM.replace("CODE", code).replace("UOM", uom)));
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPrice(By.xpath(getOGPriceUOM.replace("CODE", code).replace("UOM", uom)));
+        }
+    }
+    private double extractPrice(By priceLocator) {
+        distributorUI.waitForVisibility(priceLocator);
+        String tagName = distributorUI.getElement(priceLocator).getTagName();
+        String priceText;
+
+        if (tagName.equals("input")) {
+            priceText = distributorUI.getText(priceLocator, "value");
+        } else {
+            priceText = distributorUI.getText(priceLocator);
+        }
+
+        System.out.println("Extracted Price: " + priceText);
+        return Double.valueOf(priceText.replace("$", "").replace("/cs", "").replace("/pkg", "").trim());
+    }
+    public void clickOGAddToCartPlusIcon(String code,String uom)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(btn_OGAddToCartPlusQuantity.replace("CODE", code).replace("UOM", uom)));
+        distributorUI.click(By.xpath(btn_OGAddToCartPlusQuantity.replace("CODE", code).replace("UOM", uom)));
+        distributorUI.waitForCustom(2000);
+    }
+    public String getItemUOMQuantity(String code,String uom){
+        return distributorUI.getText(By.xpath(tbx_itemQuantityUOM.replace("CODE", code).replace("UOM", uom)), "value");
+    }
+    public void clickOGAddToCartMinusIcon(String code,String uom)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(btn_OGAddToCartMinusQuantity.replace("CODE", code).replace("UOM", uom)));
+        distributorUI.click(By.xpath(btn_OGAddToCartMinusQuantity.replace("CODE", code).replace("UOM", uom)));
+        distributorUI.waitForCustom(2000);
+    }
+    public void clickSubmittedOrder(String id){
+        distributorUI.click(By.xpath(submittedOrder.replace("ID", id)));
+    }
+    public double getTotalPriceInOrder() throws InterruptedException {
+        try {
+            return extractPrice(getTotalOrderPrice);
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPrice(getTotalOrderPrice);
+        }
+    }
+    public String getTotalQuantityInOrder(){
+        return distributorUI.getText(getTotalOrderQuantity);
+    }
+    public void ClickOnMultiUomDropDown(String name)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(multiUomDropDown.replace("NAME", name)));
+        distributorUI.click(By.xpath(multiUomDropDown.replace("NAME", name)));
+    }
+    public void ClickOnMultiUomDropDownOption(String option){
+        distributorUI.waitForVisibility(By.xpath(multiUomDropDownOption.replace("OPTION", option)));
+        distributorUI.click(By.xpath(multiUomDropDownOption.replace("OPTION", option)));
+    }
+    public double getPDPPriceUOM(String uom) throws InterruptedException {
+        try {
+            return extractPrice(By.xpath(getPriceUOM.replace("UOM", uom)));
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPrice(By.xpath(getPriceUOM.replace("UOM", uom)));
+        }
+    }
+    public void clickAddToCartPlusIcon(String uom)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(btn_addToCartPlusQuantity.replace("UOM", uom)));
+        distributorUI.click(By.xpath(btn_addToCartPlusQuantity.replace("UOM", uom)));
+        distributorUI.waitForCustom(3000);
+    }
+    public void clickAddToCartMinusIcon(String uom){
+        distributorUI.waitForVisibility(By.xpath(btn_addToCartMinusQuantity.replace("UOM", uom)));
+        distributorUI.click(By.xpath(btn_addToCartMinusQuantity.replace("UOM", uom)));
+    }
+    public boolean isEditQuantitiesButtonDisplayed(String name){
+        try {
+            distributorUI.waitForVisibility(By.xpath(btn_editQuantities.replace("NAME", name)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(btn_editQuantities.replace("NAME", name)));
+    }
+    public boolean isAddedQuantitiesDisplayed(String name ,String qty){
+        try {
+            distributorUI.waitForVisibility(By.xpath(addQtyDisplay.replace("NAME", name).replace("QUANTITY",qty)));
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(addQtyDisplay.replace("NAME", name).replace("QUANTITY",qty)));
+    }
+    public void clickOnCatalogProduct(String name){
+        distributorUI.waitForVisibility(By.xpath(txt_catalogProduct.replace("NAME", name)));
+        distributorUI.clickUsingJavaScript(By.xpath(txt_catalogProduct.replace("NAME", name)));
+    }
+    public double getTotalPriceInReviewOrder() throws InterruptedException {
+        try {
+            return extractPrice(getTotalPriceReviewOrder);
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPrice(getTotalPriceReviewOrder);
+        }
+    }
+    public String getTotalQuantityInReviewOrder(){
+        return distributorUI.getText(getTotalQuantityReviewOrder);
+    }
+    public void clickReviewOrderTrashIcon(String code)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(btn_trash.replace("CODE", code)));
+        distributorUI.click(By.xpath(btn_trash.replace("CODE", code)));
+        distributorUI.waitForCustom(2000);
+    }
+
 
 }
 

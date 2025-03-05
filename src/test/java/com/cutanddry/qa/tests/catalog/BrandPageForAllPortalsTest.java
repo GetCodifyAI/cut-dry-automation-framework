@@ -17,6 +17,7 @@ public class BrandPageForAllPortalsTest extends TestBase {
     static User user;
     String DistributerName = "185556964 - Brandon Cheney - Cheney Brothers";
 //    String ProductName = "andy capps hot fries, 0.85 oz";
+    String searchProductName = "Ac Hot On Rng 12"; //Ac Hot On Rng 12/2Z
     String ProductName = "Ac Hot On Rng 12/2Z";
     String BrandPage = "Conagra Foodservice";
 
@@ -32,10 +33,11 @@ public class BrandPageForAllPortalsTest extends TestBase {
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DistributerName);
+        Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.NavigateToShowCasePage();
         softAssert.assertTrue(ShowCase.isNavigateToShowCase(),"ERROR in Navigating to Show Case Page");
-        ShowCase.SearchProductInProductSearhBar(ProductName);
+        ShowCase.SearchProductInProductSearhBar(searchProductName);
         ShowCase.SelectProductFromShowCase(ProductName);
         ShowCase.NavigateToManufacturerPage();
         softAssert.assertTrue(ShowCase.isNavigatedToManufacturerPage(BrandPage),"ERROR in Navigating to Manufacturer Page");

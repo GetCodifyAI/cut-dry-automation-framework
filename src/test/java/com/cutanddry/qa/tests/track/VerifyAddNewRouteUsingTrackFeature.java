@@ -28,8 +28,9 @@ public class VerifyAddNewRouteUsingTrackFeature extends TestBase {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-        Login.navigateToLoginAsPortal(distributorName);
+        Login.navigateToDistributorPortal(distributorName);
         Dashboard.navigateToTrackRoutes();
+        softAssert.assertTrue(Track.isRoutesTextDisplayed(),"navigation to track routes error");
         Track.clickOkIfErrorTextDisplayed();
         Track.deleteExistingRoute();
         Track.clickBtnManageRoutes();

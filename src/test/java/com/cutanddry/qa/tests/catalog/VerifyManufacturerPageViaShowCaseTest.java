@@ -18,7 +18,7 @@ public class VerifyManufacturerPageViaShowCaseTest extends TestBase {
     String DistributerName = "185556964 - Brandon Cheney - Cheney Brothers";
 //    String ProductName = "andy capps hot fries, 0.85 oz";
     String BrandPage = "Conagra Foodservice";
-    String ProductName = "Ac Hot On Rng 12/2Z";
+    String ProductName = "Ac Hot On Rng 12"; // Ac Hot On Rng 12/2Z
 
     @BeforeMethod
     public void setUp(){
@@ -32,6 +32,7 @@ public class VerifyManufacturerPageViaShowCaseTest extends TestBase {
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DistributerName);
+        Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.NavigateToShowCasePage();
         softAssert.assertTrue(ShowCase.isNavigateToShowCase(),"ERROR in Navigating to Show Case Page");

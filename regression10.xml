@@ -1,0 +1,38 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="Part_Ten"/>
+        <classes>
+            <class name="com.cutanddry.qa.tests.price.ValidateTheFinalWeightTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPoundPriceTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingByPricingEngineTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateThePoundSpotPricingTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingNotFromPricingEngineTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateTheSplitWeightTest"/>
+
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyEditedQuantitiesAfterEditingMultipleUOMInPDPTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyNavigationPDPWhenSelectingMultipleUnitsOptionTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheDeleteItemFromMultipleUOMInReviewOrderTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantityOfMultipleUOMInOGAndSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantityOfMultipleUOMInOrderGuideTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantityOfMultipleUOMInPDPAndSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantityOfMultipleUOMInPDPTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantityOfMultipleUOMInReviewOrderTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromCatalogOnlyTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMUsingAddFromCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMUsingEditOrderTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyFinalWeightFunctionalityForMultiUOMItemsTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyAddMultipleUOMInOGAndSubmissionThenEditOrderFlowTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyAddMultipleUOMInOGAndSubmissionThenDraftOrderFlowTest"/>
+
+            <class name="com.cutanddry.qa.tests.order_reminder.VerifyEditOrderReminderTest"/>
+
+
+        </classes>
+    </test>
+</suite>

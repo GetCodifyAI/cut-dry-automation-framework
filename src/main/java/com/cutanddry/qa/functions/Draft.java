@@ -84,6 +84,15 @@ public class Draft {
     public static void clickClearFilter()throws InterruptedException{
         draftPage.clickClearFilter();
     }
+    public static String getReferenceNum() throws InterruptedException {
+        return draftPage.getReferenceNum();
+    }
+    public static boolean isPendingApprovalDraftDisplayed(String status){
+        return draftPage.isPendingApprovalDraftDisplayed(status);
+    }
+    public static void pendingApprovalDraftClick(String status){
+       draftPage.pendingApprovalDraftClick(status);
+    }
 
 
 }

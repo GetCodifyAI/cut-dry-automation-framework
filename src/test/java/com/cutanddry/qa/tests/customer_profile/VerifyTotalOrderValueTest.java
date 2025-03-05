@@ -42,6 +42,8 @@ public class VerifyTotalOrderValueTest extends TestBase{
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
         Customer.submitOrder();
         Customer.clickClose();
+        Customer.searchCustomerByCode(customerID);
+        Customer.clickOnCustomerCode(customerID);
         double valueAfterOrder = Customer.getLastOrderedValue();
         softAssert.assertEquals(valueAfterOrder,valueBeforeOrder+totalPrice,"last ordered total price");
         softAssert.assertAll();

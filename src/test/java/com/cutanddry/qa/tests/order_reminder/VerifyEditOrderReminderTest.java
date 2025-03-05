@@ -5,6 +5,8 @@ import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
+import com.cutanddry.qa.functions.OrderGuideSettings;
+import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -46,13 +48,13 @@ public class VerifyEditOrderReminderTest extends TestBase {
          softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"Edit Order Guide screen isn't displayed");
          Customer.expandMoreOptionsDropdown();
          Customer.clickOnOrderGuideSettings();
-         Customer.clickOnOrderReminderAlert();
-         softAssert.assertTrue(Customer.isOrderReminderAlertPopDisplayed());
-         Customer.clickOrderCutoffTime(OrderCutoffTime);
-         Customer.clickSendAlert(AlertTime);
-         Customer.clickAlertDays(AlertDays);
-         Customer.clickOrderRemiderAlertSettingSave();
-         Customer.clickOnSave();
+         OrderGuideSettings.clickOnOrderReminderAlert();
+         softAssert.assertTrue(OrderGuideSettings.isOrderReminderAlertPopDisplayed());
+         OrderGuideSettings.clickOrderCutoffTime(OrderCutoffTime);
+         OrderGuideSettings.clickSendAlert(AlertTime);
+         OrderGuideSettings.clickAlertDays(AlertDays);
+         OrderGuideSettings.clickOrderRemiderAlertSettingSave();
+         OrderGuideSettings.clickOnSave();
          softAssert.assertAll();
      }
 
