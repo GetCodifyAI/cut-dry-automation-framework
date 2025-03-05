@@ -598,9 +598,9 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
 
     By txt_previuosDraftOrderPopUp = By.xpath("//div[contains(text(), 'previous draft order')]");
     By btn_previuosDraftOrderPopUpClose = By.xpath("//span[contains(text(), 'x')]");
-    By dropdown_option_orderguideSettings = By.xpath("//a[@class='_1ccoy1o text-decoration-none dropdown-item' and text()='Order Guide Settings']");
-//    By AddAlertButton = By.xpath("//*[name()='svg' and @data-icon='pencil']");
-    By AddAlertButton = By.xpath("//button[@type='button' and contains(@class, 'btn-outline') and text()='Add Alert']");
+//    By dropdown_option_orderguideSettings = By.xpath("//a[@class='_1ccoy1o text-decoration-none dropdown-item' and text()='Order Guide Settings']");
+    By AddAlertButton = By.xpath("//*[name()='svg' and @data-icon='pencil']");
+//    By AddAlertButton = By.xpath("//button[@type='button' and contains(@class, 'btn-outline') and text()='Add Alert']");
     By txt_orderReminderAlertPopUp = By.xpath("//div[contains(text(), 'Order Reminder Alert')]");
     By orderCutoffTimeDropDown = By.xpath("//label[contains(text(),'Order Cutoff Time')]/following-sibling::div");
     String orderCutoffTimeDropDownOption = "//div[text()='CUTOFFTIME']";
@@ -3468,10 +3468,7 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
         return Integer.parseInt(WeightPerUOMString.trim());
     }
 
-    public void clickOnOrderGuideSettings(){
-        distributorUI.waitForClickability(dropdown_option_orderguideSettings);
-        distributorUI.click(dropdown_option_orderguideSettings);
-    }
+
     public boolean isReviewStandingOrdersDisplayed(){
         distributorUI.waitForVisibility(txt_reviewStandingOrders);
         return distributorUI.isDisplayed(txt_reviewStandingOrders);
@@ -3498,22 +3495,6 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
         }
     }
 
-    public boolean isPreviousDraftOrderPopupDisplayed(){
-        try {
-            distributorUI.waitForVisibility(txt_previuosDraftOrderPopUp,20);
-//            distributorUI.waitForCustom(4000);
-        } catch (Exception e){
-            return false;
-        }
-        return distributorUI.isDisplayed(txt_previuosDraftOrderPopUp);
-    }
-
-    public void clickClosePreviousDraftOrderPopup(){
-        distributorUI.waitForClickability(btn_previuosDraftOrderPopUpClose);
-        distributorUI.click(btn_previuosDraftOrderPopUpClose);
-
-
-    }
 
     public void clickOnOrderGuideSettings(){
         distributorUI.waitForClickability(dropdown_option_orderguideSettings);
