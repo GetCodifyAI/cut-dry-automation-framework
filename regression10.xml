@@ -29,6 +29,7 @@
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyFinalWeightFunctionalityForMultiUOMItemsTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyAddMultipleUOMInOGAndSubmissionThenEditOrderFlowTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyAddMultipleUOMInOGAndSubmissionThenDraftOrderFlowTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectingMultiUOMFromCashAndCarryFlowTest"/>
 
             <class name="com.cutanddry.qa.tests.order_reminder.VerifyEditOrderReminderTest"/>
 
