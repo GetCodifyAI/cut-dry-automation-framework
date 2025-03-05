@@ -164,6 +164,7 @@ public class CatalogPage extends LoginPage{
     By getTotalPriceReviewOrder = By.xpath("//td[contains(text(),'Total')]/following-sibling::td");
     By getTotalQuantityReviewOrder = By.xpath("//td[contains(text(),'Items')]/following-sibling::td");
     String btn_trash = "//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='trash-can']";
+    String standingOrder = "//div[text()=' (QUANTITY items for $PRICE)']";
 
 
 
@@ -844,7 +845,14 @@ public class CatalogPage extends LoginPage{
         distributorUI.click(By.xpath(btn_trash.replace("CODE", code)));
         distributorUI.waitForCustom(2000);
     }
-
+    public boolean isSubmittedStandingOrderDisplayed(String quantity ,String price) {
+        try {
+            distributorUI.waitForVisibility(By.xpath(standingOrder.replace("QUANTITY", quantity).replace("PRICE", price)));
+        } catch (Exception e) {
+            return false;
+        }
+        return distributorUI.isDisplayed(By.xpath(standingOrder.replace("QUANTITY", quantity).replace("PRICE", price)));
+    }
 
 }
 

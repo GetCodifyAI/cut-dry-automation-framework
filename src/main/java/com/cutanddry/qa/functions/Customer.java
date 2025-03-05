@@ -1926,6 +1926,9 @@ public class Customer {
     public static int getWeightPerUOM(String position){
         return customersPage.getWeightPerUOM(position);
     }
+    public static boolean isReviewStandingOrdersDisplayed(){
+        return customersPage.isReviewStandingOrdersDisplayed();
+    }
 
     public static String getItemNameFirstMultiOUM() throws InterruptedException {
         return customersPage.getItemNameFirstMultiOUM();

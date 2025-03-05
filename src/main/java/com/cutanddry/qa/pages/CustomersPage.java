@@ -574,6 +574,7 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     String totalNoOfUOMsOrdered = "((//th[contains(text(),'Total Weight')])[POSITION]/ancestor::table//tbody//td/input)[1]";
     String WeightPerUOM = "((//th[contains(text(),'Total Weight')])[POSITION]/ancestor::table//tbody//td/input)[2]";
     By dropdown_option_orderguideSettings = By.xpath("//a[@class='_1ccoy1o text-decoration-none dropdown-item' and text()='Order Guide Settings']");
+    By txt_reviewStandingOrders = By.xpath("//div[text()='Review Standing Order']");
 
     By btn_firstMultiOUM = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]");
     By lbl_firstMultiOUMItemName = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td//span/div[@data-tip='View Product Details']");
@@ -3470,6 +3471,10 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     public void clickOnOrderGuideSettings(){
         distributorUI.waitForClickability(dropdown_option_orderguideSettings);
         distributorUI.click(dropdown_option_orderguideSettings);
+    }
+    public boolean isReviewStandingOrdersDisplayed(){
+        distributorUI.waitForVisibility(txt_reviewStandingOrders);
+        return distributorUI.isDisplayed(txt_reviewStandingOrders);
     }
 
     public String getItemNameFirstMultiOUM() throws InterruptedException {
