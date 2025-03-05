@@ -50,5 +50,19 @@ public class CashAndCarry {
     public static void clickOK(){
         cashAndCarryAppPage.clickOK();
     }
+    public static double getDicarloPDPPriceUOM(String uom) throws InterruptedException {
+        return cashAndCarryAppPage.getDicarloPDPPriceUOM(uom);
+    }
+    public static void clickDicarloAddToCartPlusIcon(int count, String uom) throws InterruptedException{
+        for (int i=0; i<count;i++){
+            cashAndCarryAppPage.clickDicarloAddToCartPlusIcon(uom);
+        }
+    }
+    public static boolean isTransactionRejectPopupDisplayed(){
+        return cashAndCarryAppPage.isTransactionRejectPopupDisplayed();
+    }
+    public static boolean isProductDetailsDisplayedDicarlo(){
+        return cashAndCarryAppPage.isProductDetailsDisplayedDicarlo();
+    }
 
 }
