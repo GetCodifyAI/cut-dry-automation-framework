@@ -19,6 +19,10 @@ public class CashAndCarryAppPage extends TestBase {
     By txt_invalidCardPopup = By.xpath("//h2[text()='Invalid Card Detail(s)']");
     By btn_OK = By.xpath("//button[text()='OK']");
     By txt_paymentFailedPopup = By.xpath("//h2[contains(text(), 'Your payment authorization failed.')]");
+    String getDicarloPriceUOM = "(//div//span[contains(text(),'$')])[UOM]";
+    String btn_addToCartPlusQuantityDicarlo = "(//*[name()='svg' and contains(@data-icon, 'plus')])[UOM]";
+    By txt_transactionRejectPopup = By.xpath("//h2[contains(text(),'Transaction was rejected')]");
+    By lbl_productDetailsDicarlo = By.xpath("//div[text()='Product Details']");
 
     public void navigateToCashAndCarryApp(String url){
         distributorUI.navigateToURL(url);
@@ -73,6 +77,44 @@ public class CashAndCarryAppPage extends TestBase {
     public void clickOK(){
         distributorUI.waitForClickability(btn_OK);
         distributorUI.click(btn_OK);
+    }
+    public double getDicarloPDPPriceUOM(String uom) throws InterruptedException {
+        try {
+            return extractPrice(By.xpath(getDicarloPriceUOM.replace("UOM", uom)));
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPrice(By.xpath(getDicarloPriceUOM.replace("UOM", uom)));
+        }
+    }
+    public void clickDicarloAddToCartPlusIcon(String uom)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(btn_addToCartPlusQuantityDicarlo.replace("UOM", uom)));
+        distributorUI.click(By.xpath(btn_addToCartPlusQuantityDicarlo.replace("UOM", uom)));
+        distributorUI.waitForCustom(3000);
+    }
+    private double extractPrice(By priceLocator) {
+        distributorUI.waitForVisibility(priceLocator);
+        String tagName = distributorUI.getElement(priceLocator).getTagName();
+        String priceText;
+
+        if (tagName.equals("input")) {
+            priceText = distributorUI.getText(priceLocator, "value");
+        } else {
+            priceText = distributorUI.getText(priceLocator);
+        }
+
+        System.out.println("Extracted Price: " + priceText);
+        return Double.valueOf(priceText.replace("$", "").replace("/cs", "").replace("/pkg", "").trim());
+    }
+    public boolean isTransactionRejectPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_transactionRejectPopup);
+    }
+    public boolean isProductDetailsDisplayedDicarlo(){
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return distributorUI.isDisplayed(lbl_productDetailsDicarlo);
     }
 
 }

@@ -500,5 +500,9 @@ public class Catalog {
     public static void clickReviewOrderTrashIcon(String code)throws InterruptedException{
         catalogPage.clickReviewOrderTrashIcon(code);
     }
+    public static boolean isSubmittedStandingOrderDisplayed(String quantity ,String price){
+        return  catalogPage.isSubmittedStandingOrderDisplayed(quantity,price);
+    }
+
 
 }
