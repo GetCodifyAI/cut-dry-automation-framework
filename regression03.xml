@@ -1,0 +1,31 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="SignIn_Boost_Dashboard_DisclaimerMsg" />
+        <classes>
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordValidTest" />
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordInvalidTest" />
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyBroadcastMessageTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTopCategoryPicksTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyCompareSimilarItemsTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedForCustomerTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedBySalesRepTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyDontForgetToOrderTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyMoreFromThisBrandTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyAddingFeaturedListTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyEditingFeaturedListTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyRemovingFeaturedListTest" />
+            <class name="com.cutanddry.qa.tests.dashboard.VerifyDashboardShowingSalespersonsRelatedChartsTest" />
+            <class name="com.cutanddry.qa.tests.dashboard.VerifyFunctionalityOfTeamStandingsTableTest" />
+            <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderReviewTest" />
+            <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderDetailsSupplierPortalTest" />
+            <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderDetailsCDAppTest" />
+        </classes>
+    </test>
+</suite>

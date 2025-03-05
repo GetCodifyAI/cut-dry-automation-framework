@@ -1,0 +1,27 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="Orders" />
+        <classes>
+            <class name="com.cutanddry.qa.tests.orders.VerifyMoreFiltersSalesPersonAndCreditRequestTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsPrintKitchenReceiptTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsPrintOrderConfirmationTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsUpdateStatusTest" />
+            <class name="com.cutanddry.qa.tests.orders.ValidateOrderStatusChangesTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderSearchTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewOrderEditTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewDateDropdownTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewStatusDropdownTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewPrintOrderConfirmationTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewPrintKitchenReceiptTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewMoreFiltersTest" />
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderGuideOrderApprovalUIFeatureTest" />
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderApprovalSettingsReflectedWhileOrderingTest" />
+        </classes>
+    </test>
+</suite>

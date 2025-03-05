@@ -76,7 +76,7 @@ public class VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest exte
         orderId = Customer.getSuccessOrderId();
         Customer.clickClose();
 
-       /* //test
+        //test
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
@@ -87,21 +87,24 @@ public class VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest exte
         Orders.clickOnEditOrder();
         softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(),"edit popup error");
         Orders.clickOnConfirm();
-        softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(),"edit error(Review Page)");
-        Orders.clickOnEditOrderInReview();
+        /*softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(),"edit error(Review Page)");
+        Orders.clickOnEditOrderInReview();*/
         softAssert.assertTrue(Orders.isNavigatedToEditOrder(),"edit error");
-        Customer.searchItemOnOrderGuide(searchItemCode);
+        Customer.searchItemOnOrderGuide(multiSearchItemCode);
 
-        Customer.splitWeight();
+        Customer.splitWeightMultiUOM(uom1);
         softAssert.assertTrue(Customer.isSplitWeightPopupDisplayed(),"popup error");
-        Customer.enterCasesValue("20");
-        Customer.enterWeightValue("10");
+        Customer.enterCasesValueMultiUOM(uom1,"20");
+        Customer.enterWeightValueMultiUOM(uom1,"20");
+
+        Customer.clickAddWightRowMultiUOMIcon(uom1);
+
         Customer.clickUpdateWeight();
         softAssert.assertEquals(Customer.getItemQtyFirstRow(),"20", "item count error");
         softAssert.assertEquals(Customer.getItemSplitFinalWeight(),"200 LB", "item weight error");
         softAssert.assertEquals(Customer.getEditSplitFinalWeightPrice(),"$520.00", "item price error");
 
-        itemPrice=Customer.getSplitFinalWeightPrice();
+       /* itemPrice=Customer.getSplitFinalWeightPrice();
 
         String priceText = Customer.getItemPriceOnEditOrderReviewCheckout().replace("$", "").replace(",", "");
         Double actualPrice = Double.valueOf(priceText);
@@ -124,8 +127,8 @@ public class VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest exte
 
         String priceText1 = Customer.getPriceInCustomerOrder().replace("$", "");
         Double actualPrice1 = Double.valueOf(priceText);
-        softAssert.assertEquals(actualPrice1, itemPrice, "The item has not been selected.");
-//        softAssert.assertEquals(Customer.getPriceInCustomerOrder(),itemPrice,"The item has not been selected.");*/
+        softAssert.assertEquals(actualPrice1, itemPrice, "The item has not been selected.");*/
+//        softAssert.assertEquals(Customer.getPriceInCustomerOrder(),itemPrice,"The item has not been selected.");
         softAssert.assertAll();
     }
 

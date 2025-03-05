@@ -1,0 +1,27 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="Pay_01"/>
+        <classes>
+            <class name="com.cutanddry.qa.tests.pay.ValidateSearchCustomerPaymentTest"/>
+            <class name="com.cutanddry.qa.tests.pay.ValidateTheSendPaymentReminderTest"/>
+            <class name="com.cutanddry.qa.tests.pay.ValidateTheSendEmailStatementTest"/>
+            <class name="com.cutanddry.qa.tests.pay.ValidateTheDownloadStatementTest"/>
+            <class name="com.cutanddry.qa.tests.pay.ValidateTheNavigateToCustomerInvoicesSectionTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheCaptureFundForBulkInvoicesTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilteringInvoicesByAuthStatusTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilteringInvoicesByCustomerTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilteringInvoicesByDateTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilteringInvoicesByInvoiceIDTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilteringInvoicesByStatusTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheMarkAsPaidForBulkInvoicesTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheSendingPaymentsReminderForBulkInvoicesTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheViewFeatureInThePayoutSectionTest"/>
+        </classes>
+    </test>
+</suite>

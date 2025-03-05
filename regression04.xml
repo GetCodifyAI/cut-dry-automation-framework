@@ -6,7 +6,7 @@
         <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
     </listeners>
     <test name="distributor tests">
-        <parameter name="PART" value="Part_Three"/>
+        <parameter name="PART" value="Catalog_01"/>
         <classes>
             <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogCopyPDPTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogExportPDPTest" />
@@ -28,28 +28,6 @@
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsImageTest"/>
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsPricingPromotionsTest"/>
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsAddSubstituteTest"/>
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogItemDetailsRemoveSubstituteTest"/>
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemCatalogDataTest"/>
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemAdditionalAttributesTest"/>
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemPricingPromotionsTest"/>
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemAddSubstituteTest"/>
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemRemoveSubstituteTest"/>
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPDFGenerationForCatalogPDPTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyHardOrderMinimumWarningTest" />
-            <class name="com.cutanddry.qa.tests.catalog.BrandPageForAllPortalsTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyManufacturerPageViaShowCaseTest" />
-            <class name="com.cutanddry.qa.tests.catalog.ValidateTheMainCatalogFilterSidebarFiltersTest" />
-            <class name="com.cutanddry.qa.tests.catalog.ValidateTheMainCatalogClearAllFiltersTest" />
-            <class name="com.cutanddry.qa.tests.catalog.ValidateTheViewCatalogAsCustomerRadioButtonInMainCatalogTest" />
-            <class name="com.cutanddry.qa.tests.catalog.ValidateFilterItemsByCategoryInCatalogTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemImageTest"/>
-
-            <class name="com.cutanddry.qa.tests.multi_cart.VerifyGroupingProductsIntoTwoCartsTest" />
-            <class name="com.cutanddry.qa.tests.multi_cart.VerifyCreatedOrdersFromMultipleCartsTest" />
-
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderGuideOrderApprovalUIFeatureTest" />
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderApprovalSettingsReflectedWhileOrderingTest" />
-
         </classes>
     </test>
 </suite>

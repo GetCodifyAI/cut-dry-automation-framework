@@ -1,0 +1,27 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="StandingOrders_Sections_Archive_Tracker_Banner" />
+        <classes>
+            <class name="com.cutanddry.qa.tests.standing_orders.VerifyCreatingStandingOrdersTest" />
+            <class name="com.cutanddry.qa.tests.standing_orders.VerifyEditingStandingOrdersTest" />
+            <class name="com.cutanddry.qa.tests.standing_orders.VerifyAddingAnotherStandingOrderTest" />
+            <class name="com.cutanddry.qa.tests.standing_orders.VerifyDeletingStandingOrdersTest" />
+            <class name="com.cutanddry.qa.tests.sections.VerifyAddingOrderGuideSectionsTest"/>
+            <class name="com.cutanddry.qa.tests.sections.VerifyEditingOrderGuideSectionsTest"/>
+            <class name="com.cutanddry.qa.tests.sections.VerifyDeletingOrderGuideSectionsTest"/>
+            <class name="com.cutanddry.qa.tests.archive.VerifyHidingAnItemFromTheOrderGuideTest"/>
+            <class name="com.cutanddry.qa.tests.archive.VerifySavingAndUnhideItemFromOrderGuideTest"/>
+            <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerOnboardingDocsTest" />
+            <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerIssuesTest" />
+            <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerFeatureRequestsTest" />
+            <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerEditFeatureRequestsTest" />
+            <class name="com.cutanddry.qa.tests.banner.VerifyTheBannerFeatureTest" />
+        </classes>
+    </test>
+</suite>

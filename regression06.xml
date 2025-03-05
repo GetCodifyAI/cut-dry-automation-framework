@@ -1,0 +1,25 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="Catalog_03" />
+        <classes>
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyDeletingUnitOfMeasureOfItemTest" />
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyAddingSubstituteForAnItemTest" />
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyRemovingSubstituteFromAnItemTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheProductStatusInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheProprietaryItemInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheCategorySelectionInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheSubCategorySelectionInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheStorageMethodInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheDescriptionInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheOnSaleFilterInCatalogPricingAndPromotionsTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheNewArrivalFilterInCatalogPricingAndPromotionsTest" />
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessRestrictedViaCustomerProfileTest" />
+        </classes>
+    </test>
+</suite>
