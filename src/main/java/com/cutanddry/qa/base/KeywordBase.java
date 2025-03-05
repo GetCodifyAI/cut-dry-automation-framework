@@ -1237,4 +1237,15 @@ public class KeywordBase {
         }
     }
 
+    public boolean isElementEnabled(By locator){
+        try{
+            WebElement element = driver.findElement(locator);
+            boolean isEnabled = element.isEnabled();
+            logger.info("Element {} is {}", locator, isEnabled ? "ENABLED" : "DISABLED");
+            return isEnabled;
+        }catch (Exception e) {
+            logger.error("Failed to check if element {} is enabled", locator, e);
+            return false;
+        }
+    }
 }

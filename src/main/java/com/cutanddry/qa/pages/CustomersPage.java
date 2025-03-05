@@ -3415,17 +3415,20 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     }
 
     public int getTotalWeight(String position){
+        distributorUI.waitForVisibility(By.xpath(totalWeight.replace("POSITION",position)));
         String totalWeightString = distributorUI.getText(By.xpath(totalWeight.replace("POSITION",position)),"value");
         return Integer.parseInt(totalWeightString.trim());
 
     }
 
     public int getNoOfUOMsOrdered(String position){
+        distributorUI.waitForVisibility(By.xpath(totalNoOfUOMsOrdered.replace("POSITION",position)));
         String NoOfUOMsOrderedString = distributorUI.getText(By.xpath(totalNoOfUOMsOrdered.replace("POSITION",position)),"value") ;
         return Integer.parseInt(NoOfUOMsOrderedString.trim());
     }
 
     public int getWeightPerUOM(String position){
+        distributorUI.waitForVisibility(By.xpath(WeightPerUOM.replace("POSITION",position)));
         String WeightPerUOMString = distributorUI.getText(By.xpath(WeightPerUOM.replace("POSITION",position)),"value") ;
         return Integer.parseInt(WeightPerUOMString.trim());
     }
@@ -3441,6 +3444,12 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     }
 
     public void clickCustomerScreenScanToOrderBtn(String customerCode){
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        distributorUI.waitForVisibility(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
         distributorUI.click(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
     }
 
