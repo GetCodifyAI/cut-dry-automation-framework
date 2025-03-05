@@ -1930,6 +1930,60 @@ public class Customer {
         return customersPage.isReviewStandingOrdersDisplayed();
     }
 
+    public static String getItemNameFirstMultiOUM() throws InterruptedException {
+        return customersPage.getItemNameFirstMultiOUM();
+    }
+
+    public static String getItemCodeFirstMultiOUM() throws InterruptedException {
+        return customersPage.getItemCodeFirstMultiOUM();
+    }
+
+    public static double getActiveItemPriceFirstMultiOUMRowStable() throws InterruptedException {
+        return customersPage.getActiveItemPriceFirstMultiOUMRowStable();
+    }
+
+    public static String getItemNameFirstSingleOUM() throws InterruptedException {
+        return customersPage.getItemNameFirstSingleOUM();
+    }
+
+    public static String getItemCodeFirstSingleOUM() throws InterruptedException {
+        return customersPage.getItemCodeFirstSingleOUM();
+    }
+
+    public static double getActiveItemPriceMultiOUM(String position) throws InterruptedException {
+        return customersPage.getActiveItemPriceMultiOUM(position);
+    }
+
+    public static double getItemPriceOnMultiOUMCheckout() throws InterruptedException {
+        return customersPage.getItemPriceOnMultiOUMCheckout();
+    }
+
+    public static void checkoutItemsMultiOUM() throws InterruptedException {
+        customersPage.clickCheckOutOrderGuide();
+        /*if (customersPage.isOrderMiniumErrorBannerDisplayed()){
+            dashboardPage.clickOnOrderSettings();
+            settingsPage.selectOnOrderMinimums();
+            settingsPage.clickOnSaveChanges();
+            customersPage.clickOnBack();
+        }*/
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+        /*if(customersPage.isSubstitutesPopupDisplayed()){
+            customersPage.clickDoNotSubstitute();
+        }*/
+    }
+
+    public static void ClickOnMultiUomDropDownOG(String code)throws InterruptedException{
+        customersPage.ClickOnMultiUomDropDownOG(code);
+    }
+
+    public static void clickOGAddToCartPlusIcon(int count,String code, String uom) throws InterruptedException{
+        for (int i=0; i<count;i++){
+            customersPage.clickOGAddToCartPlusIcon(code,uom);
+        }
+    }
+
 }
 
 
