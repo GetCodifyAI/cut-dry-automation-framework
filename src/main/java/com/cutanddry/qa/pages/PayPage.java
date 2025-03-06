@@ -50,7 +50,9 @@ public class PayPage extends LoginPage{
     By lbl_invoiceCaptureFundTitle = By.xpath("//div[contains(text(),'Are you sure you want capture funds for these invoices?')]");
     By lbl_invoiceCaptureFundPopupTitle = By.xpath("//div[contains(text(),'Capture Funds')]");
     By btn_invoiceCapturePay = By.xpath("//button[contains(text(),'Pay')]");
-    By txt_error = By.xpath("//h2[contains(text(),'An error occurred while trying to charge the customer. Transaction was rejected by gateway.')]");
+//    By txt_error = By.xpath("//h2[contains(text(),'An error occurred while trying to charge the customer. Transaction was rejected by gateway.')]");
+By txt_error = By.xpath("//*[contains(text(),'Your transaction was declined due to Error - Transaction was rejected by gateway.\n" +
+        "                Please verify your card details and try again or use a different payment method.')]");
     By cbox_invoiceFirstRecord = By.xpath("//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[1]/td[1]//*[name()='svg']");
     By cbox_invoiceFirstRecordSetting = By.xpath("//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[ROW_COUNT]/td[10]//button");
     By elements_invoiceRecords = By.xpath("//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr");

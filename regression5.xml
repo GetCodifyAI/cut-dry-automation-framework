@@ -46,6 +46,29 @@
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTtheInviteBookkeeperInMoreActions"/>
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheDownloadStatementInMoreActions"/>
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCreateCreditMemoInMoreActionsTest"/>
+
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterAddingNewDriverTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterEditingDriverTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterDeletingDriverTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesSearchDriverTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterAddingNewTruckTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterEditingTruckTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterDeletingTruckTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesSearchTruckTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsSMSTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsEmailTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsPushTest" />
+            <class name="com.cutanddry.qa.tests.track.ValidateDetailsOnRouteRecordTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateGettingRouteCodeFlowTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateGettingEditRouteFlowTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateAddStopToRouteFlowTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateAddBreakToRouteFlowTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateTheRouteRecordListTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateVisibilityStatusOfRouteTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateAddUnassignedStopsTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateEditUnassignedStopsTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateDeleteUnassignedStopsTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateTheDispatchRouteFlowTest"/>
         </classes>
     </test>
 </suite>

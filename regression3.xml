@@ -50,6 +50,19 @@
             <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderGuideOrderApprovalUIFeatureTest" />
             <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderApprovalSettingsReflectedWhileOrderingTest" />
 
+            <class name="com.cutanddry.qa.tests.track.VerifyTheDatePickerFunctionality"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyDateChangeFunctionalityUnderMonitoring"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyAddNewRouteUsingTrackFeature"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyDownloadExampleRouteUsingTrackFeature"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTheDispatchButtonFunctionalityForMultipleRoutes"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTrackFieldManagerUsingTrackFeature"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTrackSettingsUnderRoutes"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTheWarehouseSelectionFromTheDropdown"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateCustomerWarehouseMonitoringTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateMonitoringFunctionalityDetailsTest"/>
+
+
+
         </classes>
     </test>
 </suite>

@@ -40,6 +40,12 @@ public class TestBase {
 //                    prefs.put("safebrowsing.enabled", "true");            // Enable safe browsing
                     chromeOptions.setExperimentalOption("prefs", prefs);
 
+                    // TODO: These options help ensure stability, performance, and compatibility when running headless Selenium tests in CircleCI
+                    chromeOptions.addArguments("--disable-dev-shm-usage"); // Prevents shared memory crashes
+                    chromeOptions.addArguments("--disable-gpu"); // Disables GPU rendering
+                    chromeOptions.addArguments("--disable-renderer-backgrounding"); // Prevents execution speed-up in background
+                    chromeOptions.addArguments("--disable-background-timer-throttling"); // Keeps timers active
+
                     driver = new ChromeDriver(chromeOptions);
                     js = (JavascriptExecutor) driver;
                     wait = new WebDriverWait(driver, Duration.ofSeconds(15));
