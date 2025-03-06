@@ -1984,12 +1984,19 @@ public class Customer {
         }
     }
 
-    public static boolean isScanToOrderBtnDisplayedInCustomers(String customerId){
-        return customersPage.isScanToOrderBtnDisplayed(customerId);
+    public static void splitWeightMultiUOM(String position){
+        customersPage.splitWeightMultiUOM(position);
     }
 
-    public static void navigateFromCustomerScreenToScanToOrderScreen(String customerCode){
-        customersPage.clickCustomerScreenScanToOrderBtn(customerCode);
+    public static void enterCasesValueMultiUOM(String position, String val) throws InterruptedException {
+        customersPage.enterCasesValueMultiUOM(position,val);
+    }
+    public static void enterWeightValueMultiUOM(String position, String val) throws InterruptedException {
+        customersPage.enterWeightValueMultiUOM(position,val);
+    }
+
+    public static void clickAddWightRowMultiUOMIcon(String position) throws InterruptedException {
+        customersPage.clickAddWightRowMultiUOMIcon(position);
     }
 
 }
