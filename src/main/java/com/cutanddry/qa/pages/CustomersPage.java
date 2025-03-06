@@ -592,6 +592,7 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     String multiUomDropDownOG = "(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg'])[1]";
     By multiUomOption =By.xpath("//div[text()='Multiple Units']");
     String btn_OGAddToCartPlusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='plus'])[UOM]";
+    String txt_multiOrderId = "(//div[contains(text(),'Order #')])[NUM]";
 
 
 
@@ -3529,6 +3530,10 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
         distributorUI.waitForVisibility(By.xpath(btn_OGAddToCartPlusQuantity.replace("CODE", code).replace("UOM", uom)));
         distributorUI.click(By.xpath(btn_OGAddToCartPlusQuantity.replace("CODE", code).replace("UOM", uom)));
         distributorUI.waitForCustom(2000);
+    }
+    public String getMultiOrderedId(String num) {
+        String orderId = distributorUI.getText(By.xpath(txt_multiOrderId.replace("NUM", num)));
+        return orderId.substring(orderId.indexOf("#") + 1).trim();
     }
 
 }
