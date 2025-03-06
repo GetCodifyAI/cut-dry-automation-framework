@@ -64,11 +64,15 @@ public class ValidateTheFinalWeightTest extends TestBase{
         Orders.clickOnEditOrderInReview();
         softAssert.assertTrue(Orders.isNavigatedToEditOrder(),"edit error");
         Customer.typeOnFinalWeight(weight);
-        softAssert.assertEquals(Customer.getItemQtyFirstRow(),"2", "item count error");
+        softAssert.assertEquals(Customer.getItemQtyFirstRow(),"1", "item count error");
         softAssert.assertEquals(Customer.getItemFinalPrice(),"$1,891.00", "item count error");
         Customer.increaseFirstRowQtyCustom(1);
-        softAssert.assertEquals(Customer.getItemFinalPrice(),"$2,836.50", "item count error");
-        softAssert.assertEquals(Customer.getItemFinalWeight(),"46.5", "item count error");
+        softAssert.assertEquals(Customer.getItemFinalPrice(),"$3,782.00", "item count error");
+
+        int calculatedWeight = Integer.parseInt(weight) * 2;
+        softAssert.assertEquals(Customer.getItemFinalWeight(), String.valueOf(calculatedWeight), "item count error");
+
+//        softAssert.assertEquals(Customer.getItemFinalWeight(),"62", "item count error");
         itemPrice=Customer.getItemFinalPrice();
         softAssert.assertEquals(Customer.getItemPriceOnEditOrderReviewCheckout(),itemPrice,"The item has not been selected.");
         Customer.clickOnCheckOutReview();
