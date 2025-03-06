@@ -606,7 +606,6 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
 
 // ((//th[contains(text(),'No. of')])[1]/../../following-sibling::*//tr[1]//input)[1]
 
-    String customerScreenScanToOrderBtn = "//tr/td[contains(text(),'CUSTOMERCODE')]/..//a[contains(@href,'scan-to-order')]";
 
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
@@ -632,6 +631,7 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
         return distributorUI.isDisplayed(By.xpath(btnOrderGuide.replace("CODE", code)));
     }
     public void clickOnOrderGuide(String code) {
+        distributorUI.waitForVisibility(By.xpath(btnOrderGuide.replace("CODE", code)));
         distributorUI.click(By.xpath(btnOrderGuide.replace("CODE", code)));
     }
     public String getItemNameFirstRow() throws InterruptedException {
@@ -3484,25 +3484,14 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
         return distributorUI.getText(lbl_firstMultiOUMItemName);
     }
 
-    public boolean isScanToOrderBtnDisplayed(String customerCode){
-        distributorUI.waitForVisibility(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
-        return distributorUI.isDisplayed(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
-    }
+
     public String getItemCodeFirstMultiOUM() throws InterruptedException {
         distributorUI.waitForVisibility(lbl_firstMultiOUMItemCode);
         distributorUI.waitForCustom(3000);
         return distributorUI.getText(lbl_firstMultiOUMItemCode);
     }
 
-    public void clickCustomerScreenScanToOrderBtn(String customerCode){
-        try {
-            distributorUI.waitForCustom(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        distributorUI.waitForVisibility(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
-        distributorUI.click(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
-    }
+
     public double getActiveItemPriceFirstMultiOUMRowStable() throws InterruptedException {
         try {
             return extractPriceStable(lbl_itemPriceListMultiOUM);

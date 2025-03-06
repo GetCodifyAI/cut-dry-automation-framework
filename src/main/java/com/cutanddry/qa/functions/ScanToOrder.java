@@ -43,4 +43,12 @@ public class ScanToOrder {
          scanToOrderPage.ClickOnScanToOrderCancelBtn(customerCode);
     }
 
+    public static void IncreaseItemQty(String ItemCode, int Quantity){
+       scanToOrderPage.clickQuantityIncreasePlusIcon(ItemCode,Quantity);
+    }
+
+    public static double getItemPriceOfItem(String ItemCode){
+       return scanToOrderPage.getItemPrice(ItemCode);
+    }
+
 }

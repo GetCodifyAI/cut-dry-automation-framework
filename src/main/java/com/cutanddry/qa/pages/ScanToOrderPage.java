@@ -9,8 +9,10 @@ public class ScanToOrderPage extends LoginPage{
     By AddToCartBtn = By.xpath("//button[contains(normalize-space(.),'Add to Cart')]");
     String ItemInCart = "//div[contains(@class,'cartContainer')]//span[contains(text(),'ITEMCODE')]";
     By customerScreenScanToOrderCancelOrderBtn = By.xpath("//button[@type='button' and contains(@class, 'btn-outline') and text()='Cancel Order']");
-
     By ScanToOrderButton = By.xpath("//a[contains(text(), 'Scan to Order')]");
+    String quantityIncreasePlusBtn = "//div[contains(@class,'cartContainer')]//span[contains(text(),'ITEMCODE')]/../following-sibling::div//*[name()='svg' and @data-icon='plus']";
+    String itemPrice = "//div[contains(@class,'cartContainer')]//span[contains(text(),'ITEMCODE')]/../following-sibling::div/div[1]";
+
 
     public boolean isScanToOrderTextDisplayed(){
         return distributorUI.isDisplayed(ScanToOrderText);
@@ -36,7 +38,7 @@ public class ScanToOrderPage extends LoginPage{
 
     public void clickOnAddToCart(){
         try {
-            distributorUI.waitForCustom(2000);
+            distributorUI.waitForCustom(3000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -59,6 +61,29 @@ public class ScanToOrderPage extends LoginPage{
             throw new RuntimeException(e);
         }
         distributorUI.click(customerScreenScanToOrderCancelOrderBtn);
+    }
+
+    public void clickQuantityIncreasePlusIcon(String ItemCode, int Quantity){
+        distributorUI.waitForVisibility(By.xpath(quantityIncreasePlusBtn.replace("ITEMCODE",ItemCode)));
+        for(int i = 1; i < Quantity; i++){
+            distributorUI.click(By.xpath(quantityIncreasePlusBtn.replace("ITEMCODE",ItemCode)));
+            try {
+                distributorUI.waitForCustom(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+    }
+
+    public double getItemPrice(String ItemCode){
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        String itemPriceInString = distributorUI.getText(By.xpath(itemPrice.replace("ITEMCODE",ItemCode)));
+        return Double.parseDouble(itemPriceInString.replace("$", ""));
     }
 
 
