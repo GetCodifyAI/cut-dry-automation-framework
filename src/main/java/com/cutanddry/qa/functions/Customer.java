@@ -1983,6 +1983,9 @@ public class Customer {
             customersPage.clickOGAddToCartPlusIcon(code,uom);
         }
     }
+    public static String getMultiOrderedId(String num) {
+        return customersPage.getMultiOrderedId(num);
+    }
 
     public static void splitWeightMultiUOM(String position){
         customersPage.splitWeightMultiUOM(position);
