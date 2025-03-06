@@ -1987,6 +1987,21 @@ public class Customer {
         return customersPage.getMultiOrderedId(num);
     }
 
+    public static void splitWeightMultiUOM(String position){
+        customersPage.splitWeightMultiUOM(position);
+    }
+
+    public static void enterCasesValueMultiUOM(String position, String val) throws InterruptedException {
+        customersPage.enterCasesValueMultiUOM(position,val);
+    }
+    public static void enterWeightValueMultiUOM(String position, String val) throws InterruptedException {
+        customersPage.enterWeightValueMultiUOM(position,val);
+    }
+
+    public static void clickAddWightRowMultiUOMIcon(String position) throws InterruptedException {
+        customersPage.clickAddWightRowMultiUOMIcon(position);
+    }
+
 }
 
 
