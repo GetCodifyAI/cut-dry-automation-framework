@@ -32,6 +32,9 @@
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectingMultiUOMFromCashAndCarryFlowTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheCreateStandingOrderWithMultipleUOMTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditStandingOrderWithMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheDeleteStandingOrderWithMultipleUOMTest"/>
+
+
 
             <class name="com.cutanddry.qa.tests.order_reminder.VerifyEditOrderReminderTest"/>
 
