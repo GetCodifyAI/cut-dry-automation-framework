@@ -1,6 +1,7 @@
 package com.cutanddry.qa.functions;
 
 import com.cutanddry.qa.pages.ScanToOrderPage;
+import org.openqa.selenium.By;
 
 public class ScanToOrder {
     static ScanToOrderPage scanToOrderPage = new ScanToOrderPage();
@@ -34,5 +35,12 @@ public class ScanToOrder {
         return scanToOrderPage.isItemAddedToTheCart(itemCode);
     }
 
+   public static boolean isScanToOrderCancelBtnDisplayed(String customerCode){
+       return scanToOrderPage.isScanToOrderCancelBtnDisplayed(customerCode);
+   }
+
+    public static void ClickOnScanToOrderCancelBtn(String customerCode){
+         scanToOrderPage.ClickOnScanToOrderCancelBtn(customerCode);
+    }
 
 }
