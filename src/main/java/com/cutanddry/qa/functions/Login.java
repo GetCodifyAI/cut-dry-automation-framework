@@ -97,4 +97,8 @@ public class Login {
         loginPage.updateCompanyIDs(featureName, companyID);
     }
 
+    public static void removeCompanyIDs(String featureName, String companyID){
+        loginPage.removeCompanyIDs(featureName,companyID);
+
+    }
 }

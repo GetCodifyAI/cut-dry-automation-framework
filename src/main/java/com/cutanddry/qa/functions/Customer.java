@@ -1907,8 +1907,8 @@ public class Customer {
     //----MultiUOM ---//
 
 
-    public static void selectFinalWeightFromOG(String position){
-        customersPage.clickFinalWeight(position);
+    public static void selectFinalWeightFromOG(String itemCode, String position){
+        customersPage.clickFinalWeight(itemCode, position);
     }
 
     public static boolean isEditWeightOverlayDisplayed(){
@@ -1983,6 +1983,9 @@ public class Customer {
             customersPage.clickOGAddToCartPlusIcon(code,uom);
         }
     }
+    public static String getMultiOrderedId(String num) {
+        return customersPage.getMultiOrderedId(num);
+    }
 
     public static void splitWeightMultiUOM(String position){
         customersPage.splitWeightMultiUOM(position);
@@ -1997,6 +2000,14 @@ public class Customer {
 
     public static void clickAddWightRowMultiUOMIcon(String position) throws InterruptedException {
         customersPage.clickAddWightRowMultiUOMIcon(position);
+    }
+
+    public static boolean isScanToOrderBtnDisplayedInCustomers(String customerId){
+        return customersPage.isScanToOrderBtnDisplayed(customerId);
+    }
+
+    public static void navigateFromCustomerScreenToScanToOrderScreen(String customerCode) throws InterruptedException {
+        customersPage.clickCustomerScreenScanToOrderBtn(customerCode);
     }
 
 }
