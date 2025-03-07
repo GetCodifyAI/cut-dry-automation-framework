@@ -51,4 +51,7 @@ public class ScanToOrder {
        return scanToOrderPage.getItemPrice(ItemCode);
     }
 
+    public static void ReviewAndConfirm(){
+        scanToOrderPage.clickOnReviewAndConfirm();
+    }
 }
