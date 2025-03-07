@@ -503,6 +503,18 @@ public class Catalog {
     public static boolean isSubmittedStandingOrderDisplayed(String quantity ,String price){
         return  catalogPage.isSubmittedStandingOrderDisplayed(quantity,price);
     }
+    public static void searchOrderGuide(String item) throws InterruptedException {
+        catalogPage.searchOrderGuide(item);
+    }
+    public static double getUOMOGPrice(String code,String uom) throws InterruptedException {
+        return catalogPage.getUOMOGPrice(code,uom);
+    }
+    public static double getItemPriceOnCheckoutButtonOG() throws InterruptedException {
+        return catalogPage.getItemPriceOnCheckoutButtonOG();
+    }
+    public static void ClickOnCatalogMultiUomDropDown(String name)throws InterruptedException{
+        catalogPage.ClickOnCatalogMultiUomDropDown(name);
+    }
 
 
 }
