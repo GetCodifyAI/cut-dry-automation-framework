@@ -165,6 +165,10 @@ public class CatalogPage extends LoginPage{
     By getTotalQuantityReviewOrder = By.xpath("//td[contains(text(),'Items')]/following-sibling::td");
     String btn_trash = "//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='trash-can']";
     String standingOrder = "//div[text()=' (QUANTITY items for $PRICE)']";
+    By orderGuideSearch = By.xpath("//input[@placeholder='Search order guide...']");
+    String getUOMOGPrice ="(//td[text()='CODE']/ancestor::tr/td[last()-2]//span)[UOM]";
+    By checkOutBtnOG = By.xpath("//button[@data-for='cartCheckoutButton' and contains(text(),'$')]");
+    String multiUomDropDownCatalog = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[2]";
 
 
 
@@ -755,7 +759,7 @@ public class CatalogPage extends LoginPage{
         }
 
         System.out.println("Extracted Price: " + priceText);
-        return Double.valueOf(priceText.replace("$", "").replace("/cs", "").replace("/pkg", "").trim());
+        return Double.valueOf(priceText.replace("$", "").replace("/cs", "").replace("/pkg", "").replace("/CS", "").replace("/HCS", "").trim());
     }
     public void clickOGAddToCartPlusIcon(String code,String uom)throws InterruptedException{
         distributorUI.waitForVisibility(By.xpath(btn_OGAddToCartPlusQuantity.replace("CODE", code).replace("UOM", uom)));
@@ -852,6 +856,27 @@ public class CatalogPage extends LoginPage{
             return false;
         }
         return distributorUI.isDisplayed(By.xpath(standingOrder.replace("QUANTITY", quantity).replace("PRICE", price)));
+    }
+    public void searchOrderGuide(String item) throws InterruptedException {
+        distributorUI.clear(orderGuideSearch);
+        distributorUI.sendKeys(orderGuideSearch,item);
+    }
+    public double getUOMOGPrice(String code ,String uom) throws InterruptedException {
+        try {
+            return extractPrice(By.xpath(getUOMOGPrice.replace("CODE", code).replace("UOM", uom)));
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPrice(By.xpath(getUOMOGPrice.replace("CODE", code).replace("UOM", uom)));
+        }
+    }
+    public Double getItemPriceOnCheckoutButtonOG() throws InterruptedException {
+        distributorUI.waitForVisibility(checkOutBtnOG);
+        distributorUI.waitForCustom(4000);
+        return Double.valueOf(distributorUI.getText(checkOutBtnOG).replace("$",""));
+    }
+    public void ClickOnCatalogMultiUomDropDown(String name)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(multiUomDropDownCatalog.replace("NAME", name)));
+        distributorUI.click(By.xpath(multiUomDropDownCatalog.replace("NAME", name)));
     }
 
 }
