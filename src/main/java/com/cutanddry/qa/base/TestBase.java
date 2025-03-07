@@ -30,6 +30,11 @@ public class TestBase {
                     chromeOptions.addArguments("--start-maximized");
                     if (Constants.RUN_HEADLESS) {
                         chromeOptions.addArguments("--headless", "--window-size=1920,1080");
+                        // TODO: These options help ensure stability, performance, and compatibility when running headless Selenium tests in CircleCI
+                        chromeOptions.addArguments("--disable-dev-shm-usage"); // Prevents shared memory crashes
+                        chromeOptions.addArguments("--disable-gpu"); // Disables GPU rendering
+                        chromeOptions.addArguments("--disable-renderer-backgrounding"); // Prevents execution speed-up in background
+                        chromeOptions.addArguments("--disable-background-timer-throttling"); // Keeps timers active
                     }
 
                     // Set custom download directory
@@ -39,12 +44,6 @@ public class TestBase {
                     prefs.put("profile.default_content_settings.popups", 0);
 //                    prefs.put("safebrowsing.enabled", "true");            // Enable safe browsing
                     chromeOptions.setExperimentalOption("prefs", prefs);
-
-                    // TODO: These options help ensure stability, performance, and compatibility when running headless Selenium tests in CircleCI
-                    chromeOptions.addArguments("--disable-dev-shm-usage"); // Prevents shared memory crashes
-                    chromeOptions.addArguments("--disable-gpu"); // Disables GPU rendering
-                    chromeOptions.addArguments("--disable-renderer-backgrounding"); // Prevents execution speed-up in background
-                    chromeOptions.addArguments("--disable-background-timer-throttling"); // Keeps timers active
 
                     driver = new ChromeDriver(chromeOptions);
                     js = (JavascriptExecutor) driver;

@@ -44,24 +44,17 @@
             <class name="com.cutanddry.qa.tests.catalog.ValidateFilterItemsByCategoryInCatalogTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemImageTest"/>
 
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyStockDataInCatalogViewTest" />
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyImageOfItemTest" />
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyAdditionalAttributeOfItemTest" />
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyTheCatalogItemDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyCreatingUnitOfMeasureOfItemTest" />
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyDeletingUnitOfMeasureOfItemTest" />
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyAddingSubstituteForAnItemTest" />
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyRemovingSubstituteFromAnItemTest" />
+
             <class name="com.cutanddry.qa.tests.multi_cart.VerifyGroupingProductsIntoTwoCartsTest" />
             <class name="com.cutanddry.qa.tests.multi_cart.VerifyCreatedOrdersFromMultipleCartsTest" />
-
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderGuideOrderApprovalUIFeatureTest" />
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderApprovalSettingsReflectedWhileOrderingTest" />
-
-            <class name="com.cutanddry.qa.tests.track.VerifyTheDatePickerFunctionality"/>
-            <class name="com.cutanddry.qa.tests.track.VerifyDateChangeFunctionalityUnderMonitoring"/>
-            <class name="com.cutanddry.qa.tests.track.VerifyAddNewRouteUsingTrackFeature"/>
-            <class name="com.cutanddry.qa.tests.track.VerifyDownloadExampleRouteUsingTrackFeature"/>
-            <class name="com.cutanddry.qa.tests.track.VerifyTheDispatchButtonFunctionalityForMultipleRoutes"/>
-            <class name="com.cutanddry.qa.tests.track.VerifyTrackFieldManagerUsingTrackFeature"/>
-            <class name="com.cutanddry.qa.tests.track.VerifyTrackSettingsUnderRoutes"/>
-            <class name="com.cutanddry.qa.tests.track.VerifyTheWarehouseSelectionFromTheDropdown"/>
-            <class name="com.cutanddry.qa.tests.track.ValidateCustomerWarehouseMonitoringTest"/>
-            <class name="com.cutanddry.qa.tests.track.ValidateMonitoringFunctionalityDetailsTest"/>
-
-
 
         </classes>
     </test>

@@ -34,7 +34,7 @@ public class VerifyTheFilterPayoutPaymentByPayoutStatusTest extends TestBase{
     }
 
     @Test(groups = "DOT-TC-898")
-    public void VerifyTheFilterInitiatedPaymentByPayoutStatus() throws InterruptedException {
+    public void VerifyTheFilterPayoutPaymentByPayoutStatus() throws InterruptedException {
         softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");

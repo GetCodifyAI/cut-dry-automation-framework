@@ -8,6 +8,39 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part_Two"/>
         <classes>
+            <class name="com.cutanddry.qa.tests.track.VerifyAddNewRouteUsingTrackFeature"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyDownloadExampleRouteUsingTrackFeature"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTrackFieldManagerUsingTrackFeature"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTrackSettingsUnderRoutes"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTheDatePickerFunctionality"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyDateChangeFunctionalityUnderMonitoring"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTheDispatchButtonFunctionalityForMultipleRoutes"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTheWarehouseSelectionFromTheDropdown"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateCustomerWarehouseMonitoringTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateMonitoringFunctionalityDetailsTest"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesSearchDriverTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterAddingNewDriverTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterEditingDriverTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterDeletingDriverTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesSearchTruckTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterAddingNewTruckTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterEditingTruckTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterDeletingTruckTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsSMSTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsEmailTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsPushTest" />
+            <class name="com.cutanddry.qa.tests.track.ValidateDetailsOnRouteRecordTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateGettingRouteCodeFlowTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateGettingEditRouteFlowTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateAddStopToRouteFlowTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateAddBreakToRouteFlowTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateTheRouteRecordListTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateVisibilityStatusOfRouteTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateAddUnassignedStopsTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateEditUnassignedStopsTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateDeleteUnassignedStopsTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateTheDispatchRouteFlowTest"/>
+
             <class name="com.cutanddry.qa.tests.order_desk.VerifyAddingNewProductFromCatalogTest" />
             <class name="com.cutanddry.qa.tests.order_desk.VerifyDeletingVoiceOrderDraftLineItemTest" />
             <class name="com.cutanddry.qa.tests.order_desk.VerifyOrderDeskFeatureTest" />
@@ -49,33 +82,7 @@
             <class name="com.cutanddry.qa.tests.team.UpdateUserWhiteLabelPortalTest" />
             <class name="com.cutanddry.qa.tests.team.RemoveUserWhiteLabelPortalTest" />
 
-            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingAddOrderReminderAlertsTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingAddCreditCardTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingExportOrderSettingTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingImportOrderSettingTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingContactDetailsTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyTheAllowSponsoredProductAdvertisementsFlowTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyTheAllowBuyersEdgePlatformRebateTagsFlowTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingGlobalHolidayTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingGlobalHolidayPickupWillCallMailDeliveryTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingCustomerSpecificHolidayTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingCustomerSpecificHolidayPickupWillCallMailDeliveryTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingEditOrderReminderAlertsTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingAddPaymentMethodTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingRemovePaymentMethodTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingDownloadInvoicesTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingLinkBankAccountTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingRemoveBankAccountTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyTheFunctionalityOfProfileAccountInformation"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyTheFlowOfEditingTheConfigurationSettingsForTheNewlyAddedWarehouseTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingDeleteOrderReminderAlertsTest"/>
-            <!--            TODO: Billing test cases are failing due to the lack of paid due invoices and the inability to create new ones. sComment out the test cases until a solution is provided.-->
-            <!--            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingPayButtonAddBankAccountTest"/>-->
-            <!--            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingPayButtonAddCreditCardTest"/>-->
-            <!--             TODO: The maximum warehouse limit has been reached, causing related test cases to fail. Comment out the test cases until a solution is provided.-->
-            <!--            <class name="com.cutanddry.qa.tests.settings.VerifyTheFlowOfAddingTheConfigurationSettingsForTheNewlyAddedWarehouseTest" />-->
-            <!--             TODO: The maximum warehouse limit has been reached, causing related test cases to fail. Comment out the test cases until a solution is provided.-->
-            <!--            <class name="com.cutanddry.qa.tests.settings.ValidateTheFlowOfTheAddNewWarehouseUnderTheManageWarehouseOptionTest" />-->
+
         </classes>
     </test>
 </suite>

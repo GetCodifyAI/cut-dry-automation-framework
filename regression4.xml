@@ -31,8 +31,7 @@
 
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyEditCustomerNameTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyLastOrderDateTest" />
-            <!--TODO: Couldn't grandee to get the exact total order value from below TC. Bcs may impact other flow while running concurrently  -->
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTotalOrderValueTest" />
+
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyEditCustomerShippingAddressTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyAddNoteTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyEditNoteTest" />
@@ -43,6 +42,9 @@
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileNewUserInviteTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileEditTest" />
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileDeleteTest" />
+
+            <class name="com.cutanddry.qa.tests.customer_groups.VerifyCustomerGroupIsAssignedWhenSelectedTest" />
+            <class name="com.cutanddry.qa.tests.customer_groups.VerifyCustomerGroupVisibleTest" />
 
             <class name="com.cutanddry.qa.tests.orders.VerifyMoreFiltersSalesPersonAndCreditRequestTest" />
             <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsPrintKitchenReceiptTest" />
@@ -57,20 +59,8 @@
             <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewPrintKitchenReceiptTest" />
             <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewMoreFiltersTest" />
 
-            <class name="com.cutanddry.qa.tests.roles_based_access.VerifyAdminRoleTest" />
-            <class name="com.cutanddry.qa.tests.roles_based_access.VerifyARRoleTest" />
-            <class name="com.cutanddry.qa.tests.roles_based_access.VerifySalespersonRoleTest" />
-            <class name="com.cutanddry.qa.tests.roles_based_access.VerifyDispatcherRoleTest" />
-
-            <class name="com.cutanddry.qa.tests.sections.VerifyAddingOrderGuideSectionsTest"/>
-            <class name="com.cutanddry.qa.tests.sections.VerifyEditingOrderGuideSectionsTest"/>
-            <class name="com.cutanddry.qa.tests.sections.VerifyDeletingOrderGuideSectionsTest"/>
-
             <class name="com.cutanddry.qa.tests.customer_specific.VerifyCustomerSpecificBroadcastMessageTest"/>
             <class name="com.cutanddry.qa.tests.customer_specific.VerifyCustomerSpecificProductRecommendationsTest"/>
-
-            <class name="com.cutanddry.qa.tests.archive.VerifyHidingAnItemFromTheOrderGuideTest"/>
-            <class name="com.cutanddry.qa.tests.archive.VerifySavingAndUnhideItemFromOrderGuideTest"/>
 
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerOnboardingDocsTest" />
             <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerIssuesTest" />
@@ -79,13 +69,18 @@
 
             <class name="com.cutanddry.qa.tests.banner.VerifyTheBannerFeatureTest" />
 
-            <class name="com.cutanddry.qa.tests.standing_orders.VerifyCreatingStandingOrdersTest" />
-            <class name="com.cutanddry.qa.tests.standing_orders.VerifyEditingStandingOrdersTest" />
-            <class name="com.cutanddry.qa.tests.standing_orders.VerifyAddingAnotherStandingOrderTest" />
-            <class name="com.cutanddry.qa.tests.standing_orders.VerifyDeletingStandingOrdersTest" />
-
             <class name="com.cutanddry.qa.tests.integration.VerifyCashAndCarryAppPassingInvalidAccountTest" />
             <class name="com.cutanddry.qa.tests.integration.VerifyChatFeatureTest" />
+
+            <class name="com.cutanddry.qa.tests.sections.VerifyAddingOrderGuideSectionsTest"/>
+            <class name="com.cutanddry.qa.tests.sections.VerifyEditingOrderGuideSectionsTest"/>
+            <class name="com.cutanddry.qa.tests.sections.VerifyDeletingOrderGuideSectionsTest"/>
+
+            <class name="com.cutanddry.qa.tests.archive.VerifyHidingAnItemFromTheOrderGuideTest"/>
+            <class name="com.cutanddry.qa.tests.archive.VerifySavingAndUnhideItemFromOrderGuideTest"/>
+
+            <!--TODO: Couldn't grandee to get the exact total order value from below TC. Bcs may impact other flow while running concurrently  -->
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTotalOrderValueTest" />
         </classes>
     </test>
 </suite>

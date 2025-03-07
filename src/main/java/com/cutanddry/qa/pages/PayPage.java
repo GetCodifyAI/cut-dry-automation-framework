@@ -78,7 +78,8 @@ By txt_error = By.xpath("//*[contains(text(),'Your transaction was declined due 
     By dropDown_payoutStatus = By.xpath("//div[contains(@class, 'col-sm-2') and contains(., 'Payout Status')]//div[contains(@class, 'themed_select__control')]");
     String option_payoutStatusDropdown = "//div[contains(@class, 'col-sm-2') and contains(., 'Payout Status')]//div[contains(@class, 'themed_select__menu')]//div[contains(text(), 'OPTION')]";
     By timestampFirstRow = By.xpath("//table[contains(@class, 'table-hover') and contains(@class, 'my-3')]//tbody/tr[1]/td[2]");
-    By dateRange_Pay = By.xpath("//div[contains(@class, 'col-sm-6')]//div[contains(@class, '_64fwrw') and contains(., 'Date Range')]//following-sibling::div//input[@type='text' and contains(@class, 'form-control')]");
+//    By dateRange_Pay = By.xpath("//div[contains(@class, 'col-sm-6')]//div[contains(@class, '_64fwrw') and contains(., 'Date Range')]//following-sibling::div//input[@type='text' and contains(@class, 'form-control')]");
+By dateRange_Pay = By.xpath("//div[contains(., 'Date Range')]//following-sibling::div//div[contains(@class,'react-datepicker__input-container')]/input[contains(@class, 'form-control')]");
     String datePicker = "//div[@class='react-datepicker']//div[@aria-label='Choose %s, %s %s%s, %s']";
     By btn_previousMonth = By.xpath("//button[@type='button' and @aria-label='Previous Month']");
     By btn_nextMonth = By.xpath("//button[@type='button' and @aria-label='Next Month']");

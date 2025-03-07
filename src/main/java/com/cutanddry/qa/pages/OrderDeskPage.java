@@ -20,7 +20,8 @@ public class OrderDeskPage extends LoginPage{
     By UploadFile = By.xpath("//div[contains(@class, '_t6r87r')]/input[@type='file']");
     By VoiceUploadProcessingText = By.xpath("//div[text()='New draft order upload is processing, please']");
     By AddLineBtn = By.xpath("//button[@class='btn btn-outline-primary']");
-    By DropdownItemSelect = By.xpath("//div[@class='themed_select__placeholder css-1wa3eu0-placeholder']");
+//    By DropdownItemSelect = By.xpath("//div[@class='themed_select__placeholder css-1wa3eu0-placeholder']");
+By DropdownItemSelect = By.xpath("//*[contains(text(),'Add Item')]/parent::div//div[contains(@class,'themed_select__placeholder ')]");
     By SelectRandomOption = By.cssSelector(".themed_select__option");
     By AddItemBtn = By.xpath("//button[@class='btn btn-outline-primary']");
     By ItemAddDeleteSucessfulTxt = By.xpath("//h2[contains(text(),'Saved Successfully')]");

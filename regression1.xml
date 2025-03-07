@@ -10,35 +10,56 @@
         <classes>
             <class name="com.cutanddry.qa.tests.order_guide.DistributorInitialSetUpTest" />
             <class name="com.cutanddry.qa.tests.order_guide.DistributorLoginTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.DistributorOrderSubmissionTest" />
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordValidTest" />
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordInvalidTest" />
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />
+
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheSearchTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyCompanyDropdownTest" />
             <class name="com.cutanddry.qa.tests.order_guide.AddProductsFrmOrderGuideTest" />
             <class name="com.cutanddry.qa.tests.order_guide.AddProductsFrmCatalogTest" />
             <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmOrderGuideTest" />
             <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmCatalogTest" />
             <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmReviewCartTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.DistributorOrderSubmissionTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyThePrintFeatureTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheSearchTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyCompanyDropdownTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersWithCatalogItemsTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersUploadingExcelFileTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrderGuideWithCatalogItemsTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrderImportingOrderGuideTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrdersUploadingExcelFileTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyExportingOrderGuideEditTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifySortOptionsTest" />
             <class name="com.cutanddry.qa.tests.order_guide.DisplayCustomerOrdersTest" />
             <class name="com.cutanddry.qa.tests.order_guide.SortCustomerOrdersTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheViewMultipleOrderGuidesUnderOrderGuideAndMoveBetweenDifferentOrderGuides"/>
             <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderItemUnitsTest"/>
             <class name="com.cutanddry.qa.tests.order_guide.ValidateTheFunctionalityOfEditMarginOfAnItem"/>
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheViewMultipleOrderGuidesUnderOrderGuideAndMoveBetweenDifferentOrderGuides"/>
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountHardHoldTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountRemoveHardHoldTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyOutOfStockItemsShowingAndNotOnSuggestiveSalesTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersWithCatalogItemsTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrderGuideWithCatalogItemsTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersUploadingExcelFileTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrdersUploadingExcelFileTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrderImportingOrderGuideTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyExportingOrderGuideEditTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest" />
 
-            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordValidTest" />
-            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordInvalidTest" />
-            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />
+
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerOrderGuideReportGenerationTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyThePickListDownloadReportTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerBaseReportGenerationTest"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerOrdersReportGenerationTest"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheItemMovementReportGenerationTest"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerWiseItemMovementDownloadReportTest"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheCatalogExportDownloadReportTest"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyThePayCustomersDownloadReportTest"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheAtRiskAccountsDownloadReportTest"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyThePaymentTransactionDownloadReportTest"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyThePaymentAuthorizationStatusDownloadReportTest"/>
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheTrackReadyOrdersDownloadReportTest"/>
+
+            <class name="com.cutanddry.qa.tests.roles_based_access.VerifyAdminRoleTest" />
+            <class name="com.cutanddry.qa.tests.roles_based_access.VerifyARRoleTest" />
+            <class name="com.cutanddry.qa.tests.roles_based_access.VerifySalespersonRoleTest" />
+            <class name="com.cutanddry.qa.tests.roles_based_access.VerifyDispatcherRoleTest" />
+
+            <class name="com.cutanddry.qa.tests.standing_orders.VerifyCreatingStandingOrdersTest" />
+            <class name="com.cutanddry.qa.tests.standing_orders.VerifyEditingStandingOrdersTest" />
+            <class name="com.cutanddry.qa.tests.standing_orders.VerifyAddingAnotherStandingOrderTest" />
+            <class name="com.cutanddry.qa.tests.standing_orders.VerifyDeletingStandingOrdersTest" />
 
             <class name="com.cutanddry.qa.tests.boost.VerifyBroadcastMessageTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyTopCategoryPicksTest" />
@@ -50,18 +71,6 @@
             <class name="com.cutanddry.qa.tests.boost.VerifyAddingFeaturedListTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyEditingFeaturedListTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRemovingFeaturedListTest" />
-
-            <class name="com.cutanddry.qa.tests.catalog_view.VerifyStockDataInCatalogViewTest" />
-            <class name="com.cutanddry.qa.tests.catalog_view.VerifyImageOfItemTest" />
-            <class name="com.cutanddry.qa.tests.catalog_view.VerifyAdditionalAttributeOfItemTest" />
-            <class name="com.cutanddry.qa.tests.catalog_view.VerifyTheCatalogItemDataTest" />
-            <class name="com.cutanddry.qa.tests.catalog_view.VerifyCreatingUnitOfMeasureOfItemTest" />
-            <class name="com.cutanddry.qa.tests.catalog_view.VerifyDeletingUnitOfMeasureOfItemTest" />
-            <class name="com.cutanddry.qa.tests.catalog_view.VerifyAddingSubstituteForAnItemTest" />
-            <class name="com.cutanddry.qa.tests.catalog_view.VerifyRemovingSubstituteFromAnItemTest" />
-
-            <class name="com.cutanddry.qa.tests.customer_groups.VerifyCustomerGroupIsAssignedWhenSelectedTest" />
-            <class name="com.cutanddry.qa.tests.customer_groups.VerifyCustomerGroupVisibleTest" />
         </classes>
     </test>
 </suite>
