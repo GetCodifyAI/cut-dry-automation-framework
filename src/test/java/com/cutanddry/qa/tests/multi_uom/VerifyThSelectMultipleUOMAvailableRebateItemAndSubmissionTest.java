@@ -32,7 +32,7 @@ public class VerifyThSelectMultipleUOMAvailableRebateItemAndSubmissionTest exten
     }
 
 
-    @Test(groups = "DOT-TC-1023")
+    @Test(groups = "DOT-TC-1028")
     public void VerifyThSelectMultipleUOMSpecialOrderItemAndSubmission() throws InterruptedException {
 
         softAssert = new SoftAssert();
