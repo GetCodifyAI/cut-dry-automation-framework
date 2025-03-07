@@ -570,13 +570,14 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
 By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),'($)')]/following-sibling::input");
     String itemValue = "//span[contains(text(), 'CODE')]";
     By btn_getSplitWeight = By.xpath("(//td[8]/div/div/div/div)[1]");
-    String finalWeightQuantitySelect = "(//tr//td[contains(text(),'3865')]/following-sibling::td//input[contains(@data-input,'quantityInput')])[1]//ancestor::td/following-sibling::td[1]/div/div[POSITION]";
+    String finalWeightQuantitySelect = "(//tr//td[contains(text(),'ITEMCODE')]/following-sibling::td//input[contains(@data-input,'quantityInput')])[1]//ancestor::td/following-sibling::td[1]/div/div[POSITION]";
     By editWeightDetailsOverlay = By.xpath("//*[contains(text(),'Edit Weight Details')]");
     String totalWeight = "((//th[contains(text(),'Total Weight')])[POSITION]/ancestor::table//tbody//td/input)[3]";
     String totalNoOfUOMsOrdered = "((//th[contains(text(),'Total Weight')])[POSITION]/ancestor::table//tbody//td/input)[1]";
     String WeightPerUOM = "((//th[contains(text(),'Total Weight')])[POSITION]/ancestor::table//tbody//td/input)[2]";
     By dropdown_option_orderguideSettings = By.xpath("//a[@class='_1ccoy1o text-decoration-none dropdown-item' and text()='Order Guide Settings']");
     By txt_reviewStandingOrders = By.xpath("//div[text()='Review Standing Order']");
+    String customerScreenScanToOrderBtn = "//tr/td[contains(text(),'CUSTOMERCODE')]/..//a[contains(@href,'scan-to-order')]";
 
     By btn_firstMultiOUM = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]");
     By lbl_firstMultiOUMItemName = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td//span/div[@data-tip='View Product Details']");
@@ -604,6 +605,7 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     String txt_weightMultiUOMAfterAdd = "((//th[contains(text(),'Weight /')])[UOM]/../../following-sibling::*//tr[NEW_UOM]//input)[2]";
 
 // ((//th[contains(text(),'No. of')])[1]/../../following-sibling::*//tr[1]//input)[1]
+
 
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
@@ -3435,8 +3437,8 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     //----MultiUOM ---//
 
 
-    public void clickFinalWeight(String position){
-        distributorUI.click(By.xpath(finalWeightQuantitySelect.replace("POSITION",position)));
+    public void clickFinalWeight(String itemCode, String position){
+        distributorUI.click(By.xpath(finalWeightQuantitySelect.replace("ITEMCODE",itemCode).replace("POSITION",position)));
     }
 
     public boolean EditWeightOverlayDisplayed(){
@@ -3468,17 +3470,22 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
         return distributorUI.isDisplayed(txt_reviewStandingOrders);
     }
 
+    public boolean isScanToOrderBtnDisplayed(String customerCode){
+        return distributorUI.isDisplayed(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
+    }
     public String getItemNameFirstMultiOUM() throws InterruptedException {
         distributorUI.waitForElementEnabledState(lbl_firstMultiOUMItemName,true);
         distributorUI.waitForCustom(3000);
         return distributorUI.getText(lbl_firstMultiOUMItemName);
     }
 
+
     public String getItemCodeFirstMultiOUM() throws InterruptedException {
         distributorUI.waitForVisibility(lbl_firstMultiOUMItemCode);
         distributorUI.waitForCustom(3000);
         return distributorUI.getText(lbl_firstMultiOUMItemCode);
     }
+
 
     public double getActiveItemPriceFirstMultiOUMRowStable() throws InterruptedException {
         try {
@@ -3541,6 +3548,10 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     public String getMultiOrderedId(String num) {
         String orderId = distributorUI.getText(By.xpath(txt_multiOrderId.replace("NUM", num)));
         return orderId.substring(orderId.indexOf("#") + 1).trim();
+    }
+    public void clickCustomerScreenScanToOrderBtn(String customerCode) throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        distributorUI.click(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
     }
 
     public void splitWeightMultiUOM(String position){

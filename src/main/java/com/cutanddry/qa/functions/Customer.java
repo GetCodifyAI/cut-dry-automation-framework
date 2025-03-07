@@ -2002,6 +2002,14 @@ public class Customer {
         customersPage.clickAddWightRowMultiUOMIcon(position);
     }
 
+    public static boolean isScanToOrderBtnDisplayedInCustomers(String customerId){
+        return customersPage.isScanToOrderBtnDisplayed(customerId);
+    }
+
+    public static void navigateFromCustomerScreenToScanToOrderScreen(String customerCode) throws InterruptedException {
+        customersPage.clickCustomerScreenScanToOrderBtn(customerCode);
+    }
+
 }
 
 

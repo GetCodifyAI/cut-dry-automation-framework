@@ -63,7 +63,7 @@ public class VerifyFinalWeightFunctionalityForMultiUOMItemsTest extends TestBase
         Orders.clickOnConfirm();
         Customer.editOrderFromReviewScreen();
 
-        Customer.selectFinalWeightFromOG(UOM1);
+        Customer.selectFinalWeightFromOG(searchItemCode2, UOM1);
         softAssert.assertTrue(Customer.isEditWeightOverlayDisplayed(),"Error in displaying Edit Weight Overlay");
         softAssert.assertEquals(Customer.getTotalWeight(UOM1)/Customer.getNoOfUOMsOrdered(UOM1),Customer.getWeightPerUOM(UOM1),"Weights per UOM calculation is wrong");
         softAssert.assertEquals(Customer.getTotalWeight(UOM2)/Customer.getNoOfUOMsOrdered(UOM2),Customer.getWeightPerUOM(UOM2),"Weights per UOM calculation is wrong");
