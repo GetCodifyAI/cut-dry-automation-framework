@@ -8,7 +8,7 @@ public class ScanToOrderPage extends LoginPage{
     By ReviewAndConfirmBtn = By.xpath("//button[contains(text(),'Review & Confirm Order')]");
     By AddToCartBtn = By.xpath("//button[contains(normalize-space(.),'Add to Cart')]");
     String ItemInCart = "//div[contains(@class,'cartContainer')]//span[contains(text(),'ITEMCODE')]";
-    By customerScreenScanToOrderCancelOrderBtn = By.xpath("//button[@type='button' and contains(@class, 'btn-outline') and text()='Cancel Order']");
+    By customerScreenScanToOrderCancelOrderBtn = By.xpath("//button[contains(text(),'Cancel Order')]");
     By ScanToOrderButton = By.xpath("//a[contains(text(), 'Scan to Order')]");
     String quantityIncreasePlusBtn = "//div[contains(@class,'cartContainer')]//span[contains(text(),'ITEMCODE')]/../following-sibling::div//*[name()='svg' and @data-icon='plus']";
     String itemPrice = "//div[contains(@class,'cartContainer')]//span[contains(text(),'ITEMCODE')]/../following-sibling::div/div[1]";
@@ -50,7 +50,6 @@ public class ScanToOrderPage extends LoginPage{
     }
 
     public boolean isScanToOrderCancelBtnDisplayed(String customerCode){
-        distributorUI.waitForVisibility(customerScreenScanToOrderCancelOrderBtn);
         return distributorUI.isDisplayed(customerScreenScanToOrderCancelOrderBtn);
     }
 
@@ -64,7 +63,6 @@ public class ScanToOrderPage extends LoginPage{
     }
 
     public void clickQuantityIncreasePlusIcon(String ItemCode, int Quantity){
-        distributorUI.waitForVisibility(By.xpath(quantityIncreasePlusBtn.replace("ITEMCODE",ItemCode)));
         for(int i = 1; i < Quantity; i++){
             distributorUI.click(By.xpath(quantityIncreasePlusBtn.replace("ITEMCODE",ItemCode)));
             try {
