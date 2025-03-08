@@ -77,7 +77,7 @@ By txt_error = By.xpath("//*[contains(text(),'Your transaction was declined due 
     By paymentStatusFirstRow = By.xpath("//table[contains(@class, 'table-hover') and contains(@class, 'my-3')]//tbody/tr[1]/td[6]");
     By dropDown_payoutStatus = By.xpath("//div[contains(@class, 'col-sm-2') and contains(., 'Payout Status')]//div[contains(@class, 'themed_select__control')]");
     String option_payoutStatusDropdown = "//div[contains(@class, 'col-sm-2') and contains(., 'Payout Status')]//div[contains(@class, 'themed_select__menu')]//div[contains(text(), 'OPTION')]";
-    By timestampFirstRow = By.xpath("//table[contains(@class, 'table-hover') and contains(@class, 'my-3')]//tbody/tr[1]/td[2]");
+    By timestampFirstRow = By.xpath("//table[contains(@class, 'table-hover') and contains(@class, 'my-3')]//tbody/tr[1]/td[3]");
 //    By dateRange_Pay = By.xpath("//div[contains(@class, 'col-sm-6')]//div[contains(@class, '_64fwrw') and contains(., 'Date Range')]//following-sibling::div//input[@type='text' and contains(@class, 'form-control')]");
 By dateRange_Pay = By.xpath("//div[contains(., 'Date Range')]//following-sibling::div//div[contains(@class,'react-datepicker__input-container')]/input[contains(@class, 'form-control')]");
     String datePicker = "//div[@class='react-datepicker']//div[@aria-label='Choose %s, %s %s%s, %s']";
@@ -103,7 +103,7 @@ By dateRange_Pay = By.xpath("//div[contains(., 'Date Range')]//following-sibling
     By lbl_orderTableColumn = By.xpath("//table/thead/tr/th");
     String lbl_orderTableColumnName = "//table/thead/tr/th[COUNT]";
     String lbl_status = "//th[COUNT][text()='STATUS']";
-    By customerName = By.xpath("//th[contains(text(),'Customer Name')]/ancestor::table/tbody/tr[1]/td[4]");
+    By customerName = By.xpath("//th[contains(text(),'Customer Name')]/ancestor::table/tbody/tr[1]/td[5]");
     String payDetails = "//span[contains(text(),'DETAILS')]";
     String payDetailsAmount = "//span[contains(text(),'DETAILS')]/../following-sibling::div[contains(text(),'$')]";
     By paymentProcessingDetailAmount = By.xpath("//div[contains(text(),'Payments Processing')]/following-sibling::div[contains(text(),'$')]");
@@ -197,7 +197,7 @@ By dateRange_Pay = By.xpath("//div[contains(., 'Date Range')]//following-sibling
         boolean dateFound = false;
 
         for (int i = 0; i < maxAttempts; i++) {
-            if (distributorUI.isDisplayed(startDate)) {
+            if (distributorUI.isDisplayed(startDate,10)) {
                 distributorUI.click(startDate);
                 dateFound = true;
                 break;
@@ -223,7 +223,7 @@ By dateRange_Pay = By.xpath("//div[contains(., 'Date Range')]//following-sibling
         boolean dateFound = false;
 
         for (int i = 0; i < maxAttempts; i++) {
-            if (distributorUI.isDisplayed(endDate)) {
+            if (distributorUI.isDisplayed(endDate,10)) {
                 distributorUI.click(endDate);
                 dateFound = true;
                 break;
