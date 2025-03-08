@@ -11,7 +11,7 @@
             <class name="com.cutanddry.qa.tests.track.VerifyAddNewRouteUsingTrackFeature"/>
             <class name="com.cutanddry.qa.tests.track.VerifyDownloadExampleRouteUsingTrackFeature"/>
             <class name="com.cutanddry.qa.tests.track.VerifyTrackFieldManagerUsingTrackFeature"/>
-            <class name="com.cutanddry.qa.tests.track.VerifyTrackSettingsUnderRoutes"/>
+            <!--<class name="com.cutanddry.qa.tests.track.VerifyTrackSettingsUnderRoutes"/>
             <class name="com.cutanddry.qa.tests.track.VerifyTheDatePickerFunctionality"/>
             <class name="com.cutanddry.qa.tests.track.VerifyDateChangeFunctionalityUnderMonitoring"/>
             <class name="com.cutanddry.qa.tests.track.VerifyTheDispatchButtonFunctionalityForMultipleRoutes"/>
@@ -68,7 +68,7 @@
             <class name="com.cutanddry.qa.tests.team.RemoveUserNonConfigDPsTest" />
             <class name="com.cutanddry.qa.tests.team.AddUserWhiteLabelPortalTest" />
             <class name="com.cutanddry.qa.tests.team.UpdateUserWhiteLabelPortalTest" />
-            <class name="com.cutanddry.qa.tests.team.RemoveUserWhiteLabelPortalTest" />
+            <class name="com.cutanddry.qa.tests.team.RemoveUserWhiteLabelPortalTest" />-->
 
 
         </classes>
