@@ -8,18 +8,18 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part_Two"/>
         <classes>
-            <class name="com.cutanddry.qa.tests.track.VerifyAddNewRouteUsingTrackFeature"/>
+            <!--<class name="com.cutanddry.qa.tests.track.VerifyAddNewRouteUsingTrackFeature"/>
             <class name="com.cutanddry.qa.tests.track.VerifyDownloadExampleRouteUsingTrackFeature"/>
             <class name="com.cutanddry.qa.tests.track.VerifyTrackFieldManagerUsingTrackFeature"/>
-            <!--<class name="com.cutanddry.qa.tests.track.VerifyTrackSettingsUnderRoutes"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTrackSettingsUnderRoutes"/>
             <class name="com.cutanddry.qa.tests.track.VerifyTheDatePickerFunctionality"/>
             <class name="com.cutanddry.qa.tests.track.VerifyDateChangeFunctionalityUnderMonitoring"/>
             <class name="com.cutanddry.qa.tests.track.VerifyTheDispatchButtonFunctionalityForMultipleRoutes"/>
             <class name="com.cutanddry.qa.tests.track.VerifyTheWarehouseSelectionFromTheDropdown"/>
             <class name="com.cutanddry.qa.tests.track.ValidateCustomerWarehouseMonitoringTest"/>
-            <class name="com.cutanddry.qa.tests.track.ValidateMonitoringFunctionalityDetailsTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateMonitoringFunctionalityDetailsTest"/>-->
             <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesSearchDriverTest" />
-            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterAddingNewDriverTest" />
+           <!-- <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterAddingNewDriverTest" />
             <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterEditingDriverTest" />
             <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterDeletingDriverTest" />
             <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesSearchTruckTest" />

@@ -40,37 +40,6 @@ jobs:
           destination: build-and-test-artifacts
     executor:
 
-  aggregate-test-results:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
-    steps:
-      - checkout
-      - run:
-          name: Calculate Pass/Fail Rate
-          command: |
-            # Initialize counters
-            total_tests=0
-            failed_tests=0
-            # Loop over the test report files from all the jobs
-            for report in $(find target/surefire-reports -name "*.xml"); do
-              # Parse the XML reports (you can use `xmlstarlet` or `xmllint` for XML parsing)
-              passed=$(xmllint --xpath "count(//testcase[not(failure)])" $report)
-              failed=$(xmllint --xpath "count(//testcase/failure)" $report)
-            
-              total_tests=$((total_tests + passed + failed))
-              failed_tests=$((failed_tests + failed))
-            done
-            # Calculate pass/fail rate
-            echo "Total tests: $total_tests"
-            echo "Failed tests: $failed_tests"
-            echo "Pass rate: $((100 * (total_tests - failed_tests) / total_tests))%"
-            echo "Fail rate: $((100 * failed_tests / total_tests))%"
-      - store_artifacts:
-          path: target/surefire-reports
-          destination: aggregated-test-reports
-    executor:
-
   nightly-build-and-test-1:
     docker:
       - image: cimg/base:stable
@@ -858,6 +827,21 @@ jobs:
           destination: daily-build-and-test-artifacts
     executor:
 
+  aggregate-results:
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
+    steps:
+      - checkout
+      - run:
+          name: Aggregate Test Results
+          command: |
+            # This step will aggregate results after all the test suites have completed.
+            mvn surefire-report:aggregate
+      - store_artifacts:
+          path: target/surefire-reports
+          destination: aggregated-results
+
 workflows:
   version: 2
   build-and-test:
@@ -867,7 +851,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "49 18 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_development
+          cron: "59 18 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_development
           filters:
             branches:
               only:
@@ -883,7 +867,7 @@ workflows:
 #      - nightly-build-and-test-8
 #      - nightly-build-and-test-9
 #      - nightly-build-and-test-10
-      - aggregate-test-results
+      - aggregate-results
 
   scheduled-test-2:
     triggers:
