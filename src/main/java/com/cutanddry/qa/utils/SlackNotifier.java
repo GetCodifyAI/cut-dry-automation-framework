@@ -12,13 +12,13 @@ import org.json.JSONObject;
 
 public class SlackNotifier {
     private static final String WEBHOOK_URL = Constants.SLACK_WEBHOOK;
-  //  https://hooks.slack.com/services/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 //group - test-alerts
-  //  https://hooks.slack.com/services/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 //group - ui-automation-tests
+    //  https://hooks.slack.com/services/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 //group - test-alerts
+    //  https://hooks.slack.com/services/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 //group - ui-automation-tests
 
     // Update this with the actual URL where the report is hosted
     private static final String REPORT_URL = "https://app.circleci.com/pipelines/github/GetCodifyAI/cut-and-dry?branch=master";
 
-    public static void sendSlackAlert(int totalTests, int passedTests, int failedTests, String environment, List<String> passedTestCases, List<String> failedTestCases, String PART) {
+    public static void sendSlackAlert(int totalTests, int passedTests, int failedTests, String environment, List<String> passedTestCases, List<String> failedTestCases, String PART, double passRate, double failRate) {
         try {
             // Construct the JSON payload
             String payload = "{"
@@ -27,7 +27,7 @@ public class SlackNotifier {
                     + "\"type\": \"section\","
                     + "\"text\": {"
                     + "\"type\": \"mrkdwn\","
-                    + "\"text\": \"*Distributor " + PART +" - Test Suite Execution Completed!*\""
+                    + "\"text\": \"*Distributor " + PART + " - Test Suite Execution Completed!*\""
                     + "}"
                     + "},"
                     + "{"
@@ -48,6 +48,14 @@ public class SlackNotifier {
                     + "{"
                     + "\"type\": \"mrkdwn\","
                     + "\"text\": \"*Failed:*\\n" + failedTests + "\""
+                    + "},"
+                    + "{"
+                    + "\"type\": \"mrkdwn\","
+                    + "\"text\": \"*Pass Rate (Ignoring Retries):*\\n" + String.format("%.2f", passRate) + "%\""
+                    + "},"
+                    + "{"
+                    + "\"type\": \"mrkdwn\","
+                    + "\"text\": \"*Fail Rate (Ignoring Retries):*\\n" + String.format("%.2f", failRate) + "%\""
                     + "}"
                     + "]"
                     + "},"
@@ -92,7 +100,7 @@ public class SlackNotifier {
             // Check the response code
             int responseCode = connection.getResponseCode();
             if (responseCode != 200) {
-                System.out.println("Slack alert not sent: response code - "+responseCode);
+                System.out.println("Slack alert not sent: response code - " + responseCode);
                 throw new RuntimeException("Failed to send Slack alert, response code: " + responseCode);
             }
 

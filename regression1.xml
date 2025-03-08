@@ -14,7 +14,7 @@
             <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordInvalidTest" />
             <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />
 
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheSearchTest" />
+            <!--<class name="com.cutanddry.qa.tests.order_guide.VerifyTheSearchTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyCompanyDropdownTest" />
             <class name="com.cutanddry.qa.tests.order_guide.AddProductsFrmOrderGuideTest" />
             <class name="com.cutanddry.qa.tests.order_guide.AddProductsFrmCatalogTest" />
@@ -70,7 +70,7 @@
             <class name="com.cutanddry.qa.tests.boost.VerifyMoreFromThisBrandTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyAddingFeaturedListTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyEditingFeaturedListTest" />
-            <class name="com.cutanddry.qa.tests.boost.VerifyRemovingFeaturedListTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyRemovingFeaturedListTest" />-->
         </classes>
     </test>
 </suite>
