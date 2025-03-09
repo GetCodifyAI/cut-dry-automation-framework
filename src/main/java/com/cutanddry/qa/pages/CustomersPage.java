@@ -604,6 +604,7 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     String txt_casesMultiUOMAfterAdd = "((//th[contains(text(),'No. of')])[UOM]/../../following-sibling::*//tr[NEW_UOM]//input)[1]";
     String txt_weightMultiUOMAfterAdd = "((//th[contains(text(),'Weight /')])[UOM]/../../following-sibling::*//tr[NEW_UOM]//input)[2]";
 
+//    String customerScreenScanToOrderBtn = "//tr/td[contains(text(),'CUSTOMERCODE')]/..//a[contains(@href,'scan-to-order')]";
 // ((//th[contains(text(),'No. of')])[1]/../../following-sibling::*//tr[1]//input)[1]
 
 
@@ -3549,10 +3550,10 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
         String orderId = distributorUI.getText(By.xpath(txt_multiOrderId.replace("NUM", num)));
         return orderId.substring(orderId.indexOf("#") + 1).trim();
     }
-    public void clickCustomerScreenScanToOrderBtn(String customerCode) throws InterruptedException {
-        distributorUI.waitForCustom(2000);
-        distributorUI.click(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
-    }
+//    public void clickCustomerScreenScanToOrderBtn(String customerCode) throws InterruptedException {
+//        distributorUI.waitForCustom(2000);
+//        distributorUI.click(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
+//    }
 
     public void splitWeightMultiUOM(String position){
         distributorUI.click(By.xpath(lbl_itemPriceMultiUOMEdit.replace("UOM",position)));
@@ -3585,6 +3586,24 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
         distributorUI.sendKeys(By.xpath(txt_weightMultiUOMAfterAdd.replace("UOM",position).replace("NEW_UOM",anotherPosition)), num);
         distributorUI.waitForCustom(1000);
     }
+
+
+    public void clickCustomerScreenScanToOrderBtn(String customerCode){
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        distributorUI.waitForVisibility(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
+        distributorUI.click(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
+    }
+
+//    public boolean isScanToOrderBtnDisplayed(String customerCode){
+//        distributorUI.waitForVisibility(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
+//        return distributorUI.isDisplayed(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
+//    }
+
+
 
 
 }

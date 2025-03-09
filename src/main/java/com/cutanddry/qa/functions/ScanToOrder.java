@@ -51,6 +51,43 @@ public class ScanToOrder {
        return scanToOrderPage.getItemPrice(ItemCode);
     }
 
+    public static boolean isTotalQuantityTextDisplayed(){
+       return scanToOrderPage.isTotalQuantityTextDisplayed();
+    }
+
+    public static boolean isTotalLineItemsTextDisplayed(){
+        return scanToOrderPage.isTotalLineItemsTextDisplayed();
+    }
+
+    public static boolean isTotalEstimatedCostTextDisplayed(){
+        return scanToOrderPage.isTotalEstimatedCostTextDisplayed();
+    }
+
+    public static boolean isTotalDiscountsTextDisplayed(){
+       return scanToOrderPage.isTotalDiscountsTextDisplayed();
+    }
+
+    public static int getProductQuantityValue(){
+       return scanToOrderPage.getProductQuantityValue();
+    }
+
+    public static int getProducttotalQuantityValues(){
+        return scanToOrderPage.getProducttotalQuantityValues();
+    }
+
+    public static int getCartLineItemCount(){
+       return scanToOrderPage.getCartLineItemCount();
+    }
+
+    public static int getCartItemCountInOrderSummary(){
+       return scanToOrderPage.getCartItemCountInOrderSummary();
+    }
+
+    public static double getTotalCostInOrderSummary(){
+       return scanToOrderPage.getTotalCostInOrderSummary();
+    }
+
+
     public static void ReviewAndConfirm(){
         scanToOrderPage.clickOnReviewAndConfirm();
     }

@@ -13,6 +13,55 @@ public class ScanToOrderPage extends LoginPage{
     String quantityIncreasePlusBtn = "//div[contains(@class,'cartContainer')]//span[contains(text(),'ITEMCODE')]/../following-sibling::div//*[name()='svg' and @data-icon='plus']";
     String itemPrice = "//div[contains(@class,'cartContainer')]//span[contains(text(),'ITEMCODE')]/../following-sibling::div/div[1]";
 
+    String customerScreenScanToOrderBtn = "//tr/td[contains(text(),'CUSTOMERCODE')]/..//a[contains(@href,'scan-to-order')]";
+
+    By totalQuantityText = By.xpath("//span[contains(text(),'Total Quantity')]");
+    By totalLineItemsText = By.xpath("//span[contains(text(),'Total Line Items')]");
+    By productQuantity = By.xpath("//input[@type='number']");
+    By productGrid = By.xpath("(//div[@class='cartItem_18e3qyo'])[2]");
+    String totalQuantityOrderSummary = "//span[contains(text(),'Total Quantity')]/following-sibling::*";
+    By cartContainerItems = By.xpath("//div[@class= 'cartItem_18e3qyo']");
+    String totalLineItemsOrderSummary = "//span[contains(text(),'Total Line Items')]/following-sibling::*";
+    By totalEstimatedCostText = By.xpath("//div[contains(text(),'Total Estimated Cost')]");
+    String totalPriceOrderSummary = "//div[contains(text(),'Total Estimated Cost')]/following-sibling::*";
+    By totalDiscountsText = By.xpath("//span[contains(text(),'Total Discounts')]");
+
+
+    public int getCartLineItemCount(){
+        int ItemCount = distributorUI.countElements(cartContainerItems);
+        return ItemCount;
+    }
+
+    public int getProductQuantityValues(String xpath) {
+        String  quantityValue =  distributorUI.getText(By.xpath(xpath), "value");
+        return Integer.parseInt(quantityValue);
+    }
+
+    public int getProductQuantityValue(){
+        int totalProducts = getProducttotalQuantityValues();
+        int TotalProductQuantity = 0;
+
+        for(int i = 1; i <= totalProducts; i++){
+            String x = String.format("(//div[@class='cartItem_18e3qyo'])[%d]//descendant::input[@data-input='quantityInput']",i);
+            TotalProductQuantity = TotalProductQuantity+ getProductQuantityValues(x);
+        }
+        return TotalProductQuantity;
+    }
+
+    public int getProducttotalQuantityValues() {
+        String quantityValue2 = distributorUI.getText(By.xpath(totalQuantityOrderSummary));
+        String quantityOnly = quantityValue2.replaceAll("\\D", "");
+
+        return Integer.parseInt(quantityOnly);
+    }
+
+    public int getCartItemCountInOrderSummary(){
+        String itemCountInOrderSummary = distributorUI.getText(By.xpath(totalLineItemsOrderSummary));
+        String itemCountOnly = itemCountInOrderSummary.replaceAll("\\D","");
+
+        return Integer.parseInt(itemCountOnly);
+        }
+
 
     public boolean isScanToOrderTextDisplayed(){
         return distributorUI.isDisplayed(ScanToOrderText);
@@ -92,6 +141,47 @@ public class ScanToOrderPage extends LoginPage{
         }
         distributorUI.click(ReviewAndConfirmBtn);
     }
+
+    public boolean isTotalQuantityTextDisplayed()
+    {
+        return distributorUI.isDisplayed(totalQuantityText);
+    }
+
+    public boolean isTotalEstimatedCostTextDisplayed()
+    {
+        return distributorUI.isDisplayed(totalEstimatedCostText);
+    }
+
+
+    public boolean isTotalLineItemsTextDisplayed()
+    {
+        return distributorUI.isDisplayed(totalLineItemsText);
+    }
+
+    public boolean isTotalDiscountsTextDisplayed(){
+        return distributorUI.isDisplayed(totalDiscountsText);
+    }
+
+    public double getTotalCostInOrderSummary()
+    {
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        String totalPriceInString = distributorUI.getText(By.xpath(totalPriceOrderSummary));
+        return Double.parseDouble(totalPriceInString.replace("$", ""));
+    }
+
+
+
+
+
+
+
+
+
+
 
 
 
