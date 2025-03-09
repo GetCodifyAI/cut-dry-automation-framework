@@ -582,7 +582,7 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     By btn_firstMultiOUM = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]");
     By lbl_firstMultiOUMItemName = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td//span/div[@data-tip='View Product Details']");
     By lbl_firstMultiOUMItemCode = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[2]");
-    By lbl_itemPriceListMultiOUM = By.xpath("(((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//input)[1] | ((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//span)[1])[1]");
+    By lbl_itemPriceListMultiOUM = By.xpath("(((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//input)[1] | ((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]/div/div/div)[1] | ((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//span)[1])[1]");
     By lbl_itemPriceListMultiOUM1 = By.xpath("(((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//input)[1] | ((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//span)[1])[2]");
 
     By lbl_itemCodeLists = By.xpath("//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[2]");
@@ -590,7 +590,8 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     String lbl_firstSingleOUMItemName = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr[ROW_COUNT]/td//span/div[@data-tip='View Product Details']";
     String lbl_firstSingleOUMItemCode = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr[ROW_COUNT]/td[2]";
 
-    String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//input)[UOM] | ((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//span)[UOM]";
+//    String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//input)[UOM] | ((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]/div/div[UOM]/div)[1] | ((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//span)[UOM]";
+String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//input)[UOM] | ((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//span)[UOM]";
 
     String multiUomDropDownOG = "(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg'])[1]";
     By multiUomOption =By.xpath("//div[text()='Multiple Units']");
@@ -598,13 +599,16 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     String txt_multiOrderId = "(//div[contains(text(),'Order #')])[NUM]";
 
     String lbl_itemPriceMultiUOMEdit = "((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]/div/div/div)[UOM]";
-    String txt_casesMultiUOMEdit = "((//th[contains(text(),'No. of')])[UOM]/../../following-sibling::*//input)[1]";
-    String txt_weightMultiUOMEdit = "((//th[contains(text(),'Weight /')])[UOM]/../../following-sibling::*//input)[2]";
+//    String txt_casesMultiUOMEdit = "((//th[contains(text(),'No. of')])[UOM]/../../following-sibling::*//input)[1]";
+//    String txt_weightMultiUOMEdit = "((//th[contains(text(),'Weight /')])[UOM]/../../following-sibling::*//input)[2]";
     String btn_AddWightRowMultiUOMEdit = "((//th[contains(text(),'No. of')])[UOM]/../../following-sibling::*//button)[1]";
-    String txt_casesMultiUOMAfterAdd = "((//th[contains(text(),'No. of')])[UOM]/../../following-sibling::*//tr[NEW_UOM]//input)[1]";
-    String txt_weightMultiUOMAfterAdd = "((//th[contains(text(),'Weight /')])[UOM]/../../following-sibling::*//tr[NEW_UOM]//input)[2]";
+    String txt_casesMultiUOMEdit = "((//th[contains(text(),'No. of')])[UOM]/../../following-sibling::*//tr[RECORD]//input)[1]";
+    String txt_weightMultiUOMEdit = "((//th[contains(text(),'Weight /')])[UOM]/../../following-sibling::*//tr[RECORD]//input)[2]";
+    String lbl_getItemPriceMultiUOM = "((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]/div/div[UOM]/div/div)[RECORD]";
+    String lbl_quantityMultiUOM = "(//input[contains(@data-input, 'quantityInput')])[UOM]";
+    By dd_sortItemBy =By.xpath("(//*[contains(text(),'Sort Items By')])[last()]/following-sibling::div");
+    String lbl_sortItemByOption = "//div[contains(@class, 'cd_themed_select__option') and contains(text(), 'TYPE')]";
 
-// ((//th[contains(text(),'No. of')])[1]/../../following-sibling::*//tr[1]//input)[1]
 
 
     public void ifDuplicateOrderDisplayed(){
@@ -782,7 +786,7 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     }
     public Double getTotalPriceCart() throws InterruptedException {
         distributorUI.waitForCustom(3000);
-        distributorUI.waitForVisibility(lbl_cartTotal);
+//        distributorUI.waitForVisibility(lbl_cartTotal);
         return Double.valueOf(distributorUI.getText(lbl_cartTotal).split("\\$")[1]);
     }
     public void submitOrder(){
@@ -2873,12 +2877,14 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
 
         if (tagName.equals("input")) {
             priceText = distributorUI.getText(priceLocator, "value");
+        } else if (tagName.equals("div")) {
+            priceText = distributorUI.getText(priceLocator);
         } else {
             priceText = distributorUI.getText(priceLocator);
         }
 
         System.out.println("Extracted Price: " + priceText);
-        priceText = priceText.replace("$", "").split("/")[0].trim();
+        priceText = priceText.replace("$", "").replace(",", "").split("/")[0].trim();
 
         return Double.valueOf(priceText);
     }
@@ -3530,7 +3536,8 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     public Double getItemPriceOnMultiOUMCheckout() throws InterruptedException {
         distributorUI.waitForVisibility(btn_orderCheckoutReview);
         distributorUI.waitForCustom(4000);
-        return Double.valueOf(distributorUI.getText(btn_orderCheckoutReview).replace("$",""));
+        String priceText = distributorUI.getText(btn_orderCheckoutReview).replace("$", "").replace(",", "");
+        return Double.valueOf(priceText);
     }
 
     public void ClickOnMultiUomDropDownOG(String code)throws InterruptedException{
@@ -3558,7 +3565,7 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
         distributorUI.click(By.xpath(lbl_itemPriceMultiUOMEdit.replace("UOM",position)));
     }
 
-    public void enterCasesValueMultiUOM(String position, String num) throws InterruptedException {
+    /*public void enterCasesValueMultiUOM(String position, String num) throws InterruptedException {
         distributorUI.clearUsingJavaScript(By.xpath(txt_casesMultiUOMEdit.replace("UOM",position)));
         distributorUI.sendKeys(By.xpath(txt_casesMultiUOMEdit.replace("UOM",position)), num);
         distributorUI.waitForCustom(1000);
@@ -3567,23 +3574,39 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
         distributorUI.clearUsingJavaScript(By.xpath(txt_weightMultiUOMEdit.replace("UOM",position)));
         distributorUI.sendKeys(By.xpath(txt_weightMultiUOMEdit.replace("UOM",position)), num);
         distributorUI.waitForCustom(1000);
-    }
+    }*/
 
     public void clickAddWightRowMultiUOMIcon(String position)throws InterruptedException{
         distributorUI.waitForVisibility(By.xpath(btn_AddWightRowMultiUOMEdit.replace("UOM", position)));
-        distributorUI.click(By.xpath(btn_AddWightRowMultiUOMEdit.replace("UOM", position)));
+        distributorUI.clickUsingJavaScript(By.xpath(btn_AddWightRowMultiUOMEdit.replace("UOM", position)));
         distributorUI.waitForCustom(2000);
     }
 
     public void enterCasesValueMultiUOM(String position, String anotherPosition, String num) throws InterruptedException {
-        distributorUI.clearUsingJavaScript(By.xpath(txt_casesMultiUOMAfterAdd.replace("UOM",position).replace("NEW_UOM",anotherPosition)));
-        distributorUI.sendKeys(By.xpath(txt_casesMultiUOMAfterAdd.replace("UOM",position).replace("NEW_UOM",anotherPosition)), num);
+        distributorUI.clearUsingJavaScript(By.xpath(txt_casesMultiUOMEdit.replace("UOM",position).replace("RECORD",anotherPosition)));
+        distributorUI.sendKeys(By.xpath(txt_casesMultiUOMEdit.replace("UOM",position).replace("RECORD",anotherPosition)), num);
         distributorUI.waitForCustom(1000);
     }
+
     public void enterWeightValueMultiUOM(String position, String anotherPosition, String num) throws InterruptedException {
-        distributorUI.clearUsingJavaScript(By.xpath(txt_weightMultiUOMAfterAdd.replace("UOM",position).replace("NEW_UOM",anotherPosition)));
-        distributorUI.sendKeys(By.xpath(txt_weightMultiUOMAfterAdd.replace("UOM",position).replace("NEW_UOM",anotherPosition)), num);
+        distributorUI.clearUsingJavaScript(By.xpath(txt_weightMultiUOMEdit.replace("UOM",position).replace("RECORD",anotherPosition)));
+        distributorUI.sendKeys(By.xpath(txt_weightMultiUOMEdit.replace("UOM",position).replace("RECORD",anotherPosition)), num);
         distributorUI.waitForCustom(1000);
+    }
+
+    public String getFinalWeightMultiUOM(String position, String anotherPosition){
+        return distributorUI.getText(By.xpath(lbl_getItemPriceMultiUOM.replace("UOM",position).replace("RECORD",anotherPosition)));
+    }
+
+    public String getItemQtyMultiUOM(String position){
+        return distributorUI.getText(By.xpath(lbl_quantityMultiUOM.replace("UOM",position)), "value");
+    }
+
+    public void selectSortItemBy(String sortBy) throws InterruptedException {
+        distributorUI.click(dd_sortItemBy);
+        distributorUI.waitForVisibility(By.xpath(lbl_sortItemByOption.replace("TYPE", sortBy)));
+        distributorUI.click(By.xpath(lbl_sortItemByOption.replace("TYPE", sortBy)));
+        distributorUI.waitForCustom(3000);
     }
 
 
