@@ -827,6 +827,7 @@ jobs:
           destination: daily-build-and-test-artifacts
     executor:
 
+
   aggregate-results:
     docker:
       - image: cimg/base:stable
@@ -834,11 +835,24 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Aggregate Test Results
+          name: Aggregate Test Results and Calculate Pass Rate
           command: |
-            # This step will aggregate results after all the test suites have completed.
-            mvn surefire-report:aggregate  || true
-          when: always
+            total_tests=$(grep -oP 'tests="\K\d+' target/surefire-reports/*.xml | awk '{s+=$1} END {print s}')
+            failed_tests=$(grep -oP 'failures="\K\d+' target/surefire-reports/*.xml | awk '{s+=$1} END {print s}')
+            error_tests=$(grep -oP 'errors="\K\d+' target/surefire-reports/*.xml | awk '{s+=$1} END {print s}')
+            skipped_tests=$(grep -oP 'skipped="\K\d+' target/surefire-reports/*.xml | awk '{s+=$1} END {print s}')
+            
+            passed_tests=$((total_tests - failed_tests - error_tests - skipped_tests))
+            pass_rate=$(awk "BEGIN {printf \"%.2f\", ($passed_tests/$total_tests)*100}")
+            
+            echo "=============================="
+            echo "Total Tests: $total_tests"
+            echo "Passed: $passed_tests"
+            echo "Failures: $failed_tests"
+            echo "Errors: $error_tests"
+            echo "Skipped: $skipped_tests"
+            echo "Pass Rate: $pass_rate%"
+            echo "=============================="
       - store_artifacts:
           path: target/surefire-reports
           destination: aggregated-results
@@ -852,7 +866,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "03 04 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_development
+          cron: "16 04 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_development
           filters:
             branches:
               only:
@@ -872,9 +886,7 @@ workflows:
           requires: # Ensure it runs **after** all test jobs
            - nightly-build-and-test-1
            - nightly-build-and-test-2
-          filters:
-            branches:
-              only: ahsan_development
+
 
   scheduled-test-2:
     triggers:
