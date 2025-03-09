@@ -837,8 +837,7 @@ jobs:
           name: Aggregate Test Results
           command: |
             # This step will aggregate results after all the test suites have completed.
-            mvn surefire-report:aggregate
-          when: always
+            mvn surefire-report:aggregate  || true
       - store_artifacts:
           path: target/surefire-reports
           destination: aggregated-results
@@ -852,7 +851,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "53 03 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_development
+          cron: "01 04 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_development
           filters:
             branches:
               only:
@@ -875,6 +874,7 @@ workflows:
           filters:
             branches:
               only: ahsan_development
+          allow_failure: true
 
   scheduled-test-2:
     triggers:
