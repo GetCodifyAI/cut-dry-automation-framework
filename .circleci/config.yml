@@ -828,55 +828,55 @@ jobs:
     executor:
 
 
-aggregate-results:
-  docker:
-    - image: cimg/base:stable
-  resource_class: xlarge
-  steps:
-    - checkout
-    - run:
-        name: Install Dependencies
-        command: pip install --user junitparser
-    - run:
-        name: Copy Test Results
-        command: mkdir -p results && find nightly-build-and-test-artifacts -name "*.xml" -exec cp {} results/ \;
-    - run:
-        name: Calculate Pass Rate
-        command: |
-          mkdir -p results
-          cp nightly-build-and-test-artifacts/*/*.xml results/ || true
-          python <<EOF
-          from junitparser import JUnitXml
-          import glob
-          
-          total_tests = 0
-          total_failures = 0
-          total_errors = 0
-          total_skipped = 0
-          
-          for file in glob.glob("results/*.xml"):
-              xml = JUnitXml.fromfile(file)
-              total_tests += xml.tests
-              total_failures += xml.failures
-              total_errors += xml.errors
-              total_skipped += xml.skipped
-          
-          passed_tests = total_tests - total_failures - total_errors
-          pass_rate = (passed_tests / total_tests) * 100 if total_tests > 0 else 0
-          
-          print(f"Total Tests: {total_tests}")
-          print(f"Passed: {passed_tests}")
-          print(f"Failed: {total_failures}")
-          print(f"Errors: {total_errors}")
-          print(f"Skipped: {total_skipped}")
-          print(f"Pass Rate: {pass_rate:.2f}%")
-          
-          if pass_rate < 80:
-              print("❌ FAIL: Pass rate below threshold!")
-              exit(1)
-          else:
-              print("✅ SUCCESS: Pass rate meets the threshold!")
-          EOF
+  aggregate-results:
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: pip install --user junitparser
+      - run:
+          name: Copy Test Results
+          command: mkdir -p results && find nightly-build-and-test-artifacts -name "*.xml" -exec cp {} results/ \;
+      - run:
+          name: Calculate Pass Rate
+          command: |
+            mkdir -p results
+            cp nightly-build-and-test-artifacts/*/*.xml results/ || true
+            python <<EOF
+            from junitparser import JUnitXml
+            import glob
+            
+            total_tests = 0
+            total_failures = 0
+            total_errors = 0
+            total_skipped = 0
+            
+            for file in glob.glob("results/*.xml"):
+                xml = JUnitXml.fromfile(file)
+                total_tests += xml.tests
+                total_failures += xml.failures
+                total_errors += xml.errors
+                total_skipped += xml.skipped
+            
+            passed_tests = total_tests - total_failures - total_errors
+            pass_rate = (passed_tests / total_tests) * 100 if total_tests > 0 else 0
+            
+            print(f"Total Tests: {total_tests}")
+            print(f"Passed: {passed_tests}")
+            print(f"Failed: {total_failures}")
+            print(f"Errors: {total_errors}")
+            print(f"Skipped: {total_skipped}")
+            print(f"Pass Rate: {pass_rate:.2f}%")
+            
+            if pass_rate < 80:
+                print("❌ FAIL: Pass rate below threshold!")
+                exit(1)
+            else:
+                print("✅ SUCCESS: Pass rate meets the threshold!")
+            EOF
 
 workflows:
   version: 2
@@ -887,7 +887,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "54 16 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_development
+          cron: "56 16 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_development
           filters:
             branches:
               only:
