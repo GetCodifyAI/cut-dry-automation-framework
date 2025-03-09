@@ -828,34 +828,52 @@ jobs:
     executor:
 
 
-  aggregate-results:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
-    steps:
-      - checkout
-      - run:
-          name: Aggregate Test Results and Calculate Pass Rate
-          command: |
-            total_tests=$(grep -oP 'tests="\K\d+' target/surefire-reports/*.xml | awk '{s+=$1} END {print s}')
-            failed_tests=$(grep -oP 'failures="\K\d+' target/surefire-reports/*.xml | awk '{s+=$1} END {print s}')
-            error_tests=$(grep -oP 'errors="\K\d+' target/surefire-reports/*.xml | awk '{s+=$1} END {print s}')
-            skipped_tests=$(grep -oP 'skipped="\K\d+' target/surefire-reports/*.xml | awk '{s+=$1} END {print s}')
-            
-            passed_tests=$((total_tests - failed_tests - error_tests - skipped_tests))
-            pass_rate=$(awk "BEGIN {printf \"%.2f\", ($passed_tests/$total_tests)*100}")
-            
-            echo "=============================="
-            echo "Total Tests: $total_tests"
-            echo "Passed: $passed_tests"
-            echo "Failures: $failed_tests"
-            echo "Errors: $error_tests"
-            echo "Skipped: $skipped_tests"
-            echo "Pass Rate: $pass_rate%"
-            echo "=============================="
-      - store_artifacts:
-          path: target/surefire-reports
-          destination: aggregated-results
+aggregate-results:
+  docker:
+    - image: cimg/python:3.10
+  resource_class: small
+  steps:
+    - checkout
+    - run:
+        name: Install Dependencies
+        command: pip install junitparser
+    - run:
+        name: Calculate Pass Rate
+        command: |
+          mkdir -p results
+          cp nightly-build-and-test-artifacts/*/*.xml results/ || true
+          python <<EOF
+          from junitparser import JUnitXml
+          import glob
+          
+          total_tests = 0
+          total_failures = 0
+          total_errors = 0
+          total_skipped = 0
+          
+          for file in glob.glob("results/*.xml"):
+              xml = JUnitXml.fromfile(file)
+              total_tests += xml.tests
+              total_failures += xml.failures
+              total_errors += xml.errors
+              total_skipped += xml.skipped
+          
+          passed_tests = total_tests - total_failures - total_errors
+          pass_rate = (passed_tests / total_tests) * 100 if total_tests > 0 else 0
+          
+          print(f"Total Tests: {total_tests}")
+          print(f"Passed: {passed_tests}")
+          print(f"Failed: {total_failures}")
+          print(f"Errors: {total_errors}")
+          print(f"Skipped: {total_skipped}")
+          print(f"Pass Rate: {pass_rate:.2f}%")
+          
+          if pass_rate < 80:
+              print("❌ FAIL: Pass rate below threshold!")
+              exit(1)
+          else:
+              print("✅ SUCCESS: Pass rate meets the threshold!")
+          EOF
 
 workflows:
   version: 2
@@ -866,7 +884,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "16 04 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_development
+          cron: "48 16 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_development
           filters:
             branches:
               only:

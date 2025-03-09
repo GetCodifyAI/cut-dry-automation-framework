@@ -35,11 +35,6 @@ public class TestNGListener implements ITestListener {
 
     @Override
     public void onFinish(ITestContext context) {
-     /*   int actualExecutedTests = passedTests + failedTests; // Ignore retries for rate calculation
-
-        double passRate = actualExecutedTests > 0 ? (passedTests * 100.0 / actualExecutedTests) : 0.0;
-        double failRate = actualExecutedTests > 0 ? (failedTests * 100.0 / actualExecutedTests) : 0.0;*/
-
 //        String environment = System.getProperty("test.env", "uat");
         SlackNotifier.sendSlackAlert(totalTests, passedTests, failedTests, TEST_ENV, passedTestCases, failedTestCases,PART);
     }
