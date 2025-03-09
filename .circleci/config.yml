@@ -830,13 +830,16 @@ jobs:
 
 aggregate-results:
   docker:
-    - image: cimg/python:3.10
-  resource_class: small
+    - image: cimg/base:stable
+  resource_class: xlarge
   steps:
     - checkout
     - run:
         name: Install Dependencies
-        command: pip install junitparser
+        command: pip install --user junitparser
+    - run:
+        name: Copy Test Results
+        command: mkdir -p results && find nightly-build-and-test-artifacts -name "*.xml" -exec cp {} results/ \;
     - run:
         name: Calculate Pass Rate
         command: |
@@ -884,7 +887,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "48 16 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_development
+          cron: "54 16 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_development
           filters:
             branches:
               only:
