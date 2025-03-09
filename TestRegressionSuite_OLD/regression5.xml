@@ -46,36 +46,6 @@
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTtheInviteBookkeeperInMoreActions"/>
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheDownloadStatementInMoreActions"/>
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCreateCreditMemoInMoreActionsTest"/>
-
-
-            <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor1OrMoreItemsWithSubstitutingTest" />
-            <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor0CountItemWithSubstitutingTest" />
-            <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor0CountItemWithoutSubstitutingTest" />
-            <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor1OrMoreItemsWithoutSubstitutingTest" />
-            <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemByIncreasingOrDecreasingQuantityTest" />
-            <class name="com.cutanddry.qa.tests.substitutions.VerifyTheMaximumAmountOfSubstituteItemsTest" />
-
-            <class name="com.cutanddry.qa.tests.dashboard.VerifyDashboardShowingSalespersonsRelatedChartsTest" />
-            <class name="com.cutanddry.qa.tests.dashboard.VerifyFunctionalityOfTeamStandingsTableTest" />
-
-            <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderReviewTest" />
-            <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderDetailsSupplierPortalTest" />
-            <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderDetailsCDAppTest" />
-
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByDateRangeTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByPayoutStatusTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByStatusFunctionality"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByTheCustomerFunctionality"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheDetailsByClickingOnOnePayoutRecordTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterPayoutPaymentsByDateTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterPayoutPaymentByPayoutStatusTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifySelectInvoiceFromInvoiceGridTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyDownloadInvoiceTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyPrintInvoiceTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheInvoiceDisplayCorrectDataTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyThePayDetailsSummeryTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheDownloadFeatureInThePayoutSectionTest"/>
-
         </classes>
     </test>
 </suite>
