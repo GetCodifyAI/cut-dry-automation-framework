@@ -830,7 +830,7 @@ jobs:
 
   aggregate-results:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/python:3.9
     resource_class: xlarge
     steps:
       - checkout
@@ -843,26 +843,22 @@ jobs:
       - run:
           name: Calculate Pass Rate
           command: |
-            mkdir -p results
-            cp nightly-build-and-test-artifacts/*/*.xml results/ || true
-            python <<EOF
+            python <<\EOF
             from junitparser import JUnitXml
             import glob
             
-            total_tests = 0
-            total_failures = 0
-            total_errors = 0
-            total_skipped = 0
+            total_tests, total_failures, total_errors, total_skipped = 0, 0, 0, 0
             
             for file in glob.glob("results/*.xml"):
                 xml = JUnitXml.fromfile(file)
-                total_tests += xml.tests
-                total_failures += xml.failures
-                total_errors += xml.errors
-                total_skipped += xml.skipped
+                for suite in xml:
+                    total_tests += suite.tests or 0
+                    total_failures += suite.failures or 0
+                    total_errors += suite.errors or 0
+                    total_skipped += suite.skipped or 0
             
             passed_tests = total_tests - total_failures - total_errors
-            pass_rate = (passed_tests / total_tests) * 100 if total_tests > 0 else 0
+            pass_rate = 100 * passed_tests / total_tests if total_tests else 100
             
             print(f"Total Tests: {total_tests}")
             print(f"Passed: {passed_tests}")
@@ -887,7 +883,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "56 16 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_development
+          cron: "58 16 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_development
           filters:
             branches:
               only:
