@@ -171,15 +171,8 @@ public class CatalogPage extends LoginPage{
     String multiUomDropDownCatalog = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[2]";
 
 
-
-
-
     public boolean isCatalogTextDisplayed() {
-        try {
-            distributorUI.waitForVisibility(txt_catalog);
-        } catch (Exception e) {
-            return false;
-        }
+        distributorUI.waitForVisibility(txt_catalog);
         return distributorUI.isDisplayed(txt_catalog);
     }
     public void clickFirstItem() {
@@ -188,7 +181,8 @@ public class CatalogPage extends LoginPage{
     public boolean isSelectedProductDisplayed() {
         return distributorUI.isDisplayed(txt_editItem);
     }
-    public void clickPreview() {
+    public void clickPreview() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         String url = distributorUI.getText(btn_preview,"href");
         distributorUI.navigateToURL(url);
     }
@@ -647,7 +641,8 @@ public class CatalogPage extends LoginPage{
         distributorUI.click(lbl_pork);
         distributorUI.waitForCustom(2000);
     }
-    public void clickOnStorageMethod(String storageMethod){
+    public void clickOnStorageMethod(String storageMethod) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.click(storageMethodDropDown);
         distributorUI.waitForVisibility(By.xpath(storageMethodOption.replace("STORAGEMETHOD",storageMethod)));
         distributorUI.click(By.xpath(storageMethodOption.replace("STORAGEMETHOD",storageMethod)));

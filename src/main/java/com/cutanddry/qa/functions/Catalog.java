@@ -14,7 +14,7 @@ public class Catalog {
     public static boolean isSelectedProductDisplayed() {
         return catalogPage.isSelectedProductDisplayed();
     }
-    public static void clickOnPreview() {
+    public static void clickOnPreview() throws InterruptedException {
         catalogPage.clickPreview();
     }
     public static boolean isNavigatedToPreview() {
@@ -386,7 +386,7 @@ public class Catalog {
     public static void selectSubCategory() throws InterruptedException {
         catalogPage.selectSubCategoryPork();
     }
-    public static void clickOnStorageMethod(String storageMethod){
+    public static void clickOnStorageMethod(String storageMethod) throws InterruptedException {
         catalogPage.clickOnStorageMethod(storageMethod);
     }
     public static boolean isStorageMethodDisplayed(String storageMethod){

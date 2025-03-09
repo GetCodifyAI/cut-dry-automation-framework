@@ -1991,12 +1991,12 @@ public class Customer {
         customersPage.splitWeightMultiUOM(position);
     }
 
-    public static void enterCasesValueMultiUOM(String position, String val) throws InterruptedException {
+    /*public static void enterCasesValueMultiUOM(String position, String val) throws InterruptedException {
         customersPage.enterCasesValueMultiUOM(position,val);
     }
     public static void enterWeightValueMultiUOM(String position, String val) throws InterruptedException {
         customersPage.enterWeightValueMultiUOM(position,val);
-    }
+    }*/
 
     public static void clickAddWightRowMultiUOMIcon(String position) throws InterruptedException {
         customersPage.clickAddWightRowMultiUOMIcon(position);
@@ -2008,6 +2008,26 @@ public class Customer {
 
     public static void navigateFromCustomerScreenToScanToOrderScreen(String customerCode) throws InterruptedException {
         customersPage.clickCustomerScreenScanToOrderBtn(customerCode);
+    }
+
+    public static void enterCasesValueMultiUOM(String uomPosition, String recordPosition, String val) throws InterruptedException {
+        customersPage.enterCasesValueMultiUOM(uomPosition, recordPosition, val);
+    }
+
+    public static void enterWeightValueMultiUOM(String uomPosition, String recordPosition, String val) throws InterruptedException {
+        customersPage.enterWeightValueMultiUOM(uomPosition, recordPosition, val);
+    }
+
+    public static String getFinalWeightMultiUOM(String position, String recordPosition){
+        return customersPage.getFinalWeightMultiUOM(position,recordPosition);
+    }
+
+    public static String getItemQtyMultiUOM(String position){
+        return customersPage.getItemQtyMultiUOM(position);
+    }
+
+    public static void selectSortItemByOption(String sortBy) throws InterruptedException {
+        customersPage.selectSortItemBy(sortBy);
     }
 
 }

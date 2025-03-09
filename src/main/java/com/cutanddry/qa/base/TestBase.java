@@ -30,6 +30,10 @@ public class TestBase {
                     chromeOptions.addArguments("--start-maximized");
                     if (Constants.RUN_HEADLESS) {
                         chromeOptions.addArguments("--headless", "--window-size=1920,1080");
+                        chromeOptions.addArguments("--disable-dev-shm-usage"); // Prevents shared memory crashes
+                        chromeOptions.addArguments("--disable-gpu"); // Disables GPU rendering
+                        chromeOptions.addArguments("--disable-renderer-backgrounding"); // Prevents execution speed-up in background
+                        chromeOptions.addArguments("--disable-background-timer-throttling"); // Keeps timers active
                     }
 
                     // Set custom download directory
