@@ -827,54 +827,6 @@ jobs:
           destination: daily-build-and-test-artifacts
     executor:
 
-
-  aggregate-results:
-    docker:
-      - image: cimg/python:3.9
-    resource_class: xlarge
-    steps:
-      - checkout
-      - run:
-          name: Install Dependencies
-          command: pip install --user junitparser
-      - run:
-          name: Copy Test Results
-          command: mkdir -p results && find nightly-build-and-test-artifacts -name "*.xml" -exec cp {} results/ \;
-      - run:
-          name: Calculate Pass Rate
-          command: |
-            echo '
-            from junitparser import JUnitXml
-            import glob
-            
-            total_tests, total_failures, total_errors, total_skipped = 0, 0, 0, 0
-            
-            for file in glob.glob("results/*.xml"):
-                xml = JUnitXml.fromfile(file)
-                for suite in xml:
-                    total_tests += suite.tests or 0
-                    total_failures += suite.failures or 0
-                    total_errors += suite.errors or 0
-                    total_skipped += suite.skipped or 0
-            
-            passed_tests = total_tests - total_failures - total_errors
-            pass_rate = 100 * passed_tests / total_tests if total_tests else 100
-            
-            print(f"Total Tests: {total_tests}")
-            print(f"Passed: {passed_tests}")
-            print(f"Failed: {total_failures}")
-            print(f"Errors: {total_errors}")
-            print(f"Skipped: {total_skipped}")
-            print(f"Pass Rate: {pass_rate:.2f}%")
-            
-            if pass_rate < 80:
-                print("❌ FAIL: Pass rate below threshold!")
-                exit(1)
-            else:
-                print("✅ SUCCESS: Pass rate meets the threshold!")
-            ' > passrate.py
-            python passrate.py
-
 workflows:
   version: 2
   build-and-test:
@@ -892,18 +844,14 @@ workflows:
     jobs:
       - nightly-build-and-test-1
       - nightly-build-and-test-2
-#      - nightly-build-and-test-3
-#      - nightly-build-and-test-4
-#      - nightly-build-and-test-5
-#      - nightly-build-and-test-6
-#      - nightly-build-and-test-7
+      - nightly-build-and-test-3
+      - nightly-build-and-test-4
+      - nightly-build-and-test-5
+      - nightly-build-and-test-6
+      - nightly-build-and-test-7
 #      - nightly-build-and-test-8
 #      - nightly-build-and-test-9
 #      - nightly-build-and-test-10
-      - aggregate-results:
-          requires: # Ensure it runs **after** all test jobs
-           - nightly-build-and-test-1
-           - nightly-build-and-test-2
 
 
   scheduled-test-2:
