@@ -55,6 +55,7 @@
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMJustInTimeItemAndSubmissionTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMSpecialOrderItemAndSubmissionTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheDeliveryFeesSelectMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEndlessAisleShippingFeesSelectMultipleUOMTest"/>
 
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest"/>
 
