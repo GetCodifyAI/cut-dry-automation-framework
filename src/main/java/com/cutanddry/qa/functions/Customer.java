@@ -2030,6 +2030,11 @@ public class Customer {
     public static void selectSortItemByOption(String sortBy) throws InterruptedException {
         customersPage.selectSortItemBy(sortBy);
     }
+    public static void clickOnPlusIconInCatalog(int count, String name) {
+        for (int i=0; i<count;i++){
+            customersPage.clickOnPlusIconInCatalog(name);
+        }
+    }
 
 }
 
