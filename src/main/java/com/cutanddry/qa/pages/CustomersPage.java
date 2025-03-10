@@ -394,6 +394,8 @@ By enabledStatusLocator = By.xpath("//div[contains(text(),'Cut+Dry Pay')]/follow
     By allItemsOption = By.xpath("(//div[contains(text(), 'Category')]/ancestor::div[2]/following-sibling::div//div[contains(text(), 'All Items')])[1]");
     By brandDropDown = By.xpath("//div[contains(text(), 'Brand')]");
     By brandDropDownOption = By.xpath("//div[contains(text(), 'Hungerford Smith')]");
+    By itemTypeDropDown = By.xpath("//div[contains(text(), 'Item Type')]");
+    By itemTypeDropDownOption = By.xpath("//div[contains(text(), 'Item Type')]/../../following-sibling::div//*[name()='svg' and @data-icon='square']/following-sibling::div[contains(text(), 'Special Order')]");
     By txt_filterByBrand =By.xpath("//button[@data-tip='View Brand Page']//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'hungerford smith')]");
     By itemStatusDropDown = By.xpath("//div[contains(text(), 'Item Type')]");
     By itemStatusDropDownOption = By.xpath("//div[contains(text(), 'Stocked')]");
@@ -3584,6 +3586,10 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
         distributorUI.clearUsingJavaScript(By.xpath(txt_weightMultiUOMAfterAdd.replace("UOM",position).replace("NEW_UOM",anotherPosition)));
         distributorUI.sendKeys(By.xpath(txt_weightMultiUOMAfterAdd.replace("UOM",position).replace("NEW_UOM",anotherPosition)), num);
         distributorUI.waitForCustom(1000);
+    }
+    public void clickItemType()throws InterruptedException{
+        distributorUI.click(itemTypeDropDown);
+        distributorUI.click(itemTypeDropDownOption);
     }
 
 
