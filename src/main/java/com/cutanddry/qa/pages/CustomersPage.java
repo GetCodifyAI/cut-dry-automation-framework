@@ -611,6 +611,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String lbl_quantityMultiUOM = "(//input[contains(@data-input, 'quantityInput')])[UOM]";
     By dd_sortItemBy =By.xpath("(//*[contains(text(),'Sort Items By')])[last()]/following-sibling::div");
     String lbl_sortItemByOption = "//div[contains(@class, 'cd_themed_select__option') and contains(text(), 'TYPE')]";
+    String catalogAddToCart = "((//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')])[last()]/following::div//*[name()='svg' and contains(@data-icon, 'plus')])[1]";
+
 
 
 
@@ -3614,6 +3616,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(By.xpath(lbl_sortItemByOption.replace("TYPE", sortBy)));
         distributorUI.click(By.xpath(lbl_sortItemByOption.replace("TYPE", sortBy)));
         distributorUI.waitForCustom(3000);
+    }
+    public void clickOnPlusIconInCatalog(String name){
+        distributorUI.waitForVisibility(By.xpath(catalogAddToCart.replace("NAME", name)));
+        distributorUI.click(By.xpath(catalogAddToCart.replace("NAME", name)));
     }
 
 
