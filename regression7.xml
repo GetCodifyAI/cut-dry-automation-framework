@@ -53,6 +53,8 @@
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyMultiCartItemsSelectMultipleUOMItemFromPDPTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMAvailableRebateItemAndSubmissionTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMJustInTimeItemAndSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMSpecialOrderItemAndSubmissionTest"/>
+
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest"/>
 
             <class name="com.cutanddry.qa.tests.order_reminder.VerifyEditOrderReminderTest"/>

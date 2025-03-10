@@ -1287,6 +1287,7 @@ public class Customer {
     public static void clickSection()throws InterruptedException{customersPage.clickNewArrivals();}
     public static void clickCategory()throws InterruptedException{customersPage.clickAllItems();}
     public static void clickBrand()throws InterruptedException{customersPage.clickBrand();}
+    public static void clickItemType()throws InterruptedException{customersPage.clickItemType();}
     public static boolean isFilteredBrandDisplayed(){
         return customersPage.isFilteredBrandDisplayed();
     }

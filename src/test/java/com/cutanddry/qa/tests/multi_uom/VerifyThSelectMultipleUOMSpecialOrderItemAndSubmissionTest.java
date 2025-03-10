@@ -14,18 +14,18 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyThSelectMultipleUOMJustInTimeItemAndSubmissionTest extends TestBase {
+public class VerifyThSelectMultipleUOMSpecialOrderItemAndSubmissionTest extends TestBase {
     SoftAssert softAssert;
     static User user;
     static String customerId = CatalogData.CUSTOMER_ID_3;
-    String searchItemCode = CatalogData.ITEM_CODE_5;
-    static double itemPriceUOM1 ,itemPriceUOM2,totalPDPItemPrice,totalOGItemPrice2;
+    String searchItemCode = CatalogData.ITEM_CODE_7;
+    static double itemPriceUOM1 ,itemPriceUOM2,totalPDPItemPrice;
     String uom1 = CatalogData.MULTI_UOM_1;
     String uom2 = CatalogData.MULTI_UOM_2;
     static String orderId;
     static String DP = CatalogData.DP_VICTO;
-    String itemName = CatalogData.ITEM_NAME_JIT;
     String uomDropDownOption = CatalogData.UOM_DROPDOWN_OPTION;
+    String itemName = CatalogData.ITEM_NAME_SPECIAL;
 
     @BeforeMethod
     public void setUp() {
@@ -34,8 +34,8 @@ public class VerifyThSelectMultipleUOMJustInTimeItemAndSubmissionTest extends Te
     }
 
 
-    @Test(groups = "DOT-TC-1027")
-    public void VerifyThSelectMultipleUOMJustInTimeItemAndSubmission() throws InterruptedException {
+    @Test(groups = "DOT-TC-1023")
+    public void VerifyThSelectMultipleUOMSpecialOrderItemAndSubmission() throws InterruptedException {
 
         softAssert = new SoftAssert();
 
@@ -47,10 +47,11 @@ public class VerifyThSelectMultipleUOMJustInTimeItemAndSubmissionTest extends Te
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
+        Catalog.searchOrderGuide(searchItemCode);
 
         Customer.goToCatalog();
-        Customer.searchItemOnCatalog(searchItemCode);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
+        Customer.clickItemType();
+
         Catalog.ClickOnCatalogMultiUomDropDown(itemName);
         Catalog.ClickOnMultiUomDropDownOption(uomDropDownOption);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
@@ -59,8 +60,8 @@ public class VerifyThSelectMultipleUOMJustInTimeItemAndSubmissionTest extends Te
         Catalog.clickAddToCartPlusIcon(1, uom1);
         Catalog.clickAddToCartPlusIcon(1, uom2);
         totalPDPItemPrice = Customer.getItemPriceOnCheckoutButtonViaPDP();
-        softAssert.assertEquals(Math.round(totalPDPItemPrice * 10.0) / 10.0,
-                (Math.round((itemPriceUOM1 + itemPriceUOM2) * 10.0) / 10.0), "The item has not been selected.");
+        softAssert.assertEquals(Math.round(totalPDPItemPrice * 100.0) / 100.0,
+                ((Math.round(itemPriceUOM1 * 100.0) / 100.0)+(Math.round(itemPriceUOM2 * 100.0) / 100.0)), "The item has not been selected.");
 
         Customer.clickCheckOutPDP();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
@@ -75,9 +76,7 @@ public class VerifyThSelectMultipleUOMJustInTimeItemAndSubmissionTest extends Te
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
         Catalog.clickSubmittedOrder(orderId);
-        //softAssert.assertEquals(Catalog.getTotalPriceInOrder(),totalPDPItemPrice,"order not successfully submitted");
-        softAssert.assertEquals(Math.round(Catalog.getTotalPriceInOrder() * 10.0) / 10.0,
-                (Math.round(totalPDPItemPrice * 10.0) / 10.0), "The item has not been selected.");
+        softAssert.assertEquals(Catalog.getTotalPriceInOrder(),totalPDPItemPrice,"order not successfully submitted");
         softAssert.assertEquals(Catalog.getTotalQuantityInOrder(),"2","order quantity not successfully submitted");
         softAssert.assertAll();
     }
