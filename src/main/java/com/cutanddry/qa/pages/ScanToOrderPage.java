@@ -84,6 +84,14 @@ public class ScanToOrderPage extends LoginPage{
         return Double.parseDouble(itemPriceInString.replace("$", ""));
     }
 
+    public void clickOnReviewAndConfirm(){
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        distributorUI.click(ReviewAndConfirmBtn);
+    }
 
 
 

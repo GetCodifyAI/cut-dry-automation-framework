@@ -44,33 +44,11 @@
             <class name="com.cutanddry.qa.tests.catalog.ValidateFilterItemsByCategoryInCatalogTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemImageTest"/>
 
-            <class name="com.cutanddry.qa.tests.catalog_view.VerifyStockDataInCatalogViewTest" />
-            <class name="com.cutanddry.qa.tests.catalog_view.VerifyImageOfItemTest" />
-            <class name="com.cutanddry.qa.tests.catalog_view.VerifyAdditionalAttributeOfItemTest" />
-            <class name="com.cutanddry.qa.tests.catalog_view.VerifyTheCatalogItemDataTest" />
-            <class name="com.cutanddry.qa.tests.catalog_view.VerifyCreatingUnitOfMeasureOfItemTest" />
-            <class name="com.cutanddry.qa.tests.catalog_view.VerifyDeletingUnitOfMeasureOfItemTest" />
-            <class name="com.cutanddry.qa.tests.catalog_view.VerifyAddingSubstituteForAnItemTest" />
-            <class name="com.cutanddry.qa.tests.catalog_view.VerifyRemovingSubstituteFromAnItemTest" />
-
             <class name="com.cutanddry.qa.tests.multi_cart.VerifyGroupingProductsIntoTwoCartsTest" />
             <class name="com.cutanddry.qa.tests.multi_cart.VerifyCreatedOrdersFromMultipleCartsTest" />
 
-            <class name="com.cutanddry.qa.tests.pay.ValidateSearchCustomerPaymentTest"/>
-            <class name="com.cutanddry.qa.tests.pay.ValidateTheSendPaymentReminderTest"/>
-            <class name="com.cutanddry.qa.tests.pay.ValidateTheSendEmailStatementTest"/>
-            <class name="com.cutanddry.qa.tests.pay.ValidateTheDownloadStatementTest"/>
-            <class name="com.cutanddry.qa.tests.pay.ValidateTheNavigateToCustomerInvoicesSectionTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheCaptureFundForBulkInvoicesTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilteringInvoicesByAuthStatusTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilteringInvoicesByCustomerTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilteringInvoicesByDateTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilteringInvoicesByInvoiceIDTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilteringInvoicesByStatusTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheMarkAsPaidForBulkInvoicesTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheSendingPaymentsReminderForBulkInvoicesTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheViewFeatureInThePayoutSectionTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheExportPayoutsFunctionalityTest"/>
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderGuideOrderApprovalUIFeatureTest" />
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderApprovalSettingsReflectedWhileOrderingTest" />
 
         </classes>
     </test>

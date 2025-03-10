@@ -9,7 +9,7 @@ public class RestaurantDashboard {
         return restaurantDashboard.isHistoryTitleDisplayed();
     }
 
-    public static void navigateToHistory() {
+    public static void navigateToHistory() throws InterruptedException {
         restaurantDashboard.clickOnHistory();
     }
 
