@@ -19,8 +19,8 @@ public class VerifyUserCanAddItemsManuallyToScanToOrderOrderTest extends TestBas
     static String companyID = "46017666";
     static String DP = "Independent Foods Co";
     static String CustomerCode = "21259";
-    static String ItemCode1 = "38479";
     static String ItemCode2 = "69204";
+    static String ItemCode1;
 
     @BeforeMethod
     public void setup(){
@@ -38,6 +38,10 @@ public class VerifyUserCanAddItemsManuallyToScanToOrderOrderTest extends TestBas
         Login.updateCompanyIDs(featureName,companyID);
 
         Login.navigateToDistributorPortal(DP);
+        Dashboard.navigateToCustomers();
+        Customer.clickOnOrderGuide(CustomerCode);
+        ItemCode1 = Customer.getItemCodeFirstRow();
+
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(CustomerCode);
         softAssert.assertTrue(Customer.isNavigatedToCustomerPage(),"Error in navigating to customer Page");
