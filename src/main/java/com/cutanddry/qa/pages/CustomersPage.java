@@ -427,10 +427,10 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     By img_second = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'extra-large-artichoke-bottoms-raw-600.png')]");
     By btn_firstImage = By.xpath("//div[contains(@class,'position-relative')]/img[contains(@src,'extra-large-artichoke-bottoms-main-600.png')]");
     By btn_secondImage = By.xpath("//div[contains(@class,'position-relative')]/img[contains(@src,'extra-large-artichoke-bottoms-raw-600.png')]");
-    By txt_specialInstruction =By.xpath("(//textarea[contains(@class, '_1r74rn3 w-100 border')])[1]");
-    By txt_internalNote =By.xpath("(//textarea[contains(@class, '_1r74rn3 w-100 border')])[2]");
-    By txt_noteToCustomer =By.xpath("(//textarea[contains(@class, '_1r74rn3 w-100 border')])[3]");
-    By txt_poNumber = By.xpath("//input[contains(@class, '_1jnwk4ts w-100')]");
+    By txt_specialInstruction =By.xpath("//div[contains(text(),'Special Instructions')]/following-sibling::textarea");
+    By txt_internalNote =By.xpath("//div[contains(text(),'Internal Notes')]/following-sibling::textarea");
+    By txt_noteToCustomer =By.xpath("//div[contains(text(),'Note to Customer')]/following-sibling::textarea");
+    By txt_poNumber = By.xpath("//div[contains(text(),'PO Number')]/following-sibling::div/input");
     String specialInstructionText = "//span[contains(text(),'SPECIALINSTRUCTION')]";
     String internalNoteText = "//span[contains(text(),'INTERNALNOTE')]";
     String noteToCustomerText = "//span[contains(text(),'NOTETOCUSTOMER')]";
@@ -611,6 +611,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String lbl_quantityMultiUOM = "(//input[contains(@data-input, 'quantityInput')])[UOM]";
     By dd_sortItemBy =By.xpath("(//*[contains(text(),'Sort Items By')])[last()]/following-sibling::div");
     String lbl_sortItemByOption = "//div[contains(@class, 'cd_themed_select__option') and contains(text(), 'TYPE')]";
+    String PONumber = "//div[contains(text(),'PO Number')]/following-sibling::div[contains(normalize-space(), 'PONUMBER')]";
 
 
 
@@ -2583,6 +2584,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isNoteToCustomerDisplayed(String noteToCustomer) {
         distributorUI.waitForVisibility(By.xpath(noteToCustomerText.replace("NOTETOCUSTOMER",noteToCustomer)));
         return distributorUI.isDisplayed(By.xpath(noteToCustomerText.replace("NOTETOCUSTOMER",noteToCustomer)));
+    }
+
+    public boolean isPoNumberCorrectlyDisplayed(String POnumber){
+        distributorUI.waitForVisibility(By.xpath(PONumber.replace("PONUMBER",POnumber)));
+        return distributorUI.isDisplayed(By.xpath(PONumber.replace("PONUMBER",POnumber)));
     }
     public String getItemQuantity() throws InterruptedException {
         distributorUI.waitForElementEnabledState(quantityValue, true);
