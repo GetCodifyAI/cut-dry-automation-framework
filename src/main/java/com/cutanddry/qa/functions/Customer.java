@@ -1360,6 +1360,9 @@ public class Customer {
     public static boolean isNoteToCustomerDisplayed(String noteToCustomer){
         return customersPage.isNoteToCustomerDisplayed(noteToCustomer);
     }
+    public static boolean isPONumberCorrectlyDisplayed(String PONumber){
+        return customersPage.isPoNumberCorrectlyDisplayed(PONumber);
+    }
     public static String getItemQuantity() throws InterruptedException {
         return customersPage.getItemQuantity();
     }

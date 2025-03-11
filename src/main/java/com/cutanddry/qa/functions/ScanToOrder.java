@@ -43,7 +43,7 @@ public class ScanToOrder {
          scanToOrderPage.ClickOnScanToOrderCancelBtn(customerCode);
     }
 
-    public static void IncreaseItemQty(String ItemCode, int Quantity){
+    public static void IncreaseItemQty(String ItemCode, int Quantity) throws InterruptedException {
        scanToOrderPage.clickQuantityIncreasePlusIcon(ItemCode,Quantity);
     }
 
@@ -53,5 +53,8 @@ public class ScanToOrder {
 
     public static void ReviewAndConfirm(){
         scanToOrderPage.clickOnReviewAndConfirm();
+    }
+    public static void DecreaseItemQty(String ItemCode, int Quantity) throws InterruptedException {
+       scanToOrderPage.clickQuantityDecreaseMinusIcon(ItemCode,Quantity);
     }
 }

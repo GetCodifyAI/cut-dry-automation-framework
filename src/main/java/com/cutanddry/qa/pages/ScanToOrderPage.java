@@ -11,6 +11,7 @@ public class ScanToOrderPage extends LoginPage{
     By customerScreenScanToOrderCancelOrderBtn = By.xpath("//button[contains(text(),'Cancel Order')]");
     By ScanToOrderButton = By.xpath("//a[contains(text(), 'Scan to Order')]");
     String quantityIncreasePlusBtn = "//div[contains(@class,'cartContainer')]//span[contains(text(),'ITEMCODE')]/../following-sibling::div//*[name()='svg' and @data-icon='plus']";
+    String quantityDecreaseMinusBtn = "//div[contains(@class,'cartContainer')]//span[contains(text(),'ITEMCODE')]/../following-sibling::div//*[name()='svg' and @data-icon='minus']";
     String itemPrice = "//div[contains(@class,'cartContainer')]//span[contains(text(),'ITEMCODE')]/../following-sibling::div/div[1]";
 
 
@@ -62,15 +63,18 @@ public class ScanToOrderPage extends LoginPage{
         distributorUI.click(customerScreenScanToOrderCancelOrderBtn);
     }
 
-    public void clickQuantityIncreasePlusIcon(String ItemCode, int Quantity){
+    public void clickQuantityIncreasePlusIcon(String ItemCode, int Quantity) throws InterruptedException {
         for(int i = 1; i < Quantity; i++){
             distributorUI.click(By.xpath(quantityIncreasePlusBtn.replace("ITEMCODE",ItemCode)));
-            try {
-                distributorUI.waitForCustom(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            distributorUI.waitForCustom(2000);
 
+        }
+    }
+
+    public void clickQuantityDecreaseMinusIcon(String ItemCode, int Quantity) throws InterruptedException {
+        for(int i=0;i<Quantity;i++){
+            distributorUI.click(By.xpath(quantityDecreaseMinusBtn.replace("ITEMCODE",ItemCode)));
+            distributorUI.waitForCustom(2000);
         }
     }
 
