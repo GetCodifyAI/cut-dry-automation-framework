@@ -13,21 +13,20 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest extends TestBase {
+public class ValidateTheFinalWeightWhenSelectingMultipleUOMTest extends TestBase {
     static User user;
     SoftAssert softAssert;
 
     static String distributor = SplitWeightUOMData.DP_NAME_KK_INT;
-    static String customerId = SplitWeightUOMData.CUSTOMER_ID_KK_INT;
+    static String customerId = SplitWeightUOMData.CUSTOMER_ID_KK_INT_1;
     static String sortOption = SplitWeightUOMData.SORT_ITEM_BY;
     static String uom1 = CatalogData.MULTI_UOM_1;
     static String uom2 = CatalogData.MULTI_UOM_2;
     static String featureName = GatekeeperData.FEATURE_NAME_FROM_ELASTIC_SEARCH;
     static String companyId = GatekeeperData.COMPONY_ID_KK_INT;
     static String orderId;
-    static String singleItemName, singleSearchItemCode, multiItemName, multiSearchItemCode;
-    static double itemOGPriceUOM1, itemOGPriceUOM2, totalOGItemPrice, multiItemPrice, totalCartAmount;
-
+    static String singleItemName, singleSearchItemCode, multiItemName, multiSearchItemCode, itemCode;
+    static double itemOGPriceUOM1, itemOGPriceUOM2, totalOGItemPrice, multiItemPrice, totalCartAmount,unitWeight1,unitWeight2;
 
     @BeforeMethod
     public void setUp() {
@@ -35,8 +34,8 @@ public class ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest extends TestB
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-1058")
-    public void ValidateTheSpotPoundPriceWhenSelectingMultipleUOM() throws InterruptedException {
+    @Test(groups = "DOT-TC-1057")
+    public void ValidateTheFinalWeightWhenSelectingMultipleUOM() throws InterruptedException {
         softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "login error");
@@ -56,10 +55,11 @@ public class ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest extends TestB
 
         multiItemName = Customer.getItemNameFirstMultiOUM();
         multiSearchItemCode = Customer.getItemCodeFirstMultiOUM();
+        itemCode = multiSearchItemCode.replaceAll("^[A-Za-z]+", "");
         multiItemPrice = Customer.getActiveItemPriceFirstMultiOUMRowStable();
 
         // Added Multi OUM Item
-        Customer.searchItemOnOrderGuide(multiSearchItemCode);
+        Customer.searchItemOnOrderGuide(itemCode);
         Customer.ClickOnMultiUomDropDownOG(multiSearchItemCode);
         Customer.clickOGAddToCartPlusIcon(1, multiSearchItemCode, uom1);
         Customer.clickOGAddToCartPlusIcon(1, multiSearchItemCode, uom2);
@@ -93,19 +93,31 @@ public class ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest extends TestB
         softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(), "edit error(Review Page)");
         Orders.clickOnEditOrderInReview();
         softAssert.assertTrue(Orders.isNavigatedToEditOrder(), "edit error");
-        Customer.searchItemOnOrderGuide(multiSearchItemCode);
+        Customer.searchItemOnOrderGuide(itemCode); //itemCode
 
-        Customer.clickPoundPriceMultiUOM();
-        softAssert.assertTrue(Customer.isPoundPricePopUpDisplay(),"pound price pop up not display");
-        Customer.enterCasesPriceValueMultiUOM(uom1,"10");
-        Customer.enterCasesPriceValueMultiUOM(uom2,"20");
-        Customer.clickUpdatePriceMultiUOM();
-        softAssert.assertNotEquals(Customer.getItemQtyMultiUOM(uom1), "1", "item count error in 1st row");
-        softAssert.assertNotEquals(Customer.getItemQtyMultiUOM(uom2), "1", "item count error in 2nd row");
-        softAssert.assertEquals(Customer.getItemPriceMultiUOM(uom1),10.0, "item weight error in 1st row");
-        softAssert.assertEquals(Customer.getItemPriceMultiUOM(uom2),20.0, "item weight error in 2nd row");
+        Customer.splitWeightMultiUOM(uom1);
+        softAssert.assertTrue(Customer.isSplitWeightPopupDisplayed(), "popup error");
 
+        unitWeight1 = Customer.getUnitPriceMultiUOM(uom1,"1");
+        Customer.enterTotalWeightMultiUOM(uom1, "1", String.valueOf(unitWeight1*3));
+        unitWeight2 = Customer.getUnitPriceMultiUOM(uom2,"1");
+//        Customer.enterWeightValueMultiUOM(uom2, "1", String.valueOf(unitWeight*1));
+
+        Customer.clickUpdateWeight();
+        softAssert.assertEquals(Customer.getItemQtyMultiUOM(uom1), "3", "item count error in 1st row");
+        softAssert.assertEquals(Customer.getItemQtyMultiUOM(uom2), "1", "item count error in 2nd row");
+        softAssert.assertTrue(Customer.getFinalWeightMultiUOM(uom1, "1").contains(formatDouble(unitWeight1*3)), "item weight error in 1st row");
+        softAssert.assertTrue(Customer.getFinalWeightMultiUOM(uom2, "1").contains(String.valueOf(unitWeight2)), "item weight error in 2nd row");
+        System.out.println(Customer.getFinalWeightMultiUOM(uom1, "1"));
+        System.out.println(String.valueOf(unitWeight1*3));
         totalCartAmount = Customer.getTotalPriceCart();
+
+
+       /* Customer.clickCheckOutOrderGuide();
+        softAssert.assertTrue(Orders.isSubmitPopupDisplayed(), "submit pop up not display");
+        Orders.clickOnConfirm();
+        softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+        Orders.clickOnClose();*/
 
         Customer.clickOnCheckOutReview();
         Customer.clickEditOrderCheckout();
@@ -118,7 +130,7 @@ public class ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest extends TestB
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
 
-        double actualPrice = Double.parseDouble(Customer.getPriceInCustomerOrder().replace("$", ""));
+        double actualPrice = Double.parseDouble(Customer.getPriceInCustomerOrder().replace("$", "").replace(",", "").trim());
         softAssert.assertEquals(actualPrice, totalCartAmount, "The total values in the submission and the total displayed in the Customer Profile Orders section do not match.");
         softAssert.assertAll();
     }

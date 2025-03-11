@@ -36,17 +36,20 @@ public class UpdateUserWithExistingUserReferenceTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToTeamSettings();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");
+
         Settings.clickOnAddUser();
         Settings.enterName(name_2);
         Settings.enterEmail(email_2);
         Settings.enterUserRef(userRef);
         Settings.clickOnInviteUser();
         softAssert.assertTrue(Settings.isUserDisplayed(name_2),"user adding error");
+
         Settings.clickOnEditUser(name_2);
         Settings.enterUserRef(userRef);
         Settings.clickOnSaveChanges();
         softAssert.assertTrue(Settings.isUserRefErrorDisplayed(),"user ref error");
         Settings.clickOK();
+
         Settings.clickRemoveAddedUserRef(userRef);
         Settings.clickOnSaveChanges();
         Settings.clickOnEditUser(name_2);

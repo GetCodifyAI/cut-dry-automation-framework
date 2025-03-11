@@ -65,6 +65,9 @@
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromMoreFromThisBrandCarouselAndSubmissionTest"/>
 
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheFinalWeightWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSpotPricingWhenSelectingMultipleUOMTest"/>
 
             <class name="com.cutanddry.qa.tests.order_reminder.VerifyEditOrderReminderTest"/>
         </classes>

@@ -2042,6 +2042,57 @@ public class Customer {
         }
     }
 
+    public static void clickPoundPriceMultiUOM(){
+        customersPage.clickPoundPriceMultiUOM();
+    }
+
+    public static void enterCasesPriceValueMultiUOM(String uomPosition, String val) throws InterruptedException {
+        customersPage.enterCasesPriceValueMultiUOM(uomPosition, val);
+    }
+
+    public static void clickUpdatePriceMultiUOM(){
+        customersPage.clickUpdatePriceMultiUOM();
+    }
+
+    public static double getItemPriceMultiUOM(String uomPosition) throws InterruptedException {
+        return customersPage.getPriceMultiUOM(uomPosition);
+    }
+
+    public static double getUnitPriceMultiUOM(String uomPosition, String recordPosition) throws InterruptedException {
+        return customersPage.getUnitPriceMultiUOM(uomPosition, recordPosition);
+    }
+
+    public static void enterTotalWeightMultiUOM(String uomPosition, String recordPosition, String val) throws InterruptedException {
+        customersPage.enterTotalWeightMultiUOM(uomPosition, recordPosition, val);
+    }
+    public static void editMarginMultiUOM(String uomPosition){
+        customersPage.editMarginMultiUOM(uomPosition);
+    }
+
+    public static void enterSpotPriceMultiUOM(String uomPosition, String val) throws InterruptedException {
+        customersPage.enterSpotPriceMultiUOM(uomPosition, val);
+    }
+
+    public static void enterMarginValueMultiUOM(String uomPosition, String val) throws InterruptedException {
+        customersPage.enterMarginValueMultiUOM(uomPosition, val);
+    }
+
+    public static void enterMarginPercentageMultiUOM(String uomPosition, String val) throws InterruptedException {
+        customersPage.enterMarginPercentageMultiUOM(uomPosition, val);
+    }
+
+    public static String getSpotPriceMultiUOM(String position){
+        return customersPage.getSpotPriceMultiUOM(position);
+    }
+
+    public static String getMarginValueMultiUOM(String position){
+        return customersPage.getMarginValueMultiUOM(position);
+    }
+
+    public static String getMarginPercentageMultiUOM(String position){
+        return customersPage.getMarginPercentageMultiUOM(position);
+    }
+
 }
 
 
