@@ -848,18 +848,18 @@ workflows:
   scheduled-test-2:
     triggers:
       - schedule:
-          cron: "36 08 * * 1-5"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
+          cron: "45 05 * * 1-5"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
           filters:
             branches:
               only:
-                - ahsan_dev_new
+                - main
     jobs:
-#      - daily-build-and-test-1
-#      - daily-build-and-test-2
+      - daily-build-and-test-1
+      - daily-build-and-test-2
       - daily-build-and-test-3
-#      - daily-build-and-test-4
-#      - daily-build-and-test-5
-#      - daily-build-and-test-6
-#      - daily-build-and-test-7
+      - daily-build-and-test-4
+      - daily-build-and-test-5
+      - daily-build-and-test-6
+      - daily-build-and-test-7
 
 
