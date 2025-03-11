@@ -58,6 +58,7 @@
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEndlessAisleShippingFeesSelectMultipleUOMTest"/>
 
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromTopCategoryCarouselAndSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromCompareSimilarItemsCarouselAndSubmissionTest"/>
 
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest"/>
 
