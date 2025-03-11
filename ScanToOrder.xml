@@ -16,6 +16,13 @@
             <class name="com.cutanddry.qa.tests.scan_to_order.VerifyThatTheAccountsReceivableUsersCanPlaceTheScanToOrdersTest"/>
             <class name="com.cutanddry.qa.tests.scan_to_order.VerifyThatTheSalespersonUsersCanPlaceTheScanToOrdersTest"/>
             <class name="com.cutanddry.qa.tests.scan_to_order.VerifyTheUserCanAddInternalNotesPONumberForScanToOrderOrdersTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderAddedItemDetailsCorrectlyDisplayedInScanToOrderScreenTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyCTAButtonTextTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderEmptyCartTextTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderItemSearchInputFieldPlaceholderTextTest"/>
+
+
+
 
         </classes>
     </test>
