@@ -515,6 +515,18 @@ public class Catalog {
     public static void ClickOnCatalogMultiUomDropDown(String name)throws InterruptedException{
         catalogPage.ClickOnCatalogMultiUomDropDown(name);
     }
+    public static double getDeliveryFeesPriceInReviewOrder() throws InterruptedException {
+        return catalogPage.getDeliveryFeesPriceInReviewOrder();
+    }
+    public static double getTotalEndlessAislePriceInReviewOrder() throws InterruptedException {
+        return catalogPage.getTotalEndlessAislePriceInReviewOrder();
+    }
+    public static double getTotalEndlessAisleSubTotalPriceInReviewOrder() throws InterruptedException {
+        return catalogPage.getTotalEndlessAisleSubTotalPriceInReviewOrder();
+    }
+    public static double getSubTotalPriceInOrder() throws InterruptedException {
+        return catalogPage.getSubTotalPriceInOrder();
+    }
 
 
 }

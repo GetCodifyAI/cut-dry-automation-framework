@@ -212,6 +212,9 @@ public class Customer {
     public static boolean isRecommendedForYouItemDisplayed(String code){
         return customersPage.isRecommendedForYouItemDisplayed(code);
     }
+    public static boolean isRecommendedForYouItemNameDisplayed(String code){
+        return customersPage.isRecommendedForYouItemNameDisplayed(code);
+    }
     public static boolean isRecommendedBySalesRepDisplayed(String code){
         return customersPage.isRecommendedBySalesRepDisplayed(code);
     }
@@ -1357,6 +1360,9 @@ public class Customer {
     public static boolean isNoteToCustomerDisplayed(String noteToCustomer){
         return customersPage.isNoteToCustomerDisplayed(noteToCustomer);
     }
+    public static boolean isPONumberCorrectlyDisplayed(String PONumber){
+        return customersPage.isPoNumberCorrectlyDisplayed(PONumber);
+    }
     public static String getItemQuantity() throws InterruptedException {
         return customersPage.getItemQuantity();
     }
@@ -2029,6 +2035,11 @@ public class Customer {
 
     public static void selectSortItemByOption(String sortBy) throws InterruptedException {
         customersPage.selectSortItemBy(sortBy);
+    }
+    public static void clickOnPlusIconInCatalog(int count, String name) {
+        for (int i=0; i<count;i++){
+            customersPage.clickOnPlusIconInCatalog(name);
+        }
     }
 
 }

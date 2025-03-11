@@ -2,10 +2,7 @@ package com.cutanddry.qa.tests.scan_to_order;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
-import com.cutanddry.qa.functions.Customer;
-import com.cutanddry.qa.functions.Dashboard;
-import com.cutanddry.qa.functions.Login;
-import com.cutanddry.qa.functions.ScanToOrder;
+import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -15,27 +12,28 @@ import org.testng.asserts.SoftAssert;
 
 import java.util.Random;
 
-public class VerifyUserCanIncreaseDecreaseQuantitiesFromScanToOrderFlowTest extends TestBase {
+public class VerifyTheDraftOrderForScanToOrderTest extends TestBase {
     static User user;
     static String featureName = "scan_to_order";
     static String companyID = "46017666";
     static String DP = "Independent Foods Co";
     static String CustomerCode = "21259";
     static String itemName, searchItemCode;
+    static double itemPrice;
 
     @BeforeMethod
     public void setup(){
         initialization();
         user = JsonUtil.readUserLogin();
     }
+    
 
-    @Test(groups = "DOT-TC-1116")
-    public static void VerifyUserCanIncreaseDecreaseQuantitiesFromScanToOrderFlow() throws InterruptedException {
+    @Test(groups = "DOT-TC-1128")
+    public static void VerifyTheDraftOrderForScanToOrder() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
 
         Random random = new Random();
-        int randomQuantity = random.nextInt(8) + 3;
-        int decreaseQuantity = randomQuantity - 2 ;
+        int randomQuantity = random.nextInt(10) + 1;
 
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "login error");
@@ -64,10 +62,13 @@ public class VerifyUserCanIncreaseDecreaseQuantitiesFromScanToOrderFlowTest exte
         ScanToOrder.IncreaseItemQty(searchItemCode,randomQuantity);
         double itemPriceAfterIncrease = ScanToOrder.getItemPriceOfItem(searchItemCode);
         softAssert.assertEquals(itemPriceAfterIncrease, itemPriceInitially *randomQuantity,"Item Prices calculation is wrong after Qty increase");
+        ScanToOrder.ReviewAndConfirm();
+        softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
+        itemPrice = Customer.getTotalPriceCart();
 
-        ScanToOrder.DecreaseItemQty(searchItemCode,decreaseQuantity);
-        double itemPriceAfterDecreases = ScanToOrder.getItemPriceOfItem(searchItemCode);
-        softAssert.assertEquals(itemPriceAfterDecreases, itemPriceInitially *2,"Item Prices calculation is wrong after Qty decrease");
+        Dashboard.navigateToDrafts();
+        softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
+        softAssert.assertTrue(Draft.isLastDraftDisplayed(String.valueOf(itemPrice)),"draft creating error");
 
         softAssert.assertAll();
 

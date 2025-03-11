@@ -43,7 +43,7 @@ public class ScanToOrder {
          scanToOrderPage.ClickOnScanToOrderCancelBtn(customerCode);
     }
 
-    public static void IncreaseItemQty(String ItemCode, int Quantity){
+    public static void IncreaseItemQty(String ItemCode, int Quantity) throws InterruptedException {
        scanToOrderPage.clickQuantityIncreasePlusIcon(ItemCode,Quantity);
     }
 
@@ -54,4 +54,60 @@ public class ScanToOrder {
     public static void ReviewAndConfirm(){
         scanToOrderPage.clickOnReviewAndConfirm();
     }
+    public static void DecreaseItemQty(String ItemCode, int Quantity) throws InterruptedException {
+       scanToOrderPage.clickQuantityDecreaseMinusIcon(ItemCode,Quantity);
+    }
+
+    public static boolean isTotalQuantityTextDisplayed(){
+        return scanToOrderPage.isTotalQuantityTextDisplayed();
+    }
+
+    public static boolean isTotalLineItemsTextDisplayed(){
+        return scanToOrderPage.isTotalLineItemsTextDisplayed();
+    }
+
+    public static boolean isTotalEstimatedCostTextDisplayed(){
+        return scanToOrderPage.isTotalEstimatedCostTextDisplayed();
+    }
+
+    public static boolean isTotalDiscountsTextDisplayed(){
+        return scanToOrderPage.isTotalDiscountsTextDisplayed();
+    }
+
+    public static int getProductQuantityValue(){
+        return scanToOrderPage.getProductQuantityValue();
+    }
+
+    public static int getProducttotalQuantityValues(){
+        return scanToOrderPage.getProducttotalQuantityValues();
+    }
+
+    public static int getCartLineItemCount(){
+        return scanToOrderPage.getCartLineItemCount();
+    }
+
+    public static int getCartItemCountInOrderSummary(){
+        return scanToOrderPage.getCartItemCountInOrderSummary();
+    }
+
+    public static double getTotalCostInOrderSummary(){
+        return scanToOrderPage.getTotalCostInOrderSummary();
+    }
+
+    public static boolean isSearchInputFieldTextDisplayed(){
+        return scanToOrderPage.isSearchInputFieldTextDisplayed();
+    }
+
+    public static String getSearchInputFieldText(){
+        return scanToOrderPage.getSearchInputFieldText();
+    }
+
+    public static String getCTAButtonText(){
+        return scanToOrderPage.getCTAButtonText();
+    }
+
+    public static boolean isEmptyCartTextDisplayed(String emptyCartText){
+        return scanToOrderPage.isEmptyCartTextDisplayed(emptyCartText);
+    }
+
 }

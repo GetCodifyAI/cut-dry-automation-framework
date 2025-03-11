@@ -1,5 +1,6 @@
 package com.cutanddry.qa.tests.scan_to_order;
 
+
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.Customer;
@@ -13,14 +14,17 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyUserCanAddItemsManuallyToScanToOrderOrderTest extends TestBase {
+
+public class VerifyScanToOrderAddedItemDetailsCorrectlyDisplayedInScanToOrderScreenTest extends TestBase{
+
     static User user;
     static String featureName = "scan_to_order";
     static String companyID = "46017666";
     static String DP = "Independent Foods Co";
     static String CustomerCode = "21259";
-    static String ItemCode2 = "69204";
-    static String ItemCode1;
+    static String ItemCode1 = "87910";
+    static String ItemCode2 = "63018";
+
 
     @BeforeMethod
     public void setup(){
@@ -28,23 +32,13 @@ public class VerifyUserCanAddItemsManuallyToScanToOrderOrderTest extends TestBas
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-1113")
-    public static void VerifyUserCanAddItemsManuallyToScanToOrderOrder() throws InterruptedException {
+    @Test(groups = "DOT-TC-1121")
+    public static void VerifyScanToOrderAddedItemDetailsCorrectlyDisplayedInScanToOrderScreen() throws InterruptedException{
         SoftAssert softAssert = new SoftAssert();
-        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-
-        Login.navigateToGateKeeperAdmin();
-        Login.updateCompanyIDs(featureName,companyID);
-
-        Login.navigateToDistributorPortal(DP);
-        Dashboard.navigateToCustomers();
-        Customer.clickOnOrderGuide(CustomerCode);
-        ItemCode1 = Customer.getItemCodeFirstRow();
-
+        Login.loginAsDistributor(user.getEmailOrMobile(),user.getPassword());
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(CustomerCode);
-        softAssert.assertTrue(Customer.isNavigatedToCustomerPage(),"Error in navigating to customer Page");
         softAssert.assertTrue(Customer.isScanToOrderBtnDisplayedInCustomers(CustomerCode),"Customers Screen Scan To order button is not displayed");
         Customer.navigateFromCustomerScreenToScanToOrderScreen(CustomerCode);
         softAssert.assertTrue(ScanToOrder.isNavigatedToScanToOrderPage(),"Error in navigating to scan to order screen");
@@ -62,12 +56,32 @@ public class VerifyUserCanAddItemsManuallyToScanToOrderOrderTest extends TestBas
         softAssert.assertTrue(ScanToOrder.isAddToCartButtonEnabled(),"Add to Cart Button is not enabled");
         ScanToOrder.AddItemsToCart();
         softAssert.assertTrue(ScanToOrder.isItemAddedToTheCart(ItemCode2),"Item is not added to the cart");
+        softAssert.assertTrue(ScanToOrder.isReviewAndConfirmBtnEnabled(),"Review and Confirm Button is not enabled");
 
+        softAssert.assertTrue(ScanToOrder.isTotalQuantityTextDisplayed(),"Total quantity text is not displayed");
+        int product_Quantity = ScanToOrder.getProductQuantityValue();
+        int product_quantityOnly = ScanToOrder.getProducttotalQuantityValues();
+        softAssert.assertEquals(product_Quantity, product_quantityOnly, "Wrong quantity");
+
+        softAssert.assertTrue(ScanToOrder.isTotalLineItemsTextDisplayed(),"Total Line Item text is not displayed");
+        int cartLineItemCount = ScanToOrder.getCartLineItemCount();
+        int cartItemCount = ScanToOrder.getCartItemCountInOrderSummary();
+        softAssert.assertEquals(cartLineItemCount,cartItemCount,"Wrong quantity");
+
+
+        softAssert.assertTrue(ScanToOrder.isTotalEstimatedCostTextDisplayed(),"Total Estimated Cost text is not displayed");
+        double totalCostOrderSummary = ScanToOrder.getTotalCostInOrderSummary();
+        double itemPrice1 = ScanToOrder.getItemPriceOfItem(ItemCode1);
+        double itemPrice2 = ScanToOrder.getItemPriceOfItem(ItemCode2);
+        double totalPrice = itemPrice1+itemPrice2;
+        softAssert.assertEquals(totalCostOrderSummary,totalPrice,"Wrong Price");
+
+        softAssert.assertTrue(ScanToOrder.isTotalDiscountsTextDisplayed());
         softAssert.assertAll();
     }
 
     @AfterMethod
-    public void tearDown(ITestResult result) throws InterruptedException {
+    public void tearDown(ITestResult result) {
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }

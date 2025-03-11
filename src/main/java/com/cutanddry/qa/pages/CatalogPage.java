@@ -169,6 +169,12 @@ public class CatalogPage extends LoginPage{
     String getUOMOGPrice ="(//td[text()='CODE']/ancestor::tr/td[last()-2]//span)[UOM]";
     By checkOutBtnOG = By.xpath("//button[@data-for='cartCheckoutButton' and contains(text(),'$')]");
     String multiUomDropDownCatalog = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[2]";
+    By getDeliveryFeesReviewOrder = By.xpath("//td[contains(text(),'Delivery Fee')]/following-sibling::td");
+    By getTotalEndlessAislePriceReviewOrder = By.xpath("//td[contains(text(),'Endless Aisle Total')]/following-sibling::td");
+    By getTotalEndlessAisleSubTotalPriceReviewOrder = By.xpath("//td[contains(text(),'Endless Aisle Subtotal')]/following-sibling::td");
+    By getSubTotalOrderPrice = By.xpath("//div[contains(text(),'Subtotal')]/../following-sibling::td");
+
+
 
 
     public boolean isCatalogTextDisplayed() {
@@ -872,6 +878,38 @@ public class CatalogPage extends LoginPage{
     public void ClickOnCatalogMultiUomDropDown(String name)throws InterruptedException{
         distributorUI.waitForVisibility(By.xpath(multiUomDropDownCatalog.replace("NAME", name)));
         distributorUI.click(By.xpath(multiUomDropDownCatalog.replace("NAME", name)));
+    }
+    public double getDeliveryFeesPriceInReviewOrder() throws InterruptedException {
+        try {
+            return extractPrice(getDeliveryFeesReviewOrder);
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPrice(getDeliveryFeesReviewOrder);
+        }
+    }
+    public double getTotalEndlessAislePriceInReviewOrder() throws InterruptedException {
+        try {
+            return extractPrice(getTotalEndlessAislePriceReviewOrder);
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPrice(getTotalEndlessAislePriceReviewOrder);
+        }
+    }
+    public double getTotalEndlessAisleSubTotalPriceInReviewOrder() throws InterruptedException {
+        try {
+            return extractPrice(getTotalEndlessAisleSubTotalPriceReviewOrder);
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPrice(getTotalEndlessAisleSubTotalPriceReviewOrder);
+        }
+    }
+    public double getSubTotalPriceInOrder() throws InterruptedException {
+        try {
+            return extractPrice(getSubTotalOrderPrice);
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPrice(getSubTotalOrderPrice);
+        }
     }
 
 }
