@@ -913,6 +913,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isRecommendedForYouItemDisplayed(String code){
         return distributorUI.isDisplayed(By.xpath(lbl_recommendedForYouItem.replace("CODE", '#'+code)));
     }
+    public boolean isRecommendedForYouItemNameDisplayed(String code){
+        return distributorUI.isDisplayed(By.xpath(lbl_recommendedForYouItem.replace("CODE",code )));
+    }
     public boolean isRecommendedBySalesRepDisplayed(String code) {
         return distributorUI.isDisplayed(By.xpath(lbl_recommendedBySalesRep.replace("CODE", '#'+code)));
     }
