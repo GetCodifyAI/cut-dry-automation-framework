@@ -212,6 +212,9 @@ public class Customer {
     public static boolean isRecommendedForYouItemDisplayed(String code){
         return customersPage.isRecommendedForYouItemDisplayed(code);
     }
+    public static boolean isRecommendedForYouItemNameDisplayed(String code){
+        return customersPage.isRecommendedForYouItemNameDisplayed(code);
+    }
     public static boolean isRecommendedBySalesRepDisplayed(String code){
         return customersPage.isRecommendedBySalesRepDisplayed(code);
     }

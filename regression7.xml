@@ -57,6 +57,13 @@
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheDeliveryFeesSelectMultipleUOMTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEndlessAisleShippingFeesSelectMultipleUOMTest"/>
 
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromTopCategoryCarouselAndSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromCompareSimilarItemsCarouselAndSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromRecommendedForCustomerCarouselAndSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromRecommendedBySalesRepCarouselAndSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromDoNotForgetToOrderCarouselAndSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromMoreFromThisBrandCarouselAndSubmissionTest"/>
+
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest"/>
 
             <class name="com.cutanddry.qa.tests.order_reminder.VerifyEditOrderReminderTest"/>

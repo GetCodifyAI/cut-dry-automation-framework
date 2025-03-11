@@ -7,6 +7,7 @@ public class CatalogData {
     public static final String CUSTOMER_ID_4 = "20240802";
     public static final String CUSTOMER_ID_5 = "29374";
     public static final String CUSTOMER_ID_6 = "113956";
+    public static final String CUSTOMER_ID_7 = "23445";
     public static final String DELIVERY_DAY = "Monday";
     public static final String ITEM_CODE = "01409";
     public static final String ITEM_CODE_2 = "00529";
@@ -16,7 +17,13 @@ public class CatalogData {
     public static final String ITEM_CODE_6 = "99005";
     public static final String ITEM_CODE_7 = "0005";
     public static final String ITEM_CODE_8 = "PGC03977BX";
+    public static final String ITEM_CODE_9 = "02095";
+    public static final String ITEM_CODE_10 = "17859";
     public static final String ITEM_NAME = "Carrot - Baby Peeled - 1 LB";
+    public static final String ITEM_NAME_SIMILAR_ITEM = "Organic Bananas - 20 LB";
+    public static final String ITEM_NAME_MORE_FROM_ITEM = "Del Monte Diced Peaches Fruit Cup";
+    public static final String ITEM_NAME_MORE_FROM_ITEM_2 = "Chicken - Bones Natural Joyce Farms";
+    public static final String ITEM_NAME_SIMILAR_ITEM_2 = "Organic Bananas - 2 LB";
     public static final String ITEM_NAME_AISLE = "Chewable Tablets Original Flavor 30/Box";
     public static final String ITEM_NAME_JIT = "Beef New York 14OZ Cca C/C";
     public static final String ITEM_NAME_SPECIAL = "S/O Sauce Chili Oil";
@@ -35,4 +42,5 @@ public class CatalogData {
     public static final String DP_SOUTHWEST = "30227908 - Cut+Dry Agent - Southwest Traders";
     public static final String DP_IFC = "47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
     public static final String DP_BIGOLI = "105718262 - Cut+Dry Agent - Bigoli Fresh Pasta";
+    public static final String SALE_REP = "Steve O";
 }
