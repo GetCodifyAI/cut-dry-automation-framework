@@ -33,6 +33,14 @@ public class VerifyEditingFeaturedListTest extends TestBase {
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickSuggestiveSales();
         Boost.navigateToFeaturedListTab();
+
+        // Pre-request
+        Boost.createNewFeaturedList();
+        softAssert.assertTrue(Boost.isCrateListOverlayDisplayed(),"Error in displaying create list overlay");
+        Boost.enterFeaturedListName(FeaturedListName);
+        Boost.submitEnteredListName();
+        softAssert.assertTrue(Boost.addedListNameDisplayed(FeaturedListName),"Error in displaying added list name");
+
         Boost.viewAndConfigure(FeaturedListName);
         softAssert.assertTrue(Boost.itemConfigureOverlayDisplayed(),"Error in displaying Item Configure Overlay");
         Boost.editListName();
@@ -41,6 +49,11 @@ public class VerifyEditingFeaturedListTest extends TestBase {
         Boost.saveChanges();
         Boost.closeEditOverlay();
         softAssert.assertTrue(Boost.addedListNameDisplayed(EditedFeaturedListName),"Error in displaying added list name");
+
+        //Post Request
+        Boost.deleteFeaturedList(FeaturedListName);
+        softAssert.assertTrue(Boost.deleteFeaturedListOverlayDisplayed(),"Erro in displaying delete List Overlay");
+        Boost.deleteFeaturedListFromOverlay();
 
         softAssert.assertAll();
     }
