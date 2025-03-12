@@ -10,7 +10,6 @@
         <classes>
             <class name="com.cutanddry.qa.tests.track.VerifyAddNewRouteUsingTrackFeature"/>
             <class name="com.cutanddry.qa.tests.track.VerifyDownloadExampleRouteUsingTrackFeature"/>
-            <class name="com.cutanddry.qa.tests.track.VerifyTrackFieldManagerUsingTrackFeature"/>
             <class name="com.cutanddry.qa.tests.track.VerifyTrackSettingsUnderRoutes"/>
             <class name="com.cutanddry.qa.tests.track.VerifyTheDatePickerFunctionality"/>
             <class name="com.cutanddry.qa.tests.track.VerifyDateChangeFunctionalityUnderMonitoring"/>
@@ -32,14 +31,16 @@
             <class name="com.cutanddry.qa.tests.track.ValidateDetailsOnRouteRecordTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateGettingRouteCodeFlowTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateGettingEditRouteFlowTest"/>
-            <class name="com.cutanddry.qa.tests.track.ValidateAddStopToRouteFlowTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateAddBreakToRouteFlowTest"/>
-            <class name="com.cutanddry.qa.tests.track.ValidateTheRouteRecordListTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateVisibilityStatusOfRouteTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateAddStopToRouteFlowTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateTheRouteRecordListTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateAddUnassignedStopsTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateEditUnassignedStopsTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateDeleteUnassignedStopsTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateTheDispatchRouteFlowTest"/>
+<!--            //TODO: It's impact the show case the labels under stop. For the moment comment out. need a proper solution for this -->
+<!--            <class name="com.cutanddry.qa.tests.track.VerifyTrackFieldManagerUsingTrackFeature"/>-->
 
             <class name="com.cutanddry.qa.tests.order_desk.VerifyAddingNewProductFromCatalogTest" />
             <class name="com.cutanddry.qa.tests.order_desk.VerifyDeletingVoiceOrderDraftLineItemTest" />
@@ -52,8 +53,6 @@
             <class name="com.cutanddry.qa.tests.order_desk.VerifySavingSubmittedVoiceOrderTest" />
             <class name="com.cutanddry.qa.tests.order_desk.VerifyEditingSubmittedVoiceOrderTest" />
             <class name="com.cutanddry.qa.tests.order_desk.VerifyDeletingVoiceOrderSubmitLineItemTest" />
-
-
 
             <class name="com.cutanddry.qa.tests.team.VerifyTheFunctionalityOfFilteringUsersByUserRoles"/>
             <class name="com.cutanddry.qa.tests.team.VerifyTheFunctionalityOfSearchingUsersByUsers"/>
