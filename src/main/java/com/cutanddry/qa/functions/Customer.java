@@ -1813,6 +1813,9 @@ public class Customer {
     public static String getItemFinalPrice() throws InterruptedException {
         return customersPage.getItemFinalPrice();
     }
+    public static double getItemFinalPriceStable() throws InterruptedException {
+        return customersPage.getItemFinalPriceStable();
+    }
     public static void typeOnFinalWeight(String weight) throws InterruptedException {
         customersPage.typeOnFinalWeight(weight);
     }

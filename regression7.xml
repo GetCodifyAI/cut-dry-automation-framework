@@ -64,6 +64,11 @@
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromDoNotForgetToOrderCarouselAndSubmissionTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromMoreFromThisBrandCarouselAndSubmissionTest"/>
 
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantitiesFunctionalityFromCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMFromSaleItemAndSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMSpecialOrderItemAndDraftEditTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMJustInTimeItemAndDraftEditTest"/>
+
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest"/>
 
             <class name="com.cutanddry.qa.tests.order_reminder.VerifyEditOrderReminderTest"/>

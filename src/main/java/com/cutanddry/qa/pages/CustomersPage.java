@@ -3313,6 +3313,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForCustom(3000);
         return distributorUI.getText(finalItemPrice);
     }
+    public double getItemFinalPriceStable() throws InterruptedException {
+        try {
+            return extractPriceStable(finalItemPrice);
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPriceStable(finalItemPrice);
+        }
+    }
     public void typeOnFinalWeight(String weight) throws InterruptedException {
         distributorUI.click(finalWeight);
         distributorUI.clearUsingJavaScript(finalWeightInput);
