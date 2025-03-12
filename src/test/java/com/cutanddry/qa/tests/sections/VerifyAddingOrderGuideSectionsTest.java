@@ -16,6 +16,7 @@ public class VerifyAddingOrderGuideSectionsTest extends TestBase {
     static User user;
     static String customerId = "16579";
     static String sectionName = "dairy";
+    static String sortOption = "Custom Order";
 
     @BeforeMethod
     public void setUp() {
@@ -32,6 +33,7 @@ public class VerifyAddingOrderGuideSectionsTest extends TestBase {
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"Error in searching customer by code");
         Customer.clickOnOrderGuide(customerId);
+        Customer.selectSortItemByOption(sortOption);
         Customer.goToEdit();
         softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
         Customer.expandMoreOptionsDropdown();

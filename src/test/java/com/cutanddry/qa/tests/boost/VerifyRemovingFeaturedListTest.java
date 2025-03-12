@@ -24,7 +24,7 @@ public class VerifyRemovingFeaturedListTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-378")
-    public void VerifyRemovingFeaturedList() {
+    public void VerifyRemovingFeaturedList() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();

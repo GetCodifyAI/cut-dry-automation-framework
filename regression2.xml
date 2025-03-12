@@ -58,7 +58,6 @@
             <class name="com.cutanddry.qa.tests.team.VerifyTheFunctionalityOfSearchingUsersByUsers"/>
             <class name="com.cutanddry.qa.tests.team.AddNewUserWithoutUserReferenceTest" />
             <class name="com.cutanddry.qa.tests.team.AddNewUserWithUserReferenceTest" />
-            <class name="com.cutanddry.qa.tests.team.UpdateUserWithExistingUserReferenceTest" />
             <class name="com.cutanddry.qa.tests.team.UpdateUserTest" />
             <class name="com.cutanddry.qa.tests.team.RemoveUserTest" />
             <class name="com.cutanddry.qa.tests.team.AddUserNonConfigDPsTest" />
@@ -67,8 +66,9 @@
             <class name="com.cutanddry.qa.tests.team.AddUserWhiteLabelPortalTest" />
             <class name="com.cutanddry.qa.tests.team.UpdateUserWhiteLabelPortalTest" />
             <class name="com.cutanddry.qa.tests.team.RemoveUserWhiteLabelPortalTest" />
-            <!--TODO: Failure TC, Need to fix the bug 1st-->
             <class name="com.cutanddry.qa.tests.team.AddNewUserWithExistingUserReferenceTest" />
+            <!--TODO: Failure TC, Need to fix the bug 1st-->
+            <class name="com.cutanddry.qa.tests.team.UpdateUserWithExistingUserReferenceTest" />
 
         </classes>
     </test>

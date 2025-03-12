@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyEditingFeaturedListTest extends TestBase {
     static User user;
     String FeaturedListName = "TestList";
-    String EditedFeaturedListName = "EditedList";
+    String EditedFeaturedListName = "EditedList"+generateDynamicValue();
 
     @BeforeMethod
     public void setUp(){
@@ -24,7 +24,7 @@ public class VerifyEditingFeaturedListTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-377")
-    public void VerifyEditingFeaturedList() {
+    public void VerifyEditingFeaturedList() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -51,7 +51,7 @@ public class VerifyEditingFeaturedListTest extends TestBase {
         softAssert.assertTrue(Boost.addedListNameDisplayed(EditedFeaturedListName),"Error in displaying added list name");
 
         //Post Request
-        Boost.deleteFeaturedList(FeaturedListName);
+        Boost.deleteFeaturedList(EditedFeaturedListName);
         softAssert.assertTrue(Boost.deleteFeaturedListOverlayDisplayed(),"Erro in displaying delete List Overlay");
         Boost.deleteFeaturedListFromOverlay();
 
