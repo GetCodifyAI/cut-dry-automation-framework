@@ -527,6 +527,9 @@ public class Catalog {
     public static double getSubTotalPriceInOrder() throws InterruptedException {
         return catalogPage.getSubTotalPriceInOrder();
     }
+    public static boolean isCatalogAddToCartButtonDisplayed(String name){
+        return catalogPage.isCatalogAddToCartButtonDisplayed(name);
+    }
 
 
 }

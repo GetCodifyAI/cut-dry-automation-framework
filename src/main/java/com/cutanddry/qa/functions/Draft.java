@@ -15,6 +15,9 @@ public class Draft {
     public static boolean isLastDraftDisplayed(String total){
         return draftPage.isLastDraftDisplayed(total);
     }
+    public static boolean isLastDraftDisplayedVito(String total){
+        return draftPage.isLastDraftDisplayedVito(total);
+    }
 
     public static boolean isApprovalRequestedOrderDisplayed(){
         return draftPage.isPendingApprovalOrdersDisplayed();

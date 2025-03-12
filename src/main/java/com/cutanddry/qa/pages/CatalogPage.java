@@ -173,6 +173,7 @@ public class CatalogPage extends LoginPage{
     By getTotalEndlessAislePriceReviewOrder = By.xpath("//td[contains(text(),'Endless Aisle Total')]/following-sibling::td");
     By getTotalEndlessAisleSubTotalPriceReviewOrder = By.xpath("//td[contains(text(),'Endless Aisle Subtotal')]/following-sibling::td");
     By getSubTotalOrderPrice = By.xpath("//div[contains(text(),'Subtotal')]/../following-sibling::td");
+    String catalogAddToCart = "(//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')]/following::div//button[contains(text(), 'Add to Cart')])[1]";
 
 
 
@@ -910,6 +911,9 @@ public class CatalogPage extends LoginPage{
             System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
             return extractPrice(getSubTotalOrderPrice);
         }
+    }
+    public boolean isCatalogAddToCartButtonDisplayed(String name){
+        return distributorUI.isDisplayed(By.xpath(catalogAddToCart.replace("NAME", name)));
     }
 
 }
