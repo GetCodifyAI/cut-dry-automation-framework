@@ -29,6 +29,11 @@ public class ScanToOrderPage extends LoginPage{
 
 
     public boolean isScanToOrderTextDisplayed(){
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return distributorUI.isDisplayed(ScanToOrderText);
     }
 

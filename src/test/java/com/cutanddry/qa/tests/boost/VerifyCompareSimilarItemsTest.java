@@ -45,7 +45,7 @@ public class VerifyCompareSimilarItemsTest extends TestBase{
         Customer.clickOnOrderGuide(customerId);
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(itemCode);
-        Customer.selectSearchedCatalogItem(itemCode);
+        Customer.selectSearchedCatalogItemStable(itemCode);
         softAssert.assertTrue(Customer.isSelectedItemDisplayed(),"navigation error");
         softAssert.assertTrue(Customer.isCompareSimilarItemsDisplayed(),"similar items missing error");
         Dashboard.navigateToBoost();

@@ -33,11 +33,17 @@ public class VerifyAddingFeaturedListTest extends TestBase {
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickSuggestiveSales();
         Boost.navigateToFeaturedListTab();
+
         Boost.createNewFeaturedList();
         softAssert.assertTrue(Boost.isCrateListOverlayDisplayed(),"Error in displaying create list overlay");
         Boost.enterFeaturedListName(FeaturedListName);
         Boost.submitEnteredListName();
         softAssert.assertTrue(Boost.addedListNameDisplayed(FeaturedListName),"Error in displaying added list name");
+
+        //Post Request
+        Boost.deleteFeaturedList(FeaturedListName);
+        softAssert.assertTrue(Boost.deleteFeaturedListOverlayDisplayed(),"Erro in displaying delete List Overlay");
+        Boost.deleteFeaturedListFromOverlay();
 
         softAssert.assertAll();
     }

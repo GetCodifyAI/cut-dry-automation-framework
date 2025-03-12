@@ -843,9 +843,7 @@ workflows:
       - nightly-build-and-test-5
       - nightly-build-and-test-6
       - nightly-build-and-test-7
-#      - nightly-build-and-test-8
-#      - nightly-build-and-test-9
-#      - nightly-build-and-test-10
+
 
   scheduled-test-2:
     triggers:
@@ -863,7 +861,5 @@ workflows:
       - daily-build-and-test-5
       - daily-build-and-test-6
       - daily-build-and-test-7
-#      - daily-build-and-test-8
-#      - daily-build-and-test-9
-#      - daily-build-and-test-10
+
 

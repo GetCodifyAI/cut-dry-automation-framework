@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.*;
@@ -20,6 +21,7 @@ public class TestBase {
     protected static JavascriptExecutor js;
     protected static KeywordBase distributorUI;
     protected static WebDriverWait wait;
+    private static final DecimalFormat df = new DecimalFormat("#.###");
 
     // Initialization method to set up the WebDriver and other components
     public static void initialization() {
@@ -30,10 +32,10 @@ public class TestBase {
                     chromeOptions.addArguments("--start-maximized");
                     if (Constants.RUN_HEADLESS) {
                         chromeOptions.addArguments("--headless", "--window-size=1920,1080");
-                        chromeOptions.addArguments("--disable-dev-shm-usage"); // Prevents shared memory crashes
+                        /*chromeOptions.addArguments("--disable-dev-shm-usage"); // Prevents shared memory crashes
                         chromeOptions.addArguments("--disable-gpu"); // Disables GPU rendering
                         chromeOptions.addArguments("--disable-renderer-backgrounding"); // Prevents execution speed-up in background
-                        chromeOptions.addArguments("--disable-background-timer-throttling"); // Keeps timers active
+                        chromeOptions.addArguments("--disable-background-timer-throttling"); // Keeps timers active*/
                     }
 
                     // Set custom download directory
@@ -129,6 +131,23 @@ public class TestBase {
         calendar.add(Calendar.DAY_OF_YEAR, -1); // Subtract 1 day
 
         return formatter.format(calendar.getTime());
+    }
+
+    public static String formatDouble(double value) {
+        return df.format(value);
+    }
+
+    public static String formatStringDouble(String value) {
+        try {
+            double doubleValue = Double.parseDouble(value); // Convert String to double
+            if (doubleValue == (long) doubleValue) {
+                return String.valueOf((long) doubleValue); // Remove decimal if it's .00
+            } else {
+                return new DecimalFormat("#.##").format(doubleValue); // Keep up to 2 decimals
+            }
+        } catch (NumberFormatException e) {
+            return "Invalid number"; // Handle invalid input
+        }
     }
 
 }
