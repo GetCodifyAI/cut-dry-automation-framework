@@ -18,7 +18,15 @@ public class Customer {
         customersPage.typeOnSearchCustomers(code);
     }
     public static boolean isCustomerSearchResultByCodeDisplayed(String code) throws InterruptedException {
-        return customersPage.isCustomerSearchResultByCodeDisplayed(code);
+//        return customersPage.isCustomerSearchResultByCodeDisplayed(code);
+        if (customersPage.isCustomerSearchResultByCodeDisplayed(code)) {
+            return true;
+        } else {
+            customersPage.refreshCustomersPage();
+            customersPage.clickOnSearchCustomers();
+            customersPage.typeOnSearchCustomers(code);
+            return customersPage.isCustomerSearchResultByCodeDisplayed(code);
+        }
     }
     public static void clickOnOrderGuide(String code) throws InterruptedException {
         customersPage.clickOnOrderGuide(code);
@@ -202,6 +210,9 @@ public class Customer {
     }
     public static void selectSearchedCatalogItem(String code) {
         customersPage.clickSearchedItem(code);
+    }
+    public static void selectSearchedCatalogItemStable(String code) {
+        customersPage.clickSearchedItemStable(code);
     }
     public static boolean isSelectedItemDisplayed(){
         return customersPage.isSelectedItemDisplayed();

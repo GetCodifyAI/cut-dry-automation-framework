@@ -73,6 +73,7 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By lbl_topCategoryPicks = By.xpath("//div[text()='Top Category Picks']");
     String lbl_itemAdded = "//div[text()='Top Category Picks']//following-sibling::div//div[text()='CODE']";
     String lbl_searchedItem = "//div[text()='CODE']";
+    String lbl_searchedItemStable = "//div[text()='CODE']/parent::div/div[1]";
     By section_compareSimilar = By.xpath("//div[text()='Compare Similar Items']");
     String lbl_recommendedForYouItem = "//div[contains(text(), 'Recommended for You')]//following-sibling::div//div[text()='CODE']";
     String lbl_recommendedBySalesRep = "//div[contains(text(), 'Recommended by')]//following-sibling::div//div[contains(text(), 'CODE')]";
@@ -646,8 +647,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isCustomerSearchResultByCodeDisplayed(String code) throws InterruptedException {
         distributorUI.waitForElementEnabledState(By.xpath(btnOrderGuide.replace("CODE", code)), true);
-        distributorUI.waitForCustom(4000);
-        return distributorUI.isDisplayed(By.xpath(btnOrderGuide.replace("CODE", code)));
+//        distributorUI.waitForCustom(4000);
+        return distributorUI.isDisplayed(By.xpath(btnOrderGuide.replace("CODE", code)),20);
     }
     public void clickOnOrderGuide(String code) {
         distributorUI.click(By.xpath(btnOrderGuide.replace("CODE", code)));
@@ -914,6 +915,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickSearchedItem(String code){
         distributorUI.click((By.xpath(lbl_searchedItem.replace("CODE", '#'+code))));
+    }
+    public void clickSearchedItemStable(String code){
+        distributorUI.click((By.xpath(lbl_searchedItemStable.replace("CODE", '#'+code))));
     }
     public boolean isSelectedItemDisplayed(){
         return distributorUI.isDisplayed(lbl_productDetails);
