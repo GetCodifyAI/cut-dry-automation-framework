@@ -20,7 +20,7 @@
             <class name="com.cutanddry.qa.tests.scan_to_order.VerifyCTAButtonTextTest"/>
             <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderEmptyCartTextTest"/>
             <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderItemSearchInputFieldPlaceholderTextTest"/>
-
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyTheDraftOrderForScanToOrderTest"/>
 
 
 

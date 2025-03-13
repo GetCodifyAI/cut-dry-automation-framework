@@ -8,4 +8,15 @@ public class SplitWeightUOMData {
     public static final String DP_NAME_KK_INT = "K&K International, Inc";
     public static final String CUSTOMER_ID_KK_INT = "31627";
     public static final String SORT_ITEM_BY = "Custom Order";
+    public static final String CUSTOMER_ID_KK_INT_1 = "25531";
+
+    public static final String DP_NAME_CNW = "130783767 - Clara Natasha White - Cheese Importers";
+    public static final String CUSTOMER_ID_CNW = "61569";
+
+    public static final String DP_NAME_DF = "150184574 - Cut+Dry Agent - Driscoll Foods";
+    public static final String CUSTOMER_ID_DF = "682653";
+
+    public static final String DISTRIBUTOR_NAME_IFC = "47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    public static final String CUSTOMER_ID_IFC = "16579";
+
 }

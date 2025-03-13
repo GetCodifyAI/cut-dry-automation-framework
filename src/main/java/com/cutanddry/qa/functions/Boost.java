@@ -185,7 +185,7 @@ public class Boost {
         boostPage.clickFeaturedListTab();
     }
 
-    public static void createNewFeaturedList(){
+    public static void createNewFeaturedList() throws InterruptedException {
         boostPage.clickOnCreateNewFeaturedListBtn();
     }
 

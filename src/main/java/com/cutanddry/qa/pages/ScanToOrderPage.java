@@ -29,6 +29,11 @@ public class ScanToOrderPage extends LoginPage{
     String customerNameandLocationInOrderScreen = "//h2[contains(text(), 'CUSTOMER_NAME')]/following-sibling::p[contains(text(), 'CUSTOMER_LOCATION')]";
 
     public boolean isScanToOrderTextDisplayed(){
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return distributorUI.isDisplayed(ScanToOrderText);
     }
 

@@ -18,7 +18,15 @@ public class Customer {
         customersPage.typeOnSearchCustomers(code);
     }
     public static boolean isCustomerSearchResultByCodeDisplayed(String code) throws InterruptedException {
-        return customersPage.isCustomerSearchResultByCodeDisplayed(code);
+//        return customersPage.isCustomerSearchResultByCodeDisplayed(code);
+        if (customersPage.isCustomerSearchResultByCodeDisplayed(code)) {
+            return true;
+        } else {
+            customersPage.refreshCustomersPage();
+            customersPage.clickOnSearchCustomers();
+            customersPage.typeOnSearchCustomers(code);
+            return customersPage.isCustomerSearchResultByCodeDisplayed(code);
+        }
     }
     public static void clickOnOrderGuide(String code) throws InterruptedException {
         customersPage.clickOnOrderGuide(code);
@@ -203,6 +211,9 @@ public class Customer {
     public static void selectSearchedCatalogItem(String code) {
         customersPage.clickSearchedItem(code);
     }
+    public static void selectSearchedCatalogItemStable(String code) {
+        customersPage.clickSearchedItemStable(code);
+    }
     public static boolean isSelectedItemDisplayed(){
         return customersPage.isSelectedItemDisplayed();
     }
@@ -211,6 +222,9 @@ public class Customer {
     }
     public static boolean isRecommendedForYouItemDisplayed(String code){
         return customersPage.isRecommendedForYouItemDisplayed(code);
+    }
+    public static boolean isRecommendedForYouItemNameDisplayed(String code){
+        return customersPage.isRecommendedForYouItemNameDisplayed(code);
     }
     public static boolean isRecommendedBySalesRepDisplayed(String code){
         return customersPage.isRecommendedBySalesRepDisplayed(code);
@@ -1810,6 +1824,9 @@ public class Customer {
     public static String getItemFinalPrice() throws InterruptedException {
         return customersPage.getItemFinalPrice();
     }
+    public static double getItemFinalPriceStable() throws InterruptedException {
+        return customersPage.getItemFinalPriceStable();
+    }
     public static void typeOnFinalWeight(String weight) throws InterruptedException {
         customersPage.typeOnFinalWeight(weight);
     }
@@ -2045,6 +2062,57 @@ public class Customer {
         for (int i=0; i<count;i++){
             customersPage.clickOnPlusIconInCatalog(name);
         }
+    }
+
+    public static void clickPoundPriceMultiUOM(){
+        customersPage.clickPoundPriceMultiUOM();
+    }
+
+    public static void enterCasesPriceValueMultiUOM(String uomPosition, String val) throws InterruptedException {
+        customersPage.enterCasesPriceValueMultiUOM(uomPosition, val);
+    }
+
+    public static void clickUpdatePriceMultiUOM(){
+        customersPage.clickUpdatePriceMultiUOM();
+    }
+
+    public static double getItemPriceMultiUOM(String uomPosition) throws InterruptedException {
+        return customersPage.getPriceMultiUOM(uomPosition);
+    }
+
+    public static double getUnitPriceMultiUOM(String uomPosition, String recordPosition) throws InterruptedException {
+        return customersPage.getUnitPriceMultiUOM(uomPosition, recordPosition);
+    }
+
+    public static void enterTotalWeightMultiUOM(String uomPosition, String recordPosition, String val) throws InterruptedException {
+        customersPage.enterTotalWeightMultiUOM(uomPosition, recordPosition, val);
+    }
+    public static void editMarginMultiUOM(String uomPosition){
+        customersPage.editMarginMultiUOM(uomPosition);
+    }
+
+    public static void enterSpotPriceMultiUOM(String uomPosition, String val) throws InterruptedException {
+        customersPage.enterSpotPriceMultiUOM(uomPosition, val);
+    }
+
+    public static void enterMarginValueMultiUOM(String uomPosition, String val) throws InterruptedException {
+        customersPage.enterMarginValueMultiUOM(uomPosition, val);
+    }
+
+    public static void enterMarginPercentageMultiUOM(String uomPosition, String val) throws InterruptedException {
+        customersPage.enterMarginPercentageMultiUOM(uomPosition, val);
+    }
+
+    public static String getSpotPriceMultiUOM(String position){
+        return customersPage.getSpotPriceMultiUOM(position);
+    }
+
+    public static String getMarginValueMultiUOM(String position){
+        return customersPage.getMarginValueMultiUOM(position);
+    }
+
+    public static String getMarginPercentageMultiUOM(String position){
+        return customersPage.getMarginPercentageMultiUOM(position);
     }
 
 }
