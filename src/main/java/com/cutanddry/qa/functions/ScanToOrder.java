@@ -106,8 +106,17 @@ public class ScanToOrder {
         return scanToOrderPage.getCTAButtonText();
     }
 
-    public static boolean isEmptyCartTextDisplayed(String emptyCartText){
-        return scanToOrderPage.isEmptyCartTextDisplayed(emptyCartText);
+    public static boolean isEmptyCartTextDisplayed(String emptyCartText1,String emptyCartText2){
+        return scanToOrderPage.isEmptyCartTextDisplayed(emptyCartText1,emptyCartText2);
     }
+
+    public static double getTotalCartPrice(String[] itemCodes){
+       return scanToOrderPage.getTotalCartPrice(itemCodes);
+    }
+
+    public static boolean isCustomerNameAndLocationDisplayedInScanToOrderScreen(String CustomerName,String CustomerLocation){
+       return scanToOrderPage.isCustomerNameAndLocationDisplayedInScanToOrderScreen(CustomerName,CustomerLocation);
+    }
+
 
 }

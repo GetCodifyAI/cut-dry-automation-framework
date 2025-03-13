@@ -923,7 +923,7 @@ public class Customer {
         return customersPage.isStandingOrderSuccessPopupDisplayed();
     }
 
-    public static String getBusinessNameFromCustomers(String CustomerCode){
+    public static String getBusinessNameFromCustomers(String CustomerCode) {
         return customersPage.getBusinessName(CustomerCode);
     }
     public static boolean isCustomerProfileDisplayed(String CustomerName){
@@ -2010,8 +2010,16 @@ public class Customer {
         return customersPage.isScanToOrderBtnDisplayed(customerId);
     }
 
+    public static boolean isCustomerProfileScreenScanToOrderButtonDisplayed() throws InterruptedException{
+        return customersPage.isCustomerProfileScreenScanToOrderButtonDisplayed();
+    }
+
     public static void navigateFromCustomerScreenToScanToOrderScreen(String customerCode) throws InterruptedException {
         customersPage.clickCustomerScreenScanToOrderBtn(customerCode);
+    }
+
+    public static void navigateFromCustomerProfileScreenToScanToOrderScreen() throws InterruptedException{
+        customersPage.clickCustomerProfileScreenScanToOrderBtn();
     }
 
     public static void enterCasesValueMultiUOM(String uomPosition, String recordPosition, String val) throws InterruptedException {
