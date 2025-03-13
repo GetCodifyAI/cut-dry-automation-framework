@@ -206,6 +206,11 @@ public class ScanToOrderPage extends LoginPage{
     }
 
     public boolean isCustomerNameAndLocationDisplayedInScanToOrderScreen(String CustomerName,String CustomerLocation){
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return distributorUI.isDisplayed(By.xpath(customerNameandLocationInOrderScreen.replace("CUSTOMER_NAME",CustomerName).replace("CUSTOMER_LOCATION",CustomerLocation)));
     }
 
