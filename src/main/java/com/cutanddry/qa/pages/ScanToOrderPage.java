@@ -3,7 +3,7 @@ package com.cutanddry.qa.pages;
 import org.openqa.selenium.By;
 
 public class ScanToOrderPage extends LoginPage{
-    By ScanToOrderText = By.xpath("//h1[contains(text(),'Scan to Order')]");
+    By ScanToOrderText = By.xpath("//*[contains(text(),'Scan to Order')]");
     By ScanToOrderItemInputField = By.xpath("//input[contains(@placeholder,'Scan barcode or search item by name or code')]");
     By ReviewAndConfirmBtn = By.xpath("//button[contains(text(),'Review & Confirm Order')]");
     By AddToCartBtn = By.xpath("//button[contains(normalize-space(.),'Add to Cart')]");
@@ -17,16 +17,16 @@ public class ScanToOrderPage extends LoginPage{
     By totalQuantityText = By.xpath("//span[contains(text(),'Total Quantity')]");
     By totalLineItemsText = By.xpath("//span[contains(text(),'Total Line Items')]");
     String totalQuantityOrderSummary = "//span[contains(text(),'Total Quantity')]/following-sibling::*";
-    By cartContainerItems = By.xpath("//div[@class= 'cartItem_18e3qyo']");
+    By cartContainerItems = By.xpath("//div[contains(@class,'cartItem')]");
     String totalLineItemsOrderSummary = "//span[contains(text(),'Total Line Items')]/following-sibling::*";
     By totalEstimatedCostText = By.xpath("//div[contains(text(),'Total Estimated Cost')]");
     String totalPriceOrderSummary = "//div[contains(text(),'Total Estimated Cost')]/following-sibling::*";
     By totalDiscountsText = By.xpath("//span[contains(text(),'Total Discounts')]");
+    String productQuantity = "(//div[contains(@class,'cartItem')])[%d]//descendant::input[@data-input='quantityInput']";
 
     By searchInputField = By.xpath("//input[@placeholder='Scan barcode or search item by name or code']");
-    String emptyCartText_1 = "//h3[text()='VALUE']";
-    String emptyCartText_2 = "//p[@class='productMeta_fxekb7']";
-
+    String emptyCartText = "//*[text()='emptyCartText1']/./following-sibling::p[contains(text(), 'emptyCartText2')]";
+    String customerNameandLocationInOrderScreen = "//h2[contains(text(), 'CUSTOMER_NAME')]/following-sibling::p[contains(text(), 'CUSTOMER_LOCATION')]";
 
     public boolean isScanToOrderTextDisplayed(){
         try {
@@ -159,17 +159,26 @@ public class ScanToOrderPage extends LoginPage{
         int TotalProductQuantity = 0;
 
         for(int i = 1; i <= totalProducts; i++){
-            String x = String.format("(//div[@class='cartItem_18e3qyo'])[%d]//descendant::input[@data-input='quantityInput']",i);
-            TotalProductQuantity = TotalProductQuantity+ getProductQuantityValues(x);
+            String itemQuantity = String.format(productQuantity,i);
+            TotalProductQuantity = TotalProductQuantity+ getProductQuantityValues(itemQuantity);
         }
         return TotalProductQuantity;
     }
 
     public int getProducttotalQuantityValues() {
-        String quantityValue2 = distributorUI.getText(By.xpath(totalQuantityOrderSummary));
-        String quantityOnly = quantityValue2.replaceAll("\\D", "");
+        String quantityValueInOrderSummary = distributorUI.getText(By.xpath(totalQuantityOrderSummary));
+        String quantityOnly = quantityValueInOrderSummary.replaceAll("\\D", "");
 
         return Integer.parseInt(quantityOnly);
+    }
+
+    public double getTotalCartPrice(String[] itemCodes) {
+        double totalPrice = 0.0;
+
+        for(String itemCode : itemCodes){
+            totalPrice += getItemPrice(itemCode);
+        }
+        return totalPrice;
     }
 
     public int getCartItemCountInOrderSummary(){
@@ -192,9 +201,19 @@ public class ScanToOrderPage extends LoginPage{
         return CTAbuttonText;
     }
 
-    public boolean isEmptyCartTextDisplayed(String value){
-        return distributorUI.isDisplayed(By.xpath(emptyCartText_1.replace("VALUE", value)));
+    public boolean isEmptyCartTextDisplayed(String emptyCartText1,String emptyCartText2){
+        return distributorUI.isDisplayed(By.xpath(emptyCartText.replace("emptyCartText1",emptyCartText1 ).replace("emptyCartText2",emptyCartText2)));
     }
+
+    public boolean isCustomerNameAndLocationDisplayedInScanToOrderScreen(String CustomerName,String CustomerLocation){
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return distributorUI.isDisplayed(By.xpath(customerNameandLocationInOrderScreen.replace("CUSTOMER_NAME",CustomerName).replace("CUSTOMER_LOCATION",CustomerLocation)));
+    }
+
 
 
 

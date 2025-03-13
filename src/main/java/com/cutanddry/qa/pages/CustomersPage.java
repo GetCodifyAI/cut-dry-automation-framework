@@ -582,6 +582,7 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     By dropdown_option_orderguideSettings = By.xpath("//a[@class='_1ccoy1o text-decoration-none dropdown-item' and text()='Order Guide Settings']");
     By txt_reviewStandingOrders = By.xpath("//div[text()='Review Standing Order']");
     String customerScreenScanToOrderBtn = "//tr/td[contains(text(),'CUSTOMERCODE')]/..//a[contains(@href,'scan-to-order')]";
+    String customerProfileScreenScanToOrderBtn = "//a[contains(@href,'scan-to-order')]";
 
     By btn_firstMultiOUM = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]");
     By lbl_firstMultiOUMItemName = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td//span/div[@data-tip='View Product Details']");
@@ -1953,6 +1954,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isCustomerProfileDisplayed(String businessName){
         try {
+            distributorUI.waitForCustom(3000);
             distributorUI.waitForVisibility(By.xpath(txt_customerProfile.replace("BUSINESSNAME",businessName)));
         } catch (Exception e){
             return false;
@@ -3597,6 +3599,16 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickCustomerScreenScanToOrderBtn(String customerCode) throws InterruptedException {
         distributorUI.waitForCustom(2000);
         distributorUI.click(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
+    }
+
+    public boolean isCustomerProfileScreenScanToOrderButtonDisplayed() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(By.xpath(customerProfileScreenScanToOrderBtn));
+    }
+
+    public void clickCustomerProfileScreenScanToOrderBtn() throws InterruptedException{
+        distributorUI.waitForCustom(2000);
+        distributorUI.click(By.xpath(customerProfileScreenScanToOrderBtn));
     }
 
     public void splitWeightMultiUOM(String position){
