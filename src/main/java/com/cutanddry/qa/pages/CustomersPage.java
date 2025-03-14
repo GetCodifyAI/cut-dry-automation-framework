@@ -582,6 +582,7 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     By dropdown_option_orderguideSettings = By.xpath("//a[@class='_1ccoy1o text-decoration-none dropdown-item' and text()='Order Guide Settings']");
     By txt_reviewStandingOrders = By.xpath("//div[text()='Review Standing Order']");
     String customerScreenScanToOrderBtn = "//tr/td[contains(text(),'CUSTOMERCODE')]/..//a[contains(@href,'scan-to-order')]";
+    String customerProfileScreenScanToOrderBtn = "//a[contains(@href,'scan-to-order')]";
 
     By btn_firstMultiOUM = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]");
     By lbl_firstMultiOUMItemName = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td//span/div[@data-tip='View Product Details']");
@@ -626,6 +627,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String lbl_spotPriceMultiUOM = "(//div[contains(text(),'Price') and contains(text(),'($)')]/following-sibling::input)[UOM]";
     String lbl_marginMultiUOM = "(//div[contains(text(),'Margin') and contains(text(),'$')]/following-sibling::input)[UOM]";
     String lbl_marginPercentageMultiUOM = "(//div[text()='Margin (%)']/following-sibling::input)[UOM]";
+    By txtSubstitution = By.xpath("//div[contains(text(),'Substitution: ')]");
 
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
@@ -1953,6 +1955,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isCustomerProfileDisplayed(String businessName){
         try {
+            distributorUI.waitForCustom(3000);
             distributorUI.waitForVisibility(By.xpath(txt_customerProfile.replace("BUSINESSNAME",businessName)));
         } catch (Exception e){
             return false;
@@ -3327,6 +3330,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForCustom(3000);
         return distributorUI.getText(finalItemPrice);
     }
+    public double getItemFinalPriceStable() throws InterruptedException {
+        try {
+            return extractPriceStable(finalItemPrice);
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPriceStable(finalItemPrice);
+        }
+    }
     public void typeOnFinalWeight(String weight) throws InterruptedException {
         distributorUI.click(finalWeight);
         distributorUI.clearUsingJavaScript(finalWeightInput);
@@ -3591,6 +3602,16 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
     }
 
+    public boolean isCustomerProfileScreenScanToOrderButtonDisplayed() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(By.xpath(customerProfileScreenScanToOrderBtn));
+    }
+
+    public void clickCustomerProfileScreenScanToOrderBtn() throws InterruptedException{
+        distributorUI.waitForCustom(2000);
+        distributorUI.click(By.xpath(customerProfileScreenScanToOrderBtn));
+    }
+
     public void splitWeightMultiUOM(String position){
         distributorUI.click(By.xpath(lbl_itemPriceMultiUOMEdit.replace("UOM",position)));
     }
@@ -3726,6 +3747,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
 
     public String getMarginPercentageMultiUOM(String position){
         return distributorUI.getText(By.xpath(lbl_marginPercentageMultiUOM.replace("UOM",position)), "value");
+    }
+    public boolean isSubstitutionTextDisplayed(){
+        return distributorUI.isDisplayed(txtSubstitution);
     }
 
 }

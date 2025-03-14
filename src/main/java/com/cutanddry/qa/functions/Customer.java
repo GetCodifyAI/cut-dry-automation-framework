@@ -937,7 +937,7 @@ public class Customer {
         return customersPage.isStandingOrderSuccessPopupDisplayed();
     }
 
-    public static String getBusinessNameFromCustomers(String CustomerCode){
+    public static String getBusinessNameFromCustomers(String CustomerCode) {
         return customersPage.getBusinessName(CustomerCode);
     }
     public static boolean isCustomerProfileDisplayed(String CustomerName){
@@ -1824,6 +1824,9 @@ public class Customer {
     public static String getItemFinalPrice() throws InterruptedException {
         return customersPage.getItemFinalPrice();
     }
+    public static double getItemFinalPriceStable() throws InterruptedException {
+        return customersPage.getItemFinalPriceStable();
+    }
     public static void typeOnFinalWeight(String weight) throws InterruptedException {
         customersPage.typeOnFinalWeight(weight);
     }
@@ -2024,8 +2027,16 @@ public class Customer {
         return customersPage.isScanToOrderBtnDisplayed(customerId);
     }
 
+    public static boolean isCustomerProfileScreenScanToOrderButtonDisplayed() throws InterruptedException{
+        return customersPage.isCustomerProfileScreenScanToOrderButtonDisplayed();
+    }
+
     public static void navigateFromCustomerScreenToScanToOrderScreen(String customerCode) throws InterruptedException {
         customersPage.clickCustomerScreenScanToOrderBtn(customerCode);
+    }
+
+    public static void navigateFromCustomerProfileScreenToScanToOrderScreen() throws InterruptedException{
+        customersPage.clickCustomerProfileScreenScanToOrderBtn();
     }
 
     public static void enterCasesValueMultiUOM(String uomPosition, String recordPosition, String val) throws InterruptedException {
@@ -2102,6 +2113,9 @@ public class Customer {
 
     public static String getMarginPercentageMultiUOM(String position){
         return customersPage.getMarginPercentageMultiUOM(position);
+    }
+    public static boolean isSubstitutionTextDisplayed(){
+        return customersPage.isSubstitutionTextDisplayed();
     }
 
 }

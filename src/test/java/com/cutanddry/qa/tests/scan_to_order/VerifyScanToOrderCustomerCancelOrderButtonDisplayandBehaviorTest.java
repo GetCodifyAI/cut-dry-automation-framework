@@ -39,7 +39,7 @@ public class VerifyScanToOrderCustomerCancelOrderButtonDisplayandBehaviorTest ex
         softAssert.assertTrue(ScanToOrder.isNavigatedToScanToOrderPage(),"Error in navigating to scan to order screen");
         softAssert.assertTrue(ScanToOrder.isScanToOrderCancelBtnDisplayed(CustomerCode),"Scan to Order Cancel Button isn't visible");
         ScanToOrder.ClickOnScanToOrderCancelBtn(CustomerCode);
-
+        softAssert.assertTrue(Customer.isCustomersTextDisplayed(),"Error in navigating to Customer screen");
         softAssert.assertAll();
     }
 

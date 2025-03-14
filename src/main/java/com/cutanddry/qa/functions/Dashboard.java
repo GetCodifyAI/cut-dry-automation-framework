@@ -179,5 +179,8 @@ public class Dashboard {
             customersPage.clickPreviousDraftOrderNo();
         }
     }
+    public static boolean isCustomerDisplayed(){
+        return dashboardPage.isCustomerDisplayed();
+    }
 
 }

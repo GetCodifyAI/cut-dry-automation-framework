@@ -334,5 +334,8 @@ public class DashboardPage extends LoginPage{
         distributorUI.click(btn_order);
         distributorUI.waitForCustom(2000);
     }
+    public boolean isCustomerDisplayed(){
+        return distributorUI.isDisplayed(btn_customers);
+    }
 
 }

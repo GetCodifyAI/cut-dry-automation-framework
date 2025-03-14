@@ -19,7 +19,10 @@ public class CatalogData {
     public static final String ITEM_CODE_8 = "PGC03977BX";
     public static final String ITEM_CODE_9 = "02095";
     public static final String ITEM_CODE_10 = "17859";
+    public static final String ITEM_CODE_11 = "00044";
+    public static final String ITEM_CODE_12 = "8318";
     public static final String ITEM_NAME = "Carrot - Baby Peeled - 1 LB";
+    public static final String ITEM_SALE = "Chili Pepper - Fresno 10 LB";
     public static final String ITEM_NAME_SIMILAR_ITEM = "Organic Bananas - 20 LB";
     public static final String ITEM_NAME_MORE_FROM_ITEM = "Del Monte Diced Peaches Fruit Cup";
     public static final String ITEM_NAME_MORE_FROM_ITEM_2 = "Chicken - Bones Natural Joyce Farms";
@@ -34,6 +37,7 @@ public class CatalogData {
     public static final String ADDED_QUANTITY = "Added: 1 CS | 1 Pkg";
     public static final String MULTI_UOM_1 = "1";
     public static final String MULTI_UOM_2 = "2";
+    public static final String MULTI_UOM_3 = "3";
     public static final String UOM_DROPDOWN_OPTION = "Multiple Units";
     public static final String APP_URL = "https://dicarlo-uat.staging.cutanddry.com/market/dicarlo";
     public static final String DP_BUTTERFIELD = "Butterfield & Vallis";
@@ -43,4 +47,7 @@ public class CatalogData {
     public static final String DP_IFC = "47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
     public static final String DP_BIGOLI = "105718262 - Cut+Dry Agent - Bigoli Fresh Pasta";
     public static final String SALE_REP = "Steve O";
+    public static final String SALE_PERSON_ROLL = "apptesters@test.com";
+    public static final String AR_ROLL = "Isuru Test AR";
+    public static final String DISPATCHER_ROLL = "Hadley Dispatcher";
 }
