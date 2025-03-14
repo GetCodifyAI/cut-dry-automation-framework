@@ -3,6 +3,7 @@ package com.cutanddry.qa.tests.e2e;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.testdata.DistributorOrderData;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.SplitWeightUOMData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.ITestResult;
@@ -15,6 +16,7 @@ public class PlaceAnCustomerMailDeliveryOrderViaPDPTest extends TestBase {
     SoftAssert softAssert;
     static User user;
     static String customerId = DistributorOrderData.RESTAURANT_TEST_HAYES_ID;
+    static String sortOption = DistributorOrderData.SORT_ITEM_BY;
     static String itemName, orderId, searchItemCode;
     static double itemPrice;
 
@@ -37,6 +39,7 @@ public class PlaceAnCustomerMailDeliveryOrderViaPDPTest extends TestBase {
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId);
+        Customer.selectSortItemByOption(sortOption);
 
         itemName = Customer.getItemNameFirstRow();
         searchItemCode = Customer.getItemCodeFirstRow();

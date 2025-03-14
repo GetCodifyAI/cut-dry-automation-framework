@@ -37,13 +37,18 @@ public class CatalogPage extends LoginPage{
     By uomSelectDropdown = By.xpath("//div[contains(text(),'Select UoM')]");
     String unit = "//div[text()='UNIT']";
     By unitPriceTxtField = By.xpath("//div[contains(text(), 'Bag')]/ancestor::td[1]/following-sibling::td[1]//input[@type='number']");
+    String unitPriceTxtFieldMultiUOM = "//div[contains(text(), 'UOM_TYPE')]/ancestor::td[1]/following-sibling::td[1]//input[@type='number']";
     By salesTypeDropDown =By.xpath("//tr[td//div[contains(text(), 'Bag')]]/td[3]//div[contains(@class, 'cd_themed_select__placeholder css-1wa3eu0-placeholder')]");
+    String salesTypeDropDownMultiUOM = "//tr[td//div[contains(text(), 'UOM_TYPE')]]/td[3]//div[contains(@class, 'cd_themed_select__placeholder css-1wa3eu0-placeholder')]";
     By percentageOption = By.xpath("//div[contains(text(),'Percentage')]");
+    By dollarValueOption = By.xpath("//div[contains(text(),'Dollar Value')]");
     By salesValue = By.xpath("//tr[td//div[contains(text(), 'Bag')]]/td[4]//input[@class='_sf843y form-control']");
+    String salesValueMultiUOM = "//tr[td//div[contains(text(), 'UOM_TYPE')]]/td[4]//input[@class='_sf843y form-control']";
     By uomDeleteBtn = By.xpath("//tr[td/label[contains(text(),'Bag')]]//td[@class='pr-0 pb-0']");
     By uomDeleteOverlay = By.xpath("//h2[contains(text(),'Delete unit of measure')]");
     By confirmBtn = By.xpath("//button[contains(text(),'Confirm')]");
     By bagUOM = By.xpath("//label[text()='Bag']");
+    String existUOM = "//label[text()='UOM']";
     By substituteTab = By.xpath("//a[contains(text(),'Substitutes')]");
     By addSubstitutionsBtn = By.xpath("//button[contains(text(),'+ Add Substitution')]");
     By selectSubstituteTxtField = By.xpath("//div[@class= ' css-1wa3eu0-placeholder' and text()='Select...']");
@@ -273,9 +278,17 @@ public class CatalogPage extends LoginPage{
         distributorUI.waitForVisibility(saveChangesBtn);
         distributorUI.click(saveChangesBtn);
     }
-    public boolean isSuccessOverlayDisplayed(){
+    /*public boolean isSuccessOverlayDisplayed(){
         distributorUI.waitForVisibility(successOverlay);
         return distributorUI.isDisplayed(successOverlay);
+    }*/
+    public boolean isSuccessOverlayDisplayed(){
+        distributorUI.waitForVisibility(successOverlay);
+        boolean isDisplayed = distributorUI.isDisplayed(successOverlay);
+        if (isDisplayed) {
+            distributorUI.waitForInvisibility(successOverlay);
+        }
+        return isDisplayed;
     }
     public void clickOnAdditionalAttributesTab(){
         distributorUI.click(additionalAttributesTab);
@@ -326,18 +339,34 @@ public class CatalogPage extends LoginPage{
     public void typeUnitPrice(String unitPrice){
         distributorUI.sendKeys(unitPriceTxtField,unitPrice);
     }
+    public void typeUnitPrice(String uom, String unitPrice){
+        distributorUI.sendKeys(By.xpath(unitPriceTxtFieldMultiUOM.replace("UOM_TYPE",uom)),unitPrice);
+    }
     public void clickOnSalesTypeDropDown(){
         distributorUI.click(salesTypeDropDown);
+    }
+    public void clickOnSalesTypeDropDown(String uom){
+        distributorUI.click(By.xpath(salesTypeDropDownMultiUOM.replace("UOM_TYPE",uom)));
     }
     public void clickOnPercentageOption(){
         distributorUI.click(percentageOption);
     }
+    public void clickOndollarValueOption(){
+        distributorUI.click(dollarValueOption);
+    }
     public void typeSaleValue(String saleValue){
         distributorUI.sendKeys(salesValue,saleValue);
+    }
+    public void typeSaleValue(String uom, String saleValue){
+        distributorUI.sendKeys(By.xpath(salesValueMultiUOM.replace("UOM_TYPE",uom)),saleValue);
     }
     public void deleteUOMinCatalog() throws InterruptedException {
         distributorUI.waitForCustom(3000);
         distributorUI.click(uomDeleteBtn);
+    }
+    public void deleteUOMinCatalog(String uom) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        distributorUI.click(By.xpath(deleteUom.replace("UOM",uom)));
     }
     public boolean isUOMDeleteOverlayDisplayed(){
         return distributorUI.isDisplayed(uomDeleteOverlay);
@@ -347,11 +376,15 @@ public class CatalogPage extends LoginPage{
     }
     public boolean isBagUOMDisplayed(){
         try {
-            distributorUI.waitForCustom(2000);
+            distributorUI.waitForCustom(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         return distributorUI.isDisplayed(bagUOM);
+    }
+    public boolean isUOMDisplayed(String uom) throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(By.xpath(existUOM.replace("UOM",uom)));
     }
     public void clickOnSubstituteTab(){
         distributorUI.click(substituteTab);

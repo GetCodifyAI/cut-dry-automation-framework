@@ -3,7 +3,6 @@ package com.cutanddry.qa.tests.multi_uom;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CatalogData;
-import com.cutanddry.qa.data.testdata.GatekeeperData;
 import com.cutanddry.qa.data.testdata.SplitWeightUOMData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
@@ -13,7 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest extends TestBase {
+public class ValidateTheSplitWeightWhenSelectingMultipleUOMTest extends TestBase {
     static User user;
     SoftAssert softAssert;
 
@@ -22,10 +21,8 @@ public class VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest exte
     static String sortOption = SplitWeightUOMData.SORT_ITEM_BY;
     static String uom1 = CatalogData.MULTI_UOM_1;
     static String uom2 = CatalogData.MULTI_UOM_2;
-    /*static String featureName = GatekeeperData.FEATURE_NAME_FROM_ELASTIC_SEARCH;
-    static String companyId = GatekeeperData.COMPONY_ID_TS_INT;*/
     static String orderId;
-    static String singleItemName, singleSearchItemCode, multiItemName, multiSearchItemCode;
+    static String singleItemName, singleSearchItemCode, multiItemName, multiSearchItemCode, itemCode;
     static double itemOGPriceUOM1, itemOGPriceUOM2, totalOGItemPrice, multiItemPrice, totalCartAmount;
 
     @BeforeMethod
@@ -34,34 +31,29 @@ public class VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest exte
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-1095")
-    public void verifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUs() throws InterruptedException {
+    @Test(groups = "DOT-TC-1062")
+    public void ValidateTheSplitWeightWhenSelectingMultipleUOM() throws InterruptedException {
         softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "login error");
 
-       /* Login.navigateToGateKeeperAdmin();
-        Login.updateCompanyIDs(featureName,companyId);
-*/
         Login.navigateToDistributorPortal(distributor);
         Customer.ensureCarouselDisplayStatus(false);
 
-        //Place an order with single and Multi OUM Items
+        //Place an order with Multi OUM Items
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId);
         Customer.selectSortItemByOption(sortOption);
 
-        singleItemName = Customer.getItemNameFirstSingleOUM();
-        singleSearchItemCode = Customer.getItemCodeFirstSingleOUM();
-
         multiItemName = Customer.getItemNameFirstMultiOUM();
         multiSearchItemCode = Customer.getItemCodeFirstMultiOUM();
+        itemCode = multiSearchItemCode.replaceAll("^[A-Za-z]+", "");
         multiItemPrice = Customer.getActiveItemPriceFirstMultiOUMRowStable();
 
         // Added Multi OUM Item
-        Customer.searchItemOnOrderGuide(multiSearchItemCode);
+        Customer.searchItemOnOrderGuide(itemCode);
         Customer.ClickOnMultiUomDropDownOG(multiSearchItemCode);
         Customer.clickOGAddToCartPlusIcon(1, multiSearchItemCode, uom1);
         Customer.clickOGAddToCartPlusIcon(1, multiSearchItemCode, uom2);
@@ -73,16 +65,11 @@ public class VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest exte
         softAssert.assertEquals(Math.round(totalOGItemPrice * 100.0) / 100.0,
                 ((Math.round(itemOGPriceUOM1 * 100.0) / 100.0) + (Math.round(itemOGPriceUOM2 * 100.0) / 100.0)), "The item was not selected properly.");
 
-        // Added Single Item
-        Customer.searchItemOnOrderGuide(singleSearchItemCode);
-        Customer.increaseFirstRowQtyCustom(1);
-
         // Checkout
         Customer.checkoutItemsMultiOUM();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         Customer.submitOrder();
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "The order was not completed successfully.");
-        orderId = Customer.getSuccessOrderId();
         Customer.clickClose();
 
         // Test Flow
@@ -96,26 +83,24 @@ public class VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest exte
         Orders.clickOnEditOrder();
         softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(), "edit popup error");
         Orders.clickOnConfirm();
+       /* softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(), "edit error(Review Page)");
+        Orders.clickOnEditOrderInReview();*/
         softAssert.assertTrue(Orders.isNavigatedToEditOrder(), "edit error");
-        Customer.searchItemOnOrderGuide(multiSearchItemCode);
+        Customer.searchItemOnOrderGuide(itemCode);
 
         Customer.splitWeightMultiUOM(uom1);
         softAssert.assertTrue(Customer.isSplitWeightPopupDisplayed(), "popup error");
-        Customer.enterCasesValueMultiUOM(uom1, "1", "1");
-        Customer.enterWeightValueMultiUOM(uom1, "1", "10");
+        Customer.enterCasesValueMultiUOM(uom1, "1", "15");
+        Customer.enterWeightValueMultiUOM(uom1, "1", "16");
 
-        Customer.clickAddWightRowMultiUOMIcon(uom1);
-        Customer.enterCasesValueMultiUOM(uom1, "2", "2");
-        Customer.enterWeightValueMultiUOM(uom1, "2", "20");
-
-        Customer.enterCasesValueMultiUOM(uom2, "1", "1");
+        Customer.enterCasesValueMultiUOM(uom2, "1", "2");
         Customer.enterWeightValueMultiUOM(uom2, "1", "10");
 
         Customer.clickUpdateWeight();
-        softAssert.assertEquals(Customer.getItemQtyMultiUOM(uom1), "3", "item count error in 1st row");
-        softAssert.assertEquals(Customer.getItemQtyMultiUOM(uom2), "1", "item count error in 2nd row");
-        softAssert.assertTrue(Customer.getFinalWeightMultiUOM(uom1, "1").contains("50"), "item weight error in 1st row");
-        softAssert.assertTrue(Customer.getFinalWeightMultiUOM(uom2, "1").contains("10"), "item weight error in 2nd row");
+        softAssert.assertEquals(Customer.getItemQtyMultiUOM(uom1), "15", "item count error in 1st row");
+        softAssert.assertEquals(Customer.getItemQtyMultiUOM(uom2), "2", "item count error in 2nd row");
+        softAssert.assertTrue(Customer.getFinalWeightMultiUOM(uom1, "1").contains("240"), "item weight error in 1st row");
+        softAssert.assertTrue(Customer.getFinalWeightMultiUOM(uom2, "1").contains("20"), "item weight error in 2nd row");
 
         totalCartAmount = Customer.getTotalPriceCart();
 
@@ -125,6 +110,10 @@ public class VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest exte
         Orders.clickOnConfirm();
         softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
         Orders.clickOnClose();
+        /*Customer.clickOnCheckOutReview();
+        Customer.clickEditOrderCheckout();
+        softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+        Orders.clickOnClose();*/
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);

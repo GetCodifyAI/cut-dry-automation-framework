@@ -26,7 +26,8 @@ public class CustomersPage extends LoginPage {
 //    String lbl_catalogSearchItemList = "//button[contains(@data-for,'tooltipundefined')]/ancestor::div[2]/following-sibling::div[2]/div/div[contains(text(),'NAME')]";
 //    String lbl_catalogSearchItemList = "//button[contains(text(), 'Add to Cart')]/ancestor::div//*[contains(text(), 'NAME')]";
 //    String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[contains(text(),'NAME')])[last()]";
-String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]";
+String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]";
+    String lbl_catalogAddToCart = "((//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]/ancestor::div[contains(@class,'card')])[last()]//button[@data-tip='Add to Order Guide']";
 
 //    String btn_addToCart = "//div[contains(@class, '_13kb1gk')]//div[text()= 'ITEMNAME']//ancestor::div[contains(@class, '_13kb1gk')]//div[@class='_btf6h0']//button[contains(@class, 'btn-outline-primary')]";
 //    String btn_addToCart = "//*[contains(text(), 'ITEMNAME')]/ancestor::div[contains(@class, 'card')]//button[contains(text(), 'Add to Cart')]";
@@ -59,6 +60,7 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By btn_submitOrderGuide = By.xpath("//button[contains(text(), 'Submit')]");
     By btn_addFromCatalog = By.xpath("//div[contains(text(), 'Add from Catalog')]");
     By btn_uploadFile = By.xpath("//button[contains(text(), 'Upload File')]");
+    By btn_uploadFileOG = By.xpath("//button[contains(text(), 'Upload Order')]");
     By btn_addToOrderGuide = By.xpath("//button[@data-tip='Add to Order Guide']");
     By btn_closeEditorCatalog = By.xpath("//button[contains(text(), 'Close Editor')]");
     By btn_closeEditor = By.xpath("//a[contains(text(), 'Close Editor')]");
@@ -590,6 +592,10 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     By lbl_itemPriceListMultiOUM = By.xpath("(((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//input)[1] | ((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]/div/div/div)[1] | ((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//span)[1])[1]");
     By lbl_itemPriceListMultiOUM1 = By.xpath("(((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//input)[1] | ((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//span)[1])[2]");
 
+    String lbl_firstMultiOUMItemCodeLB = "(//*[local-name()='svg' and @data-icon='chevron-down'])/ancestor::tr/td[COUNT]//div[contains(text(),'LB')]/ancestor::td/parent::tr/td[2]";
+    String lbl_firstMultiOUMItemNameLB = "(//*[local-name()='svg' and @data-icon='chevron-down'])/ancestor::tr/td[COUNT]//div[contains(text(),'LB')]/ancestor::td/parent::tr/td//span/div[@data-tip='View Product Details']";
+
+
     By lbl_itemCodeLists = By.xpath("//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[2]");
     String lbl_ListsMultiOUMExist = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr[ROW_COUNT]/td//*[local-name()='svg' and @data-icon='chevron-down']";
     String lbl_firstSingleOUMItemName = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr[ROW_COUNT]/td//span/div[@data-tip='View Product Details']";
@@ -627,6 +633,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String lbl_spotPriceMultiUOM = "(//div[contains(text(),'Price') and contains(text(),'($)')]/following-sibling::input)[UOM]";
     String lbl_marginMultiUOM = "(//div[contains(text(),'Margin') and contains(text(),'$')]/following-sibling::input)[UOM]";
     String lbl_marginPercentageMultiUOM = "(//div[text()='Margin (%)']/following-sibling::input)[UOM]";
+    String spotPriceValueMultiUOM = "//td[COUNT]/div/div[UOM]//*[contains(text(),'VALUE')]";
+    String marginValueMultiUOM = "//td[COUNT]/div/div[UOM]//*[contains(text(),'VALUE')]";
+    String marginPercentageMultiUOM = "//td[COUNT]/div/div[UOM]//*[contains(text(),'VALUE')]";
     By txtSubstitution = By.xpath("//div[contains(text(),'Substitution: ')]");
 
     public void ifDuplicateOrderDisplayed(){
@@ -653,6 +662,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(By.xpath(btnOrderGuide.replace("CODE", code)),20);
     }
     public void clickOnOrderGuide(String code) {
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.click(By.xpath(btnOrderGuide.replace("CODE", code)));
     }
     public String getItemNameFirstRow() throws InterruptedException {
@@ -878,10 +892,20 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(btn_uploadFile);
         distributorUI.click(btn_uploadFile);
     }
+    public void clickUploadOrdersOG(){
+        distributorUI.waitForVisibility(btn_uploadFileOG);
+        distributorUI.click(btn_uploadFileOG);
+    }
     public void clickOnAddToOrderGuide(){
         distributorUI.waitForVisibility(btn_addToOrderGuide);
         distributorUI.waitForClickability(btn_addToOrderGuide);
         distributorUI.click(btn_addToOrderGuide);
+    }
+    public void clickOnAddToOrderGuideStable(String name){
+        distributorUI.click(By.xpath(lbl_catalogAddToCart.replace("NAME", name)));
+    }
+    public boolean isAddToOrderGuideDisplayed(String name){
+        return distributorUI.isDisplayed(By.xpath(lbl_catalogAddToCart.replace("NAME", name)),10);
     }
     public void giveFilePath(String path){
         distributorUI.sendKeysToHiddenElements(upload_file, path);
@@ -3750,6 +3774,77 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isSubstitutionTextDisplayed(){
         return distributorUI.isDisplayed(txtSubstitution);
+    }
+
+    public String getItemCodeFirstMultiOUMLB() throws InterruptedException {
+        int totalColumnCount = distributorUI.countElements(lbl_orderGuideTableColumn);
+
+        for (int i = 1; i <= totalColumnCount; i++) {
+            String columnName = distributorUI.getText(By.xpath(lbl_orderGuideTableColumnName.replace("COUNT", String.valueOf(i))));
+            if ("price".equalsIgnoreCase(columnName)) {
+//                distributorUI.scrollToElementStable(By.xpath(lbl_firstMultiOUMItemCodeLB.replace("COUNT", String.valueOf(i))),3);
+                distributorUI.waitForVisibility(By.xpath(lbl_firstMultiOUMItemCodeLB.replace("COUNT", String.valueOf(i))));
+                distributorUI.waitForCustom(3000);
+                return distributorUI.getText(By.xpath(lbl_firstMultiOUMItemCodeLB.replace("COUNT", String.valueOf(i))));
+            }
+        }
+        return null;
+    }
+
+    public String getItemNameFirstMultiOUMLB() throws InterruptedException {
+        int totalColumnCount = distributorUI.countElements(lbl_orderGuideTableColumn);
+
+        for (int i = 1; i <= totalColumnCount; i++) {
+            String columnName = distributorUI.getText(By.xpath(lbl_orderGuideTableColumnName.replace("COUNT", String.valueOf(i))));
+            if ("price".equalsIgnoreCase(columnName)) {
+                distributorUI.scrollToElementStable(By.xpath(lbl_firstMultiOUMItemNameLB.replace("COUNT", String.valueOf(i))),3);
+                distributorUI.waitForVisibility(By.xpath(lbl_firstMultiOUMItemNameLB.replace("COUNT", String.valueOf(i))));
+                distributorUI.waitForCustom(3000);
+                return distributorUI.getText(By.xpath(lbl_firstMultiOUMItemNameLB.replace("COUNT", String.valueOf(i))));
+            }
+        }
+        return null;
+    }
+
+    public boolean isSpotPriceAdded(String position, String value){
+        int totalColumnCount = distributorUI.countElements(lbl_orderGuideTableColumn);
+
+        for (int i = 1; i <= totalColumnCount; i++) {
+            String columnName = distributorUI.getText(By.xpath(lbl_orderGuideTableColumnName.replace("COUNT", String.valueOf(i))));
+            if ("price".equalsIgnoreCase(columnName)) {
+                return distributorUI.isDisplayed(By.xpath(spotPriceValueMultiUOM.replace("VALUE", value).replace("COUNT", String.valueOf(i)).replace("UOM",position)));
+            }
+        }
+        return false;
+    }
+
+    public boolean isItemValueAdded(String position, String value){
+        int totalColumnCount = distributorUI.countElements(lbl_orderGuideTableColumn);
+
+        for (int i = 1; i <= totalColumnCount; i++) {
+            String columnName = distributorUI.getText(By.xpath(lbl_orderGuideTableColumnName.replace("COUNT", String.valueOf(i))));
+            if ("margin".equalsIgnoreCase(columnName)) {
+                return distributorUI.isDisplayed(By.xpath(marginValueMultiUOM.replace("VALUE", value).replace("COUNT", String.valueOf(i)).replace("UOM",position)));
+            }
+        }
+        return false;
+    }
+
+    public boolean isItemPercentageAdded(String position, String value){
+        int totalColumnCount = distributorUI.countElements(lbl_orderGuideTableColumn);
+
+        for (int i = 1; i <= totalColumnCount; i++) {
+            String columnName = distributorUI.getText(By.xpath(lbl_orderGuideTableColumnName.replace("COUNT", String.valueOf(i))));
+            if ("margin".equalsIgnoreCase(columnName)) {
+                return distributorUI.isDisplayed(By.xpath(marginPercentageMultiUOM.replace("VALUE", value).replace("COUNT", String.valueOf(i)).replace("UOM",position)));
+            }
+        }
+        return false;
+    }
+
+    public boolean isMultiUomDropDownOGDisplayed()throws InterruptedException{
+       return distributorUI.isDisplayed(By.xpath(lbl_ListsMultiOUMExist.replace("ROW_COUNT","1")),5);
+
     }
 
 }

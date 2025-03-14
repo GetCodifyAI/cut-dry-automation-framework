@@ -263,11 +263,21 @@ public class Customer {
     public static void addItemFromCatalog(){
         customersPage.clickOnAddToOrderGuide();
     }
+    public static void addItemFromCatalogStable(String name){
+        if (customersPage.isAddToOrderGuideDisplayed(name)) {
+            customersPage.clickOnAddToOrderGuideStable(name);
+//            customersPage.clickOnCloseEditorCatalog();
+        }
+
+    }
     public static void closeEditorCatalog(){
         customersPage.clickOnCloseEditorCatalog();
     }
     public static void createOrderByUploading(){
         customersPage.clickUploadAList();
+    }
+    public static void createOrderByUploadingOG(){
+        customersPage.clickUploadOrdersOG();
     }
     public static void uploadFile(String path){
         customersPage.giveFilePath(path);
@@ -587,6 +597,9 @@ public class Customer {
     }
     public static boolean isItemPercentageAdded(String code){
         return customersPage.isItemPercentageAdded(code);
+    }
+    public static boolean isItemPercentageAdded(String uomPosition, String code){
+        return customersPage.isItemPercentageAdded(uomPosition, code);
     }
     public static void clickOnRemoveItem(String Itemcode){
         customersPage.clickOnRemoveItem(Itemcode);
@@ -1866,6 +1879,9 @@ public class Customer {
     public static boolean isSpotPriceAdded(String code){
         return customersPage.isSpotPriceAdded(code);
     }
+    public static boolean isSpotPriceAdded(String uomPosition, String code){
+        return customersPage.isSpotPriceAdded(uomPosition, code);
+    }
     public static String getItemFinalSpotPrice() throws InterruptedException {
         return customersPage.getItemFinalSpotPrice();
     }
@@ -1899,6 +1915,9 @@ public class Customer {
     }
     public static boolean isItemValueAdded(String code){
         return customersPage.isItemValueAdded(code);
+    }
+    public static boolean isItemValueAdded(String uomPosition, String code){
+        return customersPage.isItemValueAdded(uomPosition, code);
     }
     public static void editSpotPrice(){
         customersPage.editSpotPrice();
@@ -1955,8 +1974,16 @@ public class Customer {
         return customersPage.getItemNameFirstMultiOUM();
     }
 
+    public static String getItemNameFirstMultiOUMLB() throws InterruptedException {
+        return customersPage.getItemNameFirstMultiOUMLB();
+    }
+
     public static String getItemCodeFirstMultiOUM() throws InterruptedException {
         return customersPage.getItemCodeFirstMultiOUM();
+    }
+
+    public static String getItemCodeFirstMultiOUMLB() throws InterruptedException {
+        return customersPage.getItemCodeFirstMultiOUMLB();
     }
 
     public static double getActiveItemPriceFirstMultiOUMRowStable() throws InterruptedException {
@@ -2116,6 +2143,10 @@ public class Customer {
     }
     public static boolean isSubstitutionTextDisplayed(){
         return customersPage.isSubstitutionTextDisplayed();
+    }
+
+    public static boolean isMultiUomDropDownOGDisplayed() throws InterruptedException {
+        return customersPage.isMultiUomDropDownOGDisplayed();
     }
 
 }

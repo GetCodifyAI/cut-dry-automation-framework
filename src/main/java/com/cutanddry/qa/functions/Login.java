@@ -101,4 +101,8 @@ public class Login {
         loginPage.removeCompanyIDs(featureName,companyID);
 
     }
+
+    public static void navigateToRestaurant() {
+        loginPage.navigateToRestaurant();;
+    }
 }

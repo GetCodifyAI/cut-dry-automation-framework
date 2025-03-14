@@ -19,4 +19,7 @@ public class SplitWeightUOMData {
     public static final String DISTRIBUTOR_NAME_IFC = "47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
     public static final String CUSTOMER_ID_IFC = "16579";
 
+    public static final String DISTRIBUTOR_NAME_VICTO = "Vitco";
+    public static final String CUSTOMER_ID_VICTO = "2429";
+    public static final String CUSTOMER_ID_VICTO1 = "& WAFFLES 1 TOLUCA LAKE";
 }

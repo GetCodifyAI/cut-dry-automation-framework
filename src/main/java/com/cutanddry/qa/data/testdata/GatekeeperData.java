@@ -7,5 +7,6 @@ public class GatekeeperData {
 
     public static final String FEATURE_NAME_FROM_ELASTIC_SEARCH = "form_elastic_search";
     public static final String COMPONY_ID_KK_INT = "3589548";
+    public static final String COMPONY_ID_TS_INT = "62455933";
 
 }

@@ -1183,7 +1183,7 @@ public class KeywordBase {
         try {
             JavascriptExecutor js = (JavascriptExecutor) driver;
             boolean elementFound = false;
-            int maxAttempts = 10;
+            int maxAttempts = 20;
             int attempt = 0;
             long lastHeight = 0;
 
