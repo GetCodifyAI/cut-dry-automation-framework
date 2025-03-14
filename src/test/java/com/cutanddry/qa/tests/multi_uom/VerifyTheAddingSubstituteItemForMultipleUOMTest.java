@@ -30,7 +30,7 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMTest extends TestBase {
     }
 
 
-    @Test(groups = "DOT-TC-1063")
+    @Test(groups = "DOT-TC-1073")
     public void VerifyTheAddingSubstituteItemForMultipleUOM() throws InterruptedException {
 
         softAssert = new SoftAssert();

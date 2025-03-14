@@ -35,7 +35,7 @@ public class VerifyTheSelectMultipleUOMFromOGCatalogPDPAndSubmitByARTest extends
     }
 
 
-    @Test(groups = "DOT-TC-1006")
+    @Test(groups = "DOT-TC-1011")
     public void VerifyTheSelectMultipleUOMFromOGCatalogPDPAndSubmitByAR() throws InterruptedException {
 
         softAssert = new SoftAssert();
