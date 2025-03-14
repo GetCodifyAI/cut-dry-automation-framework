@@ -2114,6 +2114,9 @@ public class Customer {
     public static String getMarginPercentageMultiUOM(String position){
         return customersPage.getMarginPercentageMultiUOM(position);
     }
+    public static boolean isSubstitutionTextDisplayed(){
+        return customersPage.isSubstitutionTextDisplayed();
+    }
 
 }
 

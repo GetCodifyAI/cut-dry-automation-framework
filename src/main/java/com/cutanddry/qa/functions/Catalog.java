@@ -530,6 +530,12 @@ public class Catalog {
     public static boolean isCatalogAddToCartButtonDisplayed(String name){
         return catalogPage.isCatalogAddToCartButtonDisplayed(name);
     }
+    public static void deleteSubstitute(){
+        catalogPage.deleteSubstitute();
+    }
+    public static void ClickOnCatalogMultiUomDropDownStable(String name)throws InterruptedException{
+        catalogPage.ClickOnCatalogMultiUomDropDownStable(name);
+    }
 
 
 }

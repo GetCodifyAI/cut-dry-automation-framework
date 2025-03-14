@@ -174,6 +174,8 @@ public class CatalogPage extends LoginPage{
     By getTotalEndlessAisleSubTotalPriceReviewOrder = By.xpath("//td[contains(text(),'Endless Aisle Subtotal')]/following-sibling::td");
     By getSubTotalOrderPrice = By.xpath("//div[contains(text(),'Subtotal')]/../following-sibling::td");
     String catalogAddToCart = "(//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')]/following::div//button[contains(text(), 'Add to Cart')])[1]";
+    By btn_deleteSubstitute = By.xpath("//div/*[local-name()='svg' and @data-icon='circle-xmark']");
+    String multiUomDropDownCatalogStable = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[last()]";
 
 
 
@@ -914,6 +916,13 @@ public class CatalogPage extends LoginPage{
     }
     public boolean isCatalogAddToCartButtonDisplayed(String name){
         return distributorUI.isDisplayed(By.xpath(catalogAddToCart.replace("NAME", name)));
+    }
+    public void deleteSubstitute(){
+        distributorUI.click(btn_deleteSubstitute);
+    }
+    public void ClickOnCatalogMultiUomDropDownStable(String name)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(multiUomDropDownCatalogStable.replace("NAME", name)));
+        distributorUI.click(By.xpath(multiUomDropDownCatalogStable.replace("NAME", name)));
     }
 
 }

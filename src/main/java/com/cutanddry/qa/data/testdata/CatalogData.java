@@ -47,4 +47,7 @@ public class CatalogData {
     public static final String DP_IFC = "47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
     public static final String DP_BIGOLI = "105718262 - Cut+Dry Agent - Bigoli Fresh Pasta";
     public static final String SALE_REP = "Steve O";
+    public static final String SALE_PERSON_ROLL = "apptesters@test.com";
+    public static final String AR_ROLL = "Isuru Test AR";
+    public static final String DISPATCHER_ROLL = "Hadley Dispatcher";
 }
