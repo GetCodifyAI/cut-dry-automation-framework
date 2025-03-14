@@ -112,6 +112,15 @@ public class Catalog {
         }
         catalogPage.clickOnUnitOfMeasure();
     }
+    public static void addUnitOfMeasureStable(String uom)throws InterruptedException{
+        if (catalogPage.isSameUomDisplayed(uom)){
+            catalogPage.deleteUOMinCatalog(uom);
+            catalogPage.clickOnConfirmBtn();
+            catalogPage.clickOnSaveChangesBtn();
+//            catalogPage.refreshPage();
+        }
+        catalogPage.clickOnUnitOfMeasure();
+    }
 
     public static int getUnitOfMeasureCount(){
         return catalogPage.getUnitOfMeasureCount();
@@ -124,18 +133,34 @@ public class Catalog {
     public static void setItemUnitPrice(String unitPrice){
         catalogPage.typeUnitPrice(unitPrice);
     }
+    public static void setItemUnitPrice(String uom, String unitPrice){
+        catalogPage.typeUnitPrice(uom, unitPrice);
+    }
 
     public static void selectPercentageAsSalesTypeFrmDropdown(){
         catalogPage.clickOnSalesTypeDropDown();
         catalogPage.clickOnPercentageOption();
     }
 
+    public static void selectDollarValueAsSalesTypeFrmDropdown(String uom){
+        catalogPage.clickOnSalesTypeDropDown(uom);
+        catalogPage.clickOndollarValueOption();
+    }
+
     public static void setSaleValue(String saleValue){
         catalogPage.typeSaleValue(saleValue);
     }
 
+    public static void setSaleValue(String uom, String saleValue){
+        catalogPage.typeSaleValue(uom, saleValue);
+    }
+
     public static void deleteUOMFromCatalog() throws InterruptedException {
         catalogPage.deleteUOMinCatalog();
+    }
+
+    public static void deleteUOMFromCatalog(String uom) throws InterruptedException {
+        catalogPage.deleteUOMinCatalog(uom);
     }
 
     public static boolean deleteUOMOverlayDisplayed(){
@@ -150,8 +175,16 @@ public class Catalog {
         return catalogPage.isBagUOMDisplayed();
     }
 
+    public static boolean isAddedUOMDisplayed(String uom) throws InterruptedException {
+        return catalogPage.isUOMDisplayed(uom);
+    }
+
     public static boolean isDeletedUOMDisplayed(){
         return catalogPage.isBagUOMDisplayed();
+    }
+
+    public static boolean isDeletedUOMDisplayed(String uom) throws InterruptedException {
+        return catalogPage.isUOMDisplayed(uom);
     }
 
     public static void navigateToSubstituteTab(){
