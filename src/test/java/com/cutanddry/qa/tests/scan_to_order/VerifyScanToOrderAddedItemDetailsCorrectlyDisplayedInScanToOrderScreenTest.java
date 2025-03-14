@@ -24,6 +24,7 @@ public class VerifyScanToOrderAddedItemDetailsCorrectlyDisplayedInScanToOrderScr
     static String CustomerCode = "21259";
     static String ItemCode1 = "87910";
     static String ItemCode2 = "63018";
+    static String [] ItemCodes = {"87910","63018"};
 
 
     @BeforeMethod
@@ -71,9 +72,7 @@ public class VerifyScanToOrderAddedItemDetailsCorrectlyDisplayedInScanToOrderScr
 
         softAssert.assertTrue(ScanToOrder.isTotalEstimatedCostTextDisplayed(),"Total Estimated Cost text is not displayed");
         double totalCostOrderSummary = ScanToOrder.getTotalCostInOrderSummary();
-        double itemPrice1 = ScanToOrder.getItemPriceOfItem(ItemCode1);
-        double itemPrice2 = ScanToOrder.getItemPriceOfItem(ItemCode2);
-        double totalPrice = itemPrice1+itemPrice2;
+        double totalPrice = ScanToOrder.getTotalCartPrice(ItemCodes);
         softAssert.assertEquals(totalCostOrderSummary,totalPrice,"Wrong Price");
 
         softAssert.assertTrue(ScanToOrder.isTotalDiscountsTextDisplayed());

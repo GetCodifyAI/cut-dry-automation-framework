@@ -22,6 +22,9 @@
             <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderItemSearchInputFieldPlaceholderTextTest"/>
             <class name="com.cutanddry.qa.tests.scan_to_order.VerifyTheDraftOrderForScanToOrderTest"/>
 
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderOptionDisplayedInCustomerProfileScreenTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderOptionNotDisplayedInCustomerProfileScreenIfTurnedOffTest"/>
+
 
 
         </classes>
