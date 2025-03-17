@@ -69,7 +69,6 @@
             <class name="com.cutanddry.qa.tests.team.AddNewUserWithExistingUserReferenceTest" />
             <!--TODO: Failure TC, Need to fix the bug 1st-->
             <class name="com.cutanddry.qa.tests.team.UpdateUserWithExistingUserReferenceTest" />
-
         </classes>
     </test>
 </suite>

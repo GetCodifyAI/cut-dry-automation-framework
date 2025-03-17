@@ -71,7 +71,6 @@
             <class name="com.cutanddry.qa.tests.pay.VerifyTheSendingPaymentsReminderForBulkInvoicesTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheViewFeatureInThePayoutSectionTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheExportPayoutsFunctionalityTest"/>
-
         </classes>
     </test>
 </suite>

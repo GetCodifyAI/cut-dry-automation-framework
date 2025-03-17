@@ -24,7 +24,7 @@ public class VerifySubstituteItemFor0CountItemWithoutSubstitutingTest extends Te
     }
 
     @Test(groups = "DOT-TC-214")
-    public void verifySubstituteItemFor0CountItemWithSubstituting() throws InterruptedException {
+    public void VerifySubstituteItemFor0CountItemWithoutSubstituting() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
