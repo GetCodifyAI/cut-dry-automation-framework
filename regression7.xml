@@ -51,8 +51,6 @@
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheUserShouldNotBeAbleGoToOrderGuideByDispatcherRoleTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddingSubstituteItemForMultipleUOMTest"/>
 
-
-
             <class name="com.cutanddry.qa.tests.order_reminder.VerifyEditOrderReminderTest"/>
         </classes>
     </test>

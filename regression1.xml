@@ -71,15 +71,6 @@
             <class name="com.cutanddry.qa.tests.boost.VerifyAddingFeaturedListTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyEditingFeaturedListTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRemovingFeaturedListTest" />
-
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheFinalWeightWhenSelectingMultipleUOMTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSpotPricingWhenSelectingMultipleUOMTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.ValidateThePoundSpotPricingWhenSelectingMultipleUOMTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSplitWeightWhenSelectingMultipleUOMTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurantPortalsTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheRemoveANewlyAddedUOMsToAnItemAndCheckFromTheDistributorAndRestaurantPortalsTest"/>
         </classes>
     </test>
 </suite>
