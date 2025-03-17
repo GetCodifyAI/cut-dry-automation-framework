@@ -21,6 +21,7 @@ public class CatalogData {
     public static final String ITEM_CODE_10 = "17859";
     public static final String ITEM_CODE_11 = "00044";
     public static final String ITEM_CODE_12 = "8318";
+    public static final String SUBSTITUTE_ITEM_CODE = "01407";
     public static final String ITEM_NAME = "Carrot - Baby Peeled - 1 LB";
     public static final String ITEM_SALE = "Chili Pepper - Fresno 10 LB";
     public static final String ITEM_NAME_SIMILAR_ITEM = "Organic Bananas - 20 LB";
