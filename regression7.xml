@@ -50,6 +50,7 @@
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromOGCatalogPDPAndSubmitBySalespersonTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheUserShouldNotBeAbleGoToOrderGuideByDispatcherRoleTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddingSubstituteItemForMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest"/>
 
             <class name="com.cutanddry.qa.tests.order_reminder.VerifyEditOrderReminderTest"/>
         </classes>

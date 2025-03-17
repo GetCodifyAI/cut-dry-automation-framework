@@ -2141,12 +2141,33 @@ public class Customer {
     public static String getMarginPercentageMultiUOM(String position){
         return customersPage.getMarginPercentageMultiUOM(position);
     }
-    public static boolean isSubstitutionTextDisplayed(){
+    public static boolean isSubstitutionTextDisplayed() throws InterruptedException {
         return customersPage.isSubstitutionTextDisplayed();
     }
 
     public static boolean isMultiUomDropDownOGDisplayed() throws InterruptedException {
         return customersPage.isMultiUomDropDownOGDisplayed();
+    }
+    public static void clickSubstitution()throws InterruptedException{
+        customersPage.clickSubstitution();
+    }
+    public static boolean isSetSubstitutionTextDisplayed()throws InterruptedException{
+        return customersPage.isSetSubstitutionTextDisplayed();
+    }
+    public static void clickChooseSub(){
+        customersPage.clickChooseSub();
+    }
+    public static void clickSelectSub(){
+        customersPage.clickSelectSub();
+    }
+    public static void clickCloseSub(){
+        customersPage.clickCloseSub();
+    }
+    public static void clickEditSub(){
+        customersPage.clickEditSub();
+    }
+    public static void clickRemovePreviousSub(){
+        customersPage.clickRemovePreviousSub();
     }
 
 }

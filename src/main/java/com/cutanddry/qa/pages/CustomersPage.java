@@ -636,7 +636,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String spotPriceValueMultiUOM = "//td[COUNT]/div/div[UOM]//*[contains(text(),'VALUE')]";
     String marginValueMultiUOM = "//td[COUNT]/div/div[UOM]//*[contains(text(),'VALUE')]";
     String marginPercentageMultiUOM = "//td[COUNT]/div/div[UOM]//*[contains(text(),'VALUE')]";
-    By txtSubstitution = By.xpath("//div[contains(text(),'Substitution: ')]");
+    By txtSubstitution = By.xpath("//div[contains(text(),'Substitution')]");
+    By txtSetSubstitution = By.xpath("//div[contains(text(),'Set Substitute Items')]");
+    By btn_chooseSub = By.xpath("(//button[contains(text(),'Choose Sub')])[last()]");
+    By btn_selectSub = By.xpath("//div[contains(text(), 'Substitute with:')]/preceding-sibling::*[1][local-name()='svg' and @data-icon='circle']");
+    By btn_closeSub = By.xpath("//*[local-name()='svg' and @data-icon='xmark']");
+    By btn_editSub = By.xpath("//*[local-name()='svg' and @data-icon='edit']");
+    By btn_notSelectSub = By.xpath("//div[contains(text(), 'Not Selected')]/preceding-sibling::*[1][local-name()='svg' and @data-icon='circle']");
+
 
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
@@ -3772,7 +3779,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public String getMarginPercentageMultiUOM(String position){
         return distributorUI.getText(By.xpath(lbl_marginPercentageMultiUOM.replace("UOM",position)), "value");
     }
-    public boolean isSubstitutionTextDisplayed(){
+    public boolean isSubstitutionTextDisplayed()throws InterruptedException{
+        distributorUI.waitForCustom(2000);
         return distributorUI.isDisplayed(txtSubstitution);
     }
 
@@ -3845,6 +3853,28 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isMultiUomDropDownOGDisplayed()throws InterruptedException{
        return distributorUI.isDisplayed(By.xpath(lbl_ListsMultiOUMExist.replace("ROW_COUNT","1")),5);
 
+    }
+    public void clickSubstitution()throws InterruptedException{
+         distributorUI.click(txtSubstitution);
+    }
+    public boolean isSetSubstitutionTextDisplayed()throws InterruptedException{
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(txtSetSubstitution);
+    }
+    public void clickChooseSub(){
+        distributorUI.click(btn_chooseSub);
+    }
+    public void clickSelectSub(){
+        distributorUI.click(btn_selectSub);
+    }
+    public void clickCloseSub(){
+        distributorUI.click(btn_closeSub);
+    }
+    public void clickEditSub(){
+        distributorUI.click(btn_editSub);
+    }
+    public void clickRemovePreviousSub(){
+        distributorUI.click(btn_notSelectSub);
     }
 
 }
