@@ -46,6 +46,9 @@ jobs:
   nightly-build-and-test:
     executor: base-executor
     parallelism: 8
+    matrix:
+      parameters:
+        test-run: [ "1", "2", "3", "4", "5", "6", "7", "8" ]
     steps:
       - checkout
       - run:
@@ -91,15 +94,10 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "51 10 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_dev_new
+          cron: "56 10 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_dev_new
           filters:
             branches:
               only:
                 - ahsan_dev_new
     jobs:
-      - nightly-build-and-test:
-          matrix:
-            parameters:
-              test-run: [ "1", "2", "3", "4", "5", "6", "7", "8" ]
-
-
+      - nightly-build-and-test
