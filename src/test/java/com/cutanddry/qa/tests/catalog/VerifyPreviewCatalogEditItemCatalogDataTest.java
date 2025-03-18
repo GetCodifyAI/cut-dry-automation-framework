@@ -38,6 +38,7 @@ public class VerifyPreviewCatalogEditItemCatalogDataTest extends TestBase {
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");
         Catalog.selectProductActiveInactiveStatus(InActive);
+        Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");
         softAssert.assertAll();
     }

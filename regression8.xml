@@ -1,0 +1,45 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="Part_Eight"/>
+        <classes>
+            <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsDeleteTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyDraftOrderSubmittedByOperatorTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsSearchFunctionTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyTheDraftDeleteConfirmationModalTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyDeleteDraftOrderByOperatorTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsSearchAndFilterFunctionTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyErrorMessageDisplayTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderWithoutAddingAnyItemsTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByRemovingExistingItemsAndChangingQuantitiesTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromOrderGuideTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromPDPTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsViaOrderGuideCatalogPDPTest"/>
+            <class name="com.cutanddry.qa.tests.draft.ValidateDraftOrdersAreOnlyAppearing30DaysTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyPendingApprovalsAreNotClickableTest"/>
+
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheFinalWeightWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSpotPricingWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateThePoundSpotPricingWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSplitWeightWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurantPortalsTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheRemoveANewlyAddedUOMsToAnItemAndCheckFromTheDistributorAndRestaurantPortalsTest"/>
+
+            <class name="com.cutanddry.qa.tests.price.ValidateTheFinalWeightTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPoundPriceTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingByPricingEngineTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateThePoundSpotPricingTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingNotFromPricingEngineTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateTheSplitWeightTest"/>
+        </classes>
+    </test>
+</suite>

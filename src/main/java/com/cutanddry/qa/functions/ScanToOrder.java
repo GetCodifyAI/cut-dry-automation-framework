@@ -114,8 +114,12 @@ public class ScanToOrder {
        return scanToOrderPage.getTotalCartPrice(itemCodes);
     }
 
-    public static boolean isCustomerNameAndLocationDisplayedInScanToOrderScreen(String CustomerName,String CustomerLocation){
-       return scanToOrderPage.isCustomerNameAndLocationDisplayedInScanToOrderScreen(CustomerName,CustomerLocation);
+    public static boolean isCustomerNameDisplayedInScanToOrderScreen(String CustomerName){
+       return scanToOrderPage.isCustomerNameDisplayedInScanToOrderScreen(CustomerName);
+    }
+
+    public static void deleteScanToOrderItems(String ItemCode)throws InterruptedException{
+       scanToOrderPage.deleteScanToOrderItems(ItemCode);
     }
 
 
