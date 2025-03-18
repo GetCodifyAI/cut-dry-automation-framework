@@ -641,8 +641,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_chooseSub = By.xpath("(//button[contains(text(),'Choose Sub')])[last()]");
     By btn_selectSub = By.xpath("//div[contains(text(), 'Substitute with:')]/preceding-sibling::*[1][local-name()='svg' and @data-icon='circle']");
     By btn_closeSub = By.xpath("//*[local-name()='svg' and @data-icon='xmark']");
-    By btn_editSub = By.xpath("//*[local-name()='svg' and @data-icon='edit']");
+    By btn_editSub = By.xpath("(//*[local-name()='svg' and @data-icon='edit'])[last()]");
     By btn_notSelectSub = By.xpath("//div[contains(text(), 'Not Selected')]/preceding-sibling::*[1][local-name()='svg' and @data-icon='circle']");
+    By combinedOrderPopUp = By.xpath("//div[contains(text(), 'Do you want to combine your orders?')]");
+    By combinedOrderContinue = By.xpath("//button[contains(text(), 'Continue')]");
 
 
     public void ifDuplicateOrderDisplayed(){
@@ -3875,6 +3877,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickRemovePreviousSub(){
         distributorUI.click(btn_notSelectSub);
+    }
+    public boolean isCombinedPopupDisplayed() {
+        return distributorUI.isDisplayed(combinedOrderPopUp);
+    }
+    public void clickContinueCombined(){
+        distributorUI.click(combinedOrderContinue);
     }
 
 }

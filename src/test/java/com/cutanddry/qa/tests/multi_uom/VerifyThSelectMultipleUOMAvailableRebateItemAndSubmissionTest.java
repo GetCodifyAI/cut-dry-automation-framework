@@ -60,7 +60,7 @@ public class VerifyThSelectMultipleUOMAvailableRebateItemAndSubmissionTest exten
 
         Customer.checkoutItemsMultiOUM();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
-        Customer.submitOrder();
+        Customer.submitOrderRebate();
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "The order was not completed successfully.");
         orderId = Customer.getSuccessOrderId();
         Customer.clickClose();

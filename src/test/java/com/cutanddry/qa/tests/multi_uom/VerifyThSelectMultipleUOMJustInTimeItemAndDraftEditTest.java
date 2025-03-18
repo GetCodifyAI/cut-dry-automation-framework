@@ -60,6 +60,8 @@ public class VerifyThSelectMultipleUOMJustInTimeItemAndDraftEditTest extends Tes
         totalPDPItemPrice = Customer.getItemPriceOnCheckoutButtonViaPDP();
         softAssert.assertEquals(Math.round(totalPDPItemPrice * 10.0) / 10.0,
                 (Math.round((itemPriceUOM1 + itemPriceUOM2) * 10.0) / 10.0), "The item has not been selected.");
+        Customer.clickCheckOutPDP();
+        softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
 
         Dashboard.navigateToDrafts();
         softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
@@ -69,7 +71,7 @@ public class VerifyThSelectMultipleUOMJustInTimeItemAndDraftEditTest extends Tes
 
         Draft.clickEditOrder();
 
-        // Added Multi OUM Item
+        // Added Multi UOM Item
         Customer.searchItemOnOrderGuide(multiSearchItemCode);
         Customer.ClickOnMultiUomDropDownOG(multiSearchItemCode);
         Customer.clickOGAddToCartPlusIcon(1, multiSearchItemCode, uom1);
@@ -78,7 +80,7 @@ public class VerifyThSelectMultipleUOMJustInTimeItemAndDraftEditTest extends Tes
         softAssert.assertEquals(Catalog.getItemUOMQuantity(multiSearchItemCode, uom2), "1", "item count error in 2nd UOM");
         itemOGPriceUOM1 = Customer.getActiveItemPriceMultiOUM(uom1);
         itemOGPriceUOM2 = Customer.getActiveItemPriceMultiOUM(uom2);
-        totalOGItemPrice = Customer.getItemPriceOnMultiOUMCheckout(); //Customer.getItemPriceOnCheckoutButton();
+        totalOGItemPrice = Customer.getItemPriceOnMultiOUMCheckout();
         softAssert.assertEquals(totalOGItemPrice, itemOGPriceUOM1 + itemOGPriceUOM2 + totalPDPItemPrice, 0.001, "The item was not selected properly.");
         Customer.checkoutItemsMultiOUM();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");

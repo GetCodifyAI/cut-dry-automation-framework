@@ -21,7 +21,8 @@ public class CatalogData {
     public static final String ITEM_CODE_10 = "17859";
     public static final String ITEM_CODE_11 = "00044";
     public static final String ITEM_CODE_12 = "8318";
-    public static final String SUBSTITUTE_ITEM_CODE = "01407";
+    public static final String ITEM_CODE_13 = "00973";
+    public static final String SUBSTITUTE_ITEM_CODE = "01922";
     public static final String ITEM_NAME = "Carrot - Baby Peeled - 1 LB";
     public static final String ITEM_SALE = "Chili Pepper - Fresno 10 LB";
     public static final String ITEM_NAME_SIMILAR_ITEM = "Organic Bananas - 20 LB";
@@ -35,6 +36,7 @@ public class CatalogData {
     public static final String ITEM_NAME_FOOD_ = "Hacomat Season";
     public static final String ITEM_NAME_DICARLO = "Cheese Mozzarella Wm Shredded";
     public static final String ITEM_NAME_2 = "Organic Bananas - 2 LB";
+    public static final String ITEM_NAME_SUB = "Cilantro -30 CT";
     public static final String ADDED_QUANTITY = "Added: 1 CS | 1 Pkg";
     public static final String MULTI_UOM_1 = "1";
     public static final String MULTI_UOM_2 = "2";
