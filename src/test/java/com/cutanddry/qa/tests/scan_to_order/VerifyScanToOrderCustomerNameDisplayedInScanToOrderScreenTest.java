@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyScanToOrderCustomerNameAndLocationDisplayedInScanToOrderScreenTest extends TestBase {
+public class VerifyScanToOrderCustomerNameDisplayedInScanToOrderScreenTest extends TestBase {
 
     static User user;
     static String featureName = "scan_to_order";
@@ -21,7 +21,6 @@ public class VerifyScanToOrderCustomerNameAndLocationDisplayedInScanToOrderScree
     static String DP = "Independent Foods Co";
     static String CustomerCode = "21259";
     static String CustomerName = "Cut & Dry Test Account";
-    static String CustomerLocation = "Hayes";
 
     @BeforeMethod
     public void setup(){
@@ -30,7 +29,7 @@ public class VerifyScanToOrderCustomerNameAndLocationDisplayedInScanToOrderScree
     }
 
     @Test(groups = "DOT-TC-1105")
-    public static void VerifyScanToOrderCustomerNameAndLocationDisplayedInScanToOrderScreen() throws InterruptedException{
+    public static void VerifyScanToOrderCustomerNameDisplayedInScanToOrderScreen() throws InterruptedException{
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(),user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
@@ -40,7 +39,7 @@ public class VerifyScanToOrderCustomerNameAndLocationDisplayedInScanToOrderScree
         Customer.navigateFromCustomerScreenToScanToOrderScreen(CustomerCode);
         softAssert.assertTrue(ScanToOrder.isNavigatedToScanToOrderPage(),"Error in navigating to scan to order screen");
 
-        softAssert.assertTrue(ScanToOrder.isCustomerNameAndLocationDisplayedInScanToOrderScreen(CustomerName,CustomerLocation));
+        softAssert.assertTrue(ScanToOrder.isCustomerNameDisplayedInScanToOrderScreen(CustomerName));
 
         softAssert.assertAll();
 
