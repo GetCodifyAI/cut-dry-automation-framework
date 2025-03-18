@@ -28,6 +28,8 @@ public class ScanToOrderPage extends LoginPage{
     String emptyCartText = "//*[text()='emptyCartText1']/./following-sibling::p[contains(text(), 'emptyCartText2')]";
     String customerNameInOrderScreen = "//*[contains(text(), 'CUSTOMER_NAME')]";
     String btn_trashIcon = "//div[contains(@class,'cartContainer')]//span[contains(text(),'ITEMCODE')]/../following-sibling::div//*//*[local-name() = 'svg' and @data-icon='cdTrash']";
+    By pickUpAndWillCallOption = By.xpath("//span[text()='Pickup/Will Call']/preceding-sibling::div//*[name()='svg']");
+    By deliveryDatePicker = By.xpath("//div[contains(@class, 'date-picker')]//input");
 
     public boolean isScanToOrderTextDisplayed(){
         try {
@@ -218,6 +220,16 @@ public class ScanToOrderPage extends LoginPage{
     public void deleteScanToOrderItems(String ItemCode)throws InterruptedException{
         distributorUI.click(By.xpath(btn_trashIcon.replace("ITEMCODE",ItemCode)));
         distributorUI.waitForCustom(3000);
+    }
+
+    public boolean isPickUpAndWillCallOptionEnabled(){
+        distributorUI.waitForVisibility(pickUpAndWillCallOption);
+        return distributorUI.isElementEnabled(pickUpAndWillCallOption);
+    }
+
+    public boolean isDeliveryDatePickerEnabled(){
+        distributorUI.waitForVisibility(deliveryDatePicker);
+        return distributorUI.isElementEnabled(deliveryDatePicker);
     }
 
 
