@@ -61,6 +61,7 @@ public class VerifyThSelectMultipleUOMSpecialOrderItemAndDraftEditTest extends T
         totalPDPItemPrice = Customer.getItemPriceOnCheckoutButtonViaPDP();
         softAssert.assertEquals(Math.round(totalPDPItemPrice * 100.0) / 100.0,
                 ((Math.round(itemPriceUOM1 * 100.0) / 100.0)+(Math.round(itemPriceUOM2 * 100.0) / 100.0)), "The item has not been selected.");
+        Customer.clickCheckOutPDP();
 
         Dashboard.navigateToDrafts();
         softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
