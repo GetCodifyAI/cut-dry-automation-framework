@@ -15,9 +15,9 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest ex
     SoftAssert softAssert;
     static User user;
     static String customerId = CatalogData.CUSTOMER_ID;
-    String searchItemCode = CatalogData.ITEM_CODE;
+    String searchItemCode = CatalogData.ITEM_CODE_13;
     String searchItemCode2 = CatalogData.ITEM_CODE_2;
-    String itemName = CatalogData.ITEM_NAME;
+    String itemName = CatalogData.ITEM_NAME_SUB;
     String itemName2 = CatalogData.ITEM_NAME_SIMILAR_ITEM_2;
     String uomDropDownOption = CatalogData.UOM_DROPDOWN_OPTION;
     static double itemPriceUOM1 ,itemPriceUOM2,totalPDPItemPrice ,totalPDPItemPrice2,totalItemPriceReviewOrder;
@@ -64,7 +64,7 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest ex
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(searchItemCode);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
-        Catalog.ClickOnMultiUomDropDown(itemName);
+        Catalog.ClickOnCatalogMultiUomDropDownStable(itemName);
         Catalog.ClickOnMultiUomDropDownOption(uomDropDownOption);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
         itemPriceUOM1 = Catalog.getPDPPriceUOM(uom1);
@@ -82,8 +82,8 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest ex
         Customer.clickSubstitution();
         softAssert.assertTrue(Customer.isSetSubstitutionTextDisplayed(),"Substitution set pop up error");
         Customer.clickEditSub();
-        Customer.clickSelectSub();
         Customer.clickRemovePreviousSub();
+        Customer.clickSaveSelection();
         Customer.clickCloseSub();
 
         Customer.clickSubstitution();
@@ -105,7 +105,7 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest ex
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(searchItemCode2);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName2).contains(itemName2.toLowerCase()), "item not found");
-        Catalog.ClickOnCatalogMultiUomDropDown(itemName2);
+        Catalog.ClickOnCatalogMultiUomDropDownStable(itemName2);
         Catalog.ClickOnMultiUomDropDownOption(uomDropDownOption);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
         itemPriceUOM1 = Catalog.getPDPPriceUOM(uom1);

@@ -15,13 +15,14 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMTest extends TestBase {
     SoftAssert softAssert;
     static User user;
     static String customerId = CatalogData.CUSTOMER_ID;
-    String searchItemCode = CatalogData.ITEM_CODE;
-    String itemName = CatalogData.ITEM_NAME;
+    String searchItemCode = CatalogData.ITEM_CODE_13;
+    String itemName = CatalogData.ITEM_NAME_SUB;
     String uomDropDownOption = CatalogData.UOM_DROPDOWN_OPTION;
     static double itemPriceUOM1 ,itemPriceUOM2,totalPDPItemPrice ,totalItemPriceReviewOrder;
     String uom1 = CatalogData.MULTI_UOM_1;
     String uom2 = CatalogData.MULTI_UOM_2;
-    String substituteItemCode = "01407";
+    String substituteItemCode = "01922";
+
 
     @BeforeMethod
     public void setUp() {
@@ -61,7 +62,7 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMTest extends TestBase {
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(searchItemCode);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
-        Catalog.ClickOnMultiUomDropDown(itemName);
+        Catalog.ClickOnCatalogMultiUomDropDownStable(itemName);
         Catalog.ClickOnMultiUomDropDownOption(uomDropDownOption);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
         itemPriceUOM1 = Catalog.getPDPPriceUOM(uom1);

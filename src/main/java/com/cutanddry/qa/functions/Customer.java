@@ -2169,6 +2169,26 @@ public class Customer {
     public static void clickRemovePreviousSub(){
         customersPage.clickRemovePreviousSub();
     }
+    public static void submitOrderRebate() throws InterruptedException {
+        customersPage.submitOrder();
+        if (customersPage.isOrderMiniumErrorBannerDisplayed()){
+            dashboardPage.clickOnOrderSettings();
+            settingsPage.selectOnOrderMinimums();
+            try {
+                settingsPage.clickOnSaveChanges();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            customersPage.clickOnBack();
+        }
+        if (customersPage.isDuplicatePopupDisplayed()){
+            customersPage.clickYesDuplicatePopup();
+        }
+        Thread.sleep(4000);
+        if (customersPage.isCombinedPopupDisplayed()){
+            customersPage.clickContinueCombined();
+        }
+    }
 
 }
 
