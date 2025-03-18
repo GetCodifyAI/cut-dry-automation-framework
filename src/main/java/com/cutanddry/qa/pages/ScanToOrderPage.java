@@ -26,7 +26,8 @@ public class ScanToOrderPage extends LoginPage{
 
     By searchInputField = By.xpath("//input[@placeholder='Scan barcode or search item by name or code']");
     String emptyCartText = "//*[text()='emptyCartText1']/./following-sibling::p[contains(text(), 'emptyCartText2')]";
-    String customerNameandLocationInOrderScreen = "//h2[contains(text(), 'CUSTOMER_NAME')]/following-sibling::p[contains(text(), 'CUSTOMER_LOCATION')]";
+    String customerNameInOrderScreen = "//*[contains(text(), 'CUSTOMER_NAME')]";
+    String btn_trashIcon = "//div[contains(@class,'cartContainer')]//span[contains(text(),'ITEMCODE')]/../following-sibling::div//*//*[local-name() = 'svg' and @data-icon='cdTrash']";
 
     public boolean isScanToOrderTextDisplayed(){
         try {
@@ -205,13 +206,18 @@ public class ScanToOrderPage extends LoginPage{
         return distributorUI.isDisplayed(By.xpath(emptyCartText.replace("emptyCartText1",emptyCartText1 ).replace("emptyCartText2",emptyCartText2)));
     }
 
-    public boolean isCustomerNameAndLocationDisplayedInScanToOrderScreen(String CustomerName,String CustomerLocation){
+    public boolean isCustomerNameDisplayedInScanToOrderScreen(String CustomerName){
         try {
             distributorUI.waitForCustom(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        return distributorUI.isDisplayed(By.xpath(customerNameandLocationInOrderScreen.replace("CUSTOMER_NAME",CustomerName).replace("CUSTOMER_LOCATION",CustomerLocation)));
+        return distributorUI.isDisplayed(By.xpath(customerNameInOrderScreen.replace("CUSTOMER_NAME",CustomerName)));
+    }
+
+    public void deleteScanToOrderItems(String ItemCode)throws InterruptedException{
+        distributorUI.click(By.xpath(btn_trashIcon.replace("ITEMCODE",ItemCode)));
+        distributorUI.waitForCustom(3000);
     }
 
 
