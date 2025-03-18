@@ -1513,7 +1513,8 @@ public class Customer {
     }
 
     public static double getActiveItemPriceFirstRow() throws InterruptedException {
-        return customersPage.getActiveItemPriceFirstRow();
+//        return customersPage.getActiveItemPriceFirstRow();
+        return customersPage.getActiveItemPriceFirstRowStable();
     }
 
     public static double getActiveItemPriceFirstRowStable() throws InterruptedException {

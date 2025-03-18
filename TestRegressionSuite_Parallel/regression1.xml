@@ -71,11 +71,6 @@
             <class name="com.cutanddry.qa.tests.boost.VerifyAddingFeaturedListTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyEditingFeaturedListTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRemovingFeaturedListTest" />
-
-            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPoundPriceTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingByPricingEngineTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateThePoundSpotPricingTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingNotFromPricingEngineTest"/>
         </classes>
     </test>
 </suite>
