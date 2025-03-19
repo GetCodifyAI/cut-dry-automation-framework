@@ -101,8 +101,8 @@ public class LoginPage extends TestBase {
         distributorUI.navigateToURL(distributorUI.getText(By.xpath(txt_verifiedVendor.replace("ID", id)), "href"));
         distributorUI.navigateToURL(distributorUI.getText(lbl_suuplierPortalVendorData, "href"));
     }
-    public void setNode() {
-        distributorUI.sendKeys(txt_key,"allowUpdateSalesPeopleMapData");
+    public void setNode(String dataName) {
+        distributorUI.sendKeys(txt_key,dataName);
         distributorUI.sendKeys(txt_value, String.valueOf(true));
         distributorUI.click(btn_setData);
     }
