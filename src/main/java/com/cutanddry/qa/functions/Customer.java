@@ -394,6 +394,10 @@ public class Customer {
         customersPage.clickOnDropdownDelivery();
         customersPage.clickOnDeliveryDateAsLast();
     }
+    public static void selectPickUpDateAsLast(){
+        customersPage.clickOnDropDownPickUp();
+        customersPage.clickOnPickUpDateAsLast();
+    }
     public static void setStandingOrder(){
         customersPage.setStandingOrder();
     }
@@ -2189,6 +2193,10 @@ public class Customer {
         if (customersPage.isCombinedPopupDisplayed()){
             customersPage.clickContinueCombined();
         }
+    }
+
+    public static String getCatalogFirstItemItemCode(){
+        return customersPage.getFirstItemItemCodeFromCatalog();
     }
 
 }
