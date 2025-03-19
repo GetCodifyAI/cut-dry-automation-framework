@@ -18,6 +18,7 @@ public class VerifyManageCatalogCreateNewItemTest extends TestBase {
     String itemName = "test";
     String itemPrice = "10.00";
     String UOM = "Bag";
+    String All = "All";
 
     @BeforeMethod
     public void setUp(){
@@ -43,6 +44,7 @@ public class VerifyManageCatalogCreateNewItemTest extends TestBase {
         String itemCode = Catalog.getItemCode();
         Catalog.clickOnClose();
         Catalog.searchItemInCatalog(itemCode);
+        Catalog.selectItemStatus(All);
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
         softAssert.assertAll();
