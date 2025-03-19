@@ -108,8 +108,10 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By created_StandingOrders = By.xpath("//div[contains(text(),'Set for ')]");
     By btn_createStandingOrders = By.xpath("//div[text()='Create']");
     By dropdown_delivery = By.xpath("//div[text()='Delivery:']/following-sibling::div//div[text()='Select Days...']");
+    By dropdown_pickUp = By.xpath("//div[text()='Pickup Date:']/../following-sibling::div/div");
     String txt_deliveryDay = "//div[text()='DAY']/preceding-sibling::input[@type='checkbox']";
     String txt_deliveryLastDay = "(//div[contains(@class, 'cd_themed_select__option')]//input[@type='checkbox'])[last()]";
+    String txt_pickUpLastDay = "//div[contains(@class, 'cd_themed_select__option')][last()]";
     By btn_setStandingOrder = By.xpath("//button[text()='Set Standing Order ']");
     By txt_EmailPopup = By.xpath("//div[text()='Standing Order CC Emails']");
     By dropdown_email = By.xpath("//div[text()='Select...']");
@@ -646,6 +648,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By combinedOrderPopUp = By.xpath("//div[contains(text(), 'Do you want to combine your orders?')]");
     By combinedOrderContinue = By.xpath("//button[contains(text(), 'Continue')]");
 
+    By catalogFirstItemItemCode = By.xpath("//div[contains(@class,'card-deck')][1]/div[contains(@class,'card')][1]//button[contains(@data-tip,'View Brand Page')]/../following-sibling::div");
 
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
@@ -1124,6 +1127,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickOnDropdownDelivery() {
         distributorUI.click(dropdown_delivery);
     }
+    public void clickOnDropDownPickUp(){
+        distributorUI.click(dropdown_pickUp);
+    }
     public void clickOnDeliveryDate(String day) {
         distributorUI.waitForVisibility(By.xpath(txt_deliveryDay.replace("DAY", day)));
         distributorUI.click(By.xpath(txt_deliveryDay.replace("DAY", day)));
@@ -1133,6 +1139,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(By.xpath(txt_deliveryLastDay));
         distributorUI.click(By.xpath(txt_deliveryLastDay));
         distributorUI.waitForElementEnabledState(By.xpath(txt_deliveryLastDay),true);
+    }
+    public void clickOnPickUpDateAsLast() {
+        distributorUI.waitForVisibility(By.xpath(txt_pickUpLastDay));
+        distributorUI.click(By.xpath(txt_pickUpLastDay));
+        distributorUI.waitForElementEnabledState(By.xpath(txt_pickUpLastDay),true);
     }
     public void setStandingOrder(){
         distributorUI.waitForElementEnabledState(btn_setStandingOrder,true);
@@ -3884,5 +3895,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickContinueCombined(){
         distributorUI.click(combinedOrderContinue);
     }
+
+    public String getFirstItemItemCodeFromCatalog(){
+        String gotText = distributorUI.getText(catalogFirstItemItemCode);
+        return gotText.split("#")[1];
+    }
+
 
 }

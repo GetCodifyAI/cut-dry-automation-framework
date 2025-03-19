@@ -26,7 +26,7 @@
             <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderOptionNotDisplayedInCustomerProfileScreenIfTurnedOffTest"/>
             <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderCustomerNameDisplayedInScanToOrderScreenTest"/>
             <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderUsersCanRemoveItemsUsingBinIconTest"/>
-
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderUserCannotEditFullfillmentTypeAndPickupDateFromReviewScreenTest"/>
 
 
         </classes>
