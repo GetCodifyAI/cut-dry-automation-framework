@@ -123,17 +123,16 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run nightly tests 2 and 3
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression2.xml -Drun.headless=true -Dtest.env=uat
-#          command: |
-#            if [ "$CIRCLE_NODE_INDEX" == "0" ]; then
-#               echo "Running regression1.xml on this node"
-#               mvn clean test -Dsurefire.suiteXmlFiles=regression2.xml -Drun.headless=true -Dtest.env=uat
-#            elif [ "$CIRCLE_NODE_INDEX" == "1" ]; then
-#               echo "Running regression4.xml on this node"
-#               mvn clean test -Dsurefire.suiteXmlFiles=regression3.xml -Drun.headless=true -Dtest.env=uat
-#            else
-#               echo "No test suite assigned for this node"
-#            fi
+          command: |
+            if [ "$CIRCLE_NODE_INDEX" == "0" ]; then
+               echo "Running regression1.xml on this node"
+               mvn clean test -Dsurefire.suiteXmlFiles=regression2.xml -Drun.headless=true -Dtest.env=uat
+            elif [ "$CIRCLE_NODE_INDEX" == "1" ]; then
+               echo "Running regression4.xml on this node"
+               mvn clean test -Dsurefire.suiteXmlFiles=regression3.xml -Drun.headless=true -Dtest.env=uat
+            else
+               echo "No test suite assigned for this node"
+            fi
       - store_artifacts:
           path: target/surefire-reports
           destination: nightly-build-and-test-artifacts
@@ -871,18 +870,18 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "40 06 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_dev_new
+          cron: "30 20 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_dev_new
           filters:
             branches:
               only:
-                - ahsan_dev_new
+                - main
     jobs:
-#      - nightly-build-and-test-1-4
+      - nightly-build-and-test-1-4
       - nightly-build-and-test-2-3
-#      - nightly-build-and-test-5
-#      - nightly-build-and-test-6
-#      - nightly-build-and-test-7
-#      - nightly-build-and-test-8
+      - nightly-build-and-test-5
+      - nightly-build-and-test-6
+      - nightly-build-and-test-7
+      - nightly-build-and-test-8
 
 
   scheduled-test-2:
