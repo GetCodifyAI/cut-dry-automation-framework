@@ -182,7 +182,8 @@ public class CatalogPage extends LoginPage{
     By btn_deleteSubstitute = By.xpath("//div/*[local-name()='svg' and @data-icon='circle-xmark']");
     String multiUomDropDownCatalogStable = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[last()]";
 
-
+    By itemStatusDropdown = By.xpath("//label[contains(text(), 'Item Status')]/following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
+    String itemStatusOption = "(//div[contains(text(),'ITEMSTATUS') and contains(@class,'themed_select__option')])[last()]";
 
 
     public boolean isCatalogTextDisplayed() {
@@ -956,6 +957,11 @@ public class CatalogPage extends LoginPage{
     public void ClickOnCatalogMultiUomDropDownStable(String name)throws InterruptedException{
         distributorUI.waitForVisibility(By.xpath(multiUomDropDownCatalogStable.replace("NAME", name)));
         distributorUI.click(By.xpath(multiUomDropDownCatalogStable.replace("NAME", name)));
+    }
+    public void clickOnItemStatus(String itemStatus){
+        distributorUI.click(itemStatusDropdown);
+        distributorUI.waitForVisibility(By.xpath(itemStatusOption.replace("ITEMSTATUS",itemStatus)));
+        distributorUI.click(By.xpath(itemStatusOption.replace("ITEMSTATUS",itemStatus)));
     }
 
 }

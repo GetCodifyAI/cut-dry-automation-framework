@@ -13,9 +13,10 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheCatalogItemDataTest extends TestBase {
     static User user;
     String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
-    String itemCode = "00475";
+    String itemCode = "00563"; // 00475
     String Active = "Active";
     String InActive = "Inactive";
+    String All = "All";
 
     @BeforeMethod
     public void setUp(){
@@ -32,6 +33,7 @@ public class VerifyTheCatalogItemDataTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
+        Catalog.selectItemStatus(All);
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
         Catalog.selectProductActiveInactiveStatus(Active);

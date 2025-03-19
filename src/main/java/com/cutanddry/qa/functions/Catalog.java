@@ -569,6 +569,8 @@ public class Catalog {
     public static void ClickOnCatalogMultiUomDropDownStable(String name)throws InterruptedException{
         catalogPage.ClickOnCatalogMultiUomDropDownStable(name);
     }
-
+    public static void selectItemStatus(String itemStatus){
+        catalogPage.clickOnItemStatus(itemStatus);
+    }
 
 }
