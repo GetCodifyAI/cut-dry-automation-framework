@@ -1,3 +1,6 @@
+// The test is expected to fail because the feature to disable these fields is not implemented yet
+
+
 package com.cutanddry.qa.tests.scan_to_order;
 
 import com.cutanddry.qa.base.TestBase;
@@ -7,13 +10,12 @@ import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.functions.ScanToOrder;
 import com.cutanddry.qa.utils.JsonUtil;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyScanToOrderUsersCanRemoveItemsUsingBinIconTest extends TestBase {
+public class VerifyScanToOrderUserCannotEditFullfillmentTypeAndPickupDateFromReviewScreenTest extends TestBase {
 
     static User user;
     static String featureName = "scan_to_order";
@@ -21,8 +23,7 @@ public class VerifyScanToOrderUsersCanRemoveItemsUsingBinIconTest extends TestBa
     static String DP = "Independent Foods Co";
     static String CustomerCode = "21259";
     static String ItemCode1 = "87910";
-    static String emptyCartText1 = "Scan to add items to your cart";
-    static String emptyCartText2 = "Use the barcode scanner to scan the barcode on the item or";
+
 
     @BeforeMethod
     public void setup(){
@@ -30,8 +31,8 @@ public class VerifyScanToOrderUsersCanRemoveItemsUsingBinIconTest extends TestBa
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-1120")
-    public static void VerifyScanToOrderUsersCanRemoveItemsUsingBinIcon() throws InterruptedException{
+    @Test(groups = "DOT-TC-1132")
+    public static void VerifyScanToOrderUserCannotEditFullfillmentTypeAndPickupDateFromReviewScreen() throws InterruptedException {
 
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(),user.getPassword());
@@ -51,18 +52,18 @@ public class VerifyScanToOrderUsersCanRemoveItemsUsingBinIconTest extends TestBa
         softAssert.assertTrue(ScanToOrder.isItemAddedToTheCart(ItemCode1),"Item is not added to the cart");
         softAssert.assertTrue(ScanToOrder.isReviewAndConfirmBtnEnabled(),"Review and Confirm Button is not enabled");
 
-        ScanToOrder.deleteScanToOrderItems(ItemCode1);
-        softAssert.assertTrue(ScanToOrder.isEmptyCartTextDisplayed(emptyCartText1,emptyCartText2),"Item hasn't deleted successfully");
-        softAssert.assertAll();
-    }
+        ScanToOrder.ReviewAndConfirm();
+        softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
+        softAssert.assertFalse(ScanToOrder.isPickUpAndWillCallOptionEnabled(),"Fullfillment type is enabled ");
 
-    @AfterMethod
-    public void tearDown(ITestResult result) {
-        takeScreenshotOnFailure(result);
-        closeAllBrowsers();
+        softAssert.assertFalse(ScanToOrder.isDeliveryDatePickerEnabled(),"Pickup Dates are enabled");
+
+        softAssert.assertAll();
+
+
+
+
     }
 
 
 }
-
-

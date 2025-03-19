@@ -122,5 +122,13 @@ public class ScanToOrder {
        scanToOrderPage.deleteScanToOrderItems(ItemCode);
     }
 
+    public static boolean isPickUpAndWillCallOptionEnabled(){
+       return scanToOrderPage.isPickUpAndWillCallOptionEnabled();
+    }
+
+    public static boolean isDeliveryDatePickerEnabled(){
+       return scanToOrderPage.isDeliveryDatePickerEnabled();
+    }
+
 
 }
