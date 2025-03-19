@@ -58,7 +58,7 @@ public class VerifyScanToOrderUserCannotEditFullfillmentTypeAndPickupDateFromRev
 
         softAssert.assertFalse(ScanToOrder.isDeliveryDatePickerEnabled(),"Pickup Dates are enabled");
 
-       softAssert.assertAll();
+        softAssert.assertAll();
 
 
 
