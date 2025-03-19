@@ -142,6 +142,7 @@ public class ValidateThePoundSpotPricingWhenSelectingMultipleUOMTest extends Tes
         Customer.clickClose();
 
         Dashboard.navigateToCustomers();
+        Customer.refreshCustomersPage();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);

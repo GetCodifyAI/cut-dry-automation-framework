@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyRemovingFeaturedListTest extends TestBase {
     static User user;
-    String FeaturedListName = "TestList";
+    String FeaturedListName = "TestList"+generateDynamicValue();
 
 
     @BeforeMethod

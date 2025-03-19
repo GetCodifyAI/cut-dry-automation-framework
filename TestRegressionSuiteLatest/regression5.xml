@@ -1,0 +1,81 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="Part_Five" />
+        <classes>
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheCatalogFilterSidebarTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheCatalogClearAllFiltersTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheViewCatalogAsCustomerRadioButtonTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateAddProductFromPDPTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateAddProductToOrderGuideByClickPDPHeartIconTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheExportPDPTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateImageCarouselInPDPTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateImageThumbnailInPDPTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateAddingSpecialInstructionsTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateItemCountAndTotalValueTest" />
+
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheProductStatusInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheProprietaryItemInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheCategorySelectionInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheSubCategorySelectionInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheStorageMethodInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheDescriptionInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheOnSaleFilterInCatalogPricingAndPromotionsTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheNewArrivalFilterInCatalogPricingAndPromotionsTest" />
+
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheMarkAsPaidInMoreActionsTest"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyAddNewPaymentMethodInCustomerInvoicesTest"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyCancelAutoPayFlowinCustomerInvoices"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyDeletePaymentMethodInCustomerInvoicesTest"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyEditAutoPayDetailsEnabledStateinCustomerInvoice"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyEnableAutoPayInCustomerInvoices"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCCFeesCanEditInCustomerInvoices"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCutAndDryPayInCustomerInvoices"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheDetailsOnLastInvoicePaidOnInCustomerInvoices"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheEmailStatementInMoreActions"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheFilterCustomerInvoices"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheManageNotificationsInMoreActions"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheNotesCanEditInCustomerInvoices"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifythePaymentTermsincustomerInvoices"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheSendPaymentReminder"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTtheInviteBookkeeperInMoreActions"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheDownloadStatementInMoreActions"/>
+            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheCreateCreditMemoInMoreActionsTest"/>
+
+
+            <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor1OrMoreItemsWithSubstitutingTest" />
+            <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor0CountItemWithSubstitutingTest" />
+            <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor0CountItemWithoutSubstitutingTest" />
+            <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor1OrMoreItemsWithoutSubstitutingTest" />
+            <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemByIncreasingOrDecreasingQuantityTest" />
+            <class name="com.cutanddry.qa.tests.substitutions.VerifyTheMaximumAmountOfSubstituteItemsTest" />
+
+            <class name="com.cutanddry.qa.tests.dashboard.VerifyDashboardShowingSalespersonsRelatedChartsTest" />
+            <class name="com.cutanddry.qa.tests.dashboard.VerifyFunctionalityOfTeamStandingsTableTest" />
+
+            <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderReviewTest" />
+            <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderDetailsSupplierPortalTest" />
+            <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderDetailsCDAppTest" />
+
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByDateRangeTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByPayoutStatusTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByStatusFunctionality"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterInitiatedPaymentByTheCustomerFunctionality"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheDetailsByClickingOnOnePayoutRecordTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterPayoutPaymentsByDateTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheFilterPayoutPaymentByPayoutStatusTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifySelectInvoiceFromInvoiceGridTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyDownloadInvoiceTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyPrintInvoiceTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheInvoiceDisplayCorrectDataTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyThePayDetailsSummeryTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheDownloadFeatureInThePayoutSectionTest"/>
+
+        </classes>
+    </test>
+</suite>
