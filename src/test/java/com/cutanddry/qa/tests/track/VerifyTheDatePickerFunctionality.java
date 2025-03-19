@@ -28,7 +28,7 @@ public class VerifyTheDatePickerFunctionality extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-871")
+    @Test(groups = "DOT-TC-916")
     public void VerifyTheDatePickerFunctionality() throws InterruptedException, URISyntaxException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
