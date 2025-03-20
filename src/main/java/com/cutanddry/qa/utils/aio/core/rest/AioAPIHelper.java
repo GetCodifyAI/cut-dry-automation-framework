@@ -22,7 +22,7 @@ public class AioAPIHelper {
     private static final String IMPORT_RESULTS = "/project/{projectKey}/testcycle/{cycleKey}/import/results?type={type}";
     private static final String UPLOAD_RUN_ATTACHMENT = "/project/{projectKey}/testcycle/{cycleKey}/testcase/{caseKey}/attachment";
     private static RequestSpecification defaultRequestSpec;
-    private static SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy");
+    private static SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy_HH_mm_ss");
     private static String todayDate = formatter.format(new Date());
 
     static  {
