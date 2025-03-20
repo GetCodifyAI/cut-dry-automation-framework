@@ -710,6 +710,7 @@ workflows:
     jobs:
         - nightly-build-and-test-8
 
+
   scheduled-test-2:
     triggers:
       - schedule:
@@ -725,7 +726,6 @@ workflows:
       - daily-build-and-test-4
       - daily-build-and-test-5
       - daily-build-and-test-6
-
 
   scheduled-test-2-sub1:
     triggers:
