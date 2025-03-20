@@ -1,6 +1,8 @@
 package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
+import java.util.NoSuchElementException;
+
 
 public class DraftPage extends LoginPage{
     By txt_drafts = By.xpath("//li[contains(text(),'Drafts')]");
@@ -190,6 +192,12 @@ public class DraftPage extends LoginPage{
         distributorUI.waitForVisibility(By.xpath(pendingApproval.replace("STATUS", status)));
         distributorUI.click(By.xpath(pendingApproval.replace("STATUS", status)));
     }
-
+    public boolean isDraftOrderReferenceNotDisplayedInOPSide() {
+        try {
+            return !distributorUI.isDisplayed(referenceNumDP);
+        } catch (NoSuchElementException e) {
+            return true;
+        }
+    }
 
 }
