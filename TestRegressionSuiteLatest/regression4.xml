@@ -89,10 +89,14 @@
             <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfShowLastOrderedPriceOnForCustomerPortalTest"/>
             <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfShowLastOrderedPriceOffForCustomerPortalTest"/>
 
-            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromPDPTest"/>
-            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsViaOrderGuideCatalogPDPTest"/>
-            <class name="com.cutanddry.qa.tests.draft.ValidateDraftOrdersAreOnlyAppearing30DaysTest"/>
-            <class name="com.cutanddry.qa.tests.draft.VerifyPendingApprovalsAreNotClickableTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheFinalWeightWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSpotPricingWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateThePoundSpotPricingWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSplitWeightWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurantPortalsTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheRemoveANewlyAddedUOMsToAnItemAndCheckFromTheDistributorAndRestaurantPortalsTest"/>
         </classes>
     </test>
 </suite>
