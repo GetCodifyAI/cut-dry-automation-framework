@@ -235,19 +235,4 @@ public class ScanToOrderPage extends LoginPage{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

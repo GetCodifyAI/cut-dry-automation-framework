@@ -97,5 +97,9 @@ public class Draft {
        draftPage.pendingApprovalDraftClick(status);
     }
 
+    public static boolean isDraftOrderReferenceNotDisplayedInOPSide(){
+        return draftPage.isDraftOrderReferenceNotDisplayedInOPSide();
+    }
+
 
 }
