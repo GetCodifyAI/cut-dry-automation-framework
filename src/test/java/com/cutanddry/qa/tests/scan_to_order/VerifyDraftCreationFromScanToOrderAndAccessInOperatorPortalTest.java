@@ -75,7 +75,7 @@ public class VerifyDraftCreationFromScanToOrderAndAccessInOperatorPortalTest ext
 
         Dashboard.navigateToDrafts();
         softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
-        softAssert.assertNotEquals(Draft.isDraftOrderReferenceNotDisplayedInOPSide(), referenceNum, "draft order not created in OP side");
+        softAssert.assertFalse(Draft.isDraftOrderReferenceNotDisplayedInOPSide(), "draft order not created in OP side");
 
         softAssert.assertAll();
 

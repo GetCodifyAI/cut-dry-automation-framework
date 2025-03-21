@@ -1,7 +1,7 @@
 package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
-import java.util.NoSuchElementException;
+
 
 
 public class DraftPage extends LoginPage{
@@ -193,11 +193,7 @@ public class DraftPage extends LoginPage{
         distributorUI.click(By.xpath(pendingApproval.replace("STATUS", status)));
     }
     public boolean isDraftOrderReferenceNotDisplayedInOPSide() {
-        try {
-            return !distributorUI.isDisplayed(referenceNumDP);
-        } catch (NoSuchElementException e) {
-            return true;
-        }
+            return distributorUI.isDisplayed(referenceNumDP);
     }
 
 }
