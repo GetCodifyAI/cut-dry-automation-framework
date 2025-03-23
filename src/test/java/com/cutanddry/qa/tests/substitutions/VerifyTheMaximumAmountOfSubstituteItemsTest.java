@@ -60,7 +60,7 @@ public class VerifyTheMaximumAmountOfSubstituteItemsTest extends TestBase {
         itemName = Customer.getItemNameFirstRow();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         Customer.increaseFirstRowQtyByOneInDist();
-        Customer.checkoutItemsDist();
+        Customer.checkoutSubstituteItems();
         softAssert.assertTrue(Customer.isSubstitutesPopupDisplayed(),"substitutes popup error");
 //        softAssert.assertEquals(Customer.getSubstituteItemsCount(4), 4, "max sub items count error");
         softAssert.assertEquals(Customer.getSubstituteItemsCount(), 4, "max sub items count error");
