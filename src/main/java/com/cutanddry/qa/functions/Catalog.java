@@ -23,7 +23,9 @@ public class Catalog {
     public static void DownloadPDF() {
         catalogPage.clickExportPdf();
     }
-    public static void SearchItemInCatalogByItemCode(String ItemCode){catalogPage.TypeSearchInCatalogSearch(ItemCode);}
+    public static void SearchItemInCatalogByItemCode(String ItemCode){
+        catalogPage.clickOnItemStatus("All");
+        catalogPage.TypeSearchInCatalogSearch(ItemCode);}
     public static void SelectItemAfterSearch(String ItemCode){catalogPage.ClickOnItemCode(ItemCode);}
     public static void ClickOnPreview(){
         catalogPage.ClickOnPreviewBtn();
@@ -56,6 +58,7 @@ public class Catalog {
     }
 
     public static void selectItemFromGrid(String itemCode){
+        catalogPage.clickOnItemStatus("All");
         catalogPage.clickonItemOnCatalogPage(itemCode);
     }
 
@@ -236,6 +239,7 @@ public class Catalog {
     }
 
     public static void searchItemInCatalog(String itemName){
+        catalogPage.clickOnItemStatus("All");
         catalogPage.clickSearchItemInCatalog(itemName);
     }
 

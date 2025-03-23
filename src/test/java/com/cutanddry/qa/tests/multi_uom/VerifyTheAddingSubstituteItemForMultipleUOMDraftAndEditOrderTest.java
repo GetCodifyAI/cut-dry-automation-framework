@@ -48,6 +48,7 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest ex
         Catalog.searchItemInCatalog(searchItemCode);
         Catalog.selectItemFromGrid(searchItemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),searchItemCode,"Error in getting Item Code");
+
         Catalog.navigateToSubstituteTab();
         Catalog.removeExistingItem(substituteItemCode);
         Catalog.addSubstitutions();
@@ -74,7 +75,7 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest ex
         totalPDPItemPrice = Customer.getItemPriceOnCheckoutButtonViaPDP();
         softAssert.assertEquals(Math.round(totalPDPItemPrice * 100.0) / 100.0,
                 ((Math.round(itemPriceUOM1 * 100.0) / 100.0)+(Math.round(itemPriceUOM2 * 100.0) / 100.0)), "The item has not been selected.");
-        Customer.clickCheckOutPDP();
+        Customer.clickCheckOutPDPSubstitute();
 
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         softAssert.assertTrue(Customer.isSubstitutionTextDisplayed(),"Substitution add error");
@@ -115,7 +116,7 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest ex
         totalPDPItemPrice2 = Customer.getItemPriceOnCheckoutButtonViaPDP();
         softAssert.assertEquals(Math.round(totalPDPItemPrice2 * 100.0) / 100.0,
                 ((Math.round(itemPriceUOM1 * 100.0) / 100.0)+(Math.round(itemPriceUOM2 * 100.0) / 100.0)+(Math.round(totalPDPItemPrice * 100.0) / 100.0)), "The item has not been selected.");
-        Customer.clickCheckOutPDP();
+        Customer.clickCheckOutPDPSubstitute();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         totalItemPriceReviewOrder = Catalog.getTotalPriceInReviewOrder();
         totalItemQuantityReviewOrder = Catalog.getTotalQuantityInReviewOrder();

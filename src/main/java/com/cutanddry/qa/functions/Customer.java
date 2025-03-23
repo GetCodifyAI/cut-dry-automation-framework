@@ -81,6 +81,10 @@ public class Customer {
     }
     public static void checkoutItems() throws InterruptedException {
         customersPage.clickOnCheckoutButton();
+        if(customersPage.isSubstitutesPopupDisplayed()){
+            customersPage.clickDoNotSubstitute();
+            customersPage.clickSaveSelection();
+        }
         if (customersPage.isOrderMiniumErrorBannerDisplayed()){
             dashboardPage.clickOnOrderSettings();
             settingsPage.selectOnOrderMinimums();
@@ -89,9 +93,6 @@ public class Customer {
         }
         if (customersPage.isPreviousDraftOrderNoDisplayed()){
             customersPage.clickPreviousDraftOrderNo();
-        }
-        if(customersPage.isSubstitutesPopupDisplayed()){
-            customersPage.clickDoNotSubstitute();
         }
     }
     public static void goToCatalog() throws InterruptedException {
@@ -326,6 +327,7 @@ public class Customer {
     public static boolean isReviewOrderTextDisplayed(){
         if(customersPage.isSubstitutesPopupDisplayed()){
             customersPage.clickDoNotSubstitute();
+            customersPage.clickSaveSelection();
         }
         return customersPage.isReviewOrderTextDisplayed();
     }
@@ -432,6 +434,13 @@ public class Customer {
         customersPage.clickPlusQryFirstRowInDist();
     }
     public static void checkoutItemsDist() throws InterruptedException {
+        customersPage.clickOnCheckoutButtonInDist();
+        if(customersPage.isSubstitutesPopupDisplayed()){
+            customersPage.clickDoNotSubstitute();
+            customersPage.clickSaveSelection();
+        }
+    }
+    public static void checkoutSubstituteItems() throws InterruptedException {
         customersPage.clickOnCheckoutButtonInDist();
     }
     public static boolean isMultiDistCentersDisplayed(){
@@ -1338,7 +1347,16 @@ public class Customer {
         customersPage.clickOnProduct(name);
     }
     public static void clickAddToCartPDP(){customersPage.clickAddToCart();}
-    public static void clickCheckOutPDP(){customersPage.clickCheckOutPDP();}
+    public static void clickCheckOutPDP(){
+        customersPage.clickCheckOutPDP();
+        if(customersPage.isSubstitutesPopupDisplayed()){
+            customersPage.clickDoNotSubstitute();
+            customersPage.clickSaveSelection();
+        }
+    }
+    public static void clickCheckOutPDPSubstitute() {
+        customersPage.clickCheckOutPDP();
+    }
     public static boolean isOrderSubmitSuccessfully(){
         return customersPage.isOrderSubmitSuccessfully();}
     public static void clickOrderGuide(){customersPage.clickOrderGuide();}
@@ -1835,6 +1853,10 @@ public class Customer {
             customersPage.clickPreviousDraftOrderNo();
         }
         customersPage.clickCheckOutOrderGuide();
+        if(customersPage.isSubstitutesPopupDisplayed()){
+            customersPage.clickDoNotSubstitute();
+            customersPage.clickSaveSelection();
+        }
     }
     public static String getItemFinalWeight() throws InterruptedException {
         return customersPage.getItemFinalWeight();
@@ -1938,6 +1960,10 @@ public class Customer {
     }
     public static void clickOnCheckOutReview(){
         customersPage.clickOnCheckOutReview();
+        if(customersPage.isSubstitutesPopupDisplayed()){
+            customersPage.clickDoNotSubstitute();
+            customersPage.clickSaveSelection();
+        }
     }
     public static double getSplitFinalWeightPrice() throws InterruptedException {
         return customersPage.getSplitFinalWeightPrice();
@@ -2013,18 +2039,19 @@ public class Customer {
 
     public static void checkoutItemsMultiOUM() throws InterruptedException {
         customersPage.clickCheckOutOrderGuide();
-        /*if (customersPage.isOrderMiniumErrorBannerDisplayed()){
+        if(customersPage.isSubstitutesPopupDisplayed()){
+            customersPage.clickDoNotSubstitute();
+            customersPage.clickSaveSelection();
+        }
+        if (customersPage.isOrderMiniumErrorBannerDisplayed()){
             dashboardPage.clickOnOrderSettings();
             settingsPage.selectOnOrderMinimums();
             settingsPage.clickOnSaveChanges();
             customersPage.clickOnBack();
-        }*/
+        }
         if (customersPage.isPreviousDraftOrderNoDisplayed()){
             customersPage.clickPreviousDraftOrderNo();
         }
-        /*if(customersPage.isSubstitutesPopupDisplayed()){
-            customersPage.clickDoNotSubstitute();
-        }*/
     }
 
     public static void ClickOnMultiUomDropDownOG(String code)throws InterruptedException{
