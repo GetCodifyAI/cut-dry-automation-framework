@@ -23,6 +23,11 @@
             <class name="com.cutanddry.qa.tests.price.ValidateThePoundSpotPricingTest"/>
             <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingNotFromPricingEngineTest"/>
             <class name="com.cutanddry.qa.tests.price.ValidateTheSplitWeightTest"/>
+
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnCatalogCardTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnPDPViewTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnCatalogCardOperatorTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnPDPViewOperatorTest"/>
         </classes>
     </test>
 </suite>
