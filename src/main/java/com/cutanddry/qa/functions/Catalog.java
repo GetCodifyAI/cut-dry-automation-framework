@@ -576,5 +576,14 @@ public class Catalog {
     public static void selectItemStatus(String itemStatus){
         catalogPage.clickOnItemStatus(itemStatus);
     }
+    public static boolean isLastOrderDateDisplayed(String date)throws InterruptedException{
+        return catalogPage.isLastOrderDateDisplayed(date);
+    }
+    public static void clickPurchaseHistory(){
+        catalogPage.clickPurchaseHistory();
+    }
+    public static boolean isLastOrderDatePDPDisplayed(String date)throws InterruptedException{
+        return catalogPage.isLastOrderDatePDPDisplayed(date);
+    }
 
 }
