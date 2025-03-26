@@ -12,6 +12,7 @@ public class DraftsData {
     public static final String CREATED_BY_DROP_DOWN_OPTION = "Customers";
     public static final String CREATED_BY_DROP_DOWN_OPTION2 = "mashan";
     public static final String SEARCH_DATA = "Test drafts";
-    public static final String RESTAURANT_USER_NAME = "hadley+employee";
+    //public static final String RESTAURANT_USER_NAME = "hadley+employee";
+    public static final String RESTAURANT_USER_NAME = "Wlaemployee";
     public static final String STATUS = "Pending Approval";
 }
