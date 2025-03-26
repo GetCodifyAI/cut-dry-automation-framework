@@ -2225,6 +2225,21 @@ public class Customer {
     public static String getCatalogFirstItemItemCode(){
         return customersPage.getFirstItemItemCodeFromCatalog();
     }
+    public static void submitOrderMinimum(){
+        customersPage.submitOrder();
+    }
+    public static void clickYesOrderMinimum(){
+        customersPage.clickOnYes();
+        if (customersPage.isDuplicatePopupDisplayed()){
+            customersPage.clickYesDuplicatePopup();
+        }
+    }
+    public static void clickOkOrderMinimum(){
+        customersPage.clickOK();
+        if (customersPage.isDuplicatePopupDisplayed()){
+            customersPage.clickYesDuplicatePopup();
+        }
+    }
 
 }
 

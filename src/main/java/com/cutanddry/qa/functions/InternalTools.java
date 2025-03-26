@@ -93,4 +93,22 @@ public class InternalTools {
         internalToolsPage.clickOKOnSucessOverlay();
 
     }
+    public static void TurnOnOrderMinimumGloballyToggle(boolean status){
+        internalToolsPage.clickTurnOnOrderMinimumGloballyToggle(status);
+    }
+    public static void clickOnOrderMinimumDropdown(String type){
+        internalToolsPage.clickOnOrderMinimumDropdown(type);
+    }
+    public static void enterOrderMinimum(String min){
+        internalToolsPage.enterOrderMinimum(min);
+    }
+    public static void clickSave(){
+        internalToolsPage.clickSave();
+    }
+    public static void clickOKOnSucessOverlay(){
+        internalToolsPage.clickOKOnSucessOverlay();
+    }
+    public static boolean isSuccessPopUpDisplayed(){
+        return internalToolsPage.isSuccessPopUpDisplayed();
+    }
 }

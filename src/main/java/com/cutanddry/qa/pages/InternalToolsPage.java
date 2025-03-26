@@ -23,6 +23,12 @@ public class InternalToolsPage extends LoginPage {
     By btn_saveRebate = By.xpath("//div[contains(h4, 'Rebates')]/button[contains(@class, 'btn') and text()='Save']");
     By lastOrderedPoundPriceToggleStable = By.xpath("//div[contains(text(), 'Show Last Ordered Pound Price in Order Guide')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By lastOrderedPoundPriceToggleStable1 = By.xpath("//div[contains(text(), 'Show Last Ordered Pound Price in Order Guide')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By orderMinimumGloballyToggleStable = By.xpath("//div[contains(text(), 'Enable Soft/Hard order minimum globally')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By orderMinimumGloballyToggleStable1 = By.xpath("//div[contains(text(), 'Enable Soft/Hard order minimum globally')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By orderMinimumDropDown = By.xpath("//div[text()='Order minimum type: ']/following-sibling::div/div");
+    String orderMinimumDropDownOption = "(//div[text()='TYPE'])[last()]";
+    By addOrderMinimum = By.xpath("//div[contains(text(),'Soft order Minimum Surcharge')]/following-sibling::div/input");
+    By txt_success = By.xpath("//h2[contains(text(),'Success')]");
 
 
     public void clickConfigureSupplier(){
@@ -160,4 +166,33 @@ public class InternalToolsPage extends LoginPage {
     public void clickRebateSave(){
         distributorUI.clickWithScrollAndHover(btn_saveRebate);
     }
+    public void clickTurnOnOrderMinimumGloballyToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(orderMinimumGloballyToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(orderMinimumGloballyToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(orderMinimumGloballyToggleStable1);
+        }
+    }
+    public void clickOnOrderMinimumDropdown(String type){
+        distributorUI.click(orderMinimumDropDown);
+        distributorUI.click(By.xpath(orderMinimumDropDownOption.replace("TYPE",type)));
+    }
+    public void enterOrderMinimum(String minimum){
+        distributorUI.click(addOrderMinimum);
+        distributorUI.clear(addOrderMinimum);
+        distributorUI.sendKeys(addOrderMinimum,minimum);
+    }
+    public void clickSave(){
+        distributorUI.scrollToElement(SaveBtn);
+        distributorUI.waitForVisibility(SaveBtn);
+        distributorUI.clickUsingJavaScript(SaveBtn);
+    }
+    public boolean isSuccessPopUpDisplayed(){
+        return distributorUI.isDisplayed(txt_success);
+    }
+
 }
