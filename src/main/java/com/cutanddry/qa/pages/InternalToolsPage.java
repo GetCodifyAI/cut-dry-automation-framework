@@ -29,6 +29,12 @@ public class InternalToolsPage extends LoginPage {
     String orderMinimumDropDownOption = "(//div[text()='TYPE'])[last()]";
     By addOrderMinimum = By.xpath("//div[contains(text(),'Soft order Minimum Surcharge')]/following-sibling::div/input");
     By txt_success = By.xpath("//h2[contains(text(),'Success')]");
+    By payDetailsTab = By.xpath("//a[contains(text(),'Pay Details')]");
+    By payDetailsToggleStable = By.xpath("//label[contains(text(), 'Pay Enabled For All Users: ')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By payDetailsToggleStable1 = By.xpath("//label[contains(text(), 'Pay Enabled For All Users: ')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    String payEnableRestaurant = "//label[contains(text(), 'Pay Enabled Restaurants')]/following-sibling::div//div[text()='NAME']";
+    String payDisableRestaurant = "//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div[text()='NAME']";
+
 
 
     public void clickConfigureSupplier(){
@@ -193,6 +199,32 @@ public class InternalToolsPage extends LoginPage {
     }
     public boolean isSuccessPopUpDisplayed(){
         return distributorUI.isDisplayed(txt_success);
+    }
+    public void navigateToPayDetailsTab(){
+        distributorUI.waitForVisibility(payDetailsTab);
+        distributorUI.click(payDetailsTab);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void clickPayDetailsToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(payDetailsToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(payDetailsToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(payDetailsToggleStable1);
+        }
+    }
+    public boolean isPayEnableRestaurantDisplayed(String name){
+        return distributorUI.isDisplayed(By.xpath(payEnableRestaurant.replace("NAME", name)));
+    }
+    public boolean isPayDisableRestaurantDisplayed(String name){
+        return distributorUI.isDisplayed(By.xpath(payDisableRestaurant.replace("NAME", name)));
     }
 
 }

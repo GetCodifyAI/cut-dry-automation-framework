@@ -346,4 +346,7 @@ public class Pay {
     public static boolean isPastDueAmountDisplayed(){
         return payPage.isPastDueAmountDisplayed();
     }
+    public static void clickCutAndDryPayToggle(boolean status){
+        payPage.clickCutAndDryPayToggle(status);
+    }
 }
