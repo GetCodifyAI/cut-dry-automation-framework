@@ -111,4 +111,17 @@ public class InternalTools {
     public static boolean isSuccessPopUpDisplayed(){
         return internalToolsPage.isSuccessPopUpDisplayed();
     }
+    public static void navigateToPayDetailsTab(){
+        internalToolsPage.navigateToPayDetailsTab();
+    }
+    public static void clickPayDetailsToggle(boolean status){
+        internalToolsPage.clickPayDetailsToggle(status);
+    }
+    public static boolean isPayEnableRestaurantDisplayed(String name){
+        return internalToolsPage.isPayEnableRestaurantDisplayed(name);
+    }
+    public static boolean isPayDisableRestaurantDisplayed(String name){
+        return internalToolsPage.isPayDisableRestaurantDisplayed(name);
+    }
+
 }
