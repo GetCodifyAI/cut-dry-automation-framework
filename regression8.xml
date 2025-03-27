@@ -35,7 +35,7 @@
             <class name="com.cutanddry.qa.tests.pay.VerifyTheEnablePayForTheCustomerThroughToggleButtonTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheDisablePayForTheCustomerThroughToggleButtonTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheEnablePayForTheCustomerThroughSupplierConfigTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheDisablePayForTheCustomerThroughSupplierConfigTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheDisablePayForTheCustomerWhenPayEnabledForAllUsersEnabledTest"/>
         </classes>
     </test>
 </suite>

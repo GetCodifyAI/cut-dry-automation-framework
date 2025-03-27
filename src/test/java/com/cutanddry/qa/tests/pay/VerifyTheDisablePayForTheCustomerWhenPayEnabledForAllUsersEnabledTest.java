@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheDisablePayForTheCustomerThroughSupplierConfigTest extends TestBase {
+public class VerifyTheDisablePayForTheCustomerWhenPayEnabledForAllUsersEnabledTest extends TestBase {
     SoftAssert softAssert;
     static User user;
     static String customerId = "44939";
@@ -25,8 +25,8 @@ public class VerifyTheDisablePayForTheCustomerThroughSupplierConfigTest extends 
     }
 
 
-    @Test(groups = "DOT-TC-1134")
-    public void VerifyTheDisablePayForTheCustomerThroughSupplierConfig() throws InterruptedException {
+    @Test(groups = "DOT-TC-1135")
+    public void VerifyTheDisablePayForTheCustomerWhenPayEnabledForAllUsersEnabled() throws InterruptedException {
 
         softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
@@ -35,7 +35,7 @@ public class VerifyTheDisablePayForTheCustomerThroughSupplierConfigTest extends 
         InternalTools.navigateToConfigureSupplier();
         InternalTools.navigateToIndependentCompEditDetails();
         InternalTools.navigateToPayDetailsTab();
-        InternalTools.clickPayDetailsToggle(true);
+        InternalTools.clickPayEnabledToggle(true);
         InternalTools.clickSave();
       //  softAssert.assertTrue(InternalTools.isSuccessPopUpDisplayed(),"change not save");
         InternalTools.clickOKOnSucessOverlay();
