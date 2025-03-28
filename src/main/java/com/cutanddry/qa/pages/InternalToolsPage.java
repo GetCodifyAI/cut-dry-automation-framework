@@ -34,6 +34,13 @@ public class InternalToolsPage extends LoginPage {
     By payDetailsToggleStable1 = By.xpath("//label[contains(text(), 'Pay Enabled For All Users: ')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     String payEnableRestaurant = "//label[contains(text(), 'Pay Enabled Restaurants')]/following-sibling::div//div[text()='NAME']";
     String payDisableRestaurant = "//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div[text()='NAME']";
+    String payEnableRestaurantDelete = "//label[contains(text(), 'Pay Enabled Restaurants')]/following-sibling::div//div[text()='NAME']/following-sibling::div";
+    String payDisableRestaurantDelete = "//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div[text()='NAME']/following-sibling::div";
+    By addCustomerToPayDisable = By.xpath("//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div/div");
+    String selectDisableCustomer = "//div[contains(text(), 'NAME')]";
+    By addCustomerToPayEnable = By.xpath("//label[contains(text(), 'Pay Enabled Restaurants')]/following-sibling::div/div");
+    By checkboxLocatorCreditMemo = By.xpath("//label[contains(text(),'Enable Auto Apply Credit Memos')]/..//input");
+
 
 
 
@@ -209,7 +216,7 @@ public class InternalToolsPage extends LoginPage {
             throw new RuntimeException(e);
         }
     }
-    public void clickPayDetailsToggle(boolean enable) {
+    public void clickPayEnabledToggle(boolean enable) {
 
         String handlePosition = distributorUI.getElement(payDetailsToggleStable).getAttribute("style");
         boolean isEnabled = handlePosition.contains("translateX(29px)");
@@ -225,6 +232,34 @@ public class InternalToolsPage extends LoginPage {
     }
     public boolean isPayDisableRestaurantDisplayed(String name){
         return distributorUI.isDisplayed(By.xpath(payDisableRestaurant.replace("NAME", name)));
+    }
+    public void deleteRestaurantInPayEnable(String name){
+        distributorUI.click(By.xpath(payEnableRestaurantDelete.replace("NAME", name)));
+    }
+    public void addCustomerToPayDisable(String name)throws InterruptedException{
+        distributorUI.click(addCustomerToPayDisable);
+        distributorUI.scrollToElement(By.xpath(selectDisableCustomer.replace("NAME", name)));
+        distributorUI.click(By.xpath(selectDisableCustomer.replace("NAME", name)));
+        distributorUI.waitForCustom(3000);
+    }
+    public void deleteRestaurantInPayDisable(String name){
+        distributorUI.click(By.xpath(payDisableRestaurantDelete.replace("NAME", name)));
+    }
+    public void addCustomerToPayEnable(String name)throws InterruptedException{
+        distributorUI.click(addCustomerToPayEnable);
+        distributorUI.scrollToElement(By.xpath(selectDisableCustomer.replace("NAME", name)));
+        distributorUI.click(By.xpath(selectDisableCustomer.replace("NAME", name)));
+        distributorUI.waitForCustom(3000);
+    }
+    public void clickCreditMemoCheckbox(boolean enable) {
+
+        boolean isChecked = distributorUI.getElement(checkboxLocatorCreditMemo).isSelected();
+
+        if (enable && !isChecked) {
+            distributorUI.click(checkboxLocatorCreditMemo); // Check the box if not checked
+        } else if (!enable && isChecked) {
+            distributorUI.click(checkboxLocatorCreditMemo); // Uncheck the box if already checked
+        }
     }
 
 }
