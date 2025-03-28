@@ -13,9 +13,9 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheDisablePayForTheCustomerThroughSupplierConfigTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    static String customerId = "44939";
+    static String customerId = "45897";
     String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
-    static String restaurantName = "Kafe Layers #1 Test";
+    static String restaurantName = "Kafe Layers #4 Test";
 
 
     @BeforeMethod
@@ -35,7 +35,8 @@ public class VerifyTheDisablePayForTheCustomerThroughSupplierConfigTest extends 
         InternalTools.navigateToConfigureSupplier();
         InternalTools.navigateToIndependentCompEditDetails();
         InternalTools.navigateToPayDetailsTab();
-        InternalTools.clickPayDetailsToggle(true);
+        InternalTools.clickPayEnabledToggle(true);
+        InternalTools.addCustomerToPayDisable(restaurantName);
         InternalTools.clickSave();
       //  softAssert.assertTrue(InternalTools.isSuccessPopUpDisplayed(),"change not save");
         InternalTools.clickOKOnSucessOverlay();
@@ -47,13 +48,17 @@ public class VerifyTheDisablePayForTheCustomerThroughSupplierConfigTest extends 
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickonInvoice();
-        Pay.clickCutAndDryPayToggle(false);
+        softAssert.assertFalse(Pay.isCutAndDryPayToggleEnabled(),"cut and dry pay enable");
 
         Login.navigateToInternalToolsPage();
         InternalTools.navigateToConfigureSupplier();
         InternalTools.navigateToIndependentCompEditDetails();
         InternalTools.navigateToPayDetailsTab();
-        softAssert.assertTrue(InternalTools.isPayDisableRestaurantDisplayed(restaurantName),"restaurant not display");
+        InternalTools.clickPayEnabledToggle(true);
+        InternalTools.deleteRestaurantInPayDisable(restaurantName);
+        InternalTools.clickSave();
+        //  softAssert.assertTrue(InternalTools.isSuccessPopUpDisplayed(),"change not save");
+        InternalTools.clickOKOnSucessOverlay();
         softAssert.assertAll();
     }
     @AfterMethod

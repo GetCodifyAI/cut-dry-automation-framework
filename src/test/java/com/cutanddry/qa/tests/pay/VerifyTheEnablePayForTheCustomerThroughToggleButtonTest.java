@@ -36,7 +36,7 @@ public class VerifyTheEnablePayForTheCustomerThroughToggleButtonTest extends Tes
         InternalTools.navigateToConfigureSupplier();
         InternalTools.navigateToIndependentCompEditDetails();
         InternalTools.navigateToPayDetailsTab();
-        InternalTools.clickPayDetailsToggle(false);
+        InternalTools.clickPayEnabledToggle(false);
         InternalTools.clickSave();
       //  softAssert.assertTrue(InternalTools.isSuccessPopUpDisplayed(),"change not save");
         InternalTools.clickOKOnSucessOverlay();

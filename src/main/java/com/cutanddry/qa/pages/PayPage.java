@@ -113,6 +113,7 @@ public class PayPage extends LoginPage{
     String lbl_payInvoiceDate = "//table/thead/tr/th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[ROW]/td[COUNT]";
     By cutAndDryPayToggleStable = By.xpath("//div[contains(text(), 'Cut+Dry Pay')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By cutAndDryPayToggleStable1 = By.xpath("//div[contains(text(), 'Cut+Dry Pay')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By creditMemoDisplay = By.xpath("//div[text()='Credit Memos (0)']");
 
 
     public boolean isPaymentStatusCorrect(String expectedPaymentStatus) {
@@ -835,6 +836,18 @@ public class PayPage extends LoginPage{
             distributorUI.click(btn_markInvoiceYes);
         }
     }
+    public boolean isCutAndDryPayToggleEnabled() {
+        return distributorUI.getElement(cutAndDryPayToggleStable)
+                .getAttribute("style")
+                .contains("translateX(66px)");
+    }
+    public boolean isCreditMemoDisplayed()throws InterruptedException{
+        distributorUI.waitForCustom(3000);
+        return distributorUI.isDisplayed(creditMemoDisplay);
+    }
+
+
+
 
 
 

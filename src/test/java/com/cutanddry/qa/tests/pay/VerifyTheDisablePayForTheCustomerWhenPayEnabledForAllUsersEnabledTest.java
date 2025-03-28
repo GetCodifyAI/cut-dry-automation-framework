@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheEnablePayForTheCustomerThroughSupplierConfigTest extends TestBase {
+public class VerifyTheDisablePayForTheCustomerWhenPayEnabledForAllUsersEnabledTest extends TestBase {
     SoftAssert softAssert;
     static User user;
     static String customerId = "44939";
@@ -25,8 +25,8 @@ public class VerifyTheEnablePayForTheCustomerThroughSupplierConfigTest extends T
     }
 
 
-    @Test(groups = "DOT-TC-1131")
-    public void VerifyTheEnablePayForTheCustomerThroughSupplierConfig() throws InterruptedException {
+    @Test(groups = "DOT-TC-1135")
+    public void VerifyTheDisablePayForTheCustomerWhenPayEnabledForAllUsersEnabled() throws InterruptedException {
 
         softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
@@ -47,13 +47,13 @@ public class VerifyTheEnablePayForTheCustomerThroughSupplierConfigTest extends T
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickonInvoice();
-        Pay.clickCutAndDryPayToggle(true);
+        Pay.clickCutAndDryPayToggle(false);
 
         Login.navigateToInternalToolsPage();
         InternalTools.navigateToConfigureSupplier();
         InternalTools.navigateToIndependentCompEditDetails();
         InternalTools.navigateToPayDetailsTab();
-        softAssert.assertFalse(InternalTools.isPayDisableRestaurantDisplayed(restaurantName),"restaurant not display");
+        softAssert.assertTrue(InternalTools.isPayDisableRestaurantDisplayed(restaurantName),"restaurant not display");
         softAssert.assertAll();
     }
     @AfterMethod

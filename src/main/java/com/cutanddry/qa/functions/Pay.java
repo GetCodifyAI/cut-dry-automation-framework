@@ -349,4 +349,10 @@ public class Pay {
     public static void clickCutAndDryPayToggle(boolean status){
         payPage.clickCutAndDryPayToggle(status);
     }
+    public static boolean isCutAndDryPayToggleEnabled(){
+        return payPage.isCutAndDryPayToggleEnabled();
+    }
+    public static boolean isCreditMemoDisplayed() throws InterruptedException {
+        return payPage.isCreditMemoDisplayed();
+    }
 }

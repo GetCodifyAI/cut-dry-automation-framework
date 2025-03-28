@@ -10,12 +10,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheEnablePayForTheCustomerThroughSupplierConfigTest extends TestBase {
+public class VerifyTheEnablePayForTheCustomerThroughSupplierConfigWhenDisableTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    static String customerId = "44939";
+    static String customerId = "25212";
     String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
-    static String restaurantName = "Kafe Layers #1 Test";
+    static String restaurantName = "Kafe Layers #2 Test";
 
 
     @BeforeMethod
@@ -25,8 +25,8 @@ public class VerifyTheEnablePayForTheCustomerThroughSupplierConfigTest extends T
     }
 
 
-    @Test(groups = "DOT-TC-1131")
-    public void VerifyTheEnablePayForTheCustomerThroughSupplierConfig() throws InterruptedException {
+    @Test(groups = "DOT-TC-1139")
+    public void VerifyTheEnablePayForTheCustomerThroughSupplierConfigWhenDisable() throws InterruptedException {
 
         softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
@@ -35,7 +35,8 @@ public class VerifyTheEnablePayForTheCustomerThroughSupplierConfigTest extends T
         InternalTools.navigateToConfigureSupplier();
         InternalTools.navigateToIndependentCompEditDetails();
         InternalTools.navigateToPayDetailsTab();
-        InternalTools.clickPayEnabledToggle(true);
+        InternalTools.clickPayEnabledToggle(false);
+        InternalTools.deleteRestaurantInPayEnable(restaurantName);
         InternalTools.clickSave();
       //  softAssert.assertTrue(InternalTools.isSuccessPopUpDisplayed(),"change not save");
         InternalTools.clickOKOnSucessOverlay();
@@ -47,13 +48,18 @@ public class VerifyTheEnablePayForTheCustomerThroughSupplierConfigTest extends T
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickonInvoice();
-        Pay.clickCutAndDryPayToggle(true);
+        softAssert.assertFalse(Pay.isCutAndDryPayToggleEnabled(),"cut and dry pay enable");
 
         Login.navigateToInternalToolsPage();
         InternalTools.navigateToConfigureSupplier();
         InternalTools.navigateToIndependentCompEditDetails();
         InternalTools.navigateToPayDetailsTab();
-        softAssert.assertFalse(InternalTools.isPayDisableRestaurantDisplayed(restaurantName),"restaurant not display");
+        InternalTools.clickPayEnabledToggle(false);
+        InternalTools.addCustomerToPayEnable(restaurantName);
+        softAssert.assertTrue(InternalTools.isPayEnableRestaurantDisplayed(restaurantName),"restaurant not display");
+        InternalTools.clickSave();
+        //  softAssert.assertTrue(InternalTools.isSuccessPopUpDisplayed(),"change not save");
+        InternalTools.clickOKOnSucessOverlay();
         softAssert.assertAll();
     }
     @AfterMethod

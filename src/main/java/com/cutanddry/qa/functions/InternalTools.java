@@ -114,14 +114,29 @@ public class InternalTools {
     public static void navigateToPayDetailsTab(){
         internalToolsPage.navigateToPayDetailsTab();
     }
-    public static void clickPayDetailsToggle(boolean status){
-        internalToolsPage.clickPayDetailsToggle(status);
+    public static void clickPayEnabledToggle(boolean status){
+        internalToolsPage.clickPayEnabledToggle(status);
     }
     public static boolean isPayEnableRestaurantDisplayed(String name){
         return internalToolsPage.isPayEnableRestaurantDisplayed(name);
     }
     public static boolean isPayDisableRestaurantDisplayed(String name){
         return internalToolsPage.isPayDisableRestaurantDisplayed(name);
+    }
+    public static void deleteRestaurantInPayEnable(String name){
+        internalToolsPage.deleteRestaurantInPayEnable(name);
+    }
+    public static void addCustomerToPayDisable(String name) throws InterruptedException {
+        internalToolsPage.addCustomerToPayDisable(name);
+    }
+    public static void deleteRestaurantInPayDisable(String name){
+        internalToolsPage.deleteRestaurantInPayDisable(name);
+    }
+    public static void addCustomerToPayEnable(String name) throws InterruptedException {
+        internalToolsPage.addCustomerToPayEnable(name);
+    }
+    public static void clickCreditMemoCheckbox(boolean status){
+        internalToolsPage.clickCreditMemoCheckbox(status);
     }
 
 }
