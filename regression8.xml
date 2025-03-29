@@ -40,7 +40,7 @@
             <class name="com.cutanddry.qa.tests.pay.VerifyTheDisablePayForTheCustomerThroughSupplierConfigTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheEnablePayForTheCustomerThroughSupplierConfigWhenDisableTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheDisablePayForTheCustomerThroughSupplierConfigWhenDisableTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureDisabledTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnAllCustomerDPPortalWhenFeatureDisabledTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnAllCustomerDPPortalWhenFeatureEnabledTest"/>
         </classes>
     </test>
