@@ -355,4 +355,10 @@ public class Pay {
     public static boolean isCreditMemoDisplayed() throws InterruptedException {
         return payPage.isCreditMemoDisplayed();
     }
+    public static void clickOnInvoiceBatchOperationButton() {
+        payPage.clickOnInvoiceBatchOperationButton();
+    }
+    public static void selectTheBatchOperationOption(String option) {
+        payPage.selectTheBatchOperationOption(option);
+    }
 }

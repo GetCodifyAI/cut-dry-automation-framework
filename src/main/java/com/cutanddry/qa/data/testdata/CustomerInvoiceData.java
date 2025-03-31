@@ -21,5 +21,8 @@ public class CustomerInvoiceData
         public static final String CREDIT_MEMO_AMOUNT = "100";
         public static final String CREDIT_MEMO_DESCRIPTION = "Test Description";
         public static final String CUSTOMER_FILTER_OPTION_PAST_DUE = "- Past due";
+        public static final String UPCOMING_DUE = "Upcoming due";
+        public static final String PAST_DUE = "Past Due";
+        public static final String TOTAL_DUE = "Total Due";
 
     }
