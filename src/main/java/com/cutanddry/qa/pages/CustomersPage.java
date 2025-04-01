@@ -198,7 +198,8 @@ By input_selectItem = By.xpath("//div[contains(text(),'Search items by name or c
     By btn_add = By.xpath("//button[contains(text(), 'Add')]");
     String btn_removeItem ="//div[text()='ITEMCODE']/following-sibling::div[2]/*";
     By EditCustomerGroupBtn = By.xpath("//div[contains(text(), 'Customer Group')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
-    By CreateCutomerGroupTextField = By.xpath("//input[@id='react-select-6-input']");
+//    By CreateCutomerGroupTextField = By.xpath("//input[@id='react-select-6-input']");
+    By CreateCutomerGroupTextField = By.xpath("//div[contains(text(), 'Customer Group')]//following-sibling::div/div/div/div/div");
     By Savebtn = By.xpath("//button[normalize-space(text())='Save']");
     String CustomerGroupName = "//div[contains(text(),'Customer Group')]/following-sibling::div//div[contains(text(),'GROUPNAME')]";
     By ClearAllCustomerGroupBtn = By.xpath("//div[contains(@class,'themed_select__indicator themed_select__clear-indicator css-tlfecz-indicatorContainer')]");
@@ -649,6 +650,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By combinedOrderContinue = By.xpath("//button[contains(text(), 'Continue')]");
 
     By catalogFirstItemItemCode = By.xpath("//div[contains(@class,'card-deck')][1]/div[contains(@class,'card')][1]//button[contains(@data-tip,'View Brand Page')]/../following-sibling::div");
+    String unpaidInvoiceName = "//div[text()='NAME']";
+    By caseMinimumNotMetText = By.xpath("//*[contains(text(),'Case Minimum Not Met')]");
     By btn_sortCustomOrder = By.xpath("//div[contains(@class, 'cd_themed_select__single-value') and text()='Custom Order']");
 
     public void ifDuplicateOrderDisplayed(){
@@ -1103,6 +1106,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(txt_popupAlertOrderMin);
         return distributorUI.isDisplayed(txt_popupAlertOrderMin);
     }
+
+    public boolean isCaseMinimumPopUpDisplayed(){
+        distributorUI.waitForVisibility(caseMinimumNotMetText);
+        return distributorUI.isDisplayed(caseMinimumNotMetText);
+    }
+
     public void clickOnCustomerCode(String code) {
         distributorUI.click(By.xpath(txt_customerCode.replace("CODE", code)));
     }
@@ -3900,6 +3909,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public String getFirstItemItemCodeFromCatalog(){
         String gotText = distributorUI.getText(catalogFirstItemItemCode);
         return gotText.split("#")[1];
+    }
+    public boolean isUnpaidInvoiceNamDisplayed(String name)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(unpaidInvoiceName.replace("NAME",name)));
+
     }
 
     public String IsCustomOrderTextDisplayed() throws InterruptedException {

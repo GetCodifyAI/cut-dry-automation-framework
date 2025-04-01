@@ -33,7 +33,7 @@ public class CatalogData {
     public static final String ITEM_NAME_JIT = "Beef New York 14OZ Cca C/C";
     public static final String ITEM_NAME_SPECIAL = "S/O Sauce Chili Oil";
     public static final String ITEM_NAME_RETAIL = "Sardine Soybean Skn/Bnles";
-    public static final String ITEM_NAME_FOOD_ = "Hacomat Season";
+    public static final String ITEM_NAME_FOOD_ = "Tomato Ketchup";
     public static final String ITEM_NAME_DICARLO = "Cheese Mozzarella Wm Shredded";
     public static final String ITEM_NAME_2 = "Organic Bananas - 2 LB";
     public static final String ITEM_NAME_SUB = "Cilantro -30 CT";
