@@ -2247,6 +2247,9 @@ public class Customer {
             customersPage.clickYesDuplicatePopup();
         }
     }
+    public static boolean isUnpaidInvoiceNamDisplayed(String name) throws InterruptedException {
+        return customersPage.isUnpaidInvoiceNamDisplayed(name);
+    }
 
 }
 
