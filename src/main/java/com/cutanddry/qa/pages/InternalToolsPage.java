@@ -23,6 +23,25 @@ public class InternalToolsPage extends LoginPage {
     By btn_saveRebate = By.xpath("//div[contains(h4, 'Rebates')]/button[contains(@class, 'btn') and text()='Save']");
     By lastOrderedPoundPriceToggleStable = By.xpath("//div[contains(text(), 'Show Last Ordered Pound Price in Order Guide')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By lastOrderedPoundPriceToggleStable1 = By.xpath("//div[contains(text(), 'Show Last Ordered Pound Price in Order Guide')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By orderMinimumGloballyToggleStable = By.xpath("//div[contains(text(), 'Enable Soft/Hard order minimum globally')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By orderMinimumGloballyToggleStable1 = By.xpath("//div[contains(text(), 'Enable Soft/Hard order minimum globally')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By orderMinimumDropDown = By.xpath("//div[text()='Order minimum type: ']/following-sibling::div/div");
+    String orderMinimumDropDownOption = "(//div[text()='TYPE'])[last()]";
+    By addOrderMinimum = By.xpath("//div[contains(text(),'Soft order Minimum Surcharge')]/following-sibling::div/input");
+    By txt_success = By.xpath("//h2[contains(text(),'Success')]");
+    By payDetailsTab = By.xpath("//a[contains(text(),'Pay Details')]");
+    By payDetailsToggleStable = By.xpath("//label[contains(text(), 'Pay Enabled For All Users: ')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By payDetailsToggleStable1 = By.xpath("//label[contains(text(), 'Pay Enabled For All Users: ')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    String payEnableRestaurant = "//label[contains(text(), 'Pay Enabled Restaurants')]/following-sibling::div//div[text()='NAME']";
+    String payDisableRestaurant = "//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div[text()='NAME']";
+    String payEnableRestaurantDelete = "//label[contains(text(), 'Pay Enabled Restaurants')]/following-sibling::div//div[text()='NAME']/following-sibling::div";
+    String payDisableRestaurantDelete = "//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div[text()='NAME']/following-sibling::div";
+    By addCustomerToPayDisable = By.xpath("//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div/div");
+    String selectDisableCustomer = "//div[contains(text(), 'NAME')]";
+    By addCustomerToPayEnable = By.xpath("//label[contains(text(), 'Pay Enabled Restaurants')]/following-sibling::div/div");
+    By checkboxLocatorCreditMemo = By.xpath("//label[contains(text(),'Enable Auto Apply Credit Memos')]/..//input");
+
+
 
 
     public void clickConfigureSupplier(){
@@ -160,4 +179,87 @@ public class InternalToolsPage extends LoginPage {
     public void clickRebateSave(){
         distributorUI.clickWithScrollAndHover(btn_saveRebate);
     }
+    public void clickTurnOnOrderMinimumGloballyToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(orderMinimumGloballyToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(orderMinimumGloballyToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(orderMinimumGloballyToggleStable1);
+        }
+    }
+    public void clickOnOrderMinimumDropdown(String type){
+        distributorUI.click(orderMinimumDropDown);
+        distributorUI.click(By.xpath(orderMinimumDropDownOption.replace("TYPE",type)));
+    }
+    public void enterOrderMinimum(String minimum){
+        distributorUI.click(addOrderMinimum);
+        distributorUI.clear(addOrderMinimum);
+        distributorUI.sendKeys(addOrderMinimum,minimum);
+    }
+    public void clickSave(){
+        distributorUI.scrollToElement(SaveBtn);
+        distributorUI.waitForVisibility(SaveBtn);
+        distributorUI.clickUsingJavaScript(SaveBtn);
+    }
+    public boolean isSuccessPopUpDisplayed(){
+        return distributorUI.isDisplayed(txt_success);
+    }
+    public void navigateToPayDetailsTab(){
+        distributorUI.waitForVisibility(payDetailsTab);
+        distributorUI.click(payDetailsTab);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void clickPayEnabledToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(payDetailsToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(payDetailsToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(payDetailsToggleStable1);
+        }
+    }
+    public boolean isPayEnableRestaurantDisplayed(String name){
+        return distributorUI.isDisplayed(By.xpath(payEnableRestaurant.replace("NAME", name)));
+    }
+    public boolean isPayDisableRestaurantDisplayed(String name){
+        return distributorUI.isDisplayed(By.xpath(payDisableRestaurant.replace("NAME", name)));
+    }
+    public void deleteRestaurantInPayEnable(String name){
+        distributorUI.click(By.xpath(payEnableRestaurantDelete.replace("NAME", name)));
+    }
+    public void addCustomerToPayDisable(String name)throws InterruptedException{
+        distributorUI.click(addCustomerToPayDisable);
+        distributorUI.scrollToElement(By.xpath(selectDisableCustomer.replace("NAME", name)));
+        distributorUI.click(By.xpath(selectDisableCustomer.replace("NAME", name)));
+        distributorUI.waitForCustom(3000);
+    }
+    public void deleteRestaurantInPayDisable(String name){
+        distributorUI.click(By.xpath(payDisableRestaurantDelete.replace("NAME", name)));
+    }
+    public void addCustomerToPayEnable(String name)throws InterruptedException{
+        distributorUI.click(addCustomerToPayEnable);
+        distributorUI.scrollToElement(By.xpath(selectDisableCustomer.replace("NAME", name)));
+        distributorUI.click(By.xpath(selectDisableCustomer.replace("NAME", name)));
+        distributorUI.waitForCustom(3000);
+    }
+    public void clickCreditMemoCheckbox(boolean enable) {
+
+        boolean isChecked = distributorUI.getElement(checkboxLocatorCreditMemo).isSelected();
+
+        if (enable && !isChecked) {
+            distributorUI.click(checkboxLocatorCreditMemo); // Check the box if not checked
+        } else if (!enable && isChecked) {
+            distributorUI.click(checkboxLocatorCreditMemo); // Uncheck the box if already checked
+        }
+    }
+
 }

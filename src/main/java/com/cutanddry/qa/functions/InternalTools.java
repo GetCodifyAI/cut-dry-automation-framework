@@ -93,4 +93,50 @@ public class InternalTools {
         internalToolsPage.clickOKOnSucessOverlay();
 
     }
+    public static void TurnOnOrderMinimumGloballyToggle(boolean status){
+        internalToolsPage.clickTurnOnOrderMinimumGloballyToggle(status);
+    }
+    public static void clickOnOrderMinimumDropdown(String type){
+        internalToolsPage.clickOnOrderMinimumDropdown(type);
+    }
+    public static void enterOrderMinimum(String min){
+        internalToolsPage.enterOrderMinimum(min);
+    }
+    public static void clickSave(){
+        internalToolsPage.clickSave();
+    }
+    public static void clickOKOnSucessOverlay(){
+        internalToolsPage.clickOKOnSucessOverlay();
+    }
+    public static boolean isSuccessPopUpDisplayed(){
+        return internalToolsPage.isSuccessPopUpDisplayed();
+    }
+    public static void navigateToPayDetailsTab(){
+        internalToolsPage.navigateToPayDetailsTab();
+    }
+    public static void clickPayEnabledToggle(boolean status){
+        internalToolsPage.clickPayEnabledToggle(status);
+    }
+    public static boolean isPayEnableRestaurantDisplayed(String name){
+        return internalToolsPage.isPayEnableRestaurantDisplayed(name);
+    }
+    public static boolean isPayDisableRestaurantDisplayed(String name){
+        return internalToolsPage.isPayDisableRestaurantDisplayed(name);
+    }
+    public static void deleteRestaurantInPayEnable(String name){
+        internalToolsPage.deleteRestaurantInPayEnable(name);
+    }
+    public static void addCustomerToPayDisable(String name) throws InterruptedException {
+        internalToolsPage.addCustomerToPayDisable(name);
+    }
+    public static void deleteRestaurantInPayDisable(String name){
+        internalToolsPage.deleteRestaurantInPayDisable(name);
+    }
+    public static void addCustomerToPayEnable(String name) throws InterruptedException {
+        internalToolsPage.addCustomerToPayEnable(name);
+    }
+    public static void clickCreditMemoCheckbox(boolean status){
+        internalToolsPage.clickCreditMemoCheckbox(status);
+    }
+
 }

@@ -36,7 +36,6 @@ public class ValidateThePoundSpotPricingTest extends TestBase{
         Login.navigateToDistributorPortal(distributorCheeseImp);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
 
-
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId3);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId3), "Unable to find the customer Id");

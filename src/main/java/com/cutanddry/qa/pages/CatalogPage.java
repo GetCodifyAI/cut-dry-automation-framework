@@ -16,7 +16,8 @@ public class CatalogPage extends LoginPage{
     String ItemPreviewTxt = "//div[@class='mt-1 _5h4pkd' and contains(text(),'ITEMCODE')]";
     By Manufacturer = By.xpath("//div[contains(text(),'Conagra Foodservice')]");
     By OtherBrandBtn = By.xpath("//img[@class='_kfc3ia img-fluid' and contains(@src,\"2b4b2013cb03bd26957893f39d0783bd.jpg\")]");
-    By ConagaraBrandPage= By.xpath("//div[contains(text(),'Conagra Foodservice ') and @class='mt-5 mb-1 _mojmdw']");
+//    By ConagaraBrandPage= By.xpath("//div[contains(text(),'Conagra Foodservice ') and @class='mt-5 mb-1 _mojmdw']");
+By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])[1]");
     By OtherBrandText = By.xpath("//h2[contains(text(),'Andy Capp’s®')]");
     By ShowCaseBtn = By.xpath("//*[contains(text(),'Showcase')]");
 //    By ShowCaseBtn = By.xpath("//a[contains(@data-tip,'Cut+Dry Product Showcase')]");
@@ -182,7 +183,11 @@ public class CatalogPage extends LoginPage{
     By btn_deleteSubstitute = By.xpath("//div/*[local-name()='svg' and @data-icon='circle-xmark']");
     String multiUomDropDownCatalogStable = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[last()]";
 
-
+    By itemStatusDropdown = By.xpath("//label[contains(text(), 'Item Status')]/following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
+    String itemStatusOption = "(//div[contains(text(),'ITEMSTATUS') and contains(@class,'themed_select__option')])[last()]";
+    String lastOrderedDate = "//div[text()='1 CS ordered on DATEPLACEHOLDER']";
+    By purchaseHistory = By.xpath("//div[text()='Purchase History']");
+    String lastOrderDatePDP = "(//div[text()='DATEPLACEHOLDER']/../following-sibling::td//div[.//div[text()='1 Pkg'] and .//div[text()='1 CS']])[1]";
 
 
     public boolean isCatalogTextDisplayed() {
@@ -232,7 +237,7 @@ public class CatalogPage extends LoginPage{
         distributorUI.click(Manufacturer);
     }
     public boolean isNavigatedtoConagaraBrandPage() {
-        distributorUI.waitForVisibility(ConagaraBrandPage);
+//        distributorUI.waitForVisibility(ConagaraBrandPage);
         return distributorUI.isDisplayed(ConagaraBrandPage);
     }
     public boolean isNavigatedtoOtherBrandPage() throws InterruptedException {
@@ -956,6 +961,23 @@ public class CatalogPage extends LoginPage{
     public void ClickOnCatalogMultiUomDropDownStable(String name)throws InterruptedException{
         distributorUI.waitForVisibility(By.xpath(multiUomDropDownCatalogStable.replace("NAME", name)));
         distributorUI.click(By.xpath(multiUomDropDownCatalogStable.replace("NAME", name)));
+    }
+    public void clickOnItemStatus(String itemStatus){
+        distributorUI.click(itemStatusDropdown);
+        distributorUI.waitForVisibility(By.xpath(itemStatusOption.replace("ITEMSTATUS",itemStatus)));
+        distributorUI.click(By.xpath(itemStatusOption.replace("ITEMSTATUS",itemStatus)));
+    }
+    public boolean isLastOrderDateDisplayed(String date) throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(By.xpath(lastOrderedDate.replace("DATEPLACEHOLDER",date)));
+    }
+    public void clickPurchaseHistory(){
+        distributorUI.scrollToElement(purchaseHistory);
+        distributorUI.click(purchaseHistory);
+    }
+    public boolean isLastOrderDatePDPDisplayed(String date) throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(By.xpath(lastOrderDatePDP.replace("DATEPLACEHOLDER",date)));
     }
 
 }

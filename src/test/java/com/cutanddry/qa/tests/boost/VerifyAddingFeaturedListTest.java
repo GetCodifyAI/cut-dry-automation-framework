@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyAddingFeaturedListTest extends TestBase {
     static User user;
-    String FeaturedListName = "TestList";
+    String FeaturedListName = "TestList"+generateDynamicValue();
 
     @BeforeMethod
     public void setUp(){

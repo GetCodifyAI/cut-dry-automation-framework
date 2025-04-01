@@ -23,7 +23,9 @@ public class Catalog {
     public static void DownloadPDF() {
         catalogPage.clickExportPdf();
     }
-    public static void SearchItemInCatalogByItemCode(String ItemCode){catalogPage.TypeSearchInCatalogSearch(ItemCode);}
+    public static void SearchItemInCatalogByItemCode(String ItemCode){
+        catalogPage.clickOnItemStatus("All");
+        catalogPage.TypeSearchInCatalogSearch(ItemCode);}
     public static void SelectItemAfterSearch(String ItemCode){catalogPage.ClickOnItemCode(ItemCode);}
     public static void ClickOnPreview(){
         catalogPage.ClickOnPreviewBtn();
@@ -56,6 +58,7 @@ public class Catalog {
     }
 
     public static void selectItemFromGrid(String itemCode){
+        catalogPage.clickOnItemStatus("All");
         catalogPage.clickonItemOnCatalogPage(itemCode);
     }
 
@@ -236,6 +239,7 @@ public class Catalog {
     }
 
     public static void searchItemInCatalog(String itemName){
+        catalogPage.clickOnItemStatus("All");
         catalogPage.clickSearchItemInCatalog(itemName);
     }
 
@@ -569,6 +573,17 @@ public class Catalog {
     public static void ClickOnCatalogMultiUomDropDownStable(String name)throws InterruptedException{
         catalogPage.ClickOnCatalogMultiUomDropDownStable(name);
     }
-
+    public static void selectItemStatus(String itemStatus){
+        catalogPage.clickOnItemStatus(itemStatus);
+    }
+    public static boolean isLastOrderDateDisplayed(String date)throws InterruptedException{
+        return catalogPage.isLastOrderDateDisplayed(date);
+    }
+    public static void clickPurchaseHistory(){
+        catalogPage.clickPurchaseHistory();
+    }
+    public static boolean isLastOrderDatePDPDisplayed(String date)throws InterruptedException{
+        return catalogPage.isLastOrderDatePDPDisplayed(date);
+    }
 
 }

@@ -24,7 +24,7 @@ public class VerifyTheWarehouseSelectionFromTheDropdown extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-874")
+    @Test(groups = "DOT-TC-877")
     public void VerifyTheWarehouseSelectionFromTheDropdown() throws InterruptedException, URISyntaxException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());

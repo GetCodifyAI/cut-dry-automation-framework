@@ -111,6 +111,9 @@ public class PayPage extends LoginPage{
     By lbl_payInvoiceTableColumn = By.xpath("//table/thead/tr/th[contains(text(),'Invoice ID')]/parent::tr/th");
     String lbl_payInvoiceTableColumnName = "//table/thead/tr/th[contains(text(),'Invoice ID')]/parent::tr/th[COUNT]";
     String lbl_payInvoiceDate = "//table/thead/tr/th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[ROW]/td[COUNT]";
+    By cutAndDryPayToggleStable = By.xpath("//div[contains(text(), 'Cut+Dry Pay')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By cutAndDryPayToggleStable1 = By.xpath("//div[contains(text(), 'Cut+Dry Pay')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By creditMemoDisplay = By.xpath("//div[text()='Credit Memos (0)']");
 
 
     public boolean isPaymentStatusCorrect(String expectedPaymentStatus) {
@@ -820,6 +823,31 @@ public class PayPage extends LoginPage{
         }
         return distributorUI.isDisplayed(pastDueDetailsAmount);
     }
+    public void clickCutAndDryPayToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(cutAndDryPayToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(66px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(cutAndDryPayToggleStable1);
+            distributorUI.click(btn_markInvoiceYes);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(cutAndDryPayToggleStable1);
+            distributorUI.click(btn_markInvoiceYes);
+        }
+    }
+    public boolean isCutAndDryPayToggleEnabled() {
+        return distributorUI.getElement(cutAndDryPayToggleStable)
+                .getAttribute("style")
+                .contains("translateX(66px)");
+    }
+    public boolean isCreditMemoDisplayed()throws InterruptedException{
+        distributorUI.waitForCustom(3000);
+        return distributorUI.isDisplayed(creditMemoDisplay);
+    }
+
+
+
 
 
 

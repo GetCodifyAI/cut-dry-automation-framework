@@ -7,7 +7,7 @@ public class CatalogData {
     public static final String CUSTOMER_ID_4 = "20240802";
     public static final String CUSTOMER_ID_5 = "29374";
     public static final String CUSTOMER_ID_6 = "113956";
-    public static final String CUSTOMER_ID_7 = "23445";
+    public static final String CUSTOMER_ID_7 = "15159";
     public static final String DELIVERY_DAY = "Monday";
     public static final String ITEM_CODE = "01409";
     public static final String ITEM_CODE_2 = "00529";

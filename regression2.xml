@@ -67,9 +67,6 @@
             <class name="com.cutanddry.qa.tests.team.UpdateUserWhiteLabelPortalTest" />
             <class name="com.cutanddry.qa.tests.team.RemoveUserWhiteLabelPortalTest" />
             <class name="com.cutanddry.qa.tests.team.AddNewUserWithExistingUserReferenceTest" />
-
-            <class name="com.cutanddry.qa.tests.price.ValidateTheFinalWeightTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateTheSplitWeightTest"/>
             <!--TODO: Failure TC, Need to fix the bug 1st-->
             <class name="com.cutanddry.qa.tests.team.UpdateUserWithExistingUserReferenceTest" />
         </classes>

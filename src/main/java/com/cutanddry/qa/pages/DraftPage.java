@@ -2,6 +2,8 @@ package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
 
+
+
 public class DraftPage extends LoginPage{
     By txt_drafts = By.xpath("//li[contains(text(),'Drafts')]");
     By btn_delete = By.xpath("(//button[contains(text(), 'Delete')])[1]");
@@ -190,6 +192,8 @@ public class DraftPage extends LoginPage{
         distributorUI.waitForVisibility(By.xpath(pendingApproval.replace("STATUS", status)));
         distributorUI.click(By.xpath(pendingApproval.replace("STATUS", status)));
     }
-
+    public boolean isDraftOrderReferenceNotDisplayedInOPSide() {
+            return distributorUI.isDisplayed(referenceNumDP);
+    }
 
 }

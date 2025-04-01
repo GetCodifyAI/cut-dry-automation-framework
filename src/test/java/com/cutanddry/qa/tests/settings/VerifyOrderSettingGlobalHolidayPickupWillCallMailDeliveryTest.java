@@ -56,7 +56,7 @@ public class VerifyOrderSettingGlobalHolidayPickupWillCallMailDeliveryTest exten
         holidayDate = Settings.getHolidayDate();
         Settings.clickOnSaveBtn();
 //        softAssert.assertEquals(Settings.getDate(),Settings.getAddedDate(),"holiday setting error");
-        softAssert.assertEquals(holidayDate,Settings.getAddedDate(),"holiday setting error");
+        softAssert.assertEquals(holidayDate,Settings.getAddedDate(),"Added holiday setting error");
         Settings.clickOnSaveChanges();
 
         Dashboard.navigateToCustomers();
@@ -102,7 +102,8 @@ public class VerifyOrderSettingGlobalHolidayPickupWillCallMailDeliveryTest exten
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");
         Settings.clickOnRemoveHoliday();
-        softAssert.assertNotEquals(Settings.getDate(),Settings.getAddedDate(),"holiday setting error");
+//        softAssert.assertNotEquals(Settings.getDate(),Settings.getAddedDate(),"holiday setting error");
+        softAssert.assertNotEquals(holidayDate,Settings.getAddedDate(),"holiday setting error after remove");
         Settings.clickOnSaveChanges();
         softAssert.assertAll();
     }

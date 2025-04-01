@@ -32,7 +32,7 @@ public class ViewManufacturerPageTest extends TestBase {
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.SearchItemInCatalogByItemCode(ItemCode);
         Catalog.SelectItemAfterSearch(ItemCode);
-        Catalog.ClickOnPreview();
+        Catalog.clickOnPreview();
         softAssert.assertTrue(Catalog.isItemPreviewDisplayed(ItemCode),"Error in navigating to Preview Page");
         Catalog.SelectManufacturer();
         softAssert.assertTrue(Catalog.isCongaraBrandPageDisplayed(),"ERROR in Navigating to Congara BrandPage");

@@ -32,6 +32,7 @@ public class AddNewUserWithoutUserReferenceTest extends TestBase {
         Dashboard.isUserNavigatedToRestaurantDashboard();
         Login.navigateToSupplierPortalVendor(verifiedVendorId);
         Login.setNode(DataName);
+        Login.switchIntoNewTab();
         Login.navigateToDistributor();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -49,6 +50,6 @@ public class AddNewUserWithoutUserReferenceTest extends TestBase {
     @AfterMethod
     public void tearDown(ITestResult result) throws InterruptedException {
         takeScreenshotOnFailure(result);
-        closeAllBrowsers();
+        closeAllBrowsersAtOnce();
     }
 }
