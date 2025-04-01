@@ -2199,6 +2199,10 @@ public class Customer {
         return customersPage.getFirstItemItemCodeFromCatalog();
     }
 
+    public static String IsCustomOrderTextDisplayed() throws InterruptedException {
+        return customersPage.IsCustomOrderTextDisplayed();
+    }
+
 }
 
 

@@ -649,6 +649,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By combinedOrderContinue = By.xpath("//button[contains(text(), 'Continue')]");
 
     By catalogFirstItemItemCode = By.xpath("//div[contains(@class,'card-deck')][1]/div[contains(@class,'card')][1]//button[contains(@data-tip,'View Brand Page')]/../following-sibling::div");
+    By btn_sortCustomOrder = By.xpath("//div[contains(@class, 'cd_themed_select__single-value') and text()='Custom Order']");
 
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
@@ -3899,6 +3900,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public String getFirstItemItemCodeFromCatalog(){
         String gotText = distributorUI.getText(catalogFirstItemItemCode);
         return gotText.split("#")[1];
+    }
+
+    public String IsCustomOrderTextDisplayed() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_sortCustomOrder);
+        distributorUI.waitForCustom(4000);
+        String dropdownText = distributorUI.getText(btn_sortCustomOrder);
+        return dropdownText;
+
     }
 
 
