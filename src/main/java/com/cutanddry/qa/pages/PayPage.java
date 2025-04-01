@@ -114,6 +114,9 @@ public class PayPage extends LoginPage{
     By cutAndDryPayToggleStable = By.xpath("//div[contains(text(), 'Cut+Dry Pay')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By cutAndDryPayToggleStable1 = By.xpath("//div[contains(text(), 'Cut+Dry Pay')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     By creditMemoDisplay = By.xpath("//div[text()='Credit Memos (0)']");
+    By btn_batchOperation = By.xpath("//button[text()='Batch Operations']");
+    String lbl_batchOperation = "//button[text()='Batch Operations']/following-sibling::div/a[contains(text(),'OPTION')]";
+
 
 
     public boolean isPaymentStatusCorrect(String expectedPaymentStatus) {
@@ -844,6 +847,15 @@ public class PayPage extends LoginPage{
     public boolean isCreditMemoDisplayed()throws InterruptedException{
         distributorUI.waitForCustom(3000);
         return distributorUI.isDisplayed(creditMemoDisplay);
+    }
+    public void clickOnInvoiceBatchOperationButton() {
+        distributorUI.waitForVisibility(btn_batchOperation);
+        distributorUI.click(btn_batchOperation);
+    }
+    public void selectTheBatchOperationOption(String option) {
+        By lbl_options = By.xpath(lbl_batchOperation.replace("OPTION", option));
+        distributorUI.waitForVisibility(lbl_options);
+        distributorUI.click(lbl_options);
     }
 
 

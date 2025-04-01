@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureDisabledTest extends TestBase {
+public class VerifyTheAutoApplyCreditMemosOnAllCustomerDPPortalWhenFeatureDisabledTest extends TestBase {
     SoftAssert softAssert;
     static User user;
     String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
@@ -27,8 +27,8 @@ public class VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureDis
     }
 
 
-    @Test(groups = "DOT-TC-971")
-    public void VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureDisabled() throws InterruptedException {
+    @Test(groups = "DOT-TC-973")
+    public void VerifyTheAutoApplyCreditMemosOnAllCustomerDPPortalWhenFeatureDisabled() throws InterruptedException {
 
         softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
