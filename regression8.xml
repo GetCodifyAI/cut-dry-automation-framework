@@ -40,7 +40,6 @@
             <class name="com.cutanddry.qa.tests.pay.VerifyTheDisablePayForTheCustomerThroughSupplierConfigTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheEnablePayForTheCustomerThroughSupplierConfigWhenDisableTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheDisablePayForTheCustomerThroughSupplierConfigWhenDisableTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureDisabledTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnAllCustomerDPPortalWhenFeatureEnabledTest"/>
 
             <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureEnabledTest"/>
@@ -48,8 +47,6 @@
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheBatchOperationFunctionalityTest"/>
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyDisplayTotalUnpaidInvoiceAmountInCustomerDetailPageTest"/>
             <class name="com.cutanddry.qa.tests.customer_groups.VerifyMultipleCustomerGroupsCanBeAssignedTest"/>
-
-
 
             <class name="com.cutanddry.qa.tests.order_guide.VerifyCustomOrderGuideSectionTest"/>
         </classes>
