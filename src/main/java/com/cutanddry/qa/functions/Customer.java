@@ -2251,6 +2251,11 @@ public class Customer {
         return customersPage.isUnpaidInvoiceNamDisplayed(name);
     }
 
+    public static String IsCustomOrderTextDisplayed() throws InterruptedException {
+        return customersPage.IsCustomOrderTextDisplayed();
+    }
+
+
 }
 
 
