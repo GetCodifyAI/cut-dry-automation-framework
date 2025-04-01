@@ -13,10 +13,8 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class VerifyCustomOrderGuideSectionTest extends TestBase{
-
     static User user;
     static String customerId = "16579";
-
 
     @BeforeMethod
     public void setUp(){
@@ -27,7 +25,6 @@ public class VerifyCustomOrderGuideSectionTest extends TestBase{
     @Test(groups = "DOT-TC-244")
     public void VerifyCustomOrderGuideSection() throws InterruptedException{
         SoftAssert softAssert = new SoftAssert();
-
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
@@ -36,20 +33,14 @@ public class VerifyCustomOrderGuideSectionTest extends TestBase{
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
         softAssert.assertTrue(Customer.isCustomerOrderGuideDisplayed(),"user has navigated to the Order Guide");
-
-
         Customer.selectCustomOrderSort();
         softAssert.assertEquals(Customer.IsCustomOrderTextDisplayed(),"Custom Order");
-
         softAssert.assertAll();
     }
-
 
     @AfterMethod
     public void tearDown(ITestResult result) {
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
     }
-
-
 }
