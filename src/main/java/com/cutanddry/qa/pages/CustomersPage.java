@@ -649,6 +649,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By combinedOrderContinue = By.xpath("//button[contains(text(), 'Continue')]");
 
     By catalogFirstItemItemCode = By.xpath("//div[contains(@class,'card-deck')][1]/div[contains(@class,'card')][1]//button[contains(@data-tip,'View Brand Page')]/../following-sibling::div");
+    By caseMinimumNotMetText = By.xpath("//*[contains(text(),'Case Minimum Not Met')]");
 
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
@@ -1102,6 +1103,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(txt_popupAlertOrderMin);
         return distributorUI.isDisplayed(txt_popupAlertOrderMin);
     }
+
+    public boolean isCaseMinimumPopUpDisplayed(){
+        distributorUI.waitForVisibility(caseMinimumNotMetText);
+        return distributorUI.isDisplayed(caseMinimumNotMetText);
+    }
+
     public void clickOnCustomerCode(String code) {
         distributorUI.click(By.xpath(txt_customerCode.replace("CODE", code)));
     }
