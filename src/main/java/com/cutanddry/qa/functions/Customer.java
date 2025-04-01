@@ -2245,9 +2245,6 @@ public class Customer {
         return customersPage.IsCustomOrderTextDisplayed();
     }
 
-    public static String IsCustomOrderTextDisplayed() throws InterruptedException {
-        return customersPage.IsCustomOrderTextDisplayed();
-    }
 
 }
 
