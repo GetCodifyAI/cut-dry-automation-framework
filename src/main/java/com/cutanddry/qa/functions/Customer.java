@@ -1820,6 +1820,10 @@ public class Customer {
     }
     public static void clickOnCheckoutButtonOperator()throws InterruptedException{
         customersPage.clickOnCheckoutButtonOperator();
+        if(customersPage.isSubstitutesPopupDisplayed()){
+            customersPage.clickDoNotSubstitute();
+            customersPage.clickSaveSelection();
+        }
         Thread.sleep(4000);
     }
     public static void increaseFirstRowQtyInClassic(int count) throws InterruptedException {
@@ -1840,6 +1844,9 @@ public class Customer {
         }
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
+        }
+        if (customersPage.isCaseMinimumPopUpDisplayed()){
+            customersPage.clickOnYes();
         }
     }
     public static boolean isSentApprovalDisplayed(){
