@@ -31,9 +31,10 @@
             <class name="com.cutanddry.qa.tests.order_guide.ValidateTheFunctionalityOfEditMarginOfAnItem"/>
             <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersWithCatalogItemsTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrderGuideWithCatalogItemsTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersUploadingExcelFileTest" />
+            <!--TODO: All the items are hidden in the Test Automation order guide. May be the following TCs are impacting on this. So just comment it for today and see the issue was exist or not -->
+<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersUploadingExcelFileTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrdersUploadingExcelFileTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrderImportingOrderGuideTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrderImportingOrderGuideTest" />-->
             <class name="com.cutanddry.qa.tests.order_guide.VerifyExportingOrderGuideEditTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest" />
 
