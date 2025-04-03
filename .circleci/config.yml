@@ -811,14 +811,18 @@ jobs:
               TESTS=$(grep -oP '(?<=tests=")[0-9]+' "$FILE" | head -1)
               FAILURES=$(grep -oP '(?<=failures=")[0-9]+' "$FILE" | head -1)
               ERRORS=$(grep -oP '(?<=errors=")[0-9]+' "$FILE" | head -1)
+              SKIPPED=$(grep -oP '(?<=skipped=")[0-9]+' "$FILE" | head -1)
             
               TESTS=${TESTS:-0}
               FAILURES=${FAILURES:-0}
               ERRORS=${ERRORS:-0}
               SKIPPED=${SKIPPED:-0}
-              
-              # Adjust total count by removing skipped tests
+            
+            # Ensure ACTUAL_TOTAL is not negative
               ACTUAL_TOTAL=$((TESTS - SKIPPED))
+              if [ "$ACTUAL_TOTAL" -lt 0 ]; then
+                ACTUAL_TOTAL=0
+              fi
             
               if [ "$ACTUAL_TOTAL" -gt 0 ]; then
                 PASSED_IN_FILE=$((ACTUAL_TOTAL - FAILURES - ERRORS))
@@ -885,7 +889,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "38 15 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
+          cron: "49 17 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
           filters:
             branches:
               only:
