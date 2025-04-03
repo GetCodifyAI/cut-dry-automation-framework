@@ -3,6 +3,7 @@ package com.cutanddry.qa.tests.multi_uom;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CatalogData;
+import com.cutanddry.qa.data.testdata.DistributorOrderData;
 import com.cutanddry.qa.functions.Catalog;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
@@ -40,12 +41,13 @@ public class VerifyEditedQuantitiesAfterEditingMultipleUOMInPDPTest extends Test
 
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
-        Customer.ensureCarouselDisplayStatus(false);
+//        Customer.ensureCarouselDisplayStatus(false);
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId);
+        Customer.clickOnItemOrderGuideDropDown(DistributorOrderData.DEFAULT_ORDER_GUIDE_TYPE);
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(searchItemCode);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
