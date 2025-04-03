@@ -11,7 +11,7 @@
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheCatalogFilterSidebarTest" />
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheCatalogClearAllFiltersTest" />
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheViewCatalogAsCustomerRadioButtonTest" />
-            <!--<class name="com.cutanddry.qa.tests.customer_catalog.ValidateAddProductFromPDPTest" />
+            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateAddProductFromPDPTest" />
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateAddProductToOrderGuideByClickPDPHeartIconTest" />
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheExportPDPTest" />
             <class name="com.cutanddry.qa.tests.customer_catalog.ValidateImageCarouselInPDPTest" />
@@ -74,7 +74,7 @@
             <class name="com.cutanddry.qa.tests.pay.VerifyPrintInvoiceTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheInvoiceDisplayCorrectDataTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyThePayDetailsSummeryTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheDownloadFeatureInThePayoutSectionTest"/>-->
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheDownloadFeatureInThePayoutSectionTest"/>
 
         </classes>
     </test>
