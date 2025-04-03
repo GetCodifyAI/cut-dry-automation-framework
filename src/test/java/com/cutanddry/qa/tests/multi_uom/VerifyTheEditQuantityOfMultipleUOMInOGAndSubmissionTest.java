@@ -3,6 +3,7 @@ package com.cutanddry.qa.tests.multi_uom;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CatalogData;
+import com.cutanddry.qa.data.testdata.DistributorOrderData;
 import com.cutanddry.qa.functions.Catalog;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
@@ -44,6 +45,7 @@ public class VerifyTheEditQuantityOfMultipleUOMInOGAndSubmissionTest extends Tes
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId);
+        Customer.clickOnItemOrderGuideDropDown(DistributorOrderData.DEFAULT_ORDER_GUIDE_TYPE);
         Catalog.ClickOnMultiUomDropDownOG(searchItemCode);
         Catalog.clickOGAddToCartPlusIcon(1,searchItemCode, uom1);
         Catalog.clickOGAddToCartPlusIcon(1,searchItemCode, uom2);
