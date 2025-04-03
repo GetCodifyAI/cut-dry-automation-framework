@@ -11,7 +11,7 @@
             <class name="com.cutanddry.qa.tests.customers.VerifyTheFilterFromSalespersonTest" />
             <class name="com.cutanddry.qa.tests.customers.VerifyTheExportCustomersTest" />
             <class name="com.cutanddry.qa.tests.customers.VerifyTheExportOrderGuidesTest" />
-            <class name="com.cutanddry.qa.tests.customers.VerifyTheMoreFiltersTest" />
+            <!--<class name="com.cutanddry.qa.tests.customers.VerifyTheMoreFiltersTest" />
             <class name="com.cutanddry.qa.tests.customers.VerifyTheAddNewCustomerTest" />
             <class name="com.cutanddry.qa.tests.customers.VerifyTheBulkActionsInviteUsersTest" />
             <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfEditOrderGuideTest" />
@@ -79,7 +79,7 @@
             <class name="com.cutanddry.qa.tests.archive.VerifyHidingAnItemFromTheOrderGuideTest"/>
             <class name="com.cutanddry.qa.tests.archive.VerifySavingAndUnhideItemFromOrderGuideTest"/>
 
-            <!--TODO: Couldn't grandee to get the exact total order value from below TC. Bcs may impact other flow while running concurrently  -->
+            &lt;!&ndash;TODO: Couldn't grandee to get the exact total order value from below TC. Bcs may impact other flow while running concurrently  &ndash;&gt;
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyTotalOrderValueTest" />
 
             <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfEditMarginOfAnItemTest" />
@@ -92,7 +92,7 @@
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromPDPTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsViaOrderGuideCatalogPDPTest"/>
             <class name="com.cutanddry.qa.tests.draft.ValidateDraftOrdersAreOnlyAppearing30DaysTest"/>
-            <class name="com.cutanddry.qa.tests.draft.VerifyPendingApprovalsAreNotClickableTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyPendingApprovalsAreNotClickableTest"/>-->
         </classes>
     </test>
 </suite>

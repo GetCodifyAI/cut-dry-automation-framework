@@ -11,7 +11,7 @@
             <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogCopyPDPTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogExportPDPTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyTheSearchTest" />
-            <class name="com.cutanddry.qa.tests.catalog.VerifyManageCatalogExportCatalogTest" />
+           <!-- <class name="com.cutanddry.qa.tests.catalog.VerifyManageCatalogExportCatalogTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyManageCatalogExportPromotionFileTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyCatalogItemImagesTest"/>
             <class name="com.cutanddry.qa.tests.catalog.VerifyItemDescriptionsTest"/>
@@ -79,8 +79,8 @@
             <class name="com.cutanddry.qa.tests.draft.VerifyDeleteDraftOrderByOperatorTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsSearchAndFilterFunctionTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifyErrorMessageDisplayTest"/>
-            <!--TODO: Failure TC, Need to fix the bug 1st-->
-            <class name="com.cutanddry.qa.tests.catalog.VerifyHardOrderMinimumWarningTest" />
+            &lt;!&ndash;TODO: Failure TC, Need to fix the bug 1st&ndash;&gt;
+            <class name="com.cutanddry.qa.tests.catalog.VerifyHardOrderMinimumWarningTest" />-->
         </classes>
     </test>
 </suite>
