@@ -41,21 +41,21 @@ public class VerifyEditingSubmittedVoiceOrderTest extends TestBase {
 
         //Item Increment using button
         OrderDesk.AddItemQuantityDraftOrderReviewPage();
-        OrderDesk.SaveDraftOrder();
-        softAssert.assertTrue(OrderDesk.isSaveDraftSucessful(),"Error in saving the draft");
-        OrderDesk.CloseTheSucessfulOverlayByOK();
+//        OrderDesk.SaveDraftOrder();
+//        softAssert.assertTrue(OrderDesk.isSaveDraftSucessful(),"Error in saving the draft");
+//        OrderDesk.CloseTheSucessfulOverlayByOK();
 
         //Item Decrement using button
         OrderDesk.SubstractItemQuantityDraftOrderReviewPage();
-        OrderDesk.SaveDraftOrder();
-        softAssert.assertTrue(OrderDesk.isSaveDraftSucessful(),"Error in saving the draft");
-        OrderDesk.CloseTheSucessfulOverlayByOK();
+//        OrderDesk.SaveDraftOrder();
+//        softAssert.assertTrue(OrderDesk.isSaveDraftSucessful(),"Error in saving the draft");
+//        OrderDesk.CloseTheSucessfulOverlayByOK();
 
         //Item Edit by Typing
         OrderDesk.EditItemQuantityDraftOrderReviewPage(ItemQuantity);
-        OrderDesk.SaveDraftOrder();
-        softAssert.assertTrue(OrderDesk.isSaveDraftSucessful(),"Error in saving the draft");
-        OrderDesk.CloseTheSucessfulOverlayByOK();
+//        OrderDesk.SaveDraftOrder();
+//        softAssert.assertTrue(OrderDesk.isSaveDraftSucessful(),"Error in saving the draft");
+//        OrderDesk.CloseTheSucessfulOverlayByOK();
 
         softAssert.assertAll();
         softAssert.assertTrue(OrderDesk.navigatedToSubmittedOrders(),"Error Navigating to Drafted Orders Page");

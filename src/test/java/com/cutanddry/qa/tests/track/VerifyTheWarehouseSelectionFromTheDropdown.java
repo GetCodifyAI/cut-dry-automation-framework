@@ -15,7 +15,7 @@ import java.net.URISyntaxException;
 
 public class VerifyTheWarehouseSelectionFromTheDropdown extends TestBase {
     static User user;
-    static String distributorName = "Brandon IFC Cut+Dry Agent";
+    static String distributorName = "Brandon IFC Cut+Dry Agent - In";
     String warehouseName = "Test";
 
     @BeforeMethod

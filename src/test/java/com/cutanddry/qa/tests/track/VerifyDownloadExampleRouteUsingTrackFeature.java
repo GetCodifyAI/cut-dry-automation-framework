@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyDownloadExampleRouteUsingTrackFeature extends TestBase {
     static User user;
-    static String distributorName = "Brandon IFC Cut+Dry Agent";
+    static String distributorName = "Brandon IFC Cut+Dry Agent - In";
 
     @BeforeMethod
     public void setUp() {

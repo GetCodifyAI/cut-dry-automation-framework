@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyAddNewRouteUsingTrackFeature extends TestBase {
     static User user;
-    static String distributorName = "Brandon IFC Cut+Dry Agent";
+    static String distributorName = "Brandon IFC Cut+Dry Agent - In";
 
     @BeforeMethod
     public void setUp() {
@@ -31,7 +31,7 @@ public class VerifyAddNewRouteUsingTrackFeature extends TestBase {
         Login.navigateToDistributorPortal(distributorName);
         Dashboard.navigateToTrackRoutes();
         softAssert.assertTrue(Track.isRoutesTextDisplayed(),"navigation to track routes error");
-        Track.clickOkIfErrorTextDisplayed();
+//        Track.clickOkIfErrorTextDisplayed();
         Track.deleteExistingRoute();
         Track.clickBtnManageRoutes();
         Track.clickBtnAddNewRoutes();
@@ -42,7 +42,7 @@ public class VerifyAddNewRouteUsingTrackFeature extends TestBase {
         Track.typeStartTime("1000AM");
         Track.clickOnSaveChanges();
         Track.clickOK();
-        Track.clickOkIfErrorTextDisplayed();
+//        Track.clickOkIfErrorTextDisplayed();
         softAssert.assertTrue(Track.isMapDisplayed(),"The map is not displayed");
         softAssert.assertAll();
     }

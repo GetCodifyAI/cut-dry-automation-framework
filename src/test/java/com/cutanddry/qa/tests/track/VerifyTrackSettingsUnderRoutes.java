@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTrackSettingsUnderRoutes extends TestBase{
     static User user;
-    static String distributorName = "Brandon IFC Cut+Dry Agent";
+    static String distributorName = "Brandon IFC Cut+Dry Agent - In";
 
     @BeforeMethod
     public void setUp() {
@@ -30,10 +30,9 @@ public class VerifyTrackSettingsUnderRoutes extends TestBase{
         Login.navigateToDistributorPortal(distributorName);
         Dashboard.navigateToTrackRoutes();
         softAssert.assertTrue(Track.isRoutesTextDisplayed(),"navigation to track routes error");
-        Track.clickOkIfErrorTextDisplayed();
+//        Track.clickOkIfErrorTextDisplayed();
         Track.deleteExistingRoute();
         Track.clickBtnManageRoutes();
-//        Track.clickTrackFieldManager();
         Track.clickTrackSettings();
         softAssert.assertTrue(Track.isTxtSettingsDisplayed(),"Not navigated to settings page properly");
         softAssert.assertAll();

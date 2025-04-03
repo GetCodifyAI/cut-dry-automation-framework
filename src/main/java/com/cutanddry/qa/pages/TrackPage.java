@@ -677,11 +677,11 @@ public class TrackPage extends LoginPage{
         }
     }
     public boolean isUploadRouteTextDisplayed(){
-        try {
-            distributorUI.waitForVisibility(txt_uploadRoute);
-        } catch (Exception e){
-            return false;
-        }
+//        try {
+//            distributorUI.waitForVisibility(txt_uploadRoute);
+//        } catch (Exception e){
+//            return false;
+//        }
         return distributorUI.isDisplayed(txt_uploadRoute);
     }
     public void clickDeleteRoute()throws InterruptedException{

@@ -317,7 +317,8 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By btn_order = By.xpath("(//tr[contains(@class, '_du1frc _du1frc _qy4b979 py-3')])[1]");
     By txt_order = By.xpath("//h2[contains(text(), 'Order')]");
     By tb_drafts = By.xpath("//a[text()='Drafts' and @role='tab']");
-    By txt_draftStatus = By.xpath("//tr[2]//td[3][contains(text(), 'just now')]");
+//    By txt_draftStatus = By.xpath("//tr[2]//td[3][contains(text(), 'just now')]");
+By txt_draftStatus = By.xpath("//tr[2]//td[3][contains(text(), 'seconds ago')]");
     By btn_deleteDraft = By.xpath("(//button[contains(@class, '_47hinf btn btn-link')])[1]");
     By lbl_stopDuration = By.xpath("//div[text()='Stop Duration']/following-sibling::div//input");
     By lbl_keyDropNum = By.xpath("//div[text()='Key Drop Number']/following-sibling::div//input");
@@ -683,7 +684,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        distributorUI.click(By.xpath(btnOrderGuide.replace("CODE", code)));
+//        distributorUI.click(By.xpath(btnOrderGuide.replace("CODE", code)));
+        distributorUI.clickWithFallback(By.xpath(btnOrderGuide.replace("CODE", code)));
     }
     public String getItemNameFirstRow() throws InterruptedException {
         distributorUI.waitForElementEnabledState(lbl_itemNameList,true);
@@ -1298,7 +1300,6 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         }
     }
     public boolean isSubstitutesPopupDisplayed(){
-//        distributorUI.waitForVisibility(txt_substitutions);
         return distributorUI.isDisplayed(txt_substitutions);
     }
     public void clickSaveSelection(){
@@ -2451,7 +2452,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
 
     public void selectTagOption() throws InterruptedException {
-        distributorUI.clickWithScrollAndHover(dropdown_selTags);
+//        distributorUI.clickWithScrollAndHover(dropdown_selTags);
+//        distributorUI.scrollByPixels(25,25);
+        distributorUI.clickWithFallback(dropdown_selTags);
         distributorUI.waitForVisibility(sel_tagOption);
         distributorUI.clickAction(sel_tagOption);
         distributorUI.waitForCustom(3000);
@@ -2464,6 +2467,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickRemoveTagOption(){distributorUI.clickWithScrollAndHover(icon_removeTag);}
 
     public boolean isTagExist() {
+        distributorUI.scrollByPixels(50,50);
         return distributorUI.isDisplayed(icon_removeTag);
     }
 
