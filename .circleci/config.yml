@@ -926,16 +926,16 @@ workflows:
             - nightly-build-and-test-7
             - nightly-build-and-test-8
 
-  scheduled-test-1-sub2:
-    triggers:
-      - schedule:
-          cron: "30 23 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 00 22 * * * ahsan_approch 30 23
-          filters:
-            branches:
-              only:
-                - main
-    jobs:
-        - nightly-build-and-test-8
+#  scheduled-test-1-sub2:
+#    triggers:
+#      - schedule:
+#          cron: "30 23 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 00 22 * * * ahsan_approch 30 23
+#          filters:
+#            branches:
+#              only:
+#                - main
+#    jobs:
+#        - nightly-build-and-test-8
 
 
   scheduled-test-2:
