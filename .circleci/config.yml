@@ -815,10 +815,18 @@ jobs:
               TESTS=${TESTS:-0}
               FAILURES=${FAILURES:-0}
               ERRORS=${ERRORS:-0}
+              SKIPPED=${SKIPPED:-0}
+              
+              # Adjust total count by removing skipped tests
+              ACTUAL_TOTAL=$((TESTS - SKIPPED))
             
-              PASSED_IN_FILE=$((TESTS - FAILURES - ERRORS))
+              if [ "$ACTUAL_TOTAL" -gt 0 ]; then
+                PASSED_IN_FILE=$((ACTUAL_TOTAL - FAILURES - ERRORS))
+              else
+                PASSED_IN_FILE=0
+              fi
             
-              TOTAL=$((TOTAL + TESTS))
+              TOTAL=$((TOTAL + ACTUAL_TOTAL))
               PASSED=$((PASSED + PASSED_IN_FILE))
               FAILED=$((FAILED + FAILURES + ERRORS))
             done
@@ -877,7 +885,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "40 12 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
+          cron: "38 15 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
           filters:
             branches:
               only:
