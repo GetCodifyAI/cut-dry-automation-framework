@@ -32,7 +32,7 @@ public class VerifyStockAvailabilityModalForMultiUOMSKUsTest extends TestBase {
 
     }
 
-    @Test(groups = "DOT-TC-1047")
+    @Test(groups = "DOT-TC-1089")
     public void VerifyStockAvailabilityModalForMultiUOMSKUs() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
