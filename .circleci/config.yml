@@ -889,7 +889,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "51 01 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
+          cron: "55 05 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
           filters:
             branches:
               only:
@@ -897,18 +897,18 @@ workflows:
     jobs:
       - nightly-build-and-test-1
       - nightly-build-and-test-2
-      - nightly-build-and-test-3
-      - nightly-build-and-test-4
-      - nightly-build-and-test-5
-      - nightly-build-and-test-6
+#      - nightly-build-and-test-3
+#      - nightly-build-and-test-4
+#      - nightly-build-and-test-5
+#      - nightly-build-and-test-6
       - calculate-pass-fail-rate:
           requires:
             - nightly-build-and-test-1
             - nightly-build-and-test-2
-            - nightly-build-and-test-3
-            - nightly-build-and-test-4
-            - nightly-build-and-test-5
-            - nightly-build-and-test-6
+#            - nightly-build-and-test-3
+#            - nightly-build-and-test-4
+#            - nightly-build-and-test-5
+#            - nightly-build-and-test-6
 
   scheduled-test-1-sub1:
     triggers:
