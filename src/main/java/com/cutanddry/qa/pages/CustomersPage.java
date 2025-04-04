@@ -654,6 +654,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String unpaidInvoiceName = "//div[text()='NAME']";
     By caseMinimumNotMetText = By.xpath("//*[contains(text(),'Case Minimum Not Met')]");
     By btn_sortCustomOrder = By.xpath("//div[contains(@class, 'cd_themed_select__single-value') and text()='Custom Order']");
+    String orderColumn = "//td[text()='COLUMN']";
+    String orderSummery = "//div[text()='ORDERSUMMERY']";
+    By caseUnit = By.xpath("//label[text()='Unit']/../following-sibling::div[text()='Case']");
+    By saveItem = By.xpath("//button[text()='Save Item']");
+    By btn_stock = By.xpath("(//span[contains(text(),'Stock')])[1]");
+    String stockAvailability = "//div[contains(text(),'STOCK')]";
+
+
 
     public void ifDuplicateOrderDisplayed(){
         if (distributorUI.isDisplayed(txt_duplicateOrder)) {
@@ -3925,6 +3933,41 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         String dropdownText = distributorUI.getText(btn_sortCustomOrder);
         return dropdownText;
 
+    }
+    public void clickF12HotKey()throws InterruptedException{
+        distributorUI.clickF12Mac();
+    }
+    public boolean isOrderColumnDisplay(String column)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(orderColumn.replace("COLUMN",column)),2);
+    }
+    public boolean orderSummeryDisplay(String summery)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(orderSummery.replace("ORDERSUMMERY",summery)),2);
+    }
+    public void clickOnCaseUnit()throws InterruptedException{
+        distributorUI.click(caseUnit);
+    }
+    public void saveItem()throws InterruptedException{
+        distributorUI.click(saveItem);
+        distributorUI.waitForCustom(3000);
+    }
+    public boolean isMultiUomDropDownDisplayed(String code)throws InterruptedException{
+       return distributorUI.isDisplayed(By.xpath(multiUomDropDownOG.replace("CODE", code)));
+    }
+    public void clickStock()throws InterruptedException{
+        distributorUI.click(btn_stock);
+    }
+    public boolean isStockAvailabilityDisplayed(String stock)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(stockAvailability.replace("STOCK", stock)));
+    }
+    public boolean isMultiUOMStockAvailabilityDisplayed(String stock, WebDriver driver) throws InterruptedException {
+        // Replace STOCK with the actual text to find
+        String updatedXpath = stockAvailability.replace("STOCK", stock);
+
+        // Find all matching elements
+        List<WebElement> stockElements = driver.findElements(By.xpath(updatedXpath));
+
+        // Return true only if at least two occurrences exist
+        return stockElements.size() >= 2;
     }
 
 
