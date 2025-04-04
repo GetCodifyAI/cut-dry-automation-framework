@@ -351,7 +351,8 @@ By lbl_margin = By.xpath("//div[contains(text(),'Margin') and contains(text(),'$
     By txtarea_editNote = By.xpath("(//textarea)[1]");
     By btn_saveNote = By.xpath("//button[contains(@class,'mx-2 my-2 btn btn-outline-primary btn-sm')]");
     By txt_assignSalesperson = By.xpath("//div[contains(text(),'Assign Salesperson')]");
-    By dropdown_assignSalesperson = By.xpath("((//*[local-name() = 'svg' and @class='css-19bqh2r']))[2]");
+//    By dropdown_assignSalesperson = By.xpath("((//*[local-name() = 'svg' and @class='css-19bqh2r']))[2]");
+By dropdown_assignSalesperson = By.xpath("(//div[contains(@class,'themed_select__dropdown-indicator')])[last()]");
     By sel_salesperson = By.xpath("//div[contains(@class, 'themed_select__option') and contains(text(), 'Ali Loynachan')]");
     By txt_assignedSalesperson = By.xpath("//td[contains(text(),'Ali Loynachan')]");
     By btn_saveChanges = By.xpath("//button[contains(text(),'Save changes')]");
@@ -370,7 +371,8 @@ By lbl_margin = By.xpath("//div[contains(text(),'Margin') and contains(text(),'$
     By btn_closeMsg = By.xpath("//span[text()='×']");
     By dropdown_selTags = By.xpath("//div[contains(text(),'Tags')]/parent::div//*[contains(@class,'themed_select__dropdown')]");
     By dropdown_list = By.xpath("//div[contains(@class,'themed_select__menu-list themed_select')]");
-    By sel_tagOption = By.xpath("//div[contains(@class, 'themed_select__option') and normalize-space(.)='Rep Orders']");
+//    By sel_tagOption = By.xpath("//div[contains(@class, 'themed_select__option') and normalize-space(.)='Rep Orders']");
+By sel_tagOption = By.xpath("//div[contains(@class, 'themed_select__option') and not(contains(@class, 'themed_select__option--is-focused')) and normalize-space(.)='Rep Orders']");
     By lbl_tagName = By.xpath("//div[contains(text(),'Tags')]");
     By sel_tagName = By.xpath("//div[contains(@class,'css-12jo7m5 theme')]");
     By icon_removeTag = By.xpath("//div[contains(text(),'Rep Orders')]/following-sibling::div");

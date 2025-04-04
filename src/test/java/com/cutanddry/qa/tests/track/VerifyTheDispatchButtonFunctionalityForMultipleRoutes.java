@@ -15,7 +15,7 @@ import java.net.URISyntaxException;
 
 public class VerifyTheDispatchButtonFunctionalityForMultipleRoutes extends TestBase{
     static User user;
-    static String distributorName = "Brandon IFC Cut+Dry Agent - In";
+    static String distributorName = "Brandon IFC Cut+Dry Agent";
 
     @BeforeMethod
     public void setUp() {
