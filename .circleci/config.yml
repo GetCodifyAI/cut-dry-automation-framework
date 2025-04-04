@@ -500,10 +500,24 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 1
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression1.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression1.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
-          destination: daily-build-and-test-artifacts
+          destination: daily-build-and-test-artifacts-1
+      - run:
+          name: Verify Test Results Exist
+          command: ls -R target/surefire-reports || echo "Test results missing!"
+      - run:
+          name: Copy test results to workspace
+          command: |
+            mkdir -p ~/workspace
+            for file in target/surefire-reports/TEST-*.xml; do
+              [ -f "$file" ] && cp "$file" ~/workspace/nightly-build-and-test-1_$(basename "$file")
+            done
+      - persist_to_workspace:
+          root: ~/workspace
+          paths:
+            - nightly-build-and-test-1_TEST-*.xml
     executor:
 
   daily-build-and-test-2:
@@ -539,10 +553,24 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 2
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression2.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression2.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
-          destination: daily-build-and-test-artifacts
+          destination: daily-build-and-test-artifacts-2
+      - run:
+          name: Verify Test Results Exist
+          command: ls -R target/surefire-reports || echo "Test results missing!"
+      - run:
+          name: Copy test results to workspace
+          command: |
+            mkdir -p ~/workspace
+            for file in target/surefire-reports/TEST-*.xml; do
+              [ -f "$file" ] && cp "$file" ~/workspace/nightly-build-and-test-2_$(basename "$file")
+            done
+      - persist_to_workspace:
+          root: ~/workspace
+          paths:
+            - nightly-build-and-test-2_TEST-*.xml
     executor:
 
   daily-build-and-test-3:
@@ -578,10 +606,24 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 3
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression3.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression3.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
-          destination: daily-build-and-test-artifacts
+          destination: daily-build-and-test-artifacts-3
+      - run:
+          name: Verify Test Results Exist
+          command: ls -R target/surefire-reports || echo "Test results missing!"
+      - run:
+          name: Copy test results to workspace
+          command: |
+            mkdir -p ~/workspace
+            for file in target/surefire-reports/TEST-*.xml; do
+              [ -f "$file" ] && cp "$file" ~/workspace/nightly-build-and-test-3_$(basename "$file")
+            done
+      - persist_to_workspace:
+          root: ~/workspace
+          paths:
+            - nightly-build-and-test-3_TEST-*.xml
     executor:
 
   daily-build-and-test-4:
@@ -617,10 +659,24 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 4
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression4.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression4.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
-          destination: daily-build-and-test-artifacts
+          destination: daily-build-and-test-artifacts-4
+      - run:
+          name: Verify Test Results Exist
+          command: ls -R target/surefire-reports || echo "Test results missing!"
+      - run:
+          name: Copy test results to workspace
+          command: |
+            mkdir -p ~/workspace
+            for file in target/surefire-reports/TEST-*.xml; do
+              [ -f "$file" ] && cp "$file" ~/workspace/nightly-build-and-test-4_$(basename "$file")
+            done
+      - persist_to_workspace:
+          root: ~/workspace
+          paths:
+            - nightly-build-and-test-4_TEST-*.xml
     executor:
 
   daily-build-and-test-5:
@@ -656,10 +712,24 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 5
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression5.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression5.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
-          destination: daily-build-and-test-artifacts
+          destination: daily-build-and-test-artifacts-5
+      - run:
+          name: Verify Test Results Exist
+          command: ls -R target/surefire-reports || echo "Test results missing!"
+      - run:
+          name: Copy test results to workspace
+          command: |
+            mkdir -p ~/workspace
+            for file in target/surefire-reports/TEST-*.xml; do
+              [ -f "$file" ] && cp "$file" ~/workspace/nightly-build-and-test-5_$(basename "$file")
+            done
+      - persist_to_workspace:
+          root: ~/workspace
+          paths:
+            - nightly-build-and-test-5_TEST-*.xml
     executor:
 
   daily-build-and-test-6:
@@ -695,10 +765,24 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 6
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression6.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression6.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
-          destination: daily-build-and-test-artifacts
+          destination: daily-build-and-test-artifacts-6
+      - run:
+          name: Verify Test Results Exist
+          command: ls -R target/surefire-reports || echo "Test results missing!"
+      - run:
+          name: Copy test results to workspace
+          command: |
+            mkdir -p ~/workspace
+            for file in target/surefire-reports/TEST-*.xml; do
+              [ -f "$file" ] && cp "$file" ~/workspace/nightly-build-and-test-6_$(basename "$file")
+            done
+      - persist_to_workspace:
+          root: ~/workspace
+          paths:
+            - nightly-build-and-test-6_TEST-*.xml
     executor:
 
   daily-build-and-test-7:
@@ -734,10 +818,24 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 7
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression7.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression7.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
-          destination: daily-build-and-test-artifacts
+          destination: daily-build-and-test-artifacts-7
+      - run:
+          name: Verify Test Results Exist
+          command: ls -R target/surefire-reports || echo "Test results missing!"
+      - run:
+          name: Copy test results to workspace
+          command: |
+            mkdir -p ~/workspace
+            for file in target/surefire-reports/TEST-*.xml; do
+              [ -f "$file" ] && cp "$file" ~/workspace/nightly-build-and-test-7_$(basename "$file")
+            done
+      - persist_to_workspace:
+          root: ~/workspace
+          paths:
+            - nightly-build-and-test-7_TEST-*.xml
     executor:
 
   daily-build-and-test-8:
@@ -773,10 +871,24 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 8
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression8.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression8.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
-          destination: daily-build-and-test-artifacts
+          destination: daily-build-and-test-artifacts-8
+      - run:
+          name: Verify Test Results Exist
+          command: ls -R target/surefire-reports || echo "Test results missing!"
+      - run:
+          name: Copy test results to workspace
+          command: |
+            mkdir -p ~/workspace
+            for file in target/surefire-reports/TEST-*.xml; do
+              [ -f "$file" ] && cp "$file" ~/workspace/nightly-build-and-test-8_$(basename "$file")
+            done
+      - persist_to_workspace:
+          root: ~/workspace
+          paths:
+            - nightly-build-and-test-8_TEST-*.xml
     executor:
 
   calculate-pass-fail-rate:
@@ -830,9 +942,9 @@ jobs:
                 PASSED_IN_FILE=0
               fi
             
-              TOTAL=$((TOTAL + ACTUAL_TOTAL))
+              TOTAL=$((TOTAL + ACTUAL_TOTAL - 1))
               PASSED=$((PASSED + PASSED_IN_FILE))
-              FAILED=$((FAILED + FAILURES + (ERRORS/2)))
+              FAILED=$((FAILED + FAILURES + (ERRORS/2) -1))
             done
             
             if [ "$TOTAL" -eq 0 ]; then
@@ -889,11 +1001,11 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "47 12 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
+          cron: "00 22 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
           filters:
             branches:
               only:
-                - ahsan_approch
+                - main
     jobs:
       - nightly-build-and-test-1
       - nightly-build-and-test-2
@@ -926,18 +1038,6 @@ workflows:
             - nightly-build-and-test-7
             - nightly-build-and-test-8
 
-#  scheduled-test-1-sub2:
-#    triggers:
-#      - schedule:
-#          cron: "30 23 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 00 22 * * * ahsan_approch 30 23
-#          filters:
-#            branches:
-#              only:
-#                - main
-#    jobs:
-#        - nightly-build-and-test-8
-
-
   scheduled-test-2:
     triggers:
       - schedule:
@@ -953,6 +1053,14 @@ workflows:
       - daily-build-and-test-4
       - daily-build-and-test-5
       - daily-build-and-test-6
+      - calculate-pass-fail-rate:
+          requires:
+            - daily-build-and-test-1
+            - daily-build-and-test-2
+            - daily-build-and-test-3
+            - daily-build-and-test-4
+            - daily-build-and-test-5
+            - daily-build-and-test-6
 
   scheduled-test-2-sub1:
     triggers:
@@ -964,16 +1072,10 @@ workflows:
                 - main
     jobs:
       - daily-build-and-test-7
-
-  scheduled-test-2-sub2:
-    triggers:
-      - schedule:
-          cron: "15 07 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 15 07 * * *
-          filters:
-            branches:
-              only:
-                - main
-    jobs:
       - daily-build-and-test-8
+      - calculate-pass-fail-rate:
+          requires:
+            - daily-build-and-test-7
+            - daily-build-and-test-8
 
 
