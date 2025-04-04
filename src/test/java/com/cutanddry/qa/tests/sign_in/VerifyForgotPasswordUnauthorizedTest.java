@@ -4,7 +4,6 @@ import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.ForgotPasswordUser;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
-import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -23,7 +22,6 @@ public class VerifyForgotPasswordUnauthorizedTest extends TestBase {
     public void verifyForgotPasswordUnauthorizedEmail() {
         SoftAssert softAssert = new SoftAssert();
         Login.forgotPassword();
-        Assert.assertTrue(false);
         softAssert.assertTrue(Login.forgotPassword(),"forgot password navigation error");
         Login.passwordResetRequest(user.getEmail_unauthorized());
         softAssert.assertTrue(Login.invalidEmailOrMobileForgotPassword(),"unauthorized email pop up error");
