@@ -49,6 +49,12 @@
             <class name="com.cutanddry.qa.tests.customer_groups.VerifyMultipleCustomerGroupsCanBeAssignedTest"/>
 
             <class name="com.cutanddry.qa.tests.order_guide.VerifyCustomOrderGuideSectionTest"/>
+
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheOrderSummerySectionShrinkAndExpandWithF12KeyTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCostMarginSectionsAreDisplayedAndHiddenWithF12KeyTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditUOMsFromEditTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyStockAvailabilityModalForMultiUOMSKUsTest"/>
+
         </classes>
     </test>
 </suite>
