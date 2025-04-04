@@ -7,7 +7,6 @@ import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.functions.Track;
 import com.cutanddry.qa.utils.JsonUtil;
-import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -28,7 +27,6 @@ public class VerifyDownloadExampleRouteUsingTrackFeature extends TestBase {
     public void VerifyDownloadExampleRouteUsingTrackFeature() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        Assert.assertTrue(false);
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToLoginAsPortal(distributorName);
         Dashboard.navigateToTrackRoutes();
