@@ -1248,4 +1248,15 @@ public class KeywordBase {
             return false;
         }
     }
+
+public KeywordBase clickF12Mac() {
+    try {
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.F12).perform();
+        logger.info("Pressed F12 (Developer Tools) on Mac");
+    } catch (Exception e) {
+        logger.error("Failed to press F12 on Mac", e);
+    }
+    return this;
+}
 }

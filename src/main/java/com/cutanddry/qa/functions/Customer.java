@@ -2254,6 +2254,34 @@ public class Customer {
     public static String IsCustomOrderTextDisplayed() throws InterruptedException {
         return customersPage.IsCustomOrderTextDisplayed();
     }
+    public static void clickF12HotKey() throws InterruptedException {
+        customersPage.clickF12HotKey();
+    }
+    public static boolean isOrderColumnDisplay(String column) throws InterruptedException {
+        return customersPage.isOrderColumnDisplay(column);
+    }
+    public static boolean orderSummeryDisplay(String summery)throws InterruptedException{
+        return customersPage.orderSummeryDisplay(summery);
+    }
+    public static void clickOnCaseUnit() throws InterruptedException {
+        customersPage.clickOnCaseUnit();
+    }
+    public static void saveItem() throws InterruptedException {
+        customersPage.saveItem();
+    }
+    public static boolean isMultiUomDropDownDisplayed(String code)throws InterruptedException{
+        return customersPage.isMultiUomDropDownDisplayed(code);
+    }
+    public static void clickStock()throws InterruptedException{
+        customersPage.clickStock();
+    }
+    public static boolean isStockAvailabilityDisplayed(String stock)throws InterruptedException{
+        return customersPage.isStockAvailabilityDisplayed(stock);
+    }
+    public static boolean isMultiUOMStockAvailabilityDisplayed(String stock)throws InterruptedException{
+        return customersPage.isStockAvailabilityDisplayed(stock);
+    }
+
 
 
 }
