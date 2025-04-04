@@ -512,12 +512,12 @@ jobs:
           command: |
             mkdir -p ~/workspace
             for file in target/surefire-reports/TEST-*.xml; do
-              [ -f "$file" ] && cp "$file" ~/workspace/nightly-build-and-test-1_$(basename "$file")
+              [ -f "$file" ] && cp "$file" ~/workspace/daily-build-and-test-1_$(basename "$file")
             done
       - persist_to_workspace:
           root: ~/workspace
           paths:
-            - nightly-build-and-test-1_TEST-*.xml
+            - daily-build-and-test-1_TEST-*.xml
     executor:
 
   daily-build-and-test-2:
@@ -565,12 +565,12 @@ jobs:
           command: |
             mkdir -p ~/workspace
             for file in target/surefire-reports/TEST-*.xml; do
-              [ -f "$file" ] && cp "$file" ~/workspace/nightly-build-and-test-2_$(basename "$file")
+              [ -f "$file" ] && cp "$file" ~/workspace/daily-build-and-test-2_$(basename "$file")
             done
       - persist_to_workspace:
           root: ~/workspace
           paths:
-            - nightly-build-and-test-2_TEST-*.xml
+            - daily-build-and-test-2_TEST-*.xml
     executor:
 
   daily-build-and-test-3:
@@ -618,12 +618,12 @@ jobs:
           command: |
             mkdir -p ~/workspace
             for file in target/surefire-reports/TEST-*.xml; do
-              [ -f "$file" ] && cp "$file" ~/workspace/nightly-build-and-test-3_$(basename "$file")
+              [ -f "$file" ] && cp "$file" ~/workspace/daily-build-and-test-3_$(basename "$file")
             done
       - persist_to_workspace:
           root: ~/workspace
           paths:
-            - nightly-build-and-test-3_TEST-*.xml
+            - daily-build-and-test-3_TEST-*.xml
     executor:
 
   daily-build-and-test-4:
@@ -671,12 +671,12 @@ jobs:
           command: |
             mkdir -p ~/workspace
             for file in target/surefire-reports/TEST-*.xml; do
-              [ -f "$file" ] && cp "$file" ~/workspace/nightly-build-and-test-4_$(basename "$file")
+              [ -f "$file" ] && cp "$file" ~/workspace/daily-build-and-test-4_$(basename "$file")
             done
       - persist_to_workspace:
           root: ~/workspace
           paths:
-            - nightly-build-and-test-4_TEST-*.xml
+            - daily-build-and-test-4_TEST-*.xml
     executor:
 
   daily-build-and-test-5:
@@ -724,12 +724,12 @@ jobs:
           command: |
             mkdir -p ~/workspace
             for file in target/surefire-reports/TEST-*.xml; do
-              [ -f "$file" ] && cp "$file" ~/workspace/nightly-build-and-test-5_$(basename "$file")
+              [ -f "$file" ] && cp "$file" ~/workspace/daily-build-and-test-5_$(basename "$file")
             done
       - persist_to_workspace:
           root: ~/workspace
           paths:
-            - nightly-build-and-test-5_TEST-*.xml
+            - daily-build-and-test-5_TEST-*.xml
     executor:
 
   daily-build-and-test-6:
@@ -777,12 +777,12 @@ jobs:
           command: |
             mkdir -p ~/workspace
             for file in target/surefire-reports/TEST-*.xml; do
-              [ -f "$file" ] && cp "$file" ~/workspace/nightly-build-and-test-6_$(basename "$file")
+              [ -f "$file" ] && cp "$file" ~/workspace/daily-build-and-test-6_$(basename "$file")
             done
       - persist_to_workspace:
           root: ~/workspace
           paths:
-            - nightly-build-and-test-6_TEST-*.xml
+            - daily-build-and-test-6_TEST-*.xml
     executor:
 
   daily-build-and-test-7:
@@ -830,12 +830,12 @@ jobs:
           command: |
             mkdir -p ~/workspace
             for file in target/surefire-reports/TEST-*.xml; do
-              [ -f "$file" ] && cp "$file" ~/workspace/nightly-build-and-test-7_$(basename "$file")
+              [ -f "$file" ] && cp "$file" ~/workspace/daily-build-and-test-7_$(basename "$file")
             done
       - persist_to_workspace:
           root: ~/workspace
           paths:
-            - nightly-build-and-test-7_TEST-*.xml
+            - daily-build-and-test-7_TEST-*.xml
     executor:
 
   daily-build-and-test-8:
@@ -883,12 +883,12 @@ jobs:
           command: |
             mkdir -p ~/workspace
             for file in target/surefire-reports/TEST-*.xml; do
-              [ -f "$file" ] && cp "$file" ~/workspace/nightly-build-and-test-8_$(basename "$file")
+              [ -f "$file" ] && cp "$file" ~/workspace/daily-build-and-test-8_$(basename "$file")
             done
       - persist_to_workspace:
           root: ~/workspace
           paths:
-            - nightly-build-and-test-8_TEST-*.xml
+            - daily-build-and-test-8_TEST-*.xml
     executor:
 
   calculate-pass-fail-rate:
