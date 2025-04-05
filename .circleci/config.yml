@@ -114,7 +114,8 @@ workflows:
               only:
                 - order_guide_performance
     jobs:
-      - hold-for-approval
+      - approve-before-run:
+          type: approval
       - jmeter-test:
           requires:
-            - hold-for-approval
+            - approve-before-run
