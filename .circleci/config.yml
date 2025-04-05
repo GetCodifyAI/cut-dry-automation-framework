@@ -102,9 +102,6 @@ jobs:
 
 workflows:
   version: 2
-#  test:
-#    jobs:
-#      - jmeter-test
   daily_manual_trigger:
     triggers:
       - schedule:
