@@ -102,6 +102,19 @@ jobs:
 
 workflows:
   version: 2
-  test:
+#  test:
+#    jobs:
+#      - jmeter-test
+  daily_manual_trigger:
+    triggers:
+      - schedule:
+          cron: "0 12 * * *"  # runs every day at 12:00 UTC
+          filters:
+            branches:
+              only:
+                - order_guide_performance
     jobs:
-      - jmeter-test
+      - hold-for-approval
+      - jmeter-test:
+          requires:
+            - hold-for-approval
