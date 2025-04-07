@@ -43,7 +43,7 @@ public class VerifyRemovingSubstituteFromAnItemTest extends TestBase{
         Catalog.deleteSubstituteItem(substituteItemCode);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in Removing substitute item");
-        softAssert.assertFalse(Catalog.isDeletedSubstituteItemDisplayedInPage(itemCode),"Substitute Item not Removed");
+        softAssert.assertFalse(Catalog.isDeletedSubstituteItemDisplayedInPage(substituteItemCode),"Substitute Item not Removed");
         softAssert.assertAll();
     }
 
