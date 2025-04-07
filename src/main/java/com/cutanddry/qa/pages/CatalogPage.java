@@ -187,7 +187,7 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
 
     By itemStatusDropdown = By.xpath("//label[contains(text(), 'Item Status')]/following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
     String itemStatusOption = "(//div[contains(text(),'ITEMSTATUS') and contains(@class,'themed_select__option')])[last()]";
-    String lastOrderedDate = "//div[text()='1 CS ordered on DATEPLACEHOLDER']";
+    String lastOrderedDate = "//div[contains(text(),'CS ordered on DATEPLACEHOLDER')]";
     By purchaseHistory = By.xpath("//div[text()='Purchase History']");
     String lastOrderDatePDP = "(//div[text()='DATEPLACEHOLDER']/../following-sibling::td//div[.//div[text()='1 Pkg'] and .//div[text()='1 CS']])[1]";
 
