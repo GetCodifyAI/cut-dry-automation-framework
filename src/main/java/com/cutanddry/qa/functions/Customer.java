@@ -2281,9 +2281,17 @@ public class Customer {
     public static boolean isMultiUOMStockAvailabilityDisplayed(String stock)throws InterruptedException{
         return customersPage.isStockAvailabilityDisplayed(stock);
     }
-
-
-
+    public static void loginNodeExplorerPortal()throws InterruptedException{
+        customersPage.loginNodeExplorerPortal();
+    }
+    public static void editStatusSubstitutionsAccess(String status){
+        customersPage.clickEditSubstitutionsAccess();
+        customersPage.editSubstitutionStatus(status);
+        customersPage.saveCatalogAccessChanges();
+    }
+    public static boolean isAddedPaymentMethodDisplayed(String status)throws InterruptedException{
+        return customersPage.isAddedPaymentMethodDisplayed(status);
+    }
 }
 
 

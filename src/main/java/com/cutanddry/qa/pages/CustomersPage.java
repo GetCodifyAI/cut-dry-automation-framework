@@ -662,6 +662,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By saveItem = By.xpath("//button[text()='Save Item']");
     By btn_stock = By.xpath("(//span[contains(text(),'Stock')])[1]");
     String stockAvailability = "//div[contains(text(),'STOCK')]";
+    By substitutionsAccessEditBtn = By.xpath("//div[contains(text(), 'Substitutions')]//following-sibling::div//div//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
+    By substitutionDropDown = By.xpath("//div[contains(text(), 'Substitutions')]//following-sibling::div/div/div/div");
+    String substitutionOption = "//div[contains(text(), 'Substitutions')]//following-sibling::*//div[text()='STATUS']";
+    String nodeStatus = "(//small[contains(text(), 'STATUS')])[1]";
 
 
 
@@ -3970,6 +3974,20 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
 
         // Return true only if at least two occurrences exist
         return stockElements.size() >= 2;
+    }
+    public void loginNodeExplorerPortal() throws InterruptedException{
+        distributorUI.navigateToURL("https://app-uat.staging.cutanddry.com/admin/nodeType/397749147765731276");
+    }
+    public void clickEditSubstitutionsAccess(){
+        distributorUI.click(substitutionsAccessEditBtn);
+    }
+    public void editSubstitutionStatus(String status){
+        distributorUI.click(substitutionDropDown);
+        distributorUI.waitForVisibility(By.xpath(substitutionOption.replace("STATUS", status)));
+        distributorUI.click(By.xpath(substitutionOption.replace("STATUS", status)));
+    }
+    public boolean isAddedPaymentMethodDisplayed(String status)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(nodeStatus.replace("STATUS", status)));
     }
 
 
