@@ -55,6 +55,9 @@
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditUOMsFromEditTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyStockAvailabilityModalForMultiUOMSKUsTest"/>
 
+            <class name="com.cutanddry.qa.tests.settings.VerifyAddPayoutAccountTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyAddCustomerPaymentMethodTest"/>
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifySubstituteItemsNotDisplayedIfTurnedOffCustomerProfileTest"/>
         </classes>
     </test>
 </suite>
