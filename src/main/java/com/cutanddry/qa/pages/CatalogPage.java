@@ -3,7 +3,7 @@ package com.cutanddry.qa.pages;
 import org.openqa.selenium.By;
 
 public class CatalogPage extends LoginPage{
-    By txt_catalog = By.xpath("//div[contains(text(),'Manage Catalog')]");
+    By txt_catalog = By.xpath("//*[contains(text(),'Manage Your Digital Catalog')]");
     By txt_catalogFirstItem = By.xpath("//tbody/tr[contains(@class, '_du1frc')][1]");
     By txt_editItem = By.xpath("//li[contains(text(),'Edit Item')]");
     By btn_preview = By.xpath("//a[.//button[contains(text(), 'Preview')]]");
