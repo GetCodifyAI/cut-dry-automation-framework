@@ -20,6 +20,8 @@ public class CatalogPage extends LoginPage{
 By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])[1]");
     By OtherBrandText = By.xpath("//h2[contains(text(),'Andy Capp’s®')]");
     By ShowCaseBtn = By.xpath("//*[contains(text(),'Showcase')]");
+    By ShowCasePopUp = By.xpath("//*[contains(text(),'Using the Product Showcase')]");
+    By btn_deleteShowCasePopUp = By.xpath("//button/*[local-name()='svg' and @data-icon='xmark']");
 //    By ShowCaseBtn = By.xpath("//a[contains(@data-tip,'Cut+Dry Product Showcase')]");
     By btn_previewCat = By.xpath("//button[contains(text(), 'Switch to Grid View')]");
     By txt_previewCat = By.xpath("//div[text()='Catalog Preview']");
@@ -248,6 +250,10 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
     }
     public void ClickOnShowCaseBtn(){
         distributorUI.click(ShowCaseBtn);
+        if (distributorUI.isDisplayed(ShowCasePopUp)) {
+            distributorUI.clickWithFallback(btn_deleteShowCasePopUp);
+        }
+
     }
     public void clickOnPreviewCatalog() {
         distributorUI.click(btn_previewCat);
