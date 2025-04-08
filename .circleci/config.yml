@@ -86,8 +86,9 @@ jobs:
           name: Copy test results to workspace
           command: |
             mkdir -p ~/workspace
+            PART_NAME="Part_One"
             for file in target/surefire-reports/TEST-*.xml; do
-              [ -f "$file" ] && cp "$file" ~/workspace/nightly-build-and-test-1_$(basename "$file")
+              [ -f "$file" ] && cp "$file" ~/workspace/${PART_NAME}_nightly-build-and-test-1_$(basename "$file")
             done
       - persist_to_workspace:
           root: ~/workspace
@@ -139,8 +140,9 @@ jobs:
           name: Copy test results to workspace
           command: |
             mkdir -p ~/workspace
+            PART_NAME="Part_Two"
             for file in target/surefire-reports/TEST-*.xml; do
-              [ -f "$file" ] && cp "$file" ~/workspace/nightly-build-and-test-2_$(basename "$file")
+              [ -f "$file" ] && cp "$file" ~/workspace/${PART_NAME}_nightly-build-and-test-2_$(basename "$file")
             done
       - persist_to_workspace:
           root: ~/workspace
@@ -915,11 +917,20 @@ jobs:
                echo "No test result XMLs found! Exiting..."
                exit 1
             fi
+            
+            declare -A PART_TOTAL
+            declare -A PART_PASS
+            declare -A PART_FAIL
+            
             TOTAL=0
             PASSED=0
             FAILED=0
             
             for FILE in ~/workspace/*.xml; do
+            
+              PART=$(basename "$FILE" | cut -d'_' -f1,2)
+              PART=${PART:-Unknown}
+              
               TESTS=$(grep -oP '(?<=tests=")[0-9]+' "$FILE" | head -1)
               FAILURES=$(grep -oP '(?<=failures=")[0-9]+' "$FILE" | head -1)
               ERRORS=$(grep -oP '(?<=errors=")[0-9]+' "$FILE" | head -1)
@@ -945,6 +956,11 @@ jobs:
               TOTAL=$((TOTAL + ACTUAL_TOTAL))
               PASSED=$((PASSED + PASSED_IN_FILE))
               FAILED=$((FAILED + FAILURES + (ERRORS/2)))
+            
+              PART_TOTAL[$PART]=$((PART_TOTAL[$PART] + ACTUAL_TOTAL))
+              PART_PASS[$PART]=$((PART_PASS[$PART] + PASSED_IN_FILE))
+              PART_FAIL[$PART]=$((PART_FAIL[$PART] + FAILURES + (ERRORS / 2)))
+            
             done
             
             if [ "$TOTAL" -eq 0 ]; then
@@ -968,8 +984,21 @@ jobs:
             echo "FAIL_RATE=$FAIL_RATE" >> $BASH_ENV
             source $BASH_ENV
             
+            # Build PART breakdown summary
+            PART_SUMMARY=""
+              for part in "${!PART_TOTAL[@]}"; do
+                total=${PART_TOTAL[$part]}
+                pass=${PART_PASS[$part]}
+                if [ "$total" -gt 0 ]; then
+                  rate=$(echo "scale=2; ($pass / $total) * 100.0" | bc)
+                else
+                  rate="0.00"
+                fi
+                PART_SUMMARY+="• *$part*: ✅ $pass / $total, 📊 *$rate%*\n"
+              done
+            
             # Set environment variables for Slack notification
-            export SLACK_MESSAGE="Total tests run: $TOTAL\nPassed: $PASSED\nFailed: $FAILED\nPass Rate: $PASS_RATE%\nFail Rate: $FAIL_RATE%"
+            export SLACK_MESSAGE="Total tests run: $TOTAL\nPassed: $PASSED\nFailed: $FAILED\nPass Rate: $PASS_RATE%\nFail Rate: $FAIL_RATE%*\n📉 Fail Rate: *$FAIL_RATE%*\n\n*Per PART breakdown:*\n$PART_SUMMARY"
 
           # Send the test results to Slack
       - slack/notify:
@@ -1001,26 +1030,26 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "00 22 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
+          cron: "33 02 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
           filters:
             branches:
               only:
-                - main
+                - ahsan_approch
     jobs:
       - nightly-build-and-test-1
       - nightly-build-and-test-2
-      - nightly-build-and-test-3
-      - nightly-build-and-test-4
-      - nightly-build-and-test-5
-      - nightly-build-and-test-6
+#      - nightly-build-and-test-3
+#      - nightly-build-and-test-4
+#      - nightly-build-and-test-5
+#      - nightly-build-and-test-6
       - calculate-pass-fail-rate:
           requires:
             - nightly-build-and-test-1
             - nightly-build-and-test-2
-            - nightly-build-and-test-3
-            - nightly-build-and-test-4
-            - nightly-build-and-test-5
-            - nightly-build-and-test-6
+#            - nightly-build-and-test-3
+#            - nightly-build-and-test-4
+#            - nightly-build-and-test-5
+#            - nightly-build-and-test-6
 
   scheduled-test-1-sub1:
     triggers:
