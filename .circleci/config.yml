@@ -93,7 +93,7 @@ jobs:
       - persist_to_workspace:
           root: ~/workspace
           paths:
-            - nightly-build-and-test-1_TEST-*.xml
+            - ${PART_NAME}_nightly-build-and-test-1_TEST-*.xml
     executor:
 
   nightly-build-and-test-2:
@@ -147,7 +147,7 @@ jobs:
       - persist_to_workspace:
           root: ~/workspace
           paths:
-            - nightly-build-and-test-2_TEST-*.xml
+            - ${PART_NAME}_nightly-build-and-test-2_TEST-*.xml
     executor:
 
   nightly-build-and-test-3:
@@ -1030,7 +1030,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "33 02 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
+          cron: "41 02 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
           filters:
             branches:
               only:
