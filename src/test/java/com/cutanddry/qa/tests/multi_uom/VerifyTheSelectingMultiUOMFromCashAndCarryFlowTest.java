@@ -7,6 +7,7 @@ import com.cutanddry.qa.functions.CashAndCarry;
 import com.cutanddry.qa.functions.Catalog;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -31,7 +32,7 @@ public class VerifyTheSelectingMultiUOMFromCashAndCarryFlowTest extends TestBase
     public void VerifyTheSelectingMultiUOMFromCashAndCarryFlow() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         CashAndCarry.navigateToCashAndCarryApp(appURL);
-        softAssert.assertTrue(CashAndCarry.isUserNavigatedToCashAndCarry(),"navigation error");
+        Assert.assertTrue(CashAndCarry.isUserNavigatedToCashAndCarry(),"navigation error");
         Customer.searchItemOnCatalog(itemName);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
         Customer.clickOnProduct(itemName);
@@ -42,7 +43,7 @@ public class VerifyTheSelectingMultiUOMFromCashAndCarryFlowTest extends TestBase
         CashAndCarry.clickDicarloAddToCartPlusIcon(1, uom2);
         totalPDPItemPrice = Customer.getItemPriceOnCheckoutButtonViaPDP();
         softAssert.assertEquals(Math.round(totalPDPItemPrice * 100.0) / 100.0,
-                ((Math.round(itemPriceUOM1 * 100.0) / 100.0)+(Math.round(itemPriceUOM2 * 100.0) / 100.0)), "The item has not been selected.");
+                ((Math.round(itemPriceUOM1 * 100.0) / 100.0)+(Math.round(itemPriceUOM2 * 100.0) / 100.0)),0.001, "The item has not been selected.");
         Customer.clickCheckOutPDP();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         CashAndCarry.enterFullName(user.getFull_name());

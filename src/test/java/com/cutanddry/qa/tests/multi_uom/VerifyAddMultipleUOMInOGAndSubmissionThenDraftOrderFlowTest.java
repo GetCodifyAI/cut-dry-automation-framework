@@ -5,6 +5,7 @@ import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CatalogData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -34,13 +35,14 @@ public class VerifyAddMultipleUOMInOGAndSubmissionThenDraftOrderFlowTest extends
         softAssert = new SoftAssert();
 
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
         Customer.ensureCarouselDisplayStatus(false);
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId);
+        Customer.searchItemOnOrderGuide(searchItemCode);
         Catalog.ClickOnMultiUomDropDownOG(searchItemCode);
         Catalog.clickOGAddToCartPlusIcon(1,searchItemCode, uom1);
         Catalog.clickOGAddToCartPlusIcon(1,searchItemCode, uom2);
@@ -55,7 +57,7 @@ public class VerifyAddMultipleUOMInOGAndSubmissionThenDraftOrderFlowTest extends
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
 
         Dashboard.navigateToDrafts();
-        softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
+        Assert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
         softAssert.assertTrue(Draft.isLastDraftDisplayed(String.valueOf(totalOGItemPrice1)),"draft creating error");
         Draft.clickDraft(String.valueOf(totalOGItemPrice1));
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
@@ -77,7 +79,7 @@ public class VerifyAddMultipleUOMInOGAndSubmissionThenDraftOrderFlowTest extends
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
         Catalog.clickSubmittedOrder(orderId);

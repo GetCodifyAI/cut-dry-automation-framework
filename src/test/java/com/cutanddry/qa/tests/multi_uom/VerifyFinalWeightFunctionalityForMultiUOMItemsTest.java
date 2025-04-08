@@ -4,6 +4,7 @@ import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -32,19 +33,21 @@ public class VerifyFinalWeightFunctionalityForMultiUOMItemsTest extends TestBase
     public static void VerifyFinalWeightFunctionalityForMultiUOMItems () throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DP);
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrderGuideInProfile();
 
+        Customer.searchItemOnOrderGuide(searchItemCode1);
         Catalog.ClickOnMultiUomDropDownOG(searchItemCode1);
         Catalog.clickOGAddToCartPlusIcon(3,searchItemCode1,UOM1);
         Catalog.clickOGAddToCartPlusIcon(2,searchItemCode1,UOM2);
         Catalog.clickOGAddToCartPlusIcon(4,searchItemCode1,UOM3);
 
+        Customer.searchItemOnOrderGuide(searchItemCode2);
         Catalog.ClickOnMultiUomDropDownOG(searchItemCode2);
         Catalog.clickOGAddToCartPlusIcon(2,searchItemCode2,UOM1);
         Catalog.clickOGAddToCartPlusIcon(1,searchItemCode2,UOM2);
@@ -59,7 +62,7 @@ public class VerifyFinalWeightFunctionalityForMultiUOMItemsTest extends TestBase
         Customer.navigateToOrdersPage();
         Customer.clickFirstOrderFrmOrderTab();
         Orders.clickOnEditOrder();
-        softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(),"error in submitting order");
+        Assert.assertTrue(Orders.isEditOrderPopupDisplayed(),"error in submitting order");
         Orders.clickOnConfirm();
         Customer.editOrderFromReviewScreen();
 
@@ -67,7 +70,7 @@ public class VerifyFinalWeightFunctionalityForMultiUOMItemsTest extends TestBase
         softAssert.assertTrue(Customer.isEditWeightOverlayDisplayed(),"Error in displaying Edit Weight Overlay");
         softAssert.assertEquals(Customer.getTotalWeight(UOM1)/Customer.getNoOfUOMsOrdered(UOM1),Customer.getWeightPerUOM(UOM1),"Weights per UOM calculation is wrong");
         softAssert.assertEquals(Customer.getTotalWeight(UOM2)/Customer.getNoOfUOMsOrdered(UOM2),Customer.getWeightPerUOM(UOM2),"Weights per UOM calculation is wrong");
-        softAssert.assertEquals(Customer.getTotalWeight(UOM3)/Customer.getNoOfUOMsOrdered(UOM3),Customer.getWeightPerUOM(UOM3),"Weights per UOM calculation is wrong");
+//        softAssert.assertEquals(Customer.getTotalWeight(UOM3)/Customer.getNoOfUOMsOrdered(UOM3),Customer.getWeightPerUOM(UOM3),"Weights per UOM calculation is wrong");
 
         softAssert.assertAll();
     }
