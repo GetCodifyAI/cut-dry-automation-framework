@@ -1001,7 +1001,7 @@ jobs:
               done
             
             # 🔥 Escape special chars for JSON safety
-            PART_SUMMARY_ESCAPED=$(echo -n "$PART_SUMMARY" | sed ':a;N;$!ba;s/\n/\\n/g' | sed 's/"/\\"/g')
+            PART_SUMMARY_ESCAPED=$(echo -n "$PART_SUMMARY" | sed 's/"/\\"/g')
             
             # Set environment variables for Slack notification
             export SLACK_MESSAGE="Total tests run: $TOTAL\nPassed: $PASSED\nFailed: $FAILED\nPass Rate: $PASS_RATE%\nFail Rate: $FAIL_RATE%*\n📉 Fail Rate: *$FAIL_RATE%*\n\n*Per PART breakdown:*\n$PART_SUMMARY"
@@ -1047,7 +1047,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "55 03 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
+          cron: "08 04 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
           filters:
             branches:
               only:
