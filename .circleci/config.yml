@@ -144,10 +144,13 @@ jobs:
             for file in target/surefire-reports/TEST-*.xml; do
               [ -f "$file" ] && cp "$file" ~/workspace/${PART_NAME}_nightly-build-and-test-2_$(basename "$file")
             done
+      - run:
+          name: Debug Workspace Files
+          command: ls -l ~/workspace
       - persist_to_workspace:
           root: ~/workspace
           paths:
-            - ${PART_NAME}_nightly-build-and-test-2_TEST-*.xml
+            - Part_Two_nightly-build-and-test-2_TEST-*.xml
     executor:
 
   nightly-build-and-test-3:
@@ -1030,13 +1033,13 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "41 02 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
+          cron: "47 02 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
           filters:
             branches:
               only:
                 - ahsan_approch
     jobs:
-      - nightly-build-and-test-1
+#      - nightly-build-and-test-1
       - nightly-build-and-test-2
 #      - nightly-build-and-test-3
 #      - nightly-build-and-test-4
@@ -1044,7 +1047,7 @@ workflows:
 #      - nightly-build-and-test-6
       - calculate-pass-fail-rate:
           requires:
-            - nightly-build-and-test-1
+#            - nightly-build-and-test-1
             - nightly-build-and-test-2
 #            - nightly-build-and-test-3
 #            - nightly-build-and-test-4
