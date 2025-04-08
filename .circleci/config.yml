@@ -1025,15 +1025,15 @@ jobs:
                     "text": "Test Results:\nTotal: *${TOTAL:-N/A}*\n✅ Passed: *${PASSED:-N/A}*\n❌ Failed: *${FAILED:-N/A}*\n📊 Pass Rate: *${PASS_RATE:-N/A}*\n📉 Fail Rate: *${FAIL_RATE:-N/A}%*"
                   }
                 },
-              {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "*Per PART breakdown:*\n${PART_SUMMARY_ESCAPED}"
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Per PART breakdown:*\n${PART_SUMMARY_ESCAPED}"
+                  }
                 }
-              }
-            ]
-        }
+              ]
+            }
 
     executor:
 
@@ -1047,7 +1047,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "01 03 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
+          cron: "04 03 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
           filters:
             branches:
               only:
