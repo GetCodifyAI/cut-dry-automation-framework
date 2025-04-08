@@ -1027,7 +1027,7 @@ jobs:
                 }
               ]
             },
-              {
+            {
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
