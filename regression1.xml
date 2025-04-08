@@ -11,8 +11,8 @@
             <class name="com.cutanddry.qa.tests.order_guide.DistributorInitialSetUpTest" />
             <class name="com.cutanddry.qa.tests.order_guide.DistributorLoginTest" />
             <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordValidTest" />
-           <!-- <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordInvalidTest" />
-            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />-->
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordInvalidTest" />
+            <!--<class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />-->
 
             <!--<class name="com.cutanddry.qa.tests.order_guide.VerifyTheSearchTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyCompanyDropdownTest" />
