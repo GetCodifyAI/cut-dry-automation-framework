@@ -1000,8 +1000,15 @@ jobs:
                 PART_SUMMARY+="• *$part*: ✅ $pass / $total, 📊 *$rate%*\n"
               done
             
+            # 🔥 Escape special chars for JSON safety
+            PART_SUMMARY_ESCAPED=$(echo "$PART_SUMMARY" | sed ':a;N;$!ba;s/\n/\\n/g' | sed 's/"/\\"/g')
+            
             # Set environment variables for Slack notification
             export SLACK_MESSAGE="Total tests run: $TOTAL\nPassed: $PASSED\nFailed: $FAILED\nPass Rate: $PASS_RATE%\nFail Rate: $FAIL_RATE%*\n📉 Fail Rate: *$FAIL_RATE%*\n\n*Per PART breakdown:*\n$PART_SUMMARY"
+            
+            # Export escaped part summary for use in Slack block
+            echo "PART_SUMMARY_ESCAPED=\"$PART_SUMMARY_ESCAPED\"" >> $BASH_ENV
+            source $BASH_ENV
 
           # Send the test results to Slack
       - slack/notify:
@@ -1019,7 +1026,16 @@ jobs:
                   }
                 }
               ]
-            }
+            },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Per PART breakdown:*\n${PART_SUMMARY_ESCAPED}"
+                }
+              }
+            ]
+        }
 
     executor:
 
@@ -1033,7 +1049,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "47 02 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
+          cron: "59 02 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
           filters:
             branches:
               only:
