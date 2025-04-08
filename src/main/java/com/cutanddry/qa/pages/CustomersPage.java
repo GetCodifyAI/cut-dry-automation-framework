@@ -748,7 +748,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        distributorUI.waitForVisibility(By.xpath(lbl_catalogSearchItemList.replace("NAME", name)),25);
+        distributorUI.waitForVisibility(By.xpath(lbl_catalogSearchItemList.replace("NAME", name)));
         return distributorUI.getText(By.xpath(lbl_catalogSearchItemList.replace("NAME", name))).toLowerCase();
     }
     public void clickAddToCartCatalog(String ItemName) throws InterruptedException {
@@ -2808,11 +2808,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
 
     public boolean isOrderMiniumErrorBannerDisplayed(){
-        try {
-            return distributorUI.isDisplayed(lbl_OrderMinimumErrorBanner);
-        } catch (Exception e){
-            return false;
-        }
+        return distributorUI.isDisplayed(lbl_OrderMinimumErrorBanner);
     }
 
     public void clickOnAddPaymentMethod() {
@@ -3139,8 +3135,6 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
 
     public boolean isPreviousDraftOrderNoDisplayed() throws InterruptedException {
-       /* distributorUI.waitForElementEnabledState(btn_previousDraftOrderNo, true);
-        distributorUI.waitForCustom(2000);*/
         return distributorUI.isDisplayed(btn_previousDraftOrderNo);
     }
 
