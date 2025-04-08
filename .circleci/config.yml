@@ -93,7 +93,7 @@ jobs:
       - persist_to_workspace:
           root: ~/workspace
           paths:
-            - ${PART_NAME}_nightly-build-and-test-1_TEST-*.xml
+            - Part_One_nightly-build-and-test-1_TEST-*.xml
     executor:
 
   nightly-build-and-test-2:
@@ -1047,13 +1047,13 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "04 03 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
+          cron: "12 03 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
           filters:
             branches:
               only:
                 - ahsan_approch
     jobs:
-#      - nightly-build-and-test-1
+      - nightly-build-and-test-1
       - nightly-build-and-test-2
 #      - nightly-build-and-test-3
 #      - nightly-build-and-test-4
@@ -1061,7 +1061,7 @@ workflows:
 #      - nightly-build-and-test-6
       - calculate-pass-fail-rate:
           requires:
-#            - nightly-build-and-test-1
+            - nightly-build-and-test-1
             - nightly-build-and-test-2
 #            - nightly-build-and-test-3
 #            - nightly-build-and-test-4

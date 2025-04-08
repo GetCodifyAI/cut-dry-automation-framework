@@ -28,7 +28,6 @@ public class VerifyAddNewRouteUsingTrackFeature extends TestBase {
     public void VerifyAddNewRouteUsingTrackFeature() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        Assert.assertTrue(false);
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(distributorName);
         Dashboard.navigateToTrackRoutes();
