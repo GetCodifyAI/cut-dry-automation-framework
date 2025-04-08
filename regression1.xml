@@ -12,9 +12,9 @@
             <class name="com.cutanddry.qa.tests.order_guide.DistributorLoginTest" />
             <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordValidTest" />
             <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordInvalidTest" />
-            <!--<class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />-->
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />
 
-            <!--<class name="com.cutanddry.qa.tests.order_guide.VerifyTheSearchTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheSearchTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyCompanyDropdownTest" />
             <class name="com.cutanddry.qa.tests.order_guide.AddProductsFrmOrderGuideTest" />
             <class name="com.cutanddry.qa.tests.order_guide.AddProductsFrmCatalogTest" />
@@ -31,10 +31,10 @@
             <class name="com.cutanddry.qa.tests.order_guide.ValidateTheFunctionalityOfEditMarginOfAnItem"/>
             <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersWithCatalogItemsTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrderGuideWithCatalogItemsTest" />
-            &lt;!&ndash;TODO: All the items are hidden in the Test Automation order guide. May be the following TCs are impacting on this. So just comment it for today and see the issue was exist or not &ndash;&gt;
-&lt;!&ndash;            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersUploadingExcelFileTest" />
+            <!--TODO: All the items are hidden in the Test Automation order guide. May be the following TCs are impacting on this. So just comment it for today and see the issue was exist or not -->
+<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersUploadingExcelFileTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrdersUploadingExcelFileTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrderImportingOrderGuideTest" />&ndash;&gt;
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrderImportingOrderGuideTest" />-->
             <class name="com.cutanddry.qa.tests.order_guide.VerifyExportingOrderGuideEditTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest" />
 
@@ -76,7 +76,7 @@
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderWithoutAddingAnyItemsTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByRemovingExistingItemsAndChangingQuantitiesTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromOrderGuideTest"/>
-            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromCatalogTest"/>-->
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromCatalogTest"/>
         </classes>
     </test>
 </suite>
