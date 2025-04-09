@@ -2,6 +2,7 @@ package com.cutanddry.qa.tests.customers;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.CustomerData;
 import com.cutanddry.qa.data.testdata.DistributorOrderData;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
@@ -16,9 +17,9 @@ import org.testng.asserts.SoftAssert;
 public class ValidatePONumberNotRequiredCustomersTest extends TestBase {
     static User user;
     static String customerId = DistributorOrderData.RESTAURANT_TEST_HAYES_ID;
-    static String itemName, orderId, searchItemCode;
+    static String itemName, searchItemCode;
     static double itemPrice;
-    static String poNumber = "37";
+    static String poNumber = CustomerData.PO_NUMBER;
 
     @BeforeMethod
     public void setUp(){
