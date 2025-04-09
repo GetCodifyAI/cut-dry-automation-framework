@@ -58,6 +58,13 @@
             <class name="com.cutanddry.qa.tests.settings.VerifyAddPayoutAccountTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyAddCustomerPaymentMethodTest"/>
             <class name="com.cutanddry.qa.tests.customer_profile.VerifySubstituteItemsNotDisplayedIfTurnedOffCustomerProfileTest"/>
+
+            <class name="com.cutanddry.qa.tests.customers.ValidatePONumberRequiredCustomersTest"/>
+            <class name="com.cutanddry.qa.tests.customers.ValidatePONumberNotRequiredCustomersTest"/>
+            <class name="com.cutanddry.qa.tests.customers.VerifyThatOrderSummeryBannerDisplayedTest"/>
+            <class name="com.cutanddry.qa.tests.customers.VerifyThatOrderSummeryGrossProfitSaleCostSectionUpdateTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_data.VerifyNotLoggedInUserCanViewThePublicItemOfTheDistributeViaPDPURLTest"/>
+
         </classes>
     </test>
 </suite>
