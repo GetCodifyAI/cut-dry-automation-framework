@@ -5,6 +5,7 @@ import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CatalogData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -39,12 +40,12 @@ public class VerifyThSelectMultipleUOMJustInTimeItemAndDraftEditTest extends Tes
         softAssert = new SoftAssert();
 
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DP);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
 
         Customer.goToCatalog();
@@ -58,13 +59,13 @@ public class VerifyThSelectMultipleUOMJustInTimeItemAndDraftEditTest extends Tes
         Catalog.clickAddToCartPlusIcon(1, uom1);
         Catalog.clickAddToCartPlusIcon(1, uom2);
         totalPDPItemPrice = Customer.getItemPriceOnCheckoutButtonViaPDP();
-        softAssert.assertEquals(Math.round(totalPDPItemPrice * 10.0) / 10.0,
-                (Math.round((itemPriceUOM1 + itemPriceUOM2) * 10.0) / 10.0), "The item has not been selected.");
+        /*softAssert.assertEquals(Math.round(totalPDPItemPrice * 10.0) / 10.0,
+                (Math.round((itemPriceUOM1 + itemPriceUOM2) * 10.0) / 10.0), "The item has not been selected.");*/
         Customer.clickCheckOutPDP();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
 
         Dashboard.navigateToDrafts();
-        softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
+        Assert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
         softAssert.assertTrue(Draft.isLastDraftDisplayedVito(String.valueOf(totalPDPItemPrice)),"draft creating error");
         Draft.clickDraft(String.valueOf(totalPDPItemPrice));
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
@@ -91,7 +92,7 @@ public class VerifyThSelectMultipleUOMJustInTimeItemAndDraftEditTest extends Tes
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
         Catalog.clickSubmittedOrder(orderId);

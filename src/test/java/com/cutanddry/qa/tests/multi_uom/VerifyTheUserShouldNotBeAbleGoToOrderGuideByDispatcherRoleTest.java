@@ -5,6 +5,7 @@ import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CatalogData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -29,7 +30,7 @@ public class VerifyTheUserShouldNotBeAbleGoToOrderGuideByDispatcherRoleTest exte
         softAssert = new SoftAssert();
 
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToLoginAsPortal(dispatcherRoll);
         softAssert.assertTrue(Track.isRoutesTextDisplayed(),"navigation to track routes error");
 

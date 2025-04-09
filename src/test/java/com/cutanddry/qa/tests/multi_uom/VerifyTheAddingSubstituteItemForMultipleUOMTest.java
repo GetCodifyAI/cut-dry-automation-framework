@@ -5,6 +5,7 @@ import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CatalogData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -37,8 +38,8 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMTest extends TestBase {
         softAssert = new SoftAssert();
 
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
-        Customer.ensureCarouselDisplayStatus(false);
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
+//        Customer.ensureCarouselDisplayStatus(false);
 
         // Add substitute
         Dashboard.navigateToCatalog();
@@ -57,7 +58,7 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMTest extends TestBase {
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId);
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(searchItemCode);

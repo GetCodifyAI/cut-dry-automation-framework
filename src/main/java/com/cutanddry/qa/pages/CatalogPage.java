@@ -176,7 +176,7 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
     By orderGuideSearch = By.xpath("//input[@placeholder='Search order guide...']");
     String getUOMOGPrice ="(//td[text()='CODE']/ancestor::tr/td[last()-2]//span)[UOM]";
     By checkOutBtnOG = By.xpath("//button[@data-for='cartCheckoutButton' and contains(text(),'$')]");
-    String multiUomDropDownCatalog = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[2]";
+    String multiUomDropDownCatalog = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[last()]";
     By getDeliveryFeesReviewOrder = By.xpath("//td[contains(text(),'Delivery Fee')]/following-sibling::td");
     By getTotalEndlessAislePriceReviewOrder = By.xpath("//td[contains(text(),'Endless Aisle Total')]/following-sibling::td");
     By getTotalEndlessAisleSubTotalPriceReviewOrder = By.xpath("//td[contains(text(),'Endless Aisle Subtotal')]/following-sibling::td");
