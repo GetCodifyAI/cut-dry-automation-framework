@@ -8,6 +8,7 @@ import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -39,20 +40,21 @@ public class VerifyTheEditStandingOrderWithMultipleUOMTest extends TestBase {
         softAssert = new SoftAssert();
 
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
-        Customer.ensureCarouselDisplayStatus(false);
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
+//        Customer.ensureCarouselDisplayStatus(false);
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
 
-        softAssert.assertTrue(Customer.isStandingOrdersDisplayed(),"navigation error");
+        Assert.assertTrue(Customer.isStandingOrdersDisplayed(),"navigation error");
         Customer.removeStandingOrdersIfAvailable();
         Customer.clickOnCreateStandingOrder();
         Customer.selectDeliveryDate(deliveryDay);
 
+        Customer.searchItemOnOrderGuide(searchItemCode);
         Catalog.ClickOnMultiUomDropDownOG(searchItemCode);
         Catalog.clickOGAddToCartPlusIcon(1,searchItemCode, uom1);
         Catalog.clickOGAddToCartPlusIcon(1,searchItemCode, uom2);
@@ -78,6 +80,7 @@ public class VerifyTheEditStandingOrderWithMultipleUOMTest extends TestBase {
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
         StandingPrice = String.valueOf((int) totalOGItemPrice1);
@@ -107,6 +110,7 @@ public class VerifyTheEditStandingOrderWithMultipleUOMTest extends TestBase {
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
         EditStandingPrice = String.valueOf((int) totalFinalItemPriceReviewOrder);

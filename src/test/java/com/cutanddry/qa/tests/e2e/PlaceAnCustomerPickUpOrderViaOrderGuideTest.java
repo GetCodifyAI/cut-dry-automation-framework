@@ -5,6 +5,7 @@ import com.cutanddry.qa.data.testdata.DistributorOrderData;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -31,11 +32,11 @@ public class PlaceAnCustomerPickUpOrderViaOrderGuideTest extends TestBase {
 
         // Distributor Flows
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId);
 
         itemName = Customer.getItemNameFirstRow();
@@ -57,10 +58,10 @@ public class PlaceAnCustomerPickUpOrderViaOrderGuideTest extends TestBase {
         // Restaurant Flows
         Login.switchIntoNewTab();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "The user is unable to land on the Dashboard page.");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "The user is unable to land on the Dashboard page.");
 
         RestaurantDashboard.navigateToHistory();
-        softAssert.assertTrue(RestaurantDashboard.isUserNavigatedToHistory(), "The user is unable to land on the History page.");
+        Assert.assertTrue(RestaurantDashboard.isUserNavigatedToHistory(), "The user is unable to land on the History page.");
         RestaurantOrderHistory.searchOrderByOrderId(orderId);
         softAssert.assertTrue(RestaurantOrderHistory.isOrderSearchResultByOrderIdDisplayed(orderId), "Unable to find the specific order Id");
         RestaurantOrderHistory.clickOnSpecificRecord(orderId);

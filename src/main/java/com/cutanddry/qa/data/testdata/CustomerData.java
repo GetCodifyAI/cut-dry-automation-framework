@@ -4,7 +4,7 @@ public class CustomerData {
     public static final String DISTRIBUTOR_NAME = "146572596 - Cut+Dry Agent - John Gross & Co";
     public static final String CUSTOMER_CODE = "11956";
     public static final String ITEM_CODE = "143210";
-    public static final String ITEM_CODE_2 = "048604";
+    public static final String ITEM_CODE_2 = "143210";//048604
     public static final String STOCK_AVAILABILITY = "Stock Availability";
     public static final String CURRENT_STOCK = "Current Stock:";
     public static final String ON_ORDER_QTY = "On Order Qty:";

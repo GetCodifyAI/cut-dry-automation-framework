@@ -5,6 +5,7 @@ import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CatalogData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -38,10 +39,10 @@ public class VerifyTheSelectMultipleUOMFromRecommendedBySalesRepCarouselAndSubmi
         softAssert = new SoftAssert();
 
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
 
         Dashboard.navigateToBoost();
-        softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
+        Assert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickSuggestiveSales();
         softAssert.assertTrue(Boost.isSuggestiveTabDisplayed(),"navigate to suggestive sales error");
         Boost.clickRecommendBySalesRepConfig();
@@ -55,7 +56,7 @@ public class VerifyTheSelectMultipleUOMFromRecommendedBySalesRepCarouselAndSubmi
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId);
         itemName = Customer.getItemNameFirstRow();
         searchItemCode = Customer.getItemCodeFirstRow();
@@ -88,7 +89,7 @@ public class VerifyTheSelectMultipleUOMFromRecommendedBySalesRepCarouselAndSubmi
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
         Catalog.clickSubmittedOrder(orderId);
@@ -96,7 +97,7 @@ public class VerifyTheSelectMultipleUOMFromRecommendedBySalesRepCarouselAndSubmi
         softAssert.assertEquals(Catalog.getTotalQuantityInOrder(),totalItemQuantityReviewOrder,"order quantity not successfully submitted");
 
         Dashboard.navigateToBoost();
-        softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
+        Assert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickSuggestiveSales();
         softAssert.assertTrue(Boost.isSuggestiveTabDisplayed(),"navigate to suggestive sales error");
         Boost.clickRecommendBySalesRepConfig();

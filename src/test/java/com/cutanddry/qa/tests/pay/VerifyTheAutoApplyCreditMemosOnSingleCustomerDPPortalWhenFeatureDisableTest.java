@@ -6,6 +6,7 @@ import com.cutanddry.qa.data.testdata.CustomerInvoiceData;
 import com.cutanddry.qa.data.testdata.PayInvoiceData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -33,7 +34,7 @@ public class VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureDis
 
         softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToInternalToolsPage();
         InternalTools.navigateToConfigureSupplier();
         InternalTools.navigateToIndependentCompEditDetails();
@@ -44,7 +45,7 @@ public class VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureDis
         InternalTools.clickOKOnSucessOverlay();
 
         Login.navigateToDistributorPortal(DistributorName);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
         Dashboard.navigateToPay();
         Pay.searchCustomer(customerName);
         softAssert.assertTrue(Pay.isSearchCustomerDisplayed(customerName),"Search customer by customer Name not display");

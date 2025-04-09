@@ -7,6 +7,7 @@ import com.cutanddry.qa.data.testdata.CustomerInvoiceData;
 import com.cutanddry.qa.data.testdata.PayInvoiceData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -32,11 +33,11 @@ public class VerifyAddPayoutAccountTest extends TestBase {
     public void VerifyAddPayoutAccount() throws InterruptedException {
         softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DistributorName);
 
         Dashboard.navigateToPaySettings();
-        softAssert.assertTrue(Settings.isPaySettingsTextDisplayed(),"navigation to pay settings error");
+        Assert.assertTrue(Settings.isPaySettingsTextDisplayed(),"navigation to pay settings error");
         //Remove existing bank accounts
         Settings.removeExistingBankAccount();
         Settings.clickOnLinkBank();

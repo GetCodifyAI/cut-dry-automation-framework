@@ -20,7 +20,7 @@ public class VerifyTheMaximumAmountOfSubstituteItemsTest extends TestBase {
     static String itemCodeSub1 = "43137";
     static String itemCodeSub2 = "365922";
     static String itemCodeSub3 = "1001445";
-    static String itemCodeSub4 = "1528211";
+    static String itemCodeSub4 = "29282";// 1528211
     String DistributerName = "30227908 - Cut+Dry Agent - Southwest Traders";
 
     @BeforeMethod

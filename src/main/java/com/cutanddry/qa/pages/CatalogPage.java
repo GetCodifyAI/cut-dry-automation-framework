@@ -181,7 +181,7 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
     By orderGuideSearch = By.xpath("//input[@placeholder='Search order guide...']");
     String getUOMOGPrice ="(//td[text()='CODE']/ancestor::tr/td[last()-2]//span)[UOM]";
     By checkOutBtnOG = By.xpath("//button[@data-for='cartCheckoutButton' and contains(text(),'$')]");
-    String multiUomDropDownCatalog = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[2]";
+    String multiUomDropDownCatalog = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[last()]";
     By getDeliveryFeesReviewOrder = By.xpath("//td[contains(text(),'Delivery Fee')]/following-sibling::td");
     By getTotalEndlessAislePriceReviewOrder = By.xpath("//td[contains(text(),'Endless Aisle Total')]/following-sibling::td");
     By getTotalEndlessAisleSubTotalPriceReviewOrder = By.xpath("//td[contains(text(),'Endless Aisle Subtotal')]/following-sibling::td");
@@ -192,7 +192,7 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
 
     By itemStatusDropdown = By.xpath("//label[contains(text(), 'Item Status')]/following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
     String itemStatusOption = "(//div[contains(text(),'ITEMSTATUS') and contains(@class,'themed_select__option')])[last()]";
-    String lastOrderedDate = "//div[text()='1 CS ordered on DATEPLACEHOLDER']";
+    String lastOrderedDate = "//div[contains(text(),'CS ordered on DATEPLACEHOLDER')]";
     By purchaseHistory = By.xpath("//div[text()='Purchase History']");
     String lastOrderDatePDP = "(//div[text()='DATEPLACEHOLDER']/../following-sibling::td//div[.//div[text()='1 Pkg'] and .//div[text()='1 CS']])[1]";
     By txt_alreadyCustomer = By.xpath("//h3//b[text()='Already a Customer?']");
@@ -820,7 +820,7 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
         }
 
         System.out.println("Extracted Price: " + priceText);
-        return Double.valueOf(priceText.replace("$", "").replace("/cs", "").replace("/pkg", "").replace("/CS", "").replace("/HCS", "").trim());
+        return Double.valueOf(priceText.replace("$", "").replace("/cs", "").replace("/pkg", "").replace("/CS", "").replace("/HCS", "").replace("/lb", "").trim());
     }
     public void clickOGAddToCartPlusIcon(String code,String uom)throws InterruptedException{
         distributorUI.waitForVisibility(By.xpath(btn_OGAddToCartPlusQuantity.replace("CODE", code).replace("UOM", uom)));
