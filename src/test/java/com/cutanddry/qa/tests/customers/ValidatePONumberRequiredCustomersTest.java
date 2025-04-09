@@ -26,7 +26,7 @@ public class ValidatePONumberRequiredCustomersTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-311")
-    public void ValidateAddingSpecialInstructions() throws InterruptedException {
+    public void ValidatePONumberRequiredCustomers() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
