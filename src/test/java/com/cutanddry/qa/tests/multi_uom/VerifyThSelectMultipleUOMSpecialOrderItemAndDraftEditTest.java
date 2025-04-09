@@ -5,6 +5,7 @@ import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CatalogData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -39,12 +40,12 @@ public class VerifyThSelectMultipleUOMSpecialOrderItemAndDraftEditTest extends T
         softAssert = new SoftAssert();
 
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DP);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
         Catalog.searchOrderGuide(searchItemCode);
 
@@ -64,7 +65,7 @@ public class VerifyThSelectMultipleUOMSpecialOrderItemAndDraftEditTest extends T
         Customer.clickCheckOutPDP();
 
         Dashboard.navigateToDrafts();
-        softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
+        Assert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
 
         softAssert.assertTrue(Draft.isLastDraftDisplayedVito(String.valueOf(totalPDPItemPrice)),"draft creating error");
         Draft.clickDraft(String.valueOf(totalPDPItemPrice));
@@ -92,7 +93,7 @@ public class VerifyThSelectMultipleUOMSpecialOrderItemAndDraftEditTest extends T
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
         Catalog.clickSubmittedOrder(orderId);

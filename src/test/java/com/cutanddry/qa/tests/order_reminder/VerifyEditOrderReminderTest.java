@@ -7,6 +7,7 @@ import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.functions.OrderGuideSettings;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -32,11 +33,11 @@ public class VerifyEditOrderReminderTest extends TestBase {
      public void VerifyEditOrderReminder() throws InterruptedException{
          SoftAssert softAssert = new SoftAssert();
          Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
          Dashboard.navigateToCustomers();
          softAssert.assertTrue(Customer.isCustomersTextDisplayed(),"customer section isn't displayed");
          Customer.searchCustomerByCode(CustomerCode);
-         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"Customer is not found");
+         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"Customer is not found");
          String BusinessName = Customer.getBusinessNameFromCustomers(CustomerCode);
          Customer.SelectCustomer(CustomerCode);
          softAssert.assertTrue(Customer.isCustomerProfileDisplayed(BusinessName),"customer profile isn't displayed");

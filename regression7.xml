@@ -33,26 +33,17 @@
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheDeliveryFeesSelectMultipleUOMTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEndlessAisleShippingFeesSelectMultipleUOMTest"/>
 
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromTopCategoryCarouselAndSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromCompareSimilarItemsCarouselAndSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromRecommendedForCustomerCarouselAndSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromRecommendedBySalesRepCarouselAndSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromDoNotForgetToOrderCarouselAndSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromMoreFromThisBrandCarouselAndSubmissionTest"/>
-
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantitiesFunctionalityFromCatalogTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMFromSaleItemAndSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMSpecialOrderItemAndDraftEditTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMJustInTimeItemAndDraftEditTest"/>
-
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromOGCatalogPDPAndSubmitByAdminTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromOGCatalogPDPAndSubmitByARTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromOGCatalogPDPAndSubmitBySalespersonTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheUserShouldNotBeAbleGoToOrderGuideByDispatcherRoleTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddingSubstituteItemForMultipleUOMTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest"/>
-
-            <class name="com.cutanddry.qa.tests.order_reminder.VerifyEditOrderReminderTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheEnablePayForTheCustomerThroughToggleButtonTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheDisablePayForTheCustomerThroughToggleButtonTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheEnablePayForTheCustomerThroughSupplierConfigTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheDisablePayForTheCustomerWhenPayEnabledForAllUsersEnabledTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheDisablePayForTheCustomerThroughSupplierConfigTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheEnablePayForTheCustomerThroughSupplierConfigWhenDisableTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheDisablePayForTheCustomerThroughSupplierConfigWhenDisableTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnAllCustomerDPPortalWhenFeatureEnabledTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureEnabledTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureDisableTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyAddCustomerPaymentMethodTest"/>
         </classes>
     </test>
 </suite>
