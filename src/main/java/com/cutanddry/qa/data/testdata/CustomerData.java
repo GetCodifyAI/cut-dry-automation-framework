@@ -31,6 +31,11 @@ public class CustomerData {
     public static final String ORDER_SUMMERY_SALES_COMMISSION = "Sales Commission";
     public static final String ORDER_SUMMERY_TOTAL_LINES = "Total Lines";
     public static final String ORDER_SUMMERY_TOTAL_PIECES = "Total Pieces";
+    public static final String CUSTOMER_ID_PO = "46185";
+    public static final String PO_NUMBER = "37";
+    public static final String ITEM_NAME_PO = "Artichoke -24CT";
+    public static final String ITEM_CODE_PO = "01700";
+
 
 
 }
