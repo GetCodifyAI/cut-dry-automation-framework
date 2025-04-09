@@ -9,4 +9,7 @@ public class GatekeeperData {
     public static final String COMPONY_ID_KK_INT = "3589548";
     public static final String COMPONY_ID_TS_INT = "62455933";
 
+    public static final String FEATURE_NAME_SUB_ENABLE_DP = "force_show_subs_enabled_for_supplier";
+    public static final String FEATURE_NAME_SUB_ENABLE_OP = "force_show_subs_enabled_for_customer";
+
 }

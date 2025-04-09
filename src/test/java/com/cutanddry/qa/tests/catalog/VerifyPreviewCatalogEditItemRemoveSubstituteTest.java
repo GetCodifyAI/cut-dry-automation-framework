@@ -23,7 +23,7 @@ public class VerifyPreviewCatalogEditItemRemoveSubstituteTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-624")
-    public void VerifyPreviewCatalogEditItemAddSubstitute() throws InterruptedException {
+    public void VerifyPreviewCatalogEditItemRemoveSubstitute() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();

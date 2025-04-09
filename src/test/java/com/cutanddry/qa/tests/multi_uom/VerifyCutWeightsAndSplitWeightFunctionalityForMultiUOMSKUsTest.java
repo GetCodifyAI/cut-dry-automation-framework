@@ -7,6 +7,7 @@ import com.cutanddry.qa.data.testdata.GatekeeperData;
 import com.cutanddry.qa.data.testdata.SplitWeightUOMData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -38,18 +39,18 @@ public class VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest exte
     public void verifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUs() throws InterruptedException {
         softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "login error");
 
        /* Login.navigateToGateKeeperAdmin();
         Login.updateCompanyIDs(featureName,companyId);
 */
         Login.navigateToDistributorPortal(distributor);
-        Customer.ensureCarouselDisplayStatus(false);
+//        Customer.ensureCarouselDisplayStatus(false);
 
         //Place an order with single and Multi OUM Items
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId);
         Customer.selectSortItemByOption(sortOption);
 
@@ -88,7 +89,7 @@ public class VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest exte
         // Test Flow
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
         Customer.clickOrder();
@@ -96,6 +97,8 @@ public class VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest exte
         Orders.clickOnEditOrder();
         softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(), "edit popup error");
         Orders.clickOnConfirm();
+        softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(), "edit error(Review Page)");
+        Orders.clickOnEditOrderInReview();
         softAssert.assertTrue(Orders.isNavigatedToEditOrder(), "edit error");
         Customer.searchItemOnOrderGuide(multiSearchItemCode);
 
