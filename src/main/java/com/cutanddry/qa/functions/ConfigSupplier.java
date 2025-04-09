@@ -23,4 +23,7 @@ public class ConfigSupplier {
     public static void toggleOffOGSuggestiveTool(){
         configPage.toggleOffOGSuggestiveTool();
     }
+    public static void ensureDefaultSearchFilterStatus(boolean enable) throws InterruptedException {
+        configPage.ensureDefaultSearchFilterStatus(enable);
+    }
 }
