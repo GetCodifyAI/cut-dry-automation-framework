@@ -47,7 +47,7 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By btn_increaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../following-sibling::div");
     By tbx_itemQuantityCartRowOne = By.xpath("//tr[2]/td//input/");
     By lbl_itemPriceCartRowOne = By.xpath("//tr[2]/td//span[contains(text(),'$')]");
-    By lbl_cartTotal = By.xpath("//td[contains(text(),'Total')]/following-sibling::td");
+    By lbl_cartTotal = By.xpath("//td[text()='Total:']/following-sibling::td");
     By btn_submitOrder = By.xpath("//button[contains(text(),'Submit Order')]");
     By btn_duplicateOrderYes = By.xpath("//h2[contains(text(),'Duplicate Order')]/../..//button[text()='Yes']");
     By lbl_thankYouForOrder = By.xpath("//*[contains(text(),'Thank you for your order!')]");
