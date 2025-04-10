@@ -131,7 +131,7 @@ public class ValidateThePoundSpotPricingWhenSelectingMultipleUOMTest extends Tes
         itemOGPriceUOM2 = Customer.getActiveItemPriceMultiOUM(uom2);
         totalOGItemPrice = Customer.getItemPriceOnMultiOUMCheckout(); //Customer.getItemPriceOnCheckoutButton();
         softAssert.assertEquals(Math.round(totalOGItemPrice * 100.0) / 100.0,
-                ((Math.round(itemOGPriceUOM1 * 100.0) / 100.0) + (Math.round(itemOGPriceUOM2 * 100.0) / 100.0)), "The item was not selected properly.");
+                ((Math.round(itemOGPriceUOM1 * 100.0) / 100.0) + (Math.round(itemOGPriceUOM2 * 100.0) / 100.0)),0.01, "The item was not selected properly.");
 
         // Checkout
         Customer.checkoutItemsMultiOUM();

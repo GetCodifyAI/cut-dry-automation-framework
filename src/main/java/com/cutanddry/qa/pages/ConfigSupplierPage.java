@@ -9,6 +9,7 @@ public class ConfigSupplierPage extends LoginPage{
     By btn_saveCatalog = By.xpath("//h5[text()='Catalog']/following::button[contains(text(), 'Save')]");
     By lbl_OGSugTool= By.xpath("//label[contains(text(), 'OG Suggestive Sales Tool')]/following-sibling::div//div[contains(@class, 'react-switch-handle')]");
     By st_activeOGSugTool = By.xpath("//label[contains(text(), 'Show only stock available items on OG Suggestive Sales Tool')]/following-sibling::div//input[@type='checkbox' and ../div[contains(@style, 'background: rgb(0, 136, 0)')]]");
+    By toggleSearchFilterHandle = By.xpath("//label[contains(., 'Enable Default Search Filter')]/following::div[contains(@class, 'react-switch-handle')][1]");
 
     public boolean isConfigTextDisplayed(){
         try {
@@ -43,6 +44,15 @@ public class ConfigSupplierPage extends LoginPage{
         if (distributorUI.isDisplayed(st_activeOGSugTool)){
             distributorUI.waitForVisibility(lbl_OGSugTool);
             distributorUI.click(lbl_OGSugTool);
+        }
+    }
+    public void ensureDefaultSearchFilterStatus(boolean enable) throws InterruptedException {
+        String transformValue = distributorUI.getElement(toggleSearchFilterHandle).getCssValue("transform");
+
+        boolean isCurrentlyEnabled = transformValue.contains("29"); // Enabled
+        if (isCurrentlyEnabled != enable) {
+            distributorUI.clickWithScrollAndHover(toggleSearchFilterHandle);
+            distributorUI.waitForCustom(2000);
         }
     }
 }
