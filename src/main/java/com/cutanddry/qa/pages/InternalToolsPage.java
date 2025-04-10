@@ -40,6 +40,10 @@ public class InternalToolsPage extends LoginPage {
     String selectDisableCustomer = "//div[contains(text(), 'NAME')]";
     By addCustomerToPayEnable = By.xpath("//label[contains(text(), 'Pay Enabled Restaurants')]/following-sibling::div/div");
     By checkboxLocatorCreditMemo = By.xpath("//label[contains(text(),'Enable Auto Apply Credit Memos')]/..//input");
+    By deleteEmailNotificationToggleStable = By.xpath("//label[contains(text(), 'Customer User Deletion Email Notifications:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By deleteEmailNotificationToggleStable1 = By.xpath("//label[contains(text(), 'Customer User Deletion Email Notifications:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By btn_notificationSave = By.xpath("//h5[text()='Notifications']/../following-sibling::div/button[text()='Save']");
+
 
 
 
@@ -260,6 +264,23 @@ public class InternalToolsPage extends LoginPage {
         } else if (!enable && isChecked) {
             distributorUI.click(checkboxLocatorCreditMemo); // Uncheck the box if already checked
         }
+    }
+    public void clickUserDeletionEmailNotificationsToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(deleteEmailNotificationToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(deleteEmailNotificationToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(deleteEmailNotificationToggleStable1);
+        }
+    }
+    public void clickNotificationSave()throws InterruptedException{
+        distributorUI.scrollToElement(btn_notificationSave);
+        distributorUI.waitForVisibility(btn_notificationSave);
+        distributorUI.clickUsingJavaScript(btn_notificationSave);
+        distributorUI.waitForCustom(3000);
     }
 
 }
