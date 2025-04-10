@@ -2,6 +2,11 @@ package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
 
+import java.awt.*;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
+
 public class CatalogPage extends LoginPage{
     By txt_catalog = By.xpath("//*[contains(text(),'Manage Your Digital Catalog')]");
     By txt_catalogFirstItem = By.xpath("//tbody/tr[contains(@class, '_du1frc')][1]");
@@ -190,6 +195,8 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
     String lastOrderedDate = "//div[contains(text(),'CS ordered on DATEPLACEHOLDER')]";
     By purchaseHistory = By.xpath("//div[text()='Purchase History']");
     String lastOrderDatePDP = "(//div[text()='DATEPLACEHOLDER']/../following-sibling::td//div[.//div[text()='1 Pkg'] and .//div[text()='1 CS']])[1]";
+    By txt_alreadyCustomer = By.xpath("//h3//b[text()='Already a Customer?']");
+    String btn_alreadyCustomer = "//button[text()='BUTTON']";
 
 
     public boolean isCatalogTextDisplayed() {
@@ -477,7 +484,6 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
     public void clickCopyPDPUrl(){
         distributorUI.click(threeDotBtn);
         distributorUI.waitForVisibility(copyPDPURLTxt);
-        distributorUI.click(copyPDPURLTxt);
     }
     public boolean isLinkCopiedTxtDisplayed(){
         return distributorUI.isDisplayed(productLink);
@@ -991,6 +997,37 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
     public boolean isLastOrderDatePDPDisplayed(String date) throws InterruptedException {
         distributorUI.waitForCustom(2000);
         return distributorUI.isDisplayed(By.xpath(lastOrderDatePDP.replace("DATEPLACEHOLDER",date)));
+    }
+    public String getCopiedPDPUrl() throws InterruptedException, IOException, UnsupportedFlavorException {
+        distributorUI.click(copyPDPURLTxt);
+
+        // Wait briefly for clipboard update
+        Thread.sleep(500);
+
+        // Access the system clipboard
+        String copiedURL = (String) Toolkit.getDefaultToolkit()
+                .getSystemClipboard()
+                .getData(DataFlavor.stringFlavor);
+
+        // Log the copied URL
+        System.out.println("Copied PDP URL: " + copiedURL);
+
+        return copiedURL;
+    }
+    public void loginPDPURL(String pdpURL) throws InterruptedException{
+        distributorUI.navigateToURL(pdpURL);
+    }
+    public boolean isAlreadyCustomerPopUpDisplay() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        distributorUI.waitForVisibility(txt_alreadyCustomer);
+        return distributorUI.isDisplayed(txt_alreadyCustomer);
+    }
+    public boolean isAlreadyCustomerButtonDisplay(String name){
+        return distributorUI.isDisplayed(By.xpath(btn_alreadyCustomer.replace("BUTTON",name)));
+    }
+    public void loginPDPURLSame(String pdpURL) throws InterruptedException{
+        distributorUI.openNewTabAndClosePreviousTabs();
+        distributorUI.navigateToURLSame(pdpURL);
     }
 
 }

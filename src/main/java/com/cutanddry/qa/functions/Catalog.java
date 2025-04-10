@@ -2,6 +2,9 @@ package com.cutanddry.qa.functions;
 
 import com.cutanddry.qa.pages.CatalogPage;
 
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
+
 public class Catalog {
     static CatalogPage catalogPage = new CatalogPage();
 
@@ -585,5 +588,21 @@ public class Catalog {
     public static boolean isLastOrderDatePDPDisplayed(String date)throws InterruptedException{
         return catalogPage.isLastOrderDatePDPDisplayed(date);
     }
+    public static String getCopiedPDPUrl() throws IOException, InterruptedException, UnsupportedFlavorException {
+        return catalogPage.getCopiedPDPUrl();
+    }
+    public static void loginPDPURL(String pdpURL) throws InterruptedException {
+        catalogPage.loginPDPURL(pdpURL);
+    }
+    public static boolean isAlreadyCustomerPopUpDisplay() throws InterruptedException {
+        return catalogPage.isAlreadyCustomerPopUpDisplay();
+    }
+    public static boolean isAlreadyCustomerButtonDisplay(String name){
+        return catalogPage.isAlreadyCustomerButtonDisplay(name);
+    }
+    public static void loginPDPURLSame(String pdpURL) throws InterruptedException {
+        catalogPage.loginPDPURLSame(pdpURL);
+    }
+
 
 }

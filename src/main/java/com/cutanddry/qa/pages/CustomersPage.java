@@ -666,6 +666,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By substitutionDropDown = By.xpath("//div[contains(text(), 'Substitutions')]//following-sibling::div/div/div/div");
     String substitutionOption = "//div[contains(text(), 'Substitutions')]//following-sibling::*//div[text()='STATUS']";
     String nodeStatus = "(//small[contains(text(), 'STATUS')])[1]";
+    By txt_missingPO = By.xpath("//h2[text()='Missing PO Number!']");
+    By marginPriceFirstItem = By.xpath("((//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-2]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-3]//span)[2])[1]");
+   // Double orderSummeryGrossProfitValue = "//div[contains(text(),'Gross Profit (Sale Cost)')]/following-sibling::div[contains(text(),'VALUE')]";
+    String orderSummeryValue = "//div[contains(text(),'NAME')]/following-sibling::div[contains(text(),'VALUE')]";
 
 
 
@@ -3983,6 +3987,22 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isAddedPaymentMethodDisplayed(String status)throws InterruptedException{
         return distributorUI.isDisplayed(By.xpath(nodeStatus.replace("STATUS", status)));
     }
+    public boolean isMissingPODisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_missingPO);
+    }
+    public boolean isOrderSummeryValueDisplayed(String name ,String value)throws InterruptedException{
+        distributorUI.waitForCustom(3000);
+        return distributorUI.isDisplayed(By.xpath(orderSummeryValue.replace("NAME", name).replace("VALUE",value)));
+    }
+    public double getItemMarginPriceFirstRow() throws InterruptedException {
+        try {
+            return extractPriceStable(marginPriceFirstItem);
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPriceStable(marginPriceFirstItem);
+        }
+    }
+
 
 
 }

@@ -23,7 +23,19 @@ public class CustomerData {
     public static final String SUB_STATUS_DISABLE = "Disabled";
     public static final String SUB_STATUS_ENABLE = "Enabled";
     public static final String SEARCH_ITEM_CODE = "02092";
+    public static final String SEARCH_ITEM_CODE2 = "10258";
     public static final String SEARCH_ITEM_NAME = "Fuji Apples 125 CT";
+    public static final String DISTRIBUTOR_NAME_MAPLEVALE = "107807920 - Cut+Dry Agent - Maplevale Farms Inc";
+    public static final String DISTRIBUTOR_SW = "150719185 - Cut+Dry Agent - S&W Wholesale";
+    public static final String CUSTOMER_ID_SW = "86642";
+    public static final String ORDER_SUMMERY_SALES_COMMISSION = "Sales Commission";
+    public static final String ORDER_SUMMERY_TOTAL_LINES = "Total Lines";
+    public static final String ORDER_SUMMERY_TOTAL_PIECES = "Total Pieces";
+    public static final String CUSTOMER_ID_PO = "46185";
+    public static final String PO_NUMBER = "37";
+    public static final String ITEM_NAME_PO = "Artichoke -24CT";
+    public static final String ITEM_CODE_PO = "01700";
+
 
 
 }

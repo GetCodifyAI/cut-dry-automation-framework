@@ -1259,4 +1259,64 @@ public KeywordBase clickF12Mac() {
     }
     return this;
 }
+    // Navigate to a URL using the SAME browser
+    public KeywordBase navigateToURLSame(String url) {
+        try {
+            // This opens the new URL in the SAME tab (does NOT close or remove the current window)
+            driver.navigate().to(url);
+            logger.info("Navigated to URL: {}", url);
+        } catch (Exception e) {
+            logger.error("Failed to navigate to URL: {}", url, e);
+        }
+        return this;
+    }
+
+    public KeywordBase openNewTabAndClosePreviousTabs() {
+        // Get all existing window handles (tabs)
+        Set<String> existingTabs = driver.getWindowHandles();
+
+        // Open a new blank tab
+        ((JavascriptExecutor) driver).executeScript("window.open();");
+
+        // Wait until the number of tabs increases
+        wait.until(ExpectedConditions.numberOfWindowsToBe(existingTabs.size() + 1));
+
+        // Get the updated list of window handles
+        Set<String> allTabs = driver.getWindowHandles();
+
+        // Identify the new tab by finding the one not in the original set
+        String newTab = null;
+        for (String tab : allTabs) {
+            if (!existingTabs.contains(tab)) {
+                newTab = tab;
+                break;
+            }
+        }
+
+        if (newTab != null) {
+            // Switch to the new tab
+            driver.switchTo().window(newTab);
+            logger.info("Switched to new tab: {}", newTab);
+
+            // Close all old tabs
+            for (String tab : existingTabs) {
+                try {
+                    driver.switchTo().window(tab);
+                    driver.close();
+                    logger.info("Closed previous tab: {}", tab);
+                } catch (Exception e) {
+                    logger.warn("Could not close tab: {}", tab, e);
+                }
+            }
+
+            // Switch back to the new tab again (just in case)
+            driver.switchTo().window(newTab);
+        } else {
+            logger.error("Failed to identify new tab");
+        }
+
+        return this;
+    }
+
+
 }

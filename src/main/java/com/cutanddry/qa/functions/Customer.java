@@ -2292,6 +2292,16 @@ public class Customer {
     public static boolean isAddedPaymentMethodDisplayed(String status)throws InterruptedException{
         return customersPage.isAddedPaymentMethodDisplayed(status);
     }
+    public static boolean isMissingPODisplayed()throws InterruptedException{
+        return customersPage.isMissingPODisplayed();
+    }
+    public static double getItemMarginPriceFirstRow() throws InterruptedException {
+        return customersPage.getItemMarginPriceFirstRow();
+    }
+    public static boolean isOrderSummeryValueDisplayed(String name ,String value)throws InterruptedException{
+        return customersPage.isOrderSummeryValueDisplayed(name,value);
+    }
+
 }
 
 
