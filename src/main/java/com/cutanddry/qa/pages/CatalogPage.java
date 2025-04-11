@@ -164,8 +164,8 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
     String tbx_itemQuantityUOM = "(//td[text()='CODE']/following-sibling::*//div/input[@data-input ='quantityInput'])[UOM]";
     String btn_OGAddToCartMinusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='minus'])[UOM]";
     String submittedOrder = "//td[contains(text(),'#') and text()='ID']";
-    By getTotalOrderPrice = By.xpath("//div[contains(text(),'Total')]/../following-sibling::td");
-    By getTotalOrderQuantity = By.xpath("//div[contains(text(),'Items')]/../following-sibling::td");
+    By getTotalOrderPrice = By.xpath("//td[text()='Total']/following-sibling::td");
+    By getTotalOrderQuantity = By.xpath("//td[contains(text(),'Total Quantity')]/following-sibling::td");
     String multiUomDropDown = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[1]";
     String multiUomDropDownOption ="//div[text()='OPTION']";
     String getPriceUOM = "((//button[contains(@data-for,'add-to-order-guide')]/ancestor::div[2]/following-sibling::div)[1]/following-sibling::*//div//span[contains(text(),'$')])[UOM]";
@@ -174,8 +174,8 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
     String btn_editQuantities = "//div[text()='NAME']/../../following-sibling::*//div//button[text()='Edit Quantities']";
     String addQtyDisplay = "//div[text()='NAME']/../../following-sibling::*//div//div[text()='QUANTITY']";
     String txt_catalogProduct = "//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]";
-    By getTotalPriceReviewOrder = By.xpath("//td[contains(text(),'Total')]/following-sibling::td");
-    By getTotalQuantityReviewOrder = By.xpath("//td[contains(text(),'Items')]/following-sibling::td");
+    By getTotalPriceReviewOrder = By.xpath("//td[text()='Total:']/following-sibling::td");
+    By getTotalQuantityReviewOrder = By.xpath("//td[contains(text(),'Total Quantity:')]/following-sibling::td");
     String btn_trash = "//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='trash-can']";
     String standingOrder = "//div[text()=' (QUANTITY items for $PRICE)']";
     By orderGuideSearch = By.xpath("//input[@placeholder='Search order guide...']");

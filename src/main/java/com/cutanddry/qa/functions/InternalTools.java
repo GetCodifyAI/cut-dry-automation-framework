@@ -138,5 +138,11 @@ public class InternalTools {
     public static void clickCreditMemoCheckbox(boolean status){
         internalToolsPage.clickCreditMemoCheckbox(status);
     }
+    public static void clickUserDeletionEmailNotificationsToggle(boolean status){
+        internalToolsPage.clickUserDeletionEmailNotificationsToggle(status);
+    }
+    public static void clickNotificationSave() throws InterruptedException {
+        internalToolsPage.clickNotificationSave();
+    }
 
 }
