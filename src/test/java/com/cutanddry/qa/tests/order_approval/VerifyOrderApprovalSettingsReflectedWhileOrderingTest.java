@@ -3,6 +3,7 @@ package com.cutanddry.qa.tests.order_approval;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -36,9 +37,9 @@ public class VerifyOrderApprovalSettingsReflectedWhileOrderingTest {
         int quantity1 = random.nextInt((35 - 15) + 1) + 15;
         int quantity2 = random.nextInt(6) + 15;
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DistributerName);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
 
         //Turning the order approval on for specific order guide
         Dashboard.navigateToCustomers();

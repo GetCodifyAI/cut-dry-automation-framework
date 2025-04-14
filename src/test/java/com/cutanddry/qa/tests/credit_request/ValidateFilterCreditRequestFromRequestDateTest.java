@@ -5,6 +5,7 @@ import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CustomerInvoiceData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -36,9 +37,9 @@ public class ValidateFilterCreditRequestFromRequestDateTest extends TestBase {
 
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCustomers();
-        softAssert.assertTrue(Customer.isNavigatedToCustomerPage(),"Error navigating to customer page");
+        Assert.assertTrue(Customer.isNavigatedToCustomerPage(),"Error navigating to customer page");
         Customer.searchCustomerByCode(CustomerCode);
         Customer.clickOnOrderGuide(CustomerCode);
         Customer.increaseFirstRowQtyByOne();
@@ -46,7 +47,7 @@ public class ValidateFilterCreditRequestFromRequestDateTest extends TestBase {
         Customer.submitOrder();
         Customer.clickClose();
         Dashboard.navigateToOrders();
-        softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"Error navigating to orders page");
+        Assert.assertTrue(Orders.isUserNavigatedToOrder(),"Error navigating to orders page");
 //        Orders.clickOnFirstOrder();
         Orders.clickOnFirstOrder(creditStatus);
         Orders.clickCheckIn();

@@ -7,6 +7,7 @@ import com.cutanddry.qa.functions.InternalTools;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.functions.Settings;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -28,31 +29,14 @@ public class VerifyTheAllowSponsoredProductAdvertisementsFlowTest extends TestBa
     public void VerifyTheAllowSponsoredProductAdvertisementsFlow() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(distributorName);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToAdsSettings();
         softAssert.assertTrue(Settings.isAdsSettingsTextDisplayed(),"navigation to ads settings error");
-        //pre-requisites
-        if (Settings.isCustomerRestrictionTextDisplayed()){
-            Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-            softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-            Login.navigateToInternalToolsPage();
-            InternalTools.navigateToConfigureSupplier();
-            InternalTools.navigateToIndependentCompEditDetails();
-            InternalTools.navigateToSponsoredAdsRebatesTab();
-            InternalTools.clickSponsoredProductAdsToggle();
-            InternalTools.clickProductAdsSave();
-        }
-        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-        Login.navigateToInternalToolsPage();
-        InternalTools.navigateToConfigureSupplier();
-        InternalTools.navigateToIndependentCompEditDetails();
-        InternalTools.navigateToSponsoredAdsRebatesTab();
-        InternalTools.clickSponsoredProductAdsToggle();
-        InternalTools.clickProductAdsSave();
 
+        Login.navigateToInternalToolsPage();
+        InternalTools.ensureSponsoredProductAdsStatus(true);
         Login.navigateToDistributorPortal(distributorName);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToAdsSettings();
@@ -61,12 +45,7 @@ public class VerifyTheAllowSponsoredProductAdvertisementsFlowTest extends TestBa
         Settings.clickGeneralSettingSaveChanges();
 
         Login.navigateToInternalToolsPage();
-        InternalTools.navigateToConfigureSupplier();
-        InternalTools.navigateToIndependentCompEditDetails();
-        InternalTools.navigateToSponsoredAdsRebatesTab();
-        InternalTools.clickSponsoredProductAdsToggle();
-        InternalTools.clickProductAdsSave();
-
+        InternalTools.ensureSponsoredProductAdsStatus(false);
         Login.navigateToDistributorPortal(distributorName);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToAdsSettings();

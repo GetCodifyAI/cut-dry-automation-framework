@@ -148,8 +148,8 @@ public class SettingsPage extends LoginPage{
     String invalidContactPopUp = "//h2[text()='MESSAGE']";
     By txt_customerRestriction =By.xpath("//div[contains(text(),'Customer Restrictions')]");
     By sponsorProdAdsToggle = By.xpath("//div[contains(text(), 'Allow Sponsored Product Advertisements')]/../../following-sibling::div//div[@class='react-switch-bg']");
-    By generalSettingSaveChanges = By.xpath("(//button[text()='Save Changes'])[1]");
-    By buyerEdgePlatformRebateToggle = By.xpath("//div[contains(text(), 'Allow Buyers Edge Platform Rebate Tags')]/../../following-sibling::div//div[@class='react-switch-bg']");
+    By generalSettingSaveChanges = By.xpath("(//button[text()='Save'])[1]");
+    By buyerEdgePlatformRebateToggle = By.xpath("//div[contains(text(), 'Rebate Tags')]/../../following-sibling::div//div[@class='react-switch-bg']");
 
 
     public void clickSaveChanges(){
@@ -938,12 +938,12 @@ public class SettingsPage extends LoginPage{
         return distributorUI.isDisplayed(By.xpath(invalidContactPopUp.replace("MESSAGE", message)));
     }
     public boolean isCustomerRestrictionTextDisplayed() throws InterruptedException {
-        try {
+       /* try {
             distributorUI.waitForVisibility(txt_customerRestriction);
         } catch (Exception e){
             return false;
         }
-        distributorUI.waitForCustom(4000);
+        distributorUI.waitForCustom(4000);*/
         return distributorUI.isDisplayed(txt_customerRestriction);
     }
     public void clickSponsorProdAdsToggle(){
