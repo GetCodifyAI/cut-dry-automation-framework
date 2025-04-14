@@ -9,7 +9,10 @@ public class ConfigSupplierPage extends LoginPage{
     By btn_saveCatalog = By.xpath("//h5[text()='Catalog']/following::button[contains(text(), 'Save')]");
     By lbl_OGSugTool= By.xpath("//label[contains(text(), 'OG Suggestive Sales Tool')]/following-sibling::div//div[contains(@class, 'react-switch-handle')]");
     By st_activeOGSugTool = By.xpath("//label[contains(text(), 'Show only stock available items on OG Suggestive Sales Tool')]/following-sibling::div//input[@type='checkbox' and ../div[contains(@style, 'background: rgb(0, 136, 0)')]]");
-    By toggleSearchFilterHandle = By.xpath("//label[contains(., 'Enable Default Search Filter')]/following::div[contains(@class, 'react-switch-handle')][1]");
+    By enableDefaultSearchFilterToggle = By.xpath("//*[contains(text(), 'Enable Default Search Filter')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By enableDefaultSearchFilterToggle1 = By.xpath("//*[contains(text(), 'Enable Default Search Filter')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+
+
 
     public boolean isConfigTextDisplayed(){
         try {
@@ -46,13 +49,16 @@ public class ConfigSupplierPage extends LoginPage{
             distributorUI.click(lbl_OGSugTool);
         }
     }
-    public void ensureDefaultSearchFilterStatus(boolean enable) throws InterruptedException {
-        String transformValue = distributorUI.getElement(toggleSearchFilterHandle).getCssValue("transform");
 
-        boolean isCurrentlyEnabled = transformValue.contains("29"); // Enabled
-        if (isCurrentlyEnabled != enable) {
-            distributorUI.clickWithScrollAndHover(toggleSearchFilterHandle);
-            distributorUI.waitForCustom(2000);
+    public void ensureDefaultSearchFilterStatus(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(enableDefaultSearchFilterToggle).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(enableDefaultSearchFilterToggle1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(enableDefaultSearchFilterToggle1);
         }
     }
 }

@@ -23,6 +23,11 @@ public class ShowCasePage extends LoginPage {
     }
 
     public void SearchInProductSearchBar(String productName){
+        try {
+            distributorUI.waitForCustom(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.sendKeys(productSearchBar,productName);
     }
 

@@ -138,7 +138,7 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By OrdersTabTxt = By.xpath("//a[contains(text(),'Orders') and @class='_1n4k2vi text-center nav-item nav-link']");
     By OrderIdTxt = By.xpath("//tr[contains(@href,'/ordersView/')][1]");
     By OrderDateSort = By.xpath("//span[contains(text(),'Order Date')]");
-    By DeliveryDate = By.xpath("//span[contains(text(),'Fulfill By')]");
+    By DeliveryDate = By.xpath("//span[contains(text(),'Fulfilled By')]");
     By OrderDateSortData = By.cssSelector("tr._du1frc td:nth-child(1)");
     By DeliveryDateSortData = By.cssSelector("tr._du1frc td:nth-child(2)");
     By txt_discountDisclaimerOrderReview = By.xpath("//div[contains(text(), 'Case discounts will be reflected on your invoice.')]");
@@ -440,9 +440,9 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     By txt_internalNote =By.xpath("//div[contains(text(),'Internal Notes')]/following-sibling::textarea");
     By txt_noteToCustomer =By.xpath("//div[contains(text(),'Note to Customer')]/following-sibling::textarea");
     By txt_poNumber = By.xpath("//div[contains(text(),'PO Number')]/following-sibling::div/input");
-    String specialInstructionText = "//span[contains(text(),'SPECIALINSTRUCTION')]";
-    String internalNoteText = "//span[contains(text(),'INTERNALNOTE')]";
-    String noteToCustomerText = "//span[contains(text(),'NOTETOCUSTOMER')]";
+    String specialInstructionText = "//*[contains(text(),'SPECIALINSTRUCTION')]";
+    String internalNoteText = "//*[contains(text(),'INTERNALNOTE')]";
+    String noteToCustomerText = "//*[contains(text(),'NOTETOCUSTOMER')]";
     By quantityValue = By.xpath("(//input[contains(@data-input, 'quantityInput')])[1]");
     By Value = By.xpath("(//td[contains(@class,'py-3 _xigbpq4 border-top border-bottom')]//div[contains(text(),'$')])[last()]");
     By totalQuantity = By.xpath("//td[@class='_ygdk15 align-bottom pb-1']");
