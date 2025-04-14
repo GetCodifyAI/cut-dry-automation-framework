@@ -4,6 +4,7 @@ import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -29,7 +30,7 @@ public class VerifyCatalogAccessRestrictedViaCustomerProfileTest extends TestBas
         SoftAssert softAssert = new SoftAssert();
 
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
 
         //Turning Enable manual catalog access for Customers from internal tools
         Login.navigateToInternalToolsPage();
@@ -41,7 +42,7 @@ public class VerifyCatalogAccessRestrictedViaCustomerProfileTest extends TestBas
 
         //Verify Catalog access is enabled for Customer
         Login.navigateToDistributorPortal(DistributerName);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(CustomerCode);
         Customer.SelectCustomer(CustomerCode);
@@ -54,7 +55,7 @@ public class VerifyCatalogAccessRestrictedViaCustomerProfileTest extends TestBas
 
         //Verify Catalog access is disabled for Customer
         Login.navigateToDistributorPortal(DistributerName);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(CustomerCode);
         Customer.SelectCustomer(CustomerCode);

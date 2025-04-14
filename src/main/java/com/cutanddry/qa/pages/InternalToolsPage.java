@@ -43,8 +43,8 @@ public class InternalToolsPage extends LoginPage {
     By deleteEmailNotificationToggleStable = By.xpath("//label[contains(text(), 'Customer User Deletion Email Notifications:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By deleteEmailNotificationToggleStable1 = By.xpath("//label[contains(text(), 'Customer User Deletion Email Notifications:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     By btn_notificationSave = By.xpath("//h5[text()='Notifications']/../following-sibling::div/button[text()='Save']");
-
-
+    By enableSponsoredProductAdvertisementsToggle = By.xpath("//*[contains(text(), 'Enable Sponsored Product Advertisements')]/../following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By enableSponsoredProductAdvertisementsToggle1 = By.xpath("//*[contains(text(), 'Enable Sponsored Product Advertisements')]/../following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
 
 
 
@@ -150,7 +150,7 @@ public class InternalToolsPage extends LoginPage {
         distributorUI.click(lastOrderedPoundPriceToggle);
     }
     public void clickOnSponsoredAdsRebates(){
-        distributorUI.waitForVisibility(sponsoredAdsRebatesTab);
+//        distributorUI.waitForVisibility(sponsoredAdsRebatesTab);
         distributorUI.click(sponsoredAdsRebatesTab);
     }
     public void clickSponsoredProductAdsToggle(){
@@ -161,9 +161,23 @@ public class InternalToolsPage extends LoginPage {
             throw new RuntimeException(e);
         }
     }
-    public void clickProductAdsSave(){
-        distributorUI.waitForVisibility(btn_saveProductAds);
+
+    public void clickSponsoredProductAdsToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(enableSponsoredProductAdvertisementsToggle).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(enableSponsoredProductAdvertisementsToggle1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(enableSponsoredProductAdvertisementsToggle1);
+        }
+    }
+
+    public void clickProductAdsSave() throws InterruptedException {
+//        distributorUI.waitForVisibility(btn_saveProductAds);
         distributorUI.click(btn_saveProductAds);
+        distributorUI.waitForCustom(5000);
     }
     public void clickBuyerEdgePlatformRebateToggle(){
         distributorUI.click(buyerEdgePlatformRebateToggle);
@@ -180,8 +194,9 @@ public class InternalToolsPage extends LoginPage {
         }
     }
 
-    public void clickRebateSave(){
+    public void clickRebateSave() throws InterruptedException {
         distributorUI.clickWithScrollAndHover(btn_saveRebate);
+        distributorUI.waitForCustom(5000);
     }
     public void clickTurnOnOrderMinimumGloballyToggle(boolean enable) {
 
