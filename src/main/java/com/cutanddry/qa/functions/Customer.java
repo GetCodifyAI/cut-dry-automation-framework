@@ -30,7 +30,7 @@ public class Customer {
     }
     public static void clickOnOrderGuide(String code) throws InterruptedException {
         customersPage.clickOnOrderGuide(code);
-        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
             customersPage.clickPreviousDraftOrderNo();
         }
     }
@@ -81,22 +81,22 @@ public class Customer {
     }
     public static void checkoutItems() throws InterruptedException {
         customersPage.clickOnCheckoutButton();
-        if(customersPage.isSubstitutesPopupDisplayed()){
+        if(customersPage.isSubstitutesPopupDisplayedSub()){
             customersPage.clickDoNotSubstitute();
             customersPage.clickSaveSelection();
         }
-        if (customersPage.isOrderMiniumErrorBannerDisplayed()){
+        if (customersPage.isOrderMiniumErrorBannerDisplayedSub()){
             dashboardPage.clickOnOrderSettings();
             settingsPage.selectOnOrderMinimums();
             settingsPage.clickOnSaveChanges();
             customersPage.clickOnBack();
         }
-        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
             customersPage.clickPreviousDraftOrderNo();
         }
     }
     public static void goToCatalog() throws InterruptedException {
-        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
             customersPage.clickPreviousDraftOrderNo();
         }
         customersPage.clickOnCatalogButton();
@@ -170,7 +170,7 @@ public class Customer {
     }
     public static void submitOrder(){
         customersPage.submitOrder();
-        if (customersPage.isOrderMiniumErrorBannerDisplayed()){
+        if (customersPage.isOrderMiniumErrorBannerDisplayedSub()){
             dashboardPage.clickOnOrderSettings();
             settingsPage.selectOnOrderMinimums();
             try {
@@ -246,7 +246,7 @@ public class Customer {
         customersPage.clickOnDownloadOrderGuide();
     }
     public static void searchItemOnOrderGuide(String item) throws InterruptedException {
-        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
             customersPage.clickPreviousDraftOrderNo();
         }
         customersPage.typeToSearchOnOrderGuide(item);
@@ -325,7 +325,7 @@ public class Customer {
         customersPage.clickOnUploadToOrder();
     }
     public static boolean isReviewOrderTextDisplayed(){
-        if(customersPage.isSubstitutesPopupDisplayed()){
+        if(customersPage.isSubstitutesPopupDisplayedSub()){
             customersPage.clickDoNotSubstitute();
             customersPage.clickSaveSelection();
         }
@@ -450,11 +450,11 @@ public class Customer {
         return customersPage.getOrderCount(num);
     }
     public static void clickOnBack() throws InterruptedException {
-        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
             customersPage.clickPreviousDraftOrderNo();
         }
         customersPage.clickOnBack();
-        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
             customersPage.clickPreviousDraftOrderNo();
         }
     }
@@ -553,7 +553,7 @@ public class Customer {
     }
     public static void clickOnOrderGuideInProfile() throws InterruptedException {
         customersPage.clickOnOrderGuideInProf();
-        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
             customersPage.clickPreviousDraftOrderNo();
         }
     }
@@ -973,7 +973,7 @@ public class Customer {
     public static void clickEditOrderGuide(){
         customersPage.clickEditOrderGuide();
         try {
-            if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
                 customersPage.clickPreviousDraftOrderNo();
             }
         } catch (InterruptedException e) {
@@ -1349,7 +1349,7 @@ public class Customer {
     public static void clickAddToCartPDP(){customersPage.clickAddToCart();}
     public static void clickCheckOutPDP(){
         customersPage.clickCheckOutPDP();
-        if(customersPage.isSubstitutesPopupDisplayed()){
+        if(customersPage.isSubstitutesPopupDisplayedSub()){
             customersPage.clickDoNotSubstitute();
             customersPage.clickSaveSelection();
         }
@@ -1768,7 +1768,7 @@ public class Customer {
     public static void clickOnItemOrderGuideDropDown(String item) throws InterruptedException {
         customersPage.clickOnDropDownOrderGuide();
         customersPage.clickOnItemDropDownOrderGuide(item);
-        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
             customersPage.clickPreviousDraftOrderNo();
         }
     }
@@ -1779,7 +1779,7 @@ public class Customer {
 
     public static void stableCheckoutItems() throws InterruptedException {
         customersPage.clickOnStableCheckoutButton();
-        if (customersPage.isOrderMiniumErrorBannerDisplayed()){
+        if (customersPage.isOrderMiniumErrorBannerDisplayedSub()){
             dashboardPage.clickOnOrderSettings();
             settingsPage.selectOnOrderMinimums();
             settingsPage.clickOnSaveChanges();
@@ -1820,14 +1820,14 @@ public class Customer {
     }
     public static void clickOnCheckoutButtonOperator()throws InterruptedException{
         customersPage.clickOnCheckoutButtonOperator();
-        if(customersPage.isSubstitutesPopupDisplayed()){
+        if(customersPage.isSubstitutesPopupDisplayedSub()){
             customersPage.clickDoNotSubstitute();
             customersPage.clickSaveSelection();
         }
         Thread.sleep(4000);
     }
     public static void increaseFirstRowQtyInClassic(int count) throws InterruptedException {
-        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
             customersPage.clickPreviousDraftOrderNo();
         }
         for(int i=0;i<count;i++){
@@ -1836,7 +1836,7 @@ public class Customer {
     }
     public static void submitOrderForApproval() throws InterruptedException {
         customersPage.submitOrderForApproval();
-        if (customersPage.isOrderMiniumErrorBannerDisplayed()){
+        if (customersPage.isOrderMiniumErrorBannerDisplayedSub()){
             dashboardPage.clickOnOrderSettings();
             settingsPage.selectOnOrderMinimums();
             settingsPage.clickOnSaveChanges();
@@ -1856,11 +1856,11 @@ public class Customer {
         customersPage.clickViewOrderInDraft();
     }
     public static void clickCheckOutOrderGuide()throws InterruptedException{
-        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
             customersPage.clickPreviousDraftOrderNo();
         }
         customersPage.clickCheckOutOrderGuide();
-        if(customersPage.isSubstitutesPopupDisplayed()){
+        if(customersPage.isSubstitutesPopupDisplayedSub()){
             customersPage.clickDoNotSubstitute();
             customersPage.clickSaveSelection();
         }
@@ -1881,7 +1881,7 @@ public class Customer {
 //        return customersPage.getItemPriceOnEditOrderCheckout();
 //    }
     public static void clickEditOrderCheckout()throws InterruptedException{
-        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
             customersPage.clickPreviousDraftOrderNo();
         }
         customersPage.clickEditOrderCheckout();
@@ -1967,7 +1967,7 @@ public class Customer {
     }
     public static void clickOnCheckOutReview(){
         customersPage.clickOnCheckOutReview();
-        if(customersPage.isSubstitutesPopupDisplayed()){
+        if(customersPage.isSubstitutesPopupDisplayedSub()){
             customersPage.clickDoNotSubstitute();
             customersPage.clickSaveSelection();
         }
@@ -2046,17 +2046,17 @@ public class Customer {
 
     public static void checkoutItemsMultiOUM() throws InterruptedException {
         customersPage.clickCheckOutOrderGuide();
-        if(customersPage.isSubstitutesPopupDisplayed()){
+        if(customersPage.isSubstitutesPopupDisplayedSub()){
             customersPage.clickDoNotSubstitute();
             customersPage.clickSaveSelection();
         }
-        if (customersPage.isOrderMiniumErrorBannerDisplayed()){
+        if (customersPage.isOrderMiniumErrorBannerDisplayedSub()){
             dashboardPage.clickOnOrderSettings();
             settingsPage.selectOnOrderMinimums();
             settingsPage.clickOnSaveChanges();
             customersPage.clickOnBack();
         }
-        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
             customersPage.clickPreviousDraftOrderNo();
         }
     }
@@ -2210,7 +2210,7 @@ public class Customer {
     }
     public static void submitOrderRebate() throws InterruptedException {
         customersPage.submitOrder();
-        if (customersPage.isOrderMiniumErrorBannerDisplayed()){
+        if (customersPage.isOrderMiniumErrorBannerDisplayedSub()){
             dashboardPage.clickOnOrderSettings();
             settingsPage.selectOnOrderMinimums();
             try {

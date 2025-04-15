@@ -65,6 +65,11 @@ public class Orders {
     public static void clickOnEditOrderInReview() throws InterruptedException {
         ordersPage.clickOnEditOrderInReview();
     }
+    public static void clickOnEditOrderInReviewStable() throws InterruptedException {
+        if (ordersPage.isNavigatedToReviewOrderScreen()) {
+            ordersPage.clickOnEditOrderInReview();
+        }
+    }
     public static boolean isEditOrderPopupDisplayed(){
         return ordersPage.isEditOrderPopupDisplayed();
     }

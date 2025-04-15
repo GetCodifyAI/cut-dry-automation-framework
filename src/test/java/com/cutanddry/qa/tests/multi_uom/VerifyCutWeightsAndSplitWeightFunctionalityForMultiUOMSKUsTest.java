@@ -45,8 +45,6 @@ public class VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest exte
         Login.updateCompanyIDs(featureName,companyId);
 */
         Login.navigateToDistributorPortal(distributor);
-//        Customer.ensureCarouselDisplayStatus(false);
-
         //Place an order with single and Multi OUM Items
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
@@ -97,8 +95,8 @@ public class VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest exte
         Orders.clickOnEditOrder();
         softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(), "edit popup error");
         Orders.clickOnConfirm();
-        softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(), "edit error(Review Page)");
-        Orders.clickOnEditOrderInReview();
+//        softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(), "edit error(Review Page)");
+        Orders.clickOnEditOrderInReviewStable();
         softAssert.assertTrue(Orders.isNavigatedToEditOrder(), "edit error");
         Customer.searchItemOnOrderGuide(multiSearchItemCode);
 

@@ -65,7 +65,7 @@ public class ValidateTheSplitWeightTest extends TestBase{
         softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(),"edit popup error");
         Orders.clickOnConfirm();
 //        softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(),"edit error(Review Page)");
-//        Orders.clickOnEditOrderInReview();
+        Orders.clickOnEditOrderInReviewStable();
         softAssert.assertTrue(Orders.isNavigatedToEditOrder(),"edit error");
         Customer.searchItemOnOrderGuide(searchItemCode);
 
