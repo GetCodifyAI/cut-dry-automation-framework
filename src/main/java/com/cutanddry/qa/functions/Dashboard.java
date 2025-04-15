@@ -139,7 +139,7 @@ public class Dashboard {
         if (dashboardPage.isTestAutomationPopupDisplayed()){
             dashboardPage.clickOnTestAutomationPopup();
         }
-        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
             customersPage.clickPreviousDraftOrderNo();
         }
     }
@@ -175,7 +175,7 @@ public class Dashboard {
     }
     public static void navigateToOrder() throws InterruptedException {
         dashboardPage.clickOnOrder();
-        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
             customersPage.clickPreviousDraftOrderNo();
         }
     }

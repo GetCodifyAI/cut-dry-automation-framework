@@ -36,15 +36,9 @@ public class VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureEna
         softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-        Login.navigateToInternalToolsPage();
-        InternalTools.navigateToConfigureSupplier();
-        InternalTools.navigateToIndependentCompEditDetails();
-        InternalTools.navigateToPayDetailsTab();
-        InternalTools.clickCreditMemoCheckbox(true);
-        InternalTools.clickSave();
-      //  softAssert.assertTrue(InternalTools.isSuccessPopUpDisplayed(),"change not save");
-        InternalTools.clickOKOnSucessOverlay();
 
+        Login.navigateToInternalToolsPage();
+        InternalTools.ensureCreditMemoCheckboxStatus(true);
         Login.navigateToDistributorPortal(DistributorName);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
         Dashboard.navigateToPay();

@@ -158,4 +158,20 @@ public class InternalTools {
         internalToolsPage.clickBuyerEdgePlatformRebateToggle(enable);
         internalToolsPage.clickRebateSave();
     }
+    public static void ensurePayEnabledStatus(boolean enable) throws InterruptedException {
+        internalToolsPage.clickConfigureSupplier();
+        internalToolsPage.clickOnIndependentCompEditDetails();
+        internalToolsPage.navigateToPayDetailsTab();
+        internalToolsPage.clickPayEnabledToggle(enable);
+        internalToolsPage.clickSave();
+        internalToolsPage.clickOKOnSucessOverlay();
+    }
+    public static void ensureCreditMemoCheckboxStatus(boolean enable) throws InterruptedException {
+        internalToolsPage.clickConfigureSupplier();
+        internalToolsPage.clickOnIndependentCompEditDetails();
+        internalToolsPage.navigateToPayDetailsTab();
+        internalToolsPage.clickCreditMemoCheckbox(enable);
+        internalToolsPage.clickSave();
+        internalToolsPage.clickOKOnSucessOverlay();
+    }
 }

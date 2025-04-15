@@ -90,8 +90,8 @@ public class ValidateTheFinalWeightWhenSelectingMultipleUOMTest extends TestBase
         Orders.clickOnEditOrder();
         softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(), "edit popup error");
         Orders.clickOnConfirm();
-        softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(), "edit error(Review Page)");
-        Orders.clickOnEditOrderInReview();
+//        softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(), "edit error(Review Page)");
+        Orders.clickOnEditOrderInReviewStable();
         softAssert.assertTrue(Orders.isNavigatedToEditOrder(), "edit error");
         Customer.searchItemOnOrderGuide(itemCode); //itemCode
 

@@ -218,10 +218,8 @@ public class InternalToolsPage extends LoginPage {
         distributorUI.clear(addOrderMinimum);
         distributorUI.sendKeys(addOrderMinimum,minimum);
     }
-    public void clickSave(){
-        distributorUI.scrollToElement(SaveBtn);
-        distributorUI.waitForVisibility(SaveBtn);
-        distributorUI.clickUsingJavaScript(SaveBtn);
+    public void clickSave() {
+        distributorUI.clickWithScrollAndHover(SaveBtn);
     }
     public boolean isSuccessPopUpDisplayed(){
         return distributorUI.isDisplayed(txt_success);
