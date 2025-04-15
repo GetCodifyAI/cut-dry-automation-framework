@@ -45,7 +45,6 @@ public class VerifyTheEditUOMsFromEditTest extends TestBase {
         Customer.clickOnCaseUnit();
         Customer.saveItem();
         Customer.closeEditor();
-        Customer.searchItemOnOrderGuide(itemCode);
         softAssert.assertFalse(Customer.isMultiUomDropDownDisplayed(itemCode),"multi uom displayed");
         Customer.goToEdit();
         softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
