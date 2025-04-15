@@ -107,9 +107,16 @@ public class ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest extends TestB
 
         totalCartAmount = Customer.getTotalPriceCart();
 
-        Customer.clickOnCheckOutReview();
-        Customer.clickEditOrderCheckout();
-        softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+        Customer.clickCheckOutOrderGuide();
+
+        if (Customer.isEditOrderCheckout()) {
+            Customer.clickEditOrderCheckout();
+            softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+        } else {
+            softAssert.assertTrue(Orders.isSubmitPopupDisplayed(), "submit pop up not display");
+            Orders.clickOnConfirm();
+            softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+        }
         Orders.clickOnClose();
 
         Dashboard.navigateToCustomers();

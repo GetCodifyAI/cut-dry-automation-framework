@@ -26,13 +26,14 @@
 
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditUOMsFromEditTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyStockAvailabilityModalForMultiUOMSKUsTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheHardOrderMinimumSelectingMultipleUOMTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSoftOrderMinimumSelectingMultipleUOMTest"/>
 
             <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnCatalogCardTest"/>
             <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnPDPViewTest"/>
             <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnCatalogCardOperatorTest"/>
             <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnPDPViewOperatorTest"/>
+
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheHardOrderMinimumSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSoftOrderMinimumSelectingMultipleUOMTest"/>
         </classes>
     </test>
 </suite>

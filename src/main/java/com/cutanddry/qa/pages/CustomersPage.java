@@ -48,6 +48,7 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By tbx_itemQuantityCartRowOne = By.xpath("//tr[2]/td//input/");
     By lbl_itemPriceCartRowOne = By.xpath("//tr[2]/td//span[contains(text(),'$')]");
     By lbl_cartTotal = By.xpath("//td[text()='Total']/following-sibling::td");
+    By lbl_cartTotalReview = By.xpath("//td[text()='Total:']/following-sibling::td");
     By btn_submitOrder = By.xpath("//button[contains(text(),'Submit Order')]");
     By btn_duplicateOrderYes = By.xpath("//h2[contains(text(),'Duplicate Order')]/../..//button[text()='Yes']");
     By lbl_thankYouForOrder = By.xpath("//*[contains(text(),'Thank you for your order!')]");
@@ -610,8 +611,8 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
 //    String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//input)[UOM] | ((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]/div/div[UOM]/div)[1] | ((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//span)[UOM]";
 String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//input)[UOM] | ((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//span)[UOM]";
 
-//    String multiUomDropDownOG = "(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg'])[1]";
-String multiUomDropDownOG = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr//td[text()='CODE']/..//*[local-name()='svg' and @data-icon='chevron-down']";
+    String multiUomDropDownOG = "(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg'])[1]";
+    String multiUomDropDownOGExist = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr//td[text()='CODE']/..//*[local-name()='svg' and @data-icon='chevron-down']";
     By multiUomOption =By.xpath("//div[text()='Multiple Units']");
     String btn_OGAddToCartPlusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='plus'])[UOM]";
     String txt_multiOrderId = "(//div[contains(text(),'Order #')])[NUM]";
@@ -671,7 +672,6 @@ String multiUomDropDownOG = "//td//span//div[@data-tip='View Product Details']/a
     By marginPriceFirstItem = By.xpath("((//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-2]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-3]//span)[2])[1]");
    // Double orderSummeryGrossProfitValue = "//div[contains(text(),'Gross Profit (Sale Cost)')]/following-sibling::div[contains(text(),'VALUE')]";
     String orderSummeryValue = "//div[contains(text(),'NAME')]/following-sibling::div[contains(text(),'VALUE')]";
-
 
 
     public void ifDuplicateOrderDisplayed(){
@@ -857,6 +857,11 @@ String multiUomDropDownOG = "//td//span//div[@data-tip='View Product Details']/a
         distributorUI.waitForCustom(3000);
 //        return Double.valueOf(distributorUI.getText(lbl_cartTotal).split("\\$")[1]);
         String priceText = distributorUI.getText(lbl_cartTotal).replace("$", "").replace(",", "").trim();
+        return Double.valueOf(priceText);
+    }
+    public Double getReviewTotalPriceCart() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        String priceText = distributorUI.getText(lbl_cartTotalReview).replace("$", "").replace(",", "").trim();
         return Double.valueOf(priceText);
     }
     public void submitOrder(){
@@ -3435,6 +3440,9 @@ String multiUomDropDownOG = "//td//span//div[@data-tip='View Product Details']/a
     public void clickEditOrderCheckout(){
         distributorUI.click(btn_submitOrderEdit);
     }
+    public boolean isEditOrderCheckout(){
+        return distributorUI.isDisplayed(btn_submitOrderEdit,8);
+    }
     public String getConfirmFinalPrice(){
         return distributorUI.getText(confirmPrice);
     }
@@ -3960,8 +3968,8 @@ String multiUomDropDownOG = "//td//span//div[@data-tip='View Product Details']/a
         distributorUI.click(saveItem);
         distributorUI.waitForCustom(8000);
     }
-    public boolean isMultiUomDropDownDisplayed(String code)throws InterruptedException{
-       return distributorUI.isDisplayed(By.xpath(multiUomDropDownOG.replace("CODE", code)));
+    public boolean isMultiUomDropDownExistDisplayed(String code)throws InterruptedException{
+       return distributorUI.isDisplayed(By.xpath(multiUomDropDownOGExist.replace("CODE", code)));
     }
     public void clickStock()throws InterruptedException{
         distributorUI.click(btn_stock);
@@ -4008,7 +4016,9 @@ String multiUomDropDownOG = "//td//span//div[@data-tip='View Product Details']/a
             return extractPriceStable(marginPriceFirstItem);
         }
     }
-
+    public boolean isSubstitutesPopupDisplayedSub1(){
+        return distributorUI.isDisplayed(txt_substitutions,5);
+    }
 
 
 }

@@ -168,6 +168,9 @@ public class Customer {
     public static double getTotalPriceCart() throws InterruptedException {
         return customersPage.getTotalPriceCart();
     }
+    public static double getReviewTotalPriceCart() throws InterruptedException {
+        return customersPage.getReviewTotalPriceCart();
+    }
     public static void submitOrder(){
         customersPage.submitOrder();
         if (customersPage.isOrderMiniumErrorBannerDisplayedSub()){
@@ -1886,6 +1889,9 @@ public class Customer {
         }
         customersPage.clickEditOrderCheckout();
     }
+    public static boolean isEditOrderCheckout() {
+        return customersPage.isEditOrderCheckout();
+    }
     public static String getConfirmFinalPrice() throws InterruptedException {
         return customersPage.getConfirmFinalPrice();
     }
@@ -2269,8 +2275,8 @@ public class Customer {
     public static void saveItem() throws InterruptedException {
         customersPage.saveItem();
     }
-    public static boolean isMultiUomDropDownDisplayed(String code)throws InterruptedException{
-        return customersPage.isMultiUomDropDownDisplayed(code);
+    public static boolean isMultiUomDropDownExistDisplayed(String code)throws InterruptedException{
+        return customersPage.isMultiUomDropDownExistDisplayed(code);
     }
     public static void clickStock()throws InterruptedException{
         customersPage.clickStock();
