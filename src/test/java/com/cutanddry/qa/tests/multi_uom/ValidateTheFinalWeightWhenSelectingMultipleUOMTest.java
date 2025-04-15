@@ -113,15 +113,16 @@ public class ValidateTheFinalWeightWhenSelectingMultipleUOMTest extends TestBase
         totalCartAmount = Customer.getTotalPriceCart();
 
 
-       /* Customer.clickCheckOutOrderGuide();
-        softAssert.assertTrue(Orders.isSubmitPopupDisplayed(), "submit pop up not display");
-        Orders.clickOnConfirm();
-        softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
-        Orders.clickOnClose();*/
+        Customer.clickCheckOutOrderGuide();
 
-        Customer.clickOnCheckOutReview();
-        Customer.clickEditOrderCheckout();
-        softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+        if (Customer.isEditOrderCheckout()) {
+            Customer.clickEditOrderCheckout();
+            softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+        } else {
+            softAssert.assertTrue(Orders.isSubmitPopupDisplayed(), "submit pop up not display");
+            Orders.clickOnConfirm();
+            softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+        }
         Orders.clickOnClose();
 
         Dashboard.navigateToCustomers();

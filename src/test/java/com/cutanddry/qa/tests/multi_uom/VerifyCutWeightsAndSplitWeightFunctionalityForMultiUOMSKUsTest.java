@@ -119,12 +119,16 @@ public class VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest exte
         softAssert.assertTrue(Customer.getFinalWeightMultiUOM(uom2, "1").contains("10"), "item weight error in 2nd row");
 
         totalCartAmount = Customer.getTotalPriceCart();
-
-
         Customer.clickCheckOutOrderGuide();
-        softAssert.assertTrue(Orders.isSubmitPopupDisplayed(), "submit pop up not display");
-        Orders.clickOnConfirm();
-        softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+
+        if (Customer.isEditOrderCheckout()) {
+            Customer.clickEditOrderCheckout();
+            softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+        } else {
+            softAssert.assertTrue(Orders.isSubmitPopupDisplayed(), "submit pop up not display");
+            Orders.clickOnConfirm();
+            softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+        }
         Orders.clickOnClose();
 
         Dashboard.navigateToCustomers();

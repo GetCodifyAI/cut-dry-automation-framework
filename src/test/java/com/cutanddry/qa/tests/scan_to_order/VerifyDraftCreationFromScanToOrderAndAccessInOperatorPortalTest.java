@@ -64,7 +64,7 @@ public class VerifyDraftCreationFromScanToOrderAndAccessInOperatorPortalTest ext
         softAssert.assertEquals(itemPriceAfterIncrease, itemPriceInitially *randomQuantity,"Item Prices calculation is wrong after Qty increase");
         ScanToOrder.ReviewAndConfirm();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
-        itemPrice = Customer.getTotalPriceCart();
+        itemPrice = Customer.getReviewTotalPriceCart();
 
         Dashboard.navigateToDrafts();
         softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
