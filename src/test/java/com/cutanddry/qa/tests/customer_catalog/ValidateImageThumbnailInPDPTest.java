@@ -15,8 +15,8 @@ import org.testng.asserts.SoftAssert;
 public class ValidateImageThumbnailInPDPTest extends TestBase {
     static User user;
     String CustomerCode = "37631";
-    static String itemName = "Artichoke Bottoms 5-7 Ct Brine";
-
+//    static String itemName = "Artichoke Bottoms 5-7 Ct Brine";
+    static String itemName = "Anchovy Paste";
 
     @BeforeMethod
     public void setUp(){
