@@ -36,7 +36,8 @@ public class VerifyAddingAnotherStandingOrderTest extends TestBase {
         Customer.clickOnOrdersTab();
         softAssert.assertTrue(Customer.isStandingOrdersDisplayed(),"navigation error");
         Customer.clickOnAddAnotherStandingOrder();
-        Customer.selectDeliveryDate(deliveryDay);
+//        Customer.selectDeliveryDate(deliveryDay);
+        Customer.selectDeliveryDateAsLastBefore();
         itemName = Customer.getItemNameFirstRow();
         Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItems();

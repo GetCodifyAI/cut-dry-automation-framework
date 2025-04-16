@@ -112,6 +112,7 @@ String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[co
     By dropdown_pickUp = By.xpath("//div[text()='Pickup Date:']/../following-sibling::div/div");
     String txt_deliveryDay = "//div[text()='DAY']/preceding-sibling::input[@type='checkbox']";
     String txt_deliveryLastDay = "(//div[contains(@class, 'cd_themed_select__option')]//input[@type='checkbox'])[last()]";
+    String txt_deliveryLastBeforeDay = "(//div[contains(@class, 'cd_themed_select__option')]//input[@type='checkbox'])[last()-1]";
     String txt_pickUpLastDay = "//div[contains(@class, 'cd_themed_select__option')][last()]";
     By btn_setStandingOrder = By.xpath("//button[text()='Set Standing Order ']");
     By txt_EmailPopup = By.xpath("//div[text()='Standing Order CC Emails']");
@@ -1175,6 +1176,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(By.xpath(txt_deliveryLastDay));
         distributorUI.click(By.xpath(txt_deliveryLastDay));
         distributorUI.waitForElementEnabledState(By.xpath(txt_deliveryLastDay),true);
+    }
+    public void clickOnDeliveryDateAsLastBefore() {
+        distributorUI.waitForVisibility(By.xpath(txt_deliveryLastBeforeDay));
+        distributorUI.click(By.xpath(txt_deliveryLastBeforeDay));
+        distributorUI.waitForElementEnabledState(By.xpath(txt_deliveryLastBeforeDay),true);
     }
     public void clickOnPickUpDateAsLast() {
         distributorUI.waitForVisibility(By.xpath(txt_pickUpLastDay));

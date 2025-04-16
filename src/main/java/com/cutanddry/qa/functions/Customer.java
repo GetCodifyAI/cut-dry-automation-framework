@@ -399,6 +399,11 @@ public class Customer {
         customersPage.clickOnDropdownDelivery();
         customersPage.clickOnDeliveryDateAsLast();
     }
+    public static void selectDeliveryDateAsLastBefore(){
+        customersPage.clickOnRemoveDelivery();
+        customersPage.clickOnDropdownDelivery();
+        customersPage.clickOnDeliveryDateAsLastBefore();
+    }
     public static void selectPickUpDateAsLast(){
         customersPage.clickOnDropDownPickUp();
         customersPage.clickOnPickUpDateAsLast();
