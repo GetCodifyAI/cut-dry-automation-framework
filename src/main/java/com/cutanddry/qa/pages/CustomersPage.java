@@ -21,7 +21,7 @@ public class CustomersPage extends LoginPage {
     By btn_increaseQtySecondRow = By.xpath("//tr[2]/td[8]/div/div/div/div[3]");
     By btn_decreaseQtySecondRow = By.xpath("//tr[2]/td[8]/div/div/div/div[1]");
     By btn_checkout = By.xpath("//button[text()='$']/../button[2]");
-    By btn_catalog = By.xpath("//div[text()='Catalog']");
+    By btn_catalog = By.xpath("//span[text()='Catalog']");
     By tbx_catalogSearch = By.xpath("//input[@placeholder='Search catalog...']");
 //    String lbl_catalogSearchItemList = "//button[contains(@data-for,'tooltipundefined')]/ancestor::div[2]/following-sibling::div[2]/div/div[contains(text(),'NAME')]";
 //    String lbl_catalogSearchItemList = "//button[contains(text(), 'Add to Cart')]/ancestor::div//*[contains(text(), 'NAME')]";
@@ -426,7 +426,7 @@ String txt_product = "//div[contains(@class,'_3quvq7 _1vlidrf' ) and contains(tr
     By btn_checkOutPDP = By.xpath("//button[@data-for='cartCheckoutButton' and contains(text(),'$')]");
     By txt_orderConfirmationPopUp = By.xpath("//strong[contains(text(), 'Thank you for your order!')]");
     By btn_addOrderGuideHeart = By.xpath("//button[@class='d-flex align-items-center justify-content-center cdbutton w-100 _fousr2 fa-stack btn btn-primary btn-sm' and @data-tip='Add to Order Guide']");
-    By btn_catalogToOrderGuide = By.xpath("//div[text()='Order Guide']");
+    By btn_catalogToOrderGuide = By.xpath("//span[text()='Order Guide']");
 //    String lbl_orderGuideItem = "//div[contains(@class, 'text-capitalize _1i69w9z') and contains(text(),'NAME')]";
 String lbl_orderGuideItem = "//div[contains(@data-tip, 'View Product Details') and contains(translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]";
 By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items-center justify-content-center cdbutton w-100 _fousr2 fa-stack btn btn-primary btn-sm' and @data-tip='Remove from Order Guide']");
@@ -446,7 +446,7 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     String noteToCustomerText = "//*[contains(text(),'NOTETOCUSTOMER')]";
     By quantityValue = By.xpath("(//input[contains(@data-input, 'quantityInput')])[1]");
     By Value = By.xpath("(//td[contains(@class,'py-3 _xigbpq4 border-top border-bottom')]//div[contains(text(),'$')])[last()]");
-    By totalQuantity = By.xpath("//td[@class='_ygdk15 align-bottom pb-1']");
+    By totalQuantity = By.xpath("//td[contains(text(),'Total Quantity')]/following-sibling::td");
     By totalValue=By.xpath("//td[@class='border-0 pt-1' and contains(text(),'$')]");
     By txt_orderId = By.xpath("//div[contains(text(),'Order #')]");
     By sel_delivery = By.xpath("//span[text()='Delivery']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
