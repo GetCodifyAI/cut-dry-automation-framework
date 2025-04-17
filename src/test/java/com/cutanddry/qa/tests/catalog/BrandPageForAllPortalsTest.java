@@ -7,6 +7,7 @@ import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.functions.ShowCase;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -31,12 +32,12 @@ public class BrandPageForAllPortalsTest extends TestBase {
     public void BrandPageForAllPortals() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DistributerName);
         Dashboard.navigateToCatalog();
-        softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
+        Assert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.NavigateToShowCasePage();
-        softAssert.assertTrue(ShowCase.isNavigateToShowCase(),"ERROR in Navigating to Show Case Page");
+        Assert.assertTrue(ShowCase.isNavigateToShowCase(),"ERROR in Navigating to Show Case Page");
         ShowCase.SearchProductInProductSearhBar(searchProductName);
         ShowCase.SelectProductFromShowCase(ProductName);
         ShowCase.NavigateToManufacturerPage();

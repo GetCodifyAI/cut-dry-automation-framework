@@ -7,6 +7,7 @@ import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Draft;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -32,9 +33,9 @@ public class VerifyErrorMessageDisplayTest extends TestBase {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToDrafts();
-        softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
+        Assert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
 
         Draft.clickDropDownFilter(createdByDropDown);
         Draft.clickDropDownFilterOption(createdByDropDownOption2);
