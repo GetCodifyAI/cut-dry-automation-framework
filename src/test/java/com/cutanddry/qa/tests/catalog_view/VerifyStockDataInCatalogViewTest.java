@@ -7,6 +7,7 @@ import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.InternalTools;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -29,15 +30,15 @@ public class VerifyStockDataInCatalogViewTest extends TestBase {
         SoftAssert softAssert = new SoftAssert();
         // Pre-request
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         InternalTools.TurnOnTheDisplayingStockCount(true);
 
 //        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
 //        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DistributerName);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToCustomers();
-        softAssert.assertTrue(Customer.isNavigatedToCustomerPage(),"ERROR in navigating to customer page");
+        Assert.assertTrue(Customer.isNavigatedToCustomerPage(),"ERROR in navigating to customer page");
         Customer.searchCustomerByCode(CustomerCode);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"search error");
         Customer.clickOnOrderGuide(CustomerCode);
@@ -57,9 +58,9 @@ public class VerifyStockDataInCatalogViewTest extends TestBase {
 //        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
 //        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DistributerName);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToCustomers();
-        softAssert.assertTrue(Customer.isNavigatedToCustomerPage(),"ERROR in navigating to customer page");
+        Assert.assertTrue(Customer.isNavigatedToCustomerPage(),"ERROR in navigating to customer page");
         Customer.searchCustomerByCode(CustomerCode);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"search error");
         Customer.clickOnOrderGuide(CustomerCode);
