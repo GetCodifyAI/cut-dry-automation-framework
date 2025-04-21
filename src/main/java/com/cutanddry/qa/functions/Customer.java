@@ -2312,6 +2312,9 @@ public class Customer {
     public static boolean isOrderSummeryValueDisplayed(String name ,String value)throws InterruptedException{
         return customersPage.isOrderSummeryValueDisplayed(name,value);
     }
+    public static String getSaleCommissionValue()throws InterruptedException{
+        return customersPage.getSaleCommissionValue();
+    }
 
 }
 
