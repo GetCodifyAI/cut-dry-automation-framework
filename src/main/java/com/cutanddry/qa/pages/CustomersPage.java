@@ -670,6 +670,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By marginPriceFirstItem = By.xpath("((//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-2]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-3]//span)[2])[1]");
    // Double orderSummeryGrossProfitValue = "//div[contains(text(),'Gross Profit (Sale Cost)')]/following-sibling::div[contains(text(),'VALUE')]";
     String orderSummeryValue = "//div[contains(text(),'NAME')]/following-sibling::div[contains(text(),'VALUE')]";
+    By salesCommissionValue = By.xpath("//div[contains(text(),'Sales Commission')]/following-sibling::div");
 
 
 
@@ -4001,6 +4002,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
             System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
             return extractPriceStable(marginPriceFirstItem);
         }
+    }
+    public String getSaleCommissionValue()throws InterruptedException{
+        return distributorUI.getText(salesCommissionValue);
     }
 
 

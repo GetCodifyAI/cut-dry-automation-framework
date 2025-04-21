@@ -35,6 +35,7 @@ public class CustomerData {
     public static final String PO_NUMBER = "37";
     public static final String ITEM_NAME_PO = "Artichoke -24CT";
     public static final String ITEM_CODE_PO = "01700";
+    public static final String DISTRIBUTOR_HILL_CREST = "96939129 - Cut+Dry Agent - Hillcrest Foodservice";
 
 
 

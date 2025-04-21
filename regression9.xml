@@ -47,6 +47,9 @@
             <class name="com.cutanddry.qa.tests.catalog_data.VerifyNotLoggedInUserCanViewThePublicItemOfTheDistributeViaPDPURLTest"/>
 
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyUserDeletionEmailNotificationToggleTest"/>
+
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyDeleteCustomerUserAndReceiveUserDeletionNotificationTest"/>
+            <class name="com.cutanddry.qa.tests.customers.VerifyThatOrderSummerySalesCommissionSectionUpdateTest"/>
         </classes>
     </test>
 </suite>
