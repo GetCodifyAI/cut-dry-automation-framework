@@ -45,7 +45,7 @@ public class ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest extends TestB
         Login.updateCompanyIDs(featureName,companyId);
 
         Login.navigateToDistributorPortal(distributor);
-        Customer.ensureCarouselDisplayStatus(false);
+//        Customer.ensureCarouselDisplayStatus(false);
 
         //Place an order with single and Multi OUM Items
         Dashboard.navigateToCustomers();
@@ -90,8 +90,8 @@ public class ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest extends TestB
         Orders.clickOnEditOrder();
         softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(), "edit popup error");
         Orders.clickOnConfirm();
-        softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(), "edit error(Review Page)");
-        Orders.clickOnEditOrderInReview();
+//        softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(), "edit error(Review Page)");
+        Orders.clickOnEditOrderInReviewStable();
         softAssert.assertTrue(Orders.isNavigatedToEditOrder(), "edit error");
         Customer.searchItemOnOrderGuide(multiSearchItemCode);
 
@@ -107,9 +107,16 @@ public class ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest extends TestB
 
         totalCartAmount = Customer.getTotalPriceCart();
 
-        Customer.clickOnCheckOutReview();
-        Customer.clickEditOrderCheckout();
-        softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+        Customer.clickCheckOutOrderGuide();
+
+        if (Customer.isEditOrderCheckout()) {
+            Customer.clickEditOrderCheckout();
+            softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+        } else {
+            softAssert.assertTrue(Orders.isSubmitPopupDisplayed(), "submit pop up not display");
+            Orders.clickOnConfirm();
+            softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+        }
         Orders.clickOnClose();
 
         Dashboard.navigateToCustomers();

@@ -183,7 +183,7 @@ public class TrackPage extends LoginPage{
         boolean dateFound = false;
 
         for (int i = 0; i < maxAttempts; i++) {
-            if (distributorUI.isDisplayed(startDate)) {
+            if (distributorUI.isDisplayed(startDate,5)) {
                 distributorUI.click(startDate);
                 dateFound = true;
                 break;

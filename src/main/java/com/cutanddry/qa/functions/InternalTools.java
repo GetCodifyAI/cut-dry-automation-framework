@@ -56,7 +56,7 @@ public class InternalTools {
     public static void clickSponsoredProductAdsToggle(){
         internalToolsPage.clickSponsoredProductAdsToggle();
     }
-    public static void clickProductAdsSave(){
+    public static void clickProductAdsSave() throws InterruptedException {
         internalToolsPage.clickProductAdsSave();
     }
     public static void clickBuyerEdgePlatformRebateToggle(){
@@ -65,7 +65,7 @@ public class InternalTools {
     public static void clickBuyerEdgePlatformRebateToggle(boolean enable){
         internalToolsPage.clickBuyerEdgePlatformRebateToggle(enable);
     }
-    public static void clickRebateSave(){
+    public static void clickRebateSave() throws InterruptedException {
         internalToolsPage.clickRebateSave();
     }
 
@@ -144,5 +144,34 @@ public class InternalTools {
     public static void clickNotificationSave() throws InterruptedException {
         internalToolsPage.clickNotificationSave();
     }
-
+    public static void ensureSponsoredProductAdsStatus(boolean enable) throws InterruptedException {
+        internalToolsPage.clickConfigureSupplier();
+        internalToolsPage.clickOnIndependentCompEditDetails();
+        internalToolsPage.clickOnSponsoredAdsRebates();
+        internalToolsPage.clickSponsoredProductAdsToggle(enable);
+        internalToolsPage.clickProductAdsSave();
+    }
+    public static void ensureBuyerEdgePlatformRebateStatus(boolean enable) throws InterruptedException {
+        internalToolsPage.clickConfigureSupplier();
+        internalToolsPage.clickOnIndependentCompEditDetails();
+        internalToolsPage.clickOnSponsoredAdsRebates();
+        internalToolsPage.clickBuyerEdgePlatformRebateToggle(enable);
+        internalToolsPage.clickRebateSave();
+    }
+    public static void ensurePayEnabledStatus(boolean enable) throws InterruptedException {
+        internalToolsPage.clickConfigureSupplier();
+        internalToolsPage.clickOnIndependentCompEditDetails();
+        internalToolsPage.navigateToPayDetailsTab();
+        internalToolsPage.clickPayEnabledToggle(enable);
+        internalToolsPage.clickSave();
+        internalToolsPage.clickOKOnSucessOverlay();
+    }
+    public static void ensureCreditMemoCheckboxStatus(boolean enable) throws InterruptedException {
+        internalToolsPage.clickConfigureSupplier();
+        internalToolsPage.clickOnIndependentCompEditDetails();
+        internalToolsPage.navigateToPayDetailsTab();
+        internalToolsPage.clickCreditMemoCheckbox(enable);
+        internalToolsPage.clickSave();
+        internalToolsPage.clickOKOnSucessOverlay();
+    }
 }

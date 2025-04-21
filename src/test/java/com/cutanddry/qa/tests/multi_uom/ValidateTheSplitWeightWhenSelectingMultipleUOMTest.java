@@ -84,7 +84,7 @@ public class ValidateTheSplitWeightWhenSelectingMultipleUOMTest extends TestBase
         softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(), "edit popup error");
         Orders.clickOnConfirm();
 //        softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(), "edit error(Review Page)");
-        Orders.clickOnEditOrderInReview();
+        Orders.clickOnEditOrderInReviewStable();
         softAssert.assertTrue(Orders.isNavigatedToEditOrder(), "edit error");
         Customer.searchItemOnOrderGuide(itemCode);
 
@@ -103,17 +103,18 @@ public class ValidateTheSplitWeightWhenSelectingMultipleUOMTest extends TestBase
         softAssert.assertTrue(Customer.getFinalWeightMultiUOM(uom2, "1").contains("20"), "item weight error in 2nd row");
 
         totalCartAmount = Customer.getTotalPriceCart();
-
-
         Customer.clickCheckOutOrderGuide();
-        softAssert.assertTrue(Orders.isSubmitPopupDisplayed(), "submit pop up not display");
-        Orders.clickOnConfirm();
-        softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+
+        if (Customer.isEditOrderCheckout()) {
+            Customer.clickEditOrderCheckout();
+            softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+        } else {
+            softAssert.assertTrue(Orders.isSubmitPopupDisplayed(), "submit pop up not display");
+            Orders.clickOnConfirm();
+            softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+        }
         Orders.clickOnClose();
-        /*Customer.clickOnCheckOutReview();
-        Customer.clickEditOrderCheckout();
-        softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
-        Orders.clickOnClose();*/
+
 
         Dashboard.navigateToCustomers();
         Customer.refreshCustomersPage();

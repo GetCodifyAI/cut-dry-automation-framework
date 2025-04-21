@@ -38,9 +38,9 @@ public class EditProductQtyFrmReviewCartTest extends TestBase {
         Customer.checkoutItems();
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
         Customer.increaseQtyUpToThreeFirstRowCart();
-        softAssert.assertEquals(Customer.getTotalPriceCart(),Customer.getUnitPriceFirstRowCart()*3,"error in total - after increase");
+        softAssert.assertEquals(Customer.getReviewTotalPriceCart(),Customer.getUnitPriceFirstRowCart()*3,"error in total - after increase");
         Customer.decreaseQtyUpToZeroFirstRowCart();
-        softAssert.assertEquals(Customer.getTotalPriceCart(),0.0,"error in total - after decrease");
+        softAssert.assertEquals(Customer.getReviewTotalPriceCart(),0.0,"error in total - after decrease");
         softAssert.assertAll();
     }
 

@@ -5,6 +5,7 @@ import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CustomerInvoiceData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
 import org.testng.ITestResult;
@@ -27,9 +28,9 @@ public class ValidateTheTimelineInCreditRequestUsingTimestampStatusOrganizationA
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCustomers();
-        softAssert.assertTrue(Customer.isNavigatedToCustomerPage(),"Error navigating to customer page");
+        Assert.assertTrue(Customer.isNavigatedToCustomerPage(),"Error navigating to customer page");
         Customer.searchCustomerByCode(CustomerCode);
         Customer.clickOnOrderGuide(CustomerCode);
         Customer.increaseFirstRowQtyByOne();
@@ -41,7 +42,7 @@ public class ValidateTheTimelineInCreditRequestUsingTimestampStatusOrganizationA
 //        Dashboard.navigateToOrders();
 //        softAssert.assertTrue(Orders.isUserNavigatedToOrder(),"Error navigating to orders page");
         Customer.clickOnOrdersTab();
-        softAssert.assertTrue(Customer.isStandingOrdersDisplayed(),"navigation error");
+        Assert.assertTrue(Customer.isStandingOrdersDisplayed(),"navigation error");
 //        Orders.clickOnFirstOrder();
         Orders.clickOnFirstOrder(creditStatus);
         Orders.clickTimeline();

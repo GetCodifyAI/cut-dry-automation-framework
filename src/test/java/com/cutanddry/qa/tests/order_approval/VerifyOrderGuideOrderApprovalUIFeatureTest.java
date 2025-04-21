@@ -7,6 +7,7 @@ import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -29,9 +30,9 @@ public class VerifyOrderGuideOrderApprovalUIFeatureTest extends TestBase {
     public void VerifyOrderGuideOrderApprovalUIFeature() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DistributerName);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(CustomerCode);
         Customer.SelectCustomer(CustomerCode);

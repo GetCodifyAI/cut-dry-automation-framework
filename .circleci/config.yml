@@ -1180,7 +1180,6 @@ workflows:
       - nightly-build-and-test-3
       - nightly-build-and-test-4
       - nightly-build-and-test-5
-      - nightly-build-and-test-6
       - calculate-pass-fail-rate:
           requires:
             - nightly-build-and-test-1
@@ -1188,7 +1187,6 @@ workflows:
             - nightly-build-and-test-3
             - nightly-build-and-test-4
             - nightly-build-and-test-5
-            - nightly-build-and-test-6
 
   scheduled-test-1-sub1:
     triggers:
@@ -1199,11 +1197,13 @@ workflows:
               only:
                 - main
     jobs:
+      - nightly-build-and-test-6
       - nightly-build-and-test-7
       - nightly-build-and-test-8
       - nightly-build-and-test-9
       - calculate-pass-fail-rate:
           requires:
+            - nightly-build-and-test-6
             - nightly-build-and-test-7
             - nightly-build-and-test-8
             - nightly-build-and-test-9
@@ -1222,7 +1222,6 @@ workflows:
       - daily-build-and-test-3
       - daily-build-and-test-4
       - daily-build-and-test-5
-      - daily-build-and-test-6
       - calculate-pass-fail-rate:
           requires:
             - daily-build-and-test-1
@@ -1230,7 +1229,6 @@ workflows:
             - daily-build-and-test-3
             - daily-build-and-test-4
             - daily-build-and-test-5
-            - daily-build-and-test-6
 
   scheduled-test-2-sub1:
     triggers:
@@ -1241,11 +1239,13 @@ workflows:
               only:
                 - main
     jobs:
+      - daily-build-and-test-6
       - daily-build-and-test-7
       - daily-build-and-test-8
       - daily-build-and-test-9
       - calculate-pass-fail-rate:
           requires:
+            - daily-build-and-test-6
             - daily-build-and-test-7
             - daily-build-and-test-8
             - daily-build-and-test-9

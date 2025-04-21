@@ -6,6 +6,7 @@ import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.functions.Settings;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -27,7 +28,7 @@ public class VerifyPaySettingRemoveBankAccountTest extends TestBase {
     public void VerifyPaySettingLinkBankAccount() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToPaySettings();
         softAssert.assertTrue(Settings.isPaySettingsTextDisplayed(),"navigation to pay settings error");
         Settings.clickOnRemoveAcc();

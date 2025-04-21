@@ -4,6 +4,7 @@ import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -28,11 +29,11 @@ public class VerifyTheCatalogItemDataTest extends TestBase {
     public void VerifyTheCatalogItemData() {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DistributerName);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToCatalog();
-        softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
+        Assert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.selectItemStatus(All);
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");

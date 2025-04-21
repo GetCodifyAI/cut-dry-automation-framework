@@ -7,6 +7,7 @@ import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -28,11 +29,11 @@ public class ValidateFilterItemsByCategoryInCatalogTest extends TestBase {
     public void ValidateFilterItemsByCategoryInCatalog() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCatalog();
-        softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
+        Assert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.clickOnPreviewCatalog();
-        softAssert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
+        Assert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
         Catalog.clickOnCategoryOption(category);
         softAssert.assertTrue(Catalog.isCategoryFilteredItem(category),"category filter get error");
         softAssert.assertAll();
