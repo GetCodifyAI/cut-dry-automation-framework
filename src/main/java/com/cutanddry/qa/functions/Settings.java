@@ -331,7 +331,7 @@ public class Settings {
     public static void clickClose(){
         settingsPage.clickClose();
     }
-    public static void clickAddAlert(){
+    public static void clickAddAlert() throws InterruptedException {
         if (settingsPage.isEditAlertBtnDisplayed()) {
             settingsPage.clickEditAlert();
             settingsPage.clickDeleteAlert();
@@ -362,7 +362,7 @@ public class Settings {
     public static boolean isSettingOrderReminderTextDisplayed()throws InterruptedException{
         return settingsPage.isSettingOrderReminderTextDisplayed();
     }
-    public static void clickOkAlert(){
+    public static void clickOkAlert() throws InterruptedException {
         settingsPage.clickOkAlert();
     }
     public static void clickDeleteAlert(){
@@ -453,6 +453,20 @@ public class Settings {
     }
     public static void clickBuyerEdgePlatformRebateToggle(){
         settingsPage.clickBuyerEdgePlatformRebateToggle();
+    }
+
+    public static void clickOrderReminderToggle(boolean status){
+        settingsPage.clickOrderReminderToggle(status);
+    }
+    public static void clickConfigureAlert() throws InterruptedException {
+        settingsPage.clickConfigureAlert();
+    }
+    public static boolean icConfigureOrderReminderPopUpDisplayed()throws InterruptedException{
+        return settingsPage.icConfigureOrderReminderPopUpDisplayed();
+    }
+    public static void selectReminderDropDown(String dropDown,String dropDownOption)throws InterruptedException{
+        settingsPage.clickConfigureOrderReminderDropDown(dropDown);
+        settingsPage.clickConfigureOrderReminderDropDownOption(dropDownOption);
     }
 
 }

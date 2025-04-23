@@ -678,6 +678,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
    // Double orderSummeryGrossProfitValue = "//div[contains(text(),'Gross Profit (Sale Cost)')]/following-sibling::div[contains(text(),'VALUE')]";
     String orderSummeryValue = "//div[contains(text(),'NAME')]/following-sibling::div[contains(text(),'VALUE')]";
     By salesCommissionValue = By.xpath("//div[contains(text(),'Sales Commission')]/following-sibling::div");
+    By orderGuideText = By.xpath("//div[text()='Order Guide:']");
+    By sortItemText = By.xpath("//div[text()='Sort Items By:']");
 
 
     public void ifDuplicateOrderDisplayed(){
@@ -4033,6 +4035,25 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public String getSaleCommissionValue()throws InterruptedException{
         return distributorUI.getText(salesCommissionValue);
     }
+    public boolean isOrderGuideTextDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(orderGuideText);
+    }
+    public boolean isSortItemTextDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(sortItemText);
+    }
+    public boolean isEditOrderGuideButtonDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(btn_edit);
+    }
+    public boolean isCreateOrderGuideButtonDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(btn_create);
+    }
+    public boolean isUploadOrderGuideButtonDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(btn_uploadFileOG);
+    }
+    public boolean isPrintOrderGuideButtonDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(btn_print);
+    }
+
 
 
 
