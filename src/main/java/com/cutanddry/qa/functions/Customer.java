@@ -2315,6 +2315,24 @@ public class Customer {
     public static String getSaleCommissionValue()throws InterruptedException{
         return customersPage.getSaleCommissionValue();
     }
+    public static boolean isOrderGuideTextDisplay()throws InterruptedException{
+        return customersPage.isOrderGuideTextDisplay();
+    }
+    public static boolean isSortItemTextDisplay()throws InterruptedException{
+        return customersPage.isSortItemTextDisplay();
+    }
+    public static boolean isEditOrderGuideButtonDisplay()throws InterruptedException{
+        return customersPage.isEditOrderGuideButtonDisplay();
+    }
+    public static boolean isCreateOrderGuideButtonDisplay()throws InterruptedException{
+        return customersPage.isCreateOrderGuideButtonDisplay();
+    }
+    public static boolean isUploadOrderGuideButtonDisplay()throws InterruptedException{
+        return customersPage.isUploadOrderGuideButtonDisplay();
+    }
+    public static boolean isPrintOrderGuideButtonDisplay()throws InterruptedException{
+        return customersPage.isPrintOrderGuideButtonDisplay();
+    }
 
 }
 

@@ -50,6 +50,11 @@
 
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyDeleteCustomerUserAndReceiveUserDeletionNotificationTest"/>
             <class name="com.cutanddry.qa.tests.customers.VerifyThatOrderSummerySalesCommissionSectionUpdateTest"/>
+
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheCustomerInvoiceViewOnDistributorToEnsureThatDigitalInvoicePDFsAreVisibleTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyElementsAreHiddenWhenSearchingAnItemInOrderGuideTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyThatSMSFunctionalityIsWorkingAsExpectedForOrderReminderAlertsTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyTheOrderReminderConfigurationsInTheDPTest"/>
         </classes>
     </test>
 </suite>
