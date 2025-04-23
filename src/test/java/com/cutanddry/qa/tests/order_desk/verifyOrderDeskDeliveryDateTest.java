@@ -38,7 +38,7 @@ public class verifyOrderDeskDeliveryDateTest extends TestBase {
 
         //Tomorrow Delivery Date
         LocalDate today = LocalDate.now();
-        LocalDate OneDaysLater = today.plusDays(1);
+        LocalDate OneDaysLater = today.plusDays(2);
         DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("EEE, MMM d");
         String OneDaysLaterDate = customFormatter.format(OneDaysLater);
         OrderDesk.SelectDeliveryDate(OneDaysLaterDate);
