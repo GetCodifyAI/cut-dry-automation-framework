@@ -16,6 +16,7 @@ public class CustomersPage extends LoginPage {
     By lbl_itemNameList = By.xpath("//td//span/div[@data-tip='View Product Details']");
     By lbl_itemDetails = By.xpath("//tbody/tr[2]");
     By btn_increaseQtyFirstRow = By.xpath("(//table/tbody/tr//*[local-name()='svg' and @data-icon='plus'])[1]");
+    By btn_increaseQtySecondRowStable = By.xpath("(//table/tbody/tr//*[local-name()='svg' and @data-icon='plus'])[2]");
     By btn_increaseQtyFifthRow = By.xpath("(//table/tbody/tr//*[local-name()='svg' and @data-icon='plus'])[5]");
     By btn_decreaseQtyFirstRow = By.xpath("//tr[1]/td[8]/div/div/div/div[1]");
     By btn_increaseQtySecondRow = By.xpath("//tr[2]/td[8]/div/div/div/div[3]");
@@ -477,6 +478,9 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
 //    By lbl_itemPriceList = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]//span)[1]");
     By lbl_itemPriceList = By.xpath("((//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-2]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-2]//span)[1])[1]");
     By lbl_itemPriceList1 = By.xpath("((//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-2]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-2]//span)[1])[2]");
+    By lbl_secondItemPriceList = By.xpath("((//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-2]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-2]//span)[2])[1]");
+    By lbl_secondItemPriceList1 = By.xpath("((//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-2]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-2]//span)[2])[2]");
+
     By btn_minusQtyFirstRow = By.xpath("(//*[name()='svg' and @data-icon='minus'])[1]");
     By tbx_itemQuantityinFirstRow = By.xpath("(//*[@data-input ='quantityInput'])[1]");
     By lbl_cartItemUnitPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//span)[1]");
@@ -680,6 +684,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By salesCommissionValue = By.xpath("//div[contains(text(),'Sales Commission')]/following-sibling::div");
     By orderGuideText = By.xpath("//div[text()='Order Guide:']");
     By sortItemText = By.xpath("//div[text()='Sort Items By:']");
+    By btn_deliveryDateStable = By.xpath("//div[text()='Delivery Date:']/../following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
+    String dynamicToXPath = "(//div[contains(@class,'react-datepicker__day--highlighted')]/preceding::div[contains(@class, 'react-datepicker__day') and text()='DAY'])[last()]";
+    String btn_catalogPDPPlusStableDP = "(//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]/../../following-sibling::div//*[name()='svg' and @data-icon='plus']";
+
+
+
 
 
     public void ifDuplicateOrderDisplayed(){
@@ -721,6 +731,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickPlusQryFirstRow(){
         distributorUI.click(btn_increaseQtyFirstRow);
+    }
+    public void clickPlusQrySecondRowStable(){
+        distributorUI.click(btn_increaseQtySecondRowStable);
     }
     public void clickMinusQryFirstRow(){
         distributorUI.click(btn_minusQtyFirstRow);
@@ -2978,6 +2991,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
             return extractPriceStable(lbl_itemPriceList1);
         }
     }
+    public double getActiveItemPriceSecondRowStable() throws InterruptedException {
+        try {
+            return extractPriceStable(lbl_secondItemPriceList);
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPriceStable(lbl_secondItemPriceList1);
+        }
+    }
 
     private double extractPrice(By priceLocator) throws InterruptedException {
         distributorUI.waitForVisibility(priceLocator);
@@ -4052,6 +4073,21 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isPrintOrderGuideButtonDisplay()throws InterruptedException{
         return distributorUI.isDisplayed(btn_print);
+    }
+    public void clickOnDeliveryDateStable() throws InterruptedException{
+        distributorUI.waitForCustom(4000);
+        distributorUI.click(btn_deliveryDateStable);
+    }
+    public void selectDeliveryDateLineStable(String date) throws InterruptedException {
+        By lbl_selectStartDate = By.xpath(dynamicToXPath.replace("DAY", date));
+        distributorUI.waitForVisibility(lbl_selectStartDate);
+        distributorUI.click(lbl_selectStartDate);
+        distributorUI.waitForCustom(5000);
+    }
+    public void clickOnPlusIconInCatalogDP(String name) throws InterruptedException {
+        distributorUI.waitForVisibility(By.xpath(btn_catalogPDPPlusStableDP.replace("NAME", name)));
+        distributorUI.click(By.xpath(btn_catalogPDPPlusStableDP.replace("NAME", name)));
+        distributorUI.waitForCustom(3000);
     }
 
 
