@@ -22,7 +22,7 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMTest extends TestBase {
     static double itemPriceUOM1 ,itemPriceUOM2,totalPDPItemPrice ,totalItemPriceReviewOrder;
     String uom1 = CatalogData.MULTI_UOM_1;
     String uom2 = CatalogData.MULTI_UOM_2;
-    String substituteItemCode = "00563";
+    String substituteItemCode = "01922"; // 01922 or 00563
 
 
     @BeforeMethod

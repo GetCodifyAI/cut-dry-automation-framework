@@ -57,6 +57,15 @@ public class DistributorInitialSetUpTest extends TestBase {
         ConfigSupplier.ensureDefaultSearchFilterStatus(false);
         ConfigSupplier.clickOnSave();
 
+        Login.switchIntoNewTab();
+        Login.navigateToConfigSupplier();
+        softAssert.assertTrue(ConfigSupplier.isUserNavigatedToConfigSupplier(),"navigation error");
+        ConfigSupplier.clickOnEditDetails(DP);
+        ConfigSupplier.clickOnOrderSettings();
+        ConfigSupplier.enableDefaultOrderHistoryAsOrderDate();
+        ConfigSupplier.clickOnOrderSettingSave();
+
+
         softAssert.assertAll();
     }
 

@@ -27,7 +27,8 @@
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddingSubstituteItemForMultipleUOMTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest"/>
 
-            <class name="com.cutanddry.qa.tests.order_reminder.VerifyEditOrderReminderTest"/>
+<!--            // TODO: Invalid TC with the new change-->
+<!--            <class name="com.cutanddry.qa.tests.order_reminder.VerifyEditOrderReminderTest"/>-->
 
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheBatchOperationFunctionalityTest"/>
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyDisplayTotalUnpaidInvoiceAmountInCustomerDetailPageTest"/>
