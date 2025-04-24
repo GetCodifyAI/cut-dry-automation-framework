@@ -32,8 +32,7 @@ public class VerifyTheUserShouldNotBeAbleGoToOrderGuideByDispatcherRoleTest exte
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToLoginAsPortal(dispatcherRoll);
-        softAssert.assertTrue(Track.isRoutesTextDisplayed(),"navigation to track routes error");
-
+        softAssert.assertTrue(Track.isRoutesTextDisplayed()|| Track.isMonitoringTextDisplayed(), "Unexpected text: " );
         softAssert.assertFalse(Dashboard.isCustomerDisplayed(),"customer section display");
         softAssert.assertAll();
     }

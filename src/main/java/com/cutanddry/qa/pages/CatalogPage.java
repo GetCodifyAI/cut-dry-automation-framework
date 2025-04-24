@@ -1000,18 +1000,21 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
     }
     public String getCopiedPDPUrl() throws InterruptedException, IOException, UnsupportedFlavorException {
         distributorUI.click(copyPDPURLTxt);
+        String copiedURL = null;
+        int attempts = 3;
 
-        // Wait briefly for clipboard update
-        Thread.sleep(500);
-
-        // Access the system clipboard
-        String copiedURL = (String) Toolkit.getDefaultToolkit()
-                .getSystemClipboard()
-                .getData(DataFlavor.stringFlavor);
-
-        // Log the copied URL
-        System.out.println("Copied PDP URL: " + copiedURL);
-
+        for (int i = 0; i < attempts; i++) {
+            try {
+                copiedURL = (String) Toolkit.getDefaultToolkit()
+                        .getSystemClipboard()
+                        .getData(DataFlavor.stringFlavor);
+                if (copiedURL != null && !copiedURL.isEmpty()) break;
+                Thread.sleep(500);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Thread.sleep(500);
+            }
+        }
         return copiedURL;
     }
     public void loginPDPURL(String pdpURL) throws InterruptedException{
