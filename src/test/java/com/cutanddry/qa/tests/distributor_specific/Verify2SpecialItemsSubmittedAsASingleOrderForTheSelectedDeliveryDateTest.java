@@ -40,7 +40,7 @@ public class Verify2SpecialItemsSubmittedAsASingleOrderForTheSelectedDeliveryDat
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DP);
-//        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
