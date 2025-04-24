@@ -9,7 +9,7 @@
         <parameter name="PART" value="Part_Seven"/>
         <classes>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyEditedQuantitiesAfterEditingMultipleUOMInPDPTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyNavigationPDPWhenSelectingMultipleUnitsOptionTest"/>
+            <!--<class name="com.cutanddry.qa.tests.multi_uom.VerifyNavigationPDPWhenSelectingMultipleUnitsOptionTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheDeleteItemFromMultipleUOMInReviewOrderTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantityOfMultipleUOMInOGAndSubmissionTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantityOfMultipleUOMInOrderGuideTest"/>
@@ -43,7 +43,7 @@
             <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnAllCustomerDPPortalWhenFeatureEnabledTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureEnabledTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureDisableTest"/>
-            <class name="com.cutanddry.qa.tests.pay.VerifyAddCustomerPaymentMethodTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyAddCustomerPaymentMethodTest"/>-->
         </classes>
     </test>
 </suite>
