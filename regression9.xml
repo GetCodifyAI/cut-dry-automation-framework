@@ -55,6 +55,14 @@
             <class name="com.cutanddry.qa.tests.order_guide.VerifyElementsAreHiddenWhenSearchingAnItemInOrderGuideTest"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyThatSMSFunctionalityIsWorkingAsExpectedForOrderReminderAlertsTest"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyTheOrderReminderConfigurationsInTheDPTest"/>
+
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1RegularItemSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1SpecialItemSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2RegularItemsSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2SpecialItemsSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1RegularItemAnd1SpecialOrderItemSubmittedAsTwoSeparateOrdersForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2RegularItemsAnd2SpecialOrderItemsSubmittedAsTwoSeparateOrdersForTheSelectedDeliveryDateTest"/>
+
         </classes>
     </test>
 </suite>
