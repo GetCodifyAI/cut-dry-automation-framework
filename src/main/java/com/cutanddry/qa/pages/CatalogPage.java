@@ -851,6 +851,7 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
     }
     public void ClickOnMultiUomDropDown(String name)throws InterruptedException{
         distributorUI.waitForVisibility(By.xpath(multiUomDropDown.replace("NAME", name)));
+        Thread.sleep(2000);
         distributorUI.click(By.xpath(multiUomDropDown.replace("NAME", name)));
     }
     public void ClickOnMultiUomDropDownOption(String option){
