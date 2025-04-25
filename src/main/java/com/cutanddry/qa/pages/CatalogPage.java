@@ -66,7 +66,7 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
     By substituteCancelBtn = By.xpath("//button[contains(text(),'Cancel')]");
     String substituteItemNameTxt = "//div[contains(text(),\"ITEMNAME\")]";
     String deleteSubstituteItemBtn = "//div[@class='align-items-center my-1 row']//div[contains(text(),'ITEMCODE')]//following-sibling::div[contains(@class,'col-md')]/*";
-    By searchField = By.xpath("//div//input[contains(@placeholder,'Find Item in Catalog')]");
+    By searchField = By.xpath("//div//input[contains(@placeholder,'Search product by name, sku, gtin...')]");
     String clearCertificationBtn = "//label[contains(text(),'CERTIFICATIONTYPE')]/..//div[contains(@class,'themed_select__clear-indicato')]";
     String selectCertificationDropdown = "//label[contains(text(),'CERTIFICATIONTYPE')]/..//div[contains(text(),'Select')]";
     String buyAmericanOption  = "//div[contains(text(),'CERTIFICATEOPTION')]";
@@ -100,11 +100,11 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
     By lbl_categoriesDropdown = By.xpath("//div[@class='themed_select__single-value css-1uccc91-singleValue' and text()='All Categories']");
     By lbl_snack = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Snack']");
     By lbl_nonSnack = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[4][not(normalize-space()='Snack')]");
-    By lbl_statusDropdown = By.xpath("//div[@class='themed_select__single-value css-1uccc91-singleValue' and text()='All']");
-    By lbl_active = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Active']");
-    By lbl_inActive = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Inactive']");
+    By lbl_statusDropdown = By.xpath("(//div[contains(text(),'All Results')]/../following-sibling::div//div[3])[1]");
+    By lbl_active = By.xpath("//div[contains(@class,'themed_select__option') and text()='Active']");
+    By lbl_inActive = By.xpath("//div[contains(@class,'themed_select__option') and text()='Inactive']");
     By lbl_nonactive = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[7][not(normalize-space()='Active')]");
-    By btn_moreFilters = By.xpath("//button[contains(., 'More Filters')]");
+    By btn_moreFilters = By.xpath("//button[contains(., 'Filters')]");
     By txt_filterCatalog= By.xpath("//div[contains(text(),'Filter Catalog')]");
     By lbl_imageUploaded = By.xpath("//label[contains(text(), 'Image Uploaded')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     By lbl_no = By.xpath("(//div[contains(text(), 'No')])[last()]");
@@ -190,7 +190,7 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
     By btn_deleteSubstitute = By.xpath("//div/*[local-name()='svg' and @data-icon='circle-xmark']");
     String multiUomDropDownCatalogStable = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[last()]";
 
-    By itemStatusDropdown = By.xpath("//label[contains(text(), 'Item Status')]/following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
+    By itemStatusDropdown = By.xpath("(//div[contains(text(),'All Results')]/../following-sibling::div//div[contains(@class,'value-container')])[3]");
     String itemStatusOption = "(//div[contains(text(),'ITEMSTATUS') and contains(@class,'themed_select__option')])[last()]";
     String lastOrderedDate = "//div[contains(text(),'CS ordered on DATEPLACEHOLDER')]";
     By purchaseHistory = By.xpath("//div[text()='Purchase History']");
