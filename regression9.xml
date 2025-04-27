@@ -28,8 +28,9 @@
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddingSubstituteItemForMultipleUOMTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest"/>
 
+         <!-- removing as this functionality is not there anymore
             <class name="com.cutanddry.qa.tests.order_reminder.VerifyEditOrderReminderTest"/>
-
+-->
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheBatchOperationFunctionalityTest"/>
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyDisplayTotalUnpaidInvoiceAmountInCustomerDetailPageTest"/>
             <class name="com.cutanddry.qa.tests.customer_groups.VerifyMultipleCustomerGroupsCanBeAssignedTest"/>
