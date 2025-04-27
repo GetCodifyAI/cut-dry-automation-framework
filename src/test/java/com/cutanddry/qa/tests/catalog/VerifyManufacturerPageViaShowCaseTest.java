@@ -19,7 +19,7 @@ public class VerifyManufacturerPageViaShowCaseTest extends TestBase {
     String DistributerName = "185556964 - Brandon Cheney - Cheney Brothers";
 //    String ProductName = "andy capps hot fries, 0.85 oz";
     String BrandPage = "Conagra Foodservice";
-    String ProductName = "Ac Hot On Rng 12"; // Ac Hot On Rng 12/2Z
+    String ProductName = "La Choy Light Soy Sauce, 15 Oza"; // Ac Hot On Rng 12/2Z
 
     @BeforeMethod
     public void setUp(){

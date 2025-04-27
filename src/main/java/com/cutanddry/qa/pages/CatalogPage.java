@@ -15,7 +15,7 @@ public class CatalogPage extends LoginPage{
     By txt_preview = By.xpath("//a[contains(text(),'Preview')]");
     By btn_downloadPdf = By.xpath("(//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ ', 'abcdefghijklmnopqrstuvwxyz')='exportpdp(pdf)'])[1]");
     By btn_dropdown = By.xpath("//button[@aria-haspopup='true']");
-    By ItemCatalogSearchBtn = By.xpath("//input[@placeholder=\"Find Item in Catalog\"]");
+    By ItemCatalogSearchBtn = By.xpath("//input[@id='order_flow_search']");
     String SearchedItemItemCode = "//tr[contains(@class, '_du1frc')][td[1]='ITEMCODE']";
     By PreviewBtn = By.xpath("//button[@class='_xrol5g mx-2 btn btn-primary']");
     String ItemPreviewTxt = "//div[@class='mt-1 _5h4pkd' and contains(text(),'ITEMCODE')]";
@@ -92,11 +92,14 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
     By txt_itemCreated = By.xpath("//h2[contains(text(),'Item created.')]");
     By btn_close = By.xpath("//button[text()='Close']");
     By txt_getItemCode = By.xpath("//div[contains(text(), 'A new item was successfully created with the item code')]");
-    By btn_review = By.xpath("//a[text()='Review']");
-    By txt_numRecentAdded = By.xpath("//div[p[text()='Recently Added']]//h6");
-    By txt_resultsCount = By.xpath("//div[@class='col-sm-4']//span[contains(text(), 'results')]");
-    By btn_updateImages = By.xpath("//a[text()='Update Images']");
-    By txt_numImageMissing= By.xpath("//div[p[text()='Products Images Missing']]//h6");
+//    By btn_review = By.xpath("//a[text()='Review']");
+By btn_review = By.xpath("//a[text()='Review Products']");
+//    By txt_numRecentAdded = By.xpath("//div[p[text()='Recently Added']]//h6");
+By txt_numRecentAdded = By.xpath("//div[text()='New Products']/following-sibling::div");
+    By txt_resultsCount = By.xpath("//div[contains(text(), 'All Results')]/following-sibling::div");
+    By btn_updateImages = By.xpath("//a[text()='Add Images']");
+//    By txt_numImageMissing= By.xpath("//div[p[text()='Products Images Missing']]//h6");
+By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/following-sibling::div");
     By lbl_categoriesDropdown = By.xpath("//div[@class='themed_select__single-value css-1uccc91-singleValue' and text()='All Categories']");
     By lbl_snack = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Snack']");
     By lbl_nonSnack = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[4][not(normalize-space()='Snack')]");
@@ -569,17 +572,37 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
         return distributorUI.getText(txt_numRecentAdded);
     }
     public void clickOnReview(){
-        distributorUI.click(btn_review);
+        try {
+            distributorUI.waitForCustom(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        distributorUI.doubleClick(btn_review);
     }
     public String getResultsCount() {
+        try {
+            distributorUI.waitForCustom(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.waitForVisibility(txt_resultsCount);
         String resultsText = distributorUI.getText(txt_resultsCount);
         return resultsText.split(" ")[0];
     }
     public void clickOnUpdateImages(){
+        try {
+            distributorUI.waitForCustom(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.click(btn_updateImages);
     }
     public String getMissingImagesCount() {
+        try {
+            distributorUI.waitForCustom(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.waitForVisibility(txt_numImageMissing);
         return distributorUI.getText(txt_numImageMissing);
     }

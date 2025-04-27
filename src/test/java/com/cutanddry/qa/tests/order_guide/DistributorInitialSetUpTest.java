@@ -49,13 +49,14 @@ public class DistributorInitialSetUpTest extends TestBase {
         Customer.disableAccHolds();
         softAssert.assertTrue(Customer.isNoneSelected(),"acc none select error");
 
-        Login.switchIntoNewTab();
-        Login.navigateToConfigSupplier();
-        softAssert.assertTrue(ConfigSupplier.isUserNavigatedToConfigSupplier(),"navigation error");
-        ConfigSupplier.clickOnEditDetails(DP);
-        ConfigSupplier.clickOnCatalogSettings();
-        ConfigSupplier.ensureDefaultSearchFilterStatus(false);
-        ConfigSupplier.clickOnSave();
+//        // TODO: This feature is move to boost section now
+//        Login.switchIntoNewTab();
+//        Login.navigateToConfigSupplier();
+//        softAssert.assertTrue(ConfigSupplier.isUserNavigatedToConfigSupplier(),"navigation error");
+//        ConfigSupplier.clickOnEditDetails(DP);
+//        ConfigSupplier.clickOnCatalogSettings();
+//        ConfigSupplier.ensureDefaultSearchFilterStatus(false);
+//        ConfigSupplier.clickOnSave();
 
         Login.switchIntoNewTab();
         Login.navigateToConfigSupplier();

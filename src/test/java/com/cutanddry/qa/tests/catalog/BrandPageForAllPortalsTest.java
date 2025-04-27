@@ -18,8 +18,8 @@ public class BrandPageForAllPortalsTest extends TestBase {
     static User user;
     String DistributerName = "185556964 - Brandon Cheney - Cheney Brothers";
 //    String ProductName = "andy capps hot fries, 0.85 oz";
-    String searchProductName = "Ac Hot On Rng 12"; //Ac Hot On Rng 12/2Z
-    String ProductName = "Ac Hot On Rng 12/2Z";
+    String searchProductName = "La Choy Light Soy Sauce, 15 Oza"; //Ac Hot On Rng 12/2Z
+    String ProductName = "La Choy Light Soy Sauce, 15 Oza";
     String BrandPage = "Conagra Foodservice";
 
     @BeforeMethod
