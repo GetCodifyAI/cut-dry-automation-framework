@@ -9,7 +9,7 @@
         <parameter name="PART" value="Part_Six"/>
         <classes>
             <class name="com.cutanddry.qa.tests.credit_request.ValidateTheCreditRequestPriceQuantityTotalInItemsSection"/>
-           <!-- <class name="com.cutanddry.qa.tests.credit_request.verifyTheCreditReqSearchByDistributorTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.verifyTheCreditReqSearchByDistributorTest"/>
             <class name="com.cutanddry.qa.tests.credit_request.VerifyTheCreditViewItemsByDistributorTest"/>
             <class name="com.cutanddry.qa.tests.credit_request.VerifyTheCreditViewofCreditRequestIssueDetailsByDistributorTest"/>
             <class name="com.cutanddry.qa.tests.credit_request.VerifyTheCreditViewTimelineByDistributorTest"/>
@@ -70,7 +70,7 @@
             <class name="com.cutanddry.qa.tests.order_guide.VerifyOutOfStockItemsShowingAndNotOnSuggestiveSalesTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountHardHoldTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountRemoveHardHoldTest" />
--->
+
 
         </classes>
     </test>
