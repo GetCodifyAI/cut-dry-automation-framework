@@ -691,6 +691,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By activeDate = By.xpath("(//div[contains(@class,'react-datepicker__day') and @aria-disabled='false'])[1]");
     By lbl_stockInHouse = By.xpath("(//div[contains(text(),'Stocked (in-house)')]/*[name()='svg'])[1]");
     By btn_clearAll = By.xpath("//div[contains(text(),'Clear All')]");
+    String hardHoldMessagePopUp = "//h2[contains(text(),'MESSAGE')]";
+    By lastOrder =By.xpath("//td[text()='Last Order']");
+
+
+
+
 
 
     public void ifDuplicateOrderDisplayed(){
@@ -4104,6 +4110,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(activeDate);
         distributorUI.click(activeDate);
         distributorUI.waitForCustom(5000);
+    }
+    public boolean isHardHoldPopupMessageDisplayed(String message){
+        return distributorUI.isDisplayed(By.xpath(hardHoldMessagePopUp.replace("MESSAGE", message)));
+    }
+    public boolean isLastOrderColumnDisplayed(){
+        return distributorUI.isDisplayed(lastOrder);
     }
 
 

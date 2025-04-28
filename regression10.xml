@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="Part_Ten"/>
+        <classes>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1RegularItemSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1SpecialItemSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2RegularItemsSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2SpecialItemsSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1RegularItemAnd1SpecialOrderItemSubmittedAsTwoSeparateOrdersForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2RegularItemsAnd2SpecialOrderItemsSubmittedAsTwoSeparateOrdersForTheSelectedDeliveryDateTest"/>
+
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyCustomerGroupsShouldNotBeEditableTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyCustomAccountHoldMessageIsDisplayedForCarmelaOnOrderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyGenericAccountHardHoldMessageTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyShowingLastOrderedPricesInPortalOrderGuidesTest"/>
+        </classes>
+    </test>
+</suite>
