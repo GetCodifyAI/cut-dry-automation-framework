@@ -41,7 +41,7 @@ public class verifyOrderDeskDeliveryDateTest extends TestBase {
         LocalDate OneDaysLater = today.plusDays(2);
         DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("EEE, MMM d");
         String OneDaysLaterDate = customFormatter.format(OneDaysLater);
-        OrderDesk.SelectDeliveryDate(OneDaysLaterDate);
+        OrderDesk.SelectDeliveryDate("1");
         OrderDesk.SaveDraftOrder();
         softAssert.assertTrue(OrderDesk.isSaveDraftSucessful(),"Error in Saving Delivery Date Draft");
         OrderDesk.CloseTheSucessfulOverlayByOK();
@@ -49,7 +49,7 @@ public class verifyOrderDeskDeliveryDateTest extends TestBase {
         //Date after DayAfter Tomorrow Delivery Date
         LocalDate ThreeDaysLater = today.plusDays(3);
         String DayAfterTodayDate = customFormatter.format(ThreeDaysLater);
-        OrderDesk.SelectDeliveryDate(DayAfterTodayDate);
+        OrderDesk.SelectDeliveryDate("2");
         OrderDesk.SaveDraftOrder();
         softAssert.assertTrue(OrderDesk.isSaveDraftSucessful(),"Error in Saving Delivery Date Draft");
         OrderDesk.CloseTheSucessfulOverlayByOK();

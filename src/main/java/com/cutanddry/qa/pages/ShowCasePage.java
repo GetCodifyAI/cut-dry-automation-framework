@@ -31,9 +31,10 @@ public class ShowCasePage extends LoginPage {
         distributorUI.sendKeys(productSearchBar,productName);
     }
 
-    public void SelectProductInShowCase(String productName){
-        distributorUI.isDisplayed(By.xpath(productDisplayed.replace("BRANDPAGE",productName)));
-        distributorUI.clickWithScrollAndHover(By.xpath(productDisplayed.replace("BRANDPAGE",productName)));
+    public void SelectProductInShowCase(String productName) throws InterruptedException {
+        distributorUI.waitForCustom(5000);
+        distributorUI.isDisplayed(By.xpath(productDisplayed.replace("BRANDPAGE",productName.toLowerCase())));
+        distributorUI.clickWithScrollAndHover(By.xpath(productDisplayed.replace("BRANDPAGE",productName.toLowerCase())));
     }
 
     public void ClickOnManufacturer() throws InterruptedException {

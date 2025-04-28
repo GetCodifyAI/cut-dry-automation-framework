@@ -688,9 +688,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_deliveryDateStable = By.xpath("//div[text()='Delivery Date:']/../following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
     String dynamicToXPath = "(//div[contains(@class,'react-datepicker__day--highlighted')]/preceding::div[contains(@class, 'react-datepicker__day') and text()='DAY'])[last()]";
     String btn_catalogPDPPlusStableDP = "(//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]/../../following-sibling::div//*[name()='svg' and @data-icon='plus']";
-
-
-
+    By activeDate = By.xpath("(//div[contains(@class,'react-datepicker__day') and @aria-disabled='false'])[1]");
+    By lbl_stockInHouse = By.xpath("(//div[contains(text(),'Stocked (in-house)')]/*[name()='svg'])[1]");
+    By btn_clearAll = By.xpath("//div[contains(text(),'Clear All')]");
 
 
     public void ifDuplicateOrderDisplayed(){
@@ -769,6 +769,16 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.sendKeys(tbx_catalogSearch,item);
         distributorUI.waitForCustom(5000);
     }
+    public boolean isStockInHouseDisplayed() throws InterruptedException {
+        return distributorUI.isDisplayed(lbl_stockInHouse);
+    }
+
+    public void clickOnStockInHouseCloseBtn() throws InterruptedException {
+         distributorUI.click(lbl_stockInHouse);
+    }
+    public void clickOnClearAllBtn() throws InterruptedException {
+        distributorUI.click(btn_clearAll);
+    }
     public String getFirstItemNameFrmSearchResults(String name){
         try {
             distributorUI.waitForCustom(4000);
@@ -779,9 +789,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.getText(By.xpath(lbl_catalogSearchItemList.replace("NAME", name))).toLowerCase();
     }
     public void clickAddToCartCatalog(String ItemName) throws InterruptedException {
-        distributorUI.waitForClickability(By.xpath(btn_addToCart.replace("ITEMNAME",ItemName)));
+        distributorUI.waitForClickability(By.xpath(btn_addToCart.replace("ITEMNAME",ItemName.toLowerCase())));
         distributorUI.waitForCustom(4000);
-        distributorUI.click(By.xpath(btn_addToCart.replace("ITEMNAME",ItemName)));
+        distributorUI.click(By.xpath(btn_addToCart.replace("ITEMNAME",ItemName.toLowerCase())));
         distributorUI.waitForCustom(4000);
         distributorUI.waitForElementEnabledState(btn_checkout_stable,true);
     }
@@ -4089,6 +4099,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(By.xpath(btn_catalogPDPPlusStableDP.replace("NAME", name)));
         distributorUI.click(By.xpath(btn_catalogPDPPlusStableDP.replace("NAME", name)));
         distributorUI.waitForCustom(3000);
+    }
+    public void selectActiveDeliveryDate() throws InterruptedException {
+        distributorUI.waitForVisibility(activeDate);
+        distributorUI.click(activeDate);
+        distributorUI.waitForCustom(5000);
     }
 
 
