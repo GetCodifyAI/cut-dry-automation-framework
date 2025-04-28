@@ -13,6 +13,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class VerifyTheOrderViewOrderEditTest extends TestBase {
     static User user;
     String creditStatus = "Submitted";
@@ -38,6 +41,7 @@ public class VerifyTheOrderViewOrderEditTest extends TestBase {
         softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(),"edit popup error");
         Orders.clickOnConfirm();
         softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(),"edit error");
+        Customer.selectActiveDeliveryDateInReview();
         Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItems();
         softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(),"update popup error");

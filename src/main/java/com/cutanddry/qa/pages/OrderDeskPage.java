@@ -40,7 +40,8 @@ public class OrderDeskPage extends LoginPage{
     By LocationName = By.cssSelector(".themed_select__option");
 //    By DeliveryDateInput = By.xpath("//div[text()='Delivery Date']/following-sibling::div//div[contains(@class,'cd_themed_select__control')]");
     By DeliveryDateInput = By.xpath("//div[text()='Delivery Date']/following-sibling::div/div");
-    String DeliveryDateSelect = "//div[contains(text(),'DELIVERYDATE')]";
+//    String DeliveryDateSelect = "//div[contains(text(),'DELIVERYDATE')]";
+String DeliveryDateSelect = "(//div[contains(@class,'themed_select__option')])[DELIVERYDATE]";
     By DeliveryDateNotValidTxt = By.xpath("//div[@class='text-danger']");
 //    By ReviewTxt = By.xpath("//h2[contains(text(),'pending_review')]");
 //    By ReviewTxt = By.xpath("//*[contains(text(),'PENDING REVIEW')]");
