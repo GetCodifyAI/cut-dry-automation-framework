@@ -28,6 +28,7 @@ public class VerifyCashAndCarryAppPassingAmountLessThanOneTest extends TestBase 
         CashAndCarry.navigateToCashAndCarryApp(appURL);
         softAssert.assertTrue(CashAndCarry.isUserNavigatedToCashAndCarry(),"navigation error");
         Customer.searchItemOnCatalog(itemName);
+        Customer.closeStockInHouseFilter();
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
         Customer.addItemToCartCatalog(itemName);
         Customer.checkoutItemsDist();

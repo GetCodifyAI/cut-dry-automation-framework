@@ -14,6 +14,9 @@ public class ConfigSupplier {
     public static void clickOnCatalogSettings(){
         configPage.clickOnCatalogSettings();
     }
+    public static void clickOnOrderSettings(){
+        configPage.clickOnOrderSettings();
+    }
     public static void clickOnSave(){
         configPage.clickOnSave();
     }
@@ -25,5 +28,15 @@ public class ConfigSupplier {
     }
     public static void ensureDefaultSearchFilterStatus(boolean enable) throws InterruptedException {
         configPage.ensureDefaultSearchFilterStatus(enable);
+    }
+
+    public static void enableDefaultOrderHistoryAsOrderDate() throws InterruptedException {
+        if (!configPage.isDefaultOrderHistoryAsOrderDateDisplayed()) {
+            configPage.clickOnDefaultOrderHistoryAsOrderDate();
+        }
+    }
+
+    public static void clickOnOrderSettingSave() throws InterruptedException {
+        configPage.saveOrderSettingChanges();
     }
 }
