@@ -2360,6 +2360,12 @@ public class Customer {
             customersPage.clickOnPlusIconInCatalogDP(name);
         }
     }
+    public static boolean isHardHoldPopupMessageDisplayed(String message){
+        return customersPage.isHardHoldPopupMessageDisplayed(message);
+    }
+    public static boolean isLastOrderColumnDisplayed(){
+        return customersPage.isLastOrderColumnDisplayed();
+    }
 
     public static void selectActiveDeliveryDateInReview()throws InterruptedException{
         customersPage.clickOnDeliveryDateStable();
