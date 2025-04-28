@@ -48,6 +48,7 @@ public class VerifyCaseDiscountsDisclaimerMsgInOrderDetailsCDAppTest extends Tes
 
         Dashboard.navigateToHistory();
         softAssert.assertTrue(History.isUserNavigatedToHistory(),"navigation error");
+        History.ensureOrderDateSortedDescending();
         History.clickFirstItemFrmHistory();
         softAssert.assertTrue(Customer.isDiscountDisclaimerOrderDetailsMsgDisplayed(),"disclaimer msg display error");
         softAssert.assertAll();

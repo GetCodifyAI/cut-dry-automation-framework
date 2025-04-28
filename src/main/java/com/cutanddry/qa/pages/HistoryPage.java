@@ -22,6 +22,9 @@ public class HistoryPage extends LoginPage{
     By btn_close = By.xpath("//button[text()='Close']");
     By txt_whichItemsHasError = By.xpath("//h2[contains(text(),'Which items had an issue')]");
     By btn_checkInOrder = By.xpath("//button[contains(@class, 'btn') and contains(., 'Check-In Order')]");
+    By lbl_orderDateColumn = By.xpath("//span[contains(text(),'Order Date')]");
+    By lbl_orderDateArrowUp = By.xpath("//span[contains(text(),'Order Date')]/*[name()='svg' and contains(@data-icon, 'arrow-up')]");
+
 
     public boolean isTxtWhichItemsHasError() {
         try {
@@ -159,5 +162,17 @@ public class HistoryPage extends LoginPage{
     }
     public void clickCheckInOrder(){
         distributorUI.click(btn_checkInOrder);
+    }
+
+    public void ensureOrderDateSortedDescending() throws InterruptedException {
+
+        distributorUI.waitForVisibility(lbl_orderDateColumn);
+        distributorUI.click(lbl_orderDateColumn);
+
+        if (distributorUI.isDisplayed(lbl_orderDateArrowUp)) {
+            distributorUI.click(lbl_orderDateColumn);
+            distributorUI.waitForCustom(2000);
+        }
+
     }
 }
