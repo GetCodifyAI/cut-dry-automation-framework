@@ -112,6 +112,11 @@ public class Customer {
     public static void searchItemOnCatalog(String item) throws InterruptedException {
         customersPage.typeToSearchOnCatalog(item);
     }
+    public static void closeStockInHouseFilter() throws InterruptedException {
+        if (customersPage.isStockInHouseDisplayed()) {
+            customersPage.clickOnClearAllBtn();
+        }
+    }
     public static String getFirstElementFrmSearchResults(String name){
        return customersPage.getFirstItemNameFrmSearchResults(name);
     }
@@ -2354,6 +2359,12 @@ public class Customer {
         for (int i=0; i<count;i++){
             customersPage.clickOnPlusIconInCatalogDP(name);
         }
+    }
+
+    public static void selectActiveDeliveryDateInReview()throws InterruptedException{
+        customersPage.clickOnDeliveryDateStable();
+        customersPage.selectActiveDeliveryDate();
+
     }
 
 }

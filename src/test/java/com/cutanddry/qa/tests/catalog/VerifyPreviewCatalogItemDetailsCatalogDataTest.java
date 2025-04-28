@@ -25,7 +25,7 @@ public class VerifyPreviewCatalogItemDetailsCatalogDataTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-611")
-    public void VerifyThePreviewCatalogEditItemDetails() throws InterruptedException {
+    public void verifyPreviewCatalogItemDetailsCatalogData() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
