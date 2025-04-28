@@ -1318,5 +1318,17 @@ public KeywordBase clickF12Mac() {
         return this;
     }
 
+    public String getValue(By by) {
+        try {
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+            String value = element.getAttribute("value");
+            logger.info("Got value from element: {} - Text: {}", by, value);
+            return value;
+        } catch (Exception e) {
+            logger.error("Failed to get value from element: {}", by, e);
+            return null;
+        }
+    }
+
 
 }
