@@ -67,6 +67,9 @@ public class History {
     public static void clickCheckInOrder(){
         historyPage.clickCheckInOrder();
     }
+    public static void ensureOrderDateSortedDescending() throws InterruptedException {
+        historyPage.ensureOrderDateSortedDescending();
+    }
 
 
 

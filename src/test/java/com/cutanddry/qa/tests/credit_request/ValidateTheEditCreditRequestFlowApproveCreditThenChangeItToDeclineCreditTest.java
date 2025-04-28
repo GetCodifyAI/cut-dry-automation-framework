@@ -39,6 +39,7 @@ public class ValidateTheEditCreditRequestFlowApproveCreditThenChangeItToDeclineC
 
         Dashboard.navigateToHistory();
         Assert.assertTrue(History.isUserNavigatedToHistory(),"There has been an error navigating to history section");
+        History.ensureOrderDateSortedDescending();
         History.clickFirstItemFrmHistory();
         Assert.assertTrue(History.isUserNavigatedOrder(),"There has been an error navigating to order section");
         History.clickCheckInOrder();
