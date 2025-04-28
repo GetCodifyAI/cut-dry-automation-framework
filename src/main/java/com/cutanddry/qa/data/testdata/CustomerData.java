@@ -36,6 +36,10 @@ public class CustomerData {
     public static final String ITEM_NAME_PO = "Artichoke -24CT";
     public static final String ITEM_CODE_PO = "01700";
     public static final String DISTRIBUTOR_HILL_CREST = "96939129 - Cut+Dry Agent - Hillcrest Foodservice";
+    public static final String DISTRIBUTOR_HOOK_TO_FORK = "155997318 - Cut+Dry Agent - Hook to Fork";
+    public static final String CUSTOMER_HOOK_TO_FORK = "39780";
+    public static final String DISTRIBUTOR_CHEF_KITCHEN = "165144548 - Cut+Dry Agent SKO - Chef’s Kitchen";
+    public static final String CUSTOMER_CHEF_KITCHEN = "T1234";
 
 
 

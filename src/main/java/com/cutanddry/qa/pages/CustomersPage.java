@@ -687,6 +687,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_deliveryDateStable = By.xpath("//div[text()='Delivery Date:']/../following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
     String dynamicToXPath = "(//div[contains(@class,'react-datepicker__day--highlighted')]/preceding::div[contains(@class, 'react-datepicker__day') and text()='DAY'])[last()]";
     String btn_catalogPDPPlusStableDP = "(//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]/../../following-sibling::div//*[name()='svg' and @data-icon='plus']";
+    String hardHoldMessagePopUp = "//h2[contains(text(),'MESSAGE')]";
+    By lastOrder =By.xpath("//td[text()='Last Order']");
+
 
 
 
@@ -4088,6 +4091,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(By.xpath(btn_catalogPDPPlusStableDP.replace("NAME", name)));
         distributorUI.click(By.xpath(btn_catalogPDPPlusStableDP.replace("NAME", name)));
         distributorUI.waitForCustom(3000);
+    }
+    public boolean isHardHoldPopupMessageDisplayed(String message){
+        return distributorUI.isDisplayed(By.xpath(hardHoldMessagePopUp.replace("MESSAGE", message)));
+    }
+    public boolean isLastOrderColumnDisplayed(){
+        return distributorUI.isDisplayed(lastOrder);
     }
 
 
