@@ -53,6 +53,10 @@ public class Orders {
     public static void selectOrderGuide(String OrderGuide) {
         ordersPage.clickOnOrderGuide(OrderGuide);
     }
+
+    public static boolean isSelectOrderGuideDisplayed(){
+       return ordersPage.isSelectOrderGuidePopUpDisplayed();
+    }
     public static void clickOnFirstOrder() throws InterruptedException {
         ordersPage.clickOnFirstOrder();
     }

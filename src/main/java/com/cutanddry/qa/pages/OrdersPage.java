@@ -206,6 +206,10 @@ public class OrdersPage extends LoginPage{
             distributorUI.click(By.xpath(orderGuide.replace("ORDERGUIDE",OrderGuideName)));
         }
     }
+
+    public boolean isSelectOrderGuidePopUpDisplayed(){
+        return distributorUI.isDisplayed(selectOrderGuide);
+    }
     public void clickOnFirstOrder() throws InterruptedException {
         distributorUI.click(lbl_firstOrder);
         distributorUI.waitForCustom(3000);
