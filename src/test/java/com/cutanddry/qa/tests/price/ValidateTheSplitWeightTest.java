@@ -102,6 +102,8 @@ public class ValidateTheSplitWeightTest extends TestBase{
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
+        Customer.OrderDateSort();
+        Customer.OrderDateSort();
 
 
         String priceText1 = Customer.getPriceInCustomerOrder().replace("$", "");
