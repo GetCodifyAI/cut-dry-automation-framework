@@ -2372,6 +2372,15 @@ public class Customer {
         customersPage.selectActiveDeliveryDate();
 
     }
+    public static void submitOrderDpSpecific(){
+        customersPage.submitOrder();
+        if (customersPage.isOrderMinPopupDisplayed()){
+            customersPage.clickOnYes();
+        }
+        if (customersPage.isDuplicatePopupDisplayed()){
+            customersPage.clickYesDuplicatePopup();
+        }
+    }
 
 }
 

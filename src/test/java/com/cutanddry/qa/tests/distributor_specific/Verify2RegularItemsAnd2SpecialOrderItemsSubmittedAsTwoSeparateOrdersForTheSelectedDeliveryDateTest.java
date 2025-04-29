@@ -75,7 +75,7 @@ public class Verify2RegularItemsAnd2SpecialOrderItemsSubmittedAsTwoSeparateOrder
         String userDeliveryDate = customFormatter.format(DeliveryDate);
         Customer.selectDeliveryDateLine(userDeliveryDate);
 
-        Customer.submitOrder();
+        Customer.submitOrderDpSpecific();
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "The order was not completed successfully.");
         softAssert.assertEquals(Customer.getOrderCount(orderCount), orderCount, "multi order submit error error");
         Customer.clickClose();
