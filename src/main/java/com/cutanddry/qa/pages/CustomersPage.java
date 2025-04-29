@@ -4049,6 +4049,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.navigateToURL("https://app-uat.staging.cutanddry.com/admin/nodeType/397749147765731276");
     }
     public void clickEditSubstitutionsAccess(){
+        distributorUI.isDisplayed(substitutionsAccessEditBtn);
         distributorUI.click(substitutionsAccessEditBtn);
     }
     public void editSubstitutionStatus(String status){
