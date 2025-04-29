@@ -15,7 +15,7 @@ public class InternalToolsPage extends LoginPage {
     String catalogOptionSelect = "(//div[text()='CATALOGDROPDOWNOPTION'])[last()]";
     By catalogSettingsSaveBtn = By.xpath("//div[h5[text()='Catalog']]/following-sibling::div//button[contains(text(), 'Save')]");
     By lastOrderedPoundPriceToggle = By.xpath("//div[contains(text(), 'Show Last Ordered Pound Price in Order Guide')]/following-sibling::div//div[@class='react-switch-bg']");
-    By sponsoredAdsRebatesTab = By.xpath("//a[contains(text(),'Sponsored Ads + Rebates')]");
+    By sponsoredAdsRebatesTab = By.xpath("//a[contains(text(),'Cut+Dry Influence')]");
     By sponsoredProductAdsToggle =By.xpath("//div[contains(text(), 'Enable Sponsored Product Advertisements')]/../following-sibling::div//div[@class='react-switch-bg']");
     By btn_saveProductAds = By.xpath("//div[contains(h4, 'Sponsored Ads')]/button[contains(@class, 'btn') and text()='Save']");
     By buyerEdgePlatformRebateToggle =By.xpath("//div[contains(text(), 'Buyers Edge Platform Rebates')]/../following-sibling::div//div[@class='react-switch-bg']");
@@ -163,7 +163,11 @@ public class InternalToolsPage extends LoginPage {
     }
 
     public void clickSponsoredProductAdsToggle(boolean enable) {
-
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         String handlePosition = distributorUI.getElement(enableSponsoredProductAdvertisementsToggle).getAttribute("style");
         boolean isEnabled = handlePosition.contains("translateX(29px)");
 
@@ -176,6 +180,7 @@ public class InternalToolsPage extends LoginPage {
 
     public void clickProductAdsSave() throws InterruptedException {
 //        distributorUI.waitForVisibility(btn_saveProductAds);
+        distributorUI.waitForCustom(2000);
         distributorUI.click(btn_saveProductAds);
         distributorUI.waitForCustom(5000);
     }

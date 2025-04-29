@@ -94,6 +94,7 @@ public class VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurant
         Customer.searchItemOnOrderGuide(searchItemCode);
         softAssert.assertTrue(Customer.getItemNameFirstRow().toLowerCase().contains(itemName.toLowerCase()),"item mismatch");
         softAssert.assertTrue(Customer.isMultiUomDropDownOGDisplayed(),"Item is not Multi UOM");
+
         Customer.ClickOnMultiUomDropDownOG(searchItemCode);
         softAssert.assertTrue(Customer.isSpotPriceAdded("1",itemPrice),"Item case price error");
 
