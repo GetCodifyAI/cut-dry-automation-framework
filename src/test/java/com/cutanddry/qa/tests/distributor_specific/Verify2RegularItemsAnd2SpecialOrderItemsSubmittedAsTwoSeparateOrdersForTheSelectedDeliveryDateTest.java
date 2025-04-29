@@ -55,7 +55,8 @@ public class Verify2RegularItemsAnd2SpecialOrderItemsSubmittedAsTwoSeparateOrder
         itemPriceOG2 = Customer.getActiveItemPriceSecondRow();
         Customer.increaseFirstRowQtyCustom(1);
         Customer.increaseSecondRowQtyCustom(1);
-        softAssert.assertEquals(Customer.getItemPriceOnMultiOUMCheckout(),itemPriceOG1+itemPriceOG2,"The item has not been selected.");
+        softAssert.assertEquals(Math.round(Customer.getItemPriceOnMultiOUMCheckout() * 100.0) / 100.0, (Math.round(itemPriceOG1 * 100.0) / 100.0) + (Math.round(itemPriceOG2 * 100.0) / 100.0), 0.001, "The item has not been selected.");
+
 
         Customer.goToCatalog();
         Customer.clickItemType();
@@ -75,7 +76,7 @@ public class Verify2RegularItemsAnd2SpecialOrderItemsSubmittedAsTwoSeparateOrder
         String userDeliveryDate = customFormatter.format(DeliveryDate);
         Customer.selectDeliveryDateLine(userDeliveryDate);
 
-        Customer.submitOrder();
+        Customer.submitOrderDpSpecific();
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "The order was not completed successfully.");
         softAssert.assertEquals(Customer.getOrderCount(orderCount), orderCount, "multi order submit error error");
         Customer.clickClose();
