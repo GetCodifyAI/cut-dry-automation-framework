@@ -62,8 +62,9 @@ public class VerifySalespersonRoleTest extends TestBase {
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation to team settings error");
         Dashboard.navigateToCompanySettings();
         softAssert.assertTrue(Settings.isCompanySettingsTextDisplayed(),"navigation to company settings error");
-        Dashboard.navigateToOrderSettings();
-        softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");
+        // TODO: Order Settings is removed from  Sales Person Role
+        /*Dashboard.navigateToOrderSettings();
+        softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");*/
         Dashboard.navigateToProfileSettings();
         softAssert.assertTrue(Settings.isProfileSettingsTextDisplayed(),"navigation to profile settings error");
         //track

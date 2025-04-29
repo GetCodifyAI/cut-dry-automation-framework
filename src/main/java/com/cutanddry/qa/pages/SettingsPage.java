@@ -42,7 +42,7 @@ public class SettingsPage extends LoginPage{
     By txt_profSettings = By.xpath("//h2[contains(text(),'Profile')]");
     By txt_trackSettings = By.xpath("//h2[contains(text(),'Delivery Settings')]");
     By txt_billingSettings = By.xpath("//h2[contains(text(),'Billing Settings')]");
-    By txt_adsSettings = By.xpath("//div[contains(text(),'Ads and Rebates')]");
+    By txt_adsSettings = By.xpath("//div[contains(text(),'Cut+Dry Influence')]");
     By txt_paySettings = By.xpath("//h2[contains(text(),'Pay Settings')]");
     By btn_addPaymentMethod = By.xpath("//button[text()='Add Payment Method']");
     By txt_addPaymentPopup = By.xpath("//h3[text()='Add Payment Method']");
