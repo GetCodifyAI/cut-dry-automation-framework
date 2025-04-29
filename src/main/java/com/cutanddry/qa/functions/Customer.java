@@ -33,6 +33,9 @@ public class Customer {
         if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
             customersPage.clickPreviousDraftOrderNo();
         }
+        else if (Orders.isSelectOrderGuideDisplayed()){
+             Orders.selectOrderGuide("Independent Foods Co");
+        }
     }
     public static void increaseFirstRowQtyByOne() throws InterruptedException {
 //        if (customersPage.isPreviousDraftOrderNoDisplayed()){

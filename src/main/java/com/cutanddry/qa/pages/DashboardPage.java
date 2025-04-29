@@ -46,7 +46,7 @@ public class DashboardPage extends LoginPage{
     By btn_endlAisle  =By.xpath("//a[@data-tip='Endless Aisle']");
     By btn_creditReq  =By.xpath("//a[@data-tip='Credit Requests']");
     By btn_showcase = By.xpath("//a[contains(@data-tip,'Cut+Dry Product Showcase')]");
-    By btn_adsSettings = By.xpath("//div[@arrowprops]//a[text()='Ads + Rebates']");
+    By btn_adsSettings = By.xpath("//div[@arrowprops]//a[text()='Influence']");
     By btn_paySettings = By.xpath("//div[@arrowprops]//a[text()='Pay']");
     By btn_credit_requests = By.xpath("//a[@data-for='sideNavSupplierMenuOptions' and @href='/credit-requests']");
     By btn_placeOrder = By.xpath("//div[contains(text(), 'Independent Foods Co')]");

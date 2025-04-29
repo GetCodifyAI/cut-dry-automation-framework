@@ -10,14 +10,15 @@
         <classes>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromTopCategoryCarouselAndSubmissionTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromCompareSimilarItemsCarouselAndSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromRecommendedForCustomerCarouselAndSubmissionTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromRecommendedBySalesRepCarouselAndSubmissionTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromDoNotForgetToOrderCarouselAndSubmissionTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromMoreFromThisBrandCarouselAndSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromRecommendedForCustomerCarouselAndSubmissionTest"/>
+
 
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantitiesFunctionalityFromCatalogTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMFromSaleItemAndSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMSpecialOrderItemAndDraftEditTest"/>
+           <!-- <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMSpecialOrderItemAndDraftEditTest"/>-->
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMJustInTimeItemAndDraftEditTest"/>
 
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromOGCatalogPDPAndSubmitByAdminTest"/>
@@ -27,9 +28,9 @@
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddingSubstituteItemForMultipleUOMTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest"/>
 
-<!--            // TODO: Invalid TC with the new change-->
-<!--            <class name="com.cutanddry.qa.tests.order_reminder.VerifyEditOrderReminderTest"/>-->
-
+         <!-- removing as this functionality is not there anymore
+            <class name="com.cutanddry.qa.tests.order_reminder.VerifyEditOrderReminderTest"/>
+-->
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheBatchOperationFunctionalityTest"/>
             <class name="com.cutanddry.qa.tests.customer_invoice.VerifyDisplayTotalUnpaidInvoiceAmountInCustomerDetailPageTest"/>
             <class name="com.cutanddry.qa.tests.customer_groups.VerifyMultipleCustomerGroupsCanBeAssignedTest"/>
@@ -45,17 +46,12 @@
             <class name="com.cutanddry.qa.tests.customers.ValidatePONumberNotRequiredCustomersTest"/>
             <class name="com.cutanddry.qa.tests.customers.VerifyThatOrderSummeryBannerDisplayedTest"/>
             <class name="com.cutanddry.qa.tests.customers.VerifyThatOrderSummeryGrossProfitSaleCostSectionUpdateTest"/>
-            <class name="com.cutanddry.qa.tests.catalog_data.VerifyNotLoggedInUserCanViewThePublicItemOfTheDistributeViaPDPURLTest"/>
-
+            <!--<class name="com.cutanddry.qa.tests.catalog_data.VerifyNotLoggedInUserCanViewThePublicItemOfTheDistributeViaPDPURLTest"/>
+-->
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyUserDeletionEmailNotificationToggleTest"/>
 
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyDeleteCustomerUserAndReceiveUserDeletionNotificationTest"/>
             <class name="com.cutanddry.qa.tests.customers.VerifyThatOrderSummerySalesCommissionSectionUpdateTest"/>
-
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheCustomerInvoiceViewOnDistributorToEnsureThatDigitalInvoicePDFsAreVisibleTest"/>
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyElementsAreHiddenWhenSearchingAnItemInOrderGuideTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyThatSMSFunctionalityIsWorkingAsExpectedForOrderReminderAlertsTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyTheOrderReminderConfigurationsInTheDPTest"/>
         </classes>
     </test>
 </suite>

@@ -12,6 +12,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class VerifyThatOrderSummeryGrossProfitSaleCostSectionUpdateTest extends TestBase {
     static User user;
@@ -48,9 +50,10 @@ public class VerifyThatOrderSummeryGrossProfitSaleCostSectionUpdateTest extends 
         searchItemCode = Customer.getItemCodeFirstRow();
         itemPrice = Customer.getActiveItemPriceFirstRow();
         marginPrice = Customer.getItemMarginPriceFirstRow();
-        String marginPriceStr = String.format("%.1f", marginPrice);
+        BigDecimal marginValue = new BigDecimal(Double.toString(marginPrice));
+        marginValue = marginValue.setScale(2, RoundingMode.DOWN);
         Customer.increaseFirstRowQtyCustom(1);
-        softAssert.assertTrue(Customer.isOrderSummeryValueDisplayed(orderSummery,marginPriceStr),"gross profit value not equal");
+        softAssert.assertTrue(Customer.isOrderSummeryValueDisplayed(orderSummery,marginValue.toPlainString()),"gross profit value not equal");
         softAssert.assertTrue(Customer.isOrderSummeryValueDisplayed(orderSummerySalesCommission,"0"),"Order Summery Sales Commission value not equal");
         softAssert.assertTrue(Customer.isOrderSummeryValueDisplayed(orderSummeryTotalLines,"1"),"Order Summery TotalLines value not equal");
         softAssert.assertTrue(Customer.isOrderSummeryValueDisplayed(orderSummeryTotalPieces,"1"),"Order Summery TotalPieces value not equal");

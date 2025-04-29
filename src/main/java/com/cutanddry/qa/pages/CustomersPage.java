@@ -770,10 +770,17 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(btn_catalog);
     }
     public void typeToSearchOnCatalog(String item) throws InterruptedException {
-        distributorUI.clear(tbx_catalogSearch);
-        distributorUI.waitForCustom(1000);
-        distributorUI.sendKeys(tbx_catalogSearch,item);
-        distributorUI.waitForCustom(5000);
+        if(distributorUI.getValue(tbx_catalogSearch).isEmpty()){
+            distributorUI.waitForCustom(1000);
+            distributorUI.sendKeys(tbx_catalogSearch,item);
+            distributorUI.waitForCustom(5000);
+        }
+        else {
+            distributorUI.clear(tbx_catalogSearch);
+            distributorUI.waitForCustom(1000);
+            distributorUI.sendKeys(tbx_catalogSearch, item);
+            distributorUI.waitForCustom(5000);
+        }
     }
     public boolean isStockInHouseDisplayed() throws InterruptedException {
         return distributorUI.isDisplayed(lbl_stockInHouse);
@@ -4042,6 +4049,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.navigateToURL("https://app-uat.staging.cutanddry.com/admin/nodeType/397749147765731276");
     }
     public void clickEditSubstitutionsAccess(){
+        distributorUI.isDisplayed(substitutionsAccessEditBtn);
         distributorUI.click(substitutionsAccessEditBtn);
     }
     public void editSubstitutionStatus(String status){
