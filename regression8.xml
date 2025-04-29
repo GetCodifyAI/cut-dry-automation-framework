@@ -8,32 +8,32 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part_Eight"/>
         <classes>
-<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheFinalWeightWhenSelectingMultipleUOMTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSpotPricingWhenSelectingMultipleUOMTest"/>-->
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheFinalWeightWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSpotPricingWhenSelectingMultipleUOMTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.ValidateThePoundSpotPricingWhenSelectingMultipleUOMTest"/>
-<!--            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSplitWeightWhenSelectingMultipleUOMTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurantPortalsTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheRemoveANewlyAddedUOMsToAnItemAndCheckFromTheDistributorAndRestaurantPortalsTest"/>-->
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSplitWeightWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurantPortalsTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheRemoveANewlyAddedUOMsToAnItemAndCheckFromTheDistributorAndRestaurantPortalsTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.price.ValidateTheFinalWeightTest"/>-->
+            <class name="com.cutanddry.qa.tests.price.ValidateTheFinalWeightTest"/>
             <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPoundPriceTest"/>
-<!--            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingByPricingEngineTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.price.ValidateThePoundSpotPricingTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingNotFromPricingEngineTest"/>-->
+            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingByPricingEngineTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateThePoundSpotPricingTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingNotFromPricingEngineTest"/>
             <class name="com.cutanddry.qa.tests.price.ValidateTheSplitWeightTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditUOMsFromEditTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyStockAvailabilityModalForMultiUOMSKUsTest"/>-->
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditUOMsFromEditTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyStockAvailabilityModalForMultiUOMSKUsTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnCatalogCardTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnPDPViewTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnCatalogCardOperatorTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnPDPViewOperatorTest"/>-->
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnCatalogCardTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnPDPViewTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnCatalogCardOperatorTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnPDPViewOperatorTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheHardOrderMinimumSelectingMultipleUOMTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSoftOrderMinimumSelectingMultipleUOMTest"/>-->
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheHardOrderMinimumSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSoftOrderMinimumSelectingMultipleUOMTest"/>
         </classes>
     </test>
 </suite>
