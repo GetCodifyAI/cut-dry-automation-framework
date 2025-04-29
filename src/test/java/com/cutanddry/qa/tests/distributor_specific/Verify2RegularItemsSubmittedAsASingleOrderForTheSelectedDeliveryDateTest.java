@@ -51,7 +51,7 @@ public class Verify2RegularItemsSubmittedAsASingleOrderForTheSelectedDeliveryDat
         itemPrice2 = Customer.getActiveItemPriceSecondRow();
         Customer.increaseFirstRowQtyCustom(1);
         Customer.increaseSecondRowQtyCustom(1);
-        softAssert.assertEquals(Customer.getItemPriceOnMultiOUMCheckout(),itemPrice1+itemPrice2,"The item has not been selected.");
+        softAssert.assertEquals(Math.round(Customer.getItemPriceOnMultiOUMCheckout() * 100.0) / 100.0, (Math.round(itemPrice1 * 100.0) / 100.0) + (Math.round(itemPrice2 * 100.0) / 100.0), 0.001, "The item has not been selected.");
         Customer.clickCheckOutPDP();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
 
