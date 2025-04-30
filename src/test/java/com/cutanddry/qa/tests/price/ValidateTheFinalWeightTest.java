@@ -19,7 +19,7 @@ public class ValidateTheFinalWeightTest extends TestBase{
     static String customerId = PriceData.CUSTOMER_ID;
     static String itemPrice ;
     static String itemName, searchItemCode;
-    static String weight = "31";
+    static double stableFinalPrice;
 
     @BeforeMethod
     public void setUp() {
@@ -53,7 +53,6 @@ public class ValidateTheFinalWeightTest extends TestBase{
         Customer.clickClose();
         Customer.searchCustomerByCode(customerId);
         Customer.clickOnCustomerCode(customerId);
-
         //test
         Customer.clickOnOrdersTab();
         Customer.clickOrder();
@@ -61,19 +60,39 @@ public class ValidateTheFinalWeightTest extends TestBase{
         Orders.clickOnEditOrder();
         softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(),"edit popup error");
         Orders.clickOnConfirm();
+        softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(),"edit error(Review Page)");
+        Orders.clickOnEditOrderInReview();
         softAssert.assertTrue(Orders.isNavigatedToEditOrder(),"edit error");
-        Customer.typeOnFinalWeight(weight);
+
+        stableFinalPrice = Customer.getItemFinalPriceStable();
+
+        String finalWeightStr = Customer.getItemFinalWeight();
+        double finalWeight = Double.parseDouble(finalWeightStr);
+        double weight1 = 2 * finalWeight;
+        String weightStr = String.valueOf(weight1);
+        String weightStr2 = String.valueOf((int)(3 * finalWeight));
+        Customer.typeOnFinalWeight(weightStr);
+
         softAssert.assertEquals(Customer.getItemQtyFirstRow(),"2", "item count error");
-        softAssert.assertEquals(Customer.getItemFinalPrice(),"$1,891.00", "item count error");
+        softAssert.assertEquals(Customer.getItemFinalPriceStable(),stableFinalPrice*2, "item count error");
         Customer.increaseFirstRowQtyCustom(1);
-        softAssert.assertEquals(Customer.getItemFinalPrice(),"$2,836.50", "item count error");
-        softAssert.assertEquals(Customer.getItemFinalWeight(),"46.5", "item count error");
+        softAssert.assertEquals(Customer.getItemFinalPriceStable(),stableFinalPrice*3, "item count error");
+
+        softAssert.assertEquals(Customer.getItemFinalWeight(),weightStr2 , "item count error 11");
+
+//        softAssert.assertEquals(Customer.getItemFinalWeight(),"62", "item count error");
         itemPrice=Customer.getItemFinalPrice();
-        softAssert.assertEquals(Customer.getItemPriceOnEditOrderCheckout(),itemPrice,"The item has not been selected.");
-        Customer.clickEditOrderCheckout();
-        softAssert.assertTrue(Orders.isSubmitPopupDisplayed(),"submit pop up not display");
-        Orders.clickOnConfirm();
-        softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(),"update popup error");
+        softAssert.assertEquals(Customer.getItemPriceOnEditOrderReviewCheckout(),itemPrice,"The item has not been selected.");
+        Customer.clickCheckOutOrderGuide();
+
+        if (Customer.isEditOrderCheckout()) {
+            Customer.clickEditOrderCheckout();
+            softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+        } else {
+            softAssert.assertTrue(Orders.isSubmitPopupDisplayed(), "submit pop up not display");
+            Orders.clickOnConfirm();
+            softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+        }
         Orders.clickOnClose();
 
         Dashboard.navigateToCustomers();

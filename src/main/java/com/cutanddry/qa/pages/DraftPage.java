@@ -2,6 +2,8 @@ package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
 
+
+
 public class DraftPage extends LoginPage{
     By txt_drafts = By.xpath("//li[contains(text(),'Drafts')]");
     By btn_delete = By.xpath("(//button[contains(text(), 'Delete')])[1]");
@@ -9,7 +11,9 @@ public class DraftPage extends LoginPage{
     By pendingApprovalOrders = By.xpath("(//td/span[contains(text(),'Pending Approval')])[1]");
     By btn_editOrder = By.xpath("//a[contains(text(),'Edit Order')]");
     String date = "//td[text()='DATE']";
+    By draftRowCount = By.xpath("//table/tbody/tr");
     By draftDate = By.xpath("//tr//td[6]");
+    By draftStatus = By.xpath("//tr//td[9]");
     String txt_restaurantLastDraft = "(//tbody/tr[contains(@href, 'place-order') and contains(@href, 'draftId')]//td[contains(text(), 'TOTAL')])[1]";
     By referenceNumOP = By.xpath("(//tbody/tr[contains(@href, 'place-order') and contains(@href, 'draftId')]//td[3])[1]");
     By referenceNumDP = By.xpath("(//tbody/tr[contains(@href, '/customers/place_order/') and contains(@href, 'draftId')]/td[2])[1]");
@@ -50,6 +54,10 @@ public class DraftPage extends LoginPage{
         distributorUI.waitForVisibility(By.xpath(txt_lastDraft.replace("TOTAL", total)));
         return distributorUI.isDisplayed(By.xpath(txt_lastDraft.replace("TOTAL", total)));
     }
+    public boolean isLastDraftDisplayedVito(String total){
+        distributorUI.waitForVisibility(By.xpath(txt_lastDraft.replace("TOTAL", total)));
+        return distributorUI.isDisplayed(By.xpath(txt_lastDraft.replace("TOTAL", total)),90);
+    }
 
     public boolean isPendingApprovalOrdersDisplayed(){
         return distributorUI.isDisplayed(pendingApprovalOrders);
@@ -71,7 +79,7 @@ public class DraftPage extends LoginPage{
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        return distributorUI.isDraftOrdersNotOlder30Days(draftDate);
+        return distributorUI.isDraftOrdersNotOlder30DaysStable(draftRowCount);
     }
     public boolean isRestaurantLastDraftDisplayed(String total){
         distributorUI.waitForVisibility(By.xpath(txt_restaurantLastDraft.replace("TOTAL", total)));
@@ -184,6 +192,8 @@ public class DraftPage extends LoginPage{
         distributorUI.waitForVisibility(By.xpath(pendingApproval.replace("STATUS", status)));
         distributorUI.click(By.xpath(pendingApproval.replace("STATUS", status)));
     }
-
+    public boolean isDraftOrderReferenceNotDisplayedInOPSide() {
+            return distributorUI.isDisplayed(referenceNumDP);
+    }
 
 }

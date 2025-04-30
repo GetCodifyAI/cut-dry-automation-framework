@@ -5,6 +5,10 @@ import com.cutanddry.qa.common.Constants;
 import com.cutanddry.qa.functions.Orders;
 import org.openqa.selenium.By;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class LoginPage extends TestBase {
     By txt_emailOrMobile = By.xpath("//input[@placeholder='Email or mobile']");
     By txt_password = By.xpath("//input[@placeholder='Password']");
@@ -97,8 +101,8 @@ public class LoginPage extends TestBase {
         distributorUI.navigateToURL(distributorUI.getText(By.xpath(txt_verifiedVendor.replace("ID", id)), "href"));
         distributorUI.navigateToURL(distributorUI.getText(lbl_suuplierPortalVendorData, "href"));
     }
-    public void setNode() {
-        distributorUI.sendKeys(txt_key,"allowUpdateSalesPeopleMapData");
+    public void setNode(String dataName) {
+        distributorUI.sendKeys(txt_key,dataName);
         distributorUI.sendKeys(txt_value, String.valueOf(true));
         distributorUI.click(btn_setData);
     }
@@ -183,6 +187,33 @@ public class LoginPage extends TestBase {
                 break;
             }
         }
+    }
+
+
+    public void removeCompanyIDs(String featureName, String RemovedCompanyID) {
+        int rowCount = distributorUI.countElements(row_count);
+
+        for (int i = 1; i <= rowCount; i++) {
+            String featureValue = distributorUI.getText(By.xpath(row_feature.replace("ROW", String.valueOf(i))), "value");
+
+            if (featureValue.equalsIgnoreCase(featureName)) {
+
+                String existingCompanyIDs = distributorUI.getText(By.xpath(row_Companies.replace("ROW", String.valueOf(i))));
+
+                String[] companyIDArray = existingCompanyIDs.split(",");
+
+                List<String> companyIDList = new ArrayList<>(Arrays.asList(companyIDArray));
+
+                if (companyIDList.contains(RemovedCompanyID)) {
+                    companyIDList.remove(RemovedCompanyID);
+                    String updatedCompanyIDs = String.join(",", companyIDList);
+                    distributorUI.sendKeysCharByChar(By.xpath(row_Companies.replace("ROW", String.valueOf(i))), updatedCompanyIDs);
+                }
+
+            }
+        }
+
+
     }
 
 

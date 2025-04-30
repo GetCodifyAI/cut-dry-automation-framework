@@ -13,7 +13,9 @@ import org.testng.asserts.SoftAssert;
 public class VerifyCaseDiscountsDisclaimerMsgInOrderDetailsCDAppTest extends TestBase {
     static User user;
     static String customer = "sales@jordanpaige.com";
+    static String customerCode = "ZTEST";
     String ItemCode = "4MK008BB";
+    static String DP = "Cut+Dry Agent - Jordan Paige";
 
     @BeforeMethod
     public void setUp(){
@@ -26,6 +28,13 @@ public class VerifyCaseDiscountsDisclaimerMsgInOrderDetailsCDAppTest extends Tes
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Login.navigateToDistributorPortal(DP);
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Dashboard.navigateToCustomers();
+        Customer.searchCustomerByCode(customerCode);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerCode), "Unable to find the customer Id");
+        Customer.SelectCustomer(customerCode);
+        Customer.ifHasHoldsRemoveHoldsFromCustomer();
         Login.navigateToLoginAsPortal(customer);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboardWhiteLabel(),"white label login error");
 
@@ -39,6 +48,7 @@ public class VerifyCaseDiscountsDisclaimerMsgInOrderDetailsCDAppTest extends Tes
 
         Dashboard.navigateToHistory();
         softAssert.assertTrue(History.isUserNavigatedToHistory(),"navigation error");
+        History.ensureOrderDateSortedDescending();
         History.clickFirstItemFrmHistory();
         softAssert.assertTrue(Customer.isDiscountDisclaimerOrderDetailsMsgDisplayed(),"disclaimer msg display error");
         softAssert.assertAll();

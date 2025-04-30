@@ -2,6 +2,9 @@ package com.cutanddry.qa.functions;
 
 import com.cutanddry.qa.pages.CatalogPage;
 
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
+
 public class Catalog {
     static CatalogPage catalogPage = new CatalogPage();
 
@@ -14,7 +17,7 @@ public class Catalog {
     public static boolean isSelectedProductDisplayed() {
         return catalogPage.isSelectedProductDisplayed();
     }
-    public static void clickOnPreview() {
+    public static void clickOnPreview() throws InterruptedException {
         catalogPage.clickPreview();
     }
     public static boolean isNavigatedToPreview() {
@@ -23,7 +26,9 @@ public class Catalog {
     public static void DownloadPDF() {
         catalogPage.clickExportPdf();
     }
-    public static void SearchItemInCatalogByItemCode(String ItemCode){catalogPage.TypeSearchInCatalogSearch(ItemCode);}
+    public static void SearchItemInCatalogByItemCode(String ItemCode){
+        catalogPage.clickOnItemStatus("All");
+        catalogPage.TypeSearchInCatalogSearch(ItemCode);}
     public static void SelectItemAfterSearch(String ItemCode){catalogPage.ClickOnItemCode(ItemCode);}
     public static void ClickOnPreview(){
         catalogPage.ClickOnPreviewBtn();
@@ -56,6 +61,7 @@ public class Catalog {
     }
 
     public static void selectItemFromGrid(String itemCode){
+        catalogPage.clickOnItemStatus("All");
         catalogPage.clickonItemOnCatalogPage(itemCode);
     }
 
@@ -112,6 +118,15 @@ public class Catalog {
         }
         catalogPage.clickOnUnitOfMeasure();
     }
+    public static void addUnitOfMeasureStable(String uom)throws InterruptedException{
+        if (catalogPage.isSameUomDisplayed(uom)){
+            catalogPage.deleteUOMinCatalog(uom);
+            catalogPage.clickOnConfirmBtn();
+            catalogPage.clickOnSaveChangesBtn();
+//            catalogPage.refreshPage();
+        }
+        catalogPage.clickOnUnitOfMeasure();
+    }
 
     public static int getUnitOfMeasureCount(){
         return catalogPage.getUnitOfMeasureCount();
@@ -124,18 +139,34 @@ public class Catalog {
     public static void setItemUnitPrice(String unitPrice){
         catalogPage.typeUnitPrice(unitPrice);
     }
+    public static void setItemUnitPrice(String uom, String unitPrice){
+        catalogPage.typeUnitPrice(uom, unitPrice);
+    }
 
     public static void selectPercentageAsSalesTypeFrmDropdown(){
         catalogPage.clickOnSalesTypeDropDown();
         catalogPage.clickOnPercentageOption();
     }
 
+    public static void selectDollarValueAsSalesTypeFrmDropdown(String uom){
+        catalogPage.clickOnSalesTypeDropDown(uom);
+        catalogPage.clickOndollarValueOption();
+    }
+
     public static void setSaleValue(String saleValue){
         catalogPage.typeSaleValue(saleValue);
     }
 
+    public static void setSaleValue(String uom, String saleValue){
+        catalogPage.typeSaleValue(uom, saleValue);
+    }
+
     public static void deleteUOMFromCatalog() throws InterruptedException {
         catalogPage.deleteUOMinCatalog();
+    }
+
+    public static void deleteUOMFromCatalog(String uom) throws InterruptedException {
+        catalogPage.deleteUOMinCatalog(uom);
     }
 
     public static boolean deleteUOMOverlayDisplayed(){
@@ -150,8 +181,16 @@ public class Catalog {
         return catalogPage.isBagUOMDisplayed();
     }
 
+    public static boolean isAddedUOMDisplayed(String uom) throws InterruptedException {
+        return catalogPage.isUOMDisplayed(uom);
+    }
+
     public static boolean isDeletedUOMDisplayed(){
         return catalogPage.isBagUOMDisplayed();
+    }
+
+    public static boolean isDeletedUOMDisplayed(String uom) throws InterruptedException {
+        return catalogPage.isUOMDisplayed(uom);
     }
 
     public static void navigateToSubstituteTab(){
@@ -203,6 +242,7 @@ public class Catalog {
     }
 
     public static void searchItemInCatalog(String itemName){
+        catalogPage.clickOnItemStatus("All");
         catalogPage.clickSearchItemInCatalog(itemName);
     }
 
@@ -386,7 +426,7 @@ public class Catalog {
     public static void selectSubCategory() throws InterruptedException {
         catalogPage.selectSubCategoryPork();
     }
-    public static void clickOnStorageMethod(String storageMethod){
+    public static void clickOnStorageMethod(String storageMethod) throws InterruptedException {
         catalogPage.clickOnStorageMethod(storageMethod);
     }
     public static boolean isStorageMethodDisplayed(String storageMethod){
@@ -434,5 +474,135 @@ public class Catalog {
         }
         catalogPage.clickAddSubstitutionBtn();
     }
+    //-------------------- Multi UOM -----------------------
+    public static void ClickOnMultiUomDropDownOG(String code)throws InterruptedException{
+        catalogPage.ClickOnMultiUomDropDownOG(code);
+    }
+    public static double getOGPriceUOM(String code,String uom) throws InterruptedException {
+        return catalogPage.getOGPriceUOM(code,uom);
+    }
+    public static void clickOGAddToCartPlusIcon(int count,String code, String uom) throws InterruptedException{
+        for (int i=0; i<count;i++){
+            catalogPage.clickOGAddToCartPlusIcon(code,uom);
+        }
+    }
+    public static String getItemUOMQuantity(String code,String uom){
+        return catalogPage.getItemUOMQuantity(code,uom);
+    }
+    public static void clickOGAddToCartMinusIcon(int count,String code, String uom) throws InterruptedException{
+        for (int i=0; i<count;i++){
+            catalogPage.clickOGAddToCartMinusIcon(code,uom);
+        }
+    }
+    public static void clickSubmittedOrder(String id){
+        catalogPage.clickSubmittedOrder(id);
+    }
+    public static double getTotalPriceInOrder() throws InterruptedException {
+        return catalogPage.getTotalPriceInOrder();
+    }
+    public static String getTotalQuantityInOrder(){
+        return catalogPage.getTotalQuantityInOrder();
+    }
+    public static void ClickOnMultiUomDropDown(String name)throws InterruptedException{
+        catalogPage.ClickOnMultiUomDropDown(name);
+    }
+    public static void ClickOnMultiUomDropDownOption(String option)throws InterruptedException{
+        catalogPage.ClickOnMultiUomDropDownOption(option);
+    }
+    public static double getPDPPriceUOM(String uom) throws InterruptedException {
+        return catalogPage.getPDPPriceUOM(uom);
+    }
+    public static void clickAddToCartPlusIcon(int count, String uom) throws InterruptedException{
+        for (int i=0; i<count;i++){
+            catalogPage.clickAddToCartPlusIcon(uom);
+        }
+    }
+    public static void clickAddToCartMinusIcon(int count, String name) {
+        for (int i=0; i<count;i++){
+            catalogPage.clickAddToCartMinusIcon(name);
+        }
+    }
+    public static boolean isEditQuantitiesButtonDisplayed(String name){
+        return catalogPage.isEditQuantitiesButtonDisplayed(name);
+    }
+    public static boolean isAddedQuantitiesDisplayed(String name ,String qty){
+        return catalogPage.isAddedQuantitiesDisplayed(name,qty);
+    }
+    public static void clickOnCatalogProduct(String name){
+        catalogPage.clickOnCatalogProduct(name);
+    }
+    public static double getTotalPriceInReviewOrder() throws InterruptedException {
+        return catalogPage.getTotalPriceInReviewOrder();
+    }
+    public static String getTotalQuantityInReviewOrder(){
+        return catalogPage.getTotalQuantityInReviewOrder();
+    }
+    public static void clickReviewOrderTrashIcon(String code)throws InterruptedException{
+        catalogPage.clickReviewOrderTrashIcon(code);
+    }
+    public static boolean isSubmittedStandingOrderDisplayed(String quantity ,String price){
+        return  catalogPage.isSubmittedStandingOrderDisplayed(quantity,price);
+    }
+    public static void searchOrderGuide(String item) throws InterruptedException {
+        catalogPage.searchOrderGuide(item);
+    }
+    public static double getUOMOGPrice(String code,String uom) throws InterruptedException {
+        return catalogPage.getUOMOGPrice(code,uom);
+    }
+    public static double getItemPriceOnCheckoutButtonOG() throws InterruptedException {
+        return catalogPage.getItemPriceOnCheckoutButtonOG();
+    }
+    public static void ClickOnCatalogMultiUomDropDown(String name)throws InterruptedException{
+        catalogPage.ClickOnCatalogMultiUomDropDown(name);
+    }
+    public static double getDeliveryFeesPriceInReviewOrder() throws InterruptedException {
+        return catalogPage.getDeliveryFeesPriceInReviewOrder();
+    }
+    public static double getTotalEndlessAislePriceInReviewOrder() throws InterruptedException {
+        return catalogPage.getTotalEndlessAislePriceInReviewOrder();
+    }
+    public static double getTotalEndlessAisleSubTotalPriceInReviewOrder() throws InterruptedException {
+        return catalogPage.getTotalEndlessAisleSubTotalPriceInReviewOrder();
+    }
+    public static double getSubTotalPriceInOrder() throws InterruptedException {
+        return catalogPage.getSubTotalPriceInOrder();
+    }
+    public static boolean isCatalogAddToCartButtonDisplayed(String name){
+        return catalogPage.isCatalogAddToCartButtonDisplayed(name);
+    }
+    public static void deleteSubstitute(){
+        catalogPage.deleteSubstitute();
+    }
+    public static void ClickOnCatalogMultiUomDropDownStable(String name)throws InterruptedException{
+        catalogPage.ClickOnCatalogMultiUomDropDownStable(name);
+    }
+    public static void selectItemStatus(String itemStatus){
+        catalogPage.clickOnItemStatus(itemStatus);
+    }
+    public static boolean isLastOrderDateDisplayed(String date)throws InterruptedException{
+        return catalogPage.isLastOrderDateDisplayed(date);
+    }
+    public static void clickPurchaseHistory(){
+        catalogPage.clickPurchaseHistory();
+    }
+    public static boolean isLastOrderDatePDPDisplayed(String date)throws InterruptedException{
+        return catalogPage.isLastOrderDatePDPDisplayed(date);
+    }
+    public static String getCopiedPDPUrl() throws IOException, InterruptedException, UnsupportedFlavorException {
+        return catalogPage.getCopiedPDPUrl();
+    }
+    public static void loginPDPURL(String pdpURL) throws InterruptedException {
+        catalogPage.loginPDPURL(pdpURL);
+    }
+    public static boolean isAlreadyCustomerPopUpDisplay() throws InterruptedException {
+        return catalogPage.isAlreadyCustomerPopUpDisplay();
+    }
+    public static boolean isAlreadyCustomerButtonDisplay(String name){
+        return catalogPage.isAlreadyCustomerButtonDisplay(name);
+    }
+    public static void loginPDPURLSame(String pdpURL) throws InterruptedException {
+        catalogPage.loginPDPURLSame(pdpURL);
+    }
+
 
 }

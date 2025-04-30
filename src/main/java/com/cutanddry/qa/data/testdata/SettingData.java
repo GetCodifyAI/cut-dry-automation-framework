@@ -20,4 +20,18 @@ public class SettingData {
     public static final String INVALID_AR_CONTACT = "The AR email is invalid.";
     public static final String INVALID_TECHNICAL_CONTACT = "Invalid email in Technical Contacts.";
 
+    public static final String SEND_ALERTS_TO = "Send alerts to:";
+    public static final String SEND_ALERTS_TO_OPTION = "Customers who ordered in the last 30 days";
+    public static final String SEND_ALERTS_TO_OPTION_2 = "All customers";
+    public static final String WHO_HAS = "Who has:";
+    public static final String WHO_HAS_OPTION = "NOT ordered for the next 14 days";
+    public static final String AND_HAS = "AND has:";
+    public static final String AND_HAS_OPTION = "NOT ordered in the last 7 days";
+    public static final String SEND_ALERTS = "Send alerts:";
+    public static final String SEND_ALERTS_OPTION = "On the day of delivery";
+    public static final String SEND_ALERTS_OPTION2 = "1 day before delivery cut-off";
+    public static final String AT_TIME = "At (time):";
+    public static final String AT_TIME_OPTION = "9:00 AM";
+
+
 }

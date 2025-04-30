@@ -17,7 +17,8 @@ public class RestaurantDashboardPage extends TestBase {
         return distributorUI.isDisplayed(pgTitle_history);
     }
 
-    public void clickOnHistory(){
+    public void clickOnHistory() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.click(btn_history);
     }
 

@@ -8,6 +8,7 @@ import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.functions.Settings;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -35,17 +36,15 @@ public class VerifyOrderSettingGlobalHolidayTest extends TestBase {
     @Test(groups = "DOT-TC-635")
     public void VerifyOrderSettingGlobalHoliday() throws InterruptedException, ParseException {
          softAssert = new SoftAssert();
-//        Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-//        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
 
         Login.switchIntoNewTab();
         Login.navigateToDistributorPortal(DP);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
 
         Dashboard.navigateToOrderSettings();
-        softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");
+        Assert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");
         Settings.setCustomerSpecificDeliveryDays(false); // Settings.uncheckDeliveryDays();
         Settings.setDeliveryDays(false);
         Settings.clickOnAddHoliday(2);
@@ -55,12 +54,12 @@ public class VerifyOrderSettingGlobalHolidayTest extends TestBase {
         holidayDate = Settings.getHolidayDate();
         Settings.clickOnSaveBtn();
 //        softAssert.assertEquals(Settings.getDate(),Settings.getAddedDate(),"holiday setting error");
-        softAssert.assertEquals(holidayDate,Settings.getAddedDate(),"holiday setting error");
+        softAssert.assertEquals(holidayDate,Settings.getAddedDate(),"Added holiday setting error");
         Settings.clickOnSaveChanges();
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
 
         Customer.increaseFirstRowQtyByOne();
@@ -73,7 +72,7 @@ public class VerifyOrderSettingGlobalHolidayTest extends TestBase {
         Login.switchIntoNewTab();
 //        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Login.navigateToRestaurantPortal(customerPhoneNo);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
 //        Dashboard.navigateToIndependentFoodsCo();
         Dashboard.clickOnPlaceOrderBtn();
 
@@ -89,11 +88,12 @@ public class VerifyOrderSettingGlobalHolidayTest extends TestBase {
 
         Login.navigateToDistributor();
         Dashboard.isUserNavigatedToDashboard();
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation to order settings error");
         Settings.clickOnRemoveHoliday();
-        softAssert.assertNotEquals(Settings.getDate(),Settings.getAddedDate(),"holiday setting error");
+//        softAssert.assertNotEquals(Settings.getDate(),Settings.getAddedDate(),"holiday setting error");
+        softAssert.assertNotEquals(holidayDate,Settings.getAddedDate(),"holiday setting error after remove");
         Settings.clickOnSaveChanges();
         softAssert.assertAll();
     }

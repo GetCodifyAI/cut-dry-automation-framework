@@ -20,34 +20,58 @@
             <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowToDeclineCreditThenChangeItToApproveCreditTest"/>
             <class name="com.cutanddry.qa.tests.credit_request.ValidateTheTimelineInCreditRequestUsingTimestampStatusOrganizationAndUser"/>
 
-            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerMailDeliveryOrderViaOrderGuideTest" />
+            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaOrderGuideTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaCatalogTest" />
-            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaCatalogTest" />
-            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerMailDeliveryOrderViaCatalogTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaPDPTest" />
-            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaPDPTest" />
-            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerMailDeliveryOrderViaPDPTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceCustomerDeliveryOrderViaOrderGuideCatalogPDPTest" />
+            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaOrderGuideTest" />
+            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaCatalogTest" />
+            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaPDPTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceCustomerPickUpOrderViaOrderGuideCatalogPDPTest" />
+            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerMailDeliveryOrderViaOrderGuideTest" />
+            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerMailDeliveryOrderViaCatalogTest" />
+            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerMailDeliveryOrderViaPDPTest" />
+            <class name="com.cutanddry.qa.tests.e2e.PlaceCustomerMailDeliveryOrderViaOrderGuideCatalogPDPTest" />
+
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingAddOrderReminderAlertsTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingAddCreditCardTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingExportOrderSettingTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingImportOrderSettingTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingContactDetailsTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyTheAllowSponsoredProductAdvertisementsFlowTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyTheAllowBuyersEdgePlatformRebateTagsFlowTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingGlobalHolidayTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingGlobalHolidayPickupWillCallMailDeliveryTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingCustomerSpecificHolidayTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingCustomerSpecificHolidayPickupWillCallMailDeliveryTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingEditOrderReminderAlertsTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingAddPaymentMethodTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingRemovePaymentMethodTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingDownloadInvoicesTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingLinkBankAccountTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingRemoveBankAccountTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyTheFunctionalityOfProfileAccountInformation"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyTheFlowOfEditingTheConfigurationSettingsForTheNewlyAddedWarehouseTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingDeleteOrderReminderAlertsTest"/>
+           <!-- &lt;!&ndash;            TODO: Billing test cases are failing due to the lack of paid due invoices and the inability to create new ones. sComment out the test cases until a solution is provided.&ndash;&gt;
+            &lt;!&ndash;            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingPayButtonAddBankAccountTest"/>&ndash;&gt;
+            &lt;!&ndash;            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingPayButtonAddCreditCardTest"/>&ndash;&gt;
+            &lt;!&ndash;             TODO: The maximum warehouse limit has been reached, causing related test cases to fail. Comment out the test cases until a solution is provided.&ndash;&gt;
+            &lt;!&ndash;            <class name="com.cutanddry.qa.tests.settings.VerifyTheFlowOfAddingTheConfigurationSettingsForTheNewlyAddedWarehouseTest" />&ndash;&gt;
+            &lt;!&ndash;             TODO: The maximum warehouse limit has been reached, causing related test cases to fail. Comment out the test cases until a solution is provided.&ndash;&gt;
+            &lt;!&ndash;            <class name="com.cutanddry.qa.tests.settings.ValidateTheFlowOfTheAddNewWarehouseUnderTheManageWarehouseOptionTest" />&ndash;&gt;
+-->
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderGuideOrderApprovalUIFeatureTest" />
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderApprovalSettingsReflectedWhileOrderingTest" />
+
 
             <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessRestrictedViaCustomerProfileTest" />
 
-            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerOrderGuideReportGenerationTest" />
-            <class name="com.cutanddry.qa.tests.reports.VerifyThePickListDownloadReportTest" />
-            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerBaseReportGenerationTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerOrdersReportGenerationTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyTheItemMovementReportGenerationTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerWiseItemMovementDownloadReportTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyTheCatalogExportDownloadReportTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyThePayCustomersDownloadReportTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyTheAtRiskAccountsDownloadReportTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyThePaymentTransactionDownloadReportTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyThePaymentAuthorizationStatusDownloadReportTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyTheTrackReadyOrdersDownloadReportTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyOutOfStockItemsShowingAndNotOnSuggestiveSalesTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountHardHoldTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountRemoveHardHoldTest" />
 
-            <class name="com.cutanddry.qa.tests.e2e.PlaceCustomerMailDeliveryOrderViaOrderGuideCatalogPDPTest" />
-            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaOrderGuideTest" />
-            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaOrderGuideTest" />
+
         </classes>
     </test>
 </suite>

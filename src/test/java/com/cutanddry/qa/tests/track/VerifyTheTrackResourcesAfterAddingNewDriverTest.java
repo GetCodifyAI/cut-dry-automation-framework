@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheTrackResourcesAfterAddingNewDriverTest extends TestBase {
     static User user;
-    static String name = "Jordan Harper";
+    static String name = "Jordan Harper "+ generateDynamicValue();
     static String phone = "14155321770";
 
     @BeforeMethod
@@ -32,12 +32,23 @@ public class VerifyTheTrackResourcesAfterAddingNewDriverTest extends TestBase {
         softAssert.assertTrue(Track.isResourcesTextDisplayed(),"navigation to track resources error");
         Track.clickOnDrivers();
         softAssert.assertTrue(Track.isAddDriversBtnDisplayed(),"navigation to drivers error");
+
+        Track.removeExistUser(name);
         Track.clickOnAddDrivers();
         softAssert.assertTrue(Track.isAddDriverPopupDisplayed(),"add driver popup error");
         Track.enterName(name);
         Track.enterPhone(phone);
         Track.clickOnInviteUser();
+        Track.clickOK();
         softAssert.assertTrue(Track.isUserDisplayed(name),"add driver error");
+
+        //Post request
+        Track.clickOnEditUser(name);
+        softAssert.assertTrue(Track.isEditUserPopupDisplayed(),"pop display error");
+        Track.clickOnRemoveUserLabel();
+        Track.clickOnRemoveUser();
+        Track.clickOK();
+
         softAssert.assertAll();
     }
 

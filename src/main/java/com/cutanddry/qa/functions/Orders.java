@@ -53,6 +53,10 @@ public class Orders {
     public static void selectOrderGuide(String OrderGuide) {
         ordersPage.clickOnOrderGuide(OrderGuide);
     }
+
+    public static boolean isSelectOrderGuideDisplayed(){
+       return ordersPage.isSelectOrderGuidePopUpDisplayed();
+    }
     public static void clickOnFirstOrder() throws InterruptedException {
         ordersPage.clickOnFirstOrder();
     }
@@ -61,6 +65,14 @@ public class Orders {
     }
     public static void clickOnEditOrder() throws InterruptedException {
         ordersPage.clickOnEditOrder();
+    }
+    public static void clickOnEditOrderInReview() throws InterruptedException {
+        ordersPage.clickOnEditOrderInReview();
+    }
+    public static void clickOnEditOrderInReviewStable() throws InterruptedException {
+        if (ordersPage.isNavigatedToReviewOrderScreen()) {
+            ordersPage.clickOnEditOrderInReview();
+        }
     }
     public static boolean isEditOrderPopupDisplayed(){
         return ordersPage.isEditOrderPopupDisplayed();

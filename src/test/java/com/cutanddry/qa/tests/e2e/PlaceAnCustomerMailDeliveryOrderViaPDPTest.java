@@ -3,8 +3,10 @@ package com.cutanddry.qa.tests.e2e;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.testdata.DistributorOrderData;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.SplitWeightUOMData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -15,6 +17,7 @@ public class PlaceAnCustomerMailDeliveryOrderViaPDPTest extends TestBase {
     SoftAssert softAssert;
     static User user;
     static String customerId = DistributorOrderData.RESTAURANT_TEST_HAYES_ID;
+    static String sortOption = DistributorOrderData.SORT_ITEM_BY;
     static String itemName, orderId, searchItemCode;
     static double itemPrice;
 
@@ -31,12 +34,13 @@ public class PlaceAnCustomerMailDeliveryOrderViaPDPTest extends TestBase {
 
         // Distributor Flows
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId);
+        Customer.selectSortItemByOption(sortOption);
 
         itemName = Customer.getItemNameFirstRow();
         searchItemCode = Customer.getItemCodeFirstRow();
@@ -63,10 +67,10 @@ public class PlaceAnCustomerMailDeliveryOrderViaPDPTest extends TestBase {
         // Restaurant Flows
         Login.switchIntoNewTab();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "The user is unable to land on the Dashboard page.");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "The user is unable to land on the Dashboard page.");
 
         RestaurantDashboard.navigateToHistory();
-        softAssert.assertTrue(RestaurantDashboard.isUserNavigatedToHistory(), "The user is unable to land on the History page.");
+        Assert.assertTrue(RestaurantDashboard.isUserNavigatedToHistory(), "The user is unable to land on the History page.");
         RestaurantOrderHistory.searchOrderByOrderId(orderId);
         softAssert.assertTrue(RestaurantOrderHistory.isOrderSearchResultByOrderIdDisplayed(orderId), "Unable to find the specific order Id");
         RestaurantOrderHistory.clickOnSpecificRecord(orderId);

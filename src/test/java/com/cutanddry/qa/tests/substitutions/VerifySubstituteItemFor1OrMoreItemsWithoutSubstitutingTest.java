@@ -37,10 +37,11 @@ public class VerifySubstituteItemFor1OrMoreItemsWithoutSubstitutingTest extends 
         itemName = Customer.getItemNameFirstRow();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         Customer.increaseFirstRowQtyByOneInDist();
-        Customer.checkoutItemsDist();
+        Customer.checkoutSubstituteItems();
         softAssert.assertTrue(Customer.isSubstitutesPopupDisplayed(),"substitutes popup error");
         Customer.clickDoNotSubstitute();
-        softAssert.assertFalse(Customer.isReplacementDisplayed(),"replace error");
+        Customer.clickSaveSelection();
+        softAssert.assertTrue(Customer.isDoNotSubstituteDisplayed(),"replace error");
         softAssert.assertAll();
     }
 

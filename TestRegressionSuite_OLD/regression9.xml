@@ -1,0 +1,62 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="Part_Nine"/>
+        <classes>
+            <class name="com.cutanddry.qa.tests.track.VerifyTheDatePickerFunctionality"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyDateChangeFunctionalityUnderMonitoring"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyAddNewRouteUsingTrackFeature"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyDownloadExampleRouteUsingTrackFeature"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTheDispatchButtonFunctionalityForMultipleRoutes"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTrackFieldManagerUsingTrackFeature"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTrackSettingsUnderRoutes"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTheWarehouseSelectionFromTheDropdown"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateCustomerWarehouseMonitoringTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateMonitoringFunctionalityDetailsTest"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterAddingNewDriverTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterEditingDriverTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterDeletingDriverTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesSearchDriverTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterAddingNewTruckTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterEditingTruckTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesAfterDeletingTruckTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackResourcesSearchTruckTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsSMSTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsEmailTest" />
+            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsPushTest" />
+            <class name="com.cutanddry.qa.tests.track.ValidateDetailsOnRouteRecordTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateGettingRouteCodeFlowTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateGettingEditRouteFlowTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateAddStopToRouteFlowTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateAddBreakToRouteFlowTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateTheRouteRecordListTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateVisibilityStatusOfRouteTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateAddUnassignedStopsTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateEditUnassignedStopsTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateDeleteUnassignedStopsTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateTheDispatchRouteFlowTest"/>
+
+            <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsDeleteTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyDraftOrderSubmittedByOperatorTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsSearchFunctionTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyTheDraftDeleteConfirmationModalTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyDeleteDraftOrderByOperatorTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsSearchAndFilterFunctionTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyErrorMessageDisplayTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderWithoutAddingAnyItemsTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByRemovingExistingItemsAndChangingQuantitiesTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromOrderGuideTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromPDPTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsViaOrderGuideCatalogPDPTest"/>
+            <class name="com.cutanddry.qa.tests.draft.ValidateDraftOrdersAreOnlyAppearing30DaysTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyPendingApprovalsAreNotClickableTest"/>
+        </classes>
+    </test>
+</suite>

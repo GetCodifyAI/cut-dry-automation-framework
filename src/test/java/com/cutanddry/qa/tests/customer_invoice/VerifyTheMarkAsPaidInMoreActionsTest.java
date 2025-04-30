@@ -24,7 +24,7 @@ public class VerifyTheMarkAsPaidInMoreActionsTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-702")
+    @Test(groups = "DOT-TC-705")
     public void VerifyTheMarkAsPaidInMoreActions() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());

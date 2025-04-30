@@ -13,7 +13,7 @@ public class ShowCase {
         showCasePage.SearchInProductSearchBar(ProductName);
     }
 
-    public static void SelectProductFromShowCase(String productName){
+    public static void SelectProductFromShowCase(String productName) throws InterruptedException {
         showCasePage.SelectProductInShowCase(productName);
     }
 

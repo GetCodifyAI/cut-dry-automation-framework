@@ -43,7 +43,7 @@ public class VerifyEditingOrderImportingOrderGuideTest extends TestBase {
         Customer.uploadToOrder();
         Customer.uploadFile(Paths.get(Objects.requireNonNull(ClassLoader.getSystemClassLoader().getResource("excelFiles/Test_Order_Guide_Automation.xlsx")).toURI()).toString());
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(),"navigation error for review order");
-        softAssert.assertEquals(Customer.getTotalPriceCart(),164.00,"import order guide error");
+        softAssert.assertEquals(Customer.getReviewTotalPriceCart(),164.00,"import order guide error");
         softAssert.assertAll();
     }
 

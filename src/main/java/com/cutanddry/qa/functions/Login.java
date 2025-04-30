@@ -59,8 +59,8 @@ public class Login {
     public static void navigateToSupplierPortalVendor(String id) {
         loginPage.navigateToSupplierPortalVendor(id);
     }
-    public static void setNode(){
-        loginPage.setNode();
+    public static void setNode(String DataName){
+        loginPage.setNode(DataName);
     }
     public static void navigateToDistributorPortal(String name) {
         loginPage.navigateToDistributorPortal(name);
@@ -97,4 +97,12 @@ public class Login {
         loginPage.updateCompanyIDs(featureName, companyID);
     }
 
+    public static void removeCompanyIDs(String featureName, String companyID){
+        loginPage.removeCompanyIDs(featureName,companyID);
+
+    }
+
+    public static void navigateToRestaurant() {
+        loginPage.navigateToRestaurant();;
+    }
 }

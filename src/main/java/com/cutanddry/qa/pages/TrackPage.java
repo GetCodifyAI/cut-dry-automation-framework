@@ -183,7 +183,7 @@ public class TrackPage extends LoginPage{
         boolean dateFound = false;
 
         for (int i = 0; i < maxAttempts; i++) {
-            if (distributorUI.isDisplayed(startDate)) {
+            if (distributorUI.isDisplayed(startDate,5)) {
                 distributorUI.click(startDate);
                 dateFound = true;
                 break;
@@ -350,6 +350,8 @@ public class TrackPage extends LoginPage{
         }
         return distributorUI.isDisplayed(txt_trackRoutes);
     }
+
+
     public void clickOnTitle() {
         distributorUI.click(txt_trackRoutes);
     }
@@ -414,12 +416,12 @@ public class TrackPage extends LoginPage{
         distributorUI.clickUsingJavaScript(btn_inviteUser);
     }
     public boolean isUserDisplayed(String user) throws InterruptedException {
-        try {
+        /*try {
             distributorUI.waitForCustom(4000);
             distributorUI.waitForVisibility(By.xpath(btn_editUser.replace("USER", user)));
         } catch (Exception e){
             return false;
-        }
+        }*/
         return distributorUI.isDisplayed(By.xpath(btn_editUser.replace("USER", user)));
     }
     public void clickOnEditUser(String user) throws InterruptedException {
@@ -445,13 +447,10 @@ public class TrackPage extends LoginPage{
         distributorUI.waitForVisibility(txt_removeUser);
         return distributorUI.isDisplayed(txt_removeUser);
     }
-    public void clickOnRemoveUser() {
-        try {
-            distributorUI.waitForCustom(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+    public void clickOnRemoveUser() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
         distributorUI.click(btn_removeUser);
+        distributorUI.waitForCustom(3000);
     }
     public void clickOnRemoveUserLabel() throws InterruptedException {
         distributorUI.waitForCustom(3000);
@@ -680,11 +679,11 @@ public class TrackPage extends LoginPage{
         }
     }
     public boolean isUploadRouteTextDisplayed(){
-        try {
-            distributorUI.waitForVisibility(txt_uploadRoute);
-        } catch (Exception e){
-            return false;
-        }
+//        try {
+//            distributorUI.waitForVisibility(txt_uploadRoute);
+//        } catch (Exception e){
+//            return false;
+//        }
         return distributorUI.isDisplayed(txt_uploadRoute);
     }
     public void clickDeleteRoute()throws InterruptedException{

@@ -1,0 +1,37 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="Part_Seven"/>
+        <classes>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderOptionDisplayedInCustomersScreenTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderOptionNotDisplayedInCustomersScreenIfTurnedOffTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyUserCanAddItemsManuallyToScanToOrderOrderTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyUserCanIncreaseDecreaseQuantitiesFromScanToOrderFlowTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderCustomerCancelOrderButtonDisplayandBehaviorTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyThatTheAccountsReceivableUsersCanPlaceTheScanToOrdersTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyThatTheSalespersonUsersCanPlaceTheScanToOrdersTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyTheUserCanAddInternalNotesPONumberForScanToOrderOrdersTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderAddedItemDetailsCorrectlyDisplayedInScanToOrderScreenTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyCTAButtonTextTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderEmptyCartTextTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderItemSearchInputFieldPlaceholderTextTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyTheDraftOrderForScanToOrderTest"/>
+
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderOptionDisplayedInCustomerProfileScreenTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderOptionNotDisplayedInCustomerProfileScreenIfTurnedOffTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderCustomerNameDisplayedInScanToOrderScreenTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderUsersCanRemoveItemsUsingBinIconTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderUserCannotEditFullfillmentTypeAndPickupDateFromReviewScreenTest"/>
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyDraftCreationFromScanToOrderAndAccessInOperatorPortalTest"/>
+
+
+
+
+        </classes>
+    </test>
+</suite>

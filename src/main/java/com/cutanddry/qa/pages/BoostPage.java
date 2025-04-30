@@ -345,7 +345,8 @@ public class BoostPage extends LoginPage {
         distributorUI.click(featuredListTab);
     }
 
-    public void clickOnCreateNewFeaturedListBtn(){
+    public void clickOnCreateNewFeaturedListBtn() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.click(createNewFeaturedListBtn);
     }
 

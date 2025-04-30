@@ -46,12 +46,12 @@ public class DashboardPage extends LoginPage{
     By btn_endlAisle  =By.xpath("//a[@data-tip='Endless Aisle']");
     By btn_creditReq  =By.xpath("//a[@data-tip='Credit Requests']");
     By btn_showcase = By.xpath("//a[contains(@data-tip,'Cut+Dry Product Showcase')]");
-    By btn_adsSettings = By.xpath("//div[@arrowprops]//a[text()='Ads + Rebates']");
+    By btn_adsSettings = By.xpath("//div[@arrowprops]//a[text()='Influence']");
     By btn_paySettings = By.xpath("//div[@arrowprops]//a[text()='Pay']");
     By btn_credit_requests = By.xpath("//a[@data-for='sideNavSupplierMenuOptions' and @href='/credit-requests']");
     By btn_placeOrder = By.xpath("//div[contains(text(), 'Independent Foods Co')]");
     By btn_hayes = By.xpath("//div[contains(text(), 'Hayes')]");
-    By txt_OrderGuide = By.xpath("//div[contains(text(), 'Order Guide')]");
+    By txt_OrderGuide = By.xpath("//span[contains(text(), 'Order Guide')]");
     By btn_TestAutomation = By.xpath("//div[contains(text(), 'Test_Automation') and contains(@class, 'w-100')]");
     By txt_draftOrder = By.xpath("//div[contains(@class, 'text-center') and contains(text(), 'continue your previous draft order')]");
     By btn_noDraftOrder = By.xpath("//span[text()='×']");
@@ -333,6 +333,9 @@ public class DashboardPage extends LoginPage{
     public void clickOnOrder() throws InterruptedException {
         distributorUI.click(btn_order);
         distributorUI.waitForCustom(2000);
+    }
+    public boolean isCustomerDisplayed(){
+        return distributorUI.isDisplayed(btn_customers);
     }
 
 }

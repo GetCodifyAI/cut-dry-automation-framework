@@ -23,12 +23,18 @@ public class ShowCasePage extends LoginPage {
     }
 
     public void SearchInProductSearchBar(String productName){
+        try {
+            distributorUI.waitForCustom(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         distributorUI.sendKeys(productSearchBar,productName);
     }
 
-    public void SelectProductInShowCase(String productName){
-        distributorUI.isDisplayed(By.xpath(productDisplayed.replace("BRANDPAGE",productName)));
-        distributorUI.clickWithScrollAndHover(By.xpath(productDisplayed.replace("BRANDPAGE",productName)));
+    public void SelectProductInShowCase(String productName) throws InterruptedException {
+        distributorUI.waitForCustom(5000);
+        distributorUI.isDisplayed(By.xpath(productDisplayed.replace("BRANDPAGE",productName.toLowerCase())));
+        distributorUI.clickWithScrollAndHover(By.xpath(productDisplayed.replace("BRANDPAGE",productName.toLowerCase())));
     }
 
     public void ClickOnManufacturer() throws InterruptedException {

@@ -1,0 +1,66 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="Part_Eight"/>
+        <classes>
+            <class name="com.cutanddry.qa.tests.order_desk.VerifyAddingNewProductFromCatalogTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.VerifyDeletingVoiceOrderDraftLineItemTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.VerifyOrderDeskFeatureTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.VerifyViewAndEditVoiceOrderDraftTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.UpdateCustomerAndLocationTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.verifyOrderDeskDeliveryDateTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.VerifySwapLineItemTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.VerifyVoiceRecordUploadTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.VerifySavingSubmittedVoiceOrderTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.VerifyEditingSubmittedVoiceOrderTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.VerifyDeletingVoiceOrderSubmitLineItemTest" />
+
+            <class name="com.cutanddry.qa.tests.dashboard.VerifyDashboardShowingSalespersonsRelatedChartsTest" />
+            <class name="com.cutanddry.qa.tests.dashboard.VerifyFunctionalityOfTeamStandingsTableTest" />
+
+            <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderReviewTest" />
+            <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderDetailsSupplierPortalTest" />
+            <class name="com.cutanddry.qa.tests.disclaimer_msg.VerifyCaseDiscountsDisclaimerMsgInOrderDetailsCDAppTest" />
+
+            <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor1OrMoreItemsWithSubstitutingTest" />
+            <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor0CountItemWithSubstitutingTest" />
+            <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor0CountItemWithoutSubstitutingTest" />
+            <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemFor1OrMoreItemsWithoutSubstitutingTest" />
+            <class name="com.cutanddry.qa.tests.substitutions.VerifySubstituteItemByIncreasingOrDecreasingQuantityTest" />
+            <class name="com.cutanddry.qa.tests.substitutions.VerifyTheMaximumAmountOfSubstituteItemsTest" />
+
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingAddOrderReminderAlertsTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingAddCreditCardTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingExportOrderSettingTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingImportOrderSettingTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingContactDetailsTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyTheAllowSponsoredProductAdvertisementsFlowTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyTheAllowBuyersEdgePlatformRebateTagsFlowTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingGlobalHolidayTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingGlobalHolidayPickupWillCallMailDeliveryTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingCustomerSpecificHolidayTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingCustomerSpecificHolidayPickupWillCallMailDeliveryTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingEditOrderReminderAlertsTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingAddPaymentMethodTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingRemovePaymentMethodTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingDownloadInvoicesTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingLinkBankAccountTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingRemoveBankAccountTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyTheFunctionalityOfProfileAccountInformation"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyTheFlowOfEditingTheConfigurationSettingsForTheNewlyAddedWarehouseTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingDeleteOrderReminderAlertsTest"/>
+            <!--            TODO: Billing test cases are failing due to the lack of paid due invoices and the inability to create new ones. sComment out the test cases until a solution is provided.-->
+            <!--            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingPayButtonAddBankAccountTest"/>-->
+            <!--            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingPayButtonAddCreditCardTest"/>-->
+            <!--             TODO: The maximum warehouse limit has been reached, causing related test cases to fail. Comment out the test cases until a solution is provided.-->
+            <!--            <class name="com.cutanddry.qa.tests.settings.VerifyTheFlowOfAddingTheConfigurationSettingsForTheNewlyAddedWarehouseTest" />-->
+            <!--             TODO: The maximum warehouse limit has been reached, causing related test cases to fail. Comment out the test cases until a solution is provided.-->
+            <!--            <class name="com.cutanddry.qa.tests.settings.ValidateTheFlowOfTheAddNewWarehouseUnderTheManageWarehouseOptionTest" />-->
+        </classes>
+    </test>
+</suite>

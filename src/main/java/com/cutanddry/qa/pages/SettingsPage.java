@@ -42,7 +42,7 @@ public class SettingsPage extends LoginPage{
     By txt_profSettings = By.xpath("//h2[contains(text(),'Profile')]");
     By txt_trackSettings = By.xpath("//h2[contains(text(),'Delivery Settings')]");
     By txt_billingSettings = By.xpath("//h2[contains(text(),'Billing Settings')]");
-    By txt_adsSettings = By.xpath("//div[contains(text(),'Ads and Rebates')]");
+    By txt_adsSettings = By.xpath("//div[contains(text(),'Cut+Dry Influence')]");
     By txt_paySettings = By.xpath("//h2[contains(text(),'Pay Settings')]");
     By btn_addPaymentMethod = By.xpath("//button[text()='Add Payment Method']");
     By txt_addPaymentPopup = By.xpath("//h3[text()='Add Payment Method']");
@@ -148,8 +148,15 @@ public class SettingsPage extends LoginPage{
     String invalidContactPopUp = "//h2[text()='MESSAGE']";
     By txt_customerRestriction =By.xpath("//div[contains(text(),'Customer Restrictions')]");
     By sponsorProdAdsToggle = By.xpath("//div[contains(text(), 'Allow Sponsored Product Advertisements')]/../../following-sibling::div//div[@class='react-switch-bg']");
-    By generalSettingSaveChanges = By.xpath("(//button[text()='Save Changes'])[1]");
-    By buyerEdgePlatformRebateToggle = By.xpath("//div[contains(text(), 'Allow Buyers Edge Platform Rebate Tags')]/../../following-sibling::div//div[@class='react-switch-bg']");
+    By generalSettingSaveChanges = By.xpath("(//button[text()='Save'])[1]");
+    By buyerEdgePlatformRebateToggle = By.xpath("//div[contains(text(), 'Rebate Tags')]/../../following-sibling::div//div[@class='react-switch-bg']");
+    By orderReminderToggleStable = By.xpath("//label[contains(text(), 'Order Reminders')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By orderReminderToggleStable1 = By.xpath("//label[contains(text(), 'Order Reminders')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By btn_configureAlerts = By.xpath("//button[contains(text(),'Configure Alerts')]");
+    By txt_configureOrderReminder = By.xpath("//p[text()='Configure order reminders']");
+    String configureOrderReminderDropDown = "//label[contains(text(), 'DROPDOWN')]/following-sibling::div";
+    String configureOrderReminderDropDownOption = "(//div[contains(text(),'DROPDOWNOPTION')])[last()]";
+
 
 
     public void clickSaveChanges(){
@@ -832,8 +839,9 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForCustom(4000);
         return distributorUI.isDisplayed(txt_setAlert);
     }
-    public void clickOkAlert(){
+    public void clickOkAlert() throws InterruptedException {
         distributorUI.click(btn_OkAlert);
+        distributorUI.waitForCustom(3000);
     }
     public void clickDeleteAlert(){
         distributorUI.waitForElementEnabledState(btn_deleteAlert,true);
@@ -938,12 +946,12 @@ public class SettingsPage extends LoginPage{
         return distributorUI.isDisplayed(By.xpath(invalidContactPopUp.replace("MESSAGE", message)));
     }
     public boolean isCustomerRestrictionTextDisplayed() throws InterruptedException {
-        try {
+       /* try {
             distributorUI.waitForVisibility(txt_customerRestriction);
         } catch (Exception e){
             return false;
         }
-        distributorUI.waitForCustom(4000);
+        distributorUI.waitForCustom(4000);*/
         return distributorUI.isDisplayed(txt_customerRestriction);
     }
     public void clickSponsorProdAdsToggle(){
@@ -957,5 +965,30 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForVisibility(buyerEdgePlatformRebateToggle);
         distributorUI.clickUsingJavaScript(buyerEdgePlatformRebateToggle);
     }
+    public void clickOrderReminderToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(orderReminderToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(orderReminderToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(orderReminderToggleStable1);
+        }
+    }
+    public void clickConfigureAlert()throws InterruptedException{
+        distributorUI.click(btn_configureAlerts);
+    }
+    public void clickConfigureOrderReminderDropDown(String dropDown)throws InterruptedException{
+        distributorUI.click(By.xpath(configureOrderReminderDropDown.replace("DROPDOWN", dropDown)));
+    }
+    public void clickConfigureOrderReminderDropDownOption(String dropDownOption)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(configureOrderReminderDropDownOption.replace("DROPDOWNOPTION", dropDownOption)));
+        distributorUI.click(By.xpath(configureOrderReminderDropDownOption.replace("DROPDOWNOPTION", dropDownOption)));
+    }
+    public boolean icConfigureOrderReminderPopUpDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_configureOrderReminder);
+    }
+
 
 }

@@ -8,12 +8,17 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part_Ten"/>
         <classes>
-            <class name="com.cutanddry.qa.tests.price.ValidateTheFinalWeightTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPoundPriceTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingByPricingEngineTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateThePoundSpotPricingTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingNotFromPricingEngineTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateTheSplitWeightTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1RegularItemSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1SpecialItemSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2RegularItemsSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2SpecialItemsSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1RegularItemAnd1SpecialOrderItemSubmittedAsTwoSeparateOrdersForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2RegularItemsAnd2SpecialOrderItemsSubmittedAsTwoSeparateOrdersForTheSelectedDeliveryDateTest"/>
+
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyCustomerGroupsShouldNotBeEditableTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyCustomAccountHoldMessageIsDisplayedForCarmelaOnOrderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyGenericAccountHardHoldMessageTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyShowingLastOrderedPricesInPortalOrderGuidesTest"/>
         </classes>
     </test>
 </suite>

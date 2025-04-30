@@ -346,4 +346,19 @@ public class Pay {
     public static boolean isPastDueAmountDisplayed(){
         return payPage.isPastDueAmountDisplayed();
     }
+    public static void clickCutAndDryPayToggle(boolean status){
+        payPage.clickCutAndDryPayToggle(status);
+    }
+    public static boolean isCutAndDryPayToggleEnabled(){
+        return payPage.isCutAndDryPayToggleEnabled();
+    }
+    public static boolean isCreditMemoDisplayed() throws InterruptedException {
+        return payPage.isCreditMemoDisplayed();
+    }
+    public static void clickOnInvoiceBatchOperationButton() {
+        payPage.clickOnInvoiceBatchOperationButton();
+    }
+    public static void selectTheBatchOperationOption(String option) {
+        payPage.selectTheBatchOperationOption(option);
+    }
 }

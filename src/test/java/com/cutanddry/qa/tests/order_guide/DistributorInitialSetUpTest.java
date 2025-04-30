@@ -3,6 +3,7 @@ package com.cutanddry.qa.tests.order_guide;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.GatekeeperData;
+import com.cutanddry.qa.functions.ConfigSupplier;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
@@ -16,9 +17,10 @@ import org.testng.asserts.SoftAssert;
 public class DistributorInitialSetUpTest extends TestBase {
     static User user;
     static String featureName = GatekeeperData.FEATURE_NAME_VOICE_ORDER;
+    static String subFeatureName = GatekeeperData.FEATURE_NAME_SUB_ENABLE_DP;
     static String companyId = GatekeeperData.COMPONY_ID;
     String CustomerCode = "37631";
-
+    static String DP = "Independent Foods Co";
 
     @BeforeMethod
     public void setUp() {
@@ -33,6 +35,7 @@ public class DistributorInitialSetUpTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToGateKeeperAdmin();
         Login.updateCompanyIDs(featureName,companyId);
+        Login.updateCompanyIDs(subFeatureName,companyId);
 
         Login.switchIntoNewTab();
         Login.navigateToDistributor();
@@ -43,14 +46,26 @@ public class DistributorInitialSetUpTest extends TestBase {
         Customer.SelectCustomer(CustomerCode);
         Customer.enableCatalogAccess();
         softAssert.assertTrue(Customer.catalogAccessEnabled(),"Error in catalog access enable displaying");
-
-        Customer.clickOnEditAccHolds();
-        Customer.clickOnAccDropdown();
-        Customer.clickOnNone();
-        Customer.clickOnSave();
-        softAssert.assertTrue(Customer.isRemoveHoldPopupDisplayed(),"remove hard hold popup error");
-        Customer.clickOnYes();
+        Customer.disableAccHolds();
         softAssert.assertTrue(Customer.isNoneSelected(),"acc none select error");
+
+//        // TODO: This feature is move to boost section now
+//        Login.switchIntoNewTab();
+//        Login.navigateToConfigSupplier();
+//        softAssert.assertTrue(ConfigSupplier.isUserNavigatedToConfigSupplier(),"navigation error");
+//        ConfigSupplier.clickOnEditDetails(DP);
+//        ConfigSupplier.clickOnCatalogSettings();
+//        ConfigSupplier.ensureDefaultSearchFilterStatus(false);
+//        ConfigSupplier.clickOnSave();
+
+        Login.switchIntoNewTab();
+        Login.navigateToConfigSupplier();
+        softAssert.assertTrue(ConfigSupplier.isUserNavigatedToConfigSupplier(),"navigation error");
+        ConfigSupplier.clickOnEditDetails(DP);
+        ConfigSupplier.clickOnOrderSettings();
+        ConfigSupplier.enableDefaultOrderHistoryAsOrderDate();
+        ConfigSupplier.clickOnOrderSettingSave();
+
 
         softAssert.assertAll();
     }

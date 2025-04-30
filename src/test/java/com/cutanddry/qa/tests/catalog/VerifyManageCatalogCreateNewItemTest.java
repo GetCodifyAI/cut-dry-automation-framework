@@ -7,6 +7,7 @@ import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -18,6 +19,7 @@ public class VerifyManageCatalogCreateNewItemTest extends TestBase {
     String itemName = "test";
     String itemPrice = "10.00";
     String UOM = "Bag";
+    String All = "All";
 
     @BeforeMethod
     public void setUp(){
@@ -30,9 +32,9 @@ public class VerifyManageCatalogCreateNewItemTest extends TestBase {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCatalog();
-        softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
+        Assert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.clickOnManageCatalog();
         Catalog.selectCreateNewItem();
         Catalog.enterItemName(itemName);
@@ -43,6 +45,7 @@ public class VerifyManageCatalogCreateNewItemTest extends TestBase {
         String itemCode = Catalog.getItemCode();
         Catalog.clickOnClose();
         Catalog.searchItemInCatalog(itemCode);
+        Catalog.selectItemStatus(All);
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
         softAssert.assertAll();

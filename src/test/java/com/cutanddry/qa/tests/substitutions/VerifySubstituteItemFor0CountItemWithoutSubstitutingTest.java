@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifySubstituteItemFor0CountItemWithoutSubstitutingTest extends TestBase {
     static User user;
     static String customer = "32404837";
-    static String itemCode = "27586";
+    static String itemCode = "99005"; // Old- 27586
 
     @BeforeMethod
     public void setUp(){
@@ -24,7 +24,7 @@ public class VerifySubstituteItemFor0CountItemWithoutSubstitutingTest extends Te
     }
 
     @Test(groups = "DOT-TC-214")
-    public void verifySubstituteItemFor0CountItemWithSubstituting() throws InterruptedException {
+    public void VerifySubstituteItemFor0CountItemWithoutSubstituting() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
@@ -36,7 +36,7 @@ public class VerifySubstituteItemFor0CountItemWithoutSubstitutingTest extends Te
         itemName = Customer.getItemNameFirstRow();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         Customer.increaseFirstRowQtyByOneInDist();
-        Customer.checkoutItemsDist();
+        Customer.checkoutSubstituteItems();
         softAssert.assertTrue(Customer.isSubstitutesPopupDisplayed(),"substitutes popup error");
         Customer.clickDoNotSubstitute();
         softAssert.assertFalse(Customer.isReplacementDisplayed(),"not replace error");

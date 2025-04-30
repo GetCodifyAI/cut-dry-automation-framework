@@ -17,6 +17,7 @@ public class AddNewUserWithoutUserReferenceTest extends TestBase {
     static String name = "Test";
     static String email = "test@email.com";
     static String verifiedVendorId = "46017666";
+    static String DataName = "allowUpdateSalesPeopleMapData";
 
     @BeforeMethod
     public void setUp(){
@@ -30,7 +31,8 @@ public class AddNewUserWithoutUserReferenceTest extends TestBase {
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToRestaurantDashboard();
         Login.navigateToSupplierPortalVendor(verifiedVendorId);
-        Login.setNode();
+        Login.setNode(DataName);
+        Login.switchIntoNewTab();
         Login.navigateToDistributor();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -48,6 +50,6 @@ public class AddNewUserWithoutUserReferenceTest extends TestBase {
     @AfterMethod
     public void tearDown(ITestResult result) throws InterruptedException {
         takeScreenshotOnFailure(result);
-        closeAllBrowsers();
+        closeAllBrowsersAtOnce();
     }
 }

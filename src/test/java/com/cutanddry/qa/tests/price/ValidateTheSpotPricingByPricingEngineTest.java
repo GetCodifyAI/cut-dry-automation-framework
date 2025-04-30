@@ -20,7 +20,7 @@ public class ValidateTheSpotPricingByPricingEngineTest extends TestBase{
     static String customerId3 = PriceData.CUSTOMER_ID_3;
     static String searchItemCode;
     static String itemName = PriceData.ITEM_NAME_SPOT_PRICE;
-    static String itemPrice;
+    static double itemPrice;
 
     @BeforeMethod
     public void setUp() {
@@ -49,26 +49,30 @@ public class ValidateTheSpotPricingByPricingEngineTest extends TestBase{
         softAssert.assertTrue(Customer.isMarginValuePopupDisplayed(),"popup error");
         Customer.enterMarginValue("8.05");
         Customer.updateMarginValues();
-        softAssert.assertTrue(Customer.isItemAdded("$8.05"),"update error");
-        softAssert.assertTrue(Customer.isItemPercentageAdded("8%"),"update error percentage");
+        softAssert.assertTrue(Customer.isItemValueAdded("$8.05"),"update error");
+        softAssert.assertTrue(Customer.isItemPercentageAdded("8.01"),"update error percentage1");
         softAssert.assertTrue(Customer.isSpotPriceAdded("$100.45"),"update error price");
 
         Customer.editMargin();
         softAssert.assertTrue(Customer.isMarginValuePopupDisplayed(),"popup error");
         Customer.enterMarginPercentage("30");
         Customer.updateMarginValues();
-        softAssert.assertTrue(Customer.isItemAdded("$39.60"),"update error");
-        softAssert.assertTrue(Customer.isItemPercentageAdded("30%"),"update error percentage");
+        softAssert.assertTrue(Customer.isItemValueAdded("$39.60"),"update error");
+        softAssert.assertTrue(Customer.isItemPercentageAdded("30"),"update error percentage2");
         softAssert.assertTrue(Customer.isSpotPriceAdded("$132.00"),"update error price");
 
+        Customer.editSpotPrice();
+        softAssert.assertTrue(Customer.isMarginValuePopupDisplayed(),"popup error");
         Customer.enterSpotPrice("200");
-        Customer.increaseFirstRowQtyCustom(1);
-        softAssert.assertTrue(Customer.isItemAdded("$107.60"),"update error");
-        softAssert.assertTrue(Customer.isItemPercentageAdded("54%"),"update error percentage");
+        Customer.updateMarginValues();
+        softAssert.assertTrue(Customer.isItemValueAdded("$107.60"),"update error");
+        softAssert.assertTrue(Customer.isItemPercentageAdded("53.8"),"update error percentage3");
         softAssert.assertTrue(Customer.isSpotPriceAdded("$200.00"),"update error price");
 
-        itemPrice = Customer.getItemFinalSpotPrice();
-        softAssert.assertEquals(Customer.getItemPriceOnEditOrderCheckout(),itemPrice,"The item has not been selected.");
+        Customer.increaseFirstRowQtyCustom(1);
+
+        itemPrice = Customer.getActiveItemPriceFirstRow();
+        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice,"The item has not been selected . .");
         Customer.checkoutItems();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         Customer.submitOrder();
@@ -80,7 +84,10 @@ public class ValidateTheSpotPricingByPricingEngineTest extends TestBase{
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId3), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId3);
         Customer.clickOnOrdersTab();
-        softAssert.assertEquals(Customer.getPriceInCustomerOrder(),itemPrice,"The item has not been selected.");
+        String priceText = Customer.getPriceInCustomerOrder().replace("$", "").replace(",", "");
+        Double actualPrice = Double.valueOf(priceText);
+        softAssert.assertEquals(actualPrice, itemPrice, "The item has not been selected.");
+//        softAssert.assertEquals(Customer.getPriceInCustomerOrder(),itemPrice,"The item has not been selected.");
         softAssert.assertAll();
     }
 

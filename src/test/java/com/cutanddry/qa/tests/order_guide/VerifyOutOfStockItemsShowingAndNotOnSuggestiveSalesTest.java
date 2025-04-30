@@ -7,6 +7,7 @@ import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -31,9 +32,9 @@ public class VerifyOutOfStockItemsShowingAndNotOnSuggestiveSalesTest extends Tes
         String itemName;
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToConfigSupplier();
-        softAssert.assertTrue(ConfigSupplier.isUserNavigatedToConfigSupplier(),"navigation error");
+        Assert.assertTrue(ConfigSupplier.isUserNavigatedToConfigSupplier(),"navigation error");
         ConfigSupplier.clickOnEditDetails(DP);
         ConfigSupplier.clickOnCatalogSettings();
         ConfigSupplier.toggleOffOGSuggestiveTool();
@@ -42,7 +43,7 @@ public class VerifyOutOfStockItemsShowingAndNotOnSuggestiveSalesTest extends Tes
         Login.navigateToDistributorPortal(DP);
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
         Customer.searchItemOnOrderGuide(itemCode);
         itemName = Customer.getItemNameFirstRow();
@@ -59,7 +60,7 @@ public class VerifyOutOfStockItemsShowingAndNotOnSuggestiveSalesTest extends Tes
         Login.navigateToDistributorPortal(DP);
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
         Customer.searchItemOnOrderGuide(itemCode);
         itemName = Customer.getItemNameFirstRow();

@@ -7,6 +7,7 @@ import com.cutanddry.qa.functions.InternalTools;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.functions.Settings;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -28,49 +29,25 @@ public class VerifyTheAllowBuyersEdgePlatformRebateTagsFlowTest extends TestBase
     public void VerifyTheAllowBuyersEdgePlatformRebateTagsFlow() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(distributorName);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToAdsSettings();
         softAssert.assertTrue(Settings.isAdsSettingsTextDisplayed(),"navigation to ads settings error");
-        /*//pre-requisites
-        if (Settings.isCustomerRestrictionTextDisplayed()){
-            Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-            softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-            Login.navigateToInternalToolsPage();
-            InternalTools.navigateToConfigureSupplier();
-            InternalTools.navigateToIndependentCompEditDetails();
-            InternalTools.navigateToSponsoredAdsRebatesTab();
-            InternalTools.clickBuyerEdgePlatformRebateToggle();
-            InternalTools.clickRebateSave();
-        }*/
-        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-        Login.navigateToInternalToolsPage();
-        InternalTools.navigateToConfigureSupplier();
-        InternalTools.navigateToIndependentCompEditDetails();
-        InternalTools.navigateToSponsoredAdsRebatesTab();
-//        InternalTools.clickBuyerEdgePlatformRebateToggle();
-        InternalTools.clickBuyerEdgePlatformRebateToggle(true);
-        InternalTools.clickRebateSave();
 
+        Login.navigateToInternalToolsPage();
+        InternalTools.ensureBuyerEdgePlatformRebateStatus(true);
         Login.navigateToDistributorPortal(distributorName);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToAdsSettings();
         softAssert.assertTrue(Settings.isCustomerRestrictionTextDisplayed(),"enabling the 'BuyerEdgePlatformRebate' toggle button from the Internal tools is error");
         Settings.clickBuyerEdgePlatformRebateToggle();
         Settings.clickGeneralSettingSaveChanges();
 
         Login.navigateToInternalToolsPage();
-        InternalTools.navigateToConfigureSupplier();
-        InternalTools.navigateToIndependentCompEditDetails();
-        InternalTools.navigateToSponsoredAdsRebatesTab();
-//        InternalTools.clickBuyerEdgePlatformRebateToggle();
-        InternalTools.clickBuyerEdgePlatformRebateToggle(false);
-        InternalTools.clickRebateSave();
-
+        InternalTools.ensureBuyerEdgePlatformRebateStatus(false);
         Login.navigateToDistributorPortal(distributorName);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToAdsSettings();
         softAssert.assertFalse(Settings.isCustomerRestrictionTextDisplayed(),"disable the 'BuyerEdgePlatformRebate' toggle button from the Internal tools is error");
         softAssert.assertAll();

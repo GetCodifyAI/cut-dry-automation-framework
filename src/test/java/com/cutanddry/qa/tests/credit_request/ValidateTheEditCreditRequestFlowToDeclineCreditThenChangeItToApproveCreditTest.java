@@ -4,6 +4,7 @@ import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -25,10 +26,10 @@ public class ValidateTheEditCreditRequestFlowToDeclineCreditThenChangeItToApprov
         SoftAssert softAssert = new SoftAssert();
         String itemName;
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "The user is unable to land on the Dashboard page.");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "The user is unable to land on the Dashboard page.");
         Dashboard.navigateToIndependentFoodsCo();
         Dashboard.navigateToOrderGuide();
-        softAssert.assertTrue(Dashboard.isUserNavigatedToOrderGuide(),"navigation error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToOrderGuide(),"navigation error");
         itemName = Customer.getItemNameFirstRow();
         Customer.increaseFirstRowQtyByOneInDist();
         Customer.clickOnCheckoutButtonOperator();
@@ -38,9 +39,10 @@ public class ValidateTheEditCreditRequestFlowToDeclineCreditThenChangeItToApprov
         Customer.clickClose();
 
         Dashboard.navigateToHistory();
-        softAssert.assertTrue(History.isUserNavigatedToHistory(),"There has been an error navigating to history section");
+        Assert.assertTrue(History.isUserNavigatedToHistory(),"There has been an error navigating to history section");
+        History.ensureOrderDateSortedDescending();
         History.clickFirstItemFrmHistory();
-        softAssert.assertTrue(History.isUserNavigatedOrder(),"There has been an error navigating to order section");
+        Assert.assertTrue(History.isUserNavigatedOrder(),"There has been an error navigating to order section");
         History.clickCheckInOrder();
         softAssert.assertTrue(History.isCheckInTextDisplayed(),"Error in navigating to Edit Check In Section");
         History.clickBtnReportIssue();
@@ -59,10 +61,10 @@ public class ValidateTheEditCreditRequestFlowToDeclineCreditThenChangeItToApprov
         Login.switchIntoNewTab();
         Login.navigateToDistributor();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCreditRequests();
         CreditRequests.clickOnFirstItemOfCreditRequests();
-        softAssert.assertTrue(CreditRequests.isNavigatedToOrderSection(), "There has been an error navigating to order section");
+        Assert.assertTrue(CreditRequests.isNavigatedToOrderSection(), "There has been an error navigating to order section");
         CreditRequests.clickCreditRequest();
         CreditRequests.process();
         softAssert.assertTrue(CreditRequests.isTxtCreditDeclinedDisplayed(), "Credit Declined Text Not Displayed");

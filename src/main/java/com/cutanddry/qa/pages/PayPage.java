@@ -50,7 +50,9 @@ public class PayPage extends LoginPage{
     By lbl_invoiceCaptureFundTitle = By.xpath("//div[contains(text(),'Are you sure you want capture funds for these invoices?')]");
     By lbl_invoiceCaptureFundPopupTitle = By.xpath("//div[contains(text(),'Capture Funds')]");
     By btn_invoiceCapturePay = By.xpath("//button[contains(text(),'Pay')]");
-    By txt_error = By.xpath("//h2[contains(text(),'An error occurred while trying to charge the customer. Transaction was rejected by gateway.')]");
+//    By txt_error = By.xpath("//h2[contains(text(),'An error occurred while trying to charge the customer. Transaction was rejected by gateway.')]");
+    By txt_error = By.xpath("//*[contains(text(),'Your transaction was declined due to Error - Transaction was rejected by gateway.\n" +
+        "                Please verify your card details and try again or use a different payment method.')]");
     By cbox_invoiceFirstRecord = By.xpath("//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[1]/td[1]//*[name()='svg']");
     By cbox_invoiceFirstRecordSetting = By.xpath("//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[ROW_COUNT]/td[10]//button");
     By elements_invoiceRecords = By.xpath("//th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr");
@@ -75,9 +77,9 @@ public class PayPage extends LoginPage{
     By paymentStatusFirstRow = By.xpath("//table[contains(@class, 'table-hover') and contains(@class, 'my-3')]//tbody/tr[1]/td[6]");
     By dropDown_payoutStatus = By.xpath("//div[contains(@class, 'col-sm-2') and contains(., 'Payout Status')]//div[contains(@class, 'themed_select__control')]");
     String option_payoutStatusDropdown = "//div[contains(@class, 'col-sm-2') and contains(., 'Payout Status')]//div[contains(@class, 'themed_select__menu')]//div[contains(text(), 'OPTION')]";
-    By timestampFirstRow = By.xpath("//table[contains(@class, 'table-hover') and contains(@class, 'my-3')]//tbody/tr[1]/td[2]");
-    By dateRange_Pay = By.xpath("//div[contains(@class, 'col-sm-6')]//div[contains(@class, '_64fwrw') and contains(., 'Date Range')]//following-sibling::div//input[@type='text' and contains(@class, 'form-control')]");
-    String datePicker = "//div[@class='react-datepicker']//div[@aria-label='Choose %s, %s %s%s, %s']";
+    By timestampFirstRow = By.xpath("//table[contains(@class, 'table-hover') and contains(@class, 'my-3')]//tbody/tr[1]/td[3]");
+    //    By dateRange_Pay = By.xpath("//div[contains(@class, 'col-sm-6')]//div[contains(@class, '_64fwrw') and contains(., 'Date Range')]//following-sibling::div//input[@type='text' and contains(@class, 'form-control')]");
+    By dateRange_Pay = By.xpath("//div[contains(., 'Date Range')]//following-sibling::div//div[contains(@class,'react-datepicker__input-container')]/input[contains(@class, 'form-control')]");String datePicker = "//div[@class='react-datepicker']//div[@aria-label='Choose %s, %s %s%s, %s']";
     By btn_previousMonth = By.xpath("//button[@type='button' and @aria-label='Previous Month']");
     By btn_nextMonth = By.xpath("//button[@type='button' and @aria-label='Next Month']");
     By table_paymentInitiated = By.xpath("//table[@class='my-3 table table-hover']");
@@ -100,7 +102,7 @@ public class PayPage extends LoginPage{
     By lbl_orderTableColumn = By.xpath("//table/thead/tr/th");
     String lbl_orderTableColumnName = "//table/thead/tr/th[COUNT]";
     String lbl_status = "//th[COUNT][text()='STATUS']";
-    By customerName = By.xpath("//th[contains(text(),'Customer Name')]/ancestor::table/tbody/tr[1]/td[4]");
+    By customerName = By.xpath("//th[contains(text(),'Customer Name')]/ancestor::table/tbody/tr[1]/td[5]");
     String payDetails = "//span[contains(text(),'DETAILS')]";
     String payDetailsAmount = "//span[contains(text(),'DETAILS')]/../following-sibling::div[contains(text(),'$')]";
     By paymentProcessingDetailAmount = By.xpath("//div[contains(text(),'Payments Processing')]/following-sibling::div[contains(text(),'$')]");
@@ -109,6 +111,12 @@ public class PayPage extends LoginPage{
     By lbl_payInvoiceTableColumn = By.xpath("//table/thead/tr/th[contains(text(),'Invoice ID')]/parent::tr/th");
     String lbl_payInvoiceTableColumnName = "//table/thead/tr/th[contains(text(),'Invoice ID')]/parent::tr/th[COUNT]";
     String lbl_payInvoiceDate = "//table/thead/tr/th[contains(text(),'Invoice ID')]/ancestor::table/tbody/tr[ROW]/td[COUNT]";
+    By cutAndDryPayToggleStable = By.xpath("//div[contains(text(), 'Cut+Dry Pay')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By cutAndDryPayToggleStable1 = By.xpath("//div[contains(text(), 'Cut+Dry Pay')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By creditMemoDisplay = By.xpath("//div[text()='Credit Memos (0)']");
+    By btn_batchOperation = By.xpath("//button[text()='Batch Operations']");
+    String lbl_batchOperation = "//button[text()='Batch Operations']/following-sibling::div/a[contains(text(),'OPTION')]";
+
 
 
     public boolean isPaymentStatusCorrect(String expectedPaymentStatus) {
@@ -194,7 +202,7 @@ public class PayPage extends LoginPage{
         boolean dateFound = false;
 
         for (int i = 0; i < maxAttempts; i++) {
-            if (distributorUI.isDisplayed(startDate)) {
+            if (distributorUI.isDisplayed(startDate,8)) {
                 distributorUI.click(startDate);
                 dateFound = true;
                 break;
@@ -220,7 +228,7 @@ public class PayPage extends LoginPage{
         boolean dateFound = false;
 
         for (int i = 0; i < maxAttempts; i++) {
-            if (distributorUI.isDisplayed(endDate)) {
+            if (distributorUI.isDisplayed(endDate,8)) {
                 distributorUI.click(endDate);
                 dateFound = true;
                 break;
@@ -818,6 +826,40 @@ public class PayPage extends LoginPage{
         }
         return distributorUI.isDisplayed(pastDueDetailsAmount);
     }
+    public void clickCutAndDryPayToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(cutAndDryPayToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(66px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(cutAndDryPayToggleStable1);
+            distributorUI.click(btn_markInvoiceYes);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(cutAndDryPayToggleStable1);
+            distributorUI.click(btn_markInvoiceYes);
+        }
+    }
+    public boolean isCutAndDryPayToggleEnabled() {
+        return distributorUI.getElement(cutAndDryPayToggleStable)
+                .getAttribute("style")
+                .contains("translateX(66px)");
+    }
+    public boolean isCreditMemoDisplayed()throws InterruptedException{
+        distributorUI.waitForCustom(3000);
+        return distributorUI.isDisplayed(creditMemoDisplay);
+    }
+    public void clickOnInvoiceBatchOperationButton() {
+        distributorUI.waitForVisibility(btn_batchOperation);
+        distributorUI.click(btn_batchOperation);
+    }
+    public void selectTheBatchOperationOption(String option) {
+        By lbl_options = By.xpath(lbl_batchOperation.replace("OPTION", option));
+        distributorUI.waitForVisibility(lbl_options);
+        distributorUI.click(lbl_options);
+    }
+
+
+
 
 
 

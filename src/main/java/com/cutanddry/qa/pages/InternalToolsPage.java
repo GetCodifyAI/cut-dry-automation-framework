@@ -15,13 +15,38 @@ public class InternalToolsPage extends LoginPage {
     String catalogOptionSelect = "(//div[text()='CATALOGDROPDOWNOPTION'])[last()]";
     By catalogSettingsSaveBtn = By.xpath("//div[h5[text()='Catalog']]/following-sibling::div//button[contains(text(), 'Save')]");
     By lastOrderedPoundPriceToggle = By.xpath("//div[contains(text(), 'Show Last Ordered Pound Price in Order Guide')]/following-sibling::div//div[@class='react-switch-bg']");
-    By sponsoredAdsRebatesTab = By.xpath("//a[contains(text(),'Sponsored Ads + Rebates')]");
+    By sponsoredAdsRebatesTab = By.xpath("//a[contains(text(),'Cut+Dry Influence')]");
     By sponsoredProductAdsToggle =By.xpath("//div[contains(text(), 'Enable Sponsored Product Advertisements')]/../following-sibling::div//div[@class='react-switch-bg']");
     By btn_saveProductAds = By.xpath("//div[contains(h4, 'Sponsored Ads')]/button[contains(@class, 'btn') and text()='Save']");
     By buyerEdgePlatformRebateToggle =By.xpath("//div[contains(text(), 'Buyers Edge Platform Rebates')]/../following-sibling::div//div[@class='react-switch-bg']");
     By buyerEdgePlatformRebateHandle = By.xpath("//div[contains(text(), 'Buyers Edge Platform Rebates')]/../following-sibling::div//div[@class='react-switch-handle']");
     By btn_saveRebate = By.xpath("//div[contains(h4, 'Rebates')]/button[contains(@class, 'btn') and text()='Save']");
     By lastOrderedPoundPriceToggleStable = By.xpath("//div[contains(text(), 'Show Last Ordered Pound Price in Order Guide')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By lastOrderedPoundPriceToggleStable1 = By.xpath("//div[contains(text(), 'Show Last Ordered Pound Price in Order Guide')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By orderMinimumGloballyToggleStable = By.xpath("//div[contains(text(), 'Enable Soft/Hard order minimum globally')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By orderMinimumGloballyToggleStable1 = By.xpath("//div[contains(text(), 'Enable Soft/Hard order minimum globally')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By orderMinimumDropDown = By.xpath("//div[text()='Order minimum type: ']/following-sibling::div/div");
+    String orderMinimumDropDownOption = "(//div[text()='TYPE'])[last()]";
+    By addOrderMinimum = By.xpath("//div[contains(text(),'Soft order Minimum Surcharge')]/following-sibling::div/input");
+    By txt_success = By.xpath("//h2[contains(text(),'Success')]");
+    By payDetailsTab = By.xpath("//a[contains(text(),'Pay Details')]");
+    By payDetailsToggleStable = By.xpath("//label[contains(text(), 'Pay Enabled For All Users: ')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By payDetailsToggleStable1 = By.xpath("//label[contains(text(), 'Pay Enabled For All Users: ')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    String payEnableRestaurant = "//label[contains(text(), 'Pay Enabled Restaurants')]/following-sibling::div//div[text()='NAME']";
+    String payDisableRestaurant = "//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div[text()='NAME']";
+    String payEnableRestaurantDelete = "//label[contains(text(), 'Pay Enabled Restaurants')]/following-sibling::div//div[text()='NAME']/following-sibling::div";
+    String payDisableRestaurantDelete = "//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div[text()='NAME']/following-sibling::div";
+    By addCustomerToPayDisable = By.xpath("//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div/div");
+    String selectDisableCustomer = "//div[contains(text(), 'NAME')]";
+    By addCustomerToPayEnable = By.xpath("//label[contains(text(), 'Pay Enabled Restaurants')]/following-sibling::div/div");
+    By checkboxLocatorCreditMemo = By.xpath("//label[contains(text(),'Enable Auto Apply Credit Memos')]/..//input");
+    By deleteEmailNotificationToggleStable = By.xpath("//label[contains(text(), 'Customer User Deletion Email Notifications:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By deleteEmailNotificationToggleStable1 = By.xpath("//label[contains(text(), 'Customer User Deletion Email Notifications:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By btn_notificationSave = By.xpath("//h5[text()='Notifications']/../following-sibling::div/button[text()='Save']");
+    By enableSponsoredProductAdvertisementsToggle = By.xpath("//*[contains(text(), 'Enable Sponsored Product Advertisements')]/../following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By enableSponsoredProductAdvertisementsToggle1 = By.xpath("//*[contains(text(), 'Enable Sponsored Product Advertisements')]/../following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+
+
 
     public void clickConfigureSupplier(){
         distributorUI.click(configureSupplierTxt);
@@ -109,9 +134,9 @@ public class InternalToolsPage extends LoginPage {
         boolean isEnabled = handlePosition.contains("translateX(29px)");
 
         if (enable && !isEnabled) {
-            distributorUI.clickWithScrollAndHover(lastOrderedPoundPriceToggleStable);
+            distributorUI.clickWithScrollAndHover(lastOrderedPoundPriceToggleStable1);
         } else if (!enable && isEnabled) {
-            distributorUI.clickWithScrollAndHover(lastOrderedPoundPriceToggleStable);
+            distributorUI.clickWithScrollAndHover(lastOrderedPoundPriceToggleStable1);
         }
     }
 
@@ -125,7 +150,7 @@ public class InternalToolsPage extends LoginPage {
         distributorUI.click(lastOrderedPoundPriceToggle);
     }
     public void clickOnSponsoredAdsRebates(){
-        distributorUI.waitForVisibility(sponsoredAdsRebatesTab);
+//        distributorUI.waitForVisibility(sponsoredAdsRebatesTab);
         distributorUI.click(sponsoredAdsRebatesTab);
     }
     public void clickSponsoredProductAdsToggle(){
@@ -136,9 +161,28 @@ public class InternalToolsPage extends LoginPage {
             throw new RuntimeException(e);
         }
     }
-    public void clickProductAdsSave(){
-        distributorUI.waitForVisibility(btn_saveProductAds);
+
+    public void clickSponsoredProductAdsToggle(boolean enable) {
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        String handlePosition = distributorUI.getElement(enableSponsoredProductAdvertisementsToggle).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(enableSponsoredProductAdvertisementsToggle1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(enableSponsoredProductAdvertisementsToggle1);
+        }
+    }
+
+    public void clickProductAdsSave() throws InterruptedException {
+//        distributorUI.waitForVisibility(btn_saveProductAds);
+        distributorUI.waitForCustom(2000);
         distributorUI.click(btn_saveProductAds);
+        distributorUI.waitForCustom(5000);
     }
     public void clickBuyerEdgePlatformRebateToggle(){
         distributorUI.click(buyerEdgePlatformRebateToggle);
@@ -155,7 +199,106 @@ public class InternalToolsPage extends LoginPage {
         }
     }
 
-    public void clickRebateSave(){
+    public void clickRebateSave() throws InterruptedException {
         distributorUI.clickWithScrollAndHover(btn_saveRebate);
+        distributorUI.waitForCustom(5000);
     }
+    public void clickTurnOnOrderMinimumGloballyToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(orderMinimumGloballyToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(orderMinimumGloballyToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(orderMinimumGloballyToggleStable1);
+        }
+    }
+    public void clickOnOrderMinimumDropdown(String type){
+        distributorUI.click(orderMinimumDropDown);
+        distributorUI.click(By.xpath(orderMinimumDropDownOption.replace("TYPE",type)));
+    }
+    public void enterOrderMinimum(String minimum){
+        distributorUI.click(addOrderMinimum);
+        distributorUI.clear(addOrderMinimum);
+        distributorUI.sendKeys(addOrderMinimum,minimum);
+    }
+    public void clickSave() {
+        distributorUI.clickWithScrollAndHover(SaveBtn);
+    }
+    public boolean isSuccessPopUpDisplayed(){
+        return distributorUI.isDisplayed(txt_success);
+    }
+    public void navigateToPayDetailsTab(){
+        distributorUI.waitForVisibility(payDetailsTab);
+        distributorUI.click(payDetailsTab);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void clickPayEnabledToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(payDetailsToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(payDetailsToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(payDetailsToggleStable1);
+        }
+    }
+    public boolean isPayEnableRestaurantDisplayed(String name){
+        return distributorUI.isDisplayed(By.xpath(payEnableRestaurant.replace("NAME", name)));
+    }
+    public boolean isPayDisableRestaurantDisplayed(String name){
+        return distributorUI.isDisplayed(By.xpath(payDisableRestaurant.replace("NAME", name)));
+    }
+    public void deleteRestaurantInPayEnable(String name){
+        distributorUI.click(By.xpath(payEnableRestaurantDelete.replace("NAME", name)));
+    }
+    public void addCustomerToPayDisable(String name)throws InterruptedException{
+        distributorUI.click(addCustomerToPayDisable);
+        distributorUI.scrollToElement(By.xpath(selectDisableCustomer.replace("NAME", name)));
+        distributorUI.click(By.xpath(selectDisableCustomer.replace("NAME", name)));
+        distributorUI.waitForCustom(3000);
+    }
+    public void deleteRestaurantInPayDisable(String name){
+        distributorUI.click(By.xpath(payDisableRestaurantDelete.replace("NAME", name)));
+    }
+    public void addCustomerToPayEnable(String name)throws InterruptedException{
+        distributorUI.click(addCustomerToPayEnable);
+        distributorUI.scrollToElement(By.xpath(selectDisableCustomer.replace("NAME", name)));
+        distributorUI.click(By.xpath(selectDisableCustomer.replace("NAME", name)));
+        distributorUI.waitForCustom(3000);
+    }
+    public void clickCreditMemoCheckbox(boolean enable) {
+
+        boolean isChecked = distributorUI.getElement(checkboxLocatorCreditMemo).isSelected();
+
+        if (enable && !isChecked) {
+            distributorUI.click(checkboxLocatorCreditMemo); // Check the box if not checked
+        } else if (!enable && isChecked) {
+            distributorUI.click(checkboxLocatorCreditMemo); // Uncheck the box if already checked
+        }
+    }
+    public void clickUserDeletionEmailNotificationsToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(deleteEmailNotificationToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(deleteEmailNotificationToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(deleteEmailNotificationToggleStable1);
+        }
+    }
+    public void clickNotificationSave()throws InterruptedException{
+        distributorUI.scrollToElement(btn_notificationSave);
+        distributorUI.waitForVisibility(btn_notificationSave);
+        distributorUI.clickUsingJavaScript(btn_notificationSave);
+        distributorUI.waitForCustom(3000);
+    }
+
 }

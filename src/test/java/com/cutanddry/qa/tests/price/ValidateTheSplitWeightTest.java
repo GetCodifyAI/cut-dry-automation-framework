@@ -18,7 +18,7 @@ public class ValidateTheSplitWeightTest extends TestBase{
     static User user;
     static String distributorTarantino = PriceData.DISTRIBUTOR_TARANTINO;
     static String customerId = PriceData.CUSTOMER_ID_4;
-    static String itemPrice ;
+    static double itemPrice ;
     static String searchItemCode;
     static String itemName = PriceData.ITEM_NAME_SPLIT_WEIGHT;
 
@@ -64,8 +64,10 @@ public class ValidateTheSplitWeightTest extends TestBase{
         Orders.clickOnEditOrder();
         softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(),"edit popup error");
         Orders.clickOnConfirm();
+//        softAssert.assertTrue(Orders.isNavigatedToOrderReviewPage(),"edit error(Review Page)");
+        Orders.clickOnEditOrderInReviewStable();
         softAssert.assertTrue(Orders.isNavigatedToEditOrder(),"edit error");
-        Customer.searchItemOnOrderGuide(itemName);
+        Customer.searchItemOnOrderGuide(searchItemCode);
 
         Customer.splitWeight();
         softAssert.assertTrue(Customer.isSplitWeightPopupDisplayed(),"popup error");
@@ -73,14 +75,26 @@ public class ValidateTheSplitWeightTest extends TestBase{
         Customer.enterWeightValue("10");
         Customer.clickUpdateWeight();
         softAssert.assertEquals(Customer.getItemQtyFirstRow(),"20", "item count error");
-        softAssert.assertEquals(Customer.getItemSplitFinalWeight(),"200", "item weight error");
-        softAssert.assertEquals(Customer.getSplitFinalWeightPrice(),"$520.00", "item price error");
+        softAssert.assertEquals(Customer.getItemSplitFinalWeight(),"200 LB", "item weight error");
+        softAssert.assertEquals(Customer.getEditSplitFinalWeightPrice(),"$520.00", "item price error");
+
         itemPrice=Customer.getSplitFinalWeightPrice();
-        softAssert.assertEquals(Customer.getItemPriceOnEditOrderCheckout(),itemPrice,"The item has not been selected.");
-        Customer.clickEditOrderCheckout();
-        softAssert.assertTrue(Orders.isSubmitPopupDisplayed(),"submit pop up not display");
-        Orders.clickOnConfirm();
-        softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(),"update popup error");
+
+        String priceText = Customer.getItemPriceOnEditOrderReviewCheckout().replace("$", "").replace(",", "");
+        Double actualPrice = Double.valueOf(priceText);
+        softAssert.assertEquals(actualPrice, itemPrice, "The item has not been selected.");
+//        softAssert.assertEquals(Customer.getItemPriceOnEditOrderReviewCheckout(),itemPrice,"The item has not been selected.");
+
+        Customer.clickCheckOutOrderGuide();
+
+        if (Customer.isEditOrderCheckout()) {
+            Customer.clickEditOrderCheckout();
+            softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+        } else {
+            softAssert.assertTrue(Orders.isSubmitPopupDisplayed(), "submit pop up not display");
+            Orders.clickOnConfirm();
+            softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
+        }
         Orders.clickOnClose();
 
         Dashboard.navigateToCustomers();
@@ -88,7 +102,17 @@ public class ValidateTheSplitWeightTest extends TestBase{
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
-        softAssert.assertEquals(Customer.getPriceInCustomerOrder(),itemPrice,"The item has not been selected.");
+        Customer.OrderDateSort();
+        Customer.OrderDateSort();
+
+
+        String priceText1 = Customer.getPriceInCustomerOrder().replace("$", "");
+        Double actualPrice1 = Double.valueOf(priceText1);
+
+//        String priceText2 = Customer.getPriceInCustomerOrder().replace("$", "").replace(",", "");
+//        Double actualPrice2 = Double.valueOf(priceText2);
+        softAssert.assertEquals(actualPrice1, itemPrice, "The item has not been selected.");
+//        softAssert.assertEquals(Customer.getPriceInCustomerOrder(),itemPrice,"The item has not been selected.");
         softAssert.assertAll();
     }
 

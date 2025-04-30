@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyRemovingFeaturedListTest extends TestBase {
     static User user;
-    String EditedFeaturedListName = "EditedList";
+    String FeaturedListName = "TestList"+generateDynamicValue();
 
 
     @BeforeMethod
@@ -24,7 +24,7 @@ public class VerifyRemovingFeaturedListTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-378")
-    public void VerifyRemovingFeaturedList() {
+    public void VerifyRemovingFeaturedList() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -33,10 +33,18 @@ public class VerifyRemovingFeaturedListTest extends TestBase {
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickSuggestiveSales();
         Boost.navigateToFeaturedListTab();
-        Boost.deleteFeaturedList(EditedFeaturedListName);
+
+        // Pre-request
+        Boost.createNewFeaturedList();
+        softAssert.assertTrue(Boost.isCrateListOverlayDisplayed(),"Error in displaying create list overlay");
+        Boost.enterFeaturedListName(FeaturedListName);
+        Boost.submitEnteredListName();
+        softAssert.assertTrue(Boost.addedListNameDisplayed(FeaturedListName),"Error in displaying added list name");
+
+        Boost.deleteFeaturedList(FeaturedListName);
         softAssert.assertTrue(Boost.deleteFeaturedListOverlayDisplayed(),"Erro in displaying delete List Overlay");
         Boost.deleteFeaturedListFromOverlay();
-        softAssert.assertFalse(Boost.deletedListDisplayed(EditedFeaturedListName),"Error in displaying added list name");
+        softAssert.assertFalse(Boost.deletedListDisplayed(FeaturedListName),"Error in displaying added list name");
 
         softAssert.assertAll();
     }

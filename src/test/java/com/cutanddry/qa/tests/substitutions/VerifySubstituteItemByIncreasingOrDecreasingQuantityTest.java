@@ -37,16 +37,19 @@ public class VerifySubstituteItemByIncreasingOrDecreasingQuantityTest extends Te
         itemName = Customer.getItemNameFirstRow();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         Customer.increaseFirstRowQtyByOneInDist();
-        Customer.checkoutItemsDist();
+        Customer.checkoutSubstituteItems();
         softAssert.assertTrue(Customer.isSubstitutesPopupDisplayed(),"substitutes popup error");
-        Customer.clickOnItem(itemCode_2);
+//        Customer.clickOnItem(itemCode_2);
+        Customer.clickOnSingleItem();
         Customer.clickSaveSelection();
-        softAssert.assertTrue(Customer.isReplacementDisplayed(),"replace error");
+        softAssert.assertFalse(Customer.isReplacementNotDisplayed(),"replace error");
         Customer.increaseFirstRowQtyByOneInCheckout();
         Customer.increaseFirstRowQtyByOneInCheckout();
-        softAssert.assertTrue(Customer.isReplacementDisplayed(),"sub item missing error");
+        softAssert.assertFalse(Customer.isReplacementNotDisplayed(),"sub item missing error");
+//        softAssert.assertTrue(Customer.isReplacementDisplayed(),"sub item missing error");
         Customer.decreaseFirstRowQtyByOneInCheckout();
-        softAssert.assertTrue(Customer.isReplacementDisplayed(),"sub item missing error");
+//        softAssert.assertTrue(Customer.isReplacementDisplayed(),"sub item missing error");
+        softAssert.assertFalse(Customer.isReplacementNotDisplayed(),"sub item missing error");
         softAssert.assertAll();
     }
 
