@@ -468,5 +468,9 @@ public class Settings {
         settingsPage.clickConfigureOrderReminderDropDown(dropDown);
         settingsPage.clickConfigureOrderReminderDropDownOption(dropDownOption);
     }
+    public static void orderMinimumCheckBox(boolean status) throws InterruptedException {
+        settingsPage.orderMinimumsOverrideRestrictions(status);
+        settingsPage.clickOnSaveChanges();
+    }
 
 }

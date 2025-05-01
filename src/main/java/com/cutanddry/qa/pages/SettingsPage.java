@@ -989,6 +989,15 @@ public class SettingsPage extends LoginPage{
     public boolean icConfigureOrderReminderPopUpDisplayed()throws InterruptedException{
         return distributorUI.isDisplayed(txt_configureOrderReminder);
     }
+    public void orderMinimumsOverrideRestrictions(boolean enable) {
+        boolean isChecked = distributorUI.getElement(sel_OrderMinimums).isSelected();
+
+        if (enable && !isChecked) {
+            distributorUI.clickWithScrollAndHover(sel_OrderMinimums);
+        } else if (!enable && isChecked) {
+            distributorUI.clickWithScrollAndHover(sel_OrderMinimums);
+        }
+    }
 
 
 }

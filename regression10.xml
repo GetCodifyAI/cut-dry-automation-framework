@@ -19,6 +19,12 @@
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyCustomAccountHoldMessageIsDisplayedForCarmelaOnOrderSubmissionTest"/>
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyGenericAccountHardHoldMessageTest"/>
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyShowingLastOrderedPricesInPortalOrderGuidesTest"/>
+
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyOrdersBelowMinimumOrderAmountPopsSoftOrderMinimumPopUpTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifySubmittingAnOrderMinimumSatisfiedOrderForAFutureDateGreaterThanItemLeadTimeItemDateInOrderTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyEntireOrderIsShiftedToDeliveryOnNextAvailableDeliveryForOrderMinimumNotMetOrdersTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyOrderMinimumMetExcludingLeadTimeItemOrderIsSplitInToTwoOrdersTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyInternalToolsRestrictSpotPricesBelowMinimumProductPriceToggleTest"/>
         </classes>
     </test>
 </suite>
