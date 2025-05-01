@@ -93,6 +93,8 @@ public class ValidateTheSpotPoundPriceTest extends TestBase{
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId2), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId2);
         Customer.clickOnOrdersTab();
+        Customer.OrderDateSort();
+        Customer.OrderDateSort();
         softAssert.assertEquals(Customer.getPriceInCustomerOrder(),itemPrice,"The item has not been selected.");
         softAssert.assertAll();
     }

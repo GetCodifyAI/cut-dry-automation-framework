@@ -1344,6 +1344,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void ClickOrderDateToSort(){
         distributorUI.click(OrderDateSort);
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        };
     }
     public void ClickDeliveryDateSort(){
         distributorUI.click(DeliveryDate);

@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheHardOrderMinimumSelectingMultipleUOMTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    static String customerId = "14143";
+    static String customerId = "17143";
     String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
     String searchItemCode = CatalogData.ITEM_CODE;
     String itemName = CatalogData.ITEM_NAME;

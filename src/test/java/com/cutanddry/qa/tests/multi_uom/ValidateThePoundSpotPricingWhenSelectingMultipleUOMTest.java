@@ -147,7 +147,8 @@ public class ValidateThePoundSpotPricingWhenSelectingMultipleUOMTest extends Tes
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
-
+        Customer.OrderDateSort();
+        Customer.OrderDateSort();
         double actualPrice = Double.parseDouble(Customer.getPriceInCustomerOrder().replace("$", "").replace(",", "").trim());
         softAssert.assertEquals(actualPrice, totalOGItemPrice, "The total values in the submission and the total displayed in the Customer Profile Orders section do not match.");
 
