@@ -33,7 +33,6 @@
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerMailDeliveryOrderViaPDPTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceCustomerMailDeliveryOrderViaOrderGuideCatalogPDPTest" />
 
-            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingAddOrderReminderAlertsTest"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingAddCreditCardTest"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingExportOrderSettingTest"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingImportOrderSettingTest"/>
@@ -44,7 +43,14 @@
             <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingGlobalHolidayPickupWillCallMailDeliveryTest"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingCustomerSpecificHolidayTest"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingCustomerSpecificHolidayPickupWillCallMailDeliveryTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingEditOrderReminderAlertsTest"/>
+
+            <!--           FIXME: These TestCases Are Removed Since the Flow is Changed-->
+<!--            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingAddOrderReminderAlertsTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingEditOrderReminderAlertsTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingDeleteOrderReminderAlertsTest"/>-->
+            <class name="com.cutanddry.qa.tests.settings.VerifyTheOrderReminderConfigurationsInTheDPTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyThatSMSFunctionalityIsWorkingAsExpectedForOrderReminderAlertsTest"/>
+
             <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingAddPaymentMethodTest"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingRemovePaymentMethodTest"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingDownloadInvoicesTest"/>
@@ -52,7 +58,7 @@
             <class name="com.cutanddry.qa.tests.settings.VerifyPaySettingRemoveBankAccountTest"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyTheFunctionalityOfProfileAccountInformation"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyTheFlowOfEditingTheConfigurationSettingsForTheNewlyAddedWarehouseTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingDeleteOrderReminderAlertsTest"/>
+
            <!-- &lt;!&ndash;            TODO: Billing test cases are failing due to the lack of paid due invoices and the inability to create new ones. sComment out the test cases until a solution is provided.&ndash;&gt;
             &lt;!&ndash;            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingPayButtonAddBankAccountTest"/>&ndash;&gt;
             &lt;!&ndash;            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingPayButtonAddCreditCardTest"/>&ndash;&gt;
