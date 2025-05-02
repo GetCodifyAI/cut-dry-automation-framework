@@ -242,6 +242,7 @@ public class BoostPage extends LoginPage {
         return distributorUI.isDisplayed(By.xpath(txt_itemAdded.replace("CODE", code)));
     }
     public void clickClose() throws InterruptedException {
+        distributorUI.waitForClickability(btn_close);
         distributorUI.click(btn_close);
         distributorUI.waitForCustom(2000);
     }
@@ -294,6 +295,7 @@ public class BoostPage extends LoginPage {
         return distributorUI.isDisplayed(txt_popupSalesRepConfig);
     }
     public void clickDontForgetToOrderConfig() {
+        distributorUI.waitForClickability(btn_dontforget_config);
         distributorUI.click(btn_dontforget_config);
     }
     public boolean isDontForgetPopupDisplayed() {
