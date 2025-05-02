@@ -693,6 +693,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_clearAll = By.xpath("//div[contains(text(),'Clear All')]");
     String hardHoldMessagePopUp = "//h2[contains(text(),'MESSAGE')]";
     By lastOrder =By.xpath("//td[text()='Last Order']");
+    By activeDateNext = By.xpath("(//div[contains(@class,'react-datepicker__day') and @aria-disabled='false'])[2]");
+    String fullOrderDelayMessage = "//span[contains(text(),'MESSAGE')]";
+    By fullyOrderDelay = By.xpath("//strong[text()='Full Order Delay: ']");
+    By PartialShipmentNotice = By.xpath("//strong[text()='Partial Shipment Notice: ']");
 
 
 
@@ -4130,8 +4134,19 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isLastOrderColumnDisplayed(){
         return distributorUI.isDisplayed(lastOrder);
     }
-
-
-
+    public void selectActiveDeliveryDateNext() throws InterruptedException {
+        distributorUI.waitForVisibility(activeDateNext);
+        distributorUI.click(activeDateNext);
+        distributorUI.waitForCustom(5000);
+    }
+    public boolean isFullOrderDelayMessageDisplayed(String message){
+        return distributorUI.isDisplayed(By.xpath(fullOrderDelayMessage.replace("MESSAGE", message)));
+    }
+    public boolean isFullOrderDelayDisplayed(){
+        return distributorUI.isDisplayed(fullyOrderDelay);
+    }
+    public boolean isPartialShipmentNoticeDisplayed(){
+        return distributorUI.isDisplayed(PartialShipmentNotice);
+    }
 
 }

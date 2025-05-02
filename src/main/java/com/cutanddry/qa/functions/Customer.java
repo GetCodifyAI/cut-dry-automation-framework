@@ -2384,6 +2384,20 @@ public class Customer {
             customersPage.clickYesDuplicatePopup();
         }
     }
+    public static void selectDeliveryDateLineStable()throws InterruptedException{
+        customersPage.clickOnDeliveryDateStable();
+        customersPage.selectActiveDeliveryDateNext();
+
+    }
+    public static boolean isFullOrderDelayMessageDisplayed(String message){
+        return customersPage.isFullOrderDelayMessageDisplayed(message);
+    }
+    public static boolean isFullOrderDelayDisplayed(){
+        return customersPage.isFullOrderDelayDisplayed();
+    }
+    public static boolean isPartialShipmentNoticeDisplayed(){
+        return customersPage.isPartialShipmentNoticeDisplayed();
+    }
 
 }
 

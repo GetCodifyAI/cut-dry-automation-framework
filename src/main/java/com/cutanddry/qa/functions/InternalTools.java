@@ -174,4 +174,13 @@ public class InternalTools {
         internalToolsPage.clickSave();
         internalToolsPage.clickOKOnSucessOverlay();
     }
+    public static void clickOnInternalToolCompanyEditDetails(String name){
+        internalToolsPage.clickOnInternalToolCompanyEditDetails(name);
+    }
+    public static void restrictSpotPricesToggle(boolean status){
+        internalToolsPage.restrictSpotPricesToggle(status);
+    }
+    public static boolean isRestrictSpotPricesToggleOn(){
+        return internalToolsPage.isRestrictSpotPricesToggleOn();
+    }
 }
