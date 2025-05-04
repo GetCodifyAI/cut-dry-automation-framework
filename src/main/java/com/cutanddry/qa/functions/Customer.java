@@ -2398,6 +2398,27 @@ public class Customer {
     public static boolean isPartialShipmentNoticeDisplayed(){
         return customersPage.isPartialShipmentNoticeDisplayed();
     }
+    public static boolean isCutOffTimeDisplay() {
+        return customersPage.isCutOffTimeDisplay();
+    }
+    public static boolean isAVGTagDisplayed(String name){
+        return customersPage.isAVGTagDisplayed(name);
+    }
+    public static void clickItemTypeInCatalog()throws InterruptedException{
+        customersPage.clickItemTypeInCatalog();
+    }
+    public static boolean isItemTypeDisplayed(String name)throws InterruptedException{
+        return customersPage.isItemTypeDisplayed(name);
+    }
+    public static void clickItemTypeOptionInCatalog()throws InterruptedException{
+        customersPage.clickItemTypeOption();
+    }
+    public static boolean isSpecialItemDisplayed(String name)throws InterruptedException{
+        return customersPage.isSpecialItemDisplayed(name);
+    }
+    public static boolean isUpdateMarginValueErrorDisplayed(String name)throws InterruptedException{
+        return customersPage.isUpdateMarginValueErrorDisplayed(name);
+    }
 
 }
 

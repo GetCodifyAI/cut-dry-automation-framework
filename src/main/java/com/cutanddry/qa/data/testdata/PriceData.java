@@ -22,4 +22,9 @@ public class PriceData {
     public static final String FULLY_ORDER_DELAY_MESSAGE = "Pre-cut items need extra time.";
     public static final String FULLY_ORDER_DELAY = "Your entire order will ship together once pre-cut items are ready.";
     public static final String COMPANY_NAME = "Cheese Importers";
+    public static final String DISTRIBUTOR_JOHN_GROSS = "146572596 - Cut+Dry Agent - John Gross & Co";
+    public static final String CUSTOMER_ID_8 = "11956";
+    public static final String ITEM_CODE_AVG = "677499";
+    public static final String ITEM_NAME_AVG = "Bacon Wild Boar Slab";
+    public static final String MINIMUM_PRICE_ERROR = "exceeded the maximum limit";
 }

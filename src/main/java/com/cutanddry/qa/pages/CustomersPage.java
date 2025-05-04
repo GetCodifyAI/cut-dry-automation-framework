@@ -697,6 +697,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String fullOrderDelayMessage = "//span[contains(text(),'MESSAGE')]";
     By fullyOrderDelay = By.xpath("//strong[text()='Full Order Delay: ']");
     By PartialShipmentNotice = By.xpath("//strong[text()='Partial Shipment Notice: ']");
+    By txt_cutOffTime = By.xpath("//span[text()='Order Cutoff:']");
+    String txt_avg = "(//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]/../following-sibling::div[contains(text(),'AVG')]";
+    String txt_itemType = "//div[contains(text(), 'Item Type')]/../../following-sibling::div//*[name()='svg' and @data-icon='square']/following-sibling::div[contains(text(), 'NAME')]";
+    String txt_specialItem = "//span//div[contains(text(), 'NAME')]";
+    String txt_marginPriceError = "//span[contains(text(), 'NAME')]";
 
 
 
@@ -4147,6 +4152,28 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isPartialShipmentNoticeDisplayed(){
         return distributorUI.isDisplayed(PartialShipmentNotice);
+    }
+    public boolean isCutOffTimeDisplay(){
+        return distributorUI.isDisplayed(txt_cutOffTime);
+    }
+    public boolean isAVGTagDisplayed(String name){
+        return distributorUI.isDisplayed(By.xpath(txt_avg.replace("NAME", name)));
+    }
+    public void clickItemTypeInCatalog()throws InterruptedException{
+        distributorUI.click(itemTypeDropDown);
+    }
+    public boolean isItemTypeDisplayed(String name){
+        return distributorUI.isDisplayed(By.xpath(txt_itemType.replace("NAME", name)));
+    }
+    public void clickItemTypeOption()throws InterruptedException{
+        distributorUI.scrollToElement(itemTypeDropDownOption);
+        distributorUI.click(itemTypeDropDownOption);
+    }
+    public boolean isSpecialItemDisplayed(String name)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(txt_specialItem.replace("NAME", name)));
+    }
+    public boolean isUpdateMarginValueErrorDisplayed(String name)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(txt_marginPriceError.replace("NAME", name)));
     }
 
 }

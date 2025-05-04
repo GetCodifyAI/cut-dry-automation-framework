@@ -156,6 +156,8 @@ public class SettingsPage extends LoginPage{
     By txt_configureOrderReminder = By.xpath("//p[text()='Configure order reminders']");
     String configureOrderReminderDropDown = "//label[contains(text(), 'DROPDOWN')]/following-sibling::div";
     String configureOrderReminderDropDownOption = "(//div[contains(text(),'DROPDOWNOPTION')])[last()]";
+    By sel_OrderCutOffs = By.xpath("//*[contains(text(),'Order Cutoffs')]/preceding-sibling::input");
+
 
 
 
@@ -996,6 +998,15 @@ public class SettingsPage extends LoginPage{
             distributorUI.clickWithScrollAndHover(sel_OrderMinimums);
         } else if (!enable && isChecked) {
             distributorUI.clickWithScrollAndHover(sel_OrderMinimums);
+        }
+    }
+    public void orderCutOffsOverrideRestrictions(boolean enable) {
+        boolean isChecked = distributorUI.getElement(sel_OrderCutOffs).isSelected();
+
+        if (enable && !isChecked) {
+            distributorUI.clickWithScrollAndHover(sel_OrderCutOffs);
+        } else if (!enable && isChecked) {
+            distributorUI.clickWithScrollAndHover(sel_OrderCutOffs);
         }
     }
 

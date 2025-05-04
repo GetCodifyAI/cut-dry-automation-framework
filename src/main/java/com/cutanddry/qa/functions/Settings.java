@@ -472,5 +472,9 @@ public class Settings {
         settingsPage.orderMinimumsOverrideRestrictions(status);
         settingsPage.clickOnSaveChanges();
     }
+    public static void orderCutOffsCheckBox(boolean status) throws InterruptedException {
+        settingsPage.orderCutOffsOverrideRestrictions(status);
+        settingsPage.clickOnSaveChanges();
+    }
 
 }

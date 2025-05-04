@@ -53,4 +53,6 @@ public class CatalogData {
     public static final String SALE_PERSON_ROLL = "apptesters@test.com";
     public static final String AR_ROLL = "Isuru Test AR";
     public static final String DISPATCHER_ROLL = "Hadley Dispatcher";
+    public static final String ITEM_TYPE_1 = "Special Order";
+    public static final String ITEM_TYPE_2 = "Stocked (in-house)";
 }
