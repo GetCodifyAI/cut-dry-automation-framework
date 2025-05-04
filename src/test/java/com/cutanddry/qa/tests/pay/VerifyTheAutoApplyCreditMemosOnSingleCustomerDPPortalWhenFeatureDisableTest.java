@@ -17,9 +17,10 @@ public class VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureDis
     SoftAssert softAssert;
     static User user;
     String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
-    static String customerName = PayInvoiceData.CUSTOMER_NAME2;
     static String status_payment = PayInvoiceData.OPTION_FUNDS;
     String CustomerFilterOption = CustomerInvoiceData.CUSTOMER_FILTER_OPTION_PAST_DUE;
+    static String customerCode = PayInvoiceData.CUSTOMER_CODE;
+
 
 
     @BeforeMethod
@@ -41,15 +42,15 @@ public class VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureDis
         Login.navigateToDistributorPortal(DistributorName);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
         Dashboard.navigateToPay();
-        Pay.searchCustomer(customerName);
-        softAssert.assertTrue(Pay.isSearchCustomerDisplayed(customerName),"Search customer by customer Name not display");
-        Pay.clickSearchCustomer(customerName);
-       // softAssert.assertTrue(Pay.isCustomerInvoiceSectionDisplayed(customerName),"navigate customer invoice section error");
+        Pay.searchCustomer(customerCode);
+        softAssert.assertTrue(Pay.isSearchCustomerDisplayed(customerCode),"Search customer by customer Name not display");
+        Pay.clickSearchCustomer(customerCode);
+//        softAssert.assertTrue(Pay.isCustomerInvoiceSectionDisplayed(customerName),"navigate customer invoice section error");
         Customer.clickOnDropDownFilter();
         Customer.selectFilterDropDown(CustomerFilterOption);
         softAssert.assertTrue(Customer.isFilterSelectedCorrectly(CustomerFilterOption.replace("- ","").trim()),"The filter hasn't selected correctly");
 
-        Pay.clickOnInvoiceRecord(2);
+        Pay.clickOnInvoiceRecord(5);
         Pay.clickOnInvoiceBatchOperationButton();
         Pay.selectTheBatchOperationOption(status_payment);
 
