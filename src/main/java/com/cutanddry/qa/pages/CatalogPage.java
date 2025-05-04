@@ -46,7 +46,7 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
     String unit = "//div[text()='UNIT']";
     By unitPriceTxtField = By.xpath("//div[contains(text(), 'Bag')]/ancestor::td[1]/following-sibling::td[1]//input[@type='number']");
     String unitPriceTxtFieldMultiUOM = "//div[contains(text(), 'UOM_TYPE')]/ancestor::td[1]/following-sibling::td[1]//input[@type='number']";
-    By salesTypeDropDown =By.xpath("//tr[td//div[contains(text(), 'Bag')]]/td[3]//div[contains(@class, 'cd_themed_select__placeholder css-1wa3eu0-placeholder')]");
+    By salesTypeDropDown =By.xpath("//tr[td//div[contains(text(), 'Select')]]/td[3]//div[contains(@class, 'cd_themed_select__placeholder css-1wa3eu0-placeholder')]");
     String salesTypeDropDownMultiUOM = "//tr[td//div[contains(text(), 'UOM_TYPE')]]/td[3]//div[contains(@class, 'cd_themed_select__placeholder css-1wa3eu0-placeholder')]";
     By percentageOption = By.xpath("//div[contains(text(),'Percentage')]");
     By dollarValueOption = By.xpath("//div[contains(text(),'Dollar Value')]");
@@ -374,6 +374,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         distributorUI.click(salesTypeDropDown);
     }
     public void clickOnSalesTypeDropDown(String uom){
+        distributorUI.waitForClickability(salesTypeDropDown);
         distributorUI.click(By.xpath(salesTypeDropDownMultiUOM.replace("UOM_TYPE",uom)));
     }
     public void clickOnPercentageOption(){
@@ -395,6 +396,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     public void deleteUOMinCatalog(String uom) throws InterruptedException {
         distributorUI.waitForCustom(3000);
         distributorUI.click(By.xpath(deleteUom.replace("UOM",uom)));
+        distributorUI.waitForCustom(3000);
     }
     public boolean isUOMDeleteOverlayDisplayed(){
         return distributorUI.isDisplayed(uomDeleteOverlay);

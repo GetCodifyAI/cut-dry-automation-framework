@@ -77,7 +77,6 @@ public class VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurant
         Customer.ClickOnMultiUomDropDownOG(searchItemCode);
         softAssert.assertTrue(Customer.isSpotPriceAdded("1",itemPrice),"Item case price error - ");
 
-
         // Restaurant Flows
 //        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Login.navigateToRestaurant();
@@ -94,10 +93,8 @@ public class VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurant
         Customer.searchItemOnOrderGuide(searchItemCode);
         softAssert.assertTrue(Customer.getItemNameFirstRow().toLowerCase().contains(itemName.toLowerCase()),"item mismatch");
         softAssert.assertTrue(Customer.isMultiUomDropDownOGDisplayed(),"Item is not Multi UOM");
-
         Customer.ClickOnMultiUomDropDownOG(searchItemCode);
         softAssert.assertTrue(Customer.isSpotPriceAdded("1",itemPrice),"Item case price error");
-
 
         softAssert.assertAll();
     }

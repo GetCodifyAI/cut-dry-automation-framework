@@ -90,6 +90,25 @@ public class VerifyTheRemoveANewlyAddedUOMsToAnItemAndCheckFromTheDistributorAnd
         softAssert.assertTrue(Customer.getItemNameFirstRow().toLowerCase().contains(itemName.toLowerCase()),"item mismatch");
         softAssert.assertFalse(Customer.isMultiUomDropDownOGDisplayed(),"Item is Multi UOM");
 
+        //Distributor Flow
+
+        Login.navigateToDistributorPortal(DistributerName);
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Dashboard.navigateToCatalog();
+        softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
+
+        Catalog.selectItemFromGrid(searchItemCode);
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),searchItemCode,"Error in getting Item Code");
+        Catalog.navigateToPricingAndPromotions();
+        Catalog.addUnitOfMeasureStable(UOM);
+        Catalog.selectUnitFromDropdown(UOM);
+        Catalog.setItemUnitPrice(UOM, itemPrice);
+        Catalog.selectDollarValueAsSalesTypeFrmDropdown(UOM);
+        Catalog.setSaleValue(UOM, saleValue);
+        Catalog.saveChanges();
+        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in creating UOM");
+        softAssert.assertTrue(Catalog.isAddedUOMDisplayed(UOM),"Error in adding the UOM");
+
 
         softAssert.assertAll();
     }
