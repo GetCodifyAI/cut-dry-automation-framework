@@ -300,7 +300,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         try {
             distributorUI.waitForCustom(3000);
             distributorUI.waitForVisibility(saveChangesBtn);
-            distributorUI.click(saveChangesBtn);
+            distributorUI.clickUsingJavaScript(saveChangesBtn);
             distributorUI.waitForCustom(3000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
@@ -347,6 +347,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     }
     public void clickOnUnitOfMeasure()throws InterruptedException{
         distributorUI.waitForVisibility(unitOfMeasure);
+        distributorUI.waitForClickability(unitOfMeasure);
         distributorUI.waitForCustom(3000);
         distributorUI.click(unitOfMeasure);
     }
@@ -359,10 +360,11 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         return distributorUI.countElements(uomCount);
     }
     public void clickOnUnit(String uom){
-        distributorUI.waitForVisibility(uomSelectDropdown);
+        distributorUI.waitForClickability(uomSelectDropdown);
         distributorUI.click(uomSelectDropdown);
         distributorUI.waitForVisibility(By.xpath(unit.replace("UNIT",uom)));
-        distributorUI.click(By.xpath(unit.replace("UNIT",uom)));
+        distributorUI.waitForClickability(By.xpath(unit.replace("UNIT",uom)));
+        distributorUI.clickUsingJavaScript(By.xpath(unit.replace("UNIT",uom)));
     }
     public void typeUnitPrice(String unitPrice){
         distributorUI.sendKeys(unitPriceTxtField,unitPrice);
@@ -787,7 +789,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
 
     public String getItemNameFirstRowInCatalog() throws InterruptedException {
         distributorUI.waitForVisibility(lbl_firstRowItemName);
-        distributorUI.waitForCustom(3000);
+        distributorUI.waitForCustom(5000);
         return distributorUI.getText(lbl_firstRowItemName);
     }
 

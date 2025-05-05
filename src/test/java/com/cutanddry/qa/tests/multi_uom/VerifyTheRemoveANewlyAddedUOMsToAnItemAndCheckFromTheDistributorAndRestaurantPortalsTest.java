@@ -73,8 +73,8 @@ public class VerifyTheRemoveANewlyAddedUOMsToAnItemAndCheckFromTheDistributorAnd
         softAssert.assertFalse(Customer.isMultiUomDropDownOGDisplayed(),"Item is Multi UOM");
 
 
-        // Restaurant Flows
-//        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
+         //Restaurant Flows
+        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Login.navigateToRestaurant();
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "The user is unable to land on the Dashboard page.");
         Dashboard.navigateToIndependentFoodsCo();
