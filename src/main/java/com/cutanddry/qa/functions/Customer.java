@@ -2420,6 +2420,17 @@ public class Customer {
         return customersPage.isUpdateMarginValueErrorDisplayed(name);
     }
 
+    public static void clearOGSections(String name)throws InterruptedException{
+        int count = customersPage.existingOGSection(name);
+        for (int i = 0; i < count; i++) {
+            if (customersPage.isAddedSectionDisplayed(name)) {
+                customersPage.clickOnEditSection(name);
+                customersPage.clickOnDelete();
+                customersPage.clickOnYes();
+            }
+        }
+    }
+
 }
 
 
