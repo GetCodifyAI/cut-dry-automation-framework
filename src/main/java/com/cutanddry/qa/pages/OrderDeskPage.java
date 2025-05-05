@@ -28,7 +28,7 @@ public class OrderDeskPage extends LoginPage{
 //    By DeleteItemBtn = By.xpath("(//td[@class='_pe8div'])[last()]");
     By DeleteItemBtn = By.xpath("(//*[local-name()='svg' and @data-icon='trash-can'])[last()]");
     By DeleteConfirmationOverlayYesBtn = By.xpath("//button[contains(text(),'Yes')]");
-    By ItemNameTxt = By.xpath("(//div[@class='_12e4m8i'])[1]");
+    By ItemNameTxt = By.xpath("(//*[local-name()='svg' and @data-icon='cdEdit'])[1]");
     By lbl_SearchProductPopup = By.xpath("//div[contains(text(),'Update Item')]");
     By SearchProduct = By.xpath("(//div[@class='themed_select__placeholder css-1wa3eu0-placeholder'])[last()]");
     By SelectedswapItem = By.xpath("//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'dmab : almond milk barista-6x32oz-califia')]");
