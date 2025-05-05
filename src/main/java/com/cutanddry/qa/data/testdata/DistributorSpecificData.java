@@ -9,5 +9,7 @@ public class DistributorSpecificData {
     public static final String ITEM_CODE_CATALOG1 = "04680";
     public static final String ITEM_CODE_CATALOG2 = "04180";
     public static final String DISTRIBUTOR_CARMELA = "174874582 - Cut+Dry Agent - Carmela Foods Inc";
+    public static final String DISTRIBUTOR_DICARLO = "72124668 - Kevin Wu - DiCarlo";
+    public static final String CUSTOMER_ID_DICARLO = "962243";
 
 }
