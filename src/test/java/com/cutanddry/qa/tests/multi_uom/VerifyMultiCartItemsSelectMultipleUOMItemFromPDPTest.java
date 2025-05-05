@@ -27,6 +27,7 @@ public class VerifyMultiCartItemsSelectMultipleUOMItemFromPDPTest extends TestBa
     static String DP = CatalogData.DP_BUTTERFIELD;
     String itemName1 = CatalogData.ITEM_NAME_RETAIL;
     String itemName2 = CatalogData.ITEM_NAME_FOOD_;
+    String searchItemCode = CatalogData.ITEM_CODE_14;
     static int orderCount = 2;
 
     @BeforeMethod
@@ -65,7 +66,7 @@ public class VerifyMultiCartItemsSelectMultipleUOMItemFromPDPTest extends TestBa
 
         Catalog.clickBack();
 
-        Customer.searchItemOnCatalog(itemName2);
+        Customer.searchItemOnCatalog(searchItemCode);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName2).contains(itemName2.toLowerCase()), "item not found");
         Customer.clickOnProduct(itemName2);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");

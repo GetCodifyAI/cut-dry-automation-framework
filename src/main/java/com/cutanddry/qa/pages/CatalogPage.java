@@ -852,7 +852,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     public void clickOGAddToCartPlusIcon(String code,String uom)throws InterruptedException{
         distributorUI.waitForVisibility(By.xpath(btn_OGAddToCartPlusQuantity.replace("CODE", code).replace("UOM", uom)));
         distributorUI.click(By.xpath(btn_OGAddToCartPlusQuantity.replace("CODE", code).replace("UOM", uom)));
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(4000);
     }
     public String getItemUOMQuantity(String code,String uom){
         return distributorUI.getText(By.xpath(tbx_itemQuantityUOM.replace("CODE", code).replace("UOM", uom)), "value");

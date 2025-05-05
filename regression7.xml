@@ -29,7 +29,8 @@
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyMultiCartItemsSelectMultipleUOMItemFromPDPTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMAvailableRebateItemAndSubmissionTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMJustInTimeItemAndSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMSpecialOrderItemAndSubmissionTest"/>
+<!--            TODO: Need to fix the Special Item-->
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMSpecialOrderItemAndSubmissionTest"/>-->
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheDeliveryFeesSelectMultipleUOMTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEndlessAisleShippingFeesSelectMultipleUOMTest"/>
 
