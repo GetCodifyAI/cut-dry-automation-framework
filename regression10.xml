@@ -25,6 +25,11 @@
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyEntireOrderIsShiftedToDeliveryOnNextAvailableDeliveryForOrderMinimumNotMetOrdersTest"/>
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyOrderMinimumMetExcludingLeadTimeItemOrderIsSplitInToTwoOrdersTest"/>
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyInternalToolsRestrictSpotPricesBelowMinimumProductPriceToggleTest"/>
+
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyDisplayPriceWithAvgSuffixTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyPriceIsNotAllowedToChangeBelowTheMinimumPriceTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheItemStatusFilterTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheOrderCutOffsCanBeOverriddenTest"/>
         </classes>
     </test>
 </suite>
