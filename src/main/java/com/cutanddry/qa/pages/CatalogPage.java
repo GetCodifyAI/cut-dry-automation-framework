@@ -200,6 +200,9 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     String lastOrderDatePDP = "(//div[text()='DATEPLACEHOLDER']/../following-sibling::td//div[.//div[text()='1 Pkg'] and .//div[text()='1 CS']])[1]";
     By txt_alreadyCustomer = By.xpath("//h3//b[text()='Already a Customer?']");
     String btn_alreadyCustomer = "//button[text()='BUTTON']";
+    By multiUomOptionEach =By.xpath("//div[text()='Each']");
+    By getTotalLineItem = By.xpath("//td[contains(text(),'Total Line Items')]/following-sibling::td");
+
 
 
     public boolean isCatalogTextDisplayed() {
@@ -1055,6 +1058,15 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     public void loginPDPURLSame(String pdpURL) throws InterruptedException{
         distributorUI.openNewTabAndClosePreviousTabs();
         distributorUI.navigateToURLSame(pdpURL);
+    }
+    public void ClickOnMultiUomEachOption(String code)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(multiUomDropDownOG.replace("CODE", code)));
+        distributorUI.click(By.xpath(multiUomDropDownOG.replace("CODE", code)));
+        distributorUI.click(multiUomOptionEach);
+        distributorUI.waitForCustom(3000);
+    }
+    public String getTotalLineItemInOrder(){
+        return distributorUI.getText(getTotalLineItem);
     }
 
 }
