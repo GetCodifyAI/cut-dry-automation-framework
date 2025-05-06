@@ -368,7 +368,7 @@ public class KeywordBase {
 
     public KeywordBase waitForInvisibility(By by) {
         try {
-            wait.until(ExpectedConditions.invisibilityOf(driver.findElement(by)));
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(by));
             logger.info("Waited for invisibility of element: {}", by);
         } catch (Exception e) {
             logger.error("Failed to wait for invisibility of element: {}", by, e);
