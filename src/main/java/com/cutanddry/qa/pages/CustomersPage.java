@@ -1108,7 +1108,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickOnMoreOptions(){
         distributorUI.waitForClickability(btn_moreOptions);
-        distributorUI.click(btn_moreOptions);
+//        distributorUI.click(btn_moreOptions);
+        distributorUI.clickWithScrollAndHover(btn_moreOptions);
     }
     public void clickOnExportOrderGuide(){
         distributorUI.waitForClickability(btn_exportOrderGuide);
@@ -1596,7 +1597,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isAddedSectionDisplayed(String name) throws InterruptedException {
         distributorUI.refreshPage();
         distributorUI.waitForCustom(3000);
-        distributorUI.waitForVisibility(By.xpath(txt_addedSection.replace("NAME", name)));
+//        distributorUI.waitForVisibility(By.xpath(txt_addedSection.replace("NAME", name)));
         return distributorUI.isDisplayed(By.xpath(txt_addedSection.replace("NAME", name)));
     }
     public void dragToTop(){
@@ -4174,6 +4175,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isUpdateMarginValueErrorDisplayed(String name)throws InterruptedException{
         return distributorUI.isDisplayed(By.xpath(txt_marginPriceError.replace("NAME", name)));
+    }
+
+    public int existingOGSection(String name) throws InterruptedException {
+        return distributorUI.countElements(By.xpath(txt_addedSection.replace("NAME", name)));
     }
 
 }

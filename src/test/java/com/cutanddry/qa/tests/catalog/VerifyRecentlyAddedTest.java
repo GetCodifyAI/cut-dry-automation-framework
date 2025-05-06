@@ -15,6 +15,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyRecentlyAddedTest extends TestBase {
     static User user;
+    String All = "All";
 
     @BeforeMethod
     public void setUp(){
@@ -30,6 +31,7 @@ public class VerifyRecentlyAddedTest extends TestBase {
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCatalog();
         Assert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
+        Catalog.selectItemStatus(All);
         String itemCount = Catalog.getRecentlyAddedCount();
         Catalog.clickOnReview();
         softAssert.assertEquals(Catalog.getResultsCount(),itemCount, "recently added count error");
