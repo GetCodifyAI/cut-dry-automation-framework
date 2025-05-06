@@ -30,6 +30,9 @@
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyPriceIsNotAllowedToChangeBelowTheMinimumPriceTest"/>
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheItemStatusFilterTest"/>
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheOrderCutOffsCanBeOverriddenTest"/>
+
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheUnitAggregationAfterPlacingTheOrderTest"/>
+            <class name="com.cutanddry.qa.tests.order_reminder.VerifyTheOrderReminderAlertOptionIsRemovedFromOrderGuideSettingsTest"/>
         </classes>
     </test>
 </suite>
