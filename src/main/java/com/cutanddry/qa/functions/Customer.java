@@ -2384,6 +2384,52 @@ public class Customer {
             customersPage.clickYesDuplicatePopup();
         }
     }
+    public static void selectDeliveryDateLineStable()throws InterruptedException{
+        customersPage.clickOnDeliveryDateStable();
+        customersPage.selectActiveDeliveryDateNext();
+
+    }
+    public static boolean isFullOrderDelayMessageDisplayed(String message){
+        return customersPage.isFullOrderDelayMessageDisplayed(message);
+    }
+    public static boolean isFullOrderDelayDisplayed(){
+        return customersPage.isFullOrderDelayDisplayed();
+    }
+    public static boolean isPartialShipmentNoticeDisplayed(){
+        return customersPage.isPartialShipmentNoticeDisplayed();
+    }
+    public static boolean isCutOffTimeDisplay() {
+        return customersPage.isCutOffTimeDisplay();
+    }
+    public static boolean isAVGTagDisplayed(String name){
+        return customersPage.isAVGTagDisplayed(name);
+    }
+    public static void clickItemTypeInCatalog()throws InterruptedException{
+        customersPage.clickItemTypeInCatalog();
+    }
+    public static boolean isItemTypeDisplayed(String name)throws InterruptedException{
+        return customersPage.isItemTypeDisplayed(name);
+    }
+    public static void clickItemTypeOptionInCatalog()throws InterruptedException{
+        customersPage.clickItemTypeOption();
+    }
+    public static boolean isSpecialItemDisplayed(String name)throws InterruptedException{
+        return customersPage.isSpecialItemDisplayed(name);
+    }
+    public static boolean isUpdateMarginValueErrorDisplayed(String name)throws InterruptedException{
+        return customersPage.isUpdateMarginValueErrorDisplayed(name);
+    }
+
+    public static void clearOGSections(String name)throws InterruptedException{
+        int count = customersPage.existingOGSection(name);
+        for (int i = 0; i < count; i++) {
+            if (customersPage.isAddedSectionDisplayed(name)) {
+                customersPage.clickOnEditSection(name);
+                customersPage.clickOnDelete();
+                customersPage.clickOnYes();
+            }
+        }
+    }
 
 }
 

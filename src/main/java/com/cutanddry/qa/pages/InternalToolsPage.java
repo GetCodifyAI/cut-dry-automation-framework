@@ -45,6 +45,10 @@ public class InternalToolsPage extends LoginPage {
     By btn_notificationSave = By.xpath("//h5[text()='Notifications']/../following-sibling::div/button[text()='Save']");
     By enableSponsoredProductAdvertisementsToggle = By.xpath("//*[contains(text(), 'Enable Sponsored Product Advertisements')]/../following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By enableSponsoredProductAdvertisementsToggle1 = By.xpath("//*[contains(text(), 'Enable Sponsored Product Advertisements')]/../following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    String InternalToolCompanyEditDetailsBtn = "//tr[td[contains(text(),'NAME')]]//a[contains(text(),'Edit Details')]";
+    By restrictSpotPricesToggleStable = By.xpath("//div[contains(text(), 'Restrict spot prices below minimum product price')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By restrictSpotPricesToggleStable1 = By.xpath("//div[contains(text(), 'Restrict spot prices below minimum product price')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+
 
 
 
@@ -300,5 +304,31 @@ public class InternalToolsPage extends LoginPage {
         distributorUI.clickUsingJavaScript(btn_notificationSave);
         distributorUI.waitForCustom(3000);
     }
+    public void clickOnInternalToolCompanyEditDetails(String name){
+        distributorUI.waitForVisibility(By.xpath(InternalToolCompanyEditDetailsBtn.replace("NAME",name)));
+        distributorUI.click(By.xpath(InternalToolCompanyEditDetailsBtn.replace("NAME",name)));
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void restrictSpotPricesToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(restrictSpotPricesToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(restrictSpotPricesToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(restrictSpotPricesToggleStable1);
+        }
+    }
+    public boolean isRestrictSpotPricesToggleOn() {
+        String handlePosition = distributorUI.getElement(restrictSpotPricesToggleStable).getAttribute("style");
+        return handlePosition.contains("translateX(29px)");
+    }
+
+
 
 }

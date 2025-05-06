@@ -37,6 +37,7 @@ public class VerifyEditingOrderGuideSectionsTest extends TestBase {
         Customer.selectSortItemByOption(sortOption);
         Customer.goToEdit();
         softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
+        Customer.clearOGSections(sectionName);
         Customer.expandMoreOptionsDropdown();
         Customer.addSection();
 //        Customer.clickClose();

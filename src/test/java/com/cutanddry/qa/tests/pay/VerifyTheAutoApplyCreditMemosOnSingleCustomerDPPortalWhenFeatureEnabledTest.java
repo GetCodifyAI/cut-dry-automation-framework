@@ -43,14 +43,14 @@ public class VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureEna
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
         Dashboard.navigateToPay();
         Pay.searchCustomer(customerCode);
-        softAssert.assertTrue(Pay.isSearchCustomerDisplayed(customerName),"Search customer by customer Name not display");
-        Pay.clickSearchCustomer(customerName);
+        softAssert.assertTrue(Pay.isSearchCustomerDisplayed(customerCode),"Search customer by customer Name not display");
+        Pay.clickSearchCustomer(customerCode);
       //  softAssert.assertTrue(Pay.isCustomerInvoiceSectionDisplayed(customerName),"navigate customer invoice section error");
         Customer.clickOnDropDownFilter();
         Customer.selectFilterDropDown(CustomerFilterOption);
         softAssert.assertTrue(Customer.isFilterSelectedCorrectly(CustomerFilterOption.replace("- ","").trim()),"The filter hasn't selected correctly");
 
-        Pay.clickOnInvoiceRecord(2);
+        Pay.clickOnInvoiceRecord(5);
         Pay.clickOnInvoiceBatchOperationButton();
         Pay.selectTheBatchOperationOption(status_payment);
 
