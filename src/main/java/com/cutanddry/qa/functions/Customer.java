@@ -2430,6 +2430,21 @@ public class Customer {
             }
         }
     }
+    public static boolean isLinkedAccountDisplayed() throws InterruptedException {
+        return customersPage.isLinkedAccountDisplayed();
+    }
+    public static void clickEditChildAccount(){
+        customersPage.clickEditChildAccount();
+    }
+    public static boolean isManageChildAccountPopUpDisplayed() throws InterruptedException {
+        return customersPage.isManageChildAccountPopUpDisplayed();
+    }
+    public static boolean isParentAccountStatusDisplayed(String status) throws InterruptedException {
+        return customersPage.isParentAccountStatusDisplayed(status);
+    }
+    public static boolean isChildAccountDisplayed(String account){
+        return customersPage.isChildAccountDisplayed(account);
+    }
 
 }
 
