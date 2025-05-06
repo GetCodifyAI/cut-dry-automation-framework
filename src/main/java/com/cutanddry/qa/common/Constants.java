@@ -31,7 +31,7 @@ public class Constants {
             MAIN_URL = "https://supplier-guava.staging.cutanddry.com/";
         }
         else if (TEST_ENV.equalsIgnoreCase("STAG")) {
-            MAIN_URL = "https://supplier-psup-116.staging.cutanddry.com/";
+            MAIN_URL = "https://supplier-ifd.staging.cutanddry.com/";
         }
         return MAIN_URL;
     }
@@ -44,7 +44,7 @@ public class Constants {
             SEC_URL = "https://app-guava.staging.cutanddry.com/";
         }
         else if (TEST_ENV.equalsIgnoreCase("STAG")) {
-            MAIN_URL = "https://app-psup-116.staging.cutanddry.com/";
+            SEC_URL = "https://app-ifd.staging.cutanddry.com/";
         }
         return SEC_URL;
     }
@@ -58,7 +58,7 @@ public class Constants {
             LOGIN_AS = "https://app-guava.staging.cutanddry.com/internaltools/loginas";
         }
         else if (TEST_ENV.equalsIgnoreCase("STAG")) {
-            MAIN_URL = "https://app-psup-116.staging.cutanddry.com/internaltools/loginas";
+            LOGIN_AS = "https://app-ifd.staging.cutanddry.com/internaltools/loginas";
         }
         return LOGIN_AS;
     }
@@ -72,7 +72,7 @@ public class Constants {
             NODE_EXPLORER = "https://app-guava.staging.cutanddry.com/admin";
         }
         else if (TEST_ENV.equalsIgnoreCase("STAG")) {
-            MAIN_URL = "https://app-psup-116.staging.cutanddry.com/admin";
+            NODE_EXPLORER = "https://app-ifd.staging.cutanddry.com/admin";
         }
         return NODE_EXPLORER;
     }
@@ -86,7 +86,7 @@ public class Constants {
             CONFIG_SUPPLIER = "https://app-guava.staging.cutanddry.com/internaltools/configure-supplier";
         }
         else if (TEST_ENV.equalsIgnoreCase("STAG")) {
-            MAIN_URL = "https://app-psup-116.staging.cutanddry.com/internaltools/configure-supplier";
+            CONFIG_SUPPLIER = "https://app-ifd.staging.cutanddry.com/internaltools/configure-supplier";
         }
         return CONFIG_SUPPLIER;
     }
