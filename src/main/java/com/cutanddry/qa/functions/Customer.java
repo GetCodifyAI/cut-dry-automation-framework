@@ -2032,7 +2032,7 @@ public class Customer {
         return customersPage.getNoOfUOMsOrdered(position);
     }
 
-    public static int getWeightPerUOM(String position){
+    public static int getWeightPerUOM(String position) throws InterruptedException {
         return customersPage.getWeightPerUOM(position);
     }
     public static boolean isReviewStandingOrdersDisplayed(){

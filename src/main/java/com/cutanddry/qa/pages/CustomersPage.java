@@ -3664,7 +3664,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return Integer.parseInt(NoOfUOMsOrderedString.trim());
     }
 
-    public int getWeightPerUOM(String position){
+    public int getWeightPerUOM(String position) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        distributorUI.waitForVisibility(By.xpath(WeightPerUOM.replace("POSITION",position)));
         String WeightPerUOMString = distributorUI.getText(By.xpath(WeightPerUOM.replace("POSITION",position)),"value") ;
         return Integer.parseInt(WeightPerUOMString.trim());
     }
