@@ -69,4 +69,7 @@ public class OrderGuideSettingsPage extends TestBase {
             throw new RuntimeException(e);
         }
     }
+    public boolean isOrderReminderAlertSettingDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(AddAlertButton);
+    }
 }

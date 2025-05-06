@@ -34,6 +34,9 @@ public class OrderGuideSettings {
         orderGuideSettingsPage.clickOnSave();
 
     }
+    public static boolean isOrderReminderAlertSettingDisplayed() throws InterruptedException {
+        return orderGuideSettingsPage.isOrderReminderAlertSettingDisplayed();
+    }
     
 
 }

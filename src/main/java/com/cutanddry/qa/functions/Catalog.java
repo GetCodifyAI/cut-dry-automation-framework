@@ -603,6 +603,12 @@ public class Catalog {
     public static void loginPDPURLSame(String pdpURL) throws InterruptedException {
         catalogPage.loginPDPURLSame(pdpURL);
     }
+    public static void ClickOnMultiUomEachOption(String code)throws InterruptedException{
+        catalogPage.ClickOnMultiUomEachOption(code);
+    }
+    public static String getTotalLineItemInOrder(){
+        return catalogPage.getTotalLineItemInOrder();
+    }
 
 
 }
