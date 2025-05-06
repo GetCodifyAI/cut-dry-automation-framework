@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 public class RestaurantOrderHistoryPage extends LoginPage {
 
     By tbx_searchOrderHistory = By.xpath("//input[@placeholder='Search']");
-    String specificOrderRecord = "//tr/td[text()='ORDER_ID']";
+    String specificOrderRecord = "//tr/td//*[text()='ORDER_ID']";
 
     public void clickOnSearchOrder() {
         distributorUI.click(tbx_searchOrderHistory);
