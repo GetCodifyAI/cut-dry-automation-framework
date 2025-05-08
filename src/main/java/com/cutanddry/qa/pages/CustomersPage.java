@@ -702,6 +702,18 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String txt_itemType = "//div[contains(text(), 'Item Type')]/../../following-sibling::div//*[name()='svg' and @data-icon='square']/following-sibling::div[contains(text(), 'NAME')]";
     String txt_specialItem = "//span//div[contains(text(), 'NAME')]";
     String txt_marginPriceError = "//span[contains(text(), 'NAME')]";
+    By txt_linkedAccount = By.xpath("//div[contains(text(),'Linked Accounts')]");
+    By childAccountEditBtn = By.xpath("//div[contains(text(), 'Child Account')]/following-sibling::div//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
+    By txt_manageChildAccounts = By.xpath("//div[contains(text(),'Manage Child Accounts')]");
+    String parentAccountStatus = "//div[contains(text(), 'Parent Account')]/following-sibling::div[contains(text(),'STATUS')]";
+    String childAccount = "//label[contains(text(), 'CHILDACC')]";
+    String childAccountDropDown = "(//label[contains(text(), 'CHILDACC')]/../following-sibling::div//*[name()='svg'])[last()]";
+    String addedOrderGuide = "(//label[contains(text(), 'CHILDACC')]/../following-sibling::div//div[contains(text(),'NAME')])[last()]";
+    String updateChildAccountSettings = "//div[contains(text(),'MESSAGE')]";
+    String dropDownOrderGuide =  "(//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'NAME')])[last()]";
+    By btn_deleteOrderGuide = By.xpath("//a[contains(text(), 'Delete Order Guide')]");
+
+
 
 
 
@@ -4183,5 +4195,49 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public int existingOGSection(String name) throws InterruptedException {
         return distributorUI.countElements(By.xpath(txt_addedSection.replace("NAME", name)));
     }
+    public boolean isLinkedAccountDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_linkedAccount);
+    }
+    public void clickEditChildAccount(){
+        distributorUI.isDisplayed(childAccountEditBtn);
+        distributorUI.click(childAccountEditBtn);
+    }
+    public boolean isManageChildAccountPopUpDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_manageChildAccounts);
+    }
+    public boolean isParentAccountStatusDisplayed(String status)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(parentAccountStatus.replace("STATUS",status)));
+    }
+    public boolean isChildAccountDisplayed(String account){
+        return distributorUI.isDisplayed(By.xpath(childAccount.replace("CHILDACC",account)));
+    }
+    public boolean isChildAccountEditDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(childAccountEditBtn);
+    }
+    public void childAccountDropDown(String account){
+         distributorUI.click(By.xpath(childAccountDropDown.replace("CHILDACC",account)));
+    }
+    public boolean isAddedOrderGuideDisplayed(String account , String name){
+        return distributorUI.isDisplayed(By.xpath(addedOrderGuide.replace("CHILDACC",account).replace("NAME",name)));
+    }
+    public void selectOrderGuide(String account , String name){
+         distributorUI.waitForClickability(By.xpath(addedOrderGuide.replace("CHILDACC",account).replace("NAME",name)));
+        distributorUI.click(By.xpath(addedOrderGuide.replace("CHILDACC",account).replace("NAME",name)));
+    }
+    public boolean isChildSettingUpdated(String message)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(updateChildAccountSettings.replace("MESSAGE",message)));
+    }
+    public void selectNewlyCreatedOrderGuide(String name){
+        distributorUI.waitForVisibility(By.xpath(dropDownOrderGuide.replace("NAME",name)));
+        distributorUI.click(By.xpath(dropDownOrderGuide.replace("NAME",name)));
+    }
+    public void clickOnDeleteOrderGuide(){
+        distributorUI.waitForClickability(btn_deleteOrderGuide);
+        distributorUI.click(btn_deleteOrderGuide);
+    }
+    public boolean isChildAccountOGDisplayed(String account , String name){
+        return distributorUI.isDisplayed(By.xpath(addedOrderGuide.replace("CHILDACC",account).replace("NAME",name)));
+    }
+
 
 }

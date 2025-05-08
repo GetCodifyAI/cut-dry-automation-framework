@@ -252,4 +252,5 @@ public class Orders {
     public static String getLastWorkingDateUST(){
         return ordersPage.getLastWorkingDateUST();
     }
+    public static void clickSaveButton(){ordersPage.clickSaveButton();}
 }

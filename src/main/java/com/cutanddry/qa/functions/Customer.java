@@ -2430,6 +2430,48 @@ public class Customer {
             }
         }
     }
+    public static boolean isLinkedAccountDisplayed() throws InterruptedException {
+        return customersPage.isLinkedAccountDisplayed();
+    }
+    public static void clickEditChildAccount(){
+        customersPage.clickEditChildAccount();
+    }
+    public static boolean isManageChildAccountPopUpDisplayed() throws InterruptedException {
+        return customersPage.isManageChildAccountPopUpDisplayed();
+    }
+    public static boolean isParentAccountStatusDisplayed(String status) throws InterruptedException {
+        return customersPage.isParentAccountStatusDisplayed(status);
+    }
+    public static boolean isChildAccountDisplayed(String account){
+        return customersPage.isChildAccountDisplayed(account);
+    }
+    public static boolean isChildAccountEditDisplayed() throws InterruptedException {
+        return customersPage.isChildAccountEditDisplayed();
+    }
+    public static void clickChildAccountDropDown(String account){
+        customersPage.childAccountDropDown(account);
+    }
+    public static boolean isOrderGuideAdded(String account , String name){
+        customersPage.childAccountDropDown(account);
+        return customersPage.isAddedOrderGuideDisplayed(account,name);
+    }
+    public static void selectNewlyAddedOrderGuide(String account , String name){
+        customersPage.childAccountDropDown(account);
+        customersPage.selectOrderGuide(account,name);
+    }
+    public static boolean isChildSettingUpdated(String message) throws InterruptedException {
+        return customersPage.isChildSettingUpdated(message);
+    }
+    public static void selectNewlyCreatedOrderGuide(String name){
+        customersPage.selectNewlyCreatedOrderGuide(name);
+    }
+    public static void clickOnDeleteOrderGuide(){
+        customersPage.clickOnDeleteOrderGuide();
+    }
+    public static boolean isChildAccountOGDisplayed(String account , String name){
+        return customersPage.isChildAccountOGDisplayed(account,name);
+    }
+
 
 }
 

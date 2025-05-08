@@ -38,6 +38,7 @@ public class VerifyTheFunctionalityOfShowLastOrderedPriceOffTest extends TestBas
         InternalTools.navigateToOrderingSettingsTab();
         InternalTools.TurnOffLastOrderedPoundPrice();
         InternalTools.SaveLastOrderedPoundPriceTurnOn();
+        Login.switchIntoNewTab();
         Login.navigateToDistributorPortal(DistributerName);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.isUserNavigatedToDashboard();
@@ -54,7 +55,7 @@ public class VerifyTheFunctionalityOfShowLastOrderedPriceOffTest extends TestBas
    @AfterMethod
     public void tearDown(ITestResult result) {
         takeScreenshotOnFailure(result);
-        closeAllBrowsers();
+        closeAllBrowsersAtOnce();
     }
 
 }

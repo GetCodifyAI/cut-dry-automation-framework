@@ -33,6 +33,11 @@
 
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheUnitAggregationAfterPlacingTheOrderTest"/>
             <class name="com.cutanddry.qa.tests.order_reminder.VerifyTheOrderReminderAlertOptionIsRemovedFromOrderGuideSettingsTest"/>
+
+<!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentSectionWillBeNAWhenViewedFromAParentCustomerTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentSectionWillBePopulatedWhenViewedFromAChildCustomerTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatNewlyAddedOGInParentAccountListedInChildListPopUpTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatIfNewOGRemovedFromParentAccountThatRemovedInDropDownOfTheChildListTest"/>-->
         </classes>
     </test>
 </suite>
