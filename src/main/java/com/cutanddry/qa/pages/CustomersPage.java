@@ -707,6 +707,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By txt_manageChildAccounts = By.xpath("//div[contains(text(),'Manage Child Accounts')]");
     String parentAccountStatus = "//div[contains(text(), 'Parent Account')]/following-sibling::div[contains(text(),'STATUS')]";
     String childAccount = "//label[contains(text(), 'CHILDACC')]";
+    String childAccountDropDown = "(//label[contains(text(), 'CHILDACC')]/../following-sibling::div//*[name()='svg'])[last()]";
+    String addedOrderGuide = "(//label[contains(text(), 'CHILDACC')]/../following-sibling::div//div[contains(text(),'NAME')])[last()]";
+    String updateChildAccountSettings = "//div[contains(text(),'MESSAGE')]";
+    String dropDownOrderGuide =  "(//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'NAME')])[last()]";
+    By btn_deleteOrderGuide = By.xpath("//a[contains(text(), 'Delete Order Guide')]");
+
 
 
 
@@ -4204,5 +4210,33 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isChildAccountDisplayed(String account){
         return distributorUI.isDisplayed(By.xpath(childAccount.replace("CHILDACC",account)));
     }
+    public boolean isChildAccountEditDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(childAccountEditBtn);
+    }
+    public void childAccountDropDown(String account){
+         distributorUI.click(By.xpath(childAccountDropDown.replace("CHILDACC",account)));
+    }
+    public boolean isAddedOrderGuideDisplayed(String account , String name){
+        return distributorUI.isDisplayed(By.xpath(addedOrderGuide.replace("CHILDACC",account).replace("NAME",name)));
+    }
+    public void selectOrderGuide(String account , String name){
+         distributorUI.waitForClickability(By.xpath(addedOrderGuide.replace("CHILDACC",account).replace("NAME",name)));
+        distributorUI.click(By.xpath(addedOrderGuide.replace("CHILDACC",account).replace("NAME",name)));
+    }
+    public boolean isChildSettingUpdated(String message)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(updateChildAccountSettings.replace("MESSAGE",message)));
+    }
+    public void selectNewlyCreatedOrderGuide(String name){
+        distributorUI.waitForVisibility(By.xpath(dropDownOrderGuide.replace("NAME",name)));
+        distributorUI.click(By.xpath(dropDownOrderGuide.replace("NAME",name)));
+    }
+    public void clickOnDeleteOrderGuide(){
+        distributorUI.waitForClickability(btn_deleteOrderGuide);
+        distributorUI.click(btn_deleteOrderGuide);
+    }
+    public boolean isChildAccountOGDisplayed(String account , String name){
+        return distributorUI.isDisplayed(By.xpath(addedOrderGuide.replace("CHILDACC",account).replace("NAME",name)));
+    }
+
 
 }
