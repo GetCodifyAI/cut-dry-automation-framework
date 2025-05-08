@@ -1010,5 +1010,9 @@ public class SettingsPage extends LoginPage{
         }
     }
 
+    public boolean ExistUser(String user) {
+        return distributorUI.isDisplayed(By.xpath(txt_userField.replace("USER", user)),8);
+
+    }
 
 }

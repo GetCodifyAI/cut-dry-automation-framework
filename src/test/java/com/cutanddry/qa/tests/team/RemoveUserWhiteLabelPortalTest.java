@@ -15,6 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class RemoveUserWhiteLabelPortalTest extends TestBase {
     static User user;
     static String name = "Test";
+    static String email = "test@email.com";
     static String customer = "13038005947";
 
     @BeforeMethod
@@ -32,6 +33,10 @@ public class RemoveUserWhiteLabelPortalTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboardWhiteLabel(),"login error");
         Dashboard.navigateToUsersWhiteLabel();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");
+
+        //Pre-request
+        Settings.addUser(name,email);
+
         Settings.clickOnUser(name);
         softAssert.assertTrue(Settings.isEditUserPopupDisplayed(),"navigation error");
         Settings.clickOnRemoveUser();

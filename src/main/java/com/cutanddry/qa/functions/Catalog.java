@@ -150,7 +150,7 @@ public class Catalog {
 
     public static void selectDollarValueAsSalesTypeFrmDropdown(String uom){
         catalogPage.clickOnSalesTypeDropDown(uom);
-        catalogPage.clickOndollarValueOption();
+//        catalogPage.clickOndollarValueOption();
     }
 
     public static void setSaleValue(String saleValue){

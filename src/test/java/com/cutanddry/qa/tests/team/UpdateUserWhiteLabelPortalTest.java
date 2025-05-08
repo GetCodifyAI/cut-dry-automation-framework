@@ -15,6 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class UpdateUserWhiteLabelPortalTest extends TestBase {
     static User user;
     static String name = "Test";
+    static String email = "test@email.com";
     static String new_email = "test123@email.com";
     static String customer = "13038005947";
 
@@ -33,11 +34,20 @@ public class UpdateUserWhiteLabelPortalTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboardWhiteLabel(),"login error");
         Dashboard.navigateToUsersWhiteLabel();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");
+
+        //Pre-request
+        Settings.addUser(name,email);
+
+        //Test
         Settings.clickOnUser(name);
         softAssert.assertTrue(Settings.isEditUserPopupDisplayed(),"navigation error");
         Settings.enterEmailWL(new_email);
         Settings.clickOnSaveChanges();
         Settings.clickOK();
+
+        //Post Request
+        Settings.deleteUser(name);
+
         softAssert.assertAll();
     }
 
