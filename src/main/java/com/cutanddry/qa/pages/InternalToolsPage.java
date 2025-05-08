@@ -185,6 +185,7 @@ public class InternalToolsPage extends LoginPage {
     public void clickProductAdsSave() throws InterruptedException {
 //        distributorUI.waitForVisibility(btn_saveProductAds);
         distributorUI.waitForCustom(2000);
+        distributorUI.scrollToElementStable(sponsoredAdsRebatesTab,2000);
         distributorUI.click(btn_saveProductAds);
         distributorUI.waitForCustom(5000);
     }
