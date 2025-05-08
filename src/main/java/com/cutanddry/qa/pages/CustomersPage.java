@@ -1050,6 +1050,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(By.xpath(lbl_recommendedForYouItem.replace("CODE",code )));
     }
     public boolean isRecommendedBySalesRepDisplayed(String code) {
+        distributorUI.scrollToElementStable(By.xpath(lbl_recommendedBySalesRep.replace("CODE", '#'+code)),5);
         return distributorUI.isDisplayed(By.xpath(lbl_recommendedBySalesRep.replace("CODE", '#'+code)));
     }
     public boolean isDontForgetToOrderDisplayed(){

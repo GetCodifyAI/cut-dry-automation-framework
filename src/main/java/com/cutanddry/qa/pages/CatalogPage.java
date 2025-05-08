@@ -49,7 +49,7 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
     By salesTypeDropDown =By.xpath("//tr[td//div[contains(text(), 'Bag')]]/td[3]//div[contains(@class, 'cd_themed_select__placeholder css-1wa3eu0-placeholder')]");
     String salesTypeDropDownMultiUOM = "//tr[td//div[contains(text(), 'UOM_TYPE')]]/td[3]//div[contains(@class, 'cd_themed_select__placeholder css-1wa3eu0-placeholder')]";
     By percentageOption = By.xpath("//div[contains(text(),'Percentage')]");
-    By dollarValueOption = By.xpath("//div[contains(text(),'Dollar Value')]");
+    By dollarValueOption = By.xpath("//div[contains(@class,'cd_themed_select__option') and text()='Dollar Value']");
     By salesValue = By.xpath("//tr[td//div[contains(text(), 'Bag')]]/td[4]//input[@class='_sf843y form-control']");
     String salesValueMultiUOM = "//tr[td//div[contains(text(), 'UOM_TYPE')]]/td[4]//input[@class='_sf843y form-control']";
     By uomDeleteBtn = By.xpath("//tr[td/label[contains(text(),'Bag')]]//td[@class='pr-0 pb-0']");
@@ -366,30 +366,56 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         distributorUI.click(uomSelectDropdown);
         distributorUI.waitForVisibility(By.xpath(unit.replace("UNIT",uom)));
         distributorUI.click(By.xpath(unit.replace("UNIT",uom)));
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void typeUnitPrice(String unitPrice){
         distributorUI.sendKeys(unitPriceTxtField,unitPrice);
     }
     public void typeUnitPrice(String uom, String unitPrice){
         distributorUI.sendKeys(By.xpath(unitPriceTxtFieldMultiUOM.replace("UOM_TYPE",uom)),unitPrice);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void clickOnSalesTypeDropDown(){
         distributorUI.click(salesTypeDropDown);
     }
     public void clickOnSalesTypeDropDown(String uom){
         distributorUI.click(By.xpath(salesTypeDropDownMultiUOM.replace("UOM_TYPE",uom)));
+        distributorUI.click(dollarValueOption);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void clickOnPercentageOption(){
         distributorUI.click(percentageOption);
     }
     public void clickOndollarValueOption(){
         distributorUI.click(dollarValueOption);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void typeSaleValue(String saleValue){
         distributorUI.sendKeys(salesValue,saleValue);
     }
     public void typeSaleValue(String uom, String saleValue){
         distributorUI.sendKeys(By.xpath(salesValueMultiUOM.replace("UOM_TYPE",uom)),saleValue);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void deleteUOMinCatalog() throws InterruptedException {
         distributorUI.waitForCustom(3000);
@@ -807,12 +833,12 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         distributorUI.click(By.xpath(mediaTypeOption.replace("TYPE",type)));
     }
     public boolean isSameUomDisplayed(String uom)throws InterruptedException{
-        try {
+        /*try {
             distributorUI.waitForVisibility(By.xpath(deleteUom.replace("UOM",uom)));
         } catch (Exception e){
             return false;
-        }
-        return distributorUI.isDisplayed(By.xpath(deleteUom.replace("UOM",uom)));
+        }*/
+        return distributorUI.isDisplayed(By.xpath(deleteUom.replace("UOM",uom)),10);
     }
     public void refreshPage(){
         distributorUI.refreshPage();
@@ -895,7 +921,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     public void clickAddToCartPlusIcon(String uom)throws InterruptedException{
         distributorUI.waitForVisibility(By.xpath(btn_addToCartPlusQuantity.replace("UOM", uom)));
         distributorUI.click(By.xpath(btn_addToCartPlusQuantity.replace("UOM", uom)));
-        distributorUI.waitForCustom(3000);
+        distributorUI.waitForCustom(5000);
     }
     public void clickAddToCartMinusIcon(String uom){
         distributorUI.waitForVisibility(By.xpath(btn_addToCartMinusQuantity.replace("UOM", uom)));
