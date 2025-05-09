@@ -202,13 +202,13 @@ public class PayPage extends LoginPage{
         boolean dateFound = false;
 
         for (int i = 0; i < maxAttempts; i++) {
-            if (distributorUI.isDisplayed(startDate,8)) {
+            if (distributorUI.isDisplayed(startDate,2)) {
                 distributorUI.click(startDate);
                 dateFound = true;
                 break;
             }
 
-            if (i < 4) {
+            if (i < 12) {
                 clickBtnPreviousMonth(); // Try navigating backward in the first few attempts
             } else {
                 clickBtnNextMonth(); // Switch to navigating forward
@@ -228,13 +228,13 @@ public class PayPage extends LoginPage{
         boolean dateFound = false;
 
         for (int i = 0; i < maxAttempts; i++) {
-            if (distributorUI.isDisplayed(endDate,8)) {
+            if (distributorUI.isDisplayed(endDate,2)) {
                 distributorUI.click(endDate);
                 dateFound = true;
                 break;
             }
 
-            if (i < 4) {
+            if (i < 12) {
                 clickBtnNextMonth(); // Try navigating forward in the first few attempts
             } else {
                 clickBtnPreviousMonth(); // Switch to navigating backward
