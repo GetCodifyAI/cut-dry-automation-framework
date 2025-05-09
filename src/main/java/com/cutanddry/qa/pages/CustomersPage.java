@@ -745,7 +745,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickOnOrderGuide(String code) {
         try {
-            distributorUI.waitForCustom(120000);
+            distributorUI.waitForCustom(3000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
