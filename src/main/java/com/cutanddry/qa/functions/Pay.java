@@ -361,4 +361,8 @@ public class Pay {
     public static void selectTheBatchOperationOption(String option) {
         payPage.selectTheBatchOperationOption(option);
     }
+    public static void selectInvoiceCustomerCodeViaFilter(String code) throws InterruptedException {
+        payPage.selectInvoiceCustomerCodeViaFilter(code);
+        payPage.clickInvoiceCodeCustomer();
+    }
 }

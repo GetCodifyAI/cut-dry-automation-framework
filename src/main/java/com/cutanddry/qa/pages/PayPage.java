@@ -116,6 +116,8 @@ public class PayPage extends LoginPage{
     By creditMemoDisplay = By.xpath("//div[text()='Credit Memos (0)']");
     By btn_batchOperation = By.xpath("//button[text()='Batch Operations']");
     String lbl_batchOperation = "//button[text()='Batch Operations']/following-sibling::div/a[contains(text(),'OPTION')]";
+    By invoiceFilterDropDown = By.xpath("//div[text()='Customer']/following-sibling::div/div/div//*//input");
+    By invoiceFilterOption = By.xpath("(//div[text()='Customer']/following-sibling::div/div/div)[1]/../following-sibling::div");
 
 
 
@@ -856,6 +858,15 @@ public class PayPage extends LoginPage{
         By lbl_options = By.xpath(lbl_batchOperation.replace("OPTION", option));
         distributorUI.waitForVisibility(lbl_options);
         distributorUI.click(lbl_options);
+    }
+    public void selectInvoiceCustomerCodeViaFilter(String code) throws InterruptedException {
+        distributorUI.click(invoiceFilterDropDown);
+        distributorUI.sendKeys(invoiceFilterDropDown,code);
+        distributorUI.waitForCustom(3000);
+    }
+    public void clickInvoiceCodeCustomer(){
+        distributorUI.waitForVisibility(invoiceFilterOption);
+        distributorUI.click(invoiceFilterOption);
     }
 
 

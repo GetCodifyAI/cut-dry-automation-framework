@@ -38,6 +38,8 @@
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentSectionWillBePopulatedWhenViewedFromAChildCustomerTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatNewlyAddedOGInParentAccountListedInChildListPopUpTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatIfNewOGRemovedFromParentAccountThatRemovedInDropDownOfTheChildListTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatRenamedNewlyAddedOGInParentAccountListedInChildListPopUpTest"/>-->
+
         </classes>
     </test>
 </suite>
