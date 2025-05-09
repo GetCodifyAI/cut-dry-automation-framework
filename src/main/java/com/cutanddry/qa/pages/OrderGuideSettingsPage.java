@@ -16,6 +16,7 @@ public class OrderGuideSettingsPage extends TestBase {
     String alertDaysDropDownOption = "//label[text()='Alert Days']/following-sibling::div//*[text()='ALERTDAYS']";
     By btn_orderReminderAlertsave = By.xpath("//div[@class='d-flex flex-column form-group']//button[text()='Save']");
     By btn_save = By.xpath("//button[normalize-space(text())='Save']");
+    By lbl_orderGuideName = By.xpath("//label[contains(text(),'Order Guide Name')]/following-sibling::input");
 
     public void clickOnOrderReminderAlert(){
         if (distributorUI.isDisplayed(AddAlertButton,10)) {
@@ -71,5 +72,10 @@ public class OrderGuideSettingsPage extends TestBase {
     }
     public boolean isOrderReminderAlertSettingDisplayed()throws InterruptedException{
         return distributorUI.isDisplayed(AddAlertButton);
+    }
+    public void editOrderGuideName(String name) throws InterruptedException {
+        distributorUI.clear(lbl_orderGuideName);
+        distributorUI.sendKeys(lbl_orderGuideName, name);
+        distributorUI.waitForCustom(1000);
     }
 }
