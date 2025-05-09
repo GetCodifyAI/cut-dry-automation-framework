@@ -861,7 +861,6 @@ public class PayPage extends LoginPage{
     }
     public void selectInvoiceCustomerCodeViaFilter(String code) throws InterruptedException {
         distributorUI.click(invoiceFilterDropDown);
-        distributorUI.click(invoiceFilterDropDown);
         distributorUI.sendKeys(invoiceFilterDropDown,code);
         distributorUI.waitForCustom(3000);
     }
