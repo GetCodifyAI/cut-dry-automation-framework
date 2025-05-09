@@ -17,7 +17,6 @@ public class VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureEna
     SoftAssert softAssert;
     static User user;
     String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
-    static String customerName = PayInvoiceData.CUSTOMER_NAME2;
     static String customerCode = PayInvoiceData.CUSTOMER_CODE;
     static String status_payment = PayInvoiceData.OPTION_FUNDS;
     String CustomerFilterOption = CustomerInvoiceData.CUSTOMER_FILTER_OPTION_PAST_DUE;
