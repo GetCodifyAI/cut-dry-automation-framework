@@ -320,22 +320,23 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForCustom(3000);
         distributorUI.waitForVisibility(btn_inviteUser);
         distributorUI.click(btn_inviteUser);
-        if(distributorUI.isDisplayed(btn_inviteUser)){
+        distributorUI.waitForCustom(3000);
+        if(distributorUI.isDisplayed(btn_inviteUser,5)){
             distributorUI.clickUsingJavaScript(btn_inviteUser);
         }
-        if(distributorUI.isDisplayed(lbl_InvalidEmail)){
+        if(distributorUI.isDisplayed(lbl_InvalidEmail,5)){
             distributorUI.waitForClickability(btn_OK);
             distributorUI.click(btn_OK);
             distributorUI.waitForCustom(3000);
         }
     }
     public boolean isUserDisplayed(String user) throws InterruptedException {
-        try {
+        /*try {
             distributorUI.waitForCustom(4000);
             distributorUI.waitForVisibility(By.xpath(btn_editUser.replace("USER", user)));
         } catch (Exception e){
             return false;
-        }
+        }*/
         return distributorUI.isDisplayed(By.xpath(btn_editUser.replace("USER", user)));
     }
     public void clickOnRemoveUserLabel() throws InterruptedException {
