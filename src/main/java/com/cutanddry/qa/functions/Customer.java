@@ -33,8 +33,15 @@ public class Customer {
         if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
             customersPage.clickPreviousDraftOrderNo();
         }
-        else if (Orders.isSelectOrderGuideDisplayed()){
+        if (!customersPage.isCustomOrderDisplayed()) {
+            customersPage.selectCustomOrder();
+        }
+        if (Orders.isSelectOrderGuideDisplayed()){
+            customersPage.clickOGDropdown();
              Orders.selectOrderGuide("Independent Foods Co");
+        } else if (!customersPage.isIFCDisplayed()){
+            customersPage.clickOGDropdown();
+            customersPage.selectIFC();
         }
     }
     public static void increaseFirstRowQtyByOne() throws InterruptedException {
@@ -1063,6 +1070,9 @@ public class Customer {
     }
     public static void selectTestAutomation(){
         customersPage.selectTestAutomation();
+    }
+    public static void selectIFC(){
+        customersPage.selectIFC();
     }
     public static void editMargin(){
         customersPage.editMargin();

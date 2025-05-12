@@ -332,6 +332,7 @@ By txt_draftStatus = By.xpath("//tr[2]//td[3][contains(text(), 'seconds ago')]")
     By lbl_orderGuide = By.xpath("//div[text()='Order Guide:']/following-sibling::div//div[@class='cd_themed_select__single-value css-1uccc91-singleValue']");
     By dropdown_testGuide1 =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Test_Guide_01')]");
     By dropdown_testAutomation =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Test_Automation')]");
+    By dropdown_ifc =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Independent Foods Co')]");
 //    By btn_editMargin = By.xpath("//td/div/button/*[local-name() = 'svg' and @data-icon='cdEdit']");
     By btn_editMargin = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[6])[1]");
     By btn_resetValues = By.xpath("//button[contains(text(), 'Reset Values')]");
@@ -1138,6 +1139,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void selectCustomOrder(){
         distributorUI.waitForVisibility(dropdown_customOrder);
         distributorUI.click(dropdown_customOrder);
+    }
+    public boolean isCustomOrderDisplayed(){
+        return distributorUI.isDisplayed(dropdown_customOrder,5);
     }
     public void selectLastOrdered(){
         distributorUI.waitForVisibility(dropdown_lastOrdered);
@@ -2239,6 +2243,13 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void selectTestAutomation(){
         distributorUI.waitForVisibility(dropdown_testAutomation);
         distributorUI.click(dropdown_testAutomation);
+    }
+    public void selectIFC(){
+        distributorUI.waitForVisibility(dropdown_ifc);
+        distributorUI.click(dropdown_ifc);
+    }
+    public boolean isIFCDisplayed(){
+       return distributorUI.isDisplayed(dropdown_ifc,5);
     }
     public void editMargin(){
         distributorUI.click(btn_editMargin);

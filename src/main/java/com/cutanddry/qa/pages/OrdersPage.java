@@ -208,7 +208,7 @@ public class OrdersPage extends LoginPage{
     }
 
     public boolean isSelectOrderGuidePopUpDisplayed(){
-        return distributorUI.isDisplayed(selectOrderGuide);
+        return distributorUI.isDisplayed(selectOrderGuide,3);
     }
     public void clickOnFirstOrder() throws InterruptedException {
         distributorUI.click(lbl_firstOrder);
