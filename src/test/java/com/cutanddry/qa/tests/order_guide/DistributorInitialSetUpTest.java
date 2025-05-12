@@ -20,7 +20,7 @@ public class DistributorInitialSetUpTest extends TestBase {
     static String subFeatureName = GatekeeperData.FEATURE_NAME_SUB_ENABLE_DP;
     static String companyId = GatekeeperData.COMPONY_ID;
     String CustomerCode = "37631";
-    static String DP = "Independent Foods Co";
+    static String DP = "QA ONLY : test distributor";
 
     @BeforeMethod
     public void setUp() {

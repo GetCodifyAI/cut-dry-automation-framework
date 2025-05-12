@@ -1,14 +1,13 @@
 package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class DashboardPage extends LoginPage{
     By txt_dashboard = By.xpath("//li[contains(text(),'Dashboard')]");
     By btn_customers = By.xpath("//a[@data-tip='Customers']");
     By btn_boost = By.xpath("//a[@data-tip='Boost']");
     By btn_chat = By.xpath("//a[@data-tip='Chat']");
-    By txt_dashboard_restaurant = By.xpath("//div[text()='Place Order']");
+    By txt_dashboard_restaurant = By.xpath("//a[text()='Place Order']");
     By btn_restaurant_chat = By.xpath("//div[contains(text(),'Chat')]");
     By btn_catalog = By.xpath("//a[@data-tip='View Catalog']");
     By btn_settings = By.xpath("//a[@role='button' and contains(text(), 'Settings')]");
@@ -49,7 +48,7 @@ public class DashboardPage extends LoginPage{
     By btn_adsSettings = By.xpath("//div[@arrowprops]//a[text()='Influence']");
     By btn_paySettings = By.xpath("//div[@arrowprops]//a[text()='Pay']");
     By btn_credit_requests = By.xpath("//a[@data-for='sideNavSupplierMenuOptions' and @href='/credit-requests']");
-    By btn_placeOrder = By.xpath("//div[contains(text(), 'Independent Foods Co')]");
+    By btn_placeOrder = By.xpath("//div[contains(text(), 'QA ONLY : test distributor')]");
     By btn_hayes = By.xpath("//div[contains(text(), 'Hayes')]");
     By txt_OrderGuide = By.xpath("//span[contains(text(), 'Order Guide')]");
     By btn_TestAutomation = By.xpath("//div[contains(text(), 'Test_Automation') and contains(@class, 'w-100')]");
@@ -60,7 +59,7 @@ public class DashboardPage extends LoginPage{
     By txt_independant_food_co = By.xpath("//a[contains(text(), 'Independent Foods Co')]");
     static By wordAfterCompanyLocator = By.xpath("//span[text()='Company:']/following-sibling::span");
     static By dropdownToggle = By.xpath("//span[text()='Company:']/ancestor::button[contains(@class, 'dropdown-toggle')]");
-    static By independentFoodOption = By.xpath("//a[text()='Independent Foods Co']");
+    static By qAOnlyTestDistributorOption = By.xpath("//a[text()='QA ONLY : test distributor']");
     By btn_PlaceOrder = By.xpath("(//button[text()='Place Order'])[1]");
     By approvalsBtn = By.xpath("//a[contains(@data-tip,'Approvals')]");
     By locationFilter = By.xpath("(//div[text()='Place Order']/following-sibling::div//div)[1]");
@@ -86,11 +85,11 @@ public class DashboardPage extends LoginPage{
         distributorUI.click(btn_chat);
     }
     public boolean isRestaurantDashboardTextDisplayed(){
-        try {
+       /* try {
             distributorUI.waitForVisibility(txt_dashboard_restaurant);
         } catch (Exception e){
             return false;
-        }
+        }*/
         return distributorUI.isDisplayed(txt_dashboard_restaurant);
     }
     public void clickOnRestaurantChat(){
@@ -303,14 +302,14 @@ public class DashboardPage extends LoginPage{
         return distributorUI.getText(wordAfterCompanyLocator);
     }
 
-    public static void selectIndependentFoodCo() {
+    public static void selectQAOnlyTestDistributor() {
         // Click the dropdown
         driver.findElement(dropdownToggle).click();
         System.out.println("Dropdown clicked.");
 
         // Wait for the 'Independent Foods Co' option to be visible and click it
-        distributorUI.waitForVisibility(independentFoodOption);
-        driver.findElement(independentFoodOption).click();
+        distributorUI.waitForVisibility(qAOnlyTestDistributorOption);
+        driver.findElement(qAOnlyTestDistributorOption).click();
 
         System.out.println("Company name changed to 'Independent Foods Co'.");
     }

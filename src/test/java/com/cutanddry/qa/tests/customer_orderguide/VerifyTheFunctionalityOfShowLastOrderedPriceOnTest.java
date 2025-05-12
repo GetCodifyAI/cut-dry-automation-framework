@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheFunctionalityOfShowLastOrderedPriceOnTest extends TestBase {
     static User user;
-    String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributerName ="456592422 - QA ONLY : test distributor - QA ONLY : test distributor";
     static String customerId = "16579";
     static String itemName = "bacon, uncured maple, e&p, food service";
     static String itemId ="24857";

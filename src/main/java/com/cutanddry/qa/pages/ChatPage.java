@@ -9,7 +9,7 @@ public class ChatPage extends LoginPage{
     By tbx_Message = By.xpath("//input[@placeholder='Message...']");
     By icon_send = By.xpath("//span[contains(@class, '_1j33wau')]");
     By txt_lastMessage = By.xpath("(//div[contains(@class, 'card-body')])[last()]");
-    By btn_chat_restaurant = By.xpath("//div[contains(text(), 'Independent Foods Co')]");
+    By btn_chat_restaurant = By.xpath("//div[contains(text(), 'QA ONLY : test distributor')]");
     By btn_hayes_restaurant = By.xpath("//div[text()='Hayes']");
     By txt_defaultMsg = By.xpath("//div[text()='Send us messages through this chat interface to clarify issues with products and orders.']");
 

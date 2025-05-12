@@ -16,7 +16,7 @@ import java.net.URISyntaxException;
 
 public class VerifyDateChangeFunctionalityUnderMonitoring extends TestBase {
     static User user;
-    static String distributorName = "Brandon IFC Cut+Dry Agent";
+    static String distributorName = "QA ONLY : test distributor";
     String startDay = "Sunday";
     String startMonth = "December";
     String startDate = "1";

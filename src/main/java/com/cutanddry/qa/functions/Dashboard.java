@@ -153,17 +153,17 @@ public class Dashboard {
     }
 
     public static void selectIndependantFoodCo(){
-        DashboardPage.selectIndependentFoodCo();
+        DashboardPage.selectQAOnlyTestDistributor();
     }
 
-    public static boolean isCompanyIndependentFood() {
+    public static boolean isCompanyQAOnlyTestDistributor() {
         String companyName = DashboardPage.getTextAfterCompany();
         System.out.println("The current company name is "+ companyName);
-        return "Independent Foods Co".equals(companyName);
+        return "QA ONLY : test distributor".equals(companyName);
     }
 
-    public static void selectIndependentFoodCo(){
-        DashboardPage.selectIndependentFoodCo();
+    public static void selectQAOnlyTestDistributor(){
+        DashboardPage.selectQAOnlyTestDistributor();
     }
 
     public static void clickOnPlaceOrderBtn(){

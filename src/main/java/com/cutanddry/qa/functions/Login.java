@@ -1,9 +1,6 @@
 package com.cutanddry.qa.functions;
 
 import com.cutanddry.qa.pages.LoginPage;
-import com.cutanddry.qa.functions.Dashboard;
-
-import static com.cutanddry.qa.pages.DashboardPage.selectIndependentFoodCo;
 
 public class Login {
 
@@ -15,11 +12,11 @@ public class Login {
         loginPage.typePassword(password);
         loginPage.clickSubmit();
 
-        if (!Dashboard.isCompanyIndependentFood()) {
-            System.out.println("Company name is incorrect. Changing to 'Independent Foods Co'...");
-            Dashboard.selectIndependentFoodCo();
+        if (!Dashboard.isCompanyQAOnlyTestDistributor()) {
+            System.out.println("Company name is incorrect. Changing to 'QA ONLY : test distributor'...");
+            Dashboard.selectQAOnlyTestDistributor();
         } else {
-            System.out.println("Company name is already 'Independent Foods Co'. No changes needed.");
+            System.out.println("Company name is already 'QA ONLY : test distributor'. No changes needed.");
         }
     }
 

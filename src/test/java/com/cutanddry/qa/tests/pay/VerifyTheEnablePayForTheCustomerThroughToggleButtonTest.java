@@ -16,7 +16,7 @@ public class VerifyTheEnablePayForTheCustomerThroughToggleButtonTest extends Tes
     SoftAssert softAssert;
     static User user;
     static String customerId = "44939";
-    String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributorName ="456592422 - QA ONLY : test distributor - QA ONLY : test distributor";
     static String restaurantName = "Kafe Layers #1 Test";
 
 

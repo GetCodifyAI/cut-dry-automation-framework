@@ -18,7 +18,7 @@ public class VerifyScanToOrderEmptyCartTextTest extends TestBase {
     static User user;
     static String featureName = "scan_to_order";
     static String companyID = "46017666";
-    static String DP = "Independent Foods Co";
+    static String DP = "QA ONLY : test distributor";
     static String CustomerCode = "21259";
     static String emptyCartText1 = "Scan to add items to your cart";
     static String emptyCartText2 = "Use the barcode scanner to scan the barcode on the item or";

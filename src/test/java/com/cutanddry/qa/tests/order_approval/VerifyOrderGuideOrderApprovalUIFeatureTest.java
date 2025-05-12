@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyOrderGuideOrderApprovalUIFeatureTest extends TestBase {
     static User user;
-    String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributerName ="456592422 - QA ONLY : test distributor - QA ONLY : test distributor";
     String CustomerCode = "23445";
     String OrderGuideName = "Independent Foods Co";
 

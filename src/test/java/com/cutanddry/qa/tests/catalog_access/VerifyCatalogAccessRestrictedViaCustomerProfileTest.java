@@ -13,10 +13,10 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyCatalogAccessRestrictedViaCustomerProfileTest extends TestBase {
     static User user;
-    String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributerName ="456592422 - QA ONLY : test distributor - QA ONLY : test distributor";
     String ManualDisableCatalogOption = "Selected Operators (via Manual Selection)";
     String CustomerCode = "44939";
-    String SupplierName = "Independent Foods Co";
+    String SupplierName = "QA ONLY : test distributor";
     String RestaurantUserCode = "105556864";
 
     @BeforeMethod

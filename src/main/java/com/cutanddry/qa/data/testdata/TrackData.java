@@ -1,7 +1,7 @@
 package com.cutanddry.qa.data.testdata;
 
 public class TrackData {
-    public static final String DISTRIBUTOR_NAME = "47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    public static final String DISTRIBUTOR_NAME = "456592422 - QA ONLY : test distributor - QA ONLY : test distributor";
     public static final String EDIT_ROUTE = "pencil";
     public static final String ADD_STOP_TO_ROUTE = "location-dot";
     public static final String ROUTE_NAME = "South 1";

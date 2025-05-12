@@ -16,10 +16,10 @@ import static com.cutanddry.qa.base.TestBase.*;
 
 public class VerifyOrderApprovalSettingsReflectedWhileOrderingTest {
     static User user;
-    String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributerName ="456592422 - QA ONLY : test distributor - QA ONLY : test distributor";
     String CustomerCode = "23445";
     String OrderGuideName = "Independent Foods Co";
-    String SupplierName = "Independent Foods Co";
+    String SupplierName = "QA ONLY : test distributor";
     String AdminUserCode = "226431917";
     String EmployeeUserCode ="280815154";
     String ItemCode = "01700";

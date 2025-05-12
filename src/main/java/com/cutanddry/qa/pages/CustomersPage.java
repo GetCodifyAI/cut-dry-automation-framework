@@ -85,7 +85,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By section_dontForget = By.xpath("//div[text()=\"Don't Forget to Order\"]");
     By section_moreFromThisBrand = By.xpath("//div[contains(text(), 'More From')]");
     By btn_companyDropdown = By.xpath("//button[.//span[text()='Company:']]");
-    By txt_companyDropdownText = By.xpath("//a[contains(text(), 'Independent Foods Co')]");
+    By txt_companyDropdownText = By.xpath("//a[contains(text(), 'QA ONLY : test distributor')]");
     By btn_edit = By.xpath("//button[contains(text(), 'Edit')]");
     By txt_editOrderGuide= By.xpath("//span[contains(text(), 'Edit Order Guide')]");
     By btn_moreOptions = By.xpath("//span[contains(text(), 'More Options')]");

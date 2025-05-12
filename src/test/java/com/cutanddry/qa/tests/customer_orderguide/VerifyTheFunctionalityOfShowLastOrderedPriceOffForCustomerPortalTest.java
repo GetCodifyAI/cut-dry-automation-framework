@@ -14,7 +14,7 @@ public class VerifyTheFunctionalityOfShowLastOrderedPriceOffForCustomerPortalTes
     static User user;
     String RestaurantUserCode = "103430764";
     static String itemName = "bacon, uncured maple, e&p, food service";
-    String SupplierName = "Independent Foods Co";
+    String SupplierName = "QA ONLY : test distributor";
     static String itemId ="24857";
 
     @BeforeMethod

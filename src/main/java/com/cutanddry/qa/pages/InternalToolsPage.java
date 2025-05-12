@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 public class InternalToolsPage extends LoginPage {
     By configureSupplierTxt = By.xpath("//a[contains(text(),'Configure Supplier')]");
-    By IndependentCompEditDetailsBtn = By.xpath("//tr[td[contains(text(),'Independent Foods Co')]]//a[contains(text(),'Edit Details')]");
+    By IndependentCompEditDetailsBtn = By.xpath("//tr[td[contains(text(),'QA ONLY : test distributor')]]//a[contains(text(),'Edit Details')]");
     By OrderingSettingsTab = By.xpath("//a[contains(text(),'Ordering Settings')]");
     By PortalStockLevelToggle = By.xpath("//div[contains(text(), 'Display stock levels on Portal:')]/following-sibling::div//div[@class='react-switch-bg']");
     By toggleSwitchHandle = By.xpath("//div[contains(text(), 'Display stock levels on Portal:')]/following-sibling::div//div[contains(@class, 'react-switch-handle')]");

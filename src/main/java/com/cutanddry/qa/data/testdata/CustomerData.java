@@ -16,7 +16,7 @@ public class CustomerData {
     public static final String MARGIN_COLUMN = "Margin";
     public static final String ORDER_SUMMERY = "Gross Profit (Sale Cost)";
     public static final String DP_HILLCREST = "96939129 - Cut+Dry Agent - Hillcrest Foodservice";
-    public static final String DISTRIBUTOR_NAME_IFC = "47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    public static final String DISTRIBUTOR_NAME_IFC = "456592422 - QA ONLY : test distributor - QA ONLY : test distributor";
     public static final String NODE_STATUS1 = "addedbysupplier";
     public static final String NODE_STATUS2 = "bank_account";
     public static final String CUSTOMER_CODE2 = "21259";

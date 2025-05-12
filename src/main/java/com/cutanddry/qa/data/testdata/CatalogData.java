@@ -48,7 +48,7 @@ public class CatalogData {
     public static final String DP_VICTO = "250939959 - Cut+Dry Agent - Vitco Foods";
     public static final String DP_BIRITE = "120984267 - Cut+Dry Agent - BiRite Foodservice Distributors";
     public static final String DP_SOUTHWEST = "30227908 - Cut+Dry Agent - Southwest Traders";
-    public static final String DP_IFC = "47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    public static final String DP_IFC = "456592422 - QA ONLY : test distributor - QA ONLY : test distributor";
     public static final String DP_BIGOLI = "105718262 - Cut+Dry Agent - Bigoli Fresh Pasta";
     public static final String SALE_REP = "Steve O";
     public static final String SALE_PERSON_ROLL = "apptesters@test.com";

@@ -9,12 +9,12 @@ public class Constants {
     public static String TEST_ENV = System.getProperty("test.env", "uat");
     public static String MAIN_URL = baseDomain();
     public static String SEC_URL = secDomain();
-    public static String LOGIN_AS = "https://app-uat.staging.cutanddry.com/internaltools/loginas";
-    public static String NODE_EXPLORER = "https://app-uat.staging.cutanddry.com/admin";
+    public static String LOGIN_AS = "https://qa-uat.staging.cutanddry.com/internaltools/loginas";
+    public static String NODE_EXPLORER = "https://qa-uat.staging.cutanddry.com/admin";
     public static String BASE_URI = "https://supplier-uat.staging.cutanddry.com/GraphQLController";
     public static String SLACK_WEBHOOK = System.getenv("SLACK_WEBHOOK");
-    public static String CONFIG_SUPPLIER = "https://app-uat.staging.cutanddry.com/internaltools/configure-supplier";
-    public static String GATE_KEEPER_ADMIN = "https://app-uat.staging.cutanddry.com/gatekeeperadmin";
+    public static String CONFIG_SUPPLIER = "https://qa-uat.staging.cutanddry.com/internaltools/configure-supplier";
+    public static String GATE_KEEPER_ADMIN = "https://qa-uat.staging.cutanddry.com/gatekeeperadmin";
 
     public static String PROD_LOGIN_AS = "https://internal.cutanddry.com/internaltools/loginas";
 
@@ -32,7 +32,9 @@ public class Constants {
     }
     private static String secDomain() {
         if (TEST_ENV.equalsIgnoreCase("UAT")){
-            SEC_URL = "https://app-"+TEST_ENV+".staging.cutanddry.com/";
+//            SEC_URL = "https://app-"+TEST_ENV+".staging.cutanddry.com/";
+            SEC_URL = "https://qa-"+TEST_ENV+".staging.cutanddry.com/";
+//            https://qa.cutanddry.com/white-label-home
         } else if (TEST_ENV.equalsIgnoreCase("PROD")){
             SEC_URL = "https://app.cutanddry.com/";
         }

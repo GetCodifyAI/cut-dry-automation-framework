@@ -17,7 +17,7 @@ public class VerifyScanToOrderOptionNotDisplayedInCustomerProfileScreenIfTurnedO
     static User user;
     static String featureName = "scan_to_order";
     static String companyID = "46017666";
-    static String DP = "Independent Foods Co";
+    static String DP = "QA ONLY : test distributor";
     static String CustomerCode = "21259";
 
     @BeforeMethod

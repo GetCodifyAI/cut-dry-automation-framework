@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyStockDataInCatalogViewTest extends TestBase {
     static User user;
-    String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributerName ="456592422 - QA ONLY : test distributor - QA ONLY : test distributor";
     String CustomerCode = "16579";
 
     @BeforeMethod
@@ -30,7 +30,7 @@ public class VerifyStockDataInCatalogViewTest extends TestBase {
         SoftAssert softAssert = new SoftAssert();
         // Pre-request
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         InternalTools.TurnOnTheDisplayingStockCount(true);
 
 //        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());

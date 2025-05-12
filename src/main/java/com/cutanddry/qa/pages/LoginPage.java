@@ -10,8 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class LoginPage extends TestBase {
-    By txt_emailOrMobile = By.xpath("//input[@placeholder='Email or mobile']");
-    By txt_password = By.xpath("//input[@placeholder='Password']");
+    By txt_emailOrMobile = By.xpath("//input[@placeholder='Email or mobile']|//input[@placeholder='Enter your email or mobile number']");
+    By txt_password = By.xpath("//input[@placeholder='Password']|//input[@placeholder='Enter your Password']");
     By btn_signIn = By.xpath("//button[@type='submit']");
     By btn_forgotPassword = By.xpath("//div[text()='Forgot Password?']");
     By txt_forgotPassword = By.xpath("//div[text()='Forgot Password']");

@@ -13,7 +13,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheCatalogItemDataTest extends TestBase {
     static User user;
-    String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributerName ="456592422 - QA ONLY : test distributor - QA ONLY : test distributor";
     String itemCode = "00563"; // 00475
     String Active = "Active";
     String InActive = "Inactive";
