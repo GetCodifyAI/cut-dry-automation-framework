@@ -2471,6 +2471,21 @@ public class Customer {
     public static boolean isChildAccountOGDisplayed(String account , String name){
         return customersPage.isChildAccountOGDisplayed(account,name);
     }
+    public static boolean isDeliveryDateCustomerOrderDisplayed(String id,String date){
+        return customersPage.isDeliveryDateCustomerOrderDisplayed(id,date);
+    }
+    public static void selectPickUpDateLine(String date)throws InterruptedException{
+        customersPage.clickOnPickUpDateStable();
+        customersPage.selectPickUpDateLineStable(date);
+
+    }
+    public static void selectMailDeliveryDateLine(String date)throws InterruptedException{
+        customersPage.clickOnDeliveryDateStable();
+        customersPage.selectMailDeliveryDateLineStable(date);
+    }
+    public static boolean isFulfilmentTagDisplayed(String id,String tag){
+        return customersPage.isFulfilmentTagDisplayed(id,tag);
+    }
 
 
 }

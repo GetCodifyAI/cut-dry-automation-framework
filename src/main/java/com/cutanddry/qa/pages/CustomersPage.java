@@ -712,6 +712,13 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String updateChildAccountSettings = "//div[contains(text(),'MESSAGE')]";
     String dropDownOrderGuide =  "(//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'NAME')])[last()]";
     By btn_deleteOrderGuide = By.xpath("//a[contains(text(), 'Delete Order Guide')]");
+    String deliveryDateCustomerOrder = "//*[contains(text(),'#') and text()='ID']/../preceding-sibling::td[1][text()='DATE']";
+    By btn_pickUpDateStable = By.xpath("//div[text()='Pickup Date:']/../following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
+    String dynamicToXPathStable = "(//div[contains(@class,'react-datepicker__day')]/preceding::div[contains(@class, 'react-datepicker__day') and text()='DAY'])[last()]";
+    String fulfilmentTag = "//*[contains(text(),'#') and text()='ID']/../preceding-sibling::td[1]//*[text()='TAG']";
+
+
+
 
 
 
@@ -4237,6 +4244,28 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isChildAccountOGDisplayed(String account , String name){
         return distributorUI.isDisplayed(By.xpath(addedOrderGuide.replace("CHILDACC",account).replace("NAME",name)));
+    }
+    public boolean isDeliveryDateCustomerOrderDisplayed(String id , String date){
+        return distributorUI.isDisplayed(By.xpath(deliveryDateCustomerOrder.replace("ID", id).replace("DATE",date)));
+    }
+    public void clickOnPickUpDateStable() throws InterruptedException{
+        distributorUI.waitForCustom(4000);
+        distributorUI.click(btn_pickUpDateStable);
+    }
+    public void selectPickUpDateLineStable(String date) throws InterruptedException {
+        By lbl_selectStartDate = By.xpath(dynamicToXPathStable.replace("DAY", date));
+        distributorUI.waitForVisibility(lbl_selectStartDate);
+        distributorUI.click(lbl_selectStartDate);
+        distributorUI.waitForCustom(5000);
+    }
+    public void selectMailDeliveryDateLineStable(String date) throws InterruptedException {
+        By lbl_selectStartDate = By.xpath(dynamicToXPathStable.replace("DAY", date));
+        distributorUI.waitForVisibility(lbl_selectStartDate);
+        distributorUI.click(lbl_selectStartDate);
+        distributorUI.waitForCustom(5000);
+    }
+    public boolean isFulfilmentTagDisplayed(String id , String tag){
+        return distributorUI.isDisplayed(By.xpath(fulfilmentTag.replace("ID", id).replace("TAG",tag)));
     }
 
 
