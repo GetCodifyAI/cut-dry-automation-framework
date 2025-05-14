@@ -37,7 +37,7 @@ public class VerifyTheItemMovementReportGenerationTest extends TestBase {
         Reports.selectItemMovementReportFromDate(2);
         Reports.selectItemMovementReportToDate(3);
         Reports.typeOnItemMovementReportEmail(email);
-        Reports.clickEmailReport();
+        Reports.clickItemMovementReportEmailReport();
         softAssert.assertTrue(Reports.isGeneratingReportPopupDisplayed(),"generating report pop up not display");
         Reports.clickOkReport();
 

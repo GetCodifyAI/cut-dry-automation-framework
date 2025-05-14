@@ -26,6 +26,7 @@ public class ReportsPage extends LoginPage{
     By txt_ItemMovementReportEmail = By.xpath("//*[contains(text(),'Item Movement Report')]/following-sibling::div/input");
     By dd_selectItemMovementReportFromDate = By.xpath("//*[contains(text(),'Item Movement Report')]/following-sibling::div/label[contains(text(),'From')]/following-sibling::div//input");
     By dd_selectItemMovementReportToDate = By.xpath("//*[contains(text(),'Item Movement Report')]/following-sibling::div/label[contains(text(),'To')]/following-sibling::div//input");
+    By btn_itemMovementReportEmailReport = By.xpath("(//*[contains(text(),'Item Movement Report')]/parent::div/following-sibling::div)[1]/button[text()='Email Report']");
 
     By lbl_PickListReport = By.xpath("//*[contains(text(),'Pick List Report')]");
     By txt_PickListReportEmail = By.xpath("//*[contains(text(),'Pick List Report')]/following-sibling::div/input");
@@ -76,6 +77,10 @@ public class ReportsPage extends LoginPage{
     }
     public void clickEmailReport() throws InterruptedException {
         distributorUI.click(btn_email_report);
+        distributorUI.waitForCustom(2000);
+    }
+    public void clickItemMovementReportEmailReport() throws InterruptedException {
+        distributorUI.click(btn_itemMovementReportEmailReport);
         distributorUI.waitForCustom(2000);
     }
     public boolean isGeneratingReportPopupDisplayed(){

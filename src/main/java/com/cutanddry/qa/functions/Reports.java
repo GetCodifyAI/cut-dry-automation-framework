@@ -13,6 +13,9 @@ public class Reports {
     public static void clickEmailReport() throws InterruptedException {
         reportsPage.clickEmailReport();
     }
+    public static void clickItemMovementReportEmailReport() throws InterruptedException {
+        reportsPage.clickItemMovementReportEmailReport();
+    }
     public static boolean isGeneratingReportPopupDisplayed(){
         return reportsPage.isGeneratingReportPopupDisplayed();
     }
