@@ -24,5 +24,6 @@ public class CustomerInvoiceData
         public static final String UPCOMING_DUE = "Upcoming due";
         public static final String PAST_DUE = "Past Due";
         public static final String TOTAL_DUE = "Total Due";
+        public static final String CREDIT_MEMO_AMOUNT_2 = "10";
 
     }

@@ -37,6 +37,9 @@ public class OrderGuideSettings {
     public static boolean isOrderReminderAlertSettingDisplayed() throws InterruptedException {
         return orderGuideSettingsPage.isOrderReminderAlertSettingDisplayed();
     }
+    public static void editOrderGuideName(String name) throws InterruptedException {
+        orderGuideSettingsPage.editOrderGuideName(name);
+    }
     
 
 }

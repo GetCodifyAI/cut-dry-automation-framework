@@ -157,6 +157,7 @@ public class SettingsPage extends LoginPage{
     String configureOrderReminderDropDown = "//label[contains(text(), 'DROPDOWN')]/following-sibling::div";
     String configureOrderReminderDropDownOption = "(//div[contains(text(),'DROPDOWNOPTION')])[last()]";
     By sel_OrderCutOffs = By.xpath("//*[contains(text(),'Order Cutoffs')]/preceding-sibling::input");
+    By sel_deliveryDate = By.xpath("//*[contains(text(),'Delivery Days')]/preceding-sibling::input");
 
 
 
@@ -320,22 +321,23 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForCustom(3000);
         distributorUI.waitForVisibility(btn_inviteUser);
         distributorUI.click(btn_inviteUser);
-        if(distributorUI.isDisplayed(btn_inviteUser)){
+        distributorUI.waitForCustom(3000);
+        if(distributorUI.isDisplayed(btn_inviteUser,5)){
             distributorUI.clickUsingJavaScript(btn_inviteUser);
         }
-        if(distributorUI.isDisplayed(lbl_InvalidEmail)){
+        if(distributorUI.isDisplayed(lbl_InvalidEmail,5)){
             distributorUI.waitForClickability(btn_OK);
             distributorUI.click(btn_OK);
             distributorUI.waitForCustom(3000);
         }
     }
     public boolean isUserDisplayed(String user) throws InterruptedException {
-        try {
+        /*try {
             distributorUI.waitForCustom(4000);
             distributorUI.waitForVisibility(By.xpath(btn_editUser.replace("USER", user)));
         } catch (Exception e){
             return false;
-        }
+        }*/
         return distributorUI.isDisplayed(By.xpath(btn_editUser.replace("USER", user)));
     }
     public void clickOnRemoveUserLabel() throws InterruptedException {
@@ -1013,6 +1015,15 @@ public class SettingsPage extends LoginPage{
     public boolean ExistUser(String user) {
         return distributorUI.isDisplayed(By.xpath(txt_userField.replace("USER", user)),8);
 
+    }
+    public void deliveryDateOverrideRestrictions(boolean enable) {
+        boolean isChecked = distributorUI.getElement(sel_deliveryDate).isSelected();
+
+        if (enable && !isChecked) {
+            distributorUI.clickWithScrollAndHover(sel_deliveryDate);
+        } else if (!enable && isChecked) {
+            distributorUI.clickWithScrollAndHover(sel_deliveryDate);
+        }
     }
 
 }
