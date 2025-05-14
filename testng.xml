@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="OrderFlowSuite" parallel="tests" thread-count="1">
+    <test name="OrderFlowTest">
+        <classes>
+            <class name="DistributorOrderSubmissionTest" />
+        </classes>
+    </test>
+</suite>

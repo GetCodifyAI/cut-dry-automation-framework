@@ -1,0 +1,27 @@
+---
+execution:
+  - executor: selenium
+    scenario: order_flow_scenario
+    concurrency: ${USERS}
+    ramp-up: 10s
+    hold-for: 1m
+
+scenarios:
+  order_flow_scenario:
+    script: test/java/DistributorOrderSubmissionTest.java
+    testng-xml: testng.xml
+
+reporting:
+  - module: junit-xml
+    output-file: results/taurus-junit.xml
+  - module: console
+  - module: final-stats
+  - module: blazemeter  # Optional, include only if you use BlazeMeter
+
+modules:
+  selenium:
+    interpreter: java
+    classpath:
+      - target/classes
+      - target/test-classes
+      - target/dependency/*
