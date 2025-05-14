@@ -45,7 +45,7 @@ jobs:
 
       - run:
           name: Build Project with Maven
-          command: mvn clean package -DskipTests=true
+          command: mvn clean package -DskipTests=true -e
 #            mvn clean test -Dsurefire.suiteXmlFiles=testng.xml -Drun.headless=true -Dtest.env=uat
 
       - run:
@@ -59,7 +59,7 @@ workflows:
   daily_manual_trigger:
     triggers:
       - schedule:
-          cron: "50 17 * * 1-5"  # 12:00 UTC / 5:30 PM IST
+          cron: "55 17 * * 1-5"  # 12:00 UTC / 5:30 PM IST
           filters:
             branches:
               only:
