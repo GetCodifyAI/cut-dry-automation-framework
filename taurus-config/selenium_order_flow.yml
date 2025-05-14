@@ -8,8 +8,8 @@ execution:
 
 scenarios:
   order_flow_scenario:
-    script: test/java/DistributorOrderSubmissionTest.java
-    testng-xml: testng.xml
+    script: src/test/java/DistributorOrderSubmissionTest.java
+    testng-xml: src/test/resources/testng.xml
 
 reporting:
   - module: junit-xml

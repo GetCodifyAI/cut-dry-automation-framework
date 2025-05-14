@@ -59,7 +59,7 @@ workflows:
   daily_manual_trigger:
     triggers:
       - schedule:
-          cron: "04 18 * * 1-5"  # 12:00 UTC / 5:30 PM IST
+          cron: "11 18 * * 1-5"  # 12:00 UTC / 5:30 PM IST
           filters:
             branches:
               only:
