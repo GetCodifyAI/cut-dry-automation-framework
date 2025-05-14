@@ -493,5 +493,9 @@ public class Settings {
             settingsPage.clickOK();
         }
     }
+    public static void deliveryDateCheckBox(boolean status) throws InterruptedException {
+        settingsPage.deliveryDateOverrideRestrictions(status);
+        settingsPage.clickOnSaveChanges();
+    }
 
 }

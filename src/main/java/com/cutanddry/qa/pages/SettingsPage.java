@@ -157,6 +157,7 @@ public class SettingsPage extends LoginPage{
     String configureOrderReminderDropDown = "//label[contains(text(), 'DROPDOWN')]/following-sibling::div";
     String configureOrderReminderDropDownOption = "(//div[contains(text(),'DROPDOWNOPTION')])[last()]";
     By sel_OrderCutOffs = By.xpath("//*[contains(text(),'Order Cutoffs')]/preceding-sibling::input");
+    By sel_deliveryDate = By.xpath("//*[contains(text(),'Delivery Days')]/preceding-sibling::input");
 
 
 
@@ -1014,6 +1015,15 @@ public class SettingsPage extends LoginPage{
     public boolean ExistUser(String user) {
         return distributorUI.isDisplayed(By.xpath(txt_userField.replace("USER", user)),8);
 
+    }
+    public void deliveryDateOverrideRestrictions(boolean enable) {
+        boolean isChecked = distributorUI.getElement(sel_deliveryDate).isSelected();
+
+        if (enable && !isChecked) {
+            distributorUI.clickWithScrollAndHover(sel_deliveryDate);
+        } else if (!enable && isChecked) {
+            distributorUI.clickWithScrollAndHover(sel_deliveryDate);
+        }
     }
 
 }

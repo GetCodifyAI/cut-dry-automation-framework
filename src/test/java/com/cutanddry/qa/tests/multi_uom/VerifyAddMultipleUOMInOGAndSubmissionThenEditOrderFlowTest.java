@@ -90,7 +90,6 @@ public class VerifyAddMultipleUOMInOGAndSubmissionThenEditOrderFlowTest extends 
         softAssert.assertEquals(Math.round(Catalog.getTotalPriceInReviewOrder() * 100.0) / 100.0,
                 ((Math.round(totalItemPriceReviewOrder *2* 100.0) / 100.0)), "The item has not been selected.");
         softAssert.assertEquals(Catalog.getTotalQuantityInReviewOrder(),"4", "item count error");
-        softAssert.assertAll();
 
         Customer.submitOrder();
         softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(),"update popup error");
