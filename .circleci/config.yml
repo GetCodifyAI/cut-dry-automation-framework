@@ -38,10 +38,14 @@ jobs:
             pip3 install bzt
 
       - run:
-          name: Build Project with Maven
+          name: Install Maven
           command: |
             sudo apt-get install -y maven
-            mvn clean package -DskipTests=true
+            mvn -version
+
+      - run:
+          name: Build Project with Maven
+          command: mvn clean package -DskipTests=true
 #            mvn clean test -Dsurefire.suiteXmlFiles=testng.xml -Drun.headless=true -Dtest.env=uat
 
       - run:
@@ -55,7 +59,7 @@ workflows:
   daily_manual_trigger:
     triggers:
       - schedule:
-          cron: "37 17 * * 1-5"  # 12:00 UTC / 5:30 PM IST
+          cron: "43 17 * * 1-5"  # 12:00 UTC / 5:30 PM IST
           filters:
             branches:
               only:
