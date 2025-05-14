@@ -3,7 +3,7 @@ version: 2.1
 executors:
   java-taurus-executor:
     docker:
-      - image: circleci/openjdk:22-jdk-buster
+      - image: cimg/openjdk:21.0
     working_directory: ~/repo
     resource_class: xlarge
 
@@ -55,7 +55,7 @@ workflows:
   daily_manual_trigger:
     triggers:
       - schedule:
-          cron: "34 17 * * 1-5"  # 12:00 UTC / 5:30 PM IST
+          cron: "37 17 * * 1-5"  # 12:00 UTC / 5:30 PM IST
           filters:
             branches:
               only:
