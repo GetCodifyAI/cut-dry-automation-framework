@@ -54,11 +54,11 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By btn_submitOrder = By.xpath("//button[contains(text(),'Submit Order')]");
     By btn_duplicateOrderYes = By.xpath("//h2[contains(text(),'Duplicate Order')]/../..//button[text()='Yes']");
     By lbl_thankYouForOrder = By.xpath("//*[contains(text(),'Thank you for your order!')]");
-    By btn_print = By.xpath("//button[contains(text(), 'Print')]");
+    By btn_print = By.xpath("//*[contains(text(),'Print Order Guide') and .//*[local-name()='svg' and @data-icon='cdPrinter']]");
     By lbl_printFriendlyOrderGuide = By.xpath("//h5[contains(text(), 'Print-Friendly Order Guide')]");
     By btn_downloadOrderGuide = By.xpath("//button[contains(text(), 'Download Order Guide')]");
     By tbx_orderGuideSearch = By.xpath("//input[@placeholder='Search order guide...']");
-    By btn_create = By.xpath("//button[contains(text(), 'Create')]");
+    By btn_create = By.xpath("//*[contains(text(),'Create New Order Guide') and .//*[local-name()='svg' and @data-icon='plus']]");
     By tbx_OrderGuideName = By.xpath("//input[@placeholder='Enter Name']");
     By btn_submitOrderGuide = By.xpath("//button[contains(text(), 'Submit')]");
     By btn_addFromCatalog = By.xpath("//div[contains(text(), 'Add from Catalog')]");
@@ -86,7 +86,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By section_moreFromThisBrand = By.xpath("//div[contains(text(), 'More From')]");
     By btn_companyDropdown = By.xpath("//button[.//span[text()='Company:']]");
     By txt_companyDropdownText = By.xpath("//a[contains(text(), 'Independent Foods Co')]");
-    By btn_edit = By.xpath("//button[contains(text(), 'Edit')]");
+    By btn_edit = By.xpath("//*[local-name()='svg' and @data-icon='cdEdit']");
     By txt_editOrderGuide= By.xpath("//span[contains(text(), 'Edit Order Guide')]");
     By btn_moreOptions = By.xpath("//span[contains(text(), 'More Options')]");
     By btn_exportOrderGuide = By.xpath("//a[contains(text(), 'Export Order Guide (XLSX)')]");
@@ -964,7 +964,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         }
     }
     public void clickOnPrint(){
-        distributorUI.waitForClickability(btn_print);
+//        distributorUI.waitForClickability(btn_print);
         distributorUI.click(btn_print);
     }
     public boolean isPrintFriendlyPopupDisplayed(){
@@ -982,7 +982,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickOnCreate() throws InterruptedException {
         distributorUI.waitForCustom(1000);
-        distributorUI.waitForClickability(btn_create);
+//        distributorUI.waitForClickability(btn_create);
         distributorUI.click(btn_create);
     }
     public void typeOrderGuideName(String orderGuideName) throws InterruptedException {
@@ -1124,13 +1124,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         } catch (Exception e){
             return false;
         }*/
-        distributorUI.waitForVisibility(txt_editOrderGuide);
+//        distributorUI.waitForVisibility(txt_editOrderGuide);
         return distributorUI.isDisplayed(txt_editOrderGuide);
     }
     public void clickOnMoreOptions(){
         distributorUI.waitForClickability(btn_moreOptions);
 //        distributorUI.click(btn_moreOptions);
         distributorUI.clickWithScrollAndHover(btn_moreOptions);
+        distributorUI.uiScrollTop();
     }
     public void clickOnExportOrderGuide(){
         distributorUI.waitForClickability(btn_exportOrderGuide);
