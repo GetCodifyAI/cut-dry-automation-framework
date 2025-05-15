@@ -20,7 +20,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyAddCustomerPaymentMethodTest extends TestBase {
     static User user;
     SoftAssert softAssert;
-    static String customerName = PayInvoiceData.CUSTOMER_NAME4;
+    static String customerName = PayInvoiceData.CUSTOMER_NAME2;
     String AccountNumber = CustomerInvoiceData.ACCOUNT_NUMBER;
     String RoutingNumber = CustomerInvoiceData.ROUTING_NUMBER;
     String AccountType = CustomerInvoiceData.ACCOUNT_TYPE;
