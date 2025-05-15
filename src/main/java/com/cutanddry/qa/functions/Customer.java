@@ -2486,6 +2486,9 @@ public class Customer {
     public static boolean isFulfilmentTagDisplayed(String id,String tag){
         return customersPage.isFulfilmentTagDisplayed(id,tag);
     }
+    public static boolean isReviewOrderFulfilmentTypeDisplayed(String type){
+        return customersPage.isReviewOrderFulfilmentTypeDisplayed(type);
+    }
 
 
 }
