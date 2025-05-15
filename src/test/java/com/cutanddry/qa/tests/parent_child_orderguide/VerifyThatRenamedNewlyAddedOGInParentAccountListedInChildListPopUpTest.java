@@ -21,7 +21,7 @@ public class VerifyThatRenamedNewlyAddedOGInParentAccountListedInChildListPopUpT
     static String editedOrderGuideName = ParentChildOGData.EDIT_PARENT_ORDER_GUIDE_NAME_2;
     static String itemName = "Appetizer Egg Roll Vegetable";
     static String childSettingMessage = "Child account settings updated successfully";
-    static String[] childAccounts = { "13410", "13403", "13400", "13414", "13412" };
+    static String[] childAccounts = {  "59195", "59130", "53175", "33602", "33601" };
 
 
     @BeforeMethod

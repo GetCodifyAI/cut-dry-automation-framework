@@ -18,7 +18,7 @@ public class VerifyThatTheParentSectionWillBePopulatedWhenViewedFromAChildCustom
     static User user;
     static String DP = ParentChildOGData.DISTRIBUTOR_INDIANHEAD;
     static String customerId = ParentChildOGData.CUSTOMER_ID_INDIANHEAD_2;
-    static String parentStatus = "101480 ";
+    static String parentStatus = "33600 ";
 
 
     @BeforeMethod

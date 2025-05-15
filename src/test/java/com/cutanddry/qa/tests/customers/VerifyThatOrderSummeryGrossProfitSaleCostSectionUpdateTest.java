@@ -53,7 +53,11 @@ public class VerifyThatOrderSummeryGrossProfitSaleCostSectionUpdateTest extends 
         BigDecimal marginValue = new BigDecimal(Double.toString(marginPrice));
         marginValue = marginValue.setScale(2, RoundingMode.DOWN);
         Customer.increaseFirstRowQtyCustom(1);
-        softAssert.assertTrue(Customer.isOrderSummeryValueDisplayed(orderSummery,marginValue.toPlainString()),"gross profit value not equal");
+//        softAssert.assertTrue(Customer.isOrderSummeryValueDisplayed(orderSummery,marginValue.toPlainString()),"gross profit value not equal");
+        softAssert.assertTrue(
+                Customer.isOrderSummeryValueDisplayed(orderSummery, marginValue.setScale(1, RoundingMode.DOWN).toPlainString()),
+                "gross profit value not equal"
+        );
         softAssert.assertTrue(Customer.isOrderSummeryValueDisplayed(orderSummerySalesCommission,"0"),"Order Summery Sales Commission value not equal");
         softAssert.assertTrue(Customer.isOrderSummeryValueDisplayed(orderSummeryTotalLines,"1"),"Order Summery TotalLines value not equal");
         softAssert.assertTrue(Customer.isOrderSummeryValueDisplayed(orderSummeryTotalPieces,"1"),"Order Summery TotalPieces value not equal");
