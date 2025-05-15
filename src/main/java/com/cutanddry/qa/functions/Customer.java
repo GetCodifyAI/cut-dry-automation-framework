@@ -256,6 +256,7 @@ public class Customer {
         return customersPage.isMoreFromThisBrandDisplayed();
     }
     public static void clickOnPrint(){
+        customersPage.clickOnMoreOptions();
         customersPage.clickOnPrint();
     }
     public static boolean isPrintFriendlyPopupDisplayed(){
@@ -271,6 +272,7 @@ public class Customer {
         customersPage.typeToSearchOnOrderGuide(item);
     }
     public static void goToCreatePopup() throws InterruptedException {
+        customersPage.clickOnMoreOptions();
         customersPage.clickOnCreate();
     }
     public static void createOrderGuide(String orderGuideName) throws InterruptedException {
@@ -326,6 +328,7 @@ public class Customer {
         return customersPage.isCompanyDropdownTextDisplayed();
     }
     public static void goToEdit(){
+        customersPage.clickOnMoreOptions();
         customersPage.clickOnEdit();
     }
     public static boolean isEditOrderGuideTextDisplayed(){

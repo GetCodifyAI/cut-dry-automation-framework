@@ -103,6 +103,7 @@ String DeliveryDateSelect = "(//div[contains(@class,'themed_select__option')])[D
             distributorUI.click(anyOrderTxt);
         } else {
             distributorUI.click(SubmitTxt);
+            distributorUI.click(DeleteConfirmationOverlayYesBtn);
         }
         distributorUI.click(SaveDraftBtn);
         try {
