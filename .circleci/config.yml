@@ -1242,7 +1242,7 @@ jobs:
 
           # Send the test results to Slack
       - slack/notify:
-          channel: "#test-alerts" # Replace with your Slack channel
+          channel: "#staging-test-alerts" # Replace with your Slack channel
           template: "${SLACK_MESSAGE}"
           event: always
           custom: |
@@ -1277,7 +1277,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "30 11 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
+          cron: "05 13 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
           filters:
             branches:
               only:
@@ -1299,7 +1299,7 @@ workflows:
   scheduled-test-1-sub1:
     triggers:
       - schedule:
-          cron: "30 12 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
+          cron: "00 14 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
           filters:
             branches:
               only:

@@ -17,7 +17,7 @@ public class Constants {
     public static String GATE_KEEPER_ADMIN = "https://app-uat.staging.cutanddry.com/gatekeeperadmin";
 
     public static String PROD_LOGIN_AS = "https://internal.cutanddry.com/internaltools/loginas";
-//    public static String TEST_STAG ="offline";
+    public static final String TEST_STAG ="scanned-order";
 
     //  https://hooks.slack.com/services/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 //group - test-alerts
     //  https://hooks.slack.com/services/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 //group - ui-automation-tests
@@ -32,7 +32,7 @@ public class Constants {
             MAIN_URL = "https://supplier-guava.staging.cutanddry.com/";
         }
         else if (TEST_ENV.equalsIgnoreCase("STAG")) {
-            MAIN_URL = "https://supplier-offline.staging.cutanddry.com/";
+            MAIN_URL = "https://supplier-"+TEST_STAG+".staging.cutanddry.com/";
         }
         return MAIN_URL;
     }
@@ -45,7 +45,7 @@ public class Constants {
             SEC_URL = "https://app-guava.staging.cutanddry.com/";
         }
         else if (TEST_ENV.equalsIgnoreCase("STAG")) {
-            SEC_URL = "https://app-offline.staging.cutanddry.com/";
+            SEC_URL = "https://app-"+TEST_STAG+".staging.cutanddry.com/";
         }
         return SEC_URL;
     }
@@ -59,7 +59,7 @@ public class Constants {
             LOGIN_AS = "https://app-guava.staging.cutanddry.com/internaltools/loginas";
         }
         else if (TEST_ENV.equalsIgnoreCase("STAG")) {
-            LOGIN_AS = "https://app-offline.staging.cutanddry.com/internaltools/loginas";
+            LOGIN_AS = "https://app-"+TEST_STAG+".staging.cutanddry.com/internaltools/loginas";
         }
         return LOGIN_AS;
     }
@@ -73,7 +73,7 @@ public class Constants {
             NODE_EXPLORER = "https://app-guava.staging.cutanddry.com/admin";
         }
         else if (TEST_ENV.equalsIgnoreCase("STAG")) {
-            NODE_EXPLORER = "https://app-offline.staging.cutanddry.com/admin";
+            NODE_EXPLORER = "https://app-"+TEST_STAG+".staging.cutanddry.com/admin";
         }
         return NODE_EXPLORER;
     }
@@ -87,7 +87,7 @@ public class Constants {
             CONFIG_SUPPLIER = "https://app-guava.staging.cutanddry.com/internaltools/configure-supplier";
         }
         else if (TEST_ENV.equalsIgnoreCase("STAG")) {
-            CONFIG_SUPPLIER = "https://app-offline.staging.cutanddry.com/internaltools/configure-supplier";
+            CONFIG_SUPPLIER = "https://app-"+TEST_STAG+".staging.cutanddry.com/internaltools/configure-supplier";
         }
         return CONFIG_SUPPLIER;
     }
