@@ -359,6 +359,9 @@ public class Customer {
     public static void selectItemCategoriesSort(){
         customersPage.selectItemCategories();
     }
+    public static void selectItemCodeSort(){
+        customersPage.selectItemCodeSort();
+    }
     public static void selectAlphabeticalSort(){
         customersPage.selectAlphabetical();
     }
@@ -2488,6 +2491,9 @@ public class Customer {
     }
     public static boolean isReviewOrderFulfilmentTypeDisplayed(String type){
         return customersPage.isReviewOrderFulfilmentTypeDisplayed(type);
+    }
+    public static boolean isSortOptionDisplayed(String option){
+        return customersPage.isSortOptionDisplayed(option);
     }
 
 
