@@ -716,6 +716,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_pickUpDateStable = By.xpath("//div[text()='Pickup Date:']/../following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
     String dynamicToXPathStable = "(//div[contains(@class,'react-datepicker__day')]/preceding::div[contains(@class, 'react-datepicker__day') and text()='DAY'])[last()]";
     String fulfilmentTag = "//*[contains(text(),'#') and text()='ID']/../preceding-sibling::td[1]//*[text()='TAG']";
+    String reviewOrderFulfilment = "//span[contains(text(),'TYPE')]";
 
 
 
@@ -4266,6 +4267,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isFulfilmentTagDisplayed(String id , String tag){
         return distributorUI.isDisplayed(By.xpath(fulfilmentTag.replace("ID", id).replace("TAG",tag)));
+    }
+    public boolean isReviewOrderFulfilmentTypeDisplayed(String type){
+        return distributorUI.isDisplayed(By.xpath(reviewOrderFulfilment.replace("TYPE",type)));
     }
 
 

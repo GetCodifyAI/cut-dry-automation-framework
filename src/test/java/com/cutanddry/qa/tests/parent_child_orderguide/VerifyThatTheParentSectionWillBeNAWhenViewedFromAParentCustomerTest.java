@@ -23,7 +23,8 @@ public class VerifyThatTheParentSectionWillBeNAWhenViewedFromAParentCustomerTest
     static String DP = ParentChildOGData.DISTRIBUTOR_INDIANHEAD;
     static String customerId = ParentChildOGData.CUSTOMER_ID_INDIANHEAD;
     static String parentStatus = "N/A";
-    static String[] childAccounts = { "13410", "13403", "13400", "13414", "13412" };
+//    static String[] childAccounts = { "13410", "13403", "13400", "13414", "13412" };
+static String[] childAccounts = { "59195", "59130", "53175", "33602", "33601" };
 
 
     @BeforeMethod
