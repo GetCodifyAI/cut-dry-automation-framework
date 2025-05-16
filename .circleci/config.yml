@@ -56,6 +56,14 @@ jobs:
           command: mvn dependency:copy-dependencies -DoutputDirectory=target/dependency
 
       - run:
+          name: Check Compiled Test Class Exists
+          command: |
+            if [ ! -f target/test-classes/com/cutanddry/qa/DistributorOrderSubmissionTest.class ]; then
+              echo "ERROR: Test class not found!"
+              exit 1
+            fi
+
+      - run:
           name: Run Taurus UI Performance Test
           command: |
             mkdir -p results
