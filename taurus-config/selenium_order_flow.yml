@@ -13,7 +13,7 @@ execution:
 #    testng-xml: src/test/resources/testng.xml
 scenarios:
   order_flow_scenario:
-    script: target/test-classes/com/cutanddry/qa/DistributorOrderSubmissionTest.class
+    script: target/test-classes/DistributorOrderSubmissionTest.class
     testng-xml: src/test/resources/testng.xml
 
 reporting:
