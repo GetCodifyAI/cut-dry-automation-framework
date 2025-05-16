@@ -1,16 +1,11 @@
 ---
 execution:
-  - executor: selenium
+  - executor: junit
     scenario: order_flow_scenario
     concurrency: ${USERS}
     ramp-up: 10s
     hold-for: 1m
 
-#scenarios:
-#  order_flow_scenario:
-#    script: src/test/java/DistributorOrderSubmissionTest.java
-#    testng: true
-#    testng-xml: src/test/resources/testng.xml
 scenarios:
   order_flow_scenario:
     class: com.cutanddry.qa.DistributorOrderSubmissionTest
@@ -24,13 +19,6 @@ reporting:
   - module: final-stats
 #  - module: blazemeter  # Optional: Enable only if you use BlazeMeter
 
-#modules:
-#  selenium:
-#    interpreter: java
-#    classpath:
-#      - target/classes
-#      - target/test-classes
-#      - target/dependency/*
 modules:
   junit:
     classpath:
