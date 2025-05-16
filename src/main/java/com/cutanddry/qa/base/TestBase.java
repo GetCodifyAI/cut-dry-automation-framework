@@ -25,7 +25,7 @@ public class TestBase {
 
     // Initialization method to set up the WebDriver and other components
     public static void initialization() {
-        if (driver == null) {  // Ensure WebDriver is initialized only once
+        if (driver == null && distributorUI == null) {  // Ensure WebDriver is initialized only once
             if (Constants.BROWSER_NAME.equalsIgnoreCase("chrome")) {
                 try {
                     ChromeOptions chromeOptions = new ChromeOptions();
