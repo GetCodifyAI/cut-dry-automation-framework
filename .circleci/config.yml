@@ -11,7 +11,7 @@ jobs:
   taurus-selenium-ui-perf:
     executor: java-taurus-executor
     environment:
-      USERS: 5
+      USERS: 1
     steps:
       - checkout
 
