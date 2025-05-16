@@ -25,17 +25,24 @@ public class TestBase {
 
     // Initialization method to set up the WebDriver and other components
     public static void initialization() {
-        if (driver == null && distributorUI == null) {  // Ensure WebDriver is initialized only once
+        if (driver == null) {  // Ensure WebDriver is initialized only once
             if (Constants.BROWSER_NAME.equalsIgnoreCase("chrome")) {
                 try {
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.addArguments("--start-maximized");
                     if (Constants.RUN_HEADLESS) {
-                        chromeOptions.addArguments("--headless", "--window-size=1920,1080");
+//                        chromeOptions.addArguments("--headless", "--window-size=1920,1080");
                         /*chromeOptions.addArguments("--disable-dev-shm-usage"); // Prevents shared memory crashes
                         chromeOptions.addArguments("--disable-gpu"); // Disables GPU rendering
                         chromeOptions.addArguments("--disable-renderer-backgrounding"); // Prevents execution speed-up in background
                         chromeOptions.addArguments("--disable-background-timer-throttling"); // Keeps timers active*/
+
+                        chromeOptions.addArguments("--headless=new");
+                        chromeOptions.addArguments("--no-sandbox");
+                        chromeOptions.addArguments("--disable-dev-shm-usage");
+                        chromeOptions.addArguments("--disable-gpu");
+                        chromeOptions.addArguments("--window-size=1920,1080");
+                        chromeOptions.addArguments("--user-data-dir=/tmp/chrome-user-data-" + System.currentTimeMillis());
                     }
 
                     // Set custom download directory

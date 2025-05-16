@@ -16,13 +16,21 @@ jobs:
       - checkout
 
       - run:
-          name: Install Chrome
+          name: Install Chrome & ChromeDriver
           command: |
+            sudo apt-get update
+            sudo apt-get install -y wget unzip curl gnupg fonts-liberation libasound2 libnss3 libxss1 libgconf-2-4 libappindicator1 libatk-bridge2.0-0 libgtk-3-0
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
-            google-chrome --version
+            CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
+            CHROME_DRIVER_VERSION=$(curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget "https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip"
+            unzip chromedriver_linux64.zip
+            sudo mv chromedriver /usr/local/bin/chromedriver
+            sudo chmod +x /usr/local/bin/chromedriver
+            chromedriver --version
 
       - run:
           name: Install Taurus
