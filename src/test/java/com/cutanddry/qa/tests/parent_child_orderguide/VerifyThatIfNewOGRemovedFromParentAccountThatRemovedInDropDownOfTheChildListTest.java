@@ -19,7 +19,7 @@ public class VerifyThatIfNewOGRemovedFromParentAccountThatRemovedInDropDownOfThe
     static User user;
     static String DP = ParentChildOGData.DISTRIBUTOR_INDIANHEAD;
     static String customerId = ParentChildOGData.CUSTOMER_ID_INDIANHEAD;
-    static String parentStatus = "N/A";
+    static String status = "Parent Account";
     static String OrderGuideName = ParentChildOGData.ORDER_GUIDE_NAME_2;
     static String itemName = "Appetizer Egg Roll Vegetable";
     static String[] childAccounts = { "59195", "59130", "53175", "33602", "33601" };
@@ -58,7 +58,7 @@ public class VerifyThatIfNewOGRemovedFromParentAccountThatRemovedInDropDownOfThe
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.SelectCustomer(customerId);
         softAssert.assertTrue(Customer.isLinkedAccountDisplayed(),"linked account section not displayed");
-        softAssert.assertTrue(Customer.isParentAccountStatusDisplayed(parentStatus),"parent account status not displayed");
+        softAssert.assertTrue(Customer.isAccountStatusDisplayed(status),"parent account status not displayed");
         Customer.clickEditChildAccount();
         softAssert.assertTrue(Customer.isManageChildAccountPopUpDisplayed(),"manage child account pop up not displayed");
         for (String childAccount : childAccounts) {
@@ -83,7 +83,7 @@ public class VerifyThatIfNewOGRemovedFromParentAccountThatRemovedInDropDownOfThe
         Orders.clickYes();
 
         softAssert.assertTrue(Customer.isLinkedAccountDisplayed(),"linked account section not displayed");
-        softAssert.assertTrue(Customer.isParentAccountStatusDisplayed(parentStatus),"parent account status not displayed");
+        softAssert.assertTrue(Customer.isAccountStatusDisplayed(status),"parent account status not displayed");
         Customer.clickEditChildAccount();
         softAssert.assertTrue(Customer.isManageChildAccountPopUpDisplayed(),"manage child account pop up not displayed");
         for (String childAccount : childAccounts) {

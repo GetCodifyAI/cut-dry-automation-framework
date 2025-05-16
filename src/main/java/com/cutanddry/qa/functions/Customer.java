@@ -28,6 +28,16 @@ public class Customer {
             return customersPage.isCustomerSearchResultByCodeDisplayed(code);
         }
     }
+    public static boolean isCustomerSearchResultByNameDisplayed(String code) throws InterruptedException {
+        if (customersPage.isCustomerSearchResultByNameDisplayed(code)) {
+            return true;
+        } else {
+            customersPage.refreshCustomersPage();
+            customersPage.clickOnSearchCustomers();
+            customersPage.typeOnSearchCustomers(code);
+            return customersPage.isCustomerSearchResultByNameDisplayed(code);
+        }
+    }
     public static void clickOnOrderGuide(String code) throws InterruptedException {
         customersPage.clickOnOrderGuide(code);
 
@@ -48,7 +58,15 @@ public class Customer {
             customersPage.selectCustomOrder();
         }
     }
-
+    public static void clickOnNameOrderGuide(String code) throws InterruptedException {
+        customersPage.clickOnNameOrderGuide(code);
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+        else if (Orders.isSelectOrderGuideDisplayed()){
+            Orders.selectOrderGuide("Independent Foods Co");
+        }
+    }
     public static void increaseFirstRowQtyByOne() throws InterruptedException {
 //        if (customersPage.isPreviousDraftOrderNoDisplayed()){
 //            customersPage.clickPreviousDraftOrderNo();
@@ -373,6 +391,9 @@ public class Customer {
     }
     public static void selectItemCategoriesSort(){
         customersPage.selectItemCategories();
+    }
+    public static void selectItemCodeSort(){
+        customersPage.selectItemCodeSort();
     }
     public static void selectAlphabeticalSort(){
         customersPage.selectAlphabetical();
@@ -1078,9 +1099,6 @@ public class Customer {
     }
     public static void selectTestAutomation(){
         customersPage.selectTestAutomation();
-    }
-    public static void selectIFC(){
-        customersPage.selectIFC();
     }
     public static void editMargin(){
         customersPage.editMargin();
@@ -2506,6 +2524,9 @@ public class Customer {
     }
     public static boolean isReviewOrderFulfilmentTypeDisplayed(String type){
         return customersPage.isReviewOrderFulfilmentTypeDisplayed(type);
+    }
+    public static boolean isSortOptionDisplayed(String option){
+        return customersPage.isSortOptionDisplayed(option);
     }
 
 
