@@ -332,7 +332,8 @@ By txt_draftStatus = By.xpath("//tr[2]//td[3][contains(text(), 'seconds ago')]")
     By lbl_orderGuide = By.xpath("//div[text()='Order Guide:']/following-sibling::div//div[@class='cd_themed_select__single-value css-1uccc91-singleValue']");
     By dropdown_testGuide1 =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Test_Guide_01')]");
     By dropdown_testAutomation =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Test_Automation')]");
-//    By btn_editMargin = By.xpath("//td/div/button/*[local-name() = 'svg' and @data-icon='cdEdit']");
+    By dropdown_ifc =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Independent Foods Co')]");
+    //    By btn_editMargin = By.xpath("//td/div/button/*[local-name() = 'svg' and @data-icon='cdEdit']");
     By btn_editMargin = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[6])[1]");
     By btn_resetValues = By.xpath("//button[contains(text(), 'Reset Values')]");
     By btn_updateValues = By.xpath("//button[contains(text(), 'Update')]");
@@ -702,7 +703,21 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String txt_itemType = "//div[contains(text(), 'Item Type')]/../../following-sibling::div//*[name()='svg' and @data-icon='square']/following-sibling::div[contains(text(), 'NAME')]";
     String txt_specialItem = "//span//div[contains(text(), 'NAME')]";
     String txt_marginPriceError = "//span[contains(text(), 'NAME')]";
-
+    By txt_linkedAccount = By.xpath("//div[contains(text(),'Linked Accounts')]");
+    By childAccountEditBtn = By.xpath("//div[contains(text(), 'Child Account')]/following-sibling::div//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
+    By txt_manageChildAccounts = By.xpath("//div[contains(text(),'Manage Child Accounts')]");
+    String parentAccountStatus = "//div[contains(text(), 'Parent Account')]/following-sibling::div[contains(text(),'STATUS')]";
+    String childAccount = "//label[contains(text(), 'CHILDACC')]";
+    String childAccountDropDown = "(//label[contains(text(), 'CHILDACC')]/../following-sibling::div//*[name()='svg'])[last()]";
+    String addedOrderGuide = "(//label[contains(text(), 'CHILDACC')]/../following-sibling::div//div[contains(text(),'NAME')])[last()]";
+    String updateChildAccountSettings = "//div[contains(text(),'MESSAGE')]";
+    String dropDownOrderGuide =  "(//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'NAME')])[last()]";
+    By btn_deleteOrderGuide = By.xpath("//a[contains(text(), 'Delete Order Guide')]");
+    String deliveryDateCustomerOrder = "//*[contains(text(),'#') and text()='ID']/../preceding-sibling::td[1][text()='DATE']";
+    By btn_pickUpDateStable = By.xpath("//div[text()='Pickup Date:']/../following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
+    String dynamicToXPathStable = "(//div[contains(@class,'react-datepicker__day')]/preceding::div[contains(@class, 'react-datepicker__day') and text()='DAY'])[last()]";
+    String fulfilmentTag = "//*[contains(text(),'#') and text()='ID']/../preceding-sibling::td[1]//*[text()='TAG']";
+    String reviewOrderFulfilment = "//span[contains(text(),'TYPE')]";
 
 
 
@@ -1138,6 +1153,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void selectCustomOrder(){
         distributorUI.waitForVisibility(dropdown_customOrder);
         distributorUI.click(dropdown_customOrder);
+    }
+    public boolean isCustomOrderDisplayed(){
+        return distributorUI.isDisplayed(dropdown_customOrder,5);
     }
     public void selectLastOrdered(){
         distributorUI.waitForVisibility(dropdown_lastOrdered);
@@ -2239,6 +2257,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void selectTestAutomation(){
         distributorUI.waitForVisibility(dropdown_testAutomation);
         distributorUI.click(dropdown_testAutomation);
+    }
+    public void selectIFC(){
+        distributorUI.waitForVisibility(dropdown_ifc);
+        distributorUI.click(dropdown_ifc);
     }
     public void editMargin(){
         distributorUI.click(btn_editMargin);
@@ -4179,6 +4201,77 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
 
     public int existingOGSection(String name) throws InterruptedException {
         return distributorUI.countElements(By.xpath(txt_addedSection.replace("NAME", name)));
+    }
+    public boolean isTestAutomationDisplayed(){
+        return distributorUI.isDisplayed(dropdown_testAutomation,5);
+    }
+    public boolean isLinkedAccountDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_linkedAccount);
+    }
+    public void clickEditChildAccount(){
+        distributorUI.isDisplayed(childAccountEditBtn);
+        distributorUI.click(childAccountEditBtn);
+    }
+    public boolean isManageChildAccountPopUpDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_manageChildAccounts);
+    }
+    public boolean isParentAccountStatusDisplayed(String status)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(parentAccountStatus.replace("STATUS",status)));
+    }
+    public boolean isChildAccountDisplayed(String account){
+        return distributorUI.isDisplayed(By.xpath(childAccount.replace("CHILDACC",account)));
+    }
+    public boolean isChildAccountEditDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(childAccountEditBtn);
+    }
+    public void childAccountDropDown(String account){
+        distributorUI.click(By.xpath(childAccountDropDown.replace("CHILDACC",account)));
+    }
+    public boolean isAddedOrderGuideDisplayed(String account , String name){
+        return distributorUI.isDisplayed(By.xpath(addedOrderGuide.replace("CHILDACC",account).replace("NAME",name)));
+    }
+    public void selectOrderGuide(String account , String name){
+        distributorUI.waitForClickability(By.xpath(addedOrderGuide.replace("CHILDACC",account).replace("NAME",name)));
+        distributorUI.click(By.xpath(addedOrderGuide.replace("CHILDACC",account).replace("NAME",name)));
+    }
+    public boolean isChildSettingUpdated(String message)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(updateChildAccountSettings.replace("MESSAGE",message)));
+    }
+    public void selectNewlyCreatedOrderGuide(String name){
+        distributorUI.waitForVisibility(By.xpath(dropDownOrderGuide.replace("NAME",name)));
+        distributorUI.click(By.xpath(dropDownOrderGuide.replace("NAME",name)));
+    }
+    public void clickOnDeleteOrderGuide(){
+        distributorUI.waitForClickability(btn_deleteOrderGuide);
+        distributorUI.click(btn_deleteOrderGuide);
+    }
+    public boolean isChildAccountOGDisplayed(String account , String name){
+        return distributorUI.isDisplayed(By.xpath(addedOrderGuide.replace("CHILDACC",account).replace("NAME",name)));
+    }
+    public boolean isDeliveryDateCustomerOrderDisplayed(String id , String date){
+        return distributorUI.isDisplayed(By.xpath(deliveryDateCustomerOrder.replace("ID", id).replace("DATE",date)));
+    }
+    public void clickOnPickUpDateStable() throws InterruptedException{
+        distributorUI.waitForCustom(4000);
+        distributorUI.click(btn_pickUpDateStable);
+    }
+    public void selectPickUpDateLineStable(String date) throws InterruptedException {
+        By lbl_selectStartDate = By.xpath(dynamicToXPathStable.replace("DAY", date));
+        distributorUI.waitForVisibility(lbl_selectStartDate);
+        distributorUI.click(lbl_selectStartDate);
+        distributorUI.waitForCustom(5000);
+    }
+    public void selectMailDeliveryDateLineStable(String date) throws InterruptedException {
+        By lbl_selectStartDate = By.xpath(dynamicToXPathStable.replace("DAY", date));
+        distributorUI.waitForVisibility(lbl_selectStartDate);
+        distributorUI.click(lbl_selectStartDate);
+        distributorUI.waitForCustom(5000);
+    }
+    public boolean isFulfilmentTagDisplayed(String id , String tag){
+        return distributorUI.isDisplayed(By.xpath(fulfilmentTag.replace("ID", id).replace("TAG",tag)));
+    }
+    public boolean isReviewOrderFulfilmentTypeDisplayed(String type){
+        return distributorUI.isDisplayed(By.xpath(reviewOrderFulfilment.replace("TYPE",type)));
     }
 
 }

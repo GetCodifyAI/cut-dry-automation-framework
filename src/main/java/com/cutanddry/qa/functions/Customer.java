@@ -30,20 +30,25 @@ public class Customer {
     }
     public static void clickOnOrderGuide(String code) throws InterruptedException {
         customersPage.clickOnOrderGuide(code);
+
         if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
             customersPage.clickPreviousDraftOrderNo();
         }
+
+        if (!customersPage.isTestAutomationDisplayed()) {
+            customersPage.clickOGDropdown();
+            customersPage.selectTestAutomation();
+        } else if (Orders.isSelectOrderGuideDisplayed()) {
+            customersPage.clickOGDropdown();
+            Orders.selectOrderGuide("Test_Automation");
+        }
+
         if (!customersPage.isCustomOrderDisplayed()) {
+            customersPage.selectSortOptions();
             customersPage.selectCustomOrder();
         }
-        if (Orders.isSelectOrderGuideDisplayed()){
-            customersPage.clickOGDropdown();
-             Orders.selectOrderGuide("Independent Foods Co");
-        } else if (!customersPage.isIFCDisplayed()){
-            customersPage.clickOGDropdown();
-            customersPage.selectIFC();
-        }
     }
+
     public static void increaseFirstRowQtyByOne() throws InterruptedException {
 //        if (customersPage.isPreviousDraftOrderNoDisplayed()){
 //            customersPage.clickPreviousDraftOrderNo();
