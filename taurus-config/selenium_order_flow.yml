@@ -9,6 +9,7 @@ execution:
 scenarios:
   order_flow_scenario:
     script: src/test/java/DistributorOrderSubmissionTest.java
+    testng: true
     testng-xml: src/test/resources/testng.xml
 
 reporting:
@@ -16,7 +17,7 @@ reporting:
     output-file: results/taurus-junit.xml
   - module: console
   - module: final-stats
-  - module: blazemeter  # Optional, include only if you use BlazeMeter
+#  - module: blazemeter  # Optional: Enable only if you use BlazeMeter
 
 modules:
   selenium:

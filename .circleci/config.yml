@@ -11,7 +11,7 @@ jobs:
   taurus-selenium-ui-perf:
     executor: java-taurus-executor
     environment:
-      USERS: 5  # Default user count, can override in workflow or schedule
+      USERS: 5
     steps:
       - checkout
 
@@ -37,16 +37,13 @@ jobs:
             sudo apt-get install -y python3-pip
             pip3 install bzt
 
-#      - run:
-#          name: Install Maven
-#          command: |
-#            sudo apt-get install -y maven
-#            mvn -version
-
       - run:
           name: Build Project with Maven
           command: mvn clean package -DskipTests=true -e
-#            mvn clean test -Dsurefire.suiteXmlFiles=testng.xml -Drun.headless=true -Dtest.env=uat
+
+      - run:
+          name: Copy Dependencies
+          command: mvn dependency:copy-dependencies -DoutputDirectory=target/dependency
 
       - run:
           name: Run Taurus UI Performance Test
@@ -54,12 +51,15 @@ jobs:
             mkdir -p results
             bzt taurus-config/selenium_order_flow.yml -o execution.0.concurrency=$USERS
 
+      - store_artifacts:
+          path: results
+
 workflows:
   version: 2
   daily_manual_trigger:
     triggers:
       - schedule:
-          cron: "11 18 * * 1-5"  # 12:00 UTC / 5:30 PM IST
+          cron: "28 16 * * 1-5"
           filters:
             branches:
               only:
