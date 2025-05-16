@@ -704,9 +704,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String txt_specialItem = "//span//div[contains(text(), 'NAME')]";
     String txt_marginPriceError = "//span[contains(text(), 'NAME')]";
     By txt_linkedAccount = By.xpath("//div[contains(text(),'Linked Accounts')]");
-    By childAccountEditBtn = By.xpath("//div[contains(text(), 'Child Account')]/following-sibling::div//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
+    By childAccountEditBtn = By.xpath("//button[contains(text(), 'Child Account')]");
     By txt_manageChildAccounts = By.xpath("//div[contains(text(),'Manage Child Accounts')]");
-    String parentAccountStatus = "//div[contains(text(), 'Parent Account')]/following-sibling::div[contains(text(),'STATUS')]";
+    String accountStatus = "//div[contains(text(), 'Account Type')]/following-sibling::div[contains(text(),'STATUS')]";
     String childAccount = "//label[contains(text(), 'CHILDACC')]";
     String childAccountDropDown = "(//label[contains(text(), 'CHILDACC')]/../following-sibling::div//*[name()='svg'])[last()]";
     String addedOrderGuide = "(//label[contains(text(), 'CHILDACC')]/../following-sibling::div//div[contains(text(),'NAME')])[last()]";
@@ -4220,8 +4220,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isManageChildAccountPopUpDisplayed()throws InterruptedException{
         return distributorUI.isDisplayed(txt_manageChildAccounts);
     }
-    public boolean isParentAccountStatusDisplayed(String status)throws InterruptedException{
-        return distributorUI.isDisplayed(By.xpath(parentAccountStatus.replace("STATUS",status)));
+    public boolean isAccountStatusDisplayed(String status)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(accountStatus.replace("STATUS",status)));
     }
     public boolean isChildAccountDisplayed(String account){
         return distributorUI.isDisplayed(By.xpath(childAccount.replace("CHILDACC",account)));

@@ -19,7 +19,7 @@ public class VerifyThatNewlyAddedOGInParentAccountListedInChildListPopUpTest ext
     static User user;
     static String DP = ParentChildOGData.DISTRIBUTOR_INDIANHEAD;
     static String customerId = ParentChildOGData.CUSTOMER_ID_INDIANHEAD;
-    static String parentStatus = "N/A";
+    static String status = "Parent Account";
     static String OrderGuideName = ParentChildOGData.ORDER_GUIDE_NAME;
     static String itemName = "Appetizer Egg Roll Vegetable";
     static String childSettingMessage = "Child account settings updated successfully";
@@ -57,7 +57,7 @@ public class VerifyThatNewlyAddedOGInParentAccountListedInChildListPopUpTest ext
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.SelectCustomer(customerId);
         softAssert.assertTrue(Customer.isLinkedAccountDisplayed(),"linked account section not displayed");
-        softAssert.assertTrue(Customer.isParentAccountStatusDisplayed(parentStatus),"parent account status not displayed");
+        softAssert.assertTrue(Customer.isAccountStatusDisplayed(status),"parent account status not displayed");
         Customer.clickEditChildAccount();
         softAssert.assertTrue(Customer.isManageChildAccountPopUpDisplayed(),"manage child account pop up not displayed");
         for (String childAccount : childAccounts) {

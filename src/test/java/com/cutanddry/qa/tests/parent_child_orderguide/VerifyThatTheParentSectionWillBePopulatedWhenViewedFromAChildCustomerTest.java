@@ -18,7 +18,7 @@ public class VerifyThatTheParentSectionWillBePopulatedWhenViewedFromAChildCustom
     static User user;
     static String DP = ParentChildOGData.DISTRIBUTOR_INDIANHEAD;
     static String customerId = ParentChildOGData.CUSTOMER_ID_INDIANHEAD_2;
-    static String parentStatus = "33600 ";
+    static String status = "Child Account";
 
 
     @BeforeMethod
@@ -40,7 +40,7 @@ public class VerifyThatTheParentSectionWillBePopulatedWhenViewedFromAChildCustom
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.SelectCustomer(customerId);
         softAssert.assertTrue(Customer.isLinkedAccountDisplayed(),"linked account section not displayed");
-        softAssert.assertTrue(Customer.isParentAccountStatusDisplayed(parentStatus),"parent account status not displayed");
+        softAssert.assertTrue(Customer.isAccountStatusDisplayed(status),"account status not displayed");
         softAssert.assertFalse(Customer.isChildAccountEditDisplayed(),"child account edit icon displayed");
         softAssert.assertAll();
     }
