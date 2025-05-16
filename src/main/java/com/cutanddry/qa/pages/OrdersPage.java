@@ -537,5 +537,9 @@ public class OrdersPage extends LoginPage{
         return distributorUI.getLastWorkingDayUST();
     }
 
+    public void clickSaveButton(){
+        distributorUI.click(btn_save);
+    }
+
 
 }

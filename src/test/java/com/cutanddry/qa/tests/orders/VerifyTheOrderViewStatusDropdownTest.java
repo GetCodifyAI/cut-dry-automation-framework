@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheOrderViewStatusDropdownTest extends TestBase {
     static User user;
-    String status = "Submitted";
+    String status = "Confirmed";
 
     @BeforeMethod
     public void setUp() {

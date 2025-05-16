@@ -54,11 +54,11 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By btn_submitOrder = By.xpath("//button[contains(text(),'Submit Order')]");
     By btn_duplicateOrderYes = By.xpath("//h2[contains(text(),'Duplicate Order')]/../..//button[text()='Yes']");
     By lbl_thankYouForOrder = By.xpath("//*[contains(text(),'Thank you for your order!')]");
-    By btn_print = By.xpath("//button[contains(text(), 'Print')]");
+    By btn_print = By.xpath("//*[contains(text(),'Print Order Guide') and .//*[local-name()='svg' and @data-icon='cdPrinter']]");
     By lbl_printFriendlyOrderGuide = By.xpath("//h5[contains(text(), 'Print-Friendly Order Guide')]");
     By btn_downloadOrderGuide = By.xpath("//button[contains(text(), 'Download Order Guide')]");
     By tbx_orderGuideSearch = By.xpath("//input[@placeholder='Search order guide...']");
-    By btn_create = By.xpath("//button[contains(text(), 'Create')]");
+    By btn_create = By.xpath("//*[contains(text(),'Create New Order Guide') and .//*[local-name()='svg' and @data-icon='plus']]");
     By tbx_OrderGuideName = By.xpath("//input[@placeholder='Enter Name']");
     By btn_submitOrderGuide = By.xpath("//button[contains(text(), 'Submit')]");
     By btn_addFromCatalog = By.xpath("//div[contains(text(), 'Add from Catalog')]");
@@ -86,7 +86,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By section_moreFromThisBrand = By.xpath("//div[contains(text(), 'More From')]");
     By btn_companyDropdown = By.xpath("//button[.//span[text()='Company:']]");
     By txt_companyDropdownText = By.xpath("//a[contains(text(), 'QA ONLY : test distributor')]");
-    By btn_edit = By.xpath("//button[contains(text(), 'Edit')]");
+    By btn_edit = By.xpath("//*[local-name()='svg' and @data-icon='cdEdit']");
     By txt_editOrderGuide= By.xpath("//span[contains(text(), 'Edit Order Guide')]");
     By btn_moreOptions = By.xpath("//span[contains(text(), 'More Options')]");
     By btn_exportOrderGuide = By.xpath("//a[contains(text(), 'Export Order Guide (XLSX)')]");
@@ -332,7 +332,6 @@ By txt_draftStatus = By.xpath("//tr[2]//td[3][contains(text(), 'seconds ago')]")
     By lbl_orderGuide = By.xpath("//div[text()='Order Guide:']/following-sibling::div//div[@class='cd_themed_select__single-value css-1uccc91-singleValue']");
     By dropdown_testGuide1 =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Test_Guide_01')]");
     By dropdown_testAutomation =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Test_Automation')]");
-    By dropdown_ifc =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Independent Foods Co')]");
 //    By btn_editMargin = By.xpath("//td/div/button/*[local-name() = 'svg' and @data-icon='cdEdit']");
     By btn_editMargin = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[6])[1]");
     By btn_resetValues = By.xpath("//button[contains(text(), 'Reset Values')]");
@@ -1139,9 +1138,6 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void selectCustomOrder(){
         distributorUI.waitForVisibility(dropdown_customOrder);
         distributorUI.click(dropdown_customOrder);
-    }
-    public boolean isCustomOrderDisplayed(){
-        return distributorUI.isDisplayed(dropdown_customOrder,5);
     }
     public void selectLastOrdered(){
         distributorUI.waitForVisibility(dropdown_lastOrdered);
@@ -2243,13 +2239,6 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void selectTestAutomation(){
         distributorUI.waitForVisibility(dropdown_testAutomation);
         distributorUI.click(dropdown_testAutomation);
-    }
-    public void selectIFC(){
-        distributorUI.waitForVisibility(dropdown_ifc);
-        distributorUI.click(dropdown_ifc);
-    }
-    public boolean isIFCDisplayed(){
-       return distributorUI.isDisplayed(dropdown_ifc,5);
     }
     public void editMargin(){
         distributorUI.click(btn_editMargin);

@@ -477,4 +477,25 @@ public class Settings {
         settingsPage.clickOnSaveChanges();
     }
 
+    public static void addUser(String name, String email) throws InterruptedException {
+        settingsPage.clickOnAddUser();
+        settingsPage.enterNameWL(name);
+        settingsPage.enterEmailWL(email);
+        settingsPage.clickOnAddUserWL();
+        settingsPage.clickOK();
+    }
+
+    public static void deleteUser(String user) throws InterruptedException {
+        while (settingsPage.ExistUser(user)){
+            settingsPage.clickOnUser(user);
+            settingsPage.clickOnRemoveUser();
+            settingsPage.clickYes();
+            settingsPage.clickOK();
+        }
+    }
+    public static void deliveryDateCheckBox(boolean status) throws InterruptedException {
+        settingsPage.deliveryDateOverrideRestrictions(status);
+        settingsPage.clickOnSaveChanges();
+    }
+
 }

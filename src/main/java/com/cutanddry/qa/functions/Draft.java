@@ -100,6 +100,9 @@ public class Draft {
     public static boolean isDraftOrderReferenceNotDisplayedInOPSide(){
         return draftPage.isDraftOrderReferenceNotDisplayedInOPSide();
     }
+    public static boolean isLastDraftStatusDisplayed(String total,String date){
+        return draftPage.isLastDraftStatusDisplayed(total,date);
+    }
 
 
 }

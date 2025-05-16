@@ -39,6 +39,10 @@ public class AddUserWhiteLabelPortalTest extends TestBase {
         Settings.clickOnAddUserWL();
         Settings.clickOK();
         softAssert.assertTrue(Settings.isWLUserDisplayed(name),"user adding error");
+
+        //Post Request
+        Settings.deleteUser(name);
+
         softAssert.assertAll();
     }
 

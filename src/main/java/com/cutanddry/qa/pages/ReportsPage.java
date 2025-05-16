@@ -76,7 +76,8 @@ public class ReportsPage extends LoginPage{
         return distributorUI.isDisplayed(txt_reporting);
     }
     public void clickEmailReport() throws InterruptedException {
-        distributorUI.click(btn_email_report);
+        distributorUI.clickWithScrollAndHover(btn_email_report);
+//        distributorUI.click(btn_email_report);
         distributorUI.waitForCustom(2000);
     }
     public void clickItemMovementReportEmailReport() throws InterruptedException {

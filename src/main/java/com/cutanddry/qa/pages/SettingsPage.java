@@ -72,7 +72,7 @@ public class SettingsPage extends LoginPage{
     By txt_global = By.xpath("//div[text()='Global']");
     By txt_customerSpecific = By.xpath("//div[text()='Customer Specific']");
     By btn_save_= By.xpath("//button[text()= 'Save']");
-    By txt_lastDate = By.xpath("(//div[@class='px-0 _c1780 col'])[last()]");
+    By txt_lastDate = By.xpath("((//button[*[local-name()='svg' and @data-icon='minus']])[last()]/parent::div/following-sibling::div)[1]");
     By dropdown_items = By.xpath("//div[@class='cd_themed_select__menu css-26l3qy-menu']");
     By dropdown_deliveryDate = By.xpath("//div[@class='text-truncate']");
     By btn_minus = By.xpath("(//button[*[local-name()='svg' and @data-icon='minus']])[last()]");
@@ -157,6 +157,7 @@ public class SettingsPage extends LoginPage{
     String configureOrderReminderDropDown = "//label[contains(text(), 'DROPDOWN')]/following-sibling::div";
     String configureOrderReminderDropDownOption = "(//div[contains(text(),'DROPDOWNOPTION')])[last()]";
     By sel_OrderCutOffs = By.xpath("//*[contains(text(),'Order Cutoffs')]/preceding-sibling::input");
+    By sel_deliveryDate = By.xpath("//*[contains(text(),'Delivery Days')]/preceding-sibling::input");
 
 
 
@@ -320,22 +321,23 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForCustom(3000);
         distributorUI.waitForVisibility(btn_inviteUser);
         distributorUI.click(btn_inviteUser);
-        if(distributorUI.isDisplayed(btn_inviteUser)){
+        distributorUI.waitForCustom(3000);
+        if(distributorUI.isDisplayed(btn_inviteUser,5)){
             distributorUI.clickUsingJavaScript(btn_inviteUser);
         }
-        if(distributorUI.isDisplayed(lbl_InvalidEmail)){
+        if(distributorUI.isDisplayed(lbl_InvalidEmail,5)){
             distributorUI.waitForClickability(btn_OK);
             distributorUI.click(btn_OK);
             distributorUI.waitForCustom(3000);
         }
     }
     public boolean isUserDisplayed(String user) throws InterruptedException {
-        try {
+        /*try {
             distributorUI.waitForCustom(4000);
             distributorUI.waitForVisibility(By.xpath(btn_editUser.replace("USER", user)));
         } catch (Exception e){
             return false;
-        }
+        }*/
         return distributorUI.isDisplayed(By.xpath(btn_editUser.replace("USER", user)));
     }
     public void clickOnRemoveUserLabel() throws InterruptedException {
@@ -1010,5 +1012,18 @@ public class SettingsPage extends LoginPage{
         }
     }
 
+    public boolean ExistUser(String user) {
+        return distributorUI.isDisplayed(By.xpath(txt_userField.replace("USER", user)),8);
+
+    }
+    public void deliveryDateOverrideRestrictions(boolean enable) {
+        boolean isChecked = distributorUI.getElement(sel_deliveryDate).isSelected();
+
+        if (enable && !isChecked) {
+            distributorUI.clickWithScrollAndHover(sel_deliveryDate);
+        } else if (!enable && isChecked) {
+            distributorUI.clickWithScrollAndHover(sel_deliveryDate);
+        }
+    }
 
 }

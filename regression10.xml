@@ -30,6 +30,27 @@
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyPriceIsNotAllowedToChangeBelowTheMinimumPriceTest"/>
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheItemStatusFilterTest"/>
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheOrderCutOffsCanBeOverriddenTest"/>
+
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheUnitAggregationAfterPlacingTheOrderTest"/>
+            <class name="com.cutanddry.qa.tests.order_reminder.VerifyTheOrderReminderAlertOptionIsRemovedFromOrderGuideSettingsTest"/>
+
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentSectionWillBeNAWhenViewedFromAParentCustomerTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentSectionWillBePopulatedWhenViewedFromAChildCustomerTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatNewlyAddedOGInParentAccountListedInChildListPopUpTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatIfNewOGRemovedFromParentAccountThatRemovedInDropDownOfTheChildListTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatRenamedNewlyAddedOGInParentAccountListedInChildListPopUpTest"/>
+
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeTest"/>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHavePickupWillCallAsTheFulfillmentTypeTest"/>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveMailDeliveryAsTheFulfillmentTypeTest"/>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeDraftOderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHavePickupWillCallAsTheFulfillmentTypeDraftOrderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveMailDeliveryAsTheFulfillmentTypeDraftOrderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeEditOrderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHavePickupWillCallAsTheFulfillmentTypeEditOrderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveMailDeliveryAsTheFulfillmentTypeEditOrderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryPickupWillCallAndMailDeliveryAsTheFulfillmentTypeTest"/>
+
         </classes>
     </test>
 </suite>

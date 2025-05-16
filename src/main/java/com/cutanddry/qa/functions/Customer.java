@@ -263,6 +263,7 @@ public class Customer {
         return customersPage.isMoreFromThisBrandDisplayed();
     }
     public static void clickOnPrint(){
+        customersPage.clickOnMoreOptions();
         customersPage.clickOnPrint();
     }
     public static boolean isPrintFriendlyPopupDisplayed(){
@@ -278,6 +279,7 @@ public class Customer {
         customersPage.typeToSearchOnOrderGuide(item);
     }
     public static void goToCreatePopup() throws InterruptedException {
+        customersPage.clickOnMoreOptions();
         customersPage.clickOnCreate();
     }
     public static void createOrderGuide(String orderGuideName) throws InterruptedException {
@@ -333,6 +335,7 @@ public class Customer {
         return customersPage.isCompanyDropdownTextDisplayed();
     }
     public static void goToEdit(){
+        customersPage.clickOnMoreOptions();
         customersPage.clickOnEdit();
     }
     public static boolean isEditOrderGuideTextDisplayed(){
@@ -2042,7 +2045,7 @@ public class Customer {
         return customersPage.getNoOfUOMsOrdered(position);
     }
 
-    public static int getWeightPerUOM(String position){
+    public static int getWeightPerUOM(String position) throws InterruptedException {
         return customersPage.getWeightPerUOM(position);
     }
     public static boolean isReviewStandingOrdersDisplayed(){
@@ -2440,6 +2443,66 @@ public class Customer {
             }
         }
     }
+    public static boolean isLinkedAccountDisplayed() throws InterruptedException {
+        return customersPage.isLinkedAccountDisplayed();
+    }
+    public static void clickEditChildAccount(){
+        customersPage.clickEditChildAccount();
+    }
+    public static boolean isManageChildAccountPopUpDisplayed() throws InterruptedException {
+        return customersPage.isManageChildAccountPopUpDisplayed();
+    }
+    public static boolean isParentAccountStatusDisplayed(String status) throws InterruptedException {
+        return customersPage.isParentAccountStatusDisplayed(status);
+    }
+    public static boolean isChildAccountDisplayed(String account){
+        return customersPage.isChildAccountDisplayed(account);
+    }
+    public static boolean isChildAccountEditDisplayed() throws InterruptedException {
+        return customersPage.isChildAccountEditDisplayed();
+    }
+    public static void clickChildAccountDropDown(String account){
+        customersPage.childAccountDropDown(account);
+    }
+    public static boolean isOrderGuideAdded(String account , String name){
+        customersPage.childAccountDropDown(account);
+        return customersPage.isAddedOrderGuideDisplayed(account,name);
+    }
+    public static void selectNewlyAddedOrderGuide(String account , String name){
+        customersPage.childAccountDropDown(account);
+        customersPage.selectOrderGuide(account,name);
+    }
+    public static boolean isChildSettingUpdated(String message) throws InterruptedException {
+        return customersPage.isChildSettingUpdated(message);
+    }
+    public static void selectNewlyCreatedOrderGuide(String name){
+        customersPage.selectNewlyCreatedOrderGuide(name);
+    }
+    public static void clickOnDeleteOrderGuide(){
+        customersPage.clickOnDeleteOrderGuide();
+    }
+    public static boolean isChildAccountOGDisplayed(String account , String name){
+        return customersPage.isChildAccountOGDisplayed(account,name);
+    }
+    public static boolean isDeliveryDateCustomerOrderDisplayed(String id,String date){
+        return customersPage.isDeliveryDateCustomerOrderDisplayed(id,date);
+    }
+    public static void selectPickUpDateLine(String date)throws InterruptedException{
+        customersPage.clickOnPickUpDateStable();
+        customersPage.selectPickUpDateLineStable(date);
+
+    }
+    public static void selectMailDeliveryDateLine(String date)throws InterruptedException{
+        customersPage.clickOnDeliveryDateStable();
+        customersPage.selectMailDeliveryDateLineStable(date);
+    }
+    public static boolean isFulfilmentTagDisplayed(String id,String tag){
+        return customersPage.isFulfilmentTagDisplayed(id,tag);
+    }
+    public static boolean isReviewOrderFulfilmentTypeDisplayed(String type){
+        return customersPage.isReviewOrderFulfilmentTypeDisplayed(type);
+    }
+
 
 }
 

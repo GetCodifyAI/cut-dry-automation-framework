@@ -44,6 +44,7 @@ public class VerifyThSelectMultipleUOMJustInTimeItemAndSubmissionTest extends Te
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DP);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Customer.ensureCarouselDisplayStatus(false);
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
