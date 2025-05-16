@@ -19,10 +19,16 @@ reporting:
   - module: final-stats
 #  - module: blazemeter  # Optional: Enable only if you use BlazeMeter
 
+#modules:
+#  selenium:
+#    interpreter: java
+#    classpath:
+#      - target/classes
+#      - target/test-classes
+#      - target/dependency/*
 modules:
-  selenium:
-    interpreter: java
+  junit:
     classpath:
       - target/classes
       - target/test-classes
-      - target/dependency/*
+      - target/dependency/*.jar
