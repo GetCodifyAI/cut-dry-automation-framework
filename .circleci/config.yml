@@ -39,7 +39,7 @@ jobs:
 
       - run:
           name: Build Project with Maven
-          command: mvn clean package -DskipTests=true -e
+          command: mvn clean package -e
 
       - run:
           name: Copy Dependencies
