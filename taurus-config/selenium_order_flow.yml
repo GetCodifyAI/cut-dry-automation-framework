@@ -1,16 +1,14 @@
----
+scenarios:
+  order_flow_scenario:
+    script: target/test-classes/com/cutanddry/qa/DistributorOrderSubmissionTest.class
+    testng-xml: src/test/resources/testng.xml
+
 execution:
   - executor: junit
     scenario: order_flow_scenario
     concurrency: ${USERS}
     ramp-up: 10s
     hold-for: 1m
-
-scenarios:
-  order_flow_scenario:
-    class: com.cutanddry.qa.DistributorOrderSubmissionTest
-    testng: true
-    testng-xml: src/test/resources/testng.xml
 
 reporting:
   - module: junit-xml
