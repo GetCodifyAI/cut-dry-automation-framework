@@ -6,10 +6,14 @@ execution:
     ramp-up: 10s
     hold-for: 1m
 
+#scenarios:
+#  order_flow_scenario:
+#    class: com.cutanddry.qa.DistributorOrderSubmissionTest
+#    testng: true
+#    testng-xml: src/test/resources/testng.xml
 scenarios:
   order_flow_scenario:
-    class: com.cutanddry.qa.DistributorOrderSubmissionTest
-    testng: true
+    script: target/test-classes/com/cutanddry/qa/DistributorOrderSubmissionTest.class
     testng-xml: src/test/resources/testng.xml
 
 reporting:
