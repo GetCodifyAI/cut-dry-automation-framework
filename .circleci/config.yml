@@ -3,7 +3,7 @@ version: 2.1
 executors:
   java-taurus-executor:
     docker:
-      - image: cimg/openjdk:21.0
+      - image: cimg/base:stable
     working_directory: ~/repo
     resource_class: xlarge
 
@@ -16,21 +16,30 @@ jobs:
       - checkout
 
       - run:
-          name: Install Chrome 125 & matching ChromeDriver
+          name: Install Java 22
           command: |
-            sudo apt-get update
-            sudo apt-get install -y wget unzip curl gnupg fonts-liberation libasound2 libnss3 libxss1 libgconf-2-4 libappindicator1 libatk-bridge2.0-0 libgtk-3-0
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
-            # Install Chrome 125 specifically
-            sudo apt-get install -y google-chrome-stable=125.0.6422.60-1
-            CHROME_DRIVER_VERSION=$(curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_125")
-            wget "https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip"
-            unzip chromedriver_linux64.zip
-            sudo mv chromedriver /usr/local/bin/chromedriver
-            sudo chmod +x /usr/local/bin/chromedriver
-            chromedriver --version
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
 
       - run:
           name: Install Taurus
