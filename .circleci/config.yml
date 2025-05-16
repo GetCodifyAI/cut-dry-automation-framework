@@ -49,7 +49,7 @@ jobs:
 
       - run:
           name: Build Project with Maven
-          command: mvn clean package -e
+          command: mvn clean package -Drun.headless=true -Dtest.env=uat -e
 
       - run:
           name: Copy Dependencies
