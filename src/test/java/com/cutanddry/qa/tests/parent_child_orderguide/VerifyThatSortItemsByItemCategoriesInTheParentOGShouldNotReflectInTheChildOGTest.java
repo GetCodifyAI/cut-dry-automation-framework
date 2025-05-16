@@ -14,11 +14,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyThatTheParentSectionWillBePopulatedWhenViewedFromAChildCustomerTest extends TestBase {
+public class VerifyThatSortItemsByItemCategoriesInTheParentOGShouldNotReflectInTheChildOGTest extends TestBase {
     static User user;
     static String DP = ParentChildOGData.DISTRIBUTOR_INDIANHEAD;
-    static String customerId = ParentChildOGData.CUSTOMER_ID_INDIANHEAD_2;
-    static String status = "Child Account";
+    static String customerId = ParentChildOGData.CUSTOMER_ID_INDIANHEAD;
+    static String customerId2 = ParentChildOGData.CUSTOMER_ID_INDIANHEAD_2;
+    static String itemCategories = "Item Categories";
 
 
     @BeforeMethod
@@ -27,8 +28,8 @@ public class VerifyThatTheParentSectionWillBePopulatedWhenViewedFromAChildCustom
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-1215")
-    public void VerifyThatTheParentSectionWillBePopulatedWhenViewedFromAChildCustomer() throws InterruptedException {
+    @Test(groups = "DOT-TC-1233")
+    public void VerifyThatSortItemsByItemCategoriesInTheParentOGShouldNotReflectInTheChildOG() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
@@ -38,10 +39,19 @@ public class VerifyThatTheParentSectionWillBePopulatedWhenViewedFromAChildCustom
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
-        Customer.SelectCustomer(customerId);
-        softAssert.assertTrue(Customer.isLinkedAccountDisplayed(),"linked account section not displayed");
-        softAssert.assertTrue(Customer.isAccountStatusDisplayed(status),"account status not displayed");
-        softAssert.assertFalse(Customer.isChildAccountEditDisplayed(),"child account edit icon displayed");
+        Customer.clickOnOrderGuide(customerId);
+        softAssert.assertTrue(Customer.isCustomerOrderGuideDisplayed(),"user has navigated to the Order Guide");
+        Customer.clickSortOptionsDropdown();
+        Customer.selectItemCategoriesSort();
+        softAssert.assertTrue(Customer.isSortOptionDisplayed(itemCategories),"Item Categories Sort not display");
+
+        Dashboard.navigateToCustomers();
+        Customer.searchCustomerByCode(customerId2);
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId2),"search error");
+        Customer.clickOnOrderGuide(customerId2);
+        softAssert.assertFalse(Customer.isSortOptionDisplayed(itemCategories),"Item Categories Sort display");
+        Customer.clickSortOptionsDropdown();
+        Customer.selectItemCategoriesSort();
         softAssert.assertAll();
     }
 

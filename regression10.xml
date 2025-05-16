@@ -51,6 +51,12 @@
             <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveMailDeliveryAsTheFulfillmentTypeEditOrderSubmissionTest"/>
             <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryPickupWillCallAndMailDeliveryAsTheFulfillmentTypeTest"/>
 
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByCustomerOrderInTheParentOGShouldNotReflectInTheChildOGTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByAlphabeticalOrderInTheParentOGShouldNotReflectInTheChildOGTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByItemCategoriesInTheParentOGShouldNotReflectInTheChildOGTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByItemCodeInTheParentOGShouldNotReflectInTheChildOGTest"/>
+
+
         </classes>
     </test>
 </suite>

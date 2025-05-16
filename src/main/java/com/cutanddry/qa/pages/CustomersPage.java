@@ -101,6 +101,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By dropdown_lastOrdered = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Last Ordered')]");
     By dropdown_alphabetical = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Alphabetical (A-Z)')]");
     By dropdown_itemCategories = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Item Categories')]");
+    By dropdown_itemCode = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Item Code')]");
     By txt_produce = By.xpath("//div[@class='flex-grow-1' and starts-with(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'produce')]");
     By txt_firstItem = By.xpath("//div[translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'artichoke -24ct']");
     By txt_minOrderBanner = By.xpath("//div[contains(text(), 'Add a few more items worth') and contains(text(), 'to meet minimum order amount')]");
@@ -704,9 +705,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String txt_specialItem = "//span//div[contains(text(), 'NAME')]";
     String txt_marginPriceError = "//span[contains(text(), 'NAME')]";
     By txt_linkedAccount = By.xpath("//div[contains(text(),'Linked Accounts')]");
-    By childAccountEditBtn = By.xpath("//div[contains(text(), 'Child Account')]/following-sibling::div//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
+    By childAccountEditBtn = By.xpath("//button[contains(text(), 'Child Account')]");
     By txt_manageChildAccounts = By.xpath("//div[contains(text(),'Manage Child Accounts')]");
-    String parentAccountStatus = "//div[contains(text(), 'Parent Account')]/following-sibling::div[contains(text(),'STATUS')]";
+    String accountStatus = "//div[contains(text(), 'Account Type')]/following-sibling::div[contains(text(),'STATUS')]";
     String childAccount = "//label[contains(text(), 'CHILDACC')]";
     String childAccountDropDown = "(//label[contains(text(), 'CHILDACC')]/../following-sibling::div//*[name()='svg'])[last()]";
     String addedOrderGuide = "(//label[contains(text(), 'CHILDACC')]/../following-sibling::div//div[contains(text(),'NAME')])[last()]";
@@ -718,6 +719,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String dynamicToXPathStable = "(//div[contains(@class,'react-datepicker__day')]/preceding::div[contains(@class, 'react-datepicker__day') and text()='DAY'])[last()]";
     String fulfilmentTag = "//*[contains(text(),'#') and text()='ID']/../preceding-sibling::td[1]//*[text()='TAG']";
     String reviewOrderFulfilment = "//span[contains(text(),'TYPE')]";
+    String sortOptionDisplay = "//div[text()='Sort Items By:']/following-sibling::div//div[contains(text(),'OPTION')]";
 
 
 
@@ -1191,6 +1193,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+    public void selectItemCodeSort(){
+        distributorUI.waitForVisibility(dropdown_itemCode);
+        distributorUI.click(dropdown_itemCode);
     }
     public boolean isProduceTextDisplayed(){
         distributorUI.waitForVisibility(txt_produce);
@@ -4223,8 +4229,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isManageChildAccountPopUpDisplayed()throws InterruptedException{
         return distributorUI.isDisplayed(txt_manageChildAccounts);
     }
-    public boolean isParentAccountStatusDisplayed(String status)throws InterruptedException{
-        return distributorUI.isDisplayed(By.xpath(parentAccountStatus.replace("STATUS",status)));
+    public boolean isAccountStatusDisplayed(String status)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(accountStatus.replace("STATUS",status)));
     }
     public boolean isChildAccountDisplayed(String account){
         return distributorUI.isDisplayed(By.xpath(childAccount.replace("CHILDACC",account)));
@@ -4280,6 +4286,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isReviewOrderFulfilmentTypeDisplayed(String type){
         return distributorUI.isDisplayed(By.xpath(reviewOrderFulfilment.replace("TYPE",type)));
+    }
+    public boolean isSortOptionDisplayed(String option){
+        return distributorUI.isDisplayed(By.xpath(sortOptionDisplay.replace("OPTION",option)));
     }
 
 

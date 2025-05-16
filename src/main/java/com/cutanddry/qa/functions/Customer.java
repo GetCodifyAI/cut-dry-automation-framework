@@ -381,6 +381,9 @@ public class Customer {
     public static void selectItemCategoriesSort(){
         customersPage.selectItemCategories();
     }
+    public static void selectItemCodeSort(){
+        customersPage.selectItemCodeSort();
+    }
     public static void selectAlphabeticalSort(){
         customersPage.selectAlphabetical();
     }
@@ -2461,8 +2464,8 @@ public class Customer {
     public static boolean isManageChildAccountPopUpDisplayed() throws InterruptedException {
         return customersPage.isManageChildAccountPopUpDisplayed();
     }
-    public static boolean isParentAccountStatusDisplayed(String status) throws InterruptedException {
-        return customersPage.isParentAccountStatusDisplayed(status);
+    public static boolean isAccountStatusDisplayed(String status) throws InterruptedException {
+        return customersPage.isAccountStatusDisplayed(status);
     }
     public static boolean isChildAccountDisplayed(String account){
         return customersPage.isChildAccountDisplayed(account);
@@ -2510,6 +2513,9 @@ public class Customer {
     }
     public static boolean isReviewOrderFulfilmentTypeDisplayed(String type){
         return customersPage.isReviewOrderFulfilmentTypeDisplayed(type);
+    }
+    public static boolean isSortOptionDisplayed(String option){
+        return customersPage.isSortOptionDisplayed(option);
     }
 
 
