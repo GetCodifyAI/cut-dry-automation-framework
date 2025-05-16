@@ -13,6 +13,7 @@ import java.util.List;
 public class CustomersPage extends LoginPage {
     By tbx_searchCustomers = By.xpath("//input[@placeholder='Search Customers']");
     String btnOrderGuide = "//td[text()='CODE']/../td[8]//button";
+    String btnNameOrderGuide = "//*[text()='NAME']/../../td[8]//button";
     By lbl_itemNameList = By.xpath("//td//span/div[@data-tip='View Product Details']");
     By lbl_itemDetails = By.xpath("//tbody/tr[2]");
     By btn_increaseQtyFirstRow = By.xpath("(//table/tbody/tr//*[local-name()='svg' and @data-icon='plus'])[1]");
@@ -751,6 +752,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
 //        distributorUI.waitForCustom(4000);
         return distributorUI.isDisplayed(By.xpath(btnOrderGuide.replace("CODE", code)),20);
     }
+    public boolean isCustomerSearchResultByNameDisplayed(String name) throws InterruptedException {
+        distributorUI.waitForElementEnabledState(By.xpath(btnNameOrderGuide.replace("NAME", name)), true);
+//        distributorUI.waitForCustom(4000);
+        return distributorUI.isDisplayed(By.xpath(btnNameOrderGuide.replace("NAME", name)),20);
+    }
     public void clickOnOrderGuide(String code) {
         try {
             distributorUI.waitForCustom(3000);
@@ -759,6 +765,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         }
 //        distributorUI.click(By.xpath(btnOrderGuide.replace("CODE", code)));
         distributorUI.clickWithFallback(By.xpath(btnOrderGuide.replace("CODE", code)));
+    }
+    public void clickOnNameOrderGuide(String code) {
+        distributorUI.clickWithFallback(By.xpath(btnNameOrderGuide.replace("NAME", code)));
     }
     public String getItemNameFirstRow() throws InterruptedException {
         distributorUI.waitForElementEnabledState(lbl_itemNameList,true);
