@@ -28,6 +28,16 @@ public class Customer {
             return customersPage.isCustomerSearchResultByCodeDisplayed(code);
         }
     }
+    public static boolean isCustomerSearchResultByNameDisplayed(String code) throws InterruptedException {
+        if (customersPage.isCustomerSearchResultByNameDisplayed(code)) {
+            return true;
+        } else {
+            customersPage.refreshCustomersPage();
+            customersPage.clickOnSearchCustomers();
+            customersPage.typeOnSearchCustomers(code);
+            return customersPage.isCustomerSearchResultByNameDisplayed(code);
+        }
+    }
     public static void clickOnOrderGuide(String code) throws InterruptedException {
         customersPage.clickOnOrderGuide(code);
         if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
@@ -35,6 +45,15 @@ public class Customer {
         }
         else if (Orders.isSelectOrderGuideDisplayed()){
              Orders.selectOrderGuide("Independent Foods Co");
+        }
+    }
+    public static void clickOnNameOrderGuide(String code) throws InterruptedException {
+        customersPage.clickOnNameOrderGuide(code);
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+        else if (Orders.isSelectOrderGuideDisplayed()){
+            Orders.selectOrderGuide("Independent Foods Co");
         }
     }
     public static void increaseFirstRowQtyByOne() throws InterruptedException {
