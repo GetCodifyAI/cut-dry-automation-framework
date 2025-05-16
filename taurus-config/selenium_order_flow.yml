@@ -6,14 +6,10 @@ execution:
     ramp-up: 10s
     hold-for: 1m
 
-#scenarios:
-#  order_flow_scenario:
-#    class: com.cutanddry.qa.DistributorOrderSubmissionTest
-#    testng: true
-#    testng-xml: src/test/resources/testng.xml
 scenarios:
   order_flow_scenario:
-    script: target/test-classes/com/cutanddry/qa/DistributorOrderSubmissionTest.class
+    class: com.cutanddry.qa.DistributorOrderSubmissionTest
+    testng: true
     testng-xml: src/test/resources/testng.xml
 
 reporting:
@@ -21,7 +17,6 @@ reporting:
     output-file: results/taurus-junit.xml
   - module: console
   - module: final-stats
-#  - module: blazemeter  # Optional: Enable only if you use BlazeMeter
 
 modules:
   junit:

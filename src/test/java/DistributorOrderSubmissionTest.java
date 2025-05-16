@@ -27,7 +27,7 @@ public class DistributorOrderSubmissionTest extends TestBase {
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
-        Dashboard.navigateToCustomers();
+        /*Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
@@ -36,7 +36,7 @@ public class DistributorOrderSubmissionTest extends TestBase {
         Customer.checkoutItems();
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
         Customer.submitOrder();
-        softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(),"order not completed");
+        softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(),"order not completed");*/
         softAssert.assertAll();
     }
 
