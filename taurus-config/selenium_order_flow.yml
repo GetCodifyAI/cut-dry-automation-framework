@@ -17,9 +17,19 @@ reporting:
   - module: console
   - module: final-stats
 
+#modules:
+#  testng:
+#    classpath:
+#      - target/classes
+#      - target/test-classes
+#      - target/dependency/*.jar
 modules:
   testng:
     classpath:
       - target/classes
       - target/test-classes
       - target/dependency/*.jar
+      - target/dependency/jcommander-1.82.jar
+      - target/dependency/testng-7.10.2.jar
+      - target/dependency/hamcrest-2.2.jar
+      # add other required JARs as needed
