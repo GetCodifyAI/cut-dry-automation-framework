@@ -1,7 +1,7 @@
 scenarios:
   order_flow_scenario:
-    script: DistributorOrderSubmissionTest
-    testng-xml: target/test-classes/testng.xml
+    script: target/test-classes/DistributorOrderSubmissionTest.class
+#    testng-xml: target/test-classes/testng.xml
 
 execution:
   - executor: junit
