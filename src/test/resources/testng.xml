@@ -2,7 +2,7 @@
 <suite name="OrderFlowSuite" parallel="tests" thread-count="1">
     <test name="OrderFlowTest">
         <classes>
-            <class name="DistributorOrderSubmissionTest" />
+            <class name="com.cutanddry.qa.DistributorOrderSubmissionTest" />
         </classes>
     </test>
 </suite>
