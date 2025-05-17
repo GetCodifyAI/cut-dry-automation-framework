@@ -5,7 +5,7 @@ scenarios:
 #    testng-xml: target/test-classes/testng.xml
 
 execution:
-  - executor: junit
+  - executor: testng
     scenario: order_flow_scenario
     concurrency: ${USERS}
     ramp-up: 10s
@@ -18,7 +18,7 @@ reporting:
   - module: final-stats
 
 modules:
-  junit:
+  testng:
     classpath:
       - target/classes
       - target/test-classes
