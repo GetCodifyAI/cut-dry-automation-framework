@@ -73,7 +73,8 @@ jobs:
             bzt taurus-config/selenium_order_flow.yml -o execution.0.concurrency=$USERS
 
       - store_artifacts:
-          path: results
+          path: target/surefire-reports
+          destination: build-and-test-artifacts
 
 workflows:
   version: 2
