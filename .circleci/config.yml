@@ -14,6 +14,9 @@ jobs:
       USERS: 1
     steps:
       - checkout
+      - run:
+          name: List all files after checkout
+          command: find . -type f | sort
 
       - run:
           name: Install Java 22
