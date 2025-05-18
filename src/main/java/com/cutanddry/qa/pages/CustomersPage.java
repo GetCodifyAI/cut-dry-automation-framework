@@ -720,6 +720,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String fulfilmentTag = "//*[contains(text(),'#') and text()='ID']/../preceding-sibling::td[1]//*[text()='TAG']";
     String reviewOrderFulfilment = "//span[contains(text(),'TYPE')]";
     String sortOptionDisplay = "//div[text()='Sort Items By:']/following-sibling::div//div[contains(text(),'OPTION')]";
+    String addedItemName = "//td//span/div[@data-tip='View Product Details'][contains(text(),'NAME')]";
 
 
 
@@ -4290,6 +4291,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isSortOptionDisplayed(String option){
         return distributorUI.isDisplayed(By.xpath(sortOptionDisplay.replace("OPTION",option)));
+    }
+    public boolean isAddedItemDisplayed(String name){
+        return distributorUI.isDisplayed(By.xpath(addedItemName.replace("NAME",name)));
+    }
+    public boolean isNewlyCreatedOrderGuideDisplay(String name){
+        return distributorUI.isDisplayed(By.xpath(dropDownOrderGuide.replace("NAME",name)));
     }
 
 

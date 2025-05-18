@@ -2528,6 +2528,12 @@ public class Customer {
             customersPage.clickPreviousDraftOrderNo();
         }
     }
+    public static boolean isAddedItemDisplayed(String name){
+        return customersPage.isAddedItemDisplayed(name);
+    }
+    public static boolean isNewlyCreatedOrderGuideDisplay(String name){
+        return customersPage.isNewlyCreatedOrderGuideDisplay(name);
+    }
 
 
 }
