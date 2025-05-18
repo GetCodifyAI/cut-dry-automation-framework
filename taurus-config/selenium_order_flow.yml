@@ -1,7 +1,7 @@
 scenarios:
   order_flow_scenario:
     executor: testng
-    script: dummy.java
+    script: src/test/java/com/cutanddry/qa/DistributorOrderSubmissionTest.java
     testng-suite: target/test-classes/testng.xml
 
 execution:
