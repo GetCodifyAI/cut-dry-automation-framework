@@ -47,14 +47,29 @@ jobs:
             sudo apt-get install -y python3-pip
             pip3 install bzt
 
-      - run:
-          name: Build Project with Maven
-          command: mvn clean package -Drun.headless=true -Dtest.env=uat -e
+#      - run:
+#          name: Build Project with Maven
+#          command: mvn clean package -Drun.headless=true -Dtest.env=uat -e
 
 #      - run:
 #          name: Copy Dependencies
 #          command: mvn clean test-compile dependency:copy-dependencies -DoutputDirectory=target/dependency
 ##          command: mvn dependency:copy-dependencies -DoutputDirectory=target/dependency
+
+      - run:
+          name: Check for required source files
+          command: |
+            for f in \
+              src/test/java/com/cutanddry/qa/base/TestBase.java \
+              src/test/java/com/cutanddry/qa/data/models/User.java \
+              src/test/java/com/cutanddry/qa/functions/Dashboard.java \
+              src/test/java/com/cutanddry/qa/functions/Login.java \
+              src/test/java/com/cutanddry/qa/utils/JsonUtil.java; do
+              if [ ! -f "$f" ]; then
+                echo "ERROR: Missing required source file: $f"
+                exit 1
+              fi
+            done
 
       - run:
           name: Build Project and Copy Dependencies
