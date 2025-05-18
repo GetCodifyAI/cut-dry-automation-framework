@@ -57,6 +57,12 @@ jobs:
 #          command: mvn dependency:copy-dependencies -DoutputDirectory=target/dependency
 
       - run:
+          name: Show Maven Dependencies
+          command: |
+            echo "Contents of target/dependency:"
+            ls -l target/dependency/
+
+      - run:
           name: Check and Show Compiled Test Classes
           command: |
             if [ ! -d target/test-classes ]; then
