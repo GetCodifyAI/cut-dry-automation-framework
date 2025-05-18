@@ -96,7 +96,7 @@ jobs:
           name: Run Taurus UI Performance Test
           command: |
             mkdir -p results
-            bzt taurus-config/selenium_order_flow.yml -o modules.java.compiler_opts="--release 22" execution.0.concurrency=1
+            bzt taurus-config/selenium_order_flow.yml -o execution.0.concurrency=1 modules.java.compiler_opts="--release 22"
 
       - store_artifacts:
           path: target/surefire-reports
