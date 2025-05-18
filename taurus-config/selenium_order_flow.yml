@@ -1,6 +1,6 @@
 scenarios:
   order_flow_scenario:
-    testng-xml: target/test-classes/testng.xml
+    script: target/test-classes/testng.xml
 
 execution:
   - executor: testng
