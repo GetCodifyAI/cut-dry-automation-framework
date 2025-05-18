@@ -79,6 +79,9 @@ jobs:
             echo "Checking for compiled DistributorOrderSubmissionTest:"
             find target/test-classes -name "*DistributorOrderSubmissionTest.class" || echo "Not found"
       - run:
+          name: List testng.xml
+          command: ls -l target/test-classes/testng.xml
+      - run:
           name: Run Taurus UI Performance Test
           command: |
             mkdir -p results
