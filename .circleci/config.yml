@@ -51,21 +51,27 @@ jobs:
           name: Build Project with Maven
           command: mvn clean package -Drun.headless=true -Dtest.env=uat -e
 
-      - run:
-          name: Copy Dependencies
-          command: mvn clean test-compile dependency:copy-dependencies -DoutputDirectory=target/dependency
-#          command: mvn dependency:copy-dependencies -DoutputDirectory=target/dependency
+#      - run:
+#          name: Copy Dependencies
+#          command: mvn clean test-compile dependency:copy-dependencies -DoutputDirectory=target/dependency
+##          command: mvn dependency:copy-dependencies -DoutputDirectory=target/dependency
 
       - run:
-          name: Download missing JCommander dependency
+          name: Build Project and Copy Dependencies
           command: |
-            wget https://repo1.maven.org/maven2/com/beust/jcommander/1.82/jcommander-1.82.jar -P target/dependency
+            mvn clean package dependency:copy-dependencies -DoutputDirectory=target/dependency -Drun.headless=true -Dtest.env=uat -e
 
       - run:
           name: Show Maven Dependencies
           command: |
             echo "Contents of target/dependency:"
             ls -l target/dependency/
+
+      - run:
+          name: Validate jcommander.jar presence
+          command: |
+            echo "Looking for jcommander.jar in target/dependency:"
+            find target/dependency -name "jcommander*.jar" || (echo "jcommander.jar NOT FOUND" && exit 1)
 
       - run:
           name: Check and Show Compiled Test Classes
