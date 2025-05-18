@@ -1,6 +1,6 @@
 scenarios:
   order_flow_scenario:
-    script: com/cutanddry/qa/DistributorOrderSubmissionTest.java
+    script: com.cutanddry.qa.DistributorOrderSubmissionTest
 #    script: target/test-classes/DistributorOrderSubmissionTest.class
     testng-xml: src/test/resources/testng.xml
 
