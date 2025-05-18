@@ -1,7 +1,7 @@
 scenarios:
   order_flow_scenario:
-#    script: target/test-classes/testng.xml
     executor: testng
+    script: dummy.java
     testng-suite: target/test-classes/testng.xml
 
 execution:
