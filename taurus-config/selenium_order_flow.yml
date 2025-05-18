@@ -1,7 +1,7 @@
 scenarios:
   order_flow_scenario:
     script: com.cutanddry.qa.DistributorOrderSubmissionTest
-
+    testng-xml: src/test/resources/testng.xml
 
 execution:
   - executor: testng
@@ -9,7 +9,6 @@ execution:
     concurrency: ${USERS}
     ramp-up: 10s
     hold-for: 1m
-    testng-xml: src/test/resources/testng.xml
 
 reporting:
   - module: junit-xml
