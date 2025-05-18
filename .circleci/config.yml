@@ -63,11 +63,11 @@ jobs:
           name: Check for required source files
           command: |
             for f in \
-              src/test/java/com/cutanddry/qa/base/TestBase.java \
-              src/test/java/com/cutanddry/qa/data/models/User.java \
-              src/test/java/com/cutanddry/qa/functions/Dashboard.java \
-              src/test/java/com/cutanddry/qa/functions/Login.java \
-              src/test/java/com/cutanddry/qa/utils/JsonUtil.java; do
+              src/main/java/com/cutanddry/qa/base/TestBase.java \
+              src/main/java/com/cutanddry/qa/data/models/User.java \
+              src/main/java/com/cutanddry/qa/functions/Dashboard.java \
+              src/main/java/com/cutanddry/qa/functions/Login.java \
+              src/main/java/com/cutanddry/qa/utils/JsonUtil.java; do
               if [ ! -f "$f" ]; then
                 echo "ERROR: Missing required source file: $f"
                 exit 1
