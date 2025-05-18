@@ -53,7 +53,8 @@ jobs:
 
       - run:
           name: Copy Dependencies
-          command: mvn dependency:copy-dependencies -DoutputDirectory=target/dependency
+          command: mvn clean test-compile dependency:copy-dependencies -DoutputDirectory=target/dependency
+#          command: mvn dependency:copy-dependencies -DoutputDirectory=target/dependency
 
       - run:
           name: Check and Show Compiled Test Classes
