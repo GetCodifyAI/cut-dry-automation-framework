@@ -74,6 +74,12 @@ jobs:
             fi
 
       - run:
+    name: Debug Compiled Classes
+    command: |
+      echo "Checking for compiled DistributorOrderSubmissionTest:"
+      find target/test-classes -name "*DistributorOrderSubmissionTest.class" || echo "Not found"
+      
+      - run:
           name: Run Taurus UI Performance Test
           command: |
             mkdir -p results
