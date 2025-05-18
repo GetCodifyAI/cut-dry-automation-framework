@@ -1,6 +1,10 @@
+scenarios:
+  order_flow_scenario:
+    testng-xml: target/test-classes/testng.xml
+
 execution:
   - executor: testng
-    testng-xml: target/test-classes/testng.xml
+    scenario: order_flow_scenario
     concurrency: ${USERS}
     ramp-up: 10s
     hold-for: 1m
