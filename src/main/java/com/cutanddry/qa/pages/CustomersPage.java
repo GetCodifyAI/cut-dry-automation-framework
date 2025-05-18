@@ -1019,7 +1019,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(btn_uploadFileOG);
         distributorUI.click(btn_uploadFileOG);
     }
-    public void clickOnAddToOrderGuide(){
+    public void clickOnAddToOrderGuide()throws InterruptedException{
+        distributorUI.waitForCustom(5000);
         distributorUI.waitForVisibility(btn_addToOrderGuide);
         distributorUI.waitForClickability(btn_addToOrderGuide);
         distributorUI.click(btn_addToOrderGuide);

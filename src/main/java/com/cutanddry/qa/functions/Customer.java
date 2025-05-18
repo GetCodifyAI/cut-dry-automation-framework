@@ -2,6 +2,7 @@ package com.cutanddry.qa.functions;
 
 import com.cutanddry.qa.pages.CustomersPage;
 import com.cutanddry.qa.pages.DashboardPage;
+import com.cutanddry.qa.pages.OrdersPage;
 import com.cutanddry.qa.pages.SettingsPage;
 
 import java.util.Objects;
@@ -12,6 +13,7 @@ public class Customer {
     static CustomersPage customersPage = new CustomersPage();
     static DashboardPage dashboardPage = new DashboardPage();
     static SettingsPage settingsPage = new SettingsPage();
+    static OrdersPage ordersPage = new OrdersPage();
 
     public static void searchCustomerByCode(String code) throws InterruptedException {
         customersPage.clickOnSearchCustomers();
@@ -301,7 +303,7 @@ public class Customer {
     public static void createOrderFromCatalog() throws InterruptedException {
         customersPage.clickOnAddFromCatalog();
     }
-    public static void addItemFromCatalog(){
+    public static void addItemFromCatalog() throws InterruptedException {
         customersPage.clickOnAddToOrderGuide();
     }
     public static void addItemFromCatalogStable(String name){
@@ -2516,6 +2518,15 @@ public class Customer {
     }
     public static boolean isSortOptionDisplayed(String option){
         return customersPage.isSortOptionDisplayed(option);
+    }
+    public static void clickOnOrderGuideParentChild(String code) throws InterruptedException {
+        customersPage.clickOnOrderGuide(code);
+        if (ordersPage.isSelectOrderGuidePopUpDisplayed()){
+            ordersPage.selectOrderGuide();
+        }
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
     }
 
 

@@ -56,6 +56,10 @@
             <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByItemCategoriesInTheParentOGShouldNotReflectInTheChildOGTest"/>
             <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByItemCodeInTheParentOGShouldNotReflectInTheChildOGTest"/>
 
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheChildCustomerCanCreateAnyNumberOfOrderGuidesManuallyTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheChildCustomerCanCreateAnyOrderGuidesAndOrderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentCustomerCanCreateAnyOrderGuidesAndOrderSubmissionTest"/>
+
 
         </classes>
     </test>
