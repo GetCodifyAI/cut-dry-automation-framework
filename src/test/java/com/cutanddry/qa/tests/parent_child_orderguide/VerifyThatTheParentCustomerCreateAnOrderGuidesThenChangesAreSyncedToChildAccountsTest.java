@@ -32,7 +32,7 @@ public class VerifyThatTheParentCustomerCreateAnOrderGuidesThenChangesAreSyncedT
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-1237")
+    @Test(groups = "DOT-TC-1220")
     public void VerifyThatTheParentCustomerCreateAnOrderGuidesThenChangesAreSyncedToChildAccounts() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
