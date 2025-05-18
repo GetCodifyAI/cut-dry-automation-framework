@@ -85,7 +85,7 @@ jobs:
           name: Run Taurus UI Performance Test
           command: |
             mkdir -p results
-            bzt taurus-config/selenium_order_flow.yml -o settings.verbose=true execution.0.concurrency=$USERS
+            bzt taurus-config/selenium_order_flow.yml -o execution.0.concurrency=1
 
       - store_artifacts:
           path: target/surefire-reports
