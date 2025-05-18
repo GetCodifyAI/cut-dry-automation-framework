@@ -103,6 +103,17 @@ jobs:
             fi
 
       - run:
+          name: Check and Show Compiled Main Classes
+          command: |
+            if [ ! -d target/classes ]; then
+              echo "ERROR: target/classes directory not found!"
+              exit 1
+            else
+              echo "Contents of target/classes:"
+              find target/classes
+            fi
+
+      - run:
           name: Debug Compiled Classes
           command: |
             echo "Checking for compiled DistributorOrderSubmissionTest:"
