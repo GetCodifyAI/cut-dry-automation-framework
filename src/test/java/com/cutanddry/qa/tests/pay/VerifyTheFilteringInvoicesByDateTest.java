@@ -46,6 +46,7 @@ public class VerifyTheFilteringInvoicesByDateTest extends TestBase {
 
         System.out.println(expectedDate+" - "+expectedYesterdayDate);
         Pay.selectInvoiceDateViaFilter(3);
+        Pay.ensureOrderDateSortedDescending();
         softAssert.assertTrue(Pay.getInvoiceRecordDate(1).trim().contains(expectedDate.trim()) || Pay.getInvoiceRecordDate(1).trim().contains(expectedYesterdayDate.trim()), "The selected invoice date should be either today or yesterday, but found: " + Pay.getInvoiceRecordDate(1).trim());
 
         softAssert.assertAll();

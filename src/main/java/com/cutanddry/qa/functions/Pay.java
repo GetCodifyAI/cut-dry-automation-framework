@@ -365,4 +365,7 @@ public class Pay {
         payPage.selectInvoiceCustomerCodeViaFilter(code);
         payPage.clickInvoiceCodeCustomer();
     }
+    public static void ensureOrderDateSortedDescending() throws InterruptedException {
+        payPage.ensureOrderDateSortedDescending();
+    }
 }
