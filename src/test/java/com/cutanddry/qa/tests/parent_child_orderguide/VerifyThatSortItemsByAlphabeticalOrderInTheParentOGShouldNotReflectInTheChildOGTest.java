@@ -38,7 +38,7 @@ public class VerifyThatSortItemsByAlphabeticalOrderInTheParentOGShouldNotReflect
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
-        Customer.clickOnOrderGuide(customerId);
+        Customer.clickOnOrderGuideParentChild(customerId);
         softAssert.assertTrue(Customer.isCustomerOrderGuideDisplayed(),"user has navigated to the Order Guide");
         Customer.clickSortOptionsDropdown();
         Customer.selectAlphabeticalSort();
@@ -47,7 +47,7 @@ public class VerifyThatSortItemsByAlphabeticalOrderInTheParentOGShouldNotReflect
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId2);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId2),"search error");
-        Customer.clickOnOrderGuide(customerId2);
+        Customer.clickOnOrderGuideParentChild(customerId2);
         softAssert.assertFalse(Customer.isSortOptionDisplayed(alphabetical),"Alphabetical sort display");
         Customer.clickSortOptionsDropdown();
         Customer.selectAlphabeticalSort();
