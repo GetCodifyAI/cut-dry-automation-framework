@@ -2534,6 +2534,15 @@ public class Customer {
     public static boolean isNewlyCreatedOrderGuideDisplay(String name){
         return customersPage.isNewlyCreatedOrderGuideDisplay(name);
     }
+    public static boolean isParentChildTagDisplay(String code,String tag){
+        return customersPage.isParentChildTagDisplay(code,tag);
+    }
+    public static boolean isCustomerProfileParentChildTagDisplay(String tag){
+        return customersPage.isCustomerProfileParentChildTagDisplay(tag);
+    }
+    public static boolean isCatalogAccessDisplay(){
+        return customersPage.isCatalogAccessDisplay();
+    }
 
 
 }
