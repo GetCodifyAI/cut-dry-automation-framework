@@ -64,6 +64,9 @@
             <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentCustomerEditAnOrderGuidesThenChangesAreSyncedToChildAccountsTest"/>
             <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentCustomerDeleteAnOrderGuidesThenChangesAreSyncedToChildAccountsTest"/>
 
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentTagDisplayTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheChildTagDisplayTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureOnUITest"/>
 
         </classes>
     </test>
