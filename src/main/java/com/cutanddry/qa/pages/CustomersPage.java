@@ -601,7 +601,7 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     String totalWeight = "((//th[contains(text(),'Total Weight')])[POSITION]/ancestor::table//tbody//td/input)[3]";
     String totalNoOfUOMsOrdered = "((//th[contains(text(),'Total Weight')])[POSITION]/ancestor::table//tbody//td/input)[1]";
     String WeightPerUOM = "((//th[contains(text(),'Total Weight')])[POSITION]/ancestor::table//tbody//td/input)[2]";
-    By dropdown_option_orderguideSettings = By.xpath("//a[@class='_1ccoy1o text-decoration-none dropdown-item' and text()='Order Guide Settings']");
+    By dropdown_option_orderguideSettings = By.xpath("//div[text()='Order Guide Settings']");
     By txt_reviewStandingOrders = By.xpath("//div[text()='Review Standing Order']");
     String customerScreenScanToOrderBtn = "//tr/td[contains(text(),'CUSTOMERCODE')]/..//a[contains(@href,'scan-to-order')]";
     String customerProfileScreenScanToOrderBtn = "//a[contains(@href,'scan-to-order')]";
@@ -721,7 +721,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String fulfilmentTag = "//*[contains(text(),'#') and text()='ID']/../preceding-sibling::td[1]//*[text()='TAG']";
     String reviewOrderFulfilment = "//span[contains(text(),'TYPE')]";
     String sortOptionDisplay = "//div[text()='Sort Items By:']/following-sibling::div//div[contains(text(),'OPTION')]";
-
+    String addedItemName = "//td//span/div[@data-tip='View Product Details'][contains(text(),'NAME')]";
+    String parentChildTag = "//td[text()='CODE']/following-sibling::td/*//span[text()='TAG']";
+    String customerProfileParentChildTag = "//span[text()='TAG']";
 
 
 
@@ -988,7 +990,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickOnCreate() throws InterruptedException {
         distributorUI.waitForCustom(1000);
-        distributorUI.waitForClickability(btn_create);
+//        distributorUI.waitForClickability(btn_create);
         distributorUI.click(btn_create);
     }
     public void typeOrderGuideName(String orderGuideName) throws InterruptedException {
@@ -1014,7 +1016,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(btn_uploadFileOG);
         distributorUI.click(btn_uploadFileOG);
     }
-    public void clickOnAddToOrderGuide(){
+    public void clickOnAddToOrderGuide()throws InterruptedException{
+        distributorUI.waitForCustom(5000);
         distributorUI.waitForVisibility(btn_addToOrderGuide);
         distributorUI.waitForClickability(btn_addToOrderGuide);
         distributorUI.click(btn_addToOrderGuide);
@@ -1076,6 +1079,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(By.xpath(lbl_recommendedForYouItem.replace("CODE",code )));
     }
     public boolean isRecommendedBySalesRepDisplayed(String code) {
+        distributorUI.scrollToElementStable(By.xpath(lbl_recommendedBySalesRep.replace("CODE", '#'+code)),5);
         return distributorUI.isDisplayed(By.xpath(lbl_recommendedBySalesRep.replace("CODE", '#'+code)));
     }
     public boolean isDontForgetToOrderDisplayed(){
@@ -1129,13 +1133,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         } catch (Exception e){
             return false;
         }*/
-        distributorUI.waitForVisibility(txt_editOrderGuide);
+//        distributorUI.waitForVisibility(txt_editOrderGuide);
         return distributorUI.isDisplayed(txt_editOrderGuide);
     }
     public void clickOnMoreOptions(){
         distributorUI.waitForClickability(btn_moreOptions);
 //        distributorUI.click(btn_moreOptions);
         distributorUI.clickWithScrollAndHover(btn_moreOptions);
+        distributorUI.uiScrollTop();
     }
     public void clickOnExportOrderGuide(){
         distributorUI.waitForClickability(btn_exportOrderGuide);
@@ -3695,7 +3700,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return Integer.parseInt(NoOfUOMsOrderedString.trim());
     }
 
-    public int getWeightPerUOM(String position){
+    public int getWeightPerUOM(String position) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        distributorUI.waitForVisibility(By.xpath(WeightPerUOM.replace("POSITION",position)));
         String WeightPerUOMString = distributorUI.getText(By.xpath(WeightPerUOM.replace("POSITION",position)),"value") ;
         return Integer.parseInt(WeightPerUOMString.trim());
     }
@@ -4240,13 +4247,13 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(childAccountEditBtn);
     }
     public void childAccountDropDown(String account){
-        distributorUI.click(By.xpath(childAccountDropDown.replace("CHILDACC",account)));
+         distributorUI.click(By.xpath(childAccountDropDown.replace("CHILDACC",account)));
     }
     public boolean isAddedOrderGuideDisplayed(String account , String name){
         return distributorUI.isDisplayed(By.xpath(addedOrderGuide.replace("CHILDACC",account).replace("NAME",name)));
     }
     public void selectOrderGuide(String account , String name){
-        distributorUI.waitForClickability(By.xpath(addedOrderGuide.replace("CHILDACC",account).replace("NAME",name)));
+         distributorUI.waitForClickability(By.xpath(addedOrderGuide.replace("CHILDACC",account).replace("NAME",name)));
         distributorUI.click(By.xpath(addedOrderGuide.replace("CHILDACC",account).replace("NAME",name)));
     }
     public boolean isChildSettingUpdated(String message)throws InterruptedException{
@@ -4291,5 +4298,21 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isSortOptionDisplayed(String option){
         return distributorUI.isDisplayed(By.xpath(sortOptionDisplay.replace("OPTION",option)));
     }
+    public boolean isAddedItemDisplayed(String name){
+        return distributorUI.isDisplayed(By.xpath(addedItemName.replace("NAME",name)));
+    }
+    public boolean isNewlyCreatedOrderGuideDisplay(String name){
+        return distributorUI.isDisplayed(By.xpath(dropDownOrderGuide.replace("NAME",name)));
+    }
+    public boolean isParentChildTagDisplay(String code,String tag){
+        return distributorUI.isDisplayed(By.xpath(parentChildTag.replace("CODE",code).replace("TAG",tag)));
+    }
+    public boolean isCustomerProfileParentChildTagDisplay(String tag){
+        return distributorUI.isDisplayed(By.xpath(customerProfileParentChildTag.replace("TAG",tag)));
+    }
+    public boolean isCatalogAccessDisplay(){
+        return distributorUI.isDisplayed(catalogAccessEditBtn);
+    }
+
 
 }

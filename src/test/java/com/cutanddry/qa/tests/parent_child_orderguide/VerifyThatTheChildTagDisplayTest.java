@@ -14,12 +14,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyThatSortItemsByAlphabeticalOrderInTheParentOGShouldNotReflectInTheChildOGTest extends TestBase {
+public class VerifyThatTheChildTagDisplayTest extends TestBase {
     static User user;
     static String DP = ParentChildOGData.DISTRIBUTOR_INDIANHEAD;
-    static String customerId = ParentChildOGData.CUSTOMER_ID_INDIANHEAD;
-    static String customerId2 = ParentChildOGData.CUSTOMER_ID_INDIANHEAD_2;
-    static String alphabetical = "Alphabetical (A-Z)";
+    static String customerId = ParentChildOGData.CUSTOMER_ID_INDIANHEAD_2;
+    static String status = "Child Account";
+    static String tag = "Child";
+
 
     @BeforeMethod
     public void setUp(){
@@ -27,8 +28,8 @@ public class VerifyThatSortItemsByAlphabeticalOrderInTheParentOGShouldNotReflect
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-1232")
-    public void VerifyThatSortItemsByAlphabeticalOrderInTheParentOGShouldNotReflectInTheChildOG() throws InterruptedException {
+    @Test(groups = "DOT-TC-1241")
+    public void VerifyThatTheChildTagDisplay() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
@@ -38,19 +39,12 @@ public class VerifyThatSortItemsByAlphabeticalOrderInTheParentOGShouldNotReflect
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
-        Customer.clickOnOrderGuideParentChild(customerId);
-        softAssert.assertTrue(Customer.isCustomerOrderGuideDisplayed(),"user has navigated to the Order Guide");
-        Customer.clickSortOptionsDropdown();
-        Customer.selectAlphabeticalSort();
-        softAssert.assertTrue(Customer.isSortOptionDisplayed(alphabetical),"Alphabetical sort not display");
+        softAssert.assertTrue(Customer.isParentChildTagDisplay(customerId,tag),"tag display error");
 
-        Dashboard.navigateToCustomers();
-        Customer.searchCustomerByCode(customerId2);
-        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId2),"search error");
-        Customer.clickOnOrderGuideParentChild(customerId2);
-        softAssert.assertFalse(Customer.isSortOptionDisplayed(alphabetical),"Alphabetical sort display");
-        Customer.clickSortOptionsDropdown();
-        Customer.selectAlphabeticalSort();
+        Customer.SelectCustomer(customerId);
+        softAssert.assertTrue(Customer.isLinkedAccountDisplayed(),"linked account section not displayed");
+        softAssert.assertTrue(Customer.isAccountStatusDisplayed(status),"parent account status not displayed");
+        softAssert.assertTrue(Customer.isCustomerProfileParentChildTagDisplay(tag),"customer profile tag display error");
         softAssert.assertAll();
     }
 

@@ -150,11 +150,23 @@ public class TestBase {
             return "Invalid number"; // Handle invalid input
         }
     }
+
     public static String generateUTCTodayDateFormatted() {
         SimpleDateFormat formatter = new SimpleDateFormat("M/d/yy"); // This gives "3/24/25"
         formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
         Date today = new Date();
         return formatter.format(today);
+    }
+
+    public static String generateUTCTomorrowDateFormatted() {
+        SimpleDateFormat formatter = new SimpleDateFormat("M/d/yy"); // This gives "3/24/25"
+        formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+        /*Date today = new Date();
+        return formatter.format(today);*/
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+        calendar.add(Calendar.DAY_OF_YEAR, 1); // Add one day
+        Date nextDay = calendar.getTime();
+        return formatter.format(nextDay);
     }
 
 }

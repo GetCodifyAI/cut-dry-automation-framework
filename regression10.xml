@@ -56,6 +56,17 @@
             <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByItemCategoriesInTheParentOGShouldNotReflectInTheChildOGTest"/>
             <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByItemCodeInTheParentOGShouldNotReflectInTheChildOGTest"/>
 
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheChildCustomerCanCreateAnyNumberOfOrderGuidesManuallyTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheChildCustomerCanCreateAnyOrderGuidesAndOrderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentCustomerCanCreateAnyOrderGuidesAndOrderSubmissionTest"/>
+
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentCustomerCreateAnOrderGuidesThenChangesAreSyncedToChildAccountsTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentCustomerEditAnOrderGuidesThenChangesAreSyncedToChildAccountsTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentCustomerDeleteAnOrderGuidesThenChangesAreSyncedToChildAccountsTest"/>
+
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentTagDisplayTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheChildTagDisplayTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureOnUITest"/>
 
         </classes>
     </test>

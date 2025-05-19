@@ -20,7 +20,7 @@ public class AddNewUserWithUserReferenceTest extends TestBase {
     static int randomNumber = new Random().nextInt(1000);
     static String dynamicName = "Testref " + randomNumber;
     static String email = "testref"+randomNumber+"@email.com";
-    static String userRef = "CC";
+    static String userRef = "CC"+ randomNumber;
 
     @BeforeMethod
     public void setUp(){

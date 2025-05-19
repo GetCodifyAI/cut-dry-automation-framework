@@ -90,6 +90,7 @@ public class OrdersPage extends LoginPage{
     String dropDownWhatIsWrongOption = "//div[contains(@class, 'themed_select__option') and text()='Missing']";
     By btn_continue = By.xpath("//button[@type='submit' and @class='btn btn-primary btn-block' and contains(text(), 'Continue')]");
     By btn_saveCheckIn = By.xpath("//button[contains(text(), 'Save Check-In')]");
+    By btn_selectOrderGuide = By.xpath("//div[contains(text(),'Select Order Guide')]/following-sibling::div/div[1]");
 
     public void clickBtnSaveCheckIn(){
         distributorUI.click(btn_saveCheckIn);
@@ -539,6 +540,9 @@ public class OrdersPage extends LoginPage{
 
     public void clickSaveButton(){
         distributorUI.click(btn_save);
+    }
+    public void selectOrderGuide(){
+        distributorUI.click(btn_selectOrderGuide);
     }
 
 

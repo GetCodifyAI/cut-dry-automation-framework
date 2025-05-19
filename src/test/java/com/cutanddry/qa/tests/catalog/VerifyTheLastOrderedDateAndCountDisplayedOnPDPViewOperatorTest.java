@@ -3,10 +3,7 @@ package com.cutanddry.qa.tests.catalog;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CatalogData;
-import com.cutanddry.qa.functions.Catalog;
-import com.cutanddry.qa.functions.Customer;
-import com.cutanddry.qa.functions.Dashboard;
-import com.cutanddry.qa.functions.Login;
+import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -73,9 +70,13 @@ public class VerifyTheLastOrderedDateAndCountDisplayedOnPDPViewOperatorTest exte
         Customer.searchItemOnCatalog(searchItemCode);
         Catalog.clickOnCatalogProduct(itemName);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
-        expectedDate = generateUTCTodayDateFormatted();
+        expectedDate = generateUTCTomorrowDateFormatted();
         Catalog.clickPurchaseHistory();
         softAssert.assertTrue(Catalog.isLastOrderDatePDPDisplayed(expectedDate),"PDP last order date error");
+
+        Dashboard.navigateToOrderSettings();
+        softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation error");
+        Settings.deliveryDateCheckBox(false);
         softAssert.assertAll();
     }
     @AfterMethod
