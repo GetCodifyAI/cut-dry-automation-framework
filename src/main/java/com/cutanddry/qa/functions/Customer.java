@@ -2475,8 +2475,8 @@ public class Customer {
     public static boolean isManageChildAccountPopUpDisplayed() throws InterruptedException {
         return customersPage.isManageChildAccountPopUpDisplayed();
     }
-    public static boolean isParentAccountStatusDisplayed(String status) throws InterruptedException {
-        return customersPage.isParentAccountStatusDisplayed(status);
+    public static boolean isAccountStatusDisplayed(String status) throws InterruptedException {
+        return customersPage.isAccountStatusDisplayed(status);
     }
     public static boolean isChildAccountDisplayed(String account){
         return customersPage.isChildAccountDisplayed(account);
