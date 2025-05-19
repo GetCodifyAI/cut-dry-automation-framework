@@ -498,4 +498,9 @@ public class Settings {
         settingsPage.clickOnSaveChanges();
     }
 
+    public static void deliveryAndOrderCutOffDateCheckBox(boolean status) throws InterruptedException {
+        settingsPage.deliveryDateOverrideRestrictions(status);
+        settingsPage.orderCutOffsOverrideRestrictions(status);
+        settingsPage.clickOnSaveChanges();
+    }
 }

@@ -170,6 +170,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     By getTotalOrderPrice = By.xpath("//td[text()='Total']/following-sibling::td");
     By getTotalOrderQuantity = By.xpath("//td[contains(text(),'Total Quantity')]/following-sibling::td");
     String multiUomDropDown = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[1]";
+    String multiUomDropDownLast = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[last()]";
     String multiUomDropDownOption ="//div[text()='OPTION']";
     String getPriceUOM = "((//button[contains(@data-for,'add-to-order-guide')]/ancestor::div[2]/following-sibling::div)[1]/following-sibling::*//div//span[contains(text(),'$')])[UOM]";
     String btn_addToCartPlusQuantity = "((//button[contains(@data-for,'add-to-order-guide')]/ancestor::div[2]/following-sibling::div)[1]/following-sibling::*//*[name()='svg' and contains(@data-icon, 'plus')])[UOM]";
@@ -902,9 +903,14 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         return distributorUI.getText(getTotalOrderQuantity);
     }
     public void ClickOnMultiUomDropDown(String name)throws InterruptedException{
-        distributorUI.waitForVisibility(By.xpath(multiUomDropDown.replace("NAME", name)));
-        Thread.sleep(2000);
-        distributorUI.click(By.xpath(multiUomDropDown.replace("NAME", name)));
+        if (distributorUI.isDisplayed(By.xpath(multiUomDropDown.replace("NAME", name)))) {
+            distributorUI.waitForVisibility(By.xpath(multiUomDropDown.replace("NAME", name)));
+            Thread.sleep(2000);
+            distributorUI.click(By.xpath(multiUomDropDown.replace("NAME", name)));
+        } else {
+            distributorUI.click(By.xpath(multiUomDropDownLast.replace("NAME", name)));
+        }
+
     }
     public void ClickOnMultiUomDropDownOption(String option){
         distributorUI.waitForVisibility(By.xpath(multiUomDropDownOption.replace("OPTION", option)));
