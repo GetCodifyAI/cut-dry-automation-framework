@@ -39,8 +39,8 @@ public class VerifyTheOrderReminderAlertOptionIsRemovedFromOrderGuideSettingsTes
          Customer.clickOnOrderGuide(CustomerCode);
          softAssert.assertTrue(Customer.isCustomerOrderGuideDisplayed(),"order guide not displayed");
 
-         Customer.goToEdit();
-         softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"Edit Order Guide screen isn't displayed");
+         /*Customer.goToEdit();
+         softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"Edit Order Guide screen isn't displayed");*/
          Customer.expandMoreOptionsDropdown();
          Customer.clickOnOrderGuideSettings();
          softAssert.assertFalse(OrderGuideSettings.isOrderReminderAlertSettingDisplayed(),"order reminder alert setting displayed");

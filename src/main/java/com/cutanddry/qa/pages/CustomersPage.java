@@ -138,7 +138,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By btn_checkoutCashCarry = By.xpath("//button[@data-tip='Click here to checkout']");
     By txt_foodServiceDistCenter = By.xpath("//span[text()='Food Service Distribution Centre']");
     By txt_retailDistCenter = By.xpath("//span[text()='Retail Distribution Centre']");
-    String txt_orders = "(//div[contains(text(), 'Order #')])[NUM]";
+    String txt_orders = "(//div[contains(text(), 'Order Number #')])[NUM]";
     By btn_back = By.xpath("//button[contains(text(), 'Back')]");
     String SelectCustomerByCode = "//td[contains(text(),'CODE')]";
     By OrdersTabTxt = By.xpath("//a[contains(text(),'Orders') and @class='_1n4k2vi text-center nav-item nav-link']");
@@ -373,7 +373,7 @@ By dropdown_assignSalesperson = By.xpath("(//div[contains(@class,'themed_select_
     By btn_submitOrderEdit = By.xpath("//button[contains(@id,'submit-order-button')]");
     By btn_orderCheckoutReview = By.xpath("//button[contains(@data-tip, 'Click here to checkout')][normalize-space()!='']");
     By btn_draftNo =By.xpath("//div[contains(text(),'No')]");
-    By txt_orderSuccessMsg = By.xpath("//strong[contains(text(),'Thank you for your order!')]");
+    By txt_orderSuccessMsg = By.xpath("//*[contains(text(),'Thank you for your order!')]");
     By btn_closeMsg = By.xpath("//span[text()='×']");
     By dropdown_selTags = By.xpath("//div[contains(text(),'Tags')]/parent::div//*[contains(@class,'themed_select__dropdown')]");
     By dropdown_list = By.xpath("//div[contains(@class,'themed_select__menu-list themed_select')]");
@@ -429,7 +429,7 @@ By enabledStatusLocator = By.xpath("//div[contains(text(),'Cut+Dry Pay')]/follow
 String txt_product = "//div[contains(@class,'_3quvq7 _1vlidrf' ) and contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]";
     By btn_addToCartPDP = By.xpath("//button[contains(text(), 'Add to Cart')]");
     By btn_checkOutPDP = By.xpath("//button[@data-for='cartCheckoutButton' and contains(text(),'$')]");
-    By txt_orderConfirmationPopUp = By.xpath("//strong[contains(text(), 'Thank you for your order!')]");
+    By txt_orderConfirmationPopUp = By.xpath("//*[contains(text(), 'Thank you for your order!')]");
     By btn_addOrderGuideHeart = By.xpath("//button[@class='d-flex align-items-center justify-content-center cdbutton w-100 _fousr2 fa-stack btn btn-primary btn-sm' and @data-tip='Add to Order Guide']");
     By btn_catalogToOrderGuide = By.xpath("//span[text()='Order Guide']");
 //    String lbl_orderGuideItem = "//div[contains(@class, 'text-capitalize _1i69w9z') and contains(text(),'NAME')]";
@@ -627,7 +627,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String multiUomDropDownOGExist = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr//td[text()='CODE']/..//*[local-name()='svg' and @data-icon='chevron-down']";
     By multiUomOption =By.xpath("//div[text()='Multiple Units']");
     String btn_OGAddToCartPlusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='plus'])[UOM]";
-    String txt_multiOrderId = "(//div[contains(text(),'Order #')])[NUM]";
+    String txt_multiOrderId = "(//div[contains(text(),'Order Number #')])[NUM]";
 
     String lbl_itemPriceMultiUOMEdit = "((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]/div/div/div)[UOM]";
 //    String txt_casesMultiUOMEdit = "((//th[contains(text(),'No. of')])[UOM]/../../following-sibling::*//input)[1]";
