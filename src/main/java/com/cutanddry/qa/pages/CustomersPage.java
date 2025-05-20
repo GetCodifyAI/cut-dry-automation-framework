@@ -457,7 +457,7 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     By Value = By.xpath("(//td[contains(@class,'py-3 _xigbpq4 border-top border-bottom')]//div[contains(text(),'$')])[last()]");
     By totalQuantity = By.xpath("//td[contains(text(),'Total Quantity')]/following-sibling::td");
     By totalValue=By.xpath("//td[@class='border-0 pt-1' and contains(text(),'$')]");
-    By txt_orderId = By.xpath("//div[contains(text(),'Order #')]");
+    By txt_orderId = By.xpath("//div[contains(text(),'Order Number #')]");
     By sel_delivery = By.xpath("//span[text()='Delivery']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
     By sel_pickup = By.xpath("//span[text()='Pickup/Will Call']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
     By sel_mailDelivery = By.xpath("//span[text()='Mail Delivery']/preceding-sibling::div//*[contains(@data-icon, 'circle')]");
