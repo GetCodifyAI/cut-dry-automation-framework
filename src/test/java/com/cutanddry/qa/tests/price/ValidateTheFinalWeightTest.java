@@ -93,13 +93,16 @@ public class ValidateTheFinalWeightTest extends TestBase{
             Orders.clickOnConfirm();
             softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
         }
-        Orders.clickOnClose();
+//        Orders.clickOnClose();
+        Customer.clickClose();
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
+        Customer.OrderDateSort();
+        Customer.OrderDateSort();
         softAssert.assertEquals(Customer.getPriceInCustomerOrder(),itemPrice,"The item has not been selected.");
         softAssert.assertAll();
     }

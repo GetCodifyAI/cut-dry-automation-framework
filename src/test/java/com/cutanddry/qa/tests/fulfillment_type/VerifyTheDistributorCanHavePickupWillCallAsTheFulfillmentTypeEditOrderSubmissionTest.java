@@ -98,7 +98,8 @@ public class VerifyTheDistributorCanHavePickupWillCallAsTheFulfillmentTypeEditOr
         Customer.increaseFirstRowQtyCustom(1);
         Customer.submitOrder();
         softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(),"update popup error");
-        Orders.clickOnClose();
+//        Orders.clickOnClose();
+        Customer.clickClose();
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
