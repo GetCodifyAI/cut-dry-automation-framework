@@ -506,6 +506,11 @@ public class OrdersPage extends LoginPage{
     }
     public void clickOkButton(){
         distributorUI.click(btn_ok);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void clickOrderStatus(){
         distributorUI.click(btn_orderStatus);
@@ -521,6 +526,11 @@ public class OrdersPage extends LoginPage{
     public void selectOrderStatusOption(String status) {
 
         distributorUI.click(By.xpath(lbl_orderStatusOption.replace("STATUS",status)));
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public boolean isOrderStatusUpdatedDisplayed(String status){
         try {

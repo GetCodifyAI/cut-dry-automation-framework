@@ -93,7 +93,8 @@ public class VerifyAddMultipleUOMInOGAndSubmissionThenEditOrderFlowTest extends 
 
         Customer.submitOrder();
         softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(),"update popup error");
-        Orders.clickOnClose();
+//        Orders.clickOnClose();
+        Customer.clickClose();
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);

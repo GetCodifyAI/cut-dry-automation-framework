@@ -45,7 +45,8 @@ public class VerifyTheOrderViewOrderEditTest extends TestBase {
         Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItems();
         softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(),"update popup error");
-        Orders.clickOnClose();
+//        Orders.clickOnClose();
+        Customer.clickClose();
         softAssert.assertAll();
     }
 
