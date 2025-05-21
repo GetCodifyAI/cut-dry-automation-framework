@@ -44,7 +44,7 @@ public class VerifyThatIfNewOGRemovedFromParentAccountThatRemovedInDropDownOfThe
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
-        Customer.clickOnOrderGuide(customerId);
+        Customer.clickOnOrderGuideParentChild(customerId);
         softAssert.assertTrue(Customer.isCustomerOrderGuideDisplayed(),"user has navigated to the Order Guide");
         Customer.goToCreatePopup();
         Customer.createOrderGuide(OrderGuideName);
@@ -71,7 +71,7 @@ public class VerifyThatIfNewOGRemovedFromParentAccountThatRemovedInDropDownOfThe
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
-        Customer.clickOnOrderGuide(customerId);
+        Customer.clickOnOrderGuideParentChild(customerId);
         softAssert.assertTrue(Customer.isCustomerOrderGuideDisplayed(),"user has navigated to the Order Guide");
         Customer.clickOGDropdown();
         Customer.selectNewlyCreatedOrderGuide(OrderGuideName);
