@@ -59,7 +59,7 @@ public class ValidateTheSpotPricingWhenSelectingMultipleUOMTest extends TestBase
 
         Customer.editMarginMultiUOM(uom1);
         softAssert.assertTrue(Customer.isMarginValuePopupDisplayed(),"popup error");
-        Customer.enterSpotPriceMultiUOM(uom1,"200");
+        Customer.enterSpotPriceMultiUOM(uom1,"700");
         Customer.enterSpotPriceMultiUOM(uom2,"200");
         Customer.updateMarginValues();
 
@@ -74,9 +74,9 @@ public class ValidateTheSpotPricingWhenSelectingMultipleUOMTest extends TestBase
         softAssert.assertTrue(Customer.isSpotPriceAdded(spotPrice1),"update spot price error - "+uom1);
         softAssert.assertTrue(Customer.isItemValueAdded(marginValue1),"update error value - "+uom1);
         softAssert.assertTrue(Customer.isItemPercentageAdded(marginPercentage1),"update error percentage - "+uom1);
-        softAssert.assertTrue(Customer.isSpotPriceAdded(spotPrice2),"update spot price error - "+uom1);
-        softAssert.assertTrue(Customer.isItemValueAdded(marginValue2),"update error value - "+uom1);
-        softAssert.assertTrue(Customer.isItemPercentageAdded(marginPercentage2),"update error percentage - "+uom1);
+        softAssert.assertTrue(Customer.isSpotPriceAdded(spotPrice2),"update spot price error - "+uom2);
+        softAssert.assertTrue(Customer.isItemValueAdded(marginValue2),"update error value - "+uom2);
+        softAssert.assertTrue(Customer.isItemPercentageAdded(marginPercentage2),"update error percentage - "+uom2);
 
 
         Customer.editMarginMultiUOM(uom1);
@@ -149,7 +149,8 @@ public class ValidateTheSpotPricingWhenSelectingMultipleUOMTest extends TestBase
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
-
+        Customer.OrderDateSort();
+        Customer.OrderDateSort();
         double actualPrice = Double.parseDouble(Customer.getPriceInCustomerOrder().replace("$", "").replace(",", "").trim());
         softAssert.assertEquals(actualPrice, totalOGItemPrice, "The total values in the submission and the total displayed in the Customer Profile Orders section do not match.");
 

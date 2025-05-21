@@ -117,7 +117,8 @@ public class ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest extends TestB
             Orders.clickOnConfirm();
             softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
         }
-        Orders.clickOnClose();
+//        Orders.clickOnClose();
+        Customer.clickClose();
 
         Dashboard.navigateToCustomers();
         Customer.refreshCustomersPage();
