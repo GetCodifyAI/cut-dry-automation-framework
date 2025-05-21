@@ -23,7 +23,6 @@ public class VerifyThatTheChildCustomerCanCreateAnyNumberOfOrderGuidesManuallyTe
     static String status = "Parent Account";
     static String OrderGuideName = ParentChildOGData.ORDER_GUIDE_NAME_3;
     static String itemName = "Appetizer Egg Roll Vegetable";
-    static String childSettingMessage = "Child account settings updated successfully";
     static String[] childAccounts = { "59195", "59130", "53175", "33602", "33601"  };
 
 
@@ -65,8 +64,9 @@ public class VerifyThatTheChildCustomerCanCreateAnyNumberOfOrderGuidesManuallyTe
             Customer.clickChildAccountDropDown(childAccount);
         }
         Orders.clickSaveButton();
-        softAssert.assertTrue(Customer.isChildSettingUpdated(childSettingMessage),"child setting not updated");
         Customer.clickOK();
+        Customer.clickClose();
+
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId2);

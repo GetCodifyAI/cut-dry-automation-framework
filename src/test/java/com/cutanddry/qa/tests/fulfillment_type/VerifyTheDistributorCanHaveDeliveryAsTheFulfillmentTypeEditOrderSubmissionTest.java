@@ -97,7 +97,7 @@ public class VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeEditOrderSub
         Customer.increaseFirstRowQtyCustom(1);
         Customer.submitOrder();
         softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(),"update popup error");
-        Orders.clickOnClose();
+        Customer.clickClose();
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
