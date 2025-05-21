@@ -627,6 +627,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String multiUomDropDownOGExist = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr//td[text()='CODE']/..//*[local-name()='svg' and @data-icon='chevron-down']";
     By multiUomOption =By.xpath("//div[text()='Multiple Units']");
     String btn_OGAddToCartPlusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='plus'])[UOM]";
+    String btn_OGAddToCartMinusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='minus'])[UOM]";
     String txt_multiOrderId = "(//div[contains(text(),'Order Number #')])[NUM]";
 
     String lbl_itemPriceMultiUOMEdit = "((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]/div/div/div)[UOM]";
@@ -652,6 +653,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String btn_editMarginMultiUOM = "((//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[6])[1]//span[2])[UOM]";
     String lbl_spotPriceMultiUOM = "(//div[contains(text(),'Price') and contains(text(),'($)')]/following-sibling::input)[UOM]";
     String lbl_marginMultiUOM = "(//div[contains(text(),'Margin') and contains(text(),'$')]/following-sibling::input)[UOM]";
+    String lbl_salesCostMultiUOM = "(//div[contains(text(),'Sales Cost') and contains(text(),'($)')]/following-sibling::input)[UOM]";
     String lbl_marginPercentageMultiUOM = "(//div[text()='Margin (%)']/following-sibling::input)[UOM]";
     String spotPriceValueMultiUOM = "//td[COUNT]/div/div[UOM]//*[contains(text(),'VALUE')]";
     String marginValueMultiUOM = "//td[COUNT]/div/div[UOM]//*[contains(text(),'VALUE')]";
@@ -3712,7 +3714,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(By.xpath(customerScreenScanToOrderBtn.replace("CUSTOMERCODE",customerCode)));
     }
     public String getItemNameFirstMultiOUM() throws InterruptedException {
-        distributorUI.scrollToElementStable(lbl_firstMultiOUMItemName,3);
+        distributorUI.scrollToElementStpByStep(lbl_firstMultiOUMItemName,3);
         distributorUI.waitForElementEnabledState(lbl_firstMultiOUMItemName,true);
         distributorUI.waitForCustom(3000);
         return distributorUI.getText(lbl_firstMultiOUMItemName);
@@ -3720,7 +3722,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
 
 
     public String getItemCodeFirstMultiOUM() throws InterruptedException {
-        distributorUI.scrollToElementStable(lbl_firstMultiOUMItemCode,3);
+        distributorUI.scrollToElementStpByStep(lbl_firstMultiOUMItemCode,3);
         distributorUI.waitForVisibility(lbl_firstMultiOUMItemCode);
         distributorUI.waitForCustom(3000);
         return distributorUI.getText(lbl_firstMultiOUMItemCode);
@@ -3784,6 +3786,13 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickOGAddToCartPlusIcon(String code,String uom)throws InterruptedException{
         distributorUI.waitForVisibility(By.xpath(btn_OGAddToCartPlusQuantity.replace("CODE", code).replace("UOM", uom)));
         distributorUI.click(By.xpath(btn_OGAddToCartPlusQuantity.replace("CODE", code).replace("UOM", uom)));
+        distributorUI.waitForCustom(2000);
+    }
+
+    public void clickOGAddToCartMinusIcon(String code,String uom)throws InterruptedException{
+        distributorUI.waitForCustom(2000);
+        distributorUI.waitForVisibility(By.xpath(btn_OGAddToCartMinusQuantity.replace("CODE", code).replace("UOM", uom)));
+        distributorUI.click(By.xpath(btn_OGAddToCartMinusQuantity.replace("CODE", code).replace("UOM", uom)));
         distributorUI.waitForCustom(2000);
     }
     public String getMultiOrderedId(String num) {
@@ -3911,6 +3920,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
 
     public void editMarginMultiUOM(String position){
         distributorUI.click(By.xpath(btn_editMarginMultiUOM.replace("UOM",position)));
+    }
+
+    public String getSalesCostMultiUOM(String position){
+        return distributorUI.getText(By.xpath(lbl_salesCostMultiUOM.replace("UOM",position)), "value");
     }
 
     public void enterSpotPriceMultiUOM(String position, String num) throws InterruptedException {

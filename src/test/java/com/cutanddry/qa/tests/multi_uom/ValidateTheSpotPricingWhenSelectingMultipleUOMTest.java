@@ -24,7 +24,7 @@ public class ValidateTheSpotPricingWhenSelectingMultipleUOMTest extends TestBase
     static String uom2 = CatalogData.MULTI_UOM_2;
     static String orderId;
     static String multiItemName, multiSearchItemCode,spotPrice1,marginValue1, marginPercentage1,spotPrice2,marginValue2, marginPercentage2;
-    static double itemOGPriceUOM1, itemOGPriceUOM2, totalOGItemPrice, multiItemPrice, totalCartAmount;
+    static double itemOGPriceUOM1, itemOGPriceUOM2, totalOGItemPrice, multiItemPrice, totalCartAmount, salesPrice1, salesPrice2;
 
 
     @BeforeMethod
@@ -59,8 +59,10 @@ public class ValidateTheSpotPricingWhenSelectingMultipleUOMTest extends TestBase
 
         Customer.editMarginMultiUOM(uom1);
         softAssert.assertTrue(Customer.isMarginValuePopupDisplayed(),"popup error");
-        Customer.enterSpotPriceMultiUOM(uom1,"700");
-        Customer.enterSpotPriceMultiUOM(uom2,"200");
+        salesPrice1 = Double.parseDouble(Customer.getSalesCostMultiUOM(uom1));
+        salesPrice2 = Double.parseDouble(Customer.getSalesCostMultiUOM(uom2));
+        Customer.enterSpotPriceMultiUOM(uom1,String.valueOf(salesPrice1 + 200));
+        Customer.enterSpotPriceMultiUOM(uom2,String.valueOf(salesPrice2 + 200));
         Customer.updateMarginValues();
 
         Customer.editMarginMultiUOM(uom1);
