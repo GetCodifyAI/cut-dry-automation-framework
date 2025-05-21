@@ -2128,7 +2128,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
 
     public String getBusinessName(String customerId){
         distributorUI.waitForVisibility(By.xpath(businessName.replace("CUSTOMERID",customerId)));
-        return distributorUI.getText(By.xpath(businessName.replace("CUSTOMERID",customerId)));
+        return distributorUI.getText(By.xpath(businessName.replace("CUSTOMERID",customerId))).replace("Child", "").trim();
     }
     public boolean isCustomerProfileDisplayed(String businessName){
         try {
