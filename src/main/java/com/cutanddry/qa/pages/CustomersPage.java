@@ -1084,7 +1084,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(By.xpath(lbl_recommendedBySalesRep.replace("CODE", '#'+code)));
     }
     public boolean isDontForgetToOrderDisplayed(){
-        distributorUI.scrollToElement(section_dontForget);
+        distributorUI.scrollToElementStable(section_dontForget,3);
         return distributorUI.isDisplayed(section_dontForget);
     }
     public boolean isMoreFromThisBrandDisplayed(){
@@ -1229,6 +1229,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(By.xpath(txt_customerCode.replace("CODE", code)));
     }
     public void clickOnOrdersTab() {
+        if (!distributorUI.isDisplayed(tb_orders)) {
+            distributorUI.refreshPage();
+        }
         distributorUI.click(tb_orders);
     }
     public boolean isStandingOrdersDisplayed(){
