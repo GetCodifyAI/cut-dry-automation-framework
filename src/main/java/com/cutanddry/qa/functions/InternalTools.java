@@ -183,4 +183,7 @@ public class InternalTools {
     public static boolean isRestrictSpotPricesToggleOn(){
         return internalToolsPage.isRestrictSpotPricesToggleOn();
     }
+    public static void clickOfflineOrderingToggle(boolean status){
+        internalToolsPage.clickOfflineOrderingToggle(status);
+    }
 }

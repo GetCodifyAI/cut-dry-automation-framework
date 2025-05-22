@@ -723,6 +723,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String addedItemName = "//td//span/div[@data-tip='View Product Details'][contains(text(),'NAME')]";
     String parentChildTag = "//td[text()='CODE']/following-sibling::td/*//span[text()='TAG']";
     String customerProfileParentChildTag = "//span[text()='TAG']";
+    By dropdown_option_SwitchToOfflineMode = By.xpath("//div[text()='Switch to Offline Mode']");
+    By txt_offlineMode = By.xpath("//div[text()='Offline Mode']");
+    By btn_activeOfflineMode = By.xpath("//button[text()='Activate Offline Mode']");
+    By txt_hangTight = By.xpath("//div[contains(text(),'Hang tight')]");
 
 
 
@@ -4301,6 +4305,21 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isCatalogAccessDisplay(){
         return distributorUI.isDisplayed(catalogAccessEditBtn);
+    }
+
+    public void clickSwitchToOfflineMode(){
+        distributorUI.waitForClickability(dropdown_option_SwitchToOfflineMode);
+        distributorUI.click(dropdown_option_SwitchToOfflineMode);
+    }
+    public boolean isOfflineModePopUpDisplay(){
+        return distributorUI.isDisplayed(txt_offlineMode);
+    }
+    public void clickActiveOfflineMode(){
+        distributorUI.waitForClickability(btn_activeOfflineMode);
+        distributorUI.click(btn_activeOfflineMode);
+    }
+    public boolean isHangTightPopUpDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_hangTight);
     }
 
 

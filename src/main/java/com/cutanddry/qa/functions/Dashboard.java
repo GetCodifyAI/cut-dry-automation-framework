@@ -182,5 +182,8 @@ public class Dashboard {
     public static boolean isCustomerDisplayed(){
         return dashboardPage.isCustomerDisplayed();
     }
+    public static boolean isOrderIndicatorDisplay(){
+        return dashboardPage.isOrderIndicatorDisplay();
+    }
 
 }
