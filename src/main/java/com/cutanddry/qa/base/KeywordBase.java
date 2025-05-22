@@ -1218,6 +1218,37 @@ public class KeywordBase {
         }
     }
 
+    public void scrollToElementStpByStep(By by, int timeoutInSeconds) {
+        try {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            int maxAttempts = 20;
+            int attempt = 0;
+            int scrollStep = 300; // pixels per scroll
+            long lastScrollTop = -1;
+
+            while (attempt < maxAttempts) {
+                if (!driver.findElements(by).isEmpty()) {
+                    WebDriverWait customWait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+                    WebElement targetElement = customWait.until(ExpectedConditions.visibilityOfElementLocated(by));
+                    js.executeScript("arguments[0].scrollIntoView({block: 'center'});", targetElement);
+                    logger.info("Scrolled to and found the element: {}", by);
+                    return;
+                }
+                js.executeScript("window.scrollBy(0, arguments[0]);", scrollStep);
+                Thread.sleep(500);
+                long scrollTop = (long) js.executeScript("return window.pageYOffset;");
+                if (scrollTop == lastScrollTop) {
+                    break; // No more scrolling possible
+                }
+                lastScrollTop = scrollTop;
+                attempt++;
+            }
+            logger.warn("Element not found after scrolling {} times: {}", attempt, by);
+        } catch (Exception e) {
+            logger.error("Failed to find and scroll to the element: {}", by, e);
+        }
+    }
+
     public String getCssValue(By locator, String propertyName) {
         WebElement element = driver.findElement(locator);
         return element.getCssValue(propertyName);

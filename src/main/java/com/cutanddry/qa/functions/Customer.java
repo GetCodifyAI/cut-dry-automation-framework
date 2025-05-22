@@ -2128,6 +2128,13 @@ public class Customer {
             customersPage.clickOGAddToCartPlusIcon(code,uom);
         }
     }
+
+    public static void clickOGAddToCartMinusIcon(int count,String code, String uom) throws InterruptedException{
+        for (int i=0; i<count;i++){
+            customersPage.clickOGAddToCartMinusIcon(code,uom);
+        }
+    }
+
     public static String getMultiOrderedId(String num) {
         return customersPage.getMultiOrderedId(num);
     }
@@ -2217,6 +2224,10 @@ public class Customer {
 
     public static void enterSpotPriceMultiUOM(String uomPosition, String val) throws InterruptedException {
         customersPage.enterSpotPriceMultiUOM(uomPosition, val);
+    }
+
+    public static String getSalesCostMultiUOM(String uomPosition) throws InterruptedException {
+        return customersPage.getSalesCostMultiUOM(uomPosition);
     }
 
     public static void enterMarginValueMultiUOM(String uomPosition, String val) throws InterruptedException {

@@ -33,7 +33,7 @@ public class VerifyDontForgetToOrderTest extends TestBase {
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickSuggestiveSales();
         softAssert.assertTrue(Boost.isSuggestiveTabDisplayed(),"navigate to suggestive sales error");
-        inactiveState = Boost.checkInactiveState("Don't Forget to Order");
+//        inactiveState = Boost.checkInactiveState("Don't Forget to Order");
         Boost.clickDontForgetToOrderConfig();
         softAssert.assertTrue(Boost.isDontForgetPopupDisplayed(),"don't forget popup error");
         Boost.ensureDontForgetToOrderDisplayStatus(true);

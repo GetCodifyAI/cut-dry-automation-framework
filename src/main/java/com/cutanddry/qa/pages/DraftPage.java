@@ -40,10 +40,9 @@ public class DraftPage extends LoginPage{
 
 
     public boolean isDraftsTextDisplayed(){
-        try {
-            distributorUI.waitForVisibility(txt_drafts);
-        } catch (Exception e){
-            return false;
+        distributorUI.waitForVisibility(txt_drafts);
+        if (!distributorUI.isDisplayed(txt_drafts)) {
+            distributorUI.refreshPage();
         }
         return distributorUI.isDisplayed(txt_drafts);
     }
@@ -57,7 +56,7 @@ public class DraftPage extends LoginPage{
         return distributorUI.isDisplayed(By.xpath(txt_lastDraft.replace("TOTAL", total)));
     }
     public boolean isLastDraftDisplayedVito(String total){
-        distributorUI.waitForVisibility(By.xpath(txt_lastDraft.replace("TOTAL", total)));
+//        distributorUI.waitForVisibility(By.xpath(txt_lastDraft.replace("TOTAL", total)));
         return distributorUI.isDisplayed(By.xpath(txt_lastDraft.replace("TOTAL", total)),90);
     }
 
