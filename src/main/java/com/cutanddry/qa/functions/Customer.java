@@ -2554,6 +2554,21 @@ public class Customer {
     public static boolean isCatalogAccessDisplay(){
         return customersPage.isCatalogAccessDisplay();
     }
+    public static void clickSwitchToOfflineMode(){
+        customersPage.clickSwitchToOfflineMode();
+    }
+    public static boolean isOfflineModePopUpDisplay(){
+        return customersPage.isOfflineModePopUpDisplay();
+    }
+    public static void clickActiveOfflineMode(){
+        customersPage.clickActiveOfflineMode();
+    }
+    public static boolean isHangTightPopUpDisplay()throws InterruptedException{
+        return customersPage.isHangTightPopUpDisplay();
+    }
+    public static boolean searchItemNotFound(){
+        return customersPage.isFilterProcessingTypeWork();
+    }
 
 
 }
