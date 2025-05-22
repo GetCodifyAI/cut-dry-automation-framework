@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyThatUserCanChangeTheUnitOfMeasureForItemsInOfflineModeTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    static String DistributorName = OfflineOrderingData.DISTRIBUTOR_NAME;
     static String customerId = DistributorOrderData.RESTAURANT_TEST_HAYES_ID;
     static String CompanyName = OfflineOrderingData.SUPPLIER_NAME;
     static String searchItemCode = "01409";
