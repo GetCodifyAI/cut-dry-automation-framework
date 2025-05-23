@@ -1277,11 +1277,11 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "40 11 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * clone_ifc_regression 00 22
+          cron: "00 22 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * clone_ifc_regression 00 22
           filters:
             branches:
               only:
-                - clone_ifc_regression
+                - main
     jobs:
       - nightly-build-and-test-1
       - nightly-build-and-test-2
@@ -1299,11 +1299,11 @@ workflows:
   scheduled-test-1-sub1:
     triggers:
       - schedule:
-          cron: "40 12 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
+          cron: "00 23 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
           filters:
             branches:
               only:
-                - clone_ifc_regression
+                - main
     jobs:
       - nightly-build-and-test-6
       - nightly-build-and-test-7
