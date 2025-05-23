@@ -981,6 +981,7 @@ public class SettingsPage extends LoginPage{
         }
     }
     public void clickConfigureAlert()throws InterruptedException{
+        distributorUI.isDisplayed(btn_configureAlerts,60);
         distributorUI.click(btn_configureAlerts);
     }
     public void clickConfigureOrderReminderDropDown(String dropDown)throws InterruptedException{
