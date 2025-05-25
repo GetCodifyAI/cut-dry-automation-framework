@@ -49,6 +49,17 @@ public class VerifyTheRemoveANewlyAddedUOMsToAnItemAndCheckFromTheDistributorAnd
         Catalog.selectItemFromGrid(searchItemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),searchItemCode,"Error in getting Item Code");
         Catalog.navigateToPricingAndPromotions();
+
+        // Pre-condition to add UOM
+        Catalog.addUnitOfMeasureStable(UOM);
+        Catalog.selectUnitFromDropdown(UOM);
+        Catalog.setItemUnitPrice(UOM, itemPrice);
+        Catalog.selectDollarValueAsSalesTypeFrmDropdown(UOM);
+        Catalog.setSaleValue(UOM, saleValue);
+        Catalog.saveChanges();
+        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in creating UOM");
+
+        // Test case to remove UOM
         Catalog.deleteUOMFromCatalog(UOM);
         softAssert.assertTrue(Catalog.deleteUOMOverlayDisplayed(),"UOM delete overlay displaying ERROR");
         Catalog.DeleteConfirm();
