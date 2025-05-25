@@ -729,6 +729,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By txt_offlineMode = By.xpath("//div[text()='Offline Mode']");
     By btn_activeOfflineMode = By.xpath("//button[text()='Activate Offline Mode']");
     By txt_hangTight = By.xpath("//div[contains(text(),'Hang tight')]");
+    By btn_activeOnLineMode = By.xpath("//span[text()='Go Online']");
+    By txt_catalog = By.xpath("//div[contains(text(), 'Sections')]");
 
 
 
@@ -4336,6 +4338,21 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isHangTightPopUpDisplay()throws InterruptedException{
         return distributorUI.isDisplayed(txt_hangTight);
+    }
+    public boolean isCatalogButtonClickable()throws InterruptedException{
+        return distributorUI.isElementEnabled(btn_catalog);
+    }
+    public void clickGoOnline()throws InterruptedException{
+        distributorUI.click(btn_activeOnLineMode);
+    }
+    public boolean isMoreOptionDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(btn_moreOptions);
+    }
+    public boolean isOfflineModeOptionDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(dropdown_option_SwitchToOfflineMode);
+    }
+    public boolean isCatalogTextDisplayed() {
+        return distributorUI.isDisplayed(txt_catalog);
     }
 
 

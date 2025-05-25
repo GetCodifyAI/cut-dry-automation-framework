@@ -2569,6 +2569,19 @@ public class Customer {
     public static boolean searchItemNotFound(){
         return customersPage.isFilterProcessingTypeWork();
     }
+    public static boolean isCatalogButtonClickable()throws InterruptedException{
+        return customersPage.isCatalogButtonClickable();
+    }
+    public static void clickGoOnline()throws InterruptedException{
+        customersPage.clickGoOnline();
+    }
+    public static boolean isMoreOptionDisplay()throws InterruptedException{
+        return customersPage.isMoreOptionDisplay();
+    }
+    public static boolean isOfflineModeOptionDisplay()throws InterruptedException{
+        return customersPage.isOfflineModeOptionDisplay();
+    }
+    public static boolean isUserNavigatedToCatalog(){return customersPage.isCatalogTextDisplayed();}
 
 
 }
