@@ -272,6 +272,11 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     }
     public void clickOnPreviewCatalog() {
         distributorUI.click(btn_previewCat);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public boolean isNavigatedToPreviewCatalog() {
         return distributorUI.isDisplayed(txt_previewCat);
