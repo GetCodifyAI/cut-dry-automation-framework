@@ -2582,6 +2582,18 @@ public class Customer {
         return customersPage.isOfflineModeOptionDisplay();
     }
     public static boolean isUserNavigatedToCatalog(){return customersPage.isCatalogTextDisplayed();}
+    public static boolean isChatIconDisplay(String code){
+        return customersPage.isChatIconDisplay(code);
+    }
+    public static void clickChatIcon(String code){
+        customersPage.clickChatIcon(code);
+    }
+    public static boolean isChatButtonDisplayed()throws InterruptedException{
+        return customersPage.isChatButtonDisplayed();
+    }
+    public static void clickChatButtonInCustomerProfile()throws InterruptedException{
+         customersPage.clickChatButtonInCustomerProfile();
+    }
 
 
 }

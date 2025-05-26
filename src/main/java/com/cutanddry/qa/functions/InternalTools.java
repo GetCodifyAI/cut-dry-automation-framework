@@ -186,4 +186,10 @@ public class InternalTools {
     public static void clickOfflineOrderingToggle(boolean status){
         internalToolsPage.clickOfflineOrderingToggle(status);
     }
+    public static void clickChatCheckbox(boolean status){
+        internalToolsPage.clickChatCheckbox(status);
+    }
+    public static void clickSaveChanges() throws InterruptedException {
+        internalToolsPage.clickSaveChanges();
+    }
 }

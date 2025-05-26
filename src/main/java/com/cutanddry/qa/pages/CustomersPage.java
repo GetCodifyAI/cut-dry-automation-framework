@@ -731,6 +731,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By txt_hangTight = By.xpath("//div[contains(text(),'Hang tight')]");
     By btn_activeOnLineMode = By.xpath("//span[text()='Go Online']");
     By txt_catalog = By.xpath("//div[contains(text(), 'Sections')]");
+    String btnChat = "//td[text()='CODE']/../td[7]//*[name()='svg' and @data-icon='comments']";
+    By btn_ChatCustomerProfile = By.xpath("//button[contains(text(),'Chat')]");
 
 
 
@@ -4353,6 +4355,18 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isCatalogTextDisplayed() {
         return distributorUI.isDisplayed(txt_catalog);
+    }
+    public boolean isChatIconDisplay(String code){
+       return distributorUI.isDisplayed(By.xpath(btnChat.replace("CODE",code)));
+    }
+    public void clickChatIcon(String code){
+        distributorUI.click(By.xpath(btnChat.replace("CODE",code)));
+    }
+    public boolean isChatButtonDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(btn_ChatCustomerProfile);
+    }
+    public void clickChatButtonInCustomerProfile()throws InterruptedException{
+         distributorUI.click(btn_ChatCustomerProfile);
     }
 
 
