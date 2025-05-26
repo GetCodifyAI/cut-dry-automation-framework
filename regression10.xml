@@ -84,6 +84,9 @@
             <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOfflineOrderingDisplayWhenOfflineOrderingToggleEnableTest"/>
             <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOfflineOrderingNotDisplayWhenOfflineOrderingToggleOffTest"/>
 
+            <class name="com.cutanddry.qa.tests.chat.VerifyTheChatFeatureDisplayInDPPortalWhenChatModuleEnableTest"/>
+            <class name="com.cutanddry.qa.tests.chat.VerifyTheChatFeatureNotDisplayInDPPortalWhenChatModuleDisableTest"/>
+
         </classes>
     </test>
 </suite>
