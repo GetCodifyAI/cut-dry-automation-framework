@@ -1277,15 +1277,15 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "35 11 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * clone_ifc_regression 00 22
+          cron: "35 01 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * clone_ifc_regression 00 22
           filters:
             branches:
               only:
                 - clone_ifc_regression
     jobs:
-      - nightly-build-and-test-1
-#      - nightly-build-and-test-2
-#      - nightly-build-and-test-3
+#      - nightly-build-and-test-1
+      - nightly-build-and-test-2
+      - nightly-build-and-test-3
 #      - nightly-build-and-test-4
 #      - nightly-build-and-test-5
 #      - calculate-pass-fail-rate:
@@ -1305,7 +1305,7 @@ workflows:
               only:
                 - clone_ifc_regression
     jobs:
-      - nightly-build-and-test-6
+#      - nightly-build-and-test-6
 #      - nightly-build-and-test-7
 #      - nightly-build-and-test-8
 #      - nightly-build-and-test-9
