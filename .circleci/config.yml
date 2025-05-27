@@ -1305,18 +1305,18 @@ workflows:
               only:
                 - clone_ifc_regression
     jobs:
-#      - nightly-build-and-test-6
-#      - nightly-build-and-test-7
-#      - nightly-build-and-test-8
-#      - nightly-build-and-test-9
-#      - nightly-build-and-test-10
-#      - calculate-pass-fail-rate:
-#          requires:
-#            - nightly-build-and-test-6
-#            - nightly-build-and-test-7
-#            - nightly-build-and-test-8
-#            - nightly-build-and-test-9
-#            - nightly-build-and-test-10
+      - nightly-build-and-test-6
+      - nightly-build-and-test-7
+      - nightly-build-and-test-8
+      - nightly-build-and-test-9
+      - nightly-build-and-test-10
+      - calculate-pass-fail-rate:
+          requires:
+            - nightly-build-and-test-6
+            - nightly-build-and-test-7
+            - nightly-build-and-test-8
+            - nightly-build-and-test-9
+            - nightly-build-and-test-10
 
   scheduled-test-2:
     triggers:
