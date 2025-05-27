@@ -24,7 +24,7 @@ public class ValidateTheSpotPricingWhenSelectingMultipleUOMTest extends TestBase
     static String uom2 = CatalogData.MULTI_UOM_2;
     static String orderId;
     static String multiItemName, multiSearchItemCode,spotPrice1,marginValue1, marginPercentage1,spotPrice2,marginValue2, marginPercentage2;
-    static double itemOGPriceUOM1, itemOGPriceUOM2, totalOGItemPrice, multiItemPrice, totalCartAmount;
+    static double itemOGPriceUOM1, itemOGPriceUOM2, totalOGItemPrice, multiItemPrice, totalCartAmount, salesPrice1, salesPrice2;
 
 
     @BeforeMethod
@@ -59,8 +59,10 @@ public class ValidateTheSpotPricingWhenSelectingMultipleUOMTest extends TestBase
 
         Customer.editMarginMultiUOM(uom1);
         softAssert.assertTrue(Customer.isMarginValuePopupDisplayed(),"popup error");
-        Customer.enterSpotPriceMultiUOM(uom1,"200");
-        Customer.enterSpotPriceMultiUOM(uom2,"200");
+        salesPrice1 = Double.parseDouble(Customer.getSalesCostMultiUOM(uom1));
+        salesPrice2 = Double.parseDouble(Customer.getSalesCostMultiUOM(uom2));
+        Customer.enterSpotPriceMultiUOM(uom1,String.valueOf(salesPrice1 + 200));
+        Customer.enterSpotPriceMultiUOM(uom2,String.valueOf(salesPrice2 + 200));
         Customer.updateMarginValues();
 
         Customer.editMarginMultiUOM(uom1);
@@ -74,9 +76,9 @@ public class ValidateTheSpotPricingWhenSelectingMultipleUOMTest extends TestBase
         softAssert.assertTrue(Customer.isSpotPriceAdded(spotPrice1),"update spot price error - "+uom1);
         softAssert.assertTrue(Customer.isItemValueAdded(marginValue1),"update error value - "+uom1);
         softAssert.assertTrue(Customer.isItemPercentageAdded(marginPercentage1),"update error percentage - "+uom1);
-        softAssert.assertTrue(Customer.isSpotPriceAdded(spotPrice2),"update spot price error - "+uom1);
-        softAssert.assertTrue(Customer.isItemValueAdded(marginValue2),"update error value - "+uom1);
-        softAssert.assertTrue(Customer.isItemPercentageAdded(marginPercentage2),"update error percentage - "+uom1);
+        softAssert.assertTrue(Customer.isSpotPriceAdded(spotPrice2),"update spot price error - "+uom2);
+        softAssert.assertTrue(Customer.isItemValueAdded(marginValue2),"update error value - "+uom2);
+        softAssert.assertTrue(Customer.isItemPercentageAdded(marginPercentage2),"update error percentage - "+uom2);
 
 
         Customer.editMarginMultiUOM(uom1);
@@ -149,7 +151,8 @@ public class ValidateTheSpotPricingWhenSelectingMultipleUOMTest extends TestBase
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
-
+        Customer.OrderDateSort();
+        Customer.OrderDateSort();
         double actualPrice = Double.parseDouble(Customer.getPriceInCustomerOrder().replace("$", "").replace(",", "").trim());
         softAssert.assertEquals(actualPrice, totalOGItemPrice, "The total values in the submission and the total displayed in the Customer Profile Orders section do not match.");
 

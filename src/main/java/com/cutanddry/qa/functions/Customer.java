@@ -2139,6 +2139,13 @@ public class Customer {
             customersPage.clickOGAddToCartPlusIcon(code,uom);
         }
     }
+
+    public static void clickOGAddToCartMinusIcon(int count,String code, String uom) throws InterruptedException{
+        for (int i=0; i<count;i++){
+            customersPage.clickOGAddToCartMinusIcon(code,uom);
+        }
+    }
+
     public static String getMultiOrderedId(String num) {
         return customersPage.getMultiOrderedId(num);
     }
@@ -2228,6 +2235,10 @@ public class Customer {
 
     public static void enterSpotPriceMultiUOM(String uomPosition, String val) throws InterruptedException {
         customersPage.enterSpotPriceMultiUOM(uomPosition, val);
+    }
+
+    public static String getSalesCostMultiUOM(String uomPosition) throws InterruptedException {
+        return customersPage.getSalesCostMultiUOM(uomPosition);
     }
 
     public static void enterMarginValueMultiUOM(String uomPosition, String val) throws InterruptedException {
@@ -2553,6 +2564,46 @@ public class Customer {
     }
     public static boolean isCatalogAccessDisplay(){
         return customersPage.isCatalogAccessDisplay();
+    }
+    public static void clickSwitchToOfflineMode(){
+        customersPage.clickSwitchToOfflineMode();
+    }
+    public static boolean isOfflineModePopUpDisplay(){
+        return customersPage.isOfflineModePopUpDisplay();
+    }
+    public static void clickActiveOfflineMode(){
+        customersPage.clickActiveOfflineMode();
+    }
+    public static boolean isHangTightPopUpDisplay()throws InterruptedException{
+        return customersPage.isHangTightPopUpDisplay();
+    }
+    public static boolean searchItemNotFound(){
+        return customersPage.isFilterProcessingTypeWork();
+    }
+    public static boolean isCatalogButtonClickable()throws InterruptedException{
+        return customersPage.isCatalogButtonClickable();
+    }
+    public static void clickGoOnline()throws InterruptedException{
+        customersPage.clickGoOnline();
+    }
+    public static boolean isMoreOptionDisplay()throws InterruptedException{
+        return customersPage.isMoreOptionDisplay();
+    }
+    public static boolean isOfflineModeOptionDisplay()throws InterruptedException{
+        return customersPage.isOfflineModeOptionDisplay();
+    }
+    public static boolean isUserNavigatedToCatalog(){return customersPage.isCatalogTextDisplayed();}
+    public static boolean isChatIconDisplay(String code){
+        return customersPage.isChatIconDisplay(code);
+    }
+    public static void clickChatIcon(String code){
+        customersPage.clickChatIcon(code);
+    }
+    public static boolean isChatButtonDisplayed()throws InterruptedException{
+        return customersPage.isChatButtonDisplayed();
+    }
+    public static void clickChatButtonInCustomerProfile()throws InterruptedException{
+         customersPage.clickChatButtonInCustomerProfile();
     }
 
 

@@ -117,7 +117,8 @@ public class ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest extends TestB
             Orders.clickOnConfirm();
             softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
         }
-        Orders.clickOnClose();
+//        Orders.clickOnClose();
+        Customer.clickClose();
 
         Dashboard.navigateToCustomers();
         Customer.refreshCustomersPage();
@@ -125,6 +126,8 @@ public class ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest extends TestB
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
+        Customer.OrderDateSort();
+        Customer.OrderDateSort();
 
         double actualPrice = Double.parseDouble(Customer.getPriceInCustomerOrder().replace("$", ""));
         softAssert.assertEquals(actualPrice, totalCartAmount, "The total values in the submission and the total displayed in the Customer Profile Orders section do not match.");

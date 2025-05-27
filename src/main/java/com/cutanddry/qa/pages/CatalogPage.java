@@ -203,6 +203,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     String btn_alreadyCustomer = "//button[text()='BUTTON']";
     By multiUomOptionEach =By.xpath("//div[text()='Each']");
     By getTotalLineItem = By.xpath("//td[contains(text(),'Total Line Items')]/following-sibling::td");
+    String multiUOMOption ="(//div[text()='OPTION'])[last()]";
 
 
 
@@ -271,6 +272,11 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     }
     public void clickOnPreviewCatalog() {
         distributorUI.click(btn_previewCat);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public boolean isNavigatedToPreviewCatalog() {
         return distributorUI.isDisplayed(txt_previewCat);
@@ -1099,6 +1105,16 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     }
     public String getTotalLineItemInOrder(){
         return distributorUI.getText(getTotalLineItem);
+    }
+
+    public void clickOnMultiUomDropDownOrderGuide(String code,String option)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(multiUomDropDownOG.replace("CODE", code)));
+        distributorUI.click(By.xpath(multiUomDropDownOG.replace("CODE", code)));
+        distributorUI.click(By.xpath(multiUOMOption.replace("OPTION", option)));
+        distributorUI.waitForCustom(3000);
+    }
+    public boolean isMeasureOptionDisplay(String option){
+        return distributorUI.isDisplayed(By.xpath(multiUOMOption.replace("OPTION", option)));
     }
 
 }

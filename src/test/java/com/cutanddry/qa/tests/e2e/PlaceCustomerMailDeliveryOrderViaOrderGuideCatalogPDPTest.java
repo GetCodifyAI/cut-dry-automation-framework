@@ -43,8 +43,6 @@ public class PlaceCustomerMailDeliveryOrderViaOrderGuideCatalogPDPTest extends T
         itemName = Customer.getItemNameFirstRow();
         searchItemCode = Customer.getItemCodeFirstRow();
         itemPrice = Customer.getActiveItemPriceFirstRow();
-        System.out.println(itemPrice);
-//        Customer.increaseFirstRowQtyCustom(1);
         Customer.clickOnPlusIconInCatalogPDP(1, itemName);
         softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice,"The item has not been selected.");
 
@@ -52,14 +50,12 @@ public class PlaceCustomerMailDeliveryOrderViaOrderGuideCatalogPDPTest extends T
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(searchItemCode);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
-//        Customer.clickPlusSearchedSingleItem(1);
         Customer.clickOnPlusIconInCatalogPDP(1, itemName);
         softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice*2,"The item has not been selected.");
 
         // Add the product via PDP
         Customer.clickOnProduct(itemName);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
-//        Customer.clickPlusSearchedSingleItem(1);
         Customer.clickOnPlusIconInCatalogPDP(1, itemName);
         softAssert.assertEquals(Math.round(Customer.getItemPriceOnCheckoutButtonViaPDP() * 100.0) / 100.0,
                 Math.round(itemPrice * 3 * 100.0) / 100.0, "The item has not been selected.");

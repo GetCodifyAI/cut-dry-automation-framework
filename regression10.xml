@@ -68,6 +68,25 @@
             <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheChildTagDisplayTest"/>
             <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureOnUITest"/>
 
+            <class name="com.cutanddry.qa.tests.order_desk.VerifyPendingOrderIndicatorInNavigationTest"/>
+
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyUserCanSwitchOfflineModeFromTheMoreOptionsOnTheOGWhenTheDeviceHasNetworkConnectivityTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatEntireOrderGuideIsDownloadedSuccessfullyUponSwitchingToOfflineModeTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOnceInOfflineModeTheUserCanAddUpdateItemsToTheCartTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatUserCanChangeTheUnitOfMeasureForItemsInOfflineModeTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyUserCanSearchForItemsInTheOrderGuideWhileInOfflineModeTest"/>
+
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatAccessCatalogAndOrderSubmissionIsDisabledWhileInOfflineModeTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatSwitchingBackToOnlineModeTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsAvailableInDraftOrdersTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsAvailableInStandingOrdersTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsNotAvailableInEditOrdersTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOfflineOrderingDisplayWhenOfflineOrderingToggleEnableTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOfflineOrderingNotDisplayWhenOfflineOrderingToggleOffTest"/>
+
+            <class name="com.cutanddry.qa.tests.chat.VerifyTheChatFeatureDisplayInDPPortalWhenChatModuleEnableTest"/>
+            <class name="com.cutanddry.qa.tests.chat.VerifyTheChatFeatureNotDisplayInDPPortalWhenChatModuleDisableTest"/>
+
         </classes>
     </test>
 </suite>

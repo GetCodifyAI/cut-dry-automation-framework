@@ -12,10 +12,15 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.util.Random;
+
 public class UpdateUserNonConfigDPsTest extends TestBase {
     static User user;
-    static String name = "Test 99";
-    static String email = "test00@email.com";
+//    static String name = "Test 99";
+//    static String email = "test00@email.com";
+    static int randomNumber = new Random().nextInt(1000);
+    static String name = "Testnoconfig" + randomNumber;
+    static String email = "test"+randomNumber+"@email.com";
 
     @BeforeMethod
     public void setUp(){
@@ -29,11 +34,23 @@ public class UpdateUserNonConfigDPsTest extends TestBase {
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+
         Dashboard.navigateToTeamSettings();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");
+
+        // Create a new user as pre-request
+        Settings.clickOnAddUser();
+        Settings.enterName(name);
+        Settings.enterEmail(email);
+        Settings.clickOnInviteUser();
+        softAssert.assertTrue(Settings.isUserDisplayed(name),"user adding error");
+
+        // Testing flow as Update user
         Settings.clickOnEditUser(name);
         Settings.enterEmail(email);
         Settings.clickOnSaveChanges();
+
+        softAssert.assertFalse(Settings.userCleanUp(name),"The user cannot be removed.");
         softAssert.assertAll();
     }
 

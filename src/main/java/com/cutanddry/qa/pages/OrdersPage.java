@@ -25,7 +25,7 @@ public class OrdersPage extends LoginPage{
     By txt_editOrder = By.xpath("//span/div[contains(text(),'Edit Order')]");
     By link_editOrder = By.xpath("//*[contains(text(),'Edit Order')]");
     By reviewOrderText = By.xpath("//div[contains(text(),'Review Order')]");
-    By orderUpdatedText = By.xpath("//h2[contains(text(),'Order Updated')]");
+    By orderUpdatedText = By.xpath("//*[contains(text(),'Order edit requested')]");
     By txt_submitPopup = By.xpath("//h2[contains(text(),'Submit Changes?')]");
     By btn_close = By.xpath("//button[contains(text(),'Close')]");
     By btn_bulkActions =    By.xpath("//button[span[contains(., 'Bulk Actions')]]");
@@ -506,6 +506,11 @@ public class OrdersPage extends LoginPage{
     }
     public void clickOkButton(){
         distributorUI.click(btn_ok);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void clickOrderStatus(){
         distributorUI.click(btn_orderStatus);
@@ -521,6 +526,11 @@ public class OrdersPage extends LoginPage{
     public void selectOrderStatusOption(String status) {
 
         distributorUI.click(By.xpath(lbl_orderStatusOption.replace("STATUS",status)));
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public boolean isOrderStatusUpdatedDisplayed(String status){
         try {

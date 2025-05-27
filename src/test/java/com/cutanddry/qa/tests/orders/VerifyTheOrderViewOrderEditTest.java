@@ -19,7 +19,7 @@ import java.time.format.DateTimeFormatter;
 public class VerifyTheOrderViewOrderEditTest extends TestBase {
     static User user;
     String creditStatus = "Submitted";
-    String date = "Last 90 Days";
+    String date = "Last 60 Days";
 
     @BeforeMethod
     public void setUp() {
@@ -45,7 +45,8 @@ public class VerifyTheOrderViewOrderEditTest extends TestBase {
         Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItems();
         softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(),"update popup error");
-        Orders.clickOnClose();
+//        Orders.clickOnClose();
+        Customer.clickClose();
         softAssert.assertAll();
     }
 

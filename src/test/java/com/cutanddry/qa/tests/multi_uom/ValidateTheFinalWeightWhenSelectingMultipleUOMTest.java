@@ -123,7 +123,7 @@ public class ValidateTheFinalWeightWhenSelectingMultipleUOMTest extends TestBase
             Orders.clickOnConfirm();
             softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
         }
-        Orders.clickOnClose();
+        Customer.clickClose();
 
         Dashboard.navigateToCustomers();
         Customer.refreshCustomersPage();
@@ -131,7 +131,8 @@ public class ValidateTheFinalWeightWhenSelectingMultipleUOMTest extends TestBase
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
-
+        Customer.OrderDateSort();
+        Customer.OrderDateSort();
         double actualPrice = Double.parseDouble(Customer.getPriceInCustomerOrder().replace("$", "").replace(",", "").trim());
         softAssert.assertEquals(actualPrice, totalCartAmount, "The total values in the submission and the total displayed in the Customer Profile Orders section do not match.");
         softAssert.assertAll();
