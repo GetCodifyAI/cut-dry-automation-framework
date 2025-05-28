@@ -35,6 +35,7 @@ public class RemoveUserWhiteLabelPortalTest extends TestBase {
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");
 
         //Pre-request
+        Settings.deleteUser(name);
         Settings.addUser(name,email);
 
         Settings.clickOnUser(name);

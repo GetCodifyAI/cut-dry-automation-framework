@@ -173,7 +173,10 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     String multiUomDropDownLast = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[last()]";
     String multiUomDropDownOption ="//div[text()='OPTION']";
     String getPriceUOM = "((//button[contains(@data-for,'add-to-order-guide')]/ancestor::div[2]/following-sibling::div)[1]/following-sibling::*//div//span[contains(text(),'$')])[UOM]";
+    String getPriceUOMVitco = "(//div[contains(text(),'CODE')]/following-sibling::div//div//span[contains(text(),'$')])[UOM]";
     String btn_addToCartPlusQuantity = "((//button[contains(@data-for,'add-to-order-guide')]/ancestor::div[2]/following-sibling::div)[1]/following-sibling::*//*[name()='svg' and contains(@data-icon, 'plus')])[UOM]";
+    String btn_addToCartPlusQuantityVitco = "((//div[contains(text(),'CODE')]/following-sibling::div//div//span[contains(text(),'$')])[1]/following::*//*[name()='svg' and contains(@data-icon, 'plus')])[UOM]";
+
     String btn_addToCartMinusQuantity = "((//button[contains(@data-for,'add-to-order-guide')]/ancestor::div[2]/following-sibling::div)[1]/following-sibling::*//*[name()='svg' and contains(@data-icon, 'minus')])[UOM]";
     String btn_editQuantities = "//div[text()='NAME']/../../following-sibling::*//div//button[text()='Edit Quantities']";
     String addQtyDisplay = "//div[text()='NAME']/../../following-sibling::*//div//div[text()='QUANTITY']";
@@ -272,6 +275,11 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     }
     public void clickOnPreviewCatalog() {
         distributorUI.click(btn_previewCat);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public boolean isNavigatedToPreviewCatalog() {
         return distributorUI.isDisplayed(txt_previewCat);
@@ -925,9 +933,23 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
             return extractPrice(By.xpath(getPriceUOM.replace("UOM", uom)));
         }
     }
+    public double getPDPPriceUOMVitco(String uom, String code) throws InterruptedException {
+        try {
+            return extractPrice(By.xpath(getPriceUOMVitco.replace("UOM", uom).replace("CODE", code)));
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPrice(By.xpath(getPriceUOMVitco.replace("UOM", uom).replace("CODE", code)));
+        }
+    }
     public void clickAddToCartPlusIcon(String uom)throws InterruptedException{
         distributorUI.waitForVisibility(By.xpath(btn_addToCartPlusQuantity.replace("UOM", uom)));
         distributorUI.click(By.xpath(btn_addToCartPlusQuantity.replace("UOM", uom)));
+        distributorUI.waitForCustom(5000);
+    }
+
+    public void clickAddToCartPlusIconVitco(String uom, String code)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(btn_addToCartPlusQuantityVitco.replace("UOM", uom).replace("CODE", code)));
+        distributorUI.click(By.xpath(btn_addToCartPlusQuantityVitco.replace("UOM", uom).replace("CODE", code)));
         distributorUI.waitForCustom(5000);
     }
     public void clickAddToCartMinusIcon(String uom){

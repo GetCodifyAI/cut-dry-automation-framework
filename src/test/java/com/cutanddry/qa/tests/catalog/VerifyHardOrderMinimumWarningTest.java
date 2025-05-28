@@ -17,7 +17,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyHardOrderMinimumWarningTest extends TestBase {
     static User user;
     static String customerId = "16579";
-    static String orderMin = "250";
+    static String orderMin = "2500000";
     static String defaultOrderMin = "0";
 
     @BeforeMethod

@@ -2144,13 +2144,15 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.getText(By.xpath(businessName.replace("CUSTOMERID",customerId))).replace("Child", "").trim();
     }
     public boolean isCustomerProfileDisplayed(String businessName){
+        String result = businessName.substring(0, businessName.indexOf("Test"));
+        System.out.println(result);
         try {
             distributorUI.waitForCustom(3000);
-            distributorUI.waitForVisibility(By.xpath(txt_customerProfile.replace("BUSINESSNAME",businessName)));
+            distributorUI.waitForVisibility(By.xpath(txt_customerProfile.replace("BUSINESSNAME",result)));
         } catch (Exception e){
             return false;
         }
-        return distributorUI.isDisplayed(By.xpath(txt_customerProfile.replace("BUSINESSNAME",businessName)));
+        return distributorUI.isDisplayed(By.xpath(txt_customerProfile.replace("BUSINESSNAME",result)));
     }
     public void clickMoreOption(){
         distributorUI.click(btn_moreOption);

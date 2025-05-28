@@ -23,10 +23,10 @@ public class VerifyTheSoftOrderMinimumSelectingMultipleUOMTest extends TestBase 
     String uom1 = CatalogData.MULTI_UOM_1;
     String uom2 = CatalogData.MULTI_UOM_2;
     static String orderId,totalItemQuantityReviewOrder;
-    static String orderMin = "300";
+    static String orderMin = "200000";
     static String defaultOrderMin = "0";
     static String orderMinimumType = "Soft Order Minimum";
-    static String orderMinInternal = "30000";
+    static String orderMinInternal = "300000";
 
     @BeforeMethod
     public void setUp() {
@@ -102,6 +102,7 @@ public class VerifyTheSoftOrderMinimumSelectingMultipleUOMTest extends TestBase 
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation error");
         Settings.enterOrderMinimum(defaultOrderMin);
+        Settings.setOrderMinimums(true);
         Settings.clickOnSaveChanges();
         softAssert.assertAll();
     }

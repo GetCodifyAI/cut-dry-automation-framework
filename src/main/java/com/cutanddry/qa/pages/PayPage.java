@@ -393,8 +393,9 @@ public class PayPage extends LoginPage{
         distributorUI.click(By.xpath(SearchedCustomer.replace("CUSTOMER",customer)));
     }
     public boolean isCustomerInvoiceSectionDisplayed(String customer){
-        distributorUI.waitForVisibility(By.xpath(txt_customerInvoice.replace("CUSTOMER",customer)));
-        return distributorUI.isDisplayed(By.xpath(txt_customerInvoice.replace("CUSTOMER",customer)));
+        String result = customer.substring(0, customer.indexOf("Test"));
+        distributorUI.waitForVisibility(By.xpath(txt_customerInvoice.replace("CUSTOMER",result)));
+        return distributorUI.isDisplayed(By.xpath(txt_customerInvoice.replace("CUSTOMER",result)));
     }
 
     // Invoice
