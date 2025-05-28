@@ -1,13 +1,5 @@
 version: 2.1
 
-parameters:
-  jmeter_script:
-    type: enum
-    enum:
-      - dpCustomerCatalog.jmx
-      - generalCatalog.jmx
-    default: dpCustomerCatalog.jmx
-
 executors:
   jmeter-executor:
     docker:
@@ -19,9 +11,6 @@ jobs:
 
   jmeter-test:
     executor: jmeter-executor
-    parameters:
-      jmeter_script:
-        type: string
     steps:
       - checkout
       - run:
@@ -123,8 +112,14 @@ jobs:
           command: |
             export JMETER_HOME=$PWD/apache-jmeter-5.6.3
             export PATH=$JMETER_HOME/bin:$PATH
-            TEST_PLAN=src/test/jmeter-tests/scripts/<< parameters.jmeter_script >>
-            $JMETER_HOME/bin/jmeter -n -t "$TEST_PLAN" -l results/test_results.jtl -e -o results/report -j jmeter.log -Jlog_level.jmeter=DEBUG
+            $JMETER_HOME/bin/jmeter -n -t src/test/jmeter-tests/scripts/dpCustomerCatalog.jmx -l results/test_results.jtl -e -o results/report -j jmeter.log -Jlog_level.jmeter=DEBUG
+            cat jmeter.log
+      - run:
+          name: Run JMeter Test
+          command: |            
+            export JMETER_HOME=$PWD/apache-jmeter-5.6.3
+            export PATH=$JMETER_HOME/bin:$PATH
+            $JMETER_HOME/bin/jmeter -n -t src/test/jmeter-tests/scripts/generalCatalog.jmx -l results/test_results.jtl -e -o results/report -j jmeter.log -Jlog_level.jmeter=DEBUG
             cat jmeter.log
 
 
@@ -140,11 +135,9 @@ workflows:
 #              only:
 #                - catalog_performance
     jobs:
-#       - jmeter-test
-      - approve-before-run:
-          type: approval
-      - jmeter-test:
-          name: run-selected-jmeter-test
-          requires:
-            - approve-before-run
-          test_script: << pipeline.parameters.test_script >>
+       - jmeter-test
+#      - approve-before-run:
+#          type: approval
+#      - jmeter-test:
+#          requires:
+#            - approve-before-run
