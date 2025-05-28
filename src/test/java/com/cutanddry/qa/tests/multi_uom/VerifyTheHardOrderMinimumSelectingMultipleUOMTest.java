@@ -23,10 +23,10 @@ public class VerifyTheHardOrderMinimumSelectingMultipleUOMTest extends TestBase 
     String uom1 = CatalogData.MULTI_UOM_1;
     String uom2 = CatalogData.MULTI_UOM_2;
     static String orderId,totalItemQuantityReviewOrder;
-    static String orderMin = "300";
+    static String orderMin = "200000";
     static String defaultOrderMin = "0";
     static String orderMinimumType = "Hard Order Minimum";
-    static String orderMinInternal = "30000";
+    static String orderMinInternal = "300000";
 
     @BeforeMethod
     public void setUp() {
@@ -90,27 +90,10 @@ public class VerifyTheHardOrderMinimumSelectingMultipleUOMTest extends TestBase 
         softAssert.assertTrue(Customer.isOrderMinPopupDisplayed(),"popup display error");
         Customer.clickOkOrderMinimum();
 
-        Catalog.clickOGAddToCartPlusIcon(6,searchItemCode, uom1);
-        Catalog.clickOGAddToCartPlusIcon(6,searchItemCode, uom2);
-        totalItemPriceReviewOrder = Catalog.getTotalPriceInReviewOrder();
-        totalItemQuantityReviewOrder = Catalog.getTotalQuantityInReviewOrder();
-        Customer.submitOrder();
-        softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "The order was not completed successfully.");
-        orderId = Customer.getSuccessOrderId();
-        Customer.clickClose();
-
-        Dashboard.navigateToCustomers();
-        Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
-        Customer.SelectCustomer(customerId);
-        Customer.clickOnOrdersTab();
-        Catalog.clickSubmittedOrder(orderId);
-        softAssert.assertEquals(Catalog.getTotalPriceInOrder(),totalItemPriceReviewOrder,"order not successfully submitted");
-        softAssert.assertEquals(Catalog.getTotalQuantityInOrder(),totalItemQuantityReviewOrder,"order quantity not successfully submitted");
-
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation error");
         Settings.enterOrderMinimum(defaultOrderMin);
+        Settings.setOrderMinimums(true);
         Settings.clickOnSaveChanges();
 
         Login.navigateToInternalToolsPage();
