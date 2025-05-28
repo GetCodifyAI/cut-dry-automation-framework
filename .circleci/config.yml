@@ -45,10 +45,21 @@ jobs:
       - run:
           name: Ensure results directory exists
           command: mkdir -p results
+#      - run:
+#          name: Verify ChromeDriver
+#          command: |
+#            which chromedriver
+#            chromedriver --version
       - run:
-          name: Verify ChromeDriver
+          name: Install Specific Chrome Version
           command: |
-            which chromedriver
+            sudo apt-get remove -y google-chrome-stable || true
+
+            wget https://edgedl.me.gvt1.com/edgedl/chrome/install/7103.113/google-chrome-stable_current_amd64.deb -O chrome136.deb
+
+            sudo apt-get install -y ./chrome136.deb
+
+            google-chrome --version
             chromedriver --version
       - run:
           name: Install JMeter
