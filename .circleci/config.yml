@@ -26,12 +26,21 @@ jobs:
             source $BASH_ENV
             java -version
       - run:
-          name: Install Chrome
+          name: Install Chrome 136.0.7103.113
           command: |
-            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            CHROME_VERSION=136.0.7103.113
+
+            # Install required dependencies
             sudo apt-get update
-            sudo apt-get install -y google-chrome-stable
+            sudo apt-get install -y wget unzip libglib2.0-0 libnss3 libgconf-2-4 libxss1 libappindicator1 libasound2 libatk-bridge2.0-0 libgtk-3-0 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 libgbm1 fonts-liberation
+
+            # Download and extract Chrome
+            wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/${CHROME_VERSION}/linux64/chrome-linux64.zip
+            unzip chrome-linux64.zip
+            sudo mv chrome-linux64 /opt/chrome
+            sudo ln -sf /opt/chrome/chrome /usr/bin/google-chrome
+
+            # Verify version
             google-chrome --version
 #      - run:
 #          name: Install Chrome
@@ -39,31 +48,31 @@ jobs:
 #            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 #            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 #            sudo apt-get update
-#            sudo apt-get install -y google-chrome-stable=136.0.1985.67-1
+#            sudo apt-get install -y google-chrome-stable
 #            google-chrome --version
-#      - run:
-#          name: Install ChromeDriver
-#          command: |
-#            CHROMEDRIVER_URL="https://storage.googleapis.com/chrome-for-testing-public/135.0.7049.52/linux64/chromedriver-linux64.zip"
-#            wget $CHROMEDRIVER_URL
-#            unzip chromedriver-linux64.zip
-#            sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
-#            sudo chmod +x /usr/local/bin/chromedriver
-#            chromedriver --version
       - run:
-          name: Install ChromeDriver (matching Chrome version)
+          name: Install ChromeDriver
           command: |
-            CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+\.\d+')
-            CHROMEDRIVER_VERSION=$(wget -qO- "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions-with-downloads.json" | \
-              python3 -c "import sys, json; v='$CHROME_VERSION'.rsplit('.',1)[0]; d=json.load(sys.stdin); print(next(x['version'] for x in d['channels'].values() if x['version'].startswith(v)), end='')")
-            echo "Chrome version: $CHROME_VERSION"
-            echo "ChromeDriver version: $CHROMEDRIVER_VERSION"
-            DRIVER_URL="https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/$CHROMEDRIVER_VERSION/linux64/chromedriver-linux64.zip"
-            wget $DRIVER_URL
-            unzip chromedriver-linux64.zip -d chromedriver-linux64
-            sudo mv chromedriver-linux64/chromedriver-linux64/chromedriver /usr/local/bin/
+            CHROMEDRIVER_URL="https://storage.googleapis.com/chrome-for-testing-public/135.0.7049.52/linux64/chromedriver-linux64.zip"
+            wget $CHROMEDRIVER_URL
+            unzip chromedriver-linux64.zip
+            sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
             sudo chmod +x /usr/local/bin/chromedriver
             chromedriver --version
+#      - run:
+#          name: Install ChromeDriver (matching Chrome version)
+#          command: |
+#            CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+\.\d+')
+#            CHROMEDRIVER_VERSION=$(wget -qO- "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions-with-downloads.json" | \
+#              python3 -c "import sys, json; v='$CHROME_VERSION'.rsplit('.',1)[0]; d=json.load(sys.stdin); print(next(x['version'] for x in d['channels'].values() if x['version'].startswith(v)), end='')")
+#            echo "Chrome version: $CHROME_VERSION"
+#            echo "ChromeDriver version: $CHROMEDRIVER_VERSION"
+#            DRIVER_URL="https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/$CHROMEDRIVER_VERSION/linux64/chromedriver-linux64.zip"
+#            wget $DRIVER_URL
+#            unzip chromedriver-linux64.zip -d chromedriver-linux64
+#            sudo mv chromedriver-linux64/chromedriver-linux64/chromedriver /usr/local/bin/
+#            sudo chmod +x /usr/local/bin/chromedriver
+#            chromedriver --version
       - run:
           name: Ensure results directory exists
           command: mkdir -p results
@@ -133,8 +142,9 @@ workflows:
 #              only:
 #                - order_guide_performance
     jobs:
-      - approve-before-run:
-          type: approval
-      - jmeter-test:
-          requires:
-            - approve-before-run
+       - jmeter-test
+#      - approve-before-run:
+#          type: approval
+#      - jmeter-test:
+#          requires:
+#            - approve-before-run
