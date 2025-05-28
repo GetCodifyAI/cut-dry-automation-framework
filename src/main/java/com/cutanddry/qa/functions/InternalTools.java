@@ -47,7 +47,7 @@ public class InternalTools {
         internalToolsPage.clickOnManualSelectionFromDropdown(CatalogDisableOption);
     }
 
-    public static void catalogSettingsSave(){
+    public static void catalogSettingsSave() throws InterruptedException {
         internalToolsPage.clickCatalogSettingsSaveBtn();
     }
     public static void navigateToSponsoredAdsRebatesTab(){
@@ -191,5 +191,14 @@ public class InternalTools {
     }
     public static void clickSaveChanges() throws InterruptedException {
         internalToolsPage.clickSaveChanges();
+    }
+    public static void addCustomerToCatalogDisable(String name) throws InterruptedException {
+        internalToolsPage.addCustomerToCatalogDisable(name);
+    }
+    public static void deleteRestaurantInCatalogDisable(String name){
+        internalToolsPage.deleteRestaurantInCatalogDisable(name);
+    }
+    public static boolean isCatalogDisableRestaurantDisplay(String name){
+        return internalToolsPage.isCatalogDisableRestaurantDisplay(name);
     }
 }
