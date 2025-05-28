@@ -147,4 +147,4 @@ workflows:
           name: run-selected-jmeter-test
           requires:
             - approve-before-run
-          test_script: << pipeline.parameters.jmeter_script >>
+          jmeter_script: << pipeline.parameters.jmeter_script >>
