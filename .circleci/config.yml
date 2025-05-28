@@ -61,7 +61,7 @@ jobs:
             DRIVER_URL="https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/$CHROMEDRIVER_VERSION/linux64/chromedriver-linux64.zip"
             wget $DRIVER_URL
             unzip chromedriver-linux64.zip -d chromedriver-linux64
-            sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
+            sudo mv chromedriver-linux64/chromedriver-linux64/chromedriver /usr/local/bin/
             sudo chmod +x /usr/local/bin/chromedriver
             chromedriver --version
       - run:
