@@ -56,10 +56,10 @@ public class VerifyThSelectMultipleUOMJustInTimeItemAndSubmissionTest extends Te
         Catalog.ClickOnCatalogMultiUomDropDown(itemName);
         Catalog.ClickOnMultiUomDropDownOption(uomDropDownOption);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
-        itemPriceUOM1 = Catalog.getPDPPriceUOM(uom1);
-        itemPriceUOM2 = Catalog.getPDPPriceUOM(uom2);
-        Catalog.clickAddToCartPlusIcon(1, uom1);
-        Catalog.clickAddToCartPlusIcon(1, uom2);
+        itemPriceUOM1 = Catalog.getPDPPriceUOMVitco(uom1,searchItemCode);
+        itemPriceUOM2 = Catalog.getPDPPriceUOMVitco(uom2,searchItemCode);
+        Catalog.clickAddToCartPlusIconVitco(1, uom1,searchItemCode);
+        Catalog.clickAddToCartPlusIconVitco(1, uom2,searchItemCode);
         totalPDPItemPrice = Customer.getItemPriceOnCheckoutButtonViaPDP();
         /*softAssert.assertEquals(Math.round(totalPDPItemPrice * 10.0) / 10.0,
                 (Math.round((itemPriceUOM1 + itemPriceUOM2) * 10.0) / 10.0), "The item has not been selected1.");*/
