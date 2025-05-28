@@ -25,13 +25,21 @@ jobs:
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
+#      - run:
+#          name: Install Chrome
+#          command: |
+#            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+#            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+#            sudo apt-get update
+#            sudo apt-get install -y google-chrome-stable
+#            google-chrome --version
       - run:
           name: Install Chrome
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
-            sudo apt-get install -y google-chrome-stable
+            sudo apt-get install -y google-chrome-stable=136.0.0.0-1
             google-chrome --version
       - run:
           name: Install ChromeDriver
@@ -45,21 +53,10 @@ jobs:
       - run:
           name: Ensure results directory exists
           command: mkdir -p results
-#      - run:
-#          name: Verify ChromeDriver
-#          command: |
-#            which chromedriver
-#            chromedriver --version
       - run:
-          name: Install Specific Chrome Version
+          name: Verify ChromeDriver
           command: |
-            sudo apt-get remove -y google-chrome-stable || true
-
-            wget https://edgedl.me.gvt1.com/edgedl/chrome/install/7103.113/google-chrome-stable_current_amd64.deb -O chrome136.deb
-
-            sudo apt-get install -y ./chrome136.deb
-
-            google-chrome --version
+            which chromedriver
             chromedriver --version
       - run:
           name: Install JMeter
