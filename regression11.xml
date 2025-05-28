@@ -35,6 +35,12 @@
             <class name="com.cutanddry.qa.tests.chat.VerifyTheChatFeatureDisplayInDPPortalWhenChatModuleEnableTest"/>
             <class name="com.cutanddry.qa.tests.chat.VerifyTheChatFeatureNotDisplayInDPPortalWhenChatModuleDisableTest"/>
 
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheSupplierConfigCatalogDisableStatusSyncingWithCustomerProfileCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCustomerProfileCatalogAccessIsSyncingWithSupplierConfigCatalogDisableStatusTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCustomerProfileCatalogAccessRestrictionAllOperatorsTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCustomerProfileCatalogAccessRestrictionSelectedOperatorsViaIntegrationTest"/>
+
+
         </classes>
     </test>
 </suite>

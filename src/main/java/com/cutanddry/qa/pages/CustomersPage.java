@@ -4370,6 +4370,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickChatButtonInCustomerProfile()throws InterruptedException{
          distributorUI.click(btn_ChatCustomerProfile);
     }
+    public boolean isEditCatalogAccessDisplay(){
+       return distributorUI.isDisplayed(catalogAccessEditBtn);
+    }
 
 
 

@@ -2594,6 +2594,9 @@ public class Customer {
     public static void clickChatButtonInCustomerProfile()throws InterruptedException{
          customersPage.clickChatButtonInCustomerProfile();
     }
+    public static boolean isEditCatalogAccessDisplay(){
+        return customersPage.isEditCatalogAccessDisplay();
+    }
 
 
 }
