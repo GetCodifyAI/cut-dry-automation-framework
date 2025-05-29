@@ -123,7 +123,7 @@ if (csvFile.exists()) {
               <stringProp name="WebDriverSampler.language">groovy</stringProp>
             </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
             <hashTree/>
-            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Dicarlo " enabled="true">
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Dicarlo ">
               <boolProp name="TransactionController.includeTimers">false</boolProp>
             </TransactionController>
             <hashTree>
@@ -279,7 +279,7 @@ def catalogLoadEnd = Long.parseLong(WDS.props.get(&quot;catalogLoadEnd&quot;))
 def catalogLoadTime = Long.parseLong(WDS.props.get(&quot;catalogLoadTime&quot;))
 
 // Define CSV file path
-def csvFilePath = &quot;/results/Customer_Catalog_DP_Load_Times.csv&quot;
+def csvFilePath = &quot;results/Customer_Catalog_DP_Load_Times.csv&quot;
 //def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter/Reports/Customer_Catalog_DP_Load_Times.csv&quot;
 
 // Initialize the CSV file
@@ -2048,7 +2048,7 @@ ctx.getEngine().stopTest()
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">/results/Customer_Catalog_DP_Load_Times.csv</stringProp>
+            <stringProp name="filename">results/Customer_Catalog_DP_Load_Times.csv</stringProp>
             <boolProp name="ignoreFirstLine">true</boolProp>
             <boolProp name="quotedData">false</boolProp>
             <boolProp name="recycle">true</boolProp>
