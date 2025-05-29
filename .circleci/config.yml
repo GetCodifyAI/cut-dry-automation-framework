@@ -126,6 +126,9 @@ jobs:
             TEST_PLAN=src/test/jmeter-tests/scripts/<< parameters.jmeter_script >>
             $JMETER_HOME/bin/jmeter -n -t "$TEST_PLAN" -l results/test_results.jtl -e -o results/report -j jmeter.log -Jlog_level.jmeter=DEBUG
             cat jmeter.log
+      - run:
+          name: List results directory
+          command: ls -lh results
       - store_artifacts:
           path: results/test_results.jtl
           destination: jmeter-results
