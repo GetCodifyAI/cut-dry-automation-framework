@@ -126,6 +126,15 @@ jobs:
             TEST_PLAN=src/test/jmeter-tests/scripts/<< parameters.jmeter_script >>
             $JMETER_HOME/bin/jmeter -n -t "$TEST_PLAN" -l results/test_results.jtl -e -o results/report -j jmeter.log -Jlog_level.jmeter=DEBUG
             cat jmeter.log
+      - store_artifacts:
+          path: results/test_results.jtl
+          destination: jmeter-results
+            - store_artifacts:
+                path: results/report
+                destination: jmeter-html-report
+            - store_artifacts:
+                path: jmeter.log
+                destination: jmeter-log
 
 
 
@@ -141,10 +150,10 @@ workflows:
 #                - catalog_performance
     jobs:
 #        - jmeter-test
-      - approve-before-run:
-          type: approval
+#      - approve-before-run:
+#          type: approval
       - jmeter-test:
           name: run-selected-jmeter-test
-          requires:
-            - approve-before-run
+#          requires:
+#            - approve-before-run
           jmeter_script: << pipeline.parameters.jmeter_script >>
