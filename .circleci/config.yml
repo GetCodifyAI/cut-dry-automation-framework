@@ -129,12 +129,12 @@ jobs:
       - store_artifacts:
           path: results/test_results.jtl
           destination: jmeter-results
-            - store_artifacts:
-                path: results/report
-                destination: jmeter-html-report
-            - store_artifacts:
-                path: jmeter.log
-                destination: jmeter-log
+      - store_artifacts:
+          path: results/report
+          destination: jmeter-html-report
+      - store_artifacts:
+          path: jmeter.log
+          destination: jmeter-log
 
 
 
