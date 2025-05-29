@@ -25,7 +25,7 @@
           <boolProp name="WebDriverConfig.reset_per_iteration">false</boolProp>
           <stringProp name="WebDriverConfig.driver_path">/usr/local/bin/chromedriver</stringProp>
           <boolProp name="WebDriverConfig.dev_mode">false</boolProp>
-          <boolProp name="WebDriverConfig.headless">false</boolProp>
+          <boolProp name="WebDriverConfig.headless">true</boolProp>
           <boolProp name="WebDriverConfig.maximize_browser">true</boolProp>
           <stringProp name="ChromeDriverConfig.additional_args">--incognito,--window-size=1920,1080,--disable-blink-features=AutomationControlled</stringProp>
           <stringProp name="ChromeDriverConfig.binary_path"></stringProp>
@@ -333,7 +333,7 @@ WDS.log.info(&quot;Catalog Load Time saved to CSV: &quot; + csvFilePath)</string
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Hillcrest " enabled="false">
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Hillcrest " enabled="true">
               <boolProp name="TransactionController.includeTimers">false</boolProp>
             </TransactionController>
             <hashTree>
@@ -542,7 +542,7 @@ WDS.log.info(&quot;Catalog Load Time saved to CSV: &quot; + csvFilePath)</string
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Birite " enabled="false">
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Birite " enabled="true">
               <boolProp name="TransactionController.includeTimers">false</boolProp>
             </TransactionController>
             <hashTree>
@@ -751,7 +751,7 @@ WDS.log.info(&quot;Catalog Load Time saved to CSV: &quot; + csvFilePath)</string
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Maplevale" enabled="false">
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Maplevale" enabled="true">
               <boolProp name="TransactionController.includeTimers">false</boolProp>
             </TransactionController>
             <hashTree>
@@ -960,7 +960,7 @@ WDS.log.info(&quot;Catalog Load Time saved to CSV: &quot; + csvFilePath)</string
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="WCW - Need to check" enabled="false">
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="WCW - Need to check" enabled="true">
               <boolProp name="TransactionController.includeTimers">false</boolProp>
             </TransactionController>
             <hashTree>
@@ -1169,7 +1169,7 @@ WDS.log.info(&quot;Catalog Load Time saved to CSV: &quot; + csvFilePath)</string
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="John Gross &amp; Co " enabled="false">
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="John Gross &amp; Co " enabled="true">
               <boolProp name="TransactionController.includeTimers">false</boolProp>
             </TransactionController>
             <hashTree>
@@ -1378,7 +1378,7 @@ WDS.log.info(&quot;Catalog Load Time saved to CSV: &quot; + csvFilePath)</string
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Chef&apos;s Kitchen " enabled="false">
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Chef&apos;s Kitchen " enabled="true">
               <boolProp name="TransactionController.includeTimers">false</boolProp>
             </TransactionController>
             <hashTree>
@@ -1587,7 +1587,7 @@ WDS.log.info(&quot;Catalog Load Time saved to CSV: &quot; + csvFilePath)</string
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Vitco " enabled="false">
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Vitco " enabled="true">
               <boolProp name="TransactionController.includeTimers">false</boolProp>
             </TransactionController>
             <hashTree>
@@ -1796,7 +1796,7 @@ WDS.log.info(&quot;Catalog Load Time saved to CSV: &quot; + csvFilePath)</string
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Cream co " enabled="false">
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Cream co ">
               <boolProp name="TransactionController.includeTimers">false</boolProp>
             </TransactionController>
             <hashTree>
