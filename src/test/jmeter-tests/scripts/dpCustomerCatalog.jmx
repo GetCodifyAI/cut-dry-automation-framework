@@ -24,7 +24,7 @@
           <collectionProp name="Arguments.arguments">
             <elementProp name="csvFilePath" elementType="Argument">
               <stringProp name="Argument.name">csvFilePath</stringProp>
-              <stringProp name="Argument.value">/results/Customer_Catalog_DP_Load_Times.csv</stringProp>
+              <stringProp name="Argument.value">results/Customer_Catalog_DP_Load_Times.csv</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="chromeDriverPath" elementType="Argument">
