@@ -2512,14 +2512,14 @@ public class Customer {
     public static boolean isDeliveryDateCustomerOrderDisplayed(String id,String date){
         return customersPage.isDeliveryDateCustomerOrderDisplayed(id,date);
     }
-    public static void selectPickUpDateLine(String date)throws InterruptedException{
+    public static void selectPickUpDateLineStable(String day, boolean isNextMonth)throws InterruptedException{
         customersPage.clickOnPickUpDateStable();
-        customersPage.selectPickUpDateLineStable(date);
+        customersPage.selectPickUpDateLineStable(day, isNextMonth);
 
     }
-    public static void selectMailDeliveryDateLine(String date)throws InterruptedException{
+    public static void selectMailDeliveryDateLineStable(String day, boolean isNextMonth)throws InterruptedException{
         customersPage.clickOnDeliveryDateStable();
-        customersPage.selectMailDeliveryDateLineStable(date);
+        customersPage.selectMailDeliveryDateLineStable(day, isNextMonth);
     }
     public static boolean isFulfilmentTagDisplayed(String id,String tag){
         return customersPage.isFulfilmentTagDisplayed(id,tag);
@@ -2596,6 +2596,11 @@ public class Customer {
     }
     public static boolean isEditCatalogAccessDisplay(){
         return customersPage.isEditCatalogAccessDisplay();
+    }
+    public static void selectDeliveryDateLineStablePick(String day, boolean isNextMonth)throws InterruptedException{
+        customersPage.clickOnDeliveryDateStable();
+        customersPage.selectDeliveryDateLineStablePick(day, isNextMonth);
+
     }
 
 
