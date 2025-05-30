@@ -718,7 +718,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_deleteOrderGuide = By.xpath("//a[contains(text(), 'Delete Order Guide')]");
     String deliveryDateCustomerOrder = "//*[contains(text(),'#') and text()='ID']/../preceding-sibling::td[1][text()='DATE']";
     By btn_pickUpDateStable = By.xpath("//div[text()='Pickup Date:']/../following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
-    String dynamicToXPathStable = "(//div[contains(@class,'react-datepicker__day')]/preceding::div[contains(@class, 'react-datepicker__day') and text()='DAY'])[last()]";
+    String dynamicToXPathStable = "//div[contains(@class,'react-datepicker__day')]/preceding::div[contains(@class, 'react-datepicker__day') and contains(@aria-disabled, 'false') and text()='DAY']";
     String fulfilmentTag = "//*[contains(text(),'#') and text()='ID']/../preceding-sibling::td[1]//*[text()='TAG']";
     String reviewOrderFulfilment = "//span[contains(text(),'TYPE')]";
     String sortOptionDisplay = "//div[text()='Sort Items By:']/following-sibling::div//div[contains(text(),'OPTION')]";
@@ -733,6 +733,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By txt_catalog = By.xpath("//div[contains(text(), 'Sections')]");
     String btnChat = "//td[text()='CODE']/../td[7]//*[name()='svg' and @data-icon='comments']";
     By btn_ChatCustomerProfile = By.xpath("//button[contains(text(),'Chat')]");
+    By btn_nextMonth = By.xpath("//button[contains(@aria-label,'Next Month')]");
 
 
 
@@ -4292,14 +4293,24 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForCustom(4000);
         distributorUI.click(btn_pickUpDateStable);
     }
-    public void selectPickUpDateLineStable(String date) throws InterruptedException {
-        By lbl_selectStartDate = By.xpath(dynamicToXPathStable.replace("DAY", date));
+    public void selectPickUpDateLineStable(String day, boolean isNextMonth) throws InterruptedException {
+        if (isNextMonth) {
+            distributorUI.click(btn_nextMonth);
+            distributorUI.waitForCustom(1000); // wait after clicking next month
+        }
+
+        By lbl_selectStartDate = By.xpath(dynamicToXPathStable.replace("DAY", day));
         distributorUI.waitForVisibility(lbl_selectStartDate);
         distributorUI.click(lbl_selectStartDate);
         distributorUI.waitForCustom(5000);
     }
-    public void selectMailDeliveryDateLineStable(String date) throws InterruptedException {
-        By lbl_selectStartDate = By.xpath(dynamicToXPathStable.replace("DAY", date));
+    public void selectMailDeliveryDateLineStable(String day, boolean isNextMonth) throws InterruptedException {
+        if (isNextMonth) {
+            distributorUI.click(btn_nextMonth);
+            distributorUI.waitForCustom(1000); // wait after clicking next month
+        }
+
+        By lbl_selectStartDate = By.xpath(dynamicToXPathStable.replace("DAY", day));
         distributorUI.waitForVisibility(lbl_selectStartDate);
         distributorUI.click(lbl_selectStartDate);
         distributorUI.waitForCustom(5000);
@@ -4372,6 +4383,18 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isEditCatalogAccessDisplay(){
        return distributorUI.isDisplayed(catalogAccessEditBtn);
+    }
+
+    public void selectDeliveryDateLineStablePick(String day, boolean isNextMonth) throws InterruptedException {
+        if (isNextMonth) {
+            distributorUI.click(btn_nextMonth);
+            distributorUI.waitForCustom(1000); // wait after clicking next month
+        }
+
+        By lbl_selectStartDate = By.xpath(dynamicToXPathStable.replace("DAY", day));
+        distributorUI.waitForVisibility(lbl_selectStartDate);
+        distributorUI.click(lbl_selectStartDate);
+        distributorUI.waitForCustom(5000);
     }
 
 
