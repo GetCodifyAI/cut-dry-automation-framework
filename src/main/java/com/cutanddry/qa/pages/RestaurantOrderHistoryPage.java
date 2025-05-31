@@ -19,8 +19,7 @@ public class RestaurantOrderHistoryPage extends LoginPage {
 
     public boolean isOrderSearchResultByOrderIdDisplayed(String orderId) throws InterruptedException {
         distributorUI.waitForElementEnabledState(By.xpath(specificOrderRecord.replace("ORDER_ID", orderId)), true);
-        distributorUI.waitForCustom(4000);
-        return distributorUI.isDisplayed(By.xpath(specificOrderRecord.replace("ORDER_ID", orderId)));
+        return distributorUI.isDisplayed(By.xpath(specificOrderRecord.replace("ORDER_ID", orderId)),30);
     }
 
     public void clickOnSpecificRecord(String orderId) throws InterruptedException {

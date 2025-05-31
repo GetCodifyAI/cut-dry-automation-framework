@@ -10,12 +10,11 @@ public class RestaurantOrderDetailsPage extends TestBase {
     String lbl_orderStatus = "//div[contains(text(),'Order Status: STATUS')]";
 
     public boolean isOrderIdDisplayed(String orderId) throws InterruptedException {
-        distributorUI.waitForVisibility(By.xpath(orderTitle.replace("ORDER_ID", orderId)));
-        distributorUI.waitForCustom(4000);
-        return distributorUI.isDisplayed(By.xpath(orderTitle.replace("ORDER_ID", orderId)));
+        return distributorUI.isDisplayed(By.xpath(orderTitle.replace("ORDER_ID", orderId)),45);
     }
 
-    public void clickOnCheckIn() {
+    public void clickOnCheckIn() throws InterruptedException {
+        distributorUI.waitForCustom(5000);
         distributorUI.waitForClickability(btn_checkIn);
         distributorUI.click(btn_checkIn);
     }

@@ -972,13 +972,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(btn_duplicateOrderYes);
         distributorUI.waitForInvisibility(btn_duplicateOrderYes);
     }
-    public boolean isThankingForOrderPopupDisplayed(){
-        try {
-            distributorUI.waitForVisibility(lbl_thankYouForOrder);
-            return distributorUI.isDisplayed(lbl_thankYouForOrder);
-        } catch (Exception e){
-            return false;
-        }
+
+    public boolean isThankingForOrderPopupDisplayed() {
+        return distributorUI.isDisplayed(lbl_thankYouForOrder,30);
     }
     public void clickOnPrint(){
 //        distributorUI.waitForClickability(btn_print);
@@ -1538,7 +1534,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickClose(){
         distributorUI.waitForVisibility(btn_close);
         distributorUI.click(btn_close);
-        distributorUI.waitForInvisibility(btn_close);
+//        distributorUI.waitForInvisibility(btn_close);
         distributorUI.refreshPage();
     }
     public void clickOnDeleteItem(){

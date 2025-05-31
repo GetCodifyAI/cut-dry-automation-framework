@@ -20,7 +20,6 @@ public class Customer {
         customersPage.typeOnSearchCustomers(code);
     }
     public static boolean isCustomerSearchResultByCodeDisplayed(String code) throws InterruptedException {
-//        return customersPage.isCustomerSearchResultByCodeDisplayed(code);
         if (customersPage.isCustomerSearchResultByCodeDisplayed(code)) {
             return true;
         } else {

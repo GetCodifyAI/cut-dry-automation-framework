@@ -26,56 +26,75 @@ public class PlaceAnCustomerDeliveryOrderViaOrderGuideTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-713")
-    public void PlaceAnCustomerDeliveryOrderViaOrderGuide() throws InterruptedException {
-
+    public void placeCustomerDeliveryOrder() throws InterruptedException {
         softAssert = new SoftAssert();
 
-        // Distributor Flows
-        Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
+        // Distributor Flow
+        loginAsDistributor();
+        navigateToCustomerOrderGuide();
+        selectItemAndCheckout();
+        submitOrder();
 
+        // Restaurant Flow
+        verifyOrderInRestaurantHistory();
+        checkInOrder();
+
+        softAssert.assertAll();
+    }
+
+    private void loginAsDistributor() throws InterruptedException {
+        Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "Failed to navigate to Dashboard.");;
+    }
+
+    private void navigateToCustomerOrderGuide() throws InterruptedException {
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
-        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Customer not found.");
         Customer.clickOnOrderGuide(customerId);
+    }
 
+    private void selectItemAndCheckout() throws InterruptedException {
         itemName = Customer.getItemNameFirstRow();
         searchItemCode = Customer.getItemCodeFirstRow();
         itemPrice = Customer.getActiveItemPriceFirstRow();
         Customer.increaseFirstRowQtyCustom(1);
-        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice,"The item has not been selected.");
-        Customer.checkoutItems();
 
-        softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
-        softAssert.assertEquals(Customer.getItemNameFirstRow(), itemName, "The item selected by the user is different from what is shown on the order review page.");
-        softAssert.assertTrue(Customer.isDeliveryOptionSelected(), "The expected fulfillment type is not selected.");
+        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(), itemPrice, "Item not selected.");
+        Customer.checkoutItems();
+        softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "Failed to navigate to Review Order page.");
+        softAssert.assertEquals(Customer.getItemNameFirstRow(), itemName, "Item mismatch on Review Order page.");
+        softAssert.assertTrue(Customer.isDeliveryOptionSelected(), "Delivery option not selected.");
+    }
+
+    private void submitOrder() {
         Customer.submitOrder();
-        softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "The order was not completed successfully.");
+        softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "Order submission failed.");
         orderId = Customer.getSuccessOrderId();
         Customer.clickClose();
+    }
 
-        // Restaurant Flows
+    private void verifyOrderInRestaurantHistory() throws InterruptedException {
         Login.switchIntoNewTab();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "The user is unable to land on the Dashboard page.");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "Failed to navigate to Restaurant Dashboard.");
 
         RestaurantDashboard.navigateToHistory();
-        Assert.assertTrue(RestaurantDashboard.isUserNavigatedToHistory(), "The user is unable to land on the History page.");
+        Assert.assertTrue(RestaurantDashboard.isUserNavigatedToHistory(), "Failed to navigate to History page.");
         RestaurantOrderHistory.searchOrderByOrderId(orderId);
-        softAssert.assertTrue(RestaurantOrderHistory.isOrderSearchResultByOrderIdDisplayed(orderId), "Unable to find the specific order Id");
+        softAssert.assertTrue(RestaurantOrderHistory.isOrderSearchResultByOrderIdDisplayed(orderId), "Order not found.");
         RestaurantOrderHistory.clickOnSpecificRecord(orderId);
-        softAssert.assertTrue(RestaurantOrderDetails.isOrderIdDisplayed(orderId), "The newly added order ID does not match the order reference number on the Order History page.");
+        softAssert.assertTrue(RestaurantOrderDetails.isOrderIdDisplayed(orderId), "Order ID mismatch.");
+    }
+
+    private void checkInOrder() throws InterruptedException {
         RestaurantOrderDetails.clickOnCheckIn();
-
-        softAssert.assertTrue(RestaurantCheckIn.isCheckInOrderIdDisplayed(orderId), "The user is unable to land on the Check In page.");
+        softAssert.assertTrue(RestaurantCheckIn.isCheckInOrderIdDisplayed(orderId), "Failed to navigate to Check In page.");
         RestaurantCheckIn.clickOnCheckInAll();
-        softAssert.assertTrue(RestaurantCheckIn.isCheckInAllPopupDisplayed(), "The Check In all confirmation popup message is not displayed as expected.");
+        softAssert.assertTrue(RestaurantCheckIn.isCheckInAllPopupDisplayed(), "Check In confirmation popup not displayed.");
         RestaurantCheckIn.clickConfirm();
-
-        softAssert.assertTrue(RestaurantOrderDetails.isOrderIdDisplayed(orderId), "The user is unable to navigate back to the Order Details page.");
-        softAssert.assertTrue(RestaurantOrderDetails.isOrderStatusDisplayed(DistributorOrderData.CHECKIN_STATUS), "The user is unable to navigate back to the Order Details page.");
-
-        softAssert.assertAll();
+        softAssert.assertTrue(RestaurantOrderDetails.isOrderIdDisplayed(orderId), "Failed to navigate back to Order Details page.");
+        softAssert.assertTrue(RestaurantOrderDetails.isOrderStatusDisplayed(DistributorOrderData.CHECKIN_STATUS), "Order status mismatch.");
     }
 
     @AfterMethod

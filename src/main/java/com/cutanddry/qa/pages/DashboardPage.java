@@ -70,12 +70,7 @@ public class DashboardPage extends LoginPage{
 
 
     public boolean isDashboardTextDisplayed(){
-        try {
-            distributorUI.waitForVisibility(txt_dashboard);
-        } catch (Exception e){
-            return false;
-        }
-        return distributorUI.isDisplayed(txt_dashboard);
+        return distributorUI.isDisplayed(txt_dashboard,45);
     }
     public void clickOnCustomers(){
         distributorUI.click(btn_customers);
@@ -87,12 +82,7 @@ public class DashboardPage extends LoginPage{
         distributorUI.click(btn_chat);
     }
     public boolean isRestaurantDashboardTextDisplayed(){
-        try {
-            distributorUI.waitForVisibility(txt_dashboard_restaurant);
-        } catch (Exception e){
-            return false;
-        }
-        return distributorUI.isDisplayed(txt_dashboard_restaurant);
+        return distributorUI.isDisplayed(txt_dashboard_restaurant,45);
     }
     public void clickOnRestaurantChat(){
         distributorUI.click(btn_restaurant_chat);

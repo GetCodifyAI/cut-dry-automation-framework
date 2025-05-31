@@ -10,7 +10,7 @@ public class RestaurantOrderDetails {
         return restaurantOrderDetailsPage.isOrderIdDisplayed(orderId);
     }
 
-    public static void clickOnCheckIn() {
+    public static void clickOnCheckIn() throws InterruptedException {
         restaurantOrderDetailsPage.clickOnCheckIn();
     }
 
