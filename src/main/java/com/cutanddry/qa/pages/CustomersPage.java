@@ -734,6 +734,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String btnChat = "//td[text()='CODE']/../td[7]//*[name()='svg' and @data-icon='comments']";
     By btn_ChatCustomerProfile = By.xpath("//button[contains(text(),'Chat')]");
     By btn_nextMonth = By.xpath("//button[contains(@aria-label,'Next Month')]");
+    By txt_sameDeliveryDate = By.xpath("//h2[contains(text(),'same delivery date are not allowed')]");
 
 
 
@@ -4396,6 +4397,56 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(lbl_selectStartDate);
         distributorUI.waitForCustom(5000);
     }
+    public boolean isAddToOrderGuideHartIconDisplay(){
+        return distributorUI.isDisplayed(btn_addToOrderGuide);
+    }
+    public boolean isCustomerProfileDisplayedStable(String businessName, String customerId){
+        try {
+            distributorUI.waitForCustom(3000);
+            String nameOnly = businessName.split(" - ")[0];
+            String location = businessName.split(" - ")[1];
+            String fullText = nameOnly + " (" + customerId + ") - " + location;
+            String xpath = "//div[contains(text(), '" + fullText + "')]";
+            distributorUI.waitForVisibility(By.xpath(xpath));
+            return distributorUI.isDisplayed(By.xpath(xpath));
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean isCustomerNameDisplayed(String businessName) {
+        try {
+            distributorUI.waitForCustom(3000);
+            String nameOnly = businessName.split(" - ")[0];
+            String xpath = "//div[contains(text(), '" + nameOnly + "')]";
+
+            distributorUI.waitForVisibility(By.xpath(xpath));
+            return distributorUI.isDisplayed(By.xpath(xpath));
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    public boolean isCustomerIDAndLocationDisplayed(String businessName, String customerId) {
+        try {
+            distributorUI.waitForCustom(3000);
+            String location = businessName.split(" - ")[1];
+            String fullText = "(" + customerId + ") " + location;
+
+            String xpath = "//div[contains(text(), '" + fullText + "')]";
+
+            distributorUI.waitForVisibility(By.xpath(xpath));
+            return distributorUI.isDisplayed(By.xpath(xpath));
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    public boolean isSameDeliveryDateErrorPopUpDisplay(){
+        return distributorUI.isDisplayed(txt_sameDeliveryDate);
+    }
+
+
+
+
 
 
 
