@@ -16,7 +16,7 @@ public class VerifyTheCatalogAccessFeatureOnUITest extends TestBase {
     static User user;
     SoftAssert softAssert;
     String DistributorName = CustomerData.DISTRIBUTOR_NAME_IFC;
-    String CustomerCode = CustomerData.CUSTOMER_CODE2;
+    String CustomerCode = CustomerData.CUSTOMER_CODE3;
 
     @BeforeMethod
     public void setUp(){
