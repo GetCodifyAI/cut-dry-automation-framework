@@ -7,29 +7,18 @@ import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyForgotPasswordValidTest extends TestBase{
-    static User userLogin;
+public class VerifyForgotPasswordTest extends TestBase{
     static ForgotPasswordUser user;
     SoftAssert softAssert;
 
-    @BeforeMethod
+    @BeforeClass
     public void setUp() {
         initialization();
-        userLogin = JsonUtil.readUserLogin();
         user = JsonUtil.readForgotPasswordUserLogin();
         softAssert = new SoftAssert();
-    }
-
-    @Test(groups = "DOT-TC-28")
-    public void loginAsDistributor() {
-        Login.loginAsDistributor(userLogin.getEmailOrMobile(), userLogin.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
-        softAssert.assertAll();
     }
 
     @Test(groups = "DOT-TC-98")
@@ -69,6 +58,11 @@ public class VerifyForgotPasswordValidTest extends TestBase{
     @AfterMethod
     public void tearDown(ITestResult result) {
         takeScreenshotOnFailure(result);
+//        closeAllBrowsers();
+    }
+
+    @AfterClass
+    public void cleanUp() {
         closeAllBrowsers();
     }
 }

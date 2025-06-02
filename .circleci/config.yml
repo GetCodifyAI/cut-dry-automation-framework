@@ -1431,24 +1431,24 @@ workflows:
   scheduled-test-2:
     triggers:
       - schedule:
-          cron: "37 07 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
+          cron: "45 05 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05 ahsan_approch
           filters:
             branches:
               only:
-                - ahsan_approch
+                - main
     jobs:
       - daily-build-and-test-1
-#      - daily-build-and-test-2
-#      - daily-build-and-test-3
-#      - daily-build-and-test-4
-#      - daily-build-and-test-5
+      - daily-build-and-test-2
+      - daily-build-and-test-3
+      - daily-build-and-test-4
+      - daily-build-and-test-5
       - calculate-pass-fail-rate:
           requires:
             - daily-build-and-test-1
-#            - daily-build-and-test-2
-#            - daily-build-and-test-3
-#            - daily-build-and-test-4
-#            - daily-build-and-test-5
+            - daily-build-and-test-2
+            - daily-build-and-test-3
+            - daily-build-and-test-4
+            - daily-build-and-test-5
 
   scheduled-test-2-sub1:
     triggers:

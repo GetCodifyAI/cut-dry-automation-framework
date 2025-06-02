@@ -32,7 +32,7 @@
 
             <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessRestrictedViaCustomerProfileTest" />
 
-            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerOrderGuideReportGenerationTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheReportGenerationTest" />
             <class name="com.cutanddry.qa.tests.reports.VerifyThePickListDownloadReportTest" />
             <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerBaseReportGenerationTest"/>
             <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerOrdersReportGenerationTest"/>

@@ -189,4 +189,8 @@ public class Dashboard {
         return dashboardPage.isChatSectionDisplay();
     }
 
+    public static void refreshPage() {
+        dashboardPage.refreshPage();
+    }
+
 }

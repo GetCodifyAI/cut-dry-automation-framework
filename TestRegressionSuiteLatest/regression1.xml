@@ -10,7 +10,7 @@
         <classes>
             <class name="com.cutanddry.qa.tests.order_guide.DistributorInitialSetUpTest" />
             <class name="com.cutanddry.qa.tests.order_guide.DistributorLoginTest" />
-            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordValidTest" />
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordTest" />
             <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordInvalidTest" />
             <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />
 
@@ -38,7 +38,7 @@
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest" />
 
 
-            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerOrderGuideReportGenerationTest" />
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheReportGenerationTest" />
             <class name="com.cutanddry.qa.tests.reports.VerifyThePickListDownloadReportTest" />
             <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerBaseReportGenerationTest"/>
             <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerOrdersReportGenerationTest"/>
@@ -61,7 +61,7 @@
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyAddingAnotherStandingOrderTest" />
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyDeletingStandingOrdersTest" />
 
-            <class name="com.cutanddry.qa.tests.boost.VerifyBroadcastMessageTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyBoosSectionTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyTopCategoryPicksTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyCompareSimilarItemsTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedForCustomerTest" />

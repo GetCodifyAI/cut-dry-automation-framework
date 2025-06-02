@@ -345,4 +345,8 @@ public class DashboardPage extends LoginPage{
         return distributorUI.isDisplayed(btn_chat);
     }
 
+    public void refreshPage(){
+        distributorUI.refreshPage();
+    }
+
 }

@@ -14,9 +14,10 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheSearchTest extends TestBase{
     static User user;
-    static String itemName = "Artichoke -24ct";
-    static String itemCode = "01700";
+//    static String itemName = "Artichoke -24ct";
+//    static String itemCode = "01700";
     static String customerId = "16579";
+    static String itemName, itemCode;
 
     @BeforeMethod
     public void setUp(){
@@ -33,6 +34,10 @@ public class VerifyTheSearchTest extends TestBase{
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
+
+        itemName = Customer.getItemNameFirstRow();
+        itemCode = Customer.getItemCodeFirstRow();
+
         Customer.searchItemOnOrderGuide(itemName);
         softAssert.assertTrue(Customer.getItemNameFirstRow().toLowerCase().contains(itemName.toLowerCase()),"item mismatch");
         Customer.searchItemOnOrderGuide(itemCode);
