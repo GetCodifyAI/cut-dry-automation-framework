@@ -21,6 +21,7 @@ public class VerifyTheCaptureFundForBulkInvoicesTest extends TestBase {
     static String status_unpaid = PayInvoiceData.STATUS_UNPAID;
     static String status_payment = PayInvoiceData.OPTION_PAYMENT;
     static String status_authorized = PayInvoiceData.STATUS_AUTHORIZED;
+    static String invoiceID = "51285996";
 
     @BeforeMethod
     public void setUp() {
@@ -46,6 +47,7 @@ public class VerifyTheCaptureFundForBulkInvoicesTest extends TestBase {
         Pay.selectInvoiceAuthStatusViaFilter(status_authorized);
         softAssert.assertTrue(Pay.isInvoiceRecordCustomerStatusExist(status_authorized), "The auth status in the invoice record does not match the expected value.");
 
+        Pay.typeInvoiceIDViaFilter(invoiceID);
         Pay.clickOnInvoiceRecord(1);
         Pay.clickOnInvoiceBulkActionButton();
         Pay.selectTheBulkInvoiceOption(status_payment);
