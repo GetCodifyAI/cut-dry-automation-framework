@@ -40,7 +40,10 @@
             <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCustomerProfileCatalogAccessRestrictionAllOperatorsTest"/>
             <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCustomerProfileCatalogAccessRestrictionSelectedOperatorsViaIntegrationTest"/>
 
-
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderEditInvalidOrderErrorMessageTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatOrderGuideSyncedFromERPDisabledForEditingTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatManuallyOrderGuideCanEditTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatDisplayingCustomerIDInHeaderSectionTest"/>
         </classes>
     </test>
 </suite>

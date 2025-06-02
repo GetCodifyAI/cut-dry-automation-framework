@@ -2600,7 +2600,24 @@ public class Customer {
     public static void selectDeliveryDateLineStablePick(String day, boolean isNextMonth)throws InterruptedException{
         customersPage.clickOnDeliveryDateStable();
         customersPage.selectDeliveryDateLineStablePick(day, isNextMonth);
-
+    }
+    public static boolean isAddToOrderGuideHartIconDisplay(){
+        return customersPage.isAddToOrderGuideHartIconDisplay();
+    }
+    public static void goToEditOrderGuide(){
+        customersPage.clickOnEdit();
+    }
+    public static boolean isCustomerProfileDisplayedStable(String businessName,String customerId){
+        return customersPage.isCustomerProfileDisplayedStable(businessName,customerId);
+    }
+    public static boolean isCustomerNameDisplayed(String businessName){
+        return customersPage.isCustomerNameDisplayed(businessName);
+    }
+    public static boolean isCustomerIDAndLocationDisplayed(String businessName,String customerId){
+        return customersPage.isCustomerIDAndLocationDisplayed(businessName,customerId);
+    }
+    public static boolean isSameDeliveryDateErrorPopUpDisplay(){
+        return customersPage.isSameDeliveryDateErrorPopUpDisplay();
     }
 
 

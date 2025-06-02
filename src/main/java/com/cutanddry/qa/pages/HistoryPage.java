@@ -24,6 +24,16 @@ public class HistoryPage extends LoginPage{
     By btn_checkInOrder = By.xpath("//button[contains(@class, 'btn') and contains(., 'Check-In Order')]");
     By lbl_orderDateColumn = By.xpath("//span[contains(text(),'Order Date')]");
     By lbl_orderDateArrowUp = By.xpath("//span[contains(text(),'Order Date')]/*[name()='svg' and contains(@data-icon, 'arrow-up')]");
+    By btn_history = By.xpath("//a[contains(., 'History')]");
+    By btn_search = By.xpath("//input[@placeholder='Search' and contains(@class, 'form-control')]");
+    String search_result = "//tr[contains(@href,'/orders-revised/view-one')][1]//following-sibling::td[contains(.,'ORDERID')]";
+    By first_row_order_details = By.xpath("//tr[2]/td[4]");
+    By btn_edit_order = By.xpath("//button[text() = 'Edit Order']");
+    By txt_edit_order = By.xpath("//h2[text() = 'Edit Order?']");
+    By btn_confirm_order = By.xpath("//button[text()='Confirm']");
+    By btn_submit_edit_order = By.xpath("//button[@id='submit-order-button' and text()='Submit Order Edits']");
+    By txt_invalidProduct = By.xpath("//h2[text() = 'Invalid Product']");
+    String itemCode = "//div[contains(text(),'CODE')]";
 
 
     public boolean isTxtWhichItemsHasError() {
@@ -174,5 +184,53 @@ public class HistoryPage extends LoginPage{
             distributorUI.waitForCustom(2000);
         }
 
+    }
+    public void clickHistory(){
+        distributorUI.click(btn_history);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void clickOnSearch(){
+        distributorUI.click(btn_search);
+    }
+    public void typeOnSearch(String orderID) throws InterruptedException {
+        distributorUI.clear(btn_search);
+        distributorUI.sendKeys(btn_search, orderID);
+        distributorUI.waitForCustom(400);
+    }
+
+    public boolean checkIfSearchedElementVisible(String orderID) {
+        distributorUI.waitForVisibility(By.xpath(search_result.replace("ORDERID",orderID)));
+        if (!distributorUI.isDisplayed(By.xpath(search_result.replace("ORDERID",orderID)))) {
+            distributorUI.refreshPage();
+        }
+        return distributorUI.isDisplayed(By.xpath(search_result.replace("ORDERID",orderID)));
+    }
+    public void refreshHistoryPage(){
+        distributorUI.refreshPage();
+    }
+    public void clickOnFirstItemOfOrderHistory(){
+        distributorUI.click(first_row_order_details);
+    }
+    public void clickEditOrder(){
+        distributorUI.click(btn_edit_order);
+    }
+    public boolean isEditOrderPopUpDisplayed(){
+        return distributorUI.isDisplayed(txt_edit_order);
+    }
+    public void clickConfirmEditOrder(){
+        distributorUI.click(btn_confirm_order);
+    }
+    public void clickSubmitEditOrder(){
+        distributorUI.click(btn_submit_edit_order);
+    }
+    public boolean isInvalidProductTextDisplay(){
+        return distributorUI.isDisplayed(txt_invalidProduct);
+    }
+    public boolean isInvalidProductCodeDisplay(String code){
+        return distributorUI.isDisplayed(By.xpath(itemCode.replace("CODE",code)));
     }
 }
