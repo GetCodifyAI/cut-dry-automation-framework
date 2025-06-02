@@ -1,0 +1,49 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="Part_Eleven"/>
+        <classes>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeTest"/>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHavePickupWillCallAsTheFulfillmentTypeTest"/>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveMailDeliveryAsTheFulfillmentTypeTest"/>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeDraftOderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHavePickupWillCallAsTheFulfillmentTypeDraftOrderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveMailDeliveryAsTheFulfillmentTypeDraftOrderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeEditOrderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHavePickupWillCallAsTheFulfillmentTypeEditOrderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveMailDeliveryAsTheFulfillmentTypeEditOrderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryPickupWillCallAndMailDeliveryAsTheFulfillmentTypeTest"/>
+
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyUserCanSwitchOfflineModeFromTheMoreOptionsOnTheOGWhenTheDeviceHasNetworkConnectivityTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatEntireOrderGuideIsDownloadedSuccessfullyUponSwitchingToOfflineModeTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOnceInOfflineModeTheUserCanAddUpdateItemsToTheCartTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatUserCanChangeTheUnitOfMeasureForItemsInOfflineModeTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyUserCanSearchForItemsInTheOrderGuideWhileInOfflineModeTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatAccessCatalogAndOrderSubmissionIsDisabledWhileInOfflineModeTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatSwitchingBackToOnlineModeTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsAvailableInDraftOrdersTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsAvailableInStandingOrdersTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsNotAvailableInEditOrdersTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOfflineOrderingDisplayWhenOfflineOrderingToggleEnableTest"/>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOfflineOrderingNotDisplayWhenOfflineOrderingToggleOffTest"/>
+
+            <class name="com.cutanddry.qa.tests.chat.VerifyTheChatFeatureDisplayInDPPortalWhenChatModuleEnableTest"/>
+            <class name="com.cutanddry.qa.tests.chat.VerifyTheChatFeatureNotDisplayInDPPortalWhenChatModuleDisableTest"/>
+
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheSupplierConfigCatalogDisableStatusSyncingWithCustomerProfileCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCustomerProfileCatalogAccessIsSyncingWithSupplierConfigCatalogDisableStatusTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCustomerProfileCatalogAccessRestrictionAllOperatorsTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCustomerProfileCatalogAccessRestrictionSelectedOperatorsViaIntegrationTest"/>
+
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderEditInvalidOrderErrorMessageTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatOrderGuideSyncedFromERPDisabledForEditingTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatManuallyOrderGuideCanEditTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatDisplayingCustomerIDInHeaderSectionTest"/>
+        </classes>
+    </test>
+</suite>

@@ -57,7 +57,7 @@ public class DraftPage extends LoginPage{
     }
     public boolean isLastDraftDisplayedVito(String total){
 //        distributorUI.waitForVisibility(By.xpath(txt_lastDraft.replace("TOTAL", total)));
-        return distributorUI.isDisplayed(By.xpath(txt_lastDraft.replace("TOTAL", total)),90);
+        return distributorUI.isDisplayed(By.xpath(txt_lastDraft.replace("TOTAL", total)),120);
     }
 
     public boolean isPendingApprovalOrdersDisplayed(){

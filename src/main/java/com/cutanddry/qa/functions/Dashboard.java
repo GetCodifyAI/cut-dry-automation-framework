@@ -185,5 +185,8 @@ public class Dashboard {
     public static boolean isOrderIndicatorDisplay(){
         return dashboardPage.isOrderIndicatorDisplay();
     }
+    public static boolean isChatSectionDisplay() throws InterruptedException {
+        return dashboardPage.isChatSectionDisplay();
+    }
 
 }

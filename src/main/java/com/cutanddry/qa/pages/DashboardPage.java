@@ -341,5 +341,8 @@ public class DashboardPage extends LoginPage{
     public boolean isOrderIndicatorDisplay(){
         return distributorUI.isDisplayed(orderIndicator);
     }
+    public boolean isChatSectionDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(btn_chat);
+    }
 
 }

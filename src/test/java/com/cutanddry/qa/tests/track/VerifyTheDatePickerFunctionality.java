@@ -16,7 +16,8 @@ import java.net.URISyntaxException;
 
 public class VerifyTheDatePickerFunctionality extends TestBase {
     static User user;
-    static String distributorName = "Brandon IFC Cut+Dry Agent";
+//    static String distributorName = "Brandon IFC Cut+Dry Agent";
+static String distributorName = "47837013";
     String startDay = "Sunday";
     String startMonth = "December";
     String startDate = "1";

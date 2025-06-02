@@ -718,7 +718,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_deleteOrderGuide = By.xpath("//a[contains(text(), 'Delete Order Guide')]");
     String deliveryDateCustomerOrder = "//*[contains(text(),'#') and text()='ID']/../preceding-sibling::td[1][text()='DATE']";
     By btn_pickUpDateStable = By.xpath("//div[text()='Pickup Date:']/../following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
-    String dynamicToXPathStable = "(//div[contains(@class,'react-datepicker__day')]/preceding::div[contains(@class, 'react-datepicker__day') and text()='DAY'])[last()]";
+    String dynamicToXPathStable = "//div[contains(@class,'react-datepicker__day')]/preceding::div[contains(@class, 'react-datepicker__day') and contains(@aria-disabled, 'false') and text()='DAY']";
     String fulfilmentTag = "//*[contains(text(),'#') and text()='ID']/../preceding-sibling::td[1]//*[text()='TAG']";
     String reviewOrderFulfilment = "//span[contains(text(),'TYPE')]";
     String sortOptionDisplay = "//div[text()='Sort Items By:']/following-sibling::div//div[contains(text(),'OPTION')]";
@@ -731,6 +731,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By txt_hangTight = By.xpath("//div[contains(text(),'Hang tight')]");
     By btn_activeOnLineMode = By.xpath("//span[text()='Go Online']");
     By txt_catalog = By.xpath("//div[contains(text(), 'Sections')]");
+    String btnChat = "//td[text()='CODE']/../td[7]//*[name()='svg' and @data-icon='comments']";
+    By btn_ChatCustomerProfile = By.xpath("//button[contains(text(),'Chat')]");
+    By btn_nextMonth = By.xpath("//button[contains(@aria-label,'Next Month')]");
+    By txt_sameDeliveryDate = By.xpath("//h2[contains(text(),'same delivery date are not allowed')]");
 
 
 
@@ -2142,13 +2146,15 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.getText(By.xpath(businessName.replace("CUSTOMERID",customerId))).replace("Child", "").trim();
     }
     public boolean isCustomerProfileDisplayed(String businessName){
+        String result = businessName.substring(0, businessName.indexOf("Test"));
+        System.out.println(result);
         try {
             distributorUI.waitForCustom(3000);
-            distributorUI.waitForVisibility(By.xpath(txt_customerProfile.replace("BUSINESSNAME",businessName)));
+            distributorUI.waitForVisibility(By.xpath(txt_customerProfile.replace("BUSINESSNAME",result)));
         } catch (Exception e){
             return false;
         }
-        return distributorUI.isDisplayed(By.xpath(txt_customerProfile.replace("BUSINESSNAME",businessName)));
+        return distributorUI.isDisplayed(By.xpath(txt_customerProfile.replace("BUSINESSNAME",result)));
     }
     public void clickMoreOption(){
         distributorUI.click(btn_moreOption);
@@ -2486,6 +2492,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(btn_addToCartPDP);
     }
     public void clickCheckOutPDP(){
+        distributorUI.isDisplayed(btn_checkOutPDP,30);
         distributorUI.click(btn_checkOutPDP);
     }
 
@@ -4288,14 +4295,24 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForCustom(4000);
         distributorUI.click(btn_pickUpDateStable);
     }
-    public void selectPickUpDateLineStable(String date) throws InterruptedException {
-        By lbl_selectStartDate = By.xpath(dynamicToXPathStable.replace("DAY", date));
+    public void selectPickUpDateLineStable(String day, boolean isNextMonth) throws InterruptedException {
+        if (isNextMonth) {
+            distributorUI.click(btn_nextMonth);
+            distributorUI.waitForCustom(1000); // wait after clicking next month
+        }
+
+        By lbl_selectStartDate = By.xpath(dynamicToXPathStable.replace("DAY", day));
         distributorUI.waitForVisibility(lbl_selectStartDate);
         distributorUI.click(lbl_selectStartDate);
         distributorUI.waitForCustom(5000);
     }
-    public void selectMailDeliveryDateLineStable(String date) throws InterruptedException {
-        By lbl_selectStartDate = By.xpath(dynamicToXPathStable.replace("DAY", date));
+    public void selectMailDeliveryDateLineStable(String day, boolean isNextMonth) throws InterruptedException {
+        if (isNextMonth) {
+            distributorUI.click(btn_nextMonth);
+            distributorUI.waitForCustom(1000); // wait after clicking next month
+        }
+
+        By lbl_selectStartDate = By.xpath(dynamicToXPathStable.replace("DAY", day));
         distributorUI.waitForVisibility(lbl_selectStartDate);
         distributorUI.click(lbl_selectStartDate);
         distributorUI.waitForCustom(5000);
@@ -4354,6 +4371,83 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isCatalogTextDisplayed() {
         return distributorUI.isDisplayed(txt_catalog);
     }
+    public boolean isChatIconDisplay(String code){
+       return distributorUI.isDisplayed(By.xpath(btnChat.replace("CODE",code)));
+    }
+    public void clickChatIcon(String code){
+        distributorUI.click(By.xpath(btnChat.replace("CODE",code)));
+    }
+    public boolean isChatButtonDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(btn_ChatCustomerProfile);
+    }
+    public void clickChatButtonInCustomerProfile()throws InterruptedException{
+         distributorUI.click(btn_ChatCustomerProfile);
+    }
+    public boolean isEditCatalogAccessDisplay(){
+       return distributorUI.isDisplayed(catalogAccessEditBtn);
+    }
+
+    public void selectDeliveryDateLineStablePick(String day, boolean isNextMonth) throws InterruptedException {
+        if (isNextMonth) {
+            distributorUI.click(btn_nextMonth);
+            distributorUI.waitForCustom(1000); // wait after clicking next month
+        }
+
+        By lbl_selectStartDate = By.xpath(dynamicToXPathStable.replace("DAY", day));
+        distributorUI.waitForVisibility(lbl_selectStartDate);
+        distributorUI.click(lbl_selectStartDate);
+        distributorUI.waitForCustom(5000);
+    }
+    public boolean isAddToOrderGuideHartIconDisplay(){
+        return distributorUI.isDisplayed(btn_addToOrderGuide);
+    }
+    public boolean isCustomerProfileDisplayedStable(String businessName, String customerId){
+        try {
+            distributorUI.waitForCustom(3000);
+            String nameOnly = businessName.split(" - ")[0];
+            String location = businessName.split(" - ")[1];
+            String fullText = nameOnly + " (" + customerId + ") - " + location;
+            String xpath = "//div[contains(text(), '" + fullText + "')]";
+            distributorUI.waitForVisibility(By.xpath(xpath));
+            return distributorUI.isDisplayed(By.xpath(xpath));
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean isCustomerNameDisplayed(String businessName) {
+        try {
+            distributorUI.waitForCustom(3000);
+            String nameOnly = businessName.split(" - ")[0];
+            String xpath = "//div[contains(text(), '" + nameOnly + "')]";
+
+            distributorUI.waitForVisibility(By.xpath(xpath));
+            return distributorUI.isDisplayed(By.xpath(xpath));
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    public boolean isCustomerIDAndLocationDisplayed(String businessName, String customerId) {
+        try {
+            distributorUI.waitForCustom(3000);
+            String location = businessName.split(" - ")[1];
+            String fullText = "(" + customerId + ") " + location;
+
+            String xpath = "//div[contains(text(), '" + fullText + "')]";
+
+            distributorUI.waitForVisibility(By.xpath(xpath));
+            return distributorUI.isDisplayed(By.xpath(xpath));
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    public boolean isSameDeliveryDateErrorPopUpDisplay(){
+        return distributorUI.isDisplayed(txt_sameDeliveryDate);
+    }
+
+
+
+
 
 
 

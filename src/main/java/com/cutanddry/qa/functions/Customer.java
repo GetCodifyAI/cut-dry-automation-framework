@@ -2512,14 +2512,14 @@ public class Customer {
     public static boolean isDeliveryDateCustomerOrderDisplayed(String id,String date){
         return customersPage.isDeliveryDateCustomerOrderDisplayed(id,date);
     }
-    public static void selectPickUpDateLine(String date)throws InterruptedException{
+    public static void selectPickUpDateLineStable(String day, boolean isNextMonth)throws InterruptedException{
         customersPage.clickOnPickUpDateStable();
-        customersPage.selectPickUpDateLineStable(date);
+        customersPage.selectPickUpDateLineStable(day, isNextMonth);
 
     }
-    public static void selectMailDeliveryDateLine(String date)throws InterruptedException{
+    public static void selectMailDeliveryDateLineStable(String day, boolean isNextMonth)throws InterruptedException{
         customersPage.clickOnDeliveryDateStable();
-        customersPage.selectMailDeliveryDateLineStable(date);
+        customersPage.selectMailDeliveryDateLineStable(day, isNextMonth);
     }
     public static boolean isFulfilmentTagDisplayed(String id,String tag){
         return customersPage.isFulfilmentTagDisplayed(id,tag);
@@ -2582,6 +2582,43 @@ public class Customer {
         return customersPage.isOfflineModeOptionDisplay();
     }
     public static boolean isUserNavigatedToCatalog(){return customersPage.isCatalogTextDisplayed();}
+    public static boolean isChatIconDisplay(String code){
+        return customersPage.isChatIconDisplay(code);
+    }
+    public static void clickChatIcon(String code){
+        customersPage.clickChatIcon(code);
+    }
+    public static boolean isChatButtonDisplayed()throws InterruptedException{
+        return customersPage.isChatButtonDisplayed();
+    }
+    public static void clickChatButtonInCustomerProfile()throws InterruptedException{
+         customersPage.clickChatButtonInCustomerProfile();
+    }
+    public static boolean isEditCatalogAccessDisplay(){
+        return customersPage.isEditCatalogAccessDisplay();
+    }
+    public static void selectDeliveryDateLineStablePick(String day, boolean isNextMonth)throws InterruptedException{
+        customersPage.clickOnDeliveryDateStable();
+        customersPage.selectDeliveryDateLineStablePick(day, isNextMonth);
+    }
+    public static boolean isAddToOrderGuideHartIconDisplay(){
+        return customersPage.isAddToOrderGuideHartIconDisplay();
+    }
+    public static void goToEditOrderGuide(){
+        customersPage.clickOnEdit();
+    }
+    public static boolean isCustomerProfileDisplayedStable(String businessName,String customerId){
+        return customersPage.isCustomerProfileDisplayedStable(businessName,customerId);
+    }
+    public static boolean isCustomerNameDisplayed(String businessName){
+        return customersPage.isCustomerNameDisplayed(businessName);
+    }
+    public static boolean isCustomerIDAndLocationDisplayed(String businessName,String customerId){
+        return customersPage.isCustomerIDAndLocationDisplayed(businessName,customerId);
+    }
+    public static boolean isSameDeliveryDateErrorPopUpDisplay(){
+        return customersPage.isSameDeliveryDateErrorPopUpDisplay();
+    }
 
 
 }
