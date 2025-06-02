@@ -77,6 +77,7 @@ public class VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeDraftOderSub
         int deliveryMonth = deliveryDate.getMonthValue();
         boolean isNextMonth = deliveryMonth != todayMonth;
         Customer.selectDeliveryDateLineStablePick(deliveryDay, isNextMonth);
+        totalItemPriceReviewOrder = Catalog.getTotalPriceInReviewOrder();
 
         Dashboard.navigateToDrafts();
         softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
@@ -94,7 +95,7 @@ public class VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeDraftOderSub
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
-        softAssert.assertTrue(Customer.isDeliveryDateCustomerOrderDisplayed(orderId,formattedDeliveryDate));
+        softAssert.assertTrue(Customer.isDeliveryDateCustomerOrderDisplayed(orderId,formattedDeliveryDate),"delivery date not correct");
         softAssert.assertAll();
     }
 

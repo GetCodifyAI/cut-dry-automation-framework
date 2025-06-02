@@ -40,6 +40,7 @@ public class CustomerData {
     public static final String CUSTOMER_HOOK_TO_FORK = "39780";
     public static final String DISTRIBUTOR_CHEF_KITCHEN = "165144548 - Cut+Dry Agent SKO - Chef’s Kitchen";
     public static final String CUSTOMER_CHEF_KITCHEN = "C1234";
+    public static final String CUSTOMER_CODE3 = "16579";
 
 
 
