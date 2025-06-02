@@ -2492,6 +2492,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(btn_addToCartPDP);
     }
     public void clickCheckOutPDP(){
+        distributorUI.isDisplayed(btn_checkOutPDP,30);
         distributorUI.click(btn_checkOutPDP);
     }
 
