@@ -52,7 +52,7 @@ public class AioAPIHelper {
 
     public static String createCycle(String projectKey, String partValue) {
         Map<String, Object> newCycleDetails = new HashMap<>();
-        newCycleDetails.put("title", "AUTOMATED_EXECUTION_DISTRIBUTOR_"+ partValue.toUpperCase()+"_"+todayDate);
+        newCycleDetails.put("title", "STAGING_AUTOMATED_EXECUTION_DISTRIBUTOR_"+ partValue.toUpperCase()+"_"+todayDate);
 //        newCycleDetails.put("objective", "Trial Run");
 //        Map<String, String> folderDetails = Collections.singletonMap("ID","2");
 //        newCycleDetails.put("folder", folderDetails);
