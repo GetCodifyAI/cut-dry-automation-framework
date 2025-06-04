@@ -66,6 +66,7 @@ public class DashboardPage extends LoginPage{
     By locationFilter = By.xpath("(//div[text()='Place Order']/following-sibling::div//div)[1]");
     By locationOption = By.xpath("//div[text()='Place Order']/following-sibling::*//div[contains(@id,'react-select') and contains(text(), 'All Locations')]");
     By btn_order = By.xpath("//a[@data-tip='Place Order']");
+    By orderIndicator = By.xpath("//a[contains(text(),'Order Desk')]/div/span");
 
 
     public boolean isDashboardTextDisplayed(){
@@ -336,6 +337,12 @@ public class DashboardPage extends LoginPage{
     }
     public boolean isCustomerDisplayed(){
         return distributorUI.isDisplayed(btn_customers);
+    }
+    public boolean isOrderIndicatorDisplay(){
+        return distributorUI.isDisplayed(orderIndicator);
+    }
+    public boolean isChatSectionDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(btn_chat);
     }
 
 }

@@ -512,9 +512,17 @@ public class Catalog {
     public static double getPDPPriceUOM(String uom) throws InterruptedException {
         return catalogPage.getPDPPriceUOM(uom);
     }
+    public static double getPDPPriceUOMVitco(String uom, String code) throws InterruptedException {
+        return catalogPage.getPDPPriceUOMVitco(uom, code);
+    }
     public static void clickAddToCartPlusIcon(int count, String uom) throws InterruptedException{
         for (int i=0; i<count;i++){
             catalogPage.clickAddToCartPlusIcon(uom);
+        }
+    }
+    public static void clickAddToCartPlusIconVitco(int count, String uom, String code) throws InterruptedException{
+        for (int i=0; i<count;i++){
+            catalogPage.clickAddToCartPlusIconVitco(uom,code);
         }
     }
     public static void clickAddToCartMinusIcon(int count, String name) {
@@ -608,6 +616,13 @@ public class Catalog {
     }
     public static String getTotalLineItemInOrder(){
         return catalogPage.getTotalLineItemInOrder();
+    }
+
+    public static void clickOnMultiUomDropDownOrderGuide(String code,String option)throws InterruptedException{
+        catalogPage.clickOnMultiUomDropDownOrderGuide(code,option);
+    }
+    public static boolean isMeasureOptionDisplay(String option){
+        return catalogPage.isMeasureOptionDisplay(option);
     }
 
 

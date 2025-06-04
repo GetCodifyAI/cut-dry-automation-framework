@@ -6,6 +6,7 @@ import com.cutanddry.qa.data.testdata.DistributorSpecificData;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
+import com.cutanddry.qa.functions.Settings;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -35,6 +36,10 @@ public class VerifyCustomAccountHoldMessageIsDisplayedForCarmelaOnOrderSubmissio
         Login.navigateToDistributorPortal(DP);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
 
+        Dashboard.navigateToOrderSettings();
+        softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation error");
+        Settings.orderMinimumCheckBox(true);
+
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
@@ -45,7 +50,7 @@ public class VerifyCustomAccountHoldMessageIsDisplayedForCarmelaOnOrderSubmissio
         Customer.clickOnSave();
         softAssert.assertTrue(Customer.isHardHoldSelected(),"acc select error");
 
-        Customer.clickOnBack();
+        Dashboard.navigateToCustomers();
         Customer.clickOnOrderGuide(customerId);
         itemName = Customer.getItemNameFirstRow();
         Customer.increaseFirstRowQtyByOne();

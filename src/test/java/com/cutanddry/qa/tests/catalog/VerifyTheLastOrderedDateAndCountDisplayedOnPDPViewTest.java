@@ -3,10 +3,7 @@ package com.cutanddry.qa.tests.catalog;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CatalogData;
-import com.cutanddry.qa.functions.Catalog;
-import com.cutanddry.qa.functions.Customer;
-import com.cutanddry.qa.functions.Dashboard;
-import com.cutanddry.qa.functions.Login;
+import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -43,6 +40,9 @@ public class VerifyTheLastOrderedDateAndCountDisplayedOnPDPViewTest extends Test
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
 //        Customer.ensureCarouselDisplayStatus(false);
+        Dashboard.navigateToOrderSettings();
+        softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation error");
+        Settings.deliveryDateCheckBox(true);
 
         //pre-req
         Dashboard.navigateToCustomers();
@@ -80,9 +80,10 @@ public class VerifyTheLastOrderedDateAndCountDisplayedOnPDPViewTest extends Test
         Customer.searchItemOnCatalog(searchItemCode);
         Catalog.clickOnCatalogProduct(itemName);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
-        expectedDate = generateUTCTodayDateFormatted();
+        expectedDate = generateUTCTomorrowDateFormatted();
         Catalog.clickPurchaseHistory();
         softAssert.assertTrue(Catalog.isLastOrderDatePDPDisplayed(expectedDate),"PDP last order date error");
+
         softAssert.assertAll();
     }
     @AfterMethod

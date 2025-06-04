@@ -48,6 +48,16 @@ public class InternalToolsPage extends LoginPage {
     String InternalToolCompanyEditDetailsBtn = "//tr[td[contains(text(),'NAME')]]//a[contains(text(),'Edit Details')]";
     By restrictSpotPricesToggleStable = By.xpath("//div[contains(text(), 'Restrict spot prices below minimum product price')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By restrictSpotPricesToggleStable1 = By.xpath("//div[contains(text(), 'Restrict spot prices below minimum product price')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By offlineOrderingToggleStable = By.xpath("//div[contains(text(), 'Offline Ordering Enabled:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By offlineOrderingToggleStable1 = By.xpath("//div[contains(text(), 'Offline Ordering Enabled:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By checkboxLocatorChat = By.xpath("//label[contains(text(),'Chat')]/..//input");
+    By btn_saveChanges = By.xpath("(//button[text()='Save Changes'])[1]");
+    By addDisableOperatorCatalog = By.xpath("//div[contains(text(), 'Select operators to disable catalog')]/following-sibling::div/div");
+    String catalogDisableRestaurantDelete = "//div[contains(text(), 'Select operators to disable catalog')]/following-sibling::div//div[text()='NAME']/following-sibling::div";
+    String catalogDisableRestaurant = "//div[contains(text(), 'Select operators to disable catalog')]/following-sibling::div//div[text()='NAME']";
+
+
+
 
 
 
@@ -122,10 +132,11 @@ public class InternalToolsPage extends LoginPage {
         distributorUI.click(By.xpath(catalogOptionSelect.replace("CATALOGDROPDOWNOPTION",SelectDisableCatOption)));
     }
 
-    public void clickCatalogSettingsSaveBtn(){
+    public void clickCatalogSettingsSaveBtn() throws InterruptedException {
         distributorUI.scrollToElement(catalogSettingsSaveBtn);
         distributorUI.waitForVisibility(catalogSettingsSaveBtn);
         distributorUI.clickUsingJavaScript(catalogSettingsSaveBtn);
+        distributorUI.waitForCustom(3000);
     }
 
     public void clickTurnOnLastOrderedPoundPriceToggle(){
@@ -329,6 +340,43 @@ public class InternalToolsPage extends LoginPage {
         String handlePosition = distributorUI.getElement(restrictSpotPricesToggleStable).getAttribute("style");
         return handlePosition.contains("translateX(29px)");
     }
+    public void clickOfflineOrderingToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(offlineOrderingToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(offlineOrderingToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(offlineOrderingToggleStable1);
+        }
+    }
+    public void clickChatCheckbox(boolean enable) {
+
+        boolean isChecked = distributorUI.getElement(checkboxLocatorChat).isSelected();
+
+        if (enable && !isChecked) {
+            distributorUI.click(checkboxLocatorChat); // Check the box if not checked
+        } else if (!enable && isChecked) {
+            distributorUI.click(checkboxLocatorChat); // Uncheck the box if already checked
+        }
+    }
+    public void clickSaveChanges()throws InterruptedException{
+        distributorUI.click(btn_saveChanges);
+    }
+    public void addCustomerToCatalogDisable(String name)throws InterruptedException{
+        distributorUI.click(addDisableOperatorCatalog);
+        distributorUI.scrollToElement(By.xpath(selectDisableCustomer.replace("NAME", name)));
+        distributorUI.clickUsingJavaScript(By.xpath(selectDisableCustomer.replace("NAME", name)));
+        distributorUI.waitForCustom(3000);
+    }
+    public void deleteRestaurantInCatalogDisable(String name){
+        distributorUI.click(By.xpath(catalogDisableRestaurantDelete.replace("NAME", name)));
+    }
+    public boolean isCatalogDisableRestaurantDisplay(String name){
+        return distributorUI.isDisplayed(By.xpath(catalogDisableRestaurant.replace("NAME", name)));
+    }
+
 
 
 

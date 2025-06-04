@@ -44,6 +44,7 @@ public class VerifyCaseDiscountsDisclaimerMsgInOrderDetailsCDAppTest extends Tes
         Orders.increaseItemQuantity(ItemCode, 3);
         Orders.checkOutFromOperatorCart();
         Customer.submitOrder();
+        String orderNum = Customer.getSuccessOrderId();
         Customer.clickClose();
 
         Dashboard.navigateToHistory();

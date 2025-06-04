@@ -16,11 +16,10 @@ public class VerifyThatRenamedNewlyAddedOGInParentAccountListedInChildListPopUpT
     static User user;
     static String DP = ParentChildOGData.DISTRIBUTOR_INDIANHEAD;
     static String customerId = ParentChildOGData.CUSTOMER_ID_INDIANHEAD;
-    static String parentStatus = "N/A";
+    static String status = "Parent Account";
     static String OrderGuideName = ParentChildOGData.PARENT_ORDER_GUIDE_NAME_2;
     static String editedOrderGuideName = ParentChildOGData.EDIT_PARENT_ORDER_GUIDE_NAME_2;
     static String itemName = "Appetizer Egg Roll Vegetable";
-    static String childSettingMessage = "Child account settings updated successfully";
     static String[] childAccounts = {  "59195", "59130", "53175", "33602", "33601" };
 
 
@@ -41,7 +40,7 @@ public class VerifyThatRenamedNewlyAddedOGInParentAccountListedInChildListPopUpT
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
-        Customer.clickOnOrderGuide(customerId);
+        Customer.clickOnOrderGuideParentChild(customerId);
         softAssert.assertTrue(Customer.isCustomerOrderGuideDisplayed(),"user has navigated to the Order Guide");
         Customer.goToCreatePopup();
         Customer.createOrderGuide(OrderGuideName);
@@ -55,7 +54,7 @@ public class VerifyThatRenamedNewlyAddedOGInParentAccountListedInChildListPopUpT
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.SelectCustomer(customerId);
         softAssert.assertTrue(Customer.isLinkedAccountDisplayed(),"linked account section not displayed");
-        softAssert.assertTrue(Customer.isParentAccountStatusDisplayed(parentStatus),"parent account status not displayed");
+        softAssert.assertTrue(Customer.isAccountStatusDisplayed(status),"parent account status not displayed");
         Customer.clickEditChildAccount();
         softAssert.assertTrue(Customer.isManageChildAccountPopUpDisplayed(),"manage child account pop up not displayed");
         for (String childAccount : childAccounts) {
@@ -67,12 +66,10 @@ public class VerifyThatRenamedNewlyAddedOGInParentAccountListedInChildListPopUpT
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
-        Customer.clickOnOrderGuide(customerId);
+        Customer.clickOnOrderGuideParentChild(customerId);
         softAssert.assertTrue(Customer.isCustomerOrderGuideDisplayed(),"user has navigated to the Order Guide");
         Customer.clickOGDropdown();
         Customer.selectNewlyCreatedOrderGuide(OrderGuideName);
-        Customer.goToEdit();
-        softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
         Customer.expandMoreOptionsDropdown();
         Customer.clickOnOrderGuideSettings();
         OrderGuideSettings.editOrderGuideName(editedOrderGuideName);
@@ -83,7 +80,7 @@ public class VerifyThatRenamedNewlyAddedOGInParentAccountListedInChildListPopUpT
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.SelectCustomer(customerId);
         softAssert.assertTrue(Customer.isLinkedAccountDisplayed(),"linked account section not displayed");
-        softAssert.assertTrue(Customer.isParentAccountStatusDisplayed(parentStatus),"parent account status not displayed");
+        softAssert.assertTrue(Customer.isAccountStatusDisplayed(status),"parent account status not displayed");
         Customer.clickEditChildAccount();
         softAssert.assertTrue(Customer.isManageChildAccountPopUpDisplayed(),"manage child account pop up not displayed");
         for (String childAccount : childAccounts) {
@@ -95,7 +92,7 @@ public class VerifyThatRenamedNewlyAddedOGInParentAccountListedInChildListPopUpT
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
-        Customer.clickOnOrderGuide(customerId);
+        Customer.clickOnOrderGuideParentChild(customerId);
         softAssert.assertTrue(Customer.isCustomerOrderGuideDisplayed(),"user has navigated to the Order Guide");
         Customer.clickOGDropdown();
         Customer.selectNewlyCreatedOrderGuide(editedOrderGuideName);

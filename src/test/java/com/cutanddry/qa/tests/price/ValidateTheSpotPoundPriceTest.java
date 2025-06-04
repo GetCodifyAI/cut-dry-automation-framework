@@ -86,7 +86,8 @@ public class ValidateTheSpotPoundPriceTest extends TestBase{
             Orders.clickOnConfirm();
             softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(), "update popup error");
         }
-        Orders.clickOnClose();
+//        Orders.clickOnClose();
+        Customer.clickClose();
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId2);

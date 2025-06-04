@@ -118,7 +118,8 @@ public class PayPage extends LoginPage{
     String lbl_batchOperation = "//button[text()='Batch Operations']/following-sibling::div/a[contains(text(),'OPTION')]";
     By invoiceFilterDropDown = By.xpath("//div[text()='Customer']/following-sibling::div/div/div//*//input");
     By invoiceFilterOption = By.xpath("(//div[text()='Customer']/following-sibling::div/div/div)[1]/../following-sibling::div");
-
+    By lbl_invoiceDateColumn = By.xpath("//th[contains(text(),'Invoice Date')]");
+    By lbl_invoiceDateArrowUp = By.xpath("//th[contains(text(),'Invoice Date')]/*[name()='svg' and contains(@data-icon, 'arrow-up')]");
 
 
     public boolean isPaymentStatusCorrect(String expectedPaymentStatus) {
@@ -392,8 +393,9 @@ public class PayPage extends LoginPage{
         distributorUI.click(By.xpath(SearchedCustomer.replace("CUSTOMER",customer)));
     }
     public boolean isCustomerInvoiceSectionDisplayed(String customer){
-        distributorUI.waitForVisibility(By.xpath(txt_customerInvoice.replace("CUSTOMER",customer)));
-        return distributorUI.isDisplayed(By.xpath(txt_customerInvoice.replace("CUSTOMER",customer)));
+        String result = customer.substring(0, customer.indexOf("Test"));
+        distributorUI.waitForVisibility(By.xpath(txt_customerInvoice.replace("CUSTOMER",result)));
+        return distributorUI.isDisplayed(By.xpath(txt_customerInvoice.replace("CUSTOMER",result)));
     }
 
     // Invoice
@@ -869,7 +871,17 @@ public class PayPage extends LoginPage{
         distributorUI.click(invoiceFilterOption);
     }
 
+    public void ensureOrderDateSortedDescending() throws InterruptedException {
 
+        distributorUI.waitForVisibility(lbl_invoiceDateColumn);
+        distributorUI.click(lbl_invoiceDateColumn);
+
+        if (distributorUI.isDisplayed(lbl_invoiceDateArrowUp)) {
+            distributorUI.click(lbl_invoiceDateColumn);
+            distributorUI.waitForCustom(2000);
+        }
+
+    }
 
 
 

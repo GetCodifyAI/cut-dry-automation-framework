@@ -65,16 +65,17 @@ public class VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeEditOrderSub
 
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         softAssert.assertTrue(Customer.isDeliveryOptionSelected(), "The expected fulfillment type is not selected.");
-        //User Delivery Date
+        // User Delivery Date
         LocalDate today = LocalDate.now();
-        LocalDate DeliveryDate = today.plusDays(2);
-        DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("d");
-        String userDeliveryDate = customFormatter.format(DeliveryDate);
-        Customer.selectDeliveryDateLine(userDeliveryDate);
-
-        // Format full date as MM/dd/yyyy
+        LocalDate deliveryDate = today.plusDays(2);
         DateTimeFormatter fullFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        String formattedDeliveryDate = fullFormatter.format(DeliveryDate);
+        String formattedDeliveryDate = fullFormatter.format(deliveryDate);
+        DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("d");
+        String deliveryDay = dayFormatter.format(deliveryDate);
+        int todayMonth = today.getMonthValue();
+        int deliveryMonth = deliveryDate.getMonthValue();
+        boolean isNextMonth = deliveryMonth != todayMonth;
+        Customer.selectDeliveryDateLineStablePick(deliveryDay, isNextMonth);
 
         Customer.submitOrder();
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "The order was not completed successfully.");
@@ -97,7 +98,8 @@ public class VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeEditOrderSub
         Customer.increaseFirstRowQtyCustom(1);
         Customer.submitOrder();
         softAssert.assertTrue(Orders.isOrderUpdatedOverlayDisplayed(),"update popup error");
-        Orders.clickOnClose();
+//        Orders.clickOnClose();
+        Customer.clickClose();
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
