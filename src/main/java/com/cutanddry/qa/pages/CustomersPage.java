@@ -131,7 +131,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By txt_deletePopup = By.xpath("//h2[text()='Are you sure?']");
     By btn_yes = By.xpath("//button[text()='Yes']");
     By btn_increaseQtyFirstRowInDist = By.xpath("//tbody/tr/td[6]/div/div/div/div[3]");
-    String btn_PlusQtyFirstRowInDist = "//tbody/tr/td[COLUMN]/div/div/div/div[3]";
+    String btn_PlusQtyFirstRowInDist = "//tbody/tr/td[COLUMN]/div/div/div//div[3]";
     By lbl_itemRowCount = By.xpath("//td[text()='Item']/parent::tr/td");
     String lbl_columnName = "//td[text()='Item']/parent::tr/td[COLUMN]";
     By btn_decreaseQtyFirstRowInDist = By.xpath("//tbody/tr[2]/td[6]/div/div/div/div[1]");
@@ -320,7 +320,8 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By btn_threeDot = By.xpath("(//button[contains(@id, 'dropdown-basic')])[2]");
     By btn_printKitchenReceipt = By.xpath("//span[contains(text(), 'Print Kitchen Receipt')]");
     By btn_orderConfirmation = By.xpath("//span[contains(text(), 'Print Order Confirmation')]");
-    By btn_order = By.xpath("(//tr[contains(@class, '_du1frc _du1frc _qy4b979 py-3')])[1]");
+//    By btn_order = By.xpath("(//tr[contains(@class, '_du1frc _du1frc _qy4b979 py-3')])[1]");
+    By btn_order = By.xpath("(//tr[contains(@class, '_du1frc _du1frc')])[1]");
     By txt_order = By.xpath("//h2[contains(text(), 'Order')]");
     By tb_drafts = By.xpath("//a[text()='Drafts' and @role='tab']");
 //    By txt_draftStatus = By.xpath("//tr[2]//td[3][contains(text(), 'just now')]");
@@ -335,7 +336,7 @@ By txt_draftStatus = By.xpath("//tr[2]//td[3][contains(text(), 'seconds ago')]")
     By dropdown_testGuide1 =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Test_Guide_01')]");
     By dropdown_testAutomation =  By.xpath("//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'Test_Automation')]");
 //    By btn_editMargin = By.xpath("//td/div/button/*[local-name() = 'svg' and @data-icon='cdEdit']");
-    By btn_editMargin = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[6])[1]");
+    By btn_editMargin = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[6]//span)[1]");
     By btn_resetValues = By.xpath("//button[contains(text(), 'Reset Values')]");
     By btn_updateValues = By.xpath("//button[contains(text(), 'Update')]");
 //    By lbl_margin = By.xpath("//div[text()='Margin ($)']/following-sibling::input");
@@ -571,7 +572,7 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
     By txt_sentApproval = By.xpath("//strong[contains(text(),'Sent for approval!')]");
     By btn_viewOrderInDraft = By.xpath("//button[text()='View Order in Drafts']");
 //    By finalWeight = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]//input)[1]");
-    By finalWeight = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]/div)[1]");
+    By finalWeight = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[7]/div/div/div/div)[1]");
     By btn_finalWeightUpdate = By.xpath("//button[contains(text(),'Update Weight')]");
     By finalWeightInput = By.xpath("(//*[contains(text(),'Edit Weight Details')]/following::div/table/tbody/tr/td[3]/input)[1]");
     By finalItemPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[8][normalize-space()!=''])[1]");
@@ -580,7 +581,7 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
     By txt_lbPricePopUP = By.xpath("//div[text()='Update Price']");
     By perLbPrice = By.xpath("//*[text()='Price LB ($)']/following-sibling::input");
     By priceInCustomerOrder = By.xpath("(//tbody/tr/td[6])[1]");
-    By editSpotPrice = By.xpath("//td[7]/div");
+    By editSpotPrice = By.xpath("//td[7]/div/div/div");
    // String spotPriceValue = "//td[7]/div/input[@value='VALUE']";
     String spotPriceValue = "//td[7]/div//span[contains(text(),'VALUE')]";
     By btn_splitWeight = By.xpath("//td[8]/div");
@@ -2300,7 +2301,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void updateMarginValues() throws InterruptedException {
         distributorUI.click(btn_updateValues);
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(5000);
     }
     public boolean isMarginValuePopupDisplayed(){
         return distributorUI.isDisplayed(lbl_margin);
