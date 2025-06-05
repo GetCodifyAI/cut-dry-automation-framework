@@ -512,6 +512,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     }
     public void clickSearchItemInCatalog(String itemName){
         distributorUI.click(searchField);
+        distributorUI.click(icon_deleteSearchItem);
         distributorUI.sendKeys(searchField,itemName);
     }
     public void searchItemInCatalogPreview(String itemCode){
