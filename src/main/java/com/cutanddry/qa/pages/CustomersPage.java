@@ -584,7 +584,7 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
     By editSpotPrice = By.xpath("//td[7]/div/div/div");
    // String spotPriceValue = "//td[7]/div/input[@value='VALUE']";
     String spotPriceValue = "//td[7]/div//span[contains(text(),'VALUE')]";
-    By btn_splitWeight = By.xpath("//td[8]/div");
+    By btn_splitWeight = By.xpath("//td[8]/div/div/div/div");
     By txt_splitWeight = By.xpath("//div[contains(text(),'Weight Details')]");
     By lbl_cases = By.xpath("(//th[contains(text(),'No. of')]/../../following-sibling::*//input)[1]");
     By lbl_weight = By.xpath("(//th[text()='Weight / CS']/../../following-sibling::*//input)[2]");
