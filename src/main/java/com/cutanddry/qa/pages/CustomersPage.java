@@ -716,7 +716,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String updateChildAccountSettings = "//div[contains(text(),'MESSAGE')]";
     String dropDownOrderGuide =  "(//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'NAME')])[last()]";
     By btn_deleteOrderGuide = By.xpath("//a[contains(text(), 'Delete Order Guide')]");
-    String deliveryDateCustomerOrder = "//*[contains(text(),'#') and text()='ID']/../preceding-sibling::td[1][text()='DATE']";
+    String deliveryDateCustomerOrder = "//*[contains(text(),'#') and text()='ID']/../../preceding-sibling::td[1][text()='DATE']";
     By btn_pickUpDateStable = By.xpath("//div[text()='Pickup Date:']/../following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
     String dynamicToXPathStable = "//div[contains(@class,'react-datepicker__day')]/preceding::div[contains(@class, 'react-datepicker__day') and contains(@aria-disabled, 'false') and text()='DAY']";
     String fulfilmentTag = "//*[contains(text(),'#') and text()='ID']/../preceding-sibling::td[1]//*[text()='TAG']";
