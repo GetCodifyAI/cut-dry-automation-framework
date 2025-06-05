@@ -1001,8 +1001,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         return distributorUI.isDisplayed(By.xpath(standingOrder.replace("QUANTITY", quantity).replace("PRICE", price)));
     }
     public void searchOrderGuide(String item) throws InterruptedException {
-        distributorUI.clear(orderGuideSearch);
         distributorUI.click(icon_deleteSearchItem);
+        distributorUI.clear(orderGuideSearch);
         distributorUI.sendKeys(orderGuideSearch,item);
     }
     public double getUOMOGPrice(String code ,String uom) throws InterruptedException {

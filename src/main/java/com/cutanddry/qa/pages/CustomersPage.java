@@ -826,8 +826,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
             distributorUI.waitForCustom(5000);
         }
         else {
-            distributorUI.clear(tbx_catalogSearch);
             distributorUI.click(icon_deleteSearchItem);
+            distributorUI.clear(tbx_catalogSearch);
             distributorUI.waitForCustom(1000);
             distributorUI.sendKeys(tbx_catalogSearch, item);
             distributorUI.waitForCustom(5000);
@@ -997,8 +997,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(btn_downloadOrderGuide);
     }
     public void typeToSearchOnOrderGuide(String item) throws InterruptedException {
-        distributorUI.clear(tbx_orderGuideSearch);
         distributorUI.click(icon_deleteSearchItem);
+        distributorUI.clear(tbx_orderGuideSearch);
         distributorUI.waitForCustom(2000);
         distributorUI.sendKeys(tbx_orderGuideSearch,item);
         distributorUI.waitForCustom(2000);
