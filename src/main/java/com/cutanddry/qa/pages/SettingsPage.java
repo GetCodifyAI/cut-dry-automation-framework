@@ -20,7 +20,7 @@ public class SettingsPage extends LoginPage{
     By lbl_name = By.xpath("//label[text()='Name']/following-sibling::div//input");
     By lbl_email = By.xpath("//label[text()='Email']/following-sibling::div//input");
     By lbl_phone = By.xpath("//label[text()='Phone']/following-sibling::div//input");
-    By lbl_userRef = By.xpath("//label[text()='User reference']/following-sibling::div//input");
+    By lbl_userRef = By.xpath("//label[contains(text(),'user reference')]/following-sibling::div//input");
     By btn_inviteUser = By.xpath("//button[text()='Invite User']");
     String btn_editUser = "//tr[td[text()='USER']]/td/following-sibling::td//*[local-name()='svg']";
     By txt_editUser = By.xpath("//div[text()='Edit User']");
