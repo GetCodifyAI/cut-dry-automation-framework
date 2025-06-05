@@ -45,12 +45,12 @@ public class ValidateMonitoringFunctionalityDetailsTest extends TestBase {
         Dashboard.navigateToTrackMonitoring();
         softAssert.assertTrue(Track.isMonitoringTextDisplayed(),"navigation to track monitoring error");
         Track.clickMonitorRouteName(routeName);
-        softAssert.assertTrue(Track.isCustomerColumnTextDisplayed(customerName),"customer not display");
-        softAssert.assertTrue(Track.isOrderIdColumnTextDisplayed(orderID),"order id not display");
-        softAssert.assertTrue(Track.isCustomerStopColumnTextDisplayed(customerStop),"stop not display");
-        Track.clickMonitorCustomer(customerName);
-        softAssert.assertTrue(Track.isMonitorCustomerNameDisplayed(customerName),"customer name display error");
-        softAssert.assertTrue(Track.isMonitorCustomerNameDisplayed(orderID),"customer order id display error");
+        softAssert.assertTrue(Track.isCustomerColumnTextDisplayed(customerName,routeName),"customer not display");
+        softAssert.assertTrue(Track.isOrderIdColumnTextDisplayed(orderID,routeName),"order id not display");
+        softAssert.assertTrue(Track.isCustomerStopColumnTextDisplayed(customerStop,routeName),"stop not display");
+        Track.clickMonitorCustomer(customerName,routeName);
+        softAssert.assertTrue(Track.isMonitorCustomerNameDisplayed(customerName,routeName),"customer name display error");
+        softAssert.assertTrue(Track.isMonitorCustomerNameDisplayed(orderID,routeName),"customer order id display error");
         softAssert.assertTrue(Track.isMonitorCustomerStopDisplayed(customerStop),"customer stop display error");
         Track.clickCloseCustomerDetails();
         softAssert.assertAll();

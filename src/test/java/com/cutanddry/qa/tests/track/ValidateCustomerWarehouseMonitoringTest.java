@@ -48,9 +48,9 @@ public class ValidateCustomerWarehouseMonitoringTest extends TestBase {
         Dashboard.navigateToTrackMonitoring();
         softAssert.assertTrue(Track.isMonitoringTextDisplayed(),"navigation to track monitoring error");
         Track.clickMonitorRouteName(routeName);
-        softAssert.assertTrue(Track.isCustomerColumnTextDisplayed(customerName),"customer not display");
-        Track.clickMonitorCustomer(customerName);
-        softAssert.assertTrue(Track.isMonitorCustomerNameDisplayed(customerName),"customer details pop up display error");
+        softAssert.assertTrue(Track.isCustomerColumnTextDisplayed(customerName,routeName),"customer not display");
+        Track.clickMonitorCustomer(customerName,routeName);
+        softAssert.assertTrue(Track.isMonitorCustomerNameDisplayed(customerName,routeName),"customer details pop up display error");
         Track.clickCloseCustomerDetails();
 
         Track.selectDate(startDay,  startMonth,  startDate,  startYear);
