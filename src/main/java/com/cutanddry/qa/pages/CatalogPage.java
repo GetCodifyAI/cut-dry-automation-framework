@@ -207,7 +207,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     By multiUomOptionEach =By.xpath("//div[text()='Each']");
     By getTotalLineItem = By.xpath("//td[contains(text(),'Total Line Items')]/following-sibling::td");
     String multiUOMOption ="(//div[text()='OPTION'])[last()]";
-
+    By icon_deleteSearchItem = By.xpath("(//*[local-name()='svg' and @data-icon='circle-xmark'])[1]");
 
 
     public boolean isCatalogTextDisplayed() {
@@ -1002,6 +1002,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     }
     public void searchOrderGuide(String item) throws InterruptedException {
         distributorUI.clear(orderGuideSearch);
+        distributorUI.click(icon_deleteSearchItem);
         distributorUI.sendKeys(orderGuideSearch,item);
     }
     public double getUOMOGPrice(String code ,String uom) throws InterruptedException {

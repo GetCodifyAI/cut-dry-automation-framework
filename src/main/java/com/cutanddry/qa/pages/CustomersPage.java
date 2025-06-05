@@ -736,6 +736,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_ChatCustomerProfile = By.xpath("//button[contains(text(),'Chat')]");
     By btn_nextMonth = By.xpath("//button[contains(@aria-label,'Next Month')]");
     By txt_sameDeliveryDate = By.xpath("//h2[contains(text(),'same delivery date are not allowed')]");
+    By icon_deleteSearchItem = By.xpath("(//*[local-name()='svg' and @data-icon='circle-xmark'])[1]");
 
 
 
@@ -826,6 +827,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         }
         else {
             distributorUI.clear(tbx_catalogSearch);
+            distributorUI.click(icon_deleteSearchItem);
             distributorUI.waitForCustom(1000);
             distributorUI.sendKeys(tbx_catalogSearch, item);
             distributorUI.waitForCustom(5000);
@@ -996,6 +998,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void typeToSearchOnOrderGuide(String item) throws InterruptedException {
         distributorUI.clear(tbx_orderGuideSearch);
+        distributorUI.click(icon_deleteSearchItem);
         distributorUI.waitForCustom(2000);
         distributorUI.sendKeys(tbx_orderGuideSearch,item);
         distributorUI.waitForCustom(2000);
