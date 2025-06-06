@@ -1398,11 +1398,17 @@ public class Customer {
         customersPage.clickOnProduct(name);
     }
     public static void clickAddToCartPDP(){customersPage.clickAddToCart();}
-    public static void clickCheckOutPDP(){
+    public static void clickCheckOutPDP() throws InterruptedException {
         customersPage.clickCheckOutPDP();
         if(customersPage.isSubstitutesPopupDisplayedSub()){
             customersPage.clickDoNotSubstitute();
             customersPage.clickSaveSelection();
+        }
+        if (customersPage.isOrderMiniumErrorBannerDisplayedSub()){
+            dashboardPage.clickOnOrderSettings();
+            settingsPage.selectOnOrderMinimums();
+            settingsPage.clickOnSaveChanges();
+            customersPage.clickOnBack();
         }
     }
     public static void clickCheckOutPDPSubstitute() {
