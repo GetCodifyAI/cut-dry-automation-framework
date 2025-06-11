@@ -208,6 +208,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     By getTotalLineItem = By.xpath("//td[contains(text(),'Total Line Items')]/following-sibling::td");
     String multiUOMOption ="(//div[text()='OPTION'])[last()]";
     By icon_deleteSearchItem = By.xpath("(//*[local-name()='svg' and @data-icon='circle-xmark'])[1]");
+    String lastOrderMarginPDP = "//div[text()='MARGIN']";
+    String marginColumnPDP = "//th[text()='MARGIN']";
 
 
     public boolean isCatalogTextDisplayed() {
@@ -1134,6 +1136,12 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     }
     public boolean isMeasureOptionDisplay(String option){
         return distributorUI.isDisplayed(By.xpath(multiUOMOption.replace("OPTION", option)));
+    }
+    public boolean isLastOrderMarginDisplay(String margin){
+        return distributorUI.isDisplayed(By.xpath(lastOrderMarginPDP.replace("MARGIN",margin)));
+    }
+    public boolean isMarginColumnDisplay(String margin){
+        return distributorUI.isDisplayed(By.xpath(marginColumnPDP.replace("MARGIN",margin)));
     }
 
 }

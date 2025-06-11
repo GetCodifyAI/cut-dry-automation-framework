@@ -737,7 +737,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_nextMonth = By.xpath("//button[contains(@aria-label,'Next Month')]");
     By txt_sameDeliveryDate = By.xpath("//h2[contains(text(),'same delivery date are not allowed')]");
     By icon_deleteSearchItem = By.xpath("(//*[local-name()='svg' and @data-icon='circle-xmark'])[1]");
-
+    String marginValue = "(//td[text()='CODE']/following-sibling::td[2]//div/div/span)[UOM]";
+    String lbl_lastOrderDetails = "(//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]/../following-sibling::div/div";
+    By txt_purchaseHistoryCatalog = By.xpath("//div[text()='Purchase History']");
+    String lastOrderDetails = "//div[text()='ORDER']";
 
 
 
@@ -4447,6 +4450,20 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isSameDeliveryDateErrorPopUpDisplay(){
         return distributorUI.isDisplayed(txt_sameDeliveryDate);
+    }
+    public String getItemMarginPercentage(String code, String uom) throws InterruptedException {
+        distributorUI.waitForVisibility(By.xpath(marginValue.replace("CODE",code).replace("UOM",uom)));
+        distributorUI.waitForCustom(3000);
+        return distributorUI.getText(By.xpath(marginValue.replace("CODE",code).replace("UOM",uom)));
+    }
+    public void clickLastOrderDetailsCatalog(String name)throws InterruptedException{
+        distributorUI.click(By.xpath(lbl_lastOrderDetails.replace("NAME",name)));
+    }
+    public boolean isPurchaseHistoryDisplay(){
+        return distributorUI.isDisplayed(txt_purchaseHistoryCatalog);
+    }
+    public boolean isLastOrderDisplay(String order){
+        return distributorUI.isDisplayed(By.xpath(lastOrderDetails.replace("ORDER",order)));
     }
 
 

@@ -2419,13 +2419,17 @@ public class Customer {
         customersPage.selectActiveDeliveryDate();
 
     }
-    public static void submitOrderDpSpecific(){
+    public static void submitOrderDpSpecific() throws InterruptedException {
         customersPage.submitOrder();
         if (customersPage.isOrderMinPopupDisplayed()){
             customersPage.clickOnYes();
         }
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
+        }
+        Thread.sleep(3000);
+        if (customersPage.isCombinedPopupDisplayed()){
+            customersPage.clickContinueCombined();
         }
     }
     public static void selectDeliveryDateLineStable()throws InterruptedException{
@@ -2624,6 +2628,18 @@ public class Customer {
     }
     public static boolean isSameDeliveryDateErrorPopUpDisplay(){
         return customersPage.isSameDeliveryDateErrorPopUpDisplay();
+    }
+    public static String getItemMarginPercentage(String code , String uom) throws InterruptedException {
+        return customersPage.getItemMarginPercentage(code,uom);
+    }
+    public static void clickLastOrderDetailsCatalog(String name)throws InterruptedException{
+        customersPage.clickLastOrderDetailsCatalog(name);
+    }
+    public static boolean isPurchaseHistoryDisplay(){
+        return customersPage.isPurchaseHistoryDisplay();
+    }
+    public static boolean isLastOrderDisplay(String order){
+        return customersPage.isLastOrderDisplay(order);
     }
 
 

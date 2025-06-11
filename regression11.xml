@@ -44,6 +44,13 @@
             <class name="com.cutanddry.qa.tests.orders.VerifyThatOrderGuideSyncedFromERPDisabledForEditingTest"/>
             <class name="com.cutanddry.qa.tests.orders.VerifyThatManuallyOrderGuideCanEditTest"/>
             <class name="com.cutanddry.qa.tests.orders.VerifyThatDisplayingCustomerIDInHeaderSectionTest"/>
+
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryMultiUOMInPDPSectionSpotPriceEnableDPTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryMultiUOMInPDPSectionSpotPriceDisableDPTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryInPDPSectionInDPTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryInCatalogueTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryPDPNavigationTest"/>
+
         </classes>
     </test>
 </suite>
