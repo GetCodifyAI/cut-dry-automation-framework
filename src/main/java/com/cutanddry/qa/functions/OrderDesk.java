@@ -75,12 +75,20 @@ public class OrderDesk {
         orderDeskPage.ClickAddItemBtn();
     }
 
+    public static boolean isAddItemBtnDisplayed(){
+        return orderDeskPage.isAddItemBtnDisplayed();
+    }
+
     public static boolean isItemAddedSucessfullySaved(){
         return orderDeskPage.isItemAddSucessfullytextisDisplayed();
     }
 
     public static void DeleteItem(){
         orderDeskPage.ClickOnDeleteBtn();
+    }
+
+    public static boolean isDeleteBtnDisplayed(){
+        return orderDeskPage.isDeleteBtnDisplayed();
     }
 
     public static void ConfirmDeleteItem(){
