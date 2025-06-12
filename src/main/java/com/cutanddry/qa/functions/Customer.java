@@ -2641,6 +2641,9 @@ public class Customer {
     public static boolean isLastOrderDisplay(String order){
         return customersPage.isLastOrderDisplay(order);
     }
+    public static void clickLastOrderOG(String code) throws InterruptedException {
+        customersPage.clickLastOrderOG(code);
+    }
 
 
 }

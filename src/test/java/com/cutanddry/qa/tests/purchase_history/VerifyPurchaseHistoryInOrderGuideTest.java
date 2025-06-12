@@ -2,6 +2,7 @@ package com.cutanddry.qa.tests.purchase_history;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.CatalogData;
 import com.cutanddry.qa.data.testdata.PurchaseHistoryData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
@@ -12,16 +13,20 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyPurchaseHistoryInPDPSectionInDPTest extends TestBase {
+public class VerifyPurchaseHistoryInOrderGuideTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    String DistributorName = PurchaseHistoryData.DISTRIBUTOR_NAME_IFC;
+    String DistributorName =PurchaseHistoryData.DISTRIBUTOR_NAME_IFC;
     static String CompanyName = PurchaseHistoryData.SUPPLIER_IFC;
     static String customerId =PurchaseHistoryData.CUSTOMER_ID_IFC;
-    static String searchItemCode = PurchaseHistoryData.ITEM_CODE_IFC_2;
-    static String itemName = PurchaseHistoryData.ITEM_NAME_IFC_2;
-    static String margin = "N/A";
-    static String marginColumn = "Margin";
+    static String searchItemCode = PurchaseHistoryData.ITEM_CODE_IFC;
+    static String itemName = PurchaseHistoryData.ITEM_NAME_IFC;
+    String uomDropDownOption = CatalogData.UOM_DROPDOWN_OPTION;
+    String uom1 = CatalogData.MULTI_UOM_1;
+    String uom2 = CatalogData.MULTI_UOM_2;
+    static String orderId;
+    static String multiUOMType1 = "1 EA";
+    static String multiUOMType2 = "1 Pkg";
 
 
 
@@ -32,8 +37,8 @@ public class VerifyPurchaseHistoryInPDPSectionInDPTest extends TestBase {
     }
 
 
-    @Test(groups = "DOT-TC-1339")
-    public void VerifyPurchaseHistoryInPDPSectionInDP() throws InterruptedException {
+    @Test(groups = "DOT-TC-1032")
+    public void VerifyPurchaseHistoryInOrderGuide() throws InterruptedException {
 
         softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
@@ -60,11 +65,30 @@ public class VerifyPurchaseHistoryInPDPSectionInDPTest extends TestBase {
         Customer.goToCatalog();
 
         Customer.searchItemOnCatalog(searchItemCode);
-        Customer.clickOnProduct(itemName);
+        Catalog.ClickOnMultiUomDropDown(itemName);
+        Catalog.ClickOnMultiUomDropDownOption(uomDropDownOption);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
-        Catalog.clickPurchaseHistory();
-        softAssert.assertTrue(Catalog.isMarginColumnDisplay(marginColumn),"Margin column not display");
-        softAssert.assertTrue(Catalog.isLastOrderMarginDisplay(margin),"PDP last order margin not display");
+        Catalog.clickAddToCartPlusIcon(1, uom1);
+        Catalog.clickAddToCartPlusIcon(1, uom2);
+        Customer.clickCheckOutPDP();
+        softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
+
+        Customer.submitOrder();
+        softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "The order was not completed successfully.");
+        orderId = Customer.getSuccessOrderId();
+        Customer.clickClose();
+
+        Dashboard.navigateToCustomers();
+        Customer.searchCustomerByCode(customerId);
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
+        Customer.clickOnOrderGuide(customerId);
+        Customer.searchItemOnOrderGuide(searchItemCode);
+        softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
+
+        Customer.clickLastOrderOG(searchItemCode);
+        softAssert.assertTrue(Customer.isPurchaseHistoryDisplay(),"Purchase history window display error");
+        softAssert.assertTrue(Customer.isLastOrderDisplay(multiUOMType1),"last order multi uom quantity error");
+        softAssert.assertTrue(Customer.isLastOrderDisplay(multiUOMType2),"last order multi uom quantity error");
         softAssert.assertAll();
     }
     @AfterMethod
