@@ -154,12 +154,20 @@ String DeliveryDateSelect = "(//div[contains(@class,'themed_select__option')])[D
         distributorUI.click(AddItemBtn);
     }
 
+    public boolean isAddItemBtnDisplayed(){
+        return distributorUI.isDisplayed(AddItemBtn,5);
+    }
+
     public boolean isItemAddSucessfullytextisDisplayed(){
         return distributorUI.isDisplayed(ItemAddDeleteSucessfulTxt);
     }
 
     public void ClickOnDeleteBtn(){
         distributorUI.click(DeleteItemBtn);
+    }
+
+    public boolean isDeleteBtnDisplayed(){
+        return distributorUI.isDisplayed(DeleteItemBtn,5);
     }
 
     public void ClickDeleteConfirmationOverlayYesBtn(){

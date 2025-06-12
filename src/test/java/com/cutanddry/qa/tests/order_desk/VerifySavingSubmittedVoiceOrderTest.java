@@ -32,11 +32,12 @@ public class VerifySavingSubmittedVoiceOrderTest extends TestBase {
         OrderDesk.navigateToSubmittedOrders();
         softAssert.assertTrue(OrderDesk.navigatedToSubmittedOrders(),"Error Navigating to Drafted Orders Page");
         OrderDesk.navigateToSubmitOrdersReviewPage();
-        OrderDesk.AddItem();
+        softAssert.assertFalse(OrderDesk.isAddItemBtnDisplayed(),"Add Item button is displayed");
+        /*OrderDesk.AddItem();
         OrderDesk.SearchItemByname();
         OrderDesk.AddItem();
         softAssert.assertTrue(OrderDesk.isItemAddedSucessfullySaved(),"Error in Adding a Item");
-        OrderDesk.CloseTheSucessfulOverlayByOK();
+        OrderDesk.CloseTheSucessfulOverlayByOK();*/
 
         softAssert.assertAll();
     }

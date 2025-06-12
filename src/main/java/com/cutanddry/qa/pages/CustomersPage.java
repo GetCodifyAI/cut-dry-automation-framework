@@ -152,6 +152,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By lbl_firstRowOrderTab = By.xpath("//tr[contains(@href,'/ordersView/')][1]");
     By txt_southwest = By.xpath("//div[contains(text(),'Southwest Traders')]");
     By txt_substitutions = By.xpath("//div[contains(normalize-space(text()), 'Set a Substitute')]");
+    By txt_substitutionsItem = By.xpath("//div[contains(normalize-space(text()), 'Item Substitution')]");
     By btn_saveSelection = By.xpath("//button[normalize-space(text())='Save Selection']");
     By btn_donotsubs = By.xpath("//div[normalize-space(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))='do not substitute']");
     By txt_replacement = By.xpath("//div[contains(normalize-space(text()), 'If out of stock, sub with')]");
@@ -737,6 +738,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_nextMonth = By.xpath("//button[contains(@aria-label,'Next Month')]");
     By txt_sameDeliveryDate = By.xpath("//h2[contains(text(),'same delivery date are not allowed')]");
     By icon_deleteSearchItem = By.xpath("(//*[local-name()='svg' and @data-icon='circle-xmark'])[1]");
+    By icon_deleteSubstitutionItem = By.xpath("(//*[local-name()='svg' and @data-icon='xmark'])[1]");
     String marginValue = "(//td[text()='CODE']/following-sibling::td[2]//div/div/span)[UOM]";
     String lbl_lastOrderDetails = "(//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]/../following-sibling::div/div";
     By txt_purchaseHistoryCatalog = By.xpath("//div[text()='Purchase History']");
@@ -1446,6 +1448,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isSubstitutesPopupDisplayedSub(){
         return distributorUI.isDisplayed(txt_substitutions,5);
+    }
+    public boolean isSubstitutesItemPopupDisplayedSub(){
+        return distributorUI.isDisplayed(txt_substitutionsItem,5);
     }
     public void clickSaveSelection(){
         distributorUI.waitForVisibility(btn_saveSelection);
@@ -4470,7 +4475,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(By.xpath(purchaseHistoryOG.replace("CODE",code)));
     }
 
-
+    public void clickCloseSubstituteItemPopup(){
+        distributorUI.waitForVisibility(icon_deleteSubstitutionItem);
+        distributorUI.click(icon_deleteSubstitutionItem);
+    }
 
 
 

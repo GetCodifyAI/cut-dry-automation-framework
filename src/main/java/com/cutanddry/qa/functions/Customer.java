@@ -1404,6 +1404,9 @@ public class Customer {
             customersPage.clickDoNotSubstitute();
             customersPage.clickSaveSelection();
         }
+        if(customersPage.isSubstitutesItemPopupDisplayedSub()){
+            customersPage.clickCloseSubstituteItemPopup();
+        }
         if (customersPage.isOrderMiniumErrorBannerDisplayedSub()){
             dashboardPage.clickOnOrderSettings();
             settingsPage.selectOnOrderMinimums();

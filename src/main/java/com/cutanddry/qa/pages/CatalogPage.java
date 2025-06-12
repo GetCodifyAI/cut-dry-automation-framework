@@ -106,7 +106,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     By lbl_statusDropdown = By.xpath("(//div[contains(text(),'All Results')]/../following-sibling::div//div[3])[1]");
     By lbl_active = By.xpath("//div[contains(@class,'themed_select__option') and text()='Active']");
     By lbl_inActive = By.xpath("//div[contains(@class,'themed_select__option') and text()='Inactive']");
-    By lbl_nonactive = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[7][not(normalize-space()='Active')]");
+    By lbl_nonactive = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[8][not(normalize-space()='Active')]");
     By btn_moreFilters = By.xpath("//button[contains(., 'Filters')]");
     By txt_filterCatalog= By.xpath("//div[contains(text(),'Filter Catalog')]");
     By lbl_imageUploaded = By.xpath("//label[contains(text(), 'Image Uploaded')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
@@ -860,6 +860,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     // -------------------------------- Multi UOM ---------------------------
 
     public void ClickOnMultiUomDropDownOG(String code)throws InterruptedException{
+        distributorUI.scrollToElementStpByStep(By.xpath(multiUomDropDownOG.replace("CODE", code)),2);
         distributorUI.waitForVisibility(By.xpath(multiUomDropDownOG.replace("CODE", code)));
         distributorUI.click(By.xpath(multiUomDropDownOG.replace("CODE", code)));
         distributorUI.click(multiUomOption);
