@@ -11,10 +11,10 @@ public class ShowCasePage extends LoginPage {
     By ManufacturerTxt = By.xpath("(//*[contains(text(),'Conagra Foodservice')])[1]");
     String ConagraFoodServiceTxt = "//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate('BRANDPAGE', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]";
     By OurBrandBtn = By.xpath("//img[contains(@class,'img-fluid') and contains(@src,'angela-mia-logo')]");
-    By OurBrandPageTxt = By.xpath("(//div[contains(text(),'Angela Mia')])[1]");
+    By OurBrandPageTxt = By.xpath("(//a[contains(text(),'Angela Mia')])[1]");
     By OurBrands = By.xpath("//div[contains(text(),'Our Brands')]");
     By HungerfordSmithBrand = By.xpath("//img[contains(@class,'img-fluid') and contains(@src,'e1709cd4888480e1b60d1b64da314fc8')]");
-    By HungerfordSmithText =By.xpath("(//div[contains(text(),'J. Hungerford Smith')])[1]");
+    By HungerfordSmithText =By.xpath("(//h1[contains(text(),'J. Hungerford Smith')])[1]");
     By icon_OurBrandRightArrow =By.xpath("(//div[contains(text(),'Our Brands')]/following::div//*[name()='svg' and @data-icon='chevron-right']//*[name()='path'])[1]");
 
 
@@ -55,6 +55,8 @@ public class ShowCasePage extends LoginPage {
         distributorUI.waitForCustom(3000);
 //        distributorUI.scrollToElement(OurBrands);
         distributorUI.clickWithScrollAndHover(OurBrandBtn);
+        distributorUI.waitForCustom(3000);
+        distributorUI.switchToNewTab();
     }
 
     public boolean isOurBrandPageisDisplayed(){
@@ -69,10 +71,12 @@ public class ShowCasePage extends LoginPage {
         distributorUI.waitForClickability(HungerfordSmithBrand);
         distributorUI.waitForCustom(3000);
         distributorUI.clickWithScrollAndHover(HungerfordSmithBrand);
+        distributorUI.waitForCustom(3000);
+        distributorUI.switchToNewTab();
     }
 
     public boolean isHungerFordSmithtxtDisplayed(){
-        distributorUI.isDisplayed(HungerfordSmithText);
+//        distributorUI.isDisplayed(HungerfordSmithText);
         return distributorUI.isDisplayed(HungerfordSmithText);
     }
 

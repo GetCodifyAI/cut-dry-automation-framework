@@ -42,7 +42,9 @@ public class VerifyHidingAnItemFromTheOrderGuideTest extends TestBase {
         Customer.clickOnYes();
         Customer.closeEditor();
         Customer.searchItemOnOrderGuide(itemCode);
-        softAssert.assertNull(Customer.getItemNameFirstRow(),"item hide error");
+//        softAssert.assertNull(Customer.getItemNameFirstRow(),"item hide error");
+        itemName = Customer.getItemCodeFirstRow();
+        softAssert.assertFalse(itemCode.contains(itemName),"item is not hidden");
         softAssert.assertAll();
     }
 
