@@ -624,6 +624,12 @@ public class Catalog {
     public static boolean isMeasureOptionDisplay(String option){
         return catalogPage.isMeasureOptionDisplay(option);
     }
+    public static boolean isLastOrderMarginDisplay(String margin){
+        return catalogPage.isLastOrderMarginDisplay(margin);
+    }
+    public static boolean isMarginColumnDisplay(String margin){
+        return catalogPage.isMarginColumnDisplay(margin);
+    }
 
 
 }

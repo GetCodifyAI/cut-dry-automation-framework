@@ -201,4 +201,13 @@ public class InternalTools {
     public static boolean isCatalogDisableRestaurantDisplay(String name){
         return internalToolsPage.isCatalogDisableRestaurantDisplay(name);
     }
+    public static void displayMarginOnPortalToggle(boolean status){
+        internalToolsPage.displayMarginOnPortalToggle(status);
+    }
+    public static void restrictMarginOnPortalToggle(boolean status){
+        internalToolsPage.restrictMarginOnPortalToggle(status);
+    }
+    public static void spotPricingOnPortalToggle(boolean status){
+        internalToolsPage.spotPricingOnPortalToggle(status);
+    }
 }
