@@ -20,8 +20,8 @@ public class CustomersPage extends LoginPage {
     By btn_increaseQtySecondRowStable = By.xpath("(//table/tbody/tr//*[local-name()='svg' and @data-icon='plus'])[2]");
     By btn_increaseQtyFifthRow = By.xpath("(//table/tbody/tr//*[local-name()='svg' and @data-icon='plus'])[5]");
     By btn_decreaseQtyFirstRow = By.xpath("//tr[1]/td[8]/div/div/div/div[1]");
-    By btn_increaseQtySecondRow = By.xpath("//tr[2]/td[8]/div/div/div/div[3]");
-    By btn_decreaseQtySecondRow = By.xpath("//tr[2]/td[8]/div/div/div/div[1]");
+    By btn_increaseQtySecondRow = By.xpath("//tr[2]/td[8]/div/div/div//div[3]");
+    By btn_decreaseQtySecondRow = By.xpath("//tr[2]/td[8]/div/div/div/div/div[1]");
     By btn_checkout = By.xpath("//button[text()='$']/../button[2]");
     By btn_catalog = By.xpath("//span[text()='Catalog']");
     By tbx_catalogSearch = By.xpath("//input[@placeholder='Search catalog...']");
