@@ -34,7 +34,7 @@ public class VerifyPurchaseHistoryWithPriceNotDisplayInOrderGuideAndPDPWhenDispl
 
 
     @Test(groups = "DOT-TC-1346")
-    public void VerifyPurchaseHistoryWithPriceInOrderGuideAndPDPWhenDisplayDisplayPurchasePriceToggleEnable() throws InterruptedException {
+    public void VerifyPurchaseHistoryWithPriceNotDisplayInOrderGuideAndPDPWhenDisplayPurchasePriceToggleDisable() throws InterruptedException {
 
         softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
