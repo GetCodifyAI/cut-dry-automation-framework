@@ -607,18 +607,18 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     String customerScreenScanToOrderBtn = "//tr/td[contains(text(),'CUSTOMERCODE')]/..//a[contains(@href,'scan-to-order')]";
     String customerProfileScreenScanToOrderBtn = "//a[contains(@href,'scan-to-order')]";
 
-    By btn_firstMultiOUM = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]");
-    By lbl_firstMultiOUMItemName = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td//span/div[@data-tip='View Product Details']");
-    By lbl_firstMultiOUMItemCode = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[2]");
-    By lbl_itemPriceListMultiOUM = By.xpath("(((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//input)[1] | ((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]/div/div/div)[1] | ((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//span)[1])[1]");
-    By lbl_itemPriceListMultiOUM1 = By.xpath("(((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//input)[1] | ((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//span)[1])[2]");
+    By btn_firstMultiOUM = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-up'])[1]");
+    By lbl_firstMultiOUMItemName = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td//span/div[@data-tip='View Product Details']");
+    By lbl_firstMultiOUMItemCode = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[2]");
+    By lbl_itemPriceListMultiOUM = By.xpath("(((//*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//input)[1] | ((//*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]/div/div/div)[1] | ((//*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//span)[1])[1]");
+    By lbl_itemPriceListMultiOUM1 = By.xpath("(((//*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//input)[1] | ((//*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//span)[1])[2]");
 
-    String lbl_firstMultiOUMItemCodeLB = "(//*[local-name()='svg' and @data-icon='chevron-down'])/ancestor::tr/td[COUNT]//div[contains(text(),'LB')]/ancestor::td/parent::tr/td[2]";
-    String lbl_firstMultiOUMItemNameLB = "(//*[local-name()='svg' and @data-icon='chevron-down'])/ancestor::tr/td[COUNT]//div[contains(text(),'LB')]/ancestor::td/parent::tr/td//span/div[@data-tip='View Product Details']";
+    String lbl_firstMultiOUMItemCodeLB = "(//*[local-name()='svg' and @data-icon='chevron-up'])/ancestor::tr/td[COUNT]//div[contains(text(),'LB')]/ancestor::td/parent::tr/td[2]";
+    String lbl_firstMultiOUMItemNameLB = "(//*[local-name()='svg' and @data-icon='chevron-up'])/ancestor::tr/td[COUNT]//div[contains(text(),'LB')]/ancestor::td/parent::tr/td//span/div[@data-tip='View Product Details']";
 
 
     By lbl_itemCodeLists = By.xpath("//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[2]");
-    String lbl_ListsMultiOUMExist = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr[ROW_COUNT]/td//*[local-name()='svg' and @data-icon='chevron-down']";
+    String lbl_ListsMultiOUMExist = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr[ROW_COUNT]/td//*[local-name()='svg' and @data-icon='chevron-up']";
     String lbl_firstSingleOUMItemName = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr[ROW_COUNT]/td//span/div[@data-tip='View Product Details']";
     String lbl_firstSingleOUMItemCode = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr[ROW_COUNT]/td[2]";
 
@@ -626,7 +626,7 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
 String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//input)[UOM] | ((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//span)[UOM]";
 
     String multiUomDropDownOG = "(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg'])[1]";
-    String multiUomDropDownOGExist = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr//td[text()='CODE']/..//*[local-name()='svg' and @data-icon='chevron-down']";
+    String multiUomDropDownOGExist = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr//td[text()='CODE']/..//*[local-name()='svg' and @data-icon='chevron-up']";
     By multiUomOption =By.xpath("//div[text()='Multiple Units']");
     String btn_OGAddToCartPlusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='plus'])[UOM]";
     String btn_OGAddToCartMinusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='minus'])[UOM]";

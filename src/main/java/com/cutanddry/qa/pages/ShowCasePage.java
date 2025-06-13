@@ -73,6 +73,7 @@ public class ShowCasePage extends LoginPage {
         distributorUI.clickWithScrollAndHover(HungerfordSmithBrand);
         distributorUI.waitForCustom(3000);
         distributorUI.switchToNewTab();
+        distributorUI.waitForCustom(5000);
     }
 
     public boolean isHungerFordSmithtxtDisplayed(){
