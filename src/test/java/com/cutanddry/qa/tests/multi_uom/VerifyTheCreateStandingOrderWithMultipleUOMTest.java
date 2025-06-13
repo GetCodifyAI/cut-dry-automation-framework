@@ -19,12 +19,12 @@ public class VerifyTheCreateStandingOrderWithMultipleUOMTest extends TestBase {
     SoftAssert softAssert;
     static User user;
     static String customerId = CatalogData.CUSTOMER_ID;
-    String searchItemCode = CatalogData.ITEM_CODE;
+    String searchItemCode = CatalogData.ITEM_CODE_2;
     static double itemOGPriceUOM1 ,itemOGPriceUOM2,totalOGItemPrice1;
     String uom1 = CatalogData.MULTI_UOM_1;
     String uom2 = CatalogData.MULTI_UOM_2;
     static String deliveryDay = CatalogData.DELIVERY_DAY;
-    String itemName = CatalogData.ITEM_NAME;
+    String itemName = CatalogData.ITEM_NAME_SIMILAR_ITEM;
     static String StandingPrice,totalQuantity;
 
     @BeforeMethod
