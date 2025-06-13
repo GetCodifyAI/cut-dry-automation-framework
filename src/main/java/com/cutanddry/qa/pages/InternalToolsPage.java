@@ -61,7 +61,10 @@ public class InternalToolsPage extends LoginPage {
     By restrictMarginOnPortalToggleStable1 = By.xpath("//div[contains(text(), 'Restrict margin on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     By spotPricingOnPortalToggleStable = By.xpath("//div[contains(text(), 'Spot pricing on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By spotPricingOnPortalToggleStable1 = By.xpath("//div[contains(text(), 'Spot pricing on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
-
+    By displayPurchaseHistoryToggleStable = By.xpath("//div[contains(text(), 'Display Purchase History')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By displayPurchaseHistoryToggleStable1 = By.xpath("//div[contains(text(), 'Display Purchase History')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By displayPurchasePriceToggleStable = By.xpath("//div[contains(text(), 'Display Purchase Price on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By displayPurchasePriceToggleStable1 = By.xpath("//div[contains(text(), 'Display Purchase Price on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
 
 
 
@@ -416,6 +419,28 @@ public class InternalToolsPage extends LoginPage {
             distributorUI.clickWithScrollAndHover(spotPricingOnPortalToggleStable1);
         } else if (!enable && isEnabled) {
             distributorUI.clickWithScrollAndHover(spotPricingOnPortalToggleStable1);
+        }
+    }
+    public void displayPurchaseHistoryToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(displayPurchaseHistoryToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(displayPurchaseHistoryToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(displayPurchaseHistoryToggleStable1);
+        }
+    }
+    public void displayPurchasePriceToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(displayPurchasePriceToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(displayPurchasePriceToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(displayPurchasePriceToggleStable1);
         }
     }
 

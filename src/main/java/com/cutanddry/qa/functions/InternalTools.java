@@ -210,4 +210,10 @@ public class InternalTools {
     public static void spotPricingOnPortalToggle(boolean status){
         internalToolsPage.spotPricingOnPortalToggle(status);
     }
+    public static void displayPurchaseHistoryToggle(boolean status){
+        internalToolsPage.displayPurchaseHistoryToggle(status);
+    }
+    public static void displayPurchasePriceToggle(boolean status){
+        internalToolsPage.displayPurchasePriceToggle(status);
+    }
 }
