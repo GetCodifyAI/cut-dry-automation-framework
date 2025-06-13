@@ -630,6 +630,12 @@ public class Catalog {
     public static boolean isMarginColumnDisplay(String margin){
         return catalogPage.isMarginColumnDisplay(margin);
     }
+    public static boolean isPriceColumnDisplay(String price){
+        return catalogPage.isPriceColumnDisplay(price);
+    }
+    public static boolean isLastOrderPriceDisplay(String price){
+        return catalogPage.isLastOrderPriceDisplay(price);
+    }
 
 
 }

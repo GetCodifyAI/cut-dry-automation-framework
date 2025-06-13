@@ -211,6 +211,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     By icon_deleteSearchItem = By.xpath("(//*[local-name()='svg' and @data-icon='circle-xmark'])[1]");
     String lastOrderMarginPDP = "//div[text()='MARGIN']";
     String marginColumnPDP = "//th[text()='MARGIN']";
+    String priceColumn = "//th[text()='PRICE']";
+    String lastOrderPrice = "//span[contains(text(),'PRICE')]";
 
 
     public boolean isCatalogTextDisplayed() {
@@ -1146,6 +1148,12 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     }
     public boolean isMarginColumnDisplay(String margin){
         return distributorUI.isDisplayed(By.xpath(marginColumnPDP.replace("MARGIN",margin)));
+    }
+    public boolean isPriceColumnDisplay(String price){
+        return distributorUI.isDisplayed(By.xpath(priceColumn.replace("PRICE",price)));
+    }
+    public boolean isLastOrderPriceDisplay(String price){
+        return distributorUI.isDisplayed(By.xpath(lastOrderPrice.replace("PRICE",price)));
     }
 
 }

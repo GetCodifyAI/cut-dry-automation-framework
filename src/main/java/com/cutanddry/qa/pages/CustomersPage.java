@@ -743,7 +743,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String lbl_lastOrderDetails = "(//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]/../following-sibling::div/div";
     By txt_purchaseHistoryCatalog = By.xpath("//div[text()='Purchase History']");
     String lastOrderDetails = "//div[text()='ORDER']";
-    String purchaseHistoryOG = "//td[text()='CODE']/following-sibling::td[2]";
+    String purchaseHistoryOG = "(//td[text()='CODE']/following-sibling::td[2]/div/div)[1]";
 
 
 
