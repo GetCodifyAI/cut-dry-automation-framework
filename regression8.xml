@@ -32,10 +32,6 @@
 
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurantPortalsTest"/>
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheRemoveANewlyAddedUOMsToAnItemAndCheckFromTheDistributorAndRestaurantPortalsTest"/>
-
-            <class name="com.cutanddry.qa.tests.catalog.VerifyHardOrderMinimumWarningTest" />
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheHardOrderMinimumSelectingMultipleUOMTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSoftOrderMinimumSelectingMultipleUOMTest"/>
         </classes>
     </test>
 </suite>

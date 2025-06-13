@@ -161,6 +161,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
 
     //multi UOM
     String multiUomDropDownOG = "(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg'])[1]";
+    String multiUomDropDownOGArrow = "(//td[text()='CODE']/following-sibling::*//button/*[local-name()='svg'])[1]";
     By multiUomOption =By.xpath("//div[text()='Multiple Units']");
     String getOGPriceUOM ="(//td[text()='CODE']/ancestor::tr/td[7]/div/div/div//span)[UOM]";
     String btn_OGAddToCartPlusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='plus'])[UOM]";
@@ -1122,6 +1123,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         distributorUI.navigateToURLSame(pdpURL);
     }
     public void ClickOnMultiUomEachOption(String code)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(multiUomDropDownOGArrow.replace("CODE", code)));
+        distributorUI.click(By.xpath(multiUomDropDownOGArrow.replace("CODE", code)));
         distributorUI.waitForVisibility(By.xpath(multiUomDropDownOG.replace("CODE", code)));
         distributorUI.click(By.xpath(multiUomDropDownOG.replace("CODE", code)));
         distributorUI.click(multiUomOptionEach);
