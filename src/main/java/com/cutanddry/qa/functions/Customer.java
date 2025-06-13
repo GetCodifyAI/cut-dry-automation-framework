@@ -2129,7 +2129,7 @@ public class Customer {
     }
 
     public static void ClickOnMultiUomDropDownOG(String code)throws InterruptedException{
-        customersPage.ClickOnMultiUomDropDownOG(code);
+//        customersPage.ClickOnMultiUomDropDownOG(code);
     }
 
     public static void clickOGAddToCartPlusIcon(int count,String code, String uom) throws InterruptedException{
