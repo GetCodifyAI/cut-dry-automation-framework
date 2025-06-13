@@ -79,7 +79,6 @@
             <class name="com.cutanddry.qa.tests.draft.VerifyDeleteDraftOrderByOperatorTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsSearchAndFilterFunctionTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifyErrorMessageDisplayTest"/>
-
         </classes>
     </test>
 </suite>
