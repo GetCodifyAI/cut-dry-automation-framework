@@ -596,11 +596,11 @@ public class Customer {
     public static boolean areOutOfStockItemsDisplayed(){
         return customersPage.areOutOfStockItemsDisplayed();
     }
-    public static void clickOnUnitEach(){
-        customersPage.clickOnUnitEach();
+    public static void clickOnUnitEach(String code){
+        customersPage.clickOnUnitEach(code);
     }
-    public static void clickOnUnitCase(){
-        customersPage.clickOnUnitCase();
+    public static void clickOnUnitCase(String code){
+        customersPage.clickOnUnitCase(code);
     }
     public static void clickOnOrderGuideInProfile() throws InterruptedException {
         customersPage.clickOnOrderGuideInProf();
@@ -1960,7 +1960,7 @@ public class Customer {
 //        return customersPage.getPriceInCustomerOrder();
 //    }
     public static String getPoundPrice() throws InterruptedException {
-        return customersPage.getPoundPrice();
+        return customersPage.getPoundPrice().trim();
     }
     public static void clickPoundPrice(){
         customersPage.clickPoundPrice();
