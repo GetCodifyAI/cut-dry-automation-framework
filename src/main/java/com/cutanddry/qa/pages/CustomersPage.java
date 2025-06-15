@@ -744,6 +744,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By txt_purchaseHistoryCatalog = By.xpath("//div[text()='Purchase History']");
     String lastOrderDetails = "//div[text()='ORDER']";
     String purchaseHistoryOG = "(//td[text()='CODE']/following-sibling::td[2]/div/div)[1]";
+    By btn_OrderCCEmailAlerts = By.xpath("//div[contains(text(), 'Order CC Email Alerts')]/following-sibling::*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
+    String txt_OrderCCEmailAlerts = "//div[text()='ALERT']";
+    By sendAlertTo = By.xpath("//div[contains(text(), 'Send alerts to:')]/following-sibling::input");
+    By AddedAlertToNewOder = By.xpath("//div[normalize-space(text())='Send Alerts For']/following-sibling::*//div[text()='New Orders']");
+    String txt_specialOrderNote = "//div[text()='NOTE']";
 
 
 
@@ -4478,6 +4483,24 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickCloseSubstituteItemPopup(){
         distributorUI.waitForVisibility(icon_deleteSubstitutionItem);
         distributorUI.click(icon_deleteSubstitutionItem);
+    }
+    public void clickOrderCCEmailAlert()throws InterruptedException{
+        distributorUI.waitForCustom(3000);
+        distributorUI.click(btn_OrderCCEmailAlerts);
+    }
+    public boolean isOrderCCEmailAlertDisplay(String alert){
+        return distributorUI.isDisplayed(By.xpath(txt_OrderCCEmailAlerts.replace("ALERT",alert)));
+    }
+    public void addEmailToSendAlertTo(String mail)throws InterruptedException{
+        distributorUI.clear(sendAlertTo);
+        distributorUI.sendKeys(sendAlertTo,mail);
+        distributorUI.waitForCustom(3000);
+    }
+    public boolean isSendAlertForNewOrderDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(AddedAlertToNewOder);
+    }
+    public boolean isSpecialOrderNoteDisplay(String note)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(txt_specialOrderNote.replace("NOTE",note)));
     }
 
 

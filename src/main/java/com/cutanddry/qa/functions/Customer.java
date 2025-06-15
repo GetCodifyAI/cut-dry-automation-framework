@@ -2647,6 +2647,21 @@ public class Customer {
     public static void clickLastOrderOG(String code) throws InterruptedException {
         customersPage.clickLastOrderOG(code);
     }
+    public static void clickOrderCCEmailAlert()throws InterruptedException{
+        customersPage.clickOrderCCEmailAlert();
+    }
+    public static boolean isOrderCCEmailAlertDisplay(String alert) throws InterruptedException {
+        return customersPage.isOrderCCEmailAlertDisplay(alert);
+    }
+    public static void addEmailToSendAlertTo(String mail)throws InterruptedException{
+        customersPage.addEmailToSendAlertTo(mail);
+    }
+    public static boolean isSendAlertForNewOrderDisplay() throws InterruptedException {
+        return customersPage.isSendAlertForNewOrderDisplay();
+    }
+    public static boolean isSpecialOrderNoteDisplay(String note) throws InterruptedException {
+        return customersPage.isSpecialOrderNoteDisplay(note);
+    }
 
 
 }
