@@ -306,10 +306,15 @@ public class Customer {
     public static void addItemFromCatalog() throws InterruptedException {
         customersPage.clickOnAddToOrderGuide();
     }
-    public static void addItemFromCatalogStable(String name){
+
+    public static void addItemFromCatalogStable(String name) {
         if (customersPage.isAddToOrderGuideDisplayed(name)) {
             customersPage.clickOnAddToOrderGuideStable(name);
 //            customersPage.clickOnCloseEditorCatalog();
+        }
+
+        if (customersPage.isErrorTextDisplayed()) {
+            customersPage.clickOK();
         }
 
     }
