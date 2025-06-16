@@ -213,6 +213,9 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     String marginColumnPDP = "//th[text()='MARGIN']";
     String priceColumn = "//th[text()='PRICE']";
     String lastOrderPrice = "//span[contains(text(),'PRICE')]";
+    String lbl_cashAndCarryAllowedOption = "//label[contains(text(),'OPTION')]";
+    By txt_actionableOverview = By.xpath("//div[text()='Actionable Overview']");
+    By txt_newProduct = By.xpath("//div[text()='New Products']");
 
 
     public boolean isCatalogTextDisplayed() {
@@ -1154,6 +1157,15 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     }
     public boolean isLastOrderPriceDisplay(String price){
         return distributorUI.isDisplayed(By.xpath(lastOrderPrice.replace("PRICE",price)));
+    }
+    public boolean isCashAndCarryAllowedDisplay(String option){
+        return distributorUI.isDisplayed(By.xpath(lbl_cashAndCarryAllowedOption.replace("OPTION",option)));
+    }
+    public boolean isActionableOverviewDisplay(){
+        return distributorUI.isDisplayed(txt_actionableOverview);
+    }
+    public boolean isNewProductDisplay(){
+        return distributorUI.isDisplayed(txt_newProduct);
     }
 
 }

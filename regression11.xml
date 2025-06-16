@@ -59,6 +59,12 @@
             <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryWithPriceInOrderGuideAndPDPWhenDisplayPurchasePriceToggleEnableTest"/>
             <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryWithPriceNotDisplayInOrderGuideAndPDPWhenDisplayPurchasePriceToggleDisableTest"/>
 
+            <class name="com.cutanddry.qa.tests.catalog.VerifyCashAndCarryAllowedOptionIsDisplayedInsidePricingAndPromotionsForCashAndCarryEnabledDPTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyCashAndCarryAllowedOptionIsNotDisplayedInsidePricingAndPromotionsForCashAndCarryNotEnabledDPTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyThatTheDistributorShouldHaveTheNewProductBannerInTheSupplierCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheSpecialOrderItemsOrderReviewNoteTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyThatTheUserCanSetUpCCEmailFromTheDistributorPortalTest"/>
+
         </classes>
     </test>
 </suite>

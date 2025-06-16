@@ -636,6 +636,15 @@ public class Catalog {
     public static boolean isLastOrderPriceDisplay(String price){
         return catalogPage.isLastOrderPriceDisplay(price);
     }
+    public static boolean isCashAndCarryAllowedDisplay(String option){
+        return catalogPage.isCashAndCarryAllowedDisplay(option);
+    }
+    public static boolean isActionableOverviewDisplay(){
+        return catalogPage.isActionableOverviewDisplay();
+    }
+    public static boolean isNewProductDisplay(){
+        return catalogPage.isNewProductDisplay();
+    }
 
 
 }

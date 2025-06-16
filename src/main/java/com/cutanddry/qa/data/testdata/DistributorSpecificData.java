@@ -11,5 +11,7 @@ public class DistributorSpecificData {
     public static final String DISTRIBUTOR_CARMELA = "174874582 - Cut+Dry Agent - Carmela Foods Inc";
     public static final String DISTRIBUTOR_DICARLO = "72124668 - Kevin Wu - DiCarlo";
     public static final String CUSTOMER_ID_DICARLO = "962243";
+    public static final String DISTRIBUTOR_WCW_ROCKIES = "138629491 - Eshan - What Chefs Want - Rockies";
+    public static final String DISTRIBUTOR_LIPARI = "319660053 - Chathuraka Lipari - Lipari Foods";
 
 }
