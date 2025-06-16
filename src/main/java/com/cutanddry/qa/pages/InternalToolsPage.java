@@ -55,6 +55,18 @@ public class InternalToolsPage extends LoginPage {
     By addDisableOperatorCatalog = By.xpath("//div[contains(text(), 'Select operators to disable catalog')]/following-sibling::div/div");
     String catalogDisableRestaurantDelete = "//div[contains(text(), 'Select operators to disable catalog')]/following-sibling::div//div[text()='NAME']/following-sibling::div";
     String catalogDisableRestaurant = "//div[contains(text(), 'Select operators to disable catalog')]/following-sibling::div//div[text()='NAME']";
+    By displayMarginOnPortalToggleStable = By.xpath("//div[contains(text(), 'Display margin on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By displayMarginOnPortalToggleStable1 = By.xpath("//div[contains(text(), 'Display margin on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By restrictMarginOnPortalToggleStable = By.xpath("//div[contains(text(), 'Restrict margin on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By restrictMarginOnPortalToggleStable1 = By.xpath("//div[contains(text(), 'Restrict margin on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By spotPricingOnPortalToggleStable = By.xpath("//div[contains(text(), 'Spot pricing on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By spotPricingOnPortalToggleStable1 = By.xpath("//div[contains(text(), 'Spot pricing on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By displayPurchaseHistoryToggleStable = By.xpath("//div[contains(text(), 'Display Purchase History')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By displayPurchaseHistoryToggleStable1 = By.xpath("//div[contains(text(), 'Display Purchase History')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By displayPurchasePriceToggleStable = By.xpath("//div[contains(text(), 'Display Purchase Price on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By displayPurchasePriceToggleStable1 = By.xpath("//div[contains(text(), 'Display Purchase Price on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+
+
 
 
 
@@ -376,6 +388,62 @@ public class InternalToolsPage extends LoginPage {
     public boolean isCatalogDisableRestaurantDisplay(String name){
         return distributorUI.isDisplayed(By.xpath(catalogDisableRestaurant.replace("NAME", name)));
     }
+    public void displayMarginOnPortalToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(displayMarginOnPortalToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(displayMarginOnPortalToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(displayMarginOnPortalToggleStable1);
+        }
+    }
+    public void restrictMarginOnPortalToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(restrictMarginOnPortalToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(restrictMarginOnPortalToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(restrictMarginOnPortalToggleStable1);
+        }
+    }
+    public void spotPricingOnPortalToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(spotPricingOnPortalToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(spotPricingOnPortalToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(spotPricingOnPortalToggleStable1);
+        }
+    }
+    public void displayPurchaseHistoryToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(displayPurchaseHistoryToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(displayPurchaseHistoryToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(displayPurchaseHistoryToggleStable1);
+        }
+    }
+    public void displayPurchasePriceToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(displayPurchasePriceToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(displayPurchasePriceToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(displayPurchasePriceToggleStable1);
+        }
+    }
+
 
 
 

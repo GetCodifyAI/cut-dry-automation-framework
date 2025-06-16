@@ -3,8 +3,8 @@ package com.cutanddry.qa.data.testdata;
 public class CustomerData {
     public static final String DISTRIBUTOR_NAME = "146572596 - Cut+Dry Agent - John Gross & Co";
     public static final String CUSTOMER_CODE = "11956";
-    public static final String ITEM_CODE = "143210";
-    public static final String ITEM_CODE_2 = "263500";//048604, 143210, 252318
+    public static final String ITEM_CODE = "263500";// 143210
+    public static final String ITEM_CODE_2 = "641563";//048604, 143210, 252318,263500
     public static final String STOCK_AVAILABILITY = "Stock Availability";
     public static final String CURRENT_STOCK = "Current Stock:";
     public static final String ON_ORDER_QTY = "On Order Qty:";

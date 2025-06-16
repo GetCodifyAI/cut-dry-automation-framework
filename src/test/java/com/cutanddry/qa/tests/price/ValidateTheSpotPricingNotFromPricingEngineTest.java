@@ -100,6 +100,8 @@ public class ValidateTheSpotPricingNotFromPricingEngineTest extends TestBase{
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId5), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId5);
         Customer.clickOnOrdersTab();
+        Customer.OrderDateSort();
+        Customer.OrderDateSort();
         String priceText = Customer.getPriceInCustomerOrder().replace("$", "").replace(",", "");
         Double actualPrice = Double.valueOf(priceText);
         softAssert.assertEquals(actualPrice, itemPrice, "The item has not been selected.");

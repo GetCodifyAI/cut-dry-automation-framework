@@ -40,7 +40,7 @@ public class VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest extends TestBase {
         Customer.searchItemOnOrderGuide(itemCode);
         itemName = Customer.getItemNameFirstRow();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
-        Customer.clickOnUnitEach();
+        Customer.clickOnUnitEach(itemCode);
         Customer.increaseFirstRowQtyByOneInDist();
         Customer.checkoutItemsDist();
         Customer.submitOrderWithoutReachMinimum();
@@ -52,7 +52,7 @@ public class VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest extends TestBase {
         itemName = Customer.getItemNameFirstRow();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         softAssert.assertEquals(Customer.getUnitType(),"Each","unit mismatch");
-        Customer.clickOnUnitCase();
+        Customer.clickOnUnitCase(itemCode);
         Customer.increaseFirstRowQtyByOneInDist();
         Customer.checkoutItemsDist();
         Customer.submitOrderWithoutReachMinimum();

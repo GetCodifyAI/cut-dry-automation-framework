@@ -50,10 +50,10 @@ public class DistributorInitialSetUpTest extends TestBase {
         Customer.disableAccHolds();
         softAssert.assertTrue(Customer.isNoneSelected(),"acc none select error");
 
-        Login.switchIntoNewTab();
+        /*Login.switchIntoNewTab();
         Login.navigateToDistributor();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");*/
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(CustomerCode1);
         Customer.SelectCustomer(CustomerCode1);

@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyHidingAnItemFromTheOrderGuideTest extends TestBase {
     static User user;
     static String customerId = "16579";
-    static String itemCode = "1409";
+    static String itemCode = "01707";
 
     @BeforeMethod
     public void setUp() {
@@ -42,7 +42,9 @@ public class VerifyHidingAnItemFromTheOrderGuideTest extends TestBase {
         Customer.clickOnYes();
         Customer.closeEditor();
         Customer.searchItemOnOrderGuide(itemCode);
-        softAssert.assertNull(Customer.getItemNameFirstRow(),"item hide error");
+//        softAssert.assertNull(Customer.getItemNameFirstRow(),"item hide error");
+        itemName = Customer.getItemCodeFirstRow();
+        softAssert.assertFalse(itemCode.contains(itemName),"item is not hidden");
         softAssert.assertAll();
     }
 

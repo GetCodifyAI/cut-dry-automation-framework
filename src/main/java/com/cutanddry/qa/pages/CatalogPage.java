@@ -106,7 +106,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     By lbl_statusDropdown = By.xpath("(//div[contains(text(),'All Results')]/../following-sibling::div//div[3])[1]");
     By lbl_active = By.xpath("//div[contains(@class,'themed_select__option') and text()='Active']");
     By lbl_inActive = By.xpath("//div[contains(@class,'themed_select__option') and text()='Inactive']");
-    By lbl_nonactive = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[7][not(normalize-space()='Active')]");
+    By lbl_nonactive = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[8][not(normalize-space()='Active')]");
     By btn_moreFilters = By.xpath("//button[contains(., 'Filters')]");
     By txt_filterCatalog= By.xpath("//div[contains(text(),'Filter Catalog')]");
     By lbl_imageUploaded = By.xpath("//label[contains(text(), 'Image Uploaded')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
@@ -161,8 +161,9 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
 
     //multi UOM
     String multiUomDropDownOG = "(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg'])[1]";
+    String multiUomDropDownOGArrow = "(//td[text()='CODE']/following-sibling::*//button/*[local-name()='svg'])[1]";
     By multiUomOption =By.xpath("//div[text()='Multiple Units']");
-    String getOGPriceUOM ="(//td[text()='CODE']/ancestor::tr/td[7]/div/div/div/span)[UOM]";
+    String getOGPriceUOM ="(//td[text()='CODE']/ancestor::tr/td[7]/div/div/div//span)[UOM]";
     String btn_OGAddToCartPlusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='plus'])[UOM]";
     String tbx_itemQuantityUOM = "(//td[text()='CODE']/following-sibling::*//div/input[@data-input ='quantityInput'])[UOM]";
     String btn_OGAddToCartMinusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='minus'])[UOM]";
@@ -207,7 +208,14 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     By multiUomOptionEach =By.xpath("//div[text()='Each']");
     By getTotalLineItem = By.xpath("//td[contains(text(),'Total Line Items')]/following-sibling::td");
     String multiUOMOption ="(//div[text()='OPTION'])[last()]";
-
+    By icon_deleteSearchItem = By.xpath("(//*[local-name()='svg' and @data-icon='circle-xmark'])[1]");
+    String lastOrderMarginPDP = "//div[text()='MARGIN']";
+    String marginColumnPDP = "//th[text()='MARGIN']";
+    String priceColumn = "//th[text()='PRICE']";
+    String lastOrderPrice = "//span[contains(text(),'PRICE')]";
+    String lbl_cashAndCarryAllowedOption = "//label[contains(text(),'OPTION')]";
+    By txt_actionableOverview = By.xpath("//div[text()='Actionable Overview']");
+    By txt_newProduct = By.xpath("//div[text()='New Products']");
 
 
     public boolean isCatalogTextDisplayed() {
@@ -512,6 +520,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     }
     public void clickSearchItemInCatalog(String itemName){
         distributorUI.click(searchField);
+        distributorUI.click(icon_deleteSearchItem);
         distributorUI.sendKeys(searchField,itemName);
     }
     public void searchItemInCatalogPreview(String itemCode){
@@ -857,6 +866,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     // -------------------------------- Multi UOM ---------------------------
 
     public void ClickOnMultiUomDropDownOG(String code)throws InterruptedException{
+        distributorUI.scrollToElementStpByStep(By.xpath(multiUomDropDownOG.replace("CODE", code)),2);
         distributorUI.waitForVisibility(By.xpath(multiUomDropDownOG.replace("CODE", code)));
         distributorUI.click(By.xpath(multiUomDropDownOG.replace("CODE", code)));
         distributorUI.click(multiUomOption);
@@ -1001,6 +1011,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         return distributorUI.isDisplayed(By.xpath(standingOrder.replace("QUANTITY", quantity).replace("PRICE", price)));
     }
     public void searchOrderGuide(String item) throws InterruptedException {
+        distributorUI.click(icon_deleteSearchItem);
         distributorUI.clear(orderGuideSearch);
         distributorUI.sendKeys(orderGuideSearch,item);
     }
@@ -1115,6 +1126,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         distributorUI.navigateToURLSame(pdpURL);
     }
     public void ClickOnMultiUomEachOption(String code)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(multiUomDropDownOGArrow.replace("CODE", code)));
+        distributorUI.click(By.xpath(multiUomDropDownOGArrow.replace("CODE", code)));
         distributorUI.waitForVisibility(By.xpath(multiUomDropDownOG.replace("CODE", code)));
         distributorUI.click(By.xpath(multiUomDropDownOG.replace("CODE", code)));
         distributorUI.click(multiUomOptionEach);
@@ -1132,6 +1145,27 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     }
     public boolean isMeasureOptionDisplay(String option){
         return distributorUI.isDisplayed(By.xpath(multiUOMOption.replace("OPTION", option)));
+    }
+    public boolean isLastOrderMarginDisplay(String margin){
+        return distributorUI.isDisplayed(By.xpath(lastOrderMarginPDP.replace("MARGIN",margin)));
+    }
+    public boolean isMarginColumnDisplay(String margin){
+        return distributorUI.isDisplayed(By.xpath(marginColumnPDP.replace("MARGIN",margin)));
+    }
+    public boolean isPriceColumnDisplay(String price){
+        return distributorUI.isDisplayed(By.xpath(priceColumn.replace("PRICE",price)));
+    }
+    public boolean isLastOrderPriceDisplay(String price){
+        return distributorUI.isDisplayed(By.xpath(lastOrderPrice.replace("PRICE",price)));
+    }
+    public boolean isCashAndCarryAllowedDisplay(String option){
+        return distributorUI.isDisplayed(By.xpath(lbl_cashAndCarryAllowedOption.replace("OPTION",option)));
+    }
+    public boolean isActionableOverviewDisplay(){
+        return distributorUI.isDisplayed(txt_actionableOverview);
+    }
+    public boolean isNewProductDisplay(){
+        return distributorUI.isDisplayed(txt_newProduct);
     }
 
 }

@@ -119,12 +119,12 @@ public class TrackPage extends LoginPage{
     String dropdownItemXPath = "//div[contains(@class, 'themed_select__menu')]//div[text()='{}']";
     By datePicker_monitoring = By.xpath("//input[@type='text' and contains(@class, 'form-control') and contains(@class, '_rfglfk')]");
     String monitorRouteName = "//div[contains(text(),'NAME')]";
-    String customerColumn = "//th[contains(text(),'Customer')]/../../following-sibling::*//td[text()='NAME']";
-    String customerName = "//div[contains(text(),'NAME')]";
+    String customerColumn = "//div[contains(text(),'ROUTE')]/following::*//th[contains(text(),'Customer')]/../../following-sibling::*//td[text()='NAME']";
+    String customerName = "//div[contains(text(),'ROUTE')]/following::*//div[contains(text(),'NAME')]";
     By clickClose = By.xpath("//span[contains(text(),'×')]");
     String dateMonitor = "//input[@type='text' and contains(@class,'form-control') and @value='DATE']";
-    String orderId = "//th[contains(text(),'Order')]/../../following-sibling::*//td[text()='ID']";
-    String customerStop = "//th[contains(text(),'Stop')]/../../following-sibling::*//td[text()='STOP']";
+    String orderId = "//div[contains(text(),'ROUTE')]/following::*//th[contains(text(),'Order')]/../../following-sibling::*//td[text()='ID']";
+    String customerStop = "//div[contains(text(),'ROUTE')]/following::*//th[contains(text(),'Stop')]/../../following-sibling::*//td[text()='STOP']";
     String stopDisplay = "//h4[contains(text(),'STOP')]";
 
     public void clickDatePickerMonitoring(){
@@ -806,26 +806,26 @@ public class TrackPage extends LoginPage{
         distributorUI.click(By.xpath(monitorRouteName.replace("NAME", name)));
         distributorUI.waitForCustom(5000);
     }
-    public boolean isCustomerColumnTextDisplayed(String name)throws InterruptedException{
+    public boolean isCustomerColumnTextDisplayed(String name, String route)throws InterruptedException{
         try {
-            distributorUI.waitForVisibility(By.xpath(customerColumn.replace("NAME", name)));
+            distributorUI.waitForVisibility(By.xpath(customerColumn.replace("NAME", name).replace("ROUTE", route)));
         } catch (Exception e){
             return false;
         }
-        return distributorUI.isDisplayed(By.xpath(customerColumn.replace("NAME", name)));
+        return distributorUI.isDisplayed(By.xpath(customerColumn.replace("NAME", name).replace("ROUTE", route)));
     }
-    public void clickMonitorCustomer(String name)throws InterruptedException{
-        distributorUI.waitForVisibility(By.xpath(customerColumn.replace("NAME", name)));
-        distributorUI.click(By.xpath(customerColumn.replace("NAME", name)));
+    public void clickMonitorCustomer(String name, String route)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(customerColumn.replace("NAME", name).replace("ROUTE", route)));
+        distributorUI.click(By.xpath(customerColumn.replace("NAME", name).replace("ROUTE", route)));
         distributorUI.waitForCustom(5000);
     }
-    public boolean isMonitorCustomerNameDisplayed(String name)throws InterruptedException{
+    public boolean isMonitorCustomerNameDisplayed(String name, String route)throws InterruptedException{
         try {
-            distributorUI.waitForVisibility(By.xpath(customerName.replace("NAME", name)));
+            distributorUI.waitForVisibility(By.xpath(customerName.replace("NAME", name).replace("ROUTE", route)));
         } catch (Exception e){
             return false;
         }
-        return distributorUI.isDisplayed(By.xpath(customerName.replace("NAME", name)));
+        return distributorUI.isDisplayed(By.xpath(customerName.replace("NAME", name).replace("ROUTE", route)));
     }
     public void clickCloseCustomerDetails()throws InterruptedException{
         distributorUI.click(clickClose);
@@ -838,21 +838,21 @@ public class TrackPage extends LoginPage{
         }
         return distributorUI.isDisplayed(By.xpath(dateMonitor.replace("DATE", date)));
     }
-    public boolean isOrderIdColumnTextDisplayed(String id)throws InterruptedException{
+    public boolean isOrderIdColumnTextDisplayed(String id, String route)throws InterruptedException{
         try {
-            distributorUI.waitForVisibility(By.xpath(orderId.replace("ID", id)));
+            distributorUI.waitForVisibility(By.xpath(orderId.replace("ID", id).replace("ROUTE", route)));
         } catch (Exception e){
             return false;
         }
-        return distributorUI.isDisplayed(By.xpath(orderId.replace("ID", id)));
+        return distributorUI.isDisplayed(By.xpath(orderId.replace("ID", id).replace("ROUTE", route)));
     }
-    public boolean isCustomerStopColumnTextDisplayed(String stop)throws InterruptedException{
+    public boolean isCustomerStopColumnTextDisplayed(String stop, String route)throws InterruptedException{
         try {
-            distributorUI.waitForVisibility(By.xpath(customerStop.replace("STOP", stop)));
+            distributorUI.waitForVisibility(By.xpath(customerStop.replace("STOP", stop).replace("ROUTE", route)));
         } catch (Exception e){
             return false;
         }
-        return distributorUI.isDisplayed(By.xpath(customerStop.replace("STOP", stop)));
+        return distributorUI.isDisplayed(By.xpath(customerStop.replace("STOP", stop).replace("ROUTE", route)));
     }
     public boolean isMonitorCustomerStopDisplayed(String stop)throws InterruptedException{
         try {

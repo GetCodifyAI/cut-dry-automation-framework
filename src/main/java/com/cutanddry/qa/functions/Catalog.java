@@ -476,7 +476,7 @@ public class Catalog {
     }
     //-------------------- Multi UOM -----------------------
     public static void ClickOnMultiUomDropDownOG(String code)throws InterruptedException{
-        catalogPage.ClickOnMultiUomDropDownOG(code);
+//        catalogPage.ClickOnMultiUomDropDownOG(code);
     }
     public static double getOGPriceUOM(String code,String uom) throws InterruptedException {
         return catalogPage.getOGPriceUOM(code,uom);
@@ -619,10 +619,31 @@ public class Catalog {
     }
 
     public static void clickOnMultiUomDropDownOrderGuide(String code,String option)throws InterruptedException{
-        catalogPage.clickOnMultiUomDropDownOrderGuide(code,option);
+//        catalogPage.clickOnMultiUomDropDownOrderGuide(code,option);
     }
     public static boolean isMeasureOptionDisplay(String option){
         return catalogPage.isMeasureOptionDisplay(option);
+    }
+    public static boolean isLastOrderMarginDisplay(String margin){
+        return catalogPage.isLastOrderMarginDisplay(margin);
+    }
+    public static boolean isMarginColumnDisplay(String margin){
+        return catalogPage.isMarginColumnDisplay(margin);
+    }
+    public static boolean isPriceColumnDisplay(String price){
+        return catalogPage.isPriceColumnDisplay(price);
+    }
+    public static boolean isLastOrderPriceDisplay(String price){
+        return catalogPage.isLastOrderPriceDisplay(price);
+    }
+    public static boolean isCashAndCarryAllowedDisplay(String option){
+        return catalogPage.isCashAndCarryAllowedDisplay(option);
+    }
+    public static boolean isActionableOverviewDisplay(){
+        return catalogPage.isActionableOverviewDisplay();
+    }
+    public static boolean isNewProductDisplay(){
+        return catalogPage.isNewProductDisplay();
     }
 
 

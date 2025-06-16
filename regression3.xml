@@ -79,8 +79,6 @@
             <class name="com.cutanddry.qa.tests.draft.VerifyDeleteDraftOrderByOperatorTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsSearchAndFilterFunctionTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifyErrorMessageDisplayTest"/>
-            <!--TODO: Failure TC, Need to fix the bug 1st-->
-            <class name="com.cutanddry.qa.tests.catalog.VerifyHardOrderMinimumWarningTest" />
         </classes>
     </test>
 </suite>

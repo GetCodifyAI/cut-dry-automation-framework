@@ -306,10 +306,15 @@ public class Customer {
     public static void addItemFromCatalog() throws InterruptedException {
         customersPage.clickOnAddToOrderGuide();
     }
-    public static void addItemFromCatalogStable(String name){
+
+    public static void addItemFromCatalogStable(String name) {
         if (customersPage.isAddToOrderGuideDisplayed(name)) {
             customersPage.clickOnAddToOrderGuideStable(name);
 //            customersPage.clickOnCloseEditorCatalog();
+        }
+
+        if (customersPage.isErrorTextDisplayed()) {
+            customersPage.clickOK();
         }
 
     }
@@ -596,11 +601,11 @@ public class Customer {
     public static boolean areOutOfStockItemsDisplayed(){
         return customersPage.areOutOfStockItemsDisplayed();
     }
-    public static void clickOnUnitEach(){
-        customersPage.clickOnUnitEach();
+    public static void clickOnUnitEach(String code){
+        customersPage.clickOnUnitEach(code);
     }
-    public static void clickOnUnitCase(){
-        customersPage.clickOnUnitCase();
+    public static void clickOnUnitCase(String code){
+        customersPage.clickOnUnitCase(code);
     }
     public static void clickOnOrderGuideInProfile() throws InterruptedException {
         customersPage.clickOnOrderGuideInProf();
@@ -1398,11 +1403,20 @@ public class Customer {
         customersPage.clickOnProduct(name);
     }
     public static void clickAddToCartPDP(){customersPage.clickAddToCart();}
-    public static void clickCheckOutPDP(){
+    public static void clickCheckOutPDP() throws InterruptedException {
         customersPage.clickCheckOutPDP();
         if(customersPage.isSubstitutesPopupDisplayedSub()){
             customersPage.clickDoNotSubstitute();
             customersPage.clickSaveSelection();
+        }
+        if(customersPage.isSubstitutesItemPopupDisplayedSub()){
+            customersPage.clickCloseSubstituteItemPopup();
+        }
+        if (customersPage.isOrderMiniumErrorBannerDisplayedSub()){
+            dashboardPage.clickOnOrderSettings();
+            settingsPage.selectOnOrderMinimums();
+            settingsPage.clickOnSaveChanges();
+            customersPage.clickOnBack();
         }
     }
     public static void clickCheckOutPDPSubstitute() {
@@ -1951,7 +1965,7 @@ public class Customer {
 //        return customersPage.getPriceInCustomerOrder();
 //    }
     public static String getPoundPrice() throws InterruptedException {
-        return customersPage.getPoundPrice();
+        return customersPage.getPoundPrice().trim();
     }
     public static void clickPoundPrice(){
         customersPage.clickPoundPrice();
@@ -2120,7 +2134,7 @@ public class Customer {
     }
 
     public static void ClickOnMultiUomDropDownOG(String code)throws InterruptedException{
-        customersPage.ClickOnMultiUomDropDownOG(code);
+//        customersPage.ClickOnMultiUomDropDownOG(code);
     }
 
     public static void clickOGAddToCartPlusIcon(int count,String code, String uom) throws InterruptedException{
@@ -2413,13 +2427,17 @@ public class Customer {
         customersPage.selectActiveDeliveryDate();
 
     }
-    public static void submitOrderDpSpecific(){
+    public static void submitOrderDpSpecific() throws InterruptedException {
         customersPage.submitOrder();
         if (customersPage.isOrderMinPopupDisplayed()){
             customersPage.clickOnYes();
         }
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
+        }
+        Thread.sleep(3000);
+        if (customersPage.isCombinedPopupDisplayed()){
+            customersPage.clickContinueCombined();
         }
     }
     public static void selectDeliveryDateLineStable()throws InterruptedException{
@@ -2618,6 +2636,36 @@ public class Customer {
     }
     public static boolean isSameDeliveryDateErrorPopUpDisplay(){
         return customersPage.isSameDeliveryDateErrorPopUpDisplay();
+    }
+    public static String getItemMarginPercentage(String code , String uom) throws InterruptedException {
+        return customersPage.getItemMarginPercentage(code,uom);
+    }
+    public static void clickLastOrderDetailsCatalog(String name)throws InterruptedException{
+        customersPage.clickLastOrderDetailsCatalog(name);
+    }
+    public static boolean isPurchaseHistoryDisplay(){
+        return customersPage.isPurchaseHistoryDisplay();
+    }
+    public static boolean isLastOrderDisplay(String order){
+        return customersPage.isLastOrderDisplay(order);
+    }
+    public static void clickLastOrderOG(String code) throws InterruptedException {
+        customersPage.clickLastOrderOG(code);
+    }
+    public static void clickOrderCCEmailAlert()throws InterruptedException{
+        customersPage.clickOrderCCEmailAlert();
+    }
+    public static boolean isOrderCCEmailAlertDisplay(String alert) throws InterruptedException {
+        return customersPage.isOrderCCEmailAlertDisplay(alert);
+    }
+    public static void addEmailToSendAlertTo(String mail)throws InterruptedException{
+        customersPage.addEmailToSendAlertTo(mail);
+    }
+    public static boolean isSendAlertForNewOrderDisplay() throws InterruptedException {
+        return customersPage.isSendAlertForNewOrderDisplay();
+    }
+    public static boolean isSpecialOrderNoteDisplay(String note) throws InterruptedException {
+        return customersPage.isSpecialOrderNoteDisplay(note);
     }
 
 

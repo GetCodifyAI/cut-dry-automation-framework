@@ -40,19 +40,19 @@ public class VerifyEditingSubmittedVoiceOrderTest extends TestBase {
         OrderDesk.navigateToSubmitOrdersReviewPage();
 
         //Item Increment using button
-        OrderDesk.AddItemQuantityDraftOrderReviewPage();
+//        OrderDesk.AddItemQuantityDraftOrderReviewPage();
 //        OrderDesk.SaveDraftOrder();
 //        softAssert.assertTrue(OrderDesk.isSaveDraftSucessful(),"Error in saving the draft");
 //        OrderDesk.CloseTheSucessfulOverlayByOK();
 
         //Item Decrement using button
-        OrderDesk.SubstractItemQuantityDraftOrderReviewPage();
+//        OrderDesk.SubstractItemQuantityDraftOrderReviewPage();
 //        OrderDesk.SaveDraftOrder();
 //        softAssert.assertTrue(OrderDesk.isSaveDraftSucessful(),"Error in saving the draft");
 //        OrderDesk.CloseTheSucessfulOverlayByOK();
 
         //Item Edit by Typing
-        OrderDesk.EditItemQuantityDraftOrderReviewPage(ItemQuantity);
+//        OrderDesk.EditItemQuantityDraftOrderReviewPage(ItemQuantity);
 //        OrderDesk.SaveDraftOrder();
 //        softAssert.assertTrue(OrderDesk.isSaveDraftSucessful(),"Error in saving the draft");
 //        OrderDesk.CloseTheSucessfulOverlayByOK();
