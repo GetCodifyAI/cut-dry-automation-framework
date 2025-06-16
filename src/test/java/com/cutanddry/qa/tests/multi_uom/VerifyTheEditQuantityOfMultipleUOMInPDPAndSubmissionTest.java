@@ -40,7 +40,7 @@ public class VerifyTheEditQuantityOfMultipleUOMInPDPAndSubmissionTest extends Te
 
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
-//        Customer.ensureCarouselDisplayStatus(false);
+        Customer.ensureCarouselDisplayStatus(false);
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
