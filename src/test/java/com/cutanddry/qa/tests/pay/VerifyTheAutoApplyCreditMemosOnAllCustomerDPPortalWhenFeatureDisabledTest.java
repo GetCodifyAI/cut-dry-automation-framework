@@ -16,7 +16,7 @@ public class VerifyTheAutoApplyCreditMemosOnAllCustomerDPPortalWhenFeatureDisabl
     static User user;
     String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
     static String status_past_due = PayInvoiceData.STATUS_PAST_DUE;
-    static String customerName = PayInvoiceData.CUSTOMER_NAME2;
+    static String customerName = PayInvoiceData.CUSTOMER_NAME3;
     static String status_payment = PayInvoiceData.OPTION_PAYMENT;
 
 
