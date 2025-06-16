@@ -1435,7 +1435,7 @@ workflows:
           filters:
             branches:
               only:
-                - staging_regression
+                - main
     jobs:
       - daily-build-and-test-1
       - daily-build-and-test-2
@@ -1453,11 +1453,11 @@ workflows:
   scheduled-test-2-sub1:
     triggers:
       - schedule:
-          cron: "30 10 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 45 06 * * *
+          cron: "30 10 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 45 06 * * * staging_regression
           filters:
             branches:
               only:
-                - staging_regression
+                - main
     jobs:
       - daily-build-and-test-6
       - daily-build-and-test-7
