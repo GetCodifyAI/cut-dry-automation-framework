@@ -29,5 +29,6 @@ public class PriceData {
     public static final String ITEM_CODE_AVG = "677499";
     public static final String ITEM_NAME_AVG = "Bacon Wild Boar Slab";
     public static final String MINIMUM_PRICE_ERROR = "exceeded the maximum limit";
-    public static final String SPECIAL_ORDER_NOTE = "*This order includes Special Order items which require additional lead time and will be shipped on a different date. For each Special Order item ordered, we will send a separate order confirmation and invoice to avoid delays shipping the in-stock items. Our customer service associates will contact you with the confirmed shipping dates for Special Order items as soon as possible.";
+    public static final String SPECIAL_ORDER_NOTE = "*This order includes Special Order items which require additional lead time and may be shipped on a different date. For each Special Order item ordered, we will send a separate order confirmation and invoice to avoid delays shipping the in-stock items. Our customer service associates will contact you with the confirmed shipping dates for Special Order items as soon as possible.";
+    public static final String DISTRIBUTOR_WAGNER = "164948356 - Cut+Dry Agent - Wagner Foodservice";
 }
