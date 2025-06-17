@@ -41,6 +41,7 @@ public class ValidateTheSpotPricingWhenSelectingMultipleUOMTest extends TestBase
 
         Login.navigateToDistributorPortal(distributor);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        Customer.ensureCarouselDisplayStatus(false);
 
         //Place an order with single and Multi OUM Items
         Dashboard.navigateToCustomers();
