@@ -60,6 +60,8 @@ public class VerifyFinalWeightFunctionalityForMultiUOMItemsTest extends TestBase
 
         Customer.SelectCustomer(customerId);
         Customer.navigateToOrdersPage();
+        Customer.OrderDateSort();
+        Customer.OrderDateSort();
         Customer.clickFirstOrderFrmOrderTab();
         Orders.clickOnEditOrder();
         Assert.assertTrue(Orders.isEditOrderPopupDisplayed(),"error in submitting order");

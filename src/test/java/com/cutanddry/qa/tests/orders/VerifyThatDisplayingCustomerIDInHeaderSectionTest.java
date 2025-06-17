@@ -48,6 +48,7 @@ public class VerifyThatDisplayingCustomerIDInHeaderSectionTest extends TestBase 
         softAssert.assertTrue(Customer.isCustomerIDAndLocationDisplayed(BusinessName,customerId),"Error in navigation to OG customer ID and location display error");
 
         itemName = Customer.getItemNameFirstRow();
+        searchItemCode = Customer.getItemCodeFirstRow();
         Customer.goToCatalog();
         softAssert.assertTrue(Customer.isCustomerNameDisplayed(BusinessName),"Error in navigation to catalog customer name display error");
         softAssert.assertTrue(Customer.isCustomerIDAndLocationDisplayed(BusinessName,customerId),"Error in navigation to catalog customer ID and location display error");
