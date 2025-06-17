@@ -24,7 +24,7 @@ public class VerifyTheCreateStandingOrderWithMultipleUOMTest extends TestBase {
     String uom1 = CatalogData.MULTI_UOM_1;
     String uom2 = CatalogData.MULTI_UOM_2;
     static String deliveryDay = CatalogData.DELIVERY_DAY;
-    String itemName = CatalogData.ITEM_NAME_SIMILAR_ITEM;
+    String itemName = CatalogData.ITEM_NAME_SIMILAR_ITEM_2;
     static String StandingPrice,totalQuantity;
 
     @BeforeMethod

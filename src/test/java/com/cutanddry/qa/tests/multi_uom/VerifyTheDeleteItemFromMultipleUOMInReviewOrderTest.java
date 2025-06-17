@@ -21,7 +21,7 @@ public class VerifyTheDeleteItemFromMultipleUOMInReviewOrderTest extends TestBas
     static User user;
     static String customerId = CatalogData.CUSTOMER_ID;
     String searchItemCode = CatalogData.ITEM_CODE_2;
-    String itemName = CatalogData.ITEM_NAME_SIMILAR_ITEM;
+    String itemName = CatalogData.ITEM_NAME_SIMILAR_ITEM_2;
     static double itemOGPriceUOM1 ,itemOGPriceUOM2,totalOGItemPrice1,totalItemPriceReviewOrder;
     String uom1 = CatalogData.MULTI_UOM_1;
     String uom2 = CatalogData.MULTI_UOM_2;
