@@ -102,7 +102,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By dropdown_alphabetical = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Alphabetical (A-Z)')]");
     By dropdown_itemCategories = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Item Categories')]");
     By dropdown_itemCode = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Item Code')]");
-    By txt_produce = By.xpath("//div[@class='flex-grow-1' and starts-with(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'produce')]");
+    By txt_produce = By.xpath("(//div[starts-with(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'bakery')])[last()]");
     By txt_firstItem = By.xpath("//div[translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'artichoke -24ct']");
     By txt_minOrderBanner = By.xpath("//div[contains(text(), 'Add a few more items worth') and contains(text(), 'to meet minimum order amount')]");
     By txt_popupAlertOrderMin = By.xpath("//h2[text()='Order Minimum Not Met']");
@@ -169,7 +169,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By CustomerTxt = By.xpath("//h2[contains(text(),'Customers')]");
     By Test_AutomationOrderGuide = By.xpath("//div[@class='cd_themed_select__single-value css-1uccc91-singleValue' and contains(text(),'Independent Foods Co')]");
     By AutomationGuide = By.xpath("//div[contains(text(),'Test_Automation')]");
-    By StockCountTxt = By.xpath("//span[@data-for='cd-label-tooltip' and contains(text(), 'Stock: 50 Pkg')]");
+    By StockCountTxt = By.xpath("//span[@data-for='cd-label-tooltip' and contains(text(), 'Stock: 50 CS')]");
     By CustomerGroupTxt = By.xpath("//div[contains(text(),'Customer Group')]");
     By txt_outOfStock = By.xpath("//div[contains(text(), 'This item is currently out of stock and may not be shipped')]");
     By txt_unitInDist = By.xpath("//tbody/tr/td[3]/div/div/div/div");
@@ -750,7 +750,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By sendAlertTo = By.xpath("//div[contains(text(), 'Send alerts to:')]/following-sibling::input");
     By AddedAlertToNewOder = By.xpath("//div[normalize-space(text())='Send Alerts For']/following-sibling::*//div[text()='New Orders']");
     String txt_specialOrderNote = "//div[text()='NOTE']";
-
+    String multiUomDropDownOGArrow = "(//td[text()='CODE']/following-sibling::*//button/*[local-name()='svg'])[1]";
 
 
     public void ifDuplicateOrderDisplayed(){
@@ -4515,6 +4515,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(txt_thereWasAnError);
     }
 
+    public void ClickOnMultiUomDD(String code)throws InterruptedException{
+        distributorUI.waitForVisibility(By.xpath(multiUomDropDownOGArrow.replace("CODE", code)));
+        distributorUI.click(By.xpath(multiUomDropDownOGArrow.replace("CODE", code)));
+        distributorUI.waitForCustom(3000);
+    }
 
 
 }
