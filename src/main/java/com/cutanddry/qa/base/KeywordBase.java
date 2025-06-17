@@ -1365,7 +1365,7 @@ public KeywordBase clickF12Mac() {
             wait.until(ExpectedConditions.visibilityOfElementLocated(checkboxLocator));
             WebElement checkbox = driver.findElement(checkboxLocator);
             String className = checkbox.getAttribute("class");
-            return className.contains("fa-square-check");  // change this based on your class
+            return className.contains("fa-square-check");
         } catch (TimeoutException e) {
             return false;
         }
