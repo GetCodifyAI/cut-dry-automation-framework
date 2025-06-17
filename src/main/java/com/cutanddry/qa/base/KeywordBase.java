@@ -1360,6 +1360,16 @@ public KeywordBase clickF12Mac() {
             return null;
         }
     }
+    public boolean isCheckboxBtnSelected(By checkboxLocator) {
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(checkboxLocator));
+            WebElement checkbox = driver.findElement(checkboxLocator);
+            String className = checkbox.getAttribute("class");
+            return className.contains("fa-square-check");
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
 
 
 }

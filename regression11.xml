@@ -65,6 +65,10 @@
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheSpecialOrderItemsOrderReviewNoteTest"/>
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyThatTheUserCanSetUpCCEmailFromTheDistributorPortalTest"/>
 
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatEditColumnsOptionIsAvailableInOrdersScreenTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatLockedColumnsCannotBeEditedInTheCustomizeColumnScreenTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatNotLockedColumnsCanBeEditedInTheCustomizeColumnScreenTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatOrderGuideEditDisableFeatureTest"/>
         </classes>
     </test>
 </suite>
