@@ -2667,7 +2667,9 @@ public class Customer {
     public static boolean isSpecialOrderNoteDisplay(String note) throws InterruptedException {
         return customersPage.isSpecialOrderNoteDisplay(note);
     }
-
+    public static void ClickOnMultiUomDD(String code)throws InterruptedException{
+        customersPage.ClickOnMultiUomDD(code);
+    }
 
 }
 
