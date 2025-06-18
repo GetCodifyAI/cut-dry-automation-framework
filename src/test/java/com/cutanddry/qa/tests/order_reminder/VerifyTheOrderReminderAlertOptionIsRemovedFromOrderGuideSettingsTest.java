@@ -27,7 +27,7 @@ public class VerifyTheOrderReminderAlertOptionIsRemovedFromOrderGuideSettingsTes
          user = JsonUtil.readUserLogin();
      }
 
-     @Test(groups = "DOT-TC-1086")
+     @Test(groups = "DOT-TC-1186")
      public void VerifyTheOrderReminderAlertOptionIsRemovedFromOrderGuideSettings() throws InterruptedException{
          SoftAssert softAssert = new SoftAssert();
          Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
