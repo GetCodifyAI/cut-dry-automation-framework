@@ -1700,7 +1700,7 @@ public class Customer {
         return customersPage.istxtEmailsSentDisplayed();
     }
 
-    public static void clickOnSendPaymentReminder(){
+    public static void clickOnSendPaymentReminder() throws InterruptedException {
         customersPage.clickOnSendPaymentReminder();
     }
 
@@ -2669,6 +2669,32 @@ public class Customer {
     }
     public static void ClickOnMultiUomDD(String code)throws InterruptedException{
         customersPage.ClickOnMultiUomDD(code);
+    }
+    public static void clickOrderGuideItem(){
+        customersPage.clickOrderGuideItem();
+    }
+    public static void addAmountUsingDataPickerOG(String name,String quantity)throws InterruptedException{
+        customersPage.addAmountUsingDataPickerOG(name,quantity);
+    }
+    public static void addAmountUsingDataPickerCatalog(String name,String quantity)throws InterruptedException{
+        customersPage.addAmountUsingDataPickerCatalog(name,quantity);
+    }
+    public static void addAmountUsingDataPickerReviewOrder(String name,String quantity)throws InterruptedException{
+        customersPage.addAmountUsingDataPickerReviewOrder(name,quantity);
+    }
+    public static void clickOnPlusIconInReviewOrder(int count, String name) {
+        for (int i=0; i<count;i++){
+            customersPage.clickOnPlusIconInReviewOrder(name);
+        }
+    }
+    public static String getAmountUsingDataPickerOG(String name){
+        return customersPage.getAmountUsingDataPickerOG(name);
+    }
+    public static String getAmountUsingDataPickerCatalogAndPDP(String name){
+        return customersPage.getAmountUsingDataPickerCatalogAndPDP(name);
+    }
+    public static String getAmountUsingDataPickerReviewOrder(String name){
+        return customersPage.getAmountUsingDataPickerReviewOrder(name);
     }
 
 }

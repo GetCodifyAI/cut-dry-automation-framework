@@ -892,7 +892,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         }
 
         System.out.println("Extracted Price: " + priceText);
-        return Double.valueOf(priceText.replace("$", "").replace("/cs", "").replace("/pkg", "").replace("/CS", "").replace("/HCS", "").replace("/lb", "").trim());
+        return Double.valueOf(priceText.replace("$", "").replace("/cs", "").replace("/pkg", "").replace("/CS", "").replace("/HCS", "").replace(",", "").replace("/lb", "").trim());
     }
     public void clickOGAddToCartPlusIcon(String code,String uom)throws InterruptedException{
         distributorUI.waitForVisibility(By.xpath(btn_OGAddToCartPlusQuantity.replace("CODE", code).replace("UOM", uom)));

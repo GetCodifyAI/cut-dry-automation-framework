@@ -21,7 +21,7 @@ public class ValidateGettingEditRouteFlowTest extends TestBase {
     static User user;
     static String distributorName = TrackData.DISTRIBUTOR_NAME;
     static String editRoute = TrackData.EDIT_ROUTE;
-    static String editRouteName = TrackData.EDIT_ROUTE_NAME;
+    static String editRouteName = TrackData.EDIT_ROUTE_NAME+generateDynamicValue();
 
     @BeforeMethod
     public void setUp() {

@@ -18,7 +18,8 @@ public class VerifyTheSelectMultipleUOMFromRecommendedForCustomerCarouselAndSubm
     static String customerId = CatalogData.CUSTOMER_ID;
     String searchItemCode1 = CatalogData.ITEM_CODE;
     String itemName1 = CatalogData.ITEM_NAME;
-    String itemName2 = CatalogData.ITEM_NAME_SIMILAR_ITEM_2;
+    String itemName2 = CatalogData.
+            ITEM_NAME_SIMILAR_ITEM_2;
     String uomDropDownOption = CatalogData.UOM_DROPDOWN_OPTION;
     static double itemPriceUOM1 ,itemPriceUOM2,totalPDPItemPrice ,totalItemPriceReviewOrder;
     String uom1 = CatalogData.MULTI_UOM_1;
