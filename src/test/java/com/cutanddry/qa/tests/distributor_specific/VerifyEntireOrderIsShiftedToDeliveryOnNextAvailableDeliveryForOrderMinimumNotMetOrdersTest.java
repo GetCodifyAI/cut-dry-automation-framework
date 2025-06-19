@@ -14,6 +14,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class VerifyEntireOrderIsShiftedToDeliveryOnNextAvailableDeliveryForOrderMinimumNotMetOrdersTest extends TestBase {
     static User user;
     static String distributorCheeseImp = PriceData.DISTRIBUTOR_CHEESE_IMP;
@@ -42,6 +45,8 @@ public class VerifyEntireOrderIsShiftedToDeliveryOnNextAvailableDeliveryForOrder
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation error");
         Settings.orderMinimumCheckBox(false);
+        Settings.deliveryDateCheckBox(true);
+        Settings.orderCutOffsCheckBox(true);
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId3);
@@ -55,7 +60,15 @@ public class VerifyEntireOrderIsShiftedToDeliveryOnNextAvailableDeliveryForOrder
         Customer.clickOnPlusIconInCatalogDP(1, itemName2);
         Customer.clickCheckOutPDP();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
-        Customer.selectActiveDeliveryDateInReview();
+        // User Delivery Date
+        LocalDate today = LocalDate.now();
+        LocalDate deliveryDate = today.plusDays(0);
+        DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("d");
+        String deliveryDay = dayFormatter.format(deliveryDate);
+        int todayMonth = today.getMonthValue();
+        int deliveryMonth = deliveryDate.getMonthValue();
+        boolean isNextMonth = deliveryMonth != todayMonth;
+        Customer.selectDeliveryDateLineStablePick(deliveryDay, isNextMonth);
 
         Customer.submitOrderDpSpecific();
         softAssert.assertTrue(Customer.isFullOrderDelayDisplayed(),"fully order delay not display");
