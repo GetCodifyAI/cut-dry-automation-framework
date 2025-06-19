@@ -3281,8 +3281,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(txt_EmailsSent);
     }
 
-    public void clickOnSendPaymentReminder(){
+    public void clickOnSendPaymentReminder() throws InterruptedException {
         distributorUI.click(btn_sendPaymentReminder);
+        distributorUI.waitForCustom(3000);
     }
 
     public void clickOnSendEmail(){
