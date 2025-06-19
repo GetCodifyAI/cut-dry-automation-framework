@@ -751,6 +751,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By AddedAlertToNewOder = By.xpath("//div[normalize-space(text())='Send Alerts For']/following-sibling::*//div[text()='New Orders']");
     String txt_specialOrderNote = "//div[text()='NOTE']";
     String multiUomDropDownOGArrow = "(//td[text()='CODE']/following-sibling::*//button/*[local-name()='svg'])[1]";
+    String dataPickerOrderGuide = "//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')]/../../../../../following-sibling::td[last()-1]//div//input";
+    String dataPickerCatalog ="(//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')]/following::div//input)[1]";
+    String dataPickerReviewOrder = "//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')]/../../../../../following-sibling::td[last()-3]//div//input";
+    String btn_reviewPlusStable = "(//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')]/following::div//*[name()='svg' and contains(@data-icon, 'plus')])[2]";
+
+
 
 
     public void ifDuplicateOrderDisplayed(){
@@ -4519,6 +4525,37 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(By.xpath(multiUomDropDownOGArrow.replace("CODE", code)));
         distributorUI.click(By.xpath(multiUomDropDownOGArrow.replace("CODE", code)));
         distributorUI.waitForCustom(3000);
+    }
+    public void clickOrderGuideItem(){
+        distributorUI.click(lbl_itemNameList);
+    }
+    public void addAmountUsingDataPickerOG(String name,String quantity)throws InterruptedException{
+        distributorUI.clearUsingJavaScript(By.xpath(dataPickerOrderGuide.replace("NAME",name)));
+        distributorUI.sendKeys(By.xpath(dataPickerOrderGuide.replace("NAME",name)),quantity);
+    }
+    public String getAmountUsingDataPickerOG(String name){
+        distributorUI.waitForVisibility(By.xpath(dataPickerOrderGuide.replace("NAME",name)));
+        return distributorUI.getText(By.xpath(dataPickerOrderGuide.replace("NAME",name)), "value");
+    }
+    public void addAmountUsingDataPickerCatalog(String name,String quantity)throws InterruptedException{
+        distributorUI.clearUsingJavaScript(By.xpath(dataPickerCatalog.replace("NAME",name)));
+        distributorUI.sendKeys(By.xpath(dataPickerCatalog.replace("NAME",name)),quantity);
+    }
+    public String getAmountUsingDataPickerCatalogAndPDP(String name){
+        distributorUI.waitForVisibility(By.xpath(dataPickerCatalog.replace("NAME",name)));
+        return distributorUI.getText(By.xpath(dataPickerCatalog.replace("NAME",name)), "value");
+    }
+    public void addAmountUsingDataPickerReviewOrder(String name,String quantity)throws InterruptedException{
+        distributorUI.clearUsingJavaScript(By.xpath(dataPickerReviewOrder.replace("NAME",name)));
+        distributorUI.sendKeys(By.xpath(dataPickerReviewOrder.replace("NAME",name)),quantity);
+    }
+    public String getAmountUsingDataPickerReviewOrder(String name){
+        distributorUI.waitForVisibility(By.xpath(dataPickerReviewOrder.replace("NAME",name)));
+        return distributorUI.getText(By.xpath(dataPickerReviewOrder.replace("NAME",name)), "value");
+    }
+    public void clickOnPlusIconInReviewOrder(String name){
+        distributorUI.waitForVisibility(By.xpath(btn_reviewPlusStable.replace("NAME", name)));
+        distributorUI.click(By.xpath(btn_reviewPlusStable.replace("NAME", name)));
     }
 
 
