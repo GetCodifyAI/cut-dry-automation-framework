@@ -1700,7 +1700,7 @@ public class Customer {
         return customersPage.istxtEmailsSentDisplayed();
     }
 
-    public static void clickOnSendPaymentReminder(){
+    public static void clickOnSendPaymentReminder() throws InterruptedException {
         customersPage.clickOnSendPaymentReminder();
     }
 
