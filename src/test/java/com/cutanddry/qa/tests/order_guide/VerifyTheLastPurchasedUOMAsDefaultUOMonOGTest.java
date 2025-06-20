@@ -40,7 +40,7 @@ public class VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest extends TestBase {
         Customer.searchItemOnOrderGuide(itemCode);
         itemName = Customer.getItemNameFirstRow();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
-        Customer.clickOnUnitEach(itemCode);
+        Customer.clickOnUnitEach();
         Customer.increaseFirstRowQtyByOneInDist();
         Customer.checkoutItemsDist();
         Customer.submitOrderWithoutReachMinimum();
@@ -49,12 +49,12 @@ public class VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest extends TestBase {
         Customer.clickOnCustomerCode(customerId);
         Customer.clickOnOrderGuideInProfile();
         Customer.searchItemOnOrderGuide(itemCode);
-        Customer.ClickOnMultiUomDD(itemCode);
+//        Customer.ClickOnMultiUomDD(itemCode);
         itemName = Customer.getItemNameFirstRow();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         softAssert.assertEquals(Customer.getUnitType(),"Each","unit mismatch");
-        Customer.ClickOnMultiUomDD(itemCode);
-        Customer.clickOnUnitCase(itemCode);
+//        Customer.ClickOnMultiUomDD(itemCode);
+        Customer.clickOnUnitCase();
         Customer.increaseFirstRowQtyByOneInDist();
         Customer.checkoutItemsDist();
         Customer.submitOrderWithoutReachMinimum();
@@ -63,7 +63,7 @@ public class VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest extends TestBase {
         Customer.clickOnCustomerCode(customerId);
         Customer.clickOnOrderGuideInProfile();
         Customer.searchItemOnOrderGuide(itemCode);
-        Customer.ClickOnMultiUomDD(itemCode);
+//        Customer.ClickOnMultiUomDD(itemCode);
         itemName = Customer.getItemNameFirstRow();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         softAssert.assertEquals(Customer.getUnitType(),"Case","unit mismatch");

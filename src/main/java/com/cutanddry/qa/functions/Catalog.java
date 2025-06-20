@@ -476,7 +476,7 @@ public class Catalog {
     }
     //-------------------- Multi UOM -----------------------
     public static void ClickOnMultiUomDropDownOG(String code)throws InterruptedException{
-//        catalogPage.ClickOnMultiUomDropDownOG(code);
+        catalogPage.ClickOnMultiUomDropDownOG(code);
     }
     public static double getOGPriceUOM(String code,String uom) throws InterruptedException {
         return catalogPage.getOGPriceUOM(code,uom);
@@ -619,7 +619,7 @@ public class Catalog {
     }
 
     public static void clickOnMultiUomDropDownOrderGuide(String code,String option)throws InterruptedException{
-//        catalogPage.clickOnMultiUomDropDownOrderGuide(code,option);
+        catalogPage.clickOnMultiUomDropDownOrderGuide(code,option);
     }
     public static boolean isMeasureOptionDisplay(String option){
         return catalogPage.isMeasureOptionDisplay(option);

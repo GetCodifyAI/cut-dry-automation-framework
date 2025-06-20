@@ -607,39 +607,52 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     String customerScreenScanToOrderBtn = "//tr/td[contains(text(),'CUSTOMERCODE')]/..//a[contains(@href,'scan-to-order')]";
     String customerProfileScreenScanToOrderBtn = "//a[contains(@href,'scan-to-order')]";
 
-    By btn_firstMultiOUM = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-up'])[1]");
+    By btn_firstMultiOUM = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]");
+    By lbl_firstMultiOUMItemName = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td//span/div[@data-tip='View Product Details']");
+    By lbl_firstMultiOUMItemCode = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[2]");
+    By lbl_itemPriceListMultiOUM = By.xpath("(((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//input)[1] | ((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]/div/div/div)[1] | ((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//span)[1])[1]");
+    By lbl_itemPriceListMultiOUM1 = By.xpath("(((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//input)[1] | ((//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[last()-2]//span)[1])[2]");
+    /*By btn_firstMultiOUM = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-up'])[1]");
     By lbl_firstMultiOUMItemName = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-up']/ancestor::tr/td//span/div[@data-tip='View Product Details'])[1]");
     By lbl_firstMultiOUMItemCode = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-up']/ancestor::tr/td[2])[1]");
     By lbl_itemPriceListMultiOUM = By.xpath("(((//*[local-name()='svg' and @data-icon='chevron-up']/ancestor::tr/td[last()-2]//input)[1])[1] | ((//*[local-name()='svg' and @data-icon='chevron-up']/ancestor::tr/td[last()-2]/div/div/div/div)[1])[1] | ((//*[local-name()='svg' and @data-icon='chevron-up']/ancestor::tr/td[last()-2]//span)[1])[1])[1]");
     By lbl_itemPriceListMultiOUM1 = By.xpath("(((//*[local-name()='svg' and @data-icon='chevron-up']/ancestor::tr/td[last()-2]//input)[1])[1] | ((//*[local-name()='svg' and @data-icon='chevron-up']/ancestor::tr/td[last()-2]//span)[1])[2])[1]");
+*/
 
-    String lbl_firstMultiOUMItemCodeLB = "(//*[local-name()='svg' and @data-icon='chevron-up'])/ancestor::tr/td[COUNT]//div[contains(text(),'LB')]/ancestor::td/parent::tr/td[2]";
+    String lbl_firstMultiOUMItemCodeLB = "(//*[local-name()='svg' and @data-icon='chevron-down'])/ancestor::tr/td[COUNT]//div[contains(text(),'LB')]/ancestor::td/parent::tr/td[2]";
+    String lbl_firstMultiOUMItemNameLB = "(//*[local-name()='svg' and @data-icon='chevron-down'])/ancestor::tr/td[COUNT]//div[contains(text(),'LB')]/ancestor::td/parent::tr/td//span/div[@data-tip='View Product Details']";
+    /*String lbl_firstMultiOUMItemCodeLB = "(//*[local-name()='svg' and @data-icon='chevron-up'])/ancestor::tr/td[COUNT]//div[contains(text(),'LB')]/ancestor::td/parent::tr/td[2]";
     String lbl_firstMultiOUMItemNameLB = "(//*[local-name()='svg' and @data-icon='chevron-up'])/ancestor::tr/td[COUNT]//div[contains(text(),'LB')]/ancestor::td/parent::tr/td//span/div[@data-tip='View Product Details']";
-
+*/
 
     By lbl_itemCodeLists = By.xpath("//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[2]");
-    String lbl_ListsMultiOUMExist = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr[ROW_COUNT]/td//*[local-name()='svg' and @data-icon='chevron-up']";
+    String lbl_ListsMultiOUMExist = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr[ROW_COUNT]/td//*[local-name()='svg' and @data-icon='chevron-down']";
+//    String lbl_ListsMultiOUMExist = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr[ROW_COUNT]/td//*[local-name()='svg' and @data-icon='chevron-up']";
     String lbl_firstSingleOUMItemName = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr[ROW_COUNT]/td//span/div[@data-tip='View Product Details']";
 //    String lbl_firstSingleOUMItemCode = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr[ROW_COUNT]/td[2]";
 String lbl_firstSingleOUMItemCode = "(//td//span//div[@data-tip='View Product Details']/ancestor::tr[1]/td[2])[ROW_COUNT]";
 
 //    String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//input)[UOM] | ((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]/div/div[UOM]/div)[1] | ((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//span)[UOM]";
-String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='chevron-up']/ancestor::tr/td[last()-2]//input)[UOM])[1] | ((//button/*[local-name()='svg' and @data-icon='chevron-up']/ancestor::tr/td[last()-2]//span)[UOM])[1]";
+String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//input)[UOM] | ((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]//span)[UOM]";
+//    String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='chevron-up']/ancestor::tr/td[last()-2]//input)[UOM])[1] | ((//button/*[local-name()='svg' and @data-icon='chevron-up']/ancestor::tr/td[last()-2]//span)[UOM])[1]";
 
     String multiUomDropDownOG = "(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg'])[1]";
-    String multiUomDropDownOGExist = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr//td[text()='CODE']/..//*[local-name()='svg' and @data-icon='chevron-up']";
+    String multiUomDropDownOGExist = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr//td[text()='CODE']/..//*[local-name()='svg' and @data-icon='chevron-down']";
+    //    String multiUomDropDownOGExist = "//td//span//div[@data-tip='View Product Details']/ancestor::tbody/tr//td[text()='CODE']/..//*[local-name()='svg' and @data-icon='chevron-up']";
     By multiUomOption =By.xpath("//div[text()='Multiple Units']");
     String btn_OGAddToCartPlusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='plus'])[UOM]";
     String btn_OGAddToCartMinusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='minus'])[UOM]";
     String txt_multiOrderId = "(//div[contains(text(),'Order Number #')])[NUM]";
 
-    String lbl_itemPriceMultiUOMEdit = "((//button/*[local-name()='svg' and @data-icon='chevron-up']/ancestor::tr/td[last()-2]/div/div/div)[UOM])[1]";
+    String lbl_itemPriceMultiUOMEdit = "((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]/div/div/div)[UOM]";
+//    String lbl_itemPriceMultiUOMEdit = "((//button/*[local-name()='svg' and @data-icon='chevron-up']/ancestor::tr/td[last()-2]/div/div/div)[UOM])[1]";
 //    String txt_casesMultiUOMEdit = "((//th[contains(text(),'No. of')])[UOM]/../../following-sibling::*//input)[1]";
 //    String txt_weightMultiUOMEdit = "((//th[contains(text(),'Weight /')])[UOM]/../../following-sibling::*//input)[2]";
     String btn_AddWightRowMultiUOMEdit = "((//th[contains(text(),'No. of')])[UOM]/../../following-sibling::*//button)[1]";
     String txt_casesMultiUOMEdit = "((//th[contains(text(),'No. of')])[UOM]/../../following-sibling::*//tr[RECORD]//input)[1]";
     String txt_weightMultiUOMEdit = "((//th[contains(text(),'Weight /')])[UOM]/../../following-sibling::*//tr[RECORD]//input)[2]";
-    String lbl_getItemPriceMultiUOM = "((//button/*[local-name()='svg' and @data-icon='chevron-up']/ancestor::tr/td[last()-2]/div/div[UOM]/div/div)[RECORD])[1]";
+    String lbl_getItemPriceMultiUOM = "((//button/*[local-name()='svg' and @data-icon='chevron-up'])[1]/ancestor::tr/td[last()-2]/div/div[UOM]/div/div)[RECORD]";
+//    String lbl_getItemPriceMultiUOM = "((//button/*[local-name()='svg' and @data-icon='chevron-up']/ancestor::tr/td[last()-2]/div/div[UOM]/div/div)[RECORD])[1]";
     String lbl_quantityMultiUOM = "(//input[contains(@data-input, 'quantityInput')])[UOM]";
     By dd_sortItemBy =By.xpath("(//*[contains(text(),'Sort Items By')])[last()]/following-sibling::div");
     String lbl_sortItemByOption = "//div[contains(@class, 'cd_themed_select__option') and contains(text(), 'TYPE')]";
@@ -1546,16 +1559,16 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
             return false;
         }
     }
-    public void clickOnUnitEach(String code){
-        distributorUI.waitForVisibility(By.xpath(multiUomDropDownOGExist.replace("CODE", code)));
-        distributorUI.click(By.xpath(multiUomDropDownOGExist.replace("CODE", code)));
+    public void clickOnUnitEach(){
+        /*distributorUI.waitForVisibility(By.xpath(multiUomDropDownOGExist.replace("CODE", code)));
+        distributorUI.click(By.xpath(multiUomDropDownOGExist.replace("CODE", code)));*/
         distributorUI.click(txt_unitInDist);
         distributorUI.waitForVisibility(txt_eachDropdownItem);
         distributorUI.click(txt_eachDropdownItem);
     }
-    public void clickOnUnitCase(String code){
-        distributorUI.waitForVisibility(By.xpath(multiUomDropDownOGExist.replace("CODE", code)));
-        distributorUI.click(By.xpath(multiUomDropDownOGExist.replace("CODE", code)));
+    public void clickOnUnitCase(){
+        /*distributorUI.waitForVisibility(By.xpath(multiUomDropDownOGExist.replace("CODE", code)));
+        distributorUI.click(By.xpath(multiUomDropDownOGExist.replace("CODE", code)));*/
         distributorUI.click(txt_unitInDist);
         distributorUI.waitForVisibility(txt_caseDropdownItem);
         distributorUI.click(txt_caseDropdownItem);
@@ -4382,9 +4395,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isOfflineModePopUpDisplay(){
         return distributorUI.isDisplayed(txt_offlineMode);
     }
-    public void clickActiveOfflineMode(){
+    public void clickActiveOfflineMode() throws InterruptedException {
         distributorUI.waitForClickability(btn_activeOfflineMode);
         distributorUI.click(btn_activeOfflineMode);
+        distributorUI.waitForCustom(10000);
     }
     public boolean isHangTightPopUpDisplay()throws InterruptedException{
         return distributorUI.isDisplayed(txt_hangTight);
