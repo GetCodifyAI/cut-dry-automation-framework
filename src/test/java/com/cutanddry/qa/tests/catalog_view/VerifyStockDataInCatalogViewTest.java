@@ -44,8 +44,8 @@ public class VerifyStockDataInCatalogViewTest extends TestBase {
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"search error");
         Customer.clickOnOrderGuide(CustomerCode);
         Customer.SelectTestAutomationOrderGuide();
-        Customer.searchItemOnOrderGuide(itemCode);
-        Customer.ClickOnMultiUomDD(itemCode);
+       /* Customer.searchItemOnOrderGuide(itemCode);
+        Customer.ClickOnMultiUomDD(itemCode);*/
         softAssert.assertTrue(Customer.isStockCountDisplayed(),"Not Displaying Stock Count");
 
         //Turning Off the Displaying Stock Count
@@ -68,8 +68,8 @@ public class VerifyStockDataInCatalogViewTest extends TestBase {
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"search error");
         Customer.clickOnOrderGuide(CustomerCode);
         Customer.SelectTestAutomationOrderGuide();
-        Customer.searchItemOnOrderGuide(itemCode);
-        Customer.ClickOnMultiUomDD(itemCode);
+        /*Customer.searchItemOnOrderGuide(itemCode);
+        Customer.ClickOnMultiUomDD(itemCode);*/
         softAssert.assertFalse(Customer.isStockCountDisplayed(),"Displaying Stock Count");
 
 

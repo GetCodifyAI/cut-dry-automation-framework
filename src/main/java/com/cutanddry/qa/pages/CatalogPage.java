@@ -1126,8 +1126,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         distributorUI.navigateToURLSame(pdpURL);
     }
     public void ClickOnMultiUomEachOption(String code)throws InterruptedException{
-        distributorUI.waitForVisibility(By.xpath(multiUomDropDownOGArrow.replace("CODE", code)));
-        distributorUI.click(By.xpath(multiUomDropDownOGArrow.replace("CODE", code)));
+//        distributorUI.waitForVisibility(By.xpath(multiUomDropDownOGArrow.replace("CODE", code)));
+//        distributorUI.click(By.xpath(multiUomDropDownOGArrow.replace("CODE", code)));
         distributorUI.waitForVisibility(By.xpath(multiUomDropDownOG.replace("CODE", code)));
         distributorUI.click(By.xpath(multiUomDropDownOG.replace("CODE", code)));
         distributorUI.click(multiUomOptionEach);
