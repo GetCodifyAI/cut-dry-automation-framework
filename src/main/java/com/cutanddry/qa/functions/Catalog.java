@@ -619,7 +619,7 @@ public class Catalog {
     }
 
     public static void clickOnMultiUomDropDownOrderGuide(String code,String option)throws InterruptedException{
-//        catalogPage.clickOnMultiUomDropDownOrderGuide(code,option);
+        catalogPage.clickOnMultiUomDropDownOrderGuide(code,option);
     }
     public static boolean isMeasureOptionDisplay(String option){
         return catalogPage.isMeasureOptionDisplay(option);

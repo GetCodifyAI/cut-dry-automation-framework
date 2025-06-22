@@ -105,4 +105,12 @@ public class Login {
     public static void navigateToRestaurant() {
         loginPage.navigateToRestaurant();;
     }
+    public static void logInToDP(String DistributorName) throws InterruptedException {
+        loginPage.typeToSearchOnDP(DistributorName);
+        loginPage.clickOnDP(DistributorName);
+        loginPage.clickOnLoginAsSupplierAndSwitchToNewTab();
+    }
+    public static void navigateToLoginAs() {
+        loginPage.navigateToLoginAs();
+    }
 }
