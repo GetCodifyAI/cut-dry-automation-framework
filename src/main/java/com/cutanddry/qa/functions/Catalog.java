@@ -476,7 +476,7 @@ public class Catalog {
     }
     //-------------------- Multi UOM -----------------------
     public static void ClickOnMultiUomDropDownOG(String code)throws InterruptedException{
-//        catalogPage.ClickOnMultiUomDropDownOG(code);
+        catalogPage.ClickOnMultiUomDropDownOG(code);
     }
     public static double getOGPriceUOM(String code,String uom) throws InterruptedException {
         return catalogPage.getOGPriceUOM(code,uom);

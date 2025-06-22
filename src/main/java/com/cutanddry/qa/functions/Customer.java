@@ -601,12 +601,18 @@ public class Customer {
     public static boolean areOutOfStockItemsDisplayed(){
         return customersPage.areOutOfStockItemsDisplayed();
     }
-    public static void clickOnUnitEach(String code){
+    public static void clickOnUnitEach() {
+        customersPage.clickOnUnitEach();
+    }
+    /*public static void clickOnUnitEach(String code){
         customersPage.clickOnUnitEach(code);
+    }*/
+    public static void clickOnUnitCase() {
+        customersPage.clickOnUnitCase();
     }
-    public static void clickOnUnitCase(String code){
+   /* public static void clickOnUnitCase(String code){
         customersPage.clickOnUnitCase(code);
-    }
+    }*/
     public static void clickOnOrderGuideInProfile() throws InterruptedException {
         customersPage.clickOnOrderGuideInProf();
         if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
@@ -1700,7 +1706,7 @@ public class Customer {
         return customersPage.istxtEmailsSentDisplayed();
     }
 
-    public static void clickOnSendPaymentReminder(){
+    public static void clickOnSendPaymentReminder() throws InterruptedException {
         customersPage.clickOnSendPaymentReminder();
     }
 
@@ -2134,7 +2140,7 @@ public class Customer {
     }
 
     public static void ClickOnMultiUomDropDownOG(String code)throws InterruptedException{
-//        customersPage.ClickOnMultiUomDropDownOG(code);
+        customersPage.ClickOnMultiUomDropDownOG(code);
     }
 
     public static void clickOGAddToCartPlusIcon(int count,String code, String uom) throws InterruptedException{
@@ -2578,7 +2584,7 @@ public class Customer {
     public static boolean isOfflineModePopUpDisplay(){
         return customersPage.isOfflineModePopUpDisplay();
     }
-    public static void clickActiveOfflineMode(){
+    public static void clickActiveOfflineMode() throws InterruptedException {
         customersPage.clickActiveOfflineMode();
     }
     public static boolean isHangTightPopUpDisplay()throws InterruptedException{
