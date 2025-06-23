@@ -58,7 +58,7 @@ public class VerifyThatOnceInOfflineModeTheUserCanAddUpdateItemsToTheCartTest ex
         softAssert.assertTrue(Customer.isOfflineModePopUpDisplay(),"offline mode pop up error");
         Customer.clickActiveOfflineMode();
         softAssert.assertTrue(Customer.isHangTightPopUpDisplay(),"hang tight pop up not display");
-        Thread.sleep(3000);
+        Thread.sleep(5000);
 
         itemName = Customer.getItemNameFirstRow();
         itemPrice = Customer.getActiveItemPriceFirstRow();

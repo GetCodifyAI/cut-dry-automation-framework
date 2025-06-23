@@ -56,7 +56,7 @@ public class VerifyThatUserCanChangeTheUnitOfMeasureForItemsInOfflineModeTest ex
         softAssert.assertTrue(Customer.isOfflineModePopUpDisplay(),"offline mode pop up error");
         Customer.clickActiveOfflineMode();
         softAssert.assertTrue(Customer.isHangTightPopUpDisplay(),"hang tight pop up not display");
-        Thread.sleep(3000);
+        Thread.sleep(5000);
 
         Customer.searchItemOnOrderGuide(searchItemCode);
         Catalog.clickOnMultiUomDropDownOrderGuide(searchItemCode,measure1);
