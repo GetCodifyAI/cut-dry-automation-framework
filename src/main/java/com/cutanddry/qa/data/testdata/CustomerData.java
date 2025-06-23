@@ -41,6 +41,12 @@ public class CustomerData {
     public static final String DISTRIBUTOR_CHEF_KITCHEN = "165144548 - Cut+Dry Agent SKO - Chef’s Kitchen";
     public static final String CUSTOMER_CHEF_KITCHEN = "C1234";
     public static final String CUSTOMER_CODE3 = "16579";
+    public static final String CUSTOMER_CODE4 = "23445";
+    public static final String DISTRIBUTOR_NAME_IFC_SALESPERSON = "164465588";
+    public static final String DISTRIBUTOR_NAME_IFC_ACCOUNT_RECEIVABLE = "81058255";
+    public static final String CUSTOMER_CODE5 = "15651";
+    public static final String DISTRIBUTOR_BIRITE = "120984267 - Cut+Dry Agent - BiRite Foodservice Distributors";
+    public static final String CUSTOMER_CODE6 = "20220340";
 
 
 

@@ -43,6 +43,9 @@ public class LoginPage extends TestBase {
     String row_feature ="//table[@class='table table-striped']/tbody/tr[ROW]//td/input[@type='text']";
     String row_Companies ="//table[@class='table table-striped']/tbody/tr[ROW]//textarea[@data-href='/gatekeeperadminajax/edit/companyIDs']";
     String row_Status ="//table[@class='table table-striped']//tbody//tr[ROW]//div[contains(text(),'Verified Vendor')]/following-sibling::ul//input[contains(@value,'active_for_all_vv')]";
+    By tbx_Search = By.xpath("//button[contains(text(),'Re-Index')]/following-sibling::*//div/input");
+    String txt_dp = "((//div[contains(text(), 'OPERATOR_NAME')])[last()])";
+    By btn_LoginAsClassic = By.xpath("//a[contains(text(), 'Login As (classic)')]");
 
 
     public void typeEmailOrMobile(String emailOrMobile){
@@ -214,6 +217,22 @@ public class LoginPage extends TestBase {
         }
 
 
+    }
+    public void typeToSearchOnDP(String operator) throws InterruptedException {
+        distributorUI.sendKeys(tbx_Search, operator);
+        distributorUI.waitForCustom(4000);
+    }
+    public void clickOnDP(String operator){
+        distributorUI.waitForVisibility(By.xpath(txt_dp.replace("OPERATOR_NAME",operator)));
+        distributorUI.click(By.xpath(txt_dp.replace("OPERATOR_NAME",operator)));
+    }
+    public void clickOnLoginAsSupplierAndSwitchToNewTab() throws InterruptedException {
+        distributorUI.click(btn_loginAsDis);
+        distributorUI.switchToNewTab();
+        distributorUI.waitForCustom(3000);
+    }
+    public void navigateToLoginAs() {
+        distributorUI.navigateToURL(Constants.LOGIN_AS);
     }
 
 

@@ -768,6 +768,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String dataPickerCatalog ="(//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')]/following::div//input)[1]";
     String dataPickerReviewOrder = "//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')]/../../../../../following-sibling::td[last()-3]//div//input";
     String btn_reviewPlusStable = "(//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')]/following::div//*[name()='svg' and contains(@data-icon, 'plus')])[2]";
+    By btn_catalogLock = By.xpath("//span[text()='Catalog']/following-sibling::*[name()='svg' and contains(@data-icon, 'cdLock')]");
+    String catalogToolTip = "//span[@data-tip=\"NAME\"]";
 
 
 
@@ -4571,6 +4573,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickOnPlusIconInReviewOrder(String name){
         distributorUI.waitForVisibility(By.xpath(btn_reviewPlusStable.replace("NAME", name)));
         distributorUI.click(By.xpath(btn_reviewPlusStable.replace("NAME", name)));
+    }
+    public boolean isCatalogLockDisplay(){
+        return distributorUI.isDisplayed(btn_catalogLock);
+    }
+    public boolean isCatalogTooltipDisplayed(String name){
+        return distributorUI.isDisplayed(By.xpath(catalogToolTip.replace("NAME", name)));
     }
 
 
