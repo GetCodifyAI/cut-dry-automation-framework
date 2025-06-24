@@ -67,6 +67,7 @@ public class DashboardPage extends LoginPage{
     By locationOption = By.xpath("//div[text()='Place Order']/following-sibling::*//div[contains(@id,'react-select') and contains(text(), 'All Locations')]");
     By btn_order = By.xpath("//a[@data-tip='Place Order']");
     By orderIndicator = By.xpath("//a[contains(text(),'Order Desk')]/div/span");
+    By txt_endlessAisle  =By.xpath("//div[text()='Endless Aisle Catalog']");
 
 
     public boolean isDashboardTextDisplayed(){
@@ -343,6 +344,9 @@ public class DashboardPage extends LoginPage{
     }
     public boolean isChatSectionDisplay()throws InterruptedException{
         return distributorUI.isDisplayed(btn_chat);
+    }
+    public boolean isEndlessAisleCatalogDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_endlessAisle);
     }
 
 }
