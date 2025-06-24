@@ -578,7 +578,7 @@ By txt_lastOrderedPrice = By.xpath("(//td//*[contains(translate(text(), 'abcdefg
     By finalWeightInput = By.xpath("(//*[contains(text(),'Edit Weight Details')]/following::div/table/tbody/tr/td[3]/input)[1]");
     By finalItemPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[8]/div/div[normalize-space()!=''])[1]");
     By confirmPrice = By.xpath("(//tbody/tr/td[9])[1]");
-    By poundPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]/div/div//div)[1]");
+    By poundPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]/div/div/div)[1]");
     By txt_lbPricePopUP = By.xpath("//div[text()='Update Price']");
     By perLbPrice = By.xpath("//*[text()='Price LB ($)']/following-sibling::input");
     By priceInCustomerOrder = By.xpath("(//tbody/tr/td[6])[1]");
@@ -744,7 +744,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By dropdown_option_SwitchToOfflineMode = By.xpath("//div[text()='Switch to Offline Mode']");
     By txt_offlineMode = By.xpath("//div[text()='Offline Mode']");
     By btn_activeOfflineMode = By.xpath("//button[text()='Activate Offline Mode']");
-    By txt_hangTight = By.xpath("//div[contains(text(),'Hang tight')]");
+    By txt_hangTight = By.xpath("//*[contains(text(),'Hang tight')]");
     By btn_activeOnLineMode = By.xpath("//span[text()='Go Online']");
     By txt_catalog = By.xpath("//div[contains(text(), 'Sections')]");
     String btnChat = "//td[text()='CODE']/../td[7]//*[name()='svg' and @data-icon='comments']";
@@ -4400,7 +4400,6 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickActiveOfflineMode() throws InterruptedException {
         distributorUI.waitForClickability(btn_activeOfflineMode);
         distributorUI.click(btn_activeOfflineMode);
-        distributorUI.waitForCustom(10000);
     }
     public boolean isHangTightPopUpDisplay()throws InterruptedException{
         return distributorUI.isDisplayed(txt_hangTight);
