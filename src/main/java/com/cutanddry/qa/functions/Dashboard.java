@@ -188,5 +188,8 @@ public class Dashboard {
     public static boolean isChatSectionDisplay() throws InterruptedException {
         return dashboardPage.isChatSectionDisplay();
     }
+    public static boolean isEndlessAisleCatalogDisplay()throws InterruptedException{
+        return dashboardPage.isEndlessAisleCatalogDisplay();
+    }
 
 }

@@ -770,6 +770,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String btn_reviewPlusStable = "(//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')]/following::div//*[name()='svg' and contains(@data-icon, 'plus')])[2]";
     By btn_catalogLock = By.xpath("//span[text()='Catalog']/following-sibling::*[name()='svg' and contains(@data-icon, 'cdLock')]");
     String catalogToolTip = "//span[@data-tip=\"NAME\"]";
+    String catalogFilter = "//div[contains(text(),'FILTER')]";
+    String itemTypeFilterDropDownOption = "//div[contains(text(), 'Item Type')]/../../following-sibling::div//*[name()='svg' and @data-icon='square']/following-sibling::div[contains(text(), 'FILTER')]";
+    String newItemTagCatalog = "//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]/../../following-sibling::div//span[text()='TAG']";
+    String catalogSearchItemCode = "//div[contains(@class,'card-deck')]//div[contains(., 'CODE')]";
+    String pONumberError = "//h2[text()='ERROR']";
+
 
 
 
@@ -2838,6 +2844,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void typePONumber(String poNumber) throws InterruptedException {
         distributorUI.waitForCustom(3000);
+        distributorUI.clear(txt_poNumber);
         distributorUI.sendKeys(txt_poNumber,poNumber);
     }
     public boolean isSpecialInstructionDisplayed(String specialInstruction) {
@@ -4578,6 +4585,27 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isCatalogTooltipDisplayed(String name){
         return distributorUI.isDisplayed(By.xpath(catalogToolTip.replace("NAME", name)));
+    }
+    public boolean isCatalogFilterDisplayed(String filter){
+        return distributorUI.isDisplayed(By.xpath(catalogFilter.replace("FILTER", filter)));
+    }
+    public void clickItemTypeFilter()throws InterruptedException{
+        distributorUI.click(itemTypeDropDown);
+    }
+    public void clickItemTypeFilterOption(String filter)throws InterruptedException{
+        distributorUI.click(By.xpath(itemTypeFilterDropDownOption.replace("FILTER", filter)));
+    }
+    public void clickCatalogFilter(String filter){
+        distributorUI.click(By.xpath(catalogFilter.replace("FILTER", filter)));
+    }
+    public boolean isCatalogFilterDisplayTag(String name,String tag){
+        return distributorUI.isDisplayed(By.xpath(newItemTagCatalog.replace("NAME", name).replace("TAG",tag)));
+    }
+    public boolean isCatalogSearchItemCodeDisplay(String code){
+        return distributorUI.isDisplayed(By.xpath(catalogSearchItemCode.replace("CODE", code)));
+    }
+    public boolean isPONumberErrorDisplay(String error){
+        return distributorUI.isDisplayed(By.xpath(pONumberError.replace("ERROR", error)));
     }
 
 

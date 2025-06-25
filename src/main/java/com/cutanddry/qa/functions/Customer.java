@@ -1435,8 +1435,11 @@ public class Customer {
         customersPage.clickOnBack();
         customersPage.clickOrderGuideTab();
     }
-    public static void clickOnOrderGuideTab() {
+    public static void clickOnOrderGuideTab() throws InterruptedException {
         customersPage.clickOrderGuideTab();
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
     }
     public static boolean addedItemDisplayOnOrderGuide(String name){
          return customersPage.addedItemDisplayOnOrderGuide(name);
@@ -2707,6 +2710,27 @@ public class Customer {
     }
     public static boolean isCatalogTooltipDisplayed(String name) throws InterruptedException {
         return customersPage.isCatalogTooltipDisplayed(name);
+    }
+    public static boolean isCatalogFilterDisplayed(String filter){
+        return customersPage.isCatalogFilterDisplayed(filter);
+    }
+    public static void clickItemTypeFilter()throws InterruptedException{
+        customersPage.clickItemTypeFilter();
+    }
+    public static void clickItemTypeFilterOption(String filter)throws InterruptedException{
+        customersPage.clickItemTypeFilterOption(filter);
+    }
+    public static void clickCatalogFilter(String filter){
+        customersPage.clickCatalogFilter(filter);
+    }
+    public static boolean isCatalogFilterDisplayTag(String name,String tag){
+        return customersPage.isCatalogFilterDisplayTag(name,tag);
+    }
+    public static boolean isCatalogSearchItemCodeDisplay(String code){
+        return customersPage.isCatalogSearchItemCodeDisplay(code);
+    }
+    public static boolean isPONumberErrorDisplay(String code){
+        return customersPage.isPONumberErrorDisplay(code);
     }
 
 
