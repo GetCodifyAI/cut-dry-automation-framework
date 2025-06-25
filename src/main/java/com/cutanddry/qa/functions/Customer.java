@@ -2702,6 +2702,13 @@ public class Customer {
     public static String getAmountUsingDataPickerReviewOrder(String name){
         return customersPage.getAmountUsingDataPickerReviewOrder(name);
     }
+    public static boolean isCatalogLockDisplay(){
+        return customersPage.isCatalogLockDisplay();
+    }
+    public static boolean isCatalogTooltipDisplayed(String name) throws InterruptedException {
+        return customersPage.isCatalogTooltipDisplayed(name);
+    }
+
 
 }
 

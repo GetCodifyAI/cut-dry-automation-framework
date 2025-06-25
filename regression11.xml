@@ -72,6 +72,12 @@
 
             <class name="com.cutanddry.qa.tests.orders.VerifyTheClickOnQuantityPickerAndIncrementTheItemCountFromQuantityPickerAndIncrementItemCountFromPlusIconTest"/>
             <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheChildAccountCanAccessThePDPViaTheOrderGuideTest"/>
+
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureLoginByAdminUserRolesTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureLoginBySalespersonUserRolesTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureLoginByAccountReceivableUserRolesTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureHillcrestDPTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureBiRiteDPTest"/>
         </classes>
     </test>
 </suite>
