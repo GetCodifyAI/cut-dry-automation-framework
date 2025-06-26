@@ -6,6 +6,9 @@ parameters:
     enum:
       - dpCustomerCatalog.jmx
       - generalCatalog.jmx
+      - orderGuideOrderFlow.jmx
+      - catalogOrderFlow.jmx
+      - pdpOrderFlow.jmx
     default: dpCustomerCatalog.jmx
 
 executors:
