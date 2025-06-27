@@ -14,8 +14,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheItemTypeFilterIsVisibleInPublicCatalogTest extends TestBase {
+public class VerifyTheItemTypeFilterIsVisibleInCustomerCatalogEditOGFlowTest extends TestBase {
     static User user;
+    String CustomerCode = "16579";
     static String itemType = "Item Type";
     static String itemTypeOption = "Stocked (in-house)";
 
@@ -26,19 +27,24 @@ public class VerifyTheItemTypeFilterIsVisibleInPublicCatalogTest extends TestBas
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-1480")
-    public void VerifyTheItemTypeFilterIsVisibleInPublicCatalog() throws InterruptedException {
+    @Test(groups = "DOT-TC-1479")
+    public void VerifyTheItemTypeFilterIsVisibleInCustomerCatalogEditOGFlow() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+        Dashboard.navigateToCustomers();
+        softAssert.assertTrue(Customer.isCustomersTextDisplayed(),"customer section not display");
+        Customer.searchCustomerByCode(CustomerCode);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"customer not found");
+        Customer.clickOnOrderGuide(CustomerCode);
 
-        Dashboard.navigateToCatalog();
-        Assert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
-        Catalog.clickOnPreviewCatalog();
-        Assert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
+        Customer.goToEdit();
+        softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
+        Customer.createOrderFromCatalog();
         softAssert.assertTrue(Customer.isCatalogFilterDisplayed(itemType),"catalog filter not display");
         Customer.clickItemTypeFilter();
         Customer.clickItemTypeFilterOption(itemTypeOption);
+        Customer.closeEditorCatalog();
         softAssert.assertAll();
     }
 
