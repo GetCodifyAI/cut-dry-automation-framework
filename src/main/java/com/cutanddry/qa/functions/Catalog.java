@@ -645,6 +645,12 @@ public class Catalog {
     public static boolean isNewProductDisplay(){
         return catalogPage.isNewProductDisplay();
     }
+    public static void clickOnSpecialItem(String status){
+        catalogPage.clickOnSpecialItem(status);
+    }
+    public static boolean isSpecialItemDropDownDisplay(){
+        return catalogPage.isSpecialItemDropDownDisplay();
+    }
 
 
 }

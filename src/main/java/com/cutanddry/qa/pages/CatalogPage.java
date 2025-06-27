@@ -216,6 +216,9 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     String lbl_cashAndCarryAllowedOption = "//label[contains(text(),'OPTION')]";
     By txt_actionableOverview = By.xpath("//div[text()='Actionable Overview']");
     By txt_newProduct = By.xpath("//div[text()='New Products']");
+    By specialItemDropDown = By.xpath("//label[contains(text(), 'Special Item')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
+    String specialItemStatus = "(//div[contains(text(),'STATUS') and contains(@class,'themed_select__option')])[last()]";
+
 
 
     public boolean isCatalogTextDisplayed() {
@@ -1166,6 +1169,14 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     }
     public boolean isNewProductDisplay(){
         return distributorUI.isDisplayed(txt_newProduct);
+    }
+
+    public void clickOnSpecialItem(String status){
+        distributorUI.click(specialItemDropDown);
+        distributorUI.clickUsingJavaScript(By.xpath(specialItemStatus.replace("STATUS",status)));
+    }
+    public boolean isSpecialItemDropDownDisplay(){
+        return distributorUI.isDisplayed(specialItemDropDown);
     }
 
 }

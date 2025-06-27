@@ -29,16 +29,24 @@
             <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureBiRiteDPTest"/>
 
             <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheItemTypeFilterIsVisibleInCustomerCatalogTest"/>
-            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheItemTypeFilterIsVisibleInCustomerCatalogEditOgFlowTest"/>
-            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheItemTypeFilterIsVisibleInPublicCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheItemTypeFilterIsVisibleInCustomerCatalogEditOGFlowTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheItemTypeFilterIsVisibleInSupplierCatalogTest"/>
             <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheAvailabilityFilterIsVisibleInCustomerCatalogTest"/>
             <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheAvailabilityFilterIsVisibleInCustomerCatalogEditOGFlowTest"/>
-            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheAvailabilityFilterIsVisibleInPublicCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheAvailabilityFilterIsVisibleInSupplierCatalogTest"/>
             <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheNewArrivalsSectionIsAvailableInCustomerCatalogTest"/>
             <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatOtherDPsHaveTheCustomerTypeFilterToFilterCustomerTypesTest"/>
             <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatDPsDisplayTheirOwnProductsAlongWithProductsFromOtherManufacturersTest"/>
 
             <class name="com.cutanddry.qa.tests.order_guide.ValidatePONumberLengthForDistributorTest"/>
+
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheDistributionCentreFilterIsFilteringRelevantDistributorCentresTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheDistributionCentreFilterIsFilteringRelevantDistributorCentresSupplierCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheDistributionCentreFilterIsFilteringRelevantDistributorCentresCustomerCatalogOGEditFlowTest"/>
+
+            <class name="com.cutanddry.qa.tests.catalog.VerifyDpsHaveSpecialItemsOnCatalogDataWhenSupplierPortalEnabledTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyDpsHaveNotSpecialItemsOnCatalogDataWhenSupplierPortalDisableTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyDpsHaveSpecialItemsOrderSubmissionTest"/>
         </classes>
     </test>
 </suite>

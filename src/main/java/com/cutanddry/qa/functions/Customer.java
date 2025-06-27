@@ -2732,6 +2732,15 @@ public class Customer {
     public static boolean isPONumberErrorDisplay(String code){
         return customersPage.isPONumberErrorDisplay(code);
     }
+    public static void selectDistributorCenter(String center)throws InterruptedException{
+        customersPage.selectDistributorCenter(center);
+    }
+    public static void clickCatalogListView() throws InterruptedException {
+        customersPage.clickCatalogListView();
+    }
+    public static boolean isCatalogFilterDisplayTagList(String name,String tag){
+        return customersPage.isCatalogFilterDisplayTagList(name,tag);
+    }
 
 
 }

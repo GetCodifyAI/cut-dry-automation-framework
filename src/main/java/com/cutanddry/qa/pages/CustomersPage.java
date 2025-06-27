@@ -775,6 +775,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String newItemTagCatalog = "//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]/../../following-sibling::div//span[text()='TAG']";
     String catalogSearchItemCode = "//div[contains(@class,'card-deck')]//div[contains(., 'CODE')]";
     String pONumberError = "//h2[text()='ERROR']";
+    String distributorCenter = "//div[contains(text(),'Distribution Center')]/../../following-sibling::div//*[text()='CENTER']";
+    By btn_listView = By.xpath("//button//*[local-name()='svg' and @data-icon='cdNewList']");
+    String listViewTag = "//td[contains(text(),'NAME')]//span[contains(text(),'TAG')]";
 
 
 
@@ -4606,6 +4609,17 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isPONumberErrorDisplay(String error){
         return distributorUI.isDisplayed(By.xpath(pONumberError.replace("ERROR", error)));
+    }
+    public void selectDistributorCenter(String center)throws InterruptedException{
+        distributorUI.click(By.xpath(distributorCenter.replace("CENTER",center)));
+        distributorUI.waitForCustom(3000);
+    }
+    public void clickCatalogListView()throws InterruptedException{
+        distributorUI.click(btn_listView);
+        distributorUI.waitForCustom(2000);
+    }
+    public boolean isCatalogFilterDisplayTagList(String name,String tag){
+        return distributorUI.isDisplayed(By.xpath(listViewTag.replace("NAME", name).replace("TAG",tag)));
     }
 
 

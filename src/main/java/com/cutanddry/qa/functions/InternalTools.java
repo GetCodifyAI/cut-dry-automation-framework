@@ -216,4 +216,7 @@ public class InternalTools {
     public static void displayPurchasePriceToggle(boolean status){
         internalToolsPage.displayPurchasePriceToggle(status);
     }
+    public static void selectSpecialItemsDropdown(String SpecialItemsOption){
+        internalToolsPage.selectSpecialItemsDropdown(SpecialItemsOption);
+    }
 }

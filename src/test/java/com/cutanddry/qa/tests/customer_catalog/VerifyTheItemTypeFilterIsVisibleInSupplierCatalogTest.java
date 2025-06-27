@@ -14,9 +14,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheAvailabilityFilterIsVisibleInPublicCatalogTest extends TestBase {
+public class VerifyTheItemTypeFilterIsVisibleInSupplierCatalogTest extends TestBase {
     static User user;
-    static String availability = "Availability";
+    static String itemType = "Item Type";
+    static String itemTypeOption = "Stocked (in-house)";
 
 
     @BeforeMethod
@@ -25,16 +26,19 @@ public class VerifyTheAvailabilityFilterIsVisibleInPublicCatalogTest extends Tes
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-1478")
-    public void VerifyTheAvailabilityFilterIsVisibleInPublicCatalog() throws InterruptedException {
+    @Test(groups = "DOT-TC-1480")
+    public void VerifyTheItemTypeFilterIsVisibleInSupplierCatalog() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+
         Dashboard.navigateToCatalog();
         Assert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.clickOnPreviewCatalog();
         Assert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
-        softAssert.assertTrue(Customer.isCatalogFilterDisplayed(availability),"catalog filter not display");
+        softAssert.assertTrue(Customer.isCatalogFilterDisplayed(itemType),"catalog filter not display");
+        Customer.clickItemTypeFilter();
+        Customer.clickItemTypeFilterOption(itemTypeOption);
         softAssert.assertAll();
     }
 
