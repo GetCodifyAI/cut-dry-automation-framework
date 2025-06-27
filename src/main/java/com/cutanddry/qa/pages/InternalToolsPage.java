@@ -65,6 +65,9 @@ public class InternalToolsPage extends LoginPage {
     By displayPurchaseHistoryToggleStable1 = By.xpath("//div[contains(text(), 'Display Purchase History')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     By displayPurchasePriceToggleStable = By.xpath("//div[contains(text(), 'Display Purchase Price on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By displayPurchasePriceToggleStable1 = By.xpath("//div[contains(text(), 'Display Purchase Price on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By specialItemsDropDown = By.xpath("(//label[contains(text(), 'Special items')]/following-sibling::div//div)[2]");
+    String specialItemsDropDownOption = "(//div[text()='OPTION'])[last()]";
+
 
 
 
@@ -442,6 +445,10 @@ public class InternalToolsPage extends LoginPage {
         } else if (!enable && isEnabled) {
             distributorUI.clickWithScrollAndHover(displayPurchasePriceToggleStable1);
         }
+    }
+    public void selectSpecialItemsDropdown(String option){
+        distributorUI.click(specialItemsDropDown);
+        distributorUI.click(By.xpath(specialItemsDropDownOption.replace("OPTION",option)));
     }
 
 
