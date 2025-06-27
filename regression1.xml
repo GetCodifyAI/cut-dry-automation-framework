@@ -67,7 +67,8 @@
             <class name="com.cutanddry.qa.tests.boost.VerifyCompareSimilarItemsTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedForCustomerTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedBySalesRepTest" />
-            <class name="com.cutanddry.qa.tests.boost.VerifyDontForgetToOrderTest" />
+<!--            TODO: Uncomment the following test when the bug[DOT-9106] is fixed [Error popup “There was an error, please try again.” appears while searching for an item in the Order Guide section]-->
+<!--            <class name="com.cutanddry.qa.tests.boost.VerifyDontForgetToOrderTest" />-->
             <class name="com.cutanddry.qa.tests.boost.VerifyMoreFromThisBrandTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyAddingFeaturedListTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyEditingFeaturedListTest" />
