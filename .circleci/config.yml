@@ -1458,7 +1458,7 @@ jobs:
 
           # Send the test results to Slack
       - slack/notify:
-          channel: "#staging-test-alerts" # Replace with your Slack channel staging-test-alerts
+          channel: "#test-alerts" # Replace with your Slack channel staging-test-alerts
           template: "${SLACK_MESSAGE}"
           event: always
           custom: |
@@ -1541,11 +1541,11 @@ workflows:
   scheduled-test-2:
     triggers:
       - schedule:
-          cron: "00 06 * * 1-5"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
+          cron: "45 05 * * 1-5"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
           filters:
             branches:
               only:
-                - staging_regression
+                - main
     jobs:
       - daily-build-and-test-1
       - daily-build-and-test-2
@@ -1563,11 +1563,11 @@ workflows:
   scheduled-test-2-sub1:
     triggers:
       - schedule:
-          cron: "00 07 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 45 06 * * * staging_regression
+          cron: "45 06 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 45 06 * * * staging_regression
           filters:
             branches:
               only:
-                - staging_regression
+                - main
     jobs:
       - daily-build-and-test-6
       - daily-build-and-test-7
