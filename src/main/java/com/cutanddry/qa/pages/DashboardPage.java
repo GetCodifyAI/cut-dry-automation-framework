@@ -18,7 +18,7 @@ public class DashboardPage extends LoginPage{
     By txt_home = By.xpath("//li[contains(text(),'Home')]");
     By btn_orderDesk = By.xpath("//a[contains(text(),'Order Desk')]");
     By btn_viewOrders = By.xpath("//a[contains(text(),'Orders')]");
-    By txt_all = By.xpath("//div[text()='All']");
+    By txt_all = By.xpath("//div[text()='All Salespersons']");
     By txt_lastDays = By.xpath("(//div[text()='Last 30 Days'])[1]");
     By lbl_salespersonDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[1]");
     By lbl_durationDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[2]");
