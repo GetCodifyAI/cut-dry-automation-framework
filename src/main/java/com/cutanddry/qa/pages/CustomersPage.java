@@ -778,6 +778,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String distributorCenter = "//div[contains(text(),'Distribution Center')]/../../following-sibling::div//*[text()='CENTER']";
     By btn_listView = By.xpath("//button//*[local-name()='svg' and @data-icon='cdNewList']");
     String listViewTag = "//td[contains(text(),'NAME')]//span[contains(text(),'TAG')]";
+    By btn_cartSummery = By.xpath("//button[text()='$']");
+    String cartSummary = "//div[text()='COUNT']";
+    String cartSummaryValue = "//div[contains(text(),'NAME')]";
+    By btn_menu = By.xpath("//*[local-name() = 'svg' and @data-icon='bars']");
+    String txt_userName = "//div[contains(text(),'NAME')]";
+    String txt_distributorName = "//span[contains(text(),'NAME')]";
+    By btn_closeMenu = By.xpath("//*[local-name() = 'svg' and @data-icon='cdCancel']");
+    String newItemTagCatalogstable = "(//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]/../../following-sibling::div//span[text()='TAG'])[last()]";
 
 
 
@@ -4620,6 +4628,31 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isCatalogFilterDisplayTagList(String name,String tag){
         return distributorUI.isDisplayed(By.xpath(listViewTag.replace("NAME", name).replace("TAG",tag)));
+    }
+    public void clickCartSummery()throws InterruptedException{
+        distributorUI.click(btn_cartSummery);
+    }
+    public boolean isCartSummaryDisplay(String count){
+        return distributorUI.isDisplayed(By.xpath(cartSummary.replace("COUNT", count)));
+    }
+    public boolean isCartSummaryValueDisplay(String name){
+        return distributorUI.isDisplayed(By.xpath(cartSummaryValue.replace("NAME", name)));
+    }
+    public void clickMenu()throws InterruptedException{
+        distributorUI.click(btn_menu);
+    }
+    public boolean isUserNameDisplay(String name){
+        return distributorUI.isDisplayed(By.xpath(txt_userName.replace("NAME", name)));
+    }
+    public boolean isDistributorNameDisplay(String name){
+        return distributorUI.isDisplayed(By.xpath(txt_distributorName.replace("NAME", name)));
+    }
+    public void clickCloseMenu()throws InterruptedException{
+        distributorUI.click(btn_closeMenu);
+    }
+    public boolean isCatalogFilterDisplayTagStable(String name,String tag) throws InterruptedException {
+        distributorUI.waitForCustom(4000);
+        return distributorUI.isDisplayed(By.xpath(newItemTagCatalogstable.replace("NAME", name).replace("TAG",tag)));
     }
 
 

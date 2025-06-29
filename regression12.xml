@@ -47,6 +47,17 @@
             <class name="com.cutanddry.qa.tests.catalog.VerifyDpsHaveSpecialItemsOnCatalogDataWhenSupplierPortalEnabledTest"/>
             <class name="com.cutanddry.qa.tests.catalog.VerifyDpsHaveNotSpecialItemsOnCatalogDataWhenSupplierPortalDisableTest"/>
             <class name="com.cutanddry.qa.tests.catalog.VerifyDpsHaveSpecialItemsOrderSubmissionTest"/>
+
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheGPOFilterOptionInTheCustomerCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheGPOFilterOptionInTheEditOGFlowTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheGPOFilterOptionInSupplierCatalogTest"/>
+
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheOutOfStockLabelsNotDisplayWhenHideOutOfStockLabelOnSupplierPortalToggleEnabledTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheOutOfStockLabelsDisplayWhenHideOutOfStockLabelOnSupplierPortalToggleDisabledTest"/>
+
+            <class name="com.cutanddry.qa.tests.customers.VerifyTheCartSummeryAndRevenueSummeryIsDisplayedOnTheReviewScreenTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheAlternateCollapsedMenuOnDesktopTest"/>
+
         </classes>
     </test>
 </suite>
