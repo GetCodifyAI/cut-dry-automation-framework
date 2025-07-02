@@ -4128,6 +4128,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(btn_closeSub);
     }
     public void clickEditSub(){
+        distributorUI.waitForVisibility(btn_editSub);
         distributorUI.click(btn_editSub);
     }
     public void clickRemovePreviousSub(){
