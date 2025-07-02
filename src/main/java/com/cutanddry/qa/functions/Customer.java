@@ -809,7 +809,7 @@ public class Customer {
     public static boolean isNavigatedToOrderGuide(){
         return customersPage.isOrdersTxtDisplayed();
     }
-    public static boolean isNavigatedToCatalog(){
+    public static boolean isAllItemsTxtDisplayed(){
         return customersPage.isAllItemsTxtDisplayed();
     }
     public static String getItemDetailsFirstRow() throws InterruptedException {
@@ -2740,6 +2740,36 @@ public class Customer {
     }
     public static boolean isCatalogFilterDisplayTagList(String name,String tag){
         return customersPage.isCatalogFilterDisplayTagList(name,tag);
+    }
+    public static void clickCartSummery() throws InterruptedException {
+        customersPage.clickCartSummery();
+    }
+    public static boolean isCartSummaryDisplay(String count){
+        return customersPage.isCartSummaryDisplay(count);
+    }
+    public static boolean isCartSummaryValueDisplay(String name){
+        return customersPage.isCartSummaryValueDisplay(name);
+    }
+    public static boolean isRevenueSummaryDisplay(String count){
+        return customersPage.isCartSummaryDisplay(count);
+    }
+    public static boolean isRevenueSummaryValueDisplay(String name){
+        return customersPage.isCartSummaryValueDisplay(name);
+    }
+    public static void clickMenu()throws InterruptedException{
+        customersPage.clickMenu();
+    }
+    public static boolean isUserNameDisplay(String name){
+        return customersPage.isUserNameDisplay(name);
+    }
+    public static boolean isDistributorNameDisplay(String name){
+        return customersPage.isDistributorNameDisplay(name);
+    }
+    public static void clickCloseMenu() throws InterruptedException {
+        customersPage.clickCloseMenu();
+    }
+    public static boolean isCatalogFilterDisplayTagStable(String name,String tag) throws InterruptedException {
+        return customersPage.isCatalogFilterDisplayTagStable(name,tag);
     }
 
 

@@ -67,6 +67,9 @@ public class InternalToolsPage extends LoginPage {
     By displayPurchasePriceToggleStable1 = By.xpath("//div[contains(text(), 'Display Purchase Price on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     By specialItemsDropDown = By.xpath("(//label[contains(text(), 'Special items')]/following-sibling::div//div)[2]");
     String specialItemsDropDownOption = "(//div[text()='OPTION'])[last()]";
+    By hideOutOfStockToggleStable = By.xpath("//div[contains(text(), 'Hide out of stock label on Supplier Portal:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By hideOutOfStockToggleStable1 = By.xpath("//div[contains(text(), 'Hide out of stock label on Supplier Portal:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+
 
 
 
@@ -449,6 +452,17 @@ public class InternalToolsPage extends LoginPage {
     public void selectSpecialItemsDropdown(String option){
         distributorUI.click(specialItemsDropDown);
         distributorUI.click(By.xpath(specialItemsDropDownOption.replace("OPTION",option)));
+    }
+    public void clickHideOutOfStockToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(hideOutOfStockToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(hideOutOfStockToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(hideOutOfStockToggleStable1);
+        }
     }
 
 

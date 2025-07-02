@@ -15,7 +15,7 @@ public class VerifyDashboardShowingSalespersonsRelatedChartsTest extends TestBas
     static User user;
     static String salesperson = "Bob";
     static String days = "Last 7 Days";
-    static String defaultSalesperson = "All";
+    static String defaultSalesperson = "All Salespersons";
     static String defaultDays = "Last 30 Days";
 
     @BeforeMethod

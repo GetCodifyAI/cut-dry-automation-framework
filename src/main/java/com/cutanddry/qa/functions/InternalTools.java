@@ -219,4 +219,7 @@ public class InternalTools {
     public static void selectSpecialItemsDropdown(String SpecialItemsOption){
         internalToolsPage.selectSpecialItemsDropdown(SpecialItemsOption);
     }
+    public static void clickHideOutOfStockToggle(boolean status){
+        internalToolsPage.clickHideOutOfStockToggle(status);
+    }
 }
