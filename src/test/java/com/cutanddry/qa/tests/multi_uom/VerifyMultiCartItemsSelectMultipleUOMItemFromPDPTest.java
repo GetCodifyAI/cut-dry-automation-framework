@@ -101,8 +101,12 @@ public class VerifyMultiCartItemsSelectMultipleUOMItemFromPDPTest extends TestBa
         Catalog.clickBack();
 
         Catalog.clickSubmittedOrder(orderId2);
-        softAssert.assertEquals(Math.round(Catalog.getTotalPriceInOrder() * 100.0) / 100.0,
-                ((Math.round(itemPriceUOM1 * 100.0) / 100.0)+(Math.round(itemPriceUOM2 * 100.0) / 100.0)), "The item has not been selected.");
+        double expected = Math.round(((itemPriceUOM1 + itemPriceUOM2) * 100.0)) / 100.0;
+        double actual = Math.round(Catalog.getTotalPriceInOrder() * 100.0) / 100.0;
+        softAssert.assertEquals(actual, expected, "The item has not been selected.");
+        softAssert.assertEquals(Math.round(Catalog.getTotalPriceInOrder() * 100.0) / 100.0, Math.round((itemPriceUOM1 + itemPriceUOM2) * 100.0) / 100.0, "The item has not been selected.");
+       /* softAssert.assertEquals(Math.round(Catalog.getTotalPriceInOrder() * 100.0) / 100.0,
+                ((Math.round(itemPriceUOM1 * 100.0) / 100.0)+(Math.round(itemPriceUOM2 * 100.0) / 100.0)), "The item has not been selected.");*/
         softAssert.assertEquals(Catalog.getTotalQuantityInOrder(),"2","order quantity not successfully submitted");
         softAssert.assertAll();
     }
