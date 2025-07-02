@@ -12,7 +12,8 @@
             <class name="com.cutanddry.qa.tests.catalog.VerifyCashAndCarryAllowedOptionIsNotDisplayedInsidePricingAndPromotionsForCashAndCarryNotEnabledDPTest"/>
             <class name="com.cutanddry.qa.tests.catalog.VerifyThatTheDistributorShouldHaveTheNewProductBannerInTheSupplierCatalogTest"/>
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheSpecialOrderItemsOrderReviewNoteTest"/>
-            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyThatTheUserCanSetUpCCEmailFromTheDistributorPortalTest"/>
+            <!--TODO: Lipari no longer available on UAT-->
+            <!--<class name="com.cutanddry.qa.tests.distributor_specific.VerifyThatTheUserCanSetUpCCEmailFromTheDistributorPortalTest"/>-->
 
             <class name="com.cutanddry.qa.tests.orders.VerifyThatEditColumnsOptionIsAvailableInOrdersScreenTest"/>
             <class name="com.cutanddry.qa.tests.orders.VerifyThatLockedColumnsCannotBeEditedInTheCustomizeColumnScreenTest"/>

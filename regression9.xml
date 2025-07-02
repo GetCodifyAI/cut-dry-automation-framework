@@ -56,8 +56,9 @@
 
             <class name="com.cutanddry.qa.tests.pay.VerifyTheCustomerInvoiceViewOnDistributorToEnsureThatDigitalInvoicePDFsAreVisibleTest"/>
             <class name="com.cutanddry.qa.tests.order_guide.VerifyElementsAreHiddenWhenSearchingAnItemInOrderGuideTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyThatSMSFunctionalityIsWorkingAsExpectedForOrderReminderAlertsTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyTheOrderReminderConfigurationsInTheDPTest"/>
+            <!--TODO: Duplicate test case, remove them here [Exist on REG 6 also]-->
+            <!--<class name="com.cutanddry.qa.tests.settings.VerifyThatSMSFunctionalityIsWorkingAsExpectedForOrderReminderAlertsTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyTheOrderReminderConfigurationsInTheDPTest"/>-->
         </classes>
     </test>
 </suite>
