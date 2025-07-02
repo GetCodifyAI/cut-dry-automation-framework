@@ -7,6 +7,7 @@ public class PayInvoiceData
         public static final String CUSTOMER_NAME3 = "Cut + Dry Testing - Hayes";
         public static final String CUSTOMER_NAME4 = "Test user1 - San Francisco";
         public static final String CUSTOMER_NAME5 = "Restaurant(Te";
+        public static final String CUSTOMER_NAME6 = "Michael's Cafe & Bistro - San Francisco";
         public static final String CUSTOMER_CODE = "21259";
         public static final String CUSTOMER_CODE2 = "16579";
 
