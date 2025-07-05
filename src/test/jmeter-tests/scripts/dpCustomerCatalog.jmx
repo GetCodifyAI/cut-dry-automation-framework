@@ -20,7 +20,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
           <collectionProp name="Arguments.arguments">
             <elementProp name="csvFilePath" elementType="Argument">
               <stringProp name="Argument.name">csvFilePath</stringProp>
@@ -40,7 +40,7 @@
           </collectionProp>
         </Arguments>
         <hashTree/>
-        <com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig guiclass="com.googlecode.jmeter.plugins.webdriver.config.gui.ChromeDriverConfigGui" testclass="com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig" testname="Chrome Driver">
+        <com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig guiclass="com.googlecode.jmeter.plugins.webdriver.config.gui.ChromeDriverConfigGui" testclass="com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig" testname="Chrome Driver" enabled="true">
           <boolProp name="WebDriverConfig.acceptinsecurecerts">false</boolProp>
           <boolProp name="WebDriverConfig.reset_per_iteration">false</boolProp>
           <stringProp name="WebDriverConfig.driver_path">${chromeDriverPath}</stringProp>
@@ -691,7 +691,7 @@ WDS.props.put(&quot;count&quot;, &quot;294&quot;) </stringProp>
                 </JSR223PostProcessor>
                 <hashTree/>
               </hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Birite" enabled="true">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Birite">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -718,6 +718,8 @@ def catalogLoadStart = System.currentTimeMillis()
 
 def catalogTab = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(&quot;//span[text()=&apos;Catalog&apos;]&quot;)))
 js.executeScript(&quot;arguments[0].click();&quot;, catalogTab);
+
+def allItemlbl = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(&quot;(//div[contains(text(),&apos;Category&apos;)]/following::div//div[contains(text(),&apos;All Item&apos;)])[1]&quot;))) js.executeScript(&quot;arguments[0].click();&quot;, allItemlbl);
 
 // Wait for the table to be present
 def orderTable = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(&quot;((//div[contains(text(),&apos;All Items&apos;)])[last()]/parent::div/parent::div/following-sibling::div)[last()-1]&quot;)))
@@ -1532,14 +1534,14 @@ WDS.log.info(&quot;Catalog Load Time saved to CSV: &quot; + csvFilePath)</string
               <boolProp name="TransactionController.includeTimers">false</boolProp>
             </TransactionController>
             <hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Search the customer" enabled="true">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Search the customer">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
 import java.time.Duration
 import org.openqa.selenium.JavascriptExecutor
 
- String DP = &quot;165144548&quot; //chef&apos;s kitchen
+String DP = &quot;179782961&quot; //chef&apos;s kitchen 165144548
  String customer = &quot;Aa Dollar plus - Rtl&quot;
 
 def waitTime = WDS.vars.get(&quot;waitTime&quot;)
@@ -1614,7 +1616,7 @@ WDS.props.put(&quot;count&quot;, &quot;394&quot;) </stringProp>
                 </JSR223PostProcessor>
                 <hashTree/>
               </hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Chef&apos;s Kitchen " enabled="true">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Chef&apos;s Kitchen ">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
