@@ -719,7 +719,8 @@ def catalogLoadStart = System.currentTimeMillis()
 def catalogTab = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(&quot;//span[text()=&apos;Catalog&apos;]&quot;)))
 js.executeScript(&quot;arguments[0].click();&quot;, catalogTab);
 
-def allItemlbl = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(&quot;(//div[contains(text(),&apos;Category&apos;)]/following::div//div[contains(text(),&apos;All Item&apos;)])[1]&quot;))) js.executeScript(&quot;arguments[0].click();&quot;, allItemlbl);
+def allItemlbl = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(&quot;(//div[contains(text(),&apos;Category&apos;)]/following::div//div[contains(text(),&apos;All Item&apos;)])[1]&quot;))) 
+js.executeScript(&quot;arguments[0].click();&quot;, allItemlbl);
 
 // Wait for the table to be present
 def orderTable = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(&quot;((//div[contains(text(),&apos;All Items&apos;)])[last()]/parent::div/parent::div/following-sibling::div)[last()-1]&quot;)))
