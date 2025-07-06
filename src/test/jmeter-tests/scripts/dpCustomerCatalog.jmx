@@ -604,7 +604,7 @@ WDS.log.info(&quot;Catalog Load Time saved to CSV: &quot; + csvFilePath)</string
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Birite " enabled="true">
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Birite ">
               <boolProp name="TransactionController.includeTimers">false</boolProp>
             </TransactionController>
             <hashTree>
@@ -2226,7 +2226,7 @@ WDS.log.info(&quot;Catalog Load Time saved to CSV: &quot; + csvFilePath)</string
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Email Sending Thread" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Email Sending Thread">
         <stringProp name="TestPlan.comments">Please cross-check the report before running this thread.</stringProp>
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">0</intProp>
@@ -2329,7 +2329,7 @@ for (int i = 1; i &lt;= 1; i++) {
           </DebugSampler>
           <hashTree/>
         </hashTree>
-        <SmtpSampler guiclass="SmtpSamplerGui" testclass="SmtpSampler" testname="SMTP Sampler" enabled="true">
+        <SmtpSampler guiclass="SmtpSamplerGui" testclass="SmtpSampler" testname="SMTP Sampler">
           <stringProp name="TestPlan.comments">Outlook: smtp.office365.com/Yahoo: smtp.mail.yahoo.com -- 587 (for TLS)/465 (for SSL)/25 (for non-secure, not recommended)</stringProp>
           <stringProp name="SMTPSampler.server">smtp.gmail.com</stringProp>
           <stringProp name="SMTPSampler.serverPort">465</stringProp>
@@ -2338,7 +2338,7 @@ for (int i = 1; i &lt;= 1; i++) {
           <stringProp name="SMTPSampler.receiverTo">ahsan@cutanddry.com</stringProp>
           <stringProp name="SMTPSampler.receiverCC"></stringProp>
           <stringProp name="SMTPSampler.receiverBCC"></stringProp>
-          <stringProp name="SMTPSampler.subject">Automated Daily Performance Load Time Report - ${__time(MM/dd/yyyy,)}</stringProp>
+          <stringProp name="SMTPSampler.subject">[Specific DPs] Automated Daily Catalog Load Time Performance Report - ${__time(MM/dd/yyyy,)}</stringProp>
           <stringProp name="SMTPSampler.suppressSubject">false</stringProp>
           <stringProp name="SMTPSampler.include_timestamp">false</stringProp>
           <stringProp name="SMTPSampler.message">&lt;html lang=&quot;en&quot;&gt;
