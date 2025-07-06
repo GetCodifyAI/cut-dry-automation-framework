@@ -691,7 +691,7 @@ WDS.props.put(&quot;count&quot;, &quot;294&quot;) </stringProp>
                 </JSR223PostProcessor>
                 <hashTree/>
               </hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Birite" enabled="true">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Birite">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -719,7 +719,7 @@ def catalogLoadStart = System.currentTimeMillis()
 def catalogTab = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(&quot;//span[text()=&apos;Catalog&apos;]&quot;)))
 js.executeScript(&quot;arguments[0].click();&quot;, catalogTab);
 
-def allItemlbl = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(&quot;(//div[contains(text(),&apos;Category&apos;)]/following::div//div[contains(text(),&apos;All Item&apos;)])[1]&quot;))) 
+def allItemlbl = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(&quot;(//div[contains(text(),&apos;Category&apos;)]/following::div//div[contains(text(),&apos;All Item&apos;)])[1]&quot;)))
 js.executeScript(&quot;arguments[0].click();&quot;, allItemlbl);
 
 // Wait for the table to be present
@@ -1531,11 +1531,11 @@ WDS.log.info(&quot;Catalog Load Time saved to CSV: &quot; + csvFilePath)</string
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Chef&apos;s Kitchen " enabled="true">
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Chef&apos;s Kitchen ">
               <boolProp name="TransactionController.includeTimers">false</boolProp>
             </TransactionController>
             <hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Search the customer" enabled="true">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Search the customer">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
