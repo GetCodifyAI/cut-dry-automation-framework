@@ -363,7 +363,7 @@ jobs:
           command: |
             export JMETER_HOME=$PWD/apache-jmeter-5.6.3
             export PATH=$JMETER_HOME/bin:$PATH
-            $JMETER_HOME/bin/jmeter -n -t src/test/jmeter-tests/scripts/generalCatalog.jmx -l results/test_results.jtl -e -o results/report -j jmeter.log -Jlog_level.jmeter=DEBUG
+            $JMETER_HOME/bin/jmeter -n -t src/test/jmeter-tests/scripts/generalCatalog1.jmx -l results/test_results.jtl -e -o results/report -j jmeter.log -Jlog_level.jmeter=DEBUG
             cat jmeter.log
       - run:
           name: List results directory
@@ -414,7 +414,7 @@ workflows:
   scheduled-test-2:
     triggers:
       - schedule:
-          cron: "37 07 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
+          cron: "07 09 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
           filters:
             branches:
               only:
