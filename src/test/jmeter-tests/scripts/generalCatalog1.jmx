@@ -49,7 +49,7 @@
         <hashTree/>
         <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Once Only Controller"/>
         <hashTree>
-          <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Login the DP" enabled="true">
+          <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Login the DP">
             <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -128,7 +128,7 @@ if (csvFile.exists()) {
               <boolProp name="TransactionController.includeTimers">false</boolProp>
             </TransactionController>
             <hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Search the customer">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Search the customer" enabled="true">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -182,7 +182,7 @@ WDS.props.put(&quot;count&quot;, &quot;116&quot;) </stringProp>
                 </JSR223PostProcessor>
                 <hashTree/>
               </hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Dicarlo">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Dicarlo" enabled="true">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -279,8 +279,8 @@ def catalogLoadEnd = Long.parseLong(WDS.props.get(&quot;catalogLoadEnd&quot;))
 def catalogLoadTime = Long.parseLong(WDS.props.get(&quot;catalogLoadTime&quot;))
 
 // Define CSV file path
-//def csvFilePath = &quot;results/Catalog_Load_Times.csv&quot;
-def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/General/Catalog_Load_Times.csv&quot;
+def csvFilePath = &quot;results/Catalog_Load_Times.csv&quot;
+//def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/General/Catalog_Load_Times.csv&quot;
 
 
 // Initialize the CSV file
@@ -489,8 +489,8 @@ def catalogLoadEnd = Long.parseLong(WDS.props.get(&quot;catalogLoadEnd&quot;))
 def catalogLoadTime = Long.parseLong(WDS.props.get(&quot;catalogLoadTime&quot;))
 
 // Define CSV file path
-//def csvFilePath = &quot;results/Catalog_Load_Times.csv&quot;
-def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/General/Catalog_Load_Times.csv&quot;
+def csvFilePath = &quot;results/Catalog_Load_Times.csv&quot;
+//def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/General/Catalog_Load_Times.csv&quot;
 //def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/Catalog_Load_Times.csv&quot;
 
 
@@ -700,8 +700,8 @@ def catalogLoadEnd = Long.parseLong(WDS.props.get(&quot;catalogLoadEnd&quot;))
 def catalogLoadTime = Long.parseLong(WDS.props.get(&quot;catalogLoadTime&quot;))
 
 // Define CSV file path
-//def csvFilePath = &quot;results/Catalog_Load_Times.csv&quot;
-def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/General/Catalog_Load_Times.csv&quot;
+def csvFilePath = &quot;results/Catalog_Load_Times.csv&quot;
+//def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/General/Catalog_Load_Times.csv&quot;
 //def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/Catalog_Load_Times.csv&quot;
 
 
@@ -911,8 +911,8 @@ def catalogLoadEnd = Long.parseLong(WDS.props.get(&quot;catalogLoadEnd&quot;))
 def catalogLoadTime = Long.parseLong(WDS.props.get(&quot;catalogLoadTime&quot;))
 
 // Define CSV file path
-//def csvFilePath = &quot;results/Catalog_Load_Times.csv&quot;
-def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/General/Catalog_Load_Times.csv&quot;
+def csvFilePath = &quot;results/Catalog_Load_Times.csv&quot;
+//def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/General/Catalog_Load_Times.csv&quot;
 //def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/Catalog_Load_Times.csv&quot;
 
 
@@ -1122,8 +1122,8 @@ def catalogLoadEnd = Long.parseLong(WDS.props.get(&quot;catalogLoadEnd&quot;))
 def catalogLoadTime = Long.parseLong(WDS.props.get(&quot;catalogLoadTime&quot;))
 
 // Define CSV file path
-//def csvFilePath = &quot;results/Catalog_Load_Times.csv&quot;
-def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/General/Catalog_Load_Times.csv&quot;
+def csvFilePath = &quot;results/Catalog_Load_Times.csv&quot;
+//def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/General/Catalog_Load_Times.csv&quot;
 //def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/Catalog_Load_Times.csv&quot;
 
 
@@ -1332,8 +1332,8 @@ def catalogLoadStart = Long.parseLong(WDS.props.get(&quot;catalogLoadStart&quot;
 def catalogLoadEnd = Long.parseLong(WDS.props.get(&quot;catalogLoadEnd&quot;))
 def catalogLoadTime = Long.parseLong(WDS.props.get(&quot;catalogLoadTime&quot;))
 
-//def csvFilePath = &quot;results/Catalog_Load_Times.csv&quot;
-def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/General/Catalog_Load_Times.csv&quot;
+def csvFilePath = &quot;results/Catalog_Load_Times.csv&quot;
+//def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/General/Catalog_Load_Times.csv&quot;
 //def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/Catalog_Load_Times.csv&quot;
 
 
@@ -1543,8 +1543,8 @@ def catalogLoadEnd = Long.parseLong(WDS.props.get(&quot;catalogLoadEnd&quot;))
 def catalogLoadTime = Long.parseLong(WDS.props.get(&quot;catalogLoadTime&quot;))
 
 // Define CSV file path
-//def csvFilePath = &quot;results/Catalog_Load_Times.csv&quot;
-def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/General/Catalog_Load_Times.csv&quot;
+def csvFilePath = &quot;results/Catalog_Load_Times.csv&quot;
+//def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/General/Catalog_Load_Times.csv&quot;
 //def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/Catalog_Load_Times.csv&quot;
 
 
@@ -1754,8 +1754,8 @@ def catalogLoadEnd = Long.parseLong(WDS.props.get(&quot;catalogLoadEnd&quot;))
 def catalogLoadTime = Long.parseLong(WDS.props.get(&quot;catalogLoadTime&quot;))
 
 // Define CSV file path
-//def csvFilePath = &quot;results/Catalog_Load_Times.csv&quot;
-def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/General/Catalog_Load_Times.csv&quot;
+def csvFilePath = &quot;results/Catalog_Load_Times.csv&quot;
+//def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/General/Catalog_Load_Times.csv&quot;
 //def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/Catalog_Load_Times.csv&quot;
 
 
@@ -1965,8 +1965,8 @@ def catalogLoadEnd = Long.parseLong(WDS.props.get(&quot;catalogLoadEnd&quot;))
 def catalogLoadTime = Long.parseLong(WDS.props.get(&quot;catalogLoadTime&quot;))
 
 // Define CSV file path
-//def csvFilePath = &quot;results/Catalog_Load_Times.csv&quot;
-def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/General/Catalog_Load_Times.csv&quot;
+def csvFilePath = &quot;results/Catalog_Load_Times.csv&quot;
+//def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/General/Catalog_Load_Times.csv&quot;
 //def csvFilePath = &quot;/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter_catalog/Reports/Catalog_Load_Times.csv&quot;
 
 
@@ -2024,7 +2024,7 @@ WDS.log.info(&quot;Catalog Load Time saved to CSV: &quot; + csvFilePath)</string
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Email Sending Thread" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Email Sending Thread">
         <stringProp name="TestPlan.comments">Please cross-check the report before running this thread.</stringProp>
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">0</intProp>
