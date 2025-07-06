@@ -142,18 +142,254 @@ jobs:
           path: jmeter.log
           destination: jmeter-log
 
+  specific-catalog-test:
+    executor: jmeter-executor
+    steps:
+      - checkout
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Chrome 136.0.7103.113
+          command: |
+            CHROME_VERSION=135.0.7049.95
+            
+            # Install required dependencies
+            sudo apt-get update
+            sudo apt-get install -y wget unzip libglib2.0-0 libnss3 libgconf-2-4 libxss1 libappindicator1 libasound2 libatk-bridge2.0-0 libgtk-3-0 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 libgbm1 fonts-liberation
+            
+            # Download and extract Chrome
+            wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/${CHROME_VERSION}/linux64/chrome-linux64.zip
+            unzip chrome-linux64.zip
+            sudo mv chrome-linux64 /opt/chrome
+            sudo ln -sf /opt/chrome/chrome /usr/bin/google-chrome
+            
+            # Verify version
+            google-chrome --version
+      #      - run:
+      #          name: Install Chrome
+      #          command: |
+      #            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+      #            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+      #            sudo apt-get update
+      #            sudo apt-get install -y google-chrome-stable
+      #            google-chrome --version
+      - run:
+          name: Install ChromeDriver
+          command: |
+            CHROMEDRIVER_URL="https://storage.googleapis.com/chrome-for-testing-public/135.0.7049.52/linux64/chromedriver-linux64.zip"
+            wget $CHROMEDRIVER_URL
+            unzip chromedriver-linux64.zip
+            sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            chromedriver --version
+      - run:
+          name: Ensure results directory exists
+          command: mkdir -p results
+      - run:
+          name: Verify ChromeDriver
+          command: |
+            which chromedriver
+            chromedriver --version
+      - run:
+          name: Install JMeter
+          command: |
+            wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.6.3.tgz
+            tar -xvzf apache-jmeter-5.6.3.tgz
+            export JMETER_HOME=$PWD/apache-jmeter-5.6.3
+            export PATH=$JMETER_HOME/bin:$PATH
+            echo "JMETER_HOME is set to $JMETER_HOME"
+            echo "Listing contents of the JMeter bin directory:"
+            ls -la $JMETER_HOME/bin
+            if [ -f "$JMETER_HOME/bin/jmeter" ]; then
+              echo "JMeter binary found!"
+            else
+              echo "JMeter binary not found!"
+            fi
+            jmeter -v
+      - run:
+          name: Install JMeter Plugin Manager
+          command: |
+            wget https://repo1.maven.org/maven2/kg/apc/jmeter-plugins-manager/1.10/jmeter-plugins-manager-1.10.jar -O apache-jmeter-5.6.3/lib/ext/JMeterPlugins-Manager.jar
+            wget https://repo1.maven.org/maven2/kg/apc/cmdrunner/2.3/cmdrunner-2.3.jar -O apache-jmeter-5.6.3/lib/cmdrunner-2.3.jar
+      - run:
+          name: Download and Install WebDriver Plugin
+          command: |
+            wget https://jmeter-plugins.org/files/packages/jpgc-webdriver-4.13.0.2.zip -O jpgc-webdriver.zip
+            unzip jpgc-webdriver.zip -d apache-jmeter-5.6.3
+            mv -n apache-jmeter-5.6.3/lib/*.jar apache-jmeter-5.6.3/lib/
+            mv -n apache-jmeter-5.6.3/lib/ext/*.jar apache-jmeter-5.6.3/lib/ext/
+      - run:
+          name: Download Groovy 4.0.25 JAR
+          command: |
+            sudo rm -f apache-jmeter-5.6.3/lib/groovy-3.0.20.jar
+            wget https://repo.maven.apache.org/maven2/org/apache/groovy/groovy/4.0.25/groovy-4.0.25.jar -O apache-jmeter-5.6.3/lib/groovy-4.0.25.jar
+      - run:
+          name: Verify files
+          command: |
+            ls -lh apache-jmeter-5.6.3/lib/ext/
+            ls -lh apache-jmeter-5.6.3/lib/
+            ls -lh apache-jmeter-5.6.3/bin/
+            chmod -R 755 apache-jmeter-5.6.3/lib/ext/
+      - run:
+          name: Run JMeter Test
+          command: |
+            export JMETER_HOME=$PWD/apache-jmeter-5.6.3
+            export PATH=$JMETER_HOME/bin:$PATH
+            $JMETER_HOME/bin/jmeter -n -t src/test/jmeter-tests/scripts/dpCustomerCatalog.jmx -l results/test_results.jtl -e -o results/report -j jmeter.log -Jlog_level.jmeter=DEBUG
+            cat jmeter.log
+      - run:
+          name: List results directory
+          command: ls -lh results
+      - store_artifacts:
+          path: results/test_results.jtl
+          destination: jmeter-results
+      - store_artifacts:
+          path: results/report
+          destination: jmeter-html-report
+      - store_artifacts:
+          path: jmeter.log
+          destination: jmeter-log
+
+  general-catalog-test:
+    executor: jmeter-executor
+    steps:
+      - checkout
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Chrome 136.0.7103.113
+          command: |
+            CHROME_VERSION=135.0.7049.95
+
+            # Install required dependencies
+            sudo apt-get update
+            sudo apt-get install -y wget unzip libglib2.0-0 libnss3 libgconf-2-4 libxss1 libappindicator1 libasound2 libatk-bridge2.0-0 libgtk-3-0 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 libgbm1 fonts-liberation
+
+            # Download and extract Chrome
+            wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/${CHROME_VERSION}/linux64/chrome-linux64.zip
+            unzip chrome-linux64.zip
+            sudo mv chrome-linux64 /opt/chrome
+            sudo ln -sf /opt/chrome/chrome /usr/bin/google-chrome
+
+            # Verify version
+            google-chrome --version
+      #      - run:
+      #          name: Install Chrome
+      #          command: |
+      #            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+      #            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+      #            sudo apt-get update
+      #            sudo apt-get install -y google-chrome-stable
+      #            google-chrome --version
+      - run:
+          name: Install ChromeDriver
+          command: |
+            CHROMEDRIVER_URL="https://storage.googleapis.com/chrome-for-testing-public/135.0.7049.52/linux64/chromedriver-linux64.zip"
+            wget $CHROMEDRIVER_URL
+            unzip chromedriver-linux64.zip
+            sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            chromedriver --version
+      - run:
+          name: Ensure results directory exists
+          command: mkdir -p results
+      - run:
+          name: Verify ChromeDriver
+          command: |
+            which chromedriver
+            chromedriver --version
+      - run:
+          name: Install JMeter
+          command: |
+            wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.6.3.tgz
+            tar -xvzf apache-jmeter-5.6.3.tgz
+            export JMETER_HOME=$PWD/apache-jmeter-5.6.3
+            export PATH=$JMETER_HOME/bin:$PATH
+            echo "JMETER_HOME is set to $JMETER_HOME"
+            echo "Listing contents of the JMeter bin directory:"
+            ls -la $JMETER_HOME/bin
+            if [ -f "$JMETER_HOME/bin/jmeter" ]; then
+              echo "JMeter binary found!"
+            else
+              echo "JMeter binary not found!"
+            fi
+            jmeter -v
+      - run:
+          name: Install JMeter Plugin Manager
+          command: |
+            wget https://repo1.maven.org/maven2/kg/apc/jmeter-plugins-manager/1.10/jmeter-plugins-manager-1.10.jar -O apache-jmeter-5.6.3/lib/ext/JMeterPlugins-Manager.jar
+            wget https://repo1.maven.org/maven2/kg/apc/cmdrunner/2.3/cmdrunner-2.3.jar -O apache-jmeter-5.6.3/lib/cmdrunner-2.3.jar
+      - run:
+          name: Download and Install WebDriver Plugin
+          command: |
+            wget https://jmeter-plugins.org/files/packages/jpgc-webdriver-4.13.0.2.zip -O jpgc-webdriver.zip
+            unzip jpgc-webdriver.zip -d apache-jmeter-5.6.3
+            mv -n apache-jmeter-5.6.3/lib/*.jar apache-jmeter-5.6.3/lib/
+            mv -n apache-jmeter-5.6.3/lib/ext/*.jar apache-jmeter-5.6.3/lib/ext/
+      - run:
+          name: Download Groovy 4.0.25 JAR
+          command: |
+            sudo rm -f apache-jmeter-5.6.3/lib/groovy-3.0.20.jar
+            wget https://repo.maven.apache.org/maven2/org/apache/groovy/groovy/4.0.25/groovy-4.0.25.jar -O apache-jmeter-5.6.3/lib/groovy-4.0.25.jar
+      - run:
+          name: Verify files
+          command: |
+            ls -lh apache-jmeter-5.6.3/lib/ext/
+            ls -lh apache-jmeter-5.6.3/lib/
+            ls -lh apache-jmeter-5.6.3/bin/
+            chmod -R 755 apache-jmeter-5.6.3/lib/ext/
+      - run:
+          name: Run JMeter Test
+          command: |
+            export JMETER_HOME=$PWD/apache-jmeter-5.6.3
+            export PATH=$JMETER_HOME/bin:$PATH
+            $JMETER_HOME/bin/jmeter -n -t src/test/jmeter-tests/scripts/generalCatalog.jmx -l results/test_results.jtl -e -o results/report -j jmeter.log -Jlog_level.jmeter=DEBUG
+            cat jmeter.log
+      - run:
+          name: List results directory
+          command: ls -lh results
+      - store_artifacts:
+          path: results/test_results.jtl
+          destination: jmeter-results
+      - store_artifacts:
+          path: results/report
+          destination: jmeter-html-report
+      - store_artifacts:
+          path: jmeter.log
+          destination: jmeter-log
+
 
 
 workflows:
   version: 2
   daily_manual_trigger:
-    triggers:
-      - schedule:
-          cron: "30 13 * * 1-5"  # runs every day at 12:00 UTC/ 5.30 PM Local // 03 12 * * 1-5
-          filters:
-            branches:
-              only:
-                - catalog_performance
+#    triggers:
+#      - schedule:
+#          cron: "30 13 * * 1-5"  # runs every day at 12:00 UTC/ 5.30 PM Local // 03 12 * * 1-5
+#          filters:
+#            branches:
+#              only:
+#                - catalog_performance
     jobs:
 #        - jmeter-test
 #      - approve-before-run:
@@ -163,3 +399,25 @@ workflows:
 #          requires:
 #            - approve-before-run
           jmeter_script: << pipeline.parameters.jmeter_script >>
+
+  scheduled-test-1:
+    triggers:
+      - schedule:
+          cron: 30 13 * * 1-5"  # runs every day at 12:00 UTC/ 7.00 PM Local // 30 13 * * 1-5
+          filters:
+            branches:
+              only:
+                - catalog_performance
+    jobs:
+      - specific-catalog-test
+
+  scheduled-test-2:
+    triggers:
+      - schedule:
+          cron: "26 07 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
+          filters:
+            branches:
+              only:
+                - catalog_performance
+    jobs:
+      - general-catalog-test
