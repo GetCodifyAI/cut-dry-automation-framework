@@ -414,7 +414,7 @@ workflows:
   scheduled-test-2:
     triggers:
       - schedule:
-          cron: "28 07 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
+          cron: "37 07 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
           filters:
             branches:
               only:

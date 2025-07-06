@@ -20,7 +20,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig guiclass="com.googlecode.jmeter.plugins.webdriver.config.gui.ChromeDriverConfigGui" testclass="com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig" testname="Chrome Driver">
+        <com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig guiclass="com.googlecode.jmeter.plugins.webdriver.config.gui.ChromeDriverConfigGui" testclass="com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig" testname="Chrome Driver" enabled="true">
           <boolProp name="WebDriverConfig.acceptinsecurecerts">false</boolProp>
           <boolProp name="WebDriverConfig.reset_per_iteration">false</boolProp>
           <stringProp name="WebDriverConfig.driver_path">/usr/local/bin/chromedriver</stringProp>
@@ -46,9 +46,9 @@
           <stringProp name="WebDriverConfig.custom_capabilites"></stringProp>
         </com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig>
         <hashTree/>
-        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Once Only Controller"/>
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Once Only Controller" enabled="true"/>
         <hashTree>
-          <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Login the DP">
+          <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Login the DP" enabled="true">
             <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -94,11 +94,11 @@ wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(&quot;//div[text
           <stringProp name="LoopController.loops">1</stringProp>
         </LoopController>
         <hashTree>
-          <CriticalSectionController guiclass="CriticalSectionControllerGui" testclass="CriticalSectionController" testname="Critical Section Controller">
+          <CriticalSectionController guiclass="CriticalSectionControllerGui" testclass="CriticalSectionController" testname="Critical Section Controller" enabled="true">
             <stringProp name="CriticalSectionController.lockName">global_lock</stringProp>
           </CriticalSectionController>
           <hashTree>
-            <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Clear the Reports Folder">
+            <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Clear the Reports Folder" enabled="true">
               <stringProp name="WebDriverSampler.script">import java.text.SimpleDateFormat
 import java.io.FileWriter
 import java.io.BufferedWriter
@@ -127,7 +127,7 @@ if (csvFile.exists()) {
               <boolProp name="TransactionController.includeTimers">false</boolProp>
             </TransactionController>
             <hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Search the customer">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Search the customer" enabled="true">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -181,7 +181,7 @@ WDS.props.put(&quot;count&quot;, &quot;116&quot;) </stringProp>
                 </JSR223PostProcessor>
                 <hashTree/>
               </hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Dicarlo">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Dicarlo" enabled="true">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -264,7 +264,7 @@ WDS.props.put(&quot;catalogLoadTime&quot;, catalogLoadTime.toString())</stringPr
                 </JSR223PostProcessor>
                 <hashTree/>
               </hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Handles CSV Writing">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Handles CSV Writing" enabled="true">
                 <stringProp name="WebDriverSampler.script">import java.text.SimpleDateFormat
 import java.io.FileWriter
 import java.io.BufferedWriter
@@ -333,7 +333,7 @@ WDS.log.info(&quot;Catalog Load Time saved to CSV: &quot; + csvFilePath)</string
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Hillcrest ">
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Hillcrest " enabled="true">
               <boolProp name="TransactionController.includeTimers">false</boolProp>
             </TransactionController>
             <hashTree>
@@ -474,7 +474,7 @@ WDS.props.put(&quot;catalogLoadTime&quot;, catalogLoadTime.toString())</stringPr
                 </JSR223PostProcessor>
                 <hashTree/>
               </hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Handles CSV Writing">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Handles CSV Writing" enabled="true">
                 <stringProp name="WebDriverSampler.script">import java.text.SimpleDateFormat
 import java.io.FileWriter
 import java.io.BufferedWriter
@@ -1387,14 +1387,14 @@ WDS.log.info(&quot;Catalog Load Time saved to CSV: &quot; + csvFilePath)</string
               <boolProp name="TransactionController.includeTimers">false</boolProp>
             </TransactionController>
             <hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Search the customer" enabled="true">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Search the customer">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
 import java.time.Duration
 import org.openqa.selenium.JavascriptExecutor
 
- String DP = &quot;165144548&quot; //chef&apos;s kitchen
+ String DP = &quot;179782961&quot; //chef&apos;s kitchen 165144548
  String customer = &quot;Aa Dollar plus - Rtl&quot;
 
 def wait = new WebDriverWait(WDS.browser, Duration.ofSeconds(30))
@@ -2016,7 +2016,7 @@ WDS.log.info(&quot;Catalog Load Time saved to CSV: &quot; + csvFilePath)</string
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Email Sending Thread" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Email Sending Thread">
         <stringProp name="TestPlan.comments">Please cross-check the report before running this thread.</stringProp>
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">0</intProp>
@@ -2127,7 +2127,7 @@ for (int i = 1; i &lt;= 1; i++) {
           <stringProp name="SMTPSampler.receiverTo">ahsan@cutanddry.com</stringProp>
           <stringProp name="SMTPSampler.receiverCC"></stringProp>
           <stringProp name="SMTPSampler.receiverBCC"></stringProp>
-          <stringProp name="SMTPSampler.subject">Automated Daily Catalog Performance Load Time Report - ${__time(MM/dd/yyyy,)}</stringProp>
+          <stringProp name="SMTPSampler.subject">[General] Automated Daily Catalog Load Time Performance Report - ${__time(MM/dd/yyyy,)}</stringProp>
           <stringProp name="SMTPSampler.suppressSubject">false</stringProp>
           <stringProp name="SMTPSampler.include_timestamp">false</stringProp>
           <stringProp name="SMTPSampler.message">&lt;html lang=&quot;en&quot;&gt;
@@ -2141,7 +2141,7 @@ for (int i = 1; i &lt;= 1; i++) {
     &lt;h2 style=&quot;font-size: 17pt; line-height: 1.6; margin-top: 18pt; margin-bottom: 0pt; padding-bottom: 1pt;&quot;&gt;2. Performance Load Time Testing&lt;/h2&gt;
 
     &lt;h3 style=&quot;font-size: 16.5pt; line-height: 1.92; margin-bottom: 4pt; padding-top: 1pt;&quot;&gt;Objective&lt;/h3&gt;
-    &lt;p style=&quot;font-size: 12pt; line-height: 1.38; margin-bottom: 15pt;&quot;&gt;The objective of the performance load time testing is to measure the time taken for each distributor&apos;s catalog to respond.&lt;/p&gt;
+    &lt;p style=&quot;font-size: 12pt; line-height: 1.38; margin-bottom: 15pt;&quot;&gt;The objective of the performance load time testing is to measure the time taken for each distributor&apos;s general catalog to respond.&lt;/p&gt;
 
     &lt;h3 style=&quot;font-size: 16.5pt; line-height: 1.92; margin-bottom: 4pt; padding-top: 10pt;&quot;&gt;Test Environment&lt;/h3&gt;
     &lt;ul style=&quot;margin: 0; padding-left: 15px;&quot;&gt;
