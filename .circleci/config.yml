@@ -10,7 +10,7 @@ parameters:
       - catalogOrderFlow.jmx
       - pdpOrderFlow.jmx
       - generalCatalog1.jmx
-    default: generalCatalog1.jmx
+    default: dpCustomerCatalog.jmx
 
 executors:
   jmeter-executor:
