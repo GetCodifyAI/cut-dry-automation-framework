@@ -36,6 +36,7 @@ public class VerifyTheSendPaymentReminder extends TestBase {
         Customer.clickonInvoice();
         Customer.clickOnSendPaymentReminder();
         Customer.clickOnSendEmail();
+        Customer.clickOK();
         softAssert.assertTrue(Customer.sendEmail(),"An error occured in sending emails");
         softAssert.assertAll();
     }
