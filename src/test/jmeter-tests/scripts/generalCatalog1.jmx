@@ -2024,7 +2024,7 @@ WDS.log.info(&quot;Catalog Load Time saved to CSV: &quot; + csvFilePath)</string
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Email Sending Thread" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Email Sending Thread">
         <stringProp name="TestPlan.comments">Please cross-check the report before running this thread.</stringProp>
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">0</intProp>
@@ -2048,7 +2048,7 @@ ctx.getEngine().stopTest()
 }</stringProp>
         </JSR223PreProcessor>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
           <stringProp name="LoopController.loops">9</stringProp>
         </LoopController>
         <hashTree>
@@ -2132,9 +2132,9 @@ for (int i = 1; i &lt;= 1; i++) {
           <stringProp name="SMTPSampler.serverPort">465</stringProp>
           <stringProp name="SMTPSampler.mailFrom">qereports@cutanddry.com</stringProp>
           <stringProp name="SMTPSampler.replyTo"></stringProp>
-          <stringProp name="SMTPSampler.receiverTo">ahsan@cutanddry.com</stringProp>
-          <stringProp name="SMTPSampler.receiverCC"></stringProp>
-          <stringProp name="SMTPSampler.receiverBCC"></stringProp>
+          <stringProp name="SMTPSampler.receiverTo">tharaka@cutanddry.com</stringProp>
+          <stringProp name="SMTPSampler.receiverCC">viranga@cutanddry.com</stringProp>
+          <stringProp name="SMTPSampler.receiverBCC">ahsan@cutanddry.com</stringProp>
           <stringProp name="SMTPSampler.subject">[General] Automated Daily Catalog Load Time Performance Report - ${__time(MM/dd/yyyy,)}</stringProp>
           <stringProp name="SMTPSampler.suppressSubject">false</stringProp>
           <stringProp name="SMTPSampler.include_timestamp">false</stringProp>
