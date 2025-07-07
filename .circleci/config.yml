@@ -9,6 +9,7 @@ parameters:
       - orderGuideOrderFlow.jmx
       - catalogOrderFlow.jmx
       - pdpOrderFlow.jmx
+      - generalCatalog1.jmx
     default: generalCatalog1.jmx
 
 executors:
