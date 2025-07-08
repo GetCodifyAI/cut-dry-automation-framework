@@ -113,4 +113,7 @@ public class Login {
     public static void navigateToLoginAs() {
         loginPage.navigateToLoginAs();
     }
+    public static boolean isUserExistInLoginAs(String name){
+        return loginPage.navigateToLoginAsPortalForCustomerIndex(name);
+    }
 }

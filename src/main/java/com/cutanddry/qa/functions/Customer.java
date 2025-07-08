@@ -1453,9 +1453,15 @@ public class Customer {
     public static boolean isNextImageDisplay(){
         return customersPage.isNextImageDisplay();
     }
+    public static boolean isNextImageDisplayThumb(){
+        return customersPage.isNextImageDisplayThumb();
+    }
     public static void clickLeftArrow(){customersPage.clickLeftArrow();}
     public static boolean isPreviousImageDisplay(){
         return customersPage.isPreviousImageDisplay();
+    }
+    public static boolean isPreviousImageDisplayThumb(){
+        return customersPage.isPreviousImageDisplayThumb();
     }
     public static void clickFirstImage(){customersPage.clickFirstImage();}
     public static void clickSecondImage(){customersPage.clickSecondImage();}
