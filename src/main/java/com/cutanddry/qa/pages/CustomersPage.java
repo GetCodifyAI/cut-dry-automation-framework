@@ -446,6 +446,8 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
 //    By btn_secondImage = By.xpath("//div[contains(@class,'position-relative')]/img[contains(@src,'extra-large-artichoke-bottoms-raw-600.png')]");
     By img_first = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'anchovy-paste-main-600.png')]");
     By img_second = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'anchovy-paste-raw-600.png')]");
+    By img_firstThumb = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'anchovy-paste-raw-600.png')]");
+    By img_secondThumb = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'anchovy-paste-main-600.png')]");
     By btn_firstImage = By.xpath("//div[contains(@class,'position-relative')]/img[contains(@src,'anchovy-paste-raw-600.png')]");
     By btn_secondImage = By.xpath("//div[contains(@class,'position-relative')]/img[contains(@src,'anchovy-paste-main-600.png')]");
     By txt_specialInstruction =By.xpath("//div[contains(text(),'Special Instructions')]/following-sibling::textarea");
@@ -1166,7 +1168,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(btn_confirm);
     }
     public void clickOK(){
-        distributorUI.waitForClickability(btn_OK);
+//        distributorUI.waitForClickability(btn_OK);
         distributorUI.click(btn_OK);
     }
     public void closeEditor(){
@@ -2827,6 +2829,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         }
         return distributorUI.isDisplayed(img_second);
     }
+    public boolean isNextImageDisplayThumb(){
+        try {
+            distributorUI.waitForVisibility(img_secondThumb);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(img_secondThumb);
+    }
     public void clickLeftArrow(){
         distributorUI.click(btn_leftArrow);
     }
@@ -2837,6 +2847,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
             return false;
         }
         return distributorUI.isDisplayed(img_first);
+    }
+    public boolean isPreviousImageDisplayThumb(){
+        try {
+            distributorUI.waitForVisibility(img_firstThumb);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(img_firstThumb);
     }
     public void clickFirstImage(){
         distributorUI.click(btn_firstImage);
@@ -2902,13 +2920,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
 
     public boolean isErrorTextDisplayed() {
-        try {
-            // Wait to see if the error text becomes visible
-            distributorUI.waitForVisibility(txt_error);
-            return true; // "error" text is found
-        } catch (TimeoutException e) {
-            return false; // No "error" text is found within the timeout
-        }
+        return distributorUI.isDisplayed(txt_error);
     }
 
     public void clickOnFirstItemOfCustomerRequests() throws InterruptedException {

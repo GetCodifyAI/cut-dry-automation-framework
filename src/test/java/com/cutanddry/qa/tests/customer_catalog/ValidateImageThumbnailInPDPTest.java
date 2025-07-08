@@ -40,9 +40,9 @@ public class ValidateImageThumbnailInPDPTest extends TestBase {
         Customer.clickOnProduct(itemName);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"navigation error");
         Customer.clickFirstImage();
-        softAssert.assertTrue(Customer.isPreviousImageDisplay(),"previous image display error");
+        softAssert.assertTrue(Customer.isPreviousImageDisplayThumb(),"previous image display error");
         Customer.clickSecondImage();
-        softAssert.assertTrue(Customer.isNextImageDisplay(),"next image display error");
+        softAssert.assertTrue(Customer.isNextImageDisplayThumb(),"next image display error");
         softAssert.assertAll();
     }
 
