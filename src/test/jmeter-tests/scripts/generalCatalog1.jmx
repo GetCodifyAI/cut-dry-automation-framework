@@ -182,7 +182,7 @@ WDS.props.put(&quot;count&quot;, &quot;116&quot;) </stringProp>
                 </JSR223PostProcessor>
                 <hashTree/>
               </hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Dicarlo">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Dicarlo" enabled="true">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -392,7 +392,7 @@ WDS.props.put(&quot;count&quot;, &quot;1231&quot;)</stringProp>
                 </JSR223PostProcessor>
                 <hashTree/>
               </hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Hillcrest">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Hillcrest" enabled="true">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -603,7 +603,7 @@ WDS.props.put(&quot;count&quot;, &quot;294&quot;) </stringProp>
                 </JSR223PostProcessor>
                 <hashTree/>
               </hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Birite">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Birite" enabled="true">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -814,7 +814,7 @@ WDS.props.put(&quot;count&quot;, &quot;243&quot;) </stringProp>
                 </JSR223PostProcessor>
                 <hashTree/>
               </hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Maplevale">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Maplevale" enabled="true">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -1025,7 +1025,7 @@ WDS.props.put(&quot;count&quot;, &quot;969&quot;) </stringProp>
                 </JSR223PostProcessor>
                 <hashTree/>
               </hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - WCW">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - WCW" enabled="true">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -1236,7 +1236,7 @@ WDS.props.put(&quot;count&quot;, &quot;1766&quot;)</stringProp>
                 </JSR223PostProcessor>
                 <hashTree/>
               </hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - John Gross &amp; Co ">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - John Gross &amp; Co " enabled="true">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -1446,7 +1446,7 @@ WDS.props.put(&quot;count&quot;, &quot;394&quot;) </stringProp>
                 </JSR223PostProcessor>
                 <hashTree/>
               </hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Chef&apos;s Kitchen ">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Chef&apos;s Kitchen " enabled="true">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -1657,7 +1657,7 @@ WDS.props.put(&quot;count&quot;, &quot;237&quot;) </stringProp>
                 </JSR223PostProcessor>
                 <hashTree/>
               </hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Vitco">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Vitco" enabled="true">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -1868,7 +1868,7 @@ WDS.props.put(&quot;count&quot;, &quot;63&quot;) </stringProp>
                 </JSR223PostProcessor>
                 <hashTree/>
               </hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Cream co ">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Catalog - Cream co " enabled="true">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -2024,7 +2024,7 @@ WDS.log.info(&quot;Catalog Load Time saved to CSV: &quot; + csvFilePath)</string
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Email Sending Thread">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Email Sending Thread" enabled="true">
         <stringProp name="TestPlan.comments">Please cross-check the report before running this thread.</stringProp>
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">0</intProp>
@@ -2048,7 +2048,7 @@ ctx.getEngine().stopTest()
 }</stringProp>
         </JSR223PreProcessor>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <stringProp name="LoopController.loops">9</stringProp>
         </LoopController>
         <hashTree>
@@ -2163,7 +2163,7 @@ for (int i = 1; i &lt;= 1; i++) {
             &lt;tr&gt;
                 &lt;th style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #c9daf8;&quot;&gt;Operator Name&lt;/th&gt;
                 &lt;th style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #c9daf8;&quot;&gt;OG Name&lt;/th&gt;
-                &lt;th style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #c9daf8;&quot;&gt;SKU Count&lt;/th&gt;
+                &lt;th style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #c9daf8;&quot;&gt;Active Item Count&lt;/th&gt;
                 &lt;th style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #c9daf8;&quot;&gt;Average Response Time (seconds)&lt;/th&gt;
                 &lt;th style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #c9daf8;&quot;&gt;Comment&lt;/th&gt;
             &lt;/tr&gt;
@@ -2172,63 +2172,63 @@ for (int i = 1; i &lt;= 1; i++) {
             &lt;tr&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;Dicarlo&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;Uncle Tony&apos;s Pizza&lt;/td&gt;
-                &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;116&lt;/td&gt;
+                &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;4696&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt; ${response_time_1} seconds&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;${status_1}&lt;/td&gt;
             &lt;/tr&gt;
             &lt;tr&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;Hillcrest&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;Akronym Public House&lt;/td&gt;
-                &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;1231&lt;/td&gt;
+                &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;7146&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;${response_time_2}  seconds&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;${status_2}&lt;/td&gt;
             &lt;/tr&gt;
             &lt;tr&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;Birite&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;Twelvemonth&lt;/td&gt;
-                &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;294&lt;/td&gt;
+                &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;15758&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;${response_time_3}  seconds&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;${status_3}&lt;/td&gt;
             &lt;/tr&gt;
             &lt;tr&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;Maplevale&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;Kcs Rustic Inn LLC&lt;/td&gt;
-                &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;243&lt;/td&gt;
+                &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;10967&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;${response_time_4}  seconds&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;${status_4}&lt;/td&gt;
             &lt;/tr&gt;
             &lt;tr&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;WCW&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;Denver art museum -Avendra&lt;/td&gt;
-                &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;969&lt;/td&gt;
+                &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;5591&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;${response_time_5}  seconds&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;${status_5}&lt;/td&gt;
             &lt;/tr&gt;
             &lt;tr&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;John Gross &amp; Co&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;Masonic Club house&lt;/td&gt;
-                &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;1766&lt;/td&gt;
+                &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;7606&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;${response_time_6}  seconds&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;${status_6}&lt;/td&gt;
             &lt;/tr&gt;
             &lt;tr&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;Chef&apos;s Kitchen&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;Aa Dollar plus - Rtl&lt;/td&gt;
-                &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;394&lt;/td&gt;
+                &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;6723&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;${response_time_7}  seconds&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;${status_7}&lt;/td&gt;
             &lt;/tr&gt;
             &lt;tr&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;Vitco&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;Spencers Rosedale HWY&lt;/td&gt;
-                &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;237&lt;/td&gt;
+                &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;8390&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;${response_time_8} seconds&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;${status_8}&lt;/td&gt;
             &lt;/tr&gt;
             &lt;tr&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;Cream co&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;Kevin Cimino Samples&lt;/td&gt;
-                &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;63&lt;/td&gt;
+                &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;414&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;${response_time_9}  seconds&lt;/td&gt;
                 &lt;td style=&quot;border: 1px solid #ddd; padding: 8px; text-align: left;&quot;&gt;${status_9}&lt;/td&gt;
             &lt;/tr&gt;
