@@ -5,6 +5,7 @@ import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
@@ -22,6 +23,7 @@ public class CustomerIndexingVerificationTest extends TestBase {
     @Test(dataProvider = "customerData")
     public void DistributorInitialSetUp(String testData) throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
+        Reporter.getCurrentTestResult().setAttribute("testData", testData);
         softAssert.assertTrue(Login.isUserExistInLoginAs(testData),"Customer not found: " + testData);
         softAssert.assertAll();
     }
@@ -56,7 +58,7 @@ public class CustomerIndexingVerificationTest extends TestBase {
                 {"sales@jordanpaige.com"},
                 {"App Testers"},
                 {"13038005947"},
-                {"75761700"},
+                {"Jonathan Allen"},
                 {"apptesters@test.com"},
                 {"226431917"},
                 {"280815154"},
@@ -65,7 +67,7 @@ public class CustomerIndexingVerificationTest extends TestBase {
                 {"81058255"},
                 {"432392672"},
                 {"176626422"},
-                {"477538372"},
+                {"Jim Beacom Jr"},
                 {"438342864"},
                 {"294962910"},
                 {"372460856"},
@@ -74,10 +76,9 @@ public class CustomerIndexingVerificationTest extends TestBase {
                 {"286475302"},
                 {"309075134"},
                 {"177931291"},
-                {"155947343"},
+                {"Chef Scott Koranda"},
                 {"286512123"},
                 {"517030659"},
-                {"63168995"},
                 {"65436339"},
                 {"137524915"},
                 {"70351601"},
