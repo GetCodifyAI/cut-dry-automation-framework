@@ -4,6 +4,7 @@
         <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
     </listeners>
     <test name="distributor tests">
+        <parameter name="PART" value="Customer Check" />
         <classes>
             <class name="com.cutanddry.qa.tests.order_guide.CustomerIndexingVerificationTest" />
         </classes>

@@ -24,7 +24,15 @@ public class TestNGListener implements ITestListener {
     @Override
     public void onTestSuccess(ITestResult result) {
         passedTests++;
-        passedTestCases.add(result.getMethod().getMethodName());
+//        passedTestCases.add(result.getMethod().getMethodName());
+        String methodName = result.getMethod().getMethodName();
+        Object testData = result.getAttribute("testData");
+
+        if (testData != null) {
+            passedTestCases.add(testData.toString()+", ");
+        } else {
+            passedTestCases.add(methodName);
+        }
     }
 
     @Override
@@ -35,7 +43,7 @@ public class TestNGListener implements ITestListener {
         Object testData = result.getAttribute("testData");
 
         if (testData != null) {
-            failedTestCases.add(methodName + " - " + testData.toString());
+            failedTestCases.add(testData.toString()+", ");
         } else {
             failedTestCases.add(methodName);
         }
