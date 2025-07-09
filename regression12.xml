@@ -59,6 +59,7 @@
             <class name="com.cutanddry.qa.tests.customers.VerifyTheCartSummeryAndRevenueSummeryIsDisplayedOnTheReviewScreenTest"/>
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheAlternateCollapsedMenuOnDesktopTest"/>
 
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatTheSendToERPButtonIsAvailableForScheduledJITOrdersTest"/>
         </classes>
     </test>
 </suite>

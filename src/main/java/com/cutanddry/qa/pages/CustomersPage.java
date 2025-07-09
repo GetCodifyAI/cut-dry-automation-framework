@@ -788,6 +788,13 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String txt_distributorName = "//span[contains(text(),'NAME')]";
     By btn_closeMenu = By.xpath("//*[local-name() = 'svg' and @data-icon='cdCancel']");
     String newItemTagCatalogstable = "(//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]/../../following-sibling::div//span[text()='TAG'])[last()]";
+    String btn_catalogPlusStable = "((//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')])[2]/../../following::div//*[name()='svg' and contains(@data-icon, 'plus')])[1]";
+    By btn_sendERP = By.xpath("//button[text()='Send to ERP']");
+    String txt_notesToCustomer = "//th[text()='Notes to Customer']/../../following-sibling::tbody//*[text()='NOTE']";
+    By txt_submitERP = By.xpath("//h2[text()='Submit Order to ERP?']");
+    By txt_OrderSentERP = By.xpath("//h2[text()='Order sent to ERP!']");
+    String txt_OrderSubmissionStep = "//td[text()='STEP']";
+    By btn_timeline = By.xpath("//a[@role='tab' and @data-rb-event-key='Timeline']");
     By SearchResultsIcon = By.xpath("(//div//*[local-name()='svg' and contains(@data-icon, 'cdSearch')])[1]");
 
 
@@ -883,7 +890,6 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
             distributorUI.clear(tbx_catalogSearch);
             distributorUI.waitForCustom(1000);
             distributorUI.sendKeys(tbx_catalogSearch, item);
-            distributorUI.waitForCustom(5000);
             distributorUI.waitForCustom(5000);
         }
     }
@@ -3326,7 +3332,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
 
     public boolean istxtEmailsSentDisplayed(){
-        return distributorUI.isDisplayed(txt_EmailsSent);
+        return distributorUI.isDisplayed(txt_EmailsSent,30);
     }
 
     public void clickOnSendPaymentReminder() throws InterruptedException {
@@ -4670,6 +4676,32 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForCustom(4000);
         return distributorUI.isDisplayed(By.xpath(newItemTagCatalogstable.replace("NAME", name).replace("TAG",tag)));
     }
+    public void clickOnPlusIconInCatalogStable(String name){
+        distributorUI.waitForVisibility(By.xpath(btn_catalogPlusStable.replace("NAME", name)));
+        distributorUI.click(By.xpath(btn_catalogPlusStable.replace("NAME", name)));
+    }
+    public void clickSendToERP()throws InterruptedException{
+        distributorUI.click(btn_sendERP);
+    }
+    public boolean isSendToERPButtonDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(btn_sendERP);
+    }
+    public boolean isNotesToCustomerDisplayed(String note){
+        return distributorUI.isDisplayed(By.xpath(txt_notesToCustomer.replace("NOTE",note)));
+    }
+    public boolean isSubmitERPPopUpDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_submitERP);
+    }
+    public boolean isOrderSentERPPopUpDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_OrderSentERP);
+    }
+    public boolean isOrderSubmissionStepDisplayed(String step){
+        return distributorUI.isDisplayed(By.xpath(txt_OrderSubmissionStep.replace("STEP",step)));
+    }
+    public void clickOnTimeline() {
+        distributorUI.clickUsingJavaScript(btn_timeline);
+    }
+
 
 
 }

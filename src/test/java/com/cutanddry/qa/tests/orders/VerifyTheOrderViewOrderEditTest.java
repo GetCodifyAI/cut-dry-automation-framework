@@ -19,7 +19,7 @@ import java.time.format.DateTimeFormatter;
 public class VerifyTheOrderViewOrderEditTest extends TestBase {
     static User user;
     String creditStatus = "Submitted";
-    String date = "Last 60 Days";
+    String date = "Last 90 Days";
 
     @BeforeMethod
     public void setUp() {
