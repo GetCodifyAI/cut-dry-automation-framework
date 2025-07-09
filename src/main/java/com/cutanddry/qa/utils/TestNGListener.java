@@ -30,7 +30,15 @@ public class TestNGListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         failedTests++;
-        failedTestCases.add(result.getMethod().getMethodName());
+//        failedTestCases.add(result.getMethod().getMethodName());
+        String methodName = result.getMethod().getMethodName();
+        Object testData = result.getAttribute("testData");
+
+        if (testData != null) {
+            failedTestCases.add(methodName + " - " + testData.toString());
+        } else {
+            failedTestCases.add(methodName);
+        }
     }
 
     @Override

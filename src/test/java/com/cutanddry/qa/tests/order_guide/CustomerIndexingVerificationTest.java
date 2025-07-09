@@ -5,6 +5,7 @@ import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
@@ -22,6 +23,7 @@ public class CustomerIndexingVerificationTest extends TestBase {
     @Test(dataProvider = "customerData")
     public void DistributorInitialSetUp(String testData) throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
+        Reporter.getCurrentTestResult().setAttribute("testData", testData);
         softAssert.assertTrue(Login.isUserExistInLoginAs(testData),"Customer not found: " + testData);
         softAssert.assertAll();
     }
