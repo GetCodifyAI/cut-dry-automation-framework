@@ -795,9 +795,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By txt_OrderSentERP = By.xpath("//h2[text()='Order sent to ERP!']");
     String txt_OrderSubmissionStep = "//td[text()='STEP']";
     By btn_timeline = By.xpath("//a[@role='tab' and @data-rb-event-key='Timeline']");
-
-
-
+    By SearchResultsIcon = By.xpath("(//div//*[local-name()='svg' and contains(@data-icon, 'cdSearch')])[1]");
 
 
 
@@ -884,6 +882,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         if(distributorUI.getValue(tbx_catalogSearch).isEmpty()){
             distributorUI.waitForCustom(1000);
             distributorUI.sendKeys(tbx_catalogSearch,item);
+            distributorUI.click(SearchResultsIcon);
             distributorUI.waitForCustom(5000);
         }
         else {
@@ -891,6 +890,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
             distributorUI.clear(tbx_catalogSearch);
             distributorUI.waitForCustom(1000);
             distributorUI.sendKeys(tbx_catalogSearch, item);
+            distributorUI.click(SearchResultsIcon);
             distributorUI.waitForCustom(5000);
         }
     }
@@ -1062,6 +1062,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.clear(tbx_orderGuideSearch);
         distributorUI.waitForCustom(2000);
         distributorUI.sendKeys(tbx_orderGuideSearch,item);
+        distributorUI.click(SearchResultsIcon);
         distributorUI.waitForCustom(2000);
     }
     public void clickOnCreate() throws InterruptedException {
