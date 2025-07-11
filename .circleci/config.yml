@@ -1540,6 +1540,17 @@ workflows:
     jobs:
       - customer-index-check
 
+  customer-index-test-night:
+    triggers:
+      - schedule:
+          cron: "00 18 * * *"  # This will run customer-index-check at 10:15 AM IST (04:45 AM UTC) -- 45 04 *
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - customer-index-check
+
   scheduled-test-1:
     triggers:
       - schedule:
