@@ -444,8 +444,10 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
 //    By img_second = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'extra-large-artichoke-bottoms-raw-600.png')]");
 //By btn_firstImage = By.xpath("//div[contains(@class,'position-relative')]/img[contains(@src,'extra-large-artichoke-bottoms-main-600.png')]");
 //    By btn_secondImage = By.xpath("//div[contains(@class,'position-relative')]/img[contains(@src,'extra-large-artichoke-bottoms-raw-600.png')]");
-    By img_first = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'anchovy-paste-raw-600.png')]");
-    By img_second = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'anchovy-paste-main-600.png')]");
+    By img_first = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'anchovy-paste-main-600.png')]");
+    By img_second = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'anchovy-paste-raw-600.png')]");
+    By img_firstThumb = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'anchovy-paste-raw-600.png')]");
+    By img_secondThumb = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'anchovy-paste-main-600.png')]");
     By btn_firstImage = By.xpath("//div[contains(@class,'position-relative')]/img[contains(@src,'anchovy-paste-raw-600.png')]");
     By btn_secondImage = By.xpath("//div[contains(@class,'position-relative')]/img[contains(@src,'anchovy-paste-main-600.png')]");
     By txt_specialInstruction =By.xpath("//div[contains(text(),'Special Instructions')]/following-sibling::textarea");
@@ -786,6 +788,15 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String txt_distributorName = "//span[contains(text(),'NAME')]";
     By btn_closeMenu = By.xpath("//*[local-name() = 'svg' and @data-icon='cdCancel']");
     String newItemTagCatalogstable = "(//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]/../../following-sibling::div//span[text()='TAG'])[last()]";
+    String btn_catalogPlusStable = "((//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')])[2]/../../following::div//*[name()='svg' and contains(@data-icon, 'plus')])[1]";
+    By btn_sendERP = By.xpath("//button[text()='Send to ERP']");
+    String txt_notesToCustomer = "//th[text()='Notes to Customer']/../../following-sibling::tbody//*[text()='NOTE']";
+    By txt_submitERP = By.xpath("//h2[text()='Submit Order to ERP?']");
+    By txt_OrderSentERP = By.xpath("//h2[text()='Order sent to ERP!']");
+    String txt_OrderSubmissionStep = "//td[text()='STEP']";
+    By btn_timeline = By.xpath("//a[@role='tab' and @data-rb-event-key='Timeline']");
+
+
 
 
 
@@ -1163,7 +1174,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(btn_confirm);
     }
     public void clickOK(){
-        distributorUI.waitForClickability(btn_OK);
+//        distributorUI.waitForClickability(btn_OK);
         distributorUI.click(btn_OK);
     }
     public void closeEditor(){
@@ -2824,6 +2835,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         }
         return distributorUI.isDisplayed(img_second);
     }
+    public boolean isNextImageDisplayThumb(){
+        try {
+            distributorUI.waitForVisibility(img_secondThumb);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(img_secondThumb);
+    }
     public void clickLeftArrow(){
         distributorUI.click(btn_leftArrow);
     }
@@ -2834,6 +2853,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
             return false;
         }
         return distributorUI.isDisplayed(img_first);
+    }
+    public boolean isPreviousImageDisplayThumb(){
+        try {
+            distributorUI.waitForVisibility(img_firstThumb);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(img_firstThumb);
     }
     public void clickFirstImage(){
         distributorUI.click(btn_firstImage);
@@ -2899,13 +2926,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
 
     public boolean isErrorTextDisplayed() {
-        try {
-            // Wait to see if the error text becomes visible
-            distributorUI.waitForVisibility(txt_error);
-            return true; // "error" text is found
-        } catch (TimeoutException e) {
-            return false; // No "error" text is found within the timeout
-        }
+        return distributorUI.isDisplayed(txt_error);
     }
 
     public void clickOnFirstItemOfCustomerRequests() throws InterruptedException {
@@ -3311,7 +3332,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
 
     public boolean istxtEmailsSentDisplayed(){
-        return distributorUI.isDisplayed(txt_EmailsSent);
+        return distributorUI.isDisplayed(txt_EmailsSent,30);
     }
 
     public void clickOnSendPaymentReminder() throws InterruptedException {
@@ -4655,6 +4676,32 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForCustom(4000);
         return distributorUI.isDisplayed(By.xpath(newItemTagCatalogstable.replace("NAME", name).replace("TAG",tag)));
     }
+    public void clickOnPlusIconInCatalogStable(String name){
+        distributorUI.waitForVisibility(By.xpath(btn_catalogPlusStable.replace("NAME", name)));
+        distributorUI.click(By.xpath(btn_catalogPlusStable.replace("NAME", name)));
+    }
+    public void clickSendToERP()throws InterruptedException{
+        distributorUI.click(btn_sendERP);
+    }
+    public boolean isSendToERPButtonDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(btn_sendERP);
+    }
+    public boolean isNotesToCustomerDisplayed(String note){
+        return distributorUI.isDisplayed(By.xpath(txt_notesToCustomer.replace("NOTE",note)));
+    }
+    public boolean isSubmitERPPopUpDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_submitERP);
+    }
+    public boolean isOrderSentERPPopUpDisplayed()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_OrderSentERP);
+    }
+    public boolean isOrderSubmissionStepDisplayed(String step){
+        return distributorUI.isDisplayed(By.xpath(txt_OrderSubmissionStep.replace("STEP",step)));
+    }
+    public void clickOnTimeline() {
+        distributorUI.clickUsingJavaScript(btn_timeline);
+    }
+
 
 
 }

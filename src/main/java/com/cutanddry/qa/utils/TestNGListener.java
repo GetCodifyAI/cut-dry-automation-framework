@@ -24,13 +24,29 @@ public class TestNGListener implements ITestListener {
     @Override
     public void onTestSuccess(ITestResult result) {
         passedTests++;
-        passedTestCases.add(result.getMethod().getMethodName());
+//        passedTestCases.add(result.getMethod().getMethodName());
+        String methodName = result.getMethod().getMethodName();
+        Object testData = result.getAttribute("testData");
+
+        if (testData != null) {
+            passedTestCases.add(testData.toString()+", ");
+        } else {
+            passedTestCases.add(methodName);
+        }
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
         failedTests++;
-        failedTestCases.add(result.getMethod().getMethodName());
+//        failedTestCases.add(result.getMethod().getMethodName());
+        String methodName = result.getMethod().getMethodName();
+        Object testData = result.getAttribute("testData");
+
+        if (testData != null) {
+            failedTestCases.add(testData.toString()+", ");
+        } else {
+            failedTestCases.add(methodName);
+        }
     }
 
     @Override

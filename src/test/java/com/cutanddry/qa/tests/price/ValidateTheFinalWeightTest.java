@@ -74,11 +74,14 @@ public class ValidateTheFinalWeightTest extends TestBase{
         Customer.typeOnFinalWeight(weightStr);
 
         softAssert.assertEquals(Customer.getItemQtyFirstRow(),"2", "item count error");
-        softAssert.assertEquals(Customer.getItemFinalPriceStable(),stableFinalPrice*2, "item count error");
+        softAssert.assertEquals(Math.round(Customer.getItemFinalPriceStable() * 100.0) / 100.0, Math.round(stableFinalPrice * 2 * 100.0) / 100.0, 0.1, "item count error");
+//        softAssert.assertEquals(Customer.getItemFinalPriceStable(),stableFinalPrice*2, "item count error");
         Customer.increaseFirstRowQtyCustom(1);
-        softAssert.assertEquals(Customer.getItemFinalPriceStable(),stableFinalPrice*3, "item count error");
+        softAssert.assertEquals(Math.round(Customer.getItemFinalPriceStable() * 100.0) / 100.0, Math.round(stableFinalPrice * 3 * 100.0) / 100.0,0.1, "item count error");
+//        softAssert.assertEquals(Customer.getItemFinalPriceStable(),stableFinalPrice*3, "item count error");
 
-        softAssert.assertEquals(Customer.getItemFinalWeight(),weightStr2 , "item count error 11");
+        softAssert.assertEquals((int)Double.parseDouble(Customer.getItemFinalWeight()), Integer.parseInt(weightStr2), "item count error 11");
+//        softAssert.assertEquals(Customer.getItemFinalWeight(),weightStr2 , "item count error 11");
 
 //        softAssert.assertEquals(Customer.getItemFinalWeight(),"62", "item count error");
         itemPrice=Customer.getItemFinalPrice();

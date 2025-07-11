@@ -1453,9 +1453,15 @@ public class Customer {
     public static boolean isNextImageDisplay(){
         return customersPage.isNextImageDisplay();
     }
+    public static boolean isNextImageDisplayThumb(){
+        return customersPage.isNextImageDisplayThumb();
+    }
     public static void clickLeftArrow(){customersPage.clickLeftArrow();}
     public static boolean isPreviousImageDisplay(){
         return customersPage.isPreviousImageDisplay();
+    }
+    public static boolean isPreviousImageDisplayThumb(){
+        return customersPage.isPreviousImageDisplayThumb();
     }
     public static void clickFirstImage(){customersPage.clickFirstImage();}
     public static void clickSecondImage(){customersPage.clickSecondImage();}
@@ -2771,6 +2777,33 @@ public class Customer {
     public static boolean isCatalogFilterDisplayTagStable(String name,String tag) throws InterruptedException {
         return customersPage.isCatalogFilterDisplayTagStable(name,tag);
     }
+    public static void clickOnPlusIconInCatalogStable(int count, String name) {
+        for (int i=0; i<count;i++){
+            customersPage.clickOnPlusIconInCatalogStable(name);
+        }
+    }
+    public static void clickSendToERP() throws InterruptedException {
+        customersPage.clickSendToERP();
+    }
+    public static boolean isSendToERPButtonDisplayed() throws InterruptedException {
+       return customersPage.isSendToERPButtonDisplayed();
+    }
+    public static boolean isNotesToCustomerDisplayed(String note){
+        return customersPage.isNotesToCustomerDisplayed(note);
+    }
+    public static boolean isSubmitERPPopUpDisplayed() throws InterruptedException {
+        return customersPage.isSubmitERPPopUpDisplayed();
+    }
+    public static boolean isOrderSentERPPopUpDisplayed() throws InterruptedException {
+        return customersPage.isOrderSentERPPopUpDisplayed();
+    }
+    public static boolean isOrderSubmissionStepDisplayed(String step){
+        return customersPage.isOrderSubmissionStepDisplayed(step);
+    }
+    public static void clickOnTimeline(){
+        customersPage.clickOnTimeline();
+    }
+
 
 
 }

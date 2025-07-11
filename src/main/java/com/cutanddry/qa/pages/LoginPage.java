@@ -234,6 +234,11 @@ public class LoginPage extends TestBase {
     public void navigateToLoginAs() {
         distributorUI.navigateToURL(Constants.LOGIN_AS);
     }
-
+    public boolean navigateToLoginAsPortalForCustomerIndex(String name) {
+        distributorUI.navigateToURL(Constants.LOGIN_AS);
+//        Orders.closeRatingOverlay();
+        distributorUI.sendKeys(lbl_loginAs,name);
+        return distributorUI.isDisplayed(By.xpath(txt_whitelblCustomer.replace("NAME", name)));
+    }
 
 }
