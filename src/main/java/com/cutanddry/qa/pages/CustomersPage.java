@@ -795,6 +795,23 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By txt_OrderSentERP = By.xpath("//h2[text()='Order sent to ERP!']");
     String txt_OrderSubmissionStep = "//td[text()='STEP']";
     By btn_timeline = By.xpath("//a[@role='tab' and @data-rb-event-key='Timeline']");
+    By dropdown_option_QuickAdd = By.xpath("//div[text()='Quick Add View']");
+    By txt_QuickAddView = By.xpath("//div[text()='Quick Add View']");
+    By lbl_itemCode = By.xpath("(//div[text()='Item Code']/../../../../following-sibling::td//input)[1]");
+    By lbl_itemQuantity = By.xpath("(//div[text()='Item Code']/../../../../following-sibling::td//input)[2]");
+    By btn_verifyItem = By.xpath("//button[text()='Verify Items']");
+    By btn_saveAndReview = By.xpath("//button[text()='Save & Review']");
+    By txt_itemVerified = By.xpath("//div[text()='Items Verified Successfully']");
+    String quickAddItemData = "//td[contains(text(),'DATA')]";
+    String quickAddItemQuantity = "//td//input[@value='QUANTITY']";
+    By txt_itemVerifiedFailed = By.xpath("//div[text()='Item Verification Failed']");
+    By txt_invalidItemCode = By.xpath("//span[text()='Invalid Item Code']");
+    By btn_trash = By.xpath("(//button[@type='button']//*[local-name()='svg' and @data-icon='cdTrash'])[1]");
+    By lbl_itemUOM = By.xpath("(//div[text()='Item Code']/../../../../following-sibling::td//input[@type='checkbox'])[1]");
+    By txt_unitNotValid = By.xpath("//span[text()='Unit not valid']");
+
+
+
 
 
 
@@ -4700,6 +4717,58 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickOnTimeline() {
         distributorUI.clickUsingJavaScript(btn_timeline);
+    }
+    public boolean isQuickAddOptionDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(dropdown_option_QuickAdd);
+    }
+    public void clickQuickAdd()throws InterruptedException{
+        distributorUI.click(dropdown_option_QuickAdd);
+    }
+    public boolean isQuickAddViewDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_QuickAddView);
+    }
+    public void enterItemCode(String code)throws InterruptedException{
+        distributorUI.click(lbl_itemCode);
+        distributorUI.sendKeys(lbl_itemCode,code);
+    }
+    public void enterItemQuantity(String code)throws InterruptedException{
+        distributorUI.click(lbl_itemQuantity);
+        distributorUI.sendKeys(lbl_itemQuantity,code);
+    }
+    public void clickVerifyItem()throws InterruptedException{
+        distributorUI.click(btn_verifyItem);
+    }
+    public void clickSaveAndReview()throws InterruptedException{
+        distributorUI.waitForCustom(5000);
+        distributorUI.click(btn_saveAndReview);
+    }
+    public boolean isItemVerifiedPopUpDisplay()throws InterruptedException{
+        distributorUI.waitForCustom(5000);
+        return distributorUI.isDisplayed(txt_itemVerified);
+    }
+    public boolean isQuickAddedItemDisplay(String data)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(quickAddItemData.replace("DATA",data)));
+    }
+    public boolean isQuickAddedItemQuantityDisplay(String data)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(quickAddItemQuantity.replace("QUANTITY",data)));
+    }
+    public boolean isItemVerifiedFailedPopUpDisplay()throws InterruptedException{
+        distributorUI.waitForCustom(5000);
+        return distributorUI.isDisplayed(txt_itemVerifiedFailed);
+    }
+    public boolean isInvalidItemCodeTextDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_invalidItemCode);
+    }
+    public void clickTrashIcon()throws InterruptedException{
+        distributorUI.waitForVisibility(btn_trash);
+        distributorUI.click(btn_trash);
+    }
+    public void clickCheckBoxEach()throws InterruptedException{
+        distributorUI.waitForVisibility(lbl_itemUOM);
+        distributorUI.click(lbl_itemUOM);
+    }
+    public boolean isUnitNotValidTextDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_unitNotValid);
     }
 
 
