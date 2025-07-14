@@ -755,6 +755,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By txt_sameDeliveryDate = By.xpath("//h2[contains(text(),'same delivery date are not allowed')]");
     By icon_deleteSearchItem = By.xpath("(//*[local-name()='svg' and @data-icon='circle-xmark'])[1]");
     By icon_deleteSubstitutionItem = By.xpath("(//*[local-name()='svg' and @data-icon='xmark'])[1]");
+    By SearchResultsIcon = By.xpath("(//div//*[local-name()='svg' and contains(@data-icon, 'cdSearch')])[1]");
     String marginValue = "(//td[text()='CODE']/following-sibling::td[2]//div/div/span)[UOM]";
     String lbl_lastOrderDetails = "(//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]/../following-sibling::div/div";
     By txt_purchaseHistoryCatalog = By.xpath("//div[text()='Purchase History']");
@@ -901,6 +902,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         if(distributorUI.getValue(tbx_catalogSearch).isEmpty()){
             distributorUI.waitForCustom(1000);
             distributorUI.sendKeys(tbx_catalogSearch,item);
+            distributorUI.click(SearchResultsIcon);
             distributorUI.waitForCustom(5000);
         }
         else {
@@ -908,6 +910,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
             distributorUI.clear(tbx_catalogSearch);
             distributorUI.waitForCustom(1000);
             distributorUI.sendKeys(tbx_catalogSearch, item);
+            distributorUI.click(SearchResultsIcon);
             distributorUI.waitForCustom(5000);
         }
     }
@@ -1079,6 +1082,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.clear(tbx_orderGuideSearch);
         distributorUI.waitForCustom(2000);
         distributorUI.sendKeys(tbx_orderGuideSearch,item);
+        distributorUI.click(SearchResultsIcon);
         distributorUI.waitForCustom(2000);
     }
     public void clickOnCreate() throws InterruptedException {
