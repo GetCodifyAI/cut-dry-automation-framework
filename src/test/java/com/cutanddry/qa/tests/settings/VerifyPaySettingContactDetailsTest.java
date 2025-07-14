@@ -46,6 +46,7 @@ public class VerifyPaySettingContactDetailsTest extends TestBase {
         Settings.enterEmailToARContact(validEmail);
         Settings.enterEmailToTechnicalContact(validEmail);
         Settings.clickOnSaveBtn();
+        Settings.clickOK();
         Settings.enterEmailToARContact(invalidEmail);
         Settings.clickOnSaveBtn();
         softAssert.assertTrue(Settings.isInvalidPopUpDisplayed(invalidArContact),"");

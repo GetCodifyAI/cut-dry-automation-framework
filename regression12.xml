@@ -59,6 +59,11 @@
             <class name="com.cutanddry.qa.tests.customers.VerifyTheCartSummeryAndRevenueSummeryIsDisplayedOnTheReviewScreenTest"/>
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheAlternateCollapsedMenuOnDesktopTest"/>
 
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatTheSendToERPButtonIsAvailableForScheduledJITOrdersTest"/>
+
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyTheUserCanAddItemsToTheQuickAddFlowByEnteringAValidProductIDTest"/>
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyTheRowDataIsClearedWhenClickingTheTrashIconInQuickAddFlowTest"/>
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyTheQuickAddFlowForItemsWithoutEachAsTheUOMTest"/>
         </classes>
     </test>
 </suite>

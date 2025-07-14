@@ -143,8 +143,10 @@ public class SettingsPage extends LoginPage{
     By txt_h2Success = By.xpath("//h2[text()='Success']");
     String detailsARContacts = "//div[contains(text(),'CONTACTS')]//*[name()='svg' and @data-icon='circle-info']";
     String messageContacts = "//div[contains(text(),'MESSAGE')]";
-    By lbl_arContact = By.xpath("//div[contains(text(),'AR Contacts')]/../following-sibling::div[1]//input[@type='email']");
-    By lbl_technicalContact = By.xpath("//div[contains(text(),'Technical Contacts')]/../following-sibling::div[1]//input[@type='email']");
+    By lbl_arContact = By.xpath("//div[contains(text(),'Customer-Facing Invoice Email')]/../following-sibling::div[1]//input");
+    By lbl_technicalContact = By.xpath("//div[contains(text(),'Technical Contacts')]/../following-sibling::div[1]//input");
+    By lbl_arContactClear = By.xpath("//div[contains(text(),'Customer-Facing Invoice Email')]/../following-sibling::div[1]//button");
+    By lbl_technicalContactClear = By.xpath("//div[contains(text(),'Technical Contacts')]/../following-sibling::div[1]//button");
     String invalidContactPopUp = "//h2[text()='MESSAGE']";
     By txt_customerRestriction =By.xpath("//div[contains(text(),'Customer Restrictions')]");
     By sponsorProdAdsToggle = By.xpath("//div[contains(text(), 'Allow Sponsored Product Advertisements')]/../../following-sibling::div//div[@class='react-switch-bg']");
@@ -930,13 +932,13 @@ public class SettingsPage extends LoginPage{
         return distributorUI.isDisplayed(By.xpath(messageContacts.replace("MESSAGE",message)));
     }
     public void enterEmailToARContact(String email){
-        distributorUI.clear(lbl_arContact);
+        distributorUI.clickUsingJavaScript(lbl_arContactClear);
         if (email != null && !email.isEmpty()) {  // Only send keys if email is provided
             distributorUI.sendKeys(lbl_arContact, email);
         }
     }
     public void enterEmailToTechnicalContact(String email){
-        distributorUI.clear(lbl_technicalContact);
+        distributorUI.click(lbl_technicalContactClear);
         if (email != null && !email.isEmpty()) {  // Only send keys if email is provided
             distributorUI.sendKeys(lbl_technicalContact, email);
         }

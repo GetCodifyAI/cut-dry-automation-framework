@@ -69,7 +69,7 @@ public class VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurant
         Customer.removeItemFromCatalog();
         Customer.addItemFromCatalogStable(itemName);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
-        Customer.addItemFromCatalogStable(itemName);
+//        Customer.addItemFromCatalogStable(itemName);
         Customer.clickOnOrderGuideTab();
         Customer.goToCatalog();
         Customer.clickOnOrderGuideTab();

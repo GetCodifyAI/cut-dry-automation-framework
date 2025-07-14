@@ -1453,9 +1453,15 @@ public class Customer {
     public static boolean isNextImageDisplay(){
         return customersPage.isNextImageDisplay();
     }
+    public static boolean isNextImageDisplayThumb(){
+        return customersPage.isNextImageDisplayThumb();
+    }
     public static void clickLeftArrow(){customersPage.clickLeftArrow();}
     public static boolean isPreviousImageDisplay(){
         return customersPage.isPreviousImageDisplay();
+    }
+    public static boolean isPreviousImageDisplayThumb(){
+        return customersPage.isPreviousImageDisplayThumb();
     }
     public static void clickFirstImage(){customersPage.clickFirstImage();}
     public static void clickSecondImage(){customersPage.clickSecondImage();}
@@ -2771,6 +2777,81 @@ public class Customer {
     public static boolean isCatalogFilterDisplayTagStable(String name,String tag) throws InterruptedException {
         return customersPage.isCatalogFilterDisplayTagStable(name,tag);
     }
+    public static void clickOnPlusIconInCatalogStable(int count, String name) {
+        for (int i=0; i<count;i++){
+            customersPage.clickOnPlusIconInCatalogStable(name);
+        }
+    }
+    public static void clickSendToERP() throws InterruptedException {
+        customersPage.clickSendToERP();
+    }
+    public static boolean isSendToERPButtonDisplayed() throws InterruptedException {
+       return customersPage.isSendToERPButtonDisplayed();
+    }
+    public static boolean isNotesToCustomerDisplayed(String note){
+        return customersPage.isNotesToCustomerDisplayed(note);
+    }
+    public static boolean isSubmitERPPopUpDisplayed() throws InterruptedException {
+        return customersPage.isSubmitERPPopUpDisplayed();
+    }
+    public static boolean isOrderSentERPPopUpDisplayed() throws InterruptedException {
+        return customersPage.isOrderSentERPPopUpDisplayed();
+    }
+    public static boolean isOrderSubmissionStepDisplayed(String step){
+        return customersPage.isOrderSubmissionStepDisplayed(step);
+    }
+    public static void clickOnTimeline(){
+        customersPage.clickOnTimeline();
+    }
+    public static boolean isQuickAddOptionDisplay()throws InterruptedException{
+        return customersPage.isQuickAddOptionDisplay();
+    }
+    public static void clickQuickAdd()throws InterruptedException{
+        customersPage.clickQuickAdd();
+    }
+    public static boolean isQuickAddViewDisplay()throws InterruptedException{
+        return customersPage.isQuickAddViewDisplay();
+    }
+    public static void enterItemCode(String code)throws InterruptedException{
+        customersPage.enterItemCode(code);
+    }
+    public static void enterItemQuantity(String code)throws InterruptedException{
+        customersPage.enterItemQuantity(code);
+    }
+    public static void clickVerifyItem()throws InterruptedException{
+        customersPage.clickVerifyItem();
+    }
+    public static void clickSaveAndReview()throws InterruptedException{
+        customersPage.clickSaveAndReview();
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+    }
+    public static boolean isItemVerifiedPopUpDisplay()throws InterruptedException{
+        return customersPage.isItemVerifiedPopUpDisplay();
+    }
+    public static boolean isQuickAddedItemDisplay(String data)throws InterruptedException{
+        return customersPage.isQuickAddedItemDisplay(data);
+    }
+    public static boolean isQuickAddedItemQuantityDisplay(String data)throws InterruptedException{
+        return customersPage.isQuickAddedItemQuantityDisplay(data);
+    }
+    public static boolean isItemVerifiedFailedPopUpDisplay()throws InterruptedException{
+        return customersPage.isItemVerifiedFailedPopUpDisplay();
+    }
+    public static boolean isInvalidItemCodeTextDisplay()throws InterruptedException{
+        return customersPage.isInvalidItemCodeTextDisplay();
+    }
+    public static void clickTrashIcon()throws InterruptedException{
+        customersPage.clickTrashIcon();
+    }
+    public static void clickCheckBoxEach()throws InterruptedException{
+        customersPage.clickCheckBoxEach();
+    }
+    public static boolean isUnitNotValidTextDisplay()throws InterruptedException{
+        return customersPage.isUnitNotValidTextDisplay();
+    }
+
 
 
 }
