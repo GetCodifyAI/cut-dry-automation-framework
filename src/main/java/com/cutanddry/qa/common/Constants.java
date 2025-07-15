@@ -6,6 +6,7 @@ public class Constants {
     public static boolean CREATE_CYCLE = Boolean.parseBoolean(System.getProperty("create.cycle","false"));
     public static String BROWSER_NAME = System.getProperty("test.browser", "chrome");
     public static boolean RUN_HEADLESS = Boolean.parseBoolean(System.getProperty("run.headless", "false"));
+    public static String TEST_ENV = System.getProperty("test.env", "uat");
     public static String MAIN_URL = baseDomain();
     public static String SEC_URL = secDomain();
     public static String LOGIN_AS = loginAsDomain();
@@ -16,7 +17,6 @@ public class Constants {
     public static String PROD_LOGIN_AS = "https://internal.cutanddry.com/internaltools/loginas";
 
     //Environment variables
-    public static String TEST_ENV = System.getProperty("test.env", "uat");
     public static String SLACK_WEBHOOK = System.getenv("SLACK_WEBHOOK");
 //    public static String SLACK_WEBHOOK = System.getenv("STAGING_SLACK_WEBHOOK");
     public static final String TEST_STAG ="ddo-800";
