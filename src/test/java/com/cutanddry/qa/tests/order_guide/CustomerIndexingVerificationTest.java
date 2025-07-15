@@ -83,6 +83,10 @@ public class CustomerIndexingVerificationTest extends TestBase {
                 {"137524915"},
                 {"70351601"},
                 {"487417810"},
+                {"229366152"},
+                {"304633577"},
+                {"278357516"},
+                {"324221501"},
                 {"47837013"}
         };
     }
