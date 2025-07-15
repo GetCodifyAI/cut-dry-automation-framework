@@ -75,7 +75,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run nightly tests 1
-          command: mvn clean test -Dsurefire.suiteXmlFiles=sanity_test_1.xml -Drun.headless=true -Dtest.env=stag || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=sanity_test_1.xml -Drun.headless=true -Dtest.env=uat || true
       - store_artifacts:
           path: target/surefire-reports
           destination: nightly-build-and-test-artifacts-1
@@ -129,7 +129,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 1
-          command: mvn clean test -Dsurefire.suiteXmlFiles=sanity_test_1.xml -Drun.headless=true -Dtest.env=stag -Dcreate.cycle=true || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=sanity_test_1.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
           destination: daily-build-and-test-artifacts-1
@@ -151,162 +151,20 @@ jobs:
     executor:
 
 
-  calculate-pass-fail-rate:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
-    steps:
-      - attach_workspace:
-          at: ~/workspace
-      - run:
-          name: Install bc for calculations
-          command: |
-            sudo apt-get update && sudo apt-get install -y bc
-      - run:
-          name: Debug Workspace Contents
-          command: ls -R ~/workspace
-      - run:
-          name: Calculate Combined Pass/Fail Rate
-          command: |
-            echo "Processing test results from workspace..."
-            find ~/workspace -name '*.xml' -print
-            
-            if [ -z "$(find ~/workspace -name '*.xml')" ]; then
-               echo "No test result XMLs found! Exiting..."
-               exit 1
-            fi
-            
-            declare -A PART_TOTAL
-            declare -A PART_PASS
-            declare -A PART_FAIL
-            
-            TOTAL=0
-            PASSED=0
-            FAILED=0
-            
-            for FILE in ~/workspace/*.xml; do
-            
-              PART=$(basename "$FILE" | cut -d'_' -f1,2)
-              PART=${PART:-Unknown}
-              
-              TESTS=$(grep -oP '(?<=tests=")[0-9]+' "$FILE" | head -1)
-              FAILURES=$(grep -oP '(?<=failures=")[0-9]+' "$FILE" | head -1)
-              ERRORS=$(grep -oP '(?<=errors=")[0-9]+' "$FILE" | head -1)
-              SKIPPED=$(grep -oP '(?<=skipped=")[0-9]+' "$FILE" | head -1)
-            
-              TESTS=${TESTS:-0}
-              FAILURES=${FAILURES:-0}
-              ERRORS=${ERRORS:-0}
-              SKIPPED=${SKIPPED:-0}
-            
-            # Ensure ACTUAL_TOTAL is not negative
-              ACTUAL_TOTAL=$((TESTS - SKIPPED - (ERRORS/2)))
-              if [ "$ACTUAL_TOTAL" -lt 0 ]; then
-                ACTUAL_TOTAL=0
-              fi
-            
-              if [ "$ACTUAL_TOTAL" -gt 0 ]; then
-                PASSED_IN_FILE=$((ACTUAL_TOTAL - FAILURES - ERRORS))
-              else
-                PASSED_IN_FILE=0
-              fi
-            
-              TOTAL=$((TOTAL + ACTUAL_TOTAL))
-              PASSED=$((PASSED + PASSED_IN_FILE))
-              FAILED=$((FAILED + FAILURES + (ERRORS/2)))
-            
-              PART_TOTAL[$PART]=$((PART_TOTAL[$PART] + ACTUAL_TOTAL))
-              PART_PASS[$PART]=$((PART_PASS[$PART] + PASSED_IN_FILE))
-              PART_FAIL[$PART]=$((PART_FAIL[$PART] + FAILURES + (ERRORS / 2)))
-            
-            done
-            
-            if [ "$TOTAL" -eq 0 ]; then
-              echo "No tests found in any XML files! Exiting..."
-              exit 1
-            fi
-            
-            PASS_RATE=$(echo "scale=2; ($PASSED / $TOTAL) * 100.0" | bc)
-            FAIL_RATE=$(echo "scale=2; ($FAILED / $TOTAL) * 100.0" | bc)
-            
-            echo "Total tests run: $TOTAL"
-            echo "Passed: $PASSED"
-            echo "Failed: $FAILED"
-            echo "Combined Pass Rate: $PASS_RATE%"
-            echo "Fail Rate: $FAIL_RATE%"
-            
-            echo "TOTAL=$TOTAL" >> $BASH_ENV
-            echo "PASSED=$PASSED" >> $BASH_ENV
-            echo "FAILED=$FAILED" >> $BASH_ENV
-            echo "PASS_RATE=$PASS_RATE" >> $BASH_ENV
-            echo "FAIL_RATE=$FAIL_RATE" >> $BASH_ENV
-            source $BASH_ENV
-            
-            # Build PART breakdown summary
-            PART_SUMMARY=""
-              for part in "${!PART_TOTAL[@]}"; do
-                total=${PART_TOTAL[$part]}
-                pass=${PART_PASS[$part]}
-                if [ "$total" -gt 0 ]; then
-                  rate=$(echo "scale=2; ($pass / $total) * 100.0" | bc)
-                else
-                  rate="0.00"
-                fi
-                PART_SUMMARY+=" • *$part*: ✅ $pass / $total,  $rate% | "
-              done
-            
-            # 🔥 Escape special chars for JSON safety
-            PART_SUMMARY_ESCAPED=$(echo -n "$PART_SUMMARY" | sed ':a;N;$!ba;s/\n/\\n/g' | sed 's/"/\\"/g')
-            
-            # Set environment variables for Slack notification
-            export SLACK_MESSAGE="Total tests run: $TOTAL\nPassed: $PASSED\nFailed: $FAILED\nPass Rate: $PASS_RATE%\nFail Rate: $FAIL_RATE%*\n📉 Fail Rate: *$FAIL_RATE%*\n\n*Per PART breakdown:*\n$PART_SUMMARY"
-            
-            # Export escaped part summary for use in Slack block
-            echo "PART_SUMMARY_ESCAPED=\"$PART_SUMMARY_ESCAPED\"" >> $BASH_ENV
-            source $BASH_ENV
-
-          # Send the test results to Slack
-      - slack/notify:
-          channel: "#staging-test-alerts" # Replace with your Slack channel
-          template: "${SLACK_MESSAGE}"
-          event: always
-          custom: |
-            {
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "Test Results for Distributor:\nTotal: *${TOTAL:-N/A}*\n✅ Passed: *${PASSED:-N/A}*\n❌ Failed: *${FAILED:-N/A}*\n📊 Pass Rate: *${PASS_RATE:-N/A}*\n📉 Fail Rate: *${FAIL_RATE:-N/A}%*"
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*Per PART breakdown:*\n${PART_SUMMARY_ESCAPED}"
-                  }
-                }
-              ]
-            }
-
-    executor:
-
-
 workflows:
   version: 2
-  build-and-test:
-    jobs:
-      - build-and-test
+#  build-and-test:
+#    jobs:
+#      - build-and-test
 
   scheduled-test-1:
-    triggers:
-      - schedule:
-          cron: "00 22 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * sanity_check 00 22
-          filters:
-            branches:
-              only:
-                - main
+#    triggers:
+#      - schedule:
+#          cron: "00 22 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * sanity_check 00 22
+#          filters:
+#            branches:
+#              only:
+#                - main
     jobs:
       - nightly-build-and-test-1
 
