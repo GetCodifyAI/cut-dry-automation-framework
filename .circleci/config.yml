@@ -75,25 +75,10 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run nightly tests 1
-          command: mvn clean test -Dsurefire.suiteXmlFiles=sanity_test_1.xml -Drun.headless=true -Dtest.env=uat || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=sanity_test_1.xml -Drun.headless=true -Dtest.env=uat
       - store_artifacts:
           path: target/surefire-reports
           destination: nightly-build-and-test-artifacts-1
-      - run:
-          name: Verify Test Results Exist
-          command: ls -R target/surefire-reports || echo "Test results missing!"
-      - run:
-          name: Copy test results to workspace
-          command: |
-            mkdir -p ~/workspace
-            PART_NAME="Part_One"
-            for file in target/surefire-reports/TEST-*.xml; do
-              [ -f "$file" ] && cp "$file" ~/workspace/${PART_NAME}_nightly-build-and-test-1_$(basename "$file")
-            done
-      - persist_to_workspace:
-          root: ~/workspace
-          paths:
-            - Part_One_nightly-build-and-test-1_TEST-*.xml
     executor:
 
   daily-build-and-test-1:
@@ -129,42 +114,17 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 1
-          command: mvn clean test -Dsurefire.suiteXmlFiles=sanity_test_1.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=sanity_test_1.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true
       - store_artifacts:
           path: target/surefire-reports
           destination: daily-build-and-test-artifacts-1
-      - run:
-          name: Verify Test Results Exist
-          command: ls -R target/surefire-reports || echo "Test results missing!"
-      - run:
-          name: Copy test results to workspace
-          command: |
-            mkdir -p ~/workspace
-            PART_NAME="Part_One"
-            for file in target/surefire-reports/TEST-*.xml; do
-              [ -f "$file" ] && cp "$file" ~/workspace/${PART_NAME}_daily-build-and-test-1_$(basename "$file")
-            done
-      - persist_to_workspace:
-          root: ~/workspace
-          paths:
-            - Part_One_daily-build-and-test-1_TEST-*.xml
     executor:
 
 
 workflows:
   version: 2
-#  build-and-test:
-#    jobs:
-#      - build-and-test
 
   scheduled-test-1:
-#    triggers:
-#      - schedule:
-#          cron: "00 22 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * sanity_check 00 22
-#          filters:
-#            branches:
-#              only:
-#                - main
     jobs:
       - nightly-build-and-test-1
 
