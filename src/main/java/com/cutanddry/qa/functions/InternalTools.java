@@ -222,4 +222,7 @@ public class InternalTools {
     public static void clickHideOutOfStockToggle(boolean status){
         internalToolsPage.clickHideOutOfStockToggle(status);
     }
+    public static void clickOnSimpleListViewDropdown(String type){
+        internalToolsPage.clickOnSimpleListViewDropdown(type);
+    }
 }
