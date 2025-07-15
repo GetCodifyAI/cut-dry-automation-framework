@@ -2869,6 +2869,9 @@ public class Customer {
     public static void clickAddItemRestrictionDropDownOption(String option)throws InterruptedException{
         customersPage.clickAddItemRestrictionDropDownOption(option);
     }
+    public static String getPoundPriceStable() throws InterruptedException {
+        return customersPage.getPoundPriceStable().trim();
+    }
 
 
 
