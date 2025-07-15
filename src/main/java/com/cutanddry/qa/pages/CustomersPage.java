@@ -810,6 +810,13 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_trash = By.xpath("(//button[@type='button']//*[local-name()='svg' and @data-icon='cdTrash'])[1]");
     By lbl_itemUOM = By.xpath("(//div[text()='Item Code']/../../../../following-sibling::td//input[@type='checkbox'])[1]");
     By txt_unitNotValid = By.xpath("//span[text()='Unit not valid']");
+    By dropdown_option_SimpleListView = By.xpath("//div[text()='Simple List View']");
+    By txt_simpleListView = By.xpath("//div[text()='Simple List View']");
+    String sortOptionOG = "(//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'OPTION')])[last()]";
+    String sortResult = "(//td//span[text()='OPTION'])[1]";
+    By addItemRestrictionDropDown = By.xpath("//label[contains(text(), 'Add Items Restriction')]/following-sibling::div");
+    String addItemRestrictionDropDownOption = "(//div[text()='OPTION'])[last()]";
+
 
 
 
@@ -4773,6 +4780,27 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isUnitNotValidTextDisplay()throws InterruptedException{
         return distributorUI.isDisplayed(txt_unitNotValid);
+    }
+    public void clickSimpleListView(){
+        distributorUI.waitForClickability(dropdown_option_SimpleListView);
+        distributorUI.click(dropdown_option_SimpleListView);
+    }
+    public boolean isSimpleListViewTextDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_simpleListView);
+    }
+    public void clickSortOptionOG(String option)throws InterruptedException{
+        distributorUI.click(By.xpath(sortOptionOG.replace("OPTION",option)));
+    }
+    public boolean isSortOptionDisplay(String option)throws InterruptedException{
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(By.xpath(sortResult.replace("OPTION",option)));
+    }
+    public void clickAddItemRestrictionDropDown()throws InterruptedException{
+        distributorUI.waitForVisibility(addItemRestrictionDropDown);
+        distributorUI.click(addItemRestrictionDropDown);
+    }
+    public void clickAddItemRestrictionDropDownOption(String option)throws InterruptedException{
+        distributorUI.click(By.xpath(addItemRestrictionDropDownOption.replace("OPTION",option)));
     }
 
 
