@@ -816,6 +816,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String sortResult = "(//td//span[text()='OPTION'])[1]";
     By addItemRestrictionDropDown = By.xpath("//label[contains(text(), 'Add Items Restriction')]/following-sibling::div");
     String addItemRestrictionDropDownOption = "(//div[text()='OPTION'])[last()]";
+    By poundPriceStable = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]/div/div/div/div)[1]");
+
 
 
 
@@ -4801,6 +4803,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickAddItemRestrictionDropDownOption(String option)throws InterruptedException{
         distributorUI.click(By.xpath(addItemRestrictionDropDownOption.replace("OPTION",option)));
+    }
+    public String getPoundPriceStable(){
+        return distributorUI.getText(poundPriceStable);
     }
 
 

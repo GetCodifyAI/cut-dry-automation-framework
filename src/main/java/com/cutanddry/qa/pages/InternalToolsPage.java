@@ -71,6 +71,9 @@ public class InternalToolsPage extends LoginPage {
     By hideOutOfStockToggleStable1 = By.xpath("//div[contains(text(), 'Hide out of stock label on Supplier Portal:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     By simpleListViewDropDown = By.xpath("//div[text()='Simple List View:']/following-sibling::div/div");
     String simpleListViewDropDownOption = "(//div[text()='TYPE'])[last()]";
+    By fetchPricesFromOrderForEditOrderFlowToggleStable = By.xpath("//div[contains(text(), 'Fetch prices from order for edit order flow:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By fetchPricesFromOrderForEditOrderFlowToggleStable1 = By.xpath("//div[contains(text(), 'Fetch prices from order for edit order flow:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+
 
 
 
@@ -469,6 +472,17 @@ public class InternalToolsPage extends LoginPage {
     public void clickOnSimpleListViewDropdown(String type){
         distributorUI.click(simpleListViewDropDown);
         distributorUI.click(By.xpath(simpleListViewDropDownOption.replace("TYPE",type)));
+    }
+    public void fetchPricesFromOrderForEditOrderFlowToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(fetchPricesFromOrderForEditOrderFlowToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(fetchPricesFromOrderForEditOrderFlowToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(fetchPricesFromOrderForEditOrderFlowToggleStable1);
+        }
     }
 
 

@@ -67,6 +67,9 @@
 
             <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheSortItemsByDropDownIsAvailableInTheSimpleListViewTest"/>
             <class name="com.cutanddry.qa.tests.catalog_access.VerifyHideWhiteLabelHomePageForEmployeesWithNoCatalogAccessTest"/>
+
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingNormalOrderAndEditItFromPortalWhenDisableFetchPricesTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingNormalOrderAndEditItFromPortalWhenEnableFetchPricesTest"/>
         </classes>
     </test>
 </suite>
