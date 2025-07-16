@@ -69,6 +69,8 @@ public class InternalToolsPage extends LoginPage {
     String specialItemsDropDownOption = "(//div[text()='OPTION'])[last()]";
     By hideOutOfStockToggleStable = By.xpath("//div[contains(text(), 'Hide out of stock label on Supplier Portal:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By hideOutOfStockToggleStable1 = By.xpath("//div[contains(text(), 'Hide out of stock label on Supplier Portal:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By simpleListViewDropDown = By.xpath("//div[text()='Simple List View:']/following-sibling::div/div");
+    String simpleListViewDropDownOption = "(//div[text()='TYPE'])[last()]";
 
 
 
@@ -463,6 +465,10 @@ public class InternalToolsPage extends LoginPage {
         } else if (!enable && isEnabled) {
             distributorUI.clickWithScrollAndHover(hideOutOfStockToggleStable1);
         }
+    }
+    public void clickOnSimpleListViewDropdown(String type){
+        distributorUI.click(simpleListViewDropDown);
+        distributorUI.click(By.xpath(simpleListViewDropDownOption.replace("TYPE",type)));
     }
 
 

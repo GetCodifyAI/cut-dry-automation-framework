@@ -2803,6 +2803,72 @@ public class Customer {
     public static void clickOnTimeline(){
         customersPage.clickOnTimeline();
     }
+    public static boolean isQuickAddOptionDisplay()throws InterruptedException{
+        return customersPage.isQuickAddOptionDisplay();
+    }
+    public static void clickQuickAdd()throws InterruptedException{
+        customersPage.clickQuickAdd();
+    }
+    public static boolean isQuickAddViewDisplay()throws InterruptedException{
+        return customersPage.isQuickAddViewDisplay();
+    }
+    public static void enterItemCode(String code)throws InterruptedException{
+        customersPage.enterItemCode(code);
+    }
+    public static void enterItemQuantity(String code)throws InterruptedException{
+        customersPage.enterItemQuantity(code);
+    }
+    public static void clickVerifyItem()throws InterruptedException{
+        customersPage.clickVerifyItem();
+    }
+    public static void clickSaveAndReview()throws InterruptedException{
+        customersPage.clickSaveAndReview();
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+    }
+    public static boolean isItemVerifiedPopUpDisplay()throws InterruptedException{
+        return customersPage.isItemVerifiedPopUpDisplay();
+    }
+    public static boolean isQuickAddedItemDisplay(String data)throws InterruptedException{
+        return customersPage.isQuickAddedItemDisplay(data);
+    }
+    public static boolean isQuickAddedItemQuantityDisplay(String data)throws InterruptedException{
+        return customersPage.isQuickAddedItemQuantityDisplay(data);
+    }
+    public static boolean isItemVerifiedFailedPopUpDisplay()throws InterruptedException{
+        return customersPage.isItemVerifiedFailedPopUpDisplay();
+    }
+    public static boolean isInvalidItemCodeTextDisplay()throws InterruptedException{
+        return customersPage.isInvalidItemCodeTextDisplay();
+    }
+    public static void clickTrashIcon()throws InterruptedException{
+        customersPage.clickTrashIcon();
+    }
+    public static void clickCheckBoxEach()throws InterruptedException{
+        customersPage.clickCheckBoxEach();
+    }
+    public static boolean isUnitNotValidTextDisplay()throws InterruptedException{
+        return customersPage.isUnitNotValidTextDisplay();
+    }
+    public static void clickSimpleListView(){
+        customersPage.clickSimpleListView();
+    }
+    public static boolean isSimpleListViewTextDisplay()throws InterruptedException{
+        return customersPage.isSimpleListViewTextDisplay();
+    }
+    public static void clickSortOptionOG(String option)throws InterruptedException{
+        customersPage.clickSortOptionOG(option);
+    }
+    public static boolean isSortOptionDisplay(String option)throws InterruptedException{
+        return customersPage.isSortOptionDisplay(option);
+    }
+    public static void clickAddItemRestrictionDropDown() throws InterruptedException {
+        customersPage.clickAddItemRestrictionDropDown();
+    }
+    public static void clickAddItemRestrictionDropDownOption(String option)throws InterruptedException{
+        customersPage.clickAddItemRestrictionDropDownOption(option);
+    }
 
 
 

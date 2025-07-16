@@ -46,6 +46,10 @@ public class LoginPage extends TestBase {
     By tbx_Search = By.xpath("//button[contains(text(),'Re-Index')]/following-sibling::*//div/input");
     String txt_dp = "((//div[contains(text(), 'OPERATOR_NAME')])[last()])";
     By btn_LoginAsClassic = By.xpath("//a[contains(text(), 'Login As (classic)')]");
+    By tbx_operatorSearch = By.xpath("//button[contains(text(),'Re-Index')]/following-sibling::*//div/input");
+    String txt_operator = "((//div[contains(text(), 'OPERATOR_NAME')])[last()])";
+    By btn_LoginAsWhiteLabel = By.xpath("//a[contains(text(), 'Login As (white-label)')]");
+
 
 
     public void typeEmailOrMobile(String emailOrMobile){
@@ -239,6 +243,19 @@ public class LoginPage extends TestBase {
 //        Orders.closeRatingOverlay();
         distributorUI.sendKeys(lbl_loginAs,name);
         return distributorUI.isDisplayed(By.xpath(txt_whitelblCustomer.replace("NAME", name)));
+    }
+    public void typeToSearchOnOperator(String operator) throws InterruptedException {
+        distributorUI.sendKeys(tbx_operatorSearch, operator);
+        distributorUI.waitForCustom(4000);
+    }
+    public void clickOperator(String operator){
+        distributorUI.waitForVisibility(By.xpath(txt_operator.replace("OPERATOR_NAME",operator)));
+        distributorUI.click(By.xpath(txt_operator.replace("OPERATOR_NAME",operator)));
+    }
+    public void clickOnLoginAsWhiteLabelAndSwitchToNewTab() throws InterruptedException {
+        distributorUI.click(btn_LoginAsWhiteLabel);
+        distributorUI.switchToNewTab();
+        distributorUI.waitForCustom(3000);
     }
 
 }
