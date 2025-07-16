@@ -922,7 +922,7 @@ WDS.log.info(&quot;Order Guide Load Time saved to CSV: &quot; + csvFilePath)</st
               <boolProp name="TransactionController.includeTimers">false</boolProp>
             </TransactionController>
             <hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Search the customer" enabled="true">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Search the customer">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -930,7 +930,7 @@ import java.time.Duration
 import org.openqa.selenium.JavascriptExecutor
 
  String DP = &quot;138629491&quot;
- String customer = &quot;Denver art museum -Avendra&quot;
+ String customer = &quot;Denver Art Museum&quot;
 
 def wait = new WebDriverWait(WDS.browser, Duration.ofSeconds(30))
 
@@ -1305,7 +1305,7 @@ WDS.log.info(&quot;Order Guide Load Time saved to CSV: &quot; + csvFilePath)</st
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Chef&apos;s Kitchen ">
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Chef&apos;s Kitchen " enabled="true">
               <boolProp name="TransactionController.includeTimers">false</boolProp>
             </TransactionController>
             <hashTree>
@@ -1371,7 +1371,7 @@ WDS.props.put(&quot;count&quot;, &quot;394&quot;) </stringProp>
                 </JSR223PostProcessor>
                 <hashTree/>
               </hashTree>
-              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Order Guide - Chef&apos;s Kitchen ">
+              <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load the Order Guide - Chef&apos;s Kitchen " enabled="true">
                 <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -1992,7 +1992,7 @@ for (int i = 1; i &lt;= 1; i++) {
           </DebugSampler>
           <hashTree/>
         </hashTree>
-        <SmtpSampler guiclass="SmtpSamplerGui" testclass="SmtpSampler" testname="SMTP Sampler">
+        <SmtpSampler guiclass="SmtpSamplerGui" testclass="SmtpSampler" testname="SMTP Sampler" enabled="true">
           <stringProp name="TestPlan.comments">Outlook: smtp.office365.com/Yahoo: smtp.mail.yahoo.com -- 587 (for TLS)/465 (for SSL)/25 (for non-secure, not recommended)</stringProp>
           <stringProp name="SMTPSampler.server">smtp.gmail.com</stringProp>
           <stringProp name="SMTPSampler.serverPort">465</stringProp>
