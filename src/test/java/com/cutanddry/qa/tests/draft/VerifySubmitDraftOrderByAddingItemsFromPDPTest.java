@@ -59,7 +59,7 @@ public class VerifySubmitDraftOrderByAddingItemsFromPDPTest extends TestBase {
         Customer.clickOnProduct(itemName);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
         Customer.clickPlusSearchedSingleItem(1);
-        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButtonViaPDP(),itemPrice*2,"The item has not been selected.");
+        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButtonViaPDP(),itemPrice*2,"The item has not been selected_1.");
         Customer.clickCheckOutPDP();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         Customer.submitOrder();

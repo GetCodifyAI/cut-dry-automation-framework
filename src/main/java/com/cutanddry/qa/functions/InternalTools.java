@@ -225,4 +225,7 @@ public class InternalTools {
     public static void clickOnSimpleListViewDropdown(String type){
         internalToolsPage.clickOnSimpleListViewDropdown(type);
     }
+    public static void fetchPricesFromOrderForEditOrderFlowToggle(boolean status){
+        internalToolsPage.fetchPricesFromOrderForEditOrderFlowToggle(status);
+    }
 }
