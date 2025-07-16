@@ -44,7 +44,7 @@ public class VerifyTheClickOnQuantityPickerAndIncrementTheItemCountFromQuantityP
         itemPrice = Customer.getActiveItemPriceFirstRow();
         Customer.addAmountUsingDataPickerOG(itemName,"5");
         itemQuantity = Customer.getAmountUsingDataPickerOG(itemName);
-        softAssert.assertEquals(Customer.getAmountUsingDataPickerOG(itemName),"5","The item has not been updated OG data picker.");
+        softAssert.assertEquals(Customer.getAmountUsingDataPickerOG(itemName),"05","The item has not been updated OG data picker.");
         Customer.clickOnPlusIconInCatalogPDP(3, itemName);
         softAssert.assertEquals(Customer.getAmountUsingDataPickerOG(itemName),"8","The item has not been updated OG +");
         softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice*8,"The item has not been selected.");
