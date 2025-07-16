@@ -95,11 +95,11 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])
 //    By btn_review = By.xpath("//a[text()='Review']");
 By btn_review = By.xpath("//a[text()='Review Products']");
 //    By txt_numRecentAdded = By.xpath("//div[p[text()='Recently Added']]//h6");
-By txt_numRecentAdded = By.xpath("//div[text()='New Products']/../../following-sibling::div/div/div");
+By txt_numRecentAdded = By.xpath("//div[text()='New Products']/../../following-sibling::div//div");
     By txt_resultsCount = By.xpath("//div[contains(text(), 'All Results')]/following-sibling::div");
     By btn_updateImages = By.xpath("//a[text()='Add Images']");
 //    By txt_numImageMissing= By.xpath("//div[p[text()='Products Images Missing']]//h6");
-By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../following-sibling::div/div/div");
+By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../following-sibling::div//div");
     By lbl_categoriesDropdown = By.xpath("//div[@class='themed_select__single-value css-1uccc91-singleValue' and text()='All Categories']");
     By lbl_snack = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Snack']");
     By lbl_nonSnack = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[4][not(normalize-space()='Snack')]");
