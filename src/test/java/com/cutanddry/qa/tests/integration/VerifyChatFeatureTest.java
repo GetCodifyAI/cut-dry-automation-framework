@@ -16,8 +16,8 @@ public class VerifyChatFeatureTest extends TestBase {
     static User user;
 //    static String customerName = "Restaurant(Test) - Hayes";
     static String customerName = "Hayes";
-    static String distributorMessage = "Test Message Distributor";
-    static String restaurantMessage = "Test Message Restaurant";
+    static String distributorMessage = "#@:Test Message Distributor#@:";
+    static String restaurantMessage = "#@:Test Message Restaurant#@:";
 
     @BeforeMethod
     public void setUp(){
