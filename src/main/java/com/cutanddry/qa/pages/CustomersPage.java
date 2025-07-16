@@ -755,6 +755,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By txt_sameDeliveryDate = By.xpath("//h2[contains(text(),'same delivery date are not allowed')]");
     By icon_deleteSearchItem = By.xpath("(//*[local-name()='svg' and @data-icon='circle-xmark'])[1]");
     By icon_deleteSubstitutionItem = By.xpath("(//*[local-name()='svg' and @data-icon='xmark'])[1]");
+    By SearchResultsIcon = By.xpath("(//div//*[local-name()='svg' and contains(@data-icon, 'cdSearch')])[1]");
     String marginValue = "(//td[text()='CODE']/following-sibling::td[2]//div/div/span)[UOM]";
     String lbl_lastOrderDetails = "(//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]/../following-sibling::div/div";
     By txt_purchaseHistoryCatalog = By.xpath("//div[text()='Purchase History']");
@@ -809,6 +810,13 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_trash = By.xpath("(//button[@type='button']//*[local-name()='svg' and @data-icon='cdTrash'])[1]");
     By lbl_itemUOM = By.xpath("(//div[text()='Item Code']/../../../../following-sibling::td//input[@type='checkbox'])[1]");
     By txt_unitNotValid = By.xpath("//span[text()='Unit not valid']");
+    By dropdown_option_SimpleListView = By.xpath("//div[text()='Simple List View']");
+    By txt_simpleListView = By.xpath("//div[text()='Simple List View']");
+    String sortOptionOG = "(//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'OPTION')])[last()]";
+    String sortResult = "(//td//span[text()='OPTION'])[1]";
+    By addItemRestrictionDropDown = By.xpath("//label[contains(text(), 'Add Items Restriction')]/following-sibling::div");
+    String addItemRestrictionDropDownOption = "(//div[text()='OPTION'])[last()]";
+
 
 
 
@@ -901,6 +909,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         if(distributorUI.getValue(tbx_catalogSearch).isEmpty()){
             distributorUI.waitForCustom(1000);
             distributorUI.sendKeys(tbx_catalogSearch,item);
+            distributorUI.click(SearchResultsIcon);
             distributorUI.waitForCustom(5000);
         }
         else {
@@ -908,6 +917,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
             distributorUI.clear(tbx_catalogSearch);
             distributorUI.waitForCustom(1000);
             distributorUI.sendKeys(tbx_catalogSearch, item);
+            distributorUI.click(SearchResultsIcon);
             distributorUI.waitForCustom(5000);
         }
     }
@@ -1079,6 +1089,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.clear(tbx_orderGuideSearch);
         distributorUI.waitForCustom(2000);
         distributorUI.sendKeys(tbx_orderGuideSearch,item);
+        distributorUI.click(SearchResultsIcon);
         distributorUI.waitForCustom(2000);
     }
     public void clickOnCreate() throws InterruptedException {
@@ -4769,6 +4780,27 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isUnitNotValidTextDisplay()throws InterruptedException{
         return distributorUI.isDisplayed(txt_unitNotValid);
+    }
+    public void clickSimpleListView(){
+        distributorUI.waitForClickability(dropdown_option_SimpleListView);
+        distributorUI.click(dropdown_option_SimpleListView);
+    }
+    public boolean isSimpleListViewTextDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_simpleListView);
+    }
+    public void clickSortOptionOG(String option)throws InterruptedException{
+        distributorUI.click(By.xpath(sortOptionOG.replace("OPTION",option)));
+    }
+    public boolean isSortOptionDisplay(String option)throws InterruptedException{
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(By.xpath(sortResult.replace("OPTION",option)));
+    }
+    public void clickAddItemRestrictionDropDown()throws InterruptedException{
+        distributorUI.waitForVisibility(addItemRestrictionDropDown);
+        distributorUI.click(addItemRestrictionDropDown);
+    }
+    public void clickAddItemRestrictionDropDownOption(String option)throws InterruptedException{
+        distributorUI.click(By.xpath(addItemRestrictionDropDownOption.replace("OPTION",option)));
     }
 
 

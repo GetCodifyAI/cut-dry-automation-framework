@@ -158,6 +158,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     String mediaTypeOption = "(//div[text()='TYPE' and contains(@class,'themed_select__option')])[last()]";
     String addedSubstitutionsCode = "//div[contains(text(),'CODE')]";
     String deleteUom = "//label[text()='UOM']/../following-sibling::td//*[local-name() = 'svg' and @data-icon='trash-can']";
+    By SearchResultsIcon = By.xpath("(//div//*[local-name()='svg' and contains(@data-icon, 'cdSearch')])[1]");
 
     //multi UOM
     String multiUomDropDownOG = "(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg'])[1]";
@@ -1017,6 +1018,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         distributorUI.click(icon_deleteSearchItem);
         distributorUI.clear(orderGuideSearch);
         distributorUI.sendKeys(orderGuideSearch,item);
+        distributorUI.click(SearchResultsIcon);
     }
     public double getUOMOGPrice(String code ,String uom) throws InterruptedException {
         try {

@@ -47,6 +47,7 @@ public class CustomerData {
     public static final String CUSTOMER_CODE5 = "15651";
     public static final String DISTRIBUTOR_BIRITE = "120984267 - Cut+Dry Agent - BiRite Foodservice Distributors";
     public static final String CUSTOMER_CODE6 = "20220340";
+    public static final String CUSTOMER_CODE7 = "58951";
 
 
 

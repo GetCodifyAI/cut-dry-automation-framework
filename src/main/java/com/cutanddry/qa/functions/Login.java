@@ -116,4 +116,9 @@ public class Login {
     public static boolean isUserExistInLoginAs(String name){
         return loginPage.navigateToLoginAsPortalForCustomerIndex(name);
     }
+    public static void logInToOperatorAsWhiteLabel(String operator) throws InterruptedException {
+        loginPage.typeToSearchOnOperator(operator);
+        loginPage.clickOperator(operator);
+        loginPage.clickOnLoginAsWhiteLabelAndSwitchToNewTab();
+    }
 }

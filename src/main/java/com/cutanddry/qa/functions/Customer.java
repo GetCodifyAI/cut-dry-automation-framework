@@ -2851,6 +2851,24 @@ public class Customer {
     public static boolean isUnitNotValidTextDisplay()throws InterruptedException{
         return customersPage.isUnitNotValidTextDisplay();
     }
+    public static void clickSimpleListView(){
+        customersPage.clickSimpleListView();
+    }
+    public static boolean isSimpleListViewTextDisplay()throws InterruptedException{
+        return customersPage.isSimpleListViewTextDisplay();
+    }
+    public static void clickSortOptionOG(String option)throws InterruptedException{
+        customersPage.clickSortOptionOG(option);
+    }
+    public static boolean isSortOptionDisplay(String option)throws InterruptedException{
+        return customersPage.isSortOptionDisplay(option);
+    }
+    public static void clickAddItemRestrictionDropDown() throws InterruptedException {
+        customersPage.clickAddItemRestrictionDropDown();
+    }
+    public static void clickAddItemRestrictionDropDownOption(String option)throws InterruptedException{
+        customersPage.clickAddItemRestrictionDropDownOption(option);
+    }
 
 
 
