@@ -470,6 +470,7 @@ public class Settings {
     }
     public static void orderMinimumCheckBox(boolean status) throws InterruptedException {
         settingsPage.orderMinimumsOverrideRestrictions(status);
+        Thread.sleep(2000);
         settingsPage.clickOnSaveChanges();
     }
     public static void orderCutOffsCheckBox(boolean status) throws InterruptedException {

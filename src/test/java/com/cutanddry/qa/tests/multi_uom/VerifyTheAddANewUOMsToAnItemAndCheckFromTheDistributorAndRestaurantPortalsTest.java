@@ -66,8 +66,10 @@ public class VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurant
         Customer.goToCatalog();
 
         Customer.searchItemOnCatalog(searchItemCode);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
+        Customer.removeItemFromCatalog();
         Customer.addItemFromCatalogStable(itemName);
+        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
+//        Customer.addItemFromCatalogStable(itemName);
         Customer.clickOnOrderGuideTab();
         Customer.goToCatalog();
         Customer.clickOnOrderGuideTab();
@@ -86,9 +88,9 @@ public class VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurant
         Dashboard.navigateToOrderGuide();
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(searchItemCode);
-        /*Customer.removeItemFromCatalog();
+        Customer.removeItemFromCatalog();
 //        Customer.addItemFromCatalog();
-        Customer.addItemFromCatalogStable(itemName);*/
+        Customer.addItemFromCatalogStable(itemName);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
         Customer.addItemFromCatalogStable(itemName);
         Customer.clickOnOrderGuideTab();

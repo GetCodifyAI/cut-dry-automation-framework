@@ -1,0 +1,37 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="Part_Eight"/>
+        <classes>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheFinalWeightWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSpotPricingWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateThePoundSpotPricingWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSplitWeightWhenSelectingMultipleUOMTest"/>
+
+            <class name="com.cutanddry.qa.tests.price.ValidateTheFinalWeightTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPoundPriceTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingByPricingEngineTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateThePoundSpotPricingTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingNotFromPricingEngineTest"/>
+            <class name="com.cutanddry.qa.tests.price.ValidateTheSplitWeightTest"/>
+
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditUOMsFromEditTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyStockAvailabilityModalForMultiUOMSKUsTest"/>
+
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnCatalogCardTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnPDPViewTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnCatalogCardOperatorTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnPDPViewOperatorTest"/>
+
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurantPortalsTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheRemoveANewlyAddedUOMsToAnItemAndCheckFromTheDistributorAndRestaurantPortalsTest"/>
+        </classes>
+    </test>
+</suite>

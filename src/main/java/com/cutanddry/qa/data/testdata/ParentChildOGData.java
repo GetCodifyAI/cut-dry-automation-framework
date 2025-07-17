@@ -5,6 +5,7 @@ public class ParentChildOGData {
     public static final String DISTRIBUTOR_INDIANHEAD = "189234630 - Cut+Dry Agent - Indianhead Foodservice Distributor Sandbox";
     public static final String CUSTOMER_ID_INDIANHEAD = "33600";
     public static final String CUSTOMER_ID_INDIANHEAD_2 = "59195";
+    public static final String CUSTOMER_ID_INDIANHEAD_3 = "33601";
     public static final String ORDER_GUIDE_NAME = "TEST Link OG";
     public static final String ORDER_GUIDE_NAME_2 = "TEST Child OG";
     public static final String ORDER_GUIDE_NAME_3 = "TEST Child Link OG";

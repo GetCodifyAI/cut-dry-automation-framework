@@ -201,4 +201,31 @@ public class InternalTools {
     public static boolean isCatalogDisableRestaurantDisplay(String name){
         return internalToolsPage.isCatalogDisableRestaurantDisplay(name);
     }
+    public static void displayMarginOnPortalToggle(boolean status){
+        internalToolsPage.displayMarginOnPortalToggle(status);
+    }
+    public static void restrictMarginOnPortalToggle(boolean status){
+        internalToolsPage.restrictMarginOnPortalToggle(status);
+    }
+    public static void spotPricingOnPortalToggle(boolean status){
+        internalToolsPage.spotPricingOnPortalToggle(status);
+    }
+    public static void displayPurchaseHistoryToggle(boolean status){
+        internalToolsPage.displayPurchaseHistoryToggle(status);
+    }
+    public static void displayPurchasePriceToggle(boolean status){
+        internalToolsPage.displayPurchasePriceToggle(status);
+    }
+    public static void selectSpecialItemsDropdown(String SpecialItemsOption){
+        internalToolsPage.selectSpecialItemsDropdown(SpecialItemsOption);
+    }
+    public static void clickHideOutOfStockToggle(boolean status){
+        internalToolsPage.clickHideOutOfStockToggle(status);
+    }
+    public static void clickOnSimpleListViewDropdown(String type){
+        internalToolsPage.clickOnSimpleListViewDropdown(type);
+    }
+    public static void fetchPricesFromOrderForEditOrderFlowToggle(boolean status){
+        internalToolsPage.fetchPricesFromOrderForEditOrderFlowToggle(status);
+    }
 }

@@ -105,4 +105,20 @@ public class Login {
     public static void navigateToRestaurant() {
         loginPage.navigateToRestaurant();;
     }
+    public static void logInToDP(String DistributorName) throws InterruptedException {
+        loginPage.typeToSearchOnDP(DistributorName);
+        loginPage.clickOnDP(DistributorName);
+        loginPage.clickOnLoginAsSupplierAndSwitchToNewTab();
+    }
+    public static void navigateToLoginAs() {
+        loginPage.navigateToLoginAs();
+    }
+    public static boolean isUserExistInLoginAs(String name){
+        return loginPage.navigateToLoginAsPortalForCustomerIndex(name);
+    }
+    public static void logInToOperatorAsWhiteLabel(String operator) throws InterruptedException {
+        loginPage.typeToSearchOnOperator(operator);
+        loginPage.clickOperator(operator);
+        loginPage.clickOnLoginAsWhiteLabelAndSwitchToNewTab();
+    }
 }

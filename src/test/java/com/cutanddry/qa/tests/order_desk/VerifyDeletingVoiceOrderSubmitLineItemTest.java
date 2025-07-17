@@ -32,10 +32,11 @@ public class VerifyDeletingVoiceOrderSubmitLineItemTest extends TestBase {
         OrderDesk.navigateToSubmittedOrders();
         OrderDesk.navigateToSubmitOrdersReviewPage();
         softAssert.assertTrue(OrderDesk.navigatedToSubmittedOrders(),"Error Navigating to Drafted Orders Page");
-        OrderDesk.DeleteItem();
+        softAssert.assertFalse(OrderDesk.isDeleteBtnDisplayed(),"Delete button is displayed");
+        /*OrderDesk.DeleteItem();
         OrderDesk.ConfirmDeleteItem();
         softAssert.assertTrue(OrderDesk.isItemDeleteSucessfullySaved(),"Error in Deleting Item");
-        OrderDesk.CloseTheSucessfulOverlayByOK();
+        OrderDesk.CloseTheSucessfulOverlayByOK();*/
 
         softAssert.assertAll();
     }

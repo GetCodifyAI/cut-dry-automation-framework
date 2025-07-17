@@ -43,7 +43,7 @@ public class VerifyOrdersBelowMinimumOrderAmountPopsSoftOrderMinimumPopUpTest ex
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId3), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId3);
         Customer.increaseFirstRowQtyCustom(1);
-        Customer.clickCheckOutPDP();
+        Customer.clickCheckOutOrderGuide();
 
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         Customer.submitOrderMinimum();

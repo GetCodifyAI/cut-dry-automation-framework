@@ -11,13 +11,16 @@ public class SettingData {
     public static final String CVV = "999";
     public static final String ADDRESS = "N0 07 Beakers' street";
     public static final String CITY = "California";
-    public static final String AR_CONTACTS ="AR Contacts";
+//    public static final String AR_CONTACTS ="Customer-Facing Invoice Email";
+public static final String AR_CONTACTS ="AR Contact";
     public static final String TECHNICAL_CONTACTS ="Technical Contacts";
-    public static final String AR_CONTACTS_MESSAGE ="These emails will be notified about payments and payouts.";
+//    public static final String AR_CONTACTS_MESSAGE ="These emails will be notified about payments and payouts.";
+    public static final String AR_CONTACTS_MESSAGE ="This email address will appear on invoices";
     public static final String TECHNICAL_CONTACTS_MESSAGE ="These emails will be notified about technical issues related to pay.";
     public static final String VALID_EMAIL = "pay@cutanddry.com";
     public static final String INVALID_EMAIL = "pay.com";
-    public static final String INVALID_AR_CONTACT = "The AR email is invalid.";
+    public static final String INVALID_AR_CONTACT = "Invalid email in Customer-facing Invoice Email.";
+//public static final String INVALID_AR_CONTACT = "The AR email is invalid.";
     public static final String INVALID_TECHNICAL_CONTACT = "Invalid email in Technical Contacts.";
 
     public static final String SEND_ALERTS_TO = "Send alerts to:";

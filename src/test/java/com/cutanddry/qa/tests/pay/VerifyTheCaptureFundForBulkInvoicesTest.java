@@ -21,6 +21,8 @@ public class VerifyTheCaptureFundForBulkInvoicesTest extends TestBase {
     static String status_unpaid = PayInvoiceData.STATUS_UNPAID;
     static String status_payment = PayInvoiceData.OPTION_PAYMENT;
     static String status_authorized = PayInvoiceData.STATUS_AUTHORIZED;
+    static String invoiceID = "51285996";
+    static String customerName = PayInvoiceData.CUSTOMER_NAME;
 
     @BeforeMethod
     public void setUp() {
@@ -41,12 +43,17 @@ public class VerifyTheCaptureFundForBulkInvoicesTest extends TestBase {
         Pay.clickOnInvoiceCustomerClearViaFilter();
         softAssert.assertTrue(Pay.isEmptyInvoiceMsgDisplayed(), "Invoices are not cleared.");
 
+        Pay.selectInvoiceCustomerViaFilter(customerName);
+        softAssert.assertEquals(Pay.getInvoiceRecordCustomerName(1).trim(), customerName.trim(), "The customer name in the first invoice record does not match the expected value.");
+
+
         Pay.selectInvoiceStatusViaFilter(status_past_due);
         softAssert.assertTrue(Pay.getInvoiceRecordStatus(1).trim().contains(status_past_due.replace("- ","").trim()), "The past due status in the first invoice record does not match the expected value.");
         Pay.selectInvoiceAuthStatusViaFilter(status_authorized);
         softAssert.assertTrue(Pay.isInvoiceRecordCustomerStatusExist(status_authorized), "The auth status in the invoice record does not match the expected value.");
 
-        Pay.clickOnInvoiceRecord(1);
+//        Pay.typeInvoiceIDViaFilter(invoiceID);
+        Pay.clickOnInvoiceRecord(2);
         Pay.clickOnInvoiceBulkActionButton();
         Pay.selectTheBulkInvoiceOption(status_payment);
 

@@ -12,7 +12,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyMoreFiltersSalesPersonAndCreditRequestTest extends TestBase {
     static User user;
-    String date = "Last 60 Days";
+    String date = "Last 90 Days";
     String creditStatus = "Credit Requested";
     static String salesPersonType = "All";
 

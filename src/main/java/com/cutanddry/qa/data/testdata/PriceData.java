@@ -19,6 +19,8 @@ public class PriceData {
     public static final String ITEM_CODE = "52428";
     public static final String ITEM_NAME2 = "Precut Blue Roquefort Aoc Societe";
     public static final String ITEM_CODE2 = "45210";
+    public static final String ITEM_CODE3 = "52541";
+    public static final String ITEM_NAME3 = "Salami Finocchiona Uncured Piccolo *Special Order";
     public static final String FULLY_ORDER_DELAY_MESSAGE = "Pre-cut items need extra time.";
     public static final String FULLY_ORDER_DELAY = "Your entire order will ship together once pre-cut items are ready.";
     public static final String COMPANY_NAME = "Cheese Importers";
@@ -27,4 +29,6 @@ public class PriceData {
     public static final String ITEM_CODE_AVG = "677499";
     public static final String ITEM_NAME_AVG = "Bacon Wild Boar Slab";
     public static final String MINIMUM_PRICE_ERROR = "exceeded the maximum limit";
+    public static final String SPECIAL_ORDER_NOTE = "*This order includes Special Order items which require additional lead time and may be shipped on a different date. For each Special Order item ordered, we will send a separate order confirmation and invoice to avoid delays shipping the in-stock items. Our customer service associates will contact you with the confirmed shipping dates for Special Order items as soon as possible.";
+    public static final String DISTRIBUTOR_WAGNER = "164948356 - Cut+Dry Agent - Wagner Foodservice";
 }

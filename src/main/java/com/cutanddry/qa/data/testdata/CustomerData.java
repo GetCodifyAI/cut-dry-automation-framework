@@ -3,8 +3,8 @@ package com.cutanddry.qa.data.testdata;
 public class CustomerData {
     public static final String DISTRIBUTOR_NAME = "146572596 - Cut+Dry Agent - John Gross & Co";
     public static final String CUSTOMER_CODE = "11956";
-    public static final String ITEM_CODE = "143210";
-    public static final String ITEM_CODE_2 = "263500";//048604, 143210, 252318
+    public static final String ITEM_CODE = "263500";// 143210
+    public static final String ITEM_CODE_2 = "641563";//048604, 143210, 252318,263500
     public static final String STOCK_AVAILABILITY = "Stock Availability";
     public static final String CURRENT_STOCK = "Current Stock:";
     public static final String ON_ORDER_QTY = "On Order Qty:";
@@ -38,8 +38,16 @@ public class CustomerData {
     public static final String DISTRIBUTOR_HILL_CREST = "96939129 - Cut+Dry Agent - Hillcrest Foodservice";
     public static final String DISTRIBUTOR_HOOK_TO_FORK = "155997318 - Cut+Dry Agent - Hook to Fork";
     public static final String CUSTOMER_HOOK_TO_FORK = "39780";
-    public static final String DISTRIBUTOR_CHEF_KITCHEN = "165144548 - Cut+Dry Agent SKO - Chef’s Kitchen";
+    public static final String DISTRIBUTOR_CHEF_KITCHEN = "Chef’s Kitchen";
     public static final String CUSTOMER_CHEF_KITCHEN = "C1234";
+    public static final String CUSTOMER_CODE3 = "16579";
+    public static final String CUSTOMER_CODE4 = "23445";
+    public static final String DISTRIBUTOR_NAME_IFC_SALESPERSON = "164465588";
+    public static final String DISTRIBUTOR_NAME_IFC_ACCOUNT_RECEIVABLE = "81058255";
+    public static final String CUSTOMER_CODE5 = "15651";
+    public static final String DISTRIBUTOR_BIRITE = "120984267 - Cut+Dry Agent - BiRite Foodservice Distributors";
+    public static final String CUSTOMER_CODE6 = "20220340";
+    public static final String CUSTOMER_CODE7 = "58951";
 
 
 

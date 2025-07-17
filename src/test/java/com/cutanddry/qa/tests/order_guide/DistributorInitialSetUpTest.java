@@ -19,7 +19,8 @@ public class DistributorInitialSetUpTest extends TestBase {
     static String featureName = GatekeeperData.FEATURE_NAME_VOICE_ORDER;
     static String subFeatureName = GatekeeperData.FEATURE_NAME_SUB_ENABLE_DP;
     static String companyId = GatekeeperData.COMPONY_ID;
-    String CustomerCode = "37631";
+    String CustomerCode = "16579";
+    String CustomerCode1 = "37631";
     static String DP = "Independent Foods Co";
 
     @BeforeMethod
@@ -44,6 +45,18 @@ public class DistributorInitialSetUpTest extends TestBase {
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(CustomerCode);
         Customer.SelectCustomer(CustomerCode);
+        Customer.enableCatalogAccess();
+        softAssert.assertTrue(Customer.catalogAccessEnabled(),"Error in catalog access enable displaying");
+        Customer.disableAccHolds();
+        softAssert.assertTrue(Customer.isNoneSelected(),"acc none select error");
+
+        /*Login.switchIntoNewTab();
+        Login.navigateToDistributor();
+        Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");*/
+        Dashboard.navigateToCustomers();
+        Customer.searchCustomerByCode(CustomerCode1);
+        Customer.SelectCustomer(CustomerCode1);
         Customer.enableCatalogAccess();
         softAssert.assertTrue(Customer.catalogAccessEnabled(),"Error in catalog access enable displaying");
         Customer.disableAccHolds();

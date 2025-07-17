@@ -355,14 +355,14 @@ public class Track {
     public static void clickMonitorRouteName(String name)throws InterruptedException{
         trackPage.clickMonitorRouteName(name);
     }
-    public static boolean isCustomerColumnTextDisplayed(String name)throws InterruptedException{
-       return trackPage.isCustomerColumnTextDisplayed(name);
+    public static boolean isCustomerColumnTextDisplayed(String name, String route)throws InterruptedException{
+       return trackPage.isCustomerColumnTextDisplayed(name,route);
     }
-    public static void clickMonitorCustomer(String name)throws InterruptedException{
-        trackPage.clickMonitorCustomer(name);
+    public static void clickMonitorCustomer(String name, String route)throws InterruptedException{
+        trackPage.clickMonitorCustomer(name,route);
     }
-    public static boolean isMonitorCustomerNameDisplayed(String name)throws InterruptedException{
-        return trackPage.isMonitorCustomerNameDisplayed(name);
+    public static boolean isMonitorCustomerNameDisplayed(String name, String route)throws InterruptedException{
+        return trackPage.isMonitorCustomerNameDisplayed(name,route);
     }
     public static void clickCloseCustomerDetails()throws InterruptedException{
         trackPage.clickCloseCustomerDetails();
@@ -370,11 +370,11 @@ public class Track {
     public static boolean isMonitorDateDisplayed(String date)throws InterruptedException{
         return trackPage.isMonitorDateDisplayed(date);
     }
-    public static boolean isOrderIdColumnTextDisplayed(String id)throws InterruptedException{
-        return trackPage.isOrderIdColumnTextDisplayed(id);
+    public static boolean isOrderIdColumnTextDisplayed(String id, String route)throws InterruptedException{
+        return trackPage.isOrderIdColumnTextDisplayed(id, route);
     }
-    public static boolean isCustomerStopColumnTextDisplayed(String STOP)throws InterruptedException{
-        return trackPage.isCustomerStopColumnTextDisplayed(STOP);
+    public static boolean isCustomerStopColumnTextDisplayed(String STOP, String route)throws InterruptedException{
+        return trackPage.isCustomerStopColumnTextDisplayed(STOP, route);
     }
     public static boolean isMonitorCustomerStopDisplayed(String stop)throws InterruptedException{
         return trackPage.isMonitorCustomerStopDisplayed(stop);

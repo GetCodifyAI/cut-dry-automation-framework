@@ -253,4 +253,28 @@ public class Orders {
         return ordersPage.getLastWorkingDateUST();
     }
     public static void clickSaveButton(){ordersPage.clickSaveButton();}
+    public static boolean isEditColumnDisplay(String option){
+        return ordersPage.isEditColumnDisplay(option);
+    }
+    public static void clickEditColumn(String option){
+        ordersPage.clickEditColumn(option);
+    }
+    public static boolean isEditColumnWindowDisplay(String option){
+        return ordersPage.isEditColumnWindowDisplay(option);
+    }
+    public static boolean isNotCustomizeColumnDisplay(String column){
+        return ordersPage.isNotCustomizeColumnDisplay(column);
+    }
+    public static void setCustomizeColumn(boolean column) {
+        ordersPage.setCustomizeColumn(column);
+    }
+    public static void clickUpdateColumn(){
+        ordersPage.clickUpdateColumn();
+    }
+    public static boolean isColumnSettingUpdatePopUpDisplay(){
+        return ordersPage.isColumnSettingUpdatePopUpDisplay();
+    }
+    public static boolean isColumnUpdateDisplay(String column){
+        return ordersPage.isColumnUpdateDisplay(column);
+    }
 }

@@ -1,5 +1,6 @@
 package com.cutanddry.qa.utils;
 
+import com.cutanddry.qa.common.Constants;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -24,19 +25,35 @@ public class TestNGListener implements ITestListener {
     @Override
     public void onTestSuccess(ITestResult result) {
         passedTests++;
-        passedTestCases.add(result.getMethod().getMethodName());
+//        passedTestCases.add(result.getMethod().getMethodName());
+        String methodName = result.getMethod().getMethodName();
+        Object testData = result.getAttribute("testData");
+
+        if (testData != null) {
+            passedTestCases.add(testData.toString()+", ");
+        } else {
+            passedTestCases.add(methodName);
+        }
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
         failedTests++;
-        failedTestCases.add(result.getMethod().getMethodName());
+//        failedTestCases.add(result.getMethod().getMethodName());
+        String methodName = result.getMethod().getMethodName();
+        Object testData = result.getAttribute("testData");
+
+        if (testData != null) {
+            failedTestCases.add(testData.toString()+", ");
+        } else {
+            failedTestCases.add(methodName);
+        }
     }
 
     @Override
     public void onFinish(ITestContext context) {
 //        String environment = System.getProperty("test.env", "uat");
-        SlackNotifier.sendSlackAlert(totalTests, passedTests, failedTests, TEST_ENV, passedTestCases, failedTestCases,PART);
+        SlackNotifier.sendSlackAlert(totalTests, passedTests, failedTests, TEST_ENV, passedTestCases, failedTestCases,PART, Constants.MAIN_URL);
     }
 
     // Implement other ITestListener methods if needed

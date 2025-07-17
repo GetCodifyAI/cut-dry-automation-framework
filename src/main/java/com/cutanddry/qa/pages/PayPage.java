@@ -44,7 +44,7 @@ public class PayPage extends LoginPage{
     By btn_invoiceSendReminders = By.xpath("//button[contains(text(),'Send Reminders')]");
     By txt_invoiceEmailSent = By.xpath("//h2[contains(text(),'Emails Sent!')]");
     By btn_invoiceOk = By.xpath("//button[contains(text(),'OK')]");
-    By lbl_markInvoicePaidPopupTitle = By.xpath("//div[contains(text(),'Are you sure you want to mark this invoice as Paid ?')]");
+    By lbl_markInvoicePaidPopupTitle = By.xpath("//div[contains(text(),'Are you sure you want to mark these invoices as Paid ?')]");
     By btn_markInvoiceYes = By.xpath("//button[contains(text(),'Yes')]");
     By btn_markInvoiceCancel = By.xpath("//button[contains(text(),'Cancel')]");
     By lbl_invoiceCaptureFundTitle = By.xpath("//div[contains(text(),'Are you sure you want capture funds for these invoices?')]");

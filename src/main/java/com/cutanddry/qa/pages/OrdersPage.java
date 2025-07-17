@@ -91,6 +91,13 @@ public class OrdersPage extends LoginPage{
     By btn_continue = By.xpath("//button[@type='submit' and @class='btn btn-primary btn-block' and contains(text(), 'Continue')]");
     By btn_saveCheckIn = By.xpath("//button[contains(text(), 'Save Check-In')]");
     By btn_selectOrderGuide = By.xpath("//div[contains(text(),'Select Order Guide')]/following-sibling::div/div[1]");
+    String btn_editColumn = "//button[text()='OPTION']";
+    String txt_editColumn = "//div[text()='OPTION']";
+    String customizeColumn = "(//span[text()='COLUMN'])[2]/../following-sibling::*[name()='svg' and @data-icon='cdLock']";
+    By sel_customizeColumn = By.xpath("//*[contains(text(),'Cut+Dry Reference')]/preceding-sibling::div//*[name()='svg' and (@data-icon='square-check' or @data-icon='square')]");
+    By btn_updateColumn = By.xpath("//button[text()='Update']");
+    By txt_columnSettingUpdate= By.xpath("//h2[text()='Column settings updated!']");
+    String columnSettingUpdated= "//span[text()='COLUMN']";
 
     public void clickBtnSaveCheckIn(){
         distributorUI.click(btn_saveCheckIn);
@@ -553,6 +560,43 @@ public class OrdersPage extends LoginPage{
     }
     public void selectOrderGuide(){
         distributorUI.click(btn_selectOrderGuide);
+    }
+    public boolean isEditColumnDisplay(String option){
+        return distributorUI.isDisplayed(By.xpath(btn_editColumn.replace("OPTION",option)));
+    }
+    public void clickEditColumn(String option){
+        distributorUI.click(By.xpath(btn_editColumn.replace("OPTION",option)));
+    }
+    public boolean isEditColumnWindowDisplay(String option){
+        return distributorUI.isDisplayed(By.xpath(txt_editColumn.replace("OPTION",option)));
+    }
+    public boolean isNotCustomizeColumnDisplay(String column){
+        return distributorUI.isDisplayed(By.xpath(customizeColumn.replace("COLUMN",column)));
+    }
+    public void setCustomizeColumn(boolean select) {
+        distributorUI.waitForVisibility(sel_customizeColumn);
+        boolean isSelected = distributorUI.isCheckboxBtnSelected(sel_customizeColumn);
+
+        if (select && !isSelected) {
+            distributorUI.click(sel_customizeColumn); // Select the checkbox
+        } else if (!select && isSelected) {
+            distributorUI.click(sel_customizeColumn); // Deselect the checkbox
+        }
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void  clickUpdateColumn(){
+        distributorUI.scrollToElement(btn_updateColumn);
+        distributorUI.click(btn_updateColumn);
+    }
+    public boolean isColumnSettingUpdatePopUpDisplay(){
+        return distributorUI.isDisplayed(txt_columnSettingUpdate);
+    }
+    public boolean isColumnUpdateDisplay(String column){
+        return distributorUI.isDisplayed(By.xpath(columnSettingUpdated.replace("COLUMN",column)));
     }
 
 

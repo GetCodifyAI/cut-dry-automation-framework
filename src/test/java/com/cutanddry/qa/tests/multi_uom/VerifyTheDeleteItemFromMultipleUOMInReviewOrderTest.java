@@ -20,8 +20,8 @@ public class VerifyTheDeleteItemFromMultipleUOMInReviewOrderTest extends TestBas
     SoftAssert softAssert;
     static User user;
     static String customerId = CatalogData.CUSTOMER_ID;
-    String searchItemCode = CatalogData.ITEM_CODE;
-    String itemName = CatalogData.ITEM_NAME;
+    String searchItemCode = CatalogData.ITEM_CODE_2;
+    String itemName = CatalogData.ITEM_NAME_SIMILAR_ITEM_2;
     static double itemOGPriceUOM1 ,itemOGPriceUOM2,totalOGItemPrice1,totalItemPriceReviewOrder;
     String uom1 = CatalogData.MULTI_UOM_1;
     String uom2 = CatalogData.MULTI_UOM_2;
@@ -48,6 +48,7 @@ public class VerifyTheDeleteItemFromMultipleUOMInReviewOrderTest extends TestBas
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId);
         Customer.clickOnItemOrderGuideDropDown(DistributorOrderData.DEFAULT_ORDER_GUIDE_TYPE);
+        Customer.searchItemOnOrderGuide(searchItemCode);
         Catalog.ClickOnMultiUomDropDownOG(searchItemCode);
         Catalog.clickOGAddToCartPlusIcon(1,searchItemCode, uom1);
         Catalog.clickOGAddToCartPlusIcon(1,searchItemCode, uom2);

@@ -43,8 +43,8 @@ public class InternalToolsPage extends LoginPage {
     By deleteEmailNotificationToggleStable = By.xpath("//label[contains(text(), 'Customer User Deletion Email Notifications:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By deleteEmailNotificationToggleStable1 = By.xpath("//label[contains(text(), 'Customer User Deletion Email Notifications:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     By btn_notificationSave = By.xpath("//h5[text()='Notifications']/../following-sibling::div/button[text()='Save']");
-    By enableSponsoredProductAdvertisementsToggle = By.xpath("//*[contains(text(), 'Enable Sponsored Product Advertisements')]/../following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
-    By enableSponsoredProductAdvertisementsToggle1 = By.xpath("//*[contains(text(), 'Enable Sponsored Product Advertisements')]/../following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By enableSponsoredProductAdvertisementsToggle = By.xpath("//*[contains(text(), 'Enable Cut+Dry Sponsored Product Advertisements')]/../following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By enableSponsoredProductAdvertisementsToggle1 = By.xpath("//*[contains(text(), 'Enable Cut+Dry Sponsored Product Advertisements')]/../following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     String InternalToolCompanyEditDetailsBtn = "//tr[td[contains(text(),'NAME')]]//a[contains(text(),'Edit Details')]";
     By restrictSpotPricesToggleStable = By.xpath("//div[contains(text(), 'Restrict spot prices below minimum product price')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By restrictSpotPricesToggleStable1 = By.xpath("//div[contains(text(), 'Restrict spot prices below minimum product price')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
@@ -55,6 +55,29 @@ public class InternalToolsPage extends LoginPage {
     By addDisableOperatorCatalog = By.xpath("//div[contains(text(), 'Select operators to disable catalog')]/following-sibling::div/div");
     String catalogDisableRestaurantDelete = "//div[contains(text(), 'Select operators to disable catalog')]/following-sibling::div//div[text()='NAME']/following-sibling::div";
     String catalogDisableRestaurant = "//div[contains(text(), 'Select operators to disable catalog')]/following-sibling::div//div[text()='NAME']";
+    By displayMarginOnPortalToggleStable = By.xpath("//div[contains(text(), 'Display margin on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By displayMarginOnPortalToggleStable1 = By.xpath("//div[contains(text(), 'Display margin on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By restrictMarginOnPortalToggleStable = By.xpath("//div[contains(text(), 'Restrict margin on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By restrictMarginOnPortalToggleStable1 = By.xpath("//div[contains(text(), 'Restrict margin on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By spotPricingOnPortalToggleStable = By.xpath("//div[contains(text(), 'Spot pricing on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By spotPricingOnPortalToggleStable1 = By.xpath("//div[contains(text(), 'Spot pricing on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By displayPurchaseHistoryToggleStable = By.xpath("//div[contains(text(), 'Display Purchase History')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By displayPurchaseHistoryToggleStable1 = By.xpath("//div[contains(text(), 'Display Purchase History')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By displayPurchasePriceToggleStable = By.xpath("//div[contains(text(), 'Display Purchase Price on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By displayPurchasePriceToggleStable1 = By.xpath("//div[contains(text(), 'Display Purchase Price on Portal')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By specialItemsDropDown = By.xpath("(//label[contains(text(), 'Special items')]/following-sibling::div//div)[2]");
+    String specialItemsDropDownOption = "(//div[text()='OPTION'])[last()]";
+    By hideOutOfStockToggleStable = By.xpath("//div[contains(text(), 'Hide out of stock label on Supplier Portal:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By hideOutOfStockToggleStable1 = By.xpath("//div[contains(text(), 'Hide out of stock label on Supplier Portal:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By simpleListViewDropDown = By.xpath("//div[text()='Simple List View:']/following-sibling::div/div");
+    String simpleListViewDropDownOption = "(//div[text()='TYPE'])[last()]";
+    By fetchPricesFromOrderForEditOrderFlowToggleStable = By.xpath("//div[contains(text(), 'Fetch prices from order for edit order flow:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By fetchPricesFromOrderForEditOrderFlowToggleStable1 = By.xpath("//div[contains(text(), 'Fetch prices from order for edit order flow:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+
+
+
+
+
 
 
 
@@ -376,6 +399,92 @@ public class InternalToolsPage extends LoginPage {
     public boolean isCatalogDisableRestaurantDisplay(String name){
         return distributorUI.isDisplayed(By.xpath(catalogDisableRestaurant.replace("NAME", name)));
     }
+    public void displayMarginOnPortalToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(displayMarginOnPortalToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(displayMarginOnPortalToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(displayMarginOnPortalToggleStable1);
+        }
+    }
+    public void restrictMarginOnPortalToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(restrictMarginOnPortalToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(restrictMarginOnPortalToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(restrictMarginOnPortalToggleStable1);
+        }
+    }
+    public void spotPricingOnPortalToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(spotPricingOnPortalToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(spotPricingOnPortalToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(spotPricingOnPortalToggleStable1);
+        }
+    }
+    public void displayPurchaseHistoryToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(displayPurchaseHistoryToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(displayPurchaseHistoryToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(displayPurchaseHistoryToggleStable1);
+        }
+    }
+    public void displayPurchasePriceToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(displayPurchasePriceToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(displayPurchasePriceToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(displayPurchasePriceToggleStable1);
+        }
+    }
+    public void selectSpecialItemsDropdown(String option){
+        distributorUI.click(specialItemsDropDown);
+        distributorUI.click(By.xpath(specialItemsDropDownOption.replace("OPTION",option)));
+    }
+    public void clickHideOutOfStockToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(hideOutOfStockToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(hideOutOfStockToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(hideOutOfStockToggleStable1);
+        }
+    }
+    public void clickOnSimpleListViewDropdown(String type){
+        distributorUI.click(simpleListViewDropDown);
+        distributorUI.click(By.xpath(simpleListViewDropDownOption.replace("TYPE",type)));
+    }
+    public void fetchPricesFromOrderForEditOrderFlowToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(fetchPricesFromOrderForEditOrderFlowToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(fetchPricesFromOrderForEditOrderFlowToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(fetchPricesFromOrderForEditOrderFlowToggleStable1);
+        }
+    }
+
 
 
 

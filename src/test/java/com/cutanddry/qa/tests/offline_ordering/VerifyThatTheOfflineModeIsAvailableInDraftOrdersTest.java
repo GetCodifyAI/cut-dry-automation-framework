@@ -58,7 +58,7 @@ public class VerifyThatTheOfflineModeIsAvailableInDraftOrdersTest extends TestBa
         Customer.clickSwitchToOfflineMode();
         softAssert.assertTrue(Customer.isOfflineModePopUpDisplay(),"offline mode pop up error");
         Customer.clickActiveOfflineMode();
-        Thread.sleep(3000);
+        Thread.sleep(10000);
 
         Customer.increaseFirstRowQtyCustom(1);
         softAssert.assertEquals(Customer.getItemPriceOnCheckoutButtonViaPDP(),itemPrice*2,"The item has not been selected.");

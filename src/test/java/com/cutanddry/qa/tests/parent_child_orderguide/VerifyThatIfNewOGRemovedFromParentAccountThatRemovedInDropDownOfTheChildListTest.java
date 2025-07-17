@@ -20,7 +20,7 @@ public class VerifyThatIfNewOGRemovedFromParentAccountThatRemovedInDropDownOfThe
     static String DP = ParentChildOGData.DISTRIBUTOR_INDIANHEAD;
     static String customerId = ParentChildOGData.CUSTOMER_ID_INDIANHEAD;
     static String status = "Parent Account";
-    static String OrderGuideName = ParentChildOGData.ORDER_GUIDE_NAME_2;
+    static String OrderGuideName = ParentChildOGData.ORDER_GUIDE_NAME_3;
     static String itemName = "Appetizer Egg Roll Vegetable";
     static String[] childAccounts = { "59195", "59130", "53175", "33602", "33601" };
     static String childSettingMessage = "Child account settings updated successfully";

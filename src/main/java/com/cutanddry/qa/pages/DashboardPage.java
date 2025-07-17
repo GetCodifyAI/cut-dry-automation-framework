@@ -18,7 +18,7 @@ public class DashboardPage extends LoginPage{
     By txt_home = By.xpath("//li[contains(text(),'Home')]");
     By btn_orderDesk = By.xpath("//a[contains(text(),'Order Desk')]");
     By btn_viewOrders = By.xpath("//a[contains(text(),'Orders')]");
-    By txt_all = By.xpath("//div[text()='All']");
+    By txt_all = By.xpath("//div[text()='All Salespersons']");
     By txt_lastDays = By.xpath("(//div[text()='Last 30 Days'])[1]");
     By lbl_salespersonDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[1]");
     By lbl_durationDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[2]");
@@ -67,6 +67,7 @@ public class DashboardPage extends LoginPage{
     By locationOption = By.xpath("//div[text()='Place Order']/following-sibling::*//div[contains(@id,'react-select') and contains(text(), 'All Locations')]");
     By btn_order = By.xpath("//a[@data-tip='Place Order']");
     By orderIndicator = By.xpath("//a[contains(text(),'Order Desk')]/div/span");
+    By txt_endlessAisle  =By.xpath("//div[text()='Endless Aisle Catalog']");
 
 
     public boolean isDashboardTextDisplayed(){
@@ -333,6 +334,9 @@ public class DashboardPage extends LoginPage{
     }
     public boolean isChatSectionDisplay()throws InterruptedException{
         return distributorUI.isDisplayed(btn_chat);
+    }
+    public boolean isEndlessAisleCatalogDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_endlessAisle);
     }
 
 }

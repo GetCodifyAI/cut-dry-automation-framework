@@ -624,6 +624,33 @@ public class Catalog {
     public static boolean isMeasureOptionDisplay(String option){
         return catalogPage.isMeasureOptionDisplay(option);
     }
+    public static boolean isLastOrderMarginDisplay(String margin){
+        return catalogPage.isLastOrderMarginDisplay(margin);
+    }
+    public static boolean isMarginColumnDisplay(String margin){
+        return catalogPage.isMarginColumnDisplay(margin);
+    }
+    public static boolean isPriceColumnDisplay(String price){
+        return catalogPage.isPriceColumnDisplay(price);
+    }
+    public static boolean isLastOrderPriceDisplay(String price){
+        return catalogPage.isLastOrderPriceDisplay(price);
+    }
+    public static boolean isCashAndCarryAllowedDisplay(String option){
+        return catalogPage.isCashAndCarryAllowedDisplay(option);
+    }
+    public static boolean isActionableOverviewDisplay(){
+        return catalogPage.isActionableOverviewDisplay();
+    }
+    public static boolean isNewProductDisplay(){
+        return catalogPage.isNewProductDisplay();
+    }
+    public static void clickOnSpecialItem(String status){
+        catalogPage.clickOnSpecialItem(status);
+    }
+    public static boolean isSpecialItemDropDownDisplay(){
+        return catalogPage.isSpecialItemDropDownDisplay();
+    }
 
 
 }
