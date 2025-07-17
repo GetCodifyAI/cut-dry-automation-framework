@@ -143,10 +143,12 @@ public class SettingsPage extends LoginPage{
     By txt_h2Success = By.xpath("//h2[text()='Success']");
     String detailsARContacts = "//div[contains(text(),'CONTACTS')]//*[name()='svg' and @data-icon='circle-info']";
     String messageContacts = "//div[contains(text(),'MESSAGE')]";
-    By lbl_arContact = By.xpath("//div[contains(text(),'Customer-Facing Invoice Email')]/../following-sibling::div[1]//input");
-    By lbl_technicalContact = By.xpath("//div[contains(text(),'Technical Contacts')]/../following-sibling::div[1]//input");
-    By lbl_arContactClear = By.xpath("//div[contains(text(),'Customer-Facing Invoice Email')]/../following-sibling::div[1]//button");
+//    By lbl_arContact = By.xpath("//div[contains(text(),'Customer-Facing Invoice Email')]/../following-sibling::div[1]//input");
+//    By lbl_technicalContact = By.xpath("//div[contains(text(),'Technical Contacts')]/../following-sibling::div[1]//input");
+    By lbl_arContactClear = By.xpath("//div[contains(text(),'AR Contact')]/../following-sibling::div[1]//button");
     By lbl_technicalContactClear = By.xpath("//div[contains(text(),'Technical Contacts')]/../following-sibling::div[1]//button");
+    By lbl_arContact = By.xpath("//div[contains(text(),'AR Contact')]/../following-sibling::div[1]//input[contains(@placeholder,'email')]");
+    By lbl_technicalContact = By.xpath("//div[contains(text(),'Technical Contacts')]/../following-sibling::div[1]//input[contains(@placeholder,'email')]");
     String invalidContactPopUp = "//h2[text()='MESSAGE']";
     By txt_customerRestriction =By.xpath("//div[contains(text(),'Customer Restrictions')]");
     By sponsorProdAdsToggle = By.xpath("//div[contains(text(), 'Allow Sponsored Product Advertisements')]/../../following-sibling::div//div[@class='react-switch-bg']");
@@ -932,13 +934,17 @@ public class SettingsPage extends LoginPage{
         return distributorUI.isDisplayed(By.xpath(messageContacts.replace("MESSAGE",message)));
     }
     public void enterEmailToARContact(String email){
-        distributorUI.clickUsingJavaScript(lbl_arContactClear);
+//        distributorUI.clickUsingJavaScript(lbl_arContactClear);
+        distributorUI.doubleClick(lbl_arContactClear);
+//        distributorUI.clear(lbl_arContact);
         if (email != null && !email.isEmpty()) {  // Only send keys if email is provided
             distributorUI.sendKeys(lbl_arContact, email);
         }
     }
     public void enterEmailToTechnicalContact(String email){
-        distributorUI.click(lbl_technicalContactClear);
+//        distributorUI.click(lbl_technicalContactClear);
+        distributorUI.doubleClick(lbl_technicalContactClear);
+//        distributorUI.clear(lbl_technicalContact);
         if (email != null && !email.isEmpty()) {  // Only send keys if email is provided
             distributorUI.sendKeys(lbl_technicalContact, email);
         }
