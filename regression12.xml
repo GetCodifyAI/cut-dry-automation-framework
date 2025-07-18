@@ -70,6 +70,9 @@
 
             <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingNormalOrderAndEditItFromPortalWhenDisableFetchPricesTest"/>
             <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingNormalOrderAndEditItFromPortalWhenEnableFetchPricesTest"/>
+
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyQuickAddViewAndSimpleListViewFeaturesWhenEnabledFromSupplierConfigTest"/>
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyQuickAddViewAndSimpleListViewFeaturesWhenEnabledFromSupplierConfigDpAndOpTest"/>
         </classes>
     </test>
 </suite>
