@@ -5,19 +5,21 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments">
           <elementProp name="csvFilePath" elementType="Argument">
             <stringProp name="Argument.name">csvFilePath</stringProp>
-            <stringProp name="Argument.value">/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Flow/Reports/PDP_Flow_Load_Times.csv</stringProp>
+            <stringProp name="Argument.value">results/PDP_Flow_Load_Times.csv</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc"></stringProp>
           </elementProp>
           <elementProp name="chromeDriverPath" elementType="Argument">
             <stringProp name="Argument.name">chromeDriverPath</stringProp>
-            <stringProp name="Argument.value">/Users/ahsan/Documents/Official_Automation_Work/Jmeter_Workspace/Selenium_Jmeter/chromedriver</stringProp>
+            <stringProp name="Argument.value">/usr/local/bin/chromedriver</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc"></stringProp>
           </elementProp>
@@ -29,7 +31,7 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - PDP">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - PDP" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -40,7 +42,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler">
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler" enabled="true">
           <stringProp name="scriptLanguage">groovy</stringProp>
           <stringProp name="parameters"></stringProp>
           <stringProp name="filename"></stringProp>
@@ -75,7 +77,7 @@ if (csvFile.exists()) {
           </JSR223PostProcessor>
           <hashTree/>
         </hashTree>
-        <com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig guiclass="com.googlecode.jmeter.plugins.webdriver.config.gui.ChromeDriverConfigGui" testclass="com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig" testname="Chrome Driver">
+        <com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig guiclass="com.googlecode.jmeter.plugins.webdriver.config.gui.ChromeDriverConfigGui" testclass="com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig" testname="Chrome Driver" enabled="true">
           <boolProp name="WebDriverConfig.acceptinsecurecerts">false</boolProp>
           <boolProp name="WebDriverConfig.reset_per_iteration">false</boolProp>
           <stringProp name="WebDriverConfig.driver_path">${chromeDriverPath}</stringProp>
@@ -101,9 +103,9 @@ if (csvFile.exists()) {
           <stringProp name="WebDriverConfig.custom_capabilites"></stringProp>
         </com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig>
         <hashTree/>
-        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Once Only Controller"/>
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Once Only Controller" enabled="true"/>
         <hashTree>
-          <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Login the DP">
+          <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Login the DP" enabled="true">
             <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.support.ui.ExpectedConditions
@@ -140,7 +142,7 @@ WDS.vars.put(&quot;csrfToken&quot;, csrfToken != null ? csrfToken : &quot;&quot;
             <stringProp name="WebDriverSampler.language">groovy</stringProp>
           </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
           <hashTree>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor">
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
               <stringProp name="cacheKey">true</stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
@@ -187,12 +189,12 @@ WDS.vars.put(&quot;csrfToken&quot;, csrfToken != null ? csrfToken : &quot;&quot;
           </collectionProp>
         </HeaderManager>
         <hashTree/>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Load the all customer&apos;s page">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Load the all customer&apos;s page" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-382 [SupplierPortalCustomersWithSearchQuery]">
+          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-382 [SupplierPortalCustomersWithSearchQuery]" enabled="true">
             <stringProp name="HTTPSampler.domain">supplier.cutanddry.com</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
@@ -3317,7 +3319,7 @@ WDS.vars.put(&quot;csrfToken&quot;, csrfToken != null ? csrfToken : &quot;&quot;
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-423[orderGuidesForSPVendorLocation]">
+          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-423[orderGuidesForSPVendorLocation]" enabled="true">
             <stringProp name="HTTPSampler.domain">supplier.cutanddry.com</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
@@ -3445,7 +3447,7 @@ WDS.vars.put(&quot;csrfToken&quot;, csrfToken != null ? csrfToken : &quot;&quot;
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor">
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
               <stringProp name="cacheKey">true</stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
@@ -3459,12 +3461,12 @@ WDS.vars.put(&quot;csrfToken&quot;, csrfToken != null ? csrfToken : &quot;&quot;
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Seach specific customer">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Seach specific customer" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-424 [SupplierPortalCustomersWithSearchQuery]">
+          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-424 [SupplierPortalCustomersWithSearchQuery]" enabled="true">
             <stringProp name="HTTPSampler.domain">supplier.cutanddry.com</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
@@ -3622,7 +3624,7 @@ WDS.vars.put(&quot;csrfToken&quot;, csrfToken != null ? csrfToken : &quot;&quot;
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-425[orderGuidesForSPVendorLocation]">
+          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-425[orderGuidesForSPVendorLocation]" enabled="true">
             <stringProp name="HTTPSampler.domain">supplier.cutanddry.com</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
@@ -3764,12 +3766,12 @@ WDS.vars.put(&quot;csrfToken&quot;, csrfToken != null ? csrfToken : &quot;&quot;
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Load the Order Guide">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Load the Order Guide" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-434 [ordersForDate]">
+          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-434 [ordersForDate]" enabled="true">
             <stringProp name="HTTPSampler.domain">supplier.cutanddry.com</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
@@ -3897,7 +3899,7 @@ WDS.vars.put(&quot;csrfToken&quot;, csrfToken != null ? csrfToken : &quot;&quot;
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-437 [singleDraft]">
+          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-437 [singleDraft]" enabled="true">
             <stringProp name="HTTPSampler.domain">supplier.cutanddry.com</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
@@ -4532,7 +4534,7 @@ fragment DraftApprovalData on Draft {
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-436 [ordersForDate]">
+          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-436 [ordersForDate]" enabled="true">
             <stringProp name="TestPlan.comments">Update the data as current date or future date like within a month</stringProp>
             <stringProp name="HTTPSampler.domain">supplier.cutanddry.com</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
@@ -9870,7 +9872,7 @@ fragment RebateConfigsFragment on CanonicalProduct {
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-478 [GateKeeperQuery]">
+          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-478 [GateKeeperQuery]" enabled="true">
             <stringProp name="HTTPSampler.domain">supplier.cutanddry.com</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
@@ -9994,7 +9996,7 @@ fragment RebateConfigsFragment on CanonicalProduct {
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Load the Catalog">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Load the Catalog" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
@@ -12839,7 +12841,7 @@ fragment InstacartAdCardConfigFragment on CanonicalProduct {
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-546 [SuggestiveSalesConfigQuery]">
+          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-546 [SuggestiveSalesConfigQuery]" enabled="true">
             <stringProp name="HTTPSampler.domain">supplier.cutanddry.com</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
@@ -13327,7 +13329,7 @@ fragment RebateConfigsFragment on CanonicalProduct {
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Load the PDP">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Load the PDP" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
@@ -17276,7 +17278,7 @@ fragment RebateConfigsFragment on CanonicalProduct {
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-65 [ItemPurchaseHistoryQuery]">
+          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-65 [ItemPurchaseHistoryQuery]" enabled="true">
             <stringProp name="HTTPSampler.domain">supplier.cutanddry.com</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
@@ -17413,7 +17415,7 @@ fragment RebateConfigsFragment on CanonicalProduct {
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Add to Cart">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Add to Cart" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
@@ -20160,7 +20162,7 @@ fragment RebateConfigsFragment on CanonicalProduct {
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-116 [draftDeliveryFree]">
+          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-116 [draftDeliveryFree]" enabled="true">
             <stringProp name="HTTPSampler.domain">supplier.cutanddry.com</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
@@ -20284,7 +20286,7 @@ fragment RebateConfigsFragment on CanonicalProduct {
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Check Out">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Check Out" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
@@ -22198,7 +22200,7 @@ fragment RebateConfigsFragment on CanonicalProduct {
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor">
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
               <stringProp name="cacheKey">true</stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
@@ -22638,7 +22640,7 @@ fragment RebateConfigsFragment on CanonicalProduct {
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-220 [SupplierPortalCustomersWithSearchQuery]">
+          <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="/GraphQLController-220 [SupplierPortalCustomersWithSearchQuery]" enabled="true">
             <stringProp name="HTTPSampler.domain">supplier.cutanddry.com</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
@@ -22808,7 +22810,7 @@ fragment RebateConfigsFragment on CanonicalProduct {
             </JSR223PostProcessor>
             <hashTree/>
           </hashTree>
-          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor">
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
             <stringProp name="cacheKey">true</stringProp>
             <stringProp name="filename"></stringProp>
             <stringProp name="parameters"></stringProp>
@@ -22818,7 +22820,7 @@ props.put(&quot;thread1.lastTxn.done&quot;, &quot;true&quot;)</stringProp>
           </JSR223PostProcessor>
           <hashTree/>
         </hashTree>
-        <JSR223Listener guiclass="TestBeanGUI" testclass="JSR223Listener" testname="Update the reposnse time into CSV file">
+        <JSR223Listener guiclass="TestBeanGUI" testclass="JSR223Listener" testname="Update the reposnse time into CSV file" enabled="true">
           <stringProp name="cacheKey">true</stringProp>
           <stringProp name="filename"></stringProp>
           <stringProp name="parameters"></stringProp>
@@ -22858,7 +22860,7 @@ outFile.withWriterAppend(&apos;UTF-8&apos;) { writer -&gt;
           <stringProp name="scriptLanguage">groovy</stringProp>
         </JSR223Listener>
         <hashTree/>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -22895,7 +22897,7 @@ outFile.withWriterAppend(&apos;UTF-8&apos;) { writer -&gt;
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -22932,7 +22934,7 @@ outFile.withWriterAppend(&apos;UTF-8&apos;) { writer -&gt;
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -22969,7 +22971,7 @@ outFile.withWriterAppend(&apos;UTF-8&apos;) { writer -&gt;
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller">
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
           <stringProp name="IfController.condition">${__groovy(props.get(&quot;thread1.lastTxn.done&quot;) == &quot;true&quot;)}</stringProp>
           <boolProp name="IfController.evaluateAll">false</boolProp>
           <boolProp name="IfController.useExpression">true</boolProp>
@@ -23050,7 +23052,7 @@ vars.put(&quot;emailBody&quot;, htmlRows.toString())</stringProp>
             <stringProp name="scriptLanguage">groovy</stringProp>
           </JSR223Sampler>
           <hashTree/>
-          <SmtpSampler guiclass="SmtpSamplerGui" testclass="SmtpSampler" testname="Trigger Email">
+          <SmtpSampler guiclass="SmtpSamplerGui" testclass="SmtpSampler" testname="Trigger Email" enabled="true">
             <stringProp name="TestPlan.comments">Outlook: smtp.office365.com/Yahoo: smtp.mail.yahoo.com -- 587 (for TLS)/465 (for SSL)/25 (for non-secure, not recommended)</stringProp>
             <stringProp name="SMTPSampler.server">smtp.gmail.com</stringProp>
             <stringProp name="SMTPSampler.serverPort">465</stringProp>
@@ -23136,7 +23138,7 @@ vars.put(&quot;emailBody&quot;, htmlRows.toString())</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Verify the 1st Thread status">
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Verify the 1st Thread status" enabled="true">
           <stringProp name="scriptLanguage">groovy</stringProp>
           <stringProp name="parameters"></stringProp>
           <stringProp name="filename"></stringProp>
@@ -23148,7 +23150,7 @@ ctx.getEngine().stopTest()
 }</stringProp>
         </JSR223PreProcessor>
         <hashTree/>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Generate the mail body">
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Generate the mail body" enabled="true">
           <stringProp name="cacheKey">true</stringProp>
           <stringProp name="filename"></stringProp>
           <stringProp name="parameters"></stringProp>
@@ -23211,7 +23213,7 @@ vars.put(&quot;emailBody&quot;, htmlRows.toString())</stringProp>
           <stringProp name="scriptLanguage">groovy</stringProp>
         </JSR223Sampler>
         <hashTree/>
-        <SmtpSampler guiclass="SmtpSamplerGui" testclass="SmtpSampler" testname="Trigger Email">
+        <SmtpSampler guiclass="SmtpSamplerGui" testclass="SmtpSampler" testname="Trigger Email" enabled="true">
           <stringProp name="TestPlan.comments">Outlook: smtp.office365.com/Yahoo: smtp.mail.yahoo.com -- 587 (for TLS)/465 (for SSL)/25 (for non-secure, not recommended)</stringProp>
           <stringProp name="SMTPSampler.server">smtp.gmail.com</stringProp>
           <stringProp name="SMTPSampler.serverPort">465</stringProp>
