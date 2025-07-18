@@ -76,4 +76,3 @@ public class Constants {
         return CONFIG_SUPPLIER;
     }
 }
-
