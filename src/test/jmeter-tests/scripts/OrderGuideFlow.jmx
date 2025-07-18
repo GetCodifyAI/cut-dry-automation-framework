@@ -5,6 +5,8 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
@@ -25923,15 +25925,15 @@ vars.put(&quot;emailBody&quot;, htmlRows.toString())</stringProp>
             <stringProp name="scriptLanguage">groovy</stringProp>
           </JSR223Sampler>
           <hashTree/>
-          <SmtpSampler guiclass="SmtpSamplerGui" testclass="SmtpSampler" testname="Trigger Email" enabled="true">
+          <SmtpSampler guiclass="SmtpSamplerGui" testclass="SmtpSampler" testname="Trigger Email">
             <stringProp name="TestPlan.comments">Outlook: smtp.office365.com/Yahoo: smtp.mail.yahoo.com -- 587 (for TLS)/465 (for SSL)/25 (for non-secure, not recommended)</stringProp>
             <stringProp name="SMTPSampler.server">smtp.gmail.com</stringProp>
             <stringProp name="SMTPSampler.serverPort">465</stringProp>
             <stringProp name="SMTPSampler.mailFrom">qereports@cutanddry.com</stringProp>
             <stringProp name="SMTPSampler.replyTo"></stringProp>
-            <stringProp name="SMTPSampler.receiverTo">ahsan@cutanddry.com</stringProp>
-            <stringProp name="SMTPSampler.receiverCC">ahsan@cutanddry.com</stringProp>
-            <stringProp name="SMTPSampler.receiverBCC"></stringProp>
+            <stringProp name="SMTPSampler.receiverTo">tharaka@cutanddry.com</stringProp>
+            <stringProp name="SMTPSampler.receiverCC">viranga@cutanddry.com</stringProp>
+            <stringProp name="SMTPSampler.receiverBCC">ahsan@cutanddry.com</stringProp>
             <stringProp name="SMTPSampler.subject">[ORDER GUIDE] Automated Report – Order Flow Load Time Metrics - ${__time(MM/dd/yyyy,)}</stringProp>
             <stringProp name="SMTPSampler.suppressSubject">false</stringProp>
             <stringProp name="SMTPSampler.include_timestamp">false</stringProp>
@@ -25946,7 +25948,7 @@ vars.put(&quot;emailBody&quot;, htmlRows.toString())</stringProp>
     &lt;h2 style=&quot;font-size: 17pt;&quot;&gt;2. Performance Load Time Testing&lt;/h2&gt;
 
     &lt;h3 style=&quot;font-size: 16pt;&quot;&gt;Objective&lt;/h3&gt;
-    &lt;p style=&quot;font-size: 12pt;&quot;&gt;To measure the response time of the IFC distributor’s order guide order flow.&lt;/p&gt;
+    &lt;p style=&quot;font-size: 12pt;&quot;&gt;To measure the response time of the IFC distributor’s ORDER GUIDE order flow.&lt;/p&gt;
 
     &lt;h3 style=&quot;font-size: 16pt;&quot;&gt;Test Environment&lt;/h3&gt;
     &lt;ul&gt;
