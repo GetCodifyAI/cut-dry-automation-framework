@@ -73,6 +73,12 @@ public class InternalToolsPage extends LoginPage {
     String simpleListViewDropDownOption = "(//div[text()='TYPE'])[last()]";
     By fetchPricesFromOrderForEditOrderFlowToggleStable = By.xpath("//div[contains(text(), 'Fetch prices from order for edit order flow:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By fetchPricesFromOrderForEditOrderFlowToggleStable1 = By.xpath("//div[contains(text(), 'Fetch prices from order for edit order flow:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By quickAddViewDropDown = By.xpath("//div[text()='Quick Add View:']/following-sibling::div/div");
+    String quickAddViewDropDownOption = "(//div[text()='TYPE'])[last()]";
+    By defaultViewForOperatorDropDown = By.xpath("Default View for Operators:']/following-sibling::div/div");
+    String defaultViewForOperatorDropDownOption = "(//div[text()='TYPE'])[last()]";
+    By defaultViewForPortalUsersDropDown = By.xpath("//div[text()='Default View for Operators:']/following-sibling::div/div");
+    String defaultViewForPortalUsersDropDownOption = "(//div[text()='TYPE'])[last()]";
 
 
 
@@ -483,6 +489,18 @@ public class InternalToolsPage extends LoginPage {
         } else if (!enable && isEnabled) {
             distributorUI.clickWithScrollAndHover(fetchPricesFromOrderForEditOrderFlowToggleStable1);
         }
+    }
+    public void clickOnQuickAddViewDropDown(String type){
+        distributorUI.click(quickAddViewDropDown);
+        distributorUI.click(By.xpath(quickAddViewDropDownOption.replace("TYPE",type)));
+    }
+    public void clickOnDefaultViewForOperatorDropDown(String type){
+        distributorUI.click(defaultViewForOperatorDropDown);
+        distributorUI.click(By.xpath(defaultViewForOperatorDropDownOption.replace("TYPE",type)));
+    }
+    public void clickOnDefaultViewForPortalUsersDropDown(String type){
+        distributorUI.click(defaultViewForPortalUsersDropDown);
+        distributorUI.click(By.xpath(defaultViewForPortalUsersDropDownOption.replace("TYPE",type)));
     }
 
 

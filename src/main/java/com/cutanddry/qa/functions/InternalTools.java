@@ -228,4 +228,13 @@ public class InternalTools {
     public static void fetchPricesFromOrderForEditOrderFlowToggle(boolean status){
         internalToolsPage.fetchPricesFromOrderForEditOrderFlowToggle(status);
     }
+    public static void clickOnQuickAddViewDropDown(String type){
+        internalToolsPage.clickOnQuickAddViewDropDown(type);
+    }
+    public static void clickOnDefaultViewForOperatorDropDown(String type){
+        internalToolsPage.clickOnDefaultViewForOperatorDropDown(type);
+    }
+    public static void clickOnDefaultViewForPortalUsersDropDown(String type){
+        internalToolsPage.clickOnDefaultViewForPortalUsersDropDown(type);
+    }
 }

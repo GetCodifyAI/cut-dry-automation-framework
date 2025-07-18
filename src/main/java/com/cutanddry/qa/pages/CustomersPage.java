@@ -817,6 +817,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By addItemRestrictionDropDown = By.xpath("//label[contains(text(), 'Add Items Restriction')]/following-sibling::div");
     String addItemRestrictionDropDownOption = "(//div[text()='OPTION'])[last()]";
     By poundPriceStable = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]/div/div/div/div)[1]");
+    String quantityReviewPage = "//td[text()='CODE']/following-sibling::*//input";
+    By dropdown_option_OrderGuideView = By.xpath("//div[text()='Order Guide View']");
+    String quantitySimpleListView = "//span[text()='CODE']/../following-sibling::*//input";
+
 
 
 
@@ -4806,6 +4810,22 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public String getPoundPriceStable(){
         return distributorUI.getText(poundPriceStable);
+    }
+    public String getItemQuantityReviewPage(String code){
+        distributorUI.waitForVisibility(By.xpath(quantityReviewPage.replace("CODE",code)));
+        return distributorUI.getText(By.xpath(quantityReviewPage.replace("CODE",code)), "value");
+    }
+    public void clickOrderGuideView(){
+        distributorUI.waitForClickability(dropdown_option_OrderGuideView);
+        distributorUI.click(dropdown_option_OrderGuideView);
+    }
+    public String getItemQuantitySimpleListView(String code){
+        distributorUI.waitForVisibility(By.xpath(quantitySimpleListView.replace("CODE",code)));
+        return distributorUI.getText(By.xpath(quantitySimpleListView.replace("CODE",code)), "value");
+    }
+    public void clearSearchField()throws InterruptedException{
+        distributorUI.click(icon_deleteSearchItem);
+        distributorUI.waitForCustom(3000);
     }
 
 
