@@ -2872,6 +2872,18 @@ public class Customer {
     public static String getPoundPriceStable() throws InterruptedException {
         return customersPage.getPoundPriceStable().trim();
     }
+    public static String getItemQuantityReviewPage(String code) throws InterruptedException {
+        return customersPage.getItemQuantityReviewPage(code);
+    }
+    public static void clickOrderGuideView(){
+        customersPage.clickOrderGuideView();
+    }
+    public static String getItemQuantitySimpleListView(String code) throws InterruptedException {
+        return customersPage.getItemQuantitySimpleListView(code);
+    }
+    public static void clearSearchField()throws InterruptedException{
+        customersPage.clearSearchField();
+    }
 
 
 
