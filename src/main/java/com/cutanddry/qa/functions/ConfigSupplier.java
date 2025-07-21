@@ -39,4 +39,39 @@ public class ConfigSupplier {
     public static void clickOnOrderSettingSave() throws InterruptedException {
         configPage.saveOrderSettingChanges();
     }
+
+    public static void enableDefaultViewPortalAsSimpleList() throws InterruptedException {
+        if (!configPage.isDefaultViewPortalAsSimpleListDisplayed()) {
+            configPage.clickOnDefaultViewPortalAsSimpleList();
+            configPage.saveOrderSettingChanges();
+        }
+    }
+
+    public static void enableDefaultViewPortalAsQuickAdd() throws InterruptedException {
+        if (!configPage.isDefaultViewPortalAsQuickAddDisplayed()) {
+            configPage.clickOnDefaultViewPortalAsQuickAdd();
+            configPage.saveOrderSettingChanges();
+        }
+    }
+
+    public static void enableDefaultViewPortalAsOrderGuide() throws InterruptedException {
+        if (!configPage.isDefaultViewPortalAsOrderGuideDisplayed()) {
+            configPage.clickOnDefaultViewPortalAsOrderGuide();
+            configPage.saveOrderSettingChanges();
+        }
+    }
+
+    public static void enableDefaultViewPortalAsCatalog() throws InterruptedException {
+        if (!configPage.isDefaultViewPortalAsCatalogDisplayed()) {
+            configPage.clickOnDefaultViewPortalAsCatalog();
+            configPage.saveOrderSettingChanges();
+        }
+    }
+
+    public static void enableDefaultViewPortalAsScanToOrder() throws InterruptedException {
+        if (!configPage.isDefaultViewPortalAsScanToOrderDisplayed()) {
+            configPage.clickOnDefaultViewPortalAsScanToOrder();
+            configPage.saveOrderSettingChanges();
+        }
+    }
 }
