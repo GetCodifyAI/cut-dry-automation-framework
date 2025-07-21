@@ -73,6 +73,9 @@
 
             <class name="com.cutanddry.qa.tests.quick_add.VerifyQuickAddViewAndSimpleListViewFeaturesWhenEnabledFromSupplierConfigTest"/>
             <class name="com.cutanddry.qa.tests.quick_add.VerifyQuickAddViewAndSimpleListViewFeaturesWhenEnabledFromSupplierConfigDpAndOpTest"/>
+
+            <!--TODO: Need to be fixed the assertions-->
+<!--            <class name="com.cutanddry.qa.tests.default_view.VerifyTheDefaultViewIsCorrectlyDisplayingWhenSetUpFromConfigSupplierForDistributorTest"/>-->
         </classes>
     </test>
 </suite>
