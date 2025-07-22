@@ -35,6 +35,7 @@ public class VerifyTheDefaultViewIsCorrectlyDisplayingWhenSetUpFromConfigSupplie
         // Order Guide
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+
         Login.navigateToConfigSupplier();
         Assert.assertTrue(ConfigSupplier.isUserNavigatedToConfigSupplier(),"navigation error");
         ConfigSupplier.clickOnEditDetails(DP);
@@ -74,7 +75,7 @@ public class VerifyTheDefaultViewIsCorrectlyDisplayingWhenSetUpFromConfigSupplie
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
-        softAssert.assertTrue(Customer.isUserNavigatedToCatalog(),"Quick Add view is not displayed as expected when default view is set to Quick Add from Config Supplier.");
+        softAssert.assertTrue(Customer.isQuickAddViewDisplay(),"Quick Add view is not displayed as expected when default view is set to Quick Add from Config Supplier.");
 
         // Simple List
         Login.navigateToConfigSupplier();
@@ -88,10 +89,11 @@ public class VerifyTheDefaultViewIsCorrectlyDisplayingWhenSetUpFromConfigSupplie
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
-        softAssert.assertTrue(Customer.isUserNavigatedToCatalog(),"Simple List view is not displayed as expected when default view is set to Simple List from Config Supplier.");
+        softAssert.assertTrue(Customer.isSimpleListViewTextDisplay(),"Simple List view is not displayed as expected when default view is set to Simple List from Config Supplier.");
 
+//        TODO: Flow is not implemented in dev end
         // Scan To Order
-        Login.navigateToConfigSupplier();
+       /* Login.navigateToConfigSupplier();
         Assert.assertTrue(ConfigSupplier.isUserNavigatedToConfigSupplier(),"navigation error");
         ConfigSupplier.clickOnEditDetails(DP);
         ConfigSupplier.clickOnOrderSettings();
@@ -104,7 +106,13 @@ public class VerifyTheDefaultViewIsCorrectlyDisplayingWhenSetUpFromConfigSupplie
         Customer.clickOnOrderGuide(customerId);
         softAssert.assertTrue(Customer.isUserNavigatedToCatalog(),"Scan To Order view is not displayed as expected when default view is set to Scan To Order from Config Supplier.");
 
+*/
 
+        Login.navigateToConfigSupplier();
+        Assert.assertTrue(ConfigSupplier.isUserNavigatedToConfigSupplier(),"navigation error");
+        ConfigSupplier.clickOnEditDetails(DP);
+        ConfigSupplier.clickOnOrderSettings();
+        ConfigSupplier.enableDefaultViewPortalAsOrderGuide();
 
         softAssert.assertAll();
     }

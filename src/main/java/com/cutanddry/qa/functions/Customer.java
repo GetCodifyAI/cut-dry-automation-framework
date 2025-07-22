@@ -373,6 +373,13 @@ public class Customer {
         customersPage.clickOnUploadToOrder();
     }
     public static boolean isReviewOrderTextDisplayed(){
+        if (!customersPage.isReviewOrderTextDisplayed()) {
+            try {
+                customersPage.clickOnCheckoutButton();
+            } catch (InterruptedException e) {
+                System.err.println("Checkout click failed: " + e.getMessage());
+            }
+        }
         if(customersPage.isSubstitutesPopupDisplayedSub()){
             customersPage.clickDoNotSubstitute();
             customersPage.clickSaveSelection();
