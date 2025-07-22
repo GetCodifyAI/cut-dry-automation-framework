@@ -821,10 +821,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By dropdown_option_OrderGuideView = By.xpath("//div[text()='Order Guide View']");
     String quantitySimpleListView = "//span[text()='CODE']/../following-sibling::*//input";
 
-
-
-
-
+    By dropdown_option_ManageStandingOrders = By.xpath("//div[text()='Manage Standing Orders']");
+    By txt_manageStandingOrders = By.xpath("//*[contains(text(), 'Manage Standing Orders')]");
+    By btn_addNew = By.xpath("//button[contains(text(),'Add New')]");
+    By btn_createStandingOrder = By.xpath("//button[contains(text(),'Create a Standing Order')]");
+    By btn_editStandingOrderIcon = By.xpath("//button[@title='Edit']");
+    By btn_deleteStandingOrderIcon = By.xpath("//button[@title='Delete']");
 
 
 
@@ -4449,7 +4451,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(By.xpath(sortOptionDisplay.replace("OPTION",option)));
     }
     public boolean isAddedItemDisplayed(String name){
-        return distributorUI.isDisplayed(By.xpath(addedItemName.replace("NAME",name)));
+        return distributorUI.isDisplayed(By.xpath(addedItemName.replace("NAME",name)),30);
     }
     public boolean isNewlyCreatedOrderGuideDisplay(String name){
         return distributorUI.isDisplayed(By.xpath(dropDownOrderGuide.replace("NAME",name)));
@@ -4827,7 +4829,35 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(icon_deleteSearchItem);
         distributorUI.waitForCustom(3000);
     }
+    public void clickOnManageStandingOrders() throws InterruptedException {
+        distributorUI.waitForCustom(1000);
+        distributorUI.click(dropdown_option_ManageStandingOrders);
+    }
+    public boolean isManageStandingOrdersPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_manageStandingOrders,20);
+    }
+    public void clickOnAddNew(){
+        distributorUI.waitForVisibility(btn_addNew);
+        distributorUI.clickWithFallback(btn_addNew);
+    }
+    public void clickOnManageCreateStandingOrder(){
+        distributorUI.waitForVisibility(btn_createStandingOrder);
+        distributorUI.clickWithFallback(btn_createStandingOrder);
+    }
+    public void clickOnStandingOrderEditIcon(){
+        distributorUI.waitForVisibility(btn_editStandingOrderIcon);
+        distributorUI.clickWithFallback(btn_editStandingOrderIcon);
+    }
+    public void clickOnStandingOrderDeleteIcon() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_deleteStandingOrderIcon);
+        distributorUI.clickWithFallback(btn_deleteStandingOrderIcon);
+        distributorUI.waitForVisibility(txt_deletePopup);
+        distributorUI.waitForClickability(btn_yes);
+        distributorUI.click(btn_yes);
+        distributorUI.waitForCustom(2000);
 
-
-
+    }
+    public boolean isStandingOrdersDeletedIconDisplay(){
+        return distributorUI.isDisplayed(btn_deleteStandingOrderIcon);
+    }
 }

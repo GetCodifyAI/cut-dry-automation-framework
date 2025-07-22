@@ -2891,9 +2891,30 @@ public class Customer {
     public static void clearSearchField()throws InterruptedException{
         customersPage.clearSearchField();
     }
+    public static void clickOnManageStandingOrders() throws InterruptedException {
+        customersPage.clickOnManageStandingOrders();
+    }
+    public static boolean isManageStandingOrdersPopupDisplayed(){
+        return customersPage.isManageStandingOrdersPopupDisplayed();
+    }
+    public static void clickOnAddNew(){
+        customersPage.clickOnAddNew();
+    }
+    public static void clickOnManageCreateStandingOrder(){
+        if (customersPage.isStandingOrdersDeletedIconDisplay()) {
 
-
-
+        }
+        customersPage.clickOnManageCreateStandingOrder();
+    }
+    public static void clickOnStandingOrderEditIcon(){
+        customersPage.clickOnStandingOrderEditIcon();
+    }
+    public static void clickOnStandingOrderDeleteIcon() throws InterruptedException {
+        customersPage.clickOnStandingOrderDeleteIcon();
+    }
+    public static boolean isStandingOrdersDeletedIconDisplay(){
+        return customersPage.isStandingOrdersDeletedIconDisplay();
+    }
 }
 
 

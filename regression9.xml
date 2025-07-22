@@ -56,9 +56,18 @@
 
             <class name="com.cutanddry.qa.tests.pay.VerifyTheCustomerInvoiceViewOnDistributorToEnsureThatDigitalInvoicePDFsAreVisibleTest"/>
             <class name="com.cutanddry.qa.tests.order_guide.VerifyElementsAreHiddenWhenSearchingAnItemInOrderGuideTest"/>
-            <!--TODO: Duplicate test case, remove them here [Exist on REG 6 also]-->
-            <!--<class name="com.cutanddry.qa.tests.settings.VerifyThatSMSFunctionalityIsWorkingAsExpectedForOrderReminderAlertsTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyTheOrderReminderConfigurationsInTheDPTest"/>-->
+
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheCreditRequestPriceQuantityTotalInItemsSection"/>
+            <class name="com.cutanddry.qa.tests.credit_request.verifyTheCreditReqSearchByDistributorTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.VerifyTheCreditViewItemsByDistributorTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.VerifyTheCreditViewofCreditRequestIssueDetailsByDistributorTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.VerifyTheCreditViewTimelineByDistributorTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromRequestDateTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromCreditStatusTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromSalespersonTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowApproveCreditThenChangeItToDeclineCreditTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowToDeclineCreditThenChangeItToApproveCreditTest"/>
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheTimelineInCreditRequestUsingTimestampStatusOrganizationAndUser"/>
         </classes>
     </test>
 </suite>
