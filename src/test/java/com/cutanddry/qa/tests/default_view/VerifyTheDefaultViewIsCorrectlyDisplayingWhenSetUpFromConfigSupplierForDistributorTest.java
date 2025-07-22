@@ -90,8 +90,9 @@ public class VerifyTheDefaultViewIsCorrectlyDisplayingWhenSetUpFromConfigSupplie
         Customer.clickOnOrderGuide(customerId);
         softAssert.assertTrue(Customer.isUserNavigatedToCatalog(),"Simple List view is not displayed as expected when default view is set to Simple List from Config Supplier.");
 
+//        TODO: Flow is not implemented in dev end
         // Scan To Order
-        Login.navigateToConfigSupplier();
+       /* Login.navigateToConfigSupplier();
         Assert.assertTrue(ConfigSupplier.isUserNavigatedToConfigSupplier(),"navigation error");
         ConfigSupplier.clickOnEditDetails(DP);
         ConfigSupplier.clickOnOrderSettings();
@@ -104,7 +105,7 @@ public class VerifyTheDefaultViewIsCorrectlyDisplayingWhenSetUpFromConfigSupplie
         Customer.clickOnOrderGuide(customerId);
         softAssert.assertTrue(Customer.isUserNavigatedToCatalog(),"Scan To Order view is not displayed as expected when default view is set to Scan To Order from Config Supplier.");
 
-
+*/
 
         softAssert.assertAll();
     }
