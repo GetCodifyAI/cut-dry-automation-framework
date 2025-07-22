@@ -50,6 +50,20 @@
             <class name="com.cutanddry.qa.tests.order_reminder.VerifyTheOrderReminderAlertOptionIsRemovedFromOrderGuideSettingsTest"/>
             <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureOnUITest"/>
             <class name="com.cutanddry.qa.tests.order_desk.VerifyPendingOrderIndicatorInNavigationTest"/>
+
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryMultiUOMInPDPSectionSpotPriceEnableDPTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryMultiUOMInPDPSectionSpotPriceDisableDPTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryInPDPSectionInDPTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryInCatalogueTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryInOrderGuideTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryWithMarginInOrderGuideTest"/>
+
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryWithMarginInOrderGuideAndPDPWhenDisplayMarginToggleEnableTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryMarginNotDisplayInOrderGuideAndPDPWhenDisplayMarginToggleDisableTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryDisplayInOrderGuideAndPDPWhenDisplayPurchaseHistoryToggleEnableTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryNotDisplayInOrderGuideAndPDPWhenDisplayPurchaseHistoryToggleDisableTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryWithPriceInOrderGuideAndPDPWhenDisplayPurchasePriceToggleEnableTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryWithPriceNotDisplayInOrderGuideAndPDPWhenDisplayPurchasePriceToggleDisableTest"/>
         </classes>
     </test>
 </suite>
