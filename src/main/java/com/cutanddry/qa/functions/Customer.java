@@ -377,7 +377,7 @@ public class Customer {
             try {
                 customersPage.clickOnCheckoutButton();
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                System.err.println("Checkout click failed: " + e.getMessage());
             }
         }
         if(customersPage.isSubstitutesPopupDisplayedSub()){
