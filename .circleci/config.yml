@@ -771,7 +771,7 @@ workflows:
   order-guide-order-flow:
     triggers:
       - schedule:
-          cron: "15 14 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
+          cron: "15 14 * * 2,4"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
           filters:
             branches:
               only:
@@ -782,7 +782,7 @@ workflows:
   catalog-order-flow:
     triggers:
       - schedule:
-          cron: "30 14 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
+          cron: "30 14 * * 2,4"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
           filters:
             branches:
               only:
@@ -793,7 +793,7 @@ workflows:
   pdp-order-flow:
     triggers:
       - schedule:
-          cron: "45 14 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
+          cron: "45 14 * * 2,4"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
           filters:
             branches:
               only:
