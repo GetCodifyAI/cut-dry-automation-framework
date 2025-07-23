@@ -402,7 +402,7 @@ By sel_tagOption = By.xpath("//div[contains(@class, 'themed_select__option') and
     By btn_statusSave = By.xpath("//button[contains(@class,'mr-2 my-2 btn btn-outline')]");
     By txt_status = By.xpath("//div[contains(text(),'Inactive')]");
     By ls_status = By.xpath("//div[contains(@class,'themed_select__menu-list css-11unzgr')]");
-    By txt_error = By.xpath("//*[contains(translate(text(), 'ERROR', 'error'), 'error')]");
+    By txt_error = By.xpath("(//*[contains(translate(text(), 'ERROR', 'error'), 'error')])[last()]");
     By first_row = By.xpath("//table[@class='table table-hover']//tbody//tr[1]");
     By btn_invoice = By.xpath("//a[text()='Invoices']");
 //    By enabledStatusLocator = By.xpath("//div[@class='_jehyy2' and text()='Enabled']");
