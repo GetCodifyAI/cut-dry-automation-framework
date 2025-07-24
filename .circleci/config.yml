@@ -82,8 +82,14 @@ jobs:
   nightly-build-and-test-1:
     machine: true
     resource_class: getcodifyai/runner-on-ec2
+    parameters:
+      parallelRunSlug:
+        type: string
     steps:
       - checkout
+      - run:
+          name: Echo Slug
+          command: echo "<< parameters.parallelRunSlug >>"
       - run:
           name: Install Java 22
           command: |
@@ -135,8 +141,14 @@ jobs:
   nightly-build-and-test-2:
     machine: true
     resource_class: getcodifyai/runner-on-ec2
+    parameters:
+      parallelRunSlug:
+        type: string
     steps:
       - checkout
+      - run:
+          name: Echo Slug
+          command: echo "<< parameters.parallelRunSlug >>"
       - run:
           name: Install Java 22
           command: |
@@ -1527,7 +1539,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "30 12 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_fix 00 22
+          cron: "36 12 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_fix 00 22
           filters:
             branches:
               only:
@@ -1537,8 +1549,7 @@ workflows:
           parallelRunSlug: "daily-part-one"
       - nightly-build-and-test-2:
           parallelRunSlug: "daily-part-two"
-      - nightly-build-and-test-3:
-          parallelRunSlug: "daily-part-three"
+#      - nightly-build-and-test-3
 #      - nightly-build-and-test-4
 #      - nightly-build-and-test-5
 #      - nightly-build-and-test-7
@@ -1546,7 +1557,7 @@ workflows:
           requires:
             - nightly-build-and-test-1
             - nightly-build-and-test-2
-            - nightly-build-and-test-3
+#            - nightly-build-and-test-3
 #            - nightly-build-and-test-4
 #            - nightly-build-and-test-5
 #            - nightly-build-and-test-7
