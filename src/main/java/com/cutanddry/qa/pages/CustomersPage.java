@@ -402,7 +402,7 @@ By sel_tagOption = By.xpath("//div[contains(@class, 'themed_select__option') and
     By btn_statusSave = By.xpath("//button[contains(@class,'mr-2 my-2 btn btn-outline')]");
     By txt_status = By.xpath("//div[contains(text(),'Inactive')]");
     By ls_status = By.xpath("//div[contains(@class,'themed_select__menu-list css-11unzgr')]");
-    By txt_error = By.xpath("//*[contains(translate(text(), 'ERROR', 'error'), 'error')]");
+    By txt_error = By.xpath("(//*[contains(translate(text(), 'ERROR', 'error'), 'error')])[last()]");
     By first_row = By.xpath("//table[@class='table table-hover']//tbody//tr[1]");
     By btn_invoice = By.xpath("//a[text()='Invoices']");
 //    By enabledStatusLocator = By.xpath("//div[@class='_jehyy2' and text()='Enabled']");
@@ -945,7 +945,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        distributorUI.waitForVisibility(By.xpath(lbl_catalogSearchItemList.replace("NAME", name)));
+        distributorUI.waitForVisibility(By.xpath(lbl_catalogSearchItemList.replace("NAME", name)),30);
         return distributorUI.getText(By.xpath(lbl_catalogSearchItemList.replace("NAME", name))).toLowerCase();
     }
     public void clickAddToCartCatalog(String ItemName) throws InterruptedException {
@@ -2596,7 +2596,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(radioButton);
     }
     public void clickOnProduct(String name){
-        distributorUI.waitForVisibility(By.xpath(txt_product.replace("NAME", name)));
+        distributorUI.waitForVisibility(By.xpath(txt_product.replace("NAME", name)),30);
         distributorUI.clickUsingJavaScript(By.xpath(txt_product.replace("NAME", name)));
     }
     public void clickAddToCart(){
