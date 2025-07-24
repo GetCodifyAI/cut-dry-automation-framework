@@ -16,7 +16,8 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+#            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
