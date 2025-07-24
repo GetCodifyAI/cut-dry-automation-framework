@@ -945,7 +945,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        distributorUI.waitForVisibility(By.xpath(lbl_catalogSearchItemList.replace("NAME", name)));
+        distributorUI.waitForVisibility(By.xpath(lbl_catalogSearchItemList.replace("NAME", name)),30);
         return distributorUI.getText(By.xpath(lbl_catalogSearchItemList.replace("NAME", name))).toLowerCase();
     }
     public void clickAddToCartCatalog(String ItemName) throws InterruptedException {
@@ -2596,7 +2596,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(radioButton);
     }
     public void clickOnProduct(String name){
-        distributorUI.waitForVisibility(By.xpath(txt_product.replace("NAME", name)));
+        distributorUI.waitForVisibility(By.xpath(txt_product.replace("NAME", name)),30);
         distributorUI.clickUsingJavaScript(By.xpath(txt_product.replace("NAME", name)));
     }
     public void clickAddToCart(){
