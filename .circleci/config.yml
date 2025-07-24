@@ -42,9 +42,8 @@ jobs:
     executor:
 
   customer-index-check:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -55,7 +54,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -81,9 +80,8 @@ jobs:
     executor:
 
   nightly-build-and-test-1:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -94,7 +92,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -135,9 +133,8 @@ jobs:
     executor:
 
   nightly-build-and-test-2:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -148,7 +145,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -192,9 +189,8 @@ jobs:
     executor:
 
   nightly-build-and-test-3:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -205,7 +201,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -246,9 +242,8 @@ jobs:
     executor:
 
   nightly-build-and-test-4:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -259,7 +254,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -300,9 +295,8 @@ jobs:
     executor:
 
   nightly-build-and-test-5:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -313,7 +307,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -354,9 +348,8 @@ jobs:
     executor:
 
   nightly-build-and-test-6:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -367,7 +360,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -408,9 +401,8 @@ jobs:
     executor:
 
   nightly-build-and-test-7:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -421,7 +413,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -462,9 +454,8 @@ jobs:
     executor:
 
   nightly-build-and-test-8:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -475,7 +466,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -516,9 +507,8 @@ jobs:
     executor:
 
   nightly-build-and-test-9:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -529,7 +519,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -570,9 +560,8 @@ jobs:
     executor:
 
   nightly-build-and-test-10:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -583,7 +572,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -624,9 +613,8 @@ jobs:
     executor:
 
   nightly-build-and-test-11:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -637,7 +625,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -678,9 +666,8 @@ jobs:
     executor:
 
   nightly-build-and-test-12:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -691,7 +678,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -732,9 +719,8 @@ jobs:
     executor:
 
   daily-build-and-test-1:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -745,7 +731,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -786,9 +772,8 @@ jobs:
     executor:
 
   daily-build-and-test-2:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -799,7 +784,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -840,9 +825,8 @@ jobs:
     executor:
 
   daily-build-and-test-3:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -853,7 +837,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -894,9 +878,8 @@ jobs:
     executor:
 
   daily-build-and-test-4:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -907,7 +890,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -948,9 +931,8 @@ jobs:
     executor:
 
   daily-build-and-test-5:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -961,7 +943,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -1002,9 +984,8 @@ jobs:
     executor:
 
   daily-build-and-test-6:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -1015,7 +996,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -1056,9 +1037,8 @@ jobs:
     executor:
 
   daily-build-and-test-7:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -1069,7 +1049,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -1110,9 +1090,8 @@ jobs:
     executor:
 
   daily-build-and-test-8:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -1123,7 +1102,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -1164,9 +1143,8 @@ jobs:
     executor:
 
   daily-build-and-test-9:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -1177,7 +1155,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -1218,9 +1196,8 @@ jobs:
     executor:
 
   daily-build-and-test-10:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -1231,7 +1208,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -1272,9 +1249,8 @@ jobs:
     executor:
 
   daily-build-and-test-11:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -1285,7 +1261,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -1326,9 +1302,8 @@ jobs:
     executor:
 
   daily-build-and-test-12:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - checkout
       - run:
@@ -1339,7 +1314,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --config java
+            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -1381,9 +1356,8 @@ jobs:
 
 
   calculate-pass-fail-rate:
-    docker:
-      - image: cimg/base:stable
-    resource_class: xlarge
+    machine: true
+    resource_class: getcodifyai/runner-on-ec2
     steps:
       - attach_workspace:
           at: ~/workspace
@@ -1553,11 +1527,11 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "00 22 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
+          cron: "45 11 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_fix 00 22
           filters:
             branches:
               only:
-                - main
+                - ahsan_fix
     jobs:
       - nightly-build-and-test-1
       - nightly-build-and-test-2
@@ -1577,11 +1551,11 @@ workflows:
   scheduled-test-1-sub1:
     triggers:
       - schedule:
-          cron: "00 23 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
+          cron: "45 12 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_fix 00 23
           filters:
             branches:
               only:
-                - main
+                - ahsan_fix
     jobs:
       - nightly-build-and-test-6
       - nightly-build-and-test-8
