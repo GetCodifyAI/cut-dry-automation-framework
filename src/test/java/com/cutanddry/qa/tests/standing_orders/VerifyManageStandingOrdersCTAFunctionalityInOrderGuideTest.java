@@ -25,7 +25,7 @@ public class VerifyManageStandingOrdersCTAFunctionalityInOrderGuideTest extends 
     }
 
     @Test(groups = "DOT-TC-202")
-    public void verifyAddingAnotherStandingOrders() throws InterruptedException {
+    public void verifyManageStandingOrdersCTAFunctionalityInOrderGuide() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
