@@ -82,20 +82,8 @@ jobs:
   nightly-build-and-test-1:
     machine: true
     resource_class: getcodifyai/runner-on-ec2
-    parameters:
-      parallelRunSlug:
-        type: string
     steps:
       - checkout
-      - run:
-          name: Export Slug as Env Var
-          command: |
-            echo 'export parallelRunSlug="<< parameters.parallelRunSlug >>"' >> $BASH_ENV
-            source $BASH_ENV
-      - run:
-          name: Echo Slug
-          command:
-            echo "Using Slug: $parallelRunSlug"
       - run:
           name: Install Java 22
           command: |
@@ -142,24 +130,13 @@ jobs:
           root: ~/workspace
           paths:
             - Part_One_nightly-build-and-test-1_TEST-*.xml
+    executor:
 
   nightly-build-and-test-2:
     machine: true
     resource_class: getcodifyai/runner-on-ec2
-    parameters:
-      parallelRunSlug:
-        type: string
     steps:
       - checkout
-      - run:
-          name: Export Slug as Env Var
-          command: |
-            echo 'export parallelRunSlug="<< parameters.parallelRunSlug >>"' >> $BASH_ENV
-            source $BASH_ENV
-      - run:
-          name: Echo Slug
-          command:
-            echo "Using Slug: $parallelRunSlug"
       - run:
           name: Install Java 22
           command: |
@@ -209,6 +186,7 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Two_nightly-build-and-test-2_TEST-*.xml
+    executor:
 
   nightly-build-and-test-3:
     machine: true
@@ -1549,17 +1527,15 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "51 12 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_fix 00 22
+          cron: "55 12 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_fix 00 22
           filters:
             branches:
               only:
                 - ahsan_fix
     jobs:
-      - nightly-build-and-test-1:
-          parallelRunSlug: "daily-part-one"
-      - nightly-build-and-test-2:
-          parallelRunSlug: "daily-part-two"
-#      - nightly-build-and-test-3
+      - nightly-build-and-test-1
+      - nightly-build-and-test-2
+      - nightly-build-and-test-3
 #      - nightly-build-and-test-4
 #      - nightly-build-and-test-5
 #      - nightly-build-and-test-7
