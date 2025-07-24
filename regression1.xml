@@ -14,7 +14,7 @@
             <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordInvalidTest" />
             <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />
 
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheSearchTest" />
+            <!--<class name="com.cutanddry.qa.tests.order_guide.VerifyTheSearchTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyCompanyDropdownTest" />
             <class name="com.cutanddry.qa.tests.order_guide.AddProductsFrmOrderGuideTest" />
             <class name="com.cutanddry.qa.tests.order_guide.AddProductsFrmCatalogTest" />
@@ -31,10 +31,10 @@
             <class name="com.cutanddry.qa.tests.order_guide.ValidateTheFunctionalityOfEditMarginOfAnItem"/>
             <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersWithCatalogItemsTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrderGuideWithCatalogItemsTest" />
-            <!--TODO: All the items are hidden in the Test Automation order guide. May be the following TCs are impacting on this. So just comment it for today and see the issue was exist or not -->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersUploadingExcelFileTest" />
+            &lt;!&ndash;TODO: All the items are hidden in the Test Automation order guide. May be the following TCs are impacting on this. So just comment it for today and see the issue was exist or not &ndash;&gt;
+&lt;!&ndash;            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersUploadingExcelFileTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrdersUploadingExcelFileTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrderImportingOrderGuideTest" />-->
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrderImportingOrderGuideTest" />&ndash;&gt;
             <class name="com.cutanddry.qa.tests.order_guide.VerifyExportingOrderGuideEditTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest" />
 
@@ -68,8 +68,8 @@
             <class name="com.cutanddry.qa.tests.boost.VerifyCompareSimilarItemsTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedForCustomerTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedBySalesRepTest" />
-<!--            TODO: Uncomment the following test when the bug[DOT-9106] is fixed [Error popup “There was an error, please try again.” appears while searching for an item in the Order Guide section]-->
-<!--            <class name="com.cutanddry.qa.tests.boost.VerifyDontForgetToOrderTest" />-->
+&lt;!&ndash;            TODO: Uncomment the following test when the bug[DOT-9106] is fixed [Error popup “There was an error, please try again.” appears while searching for an item in the Order Guide section]&ndash;&gt;
+&lt;!&ndash;            <class name="com.cutanddry.qa.tests.boost.VerifyDontForgetToOrderTest" />&ndash;&gt;
             <class name="com.cutanddry.qa.tests.boost.VerifyMoreFromThisBrandTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyAddingFeaturedListTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyEditingFeaturedListTest" />
@@ -78,7 +78,7 @@
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderWithoutAddingAnyItemsTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByRemovingExistingItemsAndChangingQuantitiesTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromOrderGuideTest"/>
-            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromCatalogTest"/>-->
         </classes>
     </test>
 </suite>

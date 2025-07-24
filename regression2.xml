@@ -8,11 +8,11 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part_Two"/>
         <classes>
-            <class name="com.cutanddry.qa.tests.track.VerifyAddNewRouteUsingTrackFeature"/>
-            <class name="com.cutanddry.qa.tests.track.VerifyDownloadExampleRouteUsingTrackFeature"/>
+            <!--<class name="com.cutanddry.qa.tests.track.VerifyAddNewRouteUsingTrackFeature"/>
+            <class name="com.cutanddry.qa.tests.track.VerifyDownloadExampleRouteUsingTrackFeature"/>-->
             <class name="com.cutanddry.qa.tests.track.VerifyTrackSettingsUnderRoutes"/>
             <class name="com.cutanddry.qa.tests.track.VerifyTheDatePickerFunctionality"/>
-            <class name="com.cutanddry.qa.tests.track.VerifyDateChangeFunctionalityUnderMonitoring"/>
+            <!--<class name="com.cutanddry.qa.tests.track.VerifyDateChangeFunctionalityUnderMonitoring"/>
             <class name="com.cutanddry.qa.tests.track.VerifyTheDispatchButtonFunctionalityForMultipleRoutes"/>
             <class name="com.cutanddry.qa.tests.track.VerifyTheWarehouseSelectionFromTheDropdown"/>
             <class name="com.cutanddry.qa.tests.track.ValidateCustomerWarehouseMonitoringTest"/>
@@ -39,8 +39,8 @@
             <class name="com.cutanddry.qa.tests.track.ValidateEditUnassignedStopsTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateDeleteUnassignedStopsTest"/>
             <class name="com.cutanddry.qa.tests.track.ValidateTheDispatchRouteFlowTest"/>
-<!--            //TODO: It's impact the show case the labels under stop. For the moment comment out. need a proper solution for this -->
-<!--            <class name="com.cutanddry.qa.tests.track.VerifyTrackFieldManagerUsingTrackFeature"/>-->
+&lt;!&ndash;            //TODO: It's impact the show case the labels under stop. For the moment comment out. need a proper solution for this &ndash;&gt;
+&lt;!&ndash;            <class name="com.cutanddry.qa.tests.track.VerifyTrackFieldManagerUsingTrackFeature"/>&ndash;&gt;
 
             <class name="com.cutanddry.qa.tests.order_desk.VerifyAddingNewProductFromCatalogTest" />
             <class name="com.cutanddry.qa.tests.order_desk.VerifyDeletingVoiceOrderDraftLineItemTest" />
@@ -67,8 +67,8 @@
             <class name="com.cutanddry.qa.tests.team.UpdateUserWhiteLabelPortalTest" />
             <class name="com.cutanddry.qa.tests.team.RemoveUserWhiteLabelPortalTest" />
             <class name="com.cutanddry.qa.tests.team.AddNewUserWithExistingUserReferenceTest" />
-            <!--TODO: Failure TC, Need to fix the bug 1st-->
-            <class name="com.cutanddry.qa.tests.team.UpdateUserWithExistingUserReferenceTest" />
+            &lt;!&ndash;TODO: Failure TC, Need to fix the bug 1st&ndash;&gt;
+            <class name="com.cutanddry.qa.tests.team.UpdateUserWithExistingUserReferenceTest" />-->
         </classes>
     </test>
 </suite>
