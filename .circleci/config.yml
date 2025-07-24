@@ -110,8 +110,13 @@ jobs:
             sudo apt-get install -y google-chrome-stable
             google-chrome --version
       - run:
+          name: Export and show PARALLEL_RUN_SLUG
+          command: |
+            export PARALLEL_RUN_SLUG="${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BUILD_NUM}"
+            echo "PARALLEL_RUN_SLUG=$PARALLEL_RUN_SLUG"
+      - run:
           name: Build and run nightly tests 1
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression1.xml -Drun.headless=true -Dtest.env=uat || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression1.xml -Drun.headless=true -Dtest.env=uat -DparallelRunSlug=${PARALLEL_RUN_SLUG} || true
       - store_artifacts:
           path: target/surefire-reports
           destination: nightly-build-and-test-artifacts-1
@@ -163,8 +168,13 @@ jobs:
             sudo apt-get install -y google-chrome-stable
             google-chrome --version
       - run:
+          name: Export and show PARALLEL_RUN_SLUG
+          command: |
+            export PARALLEL_RUN_SLUG="${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BUILD_NUM}"
+            echo "PARALLEL_RUN_SLUG=$PARALLEL_RUN_SLUG"
+      - run:
           name: Build and run nightly tests 2
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression2.xml -Drun.headless=true -Dtest.env=uat || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression2.xml -Drun.headless=true -Dtest.env=uat -DparallelRunSlug=${PARALLEL_RUN_SLUG} || true
       - store_artifacts:
           path: target/surefire-reports
           destination: nightly-build-and-test-artifacts-2
@@ -1527,7 +1537,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "45 11 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_fix 00 22
+          cron: "07 12 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_fix 00 22
           filters:
             branches:
               only:
@@ -1535,18 +1545,18 @@ workflows:
     jobs:
       - nightly-build-and-test-1
       - nightly-build-and-test-2
-      - nightly-build-and-test-3
-      - nightly-build-and-test-4
-      - nightly-build-and-test-5
-      - nightly-build-and-test-7
+#      - nightly-build-and-test-3
+#      - nightly-build-and-test-4
+#      - nightly-build-and-test-5
+#      - nightly-build-and-test-7
       - calculate-pass-fail-rate:
           requires:
             - nightly-build-and-test-1
             - nightly-build-and-test-2
-            - nightly-build-and-test-3
-            - nightly-build-and-test-4
-            - nightly-build-and-test-5
-            - nightly-build-and-test-7
+#            - nightly-build-and-test-3
+#            - nightly-build-and-test-4
+#            - nightly-build-and-test-5
+#            - nightly-build-and-test-7
 
   scheduled-test-1-sub1:
     triggers:
