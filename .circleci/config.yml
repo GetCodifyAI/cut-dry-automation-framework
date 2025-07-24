@@ -1527,15 +1527,15 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "55 12 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_fix 00 22
+          cron: "58 12 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_fix 00 22
           filters:
             branches:
               only:
                 - ahsan_fix
     jobs:
       - nightly-build-and-test-1
-      - nightly-build-and-test-2
-      - nightly-build-and-test-3
+#      - nightly-build-and-test-2
+#      - nightly-build-and-test-3
 #      - nightly-build-and-test-4
 #      - nightly-build-and-test-5
 #      - nightly-build-and-test-7
