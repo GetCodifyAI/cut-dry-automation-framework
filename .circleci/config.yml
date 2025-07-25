@@ -7,6 +7,14 @@ executors:
     machine:
       enabled: true
       resource_class: getcodifyai/runner-on-ec2
+  ec2-executor_2:
+    machine:
+      enabled: true
+      resource_class: getcodifyai/runner-on-ec2-2
+  ec2-executor_3:
+    machine:
+      enabled: true
+      resource_class: getcodifyai/runner-on-ec2-3
 
 jobs:
   build-and-test:
@@ -133,7 +141,7 @@ jobs:
             - Part_One_nightly-build-and-test-1_TEST-*.xml
 
   nightly-build-and-test-2:
-    executor: ec2-executor
+    executor: ec2-executor_2
     steps:
       - checkout
       - run:
@@ -187,7 +195,7 @@ jobs:
             - Part_Two_nightly-build-and-test-2_TEST-*.xml
 
   nightly-build-and-test-3:
-    executor: ec2-executor
+    executor: ec2-executor_3
     steps:
       - checkout
       - run:
