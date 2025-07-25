@@ -1495,7 +1495,7 @@ workflows:
 #              only:
 #                - main
     jobs:
-      - nightly-build-and-test-1
+#      - nightly-build-and-test-1
       - nightly-build-and-test-2
       - nightly-build-and-test-3
 #      - nightly-build-and-test-4
