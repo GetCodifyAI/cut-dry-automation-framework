@@ -2,15 +2,11 @@ version: 2.1
 orbs:
   slack: circleci/slack@5.1.1
 
-executors:
-  ec2-executor:
-    machine:
-      enabled: true
-      resource_class: getcodifyai/runner-on-ec2
-
 jobs:
   build-and-test:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -21,7 +17,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -44,9 +40,12 @@ jobs:
       - store_artifacts:
           path: target/surefire-reports
           destination: build-and-test-artifacts
+    executor:
 
   customer-index-check:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -57,7 +56,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -80,9 +79,12 @@ jobs:
       - store_artifacts:
           path: target/surefire-reports
           destination: customer-index-check-artifacts
+    executor:
 
   nightly-build-and-test-1:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -93,7 +95,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -131,9 +133,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_One_nightly-build-and-test-1_TEST-*.xml
+    executor:
 
   nightly-build-and-test-2:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -144,7 +149,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -185,9 +190,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Two_nightly-build-and-test-2_TEST-*.xml
+    executor:
 
   nightly-build-and-test-3:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -198,7 +206,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -236,9 +244,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Three_nightly-build-and-test-3_TEST-*.xml
+    executor:
 
   nightly-build-and-test-4:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -249,7 +260,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -287,9 +298,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Four_nightly-build-and-test-4_TEST-*.xml
+    executor:
 
   nightly-build-and-test-5:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -300,7 +314,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -338,9 +352,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Five_nightly-build-and-test-5_TEST-*.xml
+    executor:
 
   nightly-build-and-test-6:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -351,7 +368,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -389,9 +406,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Six_nightly-build-and-test-6_TEST-*.xml
+    executor:
 
   nightly-build-and-test-7:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -402,7 +422,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -440,9 +460,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Seven_nightly-build-and-test-7_TEST-*.xml
+    executor:
 
   nightly-build-and-test-8:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -453,7 +476,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -491,9 +514,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Eight_nightly-build-and-test-8_TEST-*.xml
+    executor:
 
   nightly-build-and-test-9:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -504,7 +530,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -542,9 +568,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Nine_nightly-build-and-test-9_TEST-*.xml
+    executor:
 
   nightly-build-and-test-10:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -555,7 +584,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -593,9 +622,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Ten_nightly-build-and-test-10_TEST-*.xml
+    executor:
 
   nightly-build-and-test-11:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -606,7 +638,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -644,9 +676,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Eleven_nightly-build-and-test-11_TEST-*.xml
+    executor:
 
   nightly-build-and-test-12:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -657,7 +692,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -695,9 +730,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Twelve_nightly-build-and-test-12_TEST-*.xml
+    executor:
 
   daily-build-and-test-1:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -708,7 +746,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -746,9 +784,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_One_daily-build-and-test-1_TEST-*.xml
+    executor:
 
   daily-build-and-test-2:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -759,7 +800,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -797,9 +838,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Two_daily-build-and-test-2_TEST-*.xml
+    executor:
 
   daily-build-and-test-3:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -810,7 +854,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -848,9 +892,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Three_daily-build-and-test-3_TEST-*.xml
+    executor:
 
   daily-build-and-test-4:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -861,7 +908,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -899,9 +946,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Four_daily-build-and-test-4_TEST-*.xml
+    executor:
 
   daily-build-and-test-5:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -912,7 +962,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -950,9 +1000,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Five_daily-build-and-test-5_TEST-*.xml
+    executor:
 
   daily-build-and-test-6:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -963,7 +1016,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -1001,9 +1054,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Six_daily-build-and-test-6_TEST-*.xml
+    executor:
 
   daily-build-and-test-7:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -1014,7 +1070,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -1052,9 +1108,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Seven_daily-build-and-test-7_TEST-*.xml
+    executor:
 
   daily-build-and-test-8:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -1065,7 +1124,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -1103,9 +1162,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Eight_daily-build-and-test-8_TEST-*.xml
+    executor:
 
   daily-build-and-test-9:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -1116,7 +1178,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -1154,9 +1216,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Nine_daily-build-and-test-9_TEST-*.xml
+    executor:
 
   daily-build-and-test-10:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -1167,7 +1232,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -1205,9 +1270,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Ten_daily-build-and-test-10_TEST-*.xml
+    executor:
 
   daily-build-and-test-11:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -1218,7 +1286,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -1256,9 +1324,12 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Eleven_daily-build-and-test-11_TEST-*.xml
+    executor:
 
   daily-build-and-test-12:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
       - run:
@@ -1269,7 +1340,7 @@ jobs:
             sudo mkdir -p /usr/lib/jvm
             sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
+            sudo update-alternatives --config java
             echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             java -version
@@ -1307,10 +1378,13 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Twelve_daily-build-and-test-12_TEST-*.xml
+    executor:
 
 
   calculate-pass-fail-rate:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - attach_workspace:
           at: ~/workspace
@@ -1446,12 +1520,14 @@ jobs:
               ]
             }
 
+    executor:
+
 
 workflows:
   version: 2
-#  build-and-test:
-#    jobs:
-#      - build-and-test
+  build-and-test:
+    jobs:
+      - build-and-test
 
   customer-index-test:
     triggers:
@@ -1476,33 +1552,33 @@ workflows:
       - customer-index-check
 
   scheduled-test-1:
-#    triggers:
-#      - schedule:
-#          cron: "45 11 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
-#          filters:
-#            branches:
-#              only:
-#                - main
+    triggers:
+      - schedule:
+          cron: "00 22 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
+          filters:
+            branches:
+              only:
+                - main
     jobs:
       - nightly-build-and-test-1
       - nightly-build-and-test-2
-#      - nightly-build-and-test-3
-#      - nightly-build-and-test-4
-#      - nightly-build-and-test-5
-#      - nightly-build-and-test-7
+      - nightly-build-and-test-3
+      - nightly-build-and-test-4
+      - nightly-build-and-test-5
+      - nightly-build-and-test-7
       - calculate-pass-fail-rate:
           requires:
             - nightly-build-and-test-1
             - nightly-build-and-test-2
-#            - nightly-build-and-test-3
-#            - nightly-build-and-test-4
-#            - nightly-build-and-test-5
-#            - nightly-build-and-test-7
+            - nightly-build-and-test-3
+            - nightly-build-and-test-4
+            - nightly-build-and-test-5
+            - nightly-build-and-test-7
 
   scheduled-test-1-sub1:
     triggers:
       - schedule:
-          cron: "45 12 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
+          cron: "00 23 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
           filters:
             branches:
               only:
@@ -1526,7 +1602,7 @@ workflows:
   scheduled-test-2:
     triggers:
       - schedule:
-          cron: "45 03 * * 1-5"  #  This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
+          cron: "15 05 * * 1-5"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
           filters:
             branches:
               only:
@@ -1550,7 +1626,7 @@ workflows:
   scheduled-test-2-sub1:
     triggers:
       - schedule:
-          cron: "45 04 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 45 06 * * *
+          cron: "15 06 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 45 06 * * *
           filters:
             branches:
               only:
