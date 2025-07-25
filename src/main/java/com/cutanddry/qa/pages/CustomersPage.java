@@ -402,7 +402,7 @@ By sel_tagOption = By.xpath("//div[contains(@class, 'themed_select__option') and
     By btn_statusSave = By.xpath("//button[contains(@class,'mr-2 my-2 btn btn-outline')]");
     By txt_status = By.xpath("//div[contains(text(),'Inactive')]");
     By ls_status = By.xpath("//div[contains(@class,'themed_select__menu-list css-11unzgr')]");
-    By txt_error = By.xpath("//*[contains(translate(text(), 'ERROR', 'error'), 'error')]");
+    By txt_error = By.xpath("(//*[contains(translate(text(), 'ERROR', 'error'), 'error')])[last()]");
     By first_row = By.xpath("//table[@class='table table-hover']//tbody//tr[1]");
     By btn_invoice = By.xpath("//a[text()='Invoices']");
 //    By enabledStatusLocator = By.xpath("//div[@class='_jehyy2' and text()='Enabled']");
@@ -817,10 +817,16 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By addItemRestrictionDropDown = By.xpath("//label[contains(text(), 'Add Items Restriction')]/following-sibling::div");
     String addItemRestrictionDropDownOption = "(//div[text()='OPTION'])[last()]";
     By poundPriceStable = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]/div/div/div/div)[1]");
+    String quantityReviewPage = "//td[text()='CODE']/following-sibling::*//input";
+    By dropdown_option_OrderGuideView = By.xpath("//div[text()='Order Guide View']");
+    String quantitySimpleListView = "//span[text()='CODE']/../following-sibling::*//input";
 
-
-
-
+    By dropdown_option_ManageStandingOrders = By.xpath("//div[text()='Manage Standing Orders']");
+    By txt_manageStandingOrders = By.xpath("//*[contains(text(), 'Manage Standing Orders')]");
+    By btn_addNew = By.xpath("//button[contains(text(),'Add New')]");
+    By btn_createStandingOrder = By.xpath("//button[contains(text(),'Create a Standing Order')]");
+    By btn_editStandingOrderIcon = By.xpath("//button[@title='Edit']");
+    By btn_deleteStandingOrderIcon = By.xpath("//button[@title='Delete']");
 
 
 
@@ -939,7 +945,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        distributorUI.waitForVisibility(By.xpath(lbl_catalogSearchItemList.replace("NAME", name)));
+        distributorUI.waitForVisibility(By.xpath(lbl_catalogSearchItemList.replace("NAME", name)),30);
         return distributorUI.getText(By.xpath(lbl_catalogSearchItemList.replace("NAME", name))).toLowerCase();
     }
     public void clickAddToCartCatalog(String ItemName) throws InterruptedException {
@@ -2590,7 +2596,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(radioButton);
     }
     public void clickOnProduct(String name){
-        distributorUI.waitForVisibility(By.xpath(txt_product.replace("NAME", name)));
+        distributorUI.waitForVisibility(By.xpath(txt_product.replace("NAME", name)),30);
         distributorUI.clickUsingJavaScript(By.xpath(txt_product.replace("NAME", name)));
     }
     public void clickAddToCart(){
@@ -4445,7 +4451,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(By.xpath(sortOptionDisplay.replace("OPTION",option)));
     }
     public boolean isAddedItemDisplayed(String name){
-        return distributorUI.isDisplayed(By.xpath(addedItemName.replace("NAME",name)));
+        return distributorUI.isDisplayed(By.xpath(addedItemName.replace("NAME",name)),30);
     }
     public boolean isNewlyCreatedOrderGuideDisplay(String name){
         return distributorUI.isDisplayed(By.xpath(dropDownOrderGuide.replace("NAME",name)));
@@ -4807,7 +4813,51 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public String getPoundPriceStable(){
         return distributorUI.getText(poundPriceStable);
     }
+    public String getItemQuantityReviewPage(String code){
+        distributorUI.waitForVisibility(By.xpath(quantityReviewPage.replace("CODE",code)));
+        return distributorUI.getText(By.xpath(quantityReviewPage.replace("CODE",code)), "value");
+    }
+    public void clickOrderGuideView(){
+        distributorUI.waitForClickability(dropdown_option_OrderGuideView);
+        distributorUI.click(dropdown_option_OrderGuideView);
+    }
+    public String getItemQuantitySimpleListView(String code){
+        distributorUI.waitForVisibility(By.xpath(quantitySimpleListView.replace("CODE",code)));
+        return distributorUI.getText(By.xpath(quantitySimpleListView.replace("CODE",code)), "value");
+    }
+    public void clearSearchField()throws InterruptedException{
+        distributorUI.click(icon_deleteSearchItem);
+        distributorUI.waitForCustom(3000);
+    }
+    public void clickOnManageStandingOrders() throws InterruptedException {
+        distributorUI.waitForCustom(1000);
+        distributorUI.click(dropdown_option_ManageStandingOrders);
+    }
+    public boolean isManageStandingOrdersPopupDisplayed(){
+        return distributorUI.isDisplayed(txt_manageStandingOrders,20);
+    }
+    public void clickOnAddNew(){
+        distributorUI.waitForVisibility(btn_addNew);
+        distributorUI.clickWithFallback(btn_addNew);
+    }
+    public void clickOnManageCreateStandingOrder(){
+        distributorUI.waitForVisibility(btn_createStandingOrder);
+        distributorUI.clickWithFallback(btn_createStandingOrder);
+    }
+    public void clickOnStandingOrderEditIcon(){
+        distributorUI.waitForVisibility(btn_editStandingOrderIcon);
+        distributorUI.clickWithFallback(btn_editStandingOrderIcon);
+    }
+    public void clickOnStandingOrderDeleteIcon() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_deleteStandingOrderIcon);
+        distributorUI.clickWithFallback(btn_deleteStandingOrderIcon);
+        distributorUI.waitForVisibility(txt_deletePopup);
+        distributorUI.waitForClickability(btn_yes);
+        distributorUI.click(btn_yes);
+        distributorUI.waitForCustom(2000);
 
-
-
+    }
+    public boolean isStandingOrdersDeletedIconDisplay(){
+        return distributorUI.isDisplayed(btn_deleteStandingOrderIcon);
+    }
 }

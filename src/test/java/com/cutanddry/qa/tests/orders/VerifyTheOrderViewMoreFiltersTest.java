@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheOrderViewMoreFiltersTest extends TestBase {
     static User user;
-    String date = "Last 30 Days";
+    String date = "Last 90 Days";
     String creditStatus = "Credit Requested";
     static String type = "Requested";
     static String salesPersonType = "All";

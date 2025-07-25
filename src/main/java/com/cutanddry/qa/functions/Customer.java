@@ -373,6 +373,13 @@ public class Customer {
         customersPage.clickOnUploadToOrder();
     }
     public static boolean isReviewOrderTextDisplayed(){
+        if (!customersPage.isReviewOrderTextDisplayed()) {
+            try {
+                customersPage.clickOnCheckoutButton();
+            } catch (InterruptedException e) {
+                System.err.println("Checkout click failed: " + e.getMessage());
+            }
+        }
         if(customersPage.isSubstitutesPopupDisplayedSub()){
             customersPage.clickDoNotSubstitute();
             customersPage.clickSaveSelection();
@@ -2872,9 +2879,42 @@ public class Customer {
     public static String getPoundPriceStable() throws InterruptedException {
         return customersPage.getPoundPriceStable().trim();
     }
+    public static String getItemQuantityReviewPage(String code) throws InterruptedException {
+        return customersPage.getItemQuantityReviewPage(code);
+    }
+    public static void clickOrderGuideView(){
+        customersPage.clickOrderGuideView();
+    }
+    public static String getItemQuantitySimpleListView(String code) throws InterruptedException {
+        return customersPage.getItemQuantitySimpleListView(code);
+    }
+    public static void clearSearchField()throws InterruptedException{
+        customersPage.clearSearchField();
+    }
+    public static void clickOnManageStandingOrders() throws InterruptedException {
+        customersPage.clickOnManageStandingOrders();
+    }
+    public static boolean isManageStandingOrdersPopupDisplayed(){
+        return customersPage.isManageStandingOrdersPopupDisplayed();
+    }
+    public static void clickOnAddNew(){
+        customersPage.clickOnAddNew();
+    }
+    public static void clickOnManageCreateStandingOrder(){
+        if (customersPage.isStandingOrdersDeletedIconDisplay()) {
 
-
-
+        }
+        customersPage.clickOnManageCreateStandingOrder();
+    }
+    public static void clickOnStandingOrderEditIcon(){
+        customersPage.clickOnStandingOrderEditIcon();
+    }
+    public static void clickOnStandingOrderDeleteIcon() throws InterruptedException {
+        customersPage.clickOnStandingOrderDeleteIcon();
+    }
+    public static boolean isStandingOrdersDeletedIconDisplay(){
+        return customersPage.isStandingOrdersDeletedIconDisplay();
+    }
 }
 
 
