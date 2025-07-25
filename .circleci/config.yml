@@ -95,6 +95,17 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Clean up disk
+          command: |
+            echo "Disk usage before cleanup:"
+            df -h
+            sudo apt-get clean
+            sudo rm -rf /var/lib/apt/lists/*
+            sudo rm -rf /tmp/*
+            sudo rm -rf ~/.m2/repository
+            echo "Disk usage after cleanup:"
+            df -h
+      - run:
           name: Install Java 22
           command: |
             sudo apt-get update && sudo apt-get install -y wget
@@ -115,7 +126,8 @@ jobs:
           name: Install Chrome
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo rm -f /etc/apt/sources.list.d/google-chrome.list
+            echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list > /dev/null
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
             google-chrome --version
@@ -147,6 +159,17 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Clean up disk
+          command: |
+            echo "Disk usage before cleanup:"
+            df -h
+            sudo apt-get clean
+            sudo rm -rf /var/lib/apt/lists/*
+            sudo rm -rf /tmp/*
+            sudo rm -rf ~/.m2/repository
+            echo "Disk usage after cleanup:"
+            df -h
+      - run:
           name: Install Java 22
           command: |
             sudo apt-get update && sudo apt-get install -y wget
@@ -167,7 +190,8 @@ jobs:
           name: Install Chrome
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo rm -f /etc/apt/sources.list.d/google-chrome.list
+            echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list > /dev/null
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
             google-chrome --version
@@ -202,6 +226,17 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Clean up disk
+          command: |
+            echo "Disk usage before cleanup:"
+            df -h
+            sudo apt-get clean
+            sudo rm -rf /var/lib/apt/lists/*
+            sudo rm -rf /tmp/*
+            sudo rm -rf ~/.m2/repository
+            echo "Disk usage after cleanup:"
+            df -h
+      - run:
           name: Install Java 22
           command: |
             sudo apt-get update && sudo apt-get install -y wget
@@ -222,7 +257,8 @@ jobs:
           name: Install Chrome
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo rm -f /etc/apt/sources.list.d/google-chrome.list
+            echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list > /dev/null
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
             google-chrome --version
@@ -1495,9 +1531,9 @@ workflows:
 #              only:
 #                - main
     jobs:
-#      - nightly-build-and-test-1
+      - nightly-build-and-test-1
       - nightly-build-and-test-2
-#      - nightly-build-and-test-3
+      - nightly-build-and-test-3
 #      - nightly-build-and-test-4
 #      - nightly-build-and-test-5
 #      - nightly-build-and-test-7
