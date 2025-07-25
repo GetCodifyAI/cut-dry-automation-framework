@@ -7,14 +7,17 @@ executors:
     machine:
       enabled: true
       resource_class: getcodifyai/runner-on-ec2
+      working_directory: ~/project-job1
   ec2-executor_2:
     machine:
       enabled: true
       resource_class: getcodifyai/runner-on-ec2-2
+      working_directory: ~/project-job2
   ec2-executor_3:
     machine:
       enabled: true
       resource_class: getcodifyai/runner-on-ec2-3
+      working_directory: ~/project-job3
 
 jobs:
   build-and-test:
@@ -1493,8 +1496,8 @@ workflows:
 #                - main
     jobs:
       - nightly-build-and-test-1
-#      - nightly-build-and-test-2
-#      - nightly-build-and-test-3
+      - nightly-build-and-test-2
+      - nightly-build-and-test-3
 #      - nightly-build-and-test-4
 #      - nightly-build-and-test-5
 #      - nightly-build-and-test-7
