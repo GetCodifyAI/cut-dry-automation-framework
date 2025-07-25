@@ -80,6 +80,8 @@
             <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryNotDisplayInOrderGuideAndPDPWhenDisplayPurchaseHistoryToggleDisableTest"/>
             <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryWithPriceInOrderGuideAndPDPWhenDisplayPurchasePriceToggleEnableTest"/>
             <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryWithPriceNotDisplayInOrderGuideAndPDPWhenDisplayPurchasePriceToggleDisableTest"/>
+
+            <class name="com.cutanddry.qa.tests.settings.VerifyTheGlobalDeliveryDatesOverrideFeatureTest"/>
         </classes>
     </test>
 </suite>
