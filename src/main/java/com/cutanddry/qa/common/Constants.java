@@ -21,7 +21,6 @@ public class Constants {
     public static String SLACK_WEBHOOK = System.getenv("STAGING_SLACK_WEBHOOK");
     public static final String TEST_STAG ="ddo-857";
 
-
     private static String baseDomain() {
         if (TEST_ENV.equalsIgnoreCase("UAT")){
             MAIN_URL = "https://supplier-uat.staging.cutanddry.com/";
