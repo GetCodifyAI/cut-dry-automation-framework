@@ -159,43 +159,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Clean up disk
-          command: |
-            echo "Disk usage before cleanup:"
-            df -h
-            sudo apt-get clean
-            sudo rm -rf /var/lib/apt/lists/*
-            sudo rm -rf /tmp/*
-            sudo rm -rf ~/.m2/repository
-            echo "Disk usage after cleanup:"
-            df -h
-      - run:
-          name: Install Java 22
-          command: |
-            sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
-            sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
-            source $BASH_ENV
-            java -version
-      - run:
-          name: Install Maven
-          command: |
-            sudo apt-get install -y maven
-            mvn -version
-      - run:
-          name: Install Chrome
-          command: |
-            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            sudo rm -f /etc/apt/sources.list.d/google-chrome.list
-            echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list > /dev/null
-            sudo apt-get update
-            sudo apt-get install -y google-chrome-stable
-            google-chrome --version
-      - run:
           name: Build and run nightly tests 2
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression2.xml -Drun.headless=true -Dtest.env=uat || true
       - store_artifacts:
@@ -225,43 +188,6 @@ jobs:
     working_directory: ~/project-job3
     steps:
       - checkout
-      - run:
-          name: Clean up disk
-          command: |
-            echo "Disk usage before cleanup:"
-            df -h
-            sudo apt-get clean
-            sudo rm -rf /var/lib/apt/lists/*
-            sudo rm -rf /tmp/*
-            sudo rm -rf ~/.m2/repository
-            echo "Disk usage after cleanup:"
-            df -h
-      - run:
-          name: Install Java 22
-          command: |
-            sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
-            sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
-            source $BASH_ENV
-            java -version
-      - run:
-          name: Install Maven
-          command: |
-            sudo apt-get install -y maven
-            mvn -version
-      - run:
-          name: Install Chrome
-          command: |
-            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            sudo rm -f /etc/apt/sources.list.d/google-chrome.list
-            echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list > /dev/null
-            sudo apt-get update
-            sudo apt-get install -y google-chrome-stable
-            google-chrome --version
       - run:
           name: Build and run nightly tests 3
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression3.xml -Drun.headless=true -Dtest.env=uat || true
