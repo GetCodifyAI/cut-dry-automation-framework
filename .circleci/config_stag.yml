@@ -1600,52 +1600,77 @@ workflows:
             - nightly-build-and-test-11
             - nightly-build-and-test-12
 
-  scheduled-test-2:
+  scheduled-test-2_1:
     triggers:
       - schedule:
-          cron: "45 05 * * 1-5"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
+          cron: "30 11 * * 1-5"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
           filters:
             branches:
               only:
-                - main
+                - staging_regression
     jobs:
       - daily-build-and-test-1
       - daily-build-and-test-2
-      - daily-build-and-test-3
-      - daily-build-and-test-4
-      - daily-build-and-test-5
-      - calculate-pass-fail-rate:
-          requires:
-            - daily-build-and-test-1
-            - daily-build-and-test-2
-            - daily-build-and-test-3
-            - daily-build-and-test-4
-            - daily-build-and-test-5
 
-  scheduled-test-2-sub1:
+  scheduled-test-2_2:
     triggers:
       - schedule:
-          cron: "45 06 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 45 06 * * * * staging_regression
+          cron: "00 13 * * 1-5"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
           filters:
             branches:
               only:
-                - main
+                - staging_regression
     jobs:
+      - daily-build-and-test-3
+      - daily-build-and-test-4
+
+  scheduled-test-2_3:
+    triggers:
+      - schedule:
+          cron: "30 14 * * 1-5"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
+          filters:
+            branches:
+              only:
+                - staging_regression
+    jobs:
+      - daily-build-and-test-5
       - daily-build-and-test-6
+
+  scheduled-test-2_4:
+    triggers:
+      - schedule:
+          cron: "00 16 * * 1-5"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
+          filters:
+            branches:
+              only:
+                - staging_regression
+    jobs:
       - daily-build-and-test-7
       - daily-build-and-test-8
+
+  scheduled-test-2_5:
+    triggers:
+      - schedule:
+          cron: "30 17 * * 1-5"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
+          filters:
+            branches:
+              only:
+                - staging_regression
+    jobs:
       - daily-build-and-test-9
       - daily-build-and-test-10
+
+  scheduled-test-2_6:
+    triggers:
+      - schedule:
+          cron: "00 19 * * 1-5"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
+          filters:
+            branches:
+              only:
+                - staging_regression
+    jobs:
       - daily-build-and-test-11
       - daily-build-and-test-12
-      - calculate-pass-fail-rate:
-          requires:
-            - daily-build-and-test-6
-            - daily-build-and-test-7
-            - daily-build-and-test-8
-            - daily-build-and-test-9
-            - daily-build-and-test-10
-            - daily-build-and-test-11
-            - daily-build-and-test-12
+
 
 
