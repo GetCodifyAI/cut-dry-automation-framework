@@ -19,6 +19,19 @@ public class ConfigSupplierPage extends LoginPage{
     By btn_saveOrderSetting = By.xpath("//h5[text()='Ordering Settings']/following::button[contains(text(), 'Save')]");
     By btn_saveOKOrderSetting = By.xpath("//button[contains(text(),'OK')]");
 
+    By lbl_DefaultViewPortalDropDow = By.xpath("//*[contains(text(), 'Default View for Portal Users')]/following-sibling::div//div[contains(@class,'themed_select__indicators')]");
+    By lbl_DefaultViewPortalAsSimpleList = By.xpath("//div[contains(@class, 'themed_select__option') and text()='Simple List']");
+    By lbl_DefaultViewPortalAsQuickAdd = By.xpath("//div[contains(@class, 'themed_select__option') and text()='Quick Add']");
+    By lbl_DefaultViewPortalAsOrderGuide = By.xpath("//div[contains(@class, 'themed_select__option') and text()='Order Guide']");
+    By lbl_DefaultViewPortalAsCatalog = By.xpath("//div[contains(@class, 'themed_select__option') and text()='Catalog']");
+    By lbl_DefaultViewPortalAsScanToOrder = By.xpath("//div[contains(@class, 'themed_select__option') and text()='Scan to Order']");
+
+    By lbl_defaultOrderHistoryAsSimpleList = By.xpath("//*[contains(text(), 'Default View for Portal Users')]/following-sibling::div//*[text()='Simple List']");
+    By lbl_defaultOrderHistoryAsQuickAdd = By.xpath("//*[contains(text(), 'Default View for Portal Users')]/following-sibling::div//*[text()='Quick Add']");
+    By lbl_defaultOrderHistoryAsOrderGuide = By.xpath("//*[contains(text(), 'Default View for Portal Users')]/following-sibling::div//*[text()='Order Guide']");
+    By lbl_defaultOrderHistoryAsCatalog = By.xpath("//*[contains(text(), 'Default View for Portal Users')]/following-sibling::div//*[text()='Catalog']");
+    By lbl_defaultOrderHistoryAsScanToOrder = By.xpath("//*[contains(text(), 'Default View for Portal Users')]/following-sibling::div//*[text()='Scan to Order']");
+
 
     public boolean isConfigTextDisplayed(){
         try {
@@ -87,4 +100,55 @@ public class ConfigSupplierPage extends LoginPage{
         distributorUI.click(btn_saveOKOrderSetting);
         distributorUI.waitForCustom(4000);
     }
+
+    public void clickOnDefaultViewPortalAsSimpleList() {
+        distributorUI.click(lbl_DefaultViewPortalDropDow);
+        distributorUI.waitForVisibility(lbl_DefaultViewPortalAsSimpleList);
+        distributorUI.click(lbl_DefaultViewPortalAsSimpleList);
+    }
+
+    public void clickOnDefaultViewPortalAsQuickAdd() {
+        distributorUI.click(lbl_DefaultViewPortalDropDow);
+        distributorUI.waitForVisibility(lbl_DefaultViewPortalAsQuickAdd);
+        distributorUI.click(lbl_DefaultViewPortalAsQuickAdd);
+    }
+
+    public void clickOnDefaultViewPortalAsOrderGuide() {
+        distributorUI.click(lbl_DefaultViewPortalDropDow);
+        distributorUI.waitForVisibility(lbl_DefaultViewPortalAsOrderGuide);
+        distributorUI.click(lbl_DefaultViewPortalAsOrderGuide);
+    }
+
+    public void clickOnDefaultViewPortalAsCatalog() {
+        distributorUI.click(lbl_DefaultViewPortalDropDow);
+        distributorUI.waitForVisibility(lbl_DefaultViewPortalAsCatalog);
+        distributorUI.click(lbl_DefaultViewPortalAsCatalog);
+    }
+
+    public void clickOnDefaultViewPortalAsScanToOrder() {
+        distributorUI.click(lbl_DefaultViewPortalDropDow);
+        distributorUI.waitForVisibility(lbl_DefaultViewPortalAsScanToOrder);
+        distributorUI.click(lbl_DefaultViewPortalAsScanToOrder);
+    }
+
+    public boolean isDefaultViewPortalAsSimpleListDisplayed() {
+        return distributorUI.isDisplayed(lbl_defaultOrderHistoryAsSimpleList, 5);
+    }
+
+    public boolean isDefaultViewPortalAsQuickAddDisplayed() {
+        return distributorUI.isDisplayed(lbl_defaultOrderHistoryAsQuickAdd, 5);
+    }
+
+    public boolean isDefaultViewPortalAsOrderGuideDisplayed() {
+        return distributorUI.isDisplayed(lbl_defaultOrderHistoryAsOrderGuide, 5);
+    }
+
+    public boolean isDefaultViewPortalAsCatalogDisplayed() {
+        return distributorUI.isDisplayed(lbl_defaultOrderHistoryAsCatalog, 5);
+    }
+
+    public boolean isDefaultViewPortalAsScanToOrderDisplayed() {
+        return distributorUI.isDisplayed(lbl_defaultOrderHistoryAsScanToOrder, 5);
+    }
+
 }

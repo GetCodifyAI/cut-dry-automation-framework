@@ -77,11 +77,25 @@ public class SettingsPage extends LoginPage{
     By dropdown_deliveryDate = By.xpath("//div[@class='text-truncate']");
     By btn_minus = By.xpath("(//button[*[local-name()='svg' and @data-icon='minus']])[last()]");
     By txt_addCustomerCode =    By.xpath("//div[text()='Add Customer Codes']/following::input[@type='text']");
-    By lbl_customerSpecDisabled = By.xpath("//label[text()='Customer Specific Delivery Days']/preceding-sibling::input[@type='checkbox' and @disabled]");
+   /* By lbl_customerSpecDisabled = By.xpath("//label[text()='Customer Specific Delivery Days']/preceding-sibling::input[@type='checkbox' and @disabled]");
     By lbl_deliveryDays = By.xpath("//label[text()='Delivery Days']/preceding-sibling::input[@type='checkbox']");
     By sel_OrderMinimums = By.xpath("//*[contains(text(),'Order Minimums')]/preceding-sibling::input");
     By sel_CustomerSpecificDeliveryDays = By.xpath("//*[contains(text(),'Customer Specific Delivery Days')]/preceding-sibling::input");
+    By sel_DeliveryDays = By.xpath("(//*[contains(text(),'Delivery Days')]/preceding-sibling::input)[1]");*/
+   By lbl_customerSpecDisabled = By.xpath("//span[text()='Customer Delivery Days']/preceding-sibling::div/input[@type='checkbox' and @role='switch' and @checked]");
+    By lbl_deliveryDays = By.xpath("//span[text()='Global Delivery Days']/preceding-sibling::div/div[@class='react-switch-handle']");
+    By lbl_deliveryDays_status = By.xpath("//span[text()='Global Delivery Days']/preceding-sibling::div/input[@type='checkbox' and @role='switch' and @checked]");
+    By sel_OrderMinimums = By.xpath("//span[text()='Order Minimums']/preceding-sibling::div/div[@class='react-switch-handle']");
+    By sel_OrderMinimums_status = By.xpath("//span[text()='Order Minimums']/preceding-sibling::div/input[@type='checkbox' and @role='switch' and @checked]");
+    By sel_CustomerSpecificDeliveryDays = By.xpath("//span[text()='Customer Delivery Days']/preceding-sibling::div/div[@class='react-switch-handle']");
+    By sel_CustomerSpecificDeliveryDays_status = By.xpath("//span[text()='Customer Delivery Days']/preceding-sibling::div/input[@type='checkbox' and @role='switch' and @checked]");
     By sel_DeliveryDays = By.xpath("(//*[contains(text(),'Delivery Days')]/preceding-sibling::input)[1]");
+
+
+
+
+
+
     By lbl_HolidayDate = By.xpath("(//button[*[local-name()='svg' and @data-icon='minus']]/following::div[1])[last()]");
     By dropdown_selectHolidayDate = By.xpath("//div[text()='Select Date']/following-sibling::div//input");
     String dynamicXPath = "//div[contains(@class, 'react-datepicker__day--selected')]/following::div[contains(@class, 'react-datepicker__day')][DAY]";
@@ -160,8 +174,9 @@ public class SettingsPage extends LoginPage{
     By txt_configureOrderReminder = By.xpath("//p[text()='Configure order reminders']");
     String configureOrderReminderDropDown = "//label[contains(text(), 'DROPDOWN')]/following-sibling::div";
     String configureOrderReminderDropDownOption = "(//div[contains(text(),'DROPDOWNOPTION')])[last()]";
-    By sel_OrderCutOffs = By.xpath("//*[contains(text(),'Order Cutoffs')]/preceding-sibling::input");
-    By sel_deliveryDate = By.xpath("//*[contains(text(),'Delivery Days')]/preceding-sibling::input");
+    By sel_OrderCutOffs = By.xpath("//span[text()='Order Cutoffs']/preceding-sibling::div/div[@class='react-switch-handle']");
+    By sel_OrderCutOffs_status = By.xpath("//span[text()='Order Cutoffs']/preceding-sibling::div/input[@type='checkbox' and @role='switch' and @checked]");
+    By sel_deliveryDate = By.xpath("//span[text()='Global Delivery Days']/preceding-sibling::div/div[@class='react-switch-handle']");
 
 
 
@@ -653,8 +668,17 @@ public class SettingsPage extends LoginPage{
         distributorUI.click(btn_minus);
     }
     public void uncheckDeliveryDays() {
-        if (distributorUI.isDisplayed(lbl_customerSpecDisabled)){
+//        if (distributorUI.isDisplayed(lbl_customerSpecDisabled)){
+//            distributorUI.click(lbl_deliveryDays);
+//        }
+        distributorUI.waitForVisibility(lbl_deliveryDays);
+        if (!distributorUI.isCheckboxOrRadioBtnSelected(lbl_customerSpecDisabled)){
             distributorUI.click(lbl_deliveryDays);
+        }
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -681,14 +705,17 @@ public class SettingsPage extends LoginPage{
         }
     }
 
-    public void setOrderMinimums(boolean select) {
-        distributorUI.waitForVisibility(sel_OrderMinimums);
-        boolean isSelected = distributorUI.isCheckboxOrRadioBtnSelected(sel_OrderMinimums);
+    public void setOrderMinimums(boolean enable) {
+        /*boolean isSelected = distributorUI.isCheckboxOrRadioBtnSelected(sel_OrderMinimums);
 
         if (select && !isSelected) {
             distributorUI.click(sel_OrderMinimums); // Select the checkbox
         } else if (!select && isSelected) {
             distributorUI.click(sel_OrderMinimums); // Deselect the checkbox
+        }*/
+        distributorUI.waitForVisibility(sel_OrderMinimums);
+        if (distributorUI.isCheckboxOrRadioBtnSelected(sel_OrderMinimums_status ) != enable){
+            distributorUI.click(sel_OrderMinimums);
         }
         try {
             distributorUI.waitForCustom(2000);
@@ -697,25 +724,38 @@ public class SettingsPage extends LoginPage{
         }
     }
 
-    public void setCustomerSpecificDeliveryDays(boolean select) {
-        distributorUI.waitForVisibility(sel_CustomerSpecificDeliveryDays);
+    public void setCustomerSpecificDeliveryDays(boolean enable) {
+        /*distributorUI.waitForVisibility(sel_CustomerSpecificDeliveryDays);
         boolean isSelected = distributorUI.isCheckboxOrRadioBtnSelected(sel_CustomerSpecificDeliveryDays);
 
         if (select && !isSelected) {
             distributorUI.click(sel_CustomerSpecificDeliveryDays); // Select the checkbox
         } else if (!select && isSelected) {
             distributorUI.click(sel_CustomerSpecificDeliveryDays); // Deselect the checkbox
+        }*/
+        distributorUI.waitForVisibility(sel_CustomerSpecificDeliveryDays);
+        if (distributorUI.isCheckboxOrRadioBtnSelected(sel_CustomerSpecificDeliveryDays_status ) != enable){
+            distributorUI.click(sel_CustomerSpecificDeliveryDays);
         }
     }
 
     public void setDeliveryDays(boolean select) {
-        distributorUI.waitForVisibility(sel_DeliveryDays);
+        /*distributorUI.waitForVisibility(sel_DeliveryDays);
         boolean isSelected = distributorUI.isCheckboxOrRadioBtnSelected(sel_DeliveryDays);
 
         if (select && !isSelected) {
             distributorUI.click(sel_DeliveryDays); // Select the checkbox
         } else if (!select && isSelected) {
             distributorUI.click(sel_DeliveryDays); // Deselect the checkbox
+        }*/
+        distributorUI.waitForVisibility(lbl_deliveryDays);
+        if (!distributorUI.isCheckboxOrRadioBtnSelected(lbl_customerSpecDisabled)){
+            distributorUI.click(lbl_deliveryDays);
+        }
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -1003,21 +1043,29 @@ public class SettingsPage extends LoginPage{
         return distributorUI.isDisplayed(txt_configureOrderReminder);
     }
     public void orderMinimumsOverrideRestrictions(boolean enable) {
-        boolean isChecked = distributorUI.getElement(sel_OrderMinimums).isSelected();
+        /*boolean isChecked = distributorUI.getElement(sel_OrderMinimums).isSelected();
 
         if (enable && !isChecked) {
             distributorUI.clickWithScrollAndHover(sel_OrderMinimums);
         } else if (!enable && isChecked) {
             distributorUI.clickWithScrollAndHover(sel_OrderMinimums);
+        }*/
+        distributorUI.waitForVisibility(sel_OrderMinimums);
+        if (distributorUI.isCheckboxOrRadioBtnSelected(sel_OrderMinimums_status ) != enable){
+            distributorUI.click(sel_OrderMinimums);
         }
     }
     public void orderCutOffsOverrideRestrictions(boolean enable) {
-        boolean isChecked = distributorUI.getElement(sel_OrderCutOffs).isSelected();
+        /*boolean isChecked = distributorUI.getElement(sel_OrderCutOffs).isSelected();
 
         if (enable && !isChecked) {
             distributorUI.clickWithScrollAndHover(sel_OrderCutOffs);
         } else if (!enable && isChecked) {
             distributorUI.clickWithScrollAndHover(sel_OrderCutOffs);
+        }*/
+        distributorUI.waitForVisibility(sel_OrderCutOffs);
+        if (distributorUI.isCheckboxOrRadioBtnSelected(sel_OrderCutOffs_status ) != enable){
+            distributorUI.click(sel_OrderCutOffs);
         }
     }
 
@@ -1026,12 +1074,16 @@ public class SettingsPage extends LoginPage{
 
     }
     public void deliveryDateOverrideRestrictions(boolean enable) {
-        boolean isChecked = distributorUI.getElement(sel_deliveryDate).isSelected();
+        /*boolean isChecked = distributorUI.getElement(sel_deliveryDate).isSelected();
 
         if (enable && !isChecked) {
             distributorUI.clickWithScrollAndHover(sel_deliveryDate);
         } else if (!enable && isChecked) {
             distributorUI.clickWithScrollAndHover(sel_deliveryDate);
+        }*/
+        distributorUI.waitForVisibility(lbl_deliveryDays);
+        if (distributorUI.isCheckboxOrRadioBtnSelected(lbl_deliveryDays_status ) != enable){
+            distributorUI.click(lbl_deliveryDays);
         }
     }
 
