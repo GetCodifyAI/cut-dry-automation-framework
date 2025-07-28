@@ -80,11 +80,30 @@ commands:
             fi
 
 jobs:
+  install-common-dependencies:
+    executor: ec2-executor
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Cache Maven repository
+          command: mkdir -p ~/.m2
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - .m2
+            - /usr/lib/jvm
+            - /etc/apt/sources.list.d/google-chrome.list
+            - /usr/bin/google-chrome
+            - /usr/bin/java
+
   build-and-test:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run tests
           command: mvn clean test -Dsurefire.suiteXmlFiles=bvt.xml -Drun.headless=true -Dtest.env=uat
@@ -96,7 +115,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Verify the customer index
           command: mvn clean test -Dsurefire.suiteXmlFiles=customerCheck.xml -Drun.headless=true -Dtest.env=uat || true
@@ -109,7 +129,8 @@ jobs:
     working_directory: ~/project-job1
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run nightly tests 1
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression1.xml -Drun.headless=true -Dtest.env=uat || true
@@ -137,7 +158,8 @@ jobs:
     working_directory: ~/project-job2
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run nightly tests 2
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression2.xml -Drun.headless=true -Dtest.env=uat || true
@@ -168,7 +190,8 @@ jobs:
     working_directory: ~/project-job3
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run nightly tests 3
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression3.xml -Drun.headless=true -Dtest.env=uat || true
@@ -195,7 +218,8 @@ jobs:
     executor: ec2-executor_4
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run nightly tests 4
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression4.xml -Drun.headless=true -Dtest.env=uat || true
@@ -222,7 +246,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run nightly tests 5
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression5.xml -Drun.headless=true -Dtest.env=uat || true
@@ -249,7 +274,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run nightly tests 6
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression6.xml -Drun.headless=true -Dtest.env=uat || true
@@ -276,7 +302,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run nightly tests 7
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression7.xml -Drun.headless=true -Dtest.env=uat || true
@@ -303,7 +330,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run nightly tests 8
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression8.xml -Drun.headless=true -Dtest.env=uat || true
@@ -330,7 +358,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run nightly tests 9
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression9.xml -Drun.headless=true -Dtest.env=uat || true
@@ -357,7 +386,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run nightly tests 10
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression10.xml -Drun.headless=true -Dtest.env=uat || true
@@ -384,7 +414,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run nightly tests 11
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression11.xml -Drun.headless=true -Dtest.env=uat || true
@@ -411,7 +442,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run nightly tests 12
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression12.xml -Drun.headless=true -Dtest.env=uat || true
@@ -438,7 +470,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run daily tests 1
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression1.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -465,7 +498,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run daily tests 2
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression2.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -492,7 +526,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run daily tests 3
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression3.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -519,7 +554,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run daily tests 4
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression4.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -546,7 +582,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run daily tests 5
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression5.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -573,7 +610,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run daily tests 6
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression6.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -600,7 +638,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run daily tests 7
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression7.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -627,7 +666,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run daily tests 8
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression8.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -654,7 +694,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run daily tests 9
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression9.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -681,7 +722,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run daily tests 10
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression10.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -708,7 +750,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run daily tests 11
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression11.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -735,7 +778,8 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - install-dependencies
+      - attach_workspace:
+          at: ~/
       - run:
           name: Build and run daily tests 12
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression12.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -934,18 +978,27 @@ workflows:
 #              only:
 #                - main
     jobs:
-      - nightly-build-and-test-1
-#      - nightly-build-and-test-2
-#      - nightly-build-and-test-3
-#      - nightly-build-and-test-4
+      - install-common-dependencies
+      - nightly-build-and-test-1:
+            requires:
+                - install-common-dependencies
+      - nightly-build-and-test-2:
+            requires:
+                - nightly-build-and-test-1
+      - nightly-build-and-test-3:
+            requires:
+                - nightly-build-and-test-2
+      - nightly-build-and-test-4:
+            requires:
+                - nightly-build-and-test-3
 #      - nightly-build-and-test-5
 #      - nightly-build-and-test-7
-#      - calculate-pass-fail-rate:
-#          requires:
-#            - nightly-build-and-test-1
-#            - nightly-build-and-test-2
-#            - nightly-build-and-test-3
-#            - nightly-build-and-test-4
+      - calculate-pass-fail-rate:
+          requires:
+            - nightly-build-and-test-1
+            - nightly-build-and-test-2
+            - nightly-build-and-test-3
+            - nightly-build-and-test-4
 #            - nightly-build-and-test-5
 #            - nightly-build-and-test-7
 
