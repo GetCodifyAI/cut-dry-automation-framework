@@ -15,6 +15,10 @@ executors:
     machine:
       enabled: true
       resource_class: getcodifyai/runner-on-ec2-3
+  ec2-executor_4:
+    machine:
+      enabled: true
+      resource_class: getcodifyai/runner-on-ec2-4
 
 commands:
   install-dependencies:
@@ -188,7 +192,7 @@ jobs:
             - Part_Three_nightly-build-and-test-3_TEST-*.xml
 
   nightly-build-and-test-4:
-    executor: ec2-executor
+    executor: ec2-executor_4
     steps:
       - checkout
       - install-dependencies
