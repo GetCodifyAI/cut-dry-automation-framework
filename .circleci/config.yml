@@ -1488,12 +1488,12 @@ workflows:
       - nightly-build-and-test-4
 #      - nightly-build-and-test-5
 #      - nightly-build-and-test-7
-      - calculate-pass-fail-rate:
-          requires:
-            - nightly-build-and-test-1
-            - nightly-build-and-test-2
-            - nightly-build-and-test-3
-            - nightly-build-and-test-4
+#      - calculate-pass-fail-rate:
+#          requires:
+#            - nightly-build-and-test-1
+#            - nightly-build-and-test-2
+#            - nightly-build-and-test-3
+#            - nightly-build-and-test-4
 #            - nightly-build-and-test-5
 #            - nightly-build-and-test-7
 
