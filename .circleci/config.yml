@@ -105,9 +105,7 @@ jobs:
           destination: customer-index-check-artifacts
 
   nightly-build-and-test-1:
-    docker:
-      - image: cimg/base:current
-    resource_class: getcodifyai/runner-on-ec2
+    executor: ec2-executor
     working_directory: ~/project-job1
     steps:
       - checkout
@@ -135,9 +133,7 @@ jobs:
             - Part_One_nightly-build-and-test-1_TEST-*.xml
 
   nightly-build-and-test-2:
-    docker:
-      - image: cimg/base:current
-    resource_class: getcodifyai/runner-on-ec2-2
+    executor: ec2-executor_2
     working_directory: ~/project-job2
     steps:
       - checkout
@@ -168,9 +164,7 @@ jobs:
             - Part_Two_nightly-build-and-test-2_TEST-*.xml
 
   nightly-build-and-test-3:
-    docker:
-      - image: cimg/base:current
-    resource_class: getcodifyai/runner-on-ec2
+    executor: ec2-executor_3
     working_directory: ~/project-job3
     steps:
       - checkout
@@ -941,8 +935,8 @@ workflows:
 #                - main
     jobs:
       - nightly-build-and-test-1
-#      - nightly-build-and-test-2
-#      - nightly-build-and-test-3
+      - nightly-build-and-test-2
+      - nightly-build-and-test-3
 #      - nightly-build-and-test-4
 #      - nightly-build-and-test-5
 #      - nightly-build-and-test-7
