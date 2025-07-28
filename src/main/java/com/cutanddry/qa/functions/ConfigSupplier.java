@@ -74,4 +74,18 @@ public class ConfigSupplier {
             configPage.saveOrderSettingChanges();
         }
     }
+
+    public static void enableQuickAdd() throws InterruptedException {
+        if (!configPage.isDefaultQuickAddDisplayed()) {
+            configPage.clickOnDefaultQuickAdd();
+            configPage.saveOrderSettingChanges();
+        }
+    }
+
+    public static void enableSimpleList() throws InterruptedException {
+        if (!configPage.isDefaultSimpleListDisplayed()) {
+            configPage.clickOnDefaultSimpleList();
+            configPage.saveOrderSettingChanges();
+        }
+    }
 }

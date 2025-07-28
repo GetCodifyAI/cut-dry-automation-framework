@@ -4,10 +4,7 @@ import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CustomerData;
 import com.cutanddry.qa.data.testdata.PurchaseHistoryData;
-import com.cutanddry.qa.functions.ConfigSupplier;
-import com.cutanddry.qa.functions.Customer;
-import com.cutanddry.qa.functions.Dashboard;
-import com.cutanddry.qa.functions.Login;
+import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -36,6 +33,15 @@ public class VerifyTheDefaultViewIsCorrectlyDisplayingWhenSetUpFromConfigSupplie
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
 
+        // Enable Quick Add and Simple List view
+        Login.navigateToConfigSupplier();
+        Assert.assertTrue(ConfigSupplier.isUserNavigatedToConfigSupplier(),"navigation error");
+        ConfigSupplier.clickOnEditDetails(DP);
+        ConfigSupplier.clickOnOrderSettings();
+        ConfigSupplier.enableQuickAdd();
+        ConfigSupplier.enableSimpleList();
+
+        // Order Guide
         Login.navigateToConfigSupplier();
         Assert.assertTrue(ConfigSupplier.isUserNavigatedToConfigSupplier(),"navigation error");
         ConfigSupplier.clickOnEditDetails(DP);
