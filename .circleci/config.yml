@@ -84,11 +84,7 @@ jobs:
     executor: ec2-executor
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
-      - run:
-          name: Cache Maven repository
-          command: mkdir -p ~/.m2
+      - install-dependencies
       - persist_to_workspace:
           root: ~/
           paths:
