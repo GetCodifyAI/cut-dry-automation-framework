@@ -972,13 +972,13 @@ workflows:
                 - install-common-dependencies
       - nightly-build-and-test-2:
             requires:
-                - nightly-build-and-test-1
+                - install-common-dependencies
       - nightly-build-and-test-3:
             requires:
-                - nightly-build-and-test-2
+                - install-common-dependencies
       - nightly-build-and-test-4:
             requires:
-                - nightly-build-and-test-3
+                - install-common-dependencies
 #      - nightly-build-and-test-5
 #      - nightly-build-and-test-7
       - calculate-pass-fail-rate:
