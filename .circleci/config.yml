@@ -85,14 +85,6 @@ jobs:
     steps:
       - checkout
       - install-dependencies
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - .m2
-            - /usr/lib/jvm
-            - /etc/apt/sources.list.d/google-chrome.list
-            - /usr/bin/google-chrome
-            - /usr/bin/java
 
   build-and-test:
     executor: ec2-executor
