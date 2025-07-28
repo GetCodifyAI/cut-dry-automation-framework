@@ -1651,7 +1651,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickClose(){
         distributorUI.waitForVisibility(btn_close);
         distributorUI.click(btn_close);
-        distributorUI.waitForInvisibility(btn_close);
+//        distributorUI.waitForInvisibility(btn_close);
         distributorUI.refreshPage();
     }
     public void clickOnDeleteItem(){
@@ -4859,5 +4859,15 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isStandingOrdersDeletedIconDisplay(){
         return distributorUI.isDisplayed(btn_deleteStandingOrderIcon);
+    }
+    public boolean isDeliveryDateLineDisplay(String day, boolean isNextMonth) throws InterruptedException {
+        if (isNextMonth) {
+            distributorUI.click(btn_nextMonth);
+            distributorUI.waitForCustom(1000); // wait after clicking next month
+        }
+
+        By lbl_selectStartDate = By.xpath(dynamicToXPathStable.replace("DAY", day));
+        distributorUI.waitForVisibility(lbl_selectStartDate);
+       return distributorUI.isDisplayed(lbl_selectStartDate);
     }
 }
