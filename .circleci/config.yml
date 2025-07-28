@@ -109,7 +109,7 @@ jobs:
     working_directory: ~/project-job1
     steps:
       - checkout
-      - install-dependencies
+#      - install-dependencies
       - run:
           name: Build and run nightly tests 1
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression1.xml -Drun.headless=true -Dtest.env=uat || true
@@ -137,7 +137,7 @@ jobs:
     working_directory: ~/project-job2
     steps:
       - checkout
-      - install-dependencies
+#      - install-dependencies
       - run:
           name: Build and run nightly tests 2
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression2.xml -Drun.headless=true -Dtest.env=uat || true
@@ -168,7 +168,7 @@ jobs:
     working_directory: ~/project-job3
     steps:
       - checkout
-      - install-dependencies
+#      - install-dependencies
       - run:
           name: Build and run nightly tests 3
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression3.xml -Drun.headless=true -Dtest.env=uat || true
