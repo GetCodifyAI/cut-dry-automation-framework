@@ -59,18 +59,20 @@ public class VerifyTheGlobalDeliveryDatesOverrideFeatureTest extends TestBase {
         softAssert.assertTrue(Customer.isDeliveryOptionSelected(), "The expected fulfillment type is not selected.");
 
         // User Delivery Date
-//        LocalDate today = LocalDate.now();
-//        LocalDate deliveryDate = today.plusDays(2);
-//        DateTimeFormatter fullFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-//        String formattedDeliveryDate = fullFormatter.format(deliveryDate);
-//        DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("d");
-//        String deliveryDay = dayFormatter.format(deliveryDate);
-//        int todayMonth = today.getMonthValue();
-//        int deliveryMonth = deliveryDate.getMonthValue();
-//        boolean isNextMonth = deliveryMonth != todayMonth;
-//        Customer.selectDeliveryDateLineStablePick(deliveryDay, isNextMonth);
-//
-//        Settings.clickOkAlert();
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter fullFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("d");
+
+        for (int i = 2; i <= 8; i++) {
+            LocalDate deliveryDate = today.plusDays(i);
+            String deliveryDay = dayFormatter.format(deliveryDate);
+
+            int todayMonth = today.getMonthValue();
+            int deliveryMonth = deliveryDate.getMonthValue();
+            boolean isNextMonth = deliveryMonth != todayMonth;
+
+            softAssert.assertTrue(Customer.isDeliveryDatesDisplay(deliveryDay, isNextMonth),"Display delivery dates error for day: " + deliveryDay + " (isNextMonth=" + isNextMonth + ")");
+        }
         softAssert.assertAll();
     }
 
