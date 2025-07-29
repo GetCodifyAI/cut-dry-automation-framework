@@ -229,6 +229,7 @@ jobs:
 
   nightly-build-and-test-4:
     executor: ec2-executor_4
+    working_directory: ~/project-job4
     steps:
       - checkout
       - attach_workspace:
@@ -257,6 +258,7 @@ jobs:
 
   nightly-build-and-test-5:
     executor: ec2-executor_5
+    working_directory: ~/project-job5
     steps:
       - checkout
       - attach_workspace:
@@ -285,6 +287,7 @@ jobs:
 
   nightly-build-and-test-6:
     executor: ec2-executor_6
+    working_directory: ~/project-job6
     steps:
       - checkout
       - attach_workspace:
@@ -313,6 +316,7 @@ jobs:
 
   nightly-build-and-test-7:
     executor: ec2-executor_7
+    working_directory: ~/project-job7
     steps:
       - checkout
       - attach_workspace:
@@ -341,6 +345,7 @@ jobs:
 
   nightly-build-and-test-8:
     executor: ec2-executor_8
+    working_directory: ~/project-job8
     steps:
       - checkout
       - attach_workspace:
@@ -369,6 +374,7 @@ jobs:
 
   nightly-build-and-test-9:
     executor: ec2-executor_9
+    working_directory: ~/project-job9
     steps:
       - checkout
       - attach_workspace:
@@ -397,6 +403,7 @@ jobs:
 
   nightly-build-and-test-10:
     executor: ec2-executor_10
+    working_directory: ~/project-job10
     steps:
       - checkout
       - attach_workspace:
