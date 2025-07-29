@@ -219,7 +219,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     By txt_newProduct = By.xpath("//div[text()='New Products']");
     By specialItemDropDown = By.xpath("//label[contains(text(), 'Special Item')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
     String specialItemStatus = "(//div[contains(text(),'STATUS') and contains(@class,'themed_select__option')])[last()]";
-
+    By txt_updateOGPopup = By.xpath("//*[contains(text(),'Update order guides?')]");
+    By btn_updateOGPopup = By.xpath("//button[contains(text(),'Confirm')]");
 
 
     public boolean isCatalogTextDisplayed() {
@@ -326,7 +327,10 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
             distributorUI.waitForCustom(3000);
             distributorUI.waitForVisibility(saveChangesBtn);
             distributorUI.click(saveChangesBtn);
-            distributorUI.waitForCustom(3000);
+//            distributorUI.waitForCustom(3000);
+            if (isUpdateOGPopupTextDisplayed()) {
+                clickUpdateOG();
+            }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -336,7 +340,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         return distributorUI.isDisplayed(successOverlay);
     }*/
     public boolean isSuccessOverlayDisplayed(){
-        distributorUI.waitForVisibility(successOverlay);
+//        distributorUI.waitForVisibility(successOverlay);
         boolean isDisplayed = distributorUI.isDisplayed(successOverlay);
         if (isDisplayed) {
             distributorUI.waitForInvisibility(successOverlay);
@@ -1179,6 +1183,13 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     }
     public boolean isSpecialItemDropDownDisplay(){
         return distributorUI.isDisplayed(specialItemDropDown);
+    }
+
+    public boolean isUpdateOGPopupTextDisplayed() {
+        return distributorUI.isDisplayed(txt_updateOGPopup,1);
+    }
+    public void clickUpdateOG() {
+        distributorUI.click(btn_updateOGPopup);
     }
 
 }

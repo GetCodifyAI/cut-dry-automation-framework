@@ -102,7 +102,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By dropdown_alphabetical = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Alphabetical (A-Z)')]");
     By dropdown_itemCategories = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Item Categories')]");
     By dropdown_itemCode = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Item Code')]");
-    By txt_produce = By.xpath("(//div[starts-with(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'produce')])[last()]");
+    By txt_produce = By.xpath("(//div[starts-with(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'bakery')])[last()]");  // bakery or produce
     By txt_firstItem = By.xpath("//div[translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'artichoke -24ct']");
     By txt_minOrderBanner = By.xpath("//div[contains(text(), 'Add a few more items worth') and contains(text(), 'to meet minimum order amount')]");
     By txt_popupAlertOrderMin = By.xpath("//h2[text()='Order Minimum Not Met']");
@@ -4859,5 +4859,15 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isStandingOrdersDeletedIconDisplay(){
         return distributorUI.isDisplayed(btn_deleteStandingOrderIcon);
+    }
+    public boolean isDeliveryDateLineDisplay(String day, boolean isNextMonth) throws InterruptedException {
+        if (isNextMonth) {
+            distributorUI.click(btn_nextMonth);
+            distributorUI.waitForCustom(1000); // wait after clicking next month
+        }
+
+        By lbl_selectStartDate = By.xpath(dynamicToXPathStable.replace("DAY", day));
+        distributorUI.waitForVisibility(lbl_selectStartDate);
+       return distributorUI.isDisplayed(lbl_selectStartDate);
     }
 }

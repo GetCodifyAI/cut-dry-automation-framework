@@ -2915,6 +2915,10 @@ public class Customer {
     public static boolean isStandingOrdersDeletedIconDisplay(){
         return customersPage.isStandingOrdersDeletedIconDisplay();
     }
+    public static boolean isDeliveryDatesDisplay(String day, boolean isNextMonth)throws InterruptedException{
+        customersPage.clickOnDeliveryDateStable();
+        return customersPage.isDeliveryDateLineDisplay(day, isNextMonth);
+    }
 }
 
 

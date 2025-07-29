@@ -26,11 +26,19 @@ public class ConfigSupplierPage extends LoginPage{
     By lbl_DefaultViewPortalAsCatalog = By.xpath("//div[contains(@class, 'themed_select__option') and text()='Catalog']");
     By lbl_DefaultViewPortalAsScanToOrder = By.xpath("//div[contains(@class, 'themed_select__option') and text()='Scan to Order']");
 
+    By lbl_QuickAddViewDropDow = By.xpath("//*[contains(text(), 'Quick Add View:')]/following-sibling::div//div[contains(@class,'themed_select__indicators')]");
+    By lbl_QuickAddEnable = By.xpath("//div[contains(@class, 'themed_select__option') and text()='Enabled on DP Portal']");
+    By lbl_SimpleListViewDropDow = By.xpath("//*[contains(text(), 'Simple List View:')]/following-sibling::div//div[contains(@class,'themed_select__indicators')]");
+    By lbl_SimpleListEnable = By.xpath("//div[contains(@class, 'themed_select__option') and text()='Enabled on DP Portal']");
+
     By lbl_defaultOrderHistoryAsSimpleList = By.xpath("//*[contains(text(), 'Default View for Portal Users')]/following-sibling::div//*[text()='Simple List']");
     By lbl_defaultOrderHistoryAsQuickAdd = By.xpath("//*[contains(text(), 'Default View for Portal Users')]/following-sibling::div//*[text()='Quick Add']");
     By lbl_defaultOrderHistoryAsOrderGuide = By.xpath("//*[contains(text(), 'Default View for Portal Users')]/following-sibling::div//*[text()='Order Guide']");
     By lbl_defaultOrderHistoryAsCatalog = By.xpath("//*[contains(text(), 'Default View for Portal Users')]/following-sibling::div//*[text()='Catalog']");
     By lbl_defaultOrderHistoryAsScanToOrder = By.xpath("//*[contains(text(), 'Default View for Portal Users')]/following-sibling::div//*[text()='Scan to Order']");
+
+    By lbl_defaultQuickAddView = By.xpath("//*[contains(text(), 'Quick Add View:')]/following-sibling::div//*[text()='Enabled on DP Portal & Operator App']");
+    By lbl_defaultSimpleListView = By.xpath("//*[contains(text(), 'Simple List View:')]/following-sibling::div//*[text()='Enabled on DP Portal & Operator App']");
 
 
     public boolean isConfigTextDisplayed(){
@@ -131,6 +139,18 @@ public class ConfigSupplierPage extends LoginPage{
         distributorUI.click(lbl_DefaultViewPortalAsScanToOrder);
     }
 
+    public void clickOnDefaultQuickAdd() {
+        distributorUI.click(lbl_QuickAddViewDropDow);
+        distributorUI.waitForVisibility(lbl_QuickAddEnable);
+        distributorUI.click(lbl_QuickAddEnable);
+    }
+
+    public void clickOnDefaultSimpleList() {
+        distributorUI.click(lbl_SimpleListViewDropDow);
+        distributorUI.waitForVisibility(lbl_SimpleListEnable);
+        distributorUI.click(lbl_SimpleListEnable);
+    }
+
     public boolean isDefaultViewPortalAsSimpleListDisplayed() {
         return distributorUI.isDisplayed(lbl_defaultOrderHistoryAsSimpleList, 5);
     }
@@ -149,6 +169,14 @@ public class ConfigSupplierPage extends LoginPage{
 
     public boolean isDefaultViewPortalAsScanToOrderDisplayed() {
         return distributorUI.isDisplayed(lbl_defaultOrderHistoryAsScanToOrder, 5);
+    }
+
+    public boolean isDefaultQuickAddDisplayed() {
+        return distributorUI.isDisplayed(lbl_defaultQuickAddView, 5);
+    }
+
+    public boolean isDefaultSimpleListDisplayed() {
+        return distributorUI.isDisplayed(lbl_defaultSimpleListView, 5);
     }
 
 }
