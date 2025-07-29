@@ -150,7 +150,7 @@ jobs:
           destination: customer-index-check-artifacts
 
   nightly-build-and-test-1:
-    executor: ec2-executor
+    executor: ec2-executor_1
     working_directory: ~/project-job1
     steps:
       - checkout
@@ -179,7 +179,7 @@ jobs:
             - Part_One_nightly-build-and-test-1_TEST-*.xml
 
   nightly-build-and-test-2:
-    executor: ec2-executor
+    executor: ec2-executor_2
     working_directory: ~/project-job2
     steps:
       - checkout
@@ -211,7 +211,7 @@ jobs:
             - Part_Two_nightly-build-and-test-2_TEST-*.xml
 
   nightly-build-and-test-3:
-    executor: ec2-executor_2
+    executor: ec2-executor_3
     working_directory: ~/project-job3
     steps:
       - checkout
@@ -240,7 +240,7 @@ jobs:
             - Part_Three_nightly-build-and-test-3_TEST-*.xml
 
   nightly-build-and-test-4:
-    executor: ec2-executor_2
+    executor: ec2-executor_4
     working_directory: ~/project-job4
     steps:
       - checkout
@@ -269,7 +269,7 @@ jobs:
             - Part_Four_nightly-build-and-test-4_TEST-*.xml
 
   nightly-build-and-test-5:
-    executor: ec2-executor_2
+    executor: ec2-executor_5
     working_directory: ~/project-job5
     steps:
       - checkout
@@ -298,7 +298,7 @@ jobs:
             - Part_Five_nightly-build-and-test-5_TEST-*.xml
 
   nightly-build-and-test-6:
-    executor: ec2-executor_3
+    executor: ec2-executor_6
     working_directory: ~/project-job6
     steps:
       - checkout
@@ -327,7 +327,7 @@ jobs:
             - Part_Six_nightly-build-and-test-6_TEST-*.xml
 
   nightly-build-and-test-7:
-    executor: ec2-executor_4
+    executor: ec2-executor_7
     working_directory: ~/project-job7
     steps:
       - checkout
@@ -356,7 +356,7 @@ jobs:
             - Part_Seven_nightly-build-and-test-7_TEST-*.xml
 
   nightly-build-and-test-8:
-    executor: ec2-executor_5
+    executor: ec2-executor_8
     working_directory: ~/project-job8
     steps:
       - checkout
@@ -385,7 +385,7 @@ jobs:
             - Part_Eight_nightly-build-and-test-8_TEST-*.xml
 
   nightly-build-and-test-9:
-    executor: ec2-executor_4
+    executor: ec2-executor_9
     working_directory: ~/project-job9
     steps:
       - checkout
@@ -414,7 +414,7 @@ jobs:
             - Part_Nine_nightly-build-and-test-9_TEST-*.xml
 
   nightly-build-and-test-10:
-    executor: ec2-executor_6
+    executor: ec2-executor_10
     working_directory: ~/project-job10
     steps:
       - checkout
@@ -443,7 +443,7 @@ jobs:
             - Part_Ten_nightly-build-and-test-10_TEST-*.xml
 
   nightly-build-and-test-11:
-    executor: ec2-executor_7
+    executor: ec2-executor_11
     working_directory: ~/project-job11
     steps:
       - checkout
@@ -472,7 +472,7 @@ jobs:
             - Part_Eleven_nightly-build-and-test-11_TEST-*.xml
 
   nightly-build-and-test-12:
-    executor: ec2-executor_7
+    executor: ec2-executor_12
     working_directory: ~/project-job12
     steps:
       - checkout
