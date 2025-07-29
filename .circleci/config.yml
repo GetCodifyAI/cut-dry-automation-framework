@@ -1010,6 +1010,18 @@ workflows:
       - nightly-build-and-test-7:
             requires:
                 - install-common-dependencies
+      - nightly-build-and-test-6:
+          requires:
+            - install-common-dependencies
+      - nightly-build-and-test-8:
+          requires:
+            - install-common-dependencies
+      - nightly-build-and-test-9:
+          requires:
+            - install-common-dependencies
+      - nightly-build-and-test-10:
+          requires:
+            - install-common-dependencies
       - calculate-pass-fail-rate:
           requires:
             - nightly-build-and-test-1
@@ -1018,15 +1030,19 @@ workflows:
             - nightly-build-and-test-4
             - nightly-build-and-test-5
             - nightly-build-and-test-7
+            - nightly-build-and-test-6
+            - nightly-build-and-test-8
+            - nightly-build-and-test-9
+            - nightly-build-and-test-10
 
   scheduled-test-1-sub1:
-#    triggers:
-#      - schedule:
-#          cron: "00 09 * * 1-5"  #This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
-#          filters:
-#            branches:
-#              only:
-#                - main
+    triggers:
+      - schedule:
+          cron: "00 09 * * 1-5"  #This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
+          filters:
+            branches:
+              only:
+                - main
     jobs:
       - install-common-dependencies
       - nightly-build-and-test-6:
