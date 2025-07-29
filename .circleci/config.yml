@@ -1028,6 +1028,7 @@ workflows:
 #              only:
 #                - main
     jobs:
+      - install-common-dependencies
       - nightly-build-and-test-6:
           requires:
             - install-common-dependencies
