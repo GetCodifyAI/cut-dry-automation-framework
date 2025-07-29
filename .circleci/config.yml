@@ -2,160 +2,116 @@ version: 2.1
 orbs:
   slack: circleci/slack@5.1.1
 
-executors:
-  ec2-executor:
-    machine:
-      enabled: true
-      resource_class: getcodifyai/runner-on-ec2
-  ec2-executor_2:
-    machine:
-      enabled: true
-      resource_class: getcodifyai/runner-on-ec2-2
-  ec2-executor_3:
-    machine:
-      enabled: true
-      resource_class: getcodifyai/runner-on-ec2-3
-  ec2-executor_4:
-    machine:
-      enabled: true
-      resource_class: getcodifyai/runner-on-ec2-4
-  ec2-executor_5:
-    machine:
-      enabled: true
-      resource_class: getcodifyai/runner-on-ec2-5
-  ec2-executor_6:
-    machine:
-      enabled: true
-      resource_class: getcodifyai/runner-on-ec2-6
-  ec2-executor_7:
-    machine:
-      enabled: true
-      resource_class: getcodifyai/runner-on-ec2-7
-  ec2-executor_8:
-    machine:
-      enabled: true
-      resource_class: getcodifyai/runner-on-ec2-8
-  ec2-executor_9:
-    machine:
-      enabled: true
-      resource_class: getcodifyai/runner-on-ec2-9
-  ec2-executor_10:
-    machine:
-      enabled: true
-      resource_class: getcodifyai/runner-on-ec2-10
-  ec2-executor_11:
-    machine:
-      enabled: true
-      resource_class: getcodifyai/runner-on-ec2-11
-  ec2-executor_12:
-    machine:
-      enabled: true
-      resource_class: getcodifyai/runner-on-ec2-12
-  ec2-executor_13:
-    machine:
-      enabled: true
-      resource_class: getcodifyai/runner-on-ec2-13
-
-commands:
-  install-dependencies:
-    steps:
-      - run:
-          name: Clean up disk
-          command: |
-            echo "Disk usage before cleanup:"
-            df -h
-            sudo apt-get clean
-            sudo rm -rf /var/lib/apt/lists/*
-            sudo rm -rf /tmp/*
-            sudo rm -rf ~/.m2/repository || true
-            echo "Disk usage after cleanup:"
-            df -h
-
-      - run:
-          name: Check and Install Java 22 if not exists
-          command: |
-            if ! java -version 2>&1 | grep '22' >/dev/null; then
-              echo "Java 22 not found. Installing..."
-              sudo apt-get update && sudo apt-get install -y wget
-              wget -q https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
-              sudo mkdir -p /usr/lib/jvm
-              sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-              sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-              sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
-              echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
-              source $BASH_ENV
-            else
-              echo "Java 22 is already installed."
-              java -version
-            fi
-
-      - run:
-          name: Check and Install Maven if not exists
-          command: |
-            if ! command -v mvn >/dev/null; then
-              echo "Maven not found. Installing..."
-              sudo apt-get install -y maven
-            else
-              echo "Maven already installed:"
-              mvn -version
-            fi
-
-      - run:
-          name: Check and Install Chrome if not exists
-          command: |
-            if ! command -v google-chrome >/dev/null; then
-              echo "Chrome not found. Installing..."
-              sudo rm -f /etc/apt/sources.list.d/google-chrome.list
-              echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list > /dev/null
-              wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-              sudo apt-get update
-              sudo apt-get install -y google-chrome-stable
-            else
-              echo "Chrome already installed:"
-              google-chrome --version
-            fi
-
-
 jobs:
-  install-common-dependencies:
-    executor: ec2-executor
-    steps:
-      - checkout
-      - install-dependencies
-
   build-and-test:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run tests
           command: mvn clean test -Dsurefire.suiteXmlFiles=bvt.xml -Drun.headless=true -Dtest.env=uat
       - store_artifacts:
           path: target/surefire-reports
           destination: build-and-test-artifacts
+    executor:
 
   customer-index-check:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Verify the customer index
           command: mvn clean test -Dsurefire.suiteXmlFiles=customerCheck.xml -Drun.headless=true -Dtest.env=uat || true
       - store_artifacts:
           path: target/surefire-reports
           destination: customer-index-check-artifacts
+    executor:
 
   nightly-build-and-test-1:
-    executor: ec2-executor
-    working_directory: ~/project-job1
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run nightly tests 1
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression1.xml -Drun.headless=true -Dtest.env=uat || true
@@ -177,14 +133,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_One_nightly-build-and-test-1_TEST-*.xml
+    executor:
 
   nightly-build-and-test-2:
-    executor: ec2-executor_2
-    working_directory: ~/project-job2
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run nightly tests 2
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression2.xml -Drun.headless=true -Dtest.env=uat || true
@@ -209,14 +190,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Two_nightly-build-and-test-2_TEST-*.xml
+    executor:
 
   nightly-build-and-test-3:
-    executor: ec2-executor_3
-    working_directory: ~/project-job3
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run nightly tests 3
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression3.xml -Drun.headless=true -Dtest.env=uat || true
@@ -238,14 +244,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Three_nightly-build-and-test-3_TEST-*.xml
+    executor:
 
   nightly-build-and-test-4:
-    executor: ec2-executor_4
-    working_directory: ~/project-job4
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run nightly tests 4
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression4.xml -Drun.headless=true -Dtest.env=uat || true
@@ -267,14 +298,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Four_nightly-build-and-test-4_TEST-*.xml
+    executor:
 
   nightly-build-and-test-5:
-    executor: ec2-executor_5
-    working_directory: ~/project-job5
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run nightly tests 5
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression5.xml -Drun.headless=true -Dtest.env=uat || true
@@ -296,14 +352,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Five_nightly-build-and-test-5_TEST-*.xml
+    executor:
 
   nightly-build-and-test-6:
-    executor: ec2-executor_6
-    working_directory: ~/project-job6
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run nightly tests 6
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression6.xml -Drun.headless=true -Dtest.env=uat || true
@@ -325,14 +406,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Six_nightly-build-and-test-6_TEST-*.xml
+    executor:
 
   nightly-build-and-test-7:
-    executor: ec2-executor_7
-    working_directory: ~/project-job7
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run nightly tests 7
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression7.xml -Drun.headless=true -Dtest.env=uat || true
@@ -354,14 +460,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Seven_nightly-build-and-test-7_TEST-*.xml
+    executor:
 
   nightly-build-and-test-8:
-    executor: ec2-executor_8
-    working_directory: ~/project-job8
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run nightly tests 8
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression8.xml -Drun.headless=true -Dtest.env=uat || true
@@ -383,14 +514,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Eight_nightly-build-and-test-8_TEST-*.xml
+    executor:
 
   nightly-build-and-test-9:
-    executor: ec2-executor_9
-    working_directory: ~/project-job9
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run nightly tests 9
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression9.xml -Drun.headless=true -Dtest.env=uat || true
@@ -412,14 +568,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Nine_nightly-build-and-test-9_TEST-*.xml
+    executor:
 
   nightly-build-and-test-10:
-    executor: ec2-executor_10
-    working_directory: ~/project-job10
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run nightly tests 10
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression10.xml -Drun.headless=true -Dtest.env=uat || true
@@ -441,14 +622,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Ten_nightly-build-and-test-10_TEST-*.xml
+    executor:
 
   nightly-build-and-test-11:
-    executor: ec2-executor_11
-    working_directory: ~/project-job11
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run nightly tests 11
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression11.xml -Drun.headless=true -Dtest.env=uat || true
@@ -470,14 +676,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Eleven_nightly-build-and-test-11_TEST-*.xml
+    executor:
 
   nightly-build-and-test-12:
-    executor: ec2-executor_12
-    working_directory: ~/project-job12
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run nightly tests 12
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression12.xml -Drun.headless=true -Dtest.env=uat || true
@@ -499,13 +730,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Twelve_nightly-build-and-test-12_TEST-*.xml
+    executor:
 
   daily-build-and-test-1:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run daily tests 1
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression1.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -527,13 +784,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_One_daily-build-and-test-1_TEST-*.xml
+    executor:
 
   daily-build-and-test-2:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run daily tests 2
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression2.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -555,13 +838,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Two_daily-build-and-test-2_TEST-*.xml
+    executor:
 
   daily-build-and-test-3:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run daily tests 3
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression3.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -583,13 +892,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Three_daily-build-and-test-3_TEST-*.xml
+    executor:
 
   daily-build-and-test-4:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run daily tests 4
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression4.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -611,13 +946,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Four_daily-build-and-test-4_TEST-*.xml
+    executor:
 
   daily-build-and-test-5:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run daily tests 5
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression5.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -639,13 +1000,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Five_daily-build-and-test-5_TEST-*.xml
+    executor:
 
   daily-build-and-test-6:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run daily tests 6
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression6.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -667,13 +1054,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Six_daily-build-and-test-6_TEST-*.xml
+    executor:
 
   daily-build-and-test-7:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run daily tests 7
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression7.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -695,13 +1108,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Seven_daily-build-and-test-7_TEST-*.xml
+    executor:
 
   daily-build-and-test-8:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run daily tests 8
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression8.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -723,13 +1162,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Eight_daily-build-and-test-8_TEST-*.xml
+    executor:
 
   daily-build-and-test-9:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run daily tests 9
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression9.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -751,13 +1216,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Nine_daily-build-and-test-9_TEST-*.xml
+    executor:
 
   daily-build-and-test-10:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run daily tests 10
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression10.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -779,13 +1270,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Ten_daily-build-and-test-10_TEST-*.xml
+    executor:
 
   daily-build-and-test-11:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run daily tests 11
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression11.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -807,13 +1324,39 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Eleven_daily-build-and-test-11_TEST-*.xml
+    executor:
 
   daily-build-and-test-12:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
       - run:
           name: Build and run daily tests 12
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression12.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -835,10 +1378,13 @@ jobs:
           root: ~/workspace
           paths:
             - Part_Twelve_daily-build-and-test-12_TEST-*.xml
+    executor:
 
 
   calculate-pass-fail-rate:
-    executor: ec2-executor
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
     steps:
       - attach_workspace:
           at: ~/workspace
@@ -974,12 +1520,14 @@ jobs:
               ]
             }
 
+    executor:
+
 
 workflows:
   version: 2
-#  build-and-test:
-#    jobs:
-#      - build-and-test
+  build-and-test:
+    jobs:
+      - build-and-test
 
   customer-index-test:
     triggers:
@@ -1004,45 +1552,20 @@ workflows:
       - customer-index-check
 
   scheduled-test-1:
-#    triggers:
-#      - schedule:
-#          cron: "45 11 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
-#          filters:
-#            branches:
-#              only:
-#                - main
+    triggers:
+      - schedule:
+          cron: "00 22 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
+          filters:
+            branches:
+              only:
+                - main
     jobs:
-      - install-common-dependencies
-      - nightly-build-and-test-1:
-            requires:
-                - install-common-dependencies
-      - nightly-build-and-test-2:
-            requires:
-                - install-common-dependencies
-      - nightly-build-and-test-3:
-            requires:
-                - install-common-dependencies
-      - nightly-build-and-test-4:
-            requires:
-                - install-common-dependencies
-      - nightly-build-and-test-5:
-            requires:
-                - install-common-dependencies
-      - nightly-build-and-test-7:
-            requires:
-                - install-common-dependencies
-      - nightly-build-and-test-6:
-          requires:
-            - install-common-dependencies
-      - nightly-build-and-test-8:
-          requires:
-            - install-common-dependencies
-      - nightly-build-and-test-9:
-          requires:
-            - install-common-dependencies
-      - nightly-build-and-test-10:
-          requires:
-            - install-common-dependencies
+      - nightly-build-and-test-1
+      - nightly-build-and-test-2
+      - nightly-build-and-test-3
+      - nightly-build-and-test-4
+      - nightly-build-and-test-5
+      - nightly-build-and-test-7
       - calculate-pass-fail-rate:
           requires:
             - nightly-build-and-test-1
@@ -1051,52 +1574,35 @@ workflows:
             - nightly-build-and-test-4
             - nightly-build-and-test-5
             - nightly-build-and-test-7
-            - nightly-build-and-test-6
-            - nightly-build-and-test-8
-            - nightly-build-and-test-9
-            - nightly-build-and-test-10
 
   scheduled-test-1-sub1:
     triggers:
       - schedule:
-          cron: "00 09 * * 1-5"  #This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
+          cron: "00 23 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
           filters:
             branches:
               only:
                 - main
     jobs:
-      - install-common-dependencies
-      - nightly-build-and-test-6:
-          requires:
-            - install-common-dependencies
-      - nightly-build-and-test-8:
-          requires:
-            - install-common-dependencies
-      - nightly-build-and-test-9:
-          requires:
-            - install-common-dependencies
-      - nightly-build-and-test-10:
-          requires:
-            - install-common-dependencies
-#      - nightly-build-and-test-11:
-#          requires:
-#            - install-common-dependencies
-#      - nightly-build-and-test-12:
-#          requires:
-#            - install-common-dependencies
+      - nightly-build-and-test-6
+      - nightly-build-and-test-8
+      - nightly-build-and-test-9
+      - nightly-build-and-test-10
+      - nightly-build-and-test-11
+      - nightly-build-and-test-12
       - calculate-pass-fail-rate:
           requires:
             - nightly-build-and-test-6
             - nightly-build-and-test-8
             - nightly-build-and-test-9
             - nightly-build-and-test-10
-#            - nightly-build-and-test-11
-#            - nightly-build-and-test-12
+            - nightly-build-and-test-11
+            - nightly-build-and-test-12
 
   scheduled-test-2:
     triggers:
       - schedule:
-          cron: "45 03 * * 1-5"  #  This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
+          cron: "20 03 * * 1-5"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
           filters:
             branches:
               only:
@@ -1120,7 +1626,7 @@ workflows:
   scheduled-test-2-sub1:
     triggers:
       - schedule:
-          cron: "45 04 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 45 06 * * *
+          cron: "30 04 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 45 06 * * *
           filters:
             branches:
               only:
