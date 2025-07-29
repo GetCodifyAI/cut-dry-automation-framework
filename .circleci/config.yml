@@ -150,7 +150,7 @@ jobs:
           destination: customer-index-check-artifacts
 
   nightly-build-and-test-1:
-    executor: ec2-executor_1
+    executor: ec2-executor
     working_directory: ~/project-job1
     steps:
       - checkout
