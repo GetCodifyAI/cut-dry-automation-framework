@@ -100,6 +100,15 @@ public class BoostPage extends LoginPage {
     By dropdown_menu = By.xpath("//div[contains(@class, 'themed_select__menu-list')]");
     By firstOptionLocator = By.xpath("//div[contains(@class, 'themed_select__menu-list')]//div[contains(@class, 'themed_select__option')][1]");
     By lbl_selectCustomer = By.xpath("//label[contains(text(),'Select Customers:')]");
+    By option_filteredGroup = By.xpath("//div[text()='Filtered Group']");
+    By lbl_CustomerGroups = By.xpath("//label[text()='Customer Groups:']");
+    By dropdown_customGroups = By.xpath("//label[contains(text(),'Customer Groups:')]/following-sibling::div/div");
+    By dropdown_salesperson = By.xpath("//label[contains(text(),'Salesperson:')]/following-sibling::div/div");
+    By dropdown_deliveryDate = By.xpath("//label[contains(text(),'Delivery Days:')]/following-sibling::div/div");
+    By secondOptionLocator = By.xpath("//label[contains(text(),'Delivery Days:')]/following-sibling::div/div[2]//div[1]");
+
+
+
 
     public void changeOrderDragAndDrop(){
         distributorUI.dragAndDrop(sourceRowDragHandle,targetRowDragHandle);
@@ -480,5 +489,45 @@ public class BoostPage extends LoginPage {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+    public void selectFilteredGroup() throws InterruptedException {
+        distributorUI.click(option_filteredGroup);
+        distributorUI.waitForCustom(3000);
+    }
+    public boolean isCustomerGroupsLabelDisplayed() {
+        return distributorUI.isDisplayed(lbl_CustomerGroups);
+    }
+    public void clickSelectCustomersGroupDropdown() {
+        distributorUI.click(dropdown_customGroups);
+    }
+    public String selectFirstGroupDropdownOption() throws InterruptedException {
+        distributorUI.waitForVisibility(dropdown_menu);
+        String selectedOptionName = distributorUI.getText(firstOptionLocator).trim();
+        distributorUI.click(firstOptionLocator);
+        distributorUI.waitForCustom(2000);
+        distributorUI.click(dropdown_customGroups);
+        return selectedOptionName;
+    }
+    public void clickSelectSalespersonDropdown() {
+        distributorUI.click(dropdown_salesperson);
+    }
+    public String selectFirstSalespersonDropdownOption() throws InterruptedException {
+        distributorUI.waitForVisibility(dropdown_menu);
+        String selectedOptionName = distributorUI.getText(firstOptionLocator).trim();
+        distributorUI.click(firstOptionLocator);
+        distributorUI.waitForCustom(2000);
+        distributorUI.click(dropdown_salesperson);
+        return selectedOptionName;
+    }
+    public void clickSelectDeliveryDatesDropdown() {
+        distributorUI.click(dropdown_deliveryDate);
+    }
+    public String selectDeliveryDatesDropdownOption() throws InterruptedException {
+        distributorUI.waitForVisibility(dropdown_menu);
+        String selectedOptionName = distributorUI.getText(firstOptionLocator).trim();
+        distributorUI.click(firstOptionLocator);
+        distributorUI.waitForCustom(2000);
+        distributorUI.click(dropdown_deliveryDate);
+        return selectedOptionName;
     }
 }
