@@ -487,11 +487,26 @@ public class Settings {
     }
 
     public static void deleteUser(String user) throws InterruptedException {
-        while (settingsPage.ExistUser(user)){
+        /*while (settingsPage.ExistUser(user)){
             settingsPage.clickOnUser(user);
             settingsPage.clickOnRemoveUser();
             settingsPage.clickYes();
             settingsPage.clickOK();
+        }*/
+        int maxAttempts = 3;
+
+        for (int attempts = 0; attempts < maxAttempts; attempts++) {
+            if (!settingsPage.ExistUser(user)) {
+                return;
+            }
+            settingsPage.clickOnUser(user);
+            settingsPage.clickOnRemoveUser();
+            settingsPage.clickYes();
+            settingsPage.clickOK();
+        }
+
+        if (settingsPage.ExistUser(user)) {
+            System.err.println("User '" + user + "' could not be deleted after " + maxAttempts + " attempts.");
         }
     }
     public static void deliveryDateCheckBox(boolean status) throws InterruptedException {
