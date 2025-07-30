@@ -134,9 +134,26 @@ commands:
 
 
 jobs:
-  pre-clean-and-checkout:
+#  pre-clean-and-checkout:
+#    executor: ec2-executor
+#    description: Clean disk space and then checkout
+#    steps:
+#      - run:
+#          name: Pre-clean disk before checkout
+#          command: |
+#            echo "Disk usage BEFORE cleanup:"
+#            df -h
+#            for i in $(seq 1 12); do
+#              sudo rm -rf ~/project-job$i || true
+#            done
+#            sudo rm -rf ~/workspace || true
+#            sudo rm -rf /tmp/* || true
+#            sudo rm -rf ~/.m2/repository || true
+#            echo "Disk usage AFTER cleanup:"
+#            df -h
+#      - checkout
+  install-common-dependencies:
     executor: ec2-executor
-    description: Clean disk space and then checkout
     steps:
       - run:
           name: Pre-clean disk before checkout
@@ -152,10 +169,6 @@ jobs:
             echo "Disk usage AFTER cleanup:"
             df -h
       - checkout
-  install-common-dependencies:
-    executor: ec2-executor
-    steps:
-      - pre-clean-and-checkout
       - install-dependencies
 
   build-and-test:
