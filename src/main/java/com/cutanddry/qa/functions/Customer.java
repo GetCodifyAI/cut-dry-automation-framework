@@ -49,6 +49,20 @@ public class Customer {
              Orders.selectOrderGuide("Independent Foods Co");
         }
     }
+    public static void clickOnOrderGuideOptional() {
+        if (Orders.isSelectOrderGuideDisplayed()){
+            Orders.selectOrderGuide("Test_Automation");
+        }
+    }
+    public static void clickOnOrderGuideBiRite(String code) throws InterruptedException {
+        customersPage.clickOnOrderGuide(code);
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+        else if (Orders.isSelectOrderGuideDisplayed()){
+            Orders.selectOrderGuide("BiRite Foodservice Distributors");
+        }
+    }
     public static void clickOnNameOrderGuide(String code) throws InterruptedException {
         customersPage.clickOnNameOrderGuide(code);
         if (customersPage.isPreviousDraftOrderNoDisplayedSub()){

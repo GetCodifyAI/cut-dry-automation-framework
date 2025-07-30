@@ -45,7 +45,7 @@ public class VerifyThSelectMultipleUOMAvailableRebateItemAndSubmissionTest exten
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
-        Customer.clickOnOrderGuide(customerId);
+        Customer.clickOnOrderGuideBiRite(customerId);
 
         Customer.searchItemOnOrderGuide(searchItemCode);
         Catalog.searchOrderGuide(searchItemCode);
