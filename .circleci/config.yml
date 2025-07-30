@@ -68,6 +68,9 @@ commands:
   install-dependencies:
     steps:
       - run:
+          name: Check disk space
+          command: df -h
+      - run:
           name: Clean up disk
           command: |
             echo "Disk usage before cleanup:"
