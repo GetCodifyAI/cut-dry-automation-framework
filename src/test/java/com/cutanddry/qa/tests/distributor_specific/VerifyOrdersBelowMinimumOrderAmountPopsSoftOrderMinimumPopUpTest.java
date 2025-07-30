@@ -48,7 +48,8 @@ public class VerifyOrdersBelowMinimumOrderAmountPopsSoftOrderMinimumPopUpTest ex
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         Customer.submitOrderMinimum();
         softAssert.assertTrue(Customer.isOrderMinPopupDisplayed(),"popup display error");
-        Customer.clickYesOrderMinimum();
+//        Customer.clickYesOrderMinimum();
+        Customer.clickOkOrderMinimum();
 
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation error");

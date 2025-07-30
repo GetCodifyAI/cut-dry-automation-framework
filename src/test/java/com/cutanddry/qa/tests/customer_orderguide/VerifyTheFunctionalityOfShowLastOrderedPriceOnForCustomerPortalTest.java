@@ -37,6 +37,7 @@ public class VerifyTheFunctionalityOfShowLastOrderedPriceOnForCustomerPortalTest
         Login.switchIntoNewTab();
         Login.navigateToLoginAsPortal(RestaurantUserCode);
         Orders.SelectSupplierFromPlaceOrderPage(SupplierName);
+        Customer.clickOnOrderGuideOptional();
         Customer.searchItemOnOrderGuide(itemId);
         softAssert.assertTrue(Customer.isLastOrderedPoundPriceDisplayed(),"display error");
         softAssert.assertAll();

@@ -3,6 +3,7 @@ package com.cutanddry.qa.tests.catalog_access;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CustomerData;
+import com.cutanddry.qa.data.testdata.SplitWeightUOMData;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
@@ -21,6 +22,7 @@ public class VerifyTheCatalogAccessFeatureHillcrestDPTest extends TestBase {
     static String itemName, orderId, searchItemCode;
     static double itemPrice;
     static String catalogToolTip = "Operator doesn't have catalog access, only you have catalog access";
+    static String sortOption = SplitWeightUOMData.SORT_ITEM_BY;
 
     @BeforeMethod
     public void setUp(){
@@ -48,6 +50,7 @@ public class VerifyTheCatalogAccessFeatureHillcrestDPTest extends TestBase {
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId);
+        Customer.selectSortItemByOption(sortOption);
 
         // Add the product via Order Guide
         itemName = Customer.getItemNameFirstRow();
