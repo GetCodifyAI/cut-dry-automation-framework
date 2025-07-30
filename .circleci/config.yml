@@ -135,6 +135,7 @@ commands:
 
 jobs:
   pre-clean-and-checkout:
+    executor: ec2-executor
     description: Clean disk space and then checkout
     steps:
       - run:
