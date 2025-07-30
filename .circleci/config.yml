@@ -67,7 +67,6 @@ executors:
 commands:
   install-dependencies:
     steps:
-      - pre-clean-and-checkout
       - run:
           name: Clean up disk
           command: |
@@ -155,7 +154,7 @@ jobs:
   install-common-dependencies:
     executor: ec2-executor
     steps:
-      - checkout
+      - pre-clean-and-checkout
       - install-dependencies
 
   build-and-test:
