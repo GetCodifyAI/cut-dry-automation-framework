@@ -74,7 +74,7 @@ commands:
             df -h
             
             echo "Cleaning up old project-jobN dirs..."
-            for i in $(seq 1 12); do
+            for i in $(seq 1 23); do
               rm -rf ~/project-job$i || true
             done
             
@@ -259,7 +259,7 @@ jobs:
             - Part_Four_nightly-build-and-test-4_TEST-*.xml
 
   nightly-build-and-test-5:
-    executor: ec2-executor_14
+    executor: ec2-executor_3
     working_directory: ~/project-job5
     steps:
       - checkout
@@ -317,7 +317,7 @@ jobs:
             - Part_Six_nightly-build-and-test-6_TEST-*.xml
 
   nightly-build-and-test-7:
-    executor: ec2-executor_4
+    executor: ec2-executor_14
     working_directory: ~/project-job7
     steps:
       - checkout
