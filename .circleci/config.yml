@@ -65,22 +65,6 @@ executors:
       resource_class: getcodifyai/runner-on-ec2-15
 
 commands:
-  pre-clean-and-checkout:
-    steps:
-      - run:
-          name: Clean disk before checkout
-          command: |
-            echo "Disk BEFORE cleanup:"
-            df -h
-            for i in $(seq 1 12); do
-              sudo rm -rf ~/project-job$i || true
-            done
-            sudo rm -rf ~/workspace || true
-            sudo rm -rf /tmp/* || true
-            sudo rm -rf ~/.m2/repository || true
-            echo "Disk AFTER cleanup:"
-            df -h
-      - checkout
   install-dependencies:
     steps:
       - run:
@@ -137,27 +121,20 @@ commands:
               echo "Chrome already installed:"
               google-chrome --version
             fi
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - .m2
-            - .cache
-            - .local
-            - .java
 
 
 jobs:
   install-common-dependencies:
     executor: ec2-executor
     steps:
-      - pre-clean-and-checkout
+      - checkout
       - install-dependencies
 
   nightly-build-and-test-1:
     executor: ec2-executor
     working_directory: ~/project-job1
     steps:
-      - pre-clean-and-checkout
+      - checkout
       - attach_workspace:
           at: ~/
       - run:
