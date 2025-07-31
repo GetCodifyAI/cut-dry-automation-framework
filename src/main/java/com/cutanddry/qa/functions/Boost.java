@@ -293,5 +293,24 @@ public class Boost {
             boostPage.clickBtnOK();
         }
     }
+    public static void selectFilteredGroup() throws InterruptedException {
+        boostPage.clickCustomersDropdown();
+        boostPage.selectFilteredGroup();
+    }
+    public static boolean isCustomerGroupsLabelDisplayed() {
+        return boostPage.isCustomerGroupsLabelDisplayed();
+    }
+    public static String selectFirstCustomerGroup() throws InterruptedException {
+        boostPage.clickSelectCustomersGroupDropdown();
+        return boostPage.selectFirstGroupDropdownOption();
+    }
+    public static String selectFirstSalesPerson() throws InterruptedException {
+        boostPage.clickSelectSalespersonDropdown();
+        return boostPage.selectFirstSalespersonDropdownOption();
+    }
+    public static String selectDeliveryDates() throws InterruptedException {
+        boostPage.clickSelectDeliveryDatesDropdown();
+        return boostPage.selectDeliveryDatesDropdownOption();
+    }
 
 }

@@ -18,7 +18,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyThatTheChildAccountCanAccessThePDPViaTheOrderGuideTest extends TestBase {
     static User user;
     static String DP = ParentChildOGData.DISTRIBUTOR_INDIANHEAD;
-    static String customerId2 = ParentChildOGData.CUSTOMER_ID_INDIANHEAD_3;
+    static String customerId2 = ParentChildOGData.CUSTOMER_ID_INDIANHEAD_2;
     static String itemName;
 
     @BeforeMethod

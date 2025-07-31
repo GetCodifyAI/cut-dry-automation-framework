@@ -237,4 +237,8 @@ public class InternalTools {
     public static void clickOnDefaultViewForPortalUsersDropDown(String type){
         internalToolsPage.clickOnDefaultViewForPortalUsersDropDown(type);
     }
+    public static void manualOrderQuantityCalculationToggle(boolean status){
+        internalToolsPage.manualOrderQuantityCalculationToggle(status);
+    }
+
 }
