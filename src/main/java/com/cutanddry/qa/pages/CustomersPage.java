@@ -102,7 +102,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By dropdown_alphabetical = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Alphabetical (A-Z)')]");
     By dropdown_itemCategories = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Item Categories')]");
     By dropdown_itemCode = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Item Code')]");
-    By txt_produce = By.xpath("(//div[starts-with(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'produce')])[last()]");
+    By txt_produce = By.xpath("(//div[starts-with(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'bakery')])[last()]");  // bakery or produce
     By txt_firstItem = By.xpath("//div[translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'artichoke -24ct']");
     By txt_minOrderBanner = By.xpath("//div[contains(text(), 'Add a few more items worth') and contains(text(), 'to meet minimum order amount')]");
     By txt_popupAlertOrderMin = By.xpath("//h2[text()='Order Minimum Not Met']");
@@ -827,6 +827,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_createStandingOrder = By.xpath("//button[contains(text(),'Create a Standing Order')]");
     By btn_editStandingOrderIcon = By.xpath("//button[@title='Edit']");
     By btn_deleteStandingOrderIcon = By.xpath("//button[@title='Delete']");
+    By btn_calculateOrderQty = By.xpath("(//td//span//div[@data-tip='View Product Details']/../../../../../following-sibling::td[3]/div/div/div)[1]");
+    By lbl_calculateOrderQty = By.xpath("//div[contains(text(),'Calculate Order Quantity')]");
+    By lbl_parValue = By.xpath("//div[contains(text(),'Par')]/../following-sibling::div//input");
+    By lbl_OnSiteInvValue = By.xpath("//div[contains(text(),'On-Site Inv')]/../following-sibling::div//input");
+    By lbl_ItemTotal= By.xpath("//div[contains(text(),'Item Total')]/../following-sibling::div//input");
+
 
 
 
@@ -4859,5 +4865,39 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isStandingOrdersDeletedIconDisplay(){
         return distributorUI.isDisplayed(btn_deleteStandingOrderIcon);
+    }
+    public boolean isDeliveryDateLineDisplay(String day, boolean isNextMonth) throws InterruptedException {
+        if (isNextMonth) {
+            distributorUI.click(btn_nextMonth);
+            distributorUI.waitForCustom(1000); // wait after clicking next month
+        }
+
+        By lbl_selectStartDate = By.xpath(dynamicToXPathStable.replace("DAY", day));
+        distributorUI.waitForVisibility(lbl_selectStartDate);
+       return distributorUI.isDisplayed(lbl_selectStartDate);
+    }
+    public void editCalculateOrderQty(){
+        distributorUI.click(btn_calculateOrderQty);
+    }
+    public boolean isCalculateOrderQtyDisplayed(){
+        return distributorUI.isDisplayed(lbl_calculateOrderQty);
+    }
+    public void enterParValue(String num) throws InterruptedException {
+        distributorUI.clearUsingJavaScript(lbl_parValue);
+        distributorUI.sendKeys(lbl_parValue, num);
+        distributorUI.waitForCustom(1000);
+    }
+    public void enterOnSiteInvValue(String num) throws InterruptedException {
+        distributorUI.clearUsingJavaScript(lbl_OnSiteInvValue);
+        distributorUI.sendKeys(lbl_OnSiteInvValue, num);
+        distributorUI.waitForCustom(1000);
+    }
+    public double getItemPriceTotal() throws InterruptedException {
+        try {
+            return extractPriceStable(lbl_ItemTotal);
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPriceStable(lbl_ItemTotal);
+        }
     }
 }

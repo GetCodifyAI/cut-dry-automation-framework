@@ -121,4 +121,7 @@ public class Login {
         loginPage.clickOperator(operator);
         loginPage.clickOnLoginAsWhiteLabelAndSwitchToNewTab();
     }
+    public static void closePreviousTab()throws InterruptedException{
+        loginPage.closePreviousTab();
+    }
 }

@@ -49,6 +49,20 @@ public class Customer {
              Orders.selectOrderGuide("Independent Foods Co");
         }
     }
+    public static void clickOnOrderGuideOptional() {
+        if (Orders.isSelectOrderGuideDisplayed()){
+            Orders.selectOrderGuide("Test_Automation");
+        }
+    }
+    public static void clickOnOrderGuideBiRite(String code) throws InterruptedException {
+        customersPage.clickOnOrderGuide(code);
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+        else if (Orders.isSelectOrderGuideDisplayed()){
+            Orders.selectOrderGuide("BiRite Foodservice Distributors");
+        }
+    }
     public static void clickOnNameOrderGuide(String code) throws InterruptedException {
         customersPage.clickOnNameOrderGuide(code);
         if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
@@ -2914,6 +2928,25 @@ public class Customer {
     }
     public static boolean isStandingOrdersDeletedIconDisplay(){
         return customersPage.isStandingOrdersDeletedIconDisplay();
+    }
+    public static boolean isDeliveryDatesDisplay(String day, boolean isNextMonth)throws InterruptedException{
+        customersPage.clickOnDeliveryDateStable();
+        return customersPage.isDeliveryDateLineDisplay(day, isNextMonth);
+    }
+    public static void editCalculateOrderQty(){
+        customersPage.editCalculateOrderQty();
+    }
+    public static boolean isCalculateOrderQtyDisplayed(){
+        return customersPage.isCalculateOrderQtyDisplayed();
+    }
+    public static void enterParValue(String val) throws InterruptedException {
+        customersPage.enterParValue(val);
+    }
+    public static void enterOnSiteInvValue(String val) throws InterruptedException {
+        customersPage.enterOnSiteInvValue(val);
+    }
+    public static double getItemPriceTotal() throws InterruptedException {
+        return customersPage.getItemPriceTotal();
     }
 }
 
