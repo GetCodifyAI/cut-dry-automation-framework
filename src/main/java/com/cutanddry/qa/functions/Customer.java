@@ -2933,6 +2933,21 @@ public class Customer {
         customersPage.clickOnDeliveryDateStable();
         return customersPage.isDeliveryDateLineDisplay(day, isNextMonth);
     }
+    public static void editCalculateOrderQty(){
+        customersPage.editCalculateOrderQty();
+    }
+    public static boolean isCalculateOrderQtyDisplayed(){
+        return customersPage.isCalculateOrderQtyDisplayed();
+    }
+    public static void enterParValue(String val) throws InterruptedException {
+        customersPage.enterParValue(val);
+    }
+    public static void enterOnSiteInvValue(String val) throws InterruptedException {
+        customersPage.enterOnSiteInvValue(val);
+    }
+    public static double getItemPriceTotal() throws InterruptedException {
+        return customersPage.getItemPriceTotal();
+    }
 }
 
 
