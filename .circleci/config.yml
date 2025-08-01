@@ -89,6 +89,11 @@ commands:
             # Remove large log files
             sudo find /var/log -type f -name "*.log" -delete || true
             
+            echo "Cleaning up old project-jobN dirs..."
+            for i in $(seq 1 23); do
+              rm -rf ~/project-job$i || true
+            done
+            
             # Remove unused files in /tmp and /var/tmp
             sudo rm -rf /tmp/* /var/tmp/* || true
             
