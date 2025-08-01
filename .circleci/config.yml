@@ -73,7 +73,20 @@ commands:
             echo "Disk usage BEFORE aggressive cleanup:"
             df -h
             
+            sudo rm -f /var/crash/_opt_google_chrome_chrome.1002.crash
+            sudo rm -rf /tmp/.org.chromium.Chromium.*
+            sudo rm -f /var/lib/snapd/snaps/core22_1981.snap
+            sudo rm -f /var/lib/snapd/snaps/core22_2045.snap
+            sudo rm -f /var/lib/snapd/snaps/snapd_24505.snap
+            sudo rm -f /var/lib/snapd/snaps/snapd_24792.snap
+            sudo rm -f /var/lib/snapd/snaps/amazon-ssm-agent_11320.snap
+            sudo apt-get clean
+            sudo rm -f /var/cache/apt/pkgcache.bin /var/cache/apt/srcpkgcache.bin
+            sudo rm -rf /home/circleci/.local/libexec/circleci/linux_amd64_*
+            sudo truncate -s 0 /var/log/syslog
             
+            echo "Disk usage AFTER aggressive cleanup:1111111"
+            df -h
             echo "Disk usage AFTER aggressive cleanup:1111111"
             sudo find / -xdev -type f -exec du -h {} + | sort -hr | head -30
       - run:
