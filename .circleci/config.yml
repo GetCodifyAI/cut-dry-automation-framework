@@ -70,25 +70,33 @@ commands:
       - run:
           name: Clean up disk
           command: |
-            echo "Disk usage before cleanup:"
+            echo "Disk usage BEFORE aggressive cleanup:"
             df -h
-
-            echo "Cleaning up old project-jobN dirs..."
-            for i in $(seq 1 23); do
-              rm -rf ~/project-job$i || true
-            done
-
-            echo "Cleaning up /tmp directory..."
+            
+            # Remove old Docker images/containers (if Docker is used)
+            if command -v docker >/dev/null; then
+              docker system prune -af || true
+              docker volume prune -f || true
+            fi
+            
+            # Remove all Maven target directories
+            find ~ -type d -name "target" -exec rm -rf {} + || true
+            
+            # Clean apt cache and orphaned packages
             sudo apt-get clean
-            sudo rm -rf /var/lib/apt/lists/*
-            sudo rm -rf /tmp/*
-
-            echo "Cleaning up workspace and Maven repo..."
+            sudo apt-get autoremove -y
+            
+            # Remove large log files
+            sudo find /var/log -type f -name "*.log" -delete || true
+            
+            # Remove unused files in /tmp and /var/tmp
+            sudo rm -rf /tmp/* /var/tmp/* || true
+            
+            # Remove old workspaces and Maven repo
             sudo rm -rf ~/.m2/repository || true
             sudo rm -rf ~/workspace || true
-            sudo journalctl --vacuum-time=1d || true
-
-            echo "Disk usage after cleanup:"
+            
+            echo "Disk usage AFTER aggressive cleanup:"
             df -h
       - run:
           name: Check and Install Java 22 if not exists
@@ -632,45 +640,45 @@ workflows:
   version: 2
 
   scheduled-test-1:
-    triggers:
-      - schedule:
-          cron: "36 18 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 25 06 --> DP gap = 40 min
-          filters:
-            branches:
-              only:
-                - ahsan_fix
+#    triggers:
+#      - schedule:
+#          cron: "36 18 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 25 06 --> DP gap = 40 min
+#          filters:
+#            branches:
+#              only:
+#                - ahsan_fix
     jobs:
       - install-common-dependencies
       - nightly-build-and-test-1:
           requires:
             - install-common-dependencies
-      - nightly-build-and-test-2:
-          requires:
-            - install-common-dependencies
-      - nightly-build-and-test-3:
-          requires:
-            - install-common-dependencies
-      - nightly-build-and-test-4:
-          requires:
-            - install-common-dependencies
-      - nightly-build-and-test-5:
-          requires:
-            - install-common-dependencies
-      - nightly-build-and-test-9:
-          requires:
-            - install-common-dependencies
-      - nightly-build-and-test-10:
-          requires:
-            - install-common-dependencies
-      - calculate-pass-fail-rate:
-          requires:
-            - nightly-build-and-test-1
-            - nightly-build-and-test-2
-            - nightly-build-and-test-3
-            - nightly-build-and-test-4
-            - nightly-build-and-test-5
-            - nightly-build-and-test-9
-            - nightly-build-and-test-10
+#      - nightly-build-and-test-2:
+#          requires:
+#            - install-common-dependencies
+#      - nightly-build-and-test-3:
+#          requires:
+#            - install-common-dependencies
+#      - nightly-build-and-test-4:
+#          requires:
+#            - install-common-dependencies
+#      - nightly-build-and-test-5:
+#          requires:
+#            - install-common-dependencies
+#      - nightly-build-and-test-9:
+#          requires:
+#            - install-common-dependencies
+#      - nightly-build-and-test-10:
+#          requires:
+#            - install-common-dependencies
+#      - calculate-pass-fail-rate:
+#          requires:
+#            - nightly-build-and-test-1
+#            - nightly-build-and-test-2
+#            - nightly-build-and-test-3
+#            - nightly-build-and-test-4
+#            - nightly-build-and-test-5
+#            - nightly-build-and-test-9
+#            - nightly-build-and-test-10
 
   scheduled-test-1-sub:
     triggers:
