@@ -21,7 +21,6 @@
             <class name="com.cutanddry.qa.tests.orders.VerifyThatOrderGuideEditDisableFeatureTest"/>
 
             <class name="com.cutanddry.qa.tests.orders.VerifyTheClickOnQuantityPickerAndIncrementTheItemCountFromQuantityPickerAndIncrementItemCountFromPlusIconTest"/>
-            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheChildAccountCanAccessThePDPViaTheOrderGuideTest"/>
 
             <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureLoginByAdminUserRolesTest"/>
             <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureLoginBySalespersonUserRolesTest"/>
@@ -82,6 +81,8 @@
             <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryWithPriceNotDisplayInOrderGuideAndPDPWhenDisplayPurchasePriceToggleDisableTest"/>
 
             <class name="com.cutanddry.qa.tests.settings.VerifyTheGlobalDeliveryDatesOverrideFeatureTest"/>
+            <class name="com.cutanddry.qa.tests.boost.VerifyThatTheUserCanSendBroadcastMessagesToCustomerGroupsTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheOnSiteInventoryColumnAppearsWhenTheToggleIsEnabledForTheDPSideTest"/>
         </classes>
     </test>
 </suite>

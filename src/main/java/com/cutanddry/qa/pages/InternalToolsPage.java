@@ -79,6 +79,9 @@ public class InternalToolsPage extends LoginPage {
     String defaultViewForOperatorDropDownOption = "(//div[text()='TYPE'])[last()]";
     By defaultViewForPortalUsersDropDown = By.xpath("//div[text()='Default View for Operators:']/following-sibling::div/div");
     String defaultViewForPortalUsersDropDownOption = "(//div[text()='TYPE'])[last()]";
+    By manualOrderQuantityCalculationToggleStable = By.xpath("//div[contains(text(), 'Enable manual Order Quantity calculation in OG:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By manualOrderQuantityCalculationToggleStable1 = By.xpath("//div[contains(text(), 'Enable manual Order Quantity calculation in OG:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+
 
 
 
@@ -501,6 +504,17 @@ public class InternalToolsPage extends LoginPage {
     public void clickOnDefaultViewForPortalUsersDropDown(String type){
         distributorUI.click(defaultViewForPortalUsersDropDown);
         distributorUI.click(By.xpath(defaultViewForPortalUsersDropDownOption.replace("TYPE",type)));
+    }
+    public void manualOrderQuantityCalculationToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(manualOrderQuantityCalculationToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(manualOrderQuantityCalculationToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(manualOrderQuantityCalculationToggleStable1);
+        }
     }
 
 
