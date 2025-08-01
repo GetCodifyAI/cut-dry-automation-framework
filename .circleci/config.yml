@@ -126,7 +126,7 @@ commands:
             sudo rm -f /var/cache/apt/pkgcache.bin /var/cache/apt/srcpkgcache.bin
             
             #Old CircleCI agent binaries:
-            sudo rm -rf /home/circleci/.local/libexec/circleci/linux_amd64_*
+            #sudo rm -rf /home/circleci/.local/libexec/circleci/linux_amd64_*
             
             #Large log files (optional):
             sudo truncate -s 0 /var/log/syslog
