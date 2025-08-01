@@ -79,28 +79,6 @@ commands:
               docker volume prune -f || true
             fi
             
-            # Remove all Maven target directories
-            find ~ -type d -name "target" -exec rm -rf {} + || true
-            
-            # Clean apt cache and orphaned packages
-            sudo apt-get clean
-            sudo apt-get autoremove -y
-            
-            # Remove large log files
-            sudo find /var/log -type f -name "*.log" -delete || true
-            
-            echo "Cleaning up old project-jobN dirs..."
-            for i in $(seq 1 23); do
-              rm -rf ~/project-job$i || true
-            done
-            
-            # Remove unused files in /tmp and /var/tmp
-            sudo rm -rf /tmp/* /var/tmp/* || true
-            
-            # Remove old workspaces and Maven repo
-            sudo rm -rf ~/.m2/repository || true
-            sudo rm -rf ~/workspace || true
-            
             echo "Disk usage AFTER aggressive cleanup:"
             df -h
             echo "Top 20 largest directories under /:"
