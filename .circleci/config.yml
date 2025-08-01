@@ -67,72 +67,72 @@ executors:
 commands:
   install-dependencies:
     steps:
-      - run:
-          name: Clean up disk
-          command: |
-            echo "Disk usage BEFORE aggressive cleanup:"
-            df -h
-            
-            # Remove old Docker images/containers (if Docker is used)
-            if command -v docker >/dev/null; then
-            docker system prune -af || true
-            docker volume prune -f || true
-            fi
-            
-            # Remove all Maven target directories
-            find ~ -type d -name "target" -exec rm -rf {} + || true
-            
-            # Clean apt cache and orphaned packages
-            sudo apt-get clean
-            sudo apt-get autoremove -y
-            
-            # Remove large log files
-            sudo find /var/log -type f -name "*.log" -delete || true
-            
-            echo "Cleaning up old project-jobN dirs..."
-            for i in $(seq 1 23); do
-            rm -rf ~/project-job$i || true
-            done
-            
-            # Remove unused files in /tmp and /var/tmp
-            sudo rm -rf /tmp/* /var/tmp/* || true
-            
-            # Remove old workspaces and Maven repo
-            sudo rm -rf ~/.m2/repository || true
-            sudo rm -rf ~/workspace || true
-            
-            echo "Disk usage AFTER aggressive cleanup:"
-            df -h
-            echo "Top 20 largest directories under /:"
-            sudo du -hxd1 / | sort -hr | head -20
-            echo "Top 20 largest directories under ~/:"
-            du -hxd1 ~ | sort -hr | head -20
-            
-            #Crash dumps:
-            sudo rm -f /var/crash/_opt_google_chrome_chrome.1002.crash
-            
-            #Chrome cache and temp files
-            sudo rm -rf /tmp/.org.chromium.Chromium.*
-            
-            #Old Snap packages (keep only the latest):
-            sudo rm -f /var/lib/snapd/snaps/core22_1981.snap
-            sudo rm -f /var/lib/snapd/snaps/core22_2045.snap
-            sudo rm -f /var/lib/snapd/snaps/snapd_24505.snap
-            sudo rm -f /var/lib/snapd/snaps/snapd_24792.snap
-            sudo rm -f /var/lib/snapd/snaps/amazon-ssm-agent_11320.snap
-            
-            #Apt cache:
-            sudo apt-get clean
-            sudo rm -f /var/cache/apt/pkgcache.bin /var/cache/apt/srcpkgcache.bin
-            
-            #Old CircleCI agent binaries:
-            #sudo rm -rf /home/circleci/.local/libexec/circleci/linux_amd64_*
-            
-            #Large log files (optional):
-            sudo truncate -s 0 /var/log/syslog
-            
-            echo "Disk usage AFTER aggressive cleanup:1111111"
-            df -h
+#      - run:
+#          name: Clean up disk
+#          command: |
+#            echo "Disk usage BEFORE aggressive cleanup:"
+#            df -h
+#
+#            # Remove old Docker images/containers (if Docker is used)
+#            if command -v docker >/dev/null; then
+#            docker system prune -af || true
+#            docker volume prune -f || true
+#            fi
+#
+#            # Remove all Maven target directories
+#            find ~ -type d -name "target" -exec rm -rf {} + || true
+#
+#            # Clean apt cache and orphaned packages
+#            sudo apt-get clean
+#            sudo apt-get autoremove -y
+#
+#            # Remove large log files
+#            sudo find /var/log -type f -name "*.log" -delete || true
+#
+#            echo "Cleaning up old project-jobN dirs..."
+#            for i in $(seq 1 23); do
+#            rm -rf ~/project-job$i || true
+#            done
+#
+#            # Remove unused files in /tmp and /var/tmp
+#            sudo rm -rf /tmp/* /var/tmp/* || true
+#
+#            # Remove old workspaces and Maven repo
+#            sudo rm -rf ~/.m2/repository || true
+#            sudo rm -rf ~/workspace || true
+#
+#            echo "Disk usage AFTER aggressive cleanup:"
+#            df -h
+#            echo "Top 20 largest directories under /:"
+#            sudo du -hxd1 / | sort -hr | head -20
+#            echo "Top 20 largest directories under ~/:"
+#            du -hxd1 ~ | sort -hr | head -20
+#
+#            #Crash dumps:
+#            sudo rm -f /var/crash/_opt_google_chrome_chrome.1002.crash
+#
+#            #Chrome cache and temp files
+#            sudo rm -rf /tmp/.org.chromium.Chromium.*
+#
+#            #Old Snap packages (keep only the latest):
+#            sudo rm -f /var/lib/snapd/snaps/core22_1981.snap
+#            sudo rm -f /var/lib/snapd/snaps/core22_2045.snap
+#            sudo rm -f /var/lib/snapd/snaps/snapd_24505.snap
+#            sudo rm -f /var/lib/snapd/snaps/snapd_24792.snap
+#            sudo rm -f /var/lib/snapd/snaps/amazon-ssm-agent_11320.snap
+#
+#            #Apt cache:
+#            sudo apt-get clean
+#            sudo rm -f /var/cache/apt/pkgcache.bin /var/cache/apt/srcpkgcache.bin
+#
+#            #Old CircleCI agent binaries:
+#            #sudo rm -rf /home/circleci/.local/libexec/circleci/linux_amd64_*
+#
+#            #Large log files (optional):
+#            sudo truncate -s 0 /var/log/syslog
+#
+#            echo "Disk usage AFTER aggressive cleanup:1111111"
+#            df -h
 
       - run:
           name: Check and Install Java 22 if not exists
