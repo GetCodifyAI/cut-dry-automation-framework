@@ -107,6 +107,8 @@ commands:
             sudo du -hxd1 / | sort -hr | head -20
             echo "Top 20 largest directories under ~/:"
             du -hxd1 ~ | sort -hr | head -20
+            
+            sudo ls -alh /
       - run:
           name: Check and Install Java 22 if not exists
           command: |
