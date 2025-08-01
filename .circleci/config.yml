@@ -72,44 +72,43 @@ commands:
           command: |
             echo "Disk usage BEFORE aggressive cleanup:"
             df -h
-#
-#            # Remove old Docker images/containers (if Docker is used)
-#            if command -v docker >/dev/null; then
-#              docker system prune -af || true
-#              docker volume prune -f || true
-#            fi
-#
-#            # Remove all Maven target directories
-#            find ~ -type d -name "target" -exec rm -rf {} + || true
-#
-#            # Clean apt cache and orphaned packages
-#            sudo apt-get clean
-#            sudo apt-get autoremove -y
-#
-#            # Remove large log files
-#            sudo find /var/log -type f -name "*.log" -delete || true
-#
-#            echo "Cleaning up old project-jobN dirs..."
-#            for i in $(seq 1 23); do
-#              rm -rf ~/project-job$i || true
-#            done
-#
-#            # Remove unused files in /tmp and /var/tmp
-#            sudo rm -rf /tmp/* /var/tmp/* || true
-#
-#            # Remove old workspaces and Maven repo
-#            sudo rm -rf ~/.m2/repository || true
-#            sudo rm -rf ~/workspace || true
-#
-#            echo "Disk usage AFTER aggressive cleanup:"
-#            df -h
-#            echo "Top 20 largest directories under /:"
-#            sudo du -hxd1 / | sort -hr | head -20
-#            echo "Top 20 largest directories under ~/:"
-#            du -hxd1 ~ | sort -hr | head -20
-#
-#            sudo ls -alh /
-             sudo find / -xdev -type f -exec du -h {} + | sort -hr | head -30
+            
+            # Remove old Docker images/containers (if Docker is used)
+            if command -v docker >/dev/null; then
+              docker system prune -af || true
+              docker volume prune -f || true
+            fi
+            
+            # Remove all Maven target directories
+            find ~ -type d -name "target" -exec rm -rf {} + || true
+            
+            # Clean apt cache and orphaned packages
+            sudo apt-get clean
+            sudo apt-get autoremove -y
+            
+            # Remove large log files
+            sudo find /var/log -type f -name "*.log" -delete || true
+            
+            echo "Cleaning up old project-jobN dirs..."
+            for i in $(seq 1 23); do
+              rm -rf ~/project-job$i || true
+            done
+            
+            # Remove unused files in /tmp and /var/tmp
+            sudo rm -rf /tmp/* /var/tmp/* || true
+            
+            # Remove old workspaces and Maven repo
+            sudo rm -rf ~/.m2/repository || true
+            sudo rm -rf ~/workspace || true
+            
+            echo "Disk usage AFTER aggressive cleanup:"
+            df -h
+            echo "Top 20 largest directories under /:"
+            sudo du -hxd1 / | sort -hr | head -20
+            echo "Top 20 largest directories under ~/:"
+            du -hxd1 ~ | sort -hr | head -20
+            echo "Disk usage AFTER aggressive cleanup:1111111"
+            sudo find / -xdev -type f -exec du -h {} + | sort -hr | head -30
       - run:
           name: Check and Install Java 22 if not exists
           command: |
