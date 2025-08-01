@@ -684,8 +684,8 @@ workflows:
 #              only:
 #                - ahsan_fix
     jobs:
-      - install-common-dependencies
-#      - nightly-build-and-test-1:
+#      - install-common-dependencies
+      - nightly-build-and-test-1
 #          requires:
 #            - install-common-dependencies
 #      - nightly-build-and-test-2:
