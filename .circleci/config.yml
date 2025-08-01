@@ -70,8 +70,8 @@ commands:
       - run:
           name: Clean up disk
           command: |
-#            echo "Disk usage BEFORE aggressive cleanup:"
-#            df -h
+            echo "Disk usage BEFORE aggressive cleanup:"
+            df -h
 #
 #            # Remove old Docker images/containers (if Docker is used)
 #            if command -v docker >/dev/null; then
