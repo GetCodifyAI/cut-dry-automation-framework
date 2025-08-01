@@ -98,6 +98,10 @@ commands:
             
             echo "Disk usage AFTER aggressive cleanup:"
             df -h
+            echo "Top 20 largest directories under /:"
+            sudo du -hxd1 / | sort -hr | head -20
+            echo "Top 20 largest directories under ~/:"
+            du -hxd1 ~ | sort -hr | head -20
       - run:
           name: Check and Install Java 22 if not exists
           command: |
@@ -649,9 +653,9 @@ workflows:
 #                - ahsan_fix
     jobs:
       - install-common-dependencies
-      - nightly-build-and-test-1:
-          requires:
-            - install-common-dependencies
+#      - nightly-build-and-test-1:
+#          requires:
+#            - install-common-dependencies
 #      - nightly-build-and-test-2:
 #          requires:
 #            - install-common-dependencies
