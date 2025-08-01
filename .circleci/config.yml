@@ -68,29 +68,26 @@ commands:
   install-dependencies:
     steps:
       - run:
-          name: Aggressive Disk Cleanup
+          name: Clean up disk
           command: |
             echo "Disk usage before cleanup:"
             df -h
-            echo "Deleting old job dirs..."
+
+            echo "Cleaning up old project-jobN dirs..."
             for i in $(seq 1 23); do
-             rm -rf ~/project-job$i || true
+              rm -rf ~/project-job$i || true
             done
-            echo "Removing Docker images and containers..."
-            docker container prune -f || true
-            docker image prune -af || true
-            docker volume prune -f || true
-            echo "Cleaning APT and TMP..."
+
+            echo "Cleaning up /tmp directory..."
             sudo apt-get clean
             sudo rm -rf /var/lib/apt/lists/*
             sudo rm -rf /tmp/*
+
+            echo "Cleaning up workspace and Maven repo..."
             sudo rm -rf ~/.m2/repository || true
-            sudo rm -rf ~/.cache ~/.config ~/.gradle || true
             sudo rm -rf ~/workspace || true
-            sudo rm -rf /usr/lib/jvm/* || true
             sudo journalctl --vacuum-time=1d || true
-            echo "Top large directories after cleanup:"
-            du -h --max-depth=1 / | sort -hr | head -n 20
+
             echo "Disk usage after cleanup:"
             df -h
       - run:
@@ -637,7 +634,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "30 18 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 25 06 --> DP gap = 40 min
+          cron: "36 18 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 25 06 --> DP gap = 40 min
           filters:
             branches:
               only:
@@ -678,7 +675,7 @@ workflows:
   scheduled-test-1-sub:
     triggers:
       - schedule:
-          cron: "35 18 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 25 06 --> DP gap = 40 min
+          cron: "40 18 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 25 06 --> DP gap = 40 min
           filters:
             branches:
               only:
