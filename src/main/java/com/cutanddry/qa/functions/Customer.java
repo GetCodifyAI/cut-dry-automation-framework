@@ -2948,6 +2948,18 @@ public class Customer {
     public static double getItemPriceTotal() throws InterruptedException {
         return customersPage.getItemPriceTotal();
     }
+    public static boolean isErrorTextDisplay(String message)throws InterruptedException{
+        return customersPage.isErrorTextDisplay(message);
+    }
+    public static String getCartSummeryValue (String option) throws InterruptedException {
+        return customersPage.getcartSummeryValue(option);
+    }
+    public static String getRevenueSummeryValue (String option) throws InterruptedException {
+        return customersPage.getRevenueSummeryValue(option);
+    }
+    public static double getGrossProfitValueStable(String option) throws InterruptedException {
+        return customersPage.getGrossProfitValueStable(option);
+    }
 }
 
 
