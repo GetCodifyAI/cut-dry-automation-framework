@@ -72,22 +72,10 @@ commands:
           command: |
             echo "Disk usage before cleanup:"
             df -h
-            
-            echo "Cleaning up old project-jobN dirs..."
-            for i in $(seq 1 23); do
-              rm -rf ~/project-job$i || true
-            done
-            
-            echo "Cleaning up /tmp directory..."
             sudo apt-get clean
             sudo rm -rf /var/lib/apt/lists/*
             sudo rm -rf /tmp/*
-            
-            echo "Cleaning up workspace and Maven repo..."
             sudo rm -rf ~/.m2/repository || true
-            sudo rm -rf ~/workspace || true
-            sudo journalctl --vacuum-time=1d || true
-            
             echo "Disk usage after cleanup:"
             df -h
       - run:
@@ -195,6 +183,9 @@ jobs:
             for file in target/surefire-reports/TEST-*.xml; do
               [ -f "$file" ] && cp "$file" ~/workspace/${PART_NAME}_nightly-build-and-test-2_$(basename "$file")
             done
+      - run:
+          name: Debug Workspace Files
+          command: ls -l ~/workspace
       - persist_to_workspace:
           root: ~/workspace
           paths:
@@ -259,7 +250,7 @@ jobs:
             - Part_Four_nightly-build-and-test-4_TEST-*.xml
 
   nightly-build-and-test-5:
-    executor: ec2-executor_3
+    executor: ec2-executor_14
     working_directory: ~/project-job5
     steps:
       - checkout
@@ -317,7 +308,7 @@ jobs:
             - Part_Six_nightly-build-and-test-6_TEST-*.xml
 
   nightly-build-and-test-7:
-    executor: ec2-executor_14
+    executor: ec2-executor_4
     working_directory: ~/project-job7
     steps:
       - checkout
@@ -632,6 +623,13 @@ workflows:
   version: 2
 
   scheduled-test-1:
+#    triggers:
+#      - schedule:
+#          cron: "45 11 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
+#          filters:
+#            branches:
+#              only:
+#                - main
     jobs:
       - install-common-dependencies
       - nightly-build-and-test-1:
@@ -664,12 +662,6 @@ workflows:
       - nightly-build-and-test-10:
           requires:
             - install-common-dependencies
-      - nightly-build-and-test-11:
-            requires:
-                - install-common-dependencies
-      - nightly-build-and-test-12:
-            requires:
-                - install-common-dependencies
       - calculate-pass-fail-rate:
           requires:
             - nightly-build-and-test-1
@@ -682,8 +674,6 @@ workflows:
             - nightly-build-and-test-8
             - nightly-build-and-test-9
             - nightly-build-and-test-10
-            - nightly-build-and-test-11
-            - nightly-build-and-test-12
 
 
 
