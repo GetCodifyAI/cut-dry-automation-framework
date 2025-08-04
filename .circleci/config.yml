@@ -103,10 +103,6 @@ commands:
 
             echo "Disk usage AFTER aggressive cleanup:"
             df -h
-            echo "Top 20 largest directories under /:"
-            sudo du -hxd1 / | sort -hr | head -20
-            echo "Top 20 largest directories under ~/:"
-            du -hxd1 ~ | sort -hr | head -20
 
             #Crash dumps:
             sudo rm -f /var/crash/_opt_google_chrome_chrome.1002.crash
@@ -124,12 +120,6 @@ commands:
             #Apt cache:
             sudo apt-get clean
             sudo rm -f /var/cache/apt/pkgcache.bin /var/cache/apt/srcpkgcache.bin
-
-            #Old CircleCI agent binaries:
-#            sudo rm -rf /home/circleci/.local/libexec/circleci/linux_amd64_*
-
-            #Large log files (optional):
-#            sudo truncate -s 0 /var/log/syslog
 
             echo "Disk usage AFTER aggressive cleanup:1111111"
             df -h
