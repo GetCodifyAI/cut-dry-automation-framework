@@ -668,7 +668,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "26 11 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) //25 06 --> DP gap = 40 min
+          cron: "32 11 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) //25 06 --> DP gap = 40 min
           filters:
             branches:
               only:
