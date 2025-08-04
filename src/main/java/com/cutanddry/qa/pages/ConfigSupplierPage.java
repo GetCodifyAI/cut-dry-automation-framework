@@ -27,9 +27,9 @@ public class ConfigSupplierPage extends LoginPage{
     By lbl_DefaultViewPortalAsScanToOrder = By.xpath("//div[contains(@class, 'themed_select__option') and text()='Scan to Order']");
 
     By lbl_QuickAddViewDropDow = By.xpath("//*[contains(text(), 'Quick Add View:')]/following-sibling::div//div[contains(@class,'themed_select__indicators')]");
-    By lbl_QuickAddEnable = By.xpath("//div[contains(@class, 'themed_select__option') and text()='Enabled on DP Portal']");
+    By lbl_QuickAddEnable = By.xpath("//div[contains(@class, 'themed_select__option') and text()='Enabled only on DP Portal']");
     By lbl_SimpleListViewDropDow = By.xpath("//*[contains(text(), 'Simple List View:')]/following-sibling::div//div[contains(@class,'themed_select__indicators')]");
-    By lbl_SimpleListEnable = By.xpath("//div[contains(@class, 'themed_select__option') and text()='Enabled on DP Portal']");
+    By lbl_SimpleListEnable = By.xpath("//div[contains(@class, 'themed_select__option') and text()='Enabled only on DP Portal']");
 
     By lbl_defaultOrderHistoryAsSimpleList = By.xpath("//*[contains(text(), 'Default View for Portal Users')]/following-sibling::div//*[text()='Simple List']");
     By lbl_defaultOrderHistoryAsQuickAdd = By.xpath("//*[contains(text(), 'Default View for Portal Users')]/following-sibling::div//*[text()='Quick Add']");
