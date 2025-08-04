@@ -666,50 +666,50 @@ workflows:
   version: 2
 
   scheduled-test-1:
-#    triggers:
-#      - schedule:
-#          cron: "36 18 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) //25 06 --> DP gap = 40 min
-#          filters:
-#            branches:
-#              only:
-#                - ahsan_fix
+    triggers:
+      - schedule:
+          cron: "26 11 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) //25 06 --> DP gap = 40 min
+          filters:
+            branches:
+              only:
+                - ahsan_fix
     jobs:
       - install-common-dependencies
       - nightly-build-and-test-1:
           requires:
             - install-common-dependencies
-#      - nightly-build-and-test-2:
-#          requires:
-#            - install-common-dependencies
-#      - nightly-build-and-test-3:
-#          requires:
-#            - install-common-dependencies
-#      - nightly-build-and-test-4:
-#          requires:
-#            - install-common-dependencies
-#      - nightly-build-and-test-5:
-#          requires:
-#            - install-common-dependencies
-#      - nightly-build-and-test-9:
-#          requires:
-#            - install-common-dependencies
-#      - nightly-build-and-test-10:
-#          requires:
-#            - install-common-dependencies
-#      - calculate-pass-fail-rate:
-#          requires:
-#            - nightly-build-and-test-1
-#            - nightly-build-and-test-2
-#            - nightly-build-and-test-3
-#            - nightly-build-and-test-4
-#            - nightly-build-and-test-5
-#            - nightly-build-and-test-9
-#            - nightly-build-and-test-10
+      - nightly-build-and-test-2:
+          requires:
+            - install-common-dependencies
+      - nightly-build-and-test-3:
+          requires:
+            - install-common-dependencies
+      - nightly-build-and-test-4:
+          requires:
+            - install-common-dependencies
+      - nightly-build-and-test-5:
+          requires:
+            - install-common-dependencies
+      - nightly-build-and-test-9:
+          requires:
+            - install-common-dependencies
+      - nightly-build-and-test-10:
+          requires:
+            - install-common-dependencies
+      - calculate-pass-fail-rate:
+          requires:
+            - nightly-build-and-test-1
+            - nightly-build-and-test-2
+            - nightly-build-and-test-3
+            - nightly-build-and-test-4
+            - nightly-build-and-test-5
+            - nightly-build-and-test-9
+            - nightly-build-and-test-10
 
   scheduled-test-1-sub:
     triggers:
       - schedule:
-          cron: "40 18 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 25 06 --> DP gap = 40 min
+          cron: "36 11 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 25 06 --> DP gap = 40 min
           filters:
             branches:
               only:
