@@ -177,7 +177,7 @@ jobs:
       - install-dependencies
 
   nightly-build-and-test-1:
-    executor: ec2-executor_7
+    executor: ec2-executor_5
     working_directory: ~/project-job1
     steps:
       - checkout
@@ -235,7 +235,7 @@ jobs:
             - Part_Two_nightly-build-and-test-2_TEST-*.xml
 
   nightly-build-and-test-3:
-    executor: ec2-executor_2
+    executor: ec2-executor_15
     working_directory: ~/project-job3
     steps:
       - checkout
@@ -264,7 +264,7 @@ jobs:
             - Part_Three_nightly-build-and-test-3_TEST-*.xml
 
   nightly-build-and-test-4:
-    executor: ec2-executor_4
+    executor: ec2-executor_7
     working_directory: ~/project-job4
     steps:
       - checkout
@@ -293,7 +293,7 @@ jobs:
             - Part_Four_nightly-build-and-test-4_TEST-*.xml
 
   nightly-build-and-test-5:
-    executor: ec2-executor
+    executor: ec2-executor_14
     working_directory: ~/project-job5
     steps:
       - checkout
@@ -322,7 +322,7 @@ jobs:
             - Part_Five_nightly-build-and-test-5_TEST-*.xml
 
   nightly-build-and-test-6:
-    executor: ec2-executor_11
+    executor: ec2-executor
     working_directory: ~/project-job6
     steps:
       - checkout
@@ -351,7 +351,7 @@ jobs:
             - Part_Six_nightly-build-and-test-6_TEST-*.xml
 
   nightly-build-and-test-7:
-    executor: ec2-executor_5
+    executor: ec2-executor_8
     working_directory: ~/project-job7
     steps:
       - checkout
@@ -380,7 +380,7 @@ jobs:
             - Part_Seven_nightly-build-and-test-7_TEST-*.xml
 
   nightly-build-and-test-8:
-    executor: ec2-executor_9
+    executor: ec2-executor_3
     working_directory: ~/project-job8
     steps:
       - checkout
@@ -409,7 +409,7 @@ jobs:
             - Part_Eight_nightly-build-and-test-8_TEST-*.xml
 
   nightly-build-and-test-9:
-    executor: ec2-executor_3
+    executor: ec2-executor_13
     working_directory: ~/project-job9
     steps:
       - checkout
@@ -438,7 +438,7 @@ jobs:
             - Part_Nine_nightly-build-and-test-9_TEST-*.xml
 
   nightly-build-and-test-10:
-    executor: ec2-executor_12
+    executor: ec2-executor_2
     working_directory: ~/project-job10
     steps:
       - checkout
@@ -467,7 +467,7 @@ jobs:
             - Part_Ten_nightly-build-and-test-10_TEST-*.xml
 
   nightly-build-and-test-11:
-    executor: ec2-executor_8
+    executor: ec2-executor_12
     working_directory: ~/project-job11
     steps:
       - checkout
@@ -496,7 +496,7 @@ jobs:
             - Part_Eleven_nightly-build-and-test-11_TEST-*.xml
 
   nightly-build-and-test-12:
-    executor: ec2-executor_10
+    executor: ec2-executor_4
     working_directory: ~/project-job12
     steps:
       - checkout
@@ -665,66 +665,62 @@ jobs:
 workflows:
   version: 2
 
-  scheduled-test-1:
+  scheduled-pre-request:
     triggers:
       - schedule:
-          cron: "32 11 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) //25 06 --> DP gap = 40 min
+          cron: "55 14 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) //25 06 --> DP gap = 40 min
           filters:
             branches:
               only:
                 - ahsan_fix
     jobs:
       - install-common-dependencies
-      - nightly-build-and-test-1:
-          requires:
-            - install-common-dependencies
-      - nightly-build-and-test-2:
-          requires:
-            - install-common-dependencies
-      - nightly-build-and-test-3:
-          requires:
-            - install-common-dependencies
-      - nightly-build-and-test-4:
-          requires:
-            - install-common-dependencies
-      - nightly-build-and-test-5:
-          requires:
-            - install-common-dependencies
-      - nightly-build-and-test-9:
-          requires:
-            - install-common-dependencies
-      - nightly-build-and-test-10:
-          requires:
-            - install-common-dependencies
-      - calculate-pass-fail-rate:
-          requires:
-            - nightly-build-and-test-1
-            - nightly-build-and-test-2
-            - nightly-build-and-test-3
-            - nightly-build-and-test-4
-            - nightly-build-and-test-5
-            - nightly-build-and-test-9
-            - nightly-build-and-test-10
 
-  scheduled-test-1-sub:
+  scheduled-test-1:
     triggers:
       - schedule:
-          cron: "36 11 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 25 06 --> DP gap = 40 min
+          cron: "00 15 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) //25 06 --> DP gap = 40 min
           filters:
             branches:
               only:
                 - ahsan_fix
     jobs:
+      - nightly-build-and-test-1
+      - nightly-build-and-test-2
+      - nightly-build-and-test-4
       - nightly-build-and-test-6
       - nightly-build-and-test-7
       - nightly-build-and-test-8
-      - nightly-build-and-test-11
+      - nightly-build-and-test-10
       - nightly-build-and-test-12
       - calculate-pass-fail-rate:
           requires:
+            - nightly-build-and-test-1
+            - nightly-build-and-test-2
+            - nightly-build-and-test-4
             - nightly-build-and-test-6
             - nightly-build-and-test-7
             - nightly-build-and-test-8
-            - nightly-build-and-test-11
+            - nightly-build-and-test-10
             - nightly-build-and-test-12
+
+  scheduled-test-1-sub:
+    triggers:
+      - schedule:
+          cron: "30 15 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 25 06 --> DP gap = 40 min
+          filters:
+            branches:
+              only:
+                - ahsan_fix
+    jobs:
+      - nightly-build-and-test-3
+      - nightly-build-and-test-5
+      - nightly-build-and-test-9
+      - nightly-build-and-test-11
+      - calculate-pass-fail-rate:
+          requires:
+            - nightly-build-and-test-3
+            - nightly-build-and-test-5
+            - nightly-build-and-test-9
+            - nightly-build-and-test-11
 
