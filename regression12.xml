@@ -86,6 +86,9 @@
 
             <class name="com.cutanddry.qa.tests.quick_add.VerifyCorrectErrorMessagesAreDisplayedWhenAddingDifferentTypesOfItemsToTheQuickAddFlowTest"/>
             <class name="com.cutanddry.qa.tests.customers.VerifyTheRevenueSummeryIsDisplayedCorrectlyOnTheEditOrderFlowTest"/>
+
+            <class name="com.cutanddry.qa.tests.team.SalesRepMappingAutomationAddNewUserWithERPUserReferenceTest"/>
+            <class name="com.cutanddry.qa.tests.team.SalesRepMappingAutomationAddNewUserWithAlternateERPUserReferenceTest"/>
         </classes>
     </test>
 </suite>
