@@ -22,6 +22,7 @@ public class Constants {
     public static final String TEST_STAG ="rosetmb";
 
 
+
     private static String baseDomain() {
         if (TEST_ENV.equalsIgnoreCase("UAT")){
             MAIN_URL = "https://supplier-uat.staging.cutanddry.com/";
