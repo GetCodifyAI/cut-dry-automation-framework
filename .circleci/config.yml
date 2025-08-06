@@ -668,7 +668,7 @@ workflows:
   scheduled-pre-request:
     triggers:
       - schedule:
-          cron: "10 11 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) //25 06 --> DP gap = 40 min
+          cron: "20 17 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) //25 06 --> DP gap = 40 min
           filters:
             branches:
               only:
@@ -679,7 +679,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "30 11 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) //25 06 --> DP gap = 40 min
+          cron: "30 17 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) //25 06 --> DP gap = 40 min
           filters:
             branches:
               only:
@@ -707,7 +707,7 @@ workflows:
   scheduled-test-1-sub:
     triggers:
       - schedule:
-          cron: "00 12 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 25 06 --> DP gap = 40 min
+          cron: "00 18 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 25 06 --> DP gap = 40 min
           filters:
             branches:
               only:
