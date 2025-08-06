@@ -25,7 +25,7 @@ public class VerifyTheDefaultViewIsCorrectlyDisplayingWhenSetUpFromConfigSupplie
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-1544")
+    @Test(groups = "DOT-TC-1545")
     public void verifyTheDefaultViewIsCorrectlyDisplayingWhenSetUpFromConfigSupplierForDistributor() throws InterruptedException {
         softAssert = new SoftAssert();
 

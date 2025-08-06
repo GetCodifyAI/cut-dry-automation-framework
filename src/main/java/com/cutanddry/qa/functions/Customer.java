@@ -167,6 +167,9 @@ public class Customer {
     public static double getItemPriceFirstRow(){
         return customersPage.getItemPriceFirstRow();
     }
+    public static double getItemPricePDP() throws InterruptedException {
+        return customersPage.getItemPricePDP();
+    }
     public static String getItemPriceSecondRow(){
         return customersPage.getItemPriceSecondRow();
     }

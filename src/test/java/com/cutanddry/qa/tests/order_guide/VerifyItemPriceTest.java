@@ -15,6 +15,8 @@ import org.testng.asserts.SoftAssert;
 public class VerifyItemPriceTest extends TestBase {
     static User user;
     static String customerId = "16579";
+    String itemName;
+    static double itemPriceOG,itemPricePDP;
 
     @BeforeMethod
     public void setUp(){
@@ -23,9 +25,8 @@ public class VerifyItemPriceTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-296")
-    public void editProductQtyFrmOrderGuide() throws InterruptedException {
-        String itemName;
-        String itemPrice;
+    public void VerifyItemPrice() throws InterruptedException {
+
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -34,12 +35,13 @@ public class VerifyItemPriceTest extends TestBase {
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
-        itemName = Customer.getItemNameSecondRow();
+        itemName = Customer.getItemNameFirstRow();
+        itemPriceOG = Customer.getItemPriceFirstRow();
         Customer.clickOnItem(itemName);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"navigation error");
-        itemPrice = Customer.getItemPricePDPView();
+        itemPricePDP = Customer.getItemPricePDP();
         Customer.clickOnBack();
-        softAssert.assertEquals(Customer.getItemPriceSecondRow(),itemPrice,"price error");
+        softAssert.assertEquals(Customer.getItemPriceFirstRow(),itemPricePDP,"price error");
         softAssert.assertAll();
     }
 
