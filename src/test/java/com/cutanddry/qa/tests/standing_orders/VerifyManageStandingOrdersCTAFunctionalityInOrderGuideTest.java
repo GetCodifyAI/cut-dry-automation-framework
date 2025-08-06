@@ -24,7 +24,7 @@ public class VerifyManageStandingOrdersCTAFunctionalityInOrderGuideTest extends 
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-202")
+    @Test(groups = "DOT-TC-1561")
     public void verifyManageStandingOrdersCTAFunctionalityInOrderGuide() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();
