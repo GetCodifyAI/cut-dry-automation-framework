@@ -519,4 +519,10 @@ public class Settings {
         settingsPage.orderCutOffsOverrideRestrictions(status);
         settingsPage.clickOnSaveChanges();
     }
+    public static void enterERPUserRef(String ref) throws InterruptedException {
+        settingsPage.enterERPUserRef(ref);
+    }
+    public static void enterAlternateERPUserRef(String ref) throws InterruptedException {
+        settingsPage.enterAlternateERPUserRef(ref);
+    }
 }
