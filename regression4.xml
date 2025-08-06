@@ -83,7 +83,7 @@
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyTotalOrderValueTest" />
 
             <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfEditMarginOfAnItemTest" />
-            <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyViewMultipleOGsAndMoveBetweenDifferentOGTest" />
+<!-- Duplicate           <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyViewMultipleOGsAndMoveBetweenDifferentOGTest" />-->
             <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfShowLastOrderedPriceOnTest"/>
             <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfShowLastOrderedPriceOffTest"/>
             <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfShowLastOrderedPriceOnForCustomerPortalTest"/>
