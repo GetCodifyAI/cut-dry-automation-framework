@@ -190,7 +190,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By btn_delete = By.xpath("//button[contains(text(), 'Delete')]");
     By txt_editSection = By.xpath("//div[contains(text(), 'Edit Section Header')]");
     By txt_areYouSure = By.xpath("//h2[text()='Are you sure?']");
-    By btn_deleteIcon = By.xpath("//*[local-name() = 'svg' and @data-icon='trash-alt']");
+    By btn_deleteIcon = By.xpath("//*[local-name() = 'svg' and @data-icon='trash-can']");
     By tb_boost = By.xpath("//a[text()='Boost' and @role='tab']");
     By tb_track = By.xpath("//a[text()='Track' and @role='tab']");
     By txt_customerSpecific = By.xpath("//div[contains(text(),'Customer-specific Broadcast')]");
@@ -3213,6 +3213,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         } catch (Exception e) {
             System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
             return extractPriceStable(lbl_itemPriceList1);
+        }
+    }
+    public double getItemPricePDP() throws InterruptedException {
+        try {
+            return extractPriceStable(txt_pricePDP);
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPriceStable(txt_pricePDP);
         }
     }
     public double getActiveItemPriceSecondRowStable() throws InterruptedException {
