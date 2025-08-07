@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyCustomerProfileStatusTest extends TestBase{
     static User user;
-    String customerID = "16579";
+    String customerID = "97071";
 
 
     @BeforeMethod
