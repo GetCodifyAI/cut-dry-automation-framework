@@ -16,13 +16,10 @@ import org.testng.asserts.SoftAssert;
 public class VerifyCustomerProfileVisibilityTest extends TestBase{
     static User user;
     String CustomerCode = "16579";
-    static String email = "Test_Automation_QA";
-    static String nameCus = "Test_Automation_QA - 209223241 - Owner - Kafe Layers #3 Test - San Francisco - quinn-bins-sd9lph1ucd@e.rainforestqa.com - null";
-    //static String cusCode = CustomerProfileData.CUSTOMER_PROFILE_CODE;
+    static String nameCus = "209223241";
+    String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
 
-
-
-
+    
     @BeforeMethod
     public void setUp() {
         initialization();
@@ -32,27 +29,31 @@ public class VerifyCustomerProfileVisibilityTest extends TestBase{
     @Test(groups = "DOT-TC-674")
     public void VerifyCustomerProfileVisibility() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
-        Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "login error");
+        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
+        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+
+        Login.navigateToDistributorPortal(DistributorName);
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(CustomerCode);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"Error in displaying the customer");
         String BusinessName = Customer.getBusinessNameFromCustomers(CustomerCode);
+
         Customer.SelectCustomer(CustomerCode);
         softAssert.assertTrue(Customer.isCustomerProfileDisplayed(BusinessName),"Error in navigation to customer page");
         Customer.clickCusAccountVisibilityOption();
         Customer.clickCusAccountVisibilityDropdown();
         Customer.selectCusAccountHiddenOption();
-        softAssert.assertTrue(Customer.isAccountHiddenOptionDisplayed(), "text error");
-        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        Dashboard.navigateToCustomers();
-        Customer.logIntoCustomer();
-        Customer.loginAsCustomer(email,nameCus);
+
+        Login.closePreviousTab();
+
+        Login.navigateToLoginAs();
+        Login.logInToOperator(nameCus);
         Customer.clickCustomerPortalOrderIcon();
         softAssert.assertTrue(Customer.isVisibleAddSupplierButton(), "error in visibility");
-        Customer.logIntoDP();
-        Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "login error");
+
+        Login.navigateToDistributorPortal(DistributorName);
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
         Dashboard.navigateToCustomers();
         softAssert.assertTrue(Customer.isCustomerListTextDisplayed(), "text error");
         Customer.searchCustomerByCode(CustomerCode);
@@ -62,8 +63,11 @@ public class VerifyCustomerProfileVisibilityTest extends TestBase{
         Customer.clickCusAccountVisibilityDropdown();
         Customer.selectCusAccountVisibleOption();
         softAssert.assertTrue(Customer.isAccountVisibleOptionDisplayed(), "error");
-        Customer.logIntoCustomer();
-        Customer.loginAsCustomer(email, nameCus);
+
+        Login.closePreviousTab();
+
+        Login.navigateToLoginAs();
+        Login.logInToOperator(nameCus);
         Customer.clickCustomerPortalOrderIcon();
         softAssert.assertTrue(Customer.isOrderGuideVisibleCustomerPortal(), "error in visibility");
         softAssert.assertAll();
