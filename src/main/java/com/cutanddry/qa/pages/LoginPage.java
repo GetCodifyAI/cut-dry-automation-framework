@@ -260,5 +260,10 @@ public class LoginPage extends TestBase {
     public void closePreviousTab()throws InterruptedException{
         distributorUI.CloseAllPreviousTabAndSwitchToNew();
     }
+    public void clickOnLoginAsClassicAndSwitchToNewTab() throws InterruptedException {
+        distributorUI.click(btn_LoginAsClassic);
+        distributorUI.switchToNewTab();
+        distributorUI.waitForCustom(3000);
+    }
 
 }
