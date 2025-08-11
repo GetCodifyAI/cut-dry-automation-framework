@@ -42,6 +42,7 @@
             <class name="com.cutanddry.qa.tests.catalog.ValidateTheViewCatalogAsCustomerRadioButtonInMainCatalogTest" />
             <class name="com.cutanddry.qa.tests.catalog.ValidateFilterItemsByCategoryInCatalogTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemImageTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.ViewManufacturerPageTest"/>
 
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyStockDataInCatalogViewTest" />
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyImageOfItemTest" />
@@ -70,6 +71,7 @@
             <class name="com.cutanddry.qa.tests.pay.VerifyTheSendingPaymentsReminderForBulkInvoicesTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheViewFeatureInThePayoutSectionTest"/>
             <class name="com.cutanddry.qa.tests.pay.VerifyTheExportPayoutsFunctionalityTest"/>
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnAllCustomerDPPortalWhenFeatureDisabledTest"/>
 
             <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsDeleteTest"/>
