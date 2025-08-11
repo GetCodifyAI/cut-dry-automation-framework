@@ -106,6 +106,10 @@ public class BoostPage extends LoginPage {
     By dropdown_salesperson = By.xpath("//label[contains(text(),'Salesperson:')]/following-sibling::div/div");
     By dropdown_deliveryDate = By.xpath("//label[contains(text(),'Delivery Days:')]/following-sibling::div/div");
     By secondOptionLocator = By.xpath("//label[contains(text(),'Delivery Days:')]/following-sibling::div/div[2]//div[1]");
+    String txt_WeeklyEssentials = "//div[text()='OPTION']";
+    By DisplayStatusToggleStable = By.xpath("//div[contains(text(), 'Display Status')]/div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By DisplayStatusToggleStable1 = By.xpath("//div[contains(text(), 'Display Status')]/div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+
 
 
 
@@ -474,8 +478,16 @@ public class BoostPage extends LoginPage {
         distributorUI.waitForVisibility(btn_addNewMessage);
         distributorUI.click(btn_addNewMessage);
     }
-    public void clickOnDisplayStatusToggle(){
-        distributorUI.click(displayStatusToggle);
+    public void clickOnDisplayStatusToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(DisplayStatusToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(19px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(DisplayStatusToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(DisplayStatusToggleStable1);
+        }
     }
 
     public boolean containsBoostMsg(){
@@ -529,5 +541,8 @@ public class BoostPage extends LoginPage {
         distributorUI.waitForCustom(2000);
         distributorUI.click(dropdown_deliveryDate);
         return selectedOptionName;
+    }
+    public boolean isWeeklyEssentialsTextDisplay(String option) {
+        return distributorUI.isDisplayed(By.xpath(txt_WeeklyEssentials.replace("OPTION", option)));
     }
 }
