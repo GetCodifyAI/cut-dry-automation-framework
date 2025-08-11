@@ -278,8 +278,8 @@ public class Boost {
         }
     }
 
-    public static void clickOnDisplayStatusToggle(){
-        boostPage.clickOnDisplayStatusToggle();
+    public static void clickOnDisplayStatusToggle(boolean status){
+        boostPage.clickOnDisplayStatusToggle(status);
     }
 
     public static void changeOrderDragAndDrop(){
@@ -311,6 +311,9 @@ public class Boost {
     public static String selectDeliveryDates() throws InterruptedException {
         boostPage.clickSelectDeliveryDatesDropdown();
         return boostPage.selectDeliveryDatesDropdownOption();
+    }
+    public static boolean isWeeklyEssentialsTextDisplay(String option){
+        return boostPage.isWeeklyEssentialsTextDisplay(option);
     }
 
 }
