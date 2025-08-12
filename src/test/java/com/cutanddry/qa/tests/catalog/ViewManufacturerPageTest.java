@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class ViewManufacturerPageTest extends TestBase {
     static User user;
     String ItemCode = "10153581";
-    String DistributerName = "185556964 - Brandon Cheney - Cheney Brothers";
+    String DistributorName = "185556964 - Brandon Cheney - Cheney Brothers";
 
     @BeforeMethod
     public void setUp(){
@@ -28,7 +28,7 @@ public class ViewManufacturerPageTest extends TestBase {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-        Login.navigateToDistributorPortal(DistributerName);
+        Login.navigateToDistributorPortal(DistributorName);
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.SearchItemInCatalogByItemCode(ItemCode);
         Catalog.SelectItemAfterSearch(ItemCode);
@@ -37,7 +37,6 @@ public class ViewManufacturerPageTest extends TestBase {
         Catalog.SelectManufacturer();
         softAssert.assertTrue(Catalog.isCongaraBrandPageDisplayed(),"ERROR in Navigating to Congara BrandPage");
         softAssert.assertTrue(Catalog.isOtherBrandsPageDisplayed(),"Error in navigating to Other Brands Page");
-
         softAssert.assertAll();
     }
 
