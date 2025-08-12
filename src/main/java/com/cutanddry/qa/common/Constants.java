@@ -16,10 +16,11 @@ public class Constants {
     public static String GATE_KEEPER_ADMIN = "https://app-uat.staging.cutanddry.com/gatekeeperadmin";
     public static String PROD_LOGIN_AS = "https://internal.cutanddry.com/internaltools/loginas";
 
+
     //Environment variables
 //    public static String SLACK_WEBHOOK = System.getenv("SLACK_WEBHOOK");
     public static String SLACK_WEBHOOK = System.getenv("STAGING_SLACK_WEBHOOK");
-    public static final String TEST_STAG ="standing-order";
+    public static final String TEST_STAG ="demo832";
 
 
     private static String baseDomain() {
