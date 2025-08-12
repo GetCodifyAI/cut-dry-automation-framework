@@ -43,8 +43,8 @@
             <class name="com.cutanddry.qa.tests.chat.VerifyTheChatFeatureDisplayInDPPortalWhenChatModuleEnableTest" />
 
             <class name="com.cutanddry.qa.tests.boost.VerifyTopCategoryPicksTest" />
-            <class name="com.cutanddry.qa.tests.boost.VerifyTheDisplayStatusOfFeaturedLists" />
-            <class name="com.cutanddry.qa.tests.boost.VerifyTheBoostMessageFilteringFromTheStatusOption" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheDisplayStatusOfFeaturedListsTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheBoostMessageFilteringFromTheStatusOptionTest" />
 
             <class name="com.cutanddry.qa.tests.order_desk.VerifyOrderDeskFeatureTest" />
             <class name="com.cutanddry.qa.tests.order_desk.VerifyEditingSubmittedVoiceOrderTest" />
