@@ -19,7 +19,7 @@ public class Constants {
     //Environment variables
 //    public static String SLACK_WEBHOOK = System.getenv("SLACK_WEBHOOK");
     public static String SLACK_WEBHOOK = System.getenv("STAGING_SLACK_WEBHOOK");
-    public static final String TEST_STAG ="dot9733";
+    public static final String TEST_STAG ="standing-order";
 
 
     private static String baseDomain() {
