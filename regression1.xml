@@ -15,6 +15,8 @@
             <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />
 
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheSearchTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.DeleteItemsFomTheReviewCartTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyItemPriceTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyCompanyDropdownTest" />
             <class name="com.cutanddry.qa.tests.order_guide.AddProductsFrmOrderGuideTest" />
             <class name="com.cutanddry.qa.tests.order_guide.AddProductsFrmCatalogTest" />
@@ -28,7 +30,7 @@
             <class name="com.cutanddry.qa.tests.order_guide.SortCustomerOrdersTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheViewMultipleOrderGuidesUnderOrderGuideAndMoveBetweenDifferentOrderGuides"/>
             <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderItemUnitsTest"/>
-            <class name="com.cutanddry.qa.tests.order_guide.ValidateTheFunctionalityOfEditMarginOfAnItem"/>
+<!-- Duplicate           <class name="com.cutanddry.qa.tests.order_guide.ValidateTheFunctionalityOfEditMarginOfAnItem"/>-->
             <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingOrdersWithCatalogItemsTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrderGuideWithCatalogItemsTest" />
             <!--TODO: All the items are hidden in the Test Automation order guide. May be the following TCs are impacting on this. So just comment it for today and see the issue was exist or not -->
@@ -74,6 +76,9 @@
             <class name="com.cutanddry.qa.tests.boost.VerifyAddingFeaturedListTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyEditingFeaturedListTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRemovingFeaturedListTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheBoostMessageFilteringFromTheStatusOptionTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheChangeOrderFromTheFeaturedListsTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheDisplayStatusOfFeaturedListsTest" />
 
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderWithoutAddingAnyItemsTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByRemovingExistingItemsAndChangingQuantitiesTest"/>

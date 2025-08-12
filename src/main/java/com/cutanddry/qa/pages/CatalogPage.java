@@ -22,7 +22,7 @@ public class CatalogPage extends LoginPage{
     By Manufacturer = By.xpath("//div[contains(text(),'Conagra Foodservice')]");
     By OtherBrandBtn = By.xpath("//img[@class='_kfc3ia img-fluid' and contains(@src,\"2b4b2013cb03bd26957893f39d0783bd.jpg\")]");
 //    By ConagaraBrandPage= By.xpath("//div[contains(text(),'Conagra Foodservice ') and @class='mt-5 mb-1 _mojmdw']");
-By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice ')])[1]");
+By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[1]");
     By OtherBrandText = By.xpath("//h2[contains(text(),'Andy Capp’s®')]");
     By ShowCaseBtn = By.xpath("//*[contains(text(),'Showcase')]");
     By ShowCasePopUp = By.xpath("//*[contains(text(),'Using the Product Showcase')]");

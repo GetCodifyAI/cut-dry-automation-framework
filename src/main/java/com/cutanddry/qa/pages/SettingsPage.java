@@ -177,6 +177,9 @@ public class SettingsPage extends LoginPage{
     By sel_OrderCutOffs = By.xpath("//span[text()='Order Cutoffs']/preceding-sibling::div/div[@class='react-switch-handle']");
     By sel_OrderCutOffs_status = By.xpath("//span[text()='Order Cutoffs']/preceding-sibling::div/input[@type='checkbox' and @role='switch' and @checked]");
     By sel_deliveryDate = By.xpath("//span[text()='Global Delivery Days']/preceding-sibling::div/div[@class='react-switch-handle']");
+    By lbl_ERPUserRef = By.xpath("//label[text()='ERP user reference']/following-sibling::div//input");
+    By lbl_AlternateERPUserRef = By.xpath("//label[contains(text(),'Alternate ERP user reference')]/following-sibling::div//input");
+
 
 
 
@@ -1085,6 +1088,16 @@ public class SettingsPage extends LoginPage{
         if (distributorUI.isCheckboxOrRadioBtnSelected(lbl_deliveryDays_status ) != enable){
             distributorUI.click(lbl_deliveryDays);
         }
+    }
+    public void enterERPUserRef(String ref) throws InterruptedException {
+        distributorUI.waitForCustom(4000);
+        distributorUI.sendKeysAndEnter(lbl_ERPUserRef,ref);
+        distributorUI.waitForCustom(2000);
+    }
+    public void enterAlternateERPUserRef(String ref) throws InterruptedException {
+        distributorUI.waitForCustom(4000);
+        distributorUI.sendKeysAndEnter(lbl_AlternateERPUserRef,ref);
+        distributorUI.waitForCustom(2000);
     }
 
 }

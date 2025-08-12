@@ -3,7 +3,6 @@ package com.cutanddry.qa.tests.boost;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.Boost;
-import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
@@ -13,17 +12,17 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheChangeOrderFromTheFeaturedLists extends TestBase {
+public class VerifyTheDisplayStatusOfFeaturedListsTest extends TestBase {
     static User user;
+    static String configureOption = "Weekly Essentials";
 
     @BeforeMethod
     public void setUp(){
         initialization();
         user = JsonUtil.readUserLogin();
     }
-
-    @Test(groups = "DOT-TC-833")
-    public void VerifyTheChangeOrderFromTheFeaturedLists() throws InterruptedException {
+    @Test(groups = "DOT-TC-836")
+    public void VerifyTheDisplayStatusOfFeaturedLists() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -31,7 +30,9 @@ public class VerifyTheChangeOrderFromTheFeaturedLists extends TestBase {
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.navigateToFeaturedListTab();
-        Boost.changeOrderDragAndDrop();
+        Boost.viewAndConfigure(configureOption);
+        softAssert.assertTrue(Boost.isWeeklyEssentialsTextDisplay(configureOption),"Weekly Essentials Text Display error");
+        Boost.clickOnDisplayStatusToggle(false);
         softAssert.assertAll();
     }
 

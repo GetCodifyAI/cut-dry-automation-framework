@@ -24,7 +24,7 @@ public class DeleteItemsFomTheReviewCartTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-273")
-    public void addProductsFrmOrderGuide() throws InterruptedException {
+    public void DeleteItemsFomTheReviewCart() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());

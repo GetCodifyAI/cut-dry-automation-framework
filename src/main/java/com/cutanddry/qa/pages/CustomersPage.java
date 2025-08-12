@@ -190,7 +190,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By btn_delete = By.xpath("//button[contains(text(), 'Delete')]");
     By txt_editSection = By.xpath("//div[contains(text(), 'Edit Section Header')]");
     By txt_areYouSure = By.xpath("//h2[text()='Are you sure?']");
-    By btn_deleteIcon = By.xpath("//*[local-name() = 'svg' and @data-icon='trash-alt']");
+    By btn_deleteIcon = By.xpath("//*[local-name() = 'svg' and @data-icon='trash-can']");
     By tb_boost = By.xpath("//a[text()='Boost' and @role='tab']");
     By tb_track = By.xpath("//a[text()='Track' and @role='tab']");
     By txt_customerSpecific = By.xpath("//div[contains(text(),'Customer-specific Broadcast')]");
@@ -832,6 +832,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By lbl_parValue = By.xpath("//div[contains(text(),'Par')]/../following-sibling::div//input");
     By lbl_OnSiteInvValue = By.xpath("//div[contains(text(),'On-Site Inv')]/../following-sibling::div//input");
     By lbl_ItemTotal= By.xpath("//div[contains(text(),'Item Total')]/../following-sibling::div//input");
+    String txt_errorMessage = "//span[text()='MESSAGE']";
+    String cartSummeryValue = "//div[contains(text(),'OPTION')]/following-sibling::div";
+    String revenueSummeryValue = "//div[contains(text(),'OPTION')]/following-sibling::div";
+
+
 
 
 
@@ -3210,6 +3215,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
             return extractPriceStable(lbl_itemPriceList1);
         }
     }
+    public double getItemPricePDP() throws InterruptedException {
+        try {
+            return extractPriceStable(txt_pricePDP);
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPriceStable(txt_pricePDP);
+        }
+    }
     public double getActiveItemPriceSecondRowStable() throws InterruptedException {
         try {
             return extractPriceStable(lbl_secondItemPriceList);
@@ -4787,6 +4800,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickTrashIcon()throws InterruptedException{
         distributorUI.waitForVisibility(btn_trash);
         distributorUI.click(btn_trash);
+        distributorUI.waitForCustom(3000);
     }
     public void clickCheckBoxEach()throws InterruptedException{
         distributorUI.waitForVisibility(lbl_itemUOM);
@@ -4899,5 +4913,46 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
             System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
             return extractPriceStable(lbl_ItemTotal);
         }
+    }
+    public boolean isErrorTextDisplay(String message)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(txt_errorMessage.replace("MESSAGE",message)));
+    }
+    public String getcartSummeryValue(String option) throws InterruptedException {
+        distributorUI.waitForVisibility(By.xpath(cartSummeryValue.replace("OPTION",option)));
+        distributorUI.waitForCustom(3000);
+        String rawText = distributorUI.getText(By.xpath(cartSummeryValue.replace("OPTION",option)));
+        return rawText.replace(":", "").trim();
+    }
+    public String getRevenueSummeryValue(String option) throws InterruptedException {
+        distributorUI.waitForVisibility(By.xpath(revenueSummeryValue.replace("OPTION",option)));
+        distributorUI.waitForCustom(3000);
+        String rawText = distributorUI.getText(By.xpath(revenueSummeryValue.replace("OPTION",option))); // e.g., ": 1"
+        return rawText.replace(":", "").replace("%", "").trim();
+    }
+    public double getGrossProfitValueStable(String option) throws InterruptedException {
+        try {
+            return extractGrossProfitValue(By.xpath(revenueSummeryValue.replace("OPTION",option)));
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractGrossProfitValue(By.xpath(revenueSummeryValue.replace("OPTION",option)));
+        }
+    }
+    private double extractGrossProfitValue(By priceLocator) throws InterruptedException {
+        distributorUI.waitForVisibility(priceLocator);
+        String tagName = distributorUI.getElement(priceLocator).getTagName();
+        String priceText;
+
+        if (tagName.equals("input")) {
+            priceText = distributorUI.getText(priceLocator, "value");
+        } else if (tagName.equals("div")) {
+            priceText = distributorUI.getText(priceLocator);
+        } else {
+            priceText = distributorUI.getText(priceLocator);
+        }
+
+        System.out.println("Extracted Price: " + priceText);
+        priceText = priceText.replace(":", "").replace("$", "").split("/")[0].trim();
+
+        return Double.valueOf(priceText);
     }
 }

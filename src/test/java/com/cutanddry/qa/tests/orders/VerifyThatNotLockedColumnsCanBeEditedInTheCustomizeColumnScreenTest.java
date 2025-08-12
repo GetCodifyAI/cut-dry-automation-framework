@@ -39,7 +39,7 @@ public class VerifyThatNotLockedColumnsCanBeEditedInTheCustomizeColumnScreenTest
         Orders.clickUpdateColumn();
         softAssert.assertTrue(Orders.isColumnSettingUpdatePopUpDisplay(),"Column Setting Update Pop Up not Display");
         Orders.clickOkUpdate();
-        softAssert.assertFalse(Orders.isColumnUpdateDisplay(column),"colum not updated");
+        softAssert.assertTrue(Orders.isColumnUpdateDisplay(column),"colum not updated");
 
         Orders.clickEditColumn(editColumn);
         Orders.setCustomizeColumn(true);

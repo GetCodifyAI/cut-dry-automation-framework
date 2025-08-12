@@ -3,7 +3,6 @@ package com.cutanddry.qa.tests.boost;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.Boost;
-import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
@@ -13,7 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheBoostMessageFilteringFromTheStatusOption extends TestBase {
+public class VerifyTheChangeOrderFromTheFeaturedListsTest extends TestBase {
     static User user;
 
     @BeforeMethod
@@ -22,18 +21,16 @@ public class VerifyTheBoostMessageFilteringFromTheStatusOption extends TestBase 
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-832")
-    public void VerifyTheBoostMessageFilteringFromTheStatusOption() throws InterruptedException {
+    @Test(groups = "DOT-TC-833")
+    public void VerifyTheChangeOrderFromTheFeaturedLists() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
-        Boost.selectDropDownStatus("Active");
-        softAssert.assertTrue(Boost.isStatusInTableCorrect("Active"), "There is an error with the status");
-        Boost.selectDropDownStatus("Inactive");
-        softAssert.assertTrue(Boost.isStatusInTableCorrect("Inactive"),"There is an error with the status");
+        Boost.navigateToFeaturedListTab();
+        Boost.changeOrderDragAndDrop();
         softAssert.assertAll();
     }
 

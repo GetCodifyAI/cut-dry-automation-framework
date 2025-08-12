@@ -124,4 +124,9 @@ public class Login {
     public static void closePreviousTab()throws InterruptedException{
         loginPage.closePreviousTab();
     }
+    public static void logInToOperator(String operator) throws InterruptedException {
+        loginPage.typeToSearchOnOperator(operator);
+        loginPage.clickOperator(operator);
+        loginPage.clickOnLoginAsClassicAndSwitchToNewTab();
+    }
 }
