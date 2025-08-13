@@ -16,7 +16,7 @@ public class VerifyTheAutoApplyCreditMemosOnAllCustomerDPPortalWhenFeatureDisabl
     static User user;
     String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
     static String status_past_due = PayInvoiceData.STATUS_PAST_DUE;
-    static String customerName = PayInvoiceData.CUSTOMER_NAME2;
+    static String customerName = "Acai Bowles - San Francisco";
     static String status_payment = PayInvoiceData.OPTION_PAYMENT;
 
 
@@ -57,7 +57,7 @@ public class VerifyTheAutoApplyCreditMemosOnAllCustomerDPPortalWhenFeatureDisabl
         Pay.selectInvoiceStatusViaFilter(status_past_due);
         softAssert.assertTrue(Pay.getInvoiceRecordStatus(1).trim().contains(status_past_due.replace("- ","").trim()), "The past due status in the first invoice record does not match the expected value.");
 
-        Pay.clickOnInvoiceRecord(2);
+        Pay.clickOnInvoiceRecord(4);
         Pay.clickOnInvoiceBulkActionButton();
         Pay.selectTheBulkInvoiceOption(status_payment);
 
