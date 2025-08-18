@@ -36,8 +36,6 @@
 <!--            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingAddOrderReminderAlertsTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingEditOrderReminderAlertsTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.settings.VerifyOrderSettingDeleteOrderReminderAlertsTest"/>-->
-            <class name="com.cutanddry.qa.tests.settings.VerifyTheOrderReminderConfigurationsInTheDPTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyThatSMSFunctionalityIsWorkingAsExpectedForOrderReminderAlertsTest"/>
 
             <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingAddPaymentMethodTest"/>
             <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingRemovePaymentMethodTest"/>
@@ -57,19 +55,6 @@
 -->
             <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderGuideOrderApprovalUIFeatureTest" />
             <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderApprovalSettingsReflectedWhileOrderingTest" />
-
-
-            <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessRestrictedViaCustomerProfileTest" />
-
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyOutOfStockItemsShowingAndNotOnSuggestiveSalesTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountHardHoldTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountRemoveHardHoldTest" />
-
-            <class name="com.cutanddry.qa.tests.catalog.VerifyHardOrderMinimumWarningTest" />
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheHardOrderMinimumSelectingMultipleUOMTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSoftOrderMinimumSelectingMultipleUOMTest"/>
-            <class name="com.cutanddry.qa.tests.default_view.VerifyTheDefaultViewIsCorrectlyDisplayingWhenSetUpFromConfigSupplierForDistributorTest"/>
-
         </classes>
     </test>
 </suite>

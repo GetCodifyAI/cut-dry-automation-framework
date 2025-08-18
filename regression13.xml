@@ -1,0 +1,41 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="Part_Thirteen"/>
+        <classes>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryMultiUOMInPDPSectionSpotPriceEnableDPTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryMultiUOMInPDPSectionSpotPriceDisableDPTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryInPDPSectionInDPTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryInCatalogueTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryInOrderGuideTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryWithMarginInOrderGuideTest"/>
+
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryWithMarginInOrderGuideAndPDPWhenDisplayMarginToggleEnableTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryMarginNotDisplayInOrderGuideAndPDPWhenDisplayMarginToggleDisableTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryDisplayInOrderGuideAndPDPWhenDisplayPurchaseHistoryToggleEnableTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryNotDisplayInOrderGuideAndPDPWhenDisplayPurchaseHistoryToggleDisableTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryWithPriceInOrderGuideAndPDPWhenDisplayPurchasePriceToggleEnableTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryWithPriceNotDisplayInOrderGuideAndPDPWhenDisplayPurchasePriceToggleDisableTest"/>
+
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessRestrictedViaCustomerProfileTest" />
+
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyOutOfStockItemsShowingAndNotOnSuggestiveSalesTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountHardHoldTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountRemoveHardHoldTest" />
+            <class name="com.cutanddry.qa.tests.default_view.VerifyTheDefaultViewIsCorrectlyDisplayingWhenSetUpFromConfigSupplierForDistributorTest"/>
+
+            <class name="com.cutanddry.qa.tests.catalog.VerifyHardOrderMinimumWarningTest" />
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheHardOrderMinimumSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSoftOrderMinimumSelectingMultipleUOMTest"/>
+
+            <class name="com.cutanddry.qa.tests.settings.VerifyTheOrderReminderConfigurationsInTheDPTest"/>
+            <class name="com.cutanddry.qa.tests.settings.VerifyThatSMSFunctionalityIsWorkingAsExpectedForOrderReminderAlertsTest"/>
+
+        </classes>
+    </test>
+</suite>

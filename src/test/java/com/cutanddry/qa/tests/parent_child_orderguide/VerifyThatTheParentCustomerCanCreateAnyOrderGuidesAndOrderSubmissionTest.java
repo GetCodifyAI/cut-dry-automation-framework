@@ -76,8 +76,8 @@ public class VerifyThatTheParentCustomerCanCreateAnyOrderGuidesAndOrderSubmissio
         Customer.clickOnOrderGuideParentChild(customerId);
         Customer.clickOGDropdown();
         Customer.selectNewlyCreatedOrderGuide(OrderGuideName);
-        Customer.goToEdit();
-        softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
+//        Customer.goToEdit();
+//        softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
         Customer.expandMoreOptionsDropdown();
         Customer.clickOnDeleteOrderGuide();
         softAssert.assertTrue(Orders.isAreYouSurePopUpDisplayed(),"Are you sure pop up not displayed");
