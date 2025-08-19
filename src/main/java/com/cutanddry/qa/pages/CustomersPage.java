@@ -222,7 +222,7 @@ By input_selectItem = By.xpath("//div[contains(text(),'Search items by name or c
     By RemoveUserTxt = By.xpath("//span[contains(text(),'Remove user')]");
     By DeleteCnfrmOverlay = By.xpath("//h2[contains(text(),'Are you sure you want to remove this user')]");
     By DeleteCnfrmYesBtn = By.xpath("//button[contains(text(),'Yes')]");
-    By txt_pkgDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Pkg']");
+    By txt_pkgDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Each']");
     By btn_hide = By.xpath("//button[contains(text(), 'Hide Item')]");
     By txt_editItem = By.xpath("//div[contains(text(), 'Edit Item')]");
     By btn_unhide = By.xpath("//button[contains(text(), 'Save and Unhide Item')]");
@@ -835,6 +835,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String txt_errorMessage = "//span[text()='MESSAGE']";
     String cartSummeryValue = "//div[contains(text(),'OPTION')]/following-sibling::div";
     String revenueSummeryValue = "//div[contains(text(),'OPTION')]/following-sibling::div";
+    String txt_preAuthorization = "//h2[text()='MESSAGE']";
+    By txt_confirmPayment = By.xpath("//div[text()='Confirm Payment']");
 
 
 
@@ -4954,5 +4956,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         priceText = priceText.replace(":", "").replace("$", "").split("/")[0].trim();
 
         return Double.valueOf(priceText);
+    }
+    public void increaseFirstRowQtySpecificCustomer() throws InterruptedException {
+        distributorUI.click(btn_increaseQtyFirstRow);
+    }
+    public boolean isPreAuthorizationTextDisplay(String message)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(txt_preAuthorization.replace("MESSAGE",message)));
+    }
+    public boolean isConfirmPaymentTextDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_confirmPayment);
     }
 }
