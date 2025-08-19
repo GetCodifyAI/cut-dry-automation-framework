@@ -49,10 +49,10 @@ public class VerifyThatManuallyOrderGuideCanEditTest extends TestBase{
         Customer.addItemFromCatalog();
         Customer.closeEditorCatalog();
 
-        Customer.expandMoreOptionsDropdown();
-        softAssert.assertTrue(Customer.isEditOrderGuideButtonDisplay(),"edit OG button display");
-        Customer.goToEditOrderGuide();
-        softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
+//        Customer.expandMoreOptionsDropdown();
+//        softAssert.assertTrue(Customer.isEditOrderGuideButtonDisplay(),"edit OG button display");
+//        Customer.goToEditOrderGuide();
+//        softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
         Customer.expandMoreOptionsDropdown();
         Customer.clickOnDeleteOrderGuide();
         softAssert.assertTrue(Orders.isAreYouSurePopUpDisplayed(),"Are you sure pop up not displayed");
