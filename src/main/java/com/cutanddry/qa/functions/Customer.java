@@ -2963,6 +2963,17 @@ public class Customer {
     public static double getGrossProfitValueStable(String option) throws InterruptedException {
         return customersPage.getGrossProfitValueStable(option);
     }
+    public static void increaseFirstRowQtySpecificCustomer(int count) throws InterruptedException {
+        for (int i=0; i<count;i++){
+            customersPage.increaseFirstRowQtySpecificCustomer();
+        }
+    }
+    public static boolean isPreAuthorizationTextDisplay(String message)throws InterruptedException{
+        return customersPage.isPreAuthorizationTextDisplay(message);
+    }
+    public static boolean isConfirmPaymentTextDisplay()throws InterruptedException{
+        return customersPage.isConfirmPaymentTextDisplay();
+    }
 }
 
 

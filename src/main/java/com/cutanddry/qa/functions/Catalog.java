@@ -653,5 +653,13 @@ public class Catalog {
         return catalogPage.isSpecialItemDropDownDisplay();
     }
 
+    public static String getItemCodeSecondRowInCatalog() throws InterruptedException {
+        return catalogPage.getItemCodeSecondRowInCatalog();
+    }
+
+    public static String getItemNameSecondRowInCatalog() throws InterruptedException {
+        return catalogPage.getItemNameSecondRowInCatalog();
+    }
+
 
 }

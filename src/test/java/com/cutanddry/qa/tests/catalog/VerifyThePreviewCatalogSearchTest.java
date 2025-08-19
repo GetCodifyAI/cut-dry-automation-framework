@@ -35,8 +35,8 @@ public class VerifyThePreviewCatalogSearchTest extends TestBase {
 
         Dashboard.navigateToCatalog();
         Assert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
-        itemName = Catalog.getItemNameFirstRowInCatalog().split("\n")[0];
-        searchItemCode = Catalog.getItemCodeFirstRowInCatalog();
+        itemName = Catalog.getItemNameSecondRowInCatalog().split("\n")[0];
+        searchItemCode = Catalog.getItemCodeSecondRowInCatalog();
 
         Catalog.clickOnPreviewCatalog();
         Assert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
