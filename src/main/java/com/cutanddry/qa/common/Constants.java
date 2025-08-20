@@ -17,7 +17,7 @@ public class Constants {
     public static String GATE_KEEPER_ADMIN = "https://app-uat.staging.cutanddry.com/gatekeeperadmin";
 
     public static String PROD_LOGIN_AS = "https://internal.cutanddry.com/internaltools/loginas";
-    public static final String TEST_STAG ="default-order";
+    public static final String TEST_STAG ="sorting";
 
     //  https://hooks.slack.com/services/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 //group - test-alerts
     //  https://hooks.slack.com/services/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 //group - ui-automation-tests
