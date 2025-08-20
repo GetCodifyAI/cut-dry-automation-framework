@@ -154,6 +154,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     String categoryName = "(//div[ contains(text(),'CATEGORY')])[1]";
     By lbl_firstRowItemCode = By.xpath("(//tbody/tr[1]/td[1])[1]");
     By lbl_firstRowItemName = By.xpath("(//tbody/tr[1]/td[3])[1]");
+    By lbl_secondRowItemCode = By.xpath("(//tbody/tr[2]/td[1])[1]");
+    By lbl_secondRowItemName = By.xpath("(//tbody/tr[2]/td[3])[1]");
     By mediaTypeDropDown = By.xpath("//label[contains(text(), 'Media Type')]/../following-sibling::div//div[contains(@class, 'themed_select__control')]");
     String mediaTypeOption = "(//div[text()='TYPE' and contains(@class,'themed_select__option')])[last()]";
     String addedSubstitutionsCode = "//div[contains(text(),'CODE')]";
@@ -1190,6 +1192,18 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     }
     public void clickUpdateOG() {
         distributorUI.click(btn_updateOGPopup);
+    }
+
+    public String getItemCodeSecondRowInCatalog() throws InterruptedException {
+        distributorUI.waitForVisibility(lbl_secondRowItemCode);
+        distributorUI.waitForCustom(3000);
+        return distributorUI.getText(lbl_secondRowItemCode);
+    }
+
+    public String getItemNameSecondRowInCatalog() throws InterruptedException {
+        distributorUI.waitForVisibility(lbl_secondRowItemName);
+        distributorUI.waitForCustom(3000);
+        return distributorUI.getText(lbl_secondRowItemName);
     }
 
 }
