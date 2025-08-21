@@ -36,7 +36,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run tests
-          command: mvn clean test -Dsurefire.suiteXmlFiles=bvt.xml -Drun.headless=true -Dtest.env=stag
+          command: mvn clean test -Dsurefire.suiteXmlFiles=bvt.xml -Drun.headless=true -Dtest.env=uat
       - store_artifacts:
           path: target/surefire-reports
           destination: build-and-test-artifacts
@@ -114,7 +114,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run nightly tests 1
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression1.xml -Drun.headless=true -Dtest.env=stag || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression1.xml -Drun.headless=true -Dtest.env=uat || true
       - store_artifacts:
           path: target/surefire-reports
           destination: nightly-build-and-test-artifacts-1
@@ -168,7 +168,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run nightly tests 2
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression2.xml -Drun.headless=true -Dtest.env=stag || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression2.xml -Drun.headless=true -Dtest.env=uat || true
       - store_artifacts:
           path: target/surefire-reports
           destination: nightly-build-and-test-artifacts-2
@@ -225,7 +225,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run nightly tests 3
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression3.xml -Drun.headless=true -Dtest.env=stag || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression3.xml -Drun.headless=true -Dtest.env=uat || true
       - store_artifacts:
           path: target/surefire-reports
           destination: nightly-build-and-test-artifacts-3
@@ -279,7 +279,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run nightly tests 4
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression4.xml -Drun.headless=true -Dtest.env=stag || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression4.xml -Drun.headless=true -Dtest.env=uat || true
       - store_artifacts:
           path: target/surefire-reports
           destination: nightly-build-and-test-artifacts-4
@@ -333,7 +333,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run nightly tests 5
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression5.xml -Drun.headless=true -Dtest.env=stag || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression5.xml -Drun.headless=true -Dtest.env=uat || true
       - store_artifacts:
           path: target/surefire-reports
           destination: nightly-build-and-test-artifacts-5
@@ -387,7 +387,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run nightly tests 6
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression6.xml -Drun.headless=true -Dtest.env=stag || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression6.xml -Drun.headless=true -Dtest.env=uat || true
       - store_artifacts:
           path: target/surefire-reports
           destination: nightly-build-and-test-artifacts-6
@@ -441,7 +441,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run nightly tests 7
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression7.xml -Drun.headless=true -Dtest.env=stag || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression7.xml -Drun.headless=true -Dtest.env=uat || true
       - store_artifacts:
           path: target/surefire-reports
           destination: nightly-build-and-test-artifacts-7
@@ -495,7 +495,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run nightly tests 8
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression8.xml -Drun.headless=true -Dtest.env=stag || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression8.xml -Drun.headless=true -Dtest.env=uat || true
       - store_artifacts:
           path: target/surefire-reports
           destination: nightly-build-and-test-artifacts-8
@@ -549,7 +549,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run nightly tests 9
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression9.xml -Drun.headless=true -Dtest.env=stag || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression9.xml -Drun.headless=true -Dtest.env=uat || true
       - store_artifacts:
           path: target/surefire-reports
           destination: nightly-build-and-test-artifacts-9
@@ -603,7 +603,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run nightly tests 10
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression10.xml -Drun.headless=true -Dtest.env=stag || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression10.xml -Drun.headless=true -Dtest.env=uat || true
       - store_artifacts:
           path: target/surefire-reports
           destination: nightly-build-and-test-artifacts-10
@@ -657,7 +657,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run nightly tests 11
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression11.xml -Drun.headless=true -Dtest.env=stag || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression11.xml -Drun.headless=true -Dtest.env=uat || true
       - store_artifacts:
           path: target/surefire-reports
           destination: nightly-build-and-test-artifacts-11
@@ -711,7 +711,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run nightly tests 12
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression12.xml -Drun.headless=true -Dtest.env=stag || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression12.xml -Drun.headless=true -Dtest.env=uat || true
       - store_artifacts:
           path: target/surefire-reports
           destination: nightly-build-and-test-artifacts-12
@@ -765,7 +765,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run nightly tests 13
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression13.xml -Drun.headless=true -Dtest.env=stag || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression13.xml -Drun.headless=true -Dtest.env=uat || true
       - store_artifacts:
           path: target/surefire-reports
           destination: nightly-build-and-test-artifacts-13
@@ -819,7 +819,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 1
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression1.xml -Drun.headless=true -Dtest.env=stag -Dcreate.cycle=true || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression1.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
           destination: daily-build-and-test-artifacts-1
@@ -873,7 +873,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 2
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression2.xml -Drun.headless=true -Dtest.env=stag -Dcreate.cycle=true || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression2.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
           destination: daily-build-and-test-artifacts-2
@@ -927,7 +927,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 3
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression3.xml -Drun.headless=true -Dtest.env=stag -Dcreate.cycle=true || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression3.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
           destination: daily-build-and-test-artifacts-3
@@ -981,7 +981,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 4
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression4.xml -Drun.headless=true -Dtest.env=stag -Dcreate.cycle=true || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression4.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
           destination: daily-build-and-test-artifacts-4
@@ -1035,7 +1035,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 5
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression5.xml -Drun.headless=true -Dtest.env=stag -Dcreate.cycle=true || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression5.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
           destination: daily-build-and-test-artifacts-5
@@ -1089,7 +1089,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 6
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression6.xml -Drun.headless=true -Dtest.env=stag -Dcreate.cycle=true || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression6.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
           destination: daily-build-and-test-artifacts-6
@@ -1143,7 +1143,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 7
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression7.xml -Drun.headless=true -Dtest.env=stag -Dcreate.cycle=true || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression7.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
           destination: daily-build-and-test-artifacts-7
@@ -1197,7 +1197,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 8
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression8.xml -Drun.headless=true -Dtest.env=stag -Dcreate.cycle=true || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression8.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
           destination: daily-build-and-test-artifacts-8
@@ -1251,7 +1251,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 9
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression9.xml -Drun.headless=true -Dtest.env=stag -Dcreate.cycle=true || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression9.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
           destination: daily-build-and-test-artifacts-9
@@ -1305,7 +1305,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 10
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression10.xml -Drun.headless=true -Dtest.env=stag -Dcreate.cycle=true || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression10.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
           destination: daily-build-and-test-artifacts-10
@@ -1359,7 +1359,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 11
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression11.xml -Drun.headless=true -Dtest.env=stag -Dcreate.cycle=true || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression11.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
           destination: daily-build-and-test-artifacts-11
@@ -1413,7 +1413,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 12
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression12.xml -Drun.headless=true -Dtest.env=stag -Dcreate.cycle=true || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression12.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
           destination: daily-build-and-test-artifacts-12
@@ -1467,7 +1467,7 @@ jobs:
             google-chrome --version
       - run:
           name: Build and run daily tests 13
-          command: mvn clean test -Dsurefire.suiteXmlFiles=regression13.xml -Drun.headless=true -Dtest.env=stag -Dcreate.cycle=true || true
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression13.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
       - store_artifacts:
           path: target/surefire-reports
           destination: daily-build-and-test-artifacts-13
@@ -1605,7 +1605,7 @@ jobs:
 
           # Send the test results to Slack
       - slack/notify:
-          channel: "#staging-test-alerts" # Replace with your Slack channel staging-test-alerts
+          channel: "#uat-test-alerts" # Replace with your Slack channel
           template: "${SLACK_MESSAGE}"
           event: always
           custom: |
@@ -1640,7 +1640,7 @@ workflows:
   customer-index-test:
     triggers:
       - schedule:
-          cron: "45 04 * * *"  # This will run customer-index-check at 10:15 AM IST (04:45 AM UTC) -- 45 04 *
+          cron: "30 04 * * *"  # This will run customer-index-check at 10:15 AM IST (04:45 AM UTC) -- 45 04 *
           filters:
             branches:
               only:
@@ -1662,7 +1662,7 @@ workflows:
   scheduled-test-1:
     triggers:
       - schedule:
-          cron: "00 22 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
+          cron: "00 22 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 20 * * * ahsan_approch 00 22
           filters:
             branches:
               only:
@@ -1686,7 +1686,7 @@ workflows:
   scheduled-test-1-sub1:
     triggers:
       - schedule:
-          cron: "00 23 * * *"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
+          cron: "00 23 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 30 21 * * * ahsan_approch 00 23
           filters:
             branches:
               only:
@@ -1709,78 +1709,54 @@ workflows:
             - nightly-build-and-test-12
             - nightly-build-and-test-13
 
-  scheduled-test-2_1:
+  scheduled-test-2:
     triggers:
       - schedule:
-          cron: "30 05 * * 1-5"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
+          cron: "00 04 * * 1-5"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
           filters:
             branches:
               only:
-                - staging_regression
+                - main
     jobs:
       - daily-build-and-test-1
       - daily-build-and-test-2
-
-  scheduled-test-2_2:
-    triggers:
-      - schedule:
-          cron: "00 06 * * 1-5"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
-          filters:
-            branches:
-              only:
-                - staging_regression
-    jobs:
       - daily-build-and-test-3
       - daily-build-and-test-4
-
-  scheduled-test-2_3:
-    triggers:
-      - schedule:
-          cron: "00 07 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
-          filters:
-            branches:
-              only:
-                - staging_regression
-    jobs:
       - daily-build-and-test-5
-      - daily-build-and-test-6
-
-  scheduled-test-2_4:
-    triggers:
-      - schedule:
-          cron: "00 08 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
-          filters:
-            branches:
-              only:
-                - staging_regression
-    jobs:
       - daily-build-and-test-7
-      - daily-build-and-test-8
+      - calculate-pass-fail-rate:
+          requires:
+            - daily-build-and-test-1
+            - daily-build-and-test-2
+            - daily-build-and-test-3
+            - daily-build-and-test-4
+            - daily-build-and-test-5
+            - daily-build-and-test-7
 
-  scheduled-test-2_5:
+  scheduled-test-2-sub1:
     triggers:
       - schedule:
-          cron: "00 09 * * *"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
+          cron: "00 05 * * 1-5"  # This will run nightly-build-and-test at 2:00 AM IST (08:30 PM UTC) -- 45 06 * * *
           filters:
             branches:
               only:
-                - staging_regression
+                - main
     jobs:
+      - daily-build-and-test-6
+      - daily-build-and-test-8
       - daily-build-and-test-9
       - daily-build-and-test-10
-
-  scheduled-test-2_6:
-    triggers:
-      - schedule:
-          cron: "30 09 * * 1-5"  # This will run daily-build-and-test at 11:15 AM IST (05:45 AM UTC) // 45 05
-          filters:
-            branches:
-              only:
-                - staging_regression
-    jobs:
       - daily-build-and-test-11
       - daily-build-and-test-12
       - daily-build-and-test-13
-
+      - calculate-pass-fail-rate:
+          requires:
+            - daily-build-and-test-6
+            - daily-build-and-test-8
+            - daily-build-and-test-9
+            - daily-build-and-test-10
+            - daily-build-and-test-11
+            - daily-build-and-test-12
+            - daily-build-and-test-13
 
 
