@@ -837,6 +837,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String revenueSummeryValue = "//div[contains(text(),'OPTION')]/following-sibling::div";
     String txt_preAuthorization = "//h2[text()='MESSAGE']";
     By txt_confirmPayment = By.xpath("//div[text()='Confirm Payment']");
+    String sortOptionsOG = "//span[contains(text(), 'OPTION')]";
 
 
 
@@ -4965,5 +4966,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isConfirmPaymentTextDisplay()throws InterruptedException{
         return distributorUI.isDisplayed(txt_confirmPayment);
+    }
+    public void clickSortOptionsOG(String option)throws InterruptedException{
+        distributorUI.click(By.xpath(sortOptionsOG.replace("OPTION",option)));
     }
 }

@@ -2974,6 +2974,9 @@ public class Customer {
     public static boolean isConfirmPaymentTextDisplay()throws InterruptedException{
         return customersPage.isConfirmPaymentTextDisplay();
     }
+    public static void clickSortOptionsOG(String option)throws InterruptedException{
+        customersPage.clickSortOptionsOG(option);
+    }
 }
 
 
