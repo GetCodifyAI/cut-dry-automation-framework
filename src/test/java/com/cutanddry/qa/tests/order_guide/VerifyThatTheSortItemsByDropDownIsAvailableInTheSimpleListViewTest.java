@@ -25,14 +25,11 @@ public class VerifyThatTheSortItemsByDropDownIsAvailableInTheSimpleListViewTest 
 
 
     Map<String, String> sortOptionsMap = new LinkedHashMap<>() {{
-        put("Item Categories", "346244");
-        put("Custom Order", "01700");
-        put("Description", "01700");
         put("Item Code", "00036");
-        put("UPC", "346244");
-        put("Pack Size", "01707");
-        put("Brand Name", "87910");
-        put("Last Ordered Date", "01700");
+        put("UPC", "052100324050");
+        put("Brand", "Brakebush");
+        put("Description", "Bagel Cinnamon Raisin Sliced 00069 Ou");
+        put("Pack Size", "1 Lb");
     }};
 
 
@@ -78,8 +75,7 @@ public class VerifyThatTheSortItemsByDropDownIsAvailableInTheSimpleListViewTest 
             String sortOption = entry.getKey();
             String expectedSortResult = entry.getValue();
 
-            Customer.clickSortOptionsDropdown();
-            Customer.clickSortOptionOG(sortOption);
+            Customer.clickSortOptionsOG(sortOption);
             softAssert.assertTrue(Customer.isSortOptionDisplay(expectedSortResult),
                     "Sort option: " + sortOption + " - Expected result: " + expectedSortResult + " is displayed");
         }
