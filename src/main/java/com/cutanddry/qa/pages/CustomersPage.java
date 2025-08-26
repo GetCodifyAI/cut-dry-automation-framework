@@ -297,7 +297,7 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By btn_createCustomer = By.xpath("//button[contains(text(), 'Create Customer')]");
     By txt_customerCreatedPopUp = By.xpath("//h2[contains(text(), 'Customer created.')]");
     By btn_closePopUp = By.xpath("//button[contains(text(), 'Close')]");
-    String NewCustomerName = "//tr//td[3][text()='CUSTOMERNAME']";
+    String NewCustomerName = "//tr//following::td//div[contains(text(),'CUSTOMERNAME')]";
     By btn_selectCustomer = By.xpath("(//div[@class= '_du1frc'])[2]");
     By lbl_firstRecord = By.xpath("//*[contains(text(),'Code')]/ancestor::table/tbody/tr[2]");
     By btn_bulkAction = By.xpath("//span[contains(text(), 'Bulk Actions')]");
