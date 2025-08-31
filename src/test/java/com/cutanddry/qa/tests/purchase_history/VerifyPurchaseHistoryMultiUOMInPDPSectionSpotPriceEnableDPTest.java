@@ -96,9 +96,9 @@ public class VerifyPurchaseHistoryMultiUOMInPDPSectionSpotPriceEnableDPTest exte
         softAssert.assertTrue(Catalog.isLastOrderMarginDisplay(marginUOM2),"PDP last order margin not display");
         softAssert.assertAll();
     }
-    @AfterMethod
-    public void tearDown(ITestResult result) {
-        takeScreenshotOnFailure(result);
-        closeAllBrowsersAtOnce();
-    }
+//    @AfterMethod
+//    public void tearDown(ITestResult result) {
+//        takeScreenshotOnFailure(result);
+//        closeAllBrowsersAtOnce();
+//    }
 }

@@ -1158,6 +1158,21 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         return distributorUI.isDisplayed(By.xpath(multiUOMOption.replace("OPTION", option)));
     }
     public boolean isLastOrderMarginDisplay(String margin){
+        if (margin.equalsIgnoreCase("N/A")) {
+            return distributorUI.isDisplayed(By.xpath(lastOrderMarginPDP.replace("MARGIN", margin)));
+        }
+
+        String numericPart = margin.replace("%", "");
+        if (numericPart.contains(".")) {
+            String[] parts = numericPart.split("\\.");
+            if (parts[1].length() == 1) {
+                margin = parts[0] + "." + parts[1] + "0%";
+            } else {
+                margin = numericPart + "%";
+            }
+        } else {
+            margin = numericPart + ".00%";
+        }
         return distributorUI.isDisplayed(By.xpath(lastOrderMarginPDP.replace("MARGIN",margin)));
     }
     public boolean isMarginColumnDisplay(String margin){
