@@ -40,6 +40,7 @@ public class VerifyTheCustomerAccountHardHoldTest extends TestBase {
         Customer.clickOnSave();
         softAssert.assertTrue(Customer.isHardHoldSelected(),"acc select error");
         Customer.clickOnBack();
+        Customer.searchCustomerByCode(customerId);
         Customer.clickOnOrderGuide(customerId);
         itemName = Customer.getItemNameFirstRow();
         Customer.increaseFirstRowQtyByOne();
