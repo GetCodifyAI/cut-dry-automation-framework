@@ -268,7 +268,7 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By lbl_hardHold = By.xpath("//div[text()='Account Holds']/following-sibling::div//span[contains(@class, 'badge') and text()='Hard Hold']");
     By txt_none = By.xpath("//div[contains(@class, 'themed_select__option') and  text()='None']");
     By lbl_none = By.xpath("//div[text()='Account Holds']/following-sibling::div//span[contains(@class, 'badge') and text()='None']");
-    By txt_hardHoldPopup = By.xpath("//h2[contains(text(), 'account is on hold')]");
+    By txt_hardHoldPopup = By.xpath("//h2[contains(text(), 'Account on hold')]");
     By txt_removeHold = By.xpath("//h2[contains(text(), 'Remove hold')]");
     By customer_Holds = By.xpath("//span[contains(text(),'Credit') or contains(text(),'Hard') or contains(text(),'General')]");
     By lbl_pickUp = By.xpath("//span[text()='Pickup/Will Call']");
@@ -297,7 +297,7 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By btn_createCustomer = By.xpath("//button[contains(text(), 'Create Customer')]");
     By txt_customerCreatedPopUp = By.xpath("//h2[contains(text(), 'Customer created.')]");
     By btn_closePopUp = By.xpath("//button[contains(text(), 'Close')]");
-    String NewCustomerName = "//tr//td[3][text()='CUSTOMERNAME']";
+    String NewCustomerName = "//tr//following::td//div[contains(text(),'CUSTOMERNAME')]";
     By btn_selectCustomer = By.xpath("(//div[@class= '_du1frc'])[2]");
     By lbl_firstRecord = By.xpath("//*[contains(text(),'Code')]/ancestor::table/tbody/tr[2]");
     By btn_bulkAction = By.xpath("//span[contains(text(), 'Bulk Actions')]");
@@ -838,6 +838,13 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String txt_preAuthorization = "//h2[text()='MESSAGE']";
     By txt_confirmPayment = By.xpath("//div[text()='Confirm Payment']");
     String sortOptionsOG = "//span[contains(text(), 'OPTION')]";
+    By btn_shoppingCart = By.xpath("//*[local-name()='svg' and @data-icon='cdShoppingCart']");
+    String cbox_customerRecord = "//div[contains(text(),'Code')]/ancestor::table/tbody/tr[ROW_COUNT]/td[1]//*[name()='svg']";
+    By btn_updateEligibility = By.xpath("//a[contains(text(), 'Update Eligibility for Cut+Dry')]");
+    By txt_updateEligibility = By.xpath("//div[contains(text(), 'Update Eligibility for Cut+Dry')]");
+    By updateEligibilityDropDown = By.xpath("//label[contains(text(), 'Eligibility')]/following-sibling::div");
+    By updateEligibilityDropDownOption = By.xpath("//label[contains(text(), 'Eligibility')]/following-sibling::div//*[text()='Eligible']");
+
 
 
 
@@ -2092,6 +2099,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(txt_hardHold);
     }
     public boolean isHardHoldSelected(){
+        distributorUI.refreshPage();
         return distributorUI.isDisplayed(lbl_hardHold);
     }
     public boolean isHardHoldPopupDisplayed(){
@@ -4969,5 +4977,26 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickSortOptionsOG(String option)throws InterruptedException{
         distributorUI.click(By.xpath(sortOptionsOG.replace("OPTION",option)));
+    }
+    public void  clickShoppingCartButton()throws InterruptedException{
+        distributorUI.click(btn_shoppingCart);
+    }
+    public void clickOnCustomers(int rowNo) {
+        String row_count = String.valueOf(rowNo);
+        By lbl_invoiceRecord = By.xpath(cbox_customerRecord.replace("ROW_COUNT", row_count));
+        distributorUI.waitForVisibility(lbl_invoiceRecord);
+        distributorUI.click(lbl_invoiceRecord);
+    }
+    public void clickUpdateEligibility(){
+        distributorUI.click(btn_updateEligibility);
+    }
+    public boolean isUpdateEligibilityTextDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_updateEligibility);
+    }
+    public void clickUpdateEligibilityDropDown(){
+        distributorUI.click(updateEligibilityDropDown);
+    }
+    public void clickUpdateEligibilityDropDownOption(){
+        distributorUI.click(updateEligibilityDropDownOption);
     }
 }

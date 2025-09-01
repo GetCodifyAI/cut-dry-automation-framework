@@ -68,6 +68,8 @@ public class DashboardPage extends LoginPage{
     By btn_order = By.xpath("//a[@data-tip='Place Order']");
     By orderIndicator = By.xpath("//a[contains(text(),'Order Desk')]/div/span");
     By txt_endlessAisle  =By.xpath("//div[text()='Endless Aisle Catalog']");
+    By btn_dashboard = By.xpath("//a[@data-tip='Dashboard']");
+    String getCustomerBaseValue = "(//*[name()='tspan' and contains(., 'CUSTOMER')]/following-sibling::*[name()='tspan'])[1]";
 
 
     public boolean isDashboardTextDisplayed(){
@@ -347,6 +349,20 @@ public class DashboardPage extends LoginPage{
     }
     public boolean isEndlessAisleCatalogDisplay()throws InterruptedException{
         return distributorUI.isDisplayed(txt_endlessAisle);
+    }
+    public void clickOnDashboard(){
+        distributorUI.click(btn_dashboard);
+    }
+    public String getCustomerValue(String customer) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        String rawValue = distributorUI.getText(By.xpath(
+                getCustomerBaseValue.replace("CUSTOMER", customer)
+        )).trim();
+
+        return rawValue.split(" ")[0].trim();
+    }
+    public void refreshDashBoardPage(){
+        distributorUI.refreshPage();
     }
 
 }
