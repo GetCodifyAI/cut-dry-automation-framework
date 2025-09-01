@@ -26,7 +26,7 @@ public class VerifyEligibleCustomersOfCustomerBaseWidgetInDashboardTest extends 
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-604")
+    @Test(groups = "DOT-TC-1604")
     public void VerifyEligibleCustomersOfCustomerBaseWidgetInDashboard() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
