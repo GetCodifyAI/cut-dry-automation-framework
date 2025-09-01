@@ -2977,6 +2977,27 @@ public class Customer {
     public static void clickSortOptionsOG(String option)throws InterruptedException{
         customersPage.clickSortOptionsOG(option);
     }
+    public static void clickOnBackButton()throws InterruptedException{
+        customersPage.clickOnBack();
+    }
+    public static void clickShoppingCartButton()throws InterruptedException{
+        customersPage.clickShoppingCartButton();
+    }
+    public static void clickOnCustomers(int rowCount) {
+        for (int i = 1; i <= rowCount; i++) {
+            customersPage.clickOnCustomers(i);
+        }
+    }
+    public static void clickUpdateEligibility(){customersPage.clickUpdateEligibility();}
+    public static boolean isUpdateEligibilityTextDisplay()throws InterruptedException{
+        return customersPage.isUpdateEligibilityTextDisplay();
+    }
+    public static void clickEligibilityOption(){
+        customersPage.clickUpdateEligibilityDropDown();
+        customersPage.clickUpdateEligibilityDropDownOption();
+    }
+
+
 }
 
 
