@@ -191,5 +191,12 @@ public class Dashboard {
     public static boolean isEndlessAisleCatalogDisplay()throws InterruptedException{
         return dashboardPage.isEndlessAisleCatalogDisplay();
     }
+    public static void clickOnDashboard() {
+        dashboardPage.clickOnDashboard();
+    }
+    public static String getCustomerValue(String customer) throws InterruptedException {
+        return dashboardPage.getCustomerValue(customer);
+    }
+    public static void refreshDashBoardPage(){dashboardPage.refreshDashBoardPage();}
 
 }
