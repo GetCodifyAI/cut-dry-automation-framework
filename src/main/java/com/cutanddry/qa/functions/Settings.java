@@ -525,4 +525,10 @@ public class Settings {
     public static void enterAlternateERPUserRef(String ref) throws InterruptedException {
         settingsPage.enterAlternateERPUserRef(ref);
     }
+    public static void clickEligibleCountForCutDry(String tag)throws InterruptedException{
+        settingsPage.clickEligibleCountForCutDry(tag);
+    }
+    public static void enterEligibleCountForCutDry(String tag,String num)throws InterruptedException{
+        settingsPage.enterEligibleCountForCutDry(tag,num);
+    }
 }

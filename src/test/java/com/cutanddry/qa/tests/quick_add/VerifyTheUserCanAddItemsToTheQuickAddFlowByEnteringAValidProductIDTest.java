@@ -19,6 +19,7 @@ public class VerifyTheUserCanAddItemsToTheQuickAddFlowByEnteringAValidProductIDT
     static User user;
     static String customerId = "16579";
     static String itemQuantity = "2" ;
+    static String itemQuantitySecond = "1" ;
     static String itemCode = "02345";
     static String itemDescription = "Lemons 115 CT";
     static String packSize = "115 Ct";
@@ -64,6 +65,11 @@ public class VerifyTheUserCanAddItemsToTheQuickAddFlowByEnteringAValidProductIDT
         softAssert.assertEquals(Customer.getItemNameFirstRow(), itemDescription, "The item selected by the user is different from what is shown on the order review page.");
         totalItemPriceReviewOrder = Catalog.getTotalPriceInReviewOrder();
         totalItemQuantityReviewOrder = Catalog.getTotalQuantityInReviewOrder();
+        Customer.clickOnBackButton();
+        Customer.enterItemCode(itemCode);
+        Customer.enterItemQuantity(itemQuantitySecond);
+        Customer.clickShoppingCartButton();
+        softAssert.assertEquals(Catalog.getTotalQuantityInReviewOrder(),"2","item not add error");
         Customer.submitOrder();
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "The order was not completed successfully.");
         orderId = Customer.getSuccessOrderId();

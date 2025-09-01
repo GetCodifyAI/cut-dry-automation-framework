@@ -42,6 +42,8 @@
             <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureOnUITest"/>
             <class name="com.cutanddry.qa.tests.order_desk.VerifyPendingOrderIndicatorInNavigationTest"/>
 
+            <class name="com.cutanddry.qa.tests.dashboard.VerifyEligibleCustomersOfCustomerBaseWidgetInDashboardTest"/>
+
         </classes>
     </test>
 </suite>
