@@ -24,6 +24,7 @@
             <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmCatalogTest" />
             <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmReviewCartTest" />
             <class name="com.cutanddry.qa.tests.order_guide.DistributorOrderSubmissionTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyDistributorOrderSubmissionTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyThePrintFeatureTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifySortOptionsTest" />
             <class name="com.cutanddry.qa.tests.order_guide.DisplayCustomerOrdersTest" />
