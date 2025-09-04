@@ -80,6 +80,8 @@
             <class name="com.cutanddry.qa.tests.boost.VerifyTheChangeOrderFromTheFeaturedListsTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyTheDisplayStatusOfFeaturedListsTest" />
 
+            <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyThatTheDecreasedQuantityIsAllowingForOrderingOutOfStockTest"/>
+            
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderWithoutAddingAnyItemsTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByRemovingExistingItemsAndChangingQuantitiesTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromOrderGuideTest"/>
