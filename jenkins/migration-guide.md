@@ -147,7 +147,7 @@ triggers {
 #### 3.3 Environment Variables
 Set these in Jenkins global properties:
 ```
-MAVEN_OPTS = -Xmx2048m -XX:MaxPermSize=512m
+MAVEN_OPTS = -Xmx2048m
 JAVA_HOME = /usr/lib/jvm/java-22-openjdk
 TEST_ENV = uat
 RUN_HEADLESS = true

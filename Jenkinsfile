@@ -2,7 +2,7 @@ pipeline {
     agent none
     
     environment {
-        MAVEN_OPTS = '-Xmx2048m -XX:MaxPermSize=512m'
+        MAVEN_OPTS = '-Xmx2048m'
         JAVA_HOME = '/usr/lib/jvm/java-22-openjdk'
         TEST_ENV = 'uat'
         RUN_HEADLESS = 'true'
