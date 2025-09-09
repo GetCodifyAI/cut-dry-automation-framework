@@ -319,11 +319,23 @@ def setupTestEnvironment() {
     sh '''
         echo "Setting up test environment..."
         
+        # Set JAVA_HOME based on available Java installation
+        JAVA_PATH=$(which java)
+        if [ -n "$JAVA_PATH" ]; then
+            # Get the Java installation directory
+            JAVA_BIN_DIR=$(dirname "$JAVA_PATH")
+            export JAVA_HOME=$(dirname "$JAVA_BIN_DIR")
+            echo "Set JAVA_HOME to: $JAVA_HOME"
+        else
+            echo "ERROR: Java not found in PATH"
+            exit 1
+        fi
+        
         # Use existing Java installation
         echo "Current Java version:"
         java -version
         
-        # Check if Maven is available
+        # Check if Maven is available with JAVA_HOME set
         if command -v mvn &> /dev/null; then
             echo "Maven version:"
             mvn -version
