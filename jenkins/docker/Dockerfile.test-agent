@@ -1,0 +1,97 @@
+# Dockerfile for Jenkins Test Agent with Cut+Dry automation tools
+FROM amazonlinux:2
+
+# Set environment variables
+ENV JAVA_HOME=/opt/java
+ENV MAVEN_HOME=/opt/maven
+ENV PATH=$JAVA_HOME/bin:$MAVEN_HOME/bin:$PATH
+
+# Install system dependencies
+RUN yum update -y && \
+    yum install -y wget curl unzip git bc tar gzip && \
+    yum clean all
+
+# Install Java 22
+RUN cd /opt && \
+    wget -q https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz && \
+    tar zxf openjdk-22_linux-x64_bin.tar.gz && \
+    ln -s jdk-22 java && \
+    rm openjdk-22_linux-x64_bin.tar.gz
+
+# Install Maven
+RUN cd /opt && \
+    wget -q https://archive.apache.org/dist/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz && \
+    tar zxf apache-maven-3.9.4-bin.tar.gz && \
+    ln -s apache-maven-3.9.4 maven && \
+    rm apache-maven-3.9.4-bin.tar.gz
+
+# Install Chrome
+RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | rpm --import - && \
+    echo "[google-chrome]" > /etc/yum.repos.d/google-chrome.repo && \
+    echo "name=google-chrome" >> /etc/yum.repos.d/google-chrome.repo && \
+    echo "baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64" >> /etc/yum.repos.d/google-chrome.repo && \
+    echo "enabled=1" >> /etc/yum.repos.d/google-chrome.repo && \
+    echo "gpgcheck=1" >> /etc/yum.repos.d/google-chrome.repo && \
+    echo "gpgkey=https://dl.google.com/linux/linux_signing_key.pub" >> /etc/yum.repos.d/google-chrome.repo && \
+    yum install -y google-chrome-stable
+
+# Install Docker
+RUN yum install -y docker
+
+# Create jenkins user
+RUN useradd -m -s /bin/bash jenkins && \
+    usermod -a -G docker jenkins
+
+# Install Jenkins agent (swarm client)
+RUN cd /opt && \
+    wget -q https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/3.17/swarm-client-3.17.jar && \
+    chown jenkins:jenkins swarm-client-3.17.jar
+
+# Create workspace directory
+RUN mkdir -p /home/jenkins/workspace && \
+    chown -R jenkins:jenkins /home/jenkins
+
+# Switch to jenkins user
+USER jenkins
+WORKDIR /home/jenkins
+
+# Verify installations
+RUN java -version && \
+    mvn -version && \
+    google-chrome --version
+
+# Create entrypoint script
+USER root
+RUN cat > /entrypoint.sh << 'EOF'
+#!/bin/bash
+set -e
+
+# Start Docker daemon if not running
+if ! pgrep dockerd > /dev/null; then
+    dockerd &
+    sleep 5
+fi
+
+# Default Jenkins master URL and credentials
+JENKINS_MASTER=${JENKINS_MASTER:-"http://jenkins-master:8080"}
+JENKINS_USER=${JENKINS_USER:-"jenkins-agent"}
+JENKINS_PASSWORD=${JENKINS_PASSWORD:-"agent-password"}
+AGENT_NAME=${AGENT_NAME:-"$(hostname)"}
+AGENT_LABELS=${AGENT_LABELS:-"aws-test-agent docker"}
+
+# Start Jenkins agent
+exec su - jenkins -c "java -jar /opt/swarm-client-3.17.jar \
+    -master $JENKINS_MASTER \
+    -username $JENKINS_USER \
+    -password $JENKINS_PASSWORD \
+    -name $AGENT_NAME \
+    -labels '$AGENT_LABELS' \
+    -executors 2 \
+    -fsroot /home/jenkins"
+EOF
+
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 22
+
+ENTRYPOINT ["/entrypoint.sh"]
