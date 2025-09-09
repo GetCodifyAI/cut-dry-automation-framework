@@ -23,9 +23,7 @@ pipeline {
         stage('Parallel Test Execution') {
             parallel {
                 stage('Regression 1 - Order Guide & Reports') {
-                    agent { 
-                        label 'aws-test-agent'
-                    }
+                    agent any
                     steps {
                         script {
                             runTestSuite('regression1.xml', 'Part_One', 1)
@@ -40,9 +38,7 @@ pipeline {
                 }
                 
                 stage('Regression 2 - Track & Order Desk') {
-                    agent { 
-                        label 'aws-test-agent'
-                    }
+                    agent any
                     steps {
                         script {
                             runTestSuite('regression2.xml', 'Part_Two', 2)
@@ -57,9 +53,7 @@ pipeline {
                 }
                 
                 stage('Regression 3 - Catalog & Pay') {
-                    agent { 
-                        label 'aws-test-agent'
-                    }
+                    agent any
                     steps {
                         script {
                             runTestSuite('regression3.xml', 'Part_Three', 3)
@@ -74,9 +68,7 @@ pipeline {
                 }
                 
                 stage('Regression 4 - Customers') {
-                    agent { 
-                        label 'aws-test-agent'
-                    }
+                    agent any
                     steps {
                         script {
                             runTestSuite('regression4.xml', 'Part_Four', 4)
@@ -91,9 +83,7 @@ pipeline {
                 }
                 
                 stage('Regression 5 - Orders') {
-                    agent { 
-                        label 'aws-test-agent'
-                    }
+                    agent any
                     steps {
                         script {
                             runTestSuite('regression5.xml', 'Part_Five', 5)
@@ -108,9 +98,7 @@ pipeline {
                 }
                 
                 stage('Regression 6 - Multi UOM') {
-                    agent { 
-                        label 'aws-test-agent'
-                    }
+                    agent any
                     steps {
                         script {
                             runTestSuite('regression6.xml', 'Part_Six', 6)
@@ -125,9 +113,7 @@ pipeline {
                 }
                 
                 stage('Regression 7 - Restaurant Portal') {
-                    agent { 
-                        label 'aws-test-agent'
-                    }
+                    agent any
                     steps {
                         script {
                             runTestSuite('regression7.xml', 'Part_Seven', 7)
@@ -142,9 +128,7 @@ pipeline {
                 }
                 
                 stage('Regression 8 - White Label') {
-                    agent { 
-                        label 'aws-test-agent'
-                    }
+                    agent any
                     steps {
                         script {
                             runTestSuite('regression8.xml', 'Part_Eight', 8)
@@ -159,9 +143,7 @@ pipeline {
                 }
                 
                 stage('Regression 9 - Operator Portal') {
-                    agent { 
-                        label 'aws-test-agent'
-                    }
+                    agent any
                     steps {
                         script {
                             runTestSuite('regression9.xml', 'Part_Nine', 9)
@@ -176,9 +158,7 @@ pipeline {
                 }
                 
                 stage('Regression 10 - Internal Tools') {
-                    agent { 
-                        label 'aws-test-agent'
-                    }
+                    agent any
                     steps {
                         script {
                             runTestSuite('regression10.xml', 'Part_Ten', 10)
@@ -193,9 +173,7 @@ pipeline {
                 }
                 
                 stage('Regression 11 - Credit Requests') {
-                    agent { 
-                        label 'aws-test-agent'
-                    }
+                    agent any
                     steps {
                         script {
                             runTestSuite('regression11.xml', 'Part_Eleven', 11)
@@ -210,9 +188,7 @@ pipeline {
                 }
                 
                 stage('Regression 12 - Scan to Order') {
-                    agent { 
-                        label 'aws-test-agent'
-                    }
+                    agent any
                     steps {
                         script {
                             runTestSuite('regression12.xml', 'Part_Twelve', 12)
@@ -227,9 +203,7 @@ pipeline {
                 }
                 
                 stage('Regression 13 - Purchase History') {
-                    agent { 
-                        label 'aws-test-agent'
-                    }
+                    agent any
                     steps {
                         script {
                             runTestSuite('regression13.xml', 'Part_Thirteen', 13)
@@ -246,9 +220,7 @@ pipeline {
         }
         
         stage('Aggregate Results & Report') {
-            agent { 
-                label 'aws-test-agent'
-            }
+            agent any
             steps {
                 script {
                     // Unstash all test results
