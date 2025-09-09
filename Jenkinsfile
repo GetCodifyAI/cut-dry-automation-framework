@@ -319,38 +319,40 @@ def setupTestEnvironment() {
     sh '''
         echo "Setting up test environment..."
         
-        # Install Java 22 if not present
-        if ! java -version 2>&1 | grep -q "22"; then
-            echo "Installing Java 22..."
-            sudo apt-get update && sudo apt-get install -y wget
-            wget -q https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
-            sudo mkdir -p /usr/lib/jvm
-            sudo tar zxf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-            sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
-            export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"
-            export JAVA_HOME="/usr/lib/jvm/jdk-22"
-        fi
-        
-        # Install Maven if not present
-        if ! command -v mvn &> /dev/null; then
-            echo "Installing Maven..."
-            sudo apt-get install -y maven
-        fi
-        
-        # Install Chrome for headless testing
-        if ! command -v google-chrome &> /dev/null; then
-            echo "Installing Chrome..."
-            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-            sudo apt-get update
-            sudo apt-get install -y google-chrome-stable
-        fi
-        
-        # Verify installations
+        # Use existing Java installation
+        echo "Current Java version:"
         java -version
-        mvn -version
-        google-chrome --version
+        
+        # Check if Maven is available
+        if command -v mvn &> /dev/null; then
+            echo "Maven version:"
+            mvn -version
+        else
+            echo "ERROR: Maven not found in Jenkins environment"
+            echo "Please ensure Maven is installed on the Jenkins node"
+            exit 1
+        fi
+        
+        # Check for browser availability (Chrome, Chromium, or Firefox)
+        if command -v google-chrome &> /dev/null; then
+            echo "Chrome version:"
+            google-chrome --version
+        elif command -v chromium-browser &> /dev/null; then
+            echo "Chromium version:"
+            chromium-browser --version
+        elif command -v firefox &> /dev/null; then
+            echo "Firefox version:"
+            firefox --version
+        else
+            echo "WARNING: No browser found for headless testing"
+            echo "Tests requiring browser automation may fail"
+        fi
+        
+        # Set up workspace
+        echo "Setting up workspace..."
+        mkdir -p target/surefire-reports
+        
+        echo "Environment setup complete"
     '''
 }
 
@@ -358,9 +360,9 @@ def calculateAndReportResults() {
     sh '''
         echo "Calculating combined test results..."
         
-        # Install bc for calculations if not present
+        # Check if bc is available for calculations
         if ! command -v bc &> /dev/null; then
-            sudo apt-get update && sudo apt-get install -y bc
+            echo "WARNING: bc (basic calculator) not found - using shell arithmetic instead"
         fi
         
         # Initialize counters
