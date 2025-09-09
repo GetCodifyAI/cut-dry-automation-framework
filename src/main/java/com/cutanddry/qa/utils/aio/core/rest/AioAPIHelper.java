@@ -21,6 +21,7 @@ public class AioAPIHelper {
     private static final String MARK_CASE = "project/{projectKey}/testcycle/{cycleKey}/testcase/{caseKey}/testrun?createNewRun={createNewRun}";
     private static final String IMPORT_RESULTS = "/project/{projectKey}/testcycle/{cycleKey}/import/results?type={type}";
     private static final String UPLOAD_RUN_ATTACHMENT = "/project/{projectKey}/testcycle/{cycleKey}/testcase/{caseKey}/attachment";
+    private static final String DELETE_CYCLE = "/project/{projectKey}/testcycle/{cycleKey}";
     private static RequestSpecification defaultRequestSpec;
     private static SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy_HH_mm_ss");
     private static String todayDate = formatter.format(new Date());
@@ -152,6 +153,48 @@ public class AioAPIHelper {
                 given(defaultRequestSpec).multiPart("file", file.getAbsoluteFile()).formParams(formParams).when().post(path,pathParams).andReturn();
         response.prettyPrint();
         return response;
+    }
+
+    public static Response doDelete(String path, Object... pathParams) {
+        Response response = given(defaultRequestSpec).when().delete(path, pathParams).andReturn();
+        
+        System.out.println("Response Status Code: " + response.statusCode());
+        System.out.println("Response Content Type: " + response.getContentType());
+        
+        if (response.statusCode() == 200 || response.statusCode() == 204) {
+            System.out.println("Delete operation successful for: " + Arrays.toString(pathParams));
+        } else {
+            System.err.println("Failed to delete. Status Code: " + response.statusCode());
+            response.prettyPrint();
+        }
+        return response;
+    }
+
+    public static Response doDeleteWithQueryParams(String path, Map<String, Object> queryParams, Object... pathParams) {
+        RequestSpecification spec = given(defaultRequestSpec);
+        if (queryParams != null && !queryParams.isEmpty()) {
+            spec = spec.queryParams(queryParams);
+        }
+        Response response = spec.when().delete(path, pathParams).andReturn();
+        
+        System.out.println("Response Status Code: " + response.statusCode());
+        System.out.println("Response Content Type: " + response.getContentType());
+        
+        if (response.statusCode() == 200 || response.statusCode() == 204) {
+            System.out.println("Delete operation successful for: " + Arrays.toString(pathParams));
+        } else {
+            System.err.println("Failed to delete. Status Code: " + response.statusCode());
+            response.prettyPrint();
+        }
+        return response;
+    }
+
+    public static boolean deleteCycle(String projectKey, String cycleKey) {
+        System.out.println("Deleting cycle: " + cycleKey + " from project: " + projectKey);
+        Map<String, Object> queryParams = new HashMap<>();
+        queryParams.put("emptyCycleBeforeDelete", true);
+        Response response = doDeleteWithQueryParams(DELETE_CYCLE, queryParams, projectKey, cycleKey);
+        return response.statusCode() == 200 || response.statusCode() == 204;
     }
 
 
