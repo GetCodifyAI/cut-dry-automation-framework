@@ -15,10 +15,8 @@ pipeline {
     }
     
     triggers {
-        // Nightly tests - matches CircleCI schedule (22:00 UTC weekdays)
-        cron('H 22 * * 1-5')
-        // Daily tests - matches CircleCI schedule (04:00 UTC weekdays)  
-        cron('H 4 * * 1-5')
+        // Nightly and daily tests - matches CircleCI schedule (22:00 and 04:00 UTC weekdays)
+        cron('H 4,22 * * 1-5')
     }
     
     stages {
