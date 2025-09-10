@@ -33,8 +33,18 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
             # Install ChromeDriver
-            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3)
+            # Ensure Chrome is accessible and get version
+            if command -v google-chrome >/dev/null; then
+              CHROME_VERSION=$(google-chrome --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            elif [ -f /usr/bin/google-chrome-stable ]; then
+              CHROME_VERSION=$(/usr/bin/google-chrome-stable --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            else
+              echo "Chrome not found, using latest stable ChromeDriver"
+              CHROME_VERSION=""
+            fi
+            echo "Detected Chrome version: $CHROME_VERSION"
             CHROMEDRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE")
+            echo "Installing ChromeDriver version: $CHROMEDRIVER_VERSION"
             wget -O /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip"
             sudo unzip /tmp/chromedriver.zip -d /tmp/
             sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/
@@ -101,8 +111,18 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
             # Install ChromeDriver
-            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3)
+            # Ensure Chrome is accessible and get version
+            if command -v google-chrome >/dev/null; then
+              CHROME_VERSION=$(google-chrome --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            elif [ -f /usr/bin/google-chrome-stable ]; then
+              CHROME_VERSION=$(/usr/bin/google-chrome-stable --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            else
+              echo "Chrome not found, using latest stable ChromeDriver"
+              CHROME_VERSION=""
+            fi
+            echo "Detected Chrome version: $CHROME_VERSION"
             CHROMEDRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE")
+            echo "Installing ChromeDriver version: $CHROMEDRIVER_VERSION"
             wget -O /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip"
             sudo unzip /tmp/chromedriver.zip -d /tmp/
             sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/
@@ -160,8 +180,18 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
             # Install ChromeDriver
-            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3)
+            # Ensure Chrome is accessible and get version
+            if command -v google-chrome >/dev/null; then
+              CHROME_VERSION=$(google-chrome --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            elif [ -f /usr/bin/google-chrome-stable ]; then
+              CHROME_VERSION=$(/usr/bin/google-chrome-stable --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            else
+              echo "Chrome not found, using latest stable ChromeDriver"
+              CHROME_VERSION=""
+            fi
+            echo "Detected Chrome version: $CHROME_VERSION"
             CHROMEDRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE")
+            echo "Installing ChromeDriver version: $CHROMEDRIVER_VERSION"
             wget -O /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip"
             sudo unzip /tmp/chromedriver.zip -d /tmp/
             sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/
@@ -296,8 +326,18 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
             # Install ChromeDriver
-            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3)
+            # Ensure Chrome is accessible and get version
+            if command -v google-chrome >/dev/null; then
+              CHROME_VERSION=$(google-chrome --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            elif [ -f /usr/bin/google-chrome-stable ]; then
+              CHROME_VERSION=$(/usr/bin/google-chrome-stable --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            else
+              echo "Chrome not found, using latest stable ChromeDriver"
+              CHROME_VERSION=""
+            fi
+            echo "Detected Chrome version: $CHROME_VERSION"
             CHROMEDRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE")
+            echo "Installing ChromeDriver version: $CHROMEDRIVER_VERSION"
             wget -O /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip"
             sudo unzip /tmp/chromedriver.zip -d /tmp/
             sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/
@@ -345,8 +385,18 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
             # Install ChromeDriver
-            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3)
+            # Ensure Chrome is accessible and get version
+            if command -v google-chrome >/dev/null; then
+              CHROME_VERSION=$(google-chrome --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            elif [ -f /usr/bin/google-chrome-stable ]; then
+              CHROME_VERSION=$(/usr/bin/google-chrome-stable --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            else
+              echo "Chrome not found, using latest stable ChromeDriver"
+              CHROME_VERSION=""
+            fi
+            echo "Detected Chrome version: $CHROME_VERSION"
             CHROMEDRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE")
+            echo "Installing ChromeDriver version: $CHROMEDRIVER_VERSION"
             wget -O /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip"
             sudo unzip /tmp/chromedriver.zip -d /tmp/
             sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/
@@ -394,8 +444,18 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
             # Install ChromeDriver
-            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3)
+            # Ensure Chrome is accessible and get version
+            if command -v google-chrome >/dev/null; then
+              CHROME_VERSION=$(google-chrome --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            elif [ -f /usr/bin/google-chrome-stable ]; then
+              CHROME_VERSION=$(/usr/bin/google-chrome-stable --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            else
+              echo "Chrome not found, using latest stable ChromeDriver"
+              CHROME_VERSION=""
+            fi
+            echo "Detected Chrome version: $CHROME_VERSION"
             CHROMEDRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE")
+            echo "Installing ChromeDriver version: $CHROMEDRIVER_VERSION"
             wget -O /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip"
             sudo unzip /tmp/chromedriver.zip -d /tmp/
             sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/
@@ -443,8 +503,18 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
             # Install ChromeDriver
-            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3)
+            # Ensure Chrome is accessible and get version
+            if command -v google-chrome >/dev/null; then
+              CHROME_VERSION=$(google-chrome --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            elif [ -f /usr/bin/google-chrome-stable ]; then
+              CHROME_VERSION=$(/usr/bin/google-chrome-stable --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            else
+              echo "Chrome not found, using latest stable ChromeDriver"
+              CHROME_VERSION=""
+            fi
+            echo "Detected Chrome version: $CHROME_VERSION"
             CHROMEDRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE")
+            echo "Installing ChromeDriver version: $CHROMEDRIVER_VERSION"
             wget -O /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip"
             sudo unzip /tmp/chromedriver.zip -d /tmp/
             sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/
@@ -572,8 +642,18 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
             # Install ChromeDriver
-            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3)
+            # Ensure Chrome is accessible and get version
+            if command -v google-chrome >/dev/null; then
+              CHROME_VERSION=$(google-chrome --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            elif [ -f /usr/bin/google-chrome-stable ]; then
+              CHROME_VERSION=$(/usr/bin/google-chrome-stable --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            else
+              echo "Chrome not found, using latest stable ChromeDriver"
+              CHROME_VERSION=""
+            fi
+            echo "Detected Chrome version: $CHROME_VERSION"
             CHROMEDRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE")
+            echo "Installing ChromeDriver version: $CHROMEDRIVER_VERSION"
             wget -O /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip"
             sudo unzip /tmp/chromedriver.zip -d /tmp/
             sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/
@@ -631,8 +711,18 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
             # Install ChromeDriver
-            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3)
+            # Ensure Chrome is accessible and get version
+            if command -v google-chrome >/dev/null; then
+              CHROME_VERSION=$(google-chrome --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            elif [ -f /usr/bin/google-chrome-stable ]; then
+              CHROME_VERSION=$(/usr/bin/google-chrome-stable --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            else
+              echo "Chrome not found, using latest stable ChromeDriver"
+              CHROME_VERSION=""
+            fi
+            echo "Detected Chrome version: $CHROME_VERSION"
             CHROMEDRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE")
+            echo "Installing ChromeDriver version: $CHROMEDRIVER_VERSION"
             wget -O /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip"
             sudo unzip /tmp/chromedriver.zip -d /tmp/
             sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/
@@ -767,8 +857,18 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
             # Install ChromeDriver
-            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3)
+            # Ensure Chrome is accessible and get version
+            if command -v google-chrome >/dev/null; then
+              CHROME_VERSION=$(google-chrome --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            elif [ -f /usr/bin/google-chrome-stable ]; then
+              CHROME_VERSION=$(/usr/bin/google-chrome-stable --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            else
+              echo "Chrome not found, using latest stable ChromeDriver"
+              CHROME_VERSION=""
+            fi
+            echo "Detected Chrome version: $CHROME_VERSION"
             CHROMEDRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE")
+            echo "Installing ChromeDriver version: $CHROMEDRIVER_VERSION"
             wget -O /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip"
             sudo unzip /tmp/chromedriver.zip -d /tmp/
             sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/
@@ -816,8 +916,18 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
             # Install ChromeDriver
-            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3)
+            # Ensure Chrome is accessible and get version
+            if command -v google-chrome >/dev/null; then
+              CHROME_VERSION=$(google-chrome --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            elif [ -f /usr/bin/google-chrome-stable ]; then
+              CHROME_VERSION=$(/usr/bin/google-chrome-stable --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            else
+              echo "Chrome not found, using latest stable ChromeDriver"
+              CHROME_VERSION=""
+            fi
+            echo "Detected Chrome version: $CHROME_VERSION"
             CHROMEDRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE")
+            echo "Installing ChromeDriver version: $CHROMEDRIVER_VERSION"
             wget -O /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip"
             sudo unzip /tmp/chromedriver.zip -d /tmp/
             sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/
@@ -865,8 +975,18 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
             # Install ChromeDriver
-            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3)
+            # Ensure Chrome is accessible and get version
+            if command -v google-chrome >/dev/null; then
+              CHROME_VERSION=$(google-chrome --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            elif [ -f /usr/bin/google-chrome-stable ]; then
+              CHROME_VERSION=$(/usr/bin/google-chrome-stable --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            else
+              echo "Chrome not found, using latest stable ChromeDriver"
+              CHROME_VERSION=""
+            fi
+            echo "Detected Chrome version: $CHROME_VERSION"
             CHROMEDRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE")
+            echo "Installing ChromeDriver version: $CHROMEDRIVER_VERSION"
             wget -O /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip"
             sudo unzip /tmp/chromedriver.zip -d /tmp/
             sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/
@@ -914,8 +1034,18 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
             # Install ChromeDriver
-            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3)
+            # Ensure Chrome is accessible and get version
+            if command -v google-chrome >/dev/null; then
+              CHROME_VERSION=$(google-chrome --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            elif [ -f /usr/bin/google-chrome-stable ]; then
+              CHROME_VERSION=$(/usr/bin/google-chrome-stable --version 2>/dev/null | cut -d " " -f3 | cut -d "." -f1)
+            else
+              echo "Chrome not found, using latest stable ChromeDriver"
+              CHROME_VERSION=""
+            fi
+            echo "Detected Chrome version: $CHROME_VERSION"
             CHROMEDRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE")
+            echo "Installing ChromeDriver version: $CHROMEDRIVER_VERSION"
             wget -O /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip"
             sudo unzip /tmp/chromedriver.zip -d /tmp/
             sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/
