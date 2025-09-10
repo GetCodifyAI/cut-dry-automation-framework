@@ -9,11 +9,16 @@
 
         @Override
         public boolean retry(ITestResult result) {
-            System.out.println("Retrying test " + result.getName() + " with status " + getResultStatusName(result.getStatus()) + " for the " + (retryCount + 1) + " time(s).");
+            String testName = result.getMethod().getMethodName();
+            String className = result.getTestClass().getName();
+            System.out.println("Retrying test " + className + "." + testName + " with status " + getResultStatusName(result.getStatus()) + " for the " + (retryCount + 1) + " time(s).");
+            
             if (retryCount < maxRetryCount) {
                 retryCount++;
+                System.out.println("Retry attempt " + retryCount + " of " + maxRetryCount + " for " + testName);
                 return true;
             }
+            System.out.println("Max retry attempts reached for " + testName + ". Test will be marked as failed.");
             return false;
         }
 

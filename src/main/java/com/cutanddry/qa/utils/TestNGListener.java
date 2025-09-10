@@ -12,8 +12,10 @@ public class TestNGListener implements ITestListener {
     private int totalTests = 0;
     private int passedTests = 0;
     private int failedTests = 0;
+    private int skippedTests = 0;
     private final List<String> passedTestCases = new ArrayList<>();
     private final List<String> failedTestCases = new ArrayList<>();
+    private final List<String> skippedTestCases = new ArrayList<>();
     String PART;
 
     @Override
@@ -52,13 +54,26 @@ public class TestNGListener implements ITestListener {
     @Override
     public void onFinish(ITestContext context) {
 //        String environment = System.getProperty("test.env", "uat");
+        System.out.println("Test execution summary - Total: " + totalTests + ", Passed: " + passedTests + ", Failed: " + failedTests + ", Skipped: " + skippedTests);
         SlackNotifier.sendSlackAlert(totalTests, passedTests, failedTests, TEST_ENV, passedTestCases, failedTestCases,PART);
     }
 
     // Implement other ITestListener methods if needed
     @Override
     public void onTestSkipped(ITestResult result) {
-        // Optional: handle skipped tests
+        skippedTests++;
+        String testName = result.getMethod().getMethodName();
+        String className = result.getTestClass().getName();
+        String skipReason = result.getThrowable() != null ? result.getThrowable().getMessage() : "Unknown reason";
+        
+        System.out.println("Test skipped: " + className + "." + testName + " - Reason: " + skipReason);
+        
+        Object testData = result.getAttribute("testData");
+        if (testData != null) {
+            skippedTestCases.add(testData.toString() + " (Reason: " + skipReason + "), ");
+        } else {
+            skippedTestCases.add(testName + " (Reason: " + skipReason + ")");
+        }
     }
 
     @Override
