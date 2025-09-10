@@ -10,15 +10,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -27,13 +28,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run tests
           command: mvn clean test -Dsurefire.suiteXmlFiles=bvt.xml -Drun.headless=true -Dtest.env=uat
@@ -49,15 +58,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -66,16 +76,43 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
+      - run:
+          name: Validate Environment Connectivity
+          command: |
+            echo "Validating UAT environment connectivity..."
+            # Test basic connectivity to UAT environment
+            curl -f -s --connect-timeout 10 https://uat.cutanddry.com/health || echo "UAT environment may be unreachable"
+            # Validate Java and Maven setup
+            java -version
+            mvn -version
+            echo "Environment validation completed"
       - run:
           name: Verify the customer index
-          command: mvn clean test -Dsurefire.suiteXmlFiles=customerCheck.xml -Drun.headless=true -Dtest.env=uat || true
+          command: |
+            echo "Starting customer index verification..."
+            set +e
+            mvn clean test -Dsurefire.suiteXmlFiles=customerCheck.xml -Drun.headless=true -Dtest.env=uat
+            EXIT_CODE=$?
+            echo "Maven test execution completed with exit code: $EXIT_CODE"
+            if [ $EXIT_CODE -ne 0 ]; then
+              echo "Test execution failed or had issues. Check surefire reports for details."
+            fi
+            exit 0
       - store_artifacts:
           path: target/surefire-reports
           destination: customer-index-check-artifacts
@@ -88,15 +125,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -105,13 +143,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run nightly tests 1
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression1.xml -Drun.headless=true -Dtest.env=uat || true
@@ -142,15 +188,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -159,13 +206,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run nightly tests 2
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression2.xml -Drun.headless=true -Dtest.env=uat || true
@@ -199,15 +254,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -216,13 +272,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run nightly tests 3
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression3.xml -Drun.headless=true -Dtest.env=uat || true
@@ -253,15 +317,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -270,13 +335,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run nightly tests 4
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression4.xml -Drun.headless=true -Dtest.env=uat || true
@@ -307,15 +380,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -324,13 +398,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run nightly tests 5
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression5.xml -Drun.headless=true -Dtest.env=uat || true
@@ -361,15 +443,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -378,13 +461,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run nightly tests 6
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression6.xml -Drun.headless=true -Dtest.env=uat || true
@@ -415,15 +506,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -432,13 +524,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run nightly tests 7
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression7.xml -Drun.headless=true -Dtest.env=uat || true
@@ -469,15 +569,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -486,13 +587,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run nightly tests 8
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression8.xml -Drun.headless=true -Dtest.env=uat || true
@@ -523,15 +632,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -540,13 +650,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run nightly tests 9
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression9.xml -Drun.headless=true -Dtest.env=uat || true
@@ -577,15 +695,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -594,13 +713,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run nightly tests 10
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression10.xml -Drun.headless=true -Dtest.env=uat || true
@@ -631,15 +758,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -648,13 +776,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run nightly tests 11
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression11.xml -Drun.headless=true -Dtest.env=uat || true
@@ -685,15 +821,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -702,13 +839,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run nightly tests 12
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression12.xml -Drun.headless=true -Dtest.env=uat || true
@@ -739,15 +884,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -756,13 +902,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run nightly tests 13
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression13.xml -Drun.headless=true -Dtest.env=uat || true
@@ -793,15 +947,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -810,13 +965,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run daily tests 1
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression1.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -847,15 +1010,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -864,13 +1028,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run daily tests 2
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression2.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -901,15 +1073,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -918,13 +1091,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run daily tests 3
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression3.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -955,15 +1136,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -972,13 +1154,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run daily tests 4
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression4.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -1009,15 +1199,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -1026,13 +1217,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run daily tests 5
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression5.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -1063,15 +1262,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -1080,13 +1280,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run daily tests 6
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression6.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -1117,15 +1325,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -1134,13 +1343,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run daily tests 7
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression7.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -1171,15 +1388,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -1188,13 +1406,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run daily tests 8
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression8.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -1225,15 +1451,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -1242,13 +1469,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run daily tests 9
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression9.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -1279,15 +1514,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -1296,13 +1532,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run daily tests 10
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression10.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -1333,15 +1577,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -1350,13 +1595,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run daily tests 11
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression11.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -1387,15 +1640,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -1404,13 +1658,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run daily tests 12
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression12.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
@@ -1441,15 +1703,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Java 22
+          name: Install Java 21
           command: |
             sudo apt-get update && sudo apt-get install -y wget
-            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
             sudo mkdir -p /usr/lib/jvm
-            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
             sudo update-alternatives --config java
-            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+            echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
             source $BASH_ENV
             java -version
       - run:
@@ -1458,13 +1721,21 @@ jobs:
             sudo apt-get install -y maven
             mvn -version
       - run:
-          name: Install Chrome
+          name: Install Chrome and ChromeDriver
           command: |
             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             sudo apt-get update
             sudo apt-get install -y google-chrome-stable
+            # Install ChromeDriver
+            CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+            wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+            sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+            sudo chmod +x /usr/local/bin/chromedriver
+            rm /tmp/chromedriver.zip
             google-chrome --version
+            chromedriver --version
       - run:
           name: Build and run daily tests 13
           command: mvn clean test -Dsurefire.suiteXmlFiles=regression13.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true

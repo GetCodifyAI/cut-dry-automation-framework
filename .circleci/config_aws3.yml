@@ -79,20 +79,21 @@ commands:
             echo "Disk usage after cleanup:"
             df -h
       - run:
-          name: Check and Install Java 22 if not exists
+          name: Check and Install Java 21 if not exists
           command: |
-            if ! java -version 2>&1 | grep '22' >/dev/null; then
-              echo "Java 22 not found. Installing..."
+            if ! java -version 2>&1 | grep '21' >/dev/null; then
+              echo "Java 21 not found. Installing..."
               sudo apt-get update && sudo apt-get install -y wget
-              wget -q https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+              wget -q https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
               sudo mkdir -p /usr/lib/jvm
-              sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
-              sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
-              sudo update-alternatives --set java /usr/lib/jvm/jdk-22/bin/java
-              echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+              sudo tar zxvf openjdk-21.0.1_linux-x64_bin.tar.gz -C /usr/lib/jvm
+              sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-21.0.1/bin/java 2100
+              sudo update-alternatives --set java /usr/lib/jvm/jdk-21.0.1/bin/java
+              echo 'export PATH="/usr/lib/jvm/jdk-21.0.1/bin:$PATH"' >> $BASH_ENV
+              echo 'export JAVA_HOME="/usr/lib/jvm/jdk-21.0.1"' >> $BASH_ENV
               source $BASH_ENV
             else
-              echo "Java 22 is already installed."
+              echo "Java 21 is already installed."
               java -version
             fi
 
@@ -108,7 +109,7 @@ commands:
             fi
 
       - run:
-          name: Check and Install Chrome if not exists
+          name: Check and Install Chrome and ChromeDriver if not exists
           command: |
             if ! command -v google-chrome >/dev/null; then
               echo "Chrome not found. Installing..."
@@ -120,6 +121,20 @@ commands:
             else
               echo "Chrome already installed:"
               google-chrome --version
+            fi
+            # Install ChromeDriver if not exists
+            if ! command -v chromedriver >/dev/null; then
+              echo "ChromeDriver not found. Installing..."
+              CHROME_VERSION=$(google-chrome --version | cut -d " " -f3 | cut -d "." -f1)
+              CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+              wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+              sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+              sudo chmod +x /usr/local/bin/chromedriver
+              rm /tmp/chromedriver.zip
+              chromedriver --version
+            else
+              echo "ChromeDriver already installed:"
+              chromedriver --version
             fi
 
 
