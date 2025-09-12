@@ -1,6 +1,11 @@
 pipeline {
     agent { label 'built-in' }
     
+    options {
+        timeout(time: 2, unit: 'HOURS')
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+    }
+    
     parameters {
         choice(
             name: 'TEST_ENVIRONMENT',

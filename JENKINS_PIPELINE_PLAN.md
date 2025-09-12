@@ -1,7 +1,7 @@
 # Jenkins Pipeline Plan for Sanity Test Execution
 
 ## Overview
-Create a Jenkins job that executes `sanity_test_1.xml` from the `sanity_suite` branch with configurable environment and TEST_STAG parameters.
+Create a Jenkins job named "Cut-Dry-Distributor-Stag-Sanity" that executes `sanity_test_1.xml` from the `sanity_suite` branch with configurable environment and TEST_STAG parameters.
 
 ## Requirements Met
 1. ✅ Execute `sanity_test_1.xml` from `sanity_suite` branch
@@ -11,6 +11,7 @@ Create a Jenkins job that executes `sanity_test_1.xml` from the `sanity_suite` b
 ## Implementation Plan
 
 ### 1. Jenkinsfile Configuration
+- **Pipeline Name**: `Cut-Dry-Distributor-Stag-Sanity`
 - **Location**: `/Jenkinsfile` (root directory)
 - **Parameters**:
   - `TEST_ENVIRONMENT`: Choice parameter (uat, stag, prod)
