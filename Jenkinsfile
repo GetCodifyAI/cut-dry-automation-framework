@@ -27,15 +27,11 @@ pipeline {
     }
     
     stages {
-        stage('Checkout Sanity Suite Branch') {
+        stage('Verify Test Suite') {
             steps {
                 script {
-                    echo "Checking out sanity_suite branch for sanity_test_1.xml"
-                    checkout([
-                        $class: 'GitSCM',
-                        branches: [[name: 'sanity_suite']],
-                        userRemoteConfigs: [[url: env.GIT_URL]]
-                    ])
+                    echo "Using sanity_test_1.xml from current branch"
+                    sh "ls -la sanity_test_1.xml"
                 }
             }
         }
