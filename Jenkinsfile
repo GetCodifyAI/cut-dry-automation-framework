@@ -40,7 +40,7 @@ pipeline {
             }
         }
         
-        stage('Setup Environment') {
+        stage('Display Parameters') {
             steps {
                 script {
                     echo "Setting up test environment: ${params.TEST_ENVIRONMENT}"
