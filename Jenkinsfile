@@ -19,11 +19,6 @@ pipeline {
         )
     }
     
-    options {
-        timeout(time: 2, unit: 'HOURS')
-        buildDiscarder(logRotator(numToKeepStr: '10'))
-    }
-    
     environment {
         MAVEN_OPTS = '-Xmx2048m -XX:MaxMetaspaceSize=512m'
         JAVA_HOME = '/usr/lib/jvm/java-21-openjdk-amd64'
