@@ -10,7 +10,7 @@
         <classes>
             <!-- Keep only first 2 test cases for Slack notification testing -->
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaOrderGuideTest" />
-            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaCatalogTest" />
+<!--             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaCatalogTest" /> -->
             
             <!-- Commented out remaining test cases to reduce execution time for Slack testing -->
             <!--
