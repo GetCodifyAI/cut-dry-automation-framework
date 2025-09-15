@@ -28,6 +28,7 @@ pipeline {
         JAVA_HOME = '/usr/lib/jvm/java-21-openjdk-amd64'
         TEST_ENV = 'uat'
         RUN_HEADLESS = 'true'
+        STAGING_SLACK_WEBHOOK = 'https://hooks.slack.com/services/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'
     }
     
     stages {
@@ -217,5 +218,9 @@ def calculateAndReportResults() {
         echo "Skipped: $SKIPPED"
         echo "Pass Rate: $PASS_RATE%"
         echo "=========================="
+        
+        # Note: Slack notification is sent automatically by TestNGListener
+        echo "Slack notification should be sent automatically by TestNGListener"
+        echo "STAGING_SLACK_WEBHOOK is set to: $STAGING_SLACK_WEBHOOK"
     '''
 }
