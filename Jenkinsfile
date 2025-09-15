@@ -68,7 +68,7 @@ pipeline {
                             -Dsurefire.suiteXmlFiles=sanity_test_1.xml \\
                             -Dtest.env=${params.TEST_ENVIRONMENT} \\
                             -Drun.headless=${env.RUN_HEADLESS} \\
-                            -Dtest.stag=${params.TEST_STAG_VALUE} \\
+                            -DTEST_STAG=${params.TEST_STAG_VALUE} \\
                             -Dcreate.cycle=true \\
                             -Dmaven.test.failure.ignore=true \\
                             -Duser.timezone=UTC
