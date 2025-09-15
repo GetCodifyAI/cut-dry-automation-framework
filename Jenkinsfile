@@ -28,7 +28,7 @@ pipeline {
         JAVA_HOME = '/usr/lib/jvm/java-21-openjdk-amd64'
         TEST_ENV = 'uat'
         RUN_HEADLESS = 'true'
-        STAGING_SLACK_WEBHOOK = 'https://hooks.slack.com/services/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'
+        STAGING_SLACK_WEBHOOK = 'https://hooks.slack.com/services/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'
     }
     
     stages {
