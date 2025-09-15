@@ -7,12 +7,27 @@ public class Constants {
     public static String BROWSER_NAME = System.getProperty("test.browser", "chrome");
     public static boolean RUN_HEADLESS = Boolean.parseBoolean(System.getProperty("run.headless", "false"));
     public static String TEST_ENV = System.getProperty("test.env", "stag");
-    public static String MAIN_URL = baseDomain();
-    public static String SEC_URL = secDomain();
-    public static String LOGIN_AS = loginAsDomain();
-    public static String NODE_EXPLORER = nodeExplorerDomain();
     public static String BASE_URI = "https://supplier-uat.staging.cutanddry.com/GraphQLController";
-    public static String CONFIG_SUPPLIER = configSupplierDomain();
+    
+    public static String getMainUrl() {
+        return baseDomain();
+    }
+    
+    public static String getSecUrl() {
+        return secDomain();
+    }
+    
+    public static String getLoginAs() {
+        return loginAsDomain();
+    }
+    
+    public static String getNodeExplorer() {
+        return nodeExplorerDomain();
+    }
+    
+    public static String getConfigSupplier() {
+        return configSupplierDomain();
+    }
     public static String GATE_KEEPER_ADMIN = "https://app-uat.staging.cutanddry.com/gatekeeperadmin";
     public static String PROD_LOGIN_AS = "https://internal.cutanddry.com/internaltools/loginas";
 
@@ -23,56 +38,71 @@ public class Constants {
 
 
     private static String baseDomain() {
+        String mainUrl;
         if (TEST_ENV.equalsIgnoreCase("UAT")){
-            MAIN_URL = "https://supplier-uat.staging.cutanddry.com/";
+            mainUrl = "https://supplier-uat.staging.cutanddry.com/";
         } else if (TEST_ENV.equalsIgnoreCase("PROD")){
-            MAIN_URL = "https://supplier.cutanddry.com/";
+            mainUrl = "https://supplier.cutanddry.com/";
         } else if (TEST_ENV.equalsIgnoreCase("STAG")) {
-            MAIN_URL = "https://supplier-"+TEST_STAG+".staging.cutanddry.com/";
+            mainUrl = "https://supplier-"+TEST_STAG+".staging.cutanddry.com/";
+        } else {
+            mainUrl = "https://supplier-uat.staging.cutanddry.com/";
         }
-        return MAIN_URL;
+        return mainUrl;
     }
     private static String secDomain() {
+        String secUrl;
         if (TEST_ENV.equalsIgnoreCase("UAT")){
-            SEC_URL = "https://app-"+TEST_ENV+".staging.cutanddry.com/";
+            secUrl = "https://app-"+TEST_ENV+".staging.cutanddry.com/";
         } else if (TEST_ENV.equalsIgnoreCase("PROD")){
-            SEC_URL = "https://app.cutanddry.com/";
+            secUrl = "https://app.cutanddry.com/";
         } else if (TEST_ENV.equalsIgnoreCase("STAG")) {
-            SEC_URL = "https://app-"+TEST_STAG+".staging.cutanddry.com/";
+            secUrl = "https://app-"+TEST_STAG+".staging.cutanddry.com/";
+        } else {
+            secUrl = "https://app-uat.staging.cutanddry.com/";
         }
-        return SEC_URL;
+        return secUrl;
     }
 
     private static String loginAsDomain() {
+        String loginAs;
         if (TEST_ENV.equalsIgnoreCase("UAT")) {
-            LOGIN_AS = "https://app-uat.staging.cutanddry.com/internaltools/loginas";
+            loginAs = "https://app-uat.staging.cutanddry.com/internaltools/loginas";
         } else if (TEST_ENV.equalsIgnoreCase("PROD")) {
-            LOGIN_AS = "https://app.cutanddry.com/internaltools/loginas";
+            loginAs = "https://app.cutanddry.com/internaltools/loginas";
         } else if (TEST_ENV.equalsIgnoreCase("STAG")) {
-            LOGIN_AS = "https://app-"+TEST_STAG+".staging.cutanddry.com/internaltools/loginas";
+            loginAs = "https://app-"+TEST_STAG+".staging.cutanddry.com/internaltools/loginas";
+        } else {
+            loginAs = "https://app-uat.staging.cutanddry.com/internaltools/loginas";
         }
-        return LOGIN_AS;
+        return loginAs;
     }
 
     private static String nodeExplorerDomain() {
+        String nodeExplorer;
         if (TEST_ENV.equalsIgnoreCase("UAT")) {
-            NODE_EXPLORER = "https://app-uat.staging.cutanddry.com/admin";
+            nodeExplorer = "https://app-uat.staging.cutanddry.com/admin";
         } else if (TEST_ENV.equalsIgnoreCase("PROD")) {
-            NODE_EXPLORER = "https://app.cutanddry.com/admin";
+            nodeExplorer = "https://app.cutanddry.com/admin";
         } else if (TEST_ENV.equalsIgnoreCase("STAG")) {
-            NODE_EXPLORER = "https://app-"+TEST_STAG+".staging.cutanddry.com/admin";
+            nodeExplorer = "https://app-"+TEST_STAG+".staging.cutanddry.com/admin";
+        } else {
+            nodeExplorer = "https://app-uat.staging.cutanddry.com/admin";
         }
-        return NODE_EXPLORER;
+        return nodeExplorer;
     }
 
     private static String configSupplierDomain() {
+        String configSupplier;
         if (TEST_ENV.equalsIgnoreCase("UAT")) {
-            CONFIG_SUPPLIER = "https://app-uat.staging.cutanddry.com/internaltools/configure-supplier";
+            configSupplier = "https://app-uat.staging.cutanddry.com/internaltools/configure-supplier";
         } else if (TEST_ENV.equalsIgnoreCase("PROD")) {
-            CONFIG_SUPPLIER = "https://app.cutanddry.com/internaltools/configure-supplier";
+            configSupplier = "https://app.cutanddry.com/internaltools/configure-supplier";
         } else if (TEST_ENV.equalsIgnoreCase("STAG")) {
-            CONFIG_SUPPLIER = "https://app-"+TEST_STAG+".staging.cutanddry.com/internaltools/configure-supplier";
+            configSupplier = "https://app-"+TEST_STAG+".staging.cutanddry.com/internaltools/configure-supplier";
+        } else {
+            configSupplier = "https://app-uat.staging.cutanddry.com/internaltools/configure-supplier";
         }
-        return CONFIG_SUPPLIER;
+        return configSupplier;
     }
 }
