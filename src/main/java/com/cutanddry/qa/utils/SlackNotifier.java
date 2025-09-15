@@ -20,12 +20,6 @@ public class SlackNotifier {
 
     public static void sendSlackAlert(int totalTests, int passedTests, int failedTests, String environment, List<String> passedTestCases, List<String> failedTestCases, String PART) {
         try {
-            System.out.println("DEBUG: WEBHOOK_URL = " + WEBHOOK_URL);
-            if (WEBHOOK_URL == null || WEBHOOK_URL.trim().isEmpty()) {
-                System.out.println("ERROR: Slack webhook URL is null or empty. Cannot send notification.");
-                return;
-            }
-            
             // Construct the JSON payload
             String payload = "{"
                     + "\"blocks\": ["
