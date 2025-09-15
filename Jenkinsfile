@@ -70,6 +70,7 @@ pipeline {
                             -Dtest.env=${params.TEST_ENVIRONMENT} \\
                             -Drun.headless=${env.RUN_HEADLESS} \\
                             -DTEST_STAG=${params.TEST_STAG_VALUE} \\
+                            -DSTAGING_SLACK_WEBHOOK=${env.STAGING_SLACK_WEBHOOK} \\
                             -Dcreate.cycle=true \\
                             -Dmaven.test.failure.ignore=true \\
                             -Duser.timezone=UTC

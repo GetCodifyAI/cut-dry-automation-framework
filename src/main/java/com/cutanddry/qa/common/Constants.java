@@ -33,7 +33,7 @@ public class Constants {
 
     //Environment variables
 //    public static String SLACK_WEBHOOK = System.getenv("SLACK_WEBHOOK");
-    public static String SLACK_WEBHOOK = System.getenv("STAGING_SLACK_WEBHOOK");
+    public static String SLACK_WEBHOOK = System.getProperty("STAGING_SLACK_WEBHOOK", System.getenv("STAGING_SLACK_WEBHOOK"));
     public static final String TEST_STAG = System.getProperty("TEST_STAG", "unit-price");
 
 
