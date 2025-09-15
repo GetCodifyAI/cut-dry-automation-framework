@@ -52,6 +52,12 @@ public class TestNGListener implements ITestListener {
     @Override
     public void onFinish(ITestContext context) {
 //        String environment = System.getProperty("test.env", "uat");
+        System.out.println("DEBUG: TestNGListener.onFinish() called");
+        System.out.println("DEBUG: totalTests=" + totalTests + ", passedTests=" + passedTests + ", failedTests=" + failedTests);
+        System.out.println("DEBUG: TEST_ENV=" + TEST_ENV + ", PART=" + PART);
+        System.out.println("DEBUG: passedTestCases=" + passedTestCases);
+        System.out.println("DEBUG: failedTestCases=" + failedTestCases);
+        
         SlackNotifier.sendSlackAlert(totalTests, passedTests, failedTests, TEST_ENV, passedTestCases, failedTestCases,PART);
     }
 
