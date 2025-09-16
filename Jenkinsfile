@@ -33,10 +33,10 @@ pipeline {
             }
         }
         
-        stage('Sanity Tests - stag_sanity1') {
+        stage('Sanity Tests - sanity_test_1') {
             steps {
                 script {
-                    runTestSuite('stag_sanity1.xml', 'Sanity_Check')
+                    runTestSuite('sanity_test_1.xml', 'Sanity_Check')
                 }
             }
             post {
