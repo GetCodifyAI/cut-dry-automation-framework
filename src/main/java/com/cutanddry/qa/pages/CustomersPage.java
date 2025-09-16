@@ -400,7 +400,7 @@ By sel_tagOption = By.xpath("//div[contains(@class, 'themed_select__option') and
     By dropdown_status = By.xpath("(//*[local-name() = 'svg' and @class='css-19bqh2r'])[1]");
     By sel_statusOption = By.xpath("//div[contains(@class,'themed_select__option') and contains(text(),'Inactive')]");
     By btn_statusSave = By.xpath("//button[contains(@class,'mr-2 my-2 btn btn-outline')]");
-    By txt_status = By.xpath("//div[contains(text(),'Inactive')]");
+    By txt_status = By.xpath("//div[contains(text(),'Account Status')]/following-sibling::div//*[contains(text(),'Inactive')]");
     By ls_status = By.xpath("//div[contains(@class,'themed_select__menu-list css-11unzgr')]");
     By txt_error = By.xpath("(//*[contains(translate(text(), 'ERROR', 'error'), 'error')])[last()]");
     By first_row = By.xpath("//table[@class='table table-hover']//tbody//tr[1]");
@@ -512,7 +512,7 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     By sel_filterInactive = By.xpath("//div[contains(text(),'Inactive')]");
     By btn_filterApply = By.xpath("//button[contains(text(),'Apply')]");
     By sel_statusOptionActive = By.xpath("//div[contains(text(),'Active')]");
-    By txt_activeStatus = By.xpath("//div[contains(text(),'Active')]");
+    By txt_activeStatus = By.xpath("//div[contains(text(),'Account Status')]/following-sibling::div//*[contains(text(),'Active')]");
     By sel_filterActive = By.xpath("//div[contains(text(),'Active')]");
     By txt_lastInvoicePaid = By.xpath("//div[contains(@class, 'font-weight-bold') and text()='Last invoice paid on']/following-sibling::div");
     By btn_editCCFee = By.xpath("//div[contains(@class, 'font-weight-bold') and text()='CC Fees']/*[local-name()='svg' and @data-icon='pencil']");

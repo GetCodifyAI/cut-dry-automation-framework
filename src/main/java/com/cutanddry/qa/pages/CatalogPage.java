@@ -32,14 +32,15 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
     By txt_previewCat = By.xpath("//div[text()='Catalog Preview']");
     By txt_firstItemDetails = By.xpath("//tbody/tr[1]");
     String itemInTheGrid = "//tr[contains(@class,'_du1frc')]//td[text()='ITEMCODE']";
-    By ItemCodeInCatalogData = By.xpath("//div[contains(@class, 'form-group') and contains(.//label, 'Item Code')]//div[contains(@class, 'col-sm-8')]");
+    By ItemCodeInCatalogData = By.xpath("//input[contains(@placeholder, 'Manufacturer Product Code')]");
+    By productConfigsEditBtn = By.xpath("//*[contains(text(),'Product Configuration')]/following-sibling::button");
     By saveChangesBtn = By.xpath("//button[text()='Save']");
     By successOverlay = By.xpath("//div[contains(text(),'successfully saved!')]");
     By additionalAttributesTab = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Additional Attributes')]");
     By imagesTab = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Images')]");
     By certificationAttribute = By.xpath("//div[contains(text(),'Certifications')]");
     By productItemImage = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@class,'img-fluid') and (contains(@src,'.jpg') or contains(@src,'.png'))]");
-    By priceAndPromotions = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Pricing & Promotions')]");
+    By priceAndPromotions = By.xpath("//*[contains(text(),'Pricing & Promotions')]");
     By unitOfMeasure = By.xpath("//button[contains(text(),'+ Unit of measure')]");
     By uomCount = By.xpath("//table[@class='pt-4 w-auto table table-borderless']//td[contains(@class, 'pl-0')]//label");
     By uomSelectDropdown = By.xpath("//div[contains(text(),'Select UoM')]");
@@ -70,8 +71,9 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
     String clearCertificationBtn = "//label[contains(text(),'CERTIFICATIONTYPE')]/..//div[contains(@class,'themed_select__clear-indicato')]";
     String selectCertificationDropdown = "//label[contains(text(),'CERTIFICATIONTYPE')]/..//div[contains(text(),'Select')]";
     String buyAmericanOption  = "//div[contains(text(),'CERTIFICATEOPTION')]";
-    By productStatusDropdown = By.xpath("//label[contains(text(), 'Product Status')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
-    String productStatus = "(//div[contains(text(),'PRODSTATUS') and contains(@class,'themed_select__option')])[last()]";
+    By productStatusDropdown = By.xpath("//div[normalize-space()='Product Status']/following::div[@id='config-active']");
+    String productStatus = "(//div[contains(text(),'PRODSTATUS')])[last()]";
+    String productStatusInGrid = "//tr/td[contains(text(),'PRODID')]/following-sibling::td[7]";
     By searchInCatalogPreview = By.xpath("//div//input[contains(@placeholder,'Search catalog')]");
     String clickOnItemInPreviewCatalog = "//div[contains(@class, ' _du1frc')]//div[contains(@class, '_1evg3oy') and contains(., 'ITEMCODE')]";
     String itemCodeDetails = "//div[contains(text(),'ITEMCODE')]";
@@ -130,8 +132,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     By lbl_exportPromoFile = By.xpath("//a[text()='Export Promotion File (csv)']");
     By showSubsRadioBtn = By.xpath("//input[@id='show-subs']");
     By btn_back = By.xpath("//button[text()='Back']");
-    By proprietaryItemDropDown = By.xpath("//label[contains(text(), 'Proprietary Item')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
-    String proprietaryItemStatus = "(//div[contains(text(),'PROPRIETARYSTATUS') and contains(@class,'themed_select__option')])[last()]";
+    By proprietaryItemDropDown = By.xpath("//div[normalize-space()='Proprietary Item']/following::div[@id='config-hidden']/div[1]");
+    String proprietaryItemStatus = "(//div[normalize-space(.)='PROPRIETARYSTATUS'])[last()]";
     By lbl_itemType = By.xpath("//label[contains(text(), 'Item Type')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     By lbl_proprietaryItem = By.xpath("(//div[contains(text(), 'Proprietary Items')])[last()]");
     By categoryDropDown = By.xpath("//label[contains(text(), 'Category')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
@@ -146,8 +148,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     String txt_storageMethod = "//tr//td//div[contains(text(),'STORAGEMETHOD')]";
     By txt_description = By.xpath("(//textarea[@class='form-control'])[1]");
     String newDescription = " //div[contains(text(),'DESCRIPTION')]";
-    By onSaleRadioButton = By.xpath("//label[contains(text(),'On Sale')]/../following-sibling::div/div");
-    By newArrivalRadioButton = By.xpath("//label[contains(text(),'New Arrival')]/../following-sibling::div/div");
+    By onSaleRadioButton = By.xpath("//*[contains(text(),'On Sale')]/../following-sibling::div/div");
+    By newArrivalRadioButton = By.xpath("//*[contains(text(),'New Arrival')]/../following-sibling::div/div");
     By onSaleDropDown = By.xpath("//label[contains(text(), 'On Sale')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     By newArrivalDropDown = By.xpath("//label[contains(text(), 'New Arrivals')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     String categoryOptionInCatalog = "//div[contains(text(),'Category')]/../../following-sibling::div//div[contains(text(),'CATEGORY')]";
@@ -216,7 +218,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     String marginColumnPDP = "//th[text()='MARGIN']";
     String priceColumn = "//th[text()='PRICE']";
     String lastOrderPrice = "//span[contains(text(),'PRICE')]";
-    String lbl_cashAndCarryAllowedOption = "//label[contains(text(),'OPTION')]";
+    String lbl_cashAndCarryAllowedOption = "//*[contains(text(),'OPTION')]";
     By txt_actionableOverview = By.xpath("//div[text()='Actionable Overview']");
     By txt_newProduct = By.xpath("//div[text()='New Products']");
     By specialItemDropDown = By.xpath("//label[contains(text(), 'Special Item')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
@@ -316,14 +318,20 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     }
     public String getItemCodeFromCatalogDataPage(){
         distributorUI.waitForVisibility(ItemCodeInCatalogData);
-        return distributorUI.getText(ItemCodeInCatalogData);
+        return distributorUI.getText(ItemCodeInCatalogData,"value");
+    }
+    public void clickEditOnProductConfigs(){
+        distributorUI.waitForVisibility(productConfigsEditBtn);
+        distributorUI.click(productConfigsEditBtn);
     }
     public void clickOnInactiveOrInactive(String prodStatus){
         distributorUI.click(productStatusDropdown);
         distributorUI.waitForVisibility(By.xpath(productStatus.replace("PRODSTATUS",prodStatus)));
         distributorUI.click(By.xpath(productStatus.replace("PRODSTATUS",prodStatus)));
     }
-
+    public String getProductStatusFromProductGrid(String productId){
+        return distributorUI.getText(By.xpath(productStatusInGrid.replace("PRODID",productId)));
+    }
     public void clickOnSaveChangesBtn() {
         try {
             distributorUI.waitForCustom(3000);
@@ -755,7 +763,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     public void clickBack(){
         distributorUI.click(btn_back);
     }
-    public void clickOnProprietaryItem(String proprietaryStatus){
+    public void clickOnProprietaryItem(String proprietaryStatus) throws InterruptedException {
         distributorUI.click(proprietaryItemDropDown);
         distributorUI.waitForVisibility(By.xpath(proprietaryItemStatus.replace("PROPRIETARYSTATUS",proprietaryStatus)));
         distributorUI.click(By.xpath(proprietaryItemStatus.replace("PROPRIETARYSTATUS",proprietaryStatus)));
