@@ -65,10 +65,16 @@ public class Catalog {
         catalogPage.clickonItemOnCatalogPage(itemCode);
     }
 
+    public static String getProductStatusFromCatalogProductGrid(String productId){
+        return catalogPage.getProductStatusFromProductGrid(productId);
+    }
     public static String getItemcodeInCatalogData(){
         return catalogPage.getItemCodeFromCatalogDataPage();
     }
 
+    public static void selectEditFromProductConfig(){
+        catalogPage.clickEditOnProductConfigs();
+    }
     public static void selectProductActiveInactiveStatus(String prodStatus){
         catalogPage.clickOnInactiveOrInactive(prodStatus);
     }
@@ -409,7 +415,7 @@ public class Catalog {
         catalogPage.selectExportPromoFiles();
     }
     public static void clickBack(){catalogPage.clickBack();}
-    public static void clickOnProprietaryItemStatus(String proprietaryStatus){
+    public static void clickOnProprietaryItemStatus(String proprietaryStatus) throws InterruptedException {
         catalogPage.clickOnProprietaryItem(proprietaryStatus);
     }
     public static void selectProprietaryItem() throws InterruptedException {
