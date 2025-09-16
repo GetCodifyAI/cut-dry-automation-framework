@@ -21,7 +21,7 @@ pipeline {
         RUN_HEADLESS = 'true'
         BROWSER_VERSION = 'latest'
         TEST_STAG_VALUE = "${params.TEST_STAG}"
-        STAGING_SLACK_WEBHOOK = 'https://hooks.slack.com/services/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'
+        STAGING_SLACK_WEBHOOK = "${env.STAGING_SLACK_WEBHOOK}"
     }
     
     stages {
