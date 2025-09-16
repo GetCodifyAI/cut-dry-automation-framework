@@ -9,7 +9,7 @@
         <parameter name="PART" value="Sanity_Check" />
         <classes>
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaOrderGuideTest"/>
-<!--             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaCatalogTest"/>
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerMailDeliveryOrderViaPDPTest"/>
             <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmReviewCartTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromCatalogTest"/>
@@ -22,7 +22,7 @@
             <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfChatFlowTest"/>
             <class name="com.cutanddry.qa.tests.chat.VerifyTheChatFeatureDisplayInDPPortalWhenChatModuleEnableTest"/>
             <class name="com.cutanddry.qa.tests.boost.VerifyTopCategoryPicksTest"/>
-            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerBaseReportGenerationTest"/> -->
+            <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerBaseReportGenerationTest"/>
         </classes>
     </test>
 </suite>
