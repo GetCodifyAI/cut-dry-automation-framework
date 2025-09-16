@@ -15,8 +15,8 @@ import org.testng.asserts.SoftAssert;
 public class ValidateTheProprietaryItemInCatalogDataTest extends TestBase {
     static User user;
     String itemCode = "00563"; // 00475
-    String ProprietaryYes = "Yes";
-    String ProprietaryNo = "No";
+    String ProprietaryYes = "Proprietary";
+    String ProprietaryNo = "Non-Proprietary";
     String All = "All";
 
     @BeforeMethod
@@ -34,6 +34,7 @@ public class ValidateTheProprietaryItemInCatalogDataTest extends TestBase {
         Catalog.selectItemStatus(All);
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        Catalog.selectEditFromProductConfig();
         Catalog.clickOnProprietaryItemStatus(ProprietaryYes);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");
@@ -43,6 +44,7 @@ public class ValidateTheProprietaryItemInCatalogDataTest extends TestBase {
         Catalog.selectProprietaryItem();
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        Catalog.selectEditFromProductConfig();
         Catalog.clickOnProprietaryItemStatus(ProprietaryNo);
         Catalog.saveChanges();
         softAssert.assertAll();
