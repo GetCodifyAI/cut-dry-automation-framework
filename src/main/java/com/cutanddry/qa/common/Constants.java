@@ -33,7 +33,10 @@ public class Constants {
 
     public static String SLACK_TOKEN = System.getProperty("slack.token", "***");
     public static String SLACK_CHANNEL = System.getProperty("slack.channel", "#ui-automation-tests");
-    public static String SLACK_WEBHOOK = System.getenv("STAGING_SLACK_WEBHOOK");
+    public static String MAIN_URL = baseDomain();
+    public static String SEC_URL = secDomain();
+    public static String LOGIN_AS_APP_URL = loginAsDomain();
+    public static String SLACK_WEBHOOK = System.getProperty("STAGING_SLACK_WEBHOOK", System.getenv("STAGING_SLACK_WEBHOOK"));
     public static final String TEST_STAG = System.getProperty("TEST_STAG", "unit-price");
 
 
