@@ -38,6 +38,7 @@ public class Constants {
     public static String LOGIN_AS_APP_URL = loginAsDomain();
     public static String SLACK_WEBHOOK = System.getProperty("STAGING_SLACK_WEBHOOK", System.getenv("STAGING_SLACK_WEBHOOK"));
     public static final String TEST_STAG = System.getProperty("TEST_STAG", "mfg2640");
+    public static String APP_URL = "https://dicarlo-"+TEST_STAG+".staging.cutanddry.com/market/dicarlo";
 
 
     //slackToken=***
