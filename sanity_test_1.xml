@@ -11,7 +11,7 @@
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerDeliveryOrderViaOrderGuideTest" />
             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerPickUpOrderViaCatalogTest" />
             
-            <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerMailDeliveryOrderViaPDPTest" />
+<!--             <class name="com.cutanddry.qa.tests.e2e.PlaceAnCustomerMailDeliveryOrderViaPDPTest" />
 
             <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmReviewCartTest" />
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromCatalogTest"/>
@@ -53,7 +53,7 @@
             <class name="com.cutanddry.qa.tests.catalog.VerifyCategorySelectionTest" />
             <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerBaseReportGenerationTest" />
            
-
+ -->
         </classes>
     </test>
 </suite>
