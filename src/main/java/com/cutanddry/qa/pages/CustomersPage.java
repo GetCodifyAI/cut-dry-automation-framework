@@ -1443,8 +1443,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(txt_success);
         return distributorUI.isDisplayed(txt_success);
     }
-    public void clickOnEditStandingOrder() {
+    public void clickOnEditStandingOrder() throws InterruptedException {
         distributorUI.click(btn_editStandingOrders);
+        distributorUI.waitForCustom(5000);
     }
     public void clickOnRemoveDelivery() {
         if (distributorUI.isDisplayed(btn_removeDelivery)){
