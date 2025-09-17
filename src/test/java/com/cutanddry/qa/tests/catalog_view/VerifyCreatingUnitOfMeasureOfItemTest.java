@@ -48,6 +48,7 @@ public class VerifyCreatingUnitOfMeasureOfItemTest {
         Catalog.setSaleValue(saleValue);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in creating UOM");
+        Catalog.navigateToPricingAndPromotions();
         softAssert.assertEquals(Catalog.getUnitOfMeasureCount(),UOMCount+1,"Error in increasing UOM");
         softAssert.assertTrue(Catalog.isAddedUOMDisplayed(),"Error in deleting the UOM");
 

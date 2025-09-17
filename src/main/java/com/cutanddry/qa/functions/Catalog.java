@@ -121,6 +121,7 @@ public class Catalog {
             catalogPage.deleteUOMinCatalog();
             catalogPage.clickOnConfirmBtn();
             catalogPage.clickOnSaveChangesBtn();
+            catalogPage.clickOnPricingAndPromotionsTab();
 //            catalogPage.refreshPage();
         }
         catalogPage.clickOnUnitOfMeasure();
@@ -208,6 +209,7 @@ public class Catalog {
         if (catalogPage.isDeleteSubstituteItemDisplayed(ItemCode)) {
             catalogPage.clickOnDeleteSubstituteItemBtn(ItemCode);
             catalogPage.clickOnSaveChangesBtn();
+            catalogPage.clickOnSubstituteTab();
         }
 
     }
@@ -478,6 +480,8 @@ public class Catalog {
     public static void addSubstitutionsStable(String itemCode){
         if(catalogPage.isSubstituteItemDisplayed(itemCode)){
             catalogPage.clickOnDeleteSubstituteItemBtn(itemCode);
+            catalogPage.clickOnSaveChangesBtn();
+            catalogPage.clickOnSubstituteTab();
         }
         catalogPage.clickAddSubstitutionBtn();
     }

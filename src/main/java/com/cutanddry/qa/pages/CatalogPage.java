@@ -37,7 +37,7 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
     By saveChangesBtn = By.xpath("//button[text()='Save']");
     By successOverlay = By.xpath("//div[contains(text(),'successfully saved!')]");
     By additionalAttributesTab = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Additional Attributes')]");
-    By imagesTab = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Images')]");
+    By imagesTab = By.xpath("//*[contains(text(),'Images')]");
     By certificationAttribute = By.xpath("//div[contains(text(),'Certifications')]");
     By productItemImage = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@class,'img-fluid') and (contains(@src,'.jpg') or contains(@src,'.png'))]");
     By priceAndPromotions = By.xpath("//*[contains(text(),'Pricing & Promotions')]");
@@ -58,15 +58,15 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
     By confirmBtn = By.xpath("//button[contains(text(),'Confirm')]");
     By bagUOM = By.xpath("//label[text()='Bag']");
     String existUOM = "//label[text()='UOM']";
-    By substituteTab = By.xpath("//a[contains(text(),'Substitutes')]");
-    By addSubstitutionsBtn = By.xpath("//button[contains(text(),'+ Add Substitution')]");
-    By selectSubstituteTxtField = By.xpath("//div[@class= ' css-1wa3eu0-placeholder' and text()='Select...']");
-    By substituteItemInputField = By.xpath("//div[@class=' css-1wa3eu0-placeholder' and text()='Select...']/following::input[@type='text' and @aria-autocomplete='list']");
+    By substituteTab = By.xpath("//*[contains(text(),'Product Substitutes')]");
+    By addSubstitutionsBtn = By.xpath("//*[contains(text(),'+ Add Substitution')]");
+    By selectSubstituteTxtField = By.xpath("//div[contains(text(),'Select...')]");
+    By substituteItemInputField = By.xpath("//div[contains(text(),'Select...')]/following::input[@type='text' and @aria-autocomplete='list']");
     String selectItemFromDropdown = "(//div[contains(text(),'ITEMCODE')])[last()]";
     By substituteAddBtn = By.xpath("//button[contains(text(),'Add')]");
     By substituteCancelBtn = By.xpath("//button[contains(text(),'Cancel')]");
     String substituteItemNameTxt = "//div[contains(text(),\"ITEMNAME\")]";
-    String deleteSubstituteItemBtn = "//div[@class='align-items-center my-1 row']//div[contains(text(),'ITEMCODE')]//following-sibling::div[contains(@class,'col-md')]/*";
+    String deleteSubstituteItemBtn = "//div[contains(text(),'ITEMCODE')]//following-sibling::div/*[local-name()='svg']";
     By searchField = By.xpath("//div//input[contains(@placeholder,'Search product by name, sku, gtin...')]");
     String clearCertificationBtn = "//label[contains(text(),'CERTIFICATIONTYPE')]/..//div[contains(@class,'themed_select__clear-indicato')]";
     String selectCertificationDropdown = "//label[contains(text(),'CERTIFICATIONTYPE')]/..//div[contains(text(),'Select')]";
@@ -480,11 +480,12 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         return distributorUI.isDisplayed(By.xpath(existUOM.replace("UOM",uom)));
     }
     public void clickOnSubstituteTab(){
+        distributorUI.waitForVisibility(substituteTab);
         distributorUI.click(substituteTab);
     }
     public void clickAddSubstitutionBtn(){
         distributorUI.waitForVisibility(addSubstitutionsBtn);
-        distributorUI.scrollToElement(addSubstitutionsBtn);
+        //distributorUI.scrollToElement(addSubstitutionsBtn);
         distributorUI.click(addSubstitutionsBtn);
     }
     public void searchSubstituteItem(String substituteItem){
