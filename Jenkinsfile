@@ -44,7 +44,7 @@ pipeline {
                     archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
                     stash includes: 'target/surefire-reports/TEST-*.xml', name: 'test-results-sanity'
                     publishHTML([
-                        allowMissing: false,
+                        allowMissing: true,
                         alwaysLinkToLastBuild: true,
                         keepAll: true,
                         reportDir: 'target/site',
