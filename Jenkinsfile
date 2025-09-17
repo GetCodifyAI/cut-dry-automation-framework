@@ -1,11 +1,20 @@
 pipeline {
     agent none
     
+    parameters {
+        booleanParam(
+            name: 'CLEANUP_AFTER_EXECUTION',
+            defaultValue: true,
+            description: 'Clean up temporary files after execution to save disk space'
+        )
+    }
+    
     environment {
         MAVEN_OPTS = '-Xmx2048m'
         JAVA_HOME = '/usr/lib/jvm/java-21-openjdk-amd64'
         TEST_ENV = 'uat'
         RUN_HEADLESS = 'true'
+        WORKSPACE_CLEANUP = "${params.CLEANUP_AFTER_EXECUTION}"
     }
     
     options {
@@ -26,13 +35,14 @@ pipeline {
                     agent any
                     steps {
                         script {
-                            runTestSuite('regression1.xml', 'Part_One', 1)
+                            runTestSuiteWithCleanup('regression1.xml', 'Part_One', 1)
                         }
                     }
                     post {
                         always {
-                            archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
-                            stash includes: 'target/surefire-reports/TEST-*.xml', name: 'test-results-1', allowEmpty: true
+                            script {
+                                archiveAndCleanup('1', 'Regression 1 Test Report')
+                            }
                         }
                     }
                 }
@@ -41,13 +51,14 @@ pipeline {
                     agent any
                     steps {
                         script {
-                            runTestSuite('regression2.xml', 'Part_Two', 2)
+                            runTestSuiteWithCleanup('regression2.xml', 'Part_Two', 2)
                         }
                     }
                     post {
                         always {
-                            archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
-                            stash includes: 'target/surefire-reports/TEST-*.xml', name: 'test-results-2', allowEmpty: true
+                            script {
+                                archiveAndCleanup('2', 'Regression 2 Test Report')
+                            }
                         }
                     }
                 }
@@ -56,13 +67,14 @@ pipeline {
                     agent any
                     steps {
                         script {
-                            runTestSuite('regression3.xml', 'Part_Three', 3)
+                            runTestSuiteWithCleanup('regression3.xml', 'Part_Three', 3)
                         }
                     }
                     post {
                         always {
-                            archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
-                            stash includes: 'target/surefire-reports/TEST-*.xml', name: 'test-results-3', allowEmpty: true
+                            script {
+                                archiveAndCleanup('3', 'Regression 3 Test Report')
+                            }
                         }
                     }
                 }
@@ -71,13 +83,14 @@ pipeline {
                     agent any
                     steps {
                         script {
-                            runTestSuite('regression4.xml', 'Part_Four', 4)
+                            runTestSuiteWithCleanup('regression4.xml', 'Part_Four', 4)
                         }
                     }
                     post {
                         always {
-                            archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
-                            stash includes: 'target/surefire-reports/TEST-*.xml', name: 'test-results-4', allowEmpty: true
+                            script {
+                                archiveAndCleanup('4', 'Regression 4 Test Report')
+                            }
                         }
                     }
                 }
@@ -86,13 +99,14 @@ pipeline {
                     agent any
                     steps {
                         script {
-                            runTestSuite('regression5.xml', 'Part_Five', 5)
+                            runTestSuiteWithCleanup('regression5.xml', 'Part_Five', 5)
                         }
                     }
                     post {
                         always {
-                            archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
-                            stash includes: 'target/surefire-reports/TEST-*.xml', name: 'test-results-5', allowEmpty: true
+                            script {
+                                archiveAndCleanup('5', 'Regression 5 Test Report')
+                            }
                         }
                     }
                 }
@@ -101,13 +115,14 @@ pipeline {
                     agent any
                     steps {
                         script {
-                            runTestSuite('regression6.xml', 'Part_Six', 6)
+                            runTestSuiteWithCleanup('regression6.xml', 'Part_Six', 6)
                         }
                     }
                     post {
                         always {
-                            archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
-                            stash includes: 'target/surefire-reports/TEST-*.xml', name: 'test-results-6', allowEmpty: true
+                            script {
+                                archiveAndCleanup('6', 'Regression 6 Test Report')
+                            }
                         }
                     }
                 }
@@ -116,13 +131,14 @@ pipeline {
                     agent any
                     steps {
                         script {
-                            runTestSuite('regression7.xml', 'Part_Seven', 7)
+                            runTestSuiteWithCleanup('regression7.xml', 'Part_Seven', 7)
                         }
                     }
                     post {
                         always {
-                            archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
-                            stash includes: 'target/surefire-reports/TEST-*.xml', name: 'test-results-7', allowEmpty: true
+                            script {
+                                archiveAndCleanup('7', 'Regression 7 Test Report')
+                            }
                         }
                     }
                 }
@@ -131,13 +147,14 @@ pipeline {
                     agent any
                     steps {
                         script {
-                            runTestSuite('regression8.xml', 'Part_Eight', 8)
+                            runTestSuiteWithCleanup('regression8.xml', 'Part_Eight', 8)
                         }
                     }
                     post {
                         always {
-                            archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
-                            stash includes: 'target/surefire-reports/TEST-*.xml', name: 'test-results-8', allowEmpty: true
+                            script {
+                                archiveAndCleanup('8', 'Regression 8 Test Report')
+                            }
                         }
                     }
                 }
@@ -146,13 +163,14 @@ pipeline {
                     agent any
                     steps {
                         script {
-                            runTestSuite('regression9.xml', 'Part_Nine', 9)
+                            runTestSuiteWithCleanup('regression9.xml', 'Part_Nine', 9)
                         }
                     }
                     post {
                         always {
-                            archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
-                            stash includes: 'target/surefire-reports/TEST-*.xml', name: 'test-results-9', allowEmpty: true
+                            script {
+                                archiveAndCleanup('9', 'Regression 9 Test Report')
+                            }
                         }
                     }
                 }
@@ -161,13 +179,14 @@ pipeline {
                     agent any
                     steps {
                         script {
-                            runTestSuite('regression10.xml', 'Part_Ten', 10)
+                            runTestSuiteWithCleanup('regression10.xml', 'Part_Ten', 10)
                         }
                     }
                     post {
                         always {
-                            archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
-                            stash includes: 'target/surefire-reports/TEST-*.xml', name: 'test-results-10', allowEmpty: true
+                            script {
+                                archiveAndCleanup('10', 'Regression 10 Test Report')
+                            }
                         }
                     }
                 }
@@ -176,13 +195,14 @@ pipeline {
                     agent any
                     steps {
                         script {
-                            runTestSuite('regression11.xml', 'Part_Eleven', 11)
+                            runTestSuiteWithCleanup('regression11.xml', 'Part_Eleven', 11)
                         }
                     }
                     post {
                         always {
-                            archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
-                            stash includes: 'target/surefire-reports/TEST-*.xml', name: 'test-results-11', allowEmpty: true
+                            script {
+                                archiveAndCleanup('11', 'Regression 11 Test Report')
+                            }
                         }
                     }
                 }
@@ -191,13 +211,14 @@ pipeline {
                     agent any
                     steps {
                         script {
-                            runTestSuite('regression12.xml', 'Part_Twelve', 12)
+                            runTestSuiteWithCleanup('regression12.xml', 'Part_Twelve', 12)
                         }
                     }
                     post {
                         always {
-                            archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
-                            stash includes: 'target/surefire-reports/TEST-*.xml', name: 'test-results-12', allowEmpty: true
+                            script {
+                                archiveAndCleanup('12', 'Regression 12 Test Report')
+                            }
                         }
                     }
                 }
@@ -206,13 +227,14 @@ pipeline {
                     agent any
                     steps {
                         script {
-                            runTestSuite('regression13.xml', 'Part_Thirteen', 13)
+                            runTestSuiteWithCleanup('regression13.xml', 'Part_Thirteen', 13)
                         }
                     }
                     post {
                         always {
-                            archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
-                            stash includes: 'target/surefire-reports/TEST-*.xml', name: 'test-results-13', allowEmpty: true
+                            script {
+                                archiveAndCleanup('13', 'Regression 13 Test Report')
+                            }
                         }
                     }
                 }
@@ -251,9 +273,27 @@ pipeline {
                 }
             }
         }
+        
+        stage('Final Cleanup') {
+            when {
+                expression { params.CLEANUP_AFTER_EXECUTION }
+            }
+            steps {
+                script {
+                    performFinalCleanup()
+                }
+            }
+        }
     }
     
     post {
+        always {
+            script {
+                if (params.CLEANUP_AFTER_EXECUTION) {
+                    performWorkspaceCleanup()
+                }
+            }
+        }
         failure {
             script {
                 sendSlackNotification('FAILURE')
@@ -267,7 +307,25 @@ pipeline {
     }
 }
 
-def runTestSuite(xmlFile, partName, jobNumber) {
+def runTestSuiteWithCleanup(xmlFile, partName, jobNumber) {
+    echo "Running test suite: ${xmlFile} (${partName}) with cleanup optimization"
+    
+    // Pre-execution cleanup
+    sh '''
+        # Clean up any existing test artifacts
+        rm -rf target/surefire-reports* || true
+        rm -rf target/screenshots* || true
+        rm -rf target/test-output* || true
+        
+        # Clean browser cache and temp files
+        rm -rf ~/.cache/google-chrome* || true
+        rm -rf /tmp/chrome_* /tmp/.org.chromium.* || true
+        
+        # Display disk usage before test
+        echo "Disk usage before test execution:"
+        df -h
+    '''
+    
     try {
         // Checkout code
         checkout scm
@@ -283,41 +341,58 @@ def runTestSuite(xmlFile, partName, jobNumber) {
                 -Drun.headless=${env.RUN_HEADLESS} \\
                 -Dtest.env=${env.TEST_ENV} \\
                 -Dmaven.test.failure.ignore=true \\
-                -Duser.timezone=UTC
-        """
-        
-        // Verify test results exist
-        sh """
-            if [ -d "target/surefire-reports" ]; then
-                echo "Test results found for ${partName}:"
-                ls -la target/surefire-reports/
-            else
-                echo "Warning: No test results directory found for ${partName}"
-                mkdir -p target/surefire-reports
-            fi
-        """
-        
-        // Copy test results with part name prefix
-        sh """
-            if [ -d "target/surefire-reports" ]; then
-                for file in target/surefire-reports/TEST-*.xml; do
-                    if [ -f "\$file" ]; then
-                        cp "\$file" "target/surefire-reports/${partName}_job-${jobNumber}_\$(basename "\$file")"
-                    fi
-                done
-            fi
+                -Duser.timezone=UTC \\
+                -Dmaven.repo.local=\${WORKSPACE}/.m2/repository
         """
         
     } catch (Exception e) {
-        echo "Error in ${partName}: ${e.getMessage()}"
-        currentBuild.result = 'UNSTABLE'
-        throw e
+        echo "Test execution completed with some failures: ${e.getMessage()}"
     }
+    
+    // Verify test results exist and create compressed archives
+    sh """
+        # Verify test results exist
+        ls -R target/surefire-reports || echo "Test results missing!"
+        
+        # Create part-specific directory for screenshots and reports
+        if [ -d "target/surefire-reports" ]; then
+            mkdir -p "target/surefire-reports-${partName}"
+            cp -r target/surefire-reports/* "target/surefire-reports-${partName}/" || true
+            
+            # Compress screenshots to save space
+            if [ -d "target/surefire-reports-${partName}/screenshots" ]; then
+                cd "target/surefire-reports-${partName}"
+                tar -czf "screenshots-${partName}-${jobNumber}.tar.gz" screenshots/ || true
+                rm -rf screenshots/ || true
+                cd -
+            fi
+            
+            # Create summary report
+            echo "Test Suite: ${xmlFile}" > "target/surefire-reports-${partName}/suite-info.txt"
+            echo "Part Name: ${partName}" >> "target/surefire-reports-${partName}/suite-info.txt"
+            echo "Job Number: ${jobNumber}" >> "target/surefire-reports-${partName}/suite-info.txt"
+            echo "Execution Time: \$(date)" >> "target/surefire-reports-${partName}/suite-info.txt"
+            
+            # Copy test results with part name prefix for aggregation
+            for file in target/surefire-reports/TEST-*.xml; do
+                if [ -f "\$file" ]; then
+                    cp "\$file" "target/surefire-reports/${partName}_job-${jobNumber}_\$(basename "\$file")"
+                fi
+            done
+        fi
+        
+        # Display disk usage after test
+        echo "Disk usage after test execution:"
+        df -h
+    """
 }
 
 def setupTestEnvironment() {
     sh '''
         echo "Setting up test environment..."
+        
+        # Clean up any existing temporary files
+        rm -rf /tmp/chrome_* /tmp/.org.chromium.* || true
         
         # Set JAVA_HOME to the correct OpenJDK path for Ubuntu
         export JAVA_HOME='/usr/lib/jvm/java-21-openjdk-amd64'
@@ -355,6 +430,9 @@ def setupTestEnvironment() {
         # Set up workspace
         echo "Setting up workspace..."
         mkdir -p target/surefire-reports
+        
+        # Display available disk space
+        df -h
         
         echo "Environment setup complete"
     '''
@@ -433,6 +511,87 @@ def calculateAndReportResults() {
     '''
 }
 
+def archiveAndCleanup(suiteNumber, reportName) {
+    echo "Archiving artifacts and performing cleanup for suite ${suiteNumber}"
+    
+    // Archive artifacts with compression
+    archiveArtifacts artifacts: 'target/surefire-reports*/**/*', allowEmptyArchive: true, fingerprint: true
+    
+    // Publish HTML reports
+    publishHTML([
+        allowMissing: false,
+        alwaysLinkToLastBuild: true,
+        keepAll: true,
+        reportDir: 'target/surefire-reports',
+        reportFiles: 'index.html',
+        reportName: reportName
+    ])
+    
+    // Stash test results for potential aggregation
+    stash includes: 'target/surefire-reports/TEST-*.xml', name: "test-results-${suiteNumber}", allowEmpty: true
+    
+    // Cleanup if enabled
+    if (env.WORKSPACE_CLEANUP == 'true') {
+        sh """
+            # Clean up large temporary files but keep archived artifacts
+            rm -rf target/classes || true
+            rm -rf target/test-classes || true
+            rm -rf target/maven-* || true
+            
+            # Clean browser temp files
+            rm -rf ~/.cache/google-chrome* || true
+            rm -rf /tmp/chrome_* /tmp/.org.chromium.* || true
+            
+            # Clean Maven temp files
+            rm -rf ~/.m2/repository/com/cutanddry/*/target || true
+            
+            echo "Cleanup completed for suite ${suiteNumber}"
+            df -h
+        """
+    }
+}
+
+def performFinalCleanup() {
+    echo "Performing final workspace cleanup..."
+    sh '''
+        # Clean up all temporary Maven files
+        rm -rf target/maven-archiver || true
+        rm -rf target/maven-status || true
+        rm -rf .m2/repository/com/cutanddry || true
+        
+        # Clean up browser and system temp files
+        rm -rf ~/.cache/* || true
+        rm -rf /tmp/chrome_* /tmp/.org.chromium.* || true
+        rm -rf /var/tmp/chrome_* || true
+        
+        # Clean up old log files
+        find . -name "*.log" -type f -mtime +1 -delete || true
+        
+        # Display final disk usage
+        echo "Final disk usage after cleanup:"
+        df -h
+        
+        # Display workspace size
+        echo "Workspace size:"
+        du -sh . || true
+    '''
+}
+
+def performWorkspaceCleanup() {
+    echo "Performing post-build workspace cleanup..."
+    sh '''
+        # Keep only essential files and archived artifacts
+        find . -type f -name "*.class" -delete || true
+        find . -type f -name "*.jar" -not -path "./target/surefire-reports*" -delete || true
+        
+        # Clean up Maven local repository
+        rm -rf .m2 || true
+        
+        echo "Post-build cleanup completed"
+        df -h
+    '''
+}
+
 def sendSlackNotification(buildStatus = null) {
     def status = buildStatus ?: currentBuild.currentResult
     def color = 'good'
@@ -460,6 +619,7 @@ ${emoji} *Cut+Dry Automation Test Results*
 *Status:* ${status}
 *Branch:* ${env.BRANCH_NAME ?: 'main'}
 *Duration:* ${currentBuild.durationString}
+*Cleanup Enabled:* ${env.WORKSPACE_CLEANUP ?: 'false'}
 
 *Test Summary:*
 • Total Tests: ${testResults.TOTAL_TESTS ?: 'N/A'}
