@@ -496,7 +496,7 @@ public class Customer {
     public static boolean isStandingOrderSuccessPopupDisplayed(){
         return customersPage.isStandingOrderSuccessPopupDisplayed();
     }
-    public static void clickOnEditStandingOrder(){
+    public static void clickOnEditStandingOrder() throws InterruptedException {
         customersPage.clickOnEditStandingOrder();
     }
     public static void clickOnAddAnotherStandingOrder(){

@@ -6,36 +6,111 @@ public class Constants {
     public static boolean CREATE_CYCLE = Boolean.parseBoolean(System.getProperty("create.cycle","false"));
     public static String BROWSER_NAME = System.getProperty("test.browser", "chrome");
     public static boolean RUN_HEADLESS = Boolean.parseBoolean(System.getProperty("run.headless", "false"));
-    public static String TEST_ENV = System.getProperty("test.env", "uat");
-    public static String MAIN_URL = baseDomain();
-    public static String SEC_URL = secDomain();
-    public static String LOGIN_AS = "https://app-uat.staging.cutanddry.com/internaltools/loginas";
-    public static String NODE_EXPLORER = "https://app-uat.staging.cutanddry.com/admin";
+    public static String TEST_ENV = System.getProperty("test.env", "stag");
     public static String BASE_URI = "https://supplier-uat.staging.cutanddry.com/GraphQLController";
-    public static String SLACK_WEBHOOK = System.getenv("SLACK_WEBHOOK");
-    public static String CONFIG_SUPPLIER = "https://app-uat.staging.cutanddry.com/internaltools/configure-supplier";
+    
+    public static String getMainUrl() {
+        return baseDomain();
+    }
+    
+    public static String getSecUrl() {
+        return secDomain();
+    }
+    
+    public static String getLoginAs() {
+        return loginAsDomain();
+    }
+    
+    public static String getNodeExplorer() {
+        return nodeExplorerDomain();
+    }
+    
+    public static String getConfigSupplier() {
+        return configSupplierDomain();
+    }
     public static String GATE_KEEPER_ADMIN = "https://app-uat.staging.cutanddry.com/gatekeeperadmin";
-
     public static String PROD_LOGIN_AS = "https://internal.cutanddry.com/internaltools/loginas";
 
-    //  https://hooks.slack.com/services/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 //group - test-alerts
-    //  https://hooks.slack.com/services/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 //group - ui-automation-tests
+    public static String SLACK_TOKEN = System.getProperty("slack.token", "***");
+    public static String SLACK_CHANNEL = System.getProperty("slack.channel", "#ui-automation-tests");
+    public static String MAIN_URL = baseDomain();
+    public static String SEC_URL = secDomain();
+    public static String LOGIN_AS_APP_URL = loginAsDomain();
+    public static String SLACK_WEBHOOK = System.getProperty("STAGING_SLACK_WEBHOOK", System.getenv("STAGING_SLACK_WEBHOOK"));
+    public static final String TEST_STAG = System.getProperty("TEST_STAG", "mfg2640");
+    public static String APP_URL = "https://dicarlo-"+TEST_STAG+".staging.cutanddry.com/market/dicarlo";
+
+
+    //slackToken=***
+    //slackChannel=#ui-automation-tests
 
 
     private static String baseDomain() {
+        String mainUrl;
         if (TEST_ENV.equalsIgnoreCase("UAT")){
-            MAIN_URL = "https://supplier-uat.staging.cutanddry.com/";
+            mainUrl = "https://supplier-uat.staging.cutanddry.com/";
         } else if (TEST_ENV.equalsIgnoreCase("PROD")){
-            MAIN_URL = "https://supplier.cutanddry.com/";
+            mainUrl = "https://supplier.cutanddry.com/";
+        } else if (TEST_ENV.equalsIgnoreCase("STAG")) {
+            mainUrl = "https://supplier-"+TEST_STAG+".staging.cutanddry.com/";
+        } else {
+            mainUrl = "https://supplier-uat.staging.cutanddry.com/";
         }
-        return MAIN_URL;
+        return mainUrl;
     }
     private static String secDomain() {
+        String secUrl;
         if (TEST_ENV.equalsIgnoreCase("UAT")){
-            SEC_URL = "https://app-"+TEST_ENV+".staging.cutanddry.com/";
+            secUrl = "https://app-"+TEST_ENV+".staging.cutanddry.com/";
         } else if (TEST_ENV.equalsIgnoreCase("PROD")){
-            SEC_URL = "https://app.cutanddry.com/";
+            secUrl = "https://app.cutanddry.com/";
+        } else if (TEST_ENV.equalsIgnoreCase("STAG")) {
+            secUrl = "https://app-"+TEST_STAG+".staging.cutanddry.com/";
+        } else {
+            secUrl = "https://app-uat.staging.cutanddry.com/";
         }
-        return SEC_URL;
+        return secUrl;
+    }
+
+    private static String loginAsDomain() {
+        String loginAs;
+        if (TEST_ENV.equalsIgnoreCase("UAT")) {
+            loginAs = "https://app-uat.staging.cutanddry.com/internaltools/loginas";
+        } else if (TEST_ENV.equalsIgnoreCase("PROD")) {
+            loginAs = "https://app.cutanddry.com/internaltools/loginas";
+        } else if (TEST_ENV.equalsIgnoreCase("STAG")) {
+            loginAs = "https://app-"+TEST_STAG+".staging.cutanddry.com/internaltools/loginas";
+        } else {
+            loginAs = "https://app-uat.staging.cutanddry.com/internaltools/loginas";
+        }
+        return loginAs;
+    }
+
+    private static String nodeExplorerDomain() {
+        String nodeExplorer;
+        if (TEST_ENV.equalsIgnoreCase("UAT")) {
+            nodeExplorer = "https://app-uat.staging.cutanddry.com/admin";
+        } else if (TEST_ENV.equalsIgnoreCase("PROD")) {
+            nodeExplorer = "https://app.cutanddry.com/admin";
+        } else if (TEST_ENV.equalsIgnoreCase("STAG")) {
+            nodeExplorer = "https://app-"+TEST_STAG+".staging.cutanddry.com/admin";
+        } else {
+            nodeExplorer = "https://app-uat.staging.cutanddry.com/admin";
+        }
+        return nodeExplorer;
+    }
+
+    private static String configSupplierDomain() {
+        String configSupplier;
+        if (TEST_ENV.equalsIgnoreCase("UAT")) {
+            configSupplier = "https://app-uat.staging.cutanddry.com/internaltools/configure-supplier";
+        } else if (TEST_ENV.equalsIgnoreCase("PROD")) {
+            configSupplier = "https://app.cutanddry.com/internaltools/configure-supplier";
+        } else if (TEST_ENV.equalsIgnoreCase("STAG")) {
+            configSupplier = "https://app-"+TEST_STAG+".staging.cutanddry.com/internaltools/configure-supplier";
+        } else {
+            configSupplier = "https://app-uat.staging.cutanddry.com/internaltools/configure-supplier";
+        }
+        return configSupplier;
     }
 }
