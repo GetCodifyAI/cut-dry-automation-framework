@@ -218,6 +218,7 @@ public class Catalog {
         if (!catalogPage.isDeleteSubstituteItemDisplayed(ItemCode)) {
             catalogPage.clickAddSubstitutionBtn();
             String SubstituteItemName = catalogPage.getSubstituteItemName(ItemCode);
+            catalogPage.clickAddSubstitutionBtn();
             catalogPage.searchSubstituteItem(SubstituteItemName);
             catalogPage.addSubstitutionsBtn();
             catalogPage.clickOnSaveChangesBtn();

@@ -18,7 +18,7 @@ public class VerifyRemovingSubstituteFromAnItemTest extends TestBase{
     String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
     String itemCode = "00475";
     String substituteItemCode = "20024";
-
+    String substituteItemName = "Cauliflower - Large";
 
     @BeforeMethod
     public void setUp(){
@@ -40,10 +40,13 @@ public class VerifyRemovingSubstituteFromAnItemTest extends TestBase{
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
         Catalog.navigateToSubstituteTab();
         // Pre-request
+        Catalog.removeExistingItem(substituteItemName);
         Catalog.addingItemAtZeroItem(substituteItemCode);
-        Catalog.deleteSubstituteItem(substituteItemCode);
+        Catalog.navigateToSubstituteTab();
+        Catalog.deleteSubstituteItem(substituteItemName);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in Removing substitute item");
+        Catalog.navigateToSubstituteTab();
         softAssert.assertFalse(Catalog.isDeletedSubstituteItemDisplayedInPage(substituteItemCode),"Substitute Item not Removed");
         softAssert.assertAll();
     }

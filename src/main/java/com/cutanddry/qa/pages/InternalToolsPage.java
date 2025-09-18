@@ -81,9 +81,9 @@ public class InternalToolsPage extends LoginPage {
     String defaultViewForPortalUsersDropDownOption = "(//div[text()='TYPE'])[last()]";
     By manualOrderQuantityCalculationToggleStable = By.xpath("//div[contains(text(), 'Enable manual Order Quantity calculation in OG:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By manualOrderQuantityCalculationToggleStable1 = By.xpath("//div[contains(text(), 'Enable manual Order Quantity calculation in OG:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
-
-
-
+    By supplierPortalAccountHoldAlerts = By.xpath("//div[contains(text(),'Enable Account Hold Alerts for Supplier Portal')]/following-sibling::div//div[@class='react-switch-handle']");
+    By preAuthfeature = By.xpath("(//*[contains(text(),'Allow hard hold customer to place order by pre-auth Credit Card')]/following-sibling::div//input)[1]");
+    By preAuthDpPortal =By.xpath("//*[contains(text(),'Allow hard hold customer to place order by pre-auth Credit Card on DP portal')]/following-sibling::div//input");
 
 
 
@@ -515,6 +515,35 @@ public class InternalToolsPage extends LoginPage {
         } else if (!enable && isEnabled) {
             distributorUI.clickWithScrollAndHover(manualOrderQuantityCalculationToggleStable1);
         }
+    }
+
+    public void enableAccountHoldAlerts(boolean enable) {
+        String handlePosition = distributorUI.getElement(supplierPortalAccountHoldAlerts).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(supplierPortalAccountHoldAlerts);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(supplierPortalAccountHoldAlerts);
+        }
+    }
+
+    public void enablePreAuth(boolean enable) {
+        boolean isCheckedFeature = distributorUI.getElement(preAuthfeature).isSelected();
+        boolean isCheckedDpPortal = distributorUI.getElement(preAuthDpPortal).isSelected();
+
+        if (enable && !isCheckedDpPortal ) {
+            distributorUI.click(preAuthDpPortal); // Check the box if not checked
+        }if (enable && !isCheckedFeature ) {
+            distributorUI.click(preAuthfeature); // Check the box if not checked
+        }
+        else if (!enable && isCheckedDpPortal) {
+            distributorUI.click(preAuthDpPortal); // Uncheck the box if already checked
+        }
+        else if (!enable && isCheckedFeature) {
+            distributorUI.click(preAuthfeature); // Uncheck the box if already checked
+        }
+
     }
 
 
