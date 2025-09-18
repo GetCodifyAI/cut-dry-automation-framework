@@ -222,7 +222,7 @@ By input_selectItem = By.xpath("//div[contains(text(),'Search items by name or c
     By RemoveUserTxt = By.xpath("//span[contains(text(),'Remove user')]");
     By DeleteCnfrmOverlay = By.xpath("//h2[contains(text(),'Are you sure you want to remove this user')]");
     By DeleteCnfrmYesBtn = By.xpath("//button[contains(text(),'Yes')]");
-    By txt_pkgDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Each']");
+    By txt_pkgDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Pkg']");
     By btn_hide = By.xpath("//button[contains(text(), 'Hide Item')]");
     By txt_editItem = By.xpath("//div[contains(text(), 'Edit Item')]");
     By btn_unhide = By.xpath("//button[contains(text(), 'Save and Unhide Item')]");
@@ -275,7 +275,7 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By lbl_mailDelivery = By.xpath("//span[text()='Mail Delivery']");
     By txt_customers = By.xpath("//h2[text()='Customers']");
     By btn_salesperson = By.xpath("(//div[contains(@class, 'themed_select__value-container') and contains(@class, 'themed_select__value-container--has-value')])[1]");
-    By btn_salespersonOption = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and normalize-space(text())='Amir IFC']");
+    By btn_salespersonOption = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and normalize-space(text())='Amir Ifc']");
     String salespersonName = "//tr//td[6]//div[normalize-space(text())='SALESPERSON']";
     By btn_manageCustomers = By.xpath("//span[contains(text(), 'Manage Customers')]");
     By btn_exportCustomers = By.xpath("//a[contains(text(), 'Export customers(csv)')]");
@@ -733,7 +733,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String addedOrderGuide = "(//label[contains(text(), 'CHILDACC')]/../following-sibling::div//div[contains(text(),'NAME')])[last()]";
     String updateChildAccountSettings = "//div[contains(text(),'MESSAGE')]";
     String dropDownOrderGuide =  "(//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'NAME')])[last()]";
-    By btn_deleteOrderGuide = By.xpath("//a[contains(text(), 'Delete Order Guide')]");
+    By btn_deleteOrderGuide = By.xpath("//*[contains(text(), 'Delete Order Guide')]");
     String deliveryDateCustomerOrder = "//*[contains(text(),'#') and text()='ID']/../../preceding-sibling::td[1][text()='DATE']";
     By btn_pickUpDateStable = By.xpath("//div[text()='Pickup Date:']/../following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
     String dynamicToXPathStable = "//div[contains(@class,'react-datepicker__day')]/preceding::div[contains(@class, 'react-datepicker__day') and contains(@aria-disabled, 'false') and text()='DAY']";

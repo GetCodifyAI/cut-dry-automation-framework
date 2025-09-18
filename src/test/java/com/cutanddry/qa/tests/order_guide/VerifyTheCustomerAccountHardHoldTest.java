@@ -4,7 +4,9 @@ import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
+import com.cutanddry.qa.functions.InternalTools;
 import com.cutanddry.qa.functions.Login;
+import com.cutanddry.qa.pages.InternalToolsPage;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -16,6 +18,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheCustomerAccountHardHoldTest extends TestBase {
     static User user;
     static String customerId = "16579";
+    String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
 
     @BeforeMethod
     public void setUp(){
@@ -27,7 +30,20 @@ public class VerifyTheCustomerAccountHardHoldTest extends TestBase {
     public void VerifyTheCustomerAccountHardHold() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();
-        Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
+        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
+        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+
+        //Pre Requisites
+        Login.navigateToInternalToolsPage();
+        InternalTools.navigateToConfigureSupplier();
+        InternalTools.navigateToIndependentCompEditDetails();
+        InternalTools.navigateToOrderingSettingsTab();
+        InternalTools.setEnableAccountHoldAlerts(true);
+        InternalTools.navigateToPayDetailsTab();
+        InternalTools.setEnablePreAuthFeature(false);
+
+        Login.switchIntoNewTab();
+        Login.navigateToDistributorPortal(DistributorName);
         Dashboard.isUserNavigatedToDashboard();
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCustomers();
