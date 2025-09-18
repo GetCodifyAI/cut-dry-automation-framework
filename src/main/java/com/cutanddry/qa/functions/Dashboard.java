@@ -199,4 +199,48 @@ public class Dashboard {
     }
     public static void refreshDashBoardPage(){dashboardPage.refreshDashBoardPage();}
 
+    public static void navigateToFirstTimeOrdersTableView() {
+        dashboardPage.navigateToFirstTimeOrdersTableView();
+    }
+
+    public static boolean isFirstTimeOrdersTableViewDisplayed() {
+        return dashboardPage.isFirstTimeOrdersTableViewDisplayed();
+    }
+
+    public static boolean isDownloadReportButtonVisible() {
+        return dashboardPage.isDownloadReportButtonVisible();
+    }
+
+    public static void selectDateRange(String dateRange) {
+        dashboardPage.selectDateRange(dateRange);
+    }
+
+    public static boolean isFirstTimeOrdersDataUpdated() {
+        return dashboardPage.isFirstTimeOrdersDataUpdated();
+    }
+
+    public static boolean isFirstTimeOrdersDataFiltered() {
+        return dashboardPage.isFirstTimeOrdersDataFiltered();
+    }
+
+    public static void clickDownloadReportButton() {
+        dashboardPage.clickDownloadReportButton();
+    }
+
+    public static boolean isExportModalDisplayed() {
+        return dashboardPage.isExportModalDisplayed();
+    }
+
+    public static void inputEmailInExportModal(String email) {
+        dashboardPage.inputEmailInExportModal(email);
+    }
+
+    public static void clickConfirmInExportModal() {
+        dashboardPage.clickConfirmInExportModal();
+    }
+
+    public static boolean isGeneratingReportPopupDisplayed() {
+        return dashboardPage.isGeneratingReportPopupDisplayed();
+    }
+
 }

@@ -17,6 +17,7 @@ public class AioAPIHelper {
     private static final String ADD_CASE_TO_CYCLE = "/project/{projectKey}/testcycle/{cycleKey}/testcase/{caseKey}";
 
     private static final String GET_CYCLE_DETAILS = "/project/{projectKey}/testcycle/{cycleKey}/detail";
+    private static final String GET_TESTCASE_DETAILS = "/project/{projectKey}/testcase/{testCaseKey}/detail";
     private static final String CREATE_CYCLE = "/project/{projectKey}/testcycle/detail";
     private static final String MARK_CASE = "project/{projectKey}/testcycle/{cycleKey}/testcase/{caseKey}/testrun?createNewRun={createNewRun}";
     private static final String IMPORT_RESULTS = "/project/{projectKey}/testcycle/{cycleKey}/import/results?type={type}";
@@ -111,6 +112,12 @@ public class AioAPIHelper {
     public static Response doGet(String path, String ...pathParams) {
         Response response = given(defaultRequestSpec).when().get(path,pathParams).andReturn();
         response.prettyPrint();
+        return response;
+    }
+
+    public static Response getTestCaseDetails(String projectKey, String testCaseKey) {
+        System.out.println("Retrieving test case details for: " + testCaseKey + " in project: " + projectKey);
+        Response response = doGet(GET_TESTCASE_DETAILS, projectKey, testCaseKey);
         return response;
     }
 

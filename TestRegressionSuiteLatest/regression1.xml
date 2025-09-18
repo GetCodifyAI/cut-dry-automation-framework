@@ -51,6 +51,8 @@
             <class name="com.cutanddry.qa.tests.reports.VerifyThePaymentAuthorizationStatusDownloadReportTest"/>
             <class name="com.cutanddry.qa.tests.reports.VerifyTheTrackReadyOrdersDownloadReportTest"/>
 
+            <class name="com.cutanddry.qa.tests.dashboard.VerifyDownloadReportButtonFunctionalityInFirstTimeOrdersTest"/>
+
             <class name="com.cutanddry.qa.tests.roles_based_access.VerifyAdminRoleTest" />
             <class name="com.cutanddry.qa.tests.roles_based_access.VerifyARRoleTest" />
             <class name="com.cutanddry.qa.tests.roles_based_access.VerifySalespersonRoleTest" />
