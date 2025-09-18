@@ -577,6 +577,22 @@ public class Customer {
     public static boolean isSubstitutesPopupDisplayed(){
         return customersPage.isSubstitutesPopupDisplayed();
     }
+
+    public static void addItemToOrderGuideFromCatalog() {
+        customersPage.addItemToOrderGuideFromCatalog();
+    }
+
+    public static boolean isItemAddedToOrderGuide() {
+        return customersPage.isItemAddedToOrderGuide();
+    }
+
+    public static void removeItemFromOrderGuide() {
+        customersPage.removeItemFromOrderGuide();
+    }
+
+    public static boolean isItemRemovedFromOrderGuide() {
+        return customersPage.isItemRemovedFromOrderGuide();
+    }
     public static void clickDoNotSubstitute(){
         customersPage.clickDoNotSubstitute();
     }

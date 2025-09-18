@@ -129,4 +129,8 @@ public class Login {
         loginPage.clickOperator(operator);
         loginPage.clickOnLoginAsClassicAndSwitchToNewTab();
     }
+
+    public static void loginAsOperator(String emailOrMobile, String password) throws InterruptedException {
+        logInToOperator(emailOrMobile);
+    }
 }
