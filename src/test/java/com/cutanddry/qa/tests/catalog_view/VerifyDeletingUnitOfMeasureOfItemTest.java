@@ -51,11 +51,13 @@ public class VerifyDeletingUnitOfMeasureOfItemTest extends TestBase {
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in creating UOM");
 
         // Testing flow
+        Catalog.navigateToPricingAndPromotions();
         Catalog.deleteUOMFromCatalog();
         softAssert.assertTrue(Catalog.deleteUOMOverlayDisplayed(),"UOM delete overlay displaying ERROR");
         Catalog.DeleteConfirm();
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving the changes after UOM Delete");
+        Catalog.navigateToPricingAndPromotions();
         softAssert.assertFalse(Catalog.isDeletedUOMDisplayed(),"Error in deleting the UOM");
 
         softAssert.assertAll();

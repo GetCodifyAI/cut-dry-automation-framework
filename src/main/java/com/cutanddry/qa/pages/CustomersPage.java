@@ -775,7 +775,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String catalogToolTip = "//span[@data-tip=\"NAME\"]";
     String catalogFilter = "//div[contains(text(),'FILTER')]";
     String itemTypeFilterDropDownOption = "//div[contains(text(), 'Item Type')]/../../following-sibling::div//*[name()='svg' and @data-icon='square']/following-sibling::div[contains(text(), 'FILTER')]";
-    String newItemTagCatalog = "//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]/../../following-sibling::div//span[text()='TAG']";
+    String newItemTagCatalog = "//div[contains(text(), 'NAME')]/ancestor::div[contains(@class, 'mb-2')]/following-sibling::div//span[contains(text(), 'TAG')]";
     String catalogSearchItemCode = "//div[contains(@class,'card-deck')]//div[contains(., 'CODE')]";
     String pONumberError = "//h2[text()='ERROR']";
     String distributorCenter = "//div[contains(text(),'Distribution Center')]/../../following-sibling::div//*[text()='CENTER']";
@@ -4698,6 +4698,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(By.xpath(catalogFilter.replace("FILTER", filter)));
     }
     public boolean isCatalogFilterDisplayTag(String name,String tag){
+        distributorUI.waitForVisibility(By.xpath(newItemTagCatalog.replace("NAME", name).replace("TAG",tag)));
         return distributorUI.isDisplayed(By.xpath(newItemTagCatalog.replace("NAME", name).replace("TAG",tag)));
     }
     public boolean isCatalogSearchItemCodeDisplay(String code){
