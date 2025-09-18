@@ -243,4 +243,44 @@ public class Dashboard {
         return dashboardPage.isGeneratingReportPopupDisplayed();
     }
 
+    public static boolean isOrderGuideChangesSectionDisplayed() {
+        return dashboardPage.isOrderGuideChangesSectionDisplayed();
+    }
+
+    public static boolean areOrderGuideChangesDisplayed() {
+        return dashboardPage.areOrderGuideChangesDisplayed();
+    }
+
+    public static void selectOrderGuideChangesDateRange(String dateRange) {
+        dashboardPage.selectOrderGuideChangesDateRange(dateRange);
+    }
+
+    public static boolean isOrderGuideChangesDataUpdated() {
+        return dashboardPage.isOrderGuideChangesDataUpdated();
+    }
+
+    public static void clickOrderGuideChangesViewAll() {
+        dashboardPage.clickOrderGuideChangesViewAll();
+    }
+
+    public static boolean isOrderGuideChangesFullScreenDisplayed() {
+        return dashboardPage.isOrderGuideChangesFullScreenDisplayed();
+    }
+
+    public static void selectOrderGuideChangesRestaurant(String restaurant) {
+        dashboardPage.selectOrderGuideChangesRestaurant(restaurant);
+    }
+
+    public static boolean isOrderGuideChangesFilteredByRestaurant() {
+        return dashboardPage.isOrderGuideChangesFilteredByRestaurant();
+    }
+
+    public static void selectOrderGuideChangesSalesperson(String salesperson) {
+        dashboardPage.selectOrderGuideChangesSalesperson(salesperson);
+    }
+
+    public static boolean isOrderGuideChangesFilteredBySalesperson() {
+        return dashboardPage.isOrderGuideChangesFilteredBySalesperson();
+    }
+
 }

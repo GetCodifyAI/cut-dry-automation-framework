@@ -460,4 +460,90 @@ public class DashboardPage extends LoginPage{
         }
     }
 
+    By section_orderGuideChanges = By.xpath("//div[contains(text(), 'Order Guide Changes')]");
+    By data_orderGuideChanges = By.xpath("//div[contains(@class, 'order-guide-changes-data')]");
+    By dropdown_orderGuideChangesDateRange = By.xpath("//div[contains(@class, 'order-guide-changes-date-range')]");
+    By btn_orderGuideChangesViewAll = By.xpath("//button[contains(text(), 'View All')]");
+    By screen_orderGuideChangesFullScreen = By.xpath("//h3[contains(text(), 'Order Guide Changes')]");
+    By dropdown_orderGuideChangesRestaurant = By.xpath("//div[contains(@class, 'restaurant-dropdown')]");
+    By dropdown_orderGuideChangesSalesperson = By.xpath("//div[contains(@class, 'salesperson-dropdown')]");
+    By table_orderGuideChangesData = By.xpath("//table[contains(@class, 'order-guide-changes')]");
+
+    public boolean isOrderGuideChangesSectionDisplayed() {
+        try {
+            distributorUI.waitForVisibility(section_orderGuideChanges);
+            return distributorUI.isDisplayed(section_orderGuideChanges);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean areOrderGuideChangesDisplayed() {
+        try {
+            distributorUI.waitForVisibility(data_orderGuideChanges);
+            return distributorUI.isDisplayed(data_orderGuideChanges);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void selectOrderGuideChangesDateRange(String dateRange) {
+        distributorUI.click(dropdown_orderGuideChangesDateRange);
+        distributorUI.waitForVisibility(By.xpath("//div[text()='" + dateRange + "']"));
+        distributorUI.click(By.xpath("//div[text()='" + dateRange + "']"));
+    }
+
+    public boolean isOrderGuideChangesDataUpdated() {
+        try {
+            distributorUI.waitForVisibility(table_orderGuideChangesData);
+            return distributorUI.isDisplayed(table_orderGuideChangesData);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void clickOrderGuideChangesViewAll() {
+        distributorUI.waitForClickability(btn_orderGuideChangesViewAll);
+        distributorUI.click(btn_orderGuideChangesViewAll);
+    }
+
+    public boolean isOrderGuideChangesFullScreenDisplayed() {
+        try {
+            distributorUI.waitForVisibility(screen_orderGuideChangesFullScreen);
+            return distributorUI.isDisplayed(screen_orderGuideChangesFullScreen);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void selectOrderGuideChangesRestaurant(String restaurant) {
+        distributorUI.click(dropdown_orderGuideChangesRestaurant);
+        distributorUI.waitForVisibility(By.xpath("//div[text()='" + restaurant + "']"));
+        distributorUI.click(By.xpath("//div[text()='" + restaurant + "']"));
+    }
+
+    public boolean isOrderGuideChangesFilteredByRestaurant() {
+        try {
+            distributorUI.waitForVisibility(table_orderGuideChangesData);
+            return distributorUI.isDisplayed(table_orderGuideChangesData);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void selectOrderGuideChangesSalesperson(String salesperson) {
+        distributorUI.click(dropdown_orderGuideChangesSalesperson);
+        distributorUI.waitForVisibility(By.xpath("//div[text()='" + salesperson + "']"));
+        distributorUI.click(By.xpath("//div[text()='" + salesperson + "']"));
+    }
+
+    public boolean isOrderGuideChangesFilteredBySalesperson() {
+        try {
+            distributorUI.waitForVisibility(table_orderGuideChangesData);
+            return distributorUI.isDisplayed(table_orderGuideChangesData);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }
