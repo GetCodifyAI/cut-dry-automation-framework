@@ -199,4 +199,88 @@ public class Dashboard {
     }
     public static void refreshDashBoardPage(){dashboardPage.refreshDashBoardPage();}
 
+    public static void navigateToFirstTimeOrdersTableView() {
+        dashboardPage.navigateToFirstTimeOrdersTableView();
+    }
+
+    public static boolean isFirstTimeOrdersTableViewDisplayed() {
+        return dashboardPage.isFirstTimeOrdersTableViewDisplayed();
+    }
+
+    public static boolean isDownloadReportButtonVisible() {
+        return dashboardPage.isDownloadReportButtonVisible();
+    }
+
+    public static void selectDateRange(String dateRange) {
+        dashboardPage.selectDateRange(dateRange);
+    }
+
+    public static boolean isFirstTimeOrdersDataUpdated() {
+        return dashboardPage.isFirstTimeOrdersDataUpdated();
+    }
+
+    public static boolean isFirstTimeOrdersDataFiltered() {
+        return dashboardPage.isFirstTimeOrdersDataFiltered();
+    }
+
+    public static void clickDownloadReportButton() {
+        dashboardPage.clickDownloadReportButton();
+    }
+
+    public static boolean isExportModalDisplayed() {
+        return dashboardPage.isExportModalDisplayed();
+    }
+
+    public static void inputEmailInExportModal(String email) {
+        dashboardPage.inputEmailInExportModal(email);
+    }
+
+    public static void clickConfirmInExportModal() {
+        dashboardPage.clickConfirmInExportModal();
+    }
+
+    public static boolean isGeneratingReportPopupDisplayed() {
+        return dashboardPage.isGeneratingReportPopupDisplayed();
+    }
+
+    public static boolean isOrderGuideChangesSectionDisplayed() {
+        return dashboardPage.isOrderGuideChangesSectionDisplayed();
+    }
+
+    public static boolean areOrderGuideChangesDisplayed() {
+        return dashboardPage.areOrderGuideChangesDisplayed();
+    }
+
+    public static void selectOrderGuideChangesDateRange(String dateRange) {
+        dashboardPage.selectOrderGuideChangesDateRange(dateRange);
+    }
+
+    public static boolean isOrderGuideChangesDataUpdated() {
+        return dashboardPage.isOrderGuideChangesDataUpdated();
+    }
+
+    public static void clickOrderGuideChangesViewAll() {
+        dashboardPage.clickOrderGuideChangesViewAll();
+    }
+
+    public static boolean isOrderGuideChangesFullScreenDisplayed() {
+        return dashboardPage.isOrderGuideChangesFullScreenDisplayed();
+    }
+
+    public static void selectOrderGuideChangesRestaurant(String restaurant) {
+        dashboardPage.selectOrderGuideChangesRestaurant(restaurant);
+    }
+
+    public static boolean isOrderGuideChangesFilteredByRestaurant() {
+        return dashboardPage.isOrderGuideChangesFilteredByRestaurant();
+    }
+
+    public static void selectOrderGuideChangesSalesperson(String salesperson) {
+        dashboardPage.selectOrderGuideChangesSalesperson(salesperson);
+    }
+
+    public static boolean isOrderGuideChangesFilteredBySalesperson() {
+        return dashboardPage.isOrderGuideChangesFilteredBySalesperson();
+    }
+
 }

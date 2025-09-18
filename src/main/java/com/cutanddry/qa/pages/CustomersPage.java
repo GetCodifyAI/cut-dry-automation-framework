@@ -5000,4 +5000,44 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickUpdateEligibilityDropDownOption(){
         distributorUI.click(updateEligibilityDropDownOption);
     }
+
+    public void addItemToOrderGuideFromCatalog() {
+        try {
+            distributorUI.waitForClickability(btn_catalog);
+            distributorUI.click(btn_catalog);
+            distributorUI.waitForVisibility(tbx_catalogSearch);
+            distributorUI.sendKeys(tbx_catalogSearch, "Test Item");
+            distributorUI.waitForClickability(By.xpath("//button[contains(text(), 'Add to Order Guide')]"));
+            distributorUI.click(By.xpath("//button[contains(text(), 'Add to Order Guide')]"));
+        } catch (Exception e) {
+            System.out.println("Error adding item to order guide: " + e.getMessage());
+        }
+    }
+
+    public boolean isItemAddedToOrderGuide() {
+        try {
+            distributorUI.waitForVisibility(By.xpath("//div[contains(text(), 'Item added to Order Guide')]"));
+            return distributorUI.isDisplayed(By.xpath("//div[contains(text(), 'Item added to Order Guide')]"));
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void removeItemFromOrderGuide() {
+        try {
+            distributorUI.waitForClickability(By.xpath("//button[contains(text(), 'Remove from Order Guide')]"));
+            distributorUI.click(By.xpath("//button[contains(text(), 'Remove from Order Guide')]"));
+        } catch (Exception e) {
+            System.out.println("Error removing item from order guide: " + e.getMessage());
+        }
+    }
+
+    public boolean isItemRemovedFromOrderGuide() {
+        try {
+            distributorUI.waitForVisibility(By.xpath("//div[contains(text(), 'Item removed from Order Guide')]"));
+            return distributorUI.isDisplayed(By.xpath("//div[contains(text(), 'Item removed from Order Guide')]"));
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
