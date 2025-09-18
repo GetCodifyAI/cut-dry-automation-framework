@@ -32,7 +32,7 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
     By txt_previewCat = By.xpath("//div[text()='Catalog Preview']");
     By txt_firstItemDetails = By.xpath("//tbody/tr[1]");
     String itemInTheGrid = "//tr[contains(@class,'_du1frc')]//td[text()='ITEMCODE']";
-    By ItemCodeInCatalogData = By.xpath("//input[contains(@placeholder, 'Manufacturer Product Code')]");
+    By ItemCodeInCatalogData = By.xpath("//div[normalize-space(.)='Product Code (SKU)']/ancestor::div[2]/following-sibling::div//input");
     By productConfigsEditBtn = By.xpath("//*[contains(text(),'Product Configuration')]/following-sibling::button");
     By saveChangesBtn = By.xpath("//button[text()='Save']");
     By successOverlay = By.xpath("//div[contains(text(),'successfully saved!')]");
@@ -146,7 +146,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     By storageMethodDropDown = By.xpath("//label[contains(text(), 'Storage Method')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
     String storageMethodOption = "(//div[contains(text(),'STORAGEMETHOD') and contains(@class,'themed_select__option')])[last()]";
     String txt_storageMethod = "//tr//td//div[contains(text(),'STORAGEMETHOD')]";
-    By txt_description = By.xpath("(//textarea[@class='form-control'])[1]");
+    By textdescriptionTab = By.xpath("//div[normalize-space(.)='Description']");
+    By txt_description = By.xpath("//textarea[starts-with(normalize-space(@placeholder),'Type the Product Description')]");
     String newDescription = " //div[contains(text(),'DESCRIPTION')]";
     By onSaleRadioButton = By.xpath("//*[contains(text(),'On Sale')]/../following-sibling::div/div");
     By newArrivalRadioButton = By.xpath("//*[contains(text(),'New Arrival')]/../following-sibling::div/div");
@@ -622,6 +623,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         distributorUI.click(btn_continue);
     }
     public boolean isItemCreatedPopupDisplayed(){
+        distributorUI.waitForVisibility(txt_itemCreated);
         return  distributorUI.isDisplayed(txt_itemCreated);
     }
     public void clickOnClose(){
@@ -807,6 +809,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         return distributorUI.isDisplayed(By.xpath(txt_storageMethod.replace("STORAGEMETHOD",storageMethod)));
     }
     public void typeNewDescription(String description) throws InterruptedException {
+        distributorUI.scrollToElement(textdescriptionTab);
+        distributorUI.click(textdescriptionTab);
         distributorUI.click(txt_description);
         distributorUI.clear(txt_description);
         distributorUI.waitForCustom(1000);
