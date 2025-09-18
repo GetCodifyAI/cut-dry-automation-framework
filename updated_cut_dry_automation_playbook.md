@@ -529,6 +529,51 @@ public class TestStep {
 - **Lifecycle Management**: Include proper setup and teardown methods
 - **Code Reuse**: Leverage existing page object methods and function layer implementations
 
+### Test Layer Architecture (MANDATORY)
+- **No Logic in Test Layer**: Test classes must contain NO business logic - all logic belongs in page layer or function layer
+- **Variable Assignment**: Variables passed to methods in test layer must be assigned to a variable first, never pass direct values
+- **Clean Test Structure**: Test methods should only contain: setup, method calls with assigned variables, and assertions
+- **Page Layer Responsibility**: All UI interactions, waits, and element manipulations belong in page object classes
+- **Function Layer Responsibility**: Business workflows and complex operations belong in function classes
+
+**Example - CORRECT Test Layer Structure:**
+```java
+@Test(groups = "DOT-TC-1815")
+public void verifyDownloadReportButtonFunctionality() {
+    String customerId = CustomerData.CUSTOMER_CODE3;
+    String reportType = "first-time-orders";
+    
+    Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
+    Dashboard.navigateToReports();
+    Reports.selectReportType(reportType);
+    Reports.downloadReport();
+    
+    softAssert.assertTrue(Reports.isReportDownloaded(), "Report should be downloaded successfully");
+    softAssert.assertAll();
+}
+```
+
+**Example - INCORRECT Test Layer Structure:**
+```java
+@Test(groups = "DOT-TC-1815")
+public void verifyDownloadReportButtonFunctionality() {
+    // WRONG: Logic in test layer
+    if (user.getRole().equals("admin")) {
+        Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
+    }
+    
+    // WRONG: Direct value passing without variable assignment
+    Dashboard.navigateToReports();
+    Reports.selectReportType("first-time-orders");
+    
+    // WRONG: UI logic in test layer
+    WebElement downloadBtn = driver.findElement(By.id("download-btn"));
+    downloadBtn.click();
+    
+    softAssert.assertAll();
+}
+```
+
 ## Validation Checklist
 
 ### Pre-Implementation
