@@ -127,8 +127,5 @@ def runTestSuite(String suiteFile, String partName) {
             -DSTAGING_SLACK_WEBHOOK=${STAGING_SLACK_WEBHOOK} \\
             -Dcreate.cycle=true \\
             -Dpart=${partName}
-        
-        # Generate HTML report
-        mvn surefire-report:report-only
     """
 }
