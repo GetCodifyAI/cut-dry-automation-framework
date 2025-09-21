@@ -42,16 +42,16 @@ public class VerifyMultipleSearchTermsAndNavigationTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToOrderGuide(), "Order guide navigation failed");
         
         Customer.searchItemOnOrderGuide(beefSearchTerm);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults().contains("beef") || 
-                             Customer.getFirstElementFrmSearchResults().length() > 0, 
+        String beefSearchResult = Customer.getFirstElementFrmSearchResults(beefSearchTerm);
+        softAssert.assertTrue(beefSearchResult != null && beefSearchResult.length() > 0, 
                              "Step 1: Beef search in order guide failed - no search results found");
         
         Customer.goToCatalog();
         softAssert.assertTrue(Customer.isUserNavigatedToCatalog(), "Step 2: Catalog navigation failed");
         
         Customer.searchItemOnCatalog(vegetablesSearchTerm);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults().contains("vegetable") || 
-                             Customer.getFirstElementFrmSearchResults().length() > 0, 
+        String vegetableSearchResult = Customer.getFirstElementFrmSearchResults(vegetablesSearchTerm);
+        softAssert.assertTrue(vegetableSearchResult != null && vegetableSearchResult.length() > 0, 
                              "Step 2: Vegetables search in catalog failed - no search results found");
         
         Customer.clearSearchField();
