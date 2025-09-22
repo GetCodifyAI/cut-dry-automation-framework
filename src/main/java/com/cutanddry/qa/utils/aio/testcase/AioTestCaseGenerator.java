@@ -12,11 +12,14 @@ public class AioTestCaseGenerator {
         String testCaseId = args[0];
         System.out.println("Generating test for AIO test case: " + testCaseId);
         
+        System.setProperty("aio.generation.mode", "true");
+        
         try {
             AioTestCase testCase = AioTestCaseRetriever.getTestCaseDetails(testCaseId);
             
             if (testCase == null) {
                 System.err.println("Failed to retrieve test case details for: " + testCaseId);
+                System.err.println("This may be due to network connectivity or API authentication issues");
                 System.exit(1);
             }
             
