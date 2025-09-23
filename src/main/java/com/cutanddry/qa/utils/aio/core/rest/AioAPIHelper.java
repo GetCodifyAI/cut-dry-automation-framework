@@ -169,4 +169,9 @@ public class AioAPIHelper {
         }
 
     }
+
+    public static Response getTestCaseDetail(String projectKey, String testCaseKey) {
+        String endpoint = "/project/" + projectKey + "/testcase/" + testCaseKey + "/detail";
+        return doGet(endpoint);
+    }
 }
