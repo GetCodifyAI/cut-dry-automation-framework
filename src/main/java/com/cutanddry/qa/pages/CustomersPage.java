@@ -609,6 +609,14 @@ By lbl_spotPrice = By.xpath("//div[contains(text(),'Price') and contains(text(),
     String customerScreenScanToOrderBtn = "//tr/td[contains(text(),'CUSTOMERCODE')]/..//a[contains(@href,'scan-to-order')]";
     String customerProfileScreenScanToOrderBtn = "//a[contains(@href,'scan-to-order')]";
 
+    By lbl_priceVisibility = By.xpath("//div[contains(text(), 'Price Visibility')]");
+    By lbl_priceVisibilityValue = By.xpath("//div[contains(text(), 'Price Visibility')]/following-sibling::div//div[@class='col']");
+    By btn_editPriceVisibility = By.xpath("//div[contains(text(), 'Price Visibility')]/parent::*//svg[@data-icon='pen-to-square']");
+    By dropdown_priceVisibilityOptions = By.xpath("//div[contains(@class, 'themed_select__menu')]");
+    By option_priceVisibilityHidden = By.xpath("//div[contains(@class, 'themed_select__option') and text()='Hidden']");
+    By option_priceVisibilityVisible = By.xpath("//div[contains(@class, 'themed_select__option') and text()='Visible']");
+    String lnk_customerByCode = "//td[contains(text(),'CODE')]";
+
     By btn_firstMultiOUM = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]");
     By lbl_firstMultiOUMItemName = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td//span/div[@data-tip='View Product Details']");
     By lbl_firstMultiOUMItemCode = By.xpath("(//*[local-name()='svg' and @data-icon='chevron-down'])[1]/ancestor::tr/td[2]");
@@ -5000,5 +5008,58 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickUpdateEligibilityDropDownOption(){
         distributorUI.click(updateEligibilityDropDownOption);
+    }
+
+    public void clickOnCustomerByCode(String customerCode) {
+        distributorUI.click(By.xpath(lnk_customerByCode.replace("CODE", customerCode)));
+    }
+
+    public boolean isPriceVisibilityDisplayed() {
+        try {
+            distributorUI.waitForVisibility(lbl_priceVisibility);
+            return distributorUI.isDisplayed(lbl_priceVisibility);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public String getPriceVisibilityValue() {
+        try {
+            distributorUI.waitForVisibility(lbl_priceVisibilityValue);
+            return distributorUI.getText(lbl_priceVisibilityValue);
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public void clickEditPriceVisibility() {
+        distributorUI.click(btn_editPriceVisibility);
+    }
+
+    public boolean isPriceVisibilityDropdownDisplayed() {
+        try {
+            distributorUI.waitForVisibility(dropdown_priceVisibilityOptions);
+            return distributorUI.isDisplayed(dropdown_priceVisibilityOptions);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void selectPriceVisibilityHidden() {
+        distributorUI.click(option_priceVisibilityHidden);
+    }
+
+    public void selectPriceVisibilityVisible() {
+        distributorUI.click(option_priceVisibilityVisible);
+    }
+
+    public boolean isPriceVisibilityValueUpdated(String expectedValue) {
+        try {
+            distributorUI.waitForCustom(2000);
+            String actualValue = getPriceVisibilityValue();
+            return actualValue.equals(expectedValue);
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

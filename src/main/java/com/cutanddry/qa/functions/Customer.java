@@ -2997,6 +2997,70 @@ public class Customer {
         customersPage.clickUpdateEligibilityDropDownOption();
     }
 
+    public static void navigateToCustomerProfile(String customerCode) {
+        try {
+            customersPage.clickOnCustomerByCode(customerCode);
+        } catch (Exception e) {
+            System.err.println("Failed to navigate to customer profile: " + e.getMessage());
+        }
+    }
+
+    public static boolean isPriceVisibilityDisplayed() {
+        try {
+            return customersPage.isPriceVisibilityDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public static String getPriceVisibilityValue() {
+        try {
+            return customersPage.getPriceVisibilityValue();
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public static void editPriceVisibility() {
+        try {
+            customersPage.clickEditPriceVisibility();
+        } catch (Exception e) {
+            System.err.println("Failed to click edit price visibility: " + e.getMessage());
+        }
+    }
+
+    public static boolean isPriceVisibilityDropdownDisplayed() {
+        try {
+            return customersPage.isPriceVisibilityDropdownDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public static void setPriceVisibilityToHidden() {
+        try {
+            customersPage.selectPriceVisibilityHidden();
+        } catch (Exception e) {
+            System.err.println("Failed to set price visibility to hidden: " + e.getMessage());
+        }
+    }
+
+    public static void setPriceVisibilityToVisible() {
+        try {
+            customersPage.selectPriceVisibilityVisible();
+        } catch (Exception e) {
+            System.err.println("Failed to set price visibility to visible: " + e.getMessage());
+        }
+    }
+
+    public static boolean verifyPriceVisibilityValue(String expectedValue) {
+        try {
+            return customersPage.isPriceVisibilityValueUpdated(expectedValue);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 
 }
 
