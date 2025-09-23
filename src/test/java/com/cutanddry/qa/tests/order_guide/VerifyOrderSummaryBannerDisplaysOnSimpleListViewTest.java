@@ -24,13 +24,14 @@ public class VerifyOrderSummaryBannerDisplaysOnSimpleListViewTest extends TestBa
     public void verifyOrderSummaryBannerDisplaysOnSimpleListView() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         
-        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), 
-            "Login error - user not navigated to restaurant dashboard");
-        
         Login.navigateToInternalToolsPage();
         Login.logInToOperator(operatorName);
+        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), 
+            "Login error - user not navigated to operator dashboard");
         
+        Dashboard.navigateToCustomers();
+        softAssert.assertTrue(Customer.isCustomersTextDisplayed(), 
+            "Failed to navigate to customers section");
         
         Customer.expandMoreOptionsDropdown();
         Customer.clickSimpleListView();
@@ -45,6 +46,8 @@ public class VerifyOrderSummaryBannerDisplaysOnSimpleListViewTest extends TestBa
         double totalPrice = Customer.getTotalPriceCart();
         softAssert.assertTrue(totalPrice > 0, 
             "Order Summary total price should be greater than 0");
+        softAssert.assertTrue(Customer.isOrderSummaryDisplayed(), 
+            "Order Summary banner not displayed on Simple List view");
         
         Customer.checkoutItems();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), 
@@ -57,7 +60,6 @@ public class VerifyOrderSummaryBannerDisplaysOnSimpleListViewTest extends TestBa
             "Item name mismatch between cart and review sections");
         
         Customer.submitOrder();
-        
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), 
             "Thank you for your order popup not displayed - order submission failed");
         

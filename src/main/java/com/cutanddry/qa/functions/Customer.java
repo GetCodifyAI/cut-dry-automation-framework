@@ -2881,6 +2881,13 @@ public class Customer {
     public static boolean isSimpleListViewTextDisplay()throws InterruptedException{
         return customersPage.isSimpleListViewTextDisplay();
     }
+    public static boolean isOrderSummaryDisplayed() {
+        try {
+            return customersPage.isOrderSummaryDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
     public static void clickSortOptionOG(String option)throws InterruptedException{
         customersPage.clickSortOptionOG(option);
     }
