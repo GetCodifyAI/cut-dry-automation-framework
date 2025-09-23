@@ -44,6 +44,7 @@ public class InternalToolsPage extends LoginPage {
     By deleteEmailNotificationToggleStable1 = By.xpath("//label[contains(text(), 'Customer User Deletion Email Notifications:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     By btn_notificationSave = By.xpath("//h5[text()='Notifications']/../following-sibling::div/button[text()='Save']");
     By enableSponsoredProductAdvertisementsToggle = By.xpath("//*[contains(text(), 'Enable Cut+Dry Sponsored Product Advertisements')]/../following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By instacartSponsoredProductAdvertisementsToggle = By.xpath("//*[contains(text(), 'Enable Instacart Sponsored Product Advertisements')]/../following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By enableSponsoredProductAdvertisementsToggle1 = By.xpath("//*[contains(text(), 'Enable Cut+Dry Sponsored Product Advertisements')]/../following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     String InternalToolCompanyEditDetailsBtn = "//tr[td[contains(text(),'NAME')]]//a[contains(text(),'Edit Details')]";
     By restrictSpotPricesToggleStable = By.xpath("//div[contains(text(), 'Restrict spot prices below minimum product price')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
@@ -222,6 +223,22 @@ public class InternalToolsPage extends LoginPage {
             distributorUI.clickWithScrollAndHover(enableSponsoredProductAdvertisementsToggle1);
         } else if (!enable && isEnabled) {
             distributorUI.clickWithScrollAndHover(enableSponsoredProductAdvertisementsToggle1);
+        }
+    }
+
+    public void clickInstacartSponsoredProductAdsToggle(boolean enable) {
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        String handlePosition = distributorUI.getElement(instacartSponsoredProductAdvertisementsToggle).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithFallback(instacartSponsoredProductAdvertisementsToggle);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithFallback(instacartSponsoredProductAdvertisementsToggle);
         }
     }
 

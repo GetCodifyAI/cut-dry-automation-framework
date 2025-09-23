@@ -222,8 +222,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     String lbl_cashAndCarryAllowedOption = "//*[contains(text(),'OPTION')]";
     By txt_actionableOverview = By.xpath("//div[text()='Actionable Overview']");
     By txt_newProduct = By.xpath("//div[text()='New Products']");
-    By specialItemDropDown = By.xpath("//label[contains(text(), 'Special Item')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
-    String specialItemStatus = "(//div[contains(text(),'STATUS') and contains(@class,'themed_select__option')])[last()]";
+    By specialItemDropDown = By.xpath("//div[normalize-space()='Special Item']/following::div[@id='config-specialItem']/div[1]");
+    String specialItemStatus = "(//div[contains(text(),'STATUS')])[last()]";
     By txt_updateOGPopup = By.xpath("//*[contains(text(),'Update order guides?')]");
     By btn_updateOGPopup = By.xpath("//button[contains(text(),'Confirm')]");
 

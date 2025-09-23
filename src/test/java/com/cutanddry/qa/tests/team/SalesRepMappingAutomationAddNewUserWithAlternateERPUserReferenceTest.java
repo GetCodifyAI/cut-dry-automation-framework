@@ -20,6 +20,7 @@ public class SalesRepMappingAutomationAddNewUserWithAlternateERPUserReferenceTes
     static int randomNumber = new Random().nextInt(1000);
     static String name = "Testuser02"+ randomNumber;
     static String email = "test"+randomNumber+"@email.com";
+    static String existingUserName = "Amir Ifc";
     static String ERPUserRef = "BBTest"+randomNumber;
     static String AlternateERPUserRef = "AATest"+randomNumber;
 
@@ -38,6 +39,12 @@ public class SalesRepMappingAutomationAddNewUserWithAlternateERPUserReferenceTes
 
         Dashboard.navigateToTeamSettings();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");
+
+        //adding the reference to existing user
+        Settings.editUserWithoutScroll(existingUserName);
+        Settings.enterERPUserRef(AlternateERPUserRef);
+        Settings.clickOnSaveChanges();
+
         Settings.clickOnAddUser();
         Settings.enterName(name);
         Settings.enterEmail(email);
