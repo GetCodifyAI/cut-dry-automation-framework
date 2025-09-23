@@ -52,6 +52,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By lbl_itemPriceCartRowOne = By.xpath("//tr[2]/td//span[contains(text(),'$')]");
     By lbl_cartTotal = By.xpath("//td[text()='Total']/following-sibling::td");
     By lbl_cartTotalReview = By.xpath("//td[text()='Total:']/following-sibling::td");
+    By lbl_orderSummaryBanner = By.xpath("//div[contains(text(),'$') and contains(text(),'/')]");
     By btn_submitOrder = By.xpath("//button[contains(text(),'Submit Order')]");
     By btn_duplicateOrderYes = By.xpath("//h2[contains(text(),'Duplicate Order')]/../..//button[text()='Yes']");
     By lbl_thankYouForOrder = By.xpath("//*[contains(text(),'Thank you for your order!')]");
@@ -5000,5 +5001,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickUpdateEligibilityDropDownOption(){
         distributorUI.click(updateEligibilityDropDownOption);
+    }
+    public boolean isOrderSummaryDisplayed() {
+        try {
+            return distributorUI.isDisplayed(lbl_orderSummaryBanner);
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
