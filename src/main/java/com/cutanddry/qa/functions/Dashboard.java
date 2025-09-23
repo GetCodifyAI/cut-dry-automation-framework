@@ -199,4 +199,28 @@ public class Dashboard {
     }
     public static void refreshDashBoardPage(){dashboardPage.refreshDashBoardPage();}
 
+    public static boolean isOrderGuideChangesModuleDisplayed() {
+        return dashboardPage.isOrderGuideChangesModuleDisplayed();
+    }
+
+    public static boolean verifyDistributorChangesExcluded() {
+        return dashboardPage.areDistributorPortalChangesExcluded();
+    }
+
+    public static String getOrderGuideChangesTooltip() {
+        return dashboardPage.getOrderGuideChangesTooltipText();
+    }
+
+    public static boolean isOrderGuideChangesDataSectionDisplayed() {
+        return dashboardPage.isOrderGuideChangesDataSectionDisplayed();
+    }
+
+    public static int getOrderGuideChangesItemCount() {
+        return dashboardPage.getOrderGuideChangesItemCount();
+    }
+
+    public static String getOrderGuideChangesDescription() {
+        return dashboardPage.getOrderGuideChangesDescription();
+    }
+
 }

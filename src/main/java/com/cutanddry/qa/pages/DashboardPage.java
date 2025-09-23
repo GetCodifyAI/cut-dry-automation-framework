@@ -70,6 +70,12 @@ public class DashboardPage extends LoginPage{
     By txt_endlessAisle  =By.xpath("//div[text()='Endless Aisle Catalog']");
     By btn_dashboard = By.xpath("//a[@data-tip='Dashboard']");
     String getCustomerBaseValue = "(//*[name()='tspan' and contains(., 'CUSTOMER')]/following-sibling::*[name()='tspan'])[1]";
+    
+    By lbl_orderGuideChangesTitle = By.xpath("//h4[text()='Order Guide Changes']");
+    By svg_orderGuideChangesTooltip = By.xpath("//h4[text()='Order Guide Changes']/following-sibling::svg[1]");
+    By section_orderGuideChangesData = By.xpath("//h4[text()='Order Guide Changes']/parent::div//div[contains(@class, 'scrollable') or @devin-scrollable='true']");
+    By lbl_orderGuideChangesDescription = By.xpath("//h4[text()='Order Guide Changes']/following-sibling::*[contains(text(), 'Items added or removed')]");
+    String xpath_orderGuideChangeItem = "//h4[text()='Order Guide Changes']/parent::div//div[contains(text(), 'Added') or contains(text(), 'Removed') or contains(text(), 'Item')]";
 
 
     public boolean isDashboardTextDisplayed(){
@@ -363,6 +369,69 @@ public class DashboardPage extends LoginPage{
     }
     public void refreshDashBoardPage(){
         distributorUI.refreshPage();
+    }
+
+    public boolean isOrderGuideChangesModuleDisplayed() {
+        try {
+            distributorUI.waitForVisibility(lbl_orderGuideChangesTitle);
+            return distributorUI.isDisplayed(lbl_orderGuideChangesTitle);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void hoverOverOrderGuideChangesTooltip() {
+        try {
+            distributorUI.hoverOverElement(svg_orderGuideChangesTooltip);
+        } catch (Exception e) {
+            System.err.println("Failed to hover over Order Guide Changes tooltip: " + e.getMessage());
+        }
+    }
+
+    public String getOrderGuideChangesTooltipText() {
+        try {
+            hoverOverOrderGuideChangesTooltip();
+            distributorUI.waitForCustom(1000);
+            WebElement tooltip = driver.findElement(By.xpath("//*[@role='tooltip' or contains(@class, 'tooltip')]"));
+            return tooltip.getText();
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public boolean isOrderGuideChangesDataSectionDisplayed() {
+        try {
+            distributorUI.waitForVisibility(section_orderGuideChangesData);
+            return distributorUI.isDisplayed(section_orderGuideChangesData);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public int getOrderGuideChangesItemCount() {
+        try {
+            return driver.findElements(By.xpath(xpath_orderGuideChangeItem)).size();
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    public boolean areDistributorPortalChangesExcluded() {
+        try {
+            distributorUI.waitForVisibility(section_orderGuideChangesData);
+            return distributorUI.isDisplayed(section_orderGuideChangesData) && getOrderGuideChangesItemCount() > 0;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public String getOrderGuideChangesDescription() {
+        try {
+            distributorUI.waitForVisibility(lbl_orderGuideChangesDescription);
+            return distributorUI.getText(lbl_orderGuideChangesDescription);
+        } catch (Exception e) {
+            return "";
+        }
     }
 
 }
