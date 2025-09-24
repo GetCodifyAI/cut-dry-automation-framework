@@ -26,7 +26,7 @@ public class VerifyCustomerProfileVisibilityTest extends TestBase{
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-674")
+    @Test(groups = "DOT-TC-1861")
     public void VerifyCustomerProfileVisibility() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
