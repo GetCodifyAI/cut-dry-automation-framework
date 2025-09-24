@@ -4,11 +4,13 @@ import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 public class DataSourceValidationDistributorPortalUserChangesExcludedTest extends TestBase {
+    SoftAssert softAssert;
     static User user;
 
     @BeforeMethod
@@ -19,13 +21,13 @@ public class DataSourceValidationDistributorPortalUserChangesExcludedTest extend
 
     @Test(groups = "DOT-TC-1799")
     public void dataSourceValidationDistributorPortalUserChangesExcluded() throws InterruptedException {
-        SoftAssert softAssert = new SoftAssert();
+        
+        softAssert = new SoftAssert();
         
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), 
-            "Login failed - user not navigated to distributor dashboard");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
         
-        softAssert.assertTrue(Dashboard.isOrderGuideChangesModuleDisplayed(),
+        Assert.assertTrue(Dashboard.isOrderGuideChangesModuleDisplayed(),
             "Order Guide Changes module not displayed on dashboard");
         
         boolean orderGuideChangesDataDisplayed = Dashboard.isOrderGuideChangesDataSectionDisplayed();
