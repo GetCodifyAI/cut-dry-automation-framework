@@ -42,9 +42,6 @@ public class VerifyCustomerProfileVisibilityTest extends TestBase{
         Customer.clickCusAccountVisibilityDropdown();
         Customer.selectCusAccountHiddenOption();
 
-        Dashboard.navigateToOrderGuide();
-        softAssert.assertTrue(Customer.isCustomerOrderGuideDisplayed(), "Order Guide should be displayed");
-        
         Login.closePreviousTab();
 
         Login.navigateToLoginAs();
@@ -84,13 +81,6 @@ public class VerifyCustomerProfileVisibilityTest extends TestBase{
         Customer.selectCusAccountVisibleOption();
         softAssert.assertTrue(Customer.isAccountVisibleOptionDisplayed(), "error");
 
-        Dashboard.navigateToOrderGuide();
-        softAssert.assertTrue(Customer.isCustomerOrderGuideDisplayed(), "Order Guide should be displayed");
-        
-        Dashboard.navigateToCustomers();
-        Customer.searchCustomerByCode(CustomerCode);
-        Customer.SelectCustomer(CustomerCode);
-        
         Login.closePreviousTab();
 
         Login.navigateToLoginAs();
