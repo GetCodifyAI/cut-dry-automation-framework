@@ -50,7 +50,7 @@ public class VerifyCustomerProfileVisibilityTest extends TestBase{
         Login.navigateToLoginAs();
         Login.logInToOperator(nameCus);
         Customer.clickCustomerPortalOrderIcon();
-        softAssert.assertTrue(Customer.isVisibleAddSupplierButton(), "error in visibility");
+        softAssert.assertFalse(Customer.isVisibleAddSupplierButton(), "Add Supplier button should not be visible when customer visibility is Hidden");
 
         Login.navigateToDistributorPortal(DistributorName);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
