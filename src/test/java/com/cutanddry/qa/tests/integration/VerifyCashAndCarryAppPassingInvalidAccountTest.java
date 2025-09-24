@@ -1,6 +1,7 @@
 package com.cutanddry.qa.tests.integration;
 
 import com.cutanddry.qa.base.TestBase;
+import com.cutanddry.qa.common.Constants;
 import com.cutanddry.qa.data.models.CashAndCarryAppUser;
 import com.cutanddry.qa.functions.CashAndCarry;
 import com.cutanddry.qa.functions.Customer;
@@ -23,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 
 public class VerifyCashAndCarryAppPassingInvalidAccountTest extends TestBase {
     static CashAndCarryAppUser user;
-    static String appURL = "https://dicarlo-uat.staging.cutanddry.com/market/dicarlo";
+    static String appURL = Constants.APP_URL;
     static String itemName = "Alfalfa Sprouts Cups";
 
     @BeforeMethod
