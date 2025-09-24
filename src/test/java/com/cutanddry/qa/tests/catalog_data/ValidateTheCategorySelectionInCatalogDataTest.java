@@ -17,6 +17,7 @@ public class ValidateTheCategorySelectionInCatalogDataTest extends TestBase {
     String itemCode = "00475";
     String newCategory = "Meat";
     String previousCategory = "Produce";
+    String newSubCategory = "Beef";
 
     @BeforeMethod
     public void setUp(){
@@ -32,14 +33,17 @@ public class ValidateTheCategorySelectionInCatalogDataTest extends TestBase {
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        Catalog.selectEditFromProductConfig();
         Catalog.clickOnCategory(newCategory);
+        Catalog.clickOnSubCategory(newSubCategory);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");
         Dashboard.navigateToCatalog();
         Catalog.selectCategory();
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
-        Catalog.clickOnCategory(previousCategory);
+        Catalog.selectEditFromProductConfig();
+        Catalog.removeCategory(newCategory);
         Catalog.saveChanges();
         softAssert.assertAll();
     }

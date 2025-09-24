@@ -430,6 +430,9 @@ public class Catalog {
     public static void selectCategory() throws InterruptedException {
         catalogPage.selectCategoryMeat();
     }
+    public static void removeCategory(String category){
+        catalogPage.deleteCategory(category);
+    }
     public static void clickOnSubCategory(String subCategory){
         catalogPage.clickOnSubCategory(subCategory);
     }
