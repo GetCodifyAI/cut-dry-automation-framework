@@ -73,7 +73,7 @@ public class DashboardPage extends LoginPage{
     
     By lbl_orderGuideChangesTitle = By.xpath("//h4[text()='Order Guide Changes']");
     By svg_orderGuideChangesTooltip = By.xpath("//h4[text()='Order Guide Changes']/following-sibling::svg[1]");
-    By section_orderGuideChangesData = By.xpath("//h4[text()='Order Guide Changes']/parent::div//div[contains(@class, 'scrollable') or @devin-scrollable='true']");
+    By section_orderGuideChangesData = By.xpath("//div[@devinid='34']");
     By lbl_orderGuideChangesDescription = By.xpath("//h4[text()='Order Guide Changes']/following-sibling::*[contains(text(), 'Items added or removed')]");
     String xpath_orderGuideChangeItem = "//h4[text()='Order Guide Changes']/parent::div//div[contains(text(), 'Added') or contains(text(), 'Removed') or contains(text(), 'Item')]";
 
@@ -401,8 +401,7 @@ public class DashboardPage extends LoginPage{
 
     public boolean isOrderGuideChangesDataSectionDisplayed() {
         try {
-            distributorUI.waitForVisibility(section_orderGuideChangesData);
-            return distributorUI.isDisplayed(section_orderGuideChangesData);
+            return driver.findElements(section_orderGuideChangesData).size() > 0;
         } catch (Exception e) {
             return false;
         }
