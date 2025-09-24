@@ -386,6 +386,8 @@ By sel_tagOption = By.xpath("//div[contains(@class, 'themed_select__option') and
     By icon_removeTag = By.xpath("//div[contains(text(),'Rep Orders')]/following-sibling::div");
     By txt_lastOrderDate = By.xpath("//div[contains(text(),'Last ordered on')]");
     By customersText = By.xpath("//h2[contains(text(),'Customers')]");
+    By lbl_orderSummaryBannerSimpleList = By.xpath("//button[@data-for='cartCheckoutButton' and contains(normalize-space(.), '$')]");
+    String orderSummaryValueSimpleList = "//div[contains(text(),'OPTION')]/following-sibling::div | //div[contains(text(),'OPTION')]/parent::div//following-sibling::div";
     By btn_accountVisibility = By.xpath("//div[contains(text(),'Visibility')]/following-sibling::div//*[@data-icon='pen-to-square']");
     By dropdown_visibility = By.xpath("(//*[local-name() = 'svg' and @class='css-19bqh2r'])[1]");
     By sel_hiddenOption = By.xpath("//div[contains(text(),'Hidden')]");
@@ -2152,6 +2154,25 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
             return false;
         }
         return distributorUI.isDisplayed(txt_customers);
+    }
+    public boolean isOrderSummaryBannerDisplayedInSimpleList(){
+        return distributorUI.isDisplayed(lbl_orderSummaryBannerSimpleList);
+    }
+    public boolean isOrderSummaryValuesUpdatedInSimpleList(){
+        try {
+            distributorUI.waitForCustom(2000);
+            return distributorUI.isDisplayed(lbl_orderSummaryBannerSimpleList);
+        } catch (InterruptedException e) {
+            return false;
+        }
+    }
+    public boolean isOrderSummaryValuesCorrectInReviewPage(){
+        try {
+            distributorUI.waitForCustom(2000);
+            return distributorUI.isDisplayed(lbl_cartTotalReview);
+        } catch (InterruptedException e) {
+            return false;
+        }
     }
     public void clickSalespersonDropDown(){
         distributorUI.click(btn_salesperson);

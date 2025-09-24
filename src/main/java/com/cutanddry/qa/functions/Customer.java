@@ -986,6 +986,15 @@ public class Customer {
     public static boolean isCustomersTextDisplayed(){
         return customersPage.isCustomersTextDisplayed();
     }
+    public static boolean isOrderSummaryBannerDisplayedInSimpleList(){
+        return customersPage.isOrderSummaryBannerDisplayedInSimpleList();
+    }
+    public static boolean isOrderSummaryValuesUpdatedInSimpleList(){
+        return customersPage.isOrderSummaryValuesUpdatedInSimpleList();
+    }
+    public static boolean isOrderSummaryValuesCorrectInReviewPage(){
+        return customersPage.isOrderSummaryValuesCorrectInReviewPage();
+    }
     public static void clickSalespersonDropDown(){customersPage.clickSalespersonDropDown();}
     public static void clickSalespersonOption(){customersPage.clickSalespersonOption();}
     public static boolean isSalespersonNameDisplayed(String salesperson){
