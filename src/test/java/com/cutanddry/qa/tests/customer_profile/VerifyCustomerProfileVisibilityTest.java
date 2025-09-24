@@ -70,6 +70,7 @@ public class VerifyCustomerProfileVisibilityTest extends TestBase{
         Login.logInToOperator(nameCus);
         Customer.clickCustomerPortalOrderIcon();
         softAssert.assertTrue(Customer.isOrderGuideVisibleCustomerPortal(), "error in visibility");
+        softAssert.assertTrue(Customer.isVisibleAddSupplierButton(), "Add Supplier button should be visible when customer visibility is Visible");
         softAssert.assertAll();
     }
 
