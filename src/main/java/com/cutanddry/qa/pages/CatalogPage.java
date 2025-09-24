@@ -172,7 +172,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     String multiUomDropDownOG = "(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg'])[1]";
     String multiUomDropDownOGArrow = "(//td[text()='CODE']/following-sibling::*//button/*[local-name()='svg'])[1]";
     By multiUomOption =By.xpath("//div[text()='Multiple Units']");
-    String getOGPriceUOM ="(//td[text()='CODE']/ancestor::tr/td[7]/div/div/div//span)[UOM]";
+    String getOGPriceUOM ="(//td[text()='CODE']/ancestor::tr//td//input[contains(@data-input,'quantityInput')]/ancestor::td/preceding-sibling::td[1]//span)[UOM]";
     String btn_OGAddToCartPlusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='plus'])[UOM]";
     String tbx_itemQuantityUOM = "(//td[text()='CODE']/following-sibling::*//div/input[@data-input ='quantityInput'])[UOM]";
     String btn_OGAddToCartMinusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='minus'])[UOM]";

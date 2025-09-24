@@ -15,6 +15,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyPDFGenerationForCatalogPDPTest extends TestBase {
     static User user;
+    static String itemCode = "00036";
 
     @BeforeMethod
     public void setUp(){
@@ -31,8 +32,7 @@ public class VerifyPDFGenerationForCatalogPDPTest extends TestBase {
         Dashboard.navigateToCatalog();
         Assert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.selectFirstProduct();
-        softAssert.assertTrue(Catalog.isSelectedProductDisplayed(),"navigation to product error");
-        Catalog.clickOnPreview();
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");        Catalog.clickOnPreview();
         softAssert.assertTrue(Catalog.isNavigatedToPreview(),"navigation to preview error");
         Catalog.DownloadPDF();
         softAssert.assertAll();
