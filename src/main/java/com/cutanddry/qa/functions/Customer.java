@@ -436,7 +436,7 @@ public class Customer {
     public static boolean isMinOrderBannerDisplayed(){
         return customersPage.isMinOrderBannerDisplayed();
     }
-    public static boolean isOrderMinPopupDisplayed(){
+    public static boolean isOrderMinPopupDisplayed() throws InterruptedException {
         return customersPage.isOrderMinPopupDisplayed();
     }
     public static void clickOnCustomerCode(String code){
@@ -496,7 +496,7 @@ public class Customer {
     public static boolean isStandingOrderSuccessPopupDisplayed(){
         return customersPage.isStandingOrderSuccessPopupDisplayed();
     }
-    public static void clickOnEditStandingOrder(){
+    public static void clickOnEditStandingOrder() throws InterruptedException {
         customersPage.clickOnEditStandingOrder();
     }
     public static void clickOnAddAnotherStandingOrder(){
@@ -2995,6 +2995,9 @@ public class Customer {
     public static void clickEligibilityOption(){
         customersPage.clickUpdateEligibilityDropDown();
         customersPage.clickUpdateEligibilityDropDownOption();
+    }
+    public static void SelectOrderMinimumFromProfile(String orderMinimum){
+        customersPage.selectOrderMinimum(orderMinimum);
     }
     public static String getOrderGuideSearchValue(){
         return customersPage.getOrderGuideSearchValue();

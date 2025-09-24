@@ -48,6 +48,7 @@ public class VerifyDpsHaveSpecialItemsOnCatalogDataWhenSupplierPortalEnabledTest
         Catalog.selectItemStatus(All);
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        Catalog.selectEditFromProductConfig();
         softAssert.assertTrue(Catalog.isSpecialItemDropDownDisplay(),"special item drop down display error");
         softAssert.assertAll();
     }

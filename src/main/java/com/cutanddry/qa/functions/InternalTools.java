@@ -151,6 +151,10 @@ public class InternalTools {
         internalToolsPage.clickSponsoredProductAdsToggle(enable);
         internalToolsPage.clickProductAdsSave();
     }
+    public static void ensureInstacartSponsoredProductAdsStatus(boolean enable) throws InterruptedException {
+        internalToolsPage.clickInstacartSponsoredProductAdsToggle(enable);
+        internalToolsPage.clickProductAdsSave();
+    }
     public static void ensureBuyerEdgePlatformRebateStatus(boolean enable) throws InterruptedException {
         internalToolsPage.clickConfigureSupplier();
         internalToolsPage.clickOnIndependentCompEditDetails();

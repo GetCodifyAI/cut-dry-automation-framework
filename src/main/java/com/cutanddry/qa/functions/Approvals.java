@@ -20,5 +20,41 @@ public class Approvals {
             customersPage.clickYesDuplicatePopup();
         }
     }
+
+    public static String getOrderApprovalCountWidgetDetails() throws InterruptedException {
+        return approvalsPage.getApprovalCountTextFromOrderApprovalWidget();
+    }
+
+    public static boolean isOrderApprovalCountWidgetDetailsViewAllDisplayed() throws InterruptedException {
+        return approvalsPage.getApprovalCountTextDisplayedFromOrderApprovalWidget();
+    }
+
+    public static String getOrderApprovalAccountCountWidgetDetails() throws InterruptedException {
+        return approvalsPage.getApprovalAccountCountTextFromOrderApprovalWidget();
+    }
+
+    public static boolean isOrderApprovalAccountCountWidgetDetailsViewAllDisplayed() throws InterruptedException {
+        return approvalsPage.getApprovalCountTextDisplayedFromOrderApprovalWidget();
+    }
+
+    public static void clearAllApprovalOrder(){
+        approvalsPage.clearAllOrderApprovals();
+    }
+
+    public static void selectViewAll(){
+        approvalsPage.clickViewAll();
+    }
+
+    public static String TotalPendingCount(String restuarentName){
+        return approvalsPage.getTotalPending(restuarentName);
+    }
+
+    public static boolean isPendingOrdersDisplayed(String restuarentName){
+        return approvalsPage.isPendingOrdersDisplayed(restuarentName);
+    }
+
+    public static void closeSummeryOverlay(){
+        approvalsPage.clickCloseSummeryOverlay();
+    }
 }
 
