@@ -847,6 +847,23 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By orderMinimumeditBtn = By.xpath("//*[contains(text(),'Order Minimum')]/following-sibling::div//*[local-name()='svg' and @data-icon='pen-to-square']");
     String orderMinimumSelectionRadioBtn = "//*[contains(text(),'ORDERMINIMUM')]/../input";
     By orderMinimumOverlayCloseBtn = By.xpath("//*[contains(text(),'Edit Order Minimum')]/../following-sibling::button/span[normalize-space()='×']");
+    By getOrderGuideSearch = By.xpath("//input[@id='order_flow_search' and @placeholder='Search order guide...']");
+    By getCatalogSearch = By.xpath("//input[@id='order_flow_search' and @placeholder='Search catalog...']");
+    By txt_noItemsOG = By.xpath("(//div[contains(text(), '0 Results')])[1]");
+    By txt_noItemsCatalog = By.xpath("(//div[contains(text(), '0 Results')])[last()]");
+    String lbl_catalogSearchItemPrice = "(//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]/../../following-sibling::div[2]//span[contains(text(),'PRICE')]";
+    String lbl_catalogSearchItemPriceList = "//td[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]/following-sibling::*//span[contains(text(),'PRICE')]";
+    By btn_gridView = By.xpath("//button//*[local-name()='svg' and @data-icon='cdNewGrid']");
+    By priceVisibilityEditBtn = By.xpath("//div[contains(text(), 'Price Visibility')]//following-sibling::div//div//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
+    By priceVisibilityDropDown = By.xpath("//div[contains(text(), 'Price Visibility')]//following-sibling::div/div/div/div");
+    String priceVisibilityOption = "//div[contains(text(), 'Price Visibility')]//following-sibling::*//div[text()='STATUS']";
+    By btn_placeOrderWhiteLabel = By.xpath("//button[contains(text(), 'Place Order')]");
+    By txt_catalogAllItems = By.xpath("(//div[text()='All Items'])[last()]");
+
+
+
+
+
 
 
 
@@ -5010,4 +5027,55 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         }
         distributorUI.click(orderMinimumOverlayCloseBtn);
     }
+    public String getOrderGuideSearchValue(){
+        return distributorUI.getText(getOrderGuideSearch, "value");
+    }
+    public String getCatalogSearchValue(){
+        return distributorUI.getText(getCatalogSearch, "value");
+    }
+    public void deleteSearchField(){
+        distributorUI.click(icon_deleteSearchItem);
+    }
+    public boolean isNoSearchResultOG(){
+        return distributorUI.isDisplayed(txt_noItemsOG);
+    }
+    public boolean isNoSearchResultCatalog(){
+        return distributorUI.isDisplayed(txt_noItemsCatalog);
+    }
+    public boolean getItemPriceOnCatalog(String name, String price) throws InterruptedException {
+        distributorUI.waitForCustom(4000);
+        return distributorUI.isDisplayed(By.xpath(lbl_catalogSearchItemPrice.replace("NAME", name).replace("PRICE", price)));
+    }
+    public boolean getItemPriceOnCatalogListView(String name, String price) throws InterruptedException {
+        distributorUI.waitForCustom(4000);
+        return distributorUI.isDisplayed(By.xpath(lbl_catalogSearchItemPriceList.replace("NAME", name).replace("PRICE", price)));
+    }
+    public void clickCatalogGridView()throws InterruptedException{
+        distributorUI.click(btn_gridView);
+        distributorUI.waitForCustom(2000);
+    }
+    public void clickEditPriceVisibility(){
+        distributorUI.isDisplayed(priceVisibilityEditBtn);
+        distributorUI.click(priceVisibilityEditBtn);
+    }
+    public void editPriceVisibilityStatus(String status){
+        distributorUI.click(priceVisibilityDropDown);
+        distributorUI.waitForVisibility(By.xpath(priceVisibilityOption.replace("STATUS", status)));
+        distributorUI.click(By.xpath(priceVisibilityOption.replace("STATUS", status)));
+    }
+    public void savePriceVisibilityChanges(){
+        distributorUI.clickWithScrollAndHover(Savebtn);
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void clickOnPlaceOrderWhiteLabel() {
+        distributorUI.click(btn_placeOrderWhiteLabel );
+    }
+    public boolean isCatalogAllItemsTxtDisplayed(){
+        return distributorUI.isDisplayed(txt_catalogAllItems);
+    }
+
 }

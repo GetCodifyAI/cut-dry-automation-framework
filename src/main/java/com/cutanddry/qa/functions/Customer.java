@@ -2999,6 +2999,48 @@ public class Customer {
     public static void SelectOrderMinimumFromProfile(String orderMinimum){
         customersPage.selectOrderMinimum(orderMinimum);
     }
+    public static String getOrderGuideSearchValue(){
+        return customersPage.getOrderGuideSearchValue();
+    }
+    public static String getCatalogSearchValue(){
+        return customersPage.getCatalogSearchValue();
+    }
+    public static void deleteSearchField(){
+       customersPage.deleteSearchField();
+    }
+    public static boolean isNoSearchResultOG(){
+        return customersPage.isNoSearchResultOG();
+    }
+    public static boolean isNoSearchResultCatalog(){
+        return customersPage.isNoSearchResultCatalog();
+    }
+    public static boolean getItemPriceOnCatalog(String name, String price) throws InterruptedException {
+        return customersPage.getItemPriceOnCatalog(name,price);
+    }
+    public static boolean getItemPriceOnCatalogListView(String name, String price) throws InterruptedException {
+        return customersPage.getItemPriceOnCatalogListView(name,price);
+    }
+    public static void clickCatalogGridView() throws InterruptedException {
+        customersPage.clickCatalogGridView();
+    }
+    public static void editStatusPriceVisibility(String status){
+        customersPage.clickEditPriceVisibility();
+        customersPage.editPriceVisibilityStatus(status);
+        customersPage.savePriceVisibilityChanges();
+    }
+    public static void clickOnPlaceOrderWhiteLabel() throws InterruptedException {
+        customersPage.clickOnPlaceOrderWhiteLabel();
+        if (Orders.isSelectOrderGuideDisplayed()){
+            Orders.selectOrderGuide("Test_Automation");
+        }
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+    }
+    public static boolean isCatalogAllItemsTxtDisplayed(){
+        return customersPage.isCatalogAllItemsTxtDisplayed();
+    }
+
 
 }
 
