@@ -29,10 +29,7 @@ public class VerifyCustomerProfileVisibilityTest extends TestBase{
     @Test(groups = "DOT-TC-1861")
     public void VerifyCustomerProfileVisibility() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
-        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-
-        Login.navigateToDistributorPortal(DistributorName);
+        Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(CustomerCode);
@@ -75,7 +72,7 @@ public class VerifyCustomerProfileVisibilityTest extends TestBase{
         
         
 
-        Login.navigateToDistributorPortal(DistributorName);
+        Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
         Dashboard.navigateToCustomers();
         softAssert.assertTrue(Customer.isCustomerListTextDisplayed(), "text error");
