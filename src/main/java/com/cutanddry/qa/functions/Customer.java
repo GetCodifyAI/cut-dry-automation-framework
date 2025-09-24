@@ -2996,6 +2996,34 @@ public class Customer {
         customersPage.clickUpdateEligibilityDropDown();
         customersPage.clickUpdateEligibilityDropDownOption();
     }
+    
+    public static void editPriceVisibility() throws InterruptedException {
+        customersPage.clickPriceVisibilityEdit();
+    }
+    
+    public static boolean isPriceVisibilityDisplayed() {
+        try {
+            return customersPage.isPriceVisibilityDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    public static boolean isPriceVisibilityDropdownDisplayed() {
+        try {
+            return customersPage.isPriceVisibilityDropdownDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    public static void setPriceVisibilityToHidden() throws InterruptedException {
+        customersPage.selectPriceVisibilityHidden();
+    }
+    
+    public static void setPriceVisibilityToVisible() throws InterruptedException {
+        customersPage.selectPriceVisibilityVisible();
+    }
 
 
 }
