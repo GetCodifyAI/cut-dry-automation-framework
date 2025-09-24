@@ -45,12 +45,35 @@ public class VerifyCustomerProfileVisibilityTest extends TestBase{
         Customer.clickCusAccountVisibilityDropdown();
         Customer.selectCusAccountHiddenOption();
 
+        Dashboard.navigateToOrderGuide();
+        softAssert.assertTrue(Customer.isCustomerOrderGuideDisplayed(), "Order Guide should be displayed");
+        
         Login.closePreviousTab();
 
         Login.navigateToLoginAs();
         Login.logInToOperator(nameCus);
         Customer.clickCustomerPortalOrderIcon();
         softAssert.assertFalse(Customer.isVisibleAddSupplierButton(), "Add Supplier button should not be visible when customer visibility is Hidden");
+        
+        softAssert.assertTrue(Customer.isOrderGuideVisibleCustomerPortal(), "Order Guide should be visible");
+        
+        Customer.increaseFirstRowQtyByOne();
+        softAssert.assertTrue(Integer.parseInt(Customer.getItemQtyFirstRow()) > 0, "Item quantity should be increased");
+        
+        Customer.checkoutItems();
+        softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "Review order screen should be displayed");
+        
+        
+        Customer.goToCatalog();
+        Customer.searchItemOnCatalog("test");
+        Customer.addItemToCartCatalog("test");
+        
+        Customer.submitOrder();
+        softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "Thank you popup should be displayed without total amount");
+        
+        Dashboard.navigateToHistory();
+        
+        
 
         Login.navigateToDistributorPortal(DistributorName);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
@@ -64,6 +87,13 @@ public class VerifyCustomerProfileVisibilityTest extends TestBase{
         Customer.selectCusAccountVisibleOption();
         softAssert.assertTrue(Customer.isAccountVisibleOptionDisplayed(), "error");
 
+        Dashboard.navigateToOrderGuide();
+        softAssert.assertTrue(Customer.isCustomerOrderGuideDisplayed(), "Order Guide should be displayed");
+        
+        Dashboard.navigateToCustomers();
+        Customer.searchCustomerByCode(CustomerCode);
+        Customer.SelectCustomer(CustomerCode);
+        
         Login.closePreviousTab();
 
         Login.navigateToLoginAs();
