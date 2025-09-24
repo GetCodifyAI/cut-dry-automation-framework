@@ -1,6 +1,7 @@
 package com.cutanddry.qa.tests.multi_uom;
 
 import com.cutanddry.qa.base.TestBase;
+import com.cutanddry.qa.common.Constants;
 import com.cutanddry.qa.data.models.CashAndCarryAppUser;
 import com.cutanddry.qa.data.testdata.CatalogData;
 import com.cutanddry.qa.functions.CashAndCarry;
@@ -16,11 +17,12 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheSelectingMultiUOMFromCashAndCarryFlowTest extends TestBase {
     static CashAndCarryAppUser user;
-    static String appURL = CatalogData.APP_URL;
+//    static String appURL = CatalogData.APP_URL;
     static String itemName = CatalogData.ITEM_NAME_DICARLO;
     String uom1 = CatalogData.MULTI_UOM_1;
     String uom2 = CatalogData.MULTI_UOM_2;
     static double itemPriceUOM1 ,itemPriceUOM2,totalPDPItemPrice;
+    static String appURL = Constants.APP_URL;
 
     @BeforeMethod
     public void setUp() {

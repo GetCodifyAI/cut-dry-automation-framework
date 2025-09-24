@@ -222,7 +222,7 @@ By input_selectItem = By.xpath("//div[contains(text(),'Search items by name or c
     By RemoveUserTxt = By.xpath("//span[contains(text(),'Remove user')]");
     By DeleteCnfrmOverlay = By.xpath("//h2[contains(text(),'Are you sure you want to remove this user')]");
     By DeleteCnfrmYesBtn = By.xpath("//button[contains(text(),'Yes')]");
-    By txt_pkgDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Pkg']");
+    By txt_pkgDropdownItem = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Each']");
     By btn_hide = By.xpath("//button[contains(text(), 'Hide Item')]");
     By txt_editItem = By.xpath("//div[contains(text(), 'Edit Item')]");
     By btn_unhide = By.xpath("//button[contains(text(), 'Save and Unhide Item')]");
@@ -1460,9 +1460,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(txt_success);
         return distributorUI.isDisplayed(txt_success);
     }
-    public void clickOnEditStandingOrder() throws InterruptedException {
+    public void clickOnEditStandingOrder() {
         distributorUI.click(btn_editStandingOrders);
-        distributorUI.waitForCustom(2000);
     }
     public void clickOnRemoveDelivery() {
         if (distributorUI.isDisplayed(btn_removeDelivery)){
@@ -4716,7 +4715,6 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(By.xpath(catalogFilter.replace("FILTER", filter)));
     }
     public boolean isCatalogFilterDisplayTag(String name,String tag){
-        distributorUI.waitForVisibility(By.xpath(newItemTagCatalog.replace("NAME", name).replace("TAG",tag)));
         return distributorUI.isDisplayed(By.xpath(newItemTagCatalog.replace("NAME", name).replace("TAG",tag)));
     }
     public boolean isCatalogSearchItemCodeDisplay(String code){
