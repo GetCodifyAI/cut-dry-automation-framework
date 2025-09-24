@@ -161,7 +161,7 @@ public class Customer {
     public static void addItemToCartCatalog(String ItemName) throws InterruptedException {
         customersPage.clickAddToCartCatalog(ItemName);
     }
-    public static String getItemQtyFirstRow(){
+    public static String getItemQtyFirstRow() throws InterruptedException {
         return customersPage.getItemQtyFirstRow();
     }
     public static double getItemPriceFirstRow(){

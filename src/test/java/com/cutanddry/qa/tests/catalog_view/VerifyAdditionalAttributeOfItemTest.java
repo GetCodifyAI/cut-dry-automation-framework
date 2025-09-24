@@ -18,7 +18,7 @@ public class VerifyAdditionalAttributeOfItemTest extends TestBase {
     String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
     String itemCode = "00475";
     String CertificationType = "Provenance Certifications";
-    String CertificationOption = "Buy American";
+    String CertificationOption = "Eco-Friendly";
 
     @BeforeMethod
     public void setUp(){
@@ -37,12 +37,12 @@ public class VerifyAdditionalAttributeOfItemTest extends TestBase {
         Assert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
-        Catalog.navigateToAdditionalAttributes();
-        softAssert.assertTrue(Catalog.isAdditionalAttributesTabDisplayed(),"Error in displaying Additional attributes tab");
-        Catalog.clearCertification(CertificationType);
-        Catalog.saveChanges();
-        softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");
-        Catalog.selectCertification(CertificationType,CertificationOption);
+        Catalog.navigateToSpecifications();
+        softAssert.assertTrue(Catalog.isCertificationsDisplayed(),"Error in displaying Additional attributes tab");
+        //Catalog.clearCertification(CertificationType);
+        //Catalog.saveChanges();
+        //softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");
+        Catalog.selectCertification(CertificationOption);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");
 

@@ -229,7 +229,7 @@ By input_selectItem = By.xpath("//div[contains(text(),'Search items by name or c
     By show_dropdown = By.xpath("//div[text()='Show:']//following-sibling::div//div[@class='cd_themed_select__control css-yk16xz-control']");
     By txt_activeAndHidden = By.xpath("//div[contains(@class, 'cd_themed_select__option') and text()='Active & Hidden Items']");
     String btn_editItem = "//div[contains(text(), 'NAME')]/ancestor::div[contains(@class, 'list-group-item')]//div[contains(@class, 'd-flex') and contains(@class, 'justify-content-end')]/*[local-name() = 'svg' and @data-icon='pencil']";
-    By txt_pricePDP = By.xpath("//span[contains(text(), '$')]");
+    By txt_pricePDP = By.xpath("(//*[contains(@data-for,'add-to-order-guide')]/../..//following::div//span[contains(text(),'$')])[1]");
     By img_catalog = By.xpath("//img[contains(@class, 'card-img-top')]");
     String txt_catalogItem ="(//div[contains(text(), 'NAME')])[last()]";
 //    By txt_namePDP = By.xpath("//div[contains(@class, 'd-flex align-items-center mont') and contains(@class, '_1wrelxt') and contains(@class, '_1vlidrf')]");
@@ -976,8 +976,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForCustom(4000);
         distributorUI.waitForElementEnabledState(btn_checkout_stable,true);
     }
-    public String getItemQtyFirstRow(){
+    public String getItemQtyFirstRow() throws InterruptedException {
 //        return distributorUI.getText(tbx_itemQuantityFirstRow, "value");
+        distributorUI.waitForCustom(2000);
         return distributorUI.getText(tbx_itemQuantityinFirstRow, "value");
     }
     public Double getItemPriceFirstRow(){

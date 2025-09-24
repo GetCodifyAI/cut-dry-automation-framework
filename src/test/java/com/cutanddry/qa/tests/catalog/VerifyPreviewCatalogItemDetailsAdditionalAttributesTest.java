@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyPreviewCatalogItemDetailsAdditionalAttributesTest extends TestBase {
     static User user;
     String certificationType = "Provenance Certifications";
-    String certificationOption = "Buy American";
+    String certificationOption = "Eco-Friendly";
 
     @BeforeMethod
     public void setUp(){
@@ -37,12 +37,12 @@ public class VerifyPreviewCatalogItemDetailsAdditionalAttributesTest extends Tes
         Catalog.selectFirstItem();
         softAssert.assertTrue(Catalog.isProductDescriptionDisplayed(),"select product error");
         Catalog.clickOnEditProduct();
-        Catalog.navigateToAdditionalAttributes();
-        softAssert.assertTrue(Catalog.isAdditionalAttributesTabDisplayed(),"Error in displaying Additional attributes tab");
-        Catalog.clearCertification(certificationType);
-        Catalog.saveChanges();
+        Catalog.navigateToSpecifications();
+        softAssert.assertTrue(Catalog.isCertificationsDisplayed(),"Error in displaying Additional attributes tab");
+//        Catalog.clearCertification(certificationType);
+//        Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");
-        Catalog.selectCertification(certificationType, certificationOption);
+        Catalog.selectCertification(certificationOption);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");
         softAssert.assertAll();

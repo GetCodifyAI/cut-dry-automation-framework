@@ -36,9 +36,9 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
     By productConfigsEditBtn = By.xpath("//*[contains(text(),'Product Configuration')]/following-sibling::button");
     By saveChangesBtn = By.xpath("//button[text()='Save']");
     By successOverlay = By.xpath("//div[contains(text(),'successfully saved!')]");
-    By additionalAttributesTab = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Additional Attributes')]");
+    By specificationsTab = By.xpath("//*[contains(text(),'Specifications')]");
     By imagesTab = By.xpath("//*[contains(text(),'Images')]");
-    By certificationAttribute = By.xpath("//div[contains(text(),'Certifications')]");
+    By certificationAttribute = By.xpath("//div[contains(text(), 'Certifications - ')]");
     By productItemImage = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@class,'img-fluid') and (contains(@src,'.jpg') or contains(@src,'.png'))]");
     By priceAndPromotions = By.xpath("//*[contains(text(),'Pricing & Promotions')]");
     By unitOfMeasure = By.xpath("//button[contains(text(),'+ Unit of measure')]");
@@ -69,8 +69,8 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
     String deleteSubstituteItemBtn = "//div[contains(text(),'ITEMCODE')]//following-sibling::div/*[local-name()='svg']";
     By searchField = By.xpath("//div//input[contains(@placeholder,'Search product by name, sku, gtin...')]");
     String clearCertificationBtn = "//label[contains(text(),'CERTIFICATIONTYPE')]/..//div[contains(@class,'themed_select__clear-indicato')]";
-    String selectCertificationDropdown = "//label[contains(text(),'CERTIFICATIONTYPE')]/..//div[contains(text(),'Select')]";
-    String buyAmericanOption  = "//div[contains(text(),'CERTIFICATEOPTION')]";
+    By selectCertificationDropdown = By.xpath("//div[contains(text(), 'Certifications - ')]//ancestor::div[4]/following-sibling::div//input");
+    String certificateOption = "(//div[contains(text(),'CERTIFICATEOPTION')])[last()]";
     By productStatusDropdown = By.xpath("//div[normalize-space()='Product Status']/following::div[@id='config-active']");
     String productStatus = "(//div[contains(text(),'PRODSTATUS')])[last()]";
     String productStatusInGrid = "//tr/td[contains(text(),'PRODID')]/following-sibling::td[7]";
@@ -361,8 +361,9 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         }
         return isDisplayed;
     }
-    public void clickOnAdditionalAttributesTab(){
-        distributorUI.click(additionalAttributesTab);
+    public void clickOnSpecificationsTab(){
+        distributorUI.scrollToElement(specificationsTab);
+        distributorUI.click(specificationsTab);
         try {
             distributorUI.waitForCustom(3000);
         } catch (InterruptedException e) {
@@ -375,9 +376,10 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     public void clickClearCertification(String CertificationType){
         distributorUI.click(By.xpath(clearCertificationBtn.replace("CERTIFICATIONTYPE",CertificationType)));
     }
-    public void clickOnCertification(String CertificationType, String certificate){
-        distributorUI.click(By.xpath(selectCertificationDropdown.replace("CERTIFICATIONTYPE",CertificationType)));
-        distributorUI.click(By.xpath(buyAmericanOption.replace("CERTIFICATEOPTION",certificate)));
+    public void clickOnCertification(String certificate){
+        distributorUI.scrollToElement(selectCertificationDropdown);
+        distributorUI.click(selectCertificationDropdown);
+        distributorUI.click(By.xpath(certificateOption.replace("CERTIFICATEOPTION",certificate)));
     }
     public void clickOnImagesTab(){
         distributorUI.click(imagesTab);
