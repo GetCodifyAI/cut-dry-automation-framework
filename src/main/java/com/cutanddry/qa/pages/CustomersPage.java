@@ -22,7 +22,7 @@ public class CustomersPage extends LoginPage {
     By btn_decreaseQtyFirstRow = By.xpath("//tr[1]/td[8]/div/div/div/div[1]");
     By btn_increaseQtySecondRow = By.xpath("//tr[2]/td[8]/div/div/div//div[3]");
     By btn_decreaseQtySecondRow = By.xpath("//tr[2]/td[8]/div/div/div/div/div[1]");
-    By btn_checkout = By.xpath("//button[text()='$']/../button[2]");
+    By btn_checkout = By.xpath("//button[@data-for='cartCheckoutButton' and contains(normalize-space(.), '$')]");
     By btn_catalog = By.xpath("//span[text()='Catalog']");
     By tbx_catalogSearch = By.xpath("//input[@placeholder='Search catalog...']");
 //    String lbl_catalogSearchItemList = "//button[contains(@data-for,'tooltipundefined')]/ancestor::div[2]/following-sibling::div[2]/div/div[contains(text(),'NAME')]";
@@ -844,9 +844,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By txt_updateEligibility = By.xpath("//div[contains(text(), 'Update Eligibility for Cut+Dry')]");
     By updateEligibilityDropDown = By.xpath("//label[contains(text(), 'Eligibility')]/following-sibling::div");
     By updateEligibilityDropDownOption = By.xpath("//label[contains(text(), 'Eligibility')]/following-sibling::div//*[text()='Eligible']");
-
-
-
+    By orderMinimumeditBtn = By.xpath("//*[contains(text(),'Order Minimum')]/following-sibling::div//*[local-name()='svg' and @data-icon='pen-to-square']");
+    String orderMinimumSelectionRadioBtn = "//*[contains(text(),'ORDERMINIMUM')]/../input";
+    By orderMinimumOverlayCloseBtn = By.xpath("//*[contains(text(),'Edit Order Minimum')]/../following-sibling::button/span[normalize-space()='×']");
 
 
 
@@ -5000,5 +5000,13 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickUpdateEligibilityDropDownOption(){
         distributorUI.click(updateEligibilityDropDownOption);
+    }
+    public void selectOrderMinimum(String orderMinimum){
+        distributorUI.click(orderMinimumeditBtn);
+        if(!distributorUI.isCheckboxOrRadioBtnSelected(By.xpath(orderMinimumSelectionRadioBtn.replace("ORDERMINIMUM",orderMinimum)))){
+            distributorUI.click(By.xpath(orderMinimumSelectionRadioBtn.replace("ORDERMINIMUM",orderMinimum)));
+            distributorUI.click(btn_saveChanges);
+        }
+        distributorUI.click(orderMinimumOverlayCloseBtn);
     }
 }

@@ -436,7 +436,7 @@ public class Customer {
     public static boolean isMinOrderBannerDisplayed(){
         return customersPage.isMinOrderBannerDisplayed();
     }
-    public static boolean isOrderMinPopupDisplayed(){
+    public static boolean isOrderMinPopupDisplayed() throws InterruptedException {
         return customersPage.isOrderMinPopupDisplayed();
     }
     public static void clickOnCustomerCode(String code){
@@ -2996,7 +2996,9 @@ public class Customer {
         customersPage.clickUpdateEligibilityDropDown();
         customersPage.clickUpdateEligibilityDropDownOption();
     }
-
+    public static void SelectOrderMinimumFromProfile(String orderMinimum){
+        customersPage.selectOrderMinimum(orderMinimum);
+    }
 
 }
 
