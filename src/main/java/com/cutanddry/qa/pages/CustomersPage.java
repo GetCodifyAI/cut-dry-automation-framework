@@ -276,6 +276,13 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By txt_customers = By.xpath("//h2[text()='Customers']");
     By btn_salesperson = By.xpath("(//div[contains(@class, 'themed_select__value-container') and contains(@class, 'themed_select__value-container--has-value')])[1]");
     By btn_salespersonOption = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and normalize-space(text())='Amir Ifc']");
+    
+    By lbl_priceVisibility = By.xpath("//div[contains(text(), 'Price Visibility')]");
+    By btn_priceVisibilityEdit = By.xpath("//div[contains(text(), 'Price Visibility')]/following-sibling::div//*[name()='svg']");
+    By dropdown_priceVisibilityOptions = By.xpath("//div[contains(@class, 'themed_select__option')]");
+    By option_priceVisibilityHidden = By.xpath("//div[contains(@class, 'themed_select__option') and text()='Hidden']");
+    By option_priceVisibilityVisible = By.xpath("//div[contains(@class, 'themed_select__option') and text()='Visible']");
+    String txt_customerProfileByCode = "//h1[contains(text(), '(CODE)')]";
     String salespersonName = "//tr//td[6]//div[normalize-space(text())='SALESPERSON']";
     By btn_manageCustomers = By.xpath("//span[contains(text(), 'Manage Customers')]");
     By btn_exportCustomers = By.xpath("//a[contains(text(), 'Export customers(csv)')]");
@@ -5000,5 +5007,36 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickUpdateEligibilityDropDownOption(){
         distributorUI.click(updateEligibilityDropDownOption);
+    }
+    
+    public void clickPriceVisibilityEdit() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_priceVisibilityEdit);
+        distributorUI.click(btn_priceVisibilityEdit);
+    }
+    
+    public boolean isPriceVisibilityDisplayed() {
+        try {
+            return distributorUI.isDisplayed(lbl_priceVisibility);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    public boolean isPriceVisibilityDropdownDisplayed() {
+        try {
+            return distributorUI.isDisplayed(dropdown_priceVisibilityOptions);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    public void selectPriceVisibilityHidden() throws InterruptedException {
+        distributorUI.waitForVisibility(option_priceVisibilityHidden);
+        distributorUI.click(option_priceVisibilityHidden);
+    }
+    
+    public void selectPriceVisibilityVisible() throws InterruptedException {
+        distributorUI.waitForVisibility(option_priceVisibilityVisible);
+        distributorUI.click(option_priceVisibilityVisible);
     }
 }
