@@ -32,14 +32,15 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
     By txt_previewCat = By.xpath("//div[text()='Catalog Preview']");
     By txt_firstItemDetails = By.xpath("//tbody/tr[1]");
     String itemInTheGrid = "//tr[contains(@class,'_du1frc')]//td[text()='ITEMCODE']";
-    By ItemCodeInCatalogData = By.xpath("//div[contains(@class, 'form-group') and contains(.//label, 'Item Code')]//div[contains(@class, 'col-sm-8')]");
+    By ItemCodeInCatalogData = By.xpath("//div[normalize-space(.)='Product Code (SKU)']/ancestor::div[2]/following-sibling::div//input");
+    By productConfigsEditBtn = By.xpath("//*[contains(text(),'Product Configuration')]/following-sibling::button");
     By saveChangesBtn = By.xpath("//button[text()='Save']");
     By successOverlay = By.xpath("//div[contains(text(),'successfully saved!')]");
     By additionalAttributesTab = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Additional Attributes')]");
-    By imagesTab = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Images')]");
+    By imagesTab = By.xpath("//*[contains(text(),'Images')]");
     By certificationAttribute = By.xpath("//div[contains(text(),'Certifications')]");
     By productItemImage = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@class,'img-fluid') and (contains(@src,'.jpg') or contains(@src,'.png'))]");
-    By priceAndPromotions = By.xpath("//a[contains(@class,'nav-item nav-link') and contains(text(),'Pricing & Promotions')]");
+    By priceAndPromotions = By.xpath("//*[contains(text(),'Pricing & Promotions')]");
     By unitOfMeasure = By.xpath("//button[contains(text(),'+ Unit of measure')]");
     By uomCount = By.xpath("//table[@class='pt-4 w-auto table table-borderless']//td[contains(@class, 'pl-0')]//label");
     By uomSelectDropdown = By.xpath("//div[contains(text(),'Select UoM')]");
@@ -57,21 +58,22 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
     By confirmBtn = By.xpath("//button[contains(text(),'Confirm')]");
     By bagUOM = By.xpath("//label[text()='Bag']");
     String existUOM = "//label[text()='UOM']";
-    By substituteTab = By.xpath("//a[contains(text(),'Substitutes')]");
-    By addSubstitutionsBtn = By.xpath("//button[contains(text(),'+ Add Substitution')]");
-    By selectSubstituteTxtField = By.xpath("//div[@class= ' css-1wa3eu0-placeholder' and text()='Select...']");
-    By substituteItemInputField = By.xpath("//div[@class=' css-1wa3eu0-placeholder' and text()='Select...']/following::input[@type='text' and @aria-autocomplete='list']");
+    By substituteTab = By.xpath("//*[contains(text(),'Product Substitutes')]");
+    By addSubstitutionsBtn = By.xpath("//*[contains(text(),'+ Add Substitution')]");
+    By selectSubstituteTxtField = By.xpath("//div[contains(text(),'Select...')]");
+    By substituteItemInputField = By.xpath("//div[contains(text(),'Select...')]/following::input[@type='text' and @aria-autocomplete='list']");
     String selectItemFromDropdown = "(//div[contains(text(),'ITEMCODE')])[last()]";
     By substituteAddBtn = By.xpath("//button[contains(text(),'Add')]");
     By substituteCancelBtn = By.xpath("//button[contains(text(),'Cancel')]");
     String substituteItemNameTxt = "//div[contains(text(),\"ITEMNAME\")]";
-    String deleteSubstituteItemBtn = "//div[@class='align-items-center my-1 row']//div[contains(text(),'ITEMCODE')]//following-sibling::div[contains(@class,'col-md')]/*";
+    String deleteSubstituteItemBtn = "//div[contains(text(),'ITEMCODE')]//following-sibling::div/*[local-name()='svg']";
     By searchField = By.xpath("//div//input[contains(@placeholder,'Search product by name, sku, gtin...')]");
     String clearCertificationBtn = "//label[contains(text(),'CERTIFICATIONTYPE')]/..//div[contains(@class,'themed_select__clear-indicato')]";
     String selectCertificationDropdown = "//label[contains(text(),'CERTIFICATIONTYPE')]/..//div[contains(text(),'Select')]";
     String buyAmericanOption  = "//div[contains(text(),'CERTIFICATEOPTION')]";
-    By productStatusDropdown = By.xpath("//label[contains(text(), 'Product Status')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
-    String productStatus = "(//div[contains(text(),'PRODSTATUS') and contains(@class,'themed_select__option')])[last()]";
+    By productStatusDropdown = By.xpath("//div[normalize-space()='Product Status']/following::div[@id='config-active']");
+    String productStatus = "(//div[contains(text(),'PRODSTATUS')])[last()]";
+    String productStatusInGrid = "//tr/td[contains(text(),'PRODID')]/following-sibling::td[7]";
     By searchInCatalogPreview = By.xpath("//div//input[contains(@placeholder,'Search catalog')]");
     String clickOnItemInPreviewCatalog = "//div[contains(@class, ' _du1frc')]//div[contains(@class, '_1evg3oy') and contains(., 'ITEMCODE')]";
     String itemCodeDetails = "//div[contains(text(),'ITEMCODE')]";
@@ -130,24 +132,28 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     By lbl_exportPromoFile = By.xpath("//a[text()='Export Promotion File (csv)']");
     By showSubsRadioBtn = By.xpath("//input[@id='show-subs']");
     By btn_back = By.xpath("//button[text()='Back']");
-    By proprietaryItemDropDown = By.xpath("//label[contains(text(), 'Proprietary Item')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
-    String proprietaryItemStatus = "(//div[contains(text(),'PROPRIETARYSTATUS') and contains(@class,'themed_select__option')])[last()]";
+    By proprietaryItemDropDown = By.xpath("//div[normalize-space()='Proprietary Item']/following::div[@id='config-hidden']/div[1]");
+    String proprietaryItemStatus = "(//div[normalize-space(.)='PROPRIETARYSTATUS'])[last()]";
     By lbl_itemType = By.xpath("//label[contains(text(), 'Item Type')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     By lbl_proprietaryItem = By.xpath("(//div[contains(text(), 'Proprietary Items')])[last()]");
-    By categoryDropDown = By.xpath("//label[contains(text(), 'Category')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
-    String categoryOption = "(//div[contains(text(),'CATEGORY') and contains(@class,'themed_select__option')])[last()]";
+    By addCategoryBtn = By.xpath("//div[contains(text(),'+ Add Category')]");
+    By categoryDropDown = By.xpath("//*[contains(text(), 'Select categories')]/following-sibling::div//input");
+    By subCategoryDropDown = By.xpath("//*[contains(text(), 'Select subcategories')]/following-sibling::div//input");
+    String categoryOption = "(//div[contains(text(),'CATEGORY')])[last()]";
+    String categoryRemoveBtn = "//*[contains(text(),'CATEGORY')]/ancestor::div[5]//div/*[name()='svg' and @data-icon='trash']";
     By lbl_meat = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Meat']");
-    By subCategoryDropDown = By.xpath("//label[contains(text(), 'Subcategories')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
-    String subCategoryOption = "(//div[contains(text(),'SUBCATEGORY') and contains(@class,'themed_select__option')])[last()]";
+    //By subCategoryDropDown = By.xpath("//label[contains(text(), 'Subcategories')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
+    String subCategoryOption = "(//div[contains(text(),'SUBCATEGORY')])[last()]";
     By lbl_subCategoriesDropdown = By.xpath("//label[contains(text(),'Sub-Category:')]/following-sibling::div//div[contains(@class,'themed_select__single-value css-1uccc91-singleValue') and contains(text(),'All')]");
     By lbl_pork = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Pork']");
-    By storageMethodDropDown = By.xpath("//label[contains(text(), 'Storage Method')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
-    String storageMethodOption = "(//div[contains(text(),'STORAGEMETHOD') and contains(@class,'themed_select__option')])[last()]";
+    By storageMethodDropDown = By.xpath("(//div[contains(text(),'Storage Method')]/../../../following-sibling::div//input)[1]");
+    String storageMethodOption = "//div[text()='STORAGEMETHOD']";
     String txt_storageMethod = "//tr//td//div[contains(text(),'STORAGEMETHOD')]";
-    By txt_description = By.xpath("(//textarea[@class='form-control'])[1]");
+    By textdescriptionTab = By.xpath("//div[normalize-space(.)='Description']");
+    By txt_description = By.xpath("//textarea[starts-with(normalize-space(@placeholder),'Type the Product Description')]");
     String newDescription = " //div[contains(text(),'DESCRIPTION')]";
-    By onSaleRadioButton = By.xpath("//label[contains(text(),'On Sale')]/../following-sibling::div/div");
-    By newArrivalRadioButton = By.xpath("//label[contains(text(),'New Arrival')]/../following-sibling::div/div");
+    By onSaleRadioButton = By.xpath("//*[contains(text(),'On Sale')]/../following-sibling::div/div");
+    By newArrivalRadioButton = By.xpath("//*[contains(text(),'New Arrival')]/../following-sibling::div/div");
     By onSaleDropDown = By.xpath("//label[contains(text(), 'On Sale')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     By newArrivalDropDown = By.xpath("//label[contains(text(), 'New Arrivals')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     String categoryOptionInCatalog = "//div[contains(text(),'Category')]/../../following-sibling::div//div[contains(text(),'CATEGORY')]";
@@ -216,11 +222,11 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     String marginColumnPDP = "//th[text()='MARGIN']";
     String priceColumn = "//th[text()='PRICE']";
     String lastOrderPrice = "//span[contains(text(),'PRICE')]";
-    String lbl_cashAndCarryAllowedOption = "//label[contains(text(),'OPTION')]";
+    String lbl_cashAndCarryAllowedOption = "//*[contains(text(),'OPTION')]";
     By txt_actionableOverview = By.xpath("//div[text()='Actionable Overview']");
     By txt_newProduct = By.xpath("//div[text()='New Products']");
-    By specialItemDropDown = By.xpath("//label[contains(text(), 'Special Item')]/../following-sibling::div//div[contains(@class, 'themed_select__value-container')]");
-    String specialItemStatus = "(//div[contains(text(),'STATUS') and contains(@class,'themed_select__option')])[last()]";
+    By specialItemDropDown = By.xpath("//div[normalize-space()='Special Item']/following::div[@id='config-specialItem']/div[1]");
+    String specialItemStatus = "(//div[contains(text(),'STATUS')])[last()]";
     By txt_updateOGPopup = By.xpath("//*[contains(text(),'Update order guides?')]");
     By btn_updateOGPopup = By.xpath("//button[contains(text(),'Confirm')]");
 
@@ -316,14 +322,20 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     }
     public String getItemCodeFromCatalogDataPage(){
         distributorUI.waitForVisibility(ItemCodeInCatalogData);
-        return distributorUI.getText(ItemCodeInCatalogData);
+        return distributorUI.getText(ItemCodeInCatalogData,"value");
+    }
+    public void clickEditOnProductConfigs(){
+        distributorUI.waitForVisibility(productConfigsEditBtn);
+        distributorUI.click(productConfigsEditBtn);
     }
     public void clickOnInactiveOrInactive(String prodStatus){
         distributorUI.click(productStatusDropdown);
         distributorUI.waitForVisibility(By.xpath(productStatus.replace("PRODSTATUS",prodStatus)));
         distributorUI.click(By.xpath(productStatus.replace("PRODSTATUS",prodStatus)));
     }
-
+    public String getProductStatusFromProductGrid(String productId){
+        return distributorUI.getText(By.xpath(productStatusInGrid.replace("PRODID",productId)));
+    }
     public void clickOnSaveChangesBtn() {
         try {
             distributorUI.waitForCustom(3000);
@@ -472,11 +484,12 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         return distributorUI.isDisplayed(By.xpath(existUOM.replace("UOM",uom)));
     }
     public void clickOnSubstituteTab(){
+        distributorUI.waitForVisibility(substituteTab);
         distributorUI.click(substituteTab);
     }
     public void clickAddSubstitutionBtn(){
         distributorUI.waitForVisibility(addSubstitutionsBtn);
-        distributorUI.scrollToElement(addSubstitutionsBtn);
+        //distributorUI.scrollToElement(addSubstitutionsBtn);
         distributorUI.click(addSubstitutionsBtn);
     }
     public void searchSubstituteItem(String substituteItem){
@@ -613,6 +626,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         distributorUI.click(btn_continue);
     }
     public boolean isItemCreatedPopupDisplayed(){
+        distributorUI.waitForVisibility(txt_itemCreated);
         return  distributorUI.isDisplayed(txt_itemCreated);
     }
     public void clickOnClose(){
@@ -755,7 +769,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     public void clickBack(){
         distributorUI.click(btn_back);
     }
-    public void clickOnProprietaryItem(String proprietaryStatus){
+    public void clickOnProprietaryItem(String proprietaryStatus) throws InterruptedException {
         distributorUI.click(proprietaryItemDropDown);
         distributorUI.waitForVisibility(By.xpath(proprietaryItemStatus.replace("PROPRIETARYSTATUS",proprietaryStatus)));
         distributorUI.click(By.xpath(proprietaryItemStatus.replace("PROPRIETARYSTATUS",proprietaryStatus)));
@@ -769,9 +783,14 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         distributorUI.waitForCustom(1000);
     }
     public void clickOnCategory(String category){
+        distributorUI.click(addCategoryBtn);
         distributorUI.click(categoryDropDown);
         distributorUI.waitForVisibility(By.xpath(categoryOption.replace("CATEGORY",category)));
         distributorUI.click(By.xpath(categoryOption.replace("CATEGORY",category)));
+    }
+    public void deleteCategory(String categoryName){
+        distributorUI.waitForVisibility(By.xpath(categoryRemoveBtn.replace("CATEGORY",categoryName)));
+        distributorUI.click(By.xpath(categoryRemoveBtn.replace("CATEGORY",categoryName)));
     }
     public void selectCategoryMeat() throws InterruptedException {
         distributorUI.click(lbl_categoriesDropdown);
@@ -782,6 +801,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         distributorUI.click(subCategoryDropDown);
         distributorUI.waitForVisibility(By.xpath(subCategoryOption.replace("SUBCATEGORY",subCategory)));
         distributorUI.click(By.xpath(subCategoryOption.replace("SUBCATEGORY",subCategory)));
+        distributorUI.click(categoryDropDown);
     }
     public void selectSubCategoryPork() throws InterruptedException {
         distributorUI.click(lbl_subCategoriesDropdown);
@@ -798,6 +818,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         return distributorUI.isDisplayed(By.xpath(txt_storageMethod.replace("STORAGEMETHOD",storageMethod)));
     }
     public void typeNewDescription(String description) throws InterruptedException {
+        distributorUI.scrollToElement(textdescriptionTab);
+        distributorUI.click(textdescriptionTab);
         distributorUI.click(txt_description);
         distributorUI.clear(txt_description);
         distributorUI.waitForCustom(1000);

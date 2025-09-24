@@ -16,6 +16,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyPreviewCatalogEditItemAddSubstituteTest extends TestBase {
     static User user;
     String substituteItemCode = "20024";
+    String substituteName = "Cauliflower - Large";
 
     @BeforeMethod
     public void setUp(){
@@ -35,12 +36,14 @@ public class VerifyPreviewCatalogEditItemAddSubstituteTest extends TestBase {
         Assert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
         Catalog.selectFirstEditItem();
         Catalog.navigateToSubstituteTab();
-        Catalog.removeExistingItem(substituteItemCode);
+        Catalog.removeExistingItem(substituteName);
         Catalog.addSubstitutions();
         String SubstituteItemName = Catalog.getSubstituteItemName(substituteItemCode);
+        Catalog.addSubstitutions();
         Catalog.searchAndAddSubstituteItem(substituteItemCode);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving the changes after adding  substitute");
+        Catalog.navigateToSubstituteTab();
         softAssert.assertTrue(Catalog.isAddedSubstituteItemDisplayedInPage(SubstituteItemName),"Error in adding substitute items");
         softAssert.assertAll();
     }

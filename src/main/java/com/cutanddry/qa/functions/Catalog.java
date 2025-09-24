@@ -65,10 +65,16 @@ public class Catalog {
         catalogPage.clickonItemOnCatalogPage(itemCode);
     }
 
+    public static String getProductStatusFromCatalogProductGrid(String productId){
+        return catalogPage.getProductStatusFromProductGrid(productId);
+    }
     public static String getItemcodeInCatalogData(){
         return catalogPage.getItemCodeFromCatalogDataPage();
     }
 
+    public static void selectEditFromProductConfig(){
+        catalogPage.clickEditOnProductConfigs();
+    }
     public static void selectProductActiveInactiveStatus(String prodStatus){
         catalogPage.clickOnInactiveOrInactive(prodStatus);
     }
@@ -115,6 +121,7 @@ public class Catalog {
             catalogPage.deleteUOMinCatalog();
             catalogPage.clickOnConfirmBtn();
             catalogPage.clickOnSaveChangesBtn();
+            catalogPage.clickOnPricingAndPromotionsTab();
 //            catalogPage.refreshPage();
         }
         catalogPage.clickOnUnitOfMeasure();
@@ -202,6 +209,7 @@ public class Catalog {
         if (catalogPage.isDeleteSubstituteItemDisplayed(ItemCode)) {
             catalogPage.clickOnDeleteSubstituteItemBtn(ItemCode);
             catalogPage.clickOnSaveChangesBtn();
+            catalogPage.clickOnSubstituteTab();
         }
 
     }
@@ -210,6 +218,7 @@ public class Catalog {
         if (!catalogPage.isDeleteSubstituteItemDisplayed(ItemCode)) {
             catalogPage.clickAddSubstitutionBtn();
             String SubstituteItemName = catalogPage.getSubstituteItemName(ItemCode);
+            catalogPage.clickAddSubstitutionBtn();
             catalogPage.searchSubstituteItem(SubstituteItemName);
             catalogPage.addSubstitutionsBtn();
             catalogPage.clickOnSaveChangesBtn();
@@ -409,7 +418,7 @@ public class Catalog {
         catalogPage.selectExportPromoFiles();
     }
     public static void clickBack(){catalogPage.clickBack();}
-    public static void clickOnProprietaryItemStatus(String proprietaryStatus){
+    public static void clickOnProprietaryItemStatus(String proprietaryStatus) throws InterruptedException {
         catalogPage.clickOnProprietaryItem(proprietaryStatus);
     }
     public static void selectProprietaryItem() throws InterruptedException {
@@ -420,6 +429,9 @@ public class Catalog {
     }
     public static void selectCategory() throws InterruptedException {
         catalogPage.selectCategoryMeat();
+    }
+    public static void removeCategory(String category){
+        catalogPage.deleteCategory(category);
     }
     public static void clickOnSubCategory(String subCategory){
         catalogPage.clickOnSubCategory(subCategory);
@@ -472,6 +484,8 @@ public class Catalog {
     public static void addSubstitutionsStable(String itemCode){
         if(catalogPage.isSubstituteItemDisplayed(itemCode)){
             catalogPage.clickOnDeleteSubstituteItemBtn(itemCode);
+            catalogPage.clickOnSaveChangesBtn();
+            catalogPage.clickOnSubstituteTab();
         }
         catalogPage.clickAddSubstitutionBtn();
     }

@@ -151,6 +151,10 @@ public class InternalTools {
         internalToolsPage.clickSponsoredProductAdsToggle(enable);
         internalToolsPage.clickProductAdsSave();
     }
+    public static void ensureInstacartSponsoredProductAdsStatus(boolean enable) throws InterruptedException {
+        internalToolsPage.clickInstacartSponsoredProductAdsToggle(enable);
+        internalToolsPage.clickProductAdsSave();
+    }
     public static void ensureBuyerEdgePlatformRebateStatus(boolean enable) throws InterruptedException {
         internalToolsPage.clickConfigureSupplier();
         internalToolsPage.clickOnIndependentCompEditDetails();
@@ -239,6 +243,16 @@ public class InternalTools {
     }
     public static void manualOrderQuantityCalculationToggle(boolean status){
         internalToolsPage.manualOrderQuantityCalculationToggle(status);
+    }
+    public static void setEnableAccountHoldAlerts(boolean status){
+        internalToolsPage.enableAccountHoldAlerts(status);
+        internalToolsPage.clickSave();
+        internalToolsPage.clickOKOnSucessOverlay();
+    }
+    public static void setEnablePreAuthFeature(boolean status){
+        internalToolsPage.enablePreAuth(status);
+        internalToolsPage.clickSave();
+        internalToolsPage.clickOKOnSucessOverlay();
     }
 
 }
