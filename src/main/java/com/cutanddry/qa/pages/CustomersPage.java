@@ -16,7 +16,7 @@ public class CustomersPage extends LoginPage {
     String btnNameOrderGuide = "//*[text()='NAME']/../../td[8]//button";
     By lbl_itemNameList = By.xpath("//td//span/div[@data-tip='View Product Details']");
     By lbl_itemDetails = By.xpath("//tbody/tr[2]");
-    By btn_increaseQtyFirstRow = By.xpath("(//table/tbody/tr//*[local-name()='svg' and @data-icon='plus'])[1]");
+    By btn_increaseQtyFirstRow = By.xpath("(//*[local-name()='svg' and @data-icon='plus'])[1]");
     By btn_increaseQtySecondRowStable = By.xpath("(//table/tbody/tr//*[local-name()='svg' and @data-icon='plus'])[2]");
     By btn_increaseQtyFifthRow = By.xpath("(//table/tbody/tr//*[local-name()='svg' and @data-icon='plus'])[5]");
     By btn_decreaseQtyFirstRow = By.xpath("//tr[1]/td[8]/div/div/div/div[1]");
@@ -50,7 +50,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By btn_increaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../following-sibling::div");
     By tbx_itemQuantityCartRowOne = By.xpath("//tr[2]/td//input/");
     By lbl_itemPriceCartRowOne = By.xpath("//tr[2]/td//span[contains(text(),'$')]");
-    By lbl_cartTotal = By.xpath("//td[text()='Total']/following-sibling::td");
+    By lbl_cartTotal = By.xpath("//button[contains(@class, 'btn') and contains(text(), '$')]");
     By lbl_cartTotalReview = By.xpath("//td[text()='Total:']/following-sibling::td");
     By btn_submitOrder = By.xpath("//button[contains(text(),'Submit Order')]");
     By btn_duplicateOrderYes = By.xpath("//h2[contains(text(),'Duplicate Order')]/../..//button[text()='Yes']");
@@ -489,7 +489,7 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     By lbl_secondItemPriceList1 = By.xpath("((//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-2]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[last()-2]//span)[2])[2]");
 
     By btn_minusQtyFirstRow = By.xpath("(//*[name()='svg' and @data-icon='minus'])[1]");
-    By tbx_itemQuantityinFirstRow = By.xpath("(//*[@data-input ='quantityInput'])[1]");
+    By tbx_itemQuantityinFirstRow = By.xpath("(//*[@data-input='quantityInput' or contains(@class,'quantity') or @type='number'])[1]");
     By lbl_cartItemUnitPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//span)[1]");
     By icon_edit_auto_pay = By.xpath("//div[contains(@class, 'font-weight-bold') and normalize-space(text())='Auto Pay']/*[name()='svg']");
     By dropdown_schedule = By.xpath("//div[contains(@class, 'themed_select__single-value') and text()='On due date']");
@@ -691,7 +691,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By caseMinimumNotMetText = By.xpath("//*[contains(text(),'Case Minimum Not Met')]");
     By btn_sortCustomOrder = By.xpath("//div[contains(@class, 'cd_themed_select__single-value') and text()='Custom Order']");
     String orderColumn = "//td[text()='COLUMN']";
-    String orderSummery = "//div[text()='ORDERSUMMERY']";
+    String orderSummery = "//div[contains(text(),'$') and contains(text(),'/')]";
     By caseUnit = By.xpath("//label[text()='Unit']/../following-sibling::div[text()='Case']");
     By saveItem = By.xpath("//button[text()='Save Item']");
     By btn_stock = By.xpath("(//span[contains(text(),'Stock')])[1]");
