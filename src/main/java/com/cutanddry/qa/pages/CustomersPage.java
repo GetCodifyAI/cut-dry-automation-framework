@@ -919,14 +919,15 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForCustom(3000);
         return distributorUI.getText(lbl_itemNameList);
     }
-    public void clickPlusQryFirstRow(){
+    public void clickPlusQryFirstRow() throws InterruptedException {
         distributorUI.click(btn_increaseQtyFirstRow);
+        distributorUI.waitForCustom(4000);
     }
     public void clickPlusQrySecondRowStable(){
         distributorUI.click(btn_increaseQtySecondRowStable);
     }
     public void clickMinusQryFirstRow(){
-        distributorUI.click(btn_minusQtyFirstRow);
+        distributorUI.clickAction(btn_minusQtyFirstRow);
         try {
             distributorUI.waitForCustom(4000);
         } catch (InterruptedException e) {
@@ -996,7 +997,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public String getItemQtyFirstRow() throws InterruptedException {
 //        return distributorUI.getText(tbx_itemQuantityFirstRow, "value");
-        distributorUI.waitForCustom(2000);
+        distributorUI.waitForCustom(4000);
         return distributorUI.getText(tbx_itemQuantityinFirstRow, "value");
     }
     public Double getItemPriceFirstRow(){
@@ -1010,7 +1011,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
             priceText = distributorUI.getText(lbl_itemPriceList);
         }
 
-        return Double.valueOf(priceText.replace("$", "").split("/")[0].trim());
+        String s = priceText.trim();
+        int slash = s.indexOf('/');
+        if (slash >= 0) s = s.substring(0, slash);  // keep only the price part
+        if (s.startsWith("$")) s = s.substring(1);
+        s = s.replace(",", "").trim(); // in case of thousand separators
+
+        java.math.BigDecimal bd = new java.math.BigDecimal(s).setScale(2, java.math.RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
     public String getItemPriceSecondRow(){
         distributorUI.waitForVisibility(lbl_itemPriceSecondRow);
