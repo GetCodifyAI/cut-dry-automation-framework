@@ -691,7 +691,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By caseMinimumNotMetText = By.xpath("//*[contains(text(),'Case Minimum Not Met')]");
     By btn_sortCustomOrder = By.xpath("//div[contains(@class, 'cd_themed_select__single-value') and text()='Custom Order']");
     String orderColumn = "//td[text()='COLUMN']";
-    String orderSummery = "//div[contains(text(),'$') and contains(text(),'/')]";
+    By orderSummeryHidden = By.xpath("//*[local-name()='svg' and contains(@data-icon,'shopping-cart')]/../../following-sibling::div//*[local-name()='svg' and contains(@data-icon,'chevron-down')]");
+    String orderSummery = "//*[text()='ORDERSUMMERY']";
     By caseUnit = By.xpath("//label[text()='Unit']/../following-sibling::div[text()='Case']");
     By saveItem = By.xpath("//button[text()='Save Item']");
     By btn_stock = By.xpath("(//span[contains(text(),'Stock')])[1]");
@@ -4269,6 +4270,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(By.xpath(orderColumn.replace("COLUMN",column)),2);
     }
     public boolean orderSummeryDisplay(String summery)throws InterruptedException{
+        distributorUI.click(orderSummeryHidden);
         return distributorUI.isDisplayed(By.xpath(orderSummery.replace("ORDERSUMMERY",summery)),2);
     }
     public void clickOnCaseUnit()throws InterruptedException{
