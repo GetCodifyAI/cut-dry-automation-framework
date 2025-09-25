@@ -386,9 +386,9 @@ By sel_tagOption = By.xpath("//div[contains(@class, 'themed_select__option') and
     By icon_removeTag = By.xpath("//div[contains(text(),'Rep Orders')]/following-sibling::div");
     By txt_lastOrderDate = By.xpath("//div[contains(text(),'Last ordered on')]");
     By customersText = By.xpath("//h2[contains(text(),'Customers')]");
-    By btn_accountVisibility = By.xpath("//div[contains(text(),'Visibility')]/following-sibling::div//*[@data-icon='pen-to-square']");
+    By btn_accountVisibility = By.xpath("//div[text()='Visibility']/following-sibling::div//*[@data-icon='pen-to-square']");
     By dropdown_visibility = By.xpath("(//*[local-name() = 'svg' and @class='css-19bqh2r'])[1]");
-    By sel_hiddenOption = By.xpath("//div[contains(text(),'Hidden')]");
+    By sel_hiddenOption = By.xpath("(//div[text()='Visibility']/..//div[contains(text(),'Hidden')])[last()]");
     By btn_visibilitySave = By.xpath("//button[contains(@class,'mr-2 my-2 btn btn-outline')]");
     By txt_hidden = By.xpath("//div[contains(@class,'col')and contains(text(),'Hidden')]");
     By tbx_emailOrMobile = By.xpath("//input[@id='react-select-5-input']");
@@ -503,7 +503,7 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
 
 
     By btn_catalogMinus = By.xpath("//*[name()='svg' and @data-icon='minus']");
-    By sel_visibleOption = By.xpath("//div[contains(text(),'Visible')]");
+    By sel_visibleOption = By.xpath("(//div[text()='Visibility']/..//div[contains(text(),'Visible')])[last()]");
     By txt_visible = By.xpath("//div[contains(text(),'Visible')]");
     By btn_placeOrder = By.xpath("//button[contains(text(),'Place Order')]");
     By txt_noCusMatch = By.xpath("//td[contains(text(),'No customers matching')]");
