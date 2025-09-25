@@ -23,6 +23,7 @@ public class CashAndCarryAppPage extends TestBase {
     String btn_addToCartPlusQuantityDicarlo = "(//*[name()='svg' and contains(@data-icon, 'plus')])[UOM]";
     By txt_transactionRejectPopup = By.xpath("//h2[contains(text(),'Transaction was rejected')]");
     By lbl_productDetailsDicarlo = By.xpath("//div[text()='Product Details']");
+    By orderSucessfullyPlacedTxt = By.xpath("//div[contains(text(),'Thank you for your DiCarlo Marketplace Order.')]");
 
     public void navigateToCashAndCarryApp(String url){
         distributorUI.navigateToURL(url);
@@ -107,6 +108,9 @@ public class CashAndCarryAppPage extends TestBase {
     }
     public boolean isTransactionRejectPopupDisplayed(){
         return distributorUI.isDisplayed(txt_transactionRejectPopup);
+    }
+    public boolean isPaymentSucessfullyScreenDisplayed(){
+        return distributorUI.isDisplayed(orderSucessfullyPlacedTxt);
     }
     public boolean isProductDetailsDisplayedDicarlo(){
         try {

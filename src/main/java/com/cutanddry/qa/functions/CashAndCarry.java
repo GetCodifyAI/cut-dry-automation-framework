@@ -61,6 +61,9 @@ public class CashAndCarry {
     public static boolean isTransactionRejectPopupDisplayed(){
         return cashAndCarryAppPage.isTransactionRejectPopupDisplayed();
     }
+    public static boolean isPaymentSucessfullyScreenDisplayed(){
+        return cashAndCarryAppPage.isPaymentSucessfullyScreenDisplayed();
+    }
     public static boolean isProductDetailsDisplayedDicarlo(){
         return cashAndCarryAppPage.isProductDetailsDisplayedDicarlo();
     }

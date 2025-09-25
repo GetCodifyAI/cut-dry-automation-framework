@@ -23,7 +23,13 @@ public class Customer {
 //        return customersPage.isCustomerSearchResultByCodeDisplayed(code);
         if (customersPage.isCustomerSearchResultByCodeDisplayed(code)) {
             return true;
-        } else {
+        }else if(!customersPage.isCustomerSearchResultByCodeDisplayed(code)){
+            customersPage.clickOnMoreFiltersOption();
+            customersPage.clickOnMoreFilterStatusDropdown();
+            customersPage.clickOnMoreFiltersAllOption();
+            customersPage.clickApply();
+            return customersPage.isCustomerSearchResultByCodeDisplayed(code);
+        }else {
             customersPage.refreshCustomersPage();
             customersPage.clickOnSearchCustomers();
             customersPage.typeOnSearchCustomers(code);
@@ -161,7 +167,7 @@ public class Customer {
     public static void addItemToCartCatalog(String ItemName) throws InterruptedException {
         customersPage.clickAddToCartCatalog(ItemName);
     }
-    public static String getItemQtyFirstRow(){
+    public static String getItemQtyFirstRow() throws InterruptedException {
         return customersPage.getItemQtyFirstRow();
     }
     public static double getItemPriceFirstRow(){
