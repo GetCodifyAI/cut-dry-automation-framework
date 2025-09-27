@@ -198,5 +198,29 @@ public class Dashboard {
         return dashboardPage.getCustomerValue(customer);
     }
     public static void refreshDashBoardPage(){dashboardPage.refreshDashBoardPage();}
+    
+    public static boolean isOrderGuideChangesSectionDisplayed() {
+        return dashboardPage.isOrderGuideChangesSectionDisplayed();
+    }
+    
+    public static boolean isOrderGuideChangesDataDisplayed() {
+        return dashboardPage.isOrderGuideChangesDataDisplayed();
+    }
+    
+    public static void selectDateRange(String range) {
+        dashboardPage.selectDateRange(range);
+    }
+    
+    public static void selectRestaurantFilter(String restaurant) {
+        dashboardPage.selectRestaurantFilter(restaurant);
+    }
+    
+    public static void selectSalespersonFilter(String salesperson) {
+        dashboardPage.selectSalespersonFilterOGChanges(salesperson);
+    }
+    
+    public static void clickViewAllOrderGuideChanges() {
+        dashboardPage.clickViewAllOrderGuideChanges();
+    }
 
 }
