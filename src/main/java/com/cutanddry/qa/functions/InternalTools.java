@@ -244,10 +244,11 @@ public class InternalTools {
     public static void manualOrderQuantityCalculationToggle(boolean status){
         internalToolsPage.manualOrderQuantityCalculationToggle(status);
     }
-    public static void setEnableAccountHoldAlerts(boolean status){
+    public static void setEnableAccountHoldAlerts(boolean status) throws InterruptedException {
         internalToolsPage.enableAccountHoldAlerts(status);
         internalToolsPage.clickSave();
         internalToolsPage.clickOKOnSucessOverlay();
+        internalToolsPage.scrollToConfigureSupplierPageHeader();
     }
     public static void setEnablePreAuthFeature(boolean status){
         internalToolsPage.enablePreAuth(status);

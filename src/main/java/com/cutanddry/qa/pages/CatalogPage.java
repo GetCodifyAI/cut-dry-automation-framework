@@ -32,6 +32,8 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
     By txt_previewCat = By.xpath("//div[text()='Catalog Preview']");
     By txt_firstItemDetails = By.xpath("//tbody/tr[1]");
     String itemInTheGrid = "//tr[contains(@class,'_du1frc')]//td[text()='ITEMCODE']";
+    By itemNameColumnHeader = By.xpath("//div[contains(text(),'Item Name')]");
+    By itemNameHeaderArrowUP = By.xpath("//div[normalize-space(.)='Item Name']/following-sibling::*[local-name()='svg' and contains(@data-icon,'arrow-up')]");
     By ItemCodeInCatalogData = By.xpath("//div[normalize-space(.)='Product Code (SKU)']/ancestor::div[2]/following-sibling::div//input");
     By productConfigsEditBtn = By.xpath("//*[contains(text(),'Product Configuration')]/following-sibling::button");
     By saveChangesBtn = By.xpath("//button[text()='Save']");
@@ -138,6 +140,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     By lbl_proprietaryItem = By.xpath("(//div[contains(text(), 'Proprietary Items')])[last()]");
     By addCategoryBtn = By.xpath("//div[contains(text(),'+ Add Category')]");
     By categoryDropDown = By.xpath("//*[contains(text(), 'Select categories')]/following-sibling::div//input");
+    By categoryTxt = By.xpath("//*[contains(text(),'+ Add Category')]/ancestor::div//div[contains(text(),'Categories')]");
     By subCategoryDropDown = By.xpath("//*[contains(text(), 'Select subcategories')]/following-sibling::div//input");
     String categoryOption = "(//div[contains(text(),'CATEGORY')])[last()]";
     String categoryRemoveBtn = "//*[contains(text(),'CATEGORY')]/ancestor::div[5]//div/*[name()='svg' and @data-icon='trash']";
@@ -319,6 +322,12 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         }
         distributorUI.waitForVisibility(By.xpath(itemInTheGrid.replace("ITEMCODE",itemCode)));
         distributorUI.click(By.xpath(itemInTheGrid.replace("ITEMCODE",itemCode)));
+    }
+    public void sortCatalogItemsNameAscending(){
+        distributorUI.click(itemNameColumnHeader);
+        if(!distributorUI.isDisplayed(itemNameHeaderArrowUP)){
+            distributorUI.click(itemNameColumnHeader);
+        }
     }
     public String getItemCodeFromCatalogDataPage(){
         distributorUI.waitForVisibility(ItemCodeInCatalogData);
@@ -803,7 +812,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         distributorUI.click(subCategoryDropDown);
         distributorUI.waitForVisibility(By.xpath(subCategoryOption.replace("SUBCATEGORY",subCategory)));
         distributorUI.click(By.xpath(subCategoryOption.replace("SUBCATEGORY",subCategory)));
-        distributorUI.click(categoryDropDown);
+        distributorUI.click(categoryTxt);
     }
     public void selectSubCategoryPork() throws InterruptedException {
         distributorUI.click(lbl_subCategoriesDropdown);

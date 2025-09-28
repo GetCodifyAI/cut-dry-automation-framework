@@ -82,7 +82,8 @@ public class InternalToolsPage extends LoginPage {
     String defaultViewForPortalUsersDropDownOption = "(//div[text()='TYPE'])[last()]";
     By manualOrderQuantityCalculationToggleStable = By.xpath("//div[contains(text(), 'Enable manual Order Quantity calculation in OG:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By manualOrderQuantityCalculationToggleStable1 = By.xpath("//div[contains(text(), 'Enable manual Order Quantity calculation in OG:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
-    By supplierPortalAccountHoldAlerts = By.xpath("//div[contains(text(),'Enable Account Hold Alerts for Supplier Portal')]/following-sibling::div//div[@class='react-switch-handle']");
+    By supplierPortalAccountHoldAlertsStatus = By.xpath("//div[contains(text(),'Enable Account Hold Alerts for Supplier Portal')]/following-sibling::div//div[@class='react-switch-handle']");
+    By supplierPortalAccountHoldAlerts = By.xpath("//div[contains(text(),'Enable Account Hold Alerts for Supplier Portal')]/following-sibling::div//div[@class='react-switch-handle']/parent::div/div[1]");
     By preAuthfeature = By.xpath("(//*[contains(text(),'Allow hard hold customer to place order by pre-auth Credit Card')]/following-sibling::div//input)[1]");
     By preAuthDpPortal =By.xpath("//*[contains(text(),'Allow hard hold customer to place order by pre-auth Credit Card on DP portal')]/following-sibling::div//input");
 
@@ -535,7 +536,7 @@ public class InternalToolsPage extends LoginPage {
     }
 
     public void enableAccountHoldAlerts(boolean enable) {
-        String handlePosition = distributorUI.getElement(supplierPortalAccountHoldAlerts).getAttribute("style");
+        String handlePosition = distributorUI.getElement(supplierPortalAccountHoldAlertsStatus).getAttribute("style");
         boolean isEnabled = handlePosition.contains("translateX(29px)");
 
         if (enable && !isEnabled) {
@@ -546,23 +547,27 @@ public class InternalToolsPage extends LoginPage {
     }
 
     public void enablePreAuth(boolean enable) {
-        boolean isCheckedFeature = distributorUI.getElement(preAuthfeature).isSelected();
-        boolean isCheckedDpPortal = distributorUI.getElement(preAuthDpPortal).isSelected();
+        boolean isCheckedFeature = distributorUI.isCheckboxOrRadioBtnSelected(preAuthfeature);
+        boolean isCheckedDpPortal = distributorUI.isCheckboxOrRadioBtnSelected(preAuthDpPortal);
 
         if (enable && !isCheckedDpPortal ) {
             distributorUI.click(preAuthDpPortal); // Check the box if not checked
         }if (enable && !isCheckedFeature ) {
             distributorUI.click(preAuthfeature); // Check the box if not checked
         }
-        else if (!enable && isCheckedDpPortal) {
+        if (!enable && isCheckedDpPortal) {
             distributorUI.click(preAuthDpPortal); // Uncheck the box if already checked
         }
-        else if (!enable && isCheckedFeature) {
+        if (!enable && isCheckedFeature) {
             distributorUI.click(preAuthfeature); // Uncheck the box if already checked
         }
 
     }
 
+    public void scrollToConfigureSupplierPageHeader() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        distributorUI.uiScrollTop();
+    }
 
 
 

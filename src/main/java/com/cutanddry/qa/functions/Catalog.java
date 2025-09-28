@@ -65,6 +65,10 @@ public class Catalog {
         catalogPage.clickonItemOnCatalogPage(itemCode);
     }
 
+    public static void sortItemNamesAscendingInCatalog(){
+        catalogPage.sortCatalogItemsNameAscending();
+    }
+
     public static String getProductStatusFromCatalogProductGrid(String productId){
         return catalogPage.getProductStatusFromProductGrid(productId);
     }
@@ -131,6 +135,7 @@ public class Catalog {
             catalogPage.deleteUOMinCatalog(uom);
             catalogPage.clickOnConfirmBtn();
             catalogPage.clickOnSaveChangesBtn();
+            catalogPage.clickOnPricingAndPromotionsTab();
 //            catalogPage.refreshPage();
         }
         catalogPage.clickOnUnitOfMeasure();
