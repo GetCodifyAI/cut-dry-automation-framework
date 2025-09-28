@@ -44,6 +44,10 @@
 
             <class name="com.cutanddry.qa.tests.dashboard.VerifyEligibleCustomersOfCustomerBaseWidgetInDashboardTest"/>
 
+            <class name="com.cutanddry.qa.tests.order_guide.SearchClearAndReturnToOrderGuideTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyMultipleSearchTermsAndNavigationTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyEmptySearchAndStatePersistenceTest"/>
+
         </classes>
     </test>
 </suite>

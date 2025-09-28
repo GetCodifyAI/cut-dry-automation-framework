@@ -16,7 +16,7 @@ import static com.cutanddry.qa.base.TestBase.*;
 public class VerifyFinalWeightFunctionalityForMultiUOMItemsTest extends TestBase {
     static User user;
     static String DP = "K&K International";
-    static String customerId = "18935";
+    static String customerId = "21854";
     static String searchItemCode1 = "20507";
     static String searchItemCode2 = "3865";
     static String UOM1 = "1";
