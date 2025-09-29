@@ -41,5 +41,44 @@ public class OrderGuideSettings {
         orderGuideSettingsPage.editOrderGuideName(name);
     }
     
+    public static boolean isOrderGuideNameDisplayed() {
+        try {
+            return orderGuideSettingsPage.isOrderGuideNameDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    public static boolean isGuideDescriptionDisplayed() {
+        try {
+            return orderGuideSettingsPage.isGuideDescriptionDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    public static boolean isPriceVisibilityDropdownDisplayed() {
+        try {
+            return orderGuideSettingsPage.isPriceVisibilityDropdownDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    public static boolean isAddItemsRestrictionDropdownDisplayed() {
+        try {
+            return orderGuideSettingsPage.isAddItemsRestrictionDropdownDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    public static boolean isEnableOrderApprovalCheckboxDisplayed() {
+        try {
+            return orderGuideSettingsPage.isEnableOrderApprovalCheckboxDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
 }
