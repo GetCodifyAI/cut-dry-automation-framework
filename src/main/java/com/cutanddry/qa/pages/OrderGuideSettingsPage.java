@@ -17,6 +17,12 @@ public class OrderGuideSettingsPage extends TestBase {
     By btn_orderReminderAlertsave = By.xpath("//div[@class='d-flex flex-column form-group']//button[text()='Save']");
     By btn_save = By.xpath("//button[normalize-space(text())='Save']");
     By lbl_orderGuideName = By.xpath("//label[contains(text(),'Order Guide Name')]/following-sibling::input");
+    
+    By txt_orderGuideName = By.xpath("//input[@value='Independent Foods Co']");
+    By txt_guideDescription = By.xpath("//label[contains(text(),'Guide Description')]/following-sibling::input");
+    By dropdown_priceVisibility = By.xpath("//label[contains(text(),'Price Visibility')]/following-sibling::div//input[@type='text']");
+    By dropdown_addItemsRestriction = By.xpath("//label[contains(text(),'Add Items Restriction')]/following-sibling::div//input[@type='text']");
+    By checkbox_enableOrderApproval = By.xpath("//label[contains(text(),'Enable Order Approval')]/following-sibling::div//input[@type='checkbox']");
 
     public void clickOnOrderReminderAlert(){
         if (distributorUI.isDisplayed(AddAlertButton,10)) {
@@ -77,5 +83,50 @@ public class OrderGuideSettingsPage extends TestBase {
         distributorUI.clear(lbl_orderGuideName);
         distributorUI.sendKeys(lbl_orderGuideName, name);
         distributorUI.waitForCustom(1000);
+    }
+    
+    public boolean isOrderGuideNameDisplayed() {
+        try {
+            distributorUI.waitForVisibility(txt_orderGuideName);
+            return distributorUI.isDisplayed(txt_orderGuideName);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    public boolean isGuideDescriptionDisplayed() {
+        try {
+            distributorUI.waitForVisibility(txt_guideDescription);
+            return distributorUI.isDisplayed(txt_guideDescription);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    public boolean isPriceVisibilityDropdownDisplayed() {
+        try {
+            distributorUI.waitForVisibility(dropdown_priceVisibility);
+            return distributorUI.isDisplayed(dropdown_priceVisibility);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    public boolean isAddItemsRestrictionDropdownDisplayed() {
+        try {
+            distributorUI.waitForVisibility(dropdown_addItemsRestriction);
+            return distributorUI.isDisplayed(dropdown_addItemsRestriction);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    public boolean isEnableOrderApprovalCheckboxDisplayed() {
+        try {
+            distributorUI.waitForVisibility(checkbox_enableOrderApproval);
+            return distributorUI.isDisplayed(checkbox_enableOrderApproval);
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
