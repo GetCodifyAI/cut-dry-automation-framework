@@ -48,6 +48,10 @@
             <class name="com.cutanddry.qa.tests.order_guide.VerifyMultipleSearchTermsAndNavigationTest"/>
             <class name="com.cutanddry.qa.tests.order_guide.VerifyEmptySearchAndStatePersistenceTest"/>
 
+            <class name="com.cutanddry.qa.tests.internal_tool.VerifyCreateNewVerifiedVendorGroupTest"/>
+            <class name="com.cutanddry.qa.tests.internal_tool.VerifyUpdateExistingVerifiedVendorGroupTest"/>
+            <class name="com.cutanddry.qa.tests.internal_tool.VerifyDeleteVerifiedVendorGroupTest"/>
+
         </classes>
     </test>
 </suite>
