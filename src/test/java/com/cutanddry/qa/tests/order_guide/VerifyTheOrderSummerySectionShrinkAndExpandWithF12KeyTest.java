@@ -3,7 +3,6 @@ package com.cutanddry.qa.tests.order_guide;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CustomerData;
-import com.cutanddry.qa.data.testdata.SplitWeightUOMData;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
@@ -41,8 +40,9 @@ public class VerifyTheOrderSummerySectionShrinkAndExpandWithF12KeyTest extends T
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId);
         Customer.clickF12HotKey();
-        softAssert.assertFalse(Customer.orderSummeryDisplay(orderSummery),"order summery display");
+        softAssert.assertFalse(Customer.shrinkedOrderSummeryDisplayed(),"order summery display");
         Customer.clickF12HotKey();
+        Customer.expandShrinkedOrderSummery();
         softAssert.assertTrue(Customer.orderSummeryDisplay(orderSummery),"order summery not display");
         softAssert.assertAll();
     }

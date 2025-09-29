@@ -692,7 +692,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By caseMinimumNotMetText = By.xpath("//*[contains(text(),'Case Minimum Not Met')]");
     By btn_sortCustomOrder = By.xpath("//div[contains(@class, 'cd_themed_select__single-value') and text()='Custom Order']");
     String orderColumn = "//td[text()='COLUMN']";
-    String orderSummery = "//div[text()='ORDERSUMMERY']";
+    String orderSummery = "//*[text()='ORDERSUMMERY']";
+    By orderSummeryShrinked = By.xpath("//*[local-name()='svg' and @data-icon='shopping-cart-03']/../../following-sibling::div/*[local-name()='svg' and @data-icon='chevron-down']");
     By caseUnit = By.xpath("//label[text()='Unit']/../following-sibling::div[text()='Case']");
     By saveItem = By.xpath("//button[text()='Save Item']");
     By btn_stock = By.xpath("(//span[contains(text(),'Stock')])[1]");
@@ -4289,6 +4290,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean orderSummeryDisplay(String summery)throws InterruptedException{
         return distributorUI.isDisplayed(By.xpath(orderSummery.replace("ORDERSUMMERY",summery)),2);
     }
+    public void clickShrinkedOrderSummery(){
+        distributorUI.click(orderSummeryShrinked);
+    }
+    public boolean isShrinkedOrderSummeryDisplayed(){
+        return distributorUI.isDisplayed(orderSummeryShrinked);
+    }
     public void clickOnCaseUnit()throws InterruptedException{
         distributorUI.click(caseUnit);
     }
@@ -4349,7 +4356,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(txt_substitutions,5);
     }
     public String getSaleCommissionValue()throws InterruptedException{
-        return distributorUI.getText(salesCommissionValue);
+        String TotalText = distributorUI.getText(salesCommissionValue);
+        String[] parts = TotalText.split("\\|");
+        String price = parts[0].trim();
+        String percentage = parts[1].trim();
+        return price;
     }
     public boolean isOrderGuideTextDisplay()throws InterruptedException{
         return distributorUI.isDisplayed(orderGuideText);
