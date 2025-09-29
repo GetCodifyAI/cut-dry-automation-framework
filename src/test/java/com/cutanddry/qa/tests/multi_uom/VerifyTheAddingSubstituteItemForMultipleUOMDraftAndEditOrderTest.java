@@ -54,6 +54,7 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest ex
         Catalog.removeExistingItem(substituteItemCode);
         Catalog.addSubstitutions();
         String SubstituteItemName = Catalog.getSubstituteItemName(substituteItemCode);
+        Catalog.addSubstitutions();
         Catalog.searchAndAddSubstituteItem(substituteItemCode);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving the changes after adding  substitute");

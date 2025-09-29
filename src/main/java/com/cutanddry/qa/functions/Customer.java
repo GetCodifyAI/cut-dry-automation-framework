@@ -364,6 +364,9 @@ public class Customer {
     public static void clickOK(){
         customersPage.clickOK();
     }
+    public static void closeAccountHoldOverlayByOutsideClick(){
+        customersPage.clickOutSideHardHoldModal();
+    }
     public static void closeEditor() throws InterruptedException {
         customersPage.closeEditor();
     }
@@ -2929,7 +2932,7 @@ public class Customer {
         }
         customersPage.clickOnManageCreateStandingOrder();
     }
-    public static void clickOnStandingOrderEditIcon(){
+    public static void clickOnStandingOrderEditIcon() throws InterruptedException {
         customersPage.clickOnStandingOrderEditIcon();
     }
     public static void clickOnStandingOrderDeleteIcon() throws InterruptedException {
@@ -3046,7 +3049,9 @@ public class Customer {
     public static boolean isCatalogAllItemsTxtDisplayed(){
         return customersPage.isCatalogAllItemsTxtDisplayed();
     }
-
+    public static void refreshOrderGuide(){
+        customersPage.clickOnRefreshOrderGuide();
+    }
 
 }
 

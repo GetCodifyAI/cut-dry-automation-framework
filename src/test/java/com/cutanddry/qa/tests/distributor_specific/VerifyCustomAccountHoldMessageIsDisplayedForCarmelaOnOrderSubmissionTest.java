@@ -3,10 +3,7 @@ package com.cutanddry.qa.tests.distributor_specific;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.DistributorSpecificData;
-import com.cutanddry.qa.functions.Customer;
-import com.cutanddry.qa.functions.Dashboard;
-import com.cutanddry.qa.functions.Login;
-import com.cutanddry.qa.functions.Settings;
+import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -21,6 +18,7 @@ public class VerifyCustomAccountHoldMessageIsDisplayedForCarmelaOnOrderSubmissio
     static String itemName;
     static String hardHoldMessage = "A payment is due at this time. Please contact your Carmela representative to place an order";
     static String DP = DistributorSpecificData.DISTRIBUTOR_CARMELA;
+    static String DPNAME = DistributorSpecificData.DISTRIBUTOR_CARMELA_EDIT_DETAILS;
 
     @BeforeMethod
     public void setUp(){
@@ -33,7 +31,17 @@ public class VerifyCustomAccountHoldMessageIsDisplayedForCarmelaOnOrderSubmissio
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+
+        Login.navigateToInternalToolsPage();
+        InternalTools.navigateToConfigureSupplier();
+        InternalTools.clickOnInternalToolCompanyEditDetails(DPNAME);
+        InternalTools.navigateToOrderingSettingsTab();
+        InternalTools.setEnableAccountHoldAlerts(true);
+        InternalTools.navigateToPayDetailsTab();
+        InternalTools.setEnablePreAuthFeature(false);
+
         Login.navigateToDistributorPortal(DP);
+
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
 
         Dashboard.navigateToOrderSettings();
@@ -59,7 +67,7 @@ public class VerifyCustomAccountHoldMessageIsDisplayedForCarmelaOnOrderSubmissio
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
         Customer.submitOrder();
         softAssert.assertTrue(Customer.isHardHoldPopupMessageDisplayed(hardHoldMessage),"hard hold set error");
-        Customer.clickOK();
+        Customer.closeAccountHoldOverlayByOutsideClick();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(),"order hard hold error");
 
         //revert Hard hold
