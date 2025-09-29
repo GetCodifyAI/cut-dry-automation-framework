@@ -2394,6 +2394,12 @@ public class Customer {
     public static boolean orderSummeryDisplay(String summery)throws InterruptedException{
         return customersPage.orderSummeryDisplay(summery);
     }
+    public static void expandShrinkedOrderSummery(){
+        customersPage.clickShrinkedOrderSummery();
+    }
+    public static boolean shrinkedOrderSummeryDisplayed(){
+        return customersPage.isShrinkedOrderSummeryDisplayed();
+    }
     public static void clickOnCaseUnit() throws InterruptedException {
         customersPage.clickOnCaseUnit();
     }

@@ -69,6 +69,8 @@
             <class name="com.cutanddry.qa.tests.team.AddNewUserWithExistingUserReferenceTest" />
             <!--TODO: Failure TC, Need to fix the bug 1st-->
             <class name="com.cutanddry.qa.tests.team.UpdateUserWithExistingUserReferenceTest" />
+            
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderSummaryBannerDisplaysOnSimpleListViewTest" />
         </classes>
     </test>
 </suite>
