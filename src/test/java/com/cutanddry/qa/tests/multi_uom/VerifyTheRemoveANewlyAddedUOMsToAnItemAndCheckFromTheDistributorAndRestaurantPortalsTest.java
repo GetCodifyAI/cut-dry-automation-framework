@@ -21,7 +21,7 @@ public class VerifyTheRemoveANewlyAddedUOMsToAnItemAndCheckFromTheDistributorAnd
     static String itemName, searchItemCode;
     static String DistributerName = SplitWeightUOMData.DISTRIBUTOR_NAME_IFC;
     static String customerId = SplitWeightUOMData.CUSTOMER_ID_IFC;
-    String UOM = "Case";
+    String UOM = "Box";
     String itemPrice = "3.00";
     String saleValue = "3.00";
 
@@ -43,9 +43,11 @@ public class VerifyTheRemoveANewlyAddedUOMsToAnItemAndCheckFromTheDistributorAnd
 
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
+        Catalog.sortItemNamesAscendingInCatalog();
         itemName = Catalog.getItemNameFirstRowInCatalog().split("\n")[0];
         searchItemCode = Catalog.getItemCodeFirstRowInCatalog();
 
+        Catalog.searchItemInCatalog(searchItemCode);
         Catalog.selectItemFromGrid(searchItemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),searchItemCode,"Error in getting Item Code");
         Catalog.navigateToPricingAndPromotions();
@@ -58,6 +60,7 @@ public class VerifyTheRemoveANewlyAddedUOMsToAnItemAndCheckFromTheDistributorAnd
         Catalog.setSaleValue(UOM, saleValue);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in creating UOM");
+        Catalog.navigateToPricingAndPromotions();
 
         // Test case to remove UOM
         Catalog.deleteUOMFromCatalog(UOM);
@@ -65,6 +68,7 @@ public class VerifyTheRemoveANewlyAddedUOMsToAnItemAndCheckFromTheDistributorAnd
         Catalog.DeleteConfirm();
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving the changes after UOM Delete");
+        Catalog.navigateToPricingAndPromotions();
         softAssert.assertFalse(Catalog.isDeletedUOMDisplayed(UOM),"Error in deleting the UOM");
 
         Dashboard.navigateToCustomers();
@@ -94,6 +98,7 @@ public class VerifyTheRemoveANewlyAddedUOMsToAnItemAndCheckFromTheDistributorAnd
         Customer.searchItemOnCatalog(searchItemCode);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
         Customer.addItemFromCatalogStable(itemName);
+        Customer.refreshOrderGuide();
         Customer.clickOnOrderGuideTab();
         Customer.goToCatalog();
         Customer.clickOnOrderGuideTab();

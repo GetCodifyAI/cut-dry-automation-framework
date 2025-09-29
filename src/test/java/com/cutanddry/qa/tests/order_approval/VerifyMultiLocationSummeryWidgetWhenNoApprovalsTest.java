@@ -17,6 +17,8 @@ public class VerifyMultiLocationSummeryWidgetWhenNoApprovalsTest {
     String DistributerName = "47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
     String ManagerUserCode = "226431917";
     String RestuarentName = "Bellota Restaurant — Sacramento ";
+    String CustomerCode = "23445";
+    String OrderGuideName = "Independent Foods Co";
 
     @BeforeMethod
     public void setUp() {
@@ -31,6 +33,18 @@ public class VerifyMultiLocationSummeryWidgetWhenNoApprovalsTest {
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "login error");
         Login.navigateToDistributorPortal(DistributerName);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "navigation error");
+
+        //Turning the order approval on for specific order guide
+        Dashboard.navigateToCustomers();
+        Customer.searchCustomerByCode(CustomerCode);
+        Customer.SelectCustomer(CustomerCode);
+        softAssert.assertTrue(Customer.orderApprovalTxtDisplayed(),"Order approval option is not displayed");
+        Customer.ifHasHoldsRemoveHoldsFromCustomer();
+        Customer.orderApprovalEdit();
+        softAssert.assertTrue(Customer.orderApprovalSettingsOverlayDisplayed(),"Order approval overlay is not displayed");
+        softAssert.assertTrue(Customer.existingOrderGuideDisplayed(OrderGuideName),"Error in displaying the existing order guids");
+        Customer.orderApprovalTurnOnForTheOrderGuide(OrderGuideName);
+        Customer.saveOrderApprovalSettings();
 
         Login.navigateToLoginAsPortal(ManagerUserCode);
         Dashboard.navigateToApprovalsTab();

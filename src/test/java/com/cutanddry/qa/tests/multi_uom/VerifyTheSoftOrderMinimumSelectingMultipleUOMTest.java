@@ -27,6 +27,7 @@ public class VerifyTheSoftOrderMinimumSelectingMultipleUOMTest extends TestBase 
     static String defaultOrderMin = "0";
     static String orderMinimumType = "Soft Order Minimum";
     static String orderMinInternal = "300000";
+    static String orderMinimumSetting = "Use Global Settings";
 
     @BeforeMethod
     public void setUp() {
@@ -61,10 +62,14 @@ public class VerifyTheSoftOrderMinimumSelectingMultipleUOMTest extends TestBase 
         Settings.setOrderMinimums(false);
         Settings.clickOnSaveChanges();
 
+        //set soft hold minimum configs from the profile
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
-        Customer.clickOnOrderGuide(customerId);
+        Customer.SelectCustomer(customerId);
+        Customer.SelectOrderMinimumFromProfile(orderMinimumSetting);
+        Customer.clickOnOrderGuideInProfile();
+
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(searchItemCode);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
