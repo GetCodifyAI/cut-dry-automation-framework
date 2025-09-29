@@ -16,7 +16,6 @@ import static io.restassured.RestAssured.given;
 public class AioAPIHelper {
     private static final String ADD_CASE_TO_CYCLE = "/project/{projectKey}/testcycle/{cycleKey}/testcase/{caseKey}";
 
-    private static final String GET_CYCLE_DETAILS = "/project/{projectKey}/testcycle/{cycleKey}/detail";
     private static final String CREATE_CYCLE = "/project/{projectKey}/testcycle/detail";
     private static final String MARK_CASE = "project/{projectKey}/testcycle/{cycleKey}/testcase/{caseKey}/testrun?createNewRun={createNewRun}";
     private static final String IMPORT_RESULTS = "/project/{projectKey}/testcycle/{cycleKey}/import/results?type={type}";
@@ -168,10 +167,5 @@ public class AioAPIHelper {
             return aioMappingStatus;
         }
 
-    }
-
-    public static Response getTestCaseDetail(String projectKey, String testCaseKey) {
-        String endpoint = "/project/" + projectKey + "/testcase/" + testCaseKey + "/detail";
-        return doGet(endpoint);
     }
 }

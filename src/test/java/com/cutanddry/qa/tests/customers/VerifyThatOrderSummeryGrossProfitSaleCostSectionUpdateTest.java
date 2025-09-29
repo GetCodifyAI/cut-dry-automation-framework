@@ -54,6 +54,7 @@ public class VerifyThatOrderSummeryGrossProfitSaleCostSectionUpdateTest extends 
         marginValue = marginValue.setScale(2, RoundingMode.DOWN);
         Customer.increaseFirstRowQtyCustom(1);
 //        softAssert.assertTrue(Customer.isOrderSummeryValueDisplayed(orderSummery,marginValue.toPlainString()),"gross profit value not equal");
+        Customer.expandShrinkedOrderSummery();
         softAssert.assertTrue(
                 Customer.isOrderSummeryValueDisplayed(orderSummery, marginValue.setScale(1, RoundingMode.DOWN).toPlainString()),
                 "gross profit value not equal"

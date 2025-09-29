@@ -2391,6 +2391,12 @@ public class Customer {
     public static boolean orderSummeryDisplay(String summery)throws InterruptedException{
         return customersPage.orderSummeryDisplay(summery);
     }
+    public static void expandShrinkedOrderSummery(){
+        customersPage.clickShrinkedOrderSummery();
+    }
+    public static boolean shrinkedOrderSummeryDisplayed(){
+        return customersPage.isShrinkedOrderSummeryDisplayed();
+    }
     public static void clickOnCaseUnit() throws InterruptedException {
         customersPage.clickOnCaseUnit();
     }
@@ -2886,13 +2892,6 @@ public class Customer {
     }
     public static boolean isSimpleListViewTextDisplay()throws InterruptedException{
         return customersPage.isSimpleListViewTextDisplay();
-    }
-    public static boolean isOrderSummaryDisplayed() {
-        try {
-            return customersPage.isOrderSummaryDisplayed();
-        } catch (Exception e) {
-            return false;
-        }
     }
     public static void clickSortOptionOG(String option)throws InterruptedException{
         customersPage.clickSortOptionOG(option);
