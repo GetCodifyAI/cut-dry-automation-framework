@@ -266,4 +266,32 @@ public class LoginPage extends TestBase {
         distributorUI.waitForCustom(3000);
     }
 
+    public boolean isInternalToolsPageDisplayed(){
+        try {
+            return distributorUI.getCurrentURL().contains("internaltools/loginas");
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public void selectFromDistributorQuickLinks(String distributorName){
+        distributorUI.waitForElementEnabledState(lbl_loginAsDist,true);
+        distributorUI.sendKeys(lbl_loginAsDist, distributorName);
+        distributorUI.click(By.xpath(txt_distributor.replace("NAME", distributorName)));
+    }
+
+    public void clickLoginAsSupplier(){
+        distributorUI.click(btn_loginAsDis);
+        distributorUI.switchToNewTab();
+    }
+
+    public void selectUserWithNoDrafts(){
+        distributorUI.waitForElementEnabledState(lbl_loginAsCustomer,true);
+        distributorUI.sendKeys(lbl_loginAsCustomer, "user-with-no-drafts");
+    }
+
+    public void clickLoginButton(){
+        distributorUI.click(btn_loginAsCustomer);
+    }
+
 }

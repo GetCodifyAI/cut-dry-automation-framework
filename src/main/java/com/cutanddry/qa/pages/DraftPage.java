@@ -20,7 +20,7 @@ public class DraftPage extends LoginPage{
     String draftsColumnDP = "(//tbody/tr[contains(@href, '/customers/place_order/') and contains(@href, 'draftId')]/td[NUM])[1]";
     By customerName = By.xpath("(//tbody/tr[contains(@href, '/customers/place_order/') and contains(@href, 'draftId')]/td[3]//div)[1]");
     By searchDrafts = By.xpath("//input[@placeholder='Search Drafts..']");
-    String resultCount = "//span[contains(@class,'text-muted') and contains(text(),'COUNT')]";
+    String resultCount = "//span[contains(text(),'COUNT results')]";
     By btn_trash = By.xpath("(//button[@type='button']//*[local-name()='svg' and @data-icon='cdTrash'])[1]");
     By txt_delete = By.xpath("//h2[contains(text(),'Delete Draft Permanently?')]");
     String confirmationModel = "//div[contains(text(),'TEXT')]";
@@ -200,6 +200,27 @@ public class DraftPage extends LoginPage{
     public boolean isLastDraftStatusDisplayed(String total,String date){
         distributorUI.waitForVisibility(By.xpath(txt_lastDraftDisplay.replace("TOTAL", total).replace("DATE",date)));
         return distributorUI.isDisplayed(By.xpath(txt_lastDraftDisplay.replace("TOTAL", total).replace("DATE",date)));
+    }
+
+    public int getActiveDraftCount(){
+        try {
+            String resultText = distributorUI.getText(By.xpath("//span[contains(text(),'results')]"));
+            if (resultText.contains("0 results")) {
+                return 0;
+            }
+            String[] parts = resultText.split(" ");
+            return Integer.parseInt(parts[0]);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    public boolean isEmptyStateDisplayed(){
+        try {
+            return distributorUI.isDisplayed(By.xpath("//span[contains(text(),'0 results')]"));
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }

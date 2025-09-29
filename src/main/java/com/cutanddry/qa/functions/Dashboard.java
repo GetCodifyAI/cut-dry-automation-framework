@@ -199,4 +199,32 @@ public class Dashboard {
     }
     public static void refreshDashBoardPage(){dashboardPage.refreshDashBoardPage();}
 
+    public static boolean isDraftsMenuItemVisible(){
+        return dashboardPage.isDraftsMenuItemVisible();
+    }
+
+    public static boolean isDraftsBadgeVisible(){
+        return dashboardPage.isDraftsBadgeVisible();
+    }
+
+    public static int getDraftsBadgeCount(){
+        return dashboardPage.getDraftsBadgeCount();
+    }
+
+    public static boolean isDraftsBadgeStyleCorrect(){
+        return dashboardPage.isDraftsBadgeStyleCorrect();
+    }
+
+    public static void clickDraftsMenuItem(){
+        dashboardPage.clickDraftsMenuItem();
+    }
+
+    public static boolean isUserNavigatedToSupplierDashboard(){
+        return dashboardPage.isUserNavigatedToSupplierDashboard();
+    }
+
+    public static boolean isSupplierSpecificDraftLogic(){
+        return dashboardPage.isSupplierSpecificDraftLogic();
+    }
+
 }

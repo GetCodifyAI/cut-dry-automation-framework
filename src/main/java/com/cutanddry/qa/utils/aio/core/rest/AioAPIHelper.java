@@ -15,6 +15,7 @@ import static io.restassured.RestAssured.given;
 
 public class AioAPIHelper {
     private static final String ADD_CASE_TO_CYCLE = "/project/{projectKey}/testcycle/{cycleKey}/testcase/{caseKey}";
+    private static final String GET_TEST_CASE_DETAIL = "/project/{projectKey}/testcase/{caseKey}/detail";
 
     private static final String GET_CYCLE_DETAILS = "/project/{projectKey}/testcycle/{cycleKey}/detail";
     private static final String CREATE_CYCLE = "/project/{projectKey}/testcycle/detail";
@@ -105,6 +106,12 @@ public class AioAPIHelper {
             System.err.println("Failed to parse JSON. Response was: " + responseBody);
         }
         return null;
+    }
+
+    public static Response getTestCaseDetail(String projectKey, String caseKey) {
+        System.out.println("Retrieving test case details for: " + caseKey);
+        Response response = doGet(GET_TEST_CASE_DETAIL, projectKey, caseKey);
+        return response;
     }
 
 

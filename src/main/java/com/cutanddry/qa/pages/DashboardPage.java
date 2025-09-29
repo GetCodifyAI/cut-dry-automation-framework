@@ -30,6 +30,9 @@ public class DashboardPage extends LoginPage{
     By txt_totalTimeSaved = By.xpath("//tr[td[contains(text(), 'Total')]]/td[5]");
     By btn_history = By.xpath("//a[@data-tip='Order History']");
     By btn_drafts  =By.xpath("//a[@data-tip='View Drafts']");
+    By btn_drafts_with_badge = By.xpath("//a[@href='/draft-orders']");
+    By drafts_badge = By.xpath("//a[@href='/draft-orders']//span[contains(@class,'badge')]");
+    By drafts_menu_item = By.xpath("//a[@href='/draft-orders']");
     By btn_track = By.xpath("//a[@role='button' and contains(text(), 'Track')]");
     By btn_trackResources = By.xpath("//div[@arrowprops]//a[text()='Resources']");
     By btn_trackRoutes = By.xpath("//div[@arrowprops]//a[text()='Routes']");
@@ -363,6 +366,67 @@ public class DashboardPage extends LoginPage{
     }
     public void refreshDashBoardPage(){
         distributorUI.refreshPage();
+    }
+
+    public boolean isDraftsMenuItemVisible(){
+        try {
+            return distributorUI.isDisplayed(drafts_menu_item);
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean isDraftsBadgeVisible(){
+        try {
+            return distributorUI.isDisplayed(drafts_badge);
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public int getDraftsBadgeCount(){
+        try {
+            if (!isDraftsBadgeVisible()) {
+                return 0;
+            }
+            String badgeText = distributorUI.getText(drafts_badge);
+            if (badgeText.contains("K")) {
+                return 1000;
+            }
+            return Integer.parseInt(badgeText);
+        } catch (Exception e){
+            return 0;
+        }
+    }
+
+    public boolean isDraftsBadgeStyleCorrect(){
+        try {
+            if (!isDraftsBadgeVisible()) {
+                return false;
+            }
+            WebElement badge = distributorUI.getElement(drafts_badge);
+            String backgroundColor = badge.getCssValue("background-color");
+            String color = badge.getCssValue("color");
+            return backgroundColor.contains("243, 110, 108") && color.contains("255, 255, 255");
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public void clickDraftsMenuItem(){
+        distributorUI.clickWithFallback(drafts_menu_item);
+    }
+
+    public boolean isUserNavigatedToSupplierDashboard(){
+        try {
+            return distributorUI.getCurrentURL().contains("supplier-uat.staging.cutanddry.com/dashboard");
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean isSupplierSpecificDraftLogic(){
+        return isDraftsBadgeVisible();
     }
 
 }
