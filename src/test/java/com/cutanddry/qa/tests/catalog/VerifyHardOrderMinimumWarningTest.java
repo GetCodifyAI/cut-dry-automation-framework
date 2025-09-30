@@ -55,13 +55,15 @@ public class VerifyHardOrderMinimumWarningTest extends TestBase {
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.SelectCustomer(customerId);
         Customer.SelectOrderMinimumFromProfile(orderMinimumSetting);
+
         Customer.clickOnOrderGuideInProfile();
         itemName = Customer.getItemNameFirstRow();
         Customer.increaseFirstRowQtyByOne();
         Customer.clickOnDefaultCheckoutButton();
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
         softAssert.assertTrue(Customer.isMinOrderBannerDisplayed(),"banner not appearing error");
-        Customer.submitOrder();
+        Customer.submitOrderMinimum();
+
         softAssert.assertTrue(Customer.isOrderMinPopupDisplayed(),"popup display error");
         Customer.clickOK();
         Dashboard.navigateToOrderSettings();

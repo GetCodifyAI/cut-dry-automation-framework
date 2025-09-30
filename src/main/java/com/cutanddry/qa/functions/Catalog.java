@@ -65,6 +65,10 @@ public class Catalog {
         catalogPage.clickonItemOnCatalogPage(itemCode);
     }
 
+    public static void sortItemNamesAscendingInCatalog(){
+        catalogPage.sortCatalogItemsNameAscending();
+    }
+
     public static String getProductStatusFromCatalogProductGrid(String productId){
         return catalogPage.getProductStatusFromProductGrid(productId);
     }
@@ -88,11 +92,11 @@ public class Catalog {
         return true;
     }
 
-    public static void navigateToAdditionalAttributes(){
-        catalogPage.clickOnAdditionalAttributesTab();
+    public static void navigateToSpecifications(){
+        catalogPage.clickOnSpecificationsTab();
     }
 
-    public static boolean isAdditionalAttributesTabDisplayed(){
+    public static boolean isCertificationsDisplayed(){
         return catalogPage.isCertificationsSectionDisplayed();
     }
 
@@ -100,8 +104,8 @@ public class Catalog {
         catalogPage.clickClearCertification(CertificationType);
     }
 
-    public static void selectCertification(String CertificationType,String certification){
-        catalogPage.clickOnCertification(CertificationType,certification);
+    public static void selectCertification(String certification){
+        catalogPage.clickOnCertification(certification);
     }
 
     public static void navigateToImages(){
@@ -131,6 +135,7 @@ public class Catalog {
             catalogPage.deleteUOMinCatalog(uom);
             catalogPage.clickOnConfirmBtn();
             catalogPage.clickOnSaveChangesBtn();
+            catalogPage.clickOnPricingAndPromotionsTab();
 //            catalogPage.refreshPage();
         }
         catalogPage.clickOnUnitOfMeasure();

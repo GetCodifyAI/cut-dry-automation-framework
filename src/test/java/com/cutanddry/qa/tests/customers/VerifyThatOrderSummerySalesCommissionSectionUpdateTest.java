@@ -48,6 +48,7 @@ public class VerifyThatOrderSummerySalesCommissionSectionUpdateTest extends Test
         Customer.increaseFirstRowQtyCustom(10);
         itemName = Customer.getItemNameFirstRow();
         itemPrice = Customer.getActiveItemPriceFirstRow();
+        Customer.expandShrinkedOrderSummery();
         saleCommission = Customer.getSaleCommissionValue();
         softAssert.assertNotNull(Customer.getSaleCommissionValue(),"commission error");
         softAssert.assertNotEquals(Customer.getSaleCommissionValue(),"$0 | 0%","commission not add");

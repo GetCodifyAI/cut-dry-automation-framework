@@ -19,7 +19,8 @@ public class VerifyDpsHaveNotSpecialItemsOnCatalogDataWhenSupplierPortalDisableT
     static User user;
     String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
     static String SpecialItemsDropdownOption1 = "Disabled";
-    String itemCode = "00036";
+    static String SpecialItemsDropdownOption2 = "Enabled (via Manual Selection)";
+    String itemCode = "00563";
     String All = "All";
 
 
@@ -51,7 +52,17 @@ public class VerifyDpsHaveNotSpecialItemsOnCatalogDataWhenSupplierPortalDisableT
         Catalog.selectItemStatus(All);
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        Catalog.selectEditFromProductConfig();
         softAssert.assertFalse(Catalog.isSpecialItemDropDownDisplay(),"special item drop down display error");
+
+        //Post Condition enabling special items again
+        Login.navigateToInternalToolsPage();
+        InternalTools.navigateToConfigureSupplier();
+        InternalTools.navigateToIndependentCompEditDetails();
+        InternalTools.navigateToCatalogSettingsTab();
+        InternalTools.selectSpecialItemsDropdown(SpecialItemsDropdownOption2);
+        InternalTools.catalogSettingsSave();
+
          softAssert.assertAll();
     }
     @AfterMethod
