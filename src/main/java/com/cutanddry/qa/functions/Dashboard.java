@@ -199,7 +199,7 @@ public class Dashboard {
     }
     public static void refreshDashBoardPage(){dashboardPage.refreshDashBoardPage();}
 
-    public static boolean isDraftsMenuItemVisible(){
+    public static boolean isDraftsOptionVisible(){
         return dashboardPage.isDraftsMenuItemVisible();
     }
 
@@ -209,22 +209,6 @@ public class Dashboard {
 
     public static int getDraftsBadgeCount(){
         return dashboardPage.getDraftsBadgeCount();
-    }
-
-    public static boolean isDraftsBadgeStyleCorrect(){
-        return dashboardPage.isDraftsBadgeStyleCorrect();
-    }
-
-    public static void clickDraftsMenuItem(){
-        dashboardPage.clickDraftsMenuItem();
-    }
-
-    public static boolean isUserNavigatedToSupplierDashboard(){
-        return dashboardPage.isUserNavigatedToSupplierDashboard();
-    }
-
-    public static boolean isSupplierSpecificDraftLogic(){
-        return dashboardPage.isSupplierSpecificDraftLogic();
     }
 
 }

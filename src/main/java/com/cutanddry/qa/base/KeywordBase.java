@@ -1301,18 +1301,6 @@ public KeywordBase clickF12Mac() {
         }
         return this;
     }
-
-    public String getCurrentURL() {
-        try {
-            String currentUrl = driver.getCurrentUrl();
-            logger.info("Current URL: {}", currentUrl);
-            return currentUrl;
-        } catch (Exception e) {
-            logger.error("Failed to get current URL", e);
-            return "";
-        }
-    }
-
     public KeywordBase openNewTabAndClosePreviousTabs() {
         // Get all existing window handles (tabs)
         Set<String> existingTabs = driver.getWindowHandles();

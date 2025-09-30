@@ -129,24 +129,4 @@ public class Login {
         loginPage.clickOperator(operator);
         loginPage.clickOnLoginAsClassicAndSwitchToNewTab();
     }
-
-    public static boolean isUserNavigatedToInternalTools(){
-        return loginPage.isInternalToolsPageDisplayed();
-    }
-
-    public static void selectDistributorFromQuickLinks(String distributorName){
-        loginPage.selectFromDistributorQuickLinks(distributorName);
-    }
-
-    public static void clickLoginAsSupplierButton(){
-        loginPage.clickLoginAsSupplier();
-    }
-
-    public static void selectUserWithNoDrafts(){
-        loginPage.selectUserWithNoDrafts();
-    }
-
-    public static void clickLoginButton(){
-        loginPage.clickLoginButton();
-    }
 }

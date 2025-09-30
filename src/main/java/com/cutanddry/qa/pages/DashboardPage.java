@@ -30,9 +30,7 @@ public class DashboardPage extends LoginPage{
     By txt_totalTimeSaved = By.xpath("//tr[td[contains(text(), 'Total')]]/td[5]");
     By btn_history = By.xpath("//a[@data-tip='Order History']");
     By btn_drafts  =By.xpath("//a[@data-tip='View Drafts']");
-    By btn_drafts_with_badge = By.xpath("//a[@href='/draft-orders']");
-    By drafts_badge = By.xpath("//a[@href='/draft-orders']//span[contains(@class,'badge')]");
-    By drafts_menu_item = By.xpath("//a[@href='/draft-orders']");
+    By drafts_badge = By.xpath("//*[@href='/draft-orders']//span");
     By btn_track = By.xpath("//a[@role='button' and contains(text(), 'Track')]");
     By btn_trackResources = By.xpath("//div[@arrowprops]//a[text()='Resources']");
     By btn_trackRoutes = By.xpath("//div[@arrowprops]//a[text()='Routes']");
@@ -369,64 +367,36 @@ public class DashboardPage extends LoginPage{
     }
 
     public boolean isDraftsMenuItemVisible(){
-        try {
-            return distributorUI.isDisplayed(drafts_menu_item);
-        } catch (Exception e){
-            return false;
-        }
+            return distributorUI.isDisplayed(btn_drafts);
     }
 
     public boolean isDraftsBadgeVisible(){
-        try {
             return distributorUI.isDisplayed(drafts_badge);
-        } catch (Exception e){
-            return false;
-        }
     }
 
     public int getDraftsBadgeCount(){
-        try {
-            if (!isDraftsBadgeVisible()) {
-                return 0;
-            }
-            String badgeText = distributorUI.getText(drafts_badge);
-            if (badgeText.contains("K")) {
-                return 1000;
-            }
-            return Integer.parseInt(badgeText);
-        } catch (Exception e){
+
+        String s = String.valueOf(distributorUI.getText(drafts_badge)).trim();
+        if (s.isEmpty()) {
             return 0;
         }
-    }
 
-    public boolean isDraftsBadgeStyleCorrect(){
+        s = s.replace(",", "").replace("+", "").toLowerCase();
+
+        int mul = s.endsWith("k") ? 1000 : 1;
+        if (mul == 1000) {
+            s = s.substring(0, s.length() - 1).trim(); // drop trailing 'k'
+        }
+
         try {
-            if (!isDraftsBadgeVisible()) {
-                return false;
+            return (int) Math.round(Double.parseDouble(s) * mul); // 2k->2000, 2.5k->2500
+        } catch (NumberFormatException e) {
+            String digits = s.replaceAll("\\D", "");
+            if (digits.isEmpty()) {
+                return 0;
             }
-            WebElement badge = distributorUI.getElement(drafts_badge);
-            String backgroundColor = badge.getCssValue("background-color");
-            String color = badge.getCssValue("color");
-            return backgroundColor.contains("243, 110, 108") && color.contains("255, 255, 255");
-        } catch (Exception e){
-            return false;
+            return Integer.parseInt(digits);
         }
-    }
-
-    public void clickDraftsMenuItem(){
-        distributorUI.clickWithFallback(drafts_menu_item);
-    }
-
-    public boolean isUserNavigatedToSupplierDashboard(){
-        try {
-            return distributorUI.getCurrentURL().contains("supplier-uat.staging.cutanddry.com/dashboard");
-        } catch (Exception e){
-            return false;
-        }
-    }
-
-    public boolean isSupplierSpecificDraftLogic(){
-        return isDraftsBadgeVisible();
     }
 
 }

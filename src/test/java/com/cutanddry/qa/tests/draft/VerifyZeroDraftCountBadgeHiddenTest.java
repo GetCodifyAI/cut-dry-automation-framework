@@ -10,6 +10,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyZeroDraftCountBadgeHiddenTest extends TestBase {
     static User user;
+    static String DistributorName = "502475015 - DharshiHaute Grub - Haute Grub";
 
     @BeforeMethod
     public void setUp(){
@@ -20,28 +21,16 @@ public class VerifyZeroDraftCountBadgeHiddenTest extends TestBase {
     @Test(groups = "DOT-TC-1893")
     public void verifyZeroDraftCountBadgeHidden() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
+
+        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
+        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Login.navigateToDistributorPortal(DistributorName);
         
-        Login.navigateToInternalToolsPage();
-        softAssert.assertTrue(Login.isUserNavigatedToInternalTools(), 
-            "Failed to navigate to internal tools login page");
-        
-        Login.selectUserWithNoDrafts();
-        Login.clickLoginButton();
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), 
-            "Login error - user not navigated to dashboard");
-        
-        softAssert.assertTrue(Dashboard.isDraftsMenuItemVisible(), 
-            "Drafts menu item should be visible in navigation");
-        
-        softAssert.assertFalse(Dashboard.isDraftsBadgeVisible(), 
-            "No badge should be displayed next to Drafts menu item when no active drafts exist");
-        
-        Dashboard.clickDraftsMenuItem();
-        softAssert.assertTrue(Draft.isUserNavigatedToDrafts(), 
-            "Drafts page should load successfully");
-        
-        softAssert.assertTrue(Draft.isEmptyStateDisplayed(), 
-            "Drafts page should show empty state with no drafts listed");
+        softAssert.assertTrue(Dashboard.isDraftsOptionVisible(), "Drafts menu item should be visible in navigation");
+        softAssert.assertFalse(Dashboard.isDraftsBadgeVisible(), "No badge should be displayed next to Drafts menu item when no active drafts exist");
+        Dashboard.navigateToDrafts();
+        softAssert.assertTrue(Draft.isUserNavigatedToDrafts(), "Drafts page should load successfully");
+        softAssert.assertTrue(Draft.isEmptyStateDisplayed(), "Drafts page should show empty state with no drafts listed");
         
         softAssert.assertAll();
     }
