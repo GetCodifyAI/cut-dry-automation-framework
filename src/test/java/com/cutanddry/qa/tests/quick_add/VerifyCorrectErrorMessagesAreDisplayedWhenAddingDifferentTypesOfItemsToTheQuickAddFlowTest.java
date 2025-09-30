@@ -19,7 +19,7 @@ public class VerifyCorrectErrorMessagesAreDisplayedWhenAddingDifferentTypesOfIte
     static User user;
     static String customerId = "110RES";
     static String itemQuantity = "2" ;
-    static String outOfStockItemCode = "23786";
+    static String outOfStockItemCode = "95337";
     static String outOfStockItemCodeError = "Product out of stock";
 
     static String discontinuedItemCode = "90630";

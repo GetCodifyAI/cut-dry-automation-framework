@@ -3,7 +3,7 @@ package com.cutanddry.qa.data.testdata;
 public class CatalogData {
     public static final String CUSTOMER_ID = "16579";
     public static final String CUSTOMER_ID_2 = "34315";
-    public static final String CUSTOMER_ID_3 = "4321";
+    public static final String CUSTOMER_ID_3 = "4351";
     public static final String CUSTOMER_ID_4 = "20240802";
     public static final String CUSTOMER_ID_5 = "29374";
     public static final String CUSTOMER_ID_6 = "113956";
@@ -24,6 +24,7 @@ public class CatalogData {
     public static final String ITEM_CODE_13 = "00973";
     public static final String ITEM_CODE_14 = "28356";
     public static final String SUBSTITUTE_ITEM_CODE = "08045";
+    public static final String SUBSTITUTE_ITEM_NAME = "Corn";
     public static final String ITEM_NAME = "Carrot - Baby Peeled - 1 LB";
     public static final String ITEM_SALE = "Chili Pepper - Fresno 10 LB";
     public static final String ITEM_NAME_SIMILAR_ITEM = "Organic Bananas - 20 LB";
@@ -38,7 +39,7 @@ public class CatalogData {
     public static final String ITEM_NAME_DICARLO = "Cheese Mozzarella Wm Shredded";
     public static final String ITEM_NAME_2 = "Organic Bananas - 2 LB";
     public static final String ITEM_NAME_SUB = "Cilantro -30 CT";
-    public static final String ADDED_QUANTITY = "Added: 1 CS | 1 EA";
+    public static final String ADDED_QUANTITY = "Added: 1 CS | 1 Pkg";
     public static final String MULTI_UOM_1 = "1";
     public static final String MULTI_UOM_2 = "2";
     public static final String MULTI_UOM_3 = "3";

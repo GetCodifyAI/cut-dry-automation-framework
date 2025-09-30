@@ -16,11 +16,11 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheOutOfStockLabelsDisplayWhenHideOutOfStockLabelOnSupplierPortalToggleDisabledTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    String DistributorName ="145885743 - Cut+Dry Agent - Lombardi";
-    static String CompanyName = "Lombardi";
-    static String customerId = "   1000782   S";
-    static String itemCode = "2301101";
-    static String itemName = "Lobster Tl 7-8 OZ Maine";
+    String DistributorName ="174874582 - Cut+Dry Agent - Carmela Foods Inc";
+    static String CompanyName = "Carmela Foods Inc";
+    static String customerId = "8782";
+    static String itemCode = "S00812";
+    static String itemName = "Salsa Medium Cherry Fft";
     static String tag = "Out of stock";
 
 

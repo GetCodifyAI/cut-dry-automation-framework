@@ -17,7 +17,7 @@ public class VerifyDpsHaveSpecialItemsOrderSubmissionTest extends TestBase {
     static String customerId = "16579";
     String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
     static String SpecialItemsDropdownOption1 = "Enabled (via Manual Selection)";
-    String itemCode = "00036";
+    String itemCode = "00563";
     static String specialItemYes = "Yes";
     static String specialItemNo = "No";
     String All = "All";
@@ -50,6 +50,7 @@ public class VerifyDpsHaveSpecialItemsOrderSubmissionTest extends TestBase {
         Catalog.selectItemStatus(All);
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        Catalog.selectEditFromProductConfig();
         softAssert.assertTrue(Catalog.isSpecialItemDropDownDisplay(),"special item drop down display error");
         Catalog.clickOnSpecialItem(specialItemYes);
         Catalog.saveChanges();
@@ -73,6 +74,7 @@ public class VerifyDpsHaveSpecialItemsOrderSubmissionTest extends TestBase {
         Catalog.selectItemStatus(All);
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        Catalog.selectEditFromProductConfig();
         softAssert.assertTrue(Catalog.isSpecialItemDropDownDisplay(),"special item drop down display error");
         Catalog.clickOnSpecialItem(specialItemNo);
         Catalog.saveChanges();

@@ -49,11 +49,14 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMTest extends TestBase {
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),searchItemCode,"Error in getting Item Code");
         Catalog.navigateToSubstituteTab();
         Catalog.removeExistingItem(substituteItemCode);
+        Catalog.navigateToSubstituteTab();
         Catalog.addSubstitutions();
         String SubstituteItemName = Catalog.getSubstituteItemName(substituteItemCode);
+        Catalog.addSubstitutions();
         Catalog.searchAndAddSubstituteItem(substituteItemCode);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving the changes after adding  substitute");
+        Catalog.navigateToSubstituteTab();
         softAssert.assertTrue(Catalog.isAddedSubstituteItemDisplayedInPage(SubstituteItemName),"Error in adding substitute items");
 
         Dashboard.navigateToCustomers();
@@ -87,6 +90,7 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMTest extends TestBase {
         Catalog.deleteSubstitute();
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in Removing substitute item");
+        Catalog.navigateToSubstituteTab();
         softAssert.assertAll();
     }
     @AfterMethod

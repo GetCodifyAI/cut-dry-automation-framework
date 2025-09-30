@@ -22,7 +22,7 @@ public class VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurant
     static String itemName, searchItemCode;
     static String DistributerName = SplitWeightUOMData.DISTRIBUTOR_NAME_IFC;
     static String customerId = SplitWeightUOMData.CUSTOMER_ID_IFC;
-    String UOM = "Case";
+    String UOM = "Box";
     String itemPrice = "3.00";
     String saleValue = "3.00";
 
@@ -44,9 +44,11 @@ public class VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurant
 
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
+        Catalog.sortItemNamesAscendingInCatalog();
         itemName = Catalog.getItemNameFirstRowInCatalog().split("\n")[0];
         searchItemCode = Catalog.getItemCodeFirstRowInCatalog();
 
+        Catalog.searchItemInCatalog(searchItemCode);
         Catalog.selectItemFromGrid(searchItemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),searchItemCode,"Error in getting Item Code");
         Catalog.navigateToPricingAndPromotions();
@@ -57,6 +59,7 @@ public class VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurant
         Catalog.setSaleValue(UOM, saleValue);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in creating UOM");
+        Catalog.navigateToPricingAndPromotions();
         softAssert.assertTrue(Catalog.isAddedUOMDisplayed(UOM),"Error in deleting the UOM");
 
         Dashboard.navigateToCustomers();
@@ -71,13 +74,14 @@ public class VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurant
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
         Customer.addItemFromCatalogStable(itemName);
         Customer.clickOnOrderGuideTab();
+        Customer.refreshOrderGuide();
         Customer.goToCatalog();
         Customer.clickOnOrderGuideTab();
         Customer.searchItemOnOrderGuide(searchItemCode);
         softAssert.assertTrue(Customer.getItemNameFirstRow().toLowerCase().contains(itemName.toLowerCase()),"item mismatch");
         softAssert.assertTrue(Customer.isMultiUomDropDownOGDisplayed(),"Item is not Multi UOM");
         Customer.ClickOnMultiUomDropDownOG(searchItemCode);
-        softAssert.assertTrue(Customer.isSpotPriceAdded("1",itemPrice),"Item case price error - ");
+        softAssert.assertTrue(Customer.isSpotPriceAdded("2",itemPrice),"Item case price error - ");
 
 
         // Restaurant Flows
@@ -94,6 +98,7 @@ public class VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurant
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
         Customer.addItemFromCatalogStable(itemName);
         Customer.clickOnOrderGuideTab();
+        Customer.refreshOrderGuide();
         Customer.goToCatalog();
         Customer.clickOnOrderGuideTab();
         Customer.searchItemOnOrderGuide(searchItemCode);
@@ -101,7 +106,7 @@ public class VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurant
         softAssert.assertTrue(Customer.isMultiUomDropDownOGDisplayed(),"Item is not Multi UOM");
 
         Customer.ClickOnMultiUomDropDownOG(searchItemCode);
-        softAssert.assertTrue(Customer.isSpotPriceAdded("1",itemPrice),"Item case price error");
+        softAssert.assertTrue(Customer.isSpotPriceAdded("2",itemPrice),"Item case price error");
 
 
         softAssert.assertAll();
