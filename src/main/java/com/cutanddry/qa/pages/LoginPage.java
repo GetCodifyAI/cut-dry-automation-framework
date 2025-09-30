@@ -265,4 +265,5 @@ public class LoginPage extends TestBase {
         distributorUI.switchToNewTab();
         distributorUI.waitForCustom(3000);
     }
+
 }

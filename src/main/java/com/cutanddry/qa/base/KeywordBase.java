@@ -1301,6 +1301,7 @@ public KeywordBase clickF12Mac() {
         }
         return this;
     }
+
     public KeywordBase openNewTabAndClosePreviousTabs() {
         // Get all existing window handles (tabs)
         Set<String> existingTabs = driver.getWindowHandles();
