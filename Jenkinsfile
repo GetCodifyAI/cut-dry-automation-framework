@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent { label 'ec2-fleet' }
     
     parameters {
         booleanParam(
