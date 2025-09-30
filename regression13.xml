@@ -51,6 +51,7 @@
             <class name="com.cutanddry.qa.tests.internal_tool.VerifyCreateNewVerifiedVendorGroupTest"/>
             <class name="com.cutanddry.qa.tests.internal_tool.VerifyUpdateExistingVerifiedVendorGroupTest"/>
             <class name="com.cutanddry.qa.tests.internal_tool.VerifyDeleteVerifiedVendorGroupTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderMinimumOrderCaseMinimumAndDeliveryDaysNotAvailableForIntegratedDPsTest"/>
 
         </classes>
     </test>

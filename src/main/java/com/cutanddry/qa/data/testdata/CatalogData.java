@@ -3,7 +3,7 @@ package com.cutanddry.qa.data.testdata;
 public class CatalogData {
     public static final String CUSTOMER_ID = "16579";
     public static final String CUSTOMER_ID_2 = "34315";
-    public static final String CUSTOMER_ID_3 = "4321";
+    public static final String CUSTOMER_ID_3 = "4351";
     public static final String CUSTOMER_ID_4 = "20240802";
     public static final String CUSTOMER_ID_5 = "29374";
     public static final String CUSTOMER_ID_6 = "113956";

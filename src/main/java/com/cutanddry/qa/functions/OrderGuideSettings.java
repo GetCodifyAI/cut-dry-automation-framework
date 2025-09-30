@@ -40,6 +40,21 @@ public class OrderGuideSettings {
     public static void editOrderGuideName(String name) throws InterruptedException {
         orderGuideSettingsPage.editOrderGuideName(name);
     }
+    public static void editMinOrderAmount(String amount) throws InterruptedException {
+        orderGuideSettingsPage.editMinOrderAmount(amount);
+    }
+    public static void editMinOrderCase(String minCase) throws InterruptedException {
+        orderGuideSettingsPage.editMinOrderCase(minCase);
+    }
+    public static boolean isEditMinOrderAmountDisplayed() throws InterruptedException {
+        return orderGuideSettingsPage.isEditMinOrderAmountDisplayed();
+    }
+    public static boolean isEditMinOrderCaseDisplayed() throws InterruptedException {
+        return orderGuideSettingsPage.isEditMinOrderCaseDisplayed();
+    }
+    public static boolean isDeliveryDaysDisplayed() throws InterruptedException {
+        return orderGuideSettingsPage.isDeliveryDaysDisplayed();
+    }
     
 
 }
