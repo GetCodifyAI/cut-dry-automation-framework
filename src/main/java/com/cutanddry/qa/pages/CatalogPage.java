@@ -83,6 +83,7 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
     By copyPDPURLTxt = By.xpath("//div[contains(text(),'Copy PDP (url)')]");
     By productLink = By.xpath("//h2[contains(text(),'Product Link')]");
     By publicCatalogAddToCart = By.xpath("//button[contains(text(),'Add to Cart')]");
+    String publicCatalogName = "//*[contains(text(),'DISTRIBUTORNAME')]";
     By alreadyACustomer = By.xpath("//b[contains(text(),'Already a Customer?')]");
     By lbl_link = By.xpath("//*[local-name() = 'svg' and @data-icon='link']");
     By txt_categoryLink = By.xpath("//h2[contains(text(),'Category Link')]");
@@ -573,9 +574,12 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     public boolean isLinkCopiedTxtDisplayed(){
         return distributorUI.isDisplayed(productLink);
     }
-    public void goToPublicCatalog(){
-        distributorUI.OpenNewTabAndSwitchToIt();
-        distributorUI.pasteUrlFromClipboard();
+    public void goToPublicCatalog(String URL){
+        distributorUI.navigateToURL(URL);
+    }
+    public boolean isPublicCatalogNameDisplayed(String DPNAME){
+       distributorUI.waitForVisibility(By.xpath(publicCatalogName.replace("DISTRIBUTORNAME",DPNAME)));
+        return  distributorUI.isDisplayed(By.xpath(publicCatalogName.replace("DISTRIBUTORNAME",DPNAME)));
     }
     public boolean isPublicCatalogDisplayed(String itemCode){
         distributorUI.isDisplayed(publicCatalogAddToCart);
