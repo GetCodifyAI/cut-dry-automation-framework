@@ -57,4 +57,5 @@ public class CatalogData {
     public static final String DISPATCHER_ROLL = "Hadley Dispatcher";
     public static final String ITEM_TYPE_1 = "Special Order";
     public static final String ITEM_TYPE_2 = "Stocked (in-house)";
+    public static final String PRIME_SOURCE_PUBLIC_CATALOG_URL = "https://primesourcefoods-uat.staging.cutanddry.com/catalog/Prime%20Source%20Foods/?categoryId=1&verifiedVendorId=430993089&page=1).";
 }

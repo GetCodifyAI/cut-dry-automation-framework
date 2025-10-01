@@ -786,6 +786,60 @@ jobs:
             - Part_Thirteen_nightly-build-and-test-13_TEST-*.xml
     executor:
 
+  nightly-build-and-test-14:
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
+    steps:
+      - checkout
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
+      - run:
+          name: Build and run nightly tests 14
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression14.xml -Drun.headless=true -Dtest.env=uat || true
+      - store_artifacts:
+          path: target/surefire-reports
+          destination: nightly-build-and-test-artifacts-14
+      - run:
+          name: Verify Test Results Exist
+          command: ls -R target/surefire-reports || echo "Test results missing!"
+      - run:
+          name: Copy test results to workspace
+          command: |
+            mkdir -p ~/workspace
+            PART_NAME="Part_Fourteen"
+            for file in target/surefire-reports/TEST-*.xml; do
+              [ -f "$file" ] && cp "$file" ~/workspace/${PART_NAME}_nightly-build-and-test-14_$(basename "$file")
+            done
+      - persist_to_workspace:
+          root: ~/workspace
+          paths:
+            - Part_Fourteen_nightly-build-and-test-14_TEST-*.xml
+    executor:
+
   daily-build-and-test-1:
     docker:
       - image: cimg/base:stable
@@ -1488,6 +1542,58 @@ jobs:
             - Part_Thirteen_daily-build-and-test-13_TEST-*.xml
     executor:
 
+  daily-build-and-test-14:
+    docker:
+      - image: cimg/base:stable
+    resource_class: xlarge
+    steps:
+      - checkout
+      - run:
+          name: Install Java 22
+          command: |
+            sudo apt-get update && sudo apt-get install -y wget
+            wget https://download.java.net/java/GA/jdk22/830ec9fcccef480bb3e73fb7ecafe059/36/GPL/openjdk-22_linux-x64_bin.tar.gz
+            sudo mkdir -p /usr/lib/jvm
+            sudo tar zxvf openjdk-22_linux-x64_bin.tar.gz -C /usr/lib/jvm
+            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-22/bin/java 2200
+            sudo update-alternatives --config java
+            echo 'export PATH="/usr/lib/jvm/jdk-22/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+            java -version
+      - run:
+          name: Install Maven
+          command: |
+            sudo apt-get install -y maven
+            mvn -version
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+            google-chrome --version
+      - run:
+          name: Build and run daily tests 14
+          command: mvn clean test -Dsurefire.suiteXmlFiles=regression14.xml -Drun.headless=true -Dtest.env=uat -Dcreate.cycle=true || true
+      - store_artifacts:
+          path: target/surefire-reports
+          destination: daily-build-and-test-artifacts-14
+      - run:
+          name: Verify Test Results Exist
+          command: ls -R target/surefire-reports || echo "Test results missing!"
+      - run:
+          name: Copy test results to workspace
+          command: |
+            mkdir -p ~/workspace
+            PART_NAME="Part_Fourteen"
+            for file in target/surefire-reports/TEST-*.xml; do
+              [ -f "$file" ] && cp "$file" ~/workspace/${PART_NAME}_daily-build-and-test-14_$(basename "$file")
+            done
+      - persist_to_workspace:
+          root: ~/workspace
+          paths:
+            - Part_Fourteen_daily-build-and-test-14_TEST-*.xml
 
   calculate-pass-fail-rate:
     docker:
@@ -1699,6 +1805,7 @@ workflows:
       - nightly-build-and-test-11
       - nightly-build-and-test-12
       - nightly-build-and-test-13
+      - nightly-build-and-test-14
       - calculate-pass-fail-rate:
           requires:
             - nightly-build-and-test-6
@@ -1708,6 +1815,7 @@ workflows:
             - nightly-build-and-test-11
             - nightly-build-and-test-12
             - nightly-build-and-test-13
+            - nightly-build-and-test-14
 
   scheduled-test-2:
     triggers:
@@ -1749,6 +1857,7 @@ workflows:
       - daily-build-and-test-11
       - daily-build-and-test-12
       - daily-build-and-test-13
+      - daily-build-and-test-14
       - calculate-pass-fail-rate:
           requires:
             - daily-build-and-test-6
@@ -1758,5 +1867,6 @@ workflows:
             - daily-build-and-test-11
             - daily-build-and-test-12
             - daily-build-and-test-13
+            - daily-build-and-test-14
 
 
