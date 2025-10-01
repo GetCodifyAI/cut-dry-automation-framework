@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="Part_Fourteen"/>
+        <classes>
+            <class name="com.cutanddry.qa.tests.draft.VerifySupplierPortalDraftCountDisplayTest"/>
+            <class name="com.cutanddry.qa.tests.draft.VerifyZeroDraftCountBadgeHiddenTest"/>
+
+        </classes>
+    </test>
+</suite>
