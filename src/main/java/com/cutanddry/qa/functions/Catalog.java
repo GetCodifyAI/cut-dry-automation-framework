@@ -293,12 +293,12 @@ public class Catalog {
         return catalogPage.isLinkCopiedTxtDisplayed();
     }
 
-    public static void navigateToPublicCatalog(){
-        catalogPage.goToPublicCatalog();
+    public static void navigateToPublicCatalog(String URL){
+        catalogPage.goToPublicCatalog(URL);
     }
 
-    public static boolean PublicCatalogDisplayed(String itemCode){
-        return catalogPage.isPublicCatalogDisplayed(itemCode);
+    public static boolean isNavigatedToPublicCatalog(String DPNAME){
+        return catalogPage.isPublicCatalogNameDisplayed(DPNAME);
     }
 
     public static void clickOnAddToCart(){

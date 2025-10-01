@@ -275,7 +275,7 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By lbl_mailDelivery = By.xpath("//span[text()='Mail Delivery']");
     By txt_customers = By.xpath("//h2[text()='Customers']");
     By btn_salesperson = By.xpath("(//div[contains(@class, 'themed_select__value-container') and contains(@class, 'themed_select__value-container--has-value')])[1]");
-    By btn_salespersonOption = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and normalize-space(text())='Amir Ifc']");
+    By btn_salespersonOption = By.xpath("//*[contains(text(),'Salesperson:')]/following-sibling::div//div[contains(text(),'Amir IFC')]");
     String salespersonName = "//tr//td[6]//div[normalize-space(text())='SALESPERSON']";
     By btn_manageCustomers = By.xpath("//span[contains(text(), 'Manage Customers')]");
     By btn_exportCustomers = By.xpath("//a[contains(text(), 'Export customers(csv)')]");
@@ -4733,6 +4733,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(By.xpath(catalogToolTip.replace("NAME", name)));
     }
     public boolean isCatalogFilterDisplayed(String filter){
+        distributorUI.waitForVisibility(By.xpath(catalogFilter.replace("FILTER", filter)));
         return distributorUI.isDisplayed(By.xpath(catalogFilter.replace("FILTER", filter)));
     }
     public void clickItemTypeFilter()throws InterruptedException{
