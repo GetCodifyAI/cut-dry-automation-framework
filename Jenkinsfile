@@ -11,7 +11,7 @@ pipeline {
     
     environment {
         MAVEN_OPTS = '-Xmx2048m'
-        JAVA_HOME = '/usr/lib/jvm/java-21-openjdk-amd64'
+        JAVA_HOME='/usr/lib/jvm/java-21-amazon-corretto.x86_64'
         TEST_ENV = 'uat'
         RUN_HEADLESS = 'true'
         WORKSPACE_CLEANUP = "${params.CLEANUP_AFTER_EXECUTION}"
