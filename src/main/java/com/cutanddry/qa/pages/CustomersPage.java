@@ -863,7 +863,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_placeOrderWhiteLabel = By.xpath("//button[contains(text(), 'Place Order')]");
     By txt_catalogAllItems = By.xpath("(//div[text()='All Items'])[last()]");
     By orderGuideRefreshText = By.xpath("//*[contains(text(),'Refresh to view the latest updates in this order guide')]");
-
+    By orderGuideOutOfstockItem = By.xpath("//span[contains(text(),'Out of stock')]/../preceding-sibling::div//*[contains(@data-tip,'View Product Details')]");
 
 
 
@@ -5111,4 +5111,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(orderGuideRefreshText);
         distributorUI.click(orderGuideRefreshText);
     }
+    public String getOutOfstockItemName() throws InterruptedException {
+        distributorUI.scrollToElementTillFound(orderGuideOutOfstockItem);
+        distributorUI.waitForCustom(2000);
+        return distributorUI.getText(orderGuideOutOfstockItem);
+    }
+
 }

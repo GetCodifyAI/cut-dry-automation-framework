@@ -14,13 +14,14 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import java.util.UUID;
 
 public class VerifyThatTheChildCustomerCanCreateAnyOrderGuidesAndOrderSubmissionTest extends TestBase {
     static User user;
     static String DP = ParentChildOGData.DISTRIBUTOR_INDIANHEAD;
     static String customerId2 = ParentChildOGData.CUSTOMER_ID_INDIANHEAD_2;
-    static String OrderGuideName = ParentChildOGData.ORDER_GUIDE_NAME_4;
-    static String itemName = "Appetizer Egg Roll Vegetable";
+    static String OrderGuideName = ParentChildOGData.ORDER_GUIDE_NAME_4+ "_" + UUID.randomUUID();;
+    static String itemName = "Egg Roll Pork & Vegetable";
     static String  searchItemName,orderId, searchItemCode;
     static double itemPrice;
 
