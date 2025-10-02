@@ -179,4 +179,47 @@ public class ConfigSupplierPage extends LoginPage{
         return distributorUI.isDisplayed(lbl_defaultSimpleListView, 5);
     }
 
+    By heading_stocks = By.xpath("//h4[text()='Stocks']");
+    By chk_excludeStockSupplierPortal = By.xpath("//label[contains(text(),'Supplier Portal')]/following-sibling::input[@type='checkbox']");
+    By chk_excludeStockOperatorPortal = By.xpath("//label[contains(text(),'Operator Portal')]/following-sibling::input[@type='checkbox']");
+    By txt_selectedUOM = By.xpath("//label[contains(text(),'Exclude \"Out of Stock\" and \"Low Stock\" for selected UOMs:')]/following-sibling::input[@type='text']");
+
+    public boolean isSupplierPortalCheckboxDisplayed() {
+        try {
+            distributorUI.scrollToElement(heading_stocks);
+            Thread.sleep(500);
+            return distributorUI.isDisplayed(chk_excludeStockSupplierPortal, 10);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isOperatorPortalCheckboxDisplayed() {
+        try {
+            distributorUI.scrollToElement(heading_stocks);
+            Thread.sleep(500);
+            return distributorUI.isDisplayed(chk_excludeStockOperatorPortal, 10);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isSelectedUOMDisplayed() {
+        try {
+            distributorUI.scrollToElement(heading_stocks);
+            Thread.sleep(500);
+            return distributorUI.isDisplayed(txt_selectedUOM, 10);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public String getSelectedUOMValue() {
+        try {
+            return distributorUI.getText(txt_selectedUOM);
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
 }

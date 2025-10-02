@@ -88,4 +88,20 @@ public class ConfigSupplier {
             configPage.saveOrderSettingChanges();
         }
     }
+
+    public static boolean isSupplierPortalCheckboxDisplayed() {
+        return configPage.isSupplierPortalCheckboxDisplayed();
+    }
+
+    public static boolean isOperatorPortalCheckboxDisplayed() {
+        return configPage.isOperatorPortalCheckboxDisplayed();
+    }
+
+    public static boolean isSelectedUOMDisplayed() {
+        return configPage.isSelectedUOMDisplayed();
+    }
+
+    public static String getSelectedUOMValue() {
+        return configPage.getSelectedUOMValue();
+    }
 }
