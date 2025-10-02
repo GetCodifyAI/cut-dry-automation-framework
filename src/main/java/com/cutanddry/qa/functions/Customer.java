@@ -3058,6 +3058,9 @@ public class Customer {
     public static void refreshOrderGuide(){
         customersPage.clickOnRefreshOrderGuide();
     }
+    public static String getOutOfstockItemNameFromOG() throws InterruptedException {
+        return customersPage.getOutOfstockItemName();
+    }
 
 }
 
