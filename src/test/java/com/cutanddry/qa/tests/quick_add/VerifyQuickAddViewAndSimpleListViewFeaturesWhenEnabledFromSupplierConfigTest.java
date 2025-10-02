@@ -59,6 +59,7 @@ public class VerifyQuickAddViewAndSimpleListViewFeaturesWhenEnabledFromSupplierC
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId);
+        Customer.SelectTestAutomationOrderGuide();
 
         Customer.expandMoreOptionsDropdown();
         softAssert.assertTrue(Customer.isQuickAddOptionDisplay(),"quick add option display error");
@@ -89,7 +90,9 @@ public class VerifyQuickAddViewAndSimpleListViewFeaturesWhenEnabledFromSupplierC
         Catalog.clickBack();
         softAssert.assertTrue(Customer.isSimpleListViewTextDisplay(),"simple list view section not display");
         Customer.clearSearchField();
+        Customer.searchItemOnOrderGuide(itemCode);
         softAssert.assertEquals(Customer.getItemQuantitySimpleListView(itemCode),"1","item quantity not equal simple View");
+        Customer.searchItemOnOrderGuide(searchItemCode);
         softAssert.assertEquals(Customer.getItemQuantitySimpleListView(searchItemCode),"2","item quantity not equal simple View");
         Customer.expandMoreOptionsDropdown();
         Customer.clickOrderGuideView();
