@@ -89,13 +89,13 @@ public class LoginPage extends TestBase {
         distributorUI.click(btn_tryAgain);
     }
     public void navigateToRestaurant() {
-        distributorUI.navigateToURL(Constants.SEC_URL);
+        distributorUI.navigateToURL(Constants.getSecUrl());
     }
     public void navigateToDistributor() {
-        distributorUI.navigateToURL(Constants.MAIN_URL);
+        distributorUI.navigateToURL(Constants.getMainUrl());
     }
     public void navigateToLoginAsPortal(String name) {
-        distributorUI.navigateToURL(Constants.LOGIN_AS);
+        distributorUI.navigateToURL(Constants.getLoginAs());
         Orders.closeRatingOverlay();
         distributorUI.sendKeys(lbl_loginAs,name);
         distributorUI.isDisplayed(By.xpath(txt_whitelblCustomer.replace("NAME", name)));
@@ -103,7 +103,7 @@ public class LoginPage extends TestBase {
         distributorUI.navigateToURL(distributorUI.getText(btn_loginAsWLApp, "href"));
     }
     public void navigateToSupplierPortalVendor(String id) {
-        distributorUI.navigateToURL(Constants.NODE_EXPLORER);
+        distributorUI.navigateToURL(Constants.getNodeExplorer());
         distributorUI.navigateToURL(distributorUI.getText(lbl_verifiedVendor, "href"));
         distributorUI.navigateToURL(distributorUI.getText(By.xpath(txt_verifiedVendor.replace("ID", id)), "href"));
         distributorUI.navigateToURL(distributorUI.getText(lbl_suuplierPortalVendorData, "href"));
@@ -114,7 +114,7 @@ public class LoginPage extends TestBase {
         distributorUI.click(btn_setData);
     }
     public void navigateToDistributorPortal(String name) {
-        distributorUI.navigateToURL(Constants.LOGIN_AS);
+        distributorUI.navigateToURL(Constants.getLoginAs());
         distributorUI.waitForElementEnabledState(lbl_loginAsDist,true);
         distributorUI.sendKeys(lbl_loginAsDist,name);
         distributorUI.click(By.xpath(txt_distributor.replace("NAME", name)));
@@ -122,15 +122,15 @@ public class LoginPage extends TestBase {
     }
 
     public void ClickOnInternalTools(){
-        distributorUI.navigateToURL(Constants.LOGIN_AS);
+        distributorUI.navigateToURL(Constants.getLoginAs());
         distributorUI.waitForElementEnabledState(lbl_loginAsDist,true);
         distributorUI.click(InternalToolsBtn);
     }
     public void navigateToConfigSupplier() {
-        distributorUI.navigateToURL(Constants.CONFIG_SUPPLIER);
+        distributorUI.navigateToURL(Constants.getConfigSupplier());
     }
     public void navigateToRestaurantProd() {
-        distributorUI.navigateToURL(Constants.SEC_URL);
+        distributorUI.navigateToURL(Constants.getSecUrl());
     }
     public void navigateToDistributorPortalProd(String name) {
         distributorUI.navigateToURL(Constants.PROD_LOGIN_AS);
@@ -145,7 +145,7 @@ public class LoginPage extends TestBase {
     }
 
     public void navigateToRestaurantPortal(String phoneNo) {
-        distributorUI.navigateToURL(Constants.LOGIN_AS);
+        distributorUI.navigateToURL(Constants.getLoginAs());
         distributorUI.waitForElementEnabledState(lbl_loginAsCustomer,true);
         distributorUI.sendKeys(lbl_loginAsCustomer,phoneNo);
         distributorUI.click(By.xpath(txt_customer.replace("PHONE_NO", phoneNo)));
@@ -236,10 +236,10 @@ public class LoginPage extends TestBase {
         distributorUI.waitForCustom(3000);
     }
     public void navigateToLoginAs() {
-        distributorUI.navigateToURL(Constants.LOGIN_AS);
+        distributorUI.navigateToURL(Constants.getLoginAs());
     }
     public boolean navigateToLoginAsPortalForCustomerIndex(String name) {
-        distributorUI.navigateToURL(Constants.LOGIN_AS);
+        distributorUI.navigateToURL(Constants.getLoginAs());
 //        Orders.closeRatingOverlay();
         distributorUI.sendKeys(lbl_loginAs,name);
         return distributorUI.isDisplayed(By.xpath(txt_whitelblCustomer.replace("NAME", name)));

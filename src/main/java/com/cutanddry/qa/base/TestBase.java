@@ -50,10 +50,10 @@ public class TestBase {
                     js = (JavascriptExecutor) driver;
                     wait = new WebDriverWait(driver, Duration.ofSeconds(15));
                     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-                    driver.get(Constants.MAIN_URL);
+                    driver.get(Constants.getMainUrl());
                     distributorUI = new KeywordBase(driver, wait);  // Initialize KeywordBase here
 
-                    LOGGER.info("WebDriver initialized and navigated to the URL: " + Constants.MAIN_URL);
+                    LOGGER.info("WebDriver initialized and navigated to the URL: " + Constants.getMainUrl());
                 } catch (Exception e) {
                     LOGGER.log(Level.SEVERE, "Failed to initialize WebDriver", e);
                 }
