@@ -11,7 +11,7 @@ pipeline {
     
     environment {
         MAVEN_OPTS = '-Xmx2048m'
-        JAVA_HOME='/usr/lib/jvm/java-21-amazon-corretto.x86_64'
+        JAVA_HOME='/usr/lib/jvm/java-21-openjdk-amd64'
         TEST_ENV = 'uat'
         RUN_HEADLESS = 'true'
         WORKSPACE_CLEANUP = "${params.CLEANUP_AFTER_EXECUTION}"
@@ -395,7 +395,7 @@ def setupTestEnvironment() {
         rm -rf /tmp/chrome_* /tmp/.org.chromium.* || true
         
         # Set JAVA_HOME to the correct OpenJDK path for Ubuntu
-        export JAVA_HOME='/usr/lib/jvm/java-21-amazon-corretto.x86_64'
+        export JAVA_HOME='/usr/lib/jvm/java-21-openjdk-amd64'
         echo "Set JAVA_HOME to: $JAVA_HOME"
         
         # Use existing Java installation
