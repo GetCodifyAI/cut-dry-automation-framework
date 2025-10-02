@@ -389,7 +389,7 @@ public class Catalog {
     public static boolean areImagesDisplayed(){
         return catalogPage.areImagesDisplayed();
     }
-    public static void selectFirstItem(){
+    public static void selectFirstItem() throws InterruptedException {
         catalogPage.selectFirstItem();
     }
     public static boolean isProductDescriptionDisplayed(){

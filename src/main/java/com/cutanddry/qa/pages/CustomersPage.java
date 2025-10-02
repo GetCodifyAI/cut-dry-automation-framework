@@ -429,6 +429,8 @@ By enabledStatusLocator = By.xpath("//div[contains(text(),'Cut+Dry Pay')]/follow
     By radioButton =By.xpath("//div[@class = 'align-middle']");
 //    String txt_product = "//div[contains(@class,'_3quvq7 _1vlidrf' ) and contains(text(), 'NAME')]";
 String txt_product = "//div[contains(@class,'_3quvq7 _1vlidrf' ) and contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]";
+    String brandpageLink = "//div[normalize-space(.)='BRANDPAGE']";
+    String brandpageText = "//img//following-sibling::div//div[normalize-space(.)='BRANDPAGE']";
     By btn_addToCartPDP = By.xpath("//button[contains(text(), 'Add to Cart')]");
     By btn_checkOutPDP = By.xpath("//button[@data-for='cartCheckoutButton' and contains(text(),'$')]");
     By txt_orderConfirmationPopUp = By.xpath("//*[contains(text(), 'Thank you for your order!')]");
@@ -2655,6 +2657,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickOnProduct(String name){
         distributorUI.waitForVisibility(By.xpath(txt_product.replace("NAME", name)),30);
         distributorUI.clickUsingJavaScript(By.xpath(txt_product.replace("NAME", name)));
+    }
+    public void clickOnItemBrand(String brandName){
+        distributorUI.click(By.xpath(brandpageLink.replace("BRANDPAGE",brandName)));
+    }
+    public boolean isNavigatedToBrandPage(String brandName){
+        return distributorUI.isDisplayed(By.xpath(brandpageText.replace("BRANDPAGE",brandName)));
     }
     public void clickAddToCart(){
         distributorUI.click(btn_addToCartPDP);
