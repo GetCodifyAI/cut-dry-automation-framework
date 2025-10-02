@@ -395,7 +395,7 @@ def setupTestEnvironment() {
         rm -rf /tmp/chrome_* /tmp/.org.chromium.* || true
         
         # Set JAVA_HOME to the correct OpenJDK path for Ubuntu
-        export JAVA_HOME='/usr/lib/jvm/java-21-openjdk-amd64'
+        export JAVA_HOME='/usr/lib/jvm/java-21-amazon-corretto.x86_64'
         echo "Set JAVA_HOME to: $JAVA_HOME"
         
         # Use existing Java installation
