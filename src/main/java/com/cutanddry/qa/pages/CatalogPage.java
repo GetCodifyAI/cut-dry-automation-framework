@@ -732,7 +732,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     public boolean areImagesDisplayed(){
         return distributorUI.isDisplayed(lbl_noImage);
     }
-    public void selectFirstItem() {
+    public void selectFirstItem() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
         distributorUI.click(firstItem);
         try {
             distributorUI.waitForCustom(3000);

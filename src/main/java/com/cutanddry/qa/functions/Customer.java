@@ -1441,6 +1441,12 @@ public class Customer {
     public static void clickOnProduct(String name){
         customersPage.clickOnProduct(name);
     }
+    public static void navigateToBrandPage(String brandPage){
+        customersPage.clickOnItemBrand(brandPage);
+    }
+    public static boolean isNavigatedToBrandPage(String brandPage){
+        return customersPage.isNavigatedToBrandPage(brandPage);
+    }
     public static void clickAddToCartPDP(){customersPage.clickAddToCart();}
     public static void clickCheckOutPDP() throws InterruptedException {
         customersPage.clickCheckOutPDP();
