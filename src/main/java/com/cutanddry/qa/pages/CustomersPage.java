@@ -841,6 +841,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String cartSummeryValue = "//div[contains(text(),'OPTION')]/following-sibling::div";
     String revenueSummeryValue = "//div[contains(text(),'OPTION')]/following-sibling::div";
     String txt_preAuthorization = "//h2[text()='MESSAGE']";
+    By addCreditCartOption = By.xpath("//*[contains(text(),'Add New Credit Card')]");
+    By zipCode = By.xpath("//*[contains(text(),'ZIP Code')]/../following-sibling::div/input");
+    By saveAndConfirmTxt = By.xpath("//*[contains(text(),'Save and Confirm')]");
     By txt_confirmPayment = By.xpath("//div[text()='Confirm Payment']");
     String sortOptionsOG = "//span[contains(text(), 'OPTION')]";
     By btn_shoppingCart = By.xpath("//*[local-name()='svg' and @data-icon='cdShoppingCart']");
@@ -848,7 +851,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_updateEligibility = By.xpath("//a[contains(text(), 'Update Eligibility for Cut+Dry')]");
     By txt_updateEligibility = By.xpath("//div[contains(text(), 'Update Eligibility for Cut+Dry')]");
     By updateEligibilityDropDown = By.xpath("//label[contains(text(), 'Eligibility')]/following-sibling::div");
-    By updateEligibilityDropDownOption = By.xpath("//label[contains(text(), 'Eligibility')]/following-sibling::div//*[text()='Eligible']");
+    String updateEligibilityDropDownOption = "//label[contains(text(), 'Eligibility')]/following-sibling::div//*[text()='OPTION']";
     By orderMinimumeditBtn = By.xpath("//*[contains(text(),'Order Minimum')]/following-sibling::div//*[local-name()='svg' and @data-icon='pen-to-square']");
     String orderMinimumSelectionRadioBtn = "//*[contains(text(),'ORDERMINIMUM')]/../input";
     By orderMinimumOverlayCloseBtn = By.xpath("//*[contains(text(),'Edit Order Minimum')]/../following-sibling::button/span[normalize-space()='×']");
@@ -3024,7 +3027,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.getText(totalValue);
     }
 
-    public void clickEditOrderInReviewScreen(){
+    public void clickEditOrderInReviewScreen() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.click(editOrderReviewScreen);
     }
 
@@ -5030,6 +5034,15 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isPreAuthorizationTextDisplay(String message)throws InterruptedException{
         return distributorUI.isDisplayed(By.xpath(txt_preAuthorization.replace("MESSAGE",message)));
     }
+    public void clickAddNewCreditCard(){
+        distributorUI.click(addCreditCartOption);
+    }
+    public void sendKeysZipCode(String Code){
+        distributorUI.sendKeys(zipCode,Code);
+    }
+    public void clickSaveAndConfirm(){
+        distributorUI.click(saveAndConfirmTxt);
+    }
     public boolean isConfirmPaymentTextDisplay()throws InterruptedException{
         return distributorUI.isDisplayed(txt_confirmPayment);
     }
@@ -5054,8 +5067,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickUpdateEligibilityDropDown(){
         distributorUI.click(updateEligibilityDropDown);
     }
-    public void clickUpdateEligibilityDropDownOption(){
-        distributorUI.click(updateEligibilityDropDownOption);
+    public void clickUpdateEligibilityDropDownOption(String option){
+        distributorUI.click(By.xpath(updateEligibilityDropDownOption.replace("OPTION",option)));
     }
     public void selectOrderMinimum(String orderMinimum){
         distributorUI.click(orderMinimumeditBtn);

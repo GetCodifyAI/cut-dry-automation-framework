@@ -24,13 +24,13 @@ public class VerifyForgotPasswordUnauthorizedTest extends TestBase {
         Login.forgotPassword();
         softAssert.assertTrue(Login.forgotPassword(),"forgot password navigation error");
         Login.passwordResetRequest(user.getEmail_unauthorized());
-        softAssert.assertTrue(Login.invalidEmailOrMobileForgotPassword(),"unauthorized email pop up error");
-        Login.clickTryAgain();
+        softAssert.assertTrue(Login.isPasswordResetRequestSentOverlyDisplayed(),"unauthorized email pop up error");
+        Login.clickOk();
         Login.forgotPassword();
         softAssert.assertTrue(Login.forgotPassword(),"forgot password navigation error");
         Login.passwordResetRequest(user.getMobile_unauthorized());
-        softAssert.assertTrue(Login.invalidEmailOrMobileForgotPassword(),"unauthorized email pop up error");
-        Login.clickTryAgain();
+        softAssert.assertTrue(Login.isPasswordResetRequestSentOverlyDisplayed(),"unauthorized email pop up error");
+        Login.clickOk();
         softAssert.assertAll();
     }
 
