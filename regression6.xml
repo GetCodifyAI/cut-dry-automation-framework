@@ -55,6 +55,7 @@
 -->
             <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderGuideOrderApprovalUIFeatureTest" />
             <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderApprovalSettingsReflectedWhileOrderingTest" />
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyMultiLocationSummeryWidgetWhenNoApprovalsTest" />
         </classes>
     </test>
 </suite>

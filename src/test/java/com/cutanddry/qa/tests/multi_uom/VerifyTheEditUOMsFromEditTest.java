@@ -45,7 +45,9 @@ public class VerifyTheEditUOMsFromEditTest extends TestBase {
         Customer.clickOnCaseUnit();
         Customer.saveItem();
         Customer.closeEditor();
+        Customer.searchItemOnOrderGuide(itemCode);
         softAssert.assertFalse(Customer.isMultiUomDropDownExistDisplayed(itemCode),"multi uom displayed");
+        Customer.clearSearchField();
         Customer.goToEdit();
         softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
         Customer.editItem(itemCode);
@@ -53,7 +55,9 @@ public class VerifyTheEditUOMsFromEditTest extends TestBase {
         Customer.clickOnCaseUnit();
         Customer.saveItem();
         Customer.closeEditor();
+        Customer.searchItemOnOrderGuide(itemCode);
         softAssert.assertTrue(Customer.isMultiUomDropDownExistDisplayed(itemCode),"multi uom not displayed");
+        Customer.clearSearchField();
         softAssert.assertAll();
     }
 

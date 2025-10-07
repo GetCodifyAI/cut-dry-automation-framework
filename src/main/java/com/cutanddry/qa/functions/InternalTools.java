@@ -151,6 +151,10 @@ public class InternalTools {
         internalToolsPage.clickSponsoredProductAdsToggle(enable);
         internalToolsPage.clickProductAdsSave();
     }
+    public static void ensureInstacartSponsoredProductAdsStatus(boolean enable) throws InterruptedException {
+        internalToolsPage.clickInstacartSponsoredProductAdsToggle(enable);
+        internalToolsPage.clickProductAdsSave();
+    }
     public static void ensureBuyerEdgePlatformRebateStatus(boolean enable) throws InterruptedException {
         internalToolsPage.clickConfigureSupplier();
         internalToolsPage.clickOnIndependentCompEditDetails();
@@ -240,5 +244,71 @@ public class InternalTools {
     public static void manualOrderQuantityCalculationToggle(boolean status){
         internalToolsPage.manualOrderQuantityCalculationToggle(status);
     }
+    public static void setEnableAccountHoldAlerts(boolean status) throws InterruptedException {
+        internalToolsPage.enableAccountHoldAlerts(status);
+        internalToolsPage.clickSave();
+        internalToolsPage.clickOKOnSucessOverlay();
+        internalToolsPage.scrollToConfigureSupplierPageHeader();
+    }
+    public static void setEnablePreAuthFeature(boolean status){
+        internalToolsPage.enablePreAuth(status);
+        internalToolsPage.clickSave();
+        internalToolsPage.clickOKOnSucessOverlay();
+    }
+    public static void navigateToDPGroupManager() {
+        internalToolsPage.navigateToDPGroupManager();
+    }
+    public static boolean isDPGroupManageTextDisplayed(){
+        return internalToolsPage.isDPGroupManageTextDisplayed();
+    }
+    public static void clickCreateButton() {
+        internalToolsPage.clickCreateButton();
+    }
+    public static boolean isCreateNewDPGroupTextDisplayed(){
+        return internalToolsPage.isCreateNewDPGroupTextDisplayed();
+    }
+    public static void enterGroupName(String name) {
+        internalToolsPage.enterGroupName(name);
+    }
+    public static void enterDescription(String description) {
+        internalToolsPage.enterDescription(description);
+    }
+    public static void clickaAttachedDPs(String dp) {
+        internalToolsPage.clickaAttachedDPs(dp);
+    }
+    public static void clickAllowCompanySwitching() {
+        internalToolsPage.clickAllowCompanySwitching();
+    }
+    public static void clickGroupCreate() {
+        internalToolsPage.clickGroupCreate();
+    }
+    public static boolean isCompanyNameDisplay(String name){
+        return internalToolsPage.isCompanyNameDisplay(name);
+    }
+
+    public static boolean isCompanyDescriptionDisplay(String description){
+        return internalToolsPage.isCompanyDescriptionDisplay(description);
+    }
+
+    public static boolean isCompanySwitchingDisplay(String status){
+        return internalToolsPage.isCompanySwitchingDisplay(status);
+    }
+
+    public static boolean isVendorsDisplay(String vendor){
+        return internalToolsPage.isVendorsDisplay(vendor);
+    }
+    public static boolean isEditDPGroupTextDisplayed(){
+        return internalToolsPage.isEditDPGroupTextDisplayed();
+    }
+    public static void clickGroupEdit() {
+        internalToolsPage.clickGroupEdit();
+    }
+    public static void clickUpdateDPGroup() {
+        internalToolsPage.clickUpdateDPGroup();
+    }
+    public static void clickGroupDPDelete() {
+        internalToolsPage.clickGroupDPDelete();
+    }
+
 
 }

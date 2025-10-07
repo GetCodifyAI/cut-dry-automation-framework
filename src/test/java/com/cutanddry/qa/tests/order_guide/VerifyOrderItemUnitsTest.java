@@ -42,7 +42,7 @@ public class VerifyOrderItemUnitsTest extends TestBase {
         Customer.clickOnUnitCase();
         softAssert.assertEquals(Customer.getUnitType(),"Case","unit mismatch");
         Customer.clickOnUnitPkg();
-        softAssert.assertEquals(Customer.getUnitType(),"Each","unit mismatch");
+        softAssert.assertEquals(Customer.getUnitType(),"Pkg","unit mismatch");
         softAssert.assertAll();
     }
 

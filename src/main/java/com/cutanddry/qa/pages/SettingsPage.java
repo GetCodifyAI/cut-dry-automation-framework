@@ -379,6 +379,9 @@ public class SettingsPage extends LoginPage{
             distributorUI.click(By.xpath(btn_editUser.replace("USER", user)));
         }
     }
+    public void clickEditUserWithoutScroll(String user){
+        distributorUI.click(By.xpath(btn_editUser.replace("USER", user)));
+    }
     public boolean isEditUserPopupDisplayed(){
         distributorUI.waitForVisibility(txt_editUser);
         return distributorUI.isDisplayed(txt_editUser);

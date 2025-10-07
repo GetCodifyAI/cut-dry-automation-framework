@@ -6,6 +6,16 @@ public class ApprovalsPage extends LoginPage{
     By approvalText = By.xpath("//a[contains(text(),'Pending Approvals')]/../../..//div[contains(text(),'Approvals')]");
     By approvalOrder = By.xpath("//tr[contains(@href,'/place-order')][1]");
     By approveAndSubmitBtn = By.xpath("//button[contains(text(),'Approve & Submit Order')]");
+    By btn_close = By.xpath("//button[contains(@class, 'close')]/span[text()='×']");
+    By rejectApprovalsBtn = By.xpath("//button[contains(text(),'Reject')]");
+    By approvalCountFromSummeryWidgetTxt = By.xpath("//button[contains(text(),'View All')]/parent::div/div/div[1]");
+    By AccountCountFromSummeryWidgetTxt = By.xpath("//button[contains(text(),'View All')]/parent::div/div/div[2]");
+    By viewAllButton = By.xpath("//button[contains(text(),'View All')]");
+    String pendingCountText = "//div[contains(text(),'RESTUARENTNAME')]/following-sibling::div/div[contains(text(),\"Total Pending\")]";
+    By closeApprovalSummeryOverlay = By.xpath("//button//*[local-name()='svg' and @data-icon='xmark']");
+
+    static DashboardPage dashboardPage = new DashboardPage();
+    static CustomersPage customersPage = new CustomersPage();
 
     public boolean isNavigatedToApprovalPage(){
         return distributorUI.isDisplayed(approvalText);
@@ -17,5 +27,50 @@ public class ApprovalsPage extends LoginPage{
 
     public void clickOnApproveAndSubmitBtn(){
         distributorUI.click(approveAndSubmitBtn);
+    }
+
+    public String getApprovalCountTextFromOrderApprovalWidget() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        return distributorUI.getText(approvalCountFromSummeryWidgetTxt);
+    }
+
+    public boolean getApprovalCountTextDisplayedFromOrderApprovalWidget() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(approvalCountFromSummeryWidgetTxt);
+    }
+
+    public String getApprovalAccountCountTextFromOrderApprovalWidget() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        return distributorUI.getText(AccountCountFromSummeryWidgetTxt);
+    }
+
+    public void clearAllOrderApprovals(){
+        while(distributorUI.isDisplayed(approvalOrder)){
+            distributorUI.click(approvalOrder);
+            distributorUI.click(approveAndSubmitBtn);
+            distributorUI.waitForVisibility(btn_close);
+            distributorUI.click(btn_close);
+            distributorUI.click(approvalText);
+            dashboardPage.clickOnApproval();
+            if(customersPage.isDuplicatePopupDisplayed()){
+                customersPage.clickYesDuplicatePopup();
+            }
+        }
+    }
+
+    public void clickViewAll(){
+        distributorUI.click(viewAllButton);
+    }
+
+    public String getTotalPending(String RestaurantName){
+        return distributorUI.getText(By.xpath(pendingCountText.replace("RESTUARENTNAME",RestaurantName)));
+    }
+
+    public boolean isPendingOrdersDisplayed(String RestaurantName){
+        return distributorUI.isDisplayed(By.xpath(pendingCountText.replace("RESTUARENTNAME",RestaurantName)));
+    }
+
+    public void clickCloseSummeryOverlay(){
+        distributorUI.click(closeApprovalSummeryOverlay);
     }
 }

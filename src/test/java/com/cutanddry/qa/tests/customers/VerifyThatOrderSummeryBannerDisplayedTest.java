@@ -41,6 +41,7 @@ public class VerifyThatOrderSummeryBannerDisplayedTest extends TestBase {
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId);
+        Customer.expandShrinkedOrderSummery();
         softAssert.assertTrue(Customer.orderSummeryDisplay(orderSummery),"order summery not display");
         softAssert.assertTrue(Customer.orderSummeryDisplay(orderSummerySalesCommission),"Order Summery Sales Commission not display");
         softAssert.assertTrue(Customer.orderSummeryDisplay(orderSummeryTotalLines),"Order Summery TotalLines not display");

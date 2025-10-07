@@ -50,6 +50,9 @@ public class Settings {
     public static void clickOnEditUser(String user) throws InterruptedException {
         settingsPage.clickOnEditUser(user);
     }
+    public static void editUserWithoutScroll(String user){
+        settingsPage.clickEditUserWithoutScroll(user);
+    }
     public static boolean isEditUserPopupDisplayed(){
         return settingsPage.isEditUserPopupDisplayed();
     }
