@@ -42,12 +42,14 @@ public class VerifyFinalWeightFunctionalityForMultiUOMItemsTest extends TestBase
         Customer.clickOnOrderGuideInProfile();
 
         Customer.searchItemOnOrderGuide(searchItemCode1);
+        Customer.addItemFromCatalogIfNotAvailableInOG(searchItemCode1);
         Catalog.ClickOnMultiUomDropDownOG(searchItemCode1);
         Catalog.clickOGAddToCartPlusIcon(1,searchItemCode1,UOM1);
         Catalog.clickOGAddToCartPlusIcon(2,searchItemCode1,UOM2);
         Catalog.clickOGAddToCartPlusIcon(4,searchItemCode1,UOM3);
 
         Customer.searchItemOnOrderGuide(searchItemCode2);
+        Customer.addItemFromCatalogIfNotAvailableInOG(searchItemCode2);
         Catalog.ClickOnMultiUomDropDownOG(searchItemCode2);
         Catalog.clickOGAddToCartPlusIcon(2,searchItemCode2,UOM1);
         Catalog.clickOGAddToCartPlusIcon(1,searchItemCode2,UOM2);
