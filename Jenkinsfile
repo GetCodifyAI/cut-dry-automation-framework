@@ -605,42 +605,9 @@ def sendSlackNotification(buildStatus = null) {
         emoji = '⚠️'
     }
     
-    try {
-        // Read test results if available
-        def testResults = [:]
-        if (fileExists('test_results.env')) {
-            def props = readProperties file: 'test_results.env'
-            testResults = props
-        }
-        
-        def message = """
-${emoji} *Cut+Dry Automation Test Results*
-*Build:* ${env.BUILD_NUMBER}
-*Status:* ${status}
-*Branch:* ${env.BRANCH_NAME ?: 'main'}
-*Duration:* ${currentBuild.durationString}
-*Cleanup Enabled:* ${env.WORKSPACE_CLEANUP ?: 'false'}
-
-*Test Summary:*
-• Total Tests: ${testResults.TOTAL_TESTS ?: 'N/A'}
-• Passed: ${testResults.PASSED_TESTS ?: 'N/A'}
-• Failed: ${testResults.FAILED_TESTS ?: 'N/A'}
-• Errors: ${testResults.ERROR_TESTS ?: 'N/A'}
-• Pass Rate: ${testResults.PASS_RATE ?: 'N/A'}%
-
-*Build URL:* ${env.BUILD_URL}
-        """.trim()
-        
-        // Send to Slack (requires Slack plugin configuration)
-        slackSend(
-            channel: '#qa-automation',
-            color: color,
-            message: message,
-            teamDomain: 'your-workspace',
-            token: 'your-slack-token'
-        )
-        
-    } catch (Exception e) {
-        echo "Failed to send Slack notification: ${e.getMessage()}"
-    }
+    // Slack notifications are handled by the Java TestNGListener class
+    // which automatically sends detailed test results to Slack using the
+    // SLACK_WEBHOOK environment variable configured in Jenkins.
+    // See: src/main/java/com/cutanddry/qa/utils/TestNGListener.java
+    echo "Slack notifications will be sent by TestNG listener after test completion"
 }
