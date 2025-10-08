@@ -40,12 +40,10 @@ pipeline {
                     runTestSuiteWithCleanup('bvt.xml', 'BVT', 1)
                 }
             }
-                    post {
-                        always {
-                            script {
-                                archiveAndCleanup('1', 'BVT Test Report')
-                            }
-                        }
+            post {
+                always {
+                    script {
+                        archiveAndCleanup('1', 'BVT Test Report')
                     }
                 }
             }
