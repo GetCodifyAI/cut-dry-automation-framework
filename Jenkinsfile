@@ -29,211 +29,21 @@ pipeline {
     }
     
     stages {
-        stage('Parallel Test Execution') {
-            parallel {
-                stage('Regression 1 - Order Guide & Reports') {
-                    agent any
-                    steps {
-                        script {
-                            runTestSuiteWithCleanup('regression1.xml', 'Part_One', 1)
-                        }
-                    }
-                    post {
-                        always {
-                            script {
-                                archiveAndCleanup('1', 'Regression 1 Test Report')
-                            }
-                        }
-                    }
+        // TEMPORARY: Running only bvt.xml for Slack notification testing (important-comment)
+        // TODO: Revert to parallel regression execution after testing completes (important-comment)
+        
+        stage('BVT Test Execution') {
+            agent any
+            steps {
+                script {
+                    echo "Running BVT tests for Slack notification testing"
+                    runTestSuiteWithCleanup('bvt.xml', 'BVT', 1)
                 }
-                
-                stage('Regression 2 - Track & Order Desk') {
-                    agent any
-                    steps {
-                        script {
-                            runTestSuiteWithCleanup('regression2.xml', 'Part_Two', 2)
-                        }
-                    }
+            }
                     post {
                         always {
                             script {
-                                archiveAndCleanup('2', 'Regression 2 Test Report')
-                            }
-                        }
-                    }
-                }
-                
-                stage('Regression 3 - Catalog & Pay') {
-                    agent any
-                    steps {
-                        script {
-                            runTestSuiteWithCleanup('regression3.xml', 'Part_Three', 3)
-                        }
-                    }
-                    post {
-                        always {
-                            script {
-                                archiveAndCleanup('3', 'Regression 3 Test Report')
-                            }
-                        }
-                    }
-                }
-                
-                stage('Regression 4 - Customers') {
-                    agent any
-                    steps {
-                        script {
-                            runTestSuiteWithCleanup('regression4.xml', 'Part_Four', 4)
-                        }
-                    }
-                    post {
-                        always {
-                            script {
-                                archiveAndCleanup('4', 'Regression 4 Test Report')
-                            }
-                        }
-                    }
-                }
-                
-                stage('Regression 5 - Orders') {
-                    agent any
-                    steps {
-                        script {
-                            runTestSuiteWithCleanup('regression5.xml', 'Part_Five', 5)
-                        }
-                    }
-                    post {
-                        always {
-                            script {
-                                archiveAndCleanup('5', 'Regression 5 Test Report')
-                            }
-                        }
-                    }
-                }
-                
-                stage('Regression 6 - Multi UOM') {
-                    agent any
-                    steps {
-                        script {
-                            runTestSuiteWithCleanup('regression6.xml', 'Part_Six', 6)
-                        }
-                    }
-                    post {
-                        always {
-                            script {
-                                archiveAndCleanup('6', 'Regression 6 Test Report')
-                            }
-                        }
-                    }
-                }
-                
-                stage('Regression 7 - Restaurant Portal') {
-                    agent any
-                    steps {
-                        script {
-                            runTestSuiteWithCleanup('regression7.xml', 'Part_Seven', 7)
-                        }
-                    }
-                    post {
-                        always {
-                            script {
-                                archiveAndCleanup('7', 'Regression 7 Test Report')
-                            }
-                        }
-                    }
-                }
-                
-                stage('Regression 8 - White Label') {
-                    agent any
-                    steps {
-                        script {
-                            runTestSuiteWithCleanup('regression8.xml', 'Part_Eight', 8)
-                        }
-                    }
-                    post {
-                        always {
-                            script {
-                                archiveAndCleanup('8', 'Regression 8 Test Report')
-                            }
-                        }
-                    }
-                }
-                
-                stage('Regression 9 - Operator Portal') {
-                    agent any
-                    steps {
-                        script {
-                            runTestSuiteWithCleanup('regression9.xml', 'Part_Nine', 9)
-                        }
-                    }
-                    post {
-                        always {
-                            script {
-                                archiveAndCleanup('9', 'Regression 9 Test Report')
-                            }
-                        }
-                    }
-                }
-                
-                stage('Regression 10 - Internal Tools') {
-                    agent any
-                    steps {
-                        script {
-                            runTestSuiteWithCleanup('regression10.xml', 'Part_Ten', 10)
-                        }
-                    }
-                    post {
-                        always {
-                            script {
-                                archiveAndCleanup('10', 'Regression 10 Test Report')
-                            }
-                        }
-                    }
-                }
-                
-                stage('Regression 11 - Credit Requests') {
-                    agent any
-                    steps {
-                        script {
-                            runTestSuiteWithCleanup('regression11.xml', 'Part_Eleven', 11)
-                        }
-                    }
-                    post {
-                        always {
-                            script {
-                                archiveAndCleanup('11', 'Regression 11 Test Report')
-                            }
-                        }
-                    }
-                }
-                
-                stage('Regression 12 - Scan to Order') {
-                    agent any
-                    steps {
-                        script {
-                            runTestSuiteWithCleanup('regression12.xml', 'Part_Twelve', 12)
-                        }
-                    }
-                    post {
-                        always {
-                            script {
-                                archiveAndCleanup('12', 'Regression 12 Test Report')
-                            }
-                        }
-                    }
-                }
-                
-                stage('Regression 13 - Purchase History') {
-                    agent any
-                    steps {
-                        script {
-                            runTestSuiteWithCleanup('regression13.xml', 'Part_Thirteen', 13)
-                        }
-                    }
-                    post {
-                        always {
-                            script {
-                                archiveAndCleanup('13', 'Regression 13 Test Report')
+                                archiveAndCleanup('1', 'BVT Test Report')
                             }
                         }
                     }
@@ -241,20 +51,18 @@ pipeline {
             }
         }
         
-        stage('Aggregate Results & Report') {
+        stage('Report Results') {
             agent any
             steps {
                 script {
-                    // Unstash all test results
-                    for (int i = 1; i <= 13; i++) {
-                        try {
-                            unstash "test-results-${i}"
-                        } catch (Exception e) {
-                            echo "Warning: Could not unstash test-results-${i}: ${e.getMessage()}"
-                        }
+                    // Unstash test results
+                    try {
+                        unstash "test-results-1"
+                    } catch (Exception e) {
+                        echo "Warning: Could not unstash test-results-1: ${e.getMessage()}"
                     }
                     
-                    // Calculate combined pass/fail rate
+                    // Calculate and report results
                     calculateAndReportResults()
                 }
             }
