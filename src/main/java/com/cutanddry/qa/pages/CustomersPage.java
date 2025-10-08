@@ -1,11 +1,7 @@
 package com.cutanddry.qa.pages;
 
-import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -66,6 +62,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By btn_uploadFile = By.xpath("//button[contains(text(), 'Upload File')]");
     By btn_uploadFileOG = By.xpath("//button[contains(text(), 'Upload Order')]");
     By btn_addToOrderGuide = By.xpath("//button[@data-tip='Add to Order Guide']");
+    String btn_addToOrderGuideByItem = "(//div[contains(normalize-space(.), 'ITEMCODE')])[last()]/../..//*[contains(@data-tip,'Add to Order Guide')]";
     By btn_closeEditorCatalog = By.xpath("//button[contains(text(), 'Close Editor')]");
     By btn_closeEditor = By.xpath("//a[contains(text(), 'Close Editor')]");
     By btn_removeFromOrderGuide = By.xpath("//button[@data-tip='Remove from Order Guide']");
@@ -413,6 +410,7 @@ By enabledStatusLocator = By.xpath("//div[contains(text(),'Cut+Dry Pay')]/follow
     By brandDropDown = By.xpath("//div[contains(text(), 'Brand')]");
     By brandDropDownOption = By.xpath("//div[contains(text(), 'Hungerford Smith')]");
     By itemTypeDropDown = By.xpath("//div[contains(text(), 'Item Type')]");
+    By outOfStockFilter = By.xpath("//div[contains(text(),'Availability')]/../../following-sibling::div//div[contains(text(),'Out of Stock')]/preceding-sibling::*");
     By itemTypeDropDownOption = By.xpath("//div[contains(text(), 'Item Type')]/../../following-sibling::div//*[name()='svg' and @data-icon='square']/following-sibling::div[contains(text(), 'Special Order')]");
     By txt_filterByBrand =By.xpath("//button[@data-tip='View Brand Page']//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'hungerford smith')]");
     By itemStatusDropDown = By.xpath("//div[contains(text(), 'Item Type')]");
@@ -869,9 +867,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By txt_catalogAllItems = By.xpath("(//div[text()='All Items'])[last()]");
     By orderGuideRefreshText = By.xpath("//*[contains(text(),'Refresh to view the latest updates in this order guide')]");
     By orderGuideOutOfstockItem = By.xpath("//span[contains(text(),'Out of stock')]/../preceding-sibling::div//*[contains(@data-tip,'View Product Details')]");
-
-
-
+    String getEachUOMOutOfStockItemFromCatalog = "(//span[contains(text(),'Out of stock')]/../following-sibling::div//div[contains(text(),'UOM')]/ancestor::div[7]/div[3]/div[3])[1]";
+    String outOfStockTagCatalog = "//span[normalize-space(.)='Out of stock']/parent::div/preceding-sibling::div[1]//div[contains(normalize-space(.), 'ITEMCODE')]";
+    By outOfStockTagPDP = By.xpath("//span[contains(text(),'Out of stock')]");
+    String outOfStockTagOrderGuide = "//tr[td[normalize-space(.)='ITEMCODE']]//span[normalize-space(.)='Out of stock']";
 
 
 
@@ -1189,6 +1188,13 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(btn_addToOrderGuide);
         distributorUI.waitForClickability(btn_addToOrderGuide);
         distributorUI.click(btn_addToOrderGuide);
+    }
+    public void AddToOrderGuideFromCatalogIfNotAdded(String itemCode)throws InterruptedException{
+        if(distributorUI.isDisplayed(By.xpath(btn_addToOrderGuideByItem.replace("ITEMCODE",itemCode)))) {
+            distributorUI.waitForVisibility(By.xpath(btn_addToOrderGuideByItem.replace("ITEMCODE",itemCode)));
+            distributorUI.waitForClickability(By.xpath(btn_addToOrderGuideByItem.replace("ITEMCODE",itemCode)));
+            distributorUI.click(By.xpath(btn_addToOrderGuideByItem.replace("ITEMCODE",itemCode)));
+        }
     }
     public void clickOnAddToOrderGuideStable(String name){
         distributorUI.click(By.xpath(lbl_catalogAddToCart.replace("NAME", name)));
@@ -1686,6 +1692,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
             return false;
         }
     }
+
     public void clickOnUnitEach(){
         /*distributorUI.waitForVisibility(By.xpath(multiUomDropDownOGExist.replace("CODE", code)));
         distributorUI.click(By.xpath(multiUomDropDownOGExist.replace("CODE", code)));*/
@@ -2114,6 +2121,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         }
         try {
             distributorUI.waitForCustom(2000);
+            distributorUI.click(orderGuideRefreshText);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -4751,6 +4759,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickItemTypeFilter()throws InterruptedException{
         distributorUI.click(itemTypeDropDown);
     }
+    public void clickOutOfStockFilter(){
+        distributorUI.click(outOfStockFilter);
+    }
     public void clickItemTypeFilterOption(String filter)throws InterruptedException{
         distributorUI.click(By.xpath(itemTypeFilterDropDownOption.replace("FILTER", filter)));
     }
@@ -5137,5 +5148,30 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForCustom(2000);
         return distributorUI.getText(orderGuideOutOfstockItem);
     }
+    public String getOutOfstockItemCodeforEachUOM(String UOM) {
+        String itemcode = distributorUI.getText(
+                By.xpath(getEachUOMOutOfStockItemFromCatalog.replace("UOM", UOM))
+        );
+        if (itemcode == null) {
+            return "";
+        }
+        itemcode = itemcode.replace('\u00A0',' ').trim(); // normalize NBSP, trim
+        int i = itemcode.lastIndexOf('|');
+        String part = (i >= 0 ? itemcode.substring(i + 1) : itemcode).trim();
 
+        // Drop a leading '#', if present
+        if (part.startsWith("#")) {
+            part = part.substring(1).trim();
+        }
+        return part;
+    }
+    public boolean isOutOfStockTagDisplayedInPDP(){
+        return distributorUI.isDisplayed(outOfStockTagPDP);
+    }
+    public boolean isOutOfStockTagDisplayedInCatalog(String itemName){
+        return distributorUI.isDisplayed(By.xpath(outOfStockTagCatalog.replace("ITEMCODE",itemName)));
+    }
+    public boolean isOutOfStockTagDisplayedInOrderGuide(String itemName){
+        return distributorUI.isDisplayed(By.xpath(outOfStockTagOrderGuide.replace("ITEMCODE",itemName)));
+    }
 }

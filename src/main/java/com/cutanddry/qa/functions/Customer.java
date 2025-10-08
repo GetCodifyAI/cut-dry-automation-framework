@@ -329,6 +329,9 @@ public class Customer {
     public static void addItemFromCatalog() throws InterruptedException {
         customersPage.clickOnAddToOrderGuide();
     }
+    public static void addItemFromHeartIconIfNotAvailableInOG(String itemCode) throws InterruptedException {
+        customersPage.AddToOrderGuideFromCatalogIfNotAdded(itemCode);
+    }
 
     public static void addItemFromCatalogStable(String name) {
         if (customersPage.isAddToOrderGuideDisplayed(name)) {
@@ -2769,6 +2772,9 @@ public class Customer {
     public static void clickItemTypeFilter()throws InterruptedException{
         customersPage.clickItemTypeFilter();
     }
+    public static void selectOutOfStockFilter(){
+        customersPage.clickOutOfStockFilter();
+    }
     public static void clickItemTypeFilterOption(String filter)throws InterruptedException{
         customersPage.clickItemTypeFilterOption(filter);
     }
@@ -3088,6 +3094,19 @@ public class Customer {
         if(Orders.isSelectOrderGuideDisplayed()){
             Orders.selectOrderGuide(orderGuide);
         }
+    }
+    public static String getOutOfStockItemsForEachUOMFromCatalog(String UOM){
+        return customersPage.getOutOfstockItemCodeforEachUOM(UOM);
+    }
+
+    public static boolean isOutOfStockTagDisplayedInPDP(){
+        return customersPage.isOutOfStockTagDisplayedInPDP();
+    }
+    public static boolean isOutOfStockTagDisplayedInCatalog(String itemName){
+        return customersPage.isOutOfStockTagDisplayedInCatalog(itemName);
+    }
+    public static boolean isOutOfStockTagDisplayedInOrderGuide(String itemName){
+        return customersPage.isOutOfStockTagDisplayedInOrderGuide(itemName);
     }
 }
 

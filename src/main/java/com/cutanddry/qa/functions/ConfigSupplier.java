@@ -93,6 +93,12 @@ public class ConfigSupplier {
         return configPage.isSupplierPortalCheckboxDisplayed();
     }
 
+    public static void checkExcludeStockSupplierPortal(boolean option){
+        configPage.excludeStockSupplierPortalToggle(option);
+    }
+    public static void selectUOMSForExcludeStock(String UOM){
+        configPage.clickExcludeStockUOMs(UOM);
+    }
     public static boolean isOperatorPortalCheckboxDisplayed() {
         return configPage.isOperatorPortalCheckboxDisplayed();
     }
