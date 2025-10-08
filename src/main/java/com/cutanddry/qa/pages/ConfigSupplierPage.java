@@ -39,7 +39,13 @@ public class ConfigSupplierPage extends LoginPage{
 
     By lbl_defaultQuickAddView = By.xpath("//*[contains(text(), 'Quick Add View:')]/following-sibling::div//*[text()='Enabled on DP Portal & Operator App']");
     By lbl_defaultSimpleListView = By.xpath("//*[contains(text(), 'Simple List View:')]/following-sibling::div//*[text()='Enabled on DP Portal & Operator App']");
-
+    By excludeStockIndicatorsSupplierPortal = By.xpath("(//div[contains(text(),'Exclude \"Out of Stock\" and \"Low Stock\" indicators:')]/following-sibling::div//input)[1]");
+    By heading_stocks = By.xpath("//h4[text()='Stocks']");
+    By chk_excludeStockSupplierPortal = By.xpath("//label[contains(text(),'Supplier Portal')]/following-sibling::input[@type='checkbox']");
+    By chk_excludeStockOperatorPortal = By.xpath("//label[contains(text(),'Operator Portal')]/following-sibling::input[@type='checkbox']");
+    By txt_selectedUOM = By.xpath("//label[contains(text(),'Exclude \"Out of Stock\" and \"Low Stock\" for selected UOMs:')]/following-sibling::input[@type='text']");
+    By uomTextArea = By.xpath("(//label[contains(text(),'Exclude “Out of Stock” and “Low Stock” for selected UOMs:')]/following-sibling::div//div)[3]");
+    String uomText = "(//div[normalize-space(.) = 'UOMOPTION'])[last()]";
 
     public boolean isConfigTextDisplayed(){
         try {
@@ -177,6 +183,58 @@ public class ConfigSupplierPage extends LoginPage{
 
     public boolean isDefaultSimpleListDisplayed() {
         return distributorUI.isDisplayed(lbl_defaultSimpleListView, 5);
+    }
+
+
+    public boolean isSupplierPortalCheckboxDisplayed() {
+        try {
+            distributorUI.scrollToElement(heading_stocks);
+            Thread.sleep(500);
+            return distributorUI.isDisplayed(chk_excludeStockSupplierPortal, 10);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void excludeStockSupplierPortalToggle(boolean enable) {
+        boolean isEnabled = distributorUI.isCheckboxOrRadioBtnSelected(excludeStockIndicatorsSupplierPortal);
+        if (enable != isEnabled) {
+            distributorUI.click(excludeStockIndicatorsSupplierPortal);
+        }
+    }
+
+
+
+    public void clickExcludeStockUOMs(String UOM){
+        distributorUI.click(uomTextArea);
+        distributorUI.click(By.xpath(uomText.replace("UOMOPTION",UOM)));
+    }
+    public boolean isOperatorPortalCheckboxDisplayed() {
+        try {
+            distributorUI.scrollToElement(heading_stocks);
+            Thread.sleep(500);
+            return distributorUI.isDisplayed(chk_excludeStockOperatorPortal, 10);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isSelectedUOMDisplayed() {
+        try {
+            distributorUI.scrollToElement(heading_stocks);
+            Thread.sleep(500);
+            return distributorUI.isDisplayed(txt_selectedUOM, 10);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public String getSelectedUOMValue() {
+        try {
+            return distributorUI.getText(txt_selectedUOM);
+        } catch (Exception e) {
+            return "";
+        }
     }
 
 }
