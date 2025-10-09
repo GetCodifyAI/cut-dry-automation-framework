@@ -863,6 +863,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_placeOrderWhiteLabel = By.xpath("//button[contains(text(), 'Place Order')]");
     By txt_catalogAllItems = By.xpath("(//div[text()='All Items'])[last()]");
     By orderGuideRefreshText = By.xpath("//*[contains(text(),'Refresh to view the latest updates in this order guide')]");
+    By btn_orderGuideCustomerProfile = By.xpath("//button[text()='Order Guide']");
+    String itemPriceEditOG = "//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')]/../following::div[contains(text(),'PRICE')]";
+    By btn_orderSection = By.xpath("//div[normalize-space(text()) = 'Order']");
 
 
 
@@ -5110,4 +5113,15 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(orderGuideRefreshText);
         distributorUI.click(orderGuideRefreshText);
     }
+    public void clickOnOrderGuideInCustomerProfile() {
+        distributorUI.scrollToElement(btn_orderGuideCustomerProfile);
+        distributorUI.clickUsingJavaScript(btn_orderGuideCustomerProfile);
+    }
+    public boolean isEditOGPriceDisplay(String name,String price)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(itemPriceEditOG.replace("NAME",name).replace("PRICE",price)));
+    }
+    public void clickOnOrderSection(){
+        distributorUI.click(btn_orderSection);
+    }
+
 }
