@@ -27,6 +27,7 @@ public class VerifyTheOrderEditInvalidOrderErrorMessageTest extends TestBase {
     static String orderId;
     static String customerCode = "487417810";
     int maxAttempts = 7;
+    static String orderGuide = "Dv - Westminister";
 
     @BeforeMethod
     public void setUp(){
@@ -46,6 +47,7 @@ public class VerifyTheOrderEditInvalidOrderErrorMessageTest extends TestBase {
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
+        Customer.selectOrderGuideIfOverlayDisplayed(orderGuide);
         Customer.goToCatalog();
 
         Customer.searchItemOnCatalog(searchItemCode);

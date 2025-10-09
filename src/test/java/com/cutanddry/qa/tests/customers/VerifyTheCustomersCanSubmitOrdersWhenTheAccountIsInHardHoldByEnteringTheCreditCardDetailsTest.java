@@ -4,6 +4,7 @@ import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CustomerData;
 import com.cutanddry.qa.data.testdata.DistributorSpecificData;
+import com.cutanddry.qa.data.testdata.SettingData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.Assert;
@@ -22,6 +23,10 @@ public class VerifyTheCustomersCanSubmitOrdersWhenTheAccountIsInHardHoldByEnteri
     static String preAuthMessage = "Pre-authorization Required";
     static String DistributorName = CustomerData.DISTRIBUTOR_NAME_IFC;
     static int randomNumber = new Random().nextInt(40);
+    static String card_num = SettingData.CREDIT_CARD_NUMBER;
+    static String exp_date = SettingData.EXP_DATE;
+    static String cvv = SettingData.CVV;
+    static String zipCode = SettingData.ZIPCODE;
 
     @BeforeMethod
     public void setUp(){
@@ -69,8 +74,12 @@ public class VerifyTheCustomersCanSubmitOrdersWhenTheAccountIsInHardHoldByEnteri
         Customer.submitOrder();
         softAssert.assertTrue(Customer.isPreAuthorizationTextDisplay(preAuthMessage),"pre auth pop up display error");
         Customer.clickContinue();
-        softAssert.assertTrue(Customer.isConfirmPaymentTextDisplay(),"confirm payment text error");
-        Customer.clickConfirm();
+        Customer.addCreditCart();
+        Settings.enterCardNumber(card_num);
+        Settings.enterExpDate(exp_date);
+        Settings.enterCVV(cvv);
+        Customer.enterZipCode(zipCode);
+        Customer.saveAndConfirm();
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(),"Error in turning the approval off");
         Customer.clickClose();
         softAssert.assertAll();

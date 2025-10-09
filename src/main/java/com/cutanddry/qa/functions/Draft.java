@@ -104,5 +104,12 @@ public class Draft {
         return draftPage.isLastDraftStatusDisplayed(total,date);
     }
 
+    public static int getActiveDraftCount(){
+        return draftPage.getActiveDraftCount();
+    }
+
+    public static boolean isEmptyStateDisplayed(){
+        return draftPage.isEmptyStateDisplayed();
+    }
 
 }
