@@ -3089,6 +3089,28 @@ public class Customer {
             Orders.selectOrderGuide(orderGuide);
         }
     }
+    public static void clickOnOrderGuideInCustomerProfile() throws InterruptedException {
+        customersPage.clickOnOrderGuideInCustomerProfile();
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+        else if (Orders.isSelectOrderGuideDisplayed()){
+            Orders.selectOrderGuide("Independent Foods Co");
+        }
+    }
+    public static boolean isEditOGPriceDisplay(String name,String price)throws InterruptedException{
+        return customersPage.isEditOGPriceDisplay(name,price);
+    }
+    public static void clickOnOrderSection() throws InterruptedException {
+        customersPage.clickOnOrderSection();
+        if (Orders.isSelectOrderGuideDisplayed()){
+            Orders.selectOrderGuide("Test_Automation");
+        }
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+    }
+
 }
 
 
