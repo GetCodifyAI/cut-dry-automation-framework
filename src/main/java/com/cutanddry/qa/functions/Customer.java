@@ -3110,6 +3110,15 @@ public class Customer {
             customersPage.clickPreviousDraftOrderNo();
         }
     }
+    public static boolean isOrderGuideItemTagDisplayTag(String name,String tag){
+        return customersPage.isOrderGuideItemTagDisplayTag(name,tag);
+    }
+    public static boolean isCatalogItemDisplayListView(String name){
+        return customersPage.isCatalogItemDisplayListView(name);
+    }
+    public static boolean getFirstItemNameFrmSearchResultCatalog(String name){
+        return customersPage.getFirstItemNameFrmSearchResultCatalog(name);
+    }
 
 }
 

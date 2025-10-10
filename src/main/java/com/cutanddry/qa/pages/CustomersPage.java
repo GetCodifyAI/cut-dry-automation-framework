@@ -872,6 +872,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_orderGuideCustomerProfile = By.xpath("//button[text()='Order Guide']");
     String itemPriceEditOG = "//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')]/../following::div[contains(text(),'PRICE')]";
     By btn_orderSection = By.xpath("//div[normalize-space(text()) = 'Order']");
+    String itemTagOG = "//div[contains(text(),'NAME')]/../../following-sibling::div//span[text()='TAG']";
+    String listViewCatalogItemName = "//td[contains(text(),'NAME')]";
 
 
 
@@ -5151,6 +5153,15 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickOnOrderSection(){
         distributorUI.click(btn_orderSection);
+    }
+    public boolean isOrderGuideItemTagDisplayTag(String name,String tag){
+        return distributorUI.isDisplayed(By.xpath(itemTagOG.replace("NAME", name).replace("TAG",tag)));
+    }
+    public boolean isCatalogItemDisplayListView(String name){
+        return distributorUI.isDisplayed(By.xpath(listViewCatalogItemName.replace("NAME", name)));
+    }
+    public boolean getFirstItemNameFrmSearchResultCatalog(String name){
+        return distributorUI.isDisplayed(By.xpath(lbl_catalogSearchItemList.replace("NAME", name)));
     }
 
 }
