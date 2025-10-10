@@ -71,6 +71,11 @@ public class DashboardPage extends LoginPage{
     By txt_endlessAisle  =By.xpath("//div[text()='Endless Aisle Catalog']");
     By btn_dashboard = By.xpath("//a[@data-tip='Dashboard']");
     String getCustomerBaseValue = "(//*[name()='tspan' and contains(., 'CUSTOMER')]/following-sibling::*[name()='tspan'])[1]";
+    By txt_orderGuideChangesHeader = By.xpath("//h4[contains(text(),'Order Guide Changes')]");
+    By svg_orderGuideChangesTooltip = By.xpath("//h4[contains(text(),'Order Guide Changes')]/following-sibling::svg[1]");
+    By txt_addedItem = By.xpath("//div[text()='Added Item']");
+    By txt_removedItem = By.xpath("//div[text()='Removed Item']");
+    String btn_viewAllForSection = "//h4[contains(text(),'SECTION')]/ancestor::div[contains(@class,'card') or contains(@class,'section')]//button[contains(text(),'View All')]";
 
 
     public boolean isDashboardTextDisplayed(){
@@ -398,5 +403,43 @@ public class DashboardPage extends LoginPage{
             return Integer.parseInt(digits);
         }
     }
+    public boolean isOrderGuideChangesSectionDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_orderGuideChangesHeader);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_orderGuideChangesHeader);
+    }
+
+    public boolean isOrderGuideChangesTooltipDisplayed(){
+        try {
+            return distributorUI.isDisplayed(svg_orderGuideChangesTooltip);
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public void clickOrderGuideChangesViewAll(){
+        distributorUI.scrollToElement(By.xpath(btn_viewAllForSection.replace("SECTION", "Order Guide Changes")));
+        distributorUI.click(By.xpath(btn_viewAllForSection.replace("SECTION", "Order Guide Changes")));
+    }
+
+    public boolean isAddedItemDisplayed(){
+        try {
+            return distributorUI.isDisplayed(txt_addedItem);
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean isRemovedItemDisplayed(){
+        try {
+            return distributorUI.isDisplayed(txt_removedItem);
+        } catch (Exception e){
+            return false;
+        }
+    }
+
 
 }

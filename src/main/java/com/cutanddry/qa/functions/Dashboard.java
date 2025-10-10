@@ -1,11 +1,13 @@
 package com.cutanddry.qa.functions;
 
 import com.cutanddry.qa.pages.DashboardPage;
+import com.cutanddry.qa.pages.OrderGuideChangesPage;
 
 import static com.cutanddry.qa.functions.Customer.customersPage;
 
 public class Dashboard {
     static DashboardPage dashboardPage = new DashboardPage();
+    static OrderGuideChangesPage orderGuideChangesPage = new OrderGuideChangesPage();
 
     public static boolean isUserNavigatedToDashboard(){
         return dashboardPage.isDashboardTextDisplayed();
@@ -209,6 +211,46 @@ public class Dashboard {
 
     public static int getDraftsBadgeCount(){
         return dashboardPage.getDraftsBadgeCount();
+    }
+
+    public static boolean isOrderGuideChangesSectionDisplayed(){
+        return dashboardPage.isOrderGuideChangesSectionDisplayed();
+    }
+
+    public static boolean isOrderGuideChangesTooltipDisplayed(){
+        return dashboardPage.isOrderGuideChangesTooltipDisplayed();
+    }
+
+    public static void clickOrderGuideChangesViewAll(){
+        dashboardPage.clickOrderGuideChangesViewAll();
+    }
+
+    public static boolean isAddedItemDisplayed(){
+        return dashboardPage.isAddedItemDisplayed();
+    }
+
+    public static boolean isRemovedItemDisplayed(){
+        return dashboardPage.isRemovedItemDisplayed();
+    }
+
+    public static boolean isOrderGuideChangesPageDisplayed(){
+        return orderGuideChangesPage.isOrderGuideChangesPageDisplayed();
+    }
+
+    public static void selectTimeRangeInOrderGuideChanges(String timeRange){
+        orderGuideChangesPage.selectTimeRange(timeRange);
+    }
+
+    public static void selectCustomerInOrderGuideChanges(String customer){
+        orderGuideChangesPage.selectCustomer(customer);
+    }
+
+    public static void selectSalespersonInOrderGuideChanges(String salesperson){
+        orderGuideChangesPage.selectSalesperson(salesperson);
+    }
+
+    public static boolean isOrderGuideChangesTableDisplayed(){
+        return orderGuideChangesPage.isTableDisplayed();
     }
 
 }
