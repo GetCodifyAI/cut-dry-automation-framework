@@ -943,7 +943,6 @@ public class Customer {
 
     public static void addItemFromCatalogIfNotAvailableInOG(String itemCode){
         customersPage.clickItemFromCatalogIfNotAvailableInOG(itemCode);
-        customersPage.clickOnRefreshOrderGuide();
     }
 
     public static void disableAccHolds(){
@@ -2707,7 +2706,7 @@ public class Customer {
     public static void clickLastOrderDetailsCatalog(String name)throws InterruptedException{
         customersPage.clickLastOrderDetailsCatalog(name);
     }
-    public static boolean isPurchaseHistoryDisplay(){
+    public static boolean isPurchaseHistoryDisplay() throws InterruptedException {
         return customersPage.isPurchaseHistoryDisplay();
     }
     public static boolean isLastOrderDisplay(String order){

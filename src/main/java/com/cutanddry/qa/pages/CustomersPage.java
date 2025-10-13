@@ -1041,7 +1041,18 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public Double getItemPriceOnCheckoutButton() throws InterruptedException {
         distributorUI.waitForVisibility(btn_checkout);
         distributorUI.waitForCustom(4000);
-        return Double.valueOf(distributorUI.getText(btn_checkout).replace("$",""));
+        String UnEditedValue = distributorUI.getText(btn_checkout);
+        // Extract first number-like token, drop $ and thousands commas (US style)
+        java.util.regex.Matcher m = java.util.regex.Pattern
+                .compile("(-?\\d[\\d,]*\\.?\\d*)")
+                .matcher(UnEditedValue);
+
+        if (!m.find()){
+            return null;
+        }
+
+        String num = m.group(1).replace(",", "");
+        return Double.valueOf(num);
     }
     public void clickPlusQryCatalogSearchValueOne(){
         distributorUI.click(btn_increaseQtyCatalogSearchValueOne);
@@ -2119,6 +2130,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
             distributorUI.click(By.xpath(catalogCardAddToOGBtn.replace("ITEMCODE",itemName)));
         }
         try {
+            distributorUI.click(orderGuideRefreshText);
             distributorUI.waitForCustom(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
