@@ -55,7 +55,7 @@
             <class name="com.cutanddry.qa.tests.catalog.VerifyTheOutOfStockLabelsNotDisplayWhenHideOutOfStockLabelOnSupplierPortalToggleEnabledTest"/>
             <class name="com.cutanddry.qa.tests.catalog.VerifyTheOutOfStockLabelsDisplayWhenHideOutOfStockLabelOnSupplierPortalToggleDisabledTest"/>
 
-            <class name="com.cutanddry.qa.tests.customers.VerifyTheCartSummeryAndRevenueSummeryIsDisplayedOnTheReviewScreenTest"/>
+            <class name="com.cutanddry.qa.tests.customers.VerifyTheOrderSummeryDisplayedOnDPPortalTest"/>
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheAlternateCollapsedMenuOnDesktopTest"/>
 
             <class name="com.cutanddry.qa.tests.orders.VerifyThatTheSendToERPButtonIsAvailableForScheduledJITOrdersTest"/>

@@ -11,6 +11,10 @@
             <class name="com.cutanddry.qa.tests.draft.VerifySupplierPortalDraftCountDisplayTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifyZeroDraftCountBadgeHiddenTest"/>
             <class name="com.cutanddry.qa.tests.catalog.VerifyHideAvailabilityFilterInPublicCatalogTest"/>
+            <!--            TODO: Commenting the since the change was reverted-->
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheItemPricesAreNotVisibleInTheEditOrderGuideItemsSectionWhenPriceVisibilityIsHiddenTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.catalog_data.VerifyTheItemCannotBeOrderedFromTheOrderGuideWhenStatusIsSetToInactiveTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.catalog_data.VerifyTheItemCannotBeOrderedFromTheOrderGuideWhenStatusIsSetToInactiveOnTheOPSideTest"/>-->
 
         </classes>
     </test>
