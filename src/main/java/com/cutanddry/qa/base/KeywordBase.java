@@ -512,6 +512,25 @@ public class KeywordBase {
         return this;
     }
 
+    public KeywordBase scrollToElementTillFound(By by) {
+        try {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            List<WebElement> els = driver.findElements(by);
+
+            if (!els.isEmpty()) {
+                js.executeScript("arguments[0].scrollIntoView({block:'center', inline:'nearest'});", els.get(0));
+                logger.info("Scrolled to element: {}", by);
+            } else {
+                js.executeScript("window.scrollTo(0, (document.documentElement.scrollHeight || document.body.scrollHeight));");
+                logger.info("Scrolled to page end (element not found): {}", by);
+            }
+        } catch (Exception e) {
+            logger.error("Failed to scroll to element: {}", by, e);
+        }
+        return this;
+    }
+
+
     // Scroll by pixels
     public KeywordBase scrollByPixels(int x, int y) {
         try {

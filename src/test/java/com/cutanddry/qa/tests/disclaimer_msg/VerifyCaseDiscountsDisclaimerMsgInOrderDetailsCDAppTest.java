@@ -12,7 +12,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyCaseDiscountsDisclaimerMsgInOrderDetailsCDAppTest extends TestBase {
     static User user;
-    static String customer = "sales@jordanpaige.com";
+    static String customer = "sko+jordanop@cutanddry";
     static String customerCode = "ZTEST";
     String ItemCode = "4MK008BB";
     static String DP = "Cut+Dry Agent - Jordan Paige";

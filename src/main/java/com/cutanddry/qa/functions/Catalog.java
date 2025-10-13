@@ -65,10 +65,20 @@ public class Catalog {
         catalogPage.clickonItemOnCatalogPage(itemCode);
     }
 
+    public static void sortItemNamesAscendingInCatalog(){
+        catalogPage.sortCatalogItemsNameAscending();
+    }
+
+    public static String getProductStatusFromCatalogProductGrid(String productId){
+        return catalogPage.getProductStatusFromProductGrid(productId);
+    }
     public static String getItemcodeInCatalogData(){
         return catalogPage.getItemCodeFromCatalogDataPage();
     }
 
+    public static void selectEditFromProductConfig(){
+        catalogPage.clickEditOnProductConfigs();
+    }
     public static void selectProductActiveInactiveStatus(String prodStatus){
         catalogPage.clickOnInactiveOrInactive(prodStatus);
     }
@@ -82,11 +92,11 @@ public class Catalog {
         return true;
     }
 
-    public static void navigateToAdditionalAttributes(){
-        catalogPage.clickOnAdditionalAttributesTab();
+    public static void navigateToSpecifications(){
+        catalogPage.clickOnSpecificationsTab();
     }
 
-    public static boolean isAdditionalAttributesTabDisplayed(){
+    public static boolean isCertificationsDisplayed(){
         return catalogPage.isCertificationsSectionDisplayed();
     }
 
@@ -94,8 +104,8 @@ public class Catalog {
         catalogPage.clickClearCertification(CertificationType);
     }
 
-    public static void selectCertification(String CertificationType,String certification){
-        catalogPage.clickOnCertification(CertificationType,certification);
+    public static void selectCertification(String certification){
+        catalogPage.clickOnCertification(certification);
     }
 
     public static void navigateToImages(){
@@ -115,6 +125,7 @@ public class Catalog {
             catalogPage.deleteUOMinCatalog();
             catalogPage.clickOnConfirmBtn();
             catalogPage.clickOnSaveChangesBtn();
+            catalogPage.clickOnPricingAndPromotionsTab();
 //            catalogPage.refreshPage();
         }
         catalogPage.clickOnUnitOfMeasure();
@@ -124,6 +135,7 @@ public class Catalog {
             catalogPage.deleteUOMinCatalog(uom);
             catalogPage.clickOnConfirmBtn();
             catalogPage.clickOnSaveChangesBtn();
+            catalogPage.clickOnPricingAndPromotionsTab();
 //            catalogPage.refreshPage();
         }
         catalogPage.clickOnUnitOfMeasure();
@@ -202,6 +214,7 @@ public class Catalog {
         if (catalogPage.isDeleteSubstituteItemDisplayed(ItemCode)) {
             catalogPage.clickOnDeleteSubstituteItemBtn(ItemCode);
             catalogPage.clickOnSaveChangesBtn();
+            catalogPage.clickOnSubstituteTab();
         }
 
     }
@@ -210,6 +223,7 @@ public class Catalog {
         if (!catalogPage.isDeleteSubstituteItemDisplayed(ItemCode)) {
             catalogPage.clickAddSubstitutionBtn();
             String SubstituteItemName = catalogPage.getSubstituteItemName(ItemCode);
+            catalogPage.clickAddSubstitutionBtn();
             catalogPage.searchSubstituteItem(SubstituteItemName);
             catalogPage.addSubstitutionsBtn();
             catalogPage.clickOnSaveChangesBtn();
@@ -279,12 +293,12 @@ public class Catalog {
         return catalogPage.isLinkCopiedTxtDisplayed();
     }
 
-    public static void navigateToPublicCatalog(){
-        catalogPage.goToPublicCatalog();
+    public static void navigateToPublicCatalog(String URL){
+        catalogPage.goToPublicCatalog(URL);
     }
 
-    public static boolean PublicCatalogDisplayed(String itemCode){
-        return catalogPage.isPublicCatalogDisplayed(itemCode);
+    public static boolean isNavigatedToPublicCatalog(String DPNAME){
+        return catalogPage.isPublicCatalogNameDisplayed(DPNAME);
     }
 
     public static void clickOnAddToCart(){
@@ -375,7 +389,7 @@ public class Catalog {
     public static boolean areImagesDisplayed(){
         return catalogPage.areImagesDisplayed();
     }
-    public static void selectFirstItem(){
+    public static void selectFirstItem() throws InterruptedException {
         catalogPage.selectFirstItem();
     }
     public static boolean isProductDescriptionDisplayed(){
@@ -409,7 +423,7 @@ public class Catalog {
         catalogPage.selectExportPromoFiles();
     }
     public static void clickBack(){catalogPage.clickBack();}
-    public static void clickOnProprietaryItemStatus(String proprietaryStatus){
+    public static void clickOnProprietaryItemStatus(String proprietaryStatus) throws InterruptedException {
         catalogPage.clickOnProprietaryItem(proprietaryStatus);
     }
     public static void selectProprietaryItem() throws InterruptedException {
@@ -420,6 +434,9 @@ public class Catalog {
     }
     public static void selectCategory() throws InterruptedException {
         catalogPage.selectCategoryMeat();
+    }
+    public static void removeCategory(String category){
+        catalogPage.deleteCategory(category);
     }
     public static void clickOnSubCategory(String subCategory){
         catalogPage.clickOnSubCategory(subCategory);
@@ -472,6 +489,8 @@ public class Catalog {
     public static void addSubstitutionsStable(String itemCode){
         if(catalogPage.isSubstituteItemDisplayed(itemCode)){
             catalogPage.clickOnDeleteSubstituteItemBtn(itemCode);
+            catalogPage.clickOnSaveChangesBtn();
+            catalogPage.clickOnSubstituteTab();
         }
         catalogPage.clickAddSubstitutionBtn();
     }

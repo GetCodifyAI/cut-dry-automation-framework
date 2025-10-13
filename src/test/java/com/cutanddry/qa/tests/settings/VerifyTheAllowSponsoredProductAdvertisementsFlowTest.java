@@ -37,6 +37,7 @@ public class VerifyTheAllowSponsoredProductAdvertisementsFlowTest extends TestBa
 
         Login.navigateToInternalToolsPage();
         InternalTools.ensureSponsoredProductAdsStatus(true);
+        InternalTools.ensureInstacartSponsoredProductAdsStatus(true);
         Login.navigateToDistributorPortal(distributorName);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToAdsSettings();
@@ -46,6 +47,7 @@ public class VerifyTheAllowSponsoredProductAdvertisementsFlowTest extends TestBa
 
         Login.navigateToInternalToolsPage();
         InternalTools.ensureSponsoredProductAdsStatus(false);
+        InternalTools.ensureInstacartSponsoredProductAdsStatus(false);
         Login.navigateToDistributorPortal(distributorName);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToAdsSettings();

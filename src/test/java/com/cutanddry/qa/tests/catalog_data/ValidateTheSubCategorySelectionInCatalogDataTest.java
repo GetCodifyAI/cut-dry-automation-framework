@@ -33,6 +33,7 @@ public class ValidateTheSubCategorySelectionInCatalogDataTest extends TestBase {
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        Catalog.selectEditFromProductConfig();
         Catalog.clickOnCategory(newCategory);
         Catalog.clickOnSubCategory(newSubCategory);
         Catalog.saveChanges();
@@ -42,7 +43,8 @@ public class ValidateTheSubCategorySelectionInCatalogDataTest extends TestBase {
         Catalog.selectSubCategory();
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
-        Catalog.clickOnCategory(previousCategory);
+        Catalog.selectEditFromProductConfig();
+        Catalog.removeCategory(newCategory);
         Catalog.saveChanges();
         softAssert.assertAll();
     }

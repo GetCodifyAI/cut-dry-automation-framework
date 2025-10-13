@@ -3,7 +3,7 @@ package com.cutanddry.qa.data.testdata;
 public class PurchaseHistoryData {
     public static final String SUPPLIER_NAME = "Hillcrest Foodservice";
     public static final String DISTRIBUTOR_NAME = "96939129 - Cut+Dry Agent - Hillcrest Foodservice";
-    public static final String CUSTOMER_ID = "45869";
+    public static final String CUSTOMER_ID = "71227";
     public static final String ITEM_CODE = "2442";
     public static final String ITEM_NAME = "Cheese American 120 CT Slice Yellow";
     public static final String SUPPLIER_WAGNER = "Wagner Foodservice";

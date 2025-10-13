@@ -1,10 +1,13 @@
 package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
+import java.util.regex.*;
 
 
 
 public class DraftPage extends LoginPage{
+    private static final Pattern RESULTS_NUM = Pattern.compile("(\\d[\\d,\\u00A0]*)\\s*results?", Pattern.CASE_INSENSITIVE);
+
     By txt_drafts = By.xpath("//li[contains(text(),'Drafts')]");
     By btn_delete = By.xpath("(//button[contains(text(), 'Delete')])[1]");
     String txt_lastDraft = "(//tbody/tr[contains(@href, '/customers/place_order/') and contains(@href, 'draftId')]/td[8][contains(text(), 'TOTAL')])[1]";
@@ -21,6 +24,7 @@ public class DraftPage extends LoginPage{
     By customerName = By.xpath("(//tbody/tr[contains(@href, '/customers/place_order/') and contains(@href, 'draftId')]/td[3]//div)[1]");
     By searchDrafts = By.xpath("//input[@placeholder='Search Drafts..']");
     String resultCount = "//span[contains(@class,'text-muted') and contains(text(),'COUNT')]";
+    By all_draft_Count = By.xpath("//span[contains(text(),'results')]");
     By btn_trash = By.xpath("(//button[@type='button']//*[local-name()='svg' and @data-icon='cdTrash'])[1]");
     By txt_delete = By.xpath("//h2[contains(text(),'Delete Draft Permanently?')]");
     String confirmationModel = "//div[contains(text(),'TEXT')]";
@@ -200,6 +204,31 @@ public class DraftPage extends LoginPage{
     public boolean isLastDraftStatusDisplayed(String total,String date){
         distributorUI.waitForVisibility(By.xpath(txt_lastDraftDisplay.replace("TOTAL", total).replace("DATE",date)));
         return distributorUI.isDisplayed(By.xpath(txt_lastDraftDisplay.replace("TOTAL", total).replace("DATE",date)));
+    }
+
+    public int getActiveDraftCount(){
+        distributorUI.waitForVisibility(draftDate);
+        String text = distributorUI.getText(all_draft_Count);
+
+        Matcher m = RESULTS_NUM.matcher(text.trim());
+        if (!m.find()) {
+            return 0;
+        }
+
+        String digits = m.group(1).replaceAll("[,\\u00A0]", "");
+        int count;
+        try {
+            count = Integer.parseInt(digits);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+
+        return (count > 1000) ? (int) Math.round(count / 1000.0) * 1000 : count;
+    }
+
+    public boolean isEmptyStateDisplayed(){
+        return distributorUI.isDisplayed(txt_noRecord);
+
     }
 
 }

@@ -18,6 +18,7 @@ public class VerifyCashAndCarryAllowedOptionIsNotDisplayedInsidePricingAndPromot
     static User user;
     static String DP = DistributorSpecificData.DISTRIBUTOR_WCW_ROCKIES;
     static String cashAndCarryAllowedOption = "Cash and Carry Allowed";
+    static String itemName = "36716";
 
 
 
@@ -39,6 +40,7 @@ public class VerifyCashAndCarryAllowedOptionIsNotDisplayedInsidePricingAndPromot
         Assert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.clickOnPreviewCatalog();
         Assert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
+        Catalog.searchItemInCatalogPreview(itemName);
         Catalog.selectFirstItem();
         softAssert.assertTrue(Catalog.isProductDescriptionDisplayed(),"select product error");
         Catalog.clickOnEditProduct();

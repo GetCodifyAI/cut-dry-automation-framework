@@ -30,6 +30,7 @@ public class DashboardPage extends LoginPage{
     By txt_totalTimeSaved = By.xpath("//tr[td[contains(text(), 'Total')]]/td[5]");
     By btn_history = By.xpath("//a[@data-tip='Order History']");
     By btn_drafts  =By.xpath("//a[@data-tip='View Drafts']");
+    By drafts_badge = By.xpath("//*[@href='/draft-orders']//span");
     By btn_track = By.xpath("//a[@role='button' and contains(text(), 'Track')]");
     By btn_trackResources = By.xpath("//div[@arrowprops]//a[text()='Resources']");
     By btn_trackRoutes = By.xpath("//div[@arrowprops]//a[text()='Routes']");
@@ -68,6 +69,8 @@ public class DashboardPage extends LoginPage{
     By btn_order = By.xpath("//a[@data-tip='Place Order']");
     By orderIndicator = By.xpath("//a[contains(text(),'Order Desk')]/div/span");
     By txt_endlessAisle  =By.xpath("//div[text()='Endless Aisle Catalog']");
+    By btn_dashboard = By.xpath("//a[@data-tip='Dashboard']");
+    String getCustomerBaseValue = "(//*[name()='tspan' and contains(., 'CUSTOMER')]/following-sibling::*[name()='tspan'])[1]";
 
 
     public boolean isDashboardTextDisplayed(){
@@ -347,6 +350,53 @@ public class DashboardPage extends LoginPage{
     }
     public boolean isEndlessAisleCatalogDisplay()throws InterruptedException{
         return distributorUI.isDisplayed(txt_endlessAisle);
+    }
+    public void clickOnDashboard(){
+        distributorUI.click(btn_dashboard);
+    }
+    public String getCustomerValue(String customer) throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        String rawValue = distributorUI.getText(By.xpath(
+                getCustomerBaseValue.replace("CUSTOMER", customer)
+        )).trim();
+
+        return rawValue.split(" ")[0].trim();
+    }
+    public void refreshDashBoardPage(){
+        distributorUI.refreshPage();
+    }
+
+    public boolean isDraftsMenuItemVisible(){
+            return distributorUI.isDisplayed(btn_drafts);
+    }
+
+    public boolean isDraftsBadgeVisible(){
+            return distributorUI.isDisplayed(drafts_badge);
+    }
+
+    public int getDraftsBadgeCount(){
+
+        String s = String.valueOf(distributorUI.getText(drafts_badge)).trim();
+        if (s.isEmpty()) {
+            return 0;
+        }
+
+        s = s.replace(",", "").replace("+", "").toLowerCase();
+
+        int mul = s.endsWith("k") ? 1000 : 1;
+        if (mul == 1000) {
+            s = s.substring(0, s.length() - 1).trim(); // drop trailing 'k'
+        }
+
+        try {
+            return (int) Math.round(Double.parseDouble(s) * mul); // 2k->2000, 2.5k->2500
+        } catch (NumberFormatException e) {
+            String digits = s.replaceAll("\\D", "");
+            if (digits.isEmpty()) {
+                return 0;
+            }
+            return Integer.parseInt(digits);
+        }
     }
 
 }

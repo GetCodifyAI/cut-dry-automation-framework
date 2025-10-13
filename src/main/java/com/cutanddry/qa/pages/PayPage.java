@@ -90,7 +90,7 @@ public class PayPage extends LoginPage{
     By payoutStatus = By.xpath("//table[@class='my-3 table table-hover']/tbody/tr/td[text()='Paid']");
     By onePayout = By.xpath("//thead/tr/th[normalize-space()='Payout ID']/../../following-sibling::tbody//tr[1]//td[1]");
     String payoutRecode = "//h2[contains(text(),'CODE')]";
-    By btn_threeDotPayout = By.xpath("//thead/tr/th[normalize-space()='Payout ID']/../../following-sibling::tbody//tr[1]//td[7]//*[local-name()='svg' and @data-icon='ellipsis-vertical']");
+    By btn_threeDotPayout = By.xpath("//thead/tr/th[normalize-space()='Payout ID']/../../following-sibling::tbody//tr[1]//td[9]//*[local-name()='svg' and @data-icon='ellipsis-vertical']");
     By viewDropDownOption = By.xpath("//span[text()='View']");
     By downloadDropDownOption = By.xpath("//span[text()='Download']");
     By invoiceCode = By.xpath("//th[contains(text(),'Invoice')]/ancestor::table/tbody/tr[1]/td[4]");

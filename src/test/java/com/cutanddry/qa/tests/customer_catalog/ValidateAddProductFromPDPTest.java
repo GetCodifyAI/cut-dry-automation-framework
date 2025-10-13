@@ -49,6 +49,7 @@ static String itemNameTemp = "Chocolate Cone Coating";
 //        Customer.clickOnBack();
 
         Customer.searchCustomerByCode(CustomerCode);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"customer not found");
         Customer.clickOnOrderGuide(CustomerCode);
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(itemName);

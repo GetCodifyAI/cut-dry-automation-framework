@@ -2,10 +2,7 @@ package com.cutanddry.qa.tests.catalog;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
-import com.cutanddry.qa.functions.Customer;
-import com.cutanddry.qa.functions.Dashboard;
-import com.cutanddry.qa.functions.Login;
-import com.cutanddry.qa.functions.Settings;
+import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -19,6 +16,9 @@ public class VerifyHardOrderMinimumWarningTest extends TestBase {
     static String customerId = "16579";
     static String orderMin = "2500000";
     static String defaultOrderMin = "0";
+    static String orderMinimumType = "Hard Order Minimum";
+    static String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    static String orderMinimumSetting = "Use Global Settings";
 
     @BeforeMethod
     public void setUp(){
@@ -30,7 +30,19 @@ public class VerifyHardOrderMinimumWarningTest extends TestBase {
     public void VerifyHardOrderMinimumWarning() throws InterruptedException {
         String itemName;
         SoftAssert softAssert = new SoftAssert();
-        Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
+        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
+        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+
+        //Turning on hard order minimum form internal tools
+        Login.navigateToInternalToolsPage();
+        InternalTools.navigateToConfigureSupplier();
+        InternalTools.navigateToIndependentCompEditDetails();
+        InternalTools.navigateToOrderingSettingsTab();
+        InternalTools.TurnOnOrderMinimumGloballyToggle(true);
+        InternalTools.clickOnOrderMinimumDropdown(orderMinimumType);
+        InternalTools.clickSave();
+
+        Login.navigateToDistributorPortal(DistributorName);
         Dashboard.isUserNavigatedToDashboard();
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToOrderSettings();
@@ -41,13 +53,17 @@ public class VerifyHardOrderMinimumWarningTest extends TestBase {
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
-        Customer.clickOnOrderGuide(customerId);
+        Customer.SelectCustomer(customerId);
+        Customer.SelectOrderMinimumFromProfile(orderMinimumSetting);
+
+        Customer.clickOnOrderGuideInProfile();
         itemName = Customer.getItemNameFirstRow();
         Customer.increaseFirstRowQtyByOne();
         Customer.clickOnDefaultCheckoutButton();
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
         softAssert.assertTrue(Customer.isMinOrderBannerDisplayed(),"banner not appearing error");
-        Customer.submitOrder();
+        Customer.submitOrderMinimum();
+
         softAssert.assertTrue(Customer.isOrderMinPopupDisplayed(),"popup display error");
         Customer.clickOK();
         Dashboard.navigateToOrderSettings();

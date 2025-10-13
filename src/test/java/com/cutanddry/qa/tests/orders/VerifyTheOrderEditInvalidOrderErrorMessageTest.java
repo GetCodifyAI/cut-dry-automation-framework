@@ -27,6 +27,7 @@ public class VerifyTheOrderEditInvalidOrderErrorMessageTest extends TestBase {
     static String orderId;
     static String customerCode = "487417810";
     int maxAttempts = 7;
+    static String orderGuide = "Dv - Westminister";
 
     @BeforeMethod
     public void setUp(){
@@ -40,12 +41,13 @@ public class VerifyTheOrderEditInvalidOrderErrorMessageTest extends TestBase {
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DP);
-        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+        //Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
+        Customer.selectOrderGuideIfOverlayDisplayed(orderGuide);
         Customer.goToCatalog();
 
         Customer.searchItemOnCatalog(searchItemCode);

@@ -179,6 +179,8 @@ public class SettingsPage extends LoginPage{
     By sel_deliveryDate = By.xpath("//span[text()='Global Delivery Days']/preceding-sibling::div/div[@class='react-switch-handle']");
     By lbl_ERPUserRef = By.xpath("//label[text()='ERP user reference']/following-sibling::div//input");
     By lbl_AlternateERPUserRef = By.xpath("//label[contains(text(),'Alternate ERP user reference')]/following-sibling::div//input");
+    String eligibleCountTag = "//div[contains(text(),'TAG')]";
+    String lbl_eligibleCountTag = "//div[contains(text(),'TAG')]/../following-sibling::input";
 
 
 
@@ -376,6 +378,9 @@ public class SettingsPage extends LoginPage{
             distributorUI.refreshPage();
             distributorUI.click(By.xpath(btn_editUser.replace("USER", user)));
         }
+    }
+    public void clickEditUserWithoutScroll(String user){
+        distributorUI.click(By.xpath(btn_editUser.replace("USER", user)));
     }
     public boolean isEditUserPopupDisplayed(){
         distributorUI.waitForVisibility(txt_editUser);
@@ -1098,6 +1103,14 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForCustom(4000);
         distributorUI.sendKeysAndEnter(lbl_AlternateERPUserRef,ref);
         distributorUI.waitForCustom(2000);
+    }
+    public void clickEligibleCountForCutDry(String tag)throws InterruptedException{
+        distributorUI.click(By.xpath(eligibleCountTag.replace("TAG",tag)));
+        distributorUI.waitForCustom(2000);
+    }
+    public void enterEligibleCountForCutDry(String tag,String num)throws InterruptedException{
+        distributorUI.clear(By.xpath(lbl_eligibleCountTag.replace("TAG",tag)));
+        distributorUI.sendKeys(By.xpath(lbl_eligibleCountTag.replace("TAG",tag)),num);
     }
 
 }

@@ -5,6 +5,7 @@ import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
+import com.cutanddry.qa.functions.Orders;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -16,6 +17,7 @@ public class VerifyCaseDiscountsDisclaimerMsgInOrderDetailsSupplierPortalTest ex
     static User user;
     static String DP = "Jordan Paige";
     static String customerId = "ZTEST";
+
 
     @BeforeMethod
     public void setUp(){
@@ -33,6 +35,14 @@ public class VerifyCaseDiscountsDisclaimerMsgInOrderDetailsSupplierPortalTest ex
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
+
+        Customer.clickOnOrderGuide(customerId);
+        Customer.increaseFirstRowQtyByOne();
+        Customer.checkoutItems();
+        Customer.submitOrder();
+        Customer.clickClose();
+
+        Customer.searchCustomerByCode(customerId);
         Customer.clickOnCustomerCode(customerId);
         Customer.clickOnOrdersTab();
         Customer.clickFirstOrderFrmOrderTab();

@@ -191,5 +191,24 @@ public class Dashboard {
     public static boolean isEndlessAisleCatalogDisplay()throws InterruptedException{
         return dashboardPage.isEndlessAisleCatalogDisplay();
     }
+    public static void clickOnDashboard() {
+        dashboardPage.clickOnDashboard();
+    }
+    public static String getCustomerValue(String customer) throws InterruptedException {
+        return dashboardPage.getCustomerValue(customer);
+    }
+    public static void refreshDashBoardPage(){dashboardPage.refreshDashBoardPage();}
+
+    public static boolean isDraftsOptionVisible(){
+        return dashboardPage.isDraftsMenuItemVisible();
+    }
+
+    public static boolean isDraftsBadgeVisible(){
+        return dashboardPage.isDraftsBadgeVisible();
+    }
+
+    public static int getDraftsBadgeCount(){
+        return dashboardPage.getDraftsBadgeCount();
+    }
 
 }

@@ -41,6 +41,7 @@ public class VerifyPreviewCatalogEditItemPricingPromotionsTest extends TestBase 
         Catalog.setItemUnitPrice(itemPrice);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in creating UOM");
+        Catalog.navigateToPricingAndPromotions();
         Catalog.deleteUOMFromCatalog();
         softAssert.assertTrue(Catalog.deleteUOMOverlayDisplayed(),"UOM delete overlay displaying ERROR");
         Catalog.DeleteConfirm();

@@ -3,6 +3,7 @@ package com.cutanddry.qa.tests.customer_profile;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CustomerProfileData;
+import com.cutanddry.qa.data.testdata.ParentChildOGData;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.InternalTools;
@@ -20,7 +21,7 @@ public class VerifyDeleteCustomerUserAndReceiveUserDeletionNotificationTest exte
     String CustomerCode = CustomerProfileData.CUSTOMER_CODE2;
     String UserName = CustomerProfileData.USER_NAME;
     String UserEmail = CustomerProfileData.USER_EMAIL;
-    String DistributorName = CustomerProfileData.DISTRIBUTOR_NAME_INDIANHEAD;
+    String DistributorName = ParentChildOGData.DISTRIBUTOR_INDIANHEAD;
 
 
     @BeforeMethod

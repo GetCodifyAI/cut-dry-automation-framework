@@ -9,6 +9,7 @@ public class SettingData {
     public static final String CREDIT_CARD_NUMBER = "4111111111111111";
     public static final String EXP_DATE = "10/25";
     public static final String CVV = "999";
+    public static final String ZIPCODE = "12345";
     public static final String ADDRESS = "N0 07 Beakers' street";
     public static final String CITY = "California";
 //    public static final String AR_CONTACTS ="Customer-Facing Invoice Email";

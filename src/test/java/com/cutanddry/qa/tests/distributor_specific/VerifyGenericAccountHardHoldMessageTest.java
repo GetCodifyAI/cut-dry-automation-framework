@@ -5,6 +5,7 @@ import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.DistributorSpecificData;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
+import com.cutanddry.qa.functions.InternalTools;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.Assert;
@@ -29,6 +30,18 @@ public class VerifyGenericAccountHardHoldMessageTest extends TestBase {
     @Test(groups = "DOT-TC-471")
     public void VerifyGenericAccountHardHoldMessage() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
+        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+
+        Login.navigateToInternalToolsPage();
+        InternalTools.navigateToConfigureSupplier();
+        InternalTools.navigateToIndependentCompEditDetails();
+        InternalTools.navigateToOrderingSettingsTab();
+        InternalTools.setEnableAccountHoldAlerts(true);
+        InternalTools.navigateToPayDetailsTab();
+        InternalTools.setEnablePreAuthFeature(false);
+
+        Login.navigateToDistributor();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
 
@@ -51,7 +64,7 @@ public class VerifyGenericAccountHardHoldMessageTest extends TestBase {
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
         Customer.submitOrder();
         softAssert.assertTrue(Customer.isHardHoldPopupMessageDisplayed(hardHoldMessage),"hard hold set error");
-        Customer.clickOK();
+        Customer.closeAccountHoldOverlayByOutsideClick();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(),"order hard hold error");
 
         //revert Hard hold

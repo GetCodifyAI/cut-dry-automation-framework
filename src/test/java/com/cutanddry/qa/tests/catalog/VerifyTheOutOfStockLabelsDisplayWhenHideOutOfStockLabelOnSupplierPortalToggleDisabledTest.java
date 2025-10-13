@@ -16,11 +16,11 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheOutOfStockLabelsDisplayWhenHideOutOfStockLabelOnSupplierPortalToggleDisabledTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    String DistributorName ="145885743 - Cut+Dry Agent - Lombardi";
-    static String CompanyName = "Lombardi";
-    static String customerId = "   1000782   S";
-    static String itemCode = "2301101";
-    static String itemName = "Lobster Tl 7-8 OZ Maine";
+    String DistributorName ="174874582 - Cut+Dry Agent - Carmela Foods Inc";
+    static String CompanyName = "Carmela Foods Inc";
+    static String customerId = "8782";
+    static String itemCode = "S00812";
+    static String itemName ;
     static String tag = "Out of stock";
 
 
@@ -37,6 +37,16 @@ public class VerifyTheOutOfStockLabelsDisplayWhenHideOutOfStockLabelOnSupplierPo
         softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+
+        Login.navigateToDistributorPortal(DistributorName);
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
+
+        Dashboard.navigateToCustomers();
+        Customer.searchCustomerByCode(customerId);
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
+        Customer.clickOnOrderGuide(customerId);
+        itemName = Customer.getOutOfstockItemNameFromOG();
+
         Login.navigateToInternalToolsPage();
         InternalTools.navigateToConfigureSupplier();
         InternalTools.clickOnInternalToolCompanyEditDetails(CompanyName);
@@ -55,8 +65,19 @@ public class VerifyTheOutOfStockLabelsDisplayWhenHideOutOfStockLabelOnSupplierPo
         Customer.clickOnOrderGuide(customerId);
 
         Customer.goToCatalog();
-        Customer.searchItemOnCatalog(itemCode);
+        Customer.searchItemOnCatalog(itemName);
         softAssert.assertTrue(Customer.isCatalogFilterDisplayTag(itemName,tag),"new tag display list error");
+
+        //Reverting back the changes
+        Login.navigateToInternalToolsPage();
+        InternalTools.navigateToConfigureSupplier();
+        InternalTools.clickOnInternalToolCompanyEditDetails(CompanyName);
+        InternalTools.navigateToOrderingSettingsTab();
+        InternalTools.clickHideOutOfStockToggle(true);
+        InternalTools.clickSave();
+        softAssert.assertTrue(InternalTools.isSuccessPopUpDisplayed(),"change not save");
+        InternalTools.clickOKOnSucessOverlay();
+
         softAssert.assertAll();
     }
     @AfterMethod

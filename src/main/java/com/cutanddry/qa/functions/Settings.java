@@ -50,6 +50,9 @@ public class Settings {
     public static void clickOnEditUser(String user) throws InterruptedException {
         settingsPage.clickOnEditUser(user);
     }
+    public static void editUserWithoutScroll(String user){
+        settingsPage.clickEditUserWithoutScroll(user);
+    }
     public static boolean isEditUserPopupDisplayed(){
         return settingsPage.isEditUserPopupDisplayed();
     }
@@ -524,5 +527,11 @@ public class Settings {
     }
     public static void enterAlternateERPUserRef(String ref) throws InterruptedException {
         settingsPage.enterAlternateERPUserRef(ref);
+    }
+    public static void clickEligibleCountForCutDry(String tag)throws InterruptedException{
+        settingsPage.clickEligibleCountForCutDry(tag);
+    }
+    public static void enterEligibleCountForCutDry(String tag,String num)throws InterruptedException{
+        settingsPage.enterEligibleCountForCutDry(tag,num);
     }
 }

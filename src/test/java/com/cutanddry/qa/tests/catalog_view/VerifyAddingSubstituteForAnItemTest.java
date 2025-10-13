@@ -18,6 +18,7 @@ public class VerifyAddingSubstituteForAnItemTest extends TestBase {
     String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
     String itemCode = "00475";
     String substituteItemCode = "20024";
+    String substituteItemName = "Cauliflower - Large";
 
     @BeforeMethod
     public void setUp(){
@@ -38,12 +39,14 @@ public class VerifyAddingSubstituteForAnItemTest extends TestBase {
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
         Catalog.navigateToSubstituteTab();
-        Catalog.removeExistingItem(substituteItemCode);
+        Catalog.removeExistingItem(substituteItemName);
         Catalog.addSubstitutions();
         String SubstituteItemName = Catalog.getSubstituteItemName(substituteItemCode);
+        Catalog.addSubstitutions();
         Catalog.searchAndAddSubstituteItem(substituteItemCode);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving the changes after adding  substitute");
+        Catalog.navigateToSubstituteTab();
         softAssert.assertTrue(Catalog.isAddedSubstituteItemDisplayedInPage(SubstituteItemName),"Error in adding substitute items");
 
         softAssert.assertAll();
