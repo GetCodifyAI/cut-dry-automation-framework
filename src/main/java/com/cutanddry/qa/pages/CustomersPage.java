@@ -3335,7 +3335,19 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public Double getItemPriceOnCheckoutButtonViaPDP() throws InterruptedException {
         distributorUI.waitForVisibility(btn_checkOutPDP);
         distributorUI.waitForCustom(4000);
-        return Double.valueOf(distributorUI.getText(btn_checkOutPDP).replace("$",""));
+        //return Double.valueOf(distributorUI.getText(btn_checkOutPDP).replace("$",""));
+        String UnEditedValue = distributorUI.getText(btn_checkOutPDP);
+        // Extract first number-like token, drop $ and thousands commas (US style)
+        java.util.regex.Matcher m = java.util.regex.Pattern
+                .compile("(-?\\d[\\d,]*\\.?\\d*)")
+                .matcher(UnEditedValue);
+
+        if (!m.find()){
+            return null;
+        }
+
+        String num = m.group(1).replace(",", "");
+        return Double.valueOf(num);
     }
 
     public boolean isEnableVisible(){
@@ -4675,6 +4687,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(txt_purchaseHistoryCatalog);
     }
     public boolean isLastOrderDisplay(String order){
+        distributorUI.waitForVisibility(By.xpath(lastOrderDetails.replace("ORDER",order)));
         return distributorUI.isDisplayed(By.xpath(lastOrderDetails.replace("ORDER",order)));
     }
     public void clickLastOrderOG(String code)throws InterruptedException{

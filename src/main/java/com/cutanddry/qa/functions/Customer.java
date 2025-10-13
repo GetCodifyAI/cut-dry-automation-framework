@@ -137,6 +137,9 @@ public class Customer {
             customersPage.clickDoNotSubstitute();
             customersPage.clickSaveSelection();
         }
+        if(customersPage.isSubstitutesItemPopupDisplayedSub()) {
+            customersPage.clickCloseSub();
+        }
         if (customersPage.isOrderMiniumErrorBannerDisplayedSub()){
             dashboardPage.clickOnOrderSettings();
             settingsPage.selectOnOrderMinimums();
