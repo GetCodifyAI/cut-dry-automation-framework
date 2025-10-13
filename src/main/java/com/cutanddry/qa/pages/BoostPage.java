@@ -6,8 +6,9 @@ import com.cutanddry.qa.data.models.Broadcast;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.openqa.selenium.By;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class BoostPage extends LoginPage {
     By txt_boost = By.xpath("//li[contains(text(),'Boost')]");
@@ -428,6 +429,7 @@ public class BoostPage extends LoginPage {
     }
 
     public String getStatusFirstRow(){
+        distributorUI.waitForVisibility(status_firstRow);
         return distributorUI.getText(status_firstRow);
     }
 
@@ -440,18 +442,27 @@ public class BoostPage extends LoginPage {
         }
 
     public String getNextRoundedTime() {
-        // Get the current time
-        Calendar calendar = Calendar.getInstance();
+        //get the Time Now
+        ZonedDateTime time = ZonedDateTime.now(ZoneId.systemDefault());
 
-        // Round to the next hour
-        calendar.add(Calendar.MINUTE, 30); // Add 30 minutes to decide the next hour
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
+        // Add one hour first
+        time = time.plusHours(1);
 
-        // Format the time
-        SimpleDateFormat sdf = new SimpleDateFormat("h:mm a"); // Format as "5:00 PM" or "11:00 AM"
-        return sdf.format(calendar.getTime());
+        // Round the minutes to the nearest 15 (00, 15, 30, 45)
+        int minutes = time.getMinute();
+        int nearestQuarter = ((minutes + 7) / 15) * 15;
+
+        if (nearestQuarter == 60) {
+            time = time.plusHours(1).withMinute(0);
+        } else {
+            time = time.withMinute(nearestQuarter);
+        }
+
+        time = time.withSecond(0).withNano(0);
+
+        // Show it like "12:15 PM"
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("h:mm a");
+        return time.format(fmt);
     }
 
     public void clickDropDownStatus(String status) {
@@ -459,7 +470,7 @@ public class BoostPage extends LoginPage {
         distributorUI.click(option);
     }
 
-    public void selectNotificationTime(String time){
+    public void selectNotificationTime(String time) throws InterruptedException {
 //        By notificationTime = By.xpath(dropdown_notificationTimeOption.replace("TIME_OPTION",time));
         distributorUI.sendKeysAndEnter(dropdown_notificationTime,time);
 //        distributorUI.click(notificationTime);

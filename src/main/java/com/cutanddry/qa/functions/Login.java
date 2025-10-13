@@ -27,6 +27,10 @@ public class Login {
     public static boolean invalidEmailOrMobileForgotPassword(){
         return loginPage.invalidEmailOrMobile();
     }
+    public static boolean isPasswordResetRequestSentOverlyDisplayed(){
+        return loginPage.isPasswordResetRequestMsgDisplayed();
+    }
+
     public static void clickOk(){
         loginPage.clickOk();
     }

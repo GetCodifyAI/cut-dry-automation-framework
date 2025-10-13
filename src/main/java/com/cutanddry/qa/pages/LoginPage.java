@@ -19,6 +19,7 @@ public class LoginPage extends TestBase {
     By txt_enterEmailOrMobile = By.xpath("//input[@placeholder='Enter email or phone number']");
     By txt_validEmailOrMobile = By.xpath("//div[text()='Password Reset Request Sent!']");
     By txt_invalidEmailOrMobile = By.xpath("//div[text()='Error']");
+    By txt_password_Reset_Request = By.xpath("//div[contains(text(),'Password Reset Request Sent!')]");
     By btn_ok = By.xpath("//button[text()='Ok']");
     By btn_tryAgain = By.xpath("//button[text()='Try Again']");
     By lbl_loginAs = By.xpath("//div[text()='Select...']/following::input[@type='text']");
@@ -79,6 +80,9 @@ public class LoginPage extends TestBase {
     }
     public boolean invalidEmailOrMobile() {
         return distributorUI.isDisplayed(txt_invalidEmailOrMobile);
+    }
+    public boolean isPasswordResetRequestMsgDisplayed(){
+        return distributorUI.isDisplayed(txt_password_Reset_Request);
     }
     public void clickOk() {
         distributorUI.waitForVisibility(btn_ok);

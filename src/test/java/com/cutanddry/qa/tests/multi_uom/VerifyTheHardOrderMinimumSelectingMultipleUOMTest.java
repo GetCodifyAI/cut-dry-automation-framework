@@ -80,7 +80,7 @@ public class VerifyTheHardOrderMinimumSelectingMultipleUOMTest extends TestBase 
         totalPDPItemPrice = Customer.getItemPriceOnCheckoutButtonViaPDP();
         softAssert.assertEquals(Math.round(totalPDPItemPrice * 100.0) / 100.0,
                 ((Math.round(itemPriceUOM1 * 100.0) / 100.0)+(Math.round(itemPriceUOM2 * 100.0) / 100.0)), "The item has not been selected.");
-        Customer.clickCheckOutPDP();
+        Customer.clickCheckOutPDPSubstitute();
 
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         softAssert.assertTrue(Customer.isMinOrderBannerDisplayed(),"banner not appearing error");

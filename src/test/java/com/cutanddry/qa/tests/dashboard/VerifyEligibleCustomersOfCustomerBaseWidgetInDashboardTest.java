@@ -11,6 +11,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.math.BigDecimal;
+
 public class VerifyEligibleCustomersOfCustomerBaseWidgetInDashboardTest extends TestBase {
     static User user;
     static String useActiveCustomerTag = "Use Active Customer Tag";
@@ -18,7 +20,9 @@ public class VerifyEligibleCustomersOfCustomerBaseWidgetInDashboardTest extends 
     static String useCustomCount = "Use Custom Count";
     static String eligibleForCutDryTag = "Eligible for C+D";
     static String activeCustomersTag = "Active Customers";
-    static String eligibleForCD,activeCustomers,eligibleForCD2;
+    static String eligibleForCD,activeCustomers,eligibleForCD2,eligibleForCD3;
+    static String eligibleOption = "Eligible";
+    static String notEligibleOption = "Not Eligible";
 
     @BeforeMethod
     public void setUp() {
@@ -59,6 +63,9 @@ public class VerifyEligibleCustomersOfCustomerBaseWidgetInDashboardTest extends 
         Settings.clickEligibleCountForCutDry(useEligibleForCutDryTag);
         Settings.clickSaveChanges();
 
+        Dashboard.clickOnDashboard();
+        Dashboard.refreshDashBoardPage();
+        eligibleForCD3 = new BigDecimal(Dashboard.getCustomerValue(eligibleForCutDryTag)).subtract(new BigDecimal("5")).stripTrailingZeros().toPlainString();
         Dashboard.navigateToCustomers();
         softAssert.assertTrue(Customer.isCustomersTextDisplayed(),"customer section not display");
         Customer.clickOnCustomers(5);
@@ -66,7 +73,7 @@ public class VerifyEligibleCustomersOfCustomerBaseWidgetInDashboardTest extends 
         Customer.clickBulkActions();
         Customer.clickUpdateEligibility();
         softAssert.assertTrue(Customer.isUpdateEligibilityTextDisplay(),"update eligibility text display error");
-        Customer.clickEligibilityOption();
+        Customer.clickEligibilityOption(notEligibleOption);
         Customer.clickSave();
         softAssert.assertTrue(Pay.isSuccessPopUpDisplayed(),"update error");
         Pay.clickOkPopUp();
@@ -75,7 +82,16 @@ public class VerifyEligibleCustomersOfCustomerBaseWidgetInDashboardTest extends 
         Dashboard.refreshDashBoardPage();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"dashboard navigation error");
         eligibleForCD = Dashboard.getCustomerValue(eligibleForCutDryTag);
-        softAssert.assertEquals(eligibleForCD,"5","customer eligibility error ");
+        softAssert.assertEquals(eligibleForCD,eligibleForCD3,"customer eligibility error ");
+
+        //Reverting the eligibility
+        Dashboard.navigateToCustomers();
+        Customer.clickOnCustomers(5);
+        Customer.clickBulkActions();
+        Customer.clickUpdateEligibility();
+        Customer.clickEligibilityOption(eligibleOption);
+        Customer.clickSave();
+
         softAssert.assertAll();
     }
 

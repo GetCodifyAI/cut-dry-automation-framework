@@ -293,12 +293,12 @@ public class Catalog {
         return catalogPage.isLinkCopiedTxtDisplayed();
     }
 
-    public static void navigateToPublicCatalog(){
-        catalogPage.goToPublicCatalog();
+    public static void navigateToPublicCatalog(String URL){
+        catalogPage.goToPublicCatalog(URL);
     }
 
-    public static boolean PublicCatalogDisplayed(String itemCode){
-        return catalogPage.isPublicCatalogDisplayed(itemCode);
+    public static boolean isNavigatedToPublicCatalog(String DPNAME){
+        return catalogPage.isPublicCatalogNameDisplayed(DPNAME);
     }
 
     public static void clickOnAddToCart(){
@@ -389,7 +389,7 @@ public class Catalog {
     public static boolean areImagesDisplayed(){
         return catalogPage.areImagesDisplayed();
     }
-    public static void selectFirstItem(){
+    public static void selectFirstItem() throws InterruptedException {
         catalogPage.selectFirstItem();
     }
     public static boolean isProductDescriptionDisplayed(){

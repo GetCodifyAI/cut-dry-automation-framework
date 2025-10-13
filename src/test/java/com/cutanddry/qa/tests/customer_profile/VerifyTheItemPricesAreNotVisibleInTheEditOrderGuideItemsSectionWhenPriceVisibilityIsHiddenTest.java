@@ -15,15 +15,15 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheHidePriceFunctionalityTest extends TestBase{
+public class VerifyTheItemPricesAreNotVisibleInTheEditOrderGuideItemsSectionWhenPriceVisibilityIsHiddenTest extends TestBase{
     static User user;
     String customerID = "16672";
     static String itemName,itemPriceStr;
     static String searchItemCode = "01700";
-    static double itemPrice,itemPricePDP;
+    static double itemPrice;
     static String statusVisible = "Visible";
     static String statusHidden = "Hidden";
-    static String OperatorName = "465571413";
+    static String OperatorName = "206523643";
     String DistributorName = CustomerProfileData.DISTRIBUTOR_NAME_IFC;
 
 
@@ -33,8 +33,8 @@ public class VerifyTheHidePriceFunctionalityTest extends TestBase{
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-1861")
-    public void VerifyTheHidePriceFunctionality() throws InterruptedException {
+    @Test(groups = "DOT-TC-2032")
+    public void VerifyTheItemPricesAreNotVisibleInTheEditOrderGuideItemsSectionWhenPriceVisibilityIsHidden() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
@@ -48,37 +48,27 @@ public class VerifyTheHidePriceFunctionalityTest extends TestBase{
         softAssert.assertTrue(Customer.isCustomerNameTxtDisplayed(), "text error");
         Customer.editStatusPriceVisibility(statusHidden);
 
-        Dashboard.navigateToCustomers();
-        Customer.searchCustomerByCode(customerID);
-        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerID), "Unable to find the customer Id");
-        Customer.clickOnOrderGuide(customerID);
+        Customer.clickOnOrderGuideInCustomerProfile();
 
         // Add the product via Order Guide
         Customer.searchItemOnOrderGuide(searchItemCode);
         itemName = Customer.getItemNameFirstRow();
         itemPrice = Customer.getActiveItemPriceFirstRow();
         itemPriceStr = String.valueOf(Customer.getActiveItemPriceFirstRow());
-        Customer.clickOnPlusIconInCatalogPDP(1, itemName);
-        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice,"The item has not been selected.");
+        Customer.deleteSearchField();
+        Thread.sleep(5000);
+        Customer.goToEdit();
+        softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
+        softAssert.assertTrue(Customer.isEditOGPriceDisplay(itemName,itemPriceStr),"price display error in edit order guide");
 
-        Customer.goToCatalog();
-        Customer.searchItemOnCatalog(searchItemCode);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
-        softAssert.assertTrue(Customer.getItemPriceOnCatalog(itemName,itemPriceStr),"price display catalog error");
-        Customer.clickCatalogListView();
-        softAssert.assertTrue(Customer.getItemPriceOnCatalogListView(itemName,itemPriceStr),"price display catalog list view error");
-        Customer.clickCatalogGridView();
-        Customer.clickOnProduct(itemName);
-        softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
-        itemPricePDP = Catalog.getPDPPriceUOM("1");
-        softAssert.assertEquals(itemPricePDP,itemPrice,"The price display in PDP");
 
         Login.navigateToLoginAs();
         Login.logInToOperatorAsWhiteLabel(OperatorName);
-        Customer.clickOnPlaceOrderWhiteLabel();
-
-
-
+        Customer.clickOnOrderSection();
+        Customer.goToEdit();
+        Thread.sleep(3000);
+        softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
+        softAssert.assertFalse(Customer.isEditOGPriceDisplay(itemName,itemPriceStr),"price display error in edit order guide");
         softAssert.assertAll();
     }
 

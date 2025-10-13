@@ -15,12 +15,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.util.UUID;
+
 public class VerifyThatTheParentCustomerCanCreateAnyOrderGuidesAndOrderSubmissionTest extends TestBase {
     static User user;
     static String DP = ParentChildOGData.DISTRIBUTOR_INDIANHEAD;
     static String customerId = ParentChildOGData.CUSTOMER_ID_INDIANHEAD;
-    static String OrderGuideName = ParentChildOGData.ORDER_GUIDE_NAME_5;
-    static String itemName = "Appetizer Egg Roll Vegetable";
+    static String OrderGuideName = ParentChildOGData.ORDER_GUIDE_NAME_5+ "_" + UUID.randomUUID();
+    static String itemName = "Egg Roll Pork & Vegetable";
     static String  searchItemName,orderId, searchItemCode;
     static double itemPrice;
 
