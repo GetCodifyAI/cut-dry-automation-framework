@@ -6,7 +6,6 @@ import com.cutanddry.qa.data.testdata.PriceData;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
-import com.cutanddry.qa.functions.Settings;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -16,10 +15,10 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheSpecialOrderItemsOrderReviewNoteTest extends TestBase {
     static User user;
-    static String distributorCheeseImp = PriceData.DISTRIBUTOR_CHEESE_IMP;
-    static String customerId3 = PriceData.CUSTOMER_ID_7;
-    static String searchItemCode2 = PriceData.ITEM_CODE3;
-    static String itemName2 = PriceData.ITEM_NAME3;
+    static String distributorWagner = PriceData.DISTRIBUTOR_WAGNER;
+    static String customerId10 = PriceData.CUSTOMER_ID_10;
+    static String searchItemCode2 = PriceData.ITEM_CODE6;
+    static String itemName6 = PriceData.ITEM_NAME6;
     static String specialOrderNote = PriceData.SPECIAL_ORDER_NOTE;
 
 
@@ -36,17 +35,17 @@ public class VerifyTheSpecialOrderItemsOrderReviewNoteTest extends TestBase {
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
 
-        Login.navigateToDistributorPortal(distributorCheeseImp);
+        Login.navigateToDistributorPortal(distributorWagner);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
 
         Dashboard.navigateToCustomers();
-        Customer.searchCustomerByCode(customerId3);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId3), "Unable to find the customer Id");
-        Customer.clickOnOrderGuide(customerId3);
+        Customer.searchCustomerByCode(customerId10);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId10), "Unable to find the customer Id");
+        Customer.clickOnOrderGuide(customerId10);
 
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(searchItemCode2);
-        Customer.clickOnPlusIconInCatalogDP(1, itemName2);
+        Customer.clickOnPlusIconInCatalogDP(1, itemName6);
         Customer.clickCheckOutPDP();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         softAssert.assertTrue(Customer.isSpecialOrderNoteDisplay(specialOrderNote),"special order note not display");

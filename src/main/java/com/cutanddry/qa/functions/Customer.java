@@ -2508,14 +2508,17 @@ public class Customer {
         customersPage.selectActiveDeliveryDateNext();
 
     }
-    public static boolean isFullOrderDelayMessageDisplayed(String message){
-        return customersPage.isFullOrderDelayMessageDisplayed(message);
+    public static boolean isImportantShipmentNoticeMessageDisplayed(String message){
+        return customersPage.isImportantShipmentNoticeMessageDisplayed(message);
     }
     public static boolean isFullOrderDelayDisplayed(){
         return customersPage.isFullOrderDelayDisplayed();
     }
-    public static boolean isPartialShipmentNoticeDisplayed(){
-        return customersPage.isPartialShipmentNoticeDisplayed();
+    public static boolean isMultipleDeliveriesMessageDisplayed(String message){
+        return customersPage.isMultipleDeliveriesMessageDisplayed(message);
+    }
+    public static boolean isImportantShipmentNoticeDisplayed(){
+        return customersPage.isImportantShipmentNoticeDisplayed();
     }
     public static boolean isCutOffTimeDisplay() {
         return customersPage.isCutOffTimeDisplay();

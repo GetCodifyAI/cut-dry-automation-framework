@@ -721,9 +721,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By outSideAccountHoldModal = By.xpath("//div[@role='dialog' and contains(@class,'modal') and contains(@class,'show')]");
     By lastOrder =By.xpath("//td[text()='Last Order']");
     By activeDateNext = By.xpath("(//div[contains(@class,'react-datepicker__day') and @aria-disabled='false'])[2]");
-    String fullOrderDelayMessage = "//span[contains(text(),'MESSAGE')]";
-    By fullyOrderDelay = By.xpath("//strong[text()='Full Order Delay: ']");
-    By PartialShipmentNotice = By.xpath("//strong[text()='Partial Shipment Notice: ']");
+    String fullOrderDelayMessage = "//*[contains(text(),'MESSAGE')]";
+    By fullyOrderDelay = By.xpath("//strong[text()='Important Shipment Notice: ']");
+    By ImportantShipmentNotice = By.xpath("//strong[text()='Important Shipment Notice: ']");
     By txt_cutOffTime = By.xpath("//span[text()='Order Cutoff:']");
     String txt_avg = "(//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]/../following-sibling::div[contains(text(),'AVG')]";
     String txt_itemType = "//div[contains(text(), 'Item Type')]/../../following-sibling::div//*[name()='svg' and @data-icon='square']/following-sibling::div[contains(text(), 'NAME')]";
@@ -4453,14 +4453,17 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(activeDateNext);
         distributorUI.waitForCustom(5000);
     }
-    public boolean isFullOrderDelayMessageDisplayed(String message){
+    public boolean isImportantShipmentNoticeMessageDisplayed(String message){
+        return distributorUI.isDisplayed(By.xpath(fullOrderDelayMessage.replace("MESSAGE", message)));
+    }
+    public boolean isMultipleDeliveriesMessageDisplayed(String message){
         return distributorUI.isDisplayed(By.xpath(fullOrderDelayMessage.replace("MESSAGE", message)));
     }
     public boolean isFullOrderDelayDisplayed(){
         return distributorUI.isDisplayed(fullyOrderDelay);
     }
-    public boolean isPartialShipmentNoticeDisplayed(){
-        return distributorUI.isDisplayed(PartialShipmentNotice);
+    public boolean isImportantShipmentNoticeDisplayed(){
+        return distributorUI.isDisplayed(ImportantShipmentNotice);
     }
     public boolean isCutOffTimeDisplay(){
         return distributorUI.isDisplayed(txt_cutOffTime);
