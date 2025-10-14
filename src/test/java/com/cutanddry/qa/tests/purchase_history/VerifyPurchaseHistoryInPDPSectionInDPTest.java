@@ -44,6 +44,7 @@ public class VerifyPurchaseHistoryInPDPSectionInDPTest extends TestBase {
         InternalTools.clickOnInternalToolCompanyEditDetails(CompanyName);
         InternalTools.navigateToOrderingSettingsTab();
 
+        InternalTools.displayPurchaseHistoryToggle(true);
         InternalTools.displayMarginOnPortalToggle(true);
         InternalTools.restrictMarginOnPortalToggle(false);
 

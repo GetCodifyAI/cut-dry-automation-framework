@@ -943,7 +943,6 @@ public class Customer {
 
     public static void addItemFromCatalogIfNotAvailableInOG(String itemCode){
         customersPage.clickItemFromCatalogIfNotAvailableInOG(itemCode);
-        customersPage.clickOnRefreshOrderGuide();
     }
 
     public static void disableAccHolds(){
@@ -2509,14 +2508,17 @@ public class Customer {
         customersPage.selectActiveDeliveryDateNext();
 
     }
-    public static boolean isFullOrderDelayMessageDisplayed(String message){
-        return customersPage.isFullOrderDelayMessageDisplayed(message);
+    public static boolean isImportantShipmentNoticeMessageDisplayed(String message){
+        return customersPage.isImportantShipmentNoticeMessageDisplayed(message);
     }
     public static boolean isFullOrderDelayDisplayed(){
         return customersPage.isFullOrderDelayDisplayed();
     }
-    public static boolean isPartialShipmentNoticeDisplayed(){
-        return customersPage.isPartialShipmentNoticeDisplayed();
+    public static boolean isMultipleDeliveriesMessageDisplayed(String message){
+        return customersPage.isMultipleDeliveriesMessageDisplayed(message);
+    }
+    public static boolean isImportantShipmentNoticeDisplayed(){
+        return customersPage.isImportantShipmentNoticeDisplayed();
     }
     public static boolean isCutOffTimeDisplay() {
         return customersPage.isCutOffTimeDisplay();
@@ -2707,7 +2709,7 @@ public class Customer {
     public static void clickLastOrderDetailsCatalog(String name)throws InterruptedException{
         customersPage.clickLastOrderDetailsCatalog(name);
     }
-    public static boolean isPurchaseHistoryDisplay(){
+    public static boolean isPurchaseHistoryDisplay() throws InterruptedException {
         return customersPage.isPurchaseHistoryDisplay();
     }
     public static boolean isLastOrderDisplay(String order){
