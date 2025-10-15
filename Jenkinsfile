@@ -29,7 +29,7 @@ pipeline {
     }
     
     stages {
-        stage('Parallel Test Execution') {
+        stage('Parallel Test Execution - Group 1') {
             parallel {
                 stage('Regression 1 - Order Guide & Reports') {
                     agent any
@@ -111,22 +111,6 @@ pipeline {
                     }
                 }
                 
-                stage('Regression 6 - Multi UOM') {
-                    agent any
-                    steps {
-                        script {
-                            runTestSuiteWithCleanup('regression6.xml', 'Part_Six', 6)
-                        }
-                    }
-                    post {
-                        always {
-                            script {
-                                archiveAndCleanup('6', 'Regression 6 Test Report')
-                            }
-                        }
-                    }
-                }
-                
                 stage('Regression 7 - Restaurant Portal') {
                     agent any
                     steps {
@@ -138,6 +122,37 @@ pipeline {
                         always {
                             script {
                                 archiveAndCleanup('7', 'Regression 7 Test Report')
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        stage('Wait 30 Minutes') {
+            agent any
+            steps {
+                script {
+                    echo "Waiting 30 minutes before starting Group 2 tests..."
+                    sleep(time: 30, unit: 'MINUTES')
+                    echo "30-minute wait completed. Starting Group 2 tests..."
+                }
+            }
+        }
+        
+        stage('Parallel Test Execution - Group 2') {
+            parallel {
+                stage('Regression 6 - Multi UOM') {
+                    agent any
+                    steps {
+                        script {
+                            runTestSuiteWithCleanup('regression6.xml', 'Part_Six', 6)
+                        }
+                    }
+                    post {
+                        always {
+                            script {
+                                archiveAndCleanup('6', 'Regression 6 Test Report')
                             }
                         }
                     }
