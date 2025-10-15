@@ -238,6 +238,22 @@ pipeline {
                         }
                     }
                 }
+                
+                stage('Regression 14 - Draft Orders') {
+                    agent any
+                    steps {
+                        script {
+                            runTestSuiteWithCleanup('regression14.xml', 'Part_Fourteen', 14)
+                        }
+                    }
+                    post {
+                        always {
+                            script {
+                                archiveAndCleanup('14', 'Regression 14 Test Report')
+                            }
+                        }
+                    }
+                }
             }
         }
         
@@ -246,7 +262,7 @@ pipeline {
             steps {
                 script {
                     // Unstash all test results
-                    for (int i = 1; i <= 13; i++) {
+                    for (int i = 1; i <= 14; i++) {
                         try {
                             unstash "test-results-${i}"
                         } catch (Exception e) {
