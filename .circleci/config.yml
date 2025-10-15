@@ -1824,7 +1824,7 @@ workflows:
           filters:
             branches:
               only:
-                - staging_regression
+                - main
     jobs:
       - daily-build-and-test-1
       - daily-build-and-test-2
@@ -1848,7 +1848,7 @@ workflows:
           filters:
             branches:
               only:
-                - staging_regression
+                - main
     jobs:
       - daily-build-and-test-6
       - daily-build-and-test-8
