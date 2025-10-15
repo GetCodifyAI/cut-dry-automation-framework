@@ -9,7 +9,7 @@ public class PriceData {
     public static final String CUSTOMER_ID_5 = "2729";
     public static final String CUSTOMER_ID_6 = "61744";
     public static final String CUSTOMER_ID_7 = "TEST3";
-    public static final String CUSTOMER_ID_8 = "3MARBR";
+    public static final String CUSTOMER_ID_8 = "11956";
     public static final String CUSTOMER_ID_10 = "680";
     public static final String DISTRIBUTOR_CHEESE_IMP = "Cheese Importers";
     public static final String DISTRIBUTOR_WCW_ROCKIES = "What Chefs Want - Rockies";

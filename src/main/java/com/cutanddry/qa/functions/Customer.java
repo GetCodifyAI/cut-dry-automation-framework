@@ -2333,6 +2333,9 @@ public class Customer {
     public static boolean isSetSubstitutionTextDisplayed()throws InterruptedException{
         return customersPage.isSetSubstitutionTextDisplayed();
     }
+    public static boolean isMultiUOMSubstitutesPopupDisplayedSub(){
+        return customersPage.isSubstitutesItemPopupDisplayedSub();
+    }
     public static void clickChooseSub(){
         customersPage.clickChooseSub();
     }

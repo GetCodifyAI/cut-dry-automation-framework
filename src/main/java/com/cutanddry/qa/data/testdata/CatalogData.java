@@ -21,7 +21,7 @@ public class CatalogData {
     public static final String ITEM_CODE_10 = "17859";
     public static final String ITEM_CODE_11 = "00044";
     public static final String ITEM_CODE_12 = "8318";
-    public static final String ITEM_CODE_13 = "00973";
+    public static final String ITEM_CODE_13 = "23224";
     public static final String ITEM_CODE_14 = "28356";
     public static final String SUBSTITUTE_ITEM_CODE = "08045";
     public static final String SUBSTITUTE_ITEM_NAME = "Corn";
@@ -38,7 +38,7 @@ public class CatalogData {
     public static final String ITEM_NAME_FOOD_ = "Tomato Ketchup";
     public static final String ITEM_NAME_DICARLO = "Cheese Mozzarella Wm Shredded";
     public static final String ITEM_NAME_2 = "Organic Bananas - 2 LB";
-    public static final String ITEM_NAME_SUB = "Cilantro -30 CT";
+    public static final String ITEM_NAME_SUB = "Non Gmo Sunflower Oil";
     public static final String ADDED_QUANTITY = "Added: 1 CS | 1 Pkg";
     public static final String MULTI_UOM_1 = "1";
     public static final String MULTI_UOM_2 = "2";
