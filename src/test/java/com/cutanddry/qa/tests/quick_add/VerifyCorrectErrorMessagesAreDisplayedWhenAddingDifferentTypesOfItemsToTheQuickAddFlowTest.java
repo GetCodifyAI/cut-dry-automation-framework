@@ -18,11 +18,15 @@ public class VerifyCorrectErrorMessagesAreDisplayedWhenAddingDifferentTypesOfIte
     SoftAssert softAssert;
     static User user;
     static String customerId = "110RES";
+    static String canonicalProductID = "140480041";
+    static String productShopData = "146026040";
+    static String disContinued = "discontinued";
+    static String stockCount = "stockcount";
+    static String stockValue = "0.0";
     static String itemQuantity = "2" ;
-    static String outOfStockItemCode = "95337";
+    static String outOfStockItemCode = "33925";
     static String outOfStockItemCodeError = "Product out of stock";
-
-    static String discontinuedItemCode = "90630";
+    static String discontinuedItemCode = "95337";
     static String discontinuedItemCodeError = "Product discontinued";
 
     static String CompanyName = "What Chefs Want - Rockies";
@@ -43,6 +47,12 @@ public class VerifyCorrectErrorMessagesAreDisplayedWhenAddingDifferentTypesOfIte
         softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+
+        //Set the node values before beginning the test case
+        Login.navigateToNode(canonicalProductID);
+        Login.setNode(disContinued);
+        Login.navigateToNode(productShopData);
+        Login.setValueToNode(stockCount,stockValue);
 
         Login.navigateToInternalToolsPage();
         InternalTools.navigateToConfigureSupplier();
