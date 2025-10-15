@@ -130,7 +130,6 @@ pipeline {
         }
         
         stage('Wait 30 Minutes') {
-            agent any
             steps {
                 script {
                     echo "Waiting 30 minutes before starting Group 2 tests..."
