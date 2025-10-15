@@ -63,8 +63,14 @@ public class Login {
     public static void navigateToSupplierPortalVendor(String id) {
         loginPage.navigateToSupplierPortalVendor(id);
     }
+    public static void navigateToNode(String Node){
+        loginPage.navigateToNode(Node);
+    }
     public static void setNode(String DataName){
         loginPage.setNode(DataName);
+    }
+    public static void setValueToNode(String keyName, String valueName){
+        loginPage.setValueToNode(keyName,valueName);
     }
     public static void navigateToDistributorPortal(String name) {
         loginPage.navigateToDistributorPortal(name);
