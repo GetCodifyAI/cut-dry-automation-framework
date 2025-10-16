@@ -30,6 +30,7 @@ public class VerifyTheOrderReminderConfigurationsInTheDPTest extends TestBase {
     static String sendAlertsOption2 = SettingData.SEND_ALERTS_OPTION2;
     static String atTime = SettingData.AT_TIME;
     static String atTimeOption = SettingData.AT_TIME_OPTION;
+    static String DistributerName = SettingData.DISTRIBUTOR_NAME2;
 
 
     @BeforeMethod
@@ -41,7 +42,9 @@ public class VerifyTheOrderReminderConfigurationsInTheDPTest extends TestBase {
     @Test(groups = "DOT-TC-1182")
     public void VerifyTheOrderReminderConfigurationsInTheDP() throws InterruptedException, URISyntaxException {
         SoftAssert softAssert = new SoftAssert();
-        Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
+        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Login.navigateToDistributorPortal(DistributerName);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
 
         Dashboard.navigateToOrderSettings();
