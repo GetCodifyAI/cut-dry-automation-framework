@@ -1218,6 +1218,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         return distributorUI.isDisplayed(By.xpath(marginColumnPDP.replace("MARGIN",margin)));
     }
     public boolean isPriceColumnDisplay(String price){
+        distributorUI.waitForVisibility(By.xpath(priceColumn.replace("PRICE",price)));
         return distributorUI.isDisplayed(By.xpath(priceColumn.replace("PRICE",price)));
     }
     public boolean isLastOrderPriceDisplay(String price){

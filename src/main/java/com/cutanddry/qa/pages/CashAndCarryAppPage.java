@@ -67,7 +67,8 @@ public class CashAndCarryAppPage extends TestBase {
     public void enterCVV(String cvv){
         distributorUI.sendKeysToField(lbl_enterCVV,cvv);
     }
-    public void submitOrder(){
+    public void submitOrder() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
         distributorUI.waitForClickability(btn_submitOrder);
         distributorUI.click(btn_submitOrder);
         distributorUI.waitForVisibility(btn_submitOrder);

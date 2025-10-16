@@ -941,7 +941,7 @@ public class Customer {
         customersPage.clickOnIndependentFoods();
     }
 
-    public static void addItemFromCatalogIfNotAvailableInOG(String itemCode){
+    public static void addItemFromCatalogIfNotAvailableInOG(String itemCode) throws InterruptedException {
         customersPage.clickItemFromCatalogIfNotAvailableInOG(itemCode);
     }
 
