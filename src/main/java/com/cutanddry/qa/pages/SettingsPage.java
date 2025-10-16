@@ -1031,9 +1031,9 @@ public class SettingsPage extends LoginPage{
         boolean isEnabled = handlePosition.contains("translateX(29px)");
 
         if (enable && !isEnabled) {
-            distributorUI.clickWithScrollAndHover(orderReminderToggleStable1);
+            distributorUI.clickUsingJavaScript(orderReminderToggleStable1);
         } else if (!enable && isEnabled) {
-            distributorUI.clickWithScrollAndHover(orderReminderToggleStable1);
+            distributorUI.clickUsingJavaScript(orderReminderToggleStable1);
         }
     }
     public void clickConfigureAlert()throws InterruptedException{
