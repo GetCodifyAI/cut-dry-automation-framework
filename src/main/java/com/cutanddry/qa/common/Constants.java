@@ -8,6 +8,7 @@ public class Constants {
     public static boolean RUN_HEADLESS = Boolean.parseBoolean(System.getProperty("run.headless", "false"));
     public static String TEST_ENV = System.getProperty("test.env", "stag");
     public static String BASE_URI = "https://supplier-uat.staging.cutanddry.com/GraphQLController";
+    public static String NODE_EXPLORER = "https://app-uat.staging.cutanddry.com/admin";
     
     public static String getMainUrl() {
         return baseDomain();
