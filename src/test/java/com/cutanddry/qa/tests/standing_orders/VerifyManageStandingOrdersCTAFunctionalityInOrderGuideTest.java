@@ -37,6 +37,7 @@ public class VerifyManageStandingOrdersCTAFunctionalityInOrderGuideTest extends 
 
         Customer.expandMoreOptionsDropdown();
         Customer.clickOnManageStandingOrders();
+        Customer.deleteTheExistingStandingOrdersInManageIFAvailable();
 //        softAssert.assertTrue(Customer.isManageStandingOrdersPopupDisplayed()," add section popup error");
         Customer.clickOnManageCreateStandingOrder();
 

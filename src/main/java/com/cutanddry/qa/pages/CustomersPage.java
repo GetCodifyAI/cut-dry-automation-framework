@@ -44,6 +44,8 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By btn_decreaseQtyCatalogSearchValueOne = By.xpath("(//input[@type='number' and @value='1']/../preceding-sibling::div)[last()]");
     By btn_decreaseQtyCatalogSearchValueTwo = By.xpath("(//input[@type='number' and @value='2']/../preceding-sibling::div)[last()]");
     By btn_decreaseQtyCatalogSearchValueThree = By.xpath("(//input[@type='number' and @value='3']/../preceding-sibling::div)[last()]");
+    By catalogMinusBtn = By.xpath("//input[@data-input='quantityInput']/parent::div/preceding-sibling::div[1]");
+    By catalogPlusBtn = By.xpath("//input[@data-input='quantityInput']/parent::div/following-sibling::div[1]");
     By tbx_itemQuantityCatalogSearch = By.xpath("//input[@type='number']");
     By lbl_itemPriceSearchCatalogList = By.xpath("(//div[contains(., 'Artichoke') and not(contains(., '-24ct')) and not(contains(., 'Bottoms'))]//span[contains(text(),'$') and not(contains(text(),' ')) and not(@class='text-muted')])[last()]");
     By btn_decreaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../preceding-sibling::div//*[@data-icon='minus']");
@@ -1054,42 +1056,30 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         String num = m.group(1).replace(",", "");
         return Double.valueOf(num);
     }
-    public void clickPlusQryCatalogSearchValueOne(){
-        distributorUI.click(btn_increaseQtyCatalogSearchValueOne);
+    public void clickPlusQryCatalogSearchValueOne() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        distributorUI.click(catalogPlusBtn);
         distributorUI.waitForClickability(btn_checkout);
-        try {
-            distributorUI.waitForCustom(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
     public void clickPlusQryCatalogSearchValueTwo() throws InterruptedException {
-        distributorUI.click(btn_increaseQtyCatalogSearchValueTwo);
-        distributorUI.waitForCustom(4000);
+        distributorUI.waitForCustom(3000);
+        distributorUI.click(catalogPlusBtn);
         distributorUI.waitForClickability(btn_checkout);
-        distributorUI.waitForCustom(2000);
     }
-    public void clickMinusQryCatalogSearchValueOne(){
-        distributorUI.click(btn_decreaseQtyCatalogSearchValueOne);
-        try {
-            distributorUI.waitForCustom(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+    public void clickMinusQryCatalogSearchValueOne() throws InterruptedException {
+        distributorUI.click(catalogMinusBtn);
+        distributorUI.waitForCustom(2000);
         distributorUI.waitForElementEnabledState(btn_checkout, false);
     }
-    public void clickMinusQryCatalogSearchValueTwo(){
-        distributorUI.click(btn_decreaseQtyCatalogSearchValueTwo);
+    public void clickMinusQryCatalogSearchValueTwo() throws InterruptedException {
+        distributorUI.click(catalogMinusBtn);
         distributorUI.waitForClickability(btn_checkout);
+        distributorUI.waitForCustom(3000);
     }
-    public void clickMinusQryCatalogSearchValueThree(){
-        distributorUI.click(btn_decreaseQtyCatalogSearchValueThree);
+    public void clickMinusQryCatalogSearchValueThree() throws InterruptedException {
+        distributorUI.click(catalogMinusBtn);
         distributorUI.waitForClickability(btn_checkout);
-        try {
-            distributorUI.waitForCustom(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        distributorUI.waitForCustom(3000);
     }
     public String getItemQryCatalogSearch(){
        return distributorUI.getText(tbx_itemQuantityCatalogSearch, "value");
