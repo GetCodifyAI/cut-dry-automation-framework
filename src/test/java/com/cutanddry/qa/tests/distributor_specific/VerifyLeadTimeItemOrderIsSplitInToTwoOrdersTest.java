@@ -17,14 +17,15 @@ import org.testng.asserts.SoftAssert;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class VerifyEntireOrderIsShiftedToDeliveryOnNextAvailableDeliveryForOrderMinimumNotMetOrdersTest extends TestBase {
+public class VerifyLeadTimeItemOrderIsSplitInToTwoOrdersTest extends TestBase {
     static User user;
-    static String distributorCheeseImp = PriceData.DISTRIBUTOR_CHEESE_IMP;
-    static String customerId3 = PriceData.CUSTOMER_ID_7;
-    static String searchItemCode = PriceData.ITEM_CODE;
-    static String searchItemCode2 = PriceData.ITEM_CODE2;
-    static String itemName2 = PriceData.ITEM_NAME2;
-    static String fullyOrderDelay = PriceData.FULLY_ORDER_DELAY;
+    static String distributorWCWRockies = PriceData.DISTRIBUTOR_WCW_ROCKIES;
+    static String customerId3 = PriceData.CUSTOMER_ID_9;
+    static String searchItemCode = PriceData.ITEM_CODE4;
+    static String searchItemCode2 = PriceData.ITEM_CODE5;
+    static String itemName2 = PriceData.ITEM_NAME4;
+    static String multipleDeliveriesMessage = PriceData.MULTIPLE_DELIVERIES_MESSAGE;
+    static int orderCount = 2;
 
     @BeforeMethod
     public void setUp() {
@@ -33,13 +34,13 @@ public class VerifyEntireOrderIsShiftedToDeliveryOnNextAvailableDeliveryForOrder
     }
 
 
-    @Test(groups = "DOT-TC-423")
-    public void VerifyEntireOrderIsShiftedToDeliveryOnNextAvailableDeliveryForOrderMinimumNotMetOrders() throws InterruptedException {
+    @Test(groups = "DOT-TC-424")
+    public void VerifyLeadTimeItemOrderIsSplitInToTwoOrders() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
 
-        Login.navigateToDistributorPortal(distributorCheeseImp);
+        Login.navigateToDistributorPortal(distributorWCWRockies);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
 
         Dashboard.navigateToOrderSettings();
@@ -53,7 +54,7 @@ public class VerifyEntireOrderIsShiftedToDeliveryOnNextAvailableDeliveryForOrder
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId3), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId3);
         Customer.searchItemOnOrderGuide(searchItemCode);
-        Customer.increaseFirstRowQtyCustom(2);
+        Customer.increaseFirstRowQtyCustom(5);
 
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(searchItemCode2);
@@ -71,9 +72,9 @@ public class VerifyEntireOrderIsShiftedToDeliveryOnNextAvailableDeliveryForOrder
         Customer.selectDeliveryDateLineStablePick(deliveryDay, isNextMonth);
 
         Customer.submitOrderDpSpecific();
-        softAssert.assertTrue(Customer.isFullOrderDelayDisplayed(),"fully order delay not display");
-        softAssert.assertTrue(Customer.isFullOrderDelayMessageDisplayed(fullyOrderDelay),"fully order delay message not display");
+        softAssert.assertTrue(Customer.isMultipleDeliveriesMessageDisplayed(multipleDeliveriesMessage),"fully order delay message not display");
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "The order was not completed successfully.");
+        softAssert.assertEquals(Customer.getOrderCount(orderCount), orderCount, "multi order submit error error");
         Customer.clickClose();
 
         Dashboard.navigateToOrderSettings();

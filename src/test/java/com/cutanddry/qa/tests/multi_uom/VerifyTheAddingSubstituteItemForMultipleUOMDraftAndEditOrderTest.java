@@ -25,6 +25,7 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest ex
     String uom1 = CatalogData.MULTI_UOM_1;
     String uom2 = CatalogData.MULTI_UOM_2;
     String substituteItemCode = CatalogData.SUBSTITUTE_ITEM_CODE;
+    String substituteItemName = CatalogData.SUBSTITUTE_ITEM_NAME;
     static String orderId,totalItemQuantityReviewOrder;
 
     @BeforeMethod
@@ -51,7 +52,7 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest ex
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),searchItemCode,"Error in getting Item Code");
 
         Catalog.navigateToSubstituteTab();
-        Catalog.removeExistingItem(substituteItemCode);
+        Catalog.removeExistingItem(substituteItemName);
         Catalog.addSubstitutions();
         String SubstituteItemName = Catalog.getSubstituteItemName(substituteItemCode);
         Catalog.addSubstitutions();
@@ -84,7 +85,7 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest ex
         softAssert.assertTrue(Customer.isSubstitutionTextDisplayed(),"Substitution add error");
 
         Customer.clickSubstitution();
-        softAssert.assertTrue(Customer.isSetSubstitutionTextDisplayed(),"Substitution set pop up error");
+        softAssert.assertTrue(Customer.isMultiUOMSubstitutesPopupDisplayedSub(),"Substitution set pop up error");
         Customer.clickEditSub();
         Customer.clickRemovePreviousSub();
         Customer.clickSaveSelection();
@@ -101,6 +102,8 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest ex
         Assert.assertTrue(Draft.isUserNavigatedToDrafts(),"navigation error");
         softAssert.assertTrue(Draft.isLastDraftDisplayedVito(String.valueOf(totalPDPItemPrice)),"draft creating error");
         Draft.clickDraft(String.valueOf(totalPDPItemPrice));
+        softAssert.assertTrue(Customer.isMultiUOMSubstitutesPopupDisplayedSub(),"Substitution set pop up error");
+        Customer.clickCloseSub();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
 
         Draft.clickEditOrder();
@@ -120,6 +123,7 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest ex
         softAssert.assertEquals(Math.round(totalPDPItemPrice2 * 100.0) / 100.0,
                 ((Math.round(itemPriceUOM1 * 100.0) / 100.0)+(Math.round(itemPriceUOM2 * 100.0) / 100.0)+(Math.round(totalPDPItemPrice * 100.0) / 100.0)), "The item has not been selected.");
         Customer.clickCheckOutPDPSubstitute();
+        Customer.clickCloseSub();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         totalItemPriceReviewOrder = Catalog.getTotalPriceInReviewOrder();
         totalItemQuantityReviewOrder = Catalog.getTotalQuantityInReviewOrder();
@@ -143,7 +147,7 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest ex
         Catalog.selectItemFromGrid(searchItemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),searchItemCode,"Error in getting Item Code");
         Catalog.navigateToSubstituteTab();
-        Catalog.deleteSubstitute();
+        Catalog.deleteSubstituteItem(substituteItemName);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in Removing substitute item");
         softAssert.assertAll();

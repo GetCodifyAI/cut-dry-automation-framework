@@ -185,19 +185,19 @@ public class Customer {
     public static double getItemPriceOnCheckoutButton() throws InterruptedException {
         return customersPage.getItemPriceOnCheckoutButton();
     }
-    public static void increaseQtyByOneCatalogSearchValueOne(){
+    public static void increaseQtyByOneCatalogSearchValueOne() throws InterruptedException {
         customersPage.clickPlusQryCatalogSearchValueOne();
     }
-    public static void increaseQtyByOneCatalogSearchValueTwo(){
+    public static void increaseQtyByOneCatalogSearchValueTwo() throws InterruptedException {
         customersPage.clickPlusQryCatalogSearchValueOne();
     }
     public static void decreaseQtyByOneCatalogSearchValueOne() throws InterruptedException {
         customersPage.clickMinusQryCatalogSearchValueOne();
     }
-    public static void decreaseQtyByOneCatalogSearchValueTwo(){
+    public static void decreaseQtyByOneCatalogSearchValueTwo() throws InterruptedException {
         customersPage.clickMinusQryCatalogSearchValueTwo();
     }
-    public static void decreaseQtyByOneCatalogSearchValueThree(){
+    public static void decreaseQtyByOneCatalogSearchValueThree() throws InterruptedException {
         customersPage.clickMinusQryCatalogSearchValueThree();
     }
 
@@ -941,9 +941,8 @@ public class Customer {
         customersPage.clickOnIndependentFoods();
     }
 
-    public static void addItemFromCatalogIfNotAvailableInOG(String itemCode){
+    public static void addItemFromCatalogIfNotAvailableInOG(String itemCode) throws InterruptedException {
         customersPage.clickItemFromCatalogIfNotAvailableInOG(itemCode);
-        customersPage.clickOnRefreshOrderGuide();
     }
 
     public static void disableAccHolds(){
@@ -2334,6 +2333,9 @@ public class Customer {
     public static boolean isSetSubstitutionTextDisplayed()throws InterruptedException{
         return customersPage.isSetSubstitutionTextDisplayed();
     }
+    public static boolean isMultiUOMSubstitutesPopupDisplayedSub(){
+        return customersPage.isSubstitutesItemPopupDisplayedSub();
+    }
     public static void clickChooseSub(){
         customersPage.clickChooseSub();
     }
@@ -2509,14 +2511,17 @@ public class Customer {
         customersPage.selectActiveDeliveryDateNext();
 
     }
-    public static boolean isFullOrderDelayMessageDisplayed(String message){
-        return customersPage.isFullOrderDelayMessageDisplayed(message);
+    public static boolean isImportantShipmentNoticeMessageDisplayed(String message){
+        return customersPage.isImportantShipmentNoticeMessageDisplayed(message);
     }
     public static boolean isFullOrderDelayDisplayed(){
         return customersPage.isFullOrderDelayDisplayed();
     }
-    public static boolean isPartialShipmentNoticeDisplayed(){
-        return customersPage.isPartialShipmentNoticeDisplayed();
+    public static boolean isMultipleDeliveriesMessageDisplayed(String message){
+        return customersPage.isMultipleDeliveriesMessageDisplayed(message);
+    }
+    public static boolean isImportantShipmentNoticeDisplayed(){
+        return customersPage.isImportantShipmentNoticeDisplayed();
     }
     public static boolean isCutOffTimeDisplay() {
         return customersPage.isCutOffTimeDisplay();
@@ -2707,7 +2712,7 @@ public class Customer {
     public static void clickLastOrderDetailsCatalog(String name)throws InterruptedException{
         customersPage.clickLastOrderDetailsCatalog(name);
     }
-    public static boolean isPurchaseHistoryDisplay(){
+    public static boolean isPurchaseHistoryDisplay() throws InterruptedException {
         return customersPage.isPurchaseHistoryDisplay();
     }
     public static boolean isLastOrderDisplay(String order){
@@ -2932,6 +2937,12 @@ public class Customer {
     }
     public static void clearSearchField()throws InterruptedException{
         customersPage.clearSearchField();
+    }
+    public static void deleteTheExistingStandingOrdersInManageIFAvailable() throws InterruptedException {
+        for (int i = 0; i < 10 && customersPage.isStandingOrdersDeletedIconDisplay(); i++) {
+            customersPage.clickOnStandingOrderDeleteIcon();
+            Thread.sleep(200);
+        }
     }
     public static void clickOnManageStandingOrders() throws InterruptedException {
         customersPage.clickOnManageStandingOrders();

@@ -49,6 +49,7 @@ public class VerifyPurchaseHistoryMultiUOMInPDPSectionSpotPriceDisableDPTest ext
         InternalTools.clickOnInternalToolCompanyEditDetails(CompanyName);
         InternalTools.navigateToOrderingSettingsTab();
 
+        InternalTools.displayPurchaseHistoryToggle(true);
         InternalTools.displayMarginOnPortalToggle(true);
         InternalTools.restrictMarginOnPortalToggle(false);
 

@@ -41,7 +41,7 @@ public class CashAndCarry {
     public static void enterCVV(String cvv){
         cashAndCarryAppPage.enterCVV(cvv);
     }
-    public static void submitOrder(){
+    public static void submitOrder() throws InterruptedException {
         cashAndCarryAppPage.submitOrder();
     }
     public static boolean isInvalidCardDetailsPopupDisplayed(){

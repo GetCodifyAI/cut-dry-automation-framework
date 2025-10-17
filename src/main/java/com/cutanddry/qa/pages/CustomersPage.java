@@ -44,6 +44,8 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By btn_decreaseQtyCatalogSearchValueOne = By.xpath("(//input[@type='number' and @value='1']/../preceding-sibling::div)[last()]");
     By btn_decreaseQtyCatalogSearchValueTwo = By.xpath("(//input[@type='number' and @value='2']/../preceding-sibling::div)[last()]");
     By btn_decreaseQtyCatalogSearchValueThree = By.xpath("(//input[@type='number' and @value='3']/../preceding-sibling::div)[last()]");
+    By catalogMinusBtn = By.xpath("//input[@data-input='quantityInput']/parent::div/preceding-sibling::div[1]");
+    By catalogPlusBtn = By.xpath("//input[@data-input='quantityInput']/parent::div/following-sibling::div[1]");
     By tbx_itemQuantityCatalogSearch = By.xpath("//input[@type='number']");
     By lbl_itemPriceSearchCatalogList = By.xpath("(//div[contains(., 'Artichoke') and not(contains(., '-24ct')) and not(contains(., 'Bottoms'))]//span[contains(text(),'$') and not(contains(text(),' ')) and not(@class='text-muted')])[last()]");
     By btn_decreaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../preceding-sibling::div//*[@data-icon='minus']");
@@ -326,7 +328,7 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By txt_order = By.xpath("//h2[contains(text(), 'Order')]");
     By tb_drafts = By.xpath("//a[text()='Drafts' and @role='tab']");
 //    By txt_draftStatus = By.xpath("//tr[2]//td[3][contains(text(), 'just now')]");
-By txt_draftStatus = By.xpath("//tr[2]//td[3][contains(text(), 'seconds ago')]");
+By txt_draftStatus = By.xpath("//tr[2]//td[3][contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'), 'seconds ago')   or contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'), 'just now')]");
     By btn_deleteDraft = By.xpath("(//button[contains(@class, '_47hinf btn btn-link')])[1]");
     By lbl_stopDuration = By.xpath("//div[text()='Stop Duration']/following-sibling::div//input");
     By lbl_keyDropNum = By.xpath("//div[text()='Key Drop Number']/following-sibling::div//input");
@@ -721,9 +723,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By outSideAccountHoldModal = By.xpath("//div[@role='dialog' and contains(@class,'modal') and contains(@class,'show')]");
     By lastOrder =By.xpath("//td[text()='Last Order']");
     By activeDateNext = By.xpath("(//div[contains(@class,'react-datepicker__day') and @aria-disabled='false'])[2]");
-    String fullOrderDelayMessage = "//span[contains(text(),'MESSAGE')]";
-    By fullyOrderDelay = By.xpath("//strong[text()='Full Order Delay: ']");
-    By PartialShipmentNotice = By.xpath("//strong[text()='Partial Shipment Notice: ']");
+    String fullOrderDelayMessage = "//*[contains(text(),'MESSAGE')]";
+    By fullyOrderDelay = By.xpath("//strong[text()='Important Shipment Notice: ']");
+    By ImportantShipmentNotice = By.xpath("//strong[text()='Important Shipment Notice: ']");
     By txt_cutOffTime = By.xpath("//span[text()='Order Cutoff:']");
     String txt_avg = "(//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]/../following-sibling::div[contains(text(),'AVG')]";
     String txt_itemType = "//div[contains(text(), 'Item Type')]/../../following-sibling::div//*[name()='svg' and @data-icon='square']/following-sibling::div[contains(text(), 'NAME')]";
@@ -1041,44 +1043,43 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public Double getItemPriceOnCheckoutButton() throws InterruptedException {
         distributorUI.waitForVisibility(btn_checkout);
         distributorUI.waitForCustom(4000);
-        return Double.valueOf(distributorUI.getText(btn_checkout).replace("$",""));
-    }
-    public void clickPlusQryCatalogSearchValueOne(){
-        distributorUI.click(btn_increaseQtyCatalogSearchValueOne);
-        distributorUI.waitForClickability(btn_checkout);
-        try {
-            distributorUI.waitForCustom(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        String UnEditedValue = distributorUI.getText(btn_checkout);
+        // Extract first number-like token, drop $ and thousands commas (US style)
+        java.util.regex.Matcher m = java.util.regex.Pattern
+                .compile("(-?\\d[\\d,]*\\.?\\d*)")
+                .matcher(UnEditedValue);
+
+        if (!m.find()){
+            return null;
         }
+
+        String num = m.group(1).replace(",", "");
+        return Double.valueOf(num);
+    }
+    public void clickPlusQryCatalogSearchValueOne() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        distributorUI.click(catalogPlusBtn);
+        distributorUI.waitForClickability(btn_checkout);
     }
     public void clickPlusQryCatalogSearchValueTwo() throws InterruptedException {
-        distributorUI.click(btn_increaseQtyCatalogSearchValueTwo);
-        distributorUI.waitForCustom(4000);
+        distributorUI.waitForCustom(3000);
+        distributorUI.click(catalogPlusBtn);
         distributorUI.waitForClickability(btn_checkout);
-        distributorUI.waitForCustom(2000);
     }
-    public void clickMinusQryCatalogSearchValueOne(){
-        distributorUI.click(btn_decreaseQtyCatalogSearchValueOne);
-        try {
-            distributorUI.waitForCustom(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+    public void clickMinusQryCatalogSearchValueOne() throws InterruptedException {
+        distributorUI.click(catalogMinusBtn);
+        distributorUI.waitForCustom(2000);
         distributorUI.waitForElementEnabledState(btn_checkout, false);
     }
-    public void clickMinusQryCatalogSearchValueTwo(){
-        distributorUI.click(btn_decreaseQtyCatalogSearchValueTwo);
+    public void clickMinusQryCatalogSearchValueTwo() throws InterruptedException {
+        distributorUI.click(catalogMinusBtn);
         distributorUI.waitForClickability(btn_checkout);
+        distributorUI.waitForCustom(3000);
     }
-    public void clickMinusQryCatalogSearchValueThree(){
-        distributorUI.click(btn_decreaseQtyCatalogSearchValueThree);
+    public void clickMinusQryCatalogSearchValueThree() throws InterruptedException {
+        distributorUI.click(catalogMinusBtn);
         distributorUI.waitForClickability(btn_checkout);
-        try {
-            distributorUI.waitForCustom(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        distributorUI.waitForCustom(3000);
     }
     public String getItemQryCatalogSearch(){
        return distributorUI.getText(tbx_itemQuantityCatalogSearch, "value");
@@ -2113,9 +2114,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(btn_independentFoods);
     }
 
-    public void clickItemFromCatalogIfNotAvailableInOG(String itemName){
+    public void clickItemFromCatalogIfNotAvailableInOG(String itemName) throws InterruptedException {
         if(distributorUI.isDisplayed(By.xpath(itemNotFoundTxt.replace("ITEMCODE",itemName)))){
             distributorUI.click(By.xpath(catalogCardAddToOGBtn.replace("ITEMCODE",itemName)));
+            distributorUI.waitForCustom(2000);
+            distributorUI.click(orderGuideRefreshText);
         }
         try {
             distributorUI.waitForCustom(2000);
@@ -4440,14 +4443,17 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(activeDateNext);
         distributorUI.waitForCustom(5000);
     }
-    public boolean isFullOrderDelayMessageDisplayed(String message){
+    public boolean isImportantShipmentNoticeMessageDisplayed(String message){
+        return distributorUI.isDisplayed(By.xpath(fullOrderDelayMessage.replace("MESSAGE", message)));
+    }
+    public boolean isMultipleDeliveriesMessageDisplayed(String message){
         return distributorUI.isDisplayed(By.xpath(fullOrderDelayMessage.replace("MESSAGE", message)));
     }
     public boolean isFullOrderDelayDisplayed(){
         return distributorUI.isDisplayed(fullyOrderDelay);
     }
-    public boolean isPartialShipmentNoticeDisplayed(){
-        return distributorUI.isDisplayed(PartialShipmentNotice);
+    public boolean isImportantShipmentNoticeDisplayed(){
+        return distributorUI.isDisplayed(ImportantShipmentNotice);
     }
     public boolean isCutOffTimeDisplay(){
         return distributorUI.isDisplayed(txt_cutOffTime);

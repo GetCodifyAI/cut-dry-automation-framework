@@ -74,6 +74,7 @@ public class VerifyThSelectMultipleUOMJustInTimeItemAndDraftEditTest extends Tes
 
         // Added Multi UOM Item
         Customer.searchItemOnOrderGuide(multiSearchItemCode);
+        Customer.addItemFromCatalogIfNotAvailableInOG(multiSearchItemCode);
         Customer.ClickOnMultiUomDropDownOG(multiSearchItemCode);
         Customer.clickOGAddToCartPlusIcon(1, multiSearchItemCode, uom1);
         Customer.clickOGAddToCartPlusIcon(1, multiSearchItemCode, uom2);

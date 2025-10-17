@@ -183,7 +183,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     String submittedOrder = "//*[contains(text(),'#') and text()='ID']";
     By getTotalOrderPrice = By.xpath("//td[text()='Total']/following-sibling::td");
     By getTotalOrderQuantity = By.xpath("//td[contains(text(),'Total Quantity')]/following-sibling::td");
-    String multiUomDropDown = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[1]";
+    String multiUomDropDown = "//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg']/ancestor::div[3]/div[1]/div";
     String multiUomDropDownLast = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[last()]";
     String multiUomDropDownOption ="//div[text()='OPTION']";
     String getPriceUOM = "((//button[contains(@data-for,'add-to-order-guide')]/ancestor::div[2]/following-sibling::div)[1]/following-sibling::*//div//span[contains(text(),'$')])[UOM]";
@@ -1214,9 +1214,11 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         return distributorUI.isDisplayed(By.xpath(lastOrderMarginPDP.replace("MARGIN",margin)));
     }
     public boolean isMarginColumnDisplay(String margin){
+        distributorUI.waitForVisibility(By.xpath(marginColumnPDP.replace("MARGIN",margin)));
         return distributorUI.isDisplayed(By.xpath(marginColumnPDP.replace("MARGIN",margin)));
     }
     public boolean isPriceColumnDisplay(String price){
+        distributorUI.waitForVisibility(By.xpath(priceColumn.replace("PRICE",price)));
         return distributorUI.isDisplayed(By.xpath(priceColumn.replace("PRICE",price)));
     }
     public boolean isLastOrderPriceDisplay(String price){

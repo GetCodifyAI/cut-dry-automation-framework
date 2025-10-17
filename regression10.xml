@@ -20,8 +20,8 @@
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyShowingLastOrderedPricesInPortalOrderGuidesTest"/>
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyOrdersBelowMinimumOrderAmountPopsSoftOrderMinimumPopUpTest"/>
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifySubmittingAnOrderMinimumSatisfiedOrderForAFutureDateGreaterThanItemLeadTimeItemDateInOrderTest"/>
-            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyEntireOrderIsShiftedToDeliveryOnNextAvailableDeliveryForOrderMinimumNotMetOrdersTest"/>
-            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyOrderMinimumMetExcludingLeadTimeItemOrderIsSplitInToTwoOrdersTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyVerifyImportantShipmentNoticeMessageTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyLeadTimeItemOrderIsSplitInToTwoOrdersTest"/>
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyInternalToolsRestrictSpotPricesBelowMinimumProductPriceToggleTest"/>
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyDisplayPriceWithAvgSuffixTest"/>
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyPriceIsNotAllowedToChangeBelowTheMinimumPriceTest"/>

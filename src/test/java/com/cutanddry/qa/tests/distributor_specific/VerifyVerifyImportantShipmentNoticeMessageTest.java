@@ -17,15 +17,14 @@ import org.testng.asserts.SoftAssert;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class VerifyOrderMinimumMetExcludingLeadTimeItemOrderIsSplitInToTwoOrdersTest extends TestBase {
+public class VerifyVerifyImportantShipmentNoticeMessageTest extends TestBase {
     static User user;
     static String distributorCheeseImp = PriceData.DISTRIBUTOR_CHEESE_IMP;
     static String customerId3 = PriceData.CUSTOMER_ID_7;
     static String searchItemCode = PriceData.ITEM_CODE;
     static String searchItemCode2 = PriceData.ITEM_CODE2;
     static String itemName2 = PriceData.ITEM_NAME2;
-    static String fullyOrderDelayMessage = PriceData.FULLY_ORDER_DELAY_MESSAGE;
-    static int orderCount = 2;
+    static String importantShipmentNotice = PriceData.FULLY_ORDER_DELAY;
 
     @BeforeMethod
     public void setUp() {
@@ -34,8 +33,8 @@ public class VerifyOrderMinimumMetExcludingLeadTimeItemOrderIsSplitInToTwoOrders
     }
 
 
-    @Test(groups = "DOT-TC-424")
-    public void VerifyOrderMinimumMetExcludingLeadTimeItemOrderIsSplitInToTwoOrders() throws InterruptedException {
+    @Test(groups = "DOT-TC-423")
+    public void VerifyImportantShipmentNoticeMessageTest() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
@@ -54,7 +53,7 @@ public class VerifyOrderMinimumMetExcludingLeadTimeItemOrderIsSplitInToTwoOrders
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId3), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId3);
         Customer.searchItemOnOrderGuide(searchItemCode);
-        Customer.increaseFirstRowQtyCustom(5);
+        Customer.increaseFirstRowQtyCustom(2);
 
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(searchItemCode2);
@@ -72,10 +71,9 @@ public class VerifyOrderMinimumMetExcludingLeadTimeItemOrderIsSplitInToTwoOrders
         Customer.selectDeliveryDateLineStablePick(deliveryDay, isNextMonth);
 
         Customer.submitOrderDpSpecific();
-        softAssert.assertTrue(Customer.isPartialShipmentNoticeDisplayed(),"fully order delay not display");
-        softAssert.assertTrue(Customer.isFullOrderDelayMessageDisplayed(fullyOrderDelayMessage),"fully order delay message not display");
+        softAssert.assertTrue(Customer.isImportantShipmentNoticeDisplayed(),"fully order delay not display");
+        softAssert.assertTrue(Customer.isImportantShipmentNoticeMessageDisplayed(importantShipmentNotice),"fully order delay message not display");
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "The order was not completed successfully.");
-        softAssert.assertEquals(Customer.getOrderCount(orderCount), orderCount, "multi order submit error error");
         Customer.clickClose();
 
         Dashboard.navigateToOrderSettings();
