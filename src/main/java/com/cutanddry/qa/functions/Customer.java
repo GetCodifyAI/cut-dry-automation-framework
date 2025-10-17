@@ -185,19 +185,19 @@ public class Customer {
     public static double getItemPriceOnCheckoutButton() throws InterruptedException {
         return customersPage.getItemPriceOnCheckoutButton();
     }
-    public static void increaseQtyByOneCatalogSearchValueOne(){
+    public static void increaseQtyByOneCatalogSearchValueOne() throws InterruptedException {
         customersPage.clickPlusQryCatalogSearchValueOne();
     }
-    public static void increaseQtyByOneCatalogSearchValueTwo(){
+    public static void increaseQtyByOneCatalogSearchValueTwo() throws InterruptedException {
         customersPage.clickPlusQryCatalogSearchValueOne();
     }
     public static void decreaseQtyByOneCatalogSearchValueOne() throws InterruptedException {
         customersPage.clickMinusQryCatalogSearchValueOne();
     }
-    public static void decreaseQtyByOneCatalogSearchValueTwo(){
+    public static void decreaseQtyByOneCatalogSearchValueTwo() throws InterruptedException {
         customersPage.clickMinusQryCatalogSearchValueTwo();
     }
-    public static void decreaseQtyByOneCatalogSearchValueThree(){
+    public static void decreaseQtyByOneCatalogSearchValueThree() throws InterruptedException {
         customersPage.clickMinusQryCatalogSearchValueThree();
     }
 
@@ -2937,6 +2937,12 @@ public class Customer {
     }
     public static void clearSearchField()throws InterruptedException{
         customersPage.clearSearchField();
+    }
+    public static void deleteTheExistingStandingOrdersInManageIFAvailable() throws InterruptedException {
+        for (int i = 0; i < 10 && customersPage.isStandingOrdersDeletedIconDisplay(); i++) {
+            customersPage.clickOnStandingOrderDeleteIcon();
+            Thread.sleep(200);
+        }
     }
     public static void clickOnManageStandingOrders() throws InterruptedException {
         customersPage.clickOnManageStandingOrders();

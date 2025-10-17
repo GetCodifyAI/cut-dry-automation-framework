@@ -54,6 +54,7 @@ public class VerifyCorrectErrorMessagesAreDisplayedWhenAddingDifferentTypesOfIte
         Login.navigateToNode(productShopData);
         Login.setValueToNode(stockCount,stockValue);
 
+        Login.navigateToLoginAs();
         Login.navigateToInternalToolsPage();
         InternalTools.navigateToConfigureSupplier();
         InternalTools.clickOnInternalToolCompanyEditDetails(CompanyName);
