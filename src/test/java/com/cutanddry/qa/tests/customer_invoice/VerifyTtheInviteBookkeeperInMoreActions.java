@@ -13,11 +13,13 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import com.cutanddry.qa.base.TestBase;
 
+import java.util.UUID;
+
 public class VerifyTtheInviteBookkeeperInMoreActions extends TestBase {
     static User user;
     String CustomerCode = CustomerInvoiceData.CUSTOMER_CODE;
     String BookKeeperName = CustomerInvoiceData.BOOK_KEEPER_NAME;
-    String BookKeeperEmail = CustomerInvoiceData.BOOK_KEEPER_EMAIL;
+    String BookKeeperEmail = CustomerInvoiceData.BOOK_KEEPER_EMAIL.replaceFirst("@", UUID.randomUUID().toString() + "@");;
     String BookKeeperMobile = CustomerInvoiceData.BOOK_KEEPER_MOBILE;
 
     @BeforeMethod

@@ -3133,6 +3133,10 @@ public class Customer {
     public static boolean getFirstItemNameFrmSearchResultCatalog(String name){
         return customersPage.getFirstItemNameFrmSearchResultCatalog(name);
     }
+    public static String getOrderGuideFormID(){
+        return customersPage.getFormID();
+    }
+
 
 }
 

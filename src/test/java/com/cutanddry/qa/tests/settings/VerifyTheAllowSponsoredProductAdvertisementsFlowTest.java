@@ -30,6 +30,10 @@ public class VerifyTheAllowSponsoredProductAdvertisementsFlowTest extends TestBa
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+
+        Login.navigateToInternalToolsPage();
+        InternalTools.ensureSponsoredProductAdsStatus(true);
+        InternalTools.ensureInstacartSponsoredProductAdsStatus(true);
         Login.navigateToDistributorPortal(distributorName);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToAdsSettings();
@@ -48,10 +52,17 @@ public class VerifyTheAllowSponsoredProductAdvertisementsFlowTest extends TestBa
         Login.navigateToInternalToolsPage();
         InternalTools.ensureSponsoredProductAdsStatus(false);
         InternalTools.ensureInstacartSponsoredProductAdsStatus(false);
+        InternalTools.ensureBuyerEdgePlatformRebateStatus(false);
         Login.navigateToDistributorPortal(distributorName);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
-        Dashboard.navigateToAdsSettings();
-        softAssert.assertFalse(Settings.isCustomerRestrictionTextDisplayed(),"disable the 'Sponsored Ads' toggle button from the Internal tools is error");
+        softAssert.assertFalse(Dashboard.isInfluenceTabDisplayed(),"Influence tab not hidden");
+
+        //turning on the Influence options
+        Login.navigateToInternalToolsPage();
+        InternalTools.ensureSponsoredProductAdsStatus(true);
+        InternalTools.ensureInstacartSponsoredProductAdsStatus(true);
+        InternalTools.ensureBuyerEdgePlatformRebateStatus(true);
+
         softAssert.assertAll();
     }
 

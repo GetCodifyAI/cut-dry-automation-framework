@@ -309,6 +309,18 @@ public class InternalTools {
     public static void clickGroupDPDelete() {
         internalToolsPage.clickGroupDPDelete();
     }
-
+    public static void navigateToTaskManagementTab(){
+        internalToolsPage.clickOnTaskManagement();
+    }
+    public static void runParentChildTask(String formID){
+        internalToolsPage.isParentChildTaskDisplayed(formID);
+        internalToolsPage.clickRunLocallyOnParentChildTask(formID);
+    }
+    public static boolean isPCTaskAttemptedDisplayed(){
+        return internalToolsPage.isTaskAttemptedDisplayed();
+    }
+    public static void clickRunLocallyOnParentChildRelationshipTask(){
+        internalToolsPage.clickRunLocallyOnParentChildRelationshipTask();
+    }
 
 }

@@ -936,6 +936,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.getText(lbl_itemNameList);
     }
     public void clickPlusQryFirstRow() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_increaseQtyFirstRow);
         distributorUI.click(btn_increaseQtyFirstRow);
         distributorUI.waitForCustom(4000);
     }
@@ -5181,6 +5182,20 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean getFirstItemNameFrmSearchResultCatalog(String name){
         return distributorUI.isDisplayed(By.xpath(lbl_catalogSearchItemList.replace("NAME", name)));
+    }
+    public String getFormID() {
+        java.util.regex.Pattern FORM_ID = java.util.regex.Pattern.compile("/place_order/\\d+/\\d+/(\\d+)/");
+
+        String url = distributorUI.getCurrentUrl();
+        if (url == null) {
+            return null;
+        }
+
+        java.util.regex.Matcher m = FORM_ID.matcher(url);
+        if (m.find()) {
+            return m.group(1);
+        }
+        return null;
     }
 
 }
