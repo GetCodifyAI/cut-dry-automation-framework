@@ -123,8 +123,9 @@ public class BoostPage extends LoginPage {
         distributorUI.click(btn_OK);
     }
 
-    public void clickBtnSubmit(){
+    public void clickBtnSubmit() throws InterruptedException {
         distributorUI.click(btn_submit);
+        distributorUI.waitForCustom(4000);
     }
 
     public boolean isBoostTextDisplayed() {

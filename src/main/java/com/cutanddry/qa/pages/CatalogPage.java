@@ -233,6 +233,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     String specialItemStatus = "(//div[contains(text(),'STATUS')])[last()]";
     By txt_updateOGPopup = By.xpath("//*[contains(text(),'Update order guides?')]");
     By btn_updateOGPopup = By.xpath("//button[contains(text(),'Confirm')]");
+    By specialItemYesBtn = By.xpath("(//div[normalize-space(text()) ='Special Item'])[2]/ancestor::div[3]/following-sibling::div//div[normalize-space(text()) ='Yes']/..");
 
 
     public boolean isCatalogTextDisplayed() {
@@ -1237,6 +1238,9 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     public void clickOnSpecialItem(String status){
         distributorUI.click(specialItemDropDown);
         distributorUI.clickUsingJavaScript(By.xpath(specialItemStatus.replace("STATUS",status)));
+    }
+    public boolean isSpecialItemYesDisplayed(){
+        return distributorUI.isDisplayed(specialItemYesBtn);
     }
     public boolean isSpecialItemDropDownDisplay(){
         return distributorUI.isDisplayed(specialItemDropDown);

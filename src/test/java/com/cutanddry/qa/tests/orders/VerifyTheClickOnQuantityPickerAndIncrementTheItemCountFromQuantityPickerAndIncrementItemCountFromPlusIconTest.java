@@ -40,6 +40,7 @@ public class VerifyTheClickOnQuantityPickerAndIncrementTheItemCountFromQuantityP
 
         // Add the product via Order Guide
         Customer.searchItemOnOrderGuide(searchItemCode);
+        Customer.addItemFromCatalogIfNotAvailableInOG(searchItemCode);
         itemName = Customer.getItemNameFirstRow();
         itemPrice = Customer.getActiveItemPriceFirstRow();
         Customer.addAmountUsingDataPickerOG(itemName,"5");

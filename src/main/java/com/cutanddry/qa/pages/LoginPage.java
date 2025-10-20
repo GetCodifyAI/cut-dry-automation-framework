@@ -156,6 +156,10 @@ public class LoginPage extends TestBase {
         distributorUI.OpenNewTabAndSwitchToIt();
     }
 
+    public void closeCurrentTab(){
+        distributorUI.closeCurrentTab();
+    }
+
     public void navigateToRestaurantPortal(String phoneNo) {
         distributorUI.navigateToURL(Constants.LOGIN_AS);
         distributorUI.waitForElementEnabledState(lbl_loginAsCustomer,true);
