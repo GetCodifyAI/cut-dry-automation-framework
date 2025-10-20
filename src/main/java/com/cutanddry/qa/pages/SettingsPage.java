@@ -307,7 +307,12 @@ public class SettingsPage extends LoginPage{
             return false;
         }
         distributorUI.waitForCustom(4000);
+        distributorUI.click(txt_paySettings);
         return distributorUI.isDisplayed(txt_paySettings);
+    }
+    public void refreshThePaySettingIfNotDisplayed() throws InterruptedException {
+        distributorUI.refreshPage();
+        distributorUI.waitForVisibility(txt_paySettings);
     }
     public boolean isAdsSettingsTextDisplayed() throws InterruptedException {
         try {

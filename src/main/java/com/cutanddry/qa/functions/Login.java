@@ -95,6 +95,9 @@ public class Login {
     public static void switchIntoNewTab(){
         loginPage.switchIntoNewTab();
     }
+    public static void closeCurrentTabAndSwitchBack(){
+        loginPage.closeCurrentTab();
+    }
     public static void navigateToRestaurantPortal(String phoneNo){
         loginPage.navigateToRestaurantPortal(phoneNo);
     }
