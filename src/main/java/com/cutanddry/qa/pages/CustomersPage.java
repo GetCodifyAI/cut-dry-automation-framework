@@ -120,7 +120,8 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     String txt_deliveryLastDay = "(//div[contains(@class, 'cd_themed_select__option')]//input[@type='checkbox'])[last()]";
     String txt_deliveryLastBeforeDay = "(//div[contains(@class, 'cd_themed_select__option')]//input[@type='checkbox'])[last()-1]";
     String txt_pickUpLastDay = "//div[contains(@class, 'cd_themed_select__option')][last()]";
-    By btn_setStandingOrder = By.xpath("//button[text()='Set Standing Order ']");
+    By btn_setStandingOrder = By.xpath("//button[text()='Set Standing Order']");
+    By btn_resetStandingOrder = By.xpath("//button[normalize-space()='Reset Standing Order']");
     By txt_EmailPopup = By.xpath("//div[text()='Standing Order CC Emails']");
     By dropdown_email = By.xpath("//div[text()='Select...']");
     By txt_testEmail = By.xpath("//div[text()='Test_Automation_QA (quinn-bins-sd9lph1ucd@e.rainforestqa.com)']");
@@ -251,7 +252,7 @@ By input_selectItem = By.xpath("//div[contains(text(),'Search items by name or c
 //    By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']");
 By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/following-sibling::div//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
     By orderApprovalSettingsOverlayTxt = By.xpath("//div[contains(text(),'Order Approval Settings')]");
-    By orderApprovalSettingsOverlayNewlyCreatedOGOptionsEnabledOrDisabled = By.xpath("//div[contains(@class,'themed_select') and contains(text(),'Enabled') or contains(text(),'Disabled')]");
+    By orderApprovalSettingsOverlayNewlyCreatedOGOptionsEnabledOrDisabled = By.xpath("//div[contains(text(),'Newly Created Order Guides')]/following-sibling::div//div[contains(@class,'themed_select') and contains(text(),'Enabled') or contains(text(),'Disabled')]");
     String orderApprovalSettingsOverlayOrderGuideTxt = "//div[contains(text(),'Existing Order Guide(s)')]/following-sibling::div//div[contains(text(),'ORDERGUIDE')]";
     By orderApprovalSettingsOverlayCloseBtn = By.xpath("//span[contains(text(),'×')]");
     String orderGuideOrderApprovalDisabledBtn = "//div[contains(text(),'ORDERGUIDE')]/../following-sibling::*//div[contains(@style, 'rgb(204, 204, 204)')]";
@@ -1465,6 +1466,16 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         }
         distributorUI.click(btn_setStandingOrder);
     }
+    public void resetStandingOrder(){
+        distributorUI.waitForElementEnabledState(btn_resetStandingOrder,true);
+        distributorUI.waitForClickability(btn_resetStandingOrder);
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        distributorUI.click(btn_resetStandingOrder);
+    }
     public boolean isStandingOrderEmailPopupDisplayed(){
         try {
             distributorUI.waitForCustom(4000);
@@ -1491,7 +1502,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(txt_success);
     }
     public void clickOnEditStandingOrder() throws InterruptedException {
-        distributorUI.click(btn_editStandingOrders);
+        distributorUI.clickUsingJavaScript(btn_editStandingOrders);
         distributorUI.waitForCustom(2000);
     }
     public void clickOnRemoveDelivery() {

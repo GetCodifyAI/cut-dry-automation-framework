@@ -1036,6 +1036,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         distributorUI.clickUsingJavaScript(By.xpath(txt_catalogProduct.replace("NAME", name)));
     }
     public double getTotalPriceInReviewOrder() throws InterruptedException {
+        distributorUI.waitForCustom(1000);
         try {
             return extractPrice(getTotalPriceReviewOrder);
         } catch (Exception e) {
