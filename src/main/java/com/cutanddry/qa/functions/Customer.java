@@ -779,6 +779,9 @@ public class Customer {
     public static boolean AddUserOverlayDisplayed(){
         return customersPage.isAddUserOverlayDisplayed();
     }
+    public static boolean EditUserOverlayDisplayed(){
+        return customersPage.isEditUserOverlayDisplayed();
+    }
     public static void FillNameInAddUserOverlay(String username){
         customersPage.sendTextToAddUserOverlayNameField(username);
     }
@@ -790,6 +793,18 @@ public class Customer {
     }
     public static boolean UserDetailsSuccessfullyUpdatedMsgDisplayed(){
         return customersPage.isSuccessfullyUpdatedMsgDisplayed();
+    }
+    public static boolean UserEmailExistingMsgDisplayed(){
+        return customersPage.isUserEmailExistingMsgDisplayed();
+    }
+    public static boolean UserMobileNumberExistingMsgDisplayed(){
+        return customersPage.isUserMobileNumberExistingMsgDisplayed();
+    }
+    public static boolean EmailAccountExistingMsgDisplayed(){
+        return customersPage.isEmailAccountExistingMsgDisplayed();
+    }
+    public static boolean MobileNumberAccountExistingMsgDisplayed(){
+        return customersPage.isMobileNumberAccountExistingMsgDisplayed();
     }
     public static boolean UserSuccessfullyRemovedMsgDisplayed(){
         return customersPage.isSuccessfullyRemovedMsgDisplayed();
@@ -1060,6 +1075,15 @@ public class Customer {
     }
     public static void clickOptionAll(){customersPage.clickOptionAll();}
     public static void clickInviteEmail(){customersPage.clickInviteEmail();}
+    public static void clickInviteViaMobileNumber(){
+        customersPage.clickInviteMobileNumber();
+    }
+    public static void clickReInviteViaText(){
+        customersPage.clickReinviteViaText();
+    }
+    public static void clickReInviteViaEmail(){
+        customersPage.clickReinviteViaEmail();
+    }
     public static boolean isSuccessPopUpDisplayed(){
         return customersPage.isStandingOrderSuccessPopupDisplayed();
     }
