@@ -72,7 +72,7 @@ public class VerifyManageStandingOrdersCTAFunctionalityInOrderGuideTest extends 
         Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItems();
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
-        Customer.setStandingOrder();
+        Customer.resetStandingOrder();
         softAssert.assertTrue(Customer.isStandingOrderEmailPopupDisplayed(),"pop up display error");
         Customer.scheduleStandingOrder();
         softAssert.assertTrue(Customer.isStandingOrderSuccessPopupDisplayed(),"order creating error");
