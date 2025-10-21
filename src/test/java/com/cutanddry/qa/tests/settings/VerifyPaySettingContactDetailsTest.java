@@ -38,6 +38,7 @@ public class VerifyPaySettingContactDetailsTest extends TestBase {
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToPaySettings();
+        Settings.refreshThePaySettingIfNotDisplayed();
         softAssert.assertTrue(Settings.isPaySettingsTextDisplayed(),"navigation to pay settings error");
         Settings.hoverContacts(ARContacts);
         softAssert.assertTrue(Settings.isContactMessageDisplayed(ARContactsMessage),"AR contacts message should be not displayed when hovering");

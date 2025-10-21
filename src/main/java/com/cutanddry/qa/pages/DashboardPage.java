@@ -248,6 +248,12 @@ public class DashboardPage extends LoginPage{
         distributorUI.hoverOverElement(btn_profSettings);
         distributorUI.clickWithFallback(btn_profSettings);
     }
+    public boolean isInfluenceTabDisplayed(){
+        distributorUI.scrollToElement(btn_settings);
+        distributorUI.clickUsingJavaScript(btn_settings);
+        distributorUI.hoverOverElement(btn_adsSettings);
+        return distributorUI.isDisplayed(btn_adsSettings);
+    }
     public void clickOnAdsSettings(){
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);

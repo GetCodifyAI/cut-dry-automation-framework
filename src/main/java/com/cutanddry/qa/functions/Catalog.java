@@ -668,6 +668,13 @@ public class Catalog {
     public static void clickOnSpecialItem(String status){
         catalogPage.clickOnSpecialItem(status);
     }
+    public static void setSpecialItemToNoIfYesIsSet(){
+        if(catalogPage.isSpecialItemYesDisplayed()){
+            catalogPage.clickOnSpecialItem("No");
+            catalogPage.clickOnSaveChangesBtn();
+            catalogPage.clickEditOnProductConfigs();
+        }
+    }
     public static boolean isSpecialItemDropDownDisplay(){
         return catalogPage.isSpecialItemDropDownDisplay();
     }

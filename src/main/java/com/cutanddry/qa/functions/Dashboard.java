@@ -111,6 +111,9 @@ public class Dashboard {
     public static void navigateToAdsSettings() {
         dashboardPage.clickOnAdsSettings();
     }
+    public static boolean isInfluenceTabDisplayed(){
+        return dashboardPage.isInfluenceTabDisplayed();
+    }
     public static void navigateToSupport() {
         dashboardPage.clickOnSupport();
     }

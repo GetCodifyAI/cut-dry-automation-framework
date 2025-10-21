@@ -104,8 +104,11 @@ public class InternalToolsPage extends LoginPage {
     By btn_updateDPGroup = By.xpath("//button[text()='Update Group']");
     By txt_editNewDPGroup = By.xpath("//div[contains(text(),'Edit DP Group')]");
     By btn_deleteDPGroup = By.xpath("(//button[text()='Delete'])[1]");
-
-
+    By task_management = By.xpath("//*[normalize-space()='Task Management']");
+    String taskManagerParentChildTask = "//div[normalize-space()='copyToChildForms']/../following-sibling::td[normalize-space()='FORMID']";
+    String ParentChildTaskRunLocallyBtn =  "//div[normalize-space()='copyToChildForms']/../following-sibling::td[normalize-space()='FORMID']//ancestor::td/following::td//button[contains(text(),'Run Locally')]";
+    By isTaskRunAttemptedDisplayed = By.xpath("//*[contains(text(),'Task run attempted')]");
+    By parentChildRelationshipTask = By.xpath("//div[normalize-space()='createParentChildOrderGuideRelationships']//ancestor::td/following::td//button[contains(text(),'Run Locally')]");
 
 
 
@@ -643,6 +646,24 @@ public class InternalToolsPage extends LoginPage {
         distributorUI.waitForCustom(2000);
         distributorUI.uiScrollTop();
     }
+    public void clickOnTaskManagement(){
+        distributorUI.click(task_management);
+    }
+    public boolean isParentChildTaskDisplayed(String formID){
+        return distributorUI.isDisplayed(By.xpath(taskManagerParentChildTask.replace("FORMID","Form " + formID)));
+    }
+    public void clickRunLocallyOnParentChildTask(String formID){
+        distributorUI.waitForVisibility(By.xpath(ParentChildTaskRunLocallyBtn.replace("FORMID","Form " + formID)));
+        distributorUI.click(By.xpath(ParentChildTaskRunLocallyBtn.replace("FORMID","Form " + formID)));
+    }
+    public boolean isTaskAttemptedDisplayed(){
+        return distributorUI.isDisplayed(isTaskRunAttemptedDisplayed);
+    }
+    public void clickRunLocallyOnParentChildRelationshipTask(){
+        distributorUI.waitForVisibility(parentChildRelationshipTask);
+        distributorUI.click(parentChildRelationshipTask);
+    }
+
 
 
 
