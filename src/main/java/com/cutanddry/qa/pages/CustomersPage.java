@@ -215,6 +215,7 @@ By input_selectItem = By.xpath("//div[contains(text(),'Search items by name or c
     By ClearAllCustomerGroupBtn = By.xpath("//div[contains(@class,'themed_select__indicator themed_select__clear-indicator css-tlfecz-indicatorContainer')]");
     By InviteNewUsersBtn = By.xpath("//button[contains(text(),'Invite New Users')]");
     By AddUserText = By.xpath("//div[contains(text(),'Add User')]");
+    By EditUserText = By.xpath("//div[contains(text(),'Edit User')]");
     By UserNameInputField = By.xpath("//label[text()='Name']/following-sibling::input");
     By UserEmailInputField = By.xpath("//label[text()='Email']/following-sibling::input");
     By SaveChangeswithoutSendingInviteBtn = By.xpath("//span[text()='Save changes without sending an invite']/parent::button");
