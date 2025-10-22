@@ -3164,6 +3164,34 @@ public class Customer {
         return customersPage.getFormID();
     }
 
+    public static void clickOnCreditHold(){
+        customersPage.clickOnCreditHold();
+    }
+    public static boolean isCreditHoldSelected(){
+        return customersPage.isCreditHoldSelected();
+    }
+    public static boolean isAccountHoldPopUpDisplay() throws InterruptedException {
+        return customersPage.isAccountHoldPopUpDisplay();
+    }
+    public static boolean isAccountHoldMessageDisplay(String message) throws InterruptedException {
+        return customersPage.isAccountHoldMessageDisplay(message);
+    }
+    public static void clickCloseHardHoldPopup() throws InterruptedException {
+        customersPage.clickAccHoldCloseIcon();
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+    }
+    public static boolean isAccountHoldBannerDisplay(String message) throws InterruptedException {
+        return customersPage.isAccountHoldPopUpDisplay(message);
+    }
+    public static void clickOnInactiveHold(){
+        customersPage.clickOnInactiveHold();
+    }
+    public static boolean isInactiveHoldSelected(){
+        return customersPage.isInactiveHoldSelected();
+    }
+
 
 }
 
