@@ -238,6 +238,22 @@ pipeline {
                         }
                     }
                 }
+
+                stage('Regression 14 - New Tests') {
+                    agent any
+                    steps {
+                        script {
+                            runTestSuiteWithCleanup('regression14.xml', 'Part_Fourteen', 14)
+                        }
+                    }
+                    post {
+                        always {
+                            script {
+                                archiveAndCleanup('14', 'Regression 14 Test Report')
+                            }
+                        }
+                    }
+                }
             }
         }
         
@@ -246,7 +262,7 @@ pipeline {
             steps {
                 script {
                     // Unstash all test results
-                    for (int i = 1; i <= 13; i++) {
+                    for (int i = 1; i <= 14; i++) {
                         try {
                             unstash "test-results-${i}"
                         } catch (Exception e) {
@@ -359,12 +375,9 @@ def runTestSuiteWithCleanup(xmlFile, partName, jobNumber) {
             mkdir -p "target/surefire-reports-${partName}"
             cp -r target/surefire-reports/* "target/surefire-reports-${partName}/" || true
             
-            # Compress screenshots to save space
+            # Keep screenshots in direct folder (not zipped) for easy viewing in Jenkins
             if [ -d "target/surefire-reports-${partName}/screenshots" ]; then
-                cd "target/surefire-reports-${partName}"
-                tar -czf "screenshots-${partName}-${jobNumber}.tar.gz" screenshots/ || true
-                rm -rf screenshots/ || true
-                cd -
+                echo "Screenshots directory found and will be archived as-is"
             fi
             
             # Create summary report
