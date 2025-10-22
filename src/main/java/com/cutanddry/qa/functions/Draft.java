@@ -97,6 +97,10 @@ public class Draft {
        draftPage.pendingApprovalDraftClick(status);
     }
 
+    public static boolean isOrderDraftDisplayed(String refID){
+        return draftPage.isOrderDraftDisplayed(refID);
+    }
+
     public static boolean isDraftOrderReferenceNotDisplayedInOPSide(){
         return draftPage.isDraftOrderReferenceNotDisplayedInOPSide();
     }

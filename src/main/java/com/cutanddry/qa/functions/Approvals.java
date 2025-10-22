@@ -56,5 +56,27 @@ public class Approvals {
     public static void closeSummeryOverlay(){
         approvalsPage.clickCloseSummeryOverlay();
     }
+
+    public static boolean isApprovalOrderDisplayed(String refID){
+        return approvalsPage.isApprovalOrderDisplayed(refID);
+    }
+
+    public static void clickApprovalOrder(String refID){
+        approvalsPage.clickApprovalOrder(refID);
+        if(customersPage.isSubstitutesPopupDisplayedSub()){
+            customersPage.clickDoNotSubstitute();
+            customersPage.clickSaveSelection();
+        }
+    }
+
+    public static void RejectApprovalOrder(){
+        approvalsPage.clickRejectBtn();
+    }
+
+    public static boolean isRejectApprovalOverlayDisplayed(){
+        return approvalsPage.isRejectApprovalOverlayDisplayed();
+    }
+
+
 }
 

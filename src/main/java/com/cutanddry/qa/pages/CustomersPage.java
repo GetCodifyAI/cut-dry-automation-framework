@@ -751,6 +751,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String dropDownOrderGuide =  "(//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'NAME')])[last()]";
     By btn_deleteOrderGuide = By.xpath("//*[contains(text(), 'Delete Order Guide')]");
     String deliveryDateCustomerOrder = "//*[contains(text(),'#') and text()='ID']/../../preceding-sibling::td[1][text()='DATE']";
+    String customerOrder = "//*[contains(text(),'#') and text()='ID']";
     By btn_pickUpDateStable = By.xpath("//div[text()='Pickup Date:']/../following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
     String dynamicToXPathStable = "//div[contains(@class,'react-datepicker__day')]/preceding::div[contains(@class, 'react-datepicker__day') and contains(@aria-disabled, 'false') and text()='DAY']";
     String fulfilmentTag = "//*[contains(text(),'#') and text()='ID']/../../preceding-sibling::td[1]//*[text()='TAG']";
@@ -4582,6 +4583,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isDeliveryDateCustomerOrderDisplayed(String id , String date){
         return distributorUI.isDisplayed(By.xpath(deliveryDateCustomerOrder.replace("ID", id).replace("DATE",date)));
     }
+    public boolean isCustomerOrderDisplayed(String id){
+        return distributorUI.isDisplayed(By.xpath(customerOrder.replace("ID", id)));
+    }
     public void clickOnPickUpDateStable() throws InterruptedException{
         distributorUI.waitForCustom(4000);
         distributorUI.click(btn_pickUpDateStable);
@@ -5029,7 +5033,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForCustom(2000);
 
     }
-    public boolean isStandingOrdersDeletedIconDisplay(){
+    public boolean isStandingOrdersDeletedIconDisplay() throws InterruptedException {
+        distributorUI.waitForCustom(1000);
         return distributorUI.isDisplayed(btn_deleteStandingOrderIcon);
     }
     public boolean isDeliveryDateLineDisplay(String day, boolean isNextMonth) throws InterruptedException {

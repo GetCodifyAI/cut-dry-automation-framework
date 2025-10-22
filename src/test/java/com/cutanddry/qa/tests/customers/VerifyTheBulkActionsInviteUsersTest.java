@@ -34,7 +34,7 @@ public class VerifyTheBulkActionsInviteUsersTest extends TestBase {
         Customer.clickInviteUser();
         softAssert.assertTrue(Customer.isInviteUserPopUpDisplayed(),"invite user pop up not display");
         Customer.clickOptionAll();
-        Customer.clickInviteEmail();
+        Customer.clickReInviteViaEmail();
         softAssert.assertTrue(Customer.isSuccessPopUpDisplayed(),"success pop up not display");
         Customer.clickOK();
         softAssert.assertAll();
