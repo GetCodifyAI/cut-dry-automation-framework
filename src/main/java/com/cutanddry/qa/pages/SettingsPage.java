@@ -62,8 +62,8 @@ public class SettingsPage extends LoginPage{
     By btn_linkBankManually = By.xpath("//button[text()='Link your account manually']");
     By txt_linkAccPopup = By.xpath("//h3[text()='Add Bank Account']");
     By btn_save= By.xpath("//div[contains(@class, 'modal-content')]//button[contains(text(), 'Save')]");
-    By txt_displayedPayout = By.xpath("//div[text()='All payouts will be transferred to bank account x2220.']");
-    By text_payOutMethodPresent = By.xpath("//div[contains(text(),'All payouts will be transferred to bank account')]");
+    By txt_displayedPayout = By.xpath("//div[text()='All payouts will be transferred to the bank account x2220.']");
+    By text_payOutMethodPresent = By.xpath("//div[contains(text(),'All payouts will be transferred to the bank account')]");
     By txt_bankDetailsAddedPopup = By.xpath("//h2[text()='Bank account details have been added successfully.']");
     By txt_bankDetailsRemovedPopup = By.xpath("//h2[text()='The bank account has been successfully removed.']");
     By btn_plus = By.xpath("//button[*[local-name()='svg' and @data-icon='plus']]");

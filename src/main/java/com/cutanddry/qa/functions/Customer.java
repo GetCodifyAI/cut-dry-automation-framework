@@ -2626,6 +2626,9 @@ public class Customer {
     public static boolean isDeliveryDateCustomerOrderDisplayed(String id,String date){
         return customersPage.isDeliveryDateCustomerOrderDisplayed(id,date);
     }
+    public static boolean isOrderDisplayedInOrderScreen(String id){
+        return customersPage.isCustomerOrderDisplayed(id);
+    }
     public static void selectPickUpDateLineStable(String day, boolean isNextMonth)throws InterruptedException{
         customersPage.clickOnPickUpDateStable();
         customersPage.selectPickUpDateLineStable(day, isNextMonth);
@@ -2980,7 +2983,7 @@ public class Customer {
     public static void clickOnAddNew(){
         customersPage.clickOnAddNew();
     }
-    public static void clickOnManageCreateStandingOrder(){
+    public static void clickOnManageCreateStandingOrder() throws InterruptedException {
         if (customersPage.isStandingOrdersDeletedIconDisplay()) {
 
         }
@@ -2992,7 +2995,7 @@ public class Customer {
     public static void clickOnStandingOrderDeleteIcon() throws InterruptedException {
         customersPage.clickOnStandingOrderDeleteIcon();
     }
-    public static boolean isStandingOrdersDeletedIconDisplay(){
+    public static boolean isStandingOrdersDeletedIconDisplay() throws InterruptedException {
         return customersPage.isStandingOrdersDeletedIconDisplay();
     }
     public static boolean isDeliveryDatesDisplay(String day, boolean isNextMonth)throws InterruptedException{
@@ -3162,6 +3165,34 @@ public class Customer {
     }
     public static String getOrderGuideFormID(){
         return customersPage.getFormID();
+    }
+
+    public static void clickOnCreditHold(){
+        customersPage.clickOnCreditHold();
+    }
+    public static boolean isCreditHoldSelected(){
+        return customersPage.isCreditHoldSelected();
+    }
+    public static boolean isAccountHoldPopUpDisplay() throws InterruptedException {
+        return customersPage.isAccountHoldPopUpDisplay();
+    }
+    public static boolean isAccountHoldMessageDisplay(String message) throws InterruptedException {
+        return customersPage.isAccountHoldMessageDisplay(message);
+    }
+    public static void clickCloseHardHoldPopup() throws InterruptedException {
+        customersPage.clickAccHoldCloseIcon();
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+    }
+    public static boolean isAccountHoldBannerDisplay(String message) throws InterruptedException {
+        return customersPage.isAccountHoldPopUpDisplay(message);
+    }
+    public static void clickOnInactiveHold(){
+        customersPage.clickOnInactiveHold();
+    }
+    public static boolean isInactiveHoldSelected(){
+        return customersPage.isInactiveHoldSelected();
     }
 
 

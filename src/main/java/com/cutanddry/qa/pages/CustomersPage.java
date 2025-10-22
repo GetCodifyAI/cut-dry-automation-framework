@@ -750,6 +750,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String dropDownOrderGuide =  "(//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'NAME')])[last()]";
     By btn_deleteOrderGuide = By.xpath("//*[contains(text(), 'Delete Order Guide')]");
     String deliveryDateCustomerOrder = "//*[contains(text(),'#') and text()='ID']/../../preceding-sibling::td[1][text()='DATE']";
+    String customerOrder = "//*[contains(text(),'#') and text()='ID']";
     By btn_pickUpDateStable = By.xpath("//div[text()='Pickup Date:']/../following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
     String dynamicToXPathStable = "//div[contains(@class,'react-datepicker__day')]/preceding::div[contains(@class, 'react-datepicker__day') and contains(@aria-disabled, 'false') and text()='DAY']";
     String fulfilmentTag = "//*[contains(text(),'#') and text()='ID']/../../preceding-sibling::td[1]//*[text()='TAG']";
@@ -884,6 +885,17 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_orderSection = By.xpath("//div[normalize-space(text()) = 'Order']");
     String itemTagOG = "//div[contains(text(),'NAME')]/../../following-sibling::div//span[text()='TAG']";
     String listViewCatalogItemName = "//td[contains(text(),'NAME')]";
+    By txt_creditHold = By.xpath("//div[text()='Credit Hold']");
+    By lbl_creditHold = By.xpath("//div[text()='Account Holds']/following-sibling::div//span[contains(@class, 'badge') and text()='Credit Hold']");
+    By accountOnHold = By.xpath("//h2[text()='Account on hold!']");
+    String accountHoldMessage = "//p[text()='MESSAGE']";
+    By btn_accHoldClose_ = By.xpath("(//button[contains(@class, 'close')]/span[text()='×'])[last()]");
+    String accountOnHoldBanner = "//span[text()='MESSAGE']";
+    By txt_inactiveHold = By.xpath("//div[text()='Inactive Hold']");
+    By lbl_inactiveHold = By.xpath("//div[text()='Account Holds']/following-sibling::div//span[contains(@class, 'badge') and text()='Inactive Hold']");
+
+
+
 
 
 
@@ -4570,6 +4582,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isDeliveryDateCustomerOrderDisplayed(String id , String date){
         return distributorUI.isDisplayed(By.xpath(deliveryDateCustomerOrder.replace("ID", id).replace("DATE",date)));
     }
+    public boolean isCustomerOrderDisplayed(String id){
+        return distributorUI.isDisplayed(By.xpath(customerOrder.replace("ID", id)));
+    }
     public void clickOnPickUpDateStable() throws InterruptedException{
         distributorUI.waitForCustom(4000);
         distributorUI.click(btn_pickUpDateStable);
@@ -5017,7 +5032,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForCustom(2000);
 
     }
-    public boolean isStandingOrdersDeletedIconDisplay(){
+    public boolean isStandingOrdersDeletedIconDisplay() throws InterruptedException {
+        distributorUI.waitForCustom(1000);
         return distributorUI.isDisplayed(btn_deleteStandingOrderIcon);
     }
     public boolean isDeliveryDateLineDisplay(String day, boolean isNextMonth) throws InterruptedException {
@@ -5237,6 +5253,35 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
             return m.group(1);
         }
         return null;
+    }
+    public void clickOnCreditHold(){
+        distributorUI.waitForVisibility(txt_creditHold);
+        distributorUI.click(txt_creditHold);
+    }
+    public boolean isCreditHoldSelected(){
+        distributorUI.refreshPage();
+        return distributorUI.isDisplayed(lbl_creditHold);
+    }
+    public boolean isAccountHoldPopUpDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(accountOnHold);
+    }
+    public boolean isAccountHoldMessageDisplay(String message)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(accountHoldMessage.replace("MESSAGE",message)));
+    }
+    public void clickAccHoldCloseIcon(){
+        distributorUI.waitForVisibility(btn_accHoldClose_);
+        distributorUI.click(btn_accHoldClose_);
+    }
+    public boolean isAccountHoldPopUpDisplay(String message)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(accountOnHoldBanner.replace("MESSAGE",message)));
+    }
+    public void clickOnInactiveHold(){
+        distributorUI.waitForVisibility(txt_inactiveHold);
+        distributorUI.click(txt_inactiveHold);
+    }
+    public boolean isInactiveHoldSelected(){
+        distributorUI.refreshPage();
+        return distributorUI.isDisplayed(lbl_inactiveHold);
     }
 
 }
