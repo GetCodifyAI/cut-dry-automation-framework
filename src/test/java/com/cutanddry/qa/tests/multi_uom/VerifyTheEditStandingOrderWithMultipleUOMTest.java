@@ -102,7 +102,7 @@ public class VerifyTheEditStandingOrderWithMultipleUOMTest extends TestBase {
         softAssert.assertEquals(Catalog.getTotalQuantityInReviewOrder(),"4", "item count error");
         totalQuantity2 = Catalog.getTotalQuantityInReviewOrder();
 
-        Customer.setStandingOrder();
+        Customer.resetStandingOrder();
         softAssert.assertTrue(Customer.isStandingOrderEmailPopupDisplayed(),"pop up display error");
         Customer.scheduleStandingOrder();
         softAssert.assertTrue(Customer.isStandingOrderSuccessPopupDisplayed(),"order creating error");

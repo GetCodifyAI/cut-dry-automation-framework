@@ -376,6 +376,17 @@ public class KeywordBase {
         return this;
     }
 
+    public String getCurrentUrl() {
+        try {
+            String url = driver.getCurrentUrl();
+            logger.info("Current URL: {}", url);
+            return url;
+        } catch (Exception e) {
+            logger.error("Failed to get current URL.", e);
+            return null;
+        }
+    }
+
     public KeywordBase waitForCustom(long time) throws InterruptedException {
         Thread.sleep(time);
         return this;
@@ -1284,6 +1295,21 @@ public class KeywordBase {
                 driver.switchTo().window(windowHandle);
                 break; // Exit loop once switched to new tab
             }
+        }
+    }
+
+    public void closeCurrentTab() {
+        String current = driver.getWindowHandle();
+        Set<String> before = driver.getWindowHandles();
+        if (before.size() <= 1) return;              // don't kill the last tab/session
+
+        driver.close();                               // closes current tab
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(d -> d.getWindowHandles().size() == before.size() - 1);
+
+        // switch to the first remaining handle
+        for (String h : driver.getWindowHandles()) {
+            if (!h.equals(current)) { driver.switchTo().window(h); break; }
         }
     }
 

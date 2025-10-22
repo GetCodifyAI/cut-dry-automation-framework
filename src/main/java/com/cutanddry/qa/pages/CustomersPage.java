@@ -120,7 +120,8 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     String txt_deliveryLastDay = "(//div[contains(@class, 'cd_themed_select__option')]//input[@type='checkbox'])[last()]";
     String txt_deliveryLastBeforeDay = "(//div[contains(@class, 'cd_themed_select__option')]//input[@type='checkbox'])[last()-1]";
     String txt_pickUpLastDay = "//div[contains(@class, 'cd_themed_select__option')][last()]";
-    By btn_setStandingOrder = By.xpath("//button[text()='Set Standing Order ']");
+    By btn_setStandingOrder = By.xpath("//button[text()='Set Standing Order']");
+    By btn_resetStandingOrder = By.xpath("//button[normalize-space()='Reset Standing Order']");
     By txt_EmailPopup = By.xpath("//div[text()='Standing Order CC Emails']");
     By dropdown_email = By.xpath("//div[text()='Select...']");
     By txt_testEmail = By.xpath("//div[text()='Test_Automation_QA (quinn-bins-sd9lph1ucd@e.rainforestqa.com)']");
@@ -214,10 +215,15 @@ By input_selectItem = By.xpath("//div[contains(text(),'Search items by name or c
     By ClearAllCustomerGroupBtn = By.xpath("//div[contains(@class,'themed_select__indicator themed_select__clear-indicator css-tlfecz-indicatorContainer')]");
     By InviteNewUsersBtn = By.xpath("//button[contains(text(),'Invite New Users')]");
     By AddUserText = By.xpath("//div[contains(text(),'Add User')]");
+    By EditUserText = By.xpath("//div[contains(text(),'Edit User')]");
     By UserNameInputField = By.xpath("//label[text()='Name']/following-sibling::input");
     By UserEmailInputField = By.xpath("//label[text()='Email']/following-sibling::input");
     By SaveChangeswithoutSendingInviteBtn = By.xpath("//span[text()='Save changes without sending an invite']/parent::button");
     By SuccessfulUpdatedMsg = By.xpath("//div[contains(text(),'Successfully updated user details.')]");
+    By userEmailExistsMsg = By.xpath("//*[contains(text(),'A user with this email already exists for this company.')]");
+    By userMobileNumExistsMsg = By.xpath("//*[contains(text(),'A user with this phone number already exists for this company.')]");
+    By mobileNumAccountExistingMsg = By.xpath("//*[contains(text(),'An account with this phone number already exists.')]");
+    By emailAccountExistingMsg = By.xpath("//*[contains(text(),'An account with this email address already exists.')]");
     By SuccessfulRemovedMsg = By.xpath("//div[contains(text(),'Successfully removed the user')]");
     String UserName = "//span[text()='USERNAME']";
     String UserDetailsEditBtn = "//div[@class='_du1frc list-group-item']//span[text()='USERNAME']/../following-sibling::div[@class='col-2']";
@@ -251,7 +257,7 @@ By input_selectItem = By.xpath("//div[contains(text(),'Search items by name or c
 //    By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']");
 By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/following-sibling::div//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
     By orderApprovalSettingsOverlayTxt = By.xpath("//div[contains(text(),'Order Approval Settings')]");
-    By orderApprovalSettingsOverlayNewlyCreatedOGOptionsEnabledOrDisabled = By.xpath("//div[contains(@class,'themed_select') and contains(text(),'Enabled') or contains(text(),'Disabled')]");
+    By orderApprovalSettingsOverlayNewlyCreatedOGOptionsEnabledOrDisabled = By.xpath("//div[contains(text(),'Newly Created Order Guides')]/following-sibling::div//div[contains(@class,'themed_select') and contains(text(),'Enabled') or contains(text(),'Disabled')]");
     String orderApprovalSettingsOverlayOrderGuideTxt = "//div[contains(text(),'Existing Order Guide(s)')]/following-sibling::div//div[contains(text(),'ORDERGUIDE')]";
     By orderApprovalSettingsOverlayCloseBtn = By.xpath("//span[contains(text(),'×')]");
     String orderGuideOrderApprovalDisabledBtn = "//div[contains(text(),'ORDERGUIDE')]/../following-sibling::*//div[contains(@style, 'rgb(204, 204, 204)')]";
@@ -306,7 +312,10 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By btn_inviteUser = By.xpath("//a[contains(text(), 'Invite Users')]");
     By txt_inviteUserPopUp = By.xpath("//div[contains(text(), 'Invite Users')]");
     By btn_allOption = By.xpath("(//div[@class='my-2 _du1frc d-flex align-items-start' ])[1]");
-    By btn_inviteEmail = By.xpath("//button[contains(text(), 'invite via email')]");
+    By btn_inviteEmail = By.xpath("//button[contains(text(), 'Invite via email')]");
+    By btn_inviteMobileNum = By.xpath("//button[contains(text(),'Invite via text')]");
+    By btn_ReinviteMobileNum = By.xpath("//button[contains(text(),'Resend invite via text')]");
+    By btn_ReinviteEmail = By.xpath("//button[contains(text(),'Resend invite via email')]");
     By btn_moreOption = By.xpath("//button[contains(text(), 'More Options')]");
     By btn_editOrderGuide = By.xpath("//a[contains(text(), 'Edit Order Guide')]");
     By btn_previewCatalog = By.xpath("//a[contains(text(), 'Preview Catalog')]");
@@ -544,7 +553,7 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     By dropdown_optionMarkAsPaid = By.xpath("//a[@class='dropdown-item' and text()='Mark As Paid']");
     By tbx_bookKeeperName = By.xpath("//div[@class='form-group']//input[@class='form-control' and @placeholder='Enter contact person name...']");
     By tbx_bookKeeperEmail = By.xpath("//input[@class='form-control' and @placeholder='Enter contact person email...']");
-    By tbx_bookKeeperMobile = By.xpath("//input[@class='form-control' and @placeholder='Enter contact person mobile phone number...']");
+    By tbx_bookKeeperMobile = By.xpath("//label[text()='Mobile Phone']/following-sibling::input");
     By btn_inviteViaEmail = By.xpath("//button[@class='btn btn-primary btn-block' and text()='Invite via email']");
     String txt_BookKeeperEmailSent = "//div[text()='An invitation was sent to EMAIL.']";
     By tbx_enterNotificationEmail = By.xpath("//input[@class='form-control' and @placeholder='Enter email address']");
@@ -947,6 +956,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.getText(lbl_itemNameList);
     }
     public void clickPlusQryFirstRow() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_increaseQtyFirstRow);
         distributorUI.click(btn_increaseQtyFirstRow);
         distributorUI.waitForCustom(4000);
     }
@@ -1475,6 +1485,16 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         }
         distributorUI.click(btn_setStandingOrder);
     }
+    public void resetStandingOrder(){
+        distributorUI.waitForElementEnabledState(btn_resetStandingOrder,true);
+        distributorUI.waitForClickability(btn_resetStandingOrder);
+        try {
+            distributorUI.waitForCustom(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        distributorUI.click(btn_resetStandingOrder);
+    }
     public boolean isStandingOrderEmailPopupDisplayed(){
         try {
             distributorUI.waitForCustom(4000);
@@ -1501,7 +1521,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(txt_success);
     }
     public void clickOnEditStandingOrder() throws InterruptedException {
-        distributorUI.click(btn_editStandingOrders);
+        distributorUI.clickUsingJavaScript(btn_editStandingOrders);
         distributorUI.waitForCustom(2000);
     }
     public void clickOnRemoveDelivery() {
@@ -1910,6 +1930,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isAddUserOverlayDisplayed(){
         return distributorUI.isDisplayed(AddUserText);
     }
+    public boolean isEditUserOverlayDisplayed(){
+        return distributorUI.isDisplayed(EditUserText);
+    }
     public void sendTextToAddUserOverlayNameField(String Username){
         distributorUI.sendKeys(UserNameInputField,Username);
     }
@@ -1922,6 +1945,18 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isSuccessfullyUpdatedMsgDisplayed(){
         return distributorUI.isDisplayed(SuccessfulUpdatedMsg);
+    }
+    public boolean isUserEmailExistingMsgDisplayed(){
+        return distributorUI.isDisplayed(userEmailExistsMsg);
+    }
+    public boolean isUserMobileNumberExistingMsgDisplayed(){
+        return distributorUI.isDisplayed(userMobileNumExistsMsg);
+    }
+    public boolean isMobileNumberAccountExistingMsgDisplayed(){
+        return distributorUI.isDisplayed(mobileNumAccountExistingMsg);
+    }
+    public boolean isEmailAccountExistingMsgDisplayed(){
+        return distributorUI.isDisplayed(emailAccountExistingMsg);
     }
     public boolean isSuccessfullyRemovedMsgDisplayed(){
         return distributorUI.isDisplayed(SuccessfulRemovedMsg);
@@ -2333,7 +2368,15 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickInviteEmail(){
         distributorUI.click(btn_inviteEmail);
     }
-
+    public void clickInviteMobileNumber(){
+        distributorUI.click(btn_inviteMobileNum);
+    }
+    public void clickReinviteViaText(){
+        distributorUI.click(btn_ReinviteMobileNum);
+    }
+    public void clickReinviteViaEmail(){
+        distributorUI.click(btn_ReinviteEmail);
+    }
     public String getBusinessName(String customerId){
         distributorUI.waitForVisibility(By.xpath(businessName.replace("CUSTOMERID",customerId)));
         return distributorUI.getText(By.xpath(businessName.replace("CUSTOMERID",customerId))).replace("Child", "").trim();
@@ -5192,6 +5235,20 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean getFirstItemNameFrmSearchResultCatalog(String name){
         return distributorUI.isDisplayed(By.xpath(lbl_catalogSearchItemList.replace("NAME", name)));
+    }
+    public String getFormID() {
+        java.util.regex.Pattern FORM_ID = java.util.regex.Pattern.compile("/place_order/\\d+/\\d+/(\\d+)/");
+
+        String url = distributorUI.getCurrentUrl();
+        if (url == null) {
+            return null;
+        }
+
+        java.util.regex.Matcher m = FORM_ID.matcher(url);
+        if (m.find()) {
+            return m.group(1);
+        }
+        return null;
     }
     public void clickOnCreditHold(){
         distributorUI.waitForVisibility(txt_creditHold);

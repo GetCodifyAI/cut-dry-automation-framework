@@ -26,6 +26,11 @@ public class Settings {
     public static boolean isPaySettingsTextDisplayed() throws InterruptedException {
         return settingsPage.isPaySettingsTextDisplayed();
     }
+    public static void refreshThePaySettingIfNotDisplayed() throws InterruptedException {
+        if(!settingsPage.isPaySettingsTextDisplayed()){
+            settingsPage.refreshThePaySettingIfNotDisplayed();
+        }
+    }
     public static void clickOnAddUser() throws InterruptedException {
         settingsPage.clickOnAddUser();
     }

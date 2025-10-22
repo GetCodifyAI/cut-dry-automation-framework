@@ -52,6 +52,7 @@ public class VerifyDpsHaveSpecialItemsOrderSubmissionTest extends TestBase {
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
         Catalog.selectEditFromProductConfig();
         softAssert.assertTrue(Catalog.isSpecialItemDropDownDisplay(),"special item drop down display error");
+        Catalog.setSpecialItemToNoIfYesIsSet();
         Catalog.clickOnSpecialItem(specialItemYes);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");
