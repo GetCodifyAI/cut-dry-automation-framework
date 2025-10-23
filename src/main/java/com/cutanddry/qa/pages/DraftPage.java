@@ -37,7 +37,7 @@ public class DraftPage extends LoginPage{
     By referenceNum = By.xpath("(//tbody/tr[contains(@href, 'place-order') and contains(@href, 'draftId')]//td[3])[1]");
     String pendingApproval = "(//tbody/tr[contains(@href, '/customers/place_order/') and contains(@href, 'draftId')]/td[9]/span[contains(text(), 'STATUS')])[1]";
     String txt_lastDraftDisplay = "(//tbody/tr[contains(@href, '/customers/place_order/') and contains(@href, 'draftId')]/td[8][contains(text(), 'TOTAL')])[1]/../td[1]/div[text()='DATE']";
-
+    String draftItem = "//tbody//td[contains(normalize-space(.),'REFID')]";
 
 
 
@@ -196,6 +196,9 @@ public class DraftPage extends LoginPage{
     public void pendingApprovalDraftClick(String status){
         distributorUI.waitForVisibility(By.xpath(pendingApproval.replace("STATUS", status)));
         distributorUI.click(By.xpath(pendingApproval.replace("STATUS", status)));
+    }
+    public boolean isOrderDraftDisplayed(String RefId){
+        return distributorUI.isDisplayed(By.xpath(draftItem.replace("REFID",RefId)));
     }
     public boolean isDraftOrderReferenceNotDisplayedInOPSide() {
 
