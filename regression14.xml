@@ -10,16 +10,20 @@
         <classes>
             <class name="com.cutanddry.qa.tests.draft.VerifySupplierPortalDraftCountDisplayTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifyZeroDraftCountBadgeHiddenTest"/>
+
             <class name="com.cutanddry.qa.tests.catalog.VerifyHideAvailabilityFilterInPublicCatalogTest"/>
             <!--            TODO: Commenting the since the change was reverted-->
-<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheItemPricesAreNotVisibleInTheEditOrderGuideItemsSectionWhenPriceVisibilityIsHiddenTest"/>-->
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheItemPricesAreNotVisibleInTheEditOrderGuideItemsSectionWhenPriceVisibilityIsHiddenTest"/>
 <!--            <class name="com.cutanddry.qa.tests.catalog_data.VerifyTheItemCannotBeOrderedFromTheOrderGuideWhenStatusIsSetToInactiveTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.catalog_data.VerifyTheItemCannotBeOrderedFromTheOrderGuideWhenStatusIsSetToInactiveOnTheOPSideTest"/>-->
+
             <class name="com.cutanddry.qa.tests.customers.VerifyNewUserCanNotHaveExistingEmailMobileNumberTest"/>
             <class name="com.cutanddry.qa.tests.customers.VerifyNewUserCanNotHaveExistingMobileNumberTest"/>
 
             <class name="com.cutanddry.qa.tests.order_guide.VerifyCreditHoldModalAndBannerDisplayOnFirstOrderSessionTest"/>
             <class name="com.cutanddry.qa.tests.order_guide.VerifyInactiveHoldModalAndBannerDisplayTest"/>
+
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpOrderApprovalsAndRejectionsDisplayedCorrectlyTest"/>
         </classes>
     </test>
 </suite>

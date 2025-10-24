@@ -2,7 +2,6 @@ package com.cutanddry.qa.tests.customer_profile;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
-import com.cutanddry.qa.data.testdata.CustomerProfileData;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
@@ -15,11 +14,12 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyCustomerProfileVisibilityTest extends TestBase{
     static User user;
-    String CustomerCode = "16579";
-    static String nameCus = "209223241";
+    String CustomerCode = "41922";
+    static String nameCus = "52557616";
+    static String businessName = "Nicks Pizza - San Francisco";
     String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    static String dpName = "Independent Foods Co";
 
-    
     @BeforeMethod
     public void setUp() {
         initialization();
@@ -40,7 +40,7 @@ public class VerifyCustomerProfileVisibilityTest extends TestBase{
         String BusinessName = Customer.getBusinessNameFromCustomers(CustomerCode);
 
         Customer.SelectCustomer(CustomerCode);
-        softAssert.assertTrue(Customer.isCustomerProfileDisplayed(BusinessName),"Error in navigation to customer page");
+        softAssert.assertEquals(BusinessName,businessName,"Error in navigation to customer page");
         Customer.clickCusAccountVisibilityOption();
         Customer.clickCusAccountVisibilityDropdown();
         Customer.selectCusAccountHiddenOption();
@@ -50,7 +50,7 @@ public class VerifyCustomerProfileVisibilityTest extends TestBase{
         Login.navigateToLoginAs();
         Login.logInToOperator(nameCus);
         Customer.clickCustomerPortalOrderIcon();
-        softAssert.assertTrue(Customer.isVisibleAddSupplierButton(), "error in visibility");
+        softAssert.assertFalse(Customer.isDistributorVisibleOnOPSide(dpName), "error in visibility");
 
         Login.navigateToDistributorPortal(DistributorName);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
@@ -69,7 +69,7 @@ public class VerifyCustomerProfileVisibilityTest extends TestBase{
         Login.navigateToLoginAs();
         Login.logInToOperator(nameCus);
         Customer.clickCustomerPortalOrderIcon();
-        softAssert.assertTrue(Customer.isOrderGuideVisibleCustomerPortal(), "error in visibility");
+        softAssert.assertTrue(Customer.isDistributorVisibleOnOPSide(dpName), "error in visibility");
         softAssert.assertAll();
     }
 
