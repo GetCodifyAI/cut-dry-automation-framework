@@ -13,7 +13,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyHardOrderMinimumWarningTest extends TestBase {
     static User user;
-    static String customerId = "16579";
+    static String customerId = "34419";
     static String orderMin = "2500000";
     static String defaultOrderMin = "0";
     static String orderMinimumType = "Hard Order Minimum";
@@ -59,7 +59,7 @@ public class VerifyHardOrderMinimumWarningTest extends TestBase {
         Customer.clickOnOrderGuideInProfile();
         itemName = Customer.getItemNameFirstRow();
         Customer.increaseFirstRowQtyByOne();
-        Customer.clickOnDefaultCheckoutButton();
+        Customer.checkoutItemsDist();
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
         softAssert.assertTrue(Customer.isMinOrderBannerDisplayed(),"banner not appearing error");
         Customer.submitOrderMinimum();

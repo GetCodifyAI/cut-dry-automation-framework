@@ -1391,6 +1391,9 @@ public class Customer {
         return customersPage.isAddSupplierButtonVisible();
     }
 
+    public static boolean isDistributorVisibleOnOPSide(String dpName){
+        return customersPage.isDistributorDisplayed(dpName);
+    }
 
     public static void clickCusAccountStatusOption(){customersPage.clickEditStatusIcon();}
     public static void clickCusAccountStatusDropdown(){customersPage.clickStatusDropdown();}
@@ -2205,6 +2208,9 @@ public class Customer {
         if(customersPage.isSubstitutesPopupDisplayedSub()){
             customersPage.clickDoNotSubstitute();
             customersPage.clickSaveSelection();
+        }
+        if(customersPage.isSubstitutesItemPopupDisplayedSub()) {
+            customersPage.clickCloseSub();
         }
         if (customersPage.isOrderMiniumErrorBannerDisplayedSub()){
             dashboardPage.clickOnOrderSettings();

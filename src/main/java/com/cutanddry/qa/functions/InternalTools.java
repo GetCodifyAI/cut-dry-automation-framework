@@ -155,9 +155,9 @@ public class InternalTools {
         internalToolsPage.clickInstacartSponsoredProductAdsToggle(enable);
         internalToolsPage.clickProductAdsSave();
     }
-    public static void ensureBuyerEdgePlatformRebateStatus(boolean enable) throws InterruptedException {
+    public static void ensureBuyerEdgePlatformRebateStatus(boolean enable, String distributor) throws InterruptedException {
         internalToolsPage.clickConfigureSupplier();
-        internalToolsPage.clickOnIndependentCompEditDetails();
+        internalToolsPage.clickOnInternalToolCompanyEditDetails(distributor);
         internalToolsPage.clickOnSponsoredAdsRebates();
         internalToolsPage.clickBuyerEdgePlatformRebateToggle(enable);
         internalToolsPage.clickRebateSave();

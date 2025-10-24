@@ -9,6 +9,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import static com.cutanddry.qa.pages.ApprovalsPage.customersPage;
 
 public class CustomersPage extends LoginPage {
     By tbx_searchCustomers = By.xpath("//input[@placeholder='Search Customers']");
@@ -408,6 +409,7 @@ By sel_tagOption = By.xpath("//div[contains(@class, 'themed_select__option') and
     By btn_cusOrderIcon = By.xpath("//div[text()='Order']");
     By btn_cusAddSupplier = By.xpath("//button[contains(text(),'Add Supplier')]");
     By btn_accountStatus = By.xpath("//div[contains(text(),'Status')]/following-sibling::div//*[@data-icon='pen-to-square']");
+    String supplierPlaceOrderBtnInOP = "//*[normalize-space(text()) = 'DPNAME']//ancestor::td//following::td[contains(normalize-space(.), 'Place Order')]";
     By dropdown_status = By.xpath("(//*[local-name() = 'svg' and @class='css-19bqh2r'])[1]");
     By sel_statusOption = By.xpath("//div[contains(@class,'themed_select__option') and contains(text(),'Inactive')]");
     By btn_statusSave = By.xpath("//button[contains(@class,'mr-2 my-2 btn btn-outline')]");
@@ -1413,6 +1415,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(txt_minOrderBanner,60);
 //        distributorUI.waitForVisibility(txt_minOrderBanner);
         distributorUI.refreshPage();
+        if(customersPage.isSubstitutesPopupDisplayed()){
+            customersPage.clickDoNotSubstitute();
+            customersPage.clickSaveSelection();
+        }
         return distributorUI.isDisplayed(txt_minOrderBanner);
     }
     public boolean isOrderMinPopupDisplayed(){
@@ -2927,6 +2933,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         }
     }
 
+    public boolean isDistributorDisplayed(String DistributorName){
+        return distributorUI.isDisplayed(By.xpath(supplierPlaceOrderBtnInOP.replace("DPNAME",DistributorName)));
+
+    }
     public void loginToDistributorPortal() throws InterruptedException{
         distributorUI.navigateToURL("https://supplier-uat.staging.cutanddry.com/log-in");
     }

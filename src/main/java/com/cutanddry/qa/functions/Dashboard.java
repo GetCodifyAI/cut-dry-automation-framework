@@ -214,4 +214,12 @@ public class Dashboard {
         return dashboardPage.getDraftsBadgeCount();
     }
 
+    public static boolean isInfluenceTabDisplayedInMenuOptions(){
+        return dashboardPage.isInfluenceMenuOptionDisplayed();
+    }
+
+    public static void navigateToInfluenceTab(){
+        dashboardPage.clickInfluenceMenuOption();
+    }
+
 }
