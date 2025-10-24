@@ -41,6 +41,9 @@ public class Orders {
     public static boolean sendToApprovalOverlayDisplayed(){
         return ordersPage.isSubmitForApprovalOverlayDisplayed();
     }
+    public static String getApprovalOrderRefID(){
+        return ordersPage.getApprovalOrderRefID();
+    }
 
     public static void viewOrderInDraft(){
         ordersPage.clickOnViewOrderInDrafts();

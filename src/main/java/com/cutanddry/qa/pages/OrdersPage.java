@@ -9,6 +9,7 @@ public class OrdersPage extends LoginPage{
     By checkOutBtn = By.xpath("//button[@data-for='cartCheckoutButton' and contains(text(),'$')]");
     By submitForApproval = By.xpath("//button[contains(text(),'Submit for Approval')]");
     By sendForApprovaltext = By.xpath("//strong[contains(text(),'Sent for approval!')]");
+    By approvalOrderRefID = By.xpath("//div[contains(normalize-space(text()),'Ref #')]/following-sibling::div");
     By viewOrderInDraft = By.xpath("//button[contains(text(),'View Order in Drafts')]");
     By pendingApprovalText = By.xpath("//span[contains(text(),'Pending Approval')]");
     By selectOrderGuide = By.xpath("//div[contains(text(),'Select Order Guide')]");
@@ -199,6 +200,10 @@ public class OrdersPage extends LoginPage{
 
     public boolean isSubmitForApprovalOverlayDisplayed(){
         return distributorUI.isDisplayed(sendForApprovaltext);
+    }
+
+    public String getApprovalOrderRefID(){
+        return distributorUI.getText(approvalOrderRefID);
     }
 
     public void clickOnViewOrderInDrafts(){

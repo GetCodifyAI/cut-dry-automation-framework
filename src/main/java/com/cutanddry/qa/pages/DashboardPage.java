@@ -71,6 +71,7 @@ public class DashboardPage extends LoginPage{
     By txt_endlessAisle  =By.xpath("//div[text()='Endless Aisle Catalog']");
     By btn_dashboard = By.xpath("//a[@data-tip='Dashboard']");
     String getCustomerBaseValue = "(//*[name()='tspan' and contains(., 'CUSTOMER')]/following-sibling::*[name()='tspan'])[1]";
+    By influenceTab = By.xpath("//a[@data-tip='Influence']");
 
 
     public boolean isDashboardTextDisplayed(){
@@ -403,6 +404,13 @@ public class DashboardPage extends LoginPage{
             }
             return Integer.parseInt(digits);
         }
+    }
+
+    public boolean isInfluenceMenuOptionDisplayed(){
+        return distributorUI.isDisplayed(influenceTab);
+    }
+    public void clickInfluenceMenuOption(){
+        distributorUI.click(influenceTab);
     }
 
 }

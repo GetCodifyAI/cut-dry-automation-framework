@@ -7,12 +7,14 @@ public class ApprovalsPage extends LoginPage{
     By approvalOrder = By.xpath("//tr[contains(@href,'/place-order')][1]");
     By approveAndSubmitBtn = By.xpath("//button[contains(text(),'Approve & Submit Order')]");
     By btn_close = By.xpath("//button[contains(@class, 'close')]/span[text()='×']");
-    By rejectApprovalsBtn = By.xpath("//button[contains(text(),'Reject')]");
+    By rejectApprovalsBtn = By.xpath("(//button[contains(text(),'Reject')])[last()]");
     By approvalCountFromSummeryWidgetTxt = By.xpath("//button[contains(text(),'View All')]/parent::div/div/div[1]");
     By AccountCountFromSummeryWidgetTxt = By.xpath("//button[contains(text(),'View All')]/parent::div/div/div[2]");
     By viewAllButton = By.xpath("//button[contains(text(),'View All')]");
     String pendingCountText = "//div[contains(text(),'RESTUARENTNAME')]/following-sibling::div/div[contains(text(),\"Total Pending\")]";
     By closeApprovalSummeryOverlay = By.xpath("//button//*[local-name()='svg' and @data-icon='xmark']");
+    String approvalOrderElement = "//tbody//td[contains(normalize-space(.),'REFID')]";
+    By rejectApprovalOverlay = By.xpath("//*[contains(text(),'Do you want to reject')]");
 
     static DashboardPage dashboardPage = new DashboardPage();
     static CustomersPage customersPage = new CustomersPage();
@@ -73,4 +75,22 @@ public class ApprovalsPage extends LoginPage{
     public void clickCloseSummeryOverlay(){
         distributorUI.click(closeApprovalSummeryOverlay);
     }
+
+    public boolean isApprovalOrderDisplayed(String refID){
+        return distributorUI.isDisplayed(By.xpath(approvalOrderElement.replace("REFID","refID")));
+    }
+
+    public void clickApprovalOrder(String refID){
+        distributorUI.clickWithScrollAndHover(By.xpath(approvalOrderElement.replace("REFID","refID")));
+    }
+
+    public void clickRejectBtn(){
+        distributorUI.click(rejectApprovalsBtn);
+    }
+
+    public boolean isRejectApprovalOverlayDisplayed(){
+        return distributorUI.isDisplayed(rejectApprovalOverlay);
+    }
+
+
 }

@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import static com.cutanddry.qa.pages.ApprovalsPage.customersPage;
 
 public class CustomersPage extends LoginPage {
     By tbx_searchCustomers = By.xpath("//input[@placeholder='Search Customers']");
@@ -409,6 +410,7 @@ By sel_tagOption = By.xpath("//div[contains(@class, 'themed_select__option') and
     By btn_cusOrderIcon = By.xpath("//div[text()='Order']");
     By btn_cusAddSupplier = By.xpath("//button[contains(text(),'Add Supplier')]");
     By btn_accountStatus = By.xpath("//div[contains(text(),'Status')]/following-sibling::div//*[@data-icon='pen-to-square']");
+    String supplierPlaceOrderBtnInOP = "//*[normalize-space(text()) = 'DPNAME']//ancestor::td//following::td[contains(normalize-space(.), 'Place Order')]";
     By dropdown_status = By.xpath("(//*[local-name() = 'svg' and @class='css-19bqh2r'])[1]");
     By sel_statusOption = By.xpath("//div[contains(@class,'themed_select__option') and contains(text(),'Inactive')]");
     By btn_statusSave = By.xpath("//button[contains(@class,'mr-2 my-2 btn btn-outline')]");
@@ -752,6 +754,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String dropDownOrderGuide =  "(//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'NAME')])[last()]";
     By btn_deleteOrderGuide = By.xpath("//*[contains(text(), 'Delete Order Guide')]");
     String deliveryDateCustomerOrder = "//*[contains(text(),'#') and text()='ID']/../../preceding-sibling::td[1][text()='DATE']";
+    String customerOrder = "//*[contains(text(),'#') and text()='ID']";
     By btn_pickUpDateStable = By.xpath("//div[text()='Pickup Date:']/../following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
     String dynamicToXPathStable = "//div[contains(@class,'react-datepicker__day')]/preceding::div[contains(@class, 'react-datepicker__day') and contains(@aria-disabled, 'false') and text()='DAY']";
     String fulfilmentTag = "//*[contains(text(),'#') and text()='ID']/../../preceding-sibling::td[1]//*[text()='TAG']";
@@ -1417,6 +1420,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(txt_minOrderBanner,60);
 //        distributorUI.waitForVisibility(txt_minOrderBanner);
         distributorUI.refreshPage();
+        if(customersPage.isSubstitutesPopupDisplayed()){
+            customersPage.clickDoNotSubstitute();
+            customersPage.clickSaveSelection();
+        }
         return distributorUI.isDisplayed(txt_minOrderBanner);
     }
     public boolean isOrderMinPopupDisplayed(){
@@ -2931,6 +2938,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         }
     }
 
+    public boolean isDistributorDisplayed(String DistributorName){
+        return distributorUI.isDisplayed(By.xpath(supplierPlaceOrderBtnInOP.replace("DPNAME",DistributorName)));
+
+    }
     public void loginToDistributorPortal() throws InterruptedException{
         distributorUI.navigateToURL("https://supplier-uat.staging.cutanddry.com/log-in");
     }
@@ -4587,6 +4598,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isDeliveryDateCustomerOrderDisplayed(String id , String date){
         return distributorUI.isDisplayed(By.xpath(deliveryDateCustomerOrder.replace("ID", id).replace("DATE",date)));
     }
+    public boolean isCustomerOrderDisplayed(String id){
+        return distributorUI.isDisplayed(By.xpath(customerOrder.replace("ID", id)));
+    }
     public void clickOnPickUpDateStable() throws InterruptedException{
         distributorUI.waitForCustom(4000);
         distributorUI.click(btn_pickUpDateStable);
@@ -5034,7 +5048,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForCustom(2000);
 
     }
-    public boolean isStandingOrdersDeletedIconDisplay(){
+    public boolean isStandingOrdersDeletedIconDisplay() throws InterruptedException {
+        distributorUI.waitForCustom(1000);
         return distributorUI.isDisplayed(btn_deleteStandingOrderIcon);
     }
     public boolean isDeliveryDateLineDisplay(String day, boolean isNextMonth) throws InterruptedException {

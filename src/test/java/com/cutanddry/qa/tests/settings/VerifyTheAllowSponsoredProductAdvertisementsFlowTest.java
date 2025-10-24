@@ -17,6 +17,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheAllowSponsoredProductAdvertisementsFlowTest extends TestBase {
     static User user;
     String distributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String dp = "Independent Foods Co";
 
 
     @BeforeMethod
@@ -52,7 +53,7 @@ public class VerifyTheAllowSponsoredProductAdvertisementsFlowTest extends TestBa
         Login.navigateToInternalToolsPage();
         InternalTools.ensureSponsoredProductAdsStatus(false);
         InternalTools.ensureInstacartSponsoredProductAdsStatus(false);
-        InternalTools.ensureBuyerEdgePlatformRebateStatus(false);
+        InternalTools.ensureBuyerEdgePlatformRebateStatus(false,dp);
         Login.navigateToDistributorPortal(distributorName);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         softAssert.assertFalse(Dashboard.isInfluenceTabDisplayed(),"Influence tab not hidden");
@@ -61,7 +62,7 @@ public class VerifyTheAllowSponsoredProductAdvertisementsFlowTest extends TestBa
         Login.navigateToInternalToolsPage();
         InternalTools.ensureSponsoredProductAdsStatus(true);
         InternalTools.ensureInstacartSponsoredProductAdsStatus(true);
-        InternalTools.ensureBuyerEdgePlatformRebateStatus(true);
+        InternalTools.ensureBuyerEdgePlatformRebateStatus(true,dp);
 
         softAssert.assertAll();
     }

@@ -34,7 +34,7 @@ public class VerifyTheSearchTest extends TestBase{
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
         Customer.searchItemOnOrderGuide(itemName);
-        Customer.addItemFromCatalogIfNotAvailableInOG(itemCode);
+        Customer.addItemFromCatalogIfNotAvailableInOG(itemName);
         softAssert.assertTrue(Customer.getItemNameFirstRow().toLowerCase().contains(itemName.toLowerCase()),"item mismatch");
         Customer.searchItemOnOrderGuide(itemCode);
         softAssert.assertTrue(Customer.getItemNameFirstRow().toLowerCase().contains(itemName.toLowerCase()),"item mismatch");
