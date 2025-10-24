@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import static com.cutanddry.qa.pages.ApprovalsPage.customersPage;
 
@@ -896,6 +897,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String accountOnHoldBanner = "//span[text()='MESSAGE']";
     By txt_inactiveHold = By.xpath("//div[text()='Inactive Hold']");
     By lbl_inactiveHold = By.xpath("//div[text()='Account Holds']/following-sibling::div//span[contains(@class, 'badge') and text()='Inactive Hold']");
+    String catalogFilterTag = "//div[contains(text(),'TAG')]";
+    String catalogListViewSort = "//th//div[text()='SORT']";
+    By catalogListViewItemCode = By.xpath("//tr[@class='_du1frc']/td[1]");
+    String catalogListViewItemName= "//tr[@class='_du1frc']/td[COLUMN]";
 
 
 
@@ -5294,5 +5299,71 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.refreshPage();
         return distributorUI.isDisplayed(lbl_inactiveHold);
     }
+    public boolean isCatalogFilterTagDisplayed(String tag){
+        return distributorUI.isDisplayed(By.xpath(catalogFilterTag.replace("TAG", tag)));
+    }
+    public void clickCatalogListViewSort(String sort)throws InterruptedException{
+        distributorUI.click(By.xpath(catalogListViewSort.replace("SORT",sort)));
+    }
+    public boolean isCatalogListViewSortItemDisplayed(String sort){
+        return distributorUI.isDisplayed(By.xpath(catalogFilterTag.replace("SORT", sort)));
+    }
+    public boolean areFirstThreeItemCodesSortedAscending() {
+
+        List<WebElement> itemCodeElements = driver.findElements(catalogListViewItemCode);
+        List<Integer> itemCodes = new ArrayList<>();
+        int limit = Math.min(3, itemCodeElements.size());
+        for (int i = 0; i < limit; i++) {
+            String codeText = itemCodeElements.get(i).getText().trim();
+            if (!codeText.isEmpty()) {
+                itemCodes.add(Integer.parseInt(codeText));
+            }
+        }
+        for (int i = 0; i < itemCodes.size() - 1; i++) {
+            if (itemCodes.get(i) > itemCodes.get(i + 1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean areFirstFiveItemNamesSortedAscending(String column) {
+        List<WebElement> itemNameElements = driver.findElements(By.xpath(catalogListViewItemName.replace("COLUMN",column)));
+        List<String> itemNames = new ArrayList<>();
+        int limit = Math.min(5, itemNameElements.size());
+        for (int i = 0; i < limit; i++) {
+            String nameText = itemNameElements.get(i).getText().trim();
+            if (!nameText.isEmpty()) {
+                itemNames.add(nameText);
+            }
+        }
+        for (int i = 0; i < itemNames.size() - 1; i++) {
+            if (itemNames.get(i).compareToIgnoreCase(itemNames.get(i + 1)) > 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+    public boolean areFirstFiveItemNamesSortedDescending(String column) {
+        List<WebElement> itemNameElements = driver.findElements(By.xpath(catalogListViewItemName.replace("COLUMN", column)));
+        List<String> itemNames = new ArrayList<>();
+        int limit = Math.min(5, itemNameElements.size());
+
+        for (int i = 0; i < limit; i++) {
+            String nameText = itemNameElements.get(i).getText().trim();
+            if (!nameText.isEmpty()) {
+                itemNames.add(nameText);
+            }
+        }
+
+        for (int i = 0; i < itemNames.size() - 1; i++) {
+            if (itemNames.get(i).compareToIgnoreCase(itemNames.get(i + 1)) < 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 
 }

@@ -24,6 +24,10 @@
             <class name="com.cutanddry.qa.tests.order_guide.VerifyInactiveHoldModalAndBannerDisplayTest"/>
 
             <class name="com.cutanddry.qa.tests.order_approval.VerifyDpOrderApprovalsAndRejectionsDisplayedCorrectlyTest"/>
+
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheOnSaleSortItemsByItemCodeInCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheOnSaleSortItemsByItemNameInCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheOnSaleSortItemsByCategoryInCatalogTest"/>
         </classes>
     </test>
 </suite>
