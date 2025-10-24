@@ -462,7 +462,9 @@ public class Settings {
     public static void clickBuyerEdgePlatformRebateToggle(){
         settingsPage.clickBuyerEdgePlatformRebateToggle();
     }
-
+    public static void AllowRewardAndRebateTags(boolean enable){
+        settingsPage.AllowRewardAndRebateTags(enable);
+    }
     public static void clickOrderReminderToggle(boolean status){
         settingsPage.clickOrderReminderToggle(status);
     }

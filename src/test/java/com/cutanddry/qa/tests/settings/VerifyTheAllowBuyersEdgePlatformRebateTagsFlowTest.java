@@ -17,6 +17,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheAllowBuyersEdgePlatformRebateTagsFlowTest extends TestBase {
     static User user;
     String distributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String dp = "Independent Foods Co";
 
 
     @BeforeMethod
@@ -36,7 +37,7 @@ public class VerifyTheAllowBuyersEdgePlatformRebateTagsFlowTest extends TestBase
         softAssert.assertTrue(Settings.isAdsSettingsTextDisplayed(),"navigation to ads settings error");
 
         Login.navigateToInternalToolsPage();
-        InternalTools.ensureBuyerEdgePlatformRebateStatus(true);
+        InternalTools.ensureBuyerEdgePlatformRebateStatus(true,dp);
         Login.navigateToDistributorPortal(distributorName);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToAdsSettings();
@@ -45,7 +46,7 @@ public class VerifyTheAllowBuyersEdgePlatformRebateTagsFlowTest extends TestBase
         Settings.clickGeneralSettingSaveChanges();
 
         Login.navigateToInternalToolsPage();
-        InternalTools.ensureBuyerEdgePlatformRebateStatus(false);
+        InternalTools.ensureBuyerEdgePlatformRebateStatus(false,dp);
         Login.navigateToDistributorPortal(distributorName);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToAdsSettings();

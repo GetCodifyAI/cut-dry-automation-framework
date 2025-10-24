@@ -1030,6 +1030,18 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForVisibility(buyerEdgePlatformRebateToggle);
         distributorUI.clickUsingJavaScript(buyerEdgePlatformRebateToggle);
     }
+    public void AllowRewardAndRebateTags(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(buyerEdgePlatformRebateToggle).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("rgb(43, 194, 140)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickUsingJavaScript(buyerEdgePlatformRebateToggle);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickUsingJavaScript(buyerEdgePlatformRebateToggle);
+        }
+    }
+
     public void clickOrderReminderToggle(boolean enable) {
 
         String handlePosition = distributorUI.getElement(orderReminderToggleStable).getAttribute("style");
