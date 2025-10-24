@@ -3191,6 +3191,21 @@ public class Customer {
     public static boolean isInactiveHoldSelected(){
         return customersPage.isInactiveHoldSelected();
     }
+    public static boolean isCatalogFilterTagDisplayed(String tag){
+        return customersPage.isCatalogFilterTagDisplayed(tag);
+    }
+    public static void clickCatalogListViewSort(String sort)throws InterruptedException{
+        customersPage.clickCatalogListViewSort(sort);
+    }
+    public static boolean areFirstThreeItemCodesSortedAscending() {
+        return customersPage.areFirstThreeItemCodesSortedAscending();
+    }
+    public static boolean areFirstFiveItemNamesSortedAscending(String column) {
+        return customersPage.areFirstFiveItemNamesSortedAscending(column);
+    }
+    public static boolean areFirstFiveItemNamesSortedDescending(String column) {
+        return customersPage.areFirstFiveItemNamesSortedDescending(column);
+    }
 
 
 }
