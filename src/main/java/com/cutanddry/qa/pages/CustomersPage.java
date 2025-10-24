@@ -5338,11 +5338,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         }
         for (int i = 0; i < itemNames.size() - 1; i++) {
             if (itemNames.get(i).compareToIgnoreCase(itemNames.get(i + 1)) > 0) {
-                return false; // Not in ascending order
+                return false;
             }
         }
 
-        return true; // Sorted A→Z
+        return true;
     }
     public boolean areFirstFiveItemNamesSortedDescending(String column) {
         List<WebElement> itemNameElements = driver.findElements(By.xpath(catalogListViewItemName.replace("COLUMN", column)));
@@ -5357,13 +5357,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         }
 
         for (int i = 0; i < itemNames.size() - 1; i++) {
-            // For descending, check if current < next (A→Z means not descending)
             if (itemNames.get(i).compareToIgnoreCase(itemNames.get(i + 1)) < 0) {
-                return false; // Not in descending order
+                return false;
             }
         }
 
-        return true; // Sorted Z→A
+        return true;
     }
 
 
