@@ -28,6 +28,9 @@
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheOnSaleSortItemsByItemCodeInCatalogTest"/>
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheOnSaleSortItemsByItemNameInCatalogTest"/>
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheOnSaleSortItemsByCategoryInCatalogTest"/>
+
+            <class name="com.cutanddry.qa.tests.influence.VerifyInfluenceNavigationForRebateEnabledDPTest"/>
+            <class name="com.cutanddry.qa.tests.integration.VerifyCashAndCarryDraftCreationTest"/>
         </classes>
     </test>
 </suite>
