@@ -446,7 +446,7 @@ String txt_product = "//div[contains(@class,'_3quvq7 _1vlidrf' ) and contains(tr
     String brandpageLink = "//div[normalize-space(.)='BRANDPAGE']";
     String brandpageText = "//img//following-sibling::div//div[normalize-space(.)='BRANDPAGE']";
     By btn_addToCartPDP = By.xpath("//button[contains(text(), 'Add to Cart')]");
-    By btn_checkOutPDP = By.xpath("//button[@data-for='cartCheckoutButton' and contains(text(),'$')]");
+    static By btn_checkOutPDP = By.xpath("//button[@data-for='cartCheckoutButton' and contains(text(),'$')]");
     By txt_orderConfirmationPopUp = By.xpath("//*[contains(text(), 'Thank you for your order!')]");
     By btn_addOrderGuideHeart = By.xpath("//button[@class='d-flex align-items-center justify-content-center cdbutton w-100 _fousr2 fa-stack btn btn-primary btn-sm' and @data-tip='Add to Order Guide']");
     By btn_catalogToOrderGuide = By.xpath("//span[text()='Order Guide']");
@@ -901,6 +901,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String catalogListViewSort = "//th//div[text()='SORT']";
     By catalogListViewItemCode = By.xpath("//tr[@class='_du1frc']/td[1]");
     String catalogListViewItemName= "//tr[@class='_du1frc']/td[COLUMN]";
+    String catalogFirstItemPrice = "//div[normalize-space(.)='ITEMNAME']/../following::div//span[contains(normalize-space(.),'$')]";
 
 
 
@@ -5365,5 +5366,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return true;
     }
 
+    public double getCatalogFirstItemPrice(String ItemName){
+        String text = distributorUI.getText(By.xpath(catalogFirstItemPrice.replace("ITEMNAME",ItemName)));
+        return Double.parseDouble(text.trim().replace("$", ""));
+    }
 
 }

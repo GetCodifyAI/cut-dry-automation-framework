@@ -281,5 +281,7 @@ public class LoginPage extends TestBase {
         distributorUI.switchToNewTab();
         distributorUI.waitForCustom(3000);
     }
-
+    public void closeCurrentTabAndSwitchToNew(){
+        distributorUI.openNewTabAndClosePreviousTabs();
+    }
 }

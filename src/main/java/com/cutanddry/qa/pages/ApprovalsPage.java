@@ -56,6 +56,15 @@ public class ApprovalsPage extends LoginPage{
             dashboardPage.clickOnApproval();
             if(customersPage.isDuplicatePopupDisplayed()){
                 customersPage.clickYesDuplicatePopup();
+            }if(customersPage.isSubstitutesPopupDisplayedSub()){
+                customersPage.clickDoNotSubstitute();
+                customersPage.clickSaveSelection();
+            }
+            if(customersPage.isSubstitutesItemPopupDisplayedSub()){
+                customersPage.clickCloseSubstituteItemPopup();
+            }
+            if(customersPage.isOrderMinPopupDisplayed()){
+                customersPage.clickOnYes();
             }
         }
     }
@@ -77,11 +86,11 @@ public class ApprovalsPage extends LoginPage{
     }
 
     public boolean isApprovalOrderDisplayed(String refID){
-        return distributorUI.isDisplayed(By.xpath(approvalOrderElement.replace("REFID","refID")));
+        return distributorUI.isDisplayed(By.xpath(approvalOrderElement.replace("REFID",refID)));
     }
 
     public void clickApprovalOrder(String refID){
-        distributorUI.clickWithScrollAndHover(By.xpath(approvalOrderElement.replace("REFID","refID")));
+        distributorUI.clickWithScrollAndHover(By.xpath(approvalOrderElement.replace("REFID",refID)));
     }
 
     public void clickRejectBtn(){

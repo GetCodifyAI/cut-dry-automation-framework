@@ -4,6 +4,7 @@ import com.cutanddry.qa.pages.CustomersPage;
 import com.cutanddry.qa.pages.DashboardPage;
 import com.cutanddry.qa.pages.OrdersPage;
 import com.cutanddry.qa.pages.SettingsPage;
+import org.openqa.selenium.By;
 
 import java.util.Objects;
 
@@ -3214,6 +3215,9 @@ public class Customer {
     }
     public static boolean areFirstFiveItemNamesSortedDescending(String column) {
         return customersPage.areFirstFiveItemNamesSortedDescending(column);
+    }
+    public static double getCatalogFirstItemPrice(String ItemName){
+        return customersPage.getCatalogFirstItemPrice(ItemName);
     }
 
 

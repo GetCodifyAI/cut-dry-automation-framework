@@ -307,7 +307,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
             throw new RuntimeException(e);
         }
     }
-    public boolean isNavigatedToPreviewCatalog() {
+    public boolean isNavigatedToPreviewCatalog() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         return distributorUI.isDisplayed(txt_previewCat);
     }
     public String getItemDetailsFirstRow() throws InterruptedException {

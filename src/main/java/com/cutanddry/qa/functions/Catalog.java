@@ -53,7 +53,7 @@ public class Catalog {
     public static void clickOnPreviewCatalog() {
         catalogPage.clickOnPreviewCatalog();
     }
-    public static boolean isNavigatedToPreviewCatalog() {
+    public static boolean isNavigatedToPreviewCatalog() throws InterruptedException {
         return catalogPage.isNavigatedToPreviewCatalog();
     }
     public static String getItemDetailsFirstRow() throws InterruptedException {

@@ -142,4 +142,7 @@ public class Login {
         loginPage.clickOperator(operator);
         loginPage.clickOnLoginAsClassicAndSwitchToNewTab();
     }
+    public static void closeCurrentTabAndSwitchToNew(){
+       loginPage.closeCurrentTabAndSwitchToNew();
+    }
 }
