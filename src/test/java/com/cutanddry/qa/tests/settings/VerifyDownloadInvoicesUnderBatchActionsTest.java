@@ -28,7 +28,6 @@ public class VerifyDownloadInvoicesUnderBatchActionsTest extends TestBase {
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "Login failed - user not navigated to dashboard");
 
-        Dashboard.navigateToSettingsPage();
         Dashboard.navigateToBillingSettings();
         softAssert.assertTrue(Settings.isBillingSettingsTextDisplayed(), "Failed to navigate to Billing Settings");
 
