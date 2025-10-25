@@ -1139,6 +1139,12 @@ public class Customer {
         return customersPage.isOrderDraftDisplayed();
     }
     public static void clickDeleteDraft(){customersPage.clickDeleteDraft();}
+    public static boolean isDraftRetentionMessageDisplayed(){
+        return customersPage.isDraftRetentionMessageDisplayed();
+    }
+    public static String getDraftRetentionMessageText(){
+        return customersPage.getDraftRetentionMessageText();
+    }
 
 
     public static void enterStopDuration(String num) throws InterruptedException {

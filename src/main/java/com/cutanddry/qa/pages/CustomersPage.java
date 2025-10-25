@@ -341,6 +341,7 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
 //    By txt_draftStatus = By.xpath("//tr[2]//td[3][contains(text(), 'just now')]");
 By txt_draftStatus = By.xpath("//tr[2]//td[3][contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'), 'seconds ago')   or contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'), 'just now')]");
     By btn_deleteDraft = By.xpath("(//button[contains(@class, '_47hinf btn btn-link')])[1]");
+    By txt_draftRetentionMessage = By.xpath("//div[contains(text(), 'Drafts created by you') and contains(text(), 'will be automatically deleted after')]");
     By lbl_stopDuration = By.xpath("//div[text()='Stop Duration']/following-sibling::div//input");
     By lbl_keyDropNum = By.xpath("//div[text()='Key Drop Number']/following-sibling::div//input");
     By lbl_deliveryNotes = By.xpath("//div[text()='Delivery Notes']/following-sibling::div/textarea");
@@ -2497,6 +2498,17 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickDeleteDraft(){
         distributorUI.click(btn_deleteDraft);
+    }
+    public boolean isDraftRetentionMessageDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_draftRetentionMessage);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_draftRetentionMessage);
+    }
+    public String getDraftRetentionMessageText(){
+        return distributorUI.getText(txt_draftRetentionMessage);
     }
 
     public void enterStopDuration(String msg) throws InterruptedException {
