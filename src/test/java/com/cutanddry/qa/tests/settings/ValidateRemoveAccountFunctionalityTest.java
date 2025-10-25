@@ -27,18 +27,13 @@ public class ValidateRemoveAccountFunctionalityTest extends TestBase {
 
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "Login failed - user not navigated to dashboard");
-
         Dashboard.navigateToBillingSettings();
         softAssert.assertTrue(Settings.isBillingSettingsTextDisplayed(), "Failed to navigate to Billing Settings");
-
         softAssert.assertTrue(Settings.isPaymentMethodAdded(), "Remove Account button not displayed - no payment method exists");
-
         Settings.clickOnRemoveAcc();
         softAssert.assertTrue(Settings.isAreYouSurePopupDisplayed(), "Are you sure popup not displayed");
-
         Settings.clickYes();
         softAssert.assertTrue(Settings.isRemovePaymentSuccessPopupDisplayed(), "Payment method removal success popup not displayed");
-
         Settings.clickOK();
         softAssert.assertTrue(Settings.isAddPaymentMethodBtnDisplayed(), "Add Payment Method button not displayed after removal");
 

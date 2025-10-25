@@ -126,6 +126,11 @@ public class Settings {
         }
         settingsPage.clickOnAddPaymentMethod();
     }
+    public static void removePaymentMethod() throws InterruptedException {
+        settingsPage.clickOnRemoveAcc();
+        settingsPage.clickYes();
+        Settings.clickOK();
+    }
     public static void clickOnAddBank() {
         settingsPage.clickOnAddBank();
     }

@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyDownloadInvoicesUnderBatchActionsTest extends TestBase {
+public class VerifyBillingSettingsDownloadInvoicesUnderBatchActionsTest extends TestBase {
     static User user;
 
     @BeforeMethod
@@ -22,21 +22,16 @@ public class VerifyDownloadInvoicesUnderBatchActionsTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-840")
-    public void verifyDownloadInvoicesUnderBatchActions() throws InterruptedException {
+    public void verifyBillingSettingsDownloadInvoicesUnderBatchActions() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
 
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "Login failed - user not navigated to dashboard");
-
         Dashboard.navigateToBillingSettings();
         softAssert.assertTrue(Settings.isBillingSettingsTextDisplayed(), "Failed to navigate to Billing Settings");
-
         Settings.selectInvoice();
-
         Settings.clickOnBatchActions();
-
         softAssert.assertTrue(Settings.isDownloadInvoiceClickable(), "Download Invoices option not clickable in Batch Actions");
-
         Settings.clickOnDownloadInvoices();
 
         softAssert.assertAll();
