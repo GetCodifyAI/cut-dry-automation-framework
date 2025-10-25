@@ -541,4 +541,10 @@ public class Settings {
     public static void enterEligibleCountForCutDry(String tag,String num)throws InterruptedException{
         settingsPage.enterEligibleCountForCutDry(tag,num);
     }
+    public static boolean isAddPaymentMethodBtnDisplayed() throws InterruptedException {
+        return settingsPage.isAddPaymentMethodBtnDisplayed();
+    }
+    public static void clickOnBatchActions() {
+        settingsPage.clickOnBatchActions();
+    }
 }
