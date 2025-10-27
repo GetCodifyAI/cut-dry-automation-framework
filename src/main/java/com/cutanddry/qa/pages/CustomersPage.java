@@ -902,7 +902,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By catalogListViewItemCode = By.xpath("//tr[@class='_du1frc']/td[1]");
     String catalogListViewItemName= "//tr[@class='_du1frc']/td[COLUMN]";
     String catalogFirstItemPrice = "//div[normalize-space(.)='ITEMNAME']/../following::div//span[contains(normalize-space(.),'$')]";
-
+    By tooManyOrdersText = By.xpath("//*[contains(text(),'You are trying to create too many orders too fast!')]");
 
 
 
@@ -5371,4 +5371,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return Double.parseDouble(text.trim().replace("$", ""));
     }
 
+    public boolean isTooManyOrdersErrorDisplayed(){
+        return distributorUI.isDisplayed(tooManyOrdersText);
+    }
 }
