@@ -247,6 +247,17 @@ public class Customer {
             }
             customersPage.clickOnBack();
         }
+        if(customersPage.isTooManyOrdersErrorDisplayed()){
+            customersPage.clickOK();
+            if(customersPage.isSubstitutesPopupDisplayedSub()){
+                customersPage.clickDoNotSubstitute();
+                customersPage.clickSaveSelection();
+            }
+            if(customersPage.isSubstitutesItemPopupDisplayedSub()) {
+                customersPage.clickCloseSub();
+            }
+            customersPage.submitOrder();
+        }
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
         }
