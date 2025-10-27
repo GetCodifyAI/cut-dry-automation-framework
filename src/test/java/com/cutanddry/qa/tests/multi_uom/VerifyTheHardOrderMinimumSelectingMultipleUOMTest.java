@@ -27,6 +27,7 @@ public class VerifyTheHardOrderMinimumSelectingMultipleUOMTest extends TestBase 
     static String defaultOrderMin = "0";
     static String orderMinimumType = "Hard Order Minimum";
     static String orderMinInternal = "300000";
+    static String orderMinimumSetting = "Use Global Settings";
 
     @BeforeMethod
     public void setUp() {
@@ -66,7 +67,11 @@ public class VerifyTheHardOrderMinimumSelectingMultipleUOMTest extends TestBase 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
-        Customer.clickOnOrderGuide(customerId);
+        Customer.SelectCustomer(customerId);
+        Customer.SelectOrderMinimumFromProfile(orderMinimumSetting);
+        Customer.ifHasHoldsRemoveHoldsFromCustomer();
+
+        Customer.clickOnOrderGuideInProfile();
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(searchItemCode);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");

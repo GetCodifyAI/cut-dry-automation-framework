@@ -11,6 +11,9 @@ public class CashAndCarry {
     public static boolean isUserNavigatedToCashAndCarry(){
         return cashAndCarryAppPage.isMarketPlaceTextDisplayed();
     }
+    public static boolean isUserNavigatedToAllStarCashAndCarry(){
+        return cashAndCarryAppPage.isWarehousePickupsTextDisplayed();
+    }
     public static void enterFullName(String name){
         cashAndCarryAppPage.enterFullName(name);
     }
@@ -66,6 +69,12 @@ public class CashAndCarry {
     }
     public static boolean isProductDetailsDisplayedDicarlo(){
         return cashAndCarryAppPage.isProductDetailsDisplayedDicarlo();
+    }
+    public static boolean isOrderSubmittedScreenDisplayedForAllStar(){
+        return cashAndCarryAppPage.isOrderSubmittedScreenDisplayed();
+    }
+    public static boolean isCheckoutBtnEnabled(){
+        return cashAndCarryAppPage.isCheckoutBtnEnabled();
     }
 
 }
