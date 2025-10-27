@@ -791,11 +791,19 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForCustom(3000);
         return distributorUI.isDisplayed(btn_removeAcc);
     }
+    public boolean isAddPaymentMethodBtnDisplayed() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        return distributorUI.isDisplayed(btn_addPaymentMethod);
+    }
     public boolean isPaymentMethodAvailable(){
         return distributorUI.isDisplayed(btn_removeAcc);
     }
     public boolean isRemovePaymentMethodAvailable(){
         return distributorUI.isDisplayed(btn_removeAcc);
+    }
+    public void clickOnBatchActions() {
+        distributorUI.waitForClickability(btn_batchActions);
+        distributorUI.click(btn_batchActions);
     }
     public void clickCreditCard(){
         distributorUI.click(lbl_addCreditCard);
