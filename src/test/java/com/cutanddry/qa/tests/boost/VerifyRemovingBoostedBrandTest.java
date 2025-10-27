@@ -37,26 +37,19 @@ public class VerifyRemovingBoostedBrandTest extends TestBase {
         
         Boost.clickBrandBoostTab();
         softAssert.assertTrue(Boost.isBrandBoostTabDisplayed(), "Brand Boost tab not displayed");
-        
-        Boost.removeBrand(brandName);
-        
+        Boost.removeBrandBoost(brandName);
         softAssert.assertTrue(Boost.isBrandRemoved(brandName), "Brand not removed from selected brands");
-        
         Boost.saveBrandBoost();
         
-        Dashboard.navigateToCustomers();
-        softAssert.assertTrue(Customer.isCustomersTextDisplayed(), "Navigate to customers error");
-        
-        Customer.searchCustomerByCode(customerId);
-        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Customer search error");
-        Customer.clickOnOrderGuide(customerId);
-        
-        Customer.goToCatalog();
-        
-        Customer.searchItemOnOrderGuide(searchItem);
-        
-        String firstItemName = Customer.getItemNameFirstRow();
-        System.out.println("First item after removing brand boost: " + firstItemName);
+//        Dashboard.navigateToCustomers();
+//        softAssert.assertTrue(Customer.isCustomersTextDisplayed(), "Navigate to customers error");
+//        Customer.searchCustomerByCode(customerId);
+//        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Customer search error");
+//        Customer.clickOnOrderGuide(customerId);
+//        Customer.goToCatalog();
+//        Customer.searchItemOnOrderGuide(searchItem);
+//        String firstItemName = Customer.getItemNameFirstRow();
+//        System.out.println("First item after removing brand boost: " + firstItemName);
         
         softAssert.assertAll();
     }

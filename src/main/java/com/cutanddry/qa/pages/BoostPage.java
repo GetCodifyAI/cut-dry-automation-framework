@@ -112,13 +112,13 @@ public class BoostPage extends LoginPage {
     By DisplayStatusToggleStable1 = By.xpath("//div[contains(text(), 'Display Status')]/div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     By tab_brandBoost = By.xpath("//a[text()='Brand Boost']");
     By txt_brandBoost = By.xpath("//h3[text()='Brand Boost']");
-    By input_selectBrand = By.xpath("//input[@type='text' and @tabindex='0']");
-    String option_brand = "//div[text()='BRANDNAME']";
+    By input_selectBrand = By.xpath("//div[text()='Select brand']/following-sibling::div//input");
+    String option_brand = "(//div[text()='BRANDNAME'])[last()]";
     By btn_addBrand = By.xpath("//button[text()='Add']");
     By btn_saveBrandBoost = By.xpath("//button[text()='Save']");
     String txt_selectedBrand = "//div[contains(text(),'BRANDNAME')]";
     String btn_boostLevel = "//button[text()='LEVEL']";
-    String btn_removeBrand = "//button[@aria-label='Remove brand']";
+    String btn_removeBrand = "//div[text()='NAME']/following-sibling::button[@aria-label='Remove brand']";
 
 
 
@@ -580,8 +580,8 @@ public class BoostPage extends LoginPage {
     }
     
     public void selectBrand(String brandName) throws InterruptedException {
-        distributorUI.click(input_selectBrand);
-        distributorUI.waitForCustom(1000);
+        distributorUI.clickUsingJavaScript(input_selectBrand);
+        distributorUI.sendKeys(input_selectBrand,brandName);
         distributorUI.click(By.xpath(option_brand.replace("BRANDNAME", brandName)));
     }
     
@@ -600,9 +600,9 @@ public class BoostPage extends LoginPage {
     public void clickSaveBrandBoost() {
         distributorUI.click(btn_saveBrandBoost);
     }
-    
-    public void removeBrand(String brandName) {
-        distributorUI.click(By.xpath(btn_removeBrand));
+
+    public void removeBrandBoost(String brandName) {
+        distributorUI.click(By.xpath(btn_removeBrand.replace("NAME",brandName)));
     }
     
     public boolean isBrandRemoved(String brandName) {

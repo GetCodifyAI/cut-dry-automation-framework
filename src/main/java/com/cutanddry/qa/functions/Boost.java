@@ -344,8 +344,8 @@ public class Boost {
         boostPage.clickSaveBrandBoost();
     }
     
-    public static void removeBrand(String brandName){
-        boostPage.removeBrand(brandName);
+    public static void removeBrandBoost(String brandName){
+        boostPage.removeBrandBoost(brandName);
     }
     
     public static boolean isBrandRemoved(String brandName){

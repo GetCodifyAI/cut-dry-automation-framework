@@ -36,35 +36,25 @@ public class VerifyAddingBoostedBrandTest extends TestBase {
         
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(), "Navigate to boost error");
-        
+
         Boost.clickBrandBoostTab();
         softAssert.assertTrue(Boost.isBrandBoostTabDisplayed(), "Brand Boost tab not displayed");
-        
+
         Boost.selectBrand(brandName);
-        
         Boost.clickAddBrand();
-        
         softAssert.assertTrue(Boost.isBrandAdded(brandName), "Brand not added to selected brands");
-        
         Boost.selectBoostLevel(brandName, boostLevel);
-        
         Boost.saveBrandBoost();
         
         Dashboard.navigateToCustomers();
         softAssert.assertTrue(Customer.isCustomersTextDisplayed(), "Navigate to customers error");
-        
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Customer search error");
         Customer.clickOnOrderGuide(customerId);
-        
         Customer.goToCatalog();
-        
-        Customer.searchItemOnOrderGuide(searchItem);
-        
-        String firstItemName = Customer.getItemNameFirstRow();
-        softAssert.assertTrue(firstItemName.contains(expectedTopItem), 
-            "Expected boosted item '" + expectedTopItem + "' not on top. Found: " + firstItemName);
-        
+        Customer.searchItemOnCatalog(searchItem);
+        Thread.sleep(5000);
+        softAssert.assertTrue(Customer.getFirstItemNameBrandFrmSearchResults(expectedTopItem, brandName), "Item not found");
         softAssert.assertAll();
     }
 
