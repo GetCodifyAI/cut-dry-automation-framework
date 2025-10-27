@@ -21,6 +21,7 @@ public class VerifyTheSelectingMultiUOMFromCashAndCarryFlowTest extends TestBase
     String uom1 = CatalogData.MULTI_UOM_1;
     String uom2 = CatalogData.MULTI_UOM_2;
     static double itemPriceUOM1 ,itemPriceUOM2,totalPDPItemPrice;
+    int randomNum = (int) (Math.random() * 5)+1 ;
 
     @BeforeMethod
     public void setUp() {
@@ -40,7 +41,8 @@ public class VerifyTheSelectingMultiUOMFromCashAndCarryFlowTest extends TestBase
         itemPriceUOM1 = CashAndCarry.getDicarloPDPPriceUOM(uom1);
         itemPriceUOM2 = CashAndCarry.getDicarloPDPPriceUOM(uom2);
         CashAndCarry.clickDicarloAddToCartPlusIcon(1, uom1);
-        CashAndCarry.clickDicarloAddToCartPlusIcon(1, uom2);
+        CashAndCarry.clickDicarloAddToCartPlusIcon(randomNum, uom2);
+        Thread.sleep(3000);
         totalPDPItemPrice = Customer.getItemPriceOnCheckoutButtonViaPDP();
         softAssert.assertEquals(Math.round(totalPDPItemPrice * 100.0) / 100.0,
                 ((Math.round(itemPriceUOM1 * 100.0) / 100.0)+(Math.round(itemPriceUOM2 * 100.0) / 100.0)),0.001, "The item has not been selected.");

@@ -4,6 +4,7 @@ import com.cutanddry.qa.pages.CustomersPage;
 import com.cutanddry.qa.pages.DashboardPage;
 import com.cutanddry.qa.pages.OrdersPage;
 import com.cutanddry.qa.pages.SettingsPage;
+import org.openqa.selenium.By;
 
 import java.util.Objects;
 
@@ -3199,6 +3200,24 @@ public class Customer {
     }
     public static boolean isInactiveHoldSelected(){
         return customersPage.isInactiveHoldSelected();
+    }
+    public static boolean isCatalogFilterTagDisplayed(String tag){
+        return customersPage.isCatalogFilterTagDisplayed(tag);
+    }
+    public static void clickCatalogListViewSort(String sort)throws InterruptedException{
+        customersPage.clickCatalogListViewSort(sort);
+    }
+    public static boolean areFirstThreeItemCodesSortedAscending() {
+        return customersPage.areFirstThreeItemCodesSortedAscending();
+    }
+    public static boolean areFirstFiveItemNamesSortedAscending(String column) {
+        return customersPage.areFirstFiveItemNamesSortedAscending(column);
+    }
+    public static boolean areFirstFiveItemNamesSortedDescending(String column) {
+        return customersPage.areFirstFiveItemNamesSortedDescending(column);
+    }
+    public static double getCatalogFirstItemPrice(String ItemName){
+        return customersPage.getCatalogFirstItemPrice(ItemName);
     }
 
 

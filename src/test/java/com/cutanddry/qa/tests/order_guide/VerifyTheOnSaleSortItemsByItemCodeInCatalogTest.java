@@ -6,16 +6,19 @@ import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
-import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheCustomerAccountRemoveHardHoldTest extends TestBase {
+public class VerifyTheOnSaleSortItemsByItemCodeInCatalogTest extends TestBase {
     static User user;
-    static String customerId = "15285";
+    static String customerId = "16579";
+    static String onSaleFilter = "On Sale";
+    static String onSaleFilterTag = "Sale";
+    static String sortItemCode = "Item Code";
+
 
     @BeforeMethod
     public void setUp(){
@@ -23,24 +26,25 @@ public class VerifyTheCustomerAccountRemoveHardHoldTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-610")
-    public void VerifyTheCustomerAccountRemoveHardHold() throws InterruptedException {
-        String itemName;
+    @Test(groups = "DOT-TC-1548")
+    public void VerifyTheOnSaleSortItemsByItemCodeInCatalog() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
-        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
-        Customer.clickOnCustomerCode(customerId);
-        Customer.clickOnEditAccHolds();
-        Customer.clickOnAccDropdown();
-        Customer.clickOnNone();
-        Customer.clickOnSave();
-        softAssert.assertTrue(Customer.isRemoveHoldPopupDisplayed(),"remove hard hold popup error");
-        Customer.clickOnYes();
-        softAssert.assertTrue(Customer.isNoneSelected(),"acc none select error");
+        Customer.clickOnOrderGuide(customerId);
+
+        Customer.goToCatalog();
+        softAssert.assertTrue(Customer.isCatalogFilterDisplayed(onSaleFilter),"catalog filter not display");
+        Customer.clickCatalogFilter(onSaleFilter);
+        softAssert.assertTrue(Customer.isCatalogFilterTagDisplayed(onSaleFilterTag),"catalog filter tag not display");
+        Customer.clickCatalogListView();
+        Customer.clickCatalogListViewSort(sortItemCode);
+        softAssert.assertTrue(Customer.areFirstThreeItemCodesSortedAscending(),"error in item code sort");
         softAssert.assertAll();
     }
 

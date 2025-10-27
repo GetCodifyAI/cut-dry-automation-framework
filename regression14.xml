@@ -24,6 +24,20 @@
             <class name="com.cutanddry.qa.tests.order_guide.VerifyInactiveHoldModalAndBannerDisplayTest"/>
 
             <class name="com.cutanddry.qa.tests.order_approval.VerifyDpOrderApprovalsAndRejectionsDisplayedCorrectlyTest"/>
+
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheOnSaleSortItemsByItemCodeInCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheOnSaleSortItemsByItemNameInCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheOnSaleSortItemsByCategoryInCatalogTest"/>
+
+            <class name="com.cutanddry.qa.tests.settings.ValidateAddPaymentMethodForAddBankAccountTest"/>
+            <class name="com.cutanddry.qa.tests.settings.ValidateRemoveAccountFunctionalityTest"/>
+
+            <!--            TODO: Commenting this since the xml 6 has a testcase covering the same scenario-->
+<!--            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingsDownloadInvoicesUnderBatchActionsTest"/>-->
+
+
+            <class name="com.cutanddry.qa.tests.influence.VerifyInfluenceNavigationForRebateEnabledDPTest"/>
+            <class name="com.cutanddry.qa.tests.integration.VerifyCashAndCarryDraftCreationTest"/>
         </classes>
     </test>
 </suite>
