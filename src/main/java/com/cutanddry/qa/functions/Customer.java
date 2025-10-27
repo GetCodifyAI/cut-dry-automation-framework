@@ -1418,6 +1418,8 @@ public class Customer {
 
     public static void refreshCustomersPage(){customersPage.refreshCustomersPage();}
 
+    public static void refreshDraftsTab(){customersPage.refreshCustomersPage();}
+
     public static boolean isSearchedCustomerNotDisplayedText(){
         return customersPage.isCustomerNotMatchTextDisplayed();
     }

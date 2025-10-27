@@ -30,9 +30,10 @@ public class LoginPage extends TestBase {
     By lbl_suuplierPortalVendorData = By.xpath("//a[contains(text(), 'Link') and ancestor::th[contains(., 'SupplierPortalVendorData')]]");
     By txt_key = By.xpath("//input[@name='data_key']");
     By txt_value = By.xpath("//input[@name='data_val']");
+    String removeNode = "//*[contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'NODENAME')]/parent::*/following::th[3]//button[translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='x']";
     By btn_setData = By.xpath("//button[contains(text(), 'Set data')]");
     By lbl_loginAsDist = By.xpath("//h5[text()='Distributor Portal Quick Links']/following-sibling::div//div[text()='Select User...']/following::input[@type='text'][1]");
-    String txt_distributor = "//div[contains(@class, 'themed_select__option') and contains(text(), 'NAME')]";
+    String txt_distributor = "//div[contains(@class, 'themed_select__option') and contains(text(), \"NAME\")]";
     By btn_loginAsDis = By.xpath("//a[contains(text(), 'Login As (supplier)')]");
     By InternalToolsBtn = By.xpath("//a[contains(text(),'Internal Tools') and contains(@class,'active nav-link')]");
     By lbl_loginAsCustomer = By.xpath("//button[contains(text(),'Re-Index')]/following-sibling::div//div[contains(text(),'Select')]/following::input[@type='text'][1]");
@@ -124,6 +125,10 @@ public class LoginPage extends TestBase {
         distributorUI.sendKeys(txt_key,keyName);
         distributorUI.sendKeys(txt_value,valueName);
         distributorUI.click(btn_setData);
+    }
+    public void removeSetNodeKey(String nodeKey){
+        distributorUI.click(By.xpath(removeNode.replace("NODENAME",nodeKey)));
+        distributorUI.acceptAlert();
     }
     public void navigateToDistributorPortal(String name) {
         distributorUI.navigateToURL(Constants.LOGIN_AS);

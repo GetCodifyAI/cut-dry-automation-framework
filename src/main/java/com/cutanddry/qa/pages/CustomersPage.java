@@ -2508,6 +2508,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(txt_draftRetentionMessage);
     }
     public String getDraftRetentionMessageText(){
+        distributorUI.waitForVisibility(txt_draftRetentionMessage);
         return distributorUI.getText(txt_draftRetentionMessage);
     }
 

@@ -34,6 +34,7 @@
 
             <!--            TODO: Commenting this since the xml 6 has a testcase covering the same scenario-->
 <!--            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingsDownloadInvoicesUnderBatchActionsTest"/>-->
+            <class name="com.cutanddry.qa.tests.customers.VerifyDraftRetentionPeriodTest"/>
 
         </classes>
     </test>
