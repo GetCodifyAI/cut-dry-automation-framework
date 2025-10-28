@@ -38,6 +38,7 @@
 
             <class name="com.cutanddry.qa.tests.influence.VerifyInfluenceNavigationForRebateEnabledDPTest"/>
             <class name="com.cutanddry.qa.tests.integration.VerifyCashAndCarryDraftCreationTest"/>
+            <class name="com.cutanddry.qa.tests.integration.Verify24HourSnapshotLastSuccessfulSyncGraphAndDataTest"/>
         </classes>
     </test>
 </suite>
