@@ -3230,6 +3230,9 @@ public class Customer {
     public static double getCatalogFirstItemPrice(String ItemName){
         return customersPage.getCatalogFirstItemPrice(ItemName);
     }
+    public static boolean getFirstItemNameBrandFrmSearchResults(String name,String brand){
+        return customersPage.getFirstItemNameBrandFrmSearchResults(name,brand);
+    }
 
 
 }
