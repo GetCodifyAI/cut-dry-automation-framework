@@ -76,4 +76,17 @@ public class Integration {
     public static String getLastSyncFromTable(String syncName) {
         return integrationPage.getLastSyncFromTable(syncName);
     }
+
+    public static void selectDate(String Date){
+       integrationPage.selectDate(Date);
+    }
+
+    public static void selectSyncType(String Type){
+        integrationPage.selectSyncType(Type);
+    }
+
+    public static void selectSyncStatus(String Status){
+        integrationPage.selectSyncStatus(Status);
+    }
+
 }

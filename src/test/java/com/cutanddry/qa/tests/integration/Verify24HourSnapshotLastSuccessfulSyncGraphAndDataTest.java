@@ -20,6 +20,8 @@ public class Verify24HourSnapshotLastSuccessfulSyncGraphAndDataTest extends Test
     String Catalog = "Catalog";
     String Customer = "Customer";
     String Terms = "Terms";
+    String DateOption = "This Week";
+    String SyncStatus = "Completed";
 
     @BeforeMethod
     public void setUp(){
@@ -61,9 +63,16 @@ public class Verify24HourSnapshotLastSuccessfulSyncGraphAndDataTest extends Test
         String invoiceTimestamp = Integration.getInvoiceSyncTimestamp();
         String termsTimestamp = Integration.getTermsSyncTimestamp();
 
+        Integration.selectDate(DateOption);
+        Integration.selectSyncStatus(SyncStatus);
+
+        Integration.selectSyncType(Catalog);
         String catalogSyncEndTimeFromTable = Integration.getLastSyncFromTable(Catalog);
+        Integration.selectSyncType(Customer);
         String customerSyncEndTimeFromTable = Integration.getLastSyncFromTable(Customer);
+        Integration.selectSyncType(Invoice);
         String invoiceSyncEndTimeFromTable = Integration.getLastSyncFromTable(Invoice);
+        Integration.selectSyncType(Terms);
         String termsSyncEndTimeFromTable = Integration.getLastSyncFromTable(Terms);
 
 

@@ -20,6 +20,10 @@ public class IntegrationPage extends LoginPage {
     By table_integration = By.xpath("//table");
     By txt_integrationStatus = By.xpath("//*[contains(text(), 'Integration Status')]");
     String syncEndTimeFromTable = "(//tr/td[contains(text(),'SYNCNAME')]/following::td/span[contains(text(),'Completed')])[1]/../../td[5]";
+    By dateFilter = By.xpath("//*[contains(text(),'Date:')]/following::div[4]");
+    By syncType = By.xpath("//*[contains(text(),'Sync Type:')]/following::div[4]");
+    By status = By.xpath("//*[contains(text(),'Status:')]/following::div[4]");
+    String filterOption = "(//div[contains(text(),'OPTION')])[last()]";
     
 
     public void clickOnIntegration() {
@@ -95,8 +99,25 @@ public class IntegrationPage extends LoginPage {
     }
 
     public String getLastSyncFromTable(String syncName){
-        distributorUI.scrollToElementTillFound(By.xpath(syncEndTimeFromTable.replace("SYNCNAME",syncName)));
         return distributorUI.getText(By.xpath(syncEndTimeFromTable.replace("SYNCNAME",syncName)));
+    }
+
+    public void selectDate(String Date){
+        distributorUI.scrollToElementTillFound(dateFilter);
+        distributorUI.click(dateFilter);
+        distributorUI.click(By.xpath(filterOption.replace("OPTION",Date)));
+    }
+
+    public void selectSyncType(String Type){
+        distributorUI.scrollToElementTillFound(syncType);
+        distributorUI.click(syncType);
+        distributorUI.click(By.xpath(filterOption.replace("OPTION",Type)));
+    }
+
+    public void selectSyncStatus(String Status){
+        distributorUI.scrollToElementTillFound(status);
+        distributorUI.click(status);
+        distributorUI.click(By.xpath(filterOption.replace("OPTION",Status)));
     }
 
 
