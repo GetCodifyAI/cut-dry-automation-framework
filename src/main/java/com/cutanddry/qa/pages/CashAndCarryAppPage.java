@@ -117,6 +117,7 @@ public class CashAndCarryAppPage extends TestBase {
         return distributorUI.isDisplayed(txt_transactionRejectPopup);
     }
     public boolean isPaymentSucessfullyScreenDisplayed(){
+        distributorUI.waitForVisibility(orderSucessfullyPlacedTxt);
         return distributorUI.isDisplayed(orderSucessfullyPlacedTxt);
     }
     public boolean isOrderSubmittedScreenDisplayed(){
