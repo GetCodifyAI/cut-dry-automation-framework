@@ -140,7 +140,9 @@ String DeliveryDateSelect = "(//div[contains(@class,'themed_select__option')])[D
         return distributorUI.countElements(VoiceUploadProcessingText);
     }
 
-    public void ClickAddLineBtnOnDraftOrderReviewPage(){
+    public void ClickAddLineBtnOnDraftOrderReviewPage() throws InterruptedException {
+        distributorUI.scrollToElement(AddLineBtn);
+        distributorUI.waitForCustom(3000);
         distributorUI.click(AddLineBtn);
     }
 
@@ -178,8 +180,8 @@ String DeliveryDateSelect = "(//div[contains(@class,'themed_select__option')])[D
         return distributorUI.isDisplayed(ItemAddDeleteSucessfulTxt);
     }
 
-    public void ClickOnItemName(){
-        distributorUI.waitForVisibility(ItemNameTxt);
+    public void ClickOnItemName() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.click(ItemNameTxt);
     }
 
