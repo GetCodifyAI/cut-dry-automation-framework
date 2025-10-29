@@ -44,21 +44,16 @@ public class PlaceOrdersFromMultipleOrderGuidesTest extends TestBase {
             "Customer with code " + customerCode + " not found in search results");
 
         Customer.clickOnOrderGuide(customerCode);
-        softAssert.assertTrue(Customer.isOrderGuideTextDisplayed(), 
+        softAssert.assertTrue(Customer.isOrderGuideTextDisplay(), 
             "Order Guide not displayed after clicking Order Guide button");
 
-        Customer.clickOnMoreOptions();
-        Customer.clickOnCreate();
-
-        Customer.typeOrderGuideName(newOrderGuideName);
-        Customer.clickSubmitOrderGuide();
+        Customer.goToCreatePopup();
+        Customer.createOrderGuide(newOrderGuideName);
 
         softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(), 
             "Edit Order Guide screen not displayed after creating new order guide");
-        Customer.clickUploadAList();
-        Customer.giveFilePath(filePath);
-        Customer.clickNext();
-        Customer.clickConfirm();
+        Customer.createOrderByUploading();
+        Customer.uploadFile(filePath);
 
         softAssert.assertTrue(Customer.isOrderGuideCreateSuccessPopupDisplayed(), 
             "Order guide upload success popup not displayed");
@@ -84,13 +79,13 @@ public class PlaceOrdersFromMultipleOrderGuidesTest extends TestBase {
             "Thank you for your order popup not displayed - order submission failed from new OG");
 
         Dashboard.navigateToOrders();
-        softAssert.assertTrue(Orders.isUserNavigatedToOrders(), 
+        softAssert.assertTrue(Orders.isUserNavigatedToOrder(), 
             "Failed to navigate to Order History");
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerCode);
         Customer.clickOnOrderGuide(customerCode);
-        softAssert.assertTrue(Customer.isOrderGuideTextDisplayed(), 
+        softAssert.assertTrue(Customer.isOrderGuideTextDisplay(), 
             "Order Guide not displayed when navigating back");
 
         Customer.selectNewlyCreatedOrderGuide(existingOrderGuideName);
@@ -110,7 +105,7 @@ public class PlaceOrdersFromMultipleOrderGuidesTest extends TestBase {
             "Thank you for your order popup not displayed - order submission failed from existing OG");
 
         Dashboard.navigateToOrders();
-        softAssert.assertTrue(Orders.isUserNavigatedToOrders(), 
+        softAssert.assertTrue(Orders.isUserNavigatedToOrder(), 
             "Failed to navigate to Order History after second order");
 
         softAssert.assertAll();
