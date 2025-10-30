@@ -71,6 +71,7 @@
             <class name="com.cutanddry.qa.tests.team.UpdateUserWithExistingUserReferenceTest" />
             
             <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderSummaryBannerDisplaysOnSimpleListViewTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.PlaceOrdersFromMultipleOrderGuidesTest" />
         </classes>
     </test>
 </suite>
