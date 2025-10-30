@@ -5378,4 +5378,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean getFirstItemNameBrandFrmSearchResults(String name,String brand){
         return distributorUI.isDisplayed(By.xpath(catalogSearchItemName.replace("NAME", name).replace("BRAND",brand)));
     }
+
+    public void setItemQtyFirstRow(String quantity) throws InterruptedException {
+        distributorUI.waitForVisibility(tbx_itemQuantityinFirstRow);
+        distributorUI.sendKeys(tbx_itemQuantityinFirstRow, quantity);
+        distributorUI.waitForCustom(2000);
+    }
 }

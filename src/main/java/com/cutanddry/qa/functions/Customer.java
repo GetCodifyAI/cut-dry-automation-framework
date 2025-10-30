@@ -3234,6 +3234,9 @@ public class Customer {
         return customersPage.getFirstItemNameBrandFrmSearchResults(name,brand);
     }
 
+    public static void setItemQtyFirstRow(String quantity) throws InterruptedException {
+        customersPage.setItemQtyFirstRow(quantity);
+    }
 
 }
 
