@@ -469,6 +469,9 @@ public class Customer {
     public static void clickOnOrdersTab(){
         customersPage.clickOnOrdersTab();
     }
+    public static boolean isItemsDisplayedInsideOrderCorrectly(String itemName){
+        return customersPage.isItemsDisplayedInsideOrder(itemName);
+    }
     public static boolean isStandingOrdersDisplayed(){
         return customersPage.isStandingOrdersDisplayed();
     }

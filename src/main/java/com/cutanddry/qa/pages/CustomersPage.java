@@ -904,7 +904,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String catalogFirstItemPrice = "//div[normalize-space(.)='ITEMNAME']/../following::div//span[contains(normalize-space(.),'$')]";
     By tooManyOrdersText = By.xpath("//*[contains(text(),'You are trying to create too many orders too fast!')]");
     String catalogSearchItemName = "((//div[contains(@class,'card-deck')]//div[   contains(., 'NAME')   and   contains(., 'BRAND') ])[last()])[1]";
-
+    String orderItems = "//div[normalize-space(text())=\'ITEMNAME\']";
 
 
 
@@ -5378,4 +5378,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean getFirstItemNameBrandFrmSearchResults(String name,String brand){
         return distributorUI.isDisplayed(By.xpath(catalogSearchItemName.replace("NAME", name).replace("BRAND",brand)));
     }
+    public boolean isItemsDisplayedInsideOrder(String ItemName){
+        return distributorUI.isDisplayed(By.xpath(orderItems.replace("ITEMNAME",ItemName)));
+    }
+
+
 }
