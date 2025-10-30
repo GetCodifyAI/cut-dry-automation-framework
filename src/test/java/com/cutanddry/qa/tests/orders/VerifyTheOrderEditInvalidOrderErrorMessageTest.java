@@ -21,11 +21,11 @@ import java.time.format.DateTimeFormatter;
 public class VerifyTheOrderEditInvalidOrderErrorMessageTest extends TestBase {
     static User user;
     static String DP = "222826632 - Eshan - Mar Pacific";
-    static String customerId = "DAVIEN03";
+    static String customerId = "DAVIEN01";
     static String searchItemCode = "205626941";
     static String itemName = "Angel City Cold Brew Concentrate Bib";
     static String orderId;
-    static String customerCode = "487417810";
+    static String customerCode = "487310251";
     int maxAttempts = 7;
     static String orderGuide = "Dv - Westminister";
 
