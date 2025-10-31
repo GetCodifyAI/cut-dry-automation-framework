@@ -24,6 +24,7 @@ public class VerifyThatOnceInOfflineModeTheUserCanAddUpdateItemsToTheCartTest ex
     static String CompanyName = OfflineOrderingData.SUPPLIER_NAME;
     static String itemName;
     static double itemPrice;
+    static String OrderGuideName =OfflineOrderingData.ORDER_GUIDE_NAME;
 
 
     @BeforeMethod
@@ -52,6 +53,8 @@ public class VerifyThatOnceInOfflineModeTheUserCanAddUpdateItemsToTheCartTest ex
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId);
+        Customer.clickOGDropdown();
+        Customer.selectNewlyCreatedOrderGuide(OrderGuideName);
 
         Customer.expandMoreOptionsDropdown();
         Customer.clickSwitchToOfflineMode();

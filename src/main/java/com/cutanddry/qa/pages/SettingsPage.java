@@ -165,6 +165,7 @@ public class SettingsPage extends LoginPage{
     By lbl_technicalContact = By.xpath("//div[contains(text(),'Technical Contacts')]/../following-sibling::div[1]//input[contains(@placeholder,'email')]");
     String invalidContactPopUp = "//h2[text()='MESSAGE']";
     By txt_customerRestriction =By.xpath("//div[contains(text(),'Customer Restrictions')]");
+    By txt_rebatesAllowedColumn = By.xpath("//th[contains(text(),'Rebates Allowed')]");
     By sponsorProdAdsToggle = By.xpath("//div[contains(text(), 'Allow Sponsored Product Advertisements')]/../../following-sibling::div//div[@class='react-switch-bg']");
     By generalSettingSaveChanges = By.xpath("(//button[text()='Save'])[1]");
     By buyerEdgePlatformRebateToggle = By.xpath("//div[contains(text(), 'Rebate Tags')]/../../following-sibling::div//div[@class='react-switch-bg']");
@@ -1026,6 +1027,9 @@ public class SettingsPage extends LoginPage{
         }
         distributorUI.waitForCustom(4000);*/
         return distributorUI.isDisplayed(txt_customerRestriction);
+    }
+    public boolean isRebatesAllowedColumnDisplayed(){
+        return distributorUI.isDisplayed(txt_rebatesAllowedColumn);
     }
     public void clickSponsorProdAdsToggle(){
         distributorUI.waitForVisibility(sponsorProdAdsToggle);
