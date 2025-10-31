@@ -19,6 +19,7 @@ public class VerifyDeletePaymentMethodInCustomerInvoicesTest extends TestBase {
     String AccountNumber = CustomerInvoiceData.ACCOUNT_NUMBER;
     String RoutingNumber = CustomerInvoiceData.ROUTING_NUMBER;
     String AccountType = CustomerInvoiceData.ACCOUNT_TYPE;
+    String AccountNote = CustomerInvoiceData.ACCOUNT_NOTE;
 
     @BeforeMethod
     public void setUp() {
@@ -45,13 +46,14 @@ public class VerifyDeletePaymentMethodInCustomerInvoicesTest extends TestBase {
         Customer.typeAccountNumber(AccountNumber);
         Customer.typeRoutingNumber(RoutingNumber);
         Customer.selectAccountType(AccountType);
+        Customer.enterBankAccountNote(AccountNote);
         Customer.clickBtnNext();
         softAssert.assertTrue(Customer.isPaymentMethodAddedSuccessfully(), "There has been an error adding the payment method");
         Customer.clickOK();
 
         // Delete the payment method in customer invoice test flow
         Customer.editPaymentMethod();
-        Customer.clickOnTrashCan();
+        Customer.clickOnTrashCanOfTheSpecificPaymentMethodByNote(AccountNote);
         Customer.clickOnYes();
         softAssert.assertTrue(Customer.isPaymentMethodRemovedDisplayed(), "Message is not displayed");
         Customer.clickOK();

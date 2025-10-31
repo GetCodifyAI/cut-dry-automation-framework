@@ -26,6 +26,7 @@ public class VerifyAddCustomerPaymentMethodTest extends TestBase {
     String AccountType = CustomerInvoiceData.ACCOUNT_TYPE;
     String DistributorName = CustomerData.DISTRIBUTOR_NAME_IFC;
     String NodeStatus = CustomerData.NODE_STATUS1;
+    String AccountNote = CustomerInvoiceData.ACCOUNT_NOTE2;
 
 
     @BeforeMethod
@@ -51,6 +52,7 @@ public class VerifyAddCustomerPaymentMethodTest extends TestBase {
         Customer.typeAccountNumber(AccountNumber);
         Customer.typeRoutingNumber(RoutingNumber);
         Customer.selectAccountType(AccountType);
+        Customer.enterBankAccountNote(AccountNote);
         Customer.clickBtnNext();
         softAssert.assertTrue(Customer.isPaymentMethodAddedSuccessfully(), "There has been an error adding the payment method");
         Customer.clickOK();
@@ -66,7 +68,7 @@ public class VerifyAddCustomerPaymentMethodTest extends TestBase {
         Pay.clickSearchCustomer(customerName);
         softAssert.assertTrue(Pay.isCustomerInvoiceSectionDisplayed(customerName),"navigate customer invoice section error");
         Customer.editPaymentMethod();
-        Customer.clickOnTrashCan();
+        Customer.clickOnTrashCanOfTheSpecificPaymentMethodByNote(AccountNote);
         Customer.clickOnYes();
         softAssert.assertTrue(Customer.isPaymentMethodRemovedDisplayed(), "Message is not displayed");
         Customer.clickOK();

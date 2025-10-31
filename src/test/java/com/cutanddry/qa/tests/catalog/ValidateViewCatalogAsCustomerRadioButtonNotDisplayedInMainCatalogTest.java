@@ -14,7 +14,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class ValidateTheViewCatalogAsCustomerRadioButtonInMainCatalogTest extends TestBase {
+public class ValidateViewCatalogAsCustomerRadioButtonNotDisplayedInMainCatalogTest extends TestBase {
     static User user;
 
 
@@ -25,7 +25,7 @@ public class ValidateTheViewCatalogAsCustomerRadioButtonInMainCatalogTest extend
     }
 
     @Test(groups = "DOT-TC-760")
-    public void ValidateTheViewCatalogAsCustomerRadioButtonInMainCatalog() throws InterruptedException {
+    public void ValidateViewCatalogAsCustomerRadioButtonIsNotDisplayedInMainCatalog() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
@@ -33,8 +33,7 @@ public class ValidateTheViewCatalogAsCustomerRadioButtonInMainCatalogTest extend
         Assert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.clickOnPreviewCatalog();
         Assert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
-        Customer.clickViewCatalogAsCustomer();
-        softAssert.assertTrue(Customer.isProprietaryItemOptionDisplayed(),"view catalog as distributor is error");
+        softAssert.assertFalse(Customer.isViewCatalogAsCustomerBtnDisplayed(),"view catalog as customer button is displayed");
         softAssert.assertAll();
     }
 

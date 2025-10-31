@@ -30,7 +30,7 @@ public class VerifyTheExportOrderGuidesTest extends TestBase {
         Dashboard.navigateToCustomers();
         softAssert.assertTrue(Customer.isCustomersTextDisplayed(),"customer section not display");
         Customer.clickManageCustomers();
-        Customer.clickExportOrderGuides();
+        Customer.clickDownloadOrderGuides();
         softAssert.assertTrue(Customer.isExportOrderGuidesPopUpDisplayed(),"Export order guides pop up not display");
         Customer.clickConfirm();
         softAssert.assertTrue(Customer.isGeneratingReportPopUpDisplayed(),"generating report pop up not display");
