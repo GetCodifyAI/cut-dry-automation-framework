@@ -165,6 +165,7 @@ public class SettingsPage extends LoginPage{
     By lbl_technicalContact = By.xpath("//div[contains(text(),'Technical Contacts')]/../following-sibling::div[1]//input[contains(@placeholder,'email')]");
     String invalidContactPopUp = "//h2[text()='MESSAGE']";
     By txt_customerRestriction =By.xpath("//div[contains(text(),'Customer Restrictions')]");
+    By txt_rebatesAllowedColumn = By.xpath("//th[contains(text(),'Rebates Allowed')]");
     By sponsorProdAdsToggle = By.xpath("//div[contains(text(), 'Allow Sponsored Product Advertisements')]/../../following-sibling::div//div[@class='react-switch-bg']");
     By generalSettingSaveChanges = By.xpath("(//button[text()='Save'])[1]");
     By buyerEdgePlatformRebateToggle = By.xpath("//div[contains(text(), 'Rebate Tags')]/../../following-sibling::div//div[@class='react-switch-bg']");
@@ -791,11 +792,19 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForCustom(3000);
         return distributorUI.isDisplayed(btn_removeAcc);
     }
+    public boolean isAddPaymentMethodBtnDisplayed() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        return distributorUI.isDisplayed(btn_addPaymentMethod);
+    }
     public boolean isPaymentMethodAvailable(){
         return distributorUI.isDisplayed(btn_removeAcc);
     }
     public boolean isRemovePaymentMethodAvailable(){
         return distributorUI.isDisplayed(btn_removeAcc);
+    }
+    public void clickOnBatchActions() {
+        distributorUI.waitForClickability(btn_batchActions);
+        distributorUI.click(btn_batchActions);
     }
     public void clickCreditCard(){
         distributorUI.click(lbl_addCreditCard);
@@ -1019,6 +1028,9 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForCustom(4000);*/
         return distributorUI.isDisplayed(txt_customerRestriction);
     }
+    public boolean isRebatesAllowedColumnDisplayed(){
+        return distributorUI.isDisplayed(txt_rebatesAllowedColumn);
+    }
     public void clickSponsorProdAdsToggle(){
         distributorUI.waitForVisibility(sponsorProdAdsToggle);
         distributorUI.clickUsingJavaScript(sponsorProdAdsToggle);
@@ -1030,6 +1042,18 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForVisibility(buyerEdgePlatformRebateToggle);
         distributorUI.clickUsingJavaScript(buyerEdgePlatformRebateToggle);
     }
+    public void AllowRewardAndRebateTags(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(buyerEdgePlatformRebateToggle).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("rgb(43, 194, 140)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickUsingJavaScript(buyerEdgePlatformRebateToggle);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickUsingJavaScript(buyerEdgePlatformRebateToggle);
+        }
+    }
+
     public void clickOrderReminderToggle(boolean enable) {
 
         String handlePosition = distributorUI.getElement(orderReminderToggleStable).getAttribute("style");

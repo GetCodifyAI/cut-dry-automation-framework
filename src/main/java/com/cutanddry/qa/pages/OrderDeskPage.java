@@ -48,6 +48,7 @@ String DeliveryDateSelect = "(//div[contains(@class,'themed_select__option')])[D
     By anyOrderTxt = By.xpath("//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'quantity')]");
     By SubmittedOrderPageReViewBtn = By.xpath("(//div[contains(@class, '_10q9czs row')]//div//a[text()='View' and contains(@href,'/order-desk')])[last()]");
     By SubmitTxt = By.xpath("//*[contains(text(),'Submit Order')]");
+    By changesSavedTxt = By.xpath("//*[contains(text(),'Saved changes')]");
 
     public boolean isOrderDeskTextDisplayed(){
         try{
@@ -99,13 +100,13 @@ String DeliveryDateSelect = "(//div[contains(@class,'themed_select__option')])[D
     }
 
     public void clickOnSaveDraftBtn(){
+        distributorUI.click(SaveDraftBtn);
         if (distributorUI.isDisplayed(anyOrderTxt)) {
             distributorUI.click(anyOrderTxt);
         } else {
             distributorUI.click(SubmitTxt);
             distributorUI.click(DeleteConfirmationOverlayYesBtn);
         }
-        distributorUI.click(SaveDraftBtn);
         try {
             distributorUI.waitForCustom(4000);
         } catch (InterruptedException e) {
@@ -140,7 +141,9 @@ String DeliveryDateSelect = "(//div[contains(@class,'themed_select__option')])[D
         return distributorUI.countElements(VoiceUploadProcessingText);
     }
 
-    public void ClickAddLineBtnOnDraftOrderReviewPage(){
+    public void ClickAddLineBtnOnDraftOrderReviewPage() throws InterruptedException {
+        distributorUI.scrollToElement(AddLineBtn);
+        distributorUI.waitForCustom(3000);
         distributorUI.click(AddLineBtn);
     }
 
@@ -175,11 +178,16 @@ String DeliveryDateSelect = "(//div[contains(@class,'themed_select__option')])[D
     }
 
     public boolean isSucessfullySavedtextisDisplayed(){
-        return distributorUI.isDisplayed(ItemAddDeleteSucessfulTxt);
+        if(distributorUI.isDisplayed(ItemAddDeleteSucessfulTxt)){
+            return distributorUI.isDisplayed(ItemAddDeleteSucessfulTxt);
+        } else if (!distributorUI.isElementEnabled(SaveDraftBtn)) {
+            return distributorUI.isDisplayed(changesSavedTxt);
+        }
+        return false;
     }
 
-    public void ClickOnItemName(){
-        distributorUI.waitForVisibility(ItemNameTxt);
+    public void ClickOnItemName() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.click(ItemNameTxt);
     }
 
@@ -198,12 +206,14 @@ String DeliveryDateSelect = "(//div[contains(@class,'themed_select__option')])[D
         distributorUI.click(SwapConfirmBtn);
     }
 
-    public void SelectCustomer(){
+    public void SelectCustomer() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         distributorUI.click(CustomerSelectionDropdown);
         distributorUI.selectRandomOptionFromDropDown(CustomerName);
     }
 
     public void SelectLocation(){
+        distributorUI.waitForVisibility(LocationSelectionDropdown);
         distributorUI.click(LocationSelectionDropdown);
         distributorUI.selectRandomOptionFromDropDown(LocationName);
     }

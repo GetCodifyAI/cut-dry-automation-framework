@@ -24,6 +24,7 @@ public class VerifyTheFilteringInvoicesByStatusTest extends TestBase {
     static String status_scheduled = PayInvoiceData.STATUS_SCHEDULED;
     static String status_processing = PayInvoiceData.STATUS_PROCESSING;
     static String status_paid = PayInvoiceData.STATUS_PAID;
+    static String DistributerName = "Hillcrest";
 
 
     @BeforeMethod
@@ -35,7 +36,9 @@ public class VerifyTheFilteringInvoicesByStatusTest extends TestBase {
     @Test(groups = "DOT-TC-879")
     public void VerifyTheFilteringInvoicesByStatus() throws InterruptedException {
         softAssert = new SoftAssert();
-        Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
+        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Login.navigateToDistributorPortal(DistributerName);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
 
         Dashboard.navigateToPay();

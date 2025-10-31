@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheCustomerAccountRemoveHardHoldTest extends TestBase {
     static User user;
-    static String customerId = "16579";
+    static String customerId = "15285";
 
     @BeforeMethod
     public void setUp(){

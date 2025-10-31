@@ -4,6 +4,7 @@ import com.cutanddry.qa.pages.CustomersPage;
 import com.cutanddry.qa.pages.DashboardPage;
 import com.cutanddry.qa.pages.OrdersPage;
 import com.cutanddry.qa.pages.SettingsPage;
+import org.openqa.selenium.By;
 
 import java.util.Objects;
 
@@ -246,6 +247,17 @@ public class Customer {
             }
             customersPage.clickOnBack();
         }
+        if(customersPage.isTooManyOrdersErrorDisplayed()){
+            customersPage.clickOK();
+            if(customersPage.isSubstitutesPopupDisplayedSub()){
+                customersPage.clickDoNotSubstitute();
+                customersPage.clickSaveSelection();
+            }
+            if(customersPage.isSubstitutesItemPopupDisplayedSub()) {
+                customersPage.clickCloseSub();
+            }
+            customersPage.submitOrder();
+        }
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
         }
@@ -456,6 +468,9 @@ public class Customer {
     }
     public static void clickOnOrdersTab(){
         customersPage.clickOnOrdersTab();
+    }
+    public static boolean isItemsDisplayedInsideOrderCorrectly(String itemName){
+        return customersPage.isItemsDisplayedInsideOrder(itemName);
     }
     public static boolean isStandingOrdersDisplayed(){
         return customersPage.isStandingOrdersDisplayed();
@@ -1022,7 +1037,7 @@ public class Customer {
         return customersPage.isSalespersonNameDisplayed(salesperson);
     }
     public static void clickManageCustomers(){customersPage.clickManageCustomers();}
-    public static void clickExportCustomers(){customersPage.clickExportCustomers();}
+    public static void clickDownloadCustomerList(){customersPage.clickDownloadCustomerList();}
     public static boolean isExportCustomersPopUpDisplayed(){
         return customersPage.isExportCustomersPopUpDisplayed();
     }
@@ -1030,7 +1045,7 @@ public class Customer {
     public static boolean isGeneratingReportPopUpDisplayed(){
         return customersPage.isGeneratingReportPopUpDisplayed();
     }
-    public static void clickExportOrderGuides(){customersPage.clickExportOrderGuides();}
+    public static void clickDownloadOrderGuides(){customersPage.clickDownloadOrderGuides();}
     public static boolean isExportOrderGuidesPopUpDisplayed(){
         return customersPage.isExportOrderGuidesPopUpDisplayed();
     }
@@ -1391,6 +1406,9 @@ public class Customer {
         return customersPage.isAddSupplierButtonVisible();
     }
 
+    public static boolean isDistributorVisibleOnOPSide(String dpName){
+        return customersPage.isDistributorDisplayed(dpName);
+    }
 
     public static void clickCusAccountStatusOption(){customersPage.clickEditStatusIcon();}
     public static void clickCusAccountStatusDropdown(){customersPage.clickStatusDropdown();}
@@ -1468,6 +1486,9 @@ public class Customer {
     }
     public static void clickClearAllFilters(){customersPage.clickClearAllFilters();}
     public static void clickViewCatalogAsCustomer(){customersPage.clickRadioButton();}
+    public static boolean isViewCatalogAsCustomerBtnDisplayed(){
+        return customersPage.isViewCatalogAsCustomerBtnDisplayed();
+    }
     public static void clickOnProduct(String name){
         customersPage.clickOnProduct(name);
     }
@@ -1620,6 +1641,10 @@ public class Customer {
         customersPage.selectAccountType(accountType);
     }
 
+    public static void enterBankAccountNote(String Note){
+        customersPage.enterBankAccountNumber(Note);
+    }
+
     public static void clickBtnNext(){
         customersPage.clickNext();
     }
@@ -1638,6 +1663,10 @@ public class Customer {
 
     public static void clickOnTrashCan(){
         customersPage.clickOnTrashCan();
+    }
+
+    public static void clickOnTrashCanOfTheSpecificPaymentMethodByNote(String Note){
+        customersPage.clickOnSpecificTrashCanByNote(Note);
     }
 
     public static boolean isPaymentMethodRemovedDisplayed() throws InterruptedException {
@@ -2205,6 +2234,9 @@ public class Customer {
         if(customersPage.isSubstitutesPopupDisplayedSub()){
             customersPage.clickDoNotSubstitute();
             customersPage.clickSaveSelection();
+        }
+        if(customersPage.isSubstitutesItemPopupDisplayedSub()) {
+            customersPage.clickCloseSub();
         }
         if (customersPage.isOrderMiniumErrorBannerDisplayedSub()){
             dashboardPage.clickOnOrderSettings();
@@ -3193,6 +3225,27 @@ public class Customer {
     }
     public static boolean isInactiveHoldSelected(){
         return customersPage.isInactiveHoldSelected();
+    }
+    public static boolean isCatalogFilterTagDisplayed(String tag){
+        return customersPage.isCatalogFilterTagDisplayed(tag);
+    }
+    public static void clickCatalogListViewSort(String sort)throws InterruptedException{
+        customersPage.clickCatalogListViewSort(sort);
+    }
+    public static boolean areFirstThreeItemCodesSortedAscending() {
+        return customersPage.areFirstThreeItemCodesSortedAscending();
+    }
+    public static boolean areFirstFiveItemNamesSortedAscending(String column) {
+        return customersPage.areFirstFiveItemNamesSortedAscending(column);
+    }
+    public static boolean areFirstFiveItemNamesSortedDescending(String column) {
+        return customersPage.areFirstFiveItemNamesSortedDescending(column);
+    }
+    public static double getCatalogFirstItemPrice(String ItemName){
+        return customersPage.getCatalogFirstItemPrice(ItemName);
+    }
+    public static boolean getFirstItemNameBrandFrmSearchResults(String name,String brand){
+        return customersPage.getFirstItemNameBrandFrmSearchResults(name,brand);
     }
 
 

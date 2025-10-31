@@ -15,7 +15,7 @@ import static io.restassured.RestAssured.given;
 
 public class AioAPIHelper {
     private static final String ADD_CASE_TO_CYCLE = "/project/{projectKey}/testcycle/{cycleKey}/testcase/{caseKey}";
-
+    private static final String GET_TEST_CASE_DETAIL = "/project/{projectKey}/testcase/{caseKey}/detail";
     private static final String GET_CYCLE_DETAILS = "/project/{projectKey}/testcycle/{cycleKey}/detail";
     private static final String CREATE_CYCLE = "/project/{projectKey}/testcycle/detail";
     private static final String MARK_CASE = "project/{projectKey}/testcycle/{cycleKey}/testcase/{caseKey}/testrun?createNewRun={createNewRun}";
@@ -107,6 +107,11 @@ public class AioAPIHelper {
         return null;
     }
 
+
+    public static Response getTestCaseDetail(String projectKey, String caseKey) {
+        Response response = doGet(GET_TEST_CASE_DETAIL, projectKey, caseKey);
+        return response;
+    }
 
     public static Response doGet(String path, String ...pathParams) {
         Response response = given(defaultRequestSpec).when().get(path,pathParams).andReturn();

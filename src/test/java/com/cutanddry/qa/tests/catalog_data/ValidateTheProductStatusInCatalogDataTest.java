@@ -42,6 +42,7 @@ public class ValidateTheProductStatusInCatalogDataTest extends TestBase {
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.selectItemStatus(All);
         Catalog.selectStatusInactive();
+        Catalog.searchItemInCatalog(itemCode);
         softAssert.assertEquals(Catalog.getProductStatusFromCatalogProductGrid(itemCode),InActive,"Error displaying product status");
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");

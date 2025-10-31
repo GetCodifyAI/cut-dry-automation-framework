@@ -36,6 +36,7 @@ public class ValidateTheViewCatalogAsCustomerRadioButtonTest extends TestBase {
         Customer.goToCatalog();
         Customer.clickSection();
         Customer.clickCategory();
+        softAssert.assertTrue(Customer.isViewCatalogAsCustomerBtnDisplayed(),"view catalog as customer button is displayed");
         Customer.clickViewCatalogAsCustomer();
         softAssert.assertAll();
     }

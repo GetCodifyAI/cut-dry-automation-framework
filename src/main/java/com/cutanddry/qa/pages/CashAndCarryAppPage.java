@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 
 public class CashAndCarryAppPage extends TestBase {
     By txt_marketPlace = By.xpath("//div[contains(text(),'Marketplace')]");
+    By txt_warehousePickup = By.xpath("//div[contains(text(),'Warehouse Pickup')]");
     By lbl_enterFullName = By.xpath("//label[text()='Full Name']/following-sibling::input");
     By lbl_enterEmail = By.xpath("//label[text()='Email']/following-sibling::input");
     By lbl_enterMobilePhone = By.xpath("//label[text()='Mobile Phone']/following-sibling::input");
@@ -24,6 +25,7 @@ public class CashAndCarryAppPage extends TestBase {
     By txt_transactionRejectPopup = By.xpath("//h2[contains(text(),'Transaction was rejected')]");
     By lbl_productDetailsDicarlo = By.xpath("//div[text()='Product Details']");
     By orderSucessfullyPlacedTxt = By.xpath("//div[contains(text(),'Thank you for your DiCarlo Marketplace Order.')]");
+    By orderSubmittedMsgForAllStarDisplayed = By.xpath("//div[contains(text(),'Thank you for your All Star Specialties Warehouse Pickup Order.')]");
 
     public void navigateToCashAndCarryApp(String url){
         distributorUI.navigateToURL(url);
@@ -35,6 +37,10 @@ public class CashAndCarryAppPage extends TestBase {
             return false;
         }
         return distributorUI.isDisplayed(txt_marketPlace);
+    }
+    public boolean isWarehousePickupsTextDisplayed() {
+        distributorUI.waitForVisibility(txt_warehousePickup);
+        return distributorUI.isDisplayed(txt_warehousePickup);
     }
     public void enterFullName(String name){
         distributorUI.sendKeys(lbl_enterFullName,name);
@@ -69,9 +75,9 @@ public class CashAndCarryAppPage extends TestBase {
     }
     public void submitOrder() throws InterruptedException {
         distributorUI.waitForCustom(2000);
+        distributorUI.waitForVisibility(btn_submitOrder);
         distributorUI.waitForClickability(btn_submitOrder);
         distributorUI.click(btn_submitOrder);
-        distributorUI.waitForVisibility(btn_submitOrder);
     }
     public boolean isInvalidCardDetailsPopupDisplayed(){
         return distributorUI.isDisplayed(txt_invalidCardPopup);
@@ -111,7 +117,11 @@ public class CashAndCarryAppPage extends TestBase {
         return distributorUI.isDisplayed(txt_transactionRejectPopup);
     }
     public boolean isPaymentSucessfullyScreenDisplayed(){
+        distributorUI.waitForVisibility(orderSucessfullyPlacedTxt);
         return distributorUI.isDisplayed(orderSucessfullyPlacedTxt);
+    }
+    public boolean isOrderSubmittedScreenDisplayed(){
+        return distributorUI.isDisplayed(orderSubmittedMsgForAllStarDisplayed);
     }
     public boolean isProductDetailsDisplayedDicarlo(){
         try {
@@ -121,5 +131,7 @@ public class CashAndCarryAppPage extends TestBase {
         }
         return distributorUI.isDisplayed(lbl_productDetailsDicarlo);
     }
-
+    public boolean isCheckoutBtnEnabled(){
+        return distributorUI.isElementEnabled(CustomersPage.btn_checkOutPDP);
+    }
 }

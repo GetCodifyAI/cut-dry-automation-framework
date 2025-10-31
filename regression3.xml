@@ -39,7 +39,7 @@
             <class name="com.cutanddry.qa.tests.catalog.VerifyManufacturerPageViaShowCaseTest" />
             <class name="com.cutanddry.qa.tests.catalog.ValidateTheMainCatalogFilterSidebarFiltersTest" />
             <class name="com.cutanddry.qa.tests.catalog.ValidateTheMainCatalogClearAllFiltersTest" />
-            <class name="com.cutanddry.qa.tests.catalog.ValidateTheViewCatalogAsCustomerRadioButtonInMainCatalogTest" />
+            <class name="com.cutanddry.qa.tests.catalog.ValidateViewCatalogAsCustomerRadioButtonNotDisplayedInMainCatalogTest" />
             <class name="com.cutanddry.qa.tests.catalog.ValidateFilterItemsByCategoryInCatalogTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemImageTest"/>
             <class name="com.cutanddry.qa.tests.catalog.ViewManufacturerPageTest"/>

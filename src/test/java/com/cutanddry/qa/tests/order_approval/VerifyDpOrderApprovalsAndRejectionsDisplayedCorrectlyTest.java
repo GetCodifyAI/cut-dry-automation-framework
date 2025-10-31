@@ -104,7 +104,7 @@ public class VerifyDpOrderApprovalsAndRejectionsDisplayedCorrectlyTest extends T
 
         //Rejection flow check
         Dashboard.navigateToApprovalsTab();
-        Approvals.clickApprovalOrder(employee1Draft);
+        Approvals.clickApprovalOrder(employee2Draft);
         Approvals.RejectApprovalOrder();
         softAssert.assertTrue(Approvals.isRejectApprovalOverlayDisplayed(),"Reject Approval overlay not displayed");
         Approvals.RejectApprovalOrder();

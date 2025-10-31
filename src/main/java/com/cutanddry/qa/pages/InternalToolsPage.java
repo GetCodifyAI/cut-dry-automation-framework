@@ -664,6 +664,9 @@ public class InternalToolsPage extends LoginPage {
         distributorUI.click(parentChildRelationshipTask);
     }
 
+    public void refreshPage(){
+        distributorUI.refreshPage();
+    }
 
 
 

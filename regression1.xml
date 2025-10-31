@@ -79,6 +79,8 @@
             <class name="com.cutanddry.qa.tests.boost.VerifyTheBoostMessageFilteringFromTheStatusOptionTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyTheChangeOrderFromTheFeaturedListsTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyTheDisplayStatusOfFeaturedListsTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyAddingBoostedBrandTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyRemovingBoostedBrandTest" />
 
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderWithoutAddingAnyItemsTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByRemovingExistingItemsAndChangingQuantitiesTest"/>

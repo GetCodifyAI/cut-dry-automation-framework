@@ -180,34 +180,38 @@ public class LoginPage extends TestBase {
             String featureValue = distributorUI.getText(By.xpath(row_feature.replace("ROW", String.valueOf(i))), "value");
             if (featureValue.equalsIgnoreCase(featureName)) {
 
-                if (distributorUI.isCheckboxOrRadioBtnSelected(By.xpath(row_Status.replace("ROW", String.valueOf(i))))) {
-                    distributorUI.click(By.xpath(row_Status.replace("ROW", String.valueOf(i))));
-                    System.out.println("Checkbox was selected. Now deselected.");
+                // Ensure checkbox/radio is selected (don’t deselect it if already selected)
+                By statusLocator = By.xpath(row_Status.replace("ROW", String.valueOf(i)));
+                if (!distributorUI.isCheckboxOrRadioBtnSelected(statusLocator)) {
+                    distributorUI.click(statusLocator);
+                    System.out.println("Checkbox was not selected. Now selected.");
                 }
 
-                String existingCompanyIDs = distributorUI.getText(By.xpath(row_Companies.replace("ROW", String.valueOf(i))));
+                // Handle company IDs
+                By companiesLocator = By.xpath(row_Companies.replace("ROW", String.valueOf(i)));
+                String existingCompanyIDs = distributorUI.getText(companiesLocator);
 
                 if (existingCompanyIDs == null || existingCompanyIDs.isEmpty()) {
-                    distributorUI.sendKeysCharByChar(By.xpath(row_Companies.replace("ROW", String.valueOf(i))), newCompanyID);
+                    distributorUI.sendKeysCharByChar(companiesLocator, newCompanyID);
                 } else {
                     String[] companyIDArray = existingCompanyIDs.split(",");
                     boolean idExists = false;
 
                     for (String id : companyIDArray) {
-                        if (id.trim().equals(newCompanyID)) {
+                        if (id.trim().equalsIgnoreCase(newCompanyID.trim())) {
                             idExists = true;
                             break;
                         }
                     }
 
                     if (!idExists) {
-                        String updatedCompanyIDs = existingCompanyIDs + "," + newCompanyID;
-                        distributorUI.sendKeysCharByChar(By.xpath(row_Companies.replace("ROW", String.valueOf(i))), updatedCompanyIDs);
+                        String updatedCompanyIDs = existingCompanyIDs.trim() + "," + newCompanyID.trim();
+                        distributorUI.sendKeysCharByChar(companiesLocator, updatedCompanyIDs);
                     }
                 }
 
                 distributorUI.waitForCustom(3000);
-                break;
+                break; // stop after the target feature row
             }
         }
     }
@@ -281,5 +285,7 @@ public class LoginPage extends TestBase {
         distributorUI.switchToNewTab();
         distributorUI.waitForCustom(3000);
     }
-
+    public void closeCurrentTabAndSwitchToNew(){
+        distributorUI.openNewTabAndClosePreviousTabs();
+    }
 }

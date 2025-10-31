@@ -315,5 +315,41 @@ public class Boost {
     public static boolean isWeeklyEssentialsTextDisplay(String option){
         return boostPage.isWeeklyEssentialsTextDisplay(option);
     }
+    
+    public static void clickBrandBoostTab(){
+        boostPage.clickBrandBoostTab();
+    }
+    
+    public static boolean isBrandBoostTabDisplayed(){
+        return boostPage.isBrandBoostTabDisplayed();
+    }
+    
+    public static void selectBrand(String brandName) throws InterruptedException {
+        boostPage.selectBrand(brandName);
+    }
+    
+    public static void clickAddBrand(){
+        boostPage.clickAddBrand();
+    }
+    
+    public static boolean isBrandAdded(String brandName){
+        return boostPage.isBrandAdded(brandName);
+    }
+    
+    public static void selectBoostLevel(String brandName, String level){
+        boostPage.selectBoostLevel(brandName, level);
+    }
+    
+    public static void saveBrandBoost(){
+        boostPage.clickSaveBrandBoost();
+    }
+    
+    public static void removeBrandBoost(String brandName){
+        boostPage.removeBrandBoost(brandName);
+    }
+    
+    public static boolean isBrandRemoved(String brandName){
+        return boostPage.isBrandRemoved(brandName);
+    }
 
 }

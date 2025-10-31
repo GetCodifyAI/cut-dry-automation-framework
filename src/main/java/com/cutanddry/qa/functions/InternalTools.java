@@ -155,9 +155,9 @@ public class InternalTools {
         internalToolsPage.clickInstacartSponsoredProductAdsToggle(enable);
         internalToolsPage.clickProductAdsSave();
     }
-    public static void ensureBuyerEdgePlatformRebateStatus(boolean enable) throws InterruptedException {
+    public static void ensureBuyerEdgePlatformRebateStatus(boolean enable, String distributor) throws InterruptedException {
         internalToolsPage.clickConfigureSupplier();
-        internalToolsPage.clickOnIndependentCompEditDetails();
+        internalToolsPage.clickOnInternalToolCompanyEditDetails(distributor);
         internalToolsPage.clickOnSponsoredAdsRebates();
         internalToolsPage.clickBuyerEdgePlatformRebateToggle(enable);
         internalToolsPage.clickRebateSave();
@@ -313,8 +313,12 @@ public class InternalTools {
         internalToolsPage.clickOnTaskManagement();
     }
     public static void runParentChildTask(String formID){
-        internalToolsPage.isParentChildTaskDisplayed(formID);
-        internalToolsPage.clickRunLocallyOnParentChildTask(formID);
+        if(internalToolsPage.isParentChildTaskDisplayed(formID)){
+            internalToolsPage.clickRunLocallyOnParentChildTask(formID);
+        }else{
+            internalToolsPage.refreshPage();
+            internalToolsPage.clickRunLocallyOnParentChildTask(formID);
+        }
     }
     public static boolean isPCTaskAttemptedDisplayed(){
         return internalToolsPage.isTaskAttemptedDisplayed();

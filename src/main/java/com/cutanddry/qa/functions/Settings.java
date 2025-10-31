@@ -126,6 +126,11 @@ public class Settings {
         }
         settingsPage.clickOnAddPaymentMethod();
     }
+    public static void removePaymentMethod() throws InterruptedException {
+        settingsPage.clickOnRemoveAcc();
+        settingsPage.clickYes();
+        Settings.clickOK();
+    }
     public static void clickOnAddBank() {
         settingsPage.clickOnAddBank();
     }
@@ -453,6 +458,9 @@ public class Settings {
     public static boolean isCustomerRestrictionTextDisplayed()throws InterruptedException{
         return settingsPage.isCustomerRestrictionTextDisplayed();
     }
+    public static boolean isRebatesAllowedColumnDisplayed(){
+        return settingsPage.isRebatesAllowedColumnDisplayed();
+    }
     public static void clickSponsorProdAdsToggle(){
         settingsPage.clickSponsorProdAdsToggle();
     }
@@ -462,7 +470,9 @@ public class Settings {
     public static void clickBuyerEdgePlatformRebateToggle(){
         settingsPage.clickBuyerEdgePlatformRebateToggle();
     }
-
+    public static void AllowRewardAndRebateTags(boolean enable){
+        settingsPage.AllowRewardAndRebateTags(enable);
+    }
     public static void clickOrderReminderToggle(boolean status){
         settingsPage.clickOrderReminderToggle(status);
     }
@@ -538,5 +548,11 @@ public class Settings {
     }
     public static void enterEligibleCountForCutDry(String tag,String num)throws InterruptedException{
         settingsPage.enterEligibleCountForCutDry(tag,num);
+    }
+    public static boolean isAddPaymentMethodBtnDisplayed() throws InterruptedException {
+        return settingsPage.isAddPaymentMethodBtnDisplayed();
+    }
+    public static void clickOnBatchActions() {
+        settingsPage.clickOnBatchActions();
     }
 }

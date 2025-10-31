@@ -45,6 +45,7 @@ public class VerifyTheEditQuantityOfMultipleUOMInOrderGuideTest extends TestBase
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId);
         Customer.searchItemOnOrderGuide(searchItemCode);
+        Customer.addItemFromCatalogIfNotAvailableInOG(searchItemCode);
         Catalog.ClickOnMultiUomDropDownOG(searchItemCode);
         Catalog.clickOGAddToCartPlusIcon(1,searchItemCode, uom1);
         Catalog.clickOGAddToCartPlusIcon(1,searchItemCode, uom2);
