@@ -1756,6 +1756,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickOnOrderGuideInProf(){
 //        distributorUI.waitForVisibility(btn_orderGuide);
+        distributorUI.clickWithScrollAndHover(btn_orderGuide);
         distributorUI.waitForClickability(btn_orderGuide);
         distributorUI.click(btn_orderGuide);
     }
