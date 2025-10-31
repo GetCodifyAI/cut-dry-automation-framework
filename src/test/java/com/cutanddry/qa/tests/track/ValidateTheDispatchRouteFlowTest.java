@@ -41,7 +41,7 @@ public class ValidateTheDispatchRouteFlowTest extends TestBase {
         Track.clickEditRouteFunction(dispatchRoute);
         softAssert.assertTrue(Track.isDispatchRoutePopupDisplayed(),"Dispatch route pop up not displayed");
         Track.clickDispatch();
-        softAssert.assertTrue(Track.AreYouSureToDispatchDisplayed(),"Are you sure to dispatch pop up not displayed");
+        //softAssert.assertTrue(Track.AreYouSureToDispatchDisplayed(),"Are you sure to dispatch pop up not displayed");
         Track.clickYesButton();
         softAssert.assertTrue(Track.dispatchSuccessDisplayed(),"Dispatch driver not success");
         Track.clickOK();

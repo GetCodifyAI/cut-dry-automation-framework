@@ -1037,7 +1037,7 @@ public class Customer {
         return customersPage.isSalespersonNameDisplayed(salesperson);
     }
     public static void clickManageCustomers(){customersPage.clickManageCustomers();}
-    public static void clickExportCustomers(){customersPage.clickExportCustomers();}
+    public static void clickDownloadCustomerList(){customersPage.clickDownloadCustomerList();}
     public static boolean isExportCustomersPopUpDisplayed(){
         return customersPage.isExportCustomersPopUpDisplayed();
     }
@@ -1045,7 +1045,7 @@ public class Customer {
     public static boolean isGeneratingReportPopUpDisplayed(){
         return customersPage.isGeneratingReportPopUpDisplayed();
     }
-    public static void clickExportOrderGuides(){customersPage.clickExportOrderGuides();}
+    public static void clickDownloadOrderGuides(){customersPage.clickDownloadOrderGuides();}
     public static boolean isExportOrderGuidesPopUpDisplayed(){
         return customersPage.isExportOrderGuidesPopUpDisplayed();
     }
@@ -1486,6 +1486,9 @@ public class Customer {
     }
     public static void clickClearAllFilters(){customersPage.clickClearAllFilters();}
     public static void clickViewCatalogAsCustomer(){customersPage.clickRadioButton();}
+    public static boolean isViewCatalogAsCustomerBtnDisplayed(){
+        return customersPage.isViewCatalogAsCustomerBtnDisplayed();
+    }
     public static void clickOnProduct(String name){
         customersPage.clickOnProduct(name);
     }
@@ -1638,6 +1641,10 @@ public class Customer {
         customersPage.selectAccountType(accountType);
     }
 
+    public static void enterBankAccountNote(String Note){
+        customersPage.enterBankAccountNumber(Note);
+    }
+
     public static void clickBtnNext(){
         customersPage.clickNext();
     }
@@ -1656,6 +1663,10 @@ public class Customer {
 
     public static void clickOnTrashCan(){
         customersPage.clickOnTrashCan();
+    }
+
+    public static void clickOnTrashCanOfTheSpecificPaymentMethodByNote(String Note){
+        customersPage.clickOnSpecificTrashCanByNote(Note);
     }
 
     public static boolean isPaymentMethodRemovedDisplayed() throws InterruptedException {
