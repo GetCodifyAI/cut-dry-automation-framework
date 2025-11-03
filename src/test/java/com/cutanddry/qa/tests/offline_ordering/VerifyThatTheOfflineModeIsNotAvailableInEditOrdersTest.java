@@ -2,6 +2,7 @@ package com.cutanddry.qa.tests.offline_ordering;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.OfflineOrderingData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.ITestResult;
@@ -15,6 +16,7 @@ public class VerifyThatTheOfflineModeIsNotAvailableInEditOrdersTest extends Test
     static String customerId = "16579";
     static String itemName, searchItemCode,orderId;
     static double itemPrice;
+    static String OrderGuideName = OfflineOrderingData.ORDER_GUIDE_NAME;
 
     @BeforeMethod
     public void setUp(){
@@ -33,6 +35,8 @@ public class VerifyThatTheOfflineModeIsNotAvailableInEditOrdersTest extends Test
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
+        Customer.clickOGDropdown();
+        Customer.selectNewlyCreatedOrderGuide(OrderGuideName);
 
         itemName = Customer.getItemNameFirstRow();
         searchItemCode = Customer.getItemCodeFirstRow();

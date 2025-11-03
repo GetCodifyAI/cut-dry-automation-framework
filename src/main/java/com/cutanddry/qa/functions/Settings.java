@@ -458,6 +458,9 @@ public class Settings {
     public static boolean isCustomerRestrictionTextDisplayed()throws InterruptedException{
         return settingsPage.isCustomerRestrictionTextDisplayed();
     }
+    public static boolean isRebatesAllowedColumnDisplayed(){
+        return settingsPage.isRebatesAllowedColumnDisplayed();
+    }
     public static void clickSponsorProdAdsToggle(){
         settingsPage.clickSponsorProdAdsToggle();
     }

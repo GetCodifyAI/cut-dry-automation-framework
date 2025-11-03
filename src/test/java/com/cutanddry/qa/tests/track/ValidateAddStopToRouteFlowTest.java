@@ -28,6 +28,7 @@ public class ValidateAddStopToRouteFlowTest extends TestBase {
     static String addAddressState = TrackData.ADD_ADDRESS_STATE;
     static String addAddressZipCode = TrackData.ADD_ADDRESS_ZIPCODE;
     static String routeName = TrackData.ROUTE_NAME;
+    static String fieldName = TrackData.ADDRESS_FIELD;
 
 
     @BeforeMethod
@@ -46,6 +47,9 @@ public class ValidateAddStopToRouteFlowTest extends TestBase {
         Dashboard.navigateToTrackRoutes();
         softAssert.assertTrue(Track.isRoutesTextDisplayed(),"navigation to track routes error");
         Track.uploadRoute(Paths.get(Objects.requireNonNull(ClassLoader.getSystemClassLoader().getResource("csvFiles/Sample_Route_Template.csv")).toURI()).toString());
+        Track.clickBtnManageRoutes();
+        Track.clickTrackFieldManager();
+        Track.displayFieldIfNotDisplayed(fieldName);
         Track.clickEditRouteFunction(addStopToRoute);
         softAssert.assertTrue(Track.isAddStopPopupDisplayed(),"Add stop pop up window not display");
         Track.addCustomerName(addCustomerName);

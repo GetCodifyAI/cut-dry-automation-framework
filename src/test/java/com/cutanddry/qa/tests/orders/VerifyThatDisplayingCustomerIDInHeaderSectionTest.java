@@ -3,6 +3,7 @@ package com.cutanddry.qa.tests.orders;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.DistributorOrderData;
+import com.cutanddry.qa.data.testdata.OfflineOrderingData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.Assert;
@@ -15,8 +16,9 @@ import org.testng.asserts.SoftAssert;
 public class VerifyThatDisplayingCustomerIDInHeaderSectionTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    static String customerId = "16672";
+    static String customerId = "16579";
     static String itemName, orderId, searchItemCode;
+    static String OrderGuideName = OfflineOrderingData.ORDER_GUIDE_NAME;
 
     @BeforeMethod
     public void setUp() {
@@ -46,6 +48,8 @@ public class VerifyThatDisplayingCustomerIDInHeaderSectionTest extends TestBase 
         Customer.clickOnOrderGuide(customerId);
         softAssert.assertTrue(Customer.isCustomerNameDisplayed(BusinessName),"Error in navigation to OG customer name display error");
         softAssert.assertTrue(Customer.isCustomerIDAndLocationDisplayed(BusinessName,customerId),"Error in navigation to OG customer ID and location display error");
+        Customer.clickOGDropdown();
+        Customer.selectNewlyCreatedOrderGuide(OrderGuideName);
 
         itemName = Customer.getItemNameFirstRow();
         searchItemCode = Customer.getItemCodeFirstRow();

@@ -126,6 +126,10 @@ public class TrackPage extends LoginPage{
     String orderId = "//div[contains(text(),'ROUTE')]/following::*//th[contains(text(),'Order')]/../../following-sibling::*//td[text()='ID']";
     String customerStop = "//div[contains(text(),'ROUTE')]/following::*//th[contains(text(),'Stop')]/../../following-sibling::*//td[text()='STOP']";
     String stopDisplay = "//h4[contains(text(),'STOP')]";
+    By updateFieldMapTxt = By.xpath("//*[contains(text(),'Uploading this file will change your field mappings')]");
+    By continueAndUpdateTxt = By.xpath("//*[contains(text(),'Continue and Update Mappings')]");
+    String fieldVisibilityTrue = "(//*[contains(text(),'FIELDNAME')]/following::td)[3]//*[local-name()='svg' and @data-icon='eye']";
+    String fieldVisibilityFalse = "(//*[contains(text(),'FIELDNAME')]/following::td)[3]//*[local-name()='svg' and @data-icon='eye-slash']";
 
     public void clickDatePickerMonitoring(){
         distributorUI.click(datePicker_monitoring);
@@ -862,7 +866,22 @@ public class TrackPage extends LoginPage{
         }
         return distributorUI.isDisplayed(By.xpath(stopDisplay.replace("STOP", stop)));
     }
-
+    public boolean isChangeFieldMappingOverlayDisplayed(){
+        distributorUI.waitForVisibility(updateFieldMapTxt);
+        return distributorUI.isDisplayed(updateFieldMapTxt);
+    }
+    public void continueAndUpdate(){
+        distributorUI.click(continueAndUpdateTxt);
+    }
+    public void DisplayedFieldIfNotDisplayed(String fieldName) throws InterruptedException {
+       if(distributorUI.isDisplayed(By.xpath(fieldVisibilityFalse.replace("FIELDNAME",fieldName)))){
+           distributorUI.click(By.xpath(fieldVisibilityFalse.replace("FIELDNAME",fieldName)));
+           distributorUI.waitForVisibility(btn_saveChange);
+           distributorUI.click(btn_saveChange);
+           distributorUI.waitForVisibility(btn_saveChange);
+           distributorUI.waitForCustom(1000);
+       }
+    }
 
 
 }

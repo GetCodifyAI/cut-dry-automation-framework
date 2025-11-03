@@ -30,7 +30,7 @@ public class VerifyTheExportCustomersTest extends TestBase {
         Dashboard.navigateToCustomers();
         softAssert.assertTrue(Customer.isCustomersTextDisplayed(),"customer section not display");
         Customer.clickManageCustomers();
-        Customer.clickExportCustomers();
+        Customer.clickDownloadCustomerList();
         softAssert.assertTrue(Customer.isExportCustomersPopUpDisplayed(),"Export customer pop up not display");
         Customer.clickConfirm();
         softAssert.assertTrue(Customer.isGeneratingReportPopUpDisplayed(),"generating report pop up not display");

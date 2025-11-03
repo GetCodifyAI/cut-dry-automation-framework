@@ -119,7 +119,7 @@ public class OrderDesk {
         return orderDeskPage.isSucessfullySavedtextisDisplayed();
     }
 
-    public static void SelectCustomerFromDropdown(){
+    public static void SelectCustomerFromDropdown() throws InterruptedException {
         orderDeskPage.SelectCustomer();
     }
 
