@@ -907,6 +907,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By tooManyOrdersText = By.xpath("//*[contains(text(),'You are trying to create too many orders too fast!')]");
     String catalogSearchItemName = "((//div[contains(@class,'card-deck')]//div[   contains(., 'NAME')   and   contains(., 'BRAND') ])[last()])[1]";
     String orderItems = "//div[normalize-space(text())=\'ITEMNAME\']";
+    By lbl_locationGuide = By.xpath("//div[text()='Location/Guide:']/following-sibling::div//div[@class='cd_themed_select__single-value css-1uccc91-singleValue']");
+    String dropDownLocationOrderGuide =  "(//div[contains(text(), 'Location/Guide:')]//following::div[contains(text(), 'NAME')])[last()]";
+    String editedOrderGuide =  "//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'NAME')]";
+    String editedOrderGuideDescription =  "//div[contains(text(), 'NAME')]";
+
+
 
 
 
@@ -5397,4 +5403,16 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
 
 
+    public void clickLocationGuide(){
+        distributorUI.click(lbl_locationGuide);
+    }
+    public boolean IsLocationOrderGuideDisplay(String name){
+        return distributorUI.isDisplayed(By.xpath(dropDownLocationOrderGuide.replace("NAME",name)));
+    }
+    public boolean editedOrderGuideNameDisplay(String name){
+        return distributorUI.isDisplayed(By.xpath(editedOrderGuide.replace("NAME",name)));
+    }
+    public boolean editedOrderGuideDescriptionDisplay(String name){
+        return distributorUI.isDisplayed(By.xpath(editedOrderGuideDescription.replace("NAME",name)));
+    }
 }
