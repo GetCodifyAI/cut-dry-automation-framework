@@ -643,8 +643,11 @@ public class Customer {
     public static boolean isNavigatedToCustomerPage(){
         return customersPage.isCutomerTxtDisplayed();
     }
-    public static void SelectTestAutomationOrderGuide(){
+    public static void SelectTestAutomationOrderGuide() throws InterruptedException {
         customersPage.ClickTestAutomationOrderGuide();
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
     }
     public static boolean isStockCountDisplayed(){
         return customersPage.StockCountDisplayed();

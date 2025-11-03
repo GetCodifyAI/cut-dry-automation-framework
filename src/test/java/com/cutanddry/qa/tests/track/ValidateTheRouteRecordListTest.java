@@ -24,6 +24,7 @@ public class ValidateTheRouteRecordListTest extends TestBase {
     static String addressStreet = TrackData.ADDRESS_STREET;
     static String editRouteName = TrackData.EDIT_ROUTE_NAME;
     static String routeName = TrackData.ROUTE_NAME;
+    static String fieldName = TrackData.ADDRESS_FIELD;
 
 
     @BeforeMethod
@@ -42,6 +43,9 @@ public class ValidateTheRouteRecordListTest extends TestBase {
         Dashboard.navigateToTrackRoutes();
         softAssert.assertTrue(Track.isRoutesTextDisplayed(),"navigation to track routes error");
         Track.uploadRoute(Paths.get(Objects.requireNonNull(ClassLoader.getSystemClassLoader().getResource("csvFiles/Sample_Route_Template.csv")).toURI()).toString());
+        Track.clickBtnManageRoutes();
+        Track.clickTrackFieldManager();
+        Track.displayFieldIfNotDisplayed(fieldName);
         Track.clickRouteName(routeName);
         softAssert.assertTrue(Track.isRouteStopAdded(addressStreet),"Route address street record not display");
         softAssert.assertAll();

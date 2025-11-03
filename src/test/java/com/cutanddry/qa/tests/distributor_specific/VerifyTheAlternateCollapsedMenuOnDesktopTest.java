@@ -35,12 +35,12 @@ public class VerifyTheAlternateCollapsedMenuOnDesktopTest extends TestBase{
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
 
         Login.navigateToDistributorPortal(distributorTradewell);
-        Assert.assertTrue(Customer.isNavigatedToCustomerPage(),"Error navigating to customer page");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
         Customer.clickMenu();
         softAssert.assertTrue(Customer.isUserNameDisplay(userName),"user name display error");
         softAssert.assertTrue(Customer.isDistributorNameDisplay(DPName),"distributor name error");
         Customer.clickCloseMenu();
-        softAssert.assertTrue(Customer.isNavigatedToCustomerPage(),"Error navigating to customer page");
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
         softAssert.assertAll();
     }
 
