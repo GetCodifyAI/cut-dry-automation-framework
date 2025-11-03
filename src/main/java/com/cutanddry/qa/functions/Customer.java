@@ -3262,7 +3262,15 @@ public class Customer {
     public static boolean editedOrderGuideDescriptionDisplay(String name){
         return customersPage.editedOrderGuideDescriptionDisplay(name);
     }
-
+    public static void createOrderGuideIfOnlyOneAvailableInChild(String orderGuideName) throws InterruptedException {
+        if(!customersPage.isSelectOrderGuideOptionDisplayed()){
+            customersPage.clickOnMoreOptions();
+            customersPage.clickOnCreate();
+            customersPage.typeOrderGuideName(orderGuideName);
+            customersPage.clickSubmitOrderGuide();
+            customersPage.clickOnCloseEditorCatalog();
+        }
+    }
 
 }
 

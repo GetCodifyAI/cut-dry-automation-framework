@@ -5401,7 +5401,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isItemsDisplayedInsideOrder(String ItemName){
         return distributorUI.isDisplayed(By.xpath(orderItems.replace("ITEMNAME",ItemName)));
     }
-
+    public boolean isSelectOrderGuideOptionDisplayed(){
+        return distributorUI.isDisplayed(lbl_orderGuide);
+    }
 
     public void clickLocationGuide(){
         distributorUI.click(lbl_locationGuide);

@@ -23,7 +23,7 @@ public class VerifyTheItemPricesAreNotVisibleInTheEditOrderGuideItemsSectionWhen
     static double itemPrice;
     static String statusVisible = "Visible";
     static String statusHidden = "Hidden";
-    static String OperatorName = "206523643";
+    static String OperatorName = "496044202";
     String DistributorName = CustomerProfileData.DISTRIBUTOR_NAME_IFC;
 
 
