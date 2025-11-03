@@ -3233,6 +3233,18 @@ public class Customer {
     public static boolean getFirstItemNameBrandFrmSearchResults(String name,String brand){
         return customersPage.getFirstItemNameBrandFrmSearchResults(name,brand);
     }
+    public static void clickLocationGuide(){
+        customersPage.clickLocationGuide();
+    }
+    public static boolean IsLocationOrderGuideDisplay(String name){
+        return customersPage.IsLocationOrderGuideDisplay(name);
+    }
+    public static boolean editedOrderGuideNameDisplay(String name){
+        return customersPage.editedOrderGuideNameDisplay(name);
+    }
+    public static boolean editedOrderGuideDescriptionDisplay(String name){
+        return customersPage.editedOrderGuideDescriptionDisplay(name);
+    }
 
 
 }

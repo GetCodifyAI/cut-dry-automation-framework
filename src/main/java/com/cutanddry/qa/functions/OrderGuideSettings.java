@@ -55,6 +55,12 @@ public class OrderGuideSettings {
     public static boolean isDeliveryDaysDisplayed() throws InterruptedException {
         return orderGuideSettingsPage.isDeliveryDaysDisplayed();
     }
+    public static void editOrderGuideDescription(String name) throws InterruptedException {
+        orderGuideSettingsPage.editOrderGuideDescription(name);
+    }
+    public static void enableAccountHoldAlerts(boolean status){
+        orderGuideSettingsPage.enableAccountHoldAlerts(status);
+    }
     
 
 }

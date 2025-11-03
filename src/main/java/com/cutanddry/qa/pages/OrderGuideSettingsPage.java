@@ -20,6 +20,10 @@ public class OrderGuideSettingsPage extends TestBase {
     By lbl_minOrderAmount = By.xpath("//label[contains(text(),'Min. Order Amount')]/following-sibling::input");
     By lbl_minOrderCase = By.xpath("//label[contains(text(),'Min. Order Cases')]/following-sibling::input");
     By lbl_deliveryDays = By.xpath("//label[contains(text(),'Delivery Days')]/following-sibling::input");
+    By lbl_orderGuideDescription = By.xpath("//label[contains(text(),'Guide Description')]/following-sibling::input");
+    By enableOrderApprovalToggle = By.xpath("//label[contains(text(),'Enable Order Approval')]/following-sibling::div//div[@class='react-switch-handle']");
+    By enableOrderApprovalToggle2 = By.xpath("//label[contains(text(),'Enable Order Approval')]/following-sibling::div//div[@class='react-switch-handle']/parent::div/div[1]");
+
 
     public void clickOnOrderReminderAlert(){
         if (distributorUI.isDisplayed(AddAlertButton,10)) {
@@ -99,5 +103,20 @@ public class OrderGuideSettingsPage extends TestBase {
     }
     public boolean isDeliveryDaysDisplayed()throws InterruptedException{
         return distributorUI.isDisplayed(lbl_deliveryDays);
+    }
+    public void editOrderGuideDescription(String name) throws InterruptedException {
+        distributorUI.clear(lbl_orderGuideDescription);
+        distributorUI.sendKeys(lbl_orderGuideDescription, name);
+        distributorUI.waitForCustom(1000);
+    }
+    public void enableAccountHoldAlerts(boolean enable) {
+        String handlePosition = distributorUI.getElement(enableOrderApprovalToggle).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(enableOrderApprovalToggle2);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(enableOrderApprovalToggle2);
+        }
     }
 }
