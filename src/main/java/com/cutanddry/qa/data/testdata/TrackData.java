@@ -24,5 +24,6 @@ public class TrackData {
     public static final String CUSTOMER_NAME = "Hot Spot";
     public static final String ORDER_ID = "123456";
     public static final String CUSTOMER_STOP = "1";
+    public static final String ADDRESS_FIELD= "Address";
 
 }
