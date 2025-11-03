@@ -643,8 +643,11 @@ public class Customer {
     public static boolean isNavigatedToCustomerPage(){
         return customersPage.isCutomerTxtDisplayed();
     }
-    public static void SelectTestAutomationOrderGuide(){
+    public static void SelectTestAutomationOrderGuide() throws InterruptedException {
         customersPage.ClickTestAutomationOrderGuide();
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
     }
     public static boolean isStockCountDisplayed(){
         return customersPage.StockCountDisplayed();
@@ -3246,6 +3249,18 @@ public class Customer {
     }
     public static boolean getFirstItemNameBrandFrmSearchResults(String name,String brand){
         return customersPage.getFirstItemNameBrandFrmSearchResults(name,brand);
+    }
+    public static void clickLocationGuide(){
+        customersPage.clickLocationGuide();
+    }
+    public static boolean IsLocationOrderGuideDisplay(String name){
+        return customersPage.IsLocationOrderGuideDisplay(name);
+    }
+    public static boolean editedOrderGuideNameDisplay(String name){
+        return customersPage.editedOrderGuideNameDisplay(name);
+    }
+    public static boolean editedOrderGuideDescriptionDisplay(String name){
+        return customersPage.editedOrderGuideDescriptionDisplay(name);
     }
 
 

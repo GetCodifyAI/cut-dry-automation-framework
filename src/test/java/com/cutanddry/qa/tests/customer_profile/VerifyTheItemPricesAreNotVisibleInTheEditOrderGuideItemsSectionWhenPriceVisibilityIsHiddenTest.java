@@ -46,6 +46,9 @@ public class VerifyTheItemPricesAreNotVisibleInTheEditOrderGuideItemsSectionWhen
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerID),"search error");
         Customer.SelectCustomer(customerID);
         softAssert.assertTrue(Customer.isCustomerNameTxtDisplayed(), "text error");
+        Customer.clickCusAccountVisibilityOption();
+        Customer.clickCusAccountVisibilityDropdown();
+        Customer.selectCusAccountVisibleOption();
         Customer.editStatusPriceVisibility(statusHidden);
 
         Customer.clickOnOrderGuideInCustomerProfile();
