@@ -2,6 +2,7 @@ package com.cutanddry.qa.tests.order_guide;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.functions.Catalog;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
@@ -47,36 +48,30 @@ public class VerifyUserCanPlaceOrderWithDecimalQuantityMainOrderFlowTest extends
 
         for (String quantity : decimalQuantities) {
             Customer.setItemQtyFirstRow(quantity);
-            Customer.clickOnOrderGuideTab();
             Thread.sleep(1000);
+            Customer.clickOnOrderGuideTab();
             
             double priceAfterQty = Customer.getItemPriceOnCheckoutButton();
             double Qty = Double.parseDouble(formatStringDouble(quantity));
-            softAssert.assertEquals(priceAfterQty,itemPriceBeforeUpdate * Qty, "Price not updated correctly for quantity: " + quantity);
+            softAssert.assertEquals(priceAfterQty,itemPriceBeforeUpdate * Qty,0.01, "Price not updated correctly for quantity: " + quantity);
         }
 
-//        Customer.setItemQtyFirstRow("1");
-//        Thread.sleep(1000);
-//
-//        Customer.goToCatalog();
-//        softAssert.assertTrue(Customer.isUserNavigatedToCatalog(),
-//            "Catalog not displayed");
-//
-//        Customer.searchItemOnCatalog(itemName);
-//        Thread.sleep(2000);
-//
-//        String catalogItemName = Customer.getFirstElementFrmSearchResults(itemName);
-//        softAssert.assertTrue(catalogItemName.toLowerCase().contains(itemName.toLowerCase()),
-//            "Catalog item not found");
-//
-//        for (String quantity : decimalQuantities) {
-//            Customer.setItemQtyFirstRow(quantity);
-//            Thread.sleep(1000);
-//
-//            double catalogPrice = Customer.getItemPriceFirstRow();
-//            softAssert.assertTrue(catalogPrice >= 0,
-//                "Catalog price not updated correctly for quantity: " + quantity);
-//        }
+        Customer.goToCatalog();
+        softAssert.assertTrue(Customer.isUserNavigatedToCatalog(), "Catalog not displayed");
+        Customer.searchItemOnCatalog(itemName);
+
+        String catalogItemName = Customer.getFirstElementFrmSearchResults(itemName);
+        softAssert.assertTrue(catalogItemName.toLowerCase().contains(itemName.toLowerCase()), "Catalog item not found");
+
+        for (String quantity : decimalQuantities) {
+            Customer.setItemQtyFirstRow(quantity);
+            Thread.sleep(1000);
+            Customer.goToCatalog();
+
+            double priceAfterQty = Customer.getItemPriceOnCheckoutButton();
+            double Qty = Double.parseDouble(formatStringDouble(quantity));
+            softAssert.assertEquals(priceAfterQty,itemPriceBeforeUpdate * Qty,0.01, "Price not updated correctly for quantity: " + quantity);
+        }
 //
 //        Customer.setItemQtyFirstRow("1");
 //        Thread.sleep(1000);
