@@ -49,7 +49,7 @@ public class CatalogData {
     public static final String CC_ITEM_NAME_2 = "chocolate Chips Mini";
     public static final String AllSTAR_APP_URL = "https://allstarspecialties-uat.staging.cutanddry.com/market/AllStar";
     public static final String DP_BUTTERFIELD = "Butterfield & Vallis";
-    public static final String DP_VICTO = "250939959 - Cut+Dry Agent - Vitco Foods";
+    public static final String DP_VICTO = "308247072";
     public static final String DP_BIRITE = "120984267 - Cut+Dry Agent - BiRite Foodservice Distributors";
     public static final String DP_SOUTHWEST = "30227908 - Cut+Dry Agent - Southwest Traders";
     public static final String DP_IFC = "47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
@@ -61,4 +61,5 @@ public class CatalogData {
     public static final String ITEM_TYPE_1 = "Special Order";
     public static final String ITEM_TYPE_2 = "Stocked (in-house)";
     public static final String PRIME_SOURCE_PUBLIC_CATALOG_URL = "https://primesourcefoods-uat.staging.cutanddry.com/catalog/Prime%20Source%20Foods/?categoryId=1&verifiedVendorId=430993089&page=1).";
+    public static final String VITCO_OG = "History Order Guide";
 }
