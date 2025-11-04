@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyThatOrderGuideSyncedFromERPDisabledForEditingTest extends TestBase{
     static User user;
-    static String distributorVitco = PriceData.DISTRIBUTOR_VITCO;
+    static String DP = CatalogData.DP_VICTO;
     static String customerId = "5541";
 
 
@@ -32,7 +32,8 @@ public class VerifyThatOrderGuideSyncedFromERPDisabledForEditingTest extends Tes
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
 
-        Login.navigateToDistributorPortal(distributorVitco);
+        Login.navigateToLoginAs();
+        Login.logInToDP(DP);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
 
         Dashboard.navigateToCustomers();
