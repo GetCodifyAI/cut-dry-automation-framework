@@ -72,7 +72,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By btn_addToOrderGuide = By.xpath("//button[@data-tip='Add to Order Guide']");
     By btn_closeEditorCatalog = By.xpath("//button[contains(text(), 'Close Editor')]");
     By btn_closeEditor = By.xpath("//a[contains(text(), 'Close Editor')]");
-    By btn_removeFromOrderGuide = By.xpath("//button[@data-tip='Remove from Order Guide']");
+    By btn_removeFromOrderGuide = By.xpath("//div[contains(@class,'card-deck')]//button[@data-tip='Remove from Order Guide']");
     By upload_file = By.xpath("//input[@type='file']");
     By btn_next = By.xpath("//button[text()='Next']");
     By btn_confirm = By.xpath("//button[text()='Confirm']");
@@ -5401,7 +5401,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isItemsDisplayedInsideOrder(String ItemName){
         return distributorUI.isDisplayed(By.xpath(orderItems.replace("ITEMNAME",ItemName)));
     }
-
+    public boolean isSelectOrderGuideOptionDisplayed(){
+        return distributorUI.isDisplayed(lbl_orderGuide);
+    }
 
     public void clickLocationGuide(){
         distributorUI.click(lbl_locationGuide);

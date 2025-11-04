@@ -22,6 +22,8 @@ public class ValidateTheSpotPricingNotFromPricingEngineTest extends TestBase{
     static String itemName = PriceData.ITEM_NAME_SPOT_PRICE2;
     static String uom1 = CatalogData.MULTI_UOM_1;
     static double itemPrice;
+    static String DP = CatalogData.DP_VICTO;
+    static String orderGuide = CatalogData.VITCO_OG;
 
     @BeforeMethod
     public void setUp() {
@@ -35,7 +37,8 @@ public class ValidateTheSpotPricingNotFromPricingEngineTest extends TestBase{
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
 
-        Login.navigateToDistributorPortal(distributorVitco);
+        Login.navigateToLoginAs();
+        Login.logInToDP(DP);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
 
 
@@ -43,6 +46,7 @@ public class ValidateTheSpotPricingNotFromPricingEngineTest extends TestBase{
         Customer.searchCustomerByCode(customerId5);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId5), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId5);
+        Customer.selectOrderGuideIfOverlayDisplayed(orderGuide);
         Customer.searchItemOnOrderGuide(itemName);
         searchItemCode = Customer.getItemCodeFirstRow();
 

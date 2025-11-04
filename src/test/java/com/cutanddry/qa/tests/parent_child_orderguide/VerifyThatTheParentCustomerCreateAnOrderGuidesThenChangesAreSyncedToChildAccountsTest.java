@@ -20,6 +20,7 @@ public class VerifyThatTheParentCustomerCreateAnOrderGuidesThenChangesAreSyncedT
     static String customerId = ParentChildOGData.CUSTOMER_ID_INDIANHEAD;
     static String customerId2 = ParentChildOGData.CUSTOMER_ID_INDIANHEAD_2;
     static String OrderGuideName = ParentChildOGData.ORDER_GUIDE_NAME_6 + "_" + UUID.randomUUID();
+    static String OrderGuideName2 = "default OG";
     static String itemName = "Egg Roll Pork & Vegetable";
     static String status = "Parent Account";
     static String childSettingMessage = "Child account settings updated successfully";
@@ -88,6 +89,7 @@ public class VerifyThatTheParentCustomerCreateAnOrderGuidesThenChangesAreSyncedT
         Customer.searchCustomerByCode(customerId2);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId2),"search error");
         Customer.clickOnOrderGuideParentChild(customerId2);
+        Customer.createOrderGuideIfOnlyOneAvailableInChild(OrderGuideName2);
         Customer.clickOGDropdown();
         Customer.selectNewlyCreatedOrderGuide(OrderGuideName);
         softAssert.assertEquals(Customer.getItemNameFirstRow(), itemName, "The item added in parent account not display");
