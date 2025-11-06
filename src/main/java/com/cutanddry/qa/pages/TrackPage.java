@@ -130,6 +130,7 @@ public class TrackPage extends LoginPage{
     By continueAndUpdateTxt = By.xpath("//*[contains(text(),'Continue and Update Mappings')]");
     String fieldVisibilityTrue = "(//*[contains(text(),'FIELDNAME')]/following::td)[3]//*[local-name()='svg' and @data-icon='eye']";
     String fieldVisibilityFalse = "(//*[contains(text(),'FIELDNAME')]/following::td)[3]//*[local-name()='svg' and @data-icon='eye-slash']";
+    By closeBtn = By.xpath("//span[contains(text(),'×')]");
 
     public void clickDatePickerMonitoring(){
         distributorUI.click(datePicker_monitoring);
@@ -880,6 +881,8 @@ public class TrackPage extends LoginPage{
            distributorUI.click(btn_saveChange);
            distributorUI.waitForVisibility(btn_saveChange);
            distributorUI.waitForCustom(1000);
+       }else{
+            distributorUI.click(closeBtn);
        }
     }
 

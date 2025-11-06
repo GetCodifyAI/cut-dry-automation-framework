@@ -16,6 +16,7 @@ public class VerifyThatTheEnableOrderApprovalInOrderGuideSettingsTest extends Te
     String SupplierName = "Independent Foods Co";
     String RestaurantUserCode = "52068374";
     String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    static String orderMinimumSetting = "Exempt from Order Minimum";
 
 
 
@@ -37,7 +38,10 @@ public class VerifyThatTheEnableOrderApprovalInOrderGuideSettingsTest extends Te
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
-        Customer.clickOnOrderGuide(customerId);
+        Customer.SelectCustomer(customerId);
+        Customer.SelectOrderMinimumFromProfile(orderMinimumSetting);
+        Customer.ifHasHoldsRemoveHoldsFromCustomer();
+        Customer.clickOnOrderGuideInCustomerProfile();
 
         Customer.expandMoreOptionsDropdown();
         Customer.clickOnOrderGuideSettings();

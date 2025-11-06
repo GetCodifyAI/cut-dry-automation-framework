@@ -109,9 +109,10 @@ public class OrderGuideSettingsPage extends TestBase {
         distributorUI.sendKeys(lbl_orderGuideDescription, name);
         distributorUI.waitForCustom(1000);
     }
-    public void enableAccountHoldAlerts(boolean enable) {
+    public void enableAccountHoldAlerts(boolean enable) throws InterruptedException {
+        distributorUI.waitForCustom(2000);
         String handlePosition = distributorUI.getElement(enableOrderApprovalToggle).getAttribute("style");
-        boolean isEnabled = handlePosition.contains("translateX(29px)");
+        boolean isEnabled = handlePosition.contains("translateX(21px)");
 
         if (enable && !isEnabled) {
             distributorUI.clickWithScrollAndHover(enableOrderApprovalToggle2);

@@ -384,6 +384,9 @@ public class Customer {
     }
     public static void closeEditor() throws InterruptedException {
         customersPage.closeEditor();
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
     }
     public static void removeItemFromCatalog(){
         customersPage.clickOnRemoveFromOrderGuide();
