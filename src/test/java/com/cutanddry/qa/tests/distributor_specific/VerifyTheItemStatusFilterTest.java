@@ -37,7 +37,8 @@ public class VerifyTheItemStatusFilterTest extends TestBase {
 
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-        Login.navigateToDistributorPortal(DP);
+        Login.navigateToLoginAs();
+        Login.logInToDP(DP);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);

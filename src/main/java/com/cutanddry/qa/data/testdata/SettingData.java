@@ -8,7 +8,7 @@ public class SettingData {
     public static final String ACCOUNT_NUMBER = "2222220";
     public static final String ROUTING_NUMBER = "321081669";
     public static final String CREDIT_CARD_NUMBER = "4111111111111111";
-    public static final String EXP_DATE = "10/29";
+    public static final String EXP_DATE = "10/26";
     public static final String CVV = "999";
     public static final String ZIPCODE = "12345";
     public static final String ADDRESS = "N0 07 Beakers' street";

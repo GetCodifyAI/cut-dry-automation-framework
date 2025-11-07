@@ -384,6 +384,9 @@ public class Customer {
     }
     public static void closeEditor() throws InterruptedException {
         customersPage.closeEditor();
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
     }
     public static void removeItemFromCatalog(){
         customersPage.clickOnRemoveFromOrderGuide();
@@ -3261,6 +3264,15 @@ public class Customer {
     }
     public static boolean editedOrderGuideDescriptionDisplay(String name){
         return customersPage.editedOrderGuideDescriptionDisplay(name);
+    }
+    public static void createOrderGuideIfOnlyOneAvailableInChild(String orderGuideName) throws InterruptedException {
+        if(!customersPage.isSelectOrderGuideOptionDisplayed()){
+            customersPage.clickOnMoreOptions();
+            customersPage.clickOnCreate();
+            customersPage.typeOrderGuideName(orderGuideName);
+            customersPage.clickSubmitOrderGuide();
+            customersPage.clickOnCloseEditorCatalog();
+        }
     }
     public static boolean isEmptyStateMessageDisplay(String name){
         return customersPage.isEmptyStateMessageDisplay(name);

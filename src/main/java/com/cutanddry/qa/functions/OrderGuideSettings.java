@@ -58,7 +58,7 @@ public class OrderGuideSettings {
     public static void editOrderGuideDescription(String name) throws InterruptedException {
         orderGuideSettingsPage.editOrderGuideDescription(name);
     }
-    public static void enableAccountHoldAlerts(boolean status){
+    public static void enableAccountHoldAlerts(boolean status) throws InterruptedException {
         orderGuideSettingsPage.enableAccountHoldAlerts(status);
     }
     
