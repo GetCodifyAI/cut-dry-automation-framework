@@ -911,6 +911,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String dropDownLocationOrderGuide =  "(//div[contains(text(), 'Location/Guide:')]//following::div[contains(text(), 'NAME')])[last()]";
     String editedOrderGuide =  "//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'NAME')]";
     String editedOrderGuideDescription =  "//div[contains(text(), 'NAME')]";
+    String emptyStateMessage =  "//span[contains(text(), 'NAME')]";
 
 
 
@@ -5417,4 +5418,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean editedOrderGuideDescriptionDisplay(String name){
         return distributorUI.isDisplayed(By.xpath(editedOrderGuideDescription.replace("NAME",name)));
     }
+    public boolean isEmptyStateMessageDisplay(String name){
+        return distributorUI.isDisplayed(By.xpath(emptyStateMessage.replace("NAME",name)));
+    }
+
 }
