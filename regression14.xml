@@ -43,6 +43,9 @@
             <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheOrderGuideNameAndDescriptionInOrderGuideSettingsTest"/>
             <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheAddItemsRestrictionInOrderGuideSettingsTest"/>
             <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheEnableOrderApprovalInOrderGuideSettingsTest"/>
+
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyThatCustomerNameDisplayInEmptyInvoiceListTest"/>
+            <class name="com.cutanddry.qa.tests.customers.VerifyTheCustomersCanSubmitOrdersWhenTheAccountIsInHardHoldByEnteringTheCreditCardDetailsDPPortalTest"/>
         </classes>
     </test>
 </suite>
