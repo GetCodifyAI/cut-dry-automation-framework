@@ -42,6 +42,7 @@ public class VerifyTheAllowBuyersEdgePlatformRebateTagsFlowTest extends TestBase
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToAdsSettings();
         softAssert.assertTrue(Settings.isCustomerRestrictionTextDisplayed(),"enabling the 'BuyerEdgePlatformRebate' toggle button from the Internal tools is error");
+        softAssert.assertTrue(Settings.isRebatesAllowedColumnDisplayed(),"Rebates allowed column Not displayed");
         Settings.clickBuyerEdgePlatformRebateToggle();
         Settings.clickGeneralSettingSaveChanges();
 
@@ -50,7 +51,11 @@ public class VerifyTheAllowBuyersEdgePlatformRebateTagsFlowTest extends TestBase
         Login.navigateToDistributorPortal(distributorName);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToAdsSettings();
-        softAssert.assertFalse(Settings.isCustomerRestrictionTextDisplayed(),"disable the 'BuyerEdgePlatformRebate' toggle button from the Internal tools is error");
+        softAssert.assertFalse(Settings.isRebatesAllowedColumnDisplayed(),"Rebates allowed column displayed");
+
+        Login.navigateToInternalToolsPage();
+        InternalTools.ensureBuyerEdgePlatformRebateStatus(true,dp);
+
         softAssert.assertAll();
     }
 

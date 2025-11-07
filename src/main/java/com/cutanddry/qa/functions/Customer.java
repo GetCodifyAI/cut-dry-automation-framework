@@ -384,6 +384,9 @@ public class Customer {
     }
     public static void closeEditor() throws InterruptedException {
         customersPage.closeEditor();
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
     }
     public static void removeItemFromCatalog(){
         customersPage.clickOnRemoveFromOrderGuide();
@@ -468,6 +471,9 @@ public class Customer {
     }
     public static void clickOnOrdersTab(){
         customersPage.clickOnOrdersTab();
+    }
+    public static boolean isItemsDisplayedInsideOrderCorrectly(String itemName){
+        return customersPage.isItemsDisplayedInsideOrder(itemName);
     }
     public static boolean isStandingOrdersDisplayed(){
         return customersPage.isStandingOrdersDisplayed();
@@ -640,8 +646,11 @@ public class Customer {
     public static boolean isNavigatedToCustomerPage(){
         return customersPage.isCutomerTxtDisplayed();
     }
-    public static void SelectTestAutomationOrderGuide(){
+    public static void SelectTestAutomationOrderGuide() throws InterruptedException {
         customersPage.ClickTestAutomationOrderGuide();
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
     }
     public static boolean isStockCountDisplayed(){
         return customersPage.StockCountDisplayed();
@@ -1034,7 +1043,7 @@ public class Customer {
         return customersPage.isSalespersonNameDisplayed(salesperson);
     }
     public static void clickManageCustomers(){customersPage.clickManageCustomers();}
-    public static void clickExportCustomers(){customersPage.clickExportCustomers();}
+    public static void clickDownloadCustomerList(){customersPage.clickDownloadCustomerList();}
     public static boolean isExportCustomersPopUpDisplayed(){
         return customersPage.isExportCustomersPopUpDisplayed();
     }
@@ -1042,7 +1051,7 @@ public class Customer {
     public static boolean isGeneratingReportPopUpDisplayed(){
         return customersPage.isGeneratingReportPopUpDisplayed();
     }
-    public static void clickExportOrderGuides(){customersPage.clickExportOrderGuides();}
+    public static void clickDownloadOrderGuides(){customersPage.clickDownloadOrderGuides();}
     public static boolean isExportOrderGuidesPopUpDisplayed(){
         return customersPage.isExportOrderGuidesPopUpDisplayed();
     }
@@ -1483,6 +1492,9 @@ public class Customer {
     }
     public static void clickClearAllFilters(){customersPage.clickClearAllFilters();}
     public static void clickViewCatalogAsCustomer(){customersPage.clickRadioButton();}
+    public static boolean isViewCatalogAsCustomerBtnDisplayed(){
+        return customersPage.isViewCatalogAsCustomerBtnDisplayed();
+    }
     public static void clickOnProduct(String name){
         customersPage.clickOnProduct(name);
     }
@@ -1635,6 +1647,10 @@ public class Customer {
         customersPage.selectAccountType(accountType);
     }
 
+    public static void enterBankAccountNote(String Note){
+        customersPage.enterBankAccountNumber(Note);
+    }
+
     public static void clickBtnNext(){
         customersPage.clickNext();
     }
@@ -1653,6 +1669,10 @@ public class Customer {
 
     public static void clickOnTrashCan(){
         customersPage.clickOnTrashCan();
+    }
+
+    public static void clickOnTrashCanOfTheSpecificPaymentMethodByNote(String Note){
+        customersPage.clickOnSpecificTrashCanByNote(Note);
     }
 
     public static boolean isPaymentMethodRemovedDisplayed() throws InterruptedException {
@@ -3229,6 +3249,33 @@ public class Customer {
     }
     public static double getCatalogFirstItemPrice(String ItemName){
         return customersPage.getCatalogFirstItemPrice(ItemName);
+    }
+    public static boolean getFirstItemNameBrandFrmSearchResults(String name,String brand){
+        return customersPage.getFirstItemNameBrandFrmSearchResults(name,brand);
+    }
+    public static void clickLocationGuide(){
+        customersPage.clickLocationGuide();
+    }
+    public static boolean IsLocationOrderGuideDisplay(String name){
+        return customersPage.IsLocationOrderGuideDisplay(name);
+    }
+    public static boolean editedOrderGuideNameDisplay(String name){
+        return customersPage.editedOrderGuideNameDisplay(name);
+    }
+    public static boolean editedOrderGuideDescriptionDisplay(String name){
+        return customersPage.editedOrderGuideDescriptionDisplay(name);
+    }
+    public static void createOrderGuideIfOnlyOneAvailableInChild(String orderGuideName) throws InterruptedException {
+        if(!customersPage.isSelectOrderGuideOptionDisplayed()){
+            customersPage.clickOnMoreOptions();
+            customersPage.clickOnCreate();
+            customersPage.typeOrderGuideName(orderGuideName);
+            customersPage.clickSubmitOrderGuide();
+            customersPage.clickOnCloseEditorCatalog();
+        }
+    }
+    public static boolean isEmptyStateMessageDisplay(String name){
+        return customersPage.isEmptyStateMessageDisplay(name);
     }
 
 

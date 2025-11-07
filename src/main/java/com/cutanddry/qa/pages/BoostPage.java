@@ -110,6 +110,15 @@ public class BoostPage extends LoginPage {
     String txt_WeeklyEssentials = "//div[text()='OPTION']";
     By DisplayStatusToggleStable = By.xpath("//div[contains(text(), 'Display Status')]/div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By DisplayStatusToggleStable1 = By.xpath("//div[contains(text(), 'Display Status')]/div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By tab_brandBoost = By.xpath("//a[text()='Brand Boost']");
+    By txt_brandBoost = By.xpath("//h3[text()='Brand Boost']");
+    By input_selectBrand = By.xpath("//div[text()='Select brand']/following-sibling::div//input");
+    String option_brand = "(//div[text()='BRANDNAME'])[last()]";
+    By btn_addBrand = By.xpath("//button[text()='Add']");
+    By btn_saveBrandBoost = By.xpath("//button[text()='Save']");
+    String txt_selectedBrand = "//div[contains(text(),'BRANDNAME')]";
+    String btn_boostLevel = "//button[text()='LEVEL']";
+    String btn_removeBrand = "//div[text()='NAME']/following-sibling::button[@aria-label='Remove brand']";
 
 
 
@@ -556,5 +565,51 @@ public class BoostPage extends LoginPage {
     }
     public boolean isWeeklyEssentialsTextDisplay(String option) {
         return distributorUI.isDisplayed(By.xpath(txt_WeeklyEssentials.replace("OPTION", option)));
+    }
+    
+    public void clickBrandBoostTab() {
+        distributorUI.click(tab_brandBoost);
+    }
+    
+    public boolean isBrandBoostTabDisplayed() {
+        return distributorUI.isDisplayed(txt_brandBoost);
+    }
+    
+    public void clickSelectBrandInput() {
+        distributorUI.click(input_selectBrand);
+    }
+    
+    public void selectBrand(String brandName) throws InterruptedException {
+        distributorUI.clickUsingJavaScript(input_selectBrand);
+        distributorUI.sendKeys(input_selectBrand,brandName);
+        distributorUI.click(By.xpath(option_brand.replace("BRANDNAME", brandName)));
+    }
+    
+    public void clickAddBrand() {
+        distributorUI.click(btn_addBrand);
+    }
+    
+    public boolean isBrandAdded(String brandName) {
+        return distributorUI.isDisplayed(By.xpath(txt_selectedBrand.replace("BRANDNAME", brandName)));
+    }
+    
+    public void selectBoostLevel(String brandName, String level) {
+        distributorUI.click(By.xpath(btn_boostLevel.replace("LEVEL", level)));
+    }
+    
+    public void clickSaveBrandBoost() {
+        distributorUI.click(btn_saveBrandBoost);
+    }
+
+    public void removeBrandBoost(String brandName) {
+        distributorUI.click(By.xpath(btn_removeBrand.replace("NAME",brandName)));
+    }
+    
+    public boolean isBrandRemoved(String brandName) {
+        try {
+            return !distributorUI.isDisplayed(By.xpath(txt_selectedBrand.replace("BRANDNAME", brandName)));
+        } catch (Exception e) {
+            return true;
+        }
     }
 }

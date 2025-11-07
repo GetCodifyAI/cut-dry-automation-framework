@@ -2,6 +2,7 @@ package com.cutanddry.qa.tests.orders;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.CatalogData;
 import com.cutanddry.qa.data.testdata.PriceData;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
@@ -20,6 +21,7 @@ public class VerifyThatManuallyOrderGuideCanEditTest extends TestBase{
     static String customerId = "5541";
     static String OrderGuideName ="Test_OG";
     static String itemName ="Capers Surfine 32 OZ";
+    static String DP = CatalogData.DP_VICTO;
 
 
     @BeforeMethod
@@ -34,7 +36,8 @@ public class VerifyThatManuallyOrderGuideCanEditTest extends TestBase{
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
 
-        Login.navigateToDistributorPortal(distributorVitco);
+        Login.navigateToLoginAs();
+        Login.logInToDP(DP);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
 
         Dashboard.navigateToCustomers();

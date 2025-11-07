@@ -72,7 +72,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By btn_addToOrderGuide = By.xpath("//button[@data-tip='Add to Order Guide']");
     By btn_closeEditorCatalog = By.xpath("//button[contains(text(), 'Close Editor')]");
     By btn_closeEditor = By.xpath("//a[contains(text(), 'Close Editor')]");
-    By btn_removeFromOrderGuide = By.xpath("//button[@data-tip='Remove from Order Guide']");
+    By btn_removeFromOrderGuide = By.xpath("//div[contains(@class,'card-deck')]//button[@data-tip='Remove from Order Guide']");
     By upload_file = By.xpath("//input[@type='file']");
     By btn_next = By.xpath("//button[text()='Next']");
     By btn_confirm = By.xpath("//button[text()='Confirm']");
@@ -288,10 +288,10 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By btn_salespersonOption = By.xpath("//*[contains(text(),'Salesperson:')]/following-sibling::div//div[contains(text(),'Amir IFC')]");
     String salespersonName = "//tr//td[6]//div[normalize-space(text())='SALESPERSON']";
     By btn_manageCustomers = By.xpath("//span[contains(text(), 'Manage Customers')]");
-    By btn_exportCustomers = By.xpath("//a[contains(text(), 'Export customers(csv)')]");
+    By btn_downloadCustomerList = By.xpath("//a[contains(text(), 'Download Customer List')]");
     By txt_exportCustomersPopUp = By.xpath("//h4[contains(text(), 'Export \"Customer\" File')]");
     By txt_generatingReport = By.xpath("//h2[text()='Generating Report']");
-    By btn_exportOrderGuidesCSV = By.xpath("//a[contains(text(), 'Export order guides(csv)')]");
+    By btn_downloadOrderGuides = By.xpath("//a[contains(text(), 'Download Order Guides')]");
     By txt_exportOrderGuidesCSVPopUp = By.xpath("//h4[contains(text(), 'Export  File')]");
     By btn_moreFilters = By.xpath("//span[contains(text(), 'More Filters')]");
     By txt_filterCustomersPopUp = By.xpath("//div[contains(text(), 'Filter Customers')]");
@@ -299,7 +299,7 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By btn_signUpOption = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and normalize-space(text())='Signed up']");
     By btn_apply =By.xpath("//button[@class='mx-auto btn btn-primary btn-block' and normalize-space(text())='Apply']");
     String signUpStatus = "//tr//td[4][text()='STATUS']";
-    By btn_addNewCustomer = By.xpath("//a[contains(text(), 'Add new customer')]");
+    By btn_addNewCustomer = By.xpath("//a[contains(text(), 'Add New Customer')]");
     By txt_addNewCustomer = By.xpath("//div[contains(text(), 'Add new customer')]");
     By txt_customerName = By.xpath("//label[contains(text(),'Customer Name*')]/following-sibling::input");
     By btn_continue = By.xpath("//button[contains(text(), 'Continue')]");
@@ -488,11 +488,13 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     By tbx_account_number = By.xpath("//label[text()='Account Number']/following-sibling::input");
     By tbx_routing_number = By.xpath("//label[text()='Routing Number']/following-sibling::input");
     By dropDownAccountType = By.xpath("//label[text()='Account Type']/following-sibling::div//div[contains(@class, 'themed_select__control')]");
+    By accountNotes = By.xpath("//*[contains(text(),'Notes (Optional)')]/following-sibling::textarea");
     String btn_accountTypeOption = "//div[contains(@class, 'themed_select__option') and text()='OPTION_TEXT']";
     By txt_paymentMethodAddedSuccessfully = By.xpath("//h2[text()='Payment method added successfully']");
     By txt_errorOccurredAddingPaymentMethod = By.xpath("//h2[text()='An error occurred while trying to add the payment method.']");
     By icon_edit_payment_method = By.xpath("//div[contains(@class, 'font-weight-bold') and normalize-space(text())='Payment methods']/*[name()='svg']");
     By btn_trash_can = By.xpath("//div[@class='mx-0 my-auto col-2']//button[contains(@class, 'btn-link')]/*[name()='svg' and @data-icon='trash-can']");
+    String btnSpecifcitrashcanbyNote = "//*[contains(text(),'Edit Notes')]//ancestor::div//*[contains(text(),'NOTE')]/following::div//*[contains(@data-icon,'trash-can')]";
     By txt_payment_method_removed = By.xpath("//h2[@id='swal2-title' and text()='Payment method has been removed successfully.']");
     By btn_enable = By.xpath("//div[contains(@class, 'col')]//button[contains(text(), 'Enable')]");
     By btn_i_agree = By.xpath("//button[text()='I Agree' and contains(@class, 'btn-primary')]");
@@ -903,6 +905,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String catalogListViewItemName= "//tr[@class='_du1frc']/td[COLUMN]";
     String catalogFirstItemPrice = "//div[normalize-space(.)='ITEMNAME']/../following::div//span[contains(normalize-space(.),'$')]";
     By tooManyOrdersText = By.xpath("//*[contains(text(),'You are trying to create too many orders too fast!')]");
+    String catalogSearchItemName = "((//div[contains(@class,'card-deck')]//div[   contains(., 'NAME')   and   contains(., 'BRAND') ])[last()])[1]";
+    String orderItems = "//div[normalize-space(text())=\'ITEMNAME\']";
+    By lbl_locationGuide = By.xpath("//div[text()='Location/Guide:']/following-sibling::div//div[@class='cd_themed_select__single-value css-1uccc91-singleValue']");
+    String dropDownLocationOrderGuide =  "(//div[contains(text(), 'Location/Guide:')]//following::div[contains(text(), 'NAME')])[last()]";
+    String editedOrderGuide =  "//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'NAME')]";
+    String editedOrderGuideDescription =  "//div[contains(text(), 'NAME')]";
+    String emptyStateMessage =  "//span[contains(text(), 'NAME')]";
+
 
 
 
@@ -1753,6 +1763,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickOnOrderGuideInProf(){
 //        distributorUI.waitForVisibility(btn_orderGuide);
+        distributorUI.clickWithScrollAndHover(btn_orderGuide);
         distributorUI.waitForClickability(btn_orderGuide);
         distributorUI.click(btn_orderGuide);
     }
@@ -2255,8 +2266,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickManageCustomers(){
         distributorUI.click(btn_manageCustomers);
     }
-    public void clickExportCustomers(){
-        distributorUI.click(btn_exportCustomers);
+    public void clickDownloadCustomerList(){
+        distributorUI.click(btn_downloadCustomerList);
     }
     public boolean isExportCustomersPopUpDisplayed(){
         try {
@@ -2274,8 +2285,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         }
         return distributorUI.isDisplayed(txt_generatingReport);
     }
-    public void clickExportOrderGuides(){
-        distributorUI.click(btn_exportOrderGuidesCSV);
+    public void clickDownloadOrderGuides(){
+        distributorUI.click(btn_downloadOrderGuides);
     }
     public boolean isExportOrderGuidesPopUpDisplayed(){
         try {
@@ -2732,6 +2743,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickRadioButton(){
         distributorUI.click(radioButton);
+    }
+    public boolean isViewCatalogAsCustomerBtnDisplayed(){
+        return distributorUI.isDisplayed(radioButton);
     }
     public void clickOnProduct(String name){
         distributorUI.waitForVisibility(By.xpath(txt_product.replace("NAME", name)),30);
@@ -3250,6 +3264,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         }
     }
 
+    public void enterBankAccountNumber(String Notes){
+        distributorUI.sendKeys(accountNotes,Notes);
+    }
+
     public boolean isPaymentMethodAddedSuccessfully() {
         try {
             distributorUI.waitForVisibility(txt_paymentMethodAddedSuccessfully);
@@ -3283,6 +3301,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
 
     public void clickOnTrashCan(){
         distributorUI.click(btn_trash_can);
+    }
+
+    public void clickOnSpecificTrashCanByNote(String note){
+        distributorUI.click(By.xpath(btnSpecifcitrashcanbyNote.replace("NOTE",note)));
     }
 
     public void editPaymentMethod() throws InterruptedException {
@@ -5374,4 +5396,30 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isTooManyOrdersErrorDisplayed(){
         return distributorUI.isDisplayed(tooManyOrdersText);
     }
+    public boolean getFirstItemNameBrandFrmSearchResults(String name,String brand){
+        return distributorUI.isDisplayed(By.xpath(catalogSearchItemName.replace("NAME", name).replace("BRAND",brand)));
+    }
+    public boolean isItemsDisplayedInsideOrder(String ItemName){
+        return distributorUI.isDisplayed(By.xpath(orderItems.replace("ITEMNAME",ItemName)));
+    }
+    public boolean isSelectOrderGuideOptionDisplayed(){
+        return distributorUI.isDisplayed(lbl_orderGuide);
+    }
+
+    public void clickLocationGuide(){
+        distributorUI.click(lbl_locationGuide);
+    }
+    public boolean IsLocationOrderGuideDisplay(String name){
+        return distributorUI.isDisplayed(By.xpath(dropDownLocationOrderGuide.replace("NAME",name)));
+    }
+    public boolean editedOrderGuideNameDisplay(String name){
+        return distributorUI.isDisplayed(By.xpath(editedOrderGuide.replace("NAME",name)));
+    }
+    public boolean editedOrderGuideDescriptionDisplay(String name){
+        return distributorUI.isDisplayed(By.xpath(editedOrderGuideDescription.replace("NAME",name)));
+    }
+    public boolean isEmptyStateMessageDisplay(String name){
+        return distributorUI.isDisplayed(By.xpath(emptyStateMessage.replace("NAME",name)));
+    }
+
 }

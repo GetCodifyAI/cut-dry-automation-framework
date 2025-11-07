@@ -48,6 +48,7 @@ public class VerifyPurchaseHistoryWithPriceNotDisplayInOrderGuideAndPDPWhenDispl
         InternalTools.displayMarginOnPortalToggle(true);
         InternalTools.restrictMarginOnPortalToggle(false);
         InternalTools.displayPurchasePriceToggle(false);
+        InternalTools.displayPurchaseHistoryToggle(true);
 
         InternalTools.clickSave();
         softAssert.assertTrue(InternalTools.isSuccessPopUpDisplayed(),"change not save");

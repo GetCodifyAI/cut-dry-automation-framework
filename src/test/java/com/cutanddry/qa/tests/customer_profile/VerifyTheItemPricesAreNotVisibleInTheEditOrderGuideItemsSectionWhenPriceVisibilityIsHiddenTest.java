@@ -23,7 +23,7 @@ public class VerifyTheItemPricesAreNotVisibleInTheEditOrderGuideItemsSectionWhen
     static double itemPrice;
     static String statusVisible = "Visible";
     static String statusHidden = "Hidden";
-    static String OperatorName = "206523643";
+    static String OperatorName = "496044202";
     String DistributorName = CustomerProfileData.DISTRIBUTOR_NAME_IFC;
 
 
@@ -46,6 +46,9 @@ public class VerifyTheItemPricesAreNotVisibleInTheEditOrderGuideItemsSectionWhen
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerID),"search error");
         Customer.SelectCustomer(customerID);
         softAssert.assertTrue(Customer.isCustomerNameTxtDisplayed(), "text error");
+        Customer.clickCusAccountVisibilityOption();
+        Customer.clickCusAccountVisibilityDropdown();
+        Customer.selectCusAccountVisibleOption();
         Customer.editStatusPriceVisibility(statusHidden);
 
         Customer.clickOnOrderGuideInCustomerProfile();

@@ -22,7 +22,7 @@ public class VerifyAddingNewProductFromCatalogTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-84")
-    public void verifyAddingNewProductFromCatalog(){
+    public void verifyAddingNewProductFromCatalog() throws InterruptedException{
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(),user.getPassword());
         Dashboard.isUserNavigatedToDashboard();

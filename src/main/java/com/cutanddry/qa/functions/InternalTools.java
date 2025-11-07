@@ -313,8 +313,12 @@ public class InternalTools {
         internalToolsPage.clickOnTaskManagement();
     }
     public static void runParentChildTask(String formID){
-        internalToolsPage.isParentChildTaskDisplayed(formID);
-        internalToolsPage.clickRunLocallyOnParentChildTask(formID);
+        if(internalToolsPage.isParentChildTaskDisplayed(formID)){
+            internalToolsPage.clickRunLocallyOnParentChildTask(formID);
+        }else{
+            internalToolsPage.refreshPage();
+            internalToolsPage.clickRunLocallyOnParentChildTask(formID);
+        }
     }
     public static boolean isPCTaskAttemptedDisplayed(){
         return internalToolsPage.isTaskAttemptedDisplayed();

@@ -22,6 +22,7 @@ public class VerifyThatUserCanChangeTheUnitOfMeasureForItemsInOfflineModeTest ex
     static String searchItemCode = "01409";
     static String measure1 = "Pkg";
     static String measure2 = "Case";
+    static String OrderGuideName = OfflineOrderingData.ORDER_GUIDE_NAME;
 
 
     @BeforeMethod
@@ -50,6 +51,8 @@ public class VerifyThatUserCanChangeTheUnitOfMeasureForItemsInOfflineModeTest ex
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerId);
+        Customer.clickOGDropdown();
+        Customer.selectNewlyCreatedOrderGuide(OrderGuideName);
 
         Customer.expandMoreOptionsDropdown();
         Customer.clickSwitchToOfflineMode();
