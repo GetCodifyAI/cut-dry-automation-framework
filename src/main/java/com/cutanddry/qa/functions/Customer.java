@@ -3262,6 +3262,9 @@ public class Customer {
     public static boolean editedOrderGuideDescriptionDisplay(String name){
         return customersPage.editedOrderGuideDescriptionDisplay(name);
     }
+    public static boolean isEmptyStateMessageDisplay(String name){
+        return customersPage.isEmptyStateMessageDisplay(name);
+    }
 
 
 }
