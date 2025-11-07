@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyThatTheOrderGuideNameAndDescriptionInOrderGuideSettingsTest extends TestBase {
     static User user;
     static String customerId = "34419";
-    static String OrderGuideName = "Independent Foods Co";
+    static String OrderGuideName = "Test_Automation";
     static String NewOrderGuideName = "Test Foods OG";
     static String OrderGuideDescription = "Test Description";
 
@@ -39,6 +39,7 @@ public class VerifyThatTheOrderGuideNameAndDescriptionInOrderGuideSettingsTest e
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
+        Customer.selectOrderGuideIfOverlayDisplayed(OrderGuideName);
 
         Customer.selectNewlyCreatedOrderGuide(OrderGuideName);
         Customer.expandMoreOptionsDropdown();
