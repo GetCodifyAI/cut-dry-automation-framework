@@ -3274,6 +3274,10 @@ public class Customer {
             customersPage.clickOnCloseEditorCatalog();
         }
     }
+    public static boolean isEmptyStateMessageDisplay(String name){
+        return customersPage.isEmptyStateMessageDisplay(name);
+    }
+
 
 }
 
