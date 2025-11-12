@@ -101,6 +101,7 @@ public class OrdersPage extends LoginPage{
     String columnSettingUpdated= "//span[text()='COLUMN']";
     By selectLocation = By.xpath("//div[contains(text(),'Select Location')]");
     By btn_selectLocation = By.xpath("//div[contains(text(),'Select Location')]/following-sibling::div/div[1]");
+    By btn_FindMoreInCatalog = By.xpath("//button[text()='Find More in Catalog']");
 
     public void clickBtnSaveCheckIn(){
         distributorUI.click(btn_saveCheckIn);
@@ -613,6 +614,10 @@ public class OrdersPage extends LoginPage{
     }
     public boolean isSubmitForApprovalButtonDisplay(){
         return distributorUI.isDisplayed(submitForApproval);
+    }
+    public void  clickFindMoreInCatalog()throws InterruptedException{
+        distributorUI.scrollToElement(btn_FindMoreInCatalog);
+        distributorUI.click(btn_FindMoreInCatalog);
     }
 
 
