@@ -295,4 +295,7 @@ public class Orders {
     public static boolean isSubmitForApprovalButtonDisplay(){
         return ordersPage.isSubmitForApprovalButtonDisplay();
     }
+    public static void clickFindMoreInCatalog()throws InterruptedException{
+        ordersPage.clickFindMoreInCatalog();
+    }
 }
