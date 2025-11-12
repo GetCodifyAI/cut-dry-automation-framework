@@ -48,6 +48,8 @@
             <class name="com.cutanddry.qa.tests.customers.VerifyTheCustomersCanSubmitOrdersWhenTheAccountIsInHardHoldByEnteringTheCreditCardDetailsDPPortalTest"/>
 
             <class name="com.cutanddry.qa.tests.orders.VerifyTheFindMoreInCatalogButtonTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_data.VerifyThatTheOrderUponEditingWithInactiveItemsTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_data.VerifyThatTheStandingOrderUponEditingWithInactiveItemsTest"/>
         </classes>
     </test>
 </suite>
