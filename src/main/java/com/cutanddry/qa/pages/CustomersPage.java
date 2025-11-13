@@ -832,6 +832,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_trash = By.xpath("(//button[@type='button']//*[local-name()='svg' and @data-icon='cdTrash'])[1]");
     By lbl_itemUOM = By.xpath("(//div[text()='Item Code']/../../../../following-sibling::td//input[@type='checkbox'])[1]");
     By txt_unitNotValid = By.xpath("//span[text()='Unit not valid']");
+    By txt_maximumQuantityExceeded = By.xpath("//span[contains(text(),'Maximum quantity exceeded')]");
     By dropdown_option_SimpleListView = By.xpath("//div[text()='Simple List View']");
     By txt_simpleListView = By.xpath("//div[text()='Simple List View']");
     String sortOptionOG = "(//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'OPTION')])[last()]";
@@ -5001,6 +5002,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isUnitNotValidTextDisplay()throws InterruptedException{
         return distributorUI.isDisplayed(txt_unitNotValid);
+    }
+    public boolean isMaximumQuantityExceededErrorDisplay()throws InterruptedException{
+        return distributorUI.isDisplayed(txt_maximumQuantityExceeded);
     }
     public void clickSimpleListView(){
         distributorUI.waitForClickability(dropdown_option_SimpleListView);

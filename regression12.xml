@@ -63,6 +63,7 @@
             <class name="com.cutanddry.qa.tests.quick_add.VerifyTheUserCanAddItemsToTheQuickAddFlowByEnteringAValidProductIDTest"/>
             <class name="com.cutanddry.qa.tests.quick_add.VerifyTheRowDataIsClearedWhenClickingTheTrashIconInQuickAddFlowTest"/>
             <class name="com.cutanddry.qa.tests.quick_add.VerifyTheQuickAddFlowForItemsWithoutEachAsTheUOMTest"/>
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyQuickAddFlowMaximumQuantityValidationTest"/>
 
             <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheSortItemsByDropDownIsAvailableInTheSimpleListViewTest"/>
             <class name="com.cutanddry.qa.tests.catalog_access.VerifyHideWhiteLabelHomePageForEmployeesWithNoCatalogAccessTest"/>
