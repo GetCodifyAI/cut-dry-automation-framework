@@ -298,4 +298,7 @@ public class Orders {
     public static void clickFindMoreInCatalog()throws InterruptedException{
         ordersPage.clickFindMoreInCatalog();
     }
+    public static boolean isInactiveItemDetectedPopUpDisplay()throws InterruptedException{
+        return ordersPage.isInactiveItemDetectedPopUpDisplay();
+    }
 }
