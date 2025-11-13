@@ -29,6 +29,9 @@ public class VerifyStandingOrderFlowWhenSwitchingOrderGuidesTest extends TestBas
     @Test(groups = "DOT-TC-1546")
     public void verifyStandingOrderFlowWhenSwitchingOrderGuides() throws InterruptedException {
         String itemName;
+        String secondItemName;
+        int draftCountBefore;
+        int draftCountAfter;
         SoftAssert softAssert = new SoftAssert();
         
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
@@ -44,6 +47,13 @@ public class VerifyStandingOrderFlowWhenSwitchingOrderGuidesTest extends TestBas
         
         Customer.removeStandingOrdersIfAvailable();
         
+        Dashboard.navigateToDrafts();
+        draftCountBefore = Draft.getActiveDraftCount();
+        
+        Dashboard.navigateToCustomers();
+        Customer.searchCustomerByCode(customerId);
+        Customer.clickOnCustomerCode(customerId);
+        Customer.clickOnOrdersTab();
         Customer.clickOnCreateStandingOrder();
         
         Customer.selectDeliveryDate(deliveryDay);
@@ -53,15 +63,14 @@ public class VerifyStandingOrderFlowWhenSwitchingOrderGuidesTest extends TestBas
         softAssert.assertTrue(Integer.parseInt(Customer.getItemQtyFirstRow()) > 0, 
             "Item quantity not increased");
         
-        Customer.clickCompanyDropdown();
-        softAssert.assertTrue(Customer.isCompanyDropdownTextDisplayed(), 
-            "Company dropdown not displayed - unable to switch order guides");
+        Customer.clickOnItemOrderGuideDropDown(secondOrderGuideName);
         
         Dashboard.navigateToDrafts();
         softAssert.assertTrue(Draft.isUserNavigatedToDrafts(), 
             "Draft section not displayed");
-        softAssert.assertTrue(Draft.isDraftOrdersNotOlder30Days(), 
-            "Draft not created when switching to new order guide");
+        draftCountAfter = Draft.getActiveDraftCount();
+        softAssert.assertEquals(draftCountAfter, draftCountBefore + 1, 
+            "Draft not created when switching to new order guide - expected count: " + (draftCountBefore + 1) + ", actual: " + draftCountAfter);
         
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
@@ -70,7 +79,7 @@ public class VerifyStandingOrderFlowWhenSwitchingOrderGuidesTest extends TestBas
         Customer.clickOnCreateStandingOrder();
         Customer.selectDeliveryDate(deliveryDay);
         
-        String secondItemName = Customer.getItemNameFirstRow();
+        secondItemName = Customer.getItemNameFirstRow();
         Customer.increaseFirstRowQtyByOne();
         softAssert.assertTrue(Integer.parseInt(Customer.getItemQtyFirstRow()) > 0, 
             "Item quantity not increased in second order guide");
