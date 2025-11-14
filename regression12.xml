@@ -78,6 +78,7 @@
             <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheOnSiteInventoryColumnAppearsWhenTheToggleIsEnabledForTheDPSideTest"/>
 
             <class name="com.cutanddry.qa.tests.quick_add.VerifyCorrectErrorMessagesAreDisplayedWhenAddingDifferentTypesOfItemsToTheQuickAddFlowTest"/>
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyQuickAddMaximumQuantityValidationTest"/>
             <class name="com.cutanddry.qa.tests.customers.VerifyTheOrderSummeryIsDisplayedCorrectlyOnTheEditOrderFlowTest"/>
 
             <class name="com.cutanddry.qa.tests.team.SalesRepMappingAutomationAddNewUserWithERPUserReferenceTest"/>
