@@ -65,9 +65,89 @@ public class VerifyOrderGuideStepperValidationMaximumQuantity1999Test extends Te
         softAssert.assertEquals(Customer.getItemQtyFirstRow(), "1999",
             "Quantity changed after dismissing modal - should remain 1999");
         
-        // Step 7: Repeat the steps in PDP, Carousels, Catalog (Grid and List views), Review screen
-        // Note: This is a comprehensive test that would require additional implementation
-        // For now, we've validated the core functionality in the Order Guide
+        // Step 7: Repeat steps 2-6 in PDP, Carousels, Catalog (Grid and List views), Review screen
+        
+        Customer.goToCatalog();
+        String itemName = Customer.getItemNameFirstRow();
+        Customer.searchItemOnCatalog(itemName);
+        Customer.clickOnProduct(itemName);
+        softAssert.assertTrue(Customer.isProductDetailsDisplayed(),
+            "PDP not displayed");
+        
+        Customer.setItemQuantityPDP(1999);
+        softAssert.assertEquals(Customer.getItemQtyPDP(), "1999",
+            "PDP: Failed to set quantity to 1999");
+        
+        Customer.clickPlusQtyPDP();
+        softAssert.assertTrue(Customer.isMaximumQuantityExceededModalDisplayed(),
+            "PDP: Maximum Quantity Exceeded modal not displayed");
+        
+        softAssert.assertTrue(Customer.getMaximumQuantityExceededModalMessage().contains("1,999"),
+            "PDP: Modal message does not contain expected text");
+        
+        Customer.dismissMaximumQuantityExceededModal();
+        softAssert.assertEquals(Customer.getItemQtyPDP(), "1999",
+            "PDP: Quantity changed after dismissing modal");
+        
+        Customer.clickOnBack();
+        Customer.clickOnBack();
+        
+        Customer.goToCatalog();
+        softAssert.assertTrue(Customer.isCatalogTextDisplayed(),
+            "Catalog not displayed");
+        
+        Customer.setItemQuantityCatalogFirstRow(1999);
+        softAssert.assertEquals(Customer.getItemQtyCatalogFirstRow(), "1999",
+            "Catalog Grid: Failed to set quantity to 1999");
+        
+        Customer.clickPlusQtyCatalogFirstRow();
+        softAssert.assertTrue(Customer.isMaximumQuantityExceededModalDisplayed(),
+            "Catalog Grid: Maximum Quantity Exceeded modal not displayed");
+        
+        softAssert.assertTrue(Customer.getMaximumQuantityExceededModalMessage().contains("1,999"),
+            "Catalog Grid: Modal message does not contain expected text");
+        
+        Customer.dismissMaximumQuantityExceededModal();
+        softAssert.assertEquals(Customer.getItemQtyCatalogFirstRow(), "1999",
+            "Catalog Grid: Quantity changed after dismissing modal");
+        
+        Customer.clickSimpleListView();
+        softAssert.assertTrue(Customer.isSimpleListViewTextDisplay(),
+            "Catalog List View not displayed");
+        
+        Customer.setItemQuantityFirstRow(1999);
+        softAssert.assertEquals(Customer.getItemQtyFirstRow(), "1999",
+            "Catalog List: Failed to set quantity to 1999");
+        
+        Customer.clickPlusQryFirstRow();
+        softAssert.assertTrue(Customer.isMaximumQuantityExceededModalDisplayed(),
+            "Catalog List: Maximum Quantity Exceeded modal not displayed");
+        
+        softAssert.assertTrue(Customer.getMaximumQuantityExceededModalMessage().contains("1,999"),
+            "Catalog List: Modal message does not contain expected text");
+        
+        Customer.dismissMaximumQuantityExceededModal();
+        softAssert.assertEquals(Customer.getItemQtyFirstRow(), "1999",
+            "Catalog List: Quantity changed after dismissing modal");
+        
+        Customer.checkoutItems();
+        softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(),
+            "Review screen not displayed");
+        
+        Customer.setItemQuantityReviewFirstRow(1999);
+        softAssert.assertEquals(Customer.getItemQtyReviewFirstRow(), "1999",
+            "Review Screen: Failed to set quantity to 1999");
+        
+        Customer.clickPlusQtyReviewFirstRow();
+        softAssert.assertTrue(Customer.isMaximumQuantityExceededModalDisplayed(),
+            "Review Screen: Maximum Quantity Exceeded modal not displayed");
+        
+        softAssert.assertTrue(Customer.getMaximumQuantityExceededModalMessage().contains("1,999"),
+            "Review Screen: Modal message does not contain expected text");
+        
+        Customer.dismissMaximumQuantityExceededModal();
+        softAssert.assertEquals(Customer.getItemQtyReviewFirstRow(), "1999",
+            "Review Screen: Quantity changed after dismissing modal");
         
         softAssert.assertAll();
     }
