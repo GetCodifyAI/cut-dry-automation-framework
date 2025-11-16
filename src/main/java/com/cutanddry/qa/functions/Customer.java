@@ -3278,6 +3278,29 @@ public class Customer {
         return customersPage.isEmptyStateMessageDisplay(name);
     }
 
+    public static void setItemQuantityFirstRow(int quantity) throws InterruptedException {
+        customersPage.setItemQuantityFirstRow(quantity);
+    }
+
+    public static boolean isMaximumQuantityExceededModalDisplayed() {
+        return customersPage.isMaximumQuantityExceededModalDisplayed();
+    }
+
+    public static String getMaximumQuantityExceededModalMessage() {
+        return customersPage.getMaximumQuantityExceededModalMessage();
+    }
+
+    public static void dismissMaximumQuantityExceededModal() throws InterruptedException {
+        customersPage.dismissMaximumQuantityExceededModal();
+    }
+
+    public static boolean isOrderGuideDisplayed() {
+        return customersPage.isOrderGuideDisplayed();
+    }
+
+    public static void clickPlusQryFirstRow() throws InterruptedException {
+        customersPage.clickPlusQryFirstRow();
+    }
 
 }
 

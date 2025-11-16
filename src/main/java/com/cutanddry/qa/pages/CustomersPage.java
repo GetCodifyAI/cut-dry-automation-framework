@@ -5422,4 +5422,48 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(By.xpath(emptyStateMessage.replace("NAME",name)));
     }
 
+    By lbl_maximumQuantityExceededModal = By.xpath("//h2[contains(text(),'Maximum Quantity Exceeded')]");
+    By lbl_maximumQuantityExceededMessage = By.xpath("//div[contains(text(),'maximum quantity') or contains(text(),'1,999')]");
+    By btn_dismissMaxQuantityModal = By.xpath("//button[contains(text(),'OK') or contains(text(),'Close')]");
+    By lbl_orderGuideText = By.xpath("//span[text()='Order Guide'] | //h2[text()='Order Guide']");
+
+    public void setItemQuantityFirstRow(int quantity) throws InterruptedException {
+        distributorUI.waitForVisibility(tbx_itemQuantityinFirstRow);
+        distributorUI.clear(tbx_itemQuantityinFirstRow);
+        distributorUI.sendKeys(tbx_itemQuantityinFirstRow, String.valueOf(quantity));
+        distributorUI.waitForCustom(2000);
+    }
+
+    public boolean isMaximumQuantityExceededModalDisplayed() {
+        try {
+            distributorUI.waitForVisibility(lbl_maximumQuantityExceededModal, 5);
+            return distributorUI.isDisplayed(lbl_maximumQuantityExceededModal);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public String getMaximumQuantityExceededModalMessage() {
+        try {
+            distributorUI.waitForVisibility(lbl_maximumQuantityExceededMessage, 5);
+            return distributorUI.getText(lbl_maximumQuantityExceededMessage);
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public void dismissMaximumQuantityExceededModal() throws InterruptedException {
+        distributorUI.waitForClickability(btn_dismissMaxQuantityModal);
+        distributorUI.click(btn_dismissMaxQuantityModal);
+        distributorUI.waitForCustom(2000);
+    }
+
+    public boolean isOrderGuideDisplayed() {
+        try {
+            return distributorUI.isDisplayed(lbl_orderGuideText);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }
