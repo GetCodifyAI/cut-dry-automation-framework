@@ -912,6 +912,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String editedOrderGuide =  "//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'NAME')]";
     String editedOrderGuideDescription =  "//div[contains(text(), 'NAME')]";
     String emptyStateMessage =  "//span[contains(text(), 'NAME')]";
+    String btnPlaceOrder = "//td[text()='CODE']/../td//button[text()='Place Order']";
+    By txtCatalog = By.xpath("//div[text()='Catalog']");
 
 
 
@@ -5420,6 +5422,21 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isEmptyStateMessageDisplay(String name){
         return distributorUI.isDisplayed(By.xpath(emptyStateMessage.replace("NAME",name)));
+    }
+    public void clickOnPlaceOrder(String code) {
+        distributorUI.clickWithFallback(By.xpath(btnPlaceOrder.replace("CODE", code)));
+    }
+    public boolean isPlaceOrderButtonDisplay(String code){
+        return distributorUI.isDisplayed(By.xpath(btnPlaceOrder.replace("CODE",code)));
+    }
+    public boolean isPlaceOrderButtonVisibleInCustomerProfile(){
+        return distributorUI.isDisplayed(btn_placeOrder);
+    }
+    public void clickPlaceOrderButtonInCustomerProfile(){
+        distributorUI.click(btn_placeOrder);
+    }
+    public boolean isCatalogDisplayed(){
+        return distributorUI.isDisplayed(txtCatalog);
     }
 
 }
