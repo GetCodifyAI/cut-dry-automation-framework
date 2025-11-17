@@ -3277,6 +3277,27 @@ public class Customer {
     public static boolean isEmptyStateMessageDisplay(String name){
         return customersPage.isEmptyStateMessageDisplay(name);
     }
+    public static void clickOnPlaceOrder(String code) throws InterruptedException {
+        customersPage.clickOnPlaceOrder(code);
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+    }
+    public static boolean isPlaceOrderButtonDisplay(String code){
+        return customersPage.isPlaceOrderButtonDisplay(code);
+    }
+    public static boolean isPlaceOrderButtonVisibleInCustomerProfile(){
+        return customersPage.isPlaceOrderButtonVisibleInCustomerProfile();
+    }
+    public static void clickPlaceOrderButtonInCustomerProfile() throws InterruptedException {
+        customersPage.clickPlaceOrderButtonInCustomerProfile();
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+    }
+    public static boolean isCatalogDisplayed(){
+        return customersPage.isCatalogDisplayed();
+    }
 
 
 }

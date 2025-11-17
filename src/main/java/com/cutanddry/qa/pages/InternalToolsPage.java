@@ -109,6 +109,9 @@ public class InternalToolsPage extends LoginPage {
     String ParentChildTaskRunLocallyBtn =  "//div[normalize-space()='copyToChildForms']/../following-sibling::td[normalize-space()='FORMID']//ancestor::td/following::td//button[contains(text(),'Run Locally')]";
     By isTaskRunAttemptedDisplayed = By.xpath("//*[contains(text(),'Task run attempted')]");
     By parentChildRelationshipTask = By.xpath("//div[normalize-space()='createParentChildOrderGuideRelationships']//ancestor::td/following::td//button[contains(text(),'Run Locally')]");
+    By catalogOnlyOrderFlowToggleStable = By.xpath("//div[contains(text(), 'Catalog Only Order Flow')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By catalogOnlyOrderFlowToggleStable1 = By.xpath("//div[contains(text(), 'Catalog Only Order Flow')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+
 
 
 
@@ -666,6 +669,18 @@ public class InternalToolsPage extends LoginPage {
 
     public void refreshPage(){
         distributorUI.refreshPage();
+    }
+
+    public void clickCatalogOnlyOrderFlowToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(catalogOnlyOrderFlowToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(catalogOnlyOrderFlowToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(catalogOnlyOrderFlowToggleStable1);
+        }
     }
 
 

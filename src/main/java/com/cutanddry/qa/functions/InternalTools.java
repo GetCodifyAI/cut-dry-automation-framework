@@ -326,5 +326,8 @@ public class InternalTools {
     public static void clickRunLocallyOnParentChildRelationshipTask(){
         internalToolsPage.clickRunLocallyOnParentChildRelationshipTask();
     }
+    public static void clickCatalogOnlyOrderFlowToggle(boolean status){
+        internalToolsPage.clickCatalogOnlyOrderFlowToggle(status);
+    }
 
 }

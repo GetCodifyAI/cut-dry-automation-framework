@@ -50,6 +50,9 @@
             <class name="com.cutanddry.qa.tests.orders.VerifyTheFindMoreInCatalogButtonTest"/>
             <class name="com.cutanddry.qa.tests.catalog_data.VerifyThatTheOrderUponEditingWithInactiveItemsTest"/>
             <class name="com.cutanddry.qa.tests.catalog_data.VerifyThatTheStandingOrderUponEditingWithInactiveItemsTest"/>
+
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheOrderGuideWillNotDisplayedWhenTheCatalogOnlyOrderFlowIsActivatedFromTheSupplierConfigTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheAddToOrderGuideWillNotDisplayedWhenTheCatalogOnlyOrderFlowIsActivatedFromTheSupplierConfigTest"/>
         </classes>
     </test>
 </suite>
