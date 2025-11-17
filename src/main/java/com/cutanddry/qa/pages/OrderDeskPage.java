@@ -44,7 +44,7 @@ public class OrderDeskPage extends LoginPage{
 String DeliveryDateSelect = "(//div[contains(@class,'themed_select__option')])[DELIVERYDATE]";
     By DeliveryDateNotValidTxt = By.xpath("//div[@class='text-danger']");
 //    By ReviewTxt = By.xpath("//h2[contains(text(),'pending_review')]");
-//    By ReviewTxt = By.xpath("//*[contains(text(),'PENDING REVIEW')]");
+    By ReviewTxt = By.xpath("//*[contains(text(),'PENDING REVIEW')]");
     By anyOrderTxt = By.xpath("//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'quantity')]");
     By SubmittedOrderPageReViewBtn = By.xpath("(//div[contains(@class, '_10q9czs row')]//div//a[text()='View' and contains(@href,'/order-desk')])[last()]");
     By SubmitTxt = By.xpath("//*[contains(text(),'Submit Order')]");
@@ -96,6 +96,7 @@ String DeliveryDateSelect = "(//div[contains(@class,'themed_select__option')])[D
         distributorUI.waitForCustom(3000);
         distributorUI.clearUsingJavaScript(DraftOrderReviewPageQuantityEdit);
         distributorUI.sendKeys(DraftOrderReviewPageQuantityEdit, itemQuantity);
+        distributorUI.click(ReviewTxt);
         distributorUI.waitForCustom(4000);
     }
 

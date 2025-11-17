@@ -2,8 +2,10 @@ package com.cutanddry.qa.tests.order_guide;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.CatalogData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -19,7 +21,7 @@ public class PlaceOrdersFromMultipleOrderGuidesTest extends TestBase {
     static String customerCode = "5456";
     static String newOrderGuideName = "TestOG_Automation_" + System.currentTimeMillis();
     static String existingOrderGuideName = "History Order Guide";
-    static String distributor = "Vitco";
+    static String DP = CatalogData.DP_VICTO;
 
     @BeforeMethod
     public void setUp() {
@@ -32,8 +34,8 @@ public class PlaceOrdersFromMultipleOrderGuidesTest extends TestBase {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "login error");
-
-        Login.navigateToDistributorPortal(distributor);
+        Login.navigateToLoginAs();
+        Login.logInToDP(DP);
 
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "Login error - user not navigated to distributor dashboard");
         Dashboard.navigateToCustomers();
@@ -42,6 +44,7 @@ public class PlaceOrdersFromMultipleOrderGuidesTest extends TestBase {
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerCode), "Customer with code " + customerCode + " not found in search results");
 
         Customer.clickOnOrderGuide(customerCode);
+        Customer.selectOrderGuideIfOverlayDisplayed(existingOrderGuideName);
         softAssert.assertTrue(Customer.isCustomerOrderGuideDisplayed(), "Order Guide not displayed after clicking Order Guide button");
         Customer.goToCreatePopup();
         Customer.createOrderGuide(newOrderGuideName);
