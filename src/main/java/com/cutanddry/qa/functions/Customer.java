@@ -3003,6 +3003,15 @@ public class Customer {
     public static String getItemQuantitySimpleListView(String code) throws InterruptedException {
         return customersPage.getItemQuantitySimpleListView(code);
     }
+    public static boolean isMaximumQuantityExceededModalDisplayed() throws InterruptedException {
+        return customersPage.isMaximumQuantityExceededModalDisplayed();
+    }
+    public static boolean isMaximumQuantityExceededMessageDisplayed() throws InterruptedException {
+        return customersPage.isMaximumQuantityExceededMessageDisplayed();
+    }
+    public static void clickMaximumQuantityExceededOK() throws InterruptedException {
+        customersPage.clickMaximumQuantityExceededOK();
+    }
     public static void clearSearchField()throws InterruptedException{
         customersPage.clearSearchField();
     }

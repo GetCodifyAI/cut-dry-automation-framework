@@ -842,6 +842,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String quantityReviewPage = "//td[text()='CODE']/following-sibling::*//input";
     By dropdown_option_OrderGuideView = By.xpath("//div[text()='Order Guide View']");
     String quantitySimpleListView = "//span[text()='CODE']/../following-sibling::*//input";
+    By txt_maximumQuantityExceededModal = By.xpath("//div[@aria-modal='true']//h2[text()='Maximum Quantity Exceeded!']");
+    By txt_maximumQuantityExceededMessage = By.xpath("//div[@aria-modal='true']//div[contains(text(),'The maximum quantity allowed per item is 1999')]");
+    By btn_maximumQuantityExceededOK = By.xpath("//div[@aria-modal='true']//button[text()='OK']");
 
     By dropdown_option_ManageStandingOrders = By.xpath("//div[text()='Manage Standing Orders']");
     By txt_manageStandingOrders = By.xpath("//*[contains(text(), 'Manage Standing Orders')]");
@@ -5039,6 +5042,18 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public String getItemQuantitySimpleListView(String code){
         distributorUI.waitForVisibility(By.xpath(quantitySimpleListView.replace("CODE",code)));
         return distributorUI.getText(By.xpath(quantitySimpleListView.replace("CODE",code)), "value");
+    }
+    public boolean isMaximumQuantityExceededModalDisplayed() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(txt_maximumQuantityExceededModal);
+    }
+    public boolean isMaximumQuantityExceededMessageDisplayed() throws InterruptedException {
+        return distributorUI.isDisplayed(txt_maximumQuantityExceededMessage);
+    }
+    public void clickMaximumQuantityExceededOK() throws InterruptedException {
+        distributorUI.waitForClickability(btn_maximumQuantityExceededOK);
+        distributorUI.click(btn_maximumQuantityExceededOK);
+        distributorUI.waitForCustom(2000);
     }
     public void clearSearchField()throws InterruptedException{
         distributorUI.click(icon_deleteSearchItem);
