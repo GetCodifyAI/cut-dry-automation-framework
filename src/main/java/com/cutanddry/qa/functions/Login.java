@@ -63,8 +63,14 @@ public class Login {
     public static void navigateToSupplierPortalVendor(String id) {
         loginPage.navigateToSupplierPortalVendor(id);
     }
+    public static void navigateToNode(String Node){
+        loginPage.navigateToNode(Node);
+    }
     public static void setNode(String DataName){
         loginPage.setNode(DataName);
+    }
+    public static void setValueToNode(String keyName, String valueName){
+        loginPage.setValueToNode(keyName,valueName);
     }
     public static void navigateToDistributorPortal(String name) {
         loginPage.navigateToDistributorPortal(name);
@@ -88,6 +94,9 @@ public class Login {
 
     public static void switchIntoNewTab(){
         loginPage.switchIntoNewTab();
+    }
+    public static void closeCurrentTabAndSwitchBack(){
+        loginPage.closeCurrentTab();
     }
     public static void navigateToRestaurantPortal(String phoneNo){
         loginPage.navigateToRestaurantPortal(phoneNo);
@@ -132,5 +141,8 @@ public class Login {
         loginPage.typeToSearchOnOperator(operator);
         loginPage.clickOperator(operator);
         loginPage.clickOnLoginAsClassicAndSwitchToNewTab();
+    }
+    public static void closeCurrentTabAndSwitchToNew(){
+       loginPage.closeCurrentTabAndSwitchToNew();
     }
 }

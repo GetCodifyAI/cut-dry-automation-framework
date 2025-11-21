@@ -18,8 +18,8 @@ public class ValidateThePoundSpotPricingWhenSelectingMultipleUOMTest extends Tes
     SoftAssert softAssert;
 
     // TODO: Need a DP and Customer with Multi UOM for Pond price
-    static String distributor = SplitWeightUOMData.DISTRIBUTOR_NAME_VICTO;
-    static String customerId = SplitWeightUOMData.CUSTOMER_ID_VICTO;
+    static String distributor = SplitWeightUOMData.DISTRIBUTOR_NAME_FSM;
+    static String customerId = SplitWeightUOMData.CUSTOMER_ID_FSM;
     static String sortOption = SplitWeightUOMData.SORT_ITEM_BY;
     static String uom1 = CatalogData.MULTI_UOM_1;
     static String uom2 = CatalogData.MULTI_UOM_2;
@@ -150,7 +150,7 @@ public class ValidateThePoundSpotPricingWhenSelectingMultipleUOMTest extends Tes
         Customer.OrderDateSort();
         Customer.OrderDateSort();
         double actualPrice = Double.parseDouble(Customer.getPriceInCustomerOrder().replace("$", "").replace(",", "").trim());
-        softAssert.assertEquals(actualPrice, totalOGItemPrice, "The total values in the submission and the total displayed in the Customer Profile Orders section do not match.");
+        softAssert.assertEquals(actualPrice, totalOGItemPrice,0.01, "The total values in the submission and the total displayed in the Customer Profile Orders section do not match.");
 
 
         softAssert.assertAll();

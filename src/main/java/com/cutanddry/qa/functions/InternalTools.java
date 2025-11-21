@@ -155,9 +155,9 @@ public class InternalTools {
         internalToolsPage.clickInstacartSponsoredProductAdsToggle(enable);
         internalToolsPage.clickProductAdsSave();
     }
-    public static void ensureBuyerEdgePlatformRebateStatus(boolean enable) throws InterruptedException {
+    public static void ensureBuyerEdgePlatformRebateStatus(boolean enable, String distributor) throws InterruptedException {
         internalToolsPage.clickConfigureSupplier();
-        internalToolsPage.clickOnIndependentCompEditDetails();
+        internalToolsPage.clickOnInternalToolCompanyEditDetails(distributor);
         internalToolsPage.clickOnSponsoredAdsRebates();
         internalToolsPage.clickBuyerEdgePlatformRebateToggle(enable);
         internalToolsPage.clickRebateSave();
@@ -309,6 +309,25 @@ public class InternalTools {
     public static void clickGroupDPDelete() {
         internalToolsPage.clickGroupDPDelete();
     }
-
+    public static void navigateToTaskManagementTab(){
+        internalToolsPage.clickOnTaskManagement();
+    }
+    public static void runParentChildTask(String formID){
+        if(internalToolsPage.isParentChildTaskDisplayed(formID)){
+            internalToolsPage.clickRunLocallyOnParentChildTask(formID);
+        }else{
+            internalToolsPage.refreshPage();
+            internalToolsPage.clickRunLocallyOnParentChildTask(formID);
+        }
+    }
+    public static boolean isPCTaskAttemptedDisplayed(){
+        return internalToolsPage.isTaskAttemptedDisplayed();
+    }
+    public static void clickRunLocallyOnParentChildRelationshipTask(){
+        internalToolsPage.clickRunLocallyOnParentChildRelationshipTask();
+    }
+    public static void clickCatalogOnlyOrderFlowToggle(boolean status){
+        internalToolsPage.clickCatalogOnlyOrderFlowToggle(status);
+    }
 
 }

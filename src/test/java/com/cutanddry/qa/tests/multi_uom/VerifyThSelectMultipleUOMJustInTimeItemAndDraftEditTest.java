@@ -26,6 +26,7 @@ public class VerifyThSelectMultipleUOMJustInTimeItemAndDraftEditTest extends Tes
     String uomDropDownOption = CatalogData.UOM_DROPDOWN_OPTION;
     static double totalOGItemPrice;
     String multiSearchItemCode = CatalogData.ITEM_CODE_12;
+    static String orderGuide = CatalogData.VITCO_OG;
 
     @BeforeMethod
     public void setUp() {
@@ -41,12 +42,14 @@ public class VerifyThSelectMultipleUOMJustInTimeItemAndDraftEditTest extends Tes
 
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-        Login.navigateToDistributorPortal(DP);
+        Login.navigateToLoginAs();
+        Login.logInToDP(DP);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
+        Customer.selectOrderGuideIfOverlayDisplayed(orderGuide);
 
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(searchItemCode);
@@ -74,6 +77,7 @@ public class VerifyThSelectMultipleUOMJustInTimeItemAndDraftEditTest extends Tes
 
         // Added Multi UOM Item
         Customer.searchItemOnOrderGuide(multiSearchItemCode);
+        Customer.addItemFromCatalogIfNotAvailableInOG(multiSearchItemCode);
         Customer.ClickOnMultiUomDropDownOG(multiSearchItemCode);
         Customer.clickOGAddToCartPlusIcon(1, multiSearchItemCode, uom1);
         Customer.clickOGAddToCartPlusIcon(1, multiSearchItemCode, uom2);

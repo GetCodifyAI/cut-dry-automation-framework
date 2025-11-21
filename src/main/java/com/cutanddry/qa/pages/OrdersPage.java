@@ -9,6 +9,7 @@ public class OrdersPage extends LoginPage{
     By checkOutBtn = By.xpath("//button[@data-for='cartCheckoutButton' and contains(text(),'$')]");
     By submitForApproval = By.xpath("//button[contains(text(),'Submit for Approval')]");
     By sendForApprovaltext = By.xpath("//strong[contains(text(),'Sent for approval!')]");
+    By approvalOrderRefID = By.xpath("//div[contains(normalize-space(text()),'Ref #')]/following-sibling::div");
     By viewOrderInDraft = By.xpath("//button[contains(text(),'View Order in Drafts')]");
     By pendingApprovalText = By.xpath("//span[contains(text(),'Pending Approval')]");
     By selectOrderGuide = By.xpath("//div[contains(text(),'Select Order Guide')]");
@@ -98,6 +99,10 @@ public class OrdersPage extends LoginPage{
     By btn_updateColumn = By.xpath("//button[text()='Update']");
     By txt_columnSettingUpdate= By.xpath("//h2[text()='Column settings updated!']");
     String columnSettingUpdated= "//span[text()='COLUMN']";
+    By selectLocation = By.xpath("//div[contains(text(),'Select Location')]");
+    By btn_selectLocation = By.xpath("//div[contains(text(),'Select Location')]/following-sibling::div/div[1]");
+    By btn_FindMoreInCatalog = By.xpath("//button[text()='Find More in Catalog']");
+    By lbl_inactiveItemDetected = By.xpath("//h2[text()='Inactive Items Detected']");
 
     public void clickBtnSaveCheckIn(){
         distributorUI.click(btn_saveCheckIn);
@@ -199,6 +204,10 @@ public class OrdersPage extends LoginPage{
 
     public boolean isSubmitForApprovalOverlayDisplayed(){
         return distributorUI.isDisplayed(sendForApprovaltext);
+    }
+
+    public String getApprovalOrderRefID(){
+        return distributorUI.getText(approvalOrderRefID);
     }
 
     public void clickOnViewOrderInDrafts(){
@@ -597,6 +606,23 @@ public class OrdersPage extends LoginPage{
     }
     public boolean isColumnUpdateDisplay(String column){
         return distributorUI.isDisplayed(By.xpath(columnSettingUpdated.replace("COLUMN",column)));
+    }
+    public boolean isSelectLocationPopUpDisplayed(){
+        return distributorUI.isDisplayed(selectLocation);
+    }
+    public void selectLocation(){
+        distributorUI.click(btn_selectLocation);
+    }
+    public boolean isSubmitForApprovalButtonDisplay(){
+        return distributorUI.isDisplayed(submitForApproval);
+    }
+    public void  clickFindMoreInCatalog()throws InterruptedException{
+        distributorUI.scrollToElement(btn_FindMoreInCatalog);
+        distributorUI.click(btn_FindMoreInCatalog);
+    }
+    public boolean isInactiveItemDetectedPopUpDisplay()throws InterruptedException{
+        distributorUI.waitForVisibility(lbl_inactiveItemDetected);
+       return distributorUI.isDisplayed(lbl_inactiveItemDetected);
     }
 
 

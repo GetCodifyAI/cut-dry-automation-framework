@@ -10,12 +10,49 @@
         <classes>
             <class name="com.cutanddry.qa.tests.draft.VerifySupplierPortalDraftCountDisplayTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifyZeroDraftCountBadgeHiddenTest"/>
+
             <class name="com.cutanddry.qa.tests.catalog.VerifyHideAvailabilityFilterInPublicCatalogTest"/>
             <!--            TODO: Commenting the since the change was reverted-->
-<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheItemPricesAreNotVisibleInTheEditOrderGuideItemsSectionWhenPriceVisibilityIsHiddenTest"/>-->
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheItemPricesAreNotVisibleInTheEditOrderGuideItemsSectionWhenPriceVisibilityIsHiddenTest"/>
 <!--            <class name="com.cutanddry.qa.tests.catalog_data.VerifyTheItemCannotBeOrderedFromTheOrderGuideWhenStatusIsSetToInactiveTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.catalog_data.VerifyTheItemCannotBeOrderedFromTheOrderGuideWhenStatusIsSetToInactiveOnTheOPSideTest"/>-->
 
+            <class name="com.cutanddry.qa.tests.customers.VerifyNewUserCanNotHaveExistingEmailMobileNumberTest"/>
+            <class name="com.cutanddry.qa.tests.customers.VerifyNewUserCanNotHaveExistingMobileNumberTest"/>
+
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreditHoldModalAndBannerDisplayOnFirstOrderSessionTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyInactiveHoldModalAndBannerDisplayTest"/>
+
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpOrderApprovalsAndRejectionsDisplayedCorrectlyTest"/>
+
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheOnSaleSortItemsByItemCodeInCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheOnSaleSortItemsByItemNameInCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheOnSaleSortItemsByCategoryInCatalogTest"/>
+
+            <class name="com.cutanddry.qa.tests.settings.ValidateAddPaymentMethodForAddBankAccountTest"/>
+            <class name="com.cutanddry.qa.tests.settings.ValidateRemoveAccountFunctionalityTest"/>
+
+            <!--            TODO: Commenting this since the xml 6 has a testcase covering the same scenario-->
+<!--            <class name="com.cutanddry.qa.tests.settings.VerifyBillingSettingsDownloadInvoicesUnderBatchActionsTest"/>-->
+
+
+            <class name="com.cutanddry.qa.tests.influence.VerifyInfluenceNavigationForRebateEnabledDPTest"/>
+            <class name="com.cutanddry.qa.tests.integration.VerifyCashAndCarryDraftCreationTest"/>
+            <class name="com.cutanddry.qa.tests.integration.Verify24HourSnapshotLastSuccessfulSyncGraphAndDataTest"/>
+
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheOrderGuideNameAndDescriptionInOrderGuideSettingsTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheAddItemsRestrictionInOrderGuideSettingsTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheEnableOrderApprovalInOrderGuideSettingsTest"/>
+
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyThatCustomerNameDisplayInEmptyInvoiceListTest"/>
+            <class name="com.cutanddry.qa.tests.customers.VerifyTheCustomersCanSubmitOrdersWhenTheAccountIsInHardHoldByEnteringTheCreditCardDetailsDPPortalTest"/>
+
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheFindMoreInCatalogButtonTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_data.VerifyThatTheOrderUponEditingWithInactiveItemsTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_data.VerifyThatTheStandingOrderUponEditingWithInactiveItemsTest"/>
+
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheOrderGuideWillNotDisplayedWhenTheCatalogOnlyOrderFlowIsActivatedFromTheSupplierConfigTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheAddToOrderGuideWillNotDisplayedWhenTheCatalogOnlyOrderFlowIsActivatedFromTheSupplierConfigTest"/>
         </classes>
     </test>
 </suite>

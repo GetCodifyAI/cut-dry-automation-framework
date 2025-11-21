@@ -52,6 +52,7 @@ public class VerifySubstituteItemsNotDisplayedIfTurnedOffCustomerProfileTest ext
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(searchItemCode);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(searchItemName).contains(searchItemName.toLowerCase()), "item not found");
+        Customer.addItemToCartCatalog(searchItemName);
         Customer.clickOnPlusIconInCatalogPDP(1, searchItemName);
         Customer.checkoutItems();
 

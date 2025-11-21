@@ -13,6 +13,9 @@ public class Orders {
 
     public static void SelectSupplierFromPlaceOrderPage(String supplierName) throws InterruptedException {
         ordersPage.clickOnSupplier(supplierName);
+        if (ordersPage.isSelectOrderGuidePopUpDisplayed()){
+            ordersPage.selectOrderGuide();
+        }
         if (customersPage.isPreviousDraftOrderNoDisplayed()){
             customersPage.clickPreviousDraftOrderNo();
         }
@@ -40,6 +43,9 @@ public class Orders {
 
     public static boolean sendToApprovalOverlayDisplayed(){
         return ordersPage.isSubmitForApprovalOverlayDisplayed();
+    }
+    public static String getApprovalOrderRefID(){
+        return ordersPage.getApprovalOrderRefID();
     }
 
     public static void viewOrderInDraft(){
@@ -276,5 +282,23 @@ public class Orders {
     }
     public static boolean isColumnUpdateDisplay(String column){
         return ordersPage.isColumnUpdateDisplay(column);
+    }
+    public static void SelectSupplierFromPlaceOrder(String supplierName) throws InterruptedException {
+        ordersPage.clickOnSupplier(supplierName);
+        if (ordersPage.isSelectLocationPopUpDisplayed()){
+            ordersPage.selectLocation();
+        }
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+    }
+    public static boolean isSubmitForApprovalButtonDisplay(){
+        return ordersPage.isSubmitForApprovalButtonDisplay();
+    }
+    public static void clickFindMoreInCatalog()throws InterruptedException{
+        ordersPage.clickFindMoreInCatalog();
+    }
+    public static boolean isInactiveItemDetectedPopUpDisplay()throws InterruptedException{
+        return ordersPage.isInactiveItemDetectedPopUpDisplay();
     }
 }

@@ -23,7 +23,7 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMTest extends TestBase {
     String uom1 = CatalogData.MULTI_UOM_1;
     String uom2 = CatalogData.MULTI_UOM_2;
     String substituteItemCode = "20716"; // 01922 or 00563
-
+    String substituteItemName = "Tomatoes Filetto Di Pomodoro Peeled";
 
     @BeforeMethod
     public void setUp() {
@@ -48,7 +48,7 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMTest extends TestBase {
         Catalog.selectItemFromGrid(searchItemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),searchItemCode,"Error in getting Item Code");
         Catalog.navigateToSubstituteTab();
-        Catalog.removeExistingItem(substituteItemCode);
+        Catalog.removeExistingItem(substituteItemName);
         Catalog.navigateToSubstituteTab();
         Catalog.addSubstitutions();
         String SubstituteItemName = Catalog.getSubstituteItemName(substituteItemCode);
@@ -87,7 +87,7 @@ public class VerifyTheAddingSubstituteItemForMultipleUOMTest extends TestBase {
         Catalog.selectItemFromGrid(searchItemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),searchItemCode,"Error in getting Item Code");
         Catalog.navigateToSubstituteTab();
-        Catalog.deleteSubstitute();
+        Catalog.removeExistingItem(substituteItemName);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in Removing substitute item");
         Catalog.navigateToSubstituteTab();

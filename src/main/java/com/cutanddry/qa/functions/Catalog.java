@@ -53,7 +53,7 @@ public class Catalog {
     public static void clickOnPreviewCatalog() {
         catalogPage.clickOnPreviewCatalog();
     }
-    public static boolean isNavigatedToPreviewCatalog() {
+    public static boolean isNavigatedToPreviewCatalog() throws InterruptedException {
         return catalogPage.isNavigatedToPreviewCatalog();
     }
     public static String getItemDetailsFirstRow() throws InterruptedException {
@@ -667,6 +667,13 @@ public class Catalog {
     }
     public static void clickOnSpecialItem(String status){
         catalogPage.clickOnSpecialItem(status);
+    }
+    public static void setSpecialItemToNoIfYesIsSet(){
+        if(catalogPage.isSpecialItemYesDisplayed()){
+            catalogPage.clickOnSpecialItem("No");
+            catalogPage.clickOnSaveChangesBtn();
+            catalogPage.clickEditOnProductConfigs();
+        }
     }
     public static boolean isSpecialItemDropDownDisplay(){
         return catalogPage.isSpecialItemDropDownDisplay();

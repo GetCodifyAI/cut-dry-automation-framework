@@ -2,6 +2,7 @@ package com.cutanddry.qa.tests.archive;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.DistributorOrderData;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
@@ -16,6 +17,7 @@ public class VerifyHidingAnItemFromTheOrderGuideTest extends TestBase {
     static User user;
     static String customerId = "16579";
     static String itemCode = "01707";
+    static String orderGuide = DistributorOrderData.DEFAULT_ORDER_GUIDE_TYPE;
 
     @BeforeMethod
     public void setUp() {
@@ -33,6 +35,7 @@ public class VerifyHidingAnItemFromTheOrderGuideTest extends TestBase {
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"Error in searching customer by code");
         Customer.clickOnOrderGuide(customerId);
+        Customer.selectNewlyCreatedOrderGuide(orderGuide);
         Customer.goToEdit();
         softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");
         Customer.editItem(itemCode);

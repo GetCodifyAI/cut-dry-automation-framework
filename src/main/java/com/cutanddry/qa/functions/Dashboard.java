@@ -111,6 +111,9 @@ public class Dashboard {
     public static void navigateToAdsSettings() {
         dashboardPage.clickOnAdsSettings();
     }
+    public static boolean isInfluenceTabDisplayed(){
+        return dashboardPage.isInfluenceTabDisplayed();
+    }
     public static void navigateToSupport() {
         dashboardPage.clickOnSupport();
     }
@@ -209,6 +212,14 @@ public class Dashboard {
 
     public static int getDraftsBadgeCount(){
         return dashboardPage.getDraftsBadgeCount();
+    }
+
+    public static boolean isInfluenceTabDisplayedInMenuOptions(){
+        return dashboardPage.isInfluenceMenuOptionDisplayed();
+    }
+
+    public static void navigateToInfluenceTab(){
+        dashboardPage.clickInfluenceMenuOption();
     }
 
 }

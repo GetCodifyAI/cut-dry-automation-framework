@@ -104,7 +104,13 @@ public class InternalToolsPage extends LoginPage {
     By btn_updateDPGroup = By.xpath("//button[text()='Update Group']");
     By txt_editNewDPGroup = By.xpath("//div[contains(text(),'Edit DP Group')]");
     By btn_deleteDPGroup = By.xpath("(//button[text()='Delete'])[1]");
-
+    By task_management = By.xpath("//*[normalize-space()='Task Management']");
+    String taskManagerParentChildTask = "//div[normalize-space()='copyToChildForms']/../following-sibling::td[normalize-space()='FORMID']";
+    String ParentChildTaskRunLocallyBtn =  "//div[normalize-space()='copyToChildForms']/../following-sibling::td[normalize-space()='FORMID']//ancestor::td/following::td//button[contains(text(),'Run Locally')]";
+    By isTaskRunAttemptedDisplayed = By.xpath("//*[contains(text(),'Task run attempted')]");
+    By parentChildRelationshipTask = By.xpath("//div[normalize-space()='createParentChildOrderGuideRelationships']//ancestor::td/following::td//button[contains(text(),'Run Locally')]");
+    By catalogOnlyOrderFlowToggleStable = By.xpath("//div[contains(text(), 'Catalog Only Order Flow')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By catalogOnlyOrderFlowToggleStable1 = By.xpath("//div[contains(text(), 'Catalog Only Order Flow')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
 
 
 
@@ -642,6 +648,39 @@ public class InternalToolsPage extends LoginPage {
     public void scrollToConfigureSupplierPageHeader() throws InterruptedException {
         distributorUI.waitForCustom(2000);
         distributorUI.uiScrollTop();
+    }
+    public void clickOnTaskManagement(){
+        distributorUI.click(task_management);
+    }
+    public boolean isParentChildTaskDisplayed(String formID){
+        return distributorUI.isDisplayed(By.xpath(taskManagerParentChildTask.replace("FORMID","Form " + formID)));
+    }
+    public void clickRunLocallyOnParentChildTask(String formID){
+        distributorUI.waitForVisibility(By.xpath(ParentChildTaskRunLocallyBtn.replace("FORMID","Form " + formID)));
+        distributorUI.click(By.xpath(ParentChildTaskRunLocallyBtn.replace("FORMID","Form " + formID)));
+    }
+    public boolean isTaskAttemptedDisplayed(){
+        return distributorUI.isDisplayed(isTaskRunAttemptedDisplayed);
+    }
+    public void clickRunLocallyOnParentChildRelationshipTask(){
+        distributorUI.waitForVisibility(parentChildRelationshipTask);
+        distributorUI.click(parentChildRelationshipTask);
+    }
+
+    public void refreshPage(){
+        distributorUI.refreshPage();
+    }
+
+    public void clickCatalogOnlyOrderFlowToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(catalogOnlyOrderFlowToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(catalogOnlyOrderFlowToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(catalogOnlyOrderFlowToggleStable1);
+        }
     }
 
 

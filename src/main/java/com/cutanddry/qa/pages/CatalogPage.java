@@ -183,7 +183,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     String submittedOrder = "//*[contains(text(),'#') and text()='ID']";
     By getTotalOrderPrice = By.xpath("//td[text()='Total']/following-sibling::td");
     By getTotalOrderQuantity = By.xpath("//td[contains(text(),'Total Quantity')]/following-sibling::td");
-    String multiUomDropDown = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[1]";
+    String multiUomDropDown = "//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg']/ancestor::div[3]/div[1]/div";
     String multiUomDropDownLast = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[last()]";
     String multiUomDropDownOption ="//div[text()='OPTION']";
     String getPriceUOM = "((//button[contains(@data-for,'add-to-order-guide')]/ancestor::div[2]/following-sibling::div)[1]/following-sibling::*//div//span[contains(text(),'$')])[UOM]";
@@ -233,6 +233,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     String specialItemStatus = "(//div[contains(text(),'STATUS')])[last()]";
     By txt_updateOGPopup = By.xpath("//*[contains(text(),'Update order guides?')]");
     By btn_updateOGPopup = By.xpath("//button[contains(text(),'Confirm')]");
+    By specialItemYesBtn = By.xpath("(//div[normalize-space(text()) ='Special Item'])[2]/ancestor::div[3]/following-sibling::div//div[normalize-space(text()) ='Yes']/..");
 
 
     public boolean isCatalogTextDisplayed() {
@@ -306,7 +307,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
             throw new RuntimeException(e);
         }
     }
-    public boolean isNavigatedToPreviewCatalog() {
+    public boolean isNavigatedToPreviewCatalog() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
         return distributorUI.isDisplayed(txt_previewCat);
     }
     public String getItemDetailsFirstRow() throws InterruptedException {
@@ -1035,6 +1037,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         distributorUI.clickUsingJavaScript(By.xpath(txt_catalogProduct.replace("NAME", name)));
     }
     public double getTotalPriceInReviewOrder() throws InterruptedException {
+        distributorUI.waitForCustom(1000);
         try {
             return extractPrice(getTotalPriceReviewOrder);
         } catch (Exception e) {
@@ -1214,9 +1217,11 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         return distributorUI.isDisplayed(By.xpath(lastOrderMarginPDP.replace("MARGIN",margin)));
     }
     public boolean isMarginColumnDisplay(String margin){
+        distributorUI.waitForVisibility(By.xpath(marginColumnPDP.replace("MARGIN",margin)));
         return distributorUI.isDisplayed(By.xpath(marginColumnPDP.replace("MARGIN",margin)));
     }
     public boolean isPriceColumnDisplay(String price){
+        distributorUI.waitForVisibility(By.xpath(priceColumn.replace("PRICE",price)));
         return distributorUI.isDisplayed(By.xpath(priceColumn.replace("PRICE",price)));
     }
     public boolean isLastOrderPriceDisplay(String price){
@@ -1235,6 +1240,9 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     public void clickOnSpecialItem(String status){
         distributorUI.click(specialItemDropDown);
         distributorUI.clickUsingJavaScript(By.xpath(specialItemStatus.replace("STATUS",status)));
+    }
+    public boolean isSpecialItemYesDisplayed(){
+        return distributorUI.isDisplayed(specialItemYesBtn);
     }
     public boolean isSpecialItemDropDownDisplay(){
         return distributorUI.isDisplayed(specialItemDropDown);

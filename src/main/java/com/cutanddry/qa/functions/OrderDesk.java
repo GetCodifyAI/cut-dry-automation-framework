@@ -43,7 +43,7 @@ public class OrderDesk {
         orderDeskPage.editItemQuantityOnDraftOrderReviewPage(itemQuantity);
     }
 
-    public static void AddLineItemDraftOrderReviewPage(){
+    public static void AddLineItemDraftOrderReviewPage() throws InterruptedException {
         orderDeskPage.ClickAddLineBtnOnDraftOrderReviewPage();
     }
 
@@ -99,7 +99,7 @@ public class OrderDesk {
         return orderDeskPage.isSucessfullySavedtextisDisplayed();
     }
 
-    public static void ClickOnLineItem(){
+    public static void ClickOnLineItem() throws InterruptedException {
         orderDeskPage.ClickOnItemName();
     }
 
@@ -119,7 +119,7 @@ public class OrderDesk {
         return orderDeskPage.isSucessfullySavedtextisDisplayed();
     }
 
-    public static void SelectCustomerFromDropdown(){
+    public static void SelectCustomerFromDropdown() throws InterruptedException {
         orderDeskPage.SelectCustomer();
     }
 

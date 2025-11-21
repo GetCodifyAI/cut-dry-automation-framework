@@ -44,6 +44,7 @@ public class VerifyPurchaseHistoryMarginNotDisplayInOrderGuideAndPDPWhenDisplayM
         InternalTools.clickOnInternalToolCompanyEditDetails(CompanyName);
         InternalTools.navigateToOrderingSettingsTab();
 
+        InternalTools.displayPurchaseHistoryToggle(true);
         InternalTools.displayMarginOnPortalToggle(false);
         InternalTools.restrictMarginOnPortalToggle(false);
 

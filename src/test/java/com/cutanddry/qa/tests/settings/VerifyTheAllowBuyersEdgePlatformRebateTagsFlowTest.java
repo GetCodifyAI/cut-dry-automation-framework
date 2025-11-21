@@ -17,6 +17,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheAllowBuyersEdgePlatformRebateTagsFlowTest extends TestBase {
     static User user;
     String distributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String dp = "Independent Foods Co";
 
 
     @BeforeMethod
@@ -36,20 +37,25 @@ public class VerifyTheAllowBuyersEdgePlatformRebateTagsFlowTest extends TestBase
         softAssert.assertTrue(Settings.isAdsSettingsTextDisplayed(),"navigation to ads settings error");
 
         Login.navigateToInternalToolsPage();
-        InternalTools.ensureBuyerEdgePlatformRebateStatus(true);
+        InternalTools.ensureBuyerEdgePlatformRebateStatus(true,dp);
         Login.navigateToDistributorPortal(distributorName);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToAdsSettings();
         softAssert.assertTrue(Settings.isCustomerRestrictionTextDisplayed(),"enabling the 'BuyerEdgePlatformRebate' toggle button from the Internal tools is error");
+        softAssert.assertTrue(Settings.isRebatesAllowedColumnDisplayed(),"Rebates allowed column Not displayed");
         Settings.clickBuyerEdgePlatformRebateToggle();
         Settings.clickGeneralSettingSaveChanges();
 
         Login.navigateToInternalToolsPage();
-        InternalTools.ensureBuyerEdgePlatformRebateStatus(false);
+        InternalTools.ensureBuyerEdgePlatformRebateStatus(false,dp);
         Login.navigateToDistributorPortal(distributorName);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToAdsSettings();
-        softAssert.assertFalse(Settings.isCustomerRestrictionTextDisplayed(),"disable the 'BuyerEdgePlatformRebate' toggle button from the Internal tools is error");
+        softAssert.assertFalse(Settings.isRebatesAllowedColumnDisplayed(),"Rebates allowed column displayed");
+
+        Login.navigateToInternalToolsPage();
+        InternalTools.ensureBuyerEdgePlatformRebateStatus(true,dp);
+
         softAssert.assertAll();
     }
 

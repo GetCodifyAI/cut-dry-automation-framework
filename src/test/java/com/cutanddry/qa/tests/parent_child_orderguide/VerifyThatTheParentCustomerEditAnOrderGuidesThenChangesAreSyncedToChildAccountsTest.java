@@ -3,10 +3,7 @@ package com.cutanddry.qa.tests.parent_child_orderguide;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.ParentChildOGData;
-import com.cutanddry.qa.functions.Customer;
-import com.cutanddry.qa.functions.Dashboard;
-import com.cutanddry.qa.functions.Login;
-import com.cutanddry.qa.functions.Orders;
+import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -15,15 +12,20 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.util.UUID;
+
 public class VerifyThatTheParentCustomerEditAnOrderGuidesThenChangesAreSyncedToChildAccountsTest extends TestBase {
     static User user;
     static String DP = ParentChildOGData.DISTRIBUTOR_INDIANHEAD;
     static String customerId = ParentChildOGData.CUSTOMER_ID_INDIANHEAD;
     static String customerId2 = ParentChildOGData.CUSTOMER_ID_INDIANHEAD_2;
-    static String OrderGuideName = ParentChildOGData.ORDER_GUIDE_NAME_6;
-    static String itemName2 = "Aptz Mozz Stick Battered";
+    static String OrderGuideName = ParentChildOGData.ORDER_GUIDE_NAME_6 + "_" + UUID.randomUUID();
+    static String itemName2 = "Mozzarella Sticks Crunchy Breaded WG BA";
+    static String itemName = "Egg Roll Pork & Vegetable";
     static String status = "Parent Account";
     static String childSettingMessage = "Child account settings updated successfully";
+    static String formID;
+    static String OrderGuideName2 = "default OG";
 
 
     @BeforeMethod
@@ -40,6 +42,29 @@ public class VerifyThatTheParentCustomerEditAnOrderGuidesThenChangesAreSyncedToC
         Login.navigateToDistributorPortal(DP);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
 
+        //creating new order guide before editing
+        Dashboard.navigateToCustomers();
+        Customer.searchCustomerByCode(customerId);
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
+        Customer.clickOnOrderGuideParentChild(customerId);
+        Customer.goToCreatePopup();
+        Customer.createOrderGuide(OrderGuideName);
+        Customer.createOrderFromCatalog();
+        Customer.searchItemOnCatalog(itemName);
+        Customer.addItemFromCatalog();
+        Customer.closeEditorCatalog();
+        Customer.refreshCustomersPage();
+        formID = Customer.getOrderGuideFormID();
+        System.out.println(formID);
+
+        Login.switchIntoNewTab();
+        Login.navigateToInternalToolsPage();
+        InternalTools.navigateToTaskManagementTab();
+        InternalTools.runParentChildTask(formID);
+        Customer.clickOK();
+        softAssert.assertTrue(InternalTools.isPCTaskAttemptedDisplayed(),"Parent child task not run successfully");
+        Login.closeCurrentTabAndSwitchBack();
+
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
@@ -53,6 +78,16 @@ public class VerifyThatTheParentCustomerEditAnOrderGuidesThenChangesAreSyncedToC
         Customer.addItemFromCatalog();
         Customer.closeEditorCatalog();
         Customer.refreshCustomersPage();
+        formID = Customer.getOrderGuideFormID();
+        System.out.println(formID);
+
+        Login.switchIntoNewTab();
+        Login.navigateToInternalToolsPage();
+        InternalTools.navigateToTaskManagementTab();
+        InternalTools.runParentChildTask(formID);
+        Customer.clickOK();
+        softAssert.assertTrue(InternalTools.isPCTaskAttemptedDisplayed(),"Parent child task not run successfully");
+        Login.closeCurrentTabAndSwitchBack();
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
@@ -67,13 +102,31 @@ public class VerifyThatTheParentCustomerEditAnOrderGuidesThenChangesAreSyncedToC
         softAssert.assertTrue(Customer.isChildSettingUpdated(childSettingMessage),"child setting not updated");
         Customer.clickOK();
 
+        Login.switchIntoNewTab();
+        Login.navigateToInternalToolsPage();
+        InternalTools.navigateToTaskManagementTab();
+        InternalTools.clickRunLocallyOnParentChildRelationshipTask();
+        Customer.clickOK();
+        softAssert.assertTrue(InternalTools.isPCTaskAttemptedDisplayed(),"Parent child task not run successfully");
+        Login.closeCurrentTabAndSwitchBack();
+
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId2);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId2),"search error");
         Customer.clickOnOrderGuideParentChild(customerId2);
         Customer.clickOGDropdown();
+        Customer.createOrderGuideIfOnlyOneAvailableInChild(OrderGuideName2);
         Customer.selectNewlyCreatedOrderGuide(OrderGuideName);
         softAssert.assertTrue(Customer.isAddedItemDisplayed(itemName2), "The item edit in parent account not display");
+
+        Customer.clickOGDropdown();
+        Customer.selectNewlyCreatedOrderGuide(OrderGuideName);
+        Customer.expandMoreOptionsDropdown();
+        Customer.clickOnDeleteOrderGuide();
+        softAssert.assertTrue(Orders.isAreYouSurePopUpDisplayed(),"Are you sure pop up not displayed");
+        Orders.clickYes();
+        Customer.refreshCustomersPage();
+
         softAssert.assertAll();
     }
 
