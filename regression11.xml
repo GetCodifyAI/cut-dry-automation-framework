@@ -8,42 +8,37 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part_Eleven"/>
         <classes>
-            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeTest"/>
-            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHavePickupWillCallAsTheFulfillmentTypeTest"/>
-            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveMailDeliveryAsTheFulfillmentTypeTest"/>
-            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeDraftOderSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHavePickupWillCallAsTheFulfillmentTypeDraftOrderSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveMailDeliveryAsTheFulfillmentTypeDraftOrderSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeEditOrderSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHavePickupWillCallAsTheFulfillmentTypeEditOrderSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveMailDeliveryAsTheFulfillmentTypeEditOrderSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryPickupWillCallAndMailDeliveryAsTheFulfillmentTypeTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyCashAndCarryAllowedOptionIsDisplayedInsidePricingAndPromotionsForCashAndCarryEnabledDPTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyCashAndCarryAllowedOptionIsNotDisplayedInsidePricingAndPromotionsForCashAndCarryNotEnabledDPTest"/>
 
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyUserCanSwitchOfflineModeFromTheMoreOptionsOnTheOGWhenTheDeviceHasNetworkConnectivityTest"/>
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatEntireOrderGuideIsDownloadedSuccessfullyUponSwitchingToOfflineModeTest"/>
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOnceInOfflineModeTheUserCanAddUpdateItemsToTheCartTest"/>
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatUserCanChangeTheUnitOfMeasureForItemsInOfflineModeTest"/>
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyUserCanSearchForItemsInTheOrderGuideWhileInOfflineModeTest"/>
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatAccessCatalogAndOrderSubmissionIsDisabledWhileInOfflineModeTest"/>
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatSwitchingBackToOnlineModeTest"/>
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsAvailableInDraftOrdersTest"/>
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsAvailableInStandingOrdersTest"/>
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsNotAvailableInEditOrdersTest"/>
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOfflineOrderingDisplayWhenOfflineOrderingToggleEnableTest"/>
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOfflineOrderingNotDisplayWhenOfflineOrderingToggleOffTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheSpecialOrderItemsOrderReviewNoteTest"/>
 
-            <class name="com.cutanddry.qa.tests.chat.VerifyTheChatFeatureDisplayInDPPortalWhenChatModuleEnableTest"/>
-            <class name="com.cutanddry.qa.tests.chat.VerifyTheChatFeatureNotDisplayInDPPortalWhenChatModuleDisableTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.ValidatePONumberLengthForDistributorTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyDpsHaveSpecialItemsOrderSubmissionTest"/>
 
-            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheSupplierConfigCatalogDisableStatusSyncingWithCustomerProfileCatalogTest"/>
-            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCustomerProfileCatalogAccessIsSyncingWithSupplierConfigCatalogDisableStatusTest"/>
-            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCustomerProfileCatalogAccessRestrictionAllOperatorsTest"/>
-            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCustomerProfileCatalogAccessRestrictionSelectedOperatorsViaIntegrationTest"/>
+            <class name="com.cutanddry.qa.tests.customers.VerifyTheOrderSummeryDisplayedOnDPPortalTest"/>
 
-            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderEditInvalidOrderErrorMessageTest"/>
-            <class name="com.cutanddry.qa.tests.orders.VerifyThatOrderGuideSyncedFromERPDisabledForEditingTest"/>
-            <class name="com.cutanddry.qa.tests.orders.VerifyThatManuallyOrderGuideCanEditTest"/>
-            <class name="com.cutanddry.qa.tests.orders.VerifyThatDisplayingCustomerIDInHeaderSectionTest"/>
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyTheUserCanAddItemsToTheQuickAddFlowByEnteringAValidProductIDTest"/>
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyTheRowDataIsClearedWhenClickingTheTrashIconInQuickAddFlowTest"/>
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyTheQuickAddFlowForItemsWithoutEachAsTheUOMTest"/>
+
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheSortItemsByDropDownIsAvailableInTheSimpleListViewTest"/>
+
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingNormalOrderAndEditItFromPortalWhenDisableFetchPricesTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingNormalOrderAndEditItFromPortalWhenEnableFetchPricesTest"/>
+
+
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyQuickAddViewAndSimpleListViewFeaturesWhenEnabledFromSupplierConfigTest"/>
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyQuickAddViewAndSimpleListViewFeaturesWhenEnabledFromSupplierConfigDpAndOpTest"/>
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyCorrectErrorMessagesAreDisplayedWhenAddingDifferentTypesOfItemsToTheQuickAddFlowTest"/>
+
+            <class name="com.cutanddry.qa.tests.customers.VerifyTheOrderSummeryIsDisplayedCorrectlyOnTheEditOrderFlowTest"/>
+
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheHardOrderMinimumSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSoftOrderMinimumSelectingMultipleUOMTest"/>
+
+            <class name="com.cutanddry.qa.tests.catalog.VerifyHardOrderMinimumWarningTest" />
+            <class name="com.cutanddry.qa.tests.customers.VerifyTheCustomersCanSubmitOrdersWhenTheAccountIsInHardHoldByEnteringTheCreditCardDetailsTest"/>
         </classes>
     </test>
 </suite>

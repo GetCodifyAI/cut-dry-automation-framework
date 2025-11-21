@@ -8,30 +8,33 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part_Eight"/>
         <classes>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyCutWeightsAndSplitWeightFunctionalityForMultiUOMSKUsTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheFinalWeightWhenSelectingMultipleUOMTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSpotPoundPriceWhenSelectingMultipleUOMTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSpotPricingWhenSelectingMultipleUOMTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.ValidateThePoundSpotPricingWhenSelectingMultipleUOMTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.ValidateTheSplitWeightWhenSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyCustomOrderGuideSectionTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheOrderSummerySectionShrinkAndExpandWithF12KeyTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCostMarginSectionsAreDisplayedAndHiddenWithF12KeyTest"/>
 
-            <class name="com.cutanddry.qa.tests.price.ValidateTheFinalWeightTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPoundPriceTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingByPricingEngineTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateThePoundSpotPricingTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateTheSpotPricingNotFromPricingEngineTest"/>
-            <class name="com.cutanddry.qa.tests.price.ValidateTheSplitWeightTest"/>
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifySubstituteItemsNotDisplayedIfTurnedOffCustomerProfileTest"/>
 
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditUOMsFromEditTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyStockAvailabilityModalForMultiUOMSKUsTest"/>
+            <class name="com.cutanddry.qa.tests.customers.ValidatePONumberRequiredCustomersTest"/>
+            <class name="com.cutanddry.qa.tests.customers.ValidatePONumberNotRequiredCustomersTest"/>
+            <class name="com.cutanddry.qa.tests.customers.VerifyThatOrderSummeryBannerDisplayedTest"/>
+            <class name="com.cutanddry.qa.tests.customers.VerifyThatOrderSummeryGrossProfitSaleCostSectionUpdateTest"/>
 
-            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnCatalogCardTest"/>
-            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnPDPViewTest"/>
-            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnCatalogCardOperatorTest"/>
-            <class name="com.cutanddry.qa.tests.catalog.VerifyTheLastOrderedDateAndCountDisplayedOnPDPViewOperatorTest"/>
+            <class name="com.cutanddry.qa.tests.customers.VerifyThatOrderSummerySalesCommissionSectionUpdateTest"/>
 
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddANewUOMsToAnItemAndCheckFromTheDistributorAndRestaurantPortalsTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheRemoveANewlyAddedUOMsToAnItemAndCheckFromTheDistributorAndRestaurantPortalsTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1RegularItemSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1SpecialItemSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2RegularItemsSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2SpecialItemsSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1RegularItemAnd1SpecialOrderItemSubmittedAsTwoSeparateOrdersForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2RegularItemsAnd2SpecialOrderItemsSubmittedAsTwoSeparateOrdersForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyCustomerGroupsShouldNotBeEditableTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyCustomAccountHoldMessageIsDisplayedForCarmelaOnOrderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyGenericAccountHardHoldMessageTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyShowingLastOrderedPricesInPortalOrderGuidesTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyOrdersBelowMinimumOrderAmountPopsSoftOrderMinimumPopUpTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifySubmittingAnOrderMinimumSatisfiedOrderForAFutureDateGreaterThanItemLeadTimeItemDateInOrderTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyVerifyImportantShipmentNoticeMessageTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyLeadTimeItemOrderIsSplitInToTwoOrdersTest"/>
         </classes>
     </test>
 </suite>
