@@ -3299,6 +3299,38 @@ public class Customer {
         return customersPage.isCatalogDisplayed();
     }
 
+    // DOT-TC-2228: Maximum Quantity Validation Methods
+    public static void setQuantityByItemCode(String itemCode, String quantity) throws InterruptedException {
+        customersPage.setQuantityByItemCode(itemCode, quantity);
+    }
+
+    public static String getQuantityByItemCode(String itemCode) {
+        return customersPage.getQuantityByItemCode(itemCode);
+    }
+
+    public static boolean isPlusButtonDisabledByItemCode(String itemCode) {
+        return customersPage.isPlusButtonDisabledByItemCode(itemCode);
+    }
+
+    public static void clickPlusButtonByItemCode(String itemCode) throws InterruptedException {
+        customersPage.clickPlusButtonByItemCode(itemCode);
+    }
+
+    public static boolean isMaxQuantityExceededModalDisplayed() {
+        return customersPage.isMaxQuantityExceededModalDisplayed();
+    }
+
+    public static String getMaxQuantityModalMessage() {
+        return customersPage.getMaxQuantityModalMessage();
+    }
+
+    public static void closeMaxQuantityModal() throws InterruptedException {
+        customersPage.closeMaxQuantityModal();
+    }
+
+    public static boolean isItemDisplayedByItemCode(String itemCode) {
+        return customersPage.isItemDisplayedByItemCode(itemCode);
+    }
 
 }
 

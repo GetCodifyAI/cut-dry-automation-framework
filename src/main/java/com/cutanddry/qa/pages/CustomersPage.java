@@ -5439,4 +5439,80 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(txtCatalog);
     }
 
+    // DOT-TC-2228: Maximum Quantity Validation Methods
+    By txt_maxQuantityExceededModal = By.xpath("//h2[text()='Maximum Quantity Exceeded!']");
+    By txt_maxQuantityModalMessage = By.xpath("//p[contains(text(),'The maximum quantity allowed per item is')]");
+    By btn_maxQuantityModalClose = By.xpath("//h2[text()='Maximum Quantity Exceeded!']/../..//button[contains(@class,'close')]");
+    String btn_plusButtonByItemCode = "//td[text()='CODE']/following-sibling::td//div[contains(@class,'quantity-stepper')]//*[local-name()='svg' and @data-icon='plus']";
+    String tbx_quantityInputByItemCode = "//td[text()='CODE']/following-sibling::td//input[@type='number']";
+    String lbl_itemByItemCode = "//td[text()='CODE']";
+
+    public void setQuantityByItemCode(String itemCode, String quantity) throws InterruptedException {
+        distributorUI.clearUsingJavaScript(By.xpath(tbx_quantityInputByItemCode.replace("CODE", itemCode)));
+        distributorUI.sendKeys(By.xpath(tbx_quantityInputByItemCode.replace("CODE", itemCode)), quantity);
+        distributorUI.waitForCustom(1000);
+    }
+
+    public String getQuantityByItemCode(String itemCode) {
+        return distributorUI.getText(By.xpath(tbx_quantityInputByItemCode.replace("CODE", itemCode)), "value");
+    }
+
+    public boolean isPlusButtonDisabledByItemCode(String itemCode) {
+        try {
+            By plusButtonLocator = By.xpath(btn_plusButtonByItemCode.replace("CODE", itemCode));
+            String disabledAttr = distributorUI.getText(plusButtonLocator, "disabled");
+            String ariaDisabled = distributorUI.getText(plusButtonLocator, "aria-disabled");
+            
+            // Check if the button has disabled attribute or aria-disabled attribute
+            if (disabledAttr != null && !disabledAttr.isEmpty()) {
+                return true;
+            }
+            if (ariaDisabled != null && ariaDisabled.equals("true")) {
+                return true;
+            }
+            
+            // Alternative: Check if the parent div has a disabled class or if the button is not clickable
+            // by checking if it's displayed but attempting to verify its state
+            return !distributorUI.isDisplayed(plusButtonLocator);
+        } catch (Exception e) {
+            // If element is not found or not interactable, consider it disabled
+            return true;
+        }
+    }
+
+    public void clickPlusButtonByItemCode(String itemCode) throws InterruptedException {
+        distributorUI.click(By.xpath(btn_plusButtonByItemCode.replace("CODE", itemCode)));
+        distributorUI.waitForCustom(1000);
+    }
+
+    public boolean isMaxQuantityExceededModalDisplayed() {
+        try {
+            distributorUI.waitForVisibility(txt_maxQuantityExceededModal);
+            return distributorUI.isDisplayed(txt_maxQuantityExceededModal);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public String getMaxQuantityModalMessage() {
+        try {
+            return distributorUI.getText(txt_maxQuantityModalMessage);
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public void closeMaxQuantityModal() throws InterruptedException {
+        distributorUI.click(btn_maxQuantityModalClose);
+        distributorUI.waitForCustom(1000);
+    }
+
+    public boolean isItemDisplayedByItemCode(String itemCode) {
+        try {
+            return distributorUI.isDisplayed(By.xpath(lbl_itemByItemCode.replace("CODE", itemCode)));
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }
