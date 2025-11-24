@@ -914,6 +914,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String emptyStateMessage =  "//span[contains(text(), 'NAME')]";
     String btnPlaceOrder = "//td[text()='CODE']/../td//button[text()='Place Order']";
     By txtCatalog = By.xpath("//div[text()='Catalog']");
+    By btn_switch =By.xpath("//button[text()='Switch']") ;
 
 
 
@@ -5437,6 +5438,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isCatalogDisplayed(){
         return distributorUI.isDisplayed(txtCatalog);
+    }
+
+    public void clickOnSwitch(){
+        distributorUI.waitForVisibility(btn_switch);
+        distributorUI.click(btn_switch);
     }
 
 }

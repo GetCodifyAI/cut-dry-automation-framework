@@ -3299,6 +3299,11 @@ public class Customer {
         return customersPage.isCatalogDisplayed();
     }
 
+    public static int getStandingOrdersCount(){
+        return customersPage.getStandingOrdersCount();
+    }
+    public static void clickOnSwitch(){customersPage.clickOnSwitch();}
+
 
 }
 
