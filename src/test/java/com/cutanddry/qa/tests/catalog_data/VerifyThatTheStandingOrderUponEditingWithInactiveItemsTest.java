@@ -41,6 +41,16 @@ public class VerifyThatTheStandingOrderUponEditingWithInactiveItemsTest extends 
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
 
+        Dashboard.navigateToCatalog();
+        softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
+        Catalog.selectItemStatus(All);
+        Catalog.searchItemInCatalog(searchItemCode);
+        Catalog.selectItemFromGrid(searchItemCode);
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),searchItemCode,"Error in getting Item Code");
+        Catalog.selectEditFromProductConfig();
+        Catalog.selectProductActiveInactiveStatus(Active);
+        Catalog.saveChanges();
+
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
