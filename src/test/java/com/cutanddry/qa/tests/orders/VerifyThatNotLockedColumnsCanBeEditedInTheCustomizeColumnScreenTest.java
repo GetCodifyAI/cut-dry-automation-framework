@@ -18,7 +18,7 @@ import java.util.List;
 public class VerifyThatNotLockedColumnsCanBeEditedInTheCustomizeColumnScreenTest extends TestBase {
     static User user;
     static String editColumn = "Edit Columns";
-    static String column = "Cut+Dry Reference";
+    static String column = "Order Reference";
 
     @BeforeMethod
     public void setUp() {
