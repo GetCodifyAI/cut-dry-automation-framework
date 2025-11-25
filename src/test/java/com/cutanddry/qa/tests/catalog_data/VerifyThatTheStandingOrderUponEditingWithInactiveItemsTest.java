@@ -50,6 +50,7 @@ public class VerifyThatTheStandingOrderUponEditingWithInactiveItemsTest extends 
         Catalog.selectEditFromProductConfig();
         Catalog.selectProductActiveInactiveStatus(Active);
         Catalog.saveChanges();
+        Catalog.clickOnCloseProductConfig();
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
