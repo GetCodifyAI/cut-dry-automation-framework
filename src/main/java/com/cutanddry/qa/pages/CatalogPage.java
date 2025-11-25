@@ -1266,6 +1266,10 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         distributorUI.waitForCustom(3000);
         return distributorUI.getText(lbl_secondRowItemName);
     }
+    public void clickOnCloseProductConfig()throws InterruptedException{
+        distributorUI.waitForClickability(btn_deleteShowCasePopUp);
+        distributorUI.click(btn_deleteShowCasePopUp);
+    }
 
 }
 

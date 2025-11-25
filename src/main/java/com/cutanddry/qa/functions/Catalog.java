@@ -686,6 +686,9 @@ public class Catalog {
     public static String getItemNameSecondRowInCatalog() throws InterruptedException {
         return catalogPage.getItemNameSecondRowInCatalog();
     }
+    public static void clickOnCloseProductConfig()throws InterruptedException{
+        catalogPage.clickOnCloseProductConfig();
+    }
 
 
 }
