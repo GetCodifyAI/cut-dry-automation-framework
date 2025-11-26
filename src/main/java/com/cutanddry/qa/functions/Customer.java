@@ -897,7 +897,7 @@ public class Customer {
     public static void submitOrderWithoutReachMinimum(){
         customersPage.submitOrder();
         if(customersPage.isOrderMinimumOverlayDisplayed()){
-            customersPage.clickOnYes();
+            customersPage.clickPlaceOrderSoftOrderMinimum();;
         }
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
