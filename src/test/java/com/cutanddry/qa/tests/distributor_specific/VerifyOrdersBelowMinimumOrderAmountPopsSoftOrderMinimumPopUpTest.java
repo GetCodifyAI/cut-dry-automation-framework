@@ -3,10 +3,7 @@ package com.cutanddry.qa.tests.distributor_specific;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.PriceData;
-import com.cutanddry.qa.functions.Customer;
-import com.cutanddry.qa.functions.Dashboard;
-import com.cutanddry.qa.functions.Login;
-import com.cutanddry.qa.functions.Settings;
+import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -18,6 +15,8 @@ public class VerifyOrdersBelowMinimumOrderAmountPopsSoftOrderMinimumPopUpTest ex
     static User user;
     static String distributorCheeseImp = PriceData.DISTRIBUTOR_CHEESE_IMP;
     static String customerId3 = PriceData.CUSTOMER_ID_6;
+    static String orderMinimumType = "Soft Order Minimum";
+    static String CompanyName = "Cheese Importers";
 
     @BeforeMethod
     public void setUp() {
@@ -30,6 +29,15 @@ public class VerifyOrdersBelowMinimumOrderAmountPopsSoftOrderMinimumPopUpTest ex
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Login.navigateToInternalToolsPage();
+        InternalTools.navigateToConfigureSupplier();
+        InternalTools.clickOnInternalToolCompanyEditDetails(CompanyName);
+        InternalTools.navigateToOrderingSettingsTab();
+        InternalTools.TurnOnOrderMinimumGloballyToggle(true);
+        InternalTools.clickOnOrderMinimumDropdown(orderMinimumType);
+        InternalTools.clickSave();
+        softAssert.assertTrue(InternalTools.isSuccessPopUpDisplayed(),"change not save");
+        InternalTools.clickOKOnSucessOverlay();
 
         Login.navigateToDistributorPortal(distributorCheeseImp);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
@@ -48,8 +56,7 @@ public class VerifyOrdersBelowMinimumOrderAmountPopsSoftOrderMinimumPopUpTest ex
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         Customer.submitOrderMinimum();
         softAssert.assertTrue(Customer.isOrderMinPopupDisplayed(),"popup display error");
-//        Customer.clickYesOrderMinimum();
-        Customer.clickOkOrderMinimum();
+        Customer.clickPlaceOrderSoftOrderMinimum();
 
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation error");
