@@ -110,7 +110,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By txt_produce = By.xpath("(//div[starts-with(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'bakery')])[last()]");  // bakery or produce
     By txt_firstItem = By.xpath("//div[translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'artichoke -24ct']");
     By txt_minOrderBanner = By.xpath("//div[contains(text(), 'Add a few more items worth') and contains(text(), 'to meet minimum order amount')]");
-    By txt_popupAlertOrderMin = By.xpath("//h2[text()='Order Minimum Not Met']");
+    By txt_popupAlertOrderMin = By.xpath("//div[text()='Order Minimum Not Met']");
     By btn_previousDraftOrderNo = By.xpath("//div[contains(text(),'previous draft order')]/..//div[text()='No']");
     String txt_customerCode = "//td[text()='CODE']";
     By tb_orders = By.xpath("//a[text()='Orders' and @role='tab']");
@@ -934,6 +934,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By txt_maximumQuantityExceededMessageBody = By.xpath("//div[contains(text(),'The maximum quantity allowed per item is 1999. Please adjust your entry to a value between 1 and 1999')]");
     By txt_maximumQuantityReached = By.xpath("//h2[text()='Maximum Quantity Reached!']");
     By btn_okMaxQuantityModal = By.xpath("//h2[contains(text(),'Maximum Quantity')]/../..//button[text()='OK']");
+    By btn_placeOrderSoftOrderMinimum = By.xpath("//button[text()='Place Order']");
 
 
 
@@ -5623,6 +5624,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForClickability(btn_okMaxQuantityModal);
         distributorUI.click(btn_okMaxQuantityModal);
         distributorUI.waitForCustom(2000);
+    }
+    public void clickPlaceOrderSoftOrderMinimum(){
+        distributorUI.click(btn_placeOrderSoftOrderMinimum);
     }
 
 

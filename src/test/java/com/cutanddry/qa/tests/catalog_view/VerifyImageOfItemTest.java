@@ -25,7 +25,7 @@ public class VerifyImageOfItemTest extends TestBase {
     }
 
     @Test(groups = "DOT-TC-371")
-    public void VerifyImageOfItem() {
+    public void VerifyImageOfItem() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
@@ -33,6 +33,8 @@ public class VerifyImageOfItemTest extends TestBase {
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToCatalog();
         Assert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
+        Catalog.searchItemInCatalog(itemCode);
+        Thread.sleep(4000);
         Catalog.selectItemFromGrid(itemCode);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
         Catalog.navigateToImages();

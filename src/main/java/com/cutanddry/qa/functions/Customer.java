@@ -3409,6 +3409,12 @@ public class Customer {
     public static void clickOkOnMaxQuantityModal() throws InterruptedException {
         customersPage.clickOkOnMaxQuantityModal();
     }
+    public static void clickPlaceOrderSoftOrderMinimum(){
+        customersPage.clickPlaceOrderSoftOrderMinimum();
+        if (customersPage.isDuplicatePopupDisplayed()){
+            customersPage.clickYesDuplicatePopup();
+        }
+    }
 
 
 
