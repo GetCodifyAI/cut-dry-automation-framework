@@ -55,6 +55,8 @@
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheAddToOrderGuideWillNotDisplayedWhenTheCatalogOnlyOrderFlowIsActivatedFromTheSupplierConfigTest"/>
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyStandingOrderFlowWhenSwitchingOrderGuidesTest"/>
             <class name="com.cutanddry.qa.tests.quick_add.VerifyQuickAddMaximumQuantityValidationTest"/>
+
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyLeadTimeBannerDisplayedWhenConfiguredFromTheInternalToolsTest"/>
         </classes>
     </test>
 </suite>

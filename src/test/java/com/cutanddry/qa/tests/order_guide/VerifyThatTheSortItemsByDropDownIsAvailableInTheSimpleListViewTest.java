@@ -25,11 +25,11 @@ public class VerifyThatTheSortItemsByDropDownIsAvailableInTheSimpleListViewTest 
 
 
     Map<String, String> sortOptionsMap = new LinkedHashMap<>() {{
-        put("Item Code", "00036");
-        put("UPC", "052100324050");
-        put("Brand", "Brakebush");
+        put("Item Code", "346244");
+        put("UPC", "00076800000694");
+        put("Brand", "Lender");
         put("Description", "Bagel Cinnamon Raisin Sliced 00069 Ou");
-        put("Pack Size", "1 Lb");
+        put("Pack Size", "72/2.3 OZ");
     }};
 
 

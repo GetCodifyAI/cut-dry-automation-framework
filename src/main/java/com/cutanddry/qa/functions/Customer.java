@@ -897,7 +897,7 @@ public class Customer {
     public static void submitOrderWithoutReachMinimum(){
         customersPage.submitOrder();
         if(customersPage.isOrderMinimumOverlayDisplayed()){
-            customersPage.clickOnYes();
+            customersPage.clickPlaceOrderSoftOrderMinimum();;
         }
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
@@ -2561,7 +2561,7 @@ public class Customer {
     public static void submitOrderDpSpecific() throws InterruptedException {
         customersPage.submitOrder();
         if (customersPage.isOrderMinPopupDisplayed()){
-            customersPage.clickOnYes();
+            customersPage.clickPlaceOrderSoftOrderMinimum();
         }
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
@@ -3414,6 +3414,9 @@ public class Customer {
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
         }
+    }
+    public static boolean isLeadTimeBannerDisplay(String message){
+        return customersPage.isLeadTimeBannerDisplay(message);
     }
 
 
