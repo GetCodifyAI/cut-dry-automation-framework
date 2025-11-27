@@ -18,8 +18,8 @@ import java.time.format.DateTimeFormatter;
 public class VerifyThatTheSendToERPButtonIsAvailableForScheduledJITOrdersTest extends TestBase {
     static User user;
     static String customerId = "2419";
-    static String searchItemCode = "86405";
-    static String itemName = "103 Long BN Rib Signatre Marble 8-9";
+    static String searchItemCode = "86403";
+    static String itemName = "103 Long BN Rib Classic Marble 6-7";
     static String orderId;
     static String note = "Scheduled to push to the ERP";
     static String step1 = "Submitted";
