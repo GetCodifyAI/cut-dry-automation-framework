@@ -329,5 +329,8 @@ public class InternalTools {
     public static void clickCatalogOnlyOrderFlowToggle(boolean status){
         internalToolsPage.clickCatalogOnlyOrderFlowToggle(status);
     }
+    public static void enterLeadTimeWaringMessage(String message) {
+        internalToolsPage.enterLeadTimeWaringMessage(message);
+    }
 
 }

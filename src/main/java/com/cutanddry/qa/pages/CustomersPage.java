@@ -935,6 +935,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By txt_maximumQuantityReached = By.xpath("//h2[text()='Maximum Quantity Reached!']");
     By btn_okMaxQuantityModal = By.xpath("//h2[contains(text(),'Maximum Quantity')]/../..//button[text()='OK']");
     By btn_placeOrderSoftOrderMinimum = By.xpath("//button[text()='Place Order']");
+    String lbl_leadTimeBanner = "//span[text()='Message']";
 
 
 
@@ -5627,6 +5628,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickPlaceOrderSoftOrderMinimum(){
         distributorUI.click(btn_placeOrderSoftOrderMinimum);
+    }
+
+    public boolean isLeadTimeBannerDisplay(String message){
+        return distributorUI.isDisplayed(By.xpath(lbl_leadTimeBanner.replace("Message",message)));
     }
 
 
