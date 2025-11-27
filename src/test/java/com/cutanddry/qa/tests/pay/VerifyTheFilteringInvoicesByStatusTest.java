@@ -46,6 +46,7 @@ public class VerifyTheFilteringInvoicesByStatusTest extends TestBase {
         softAssert.assertTrue(Pay.isInvoicesBtnSelected(), "The user is unable to land on the Invoice tab.");
 
         Pay.clickOnInvoiceCustomerClearViaFilter();
+        Thread.sleep(4000);
         softAssert.assertTrue(Pay.isEmptyInvoiceMsgDisplayed(), "Invoices are not cleared.");
 
         Pay.selectInvoiceStatusViaFilter(status_past_due);

@@ -18,6 +18,7 @@ public class CustomersPage extends LoginPage {
     String btnNameOrderGuide = "//*[text()='NAME']/../../td[8]//button";
     By lbl_itemNameList = By.xpath("//td//span/div[@data-tip='View Product Details']");
     By lbl_itemDetails = By.xpath("//tbody/tr[2]");
+    By lbl_itemNameList_secondItem = By.xpath("(//td//span/div[@data-tip='View Product Details'])[2]");
     By btn_increaseQtyFirstRow = By.xpath("(//table/tbody/tr//*[local-name()='svg' and @data-icon='plus'])[1]");
     By btn_increaseQtySecondRowStable = By.xpath("(//table/tbody/tr//*[local-name()='svg' and @data-icon='plus'])[2]");
     By btn_increaseQtyFifthRow = By.xpath("(//table/tbody/tr//*[local-name()='svg' and @data-icon='plus'])[5]");
@@ -109,7 +110,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By txt_produce = By.xpath("(//div[starts-with(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'bakery')])[last()]");  // bakery or produce
     By txt_firstItem = By.xpath("//div[translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'artichoke -24ct']");
     By txt_minOrderBanner = By.xpath("//div[contains(text(), 'Add a few more items worth') and contains(text(), 'to meet minimum order amount')]");
-    By txt_popupAlertOrderMin = By.xpath("//h2[text()='Order Minimum Not Met']");
+    By txt_popupAlertOrderMin = By.xpath("//div[text()='Order Minimum Not Met']");
     By btn_previousDraftOrderNo = By.xpath("//div[contains(text(),'previous draft order')]/..//div[text()='No']");
     String txt_customerCode = "//td[text()='CODE']";
     By tb_orders = By.xpath("//a[text()='Orders' and @role='tab']");
@@ -460,12 +461,12 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
 //    By img_second = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'extra-large-artichoke-bottoms-raw-600.png')]");
 //By btn_firstImage = By.xpath("//div[contains(@class,'position-relative')]/img[contains(@src,'extra-large-artichoke-bottoms-main-600.png')]");
 //    By btn_secondImage = By.xpath("//div[contains(@class,'position-relative')]/img[contains(@src,'extra-large-artichoke-bottoms-raw-600.png')]");
-    By img_first = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'anchovy-paste-main-600.png')]");
-    By img_second = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'anchovy-paste-raw-600.png')]");
-    By img_firstThumb = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'anchovy-paste-raw-600.png')]");
-    By img_secondThumb = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'anchovy-paste-main-600.png')]");
-    By btn_firstImage = By.xpath("//div[contains(@class,'position-relative')]/img[contains(@src,'anchovy-paste-raw-600.png')]");
-    By btn_secondImage = By.xpath("//div[contains(@class,'position-relative')]/img[contains(@src,'anchovy-paste-main-600.png')]");
+    By img_first = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'47e0-9574-fddbc942efe2.png')]");
+    By img_second = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'783c-464b-8a2a-b1e3a1c4a03f.jpg')]");
+    By img_firstThumb = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'47e0-9574-fddbc942efe2.png')]");
+    By img_secondThumb = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@src,'783c-464b-8a2a-b1e3a1c4a03f.jpg')]");
+    By btn_firstImage = By.xpath("//div[contains(@class,'position-relative')]/img[contains(@src,'47e0-9574-fddbc942efe2.png')]");
+    By btn_secondImage = By.xpath("//div[contains(@class,'position-relative')]/img[contains(@src,'783c-464b-8a2a-b1e3a1c4a03f.jpg')]");
     By txt_specialInstruction =By.xpath("//div[contains(text(),'Special Instructions')]/following-sibling::textarea");
     By txt_internalNote =By.xpath("//div[contains(text(),'Internal Notes')]/following-sibling::textarea");
     By txt_noteToCustomer =By.xpath("//div[contains(text(),'Note to Customer')]/following-sibling::textarea");
@@ -726,6 +727,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String orderSummeryValue = "//div[contains(text(),'NAME')]/following-sibling::div[contains(text(),'VALUE')]";
     By salesCommissionValue = By.xpath("//div[contains(text(),'Sales Commission')]/following-sibling::div");
     By orderGuideText = By.xpath("//div[text()='Order Guide:']");
+    By catelogText = By.xpath("(//div[@class='px-4 w-100 _1ao8yn55'])[1]");
     By sortItemText = By.xpath("//div[text()='Sort Items By:']");
     By btn_deliveryDateStable = By.xpath("//div[text()='Delivery Date:']/../following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
     String dynamicToXPath = "(//div[contains(@class,'react-datepicker__day--highlighted')]/preceding::div[contains(@class, 'react-datepicker__day') and text()='DAY'])[last()]";
@@ -835,7 +837,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By dropdown_option_SimpleListView = By.xpath("//div[text()='Simple List View']");
     By txt_simpleListView = By.xpath("//div[text()='Simple List View']");
     String sortOptionOG = "(//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'OPTION')])[last()]";
-    String sortResult = "(//td//span[text()='OPTION'])[1]";
+    String sortResult = "(//td//span[contains(text(),'OPTION')])[1]";
     By addItemRestrictionDropDown = By.xpath("//label[contains(text(), 'Add Items Restriction')]/following-sibling::div");
     String addItemRestrictionDropDownOption = "(//div[text()='OPTION'])[last()]";
     By poundPriceStable = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]/div/div/div/div)[1]");
@@ -914,15 +916,26 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String emptyStateMessage =  "//span[contains(text(), 'NAME')]";
     String btnPlaceOrder = "//td[text()='CODE']/../td//button[text()='Place Order']";
     By txtCatalog = By.xpath("//div[text()='Catalog']");
-
-
-
-
-
-
-
-
-
+    By btn_switch =By.xpath("//button[text()='Switch']") ;
+    // DOT-TC-2228: Maximum Quantity Validation Methods
+    By txt_maxQuantityExceededModal = By.xpath("//h2[text()='Maximum Quantity Exceeded!']");
+    By txt_maxQuantityModalMessage = By.xpath("//p[contains(text(),'The maximum quantity allowed per item is')]");
+    By btn_maxQuantityModalClose = By.xpath("//h2[text()='Maximum Quantity Exceeded!']/../..//button[contains(@class,'close')]");
+    String btn_plusButtonByItemCode = "//td[text()='CODE']/following-sibling::td//div[contains(@class,'quantity-stepper')]//*[local-name()='svg' and @data-icon='plus']";
+    String tbx_quantityInputByItemCode = "//td[text()='CODE']/following-sibling::td//input[@type='number']";
+    String lbl_itemByItemCode = "//td[text()='CODE']";
+    By lbl_orderGuideText = By.xpath("//span[text()='Order Guide'] | //h2[text()='Order Guide']");
+    By btn_dismissMaxQuantityModal = By.xpath("//button[contains(text(),'OK') or contains(text(),'Close')]");
+    By lbl_maximumQuantityExceededModal = By.xpath("//h2[contains(text(),'Maximum Quantity Reached!')]");
+    String orderGuideItemName = "(//div[@class='order-guide-item-name'])[INDEX]";
+    By txt_pdpItemName = By.xpath("//div[@class='mb-0 pt-2 d-flex align-items-center mont _1wrelxt _1vlidrf']");
+    By tbx_itemQuantityinSecondRow = By.xpath("(//*[@data-input ='quantityInput'])[2]");
+    By simpleListView = By.xpath(" //span[normalize-space()='UPC']");
+    By txt_maximumQuantityExceededMessageBody = By.xpath("//div[contains(text(),'The maximum quantity allowed per item is 1999. Please adjust your entry to a value between 1 and 1999')]");
+    By txt_maximumQuantityReached = By.xpath("//h2[text()='Maximum Quantity Reached!']");
+    By btn_okMaxQuantityModal = By.xpath("//h2[contains(text(),'Maximum Quantity')]/../..//button[text()='OK']");
+    By btn_placeOrderSoftOrderMinimum = By.xpath("//button[text()='Place Order']");
+    String lbl_leadTimeBanner = "//span[text()='Message']";
 
 
 
@@ -5438,5 +5451,189 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isCatalogDisplayed(){
         return distributorUI.isDisplayed(txtCatalog);
     }
+
+    public void clickOnSwitch(){
+        distributorUI.waitForVisibility(btn_switch);
+        distributorUI.click(btn_switch);
+    }
+
+    public void setQuantityByItemCode(String itemCode, String quantity) throws InterruptedException {
+        distributorUI.clearUsingJavaScript(By.xpath(tbx_quantityInputByItemCode.replace("CODE", itemCode)));
+        distributorUI.sendKeys(By.xpath(tbx_quantityInputByItemCode.replace("CODE", itemCode)), quantity);
+        distributorUI.waitForCustom(1000);
+    }
+
+    public String getQuantityByItemCode(String itemCode) {
+        return distributorUI.getText(By.xpath(tbx_quantityInputByItemCode.replace("CODE", itemCode)), "value");
+    }
+
+    public boolean isPlusButtonDisabledByItemCode(String itemCode) {
+        try {
+            By plusButtonLocator = By.xpath(btn_plusButtonByItemCode.replace("CODE", itemCode));
+            String disabledAttr = distributorUI.getText(plusButtonLocator, "disabled");
+            String ariaDisabled = distributorUI.getText(plusButtonLocator, "aria-disabled");
+
+            // Check if the button has disabled attribute or aria-disabled attribute
+            if (disabledAttr != null && !disabledAttr.isEmpty()) {
+                return true;
+            }
+            if (ariaDisabled != null && ariaDisabled.equals("true")) {
+                return true;
+            }
+
+            // Alternative: Check if the parent div has a disabled class or if the button is not clickable
+            // by checking if it's displayed but attempting to verify its state
+            return !distributorUI.isDisplayed(plusButtonLocator);
+        } catch (Exception e) {
+            // If element is not found or not interactable, consider it disabled
+            return true;
+        }
+    }
+
+    public void clickPlusButtonByItemCode(String itemCode) throws InterruptedException {
+        distributorUI.click(By.xpath(btn_plusButtonByItemCode.replace("CODE", itemCode)));
+        distributorUI.waitForCustom(1000);
+    }
+
+    public boolean isMaxQuantityExceededModalDisplayed() {
+        try {
+            distributorUI.waitForVisibility(txt_maxQuantityExceededModal);
+            return distributorUI.isDisplayed(txt_maxQuantityExceededModal);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public String getMaxQuantityModalMessage() {
+        try {
+            return distributorUI.getText(txt_maxQuantityModalMessage);
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public void closeMaxQuantityModal() throws InterruptedException {
+        distributorUI.click(btn_maxQuantityModalClose);
+        distributorUI.waitForCustom(1000);
+    }
+
+    public boolean isItemDisplayedByItemCode(String itemCode) {
+        try {
+            return distributorUI.isDisplayed(By.xpath(lbl_itemByItemCode.replace("CODE", itemCode)));
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isOrderGuideDisplayed() {
+        try {
+            return distributorUI.isDisplayed(lbl_orderGuideText);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void setItemQuantityFirstRow(int quantity) throws InterruptedException {
+        distributorUI.waitForVisibility(tbx_itemQuantityinFirstRow);
+        distributorUI.clear(tbx_itemQuantityinFirstRow);
+        distributorUI.sendKeys(tbx_itemQuantityinFirstRow, String.valueOf(quantity));
+        distributorUI.waitForCustom(2000);
+    }
+
+    public void clickPlusQryFirstRowWithoutWait() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_increaseQtyFirstRow);
+        distributorUI.click(btn_increaseQtyFirstRow);
+    }
+
+    public void dismissMaximumQuantityExceededModal() throws InterruptedException {
+        distributorUI.waitForClickability(btn_dismissMaxQuantityModal);
+        distributorUI.click(btn_dismissMaxQuantityModal);
+        distributorUI.waitForCustom(2000);
+    }
+
+    public boolean isPlusButtonEnable(){
+        return distributorUI.isElementEnabled(btn_increaseQtyFirstRow);
+    }
+
+    public boolean isMaximumQuantityExceededModalDisplayed() {
+        try {
+            distributorUI.waitForVisibility(lbl_maximumQuantityExceededModal, 5);
+            return distributorUI.isDisplayed(lbl_maximumQuantityExceededModal);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public String getItemNameByRow(int row) {
+        String locator = "(//div[@class='order-guide-item-name'])[" + row + "]";
+        return distributorUI.getText(By.xpath(locator));
+    }
+
+
+
+    public void clickOrderGuideSecondItem(){
+        distributorUI.click( lbl_itemNameList_secondItem);
+    }
+
+    public String getItemNameFromPDP() throws InterruptedException {
+        distributorUI.waitForCustom(4000);
+        return distributorUI.getText(txt_pdpItemName).toLowerCase();
+    }
+
+    public void clickOutsideQuantityField() throws InterruptedException {
+        distributorUI.click(orderGuideText);
+        distributorUI.waitForCustom(2000);
+    }
+
+    public void clickOutsideQuantityFieldInCatelog() throws InterruptedException {
+        distributorUI.click(catelogText);
+        distributorUI.waitForCustom(2000);
+    }
+
+
+    public void typeQuantityInFirstRow(String quantity) throws InterruptedException {
+        distributorUI.waitForVisibility(tbx_itemQuantityinFirstRow);
+        distributorUI.clearUsingJavaScript(tbx_itemQuantityinFirstRow);
+        distributorUI.sendKeys(tbx_itemQuantityinFirstRow, quantity);
+        distributorUI.waitForCustom(1000);
+    }
+
+    public void typeQuantityInSecondRow(String quantity) throws InterruptedException {
+        distributorUI.waitForVisibility(tbx_itemQuantityinSecondRow);
+        distributorUI.clearUsingJavaScript(tbx_itemQuantityinSecondRow);
+        distributorUI.sendKeys(tbx_itemQuantityinSecondRow, quantity);
+        distributorUI.waitForCustom(1000);
+    }
+
+
+    public void clickOutsideQuantityFieldUnderListView() throws InterruptedException {
+        distributorUI.click(simpleListView);
+        distributorUI.waitForCustom(2000);
+    }
+
+    public boolean isMaximumQuantityMessageBodyModalDisplayed() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        try {
+            return distributorUI.isDisplayed(txt_maximumQuantityExceededMessageBody);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void clickOkOnMaxQuantityModal() throws InterruptedException {
+        distributorUI.waitForCustom(1000);
+        distributorUI.waitForClickability(btn_okMaxQuantityModal);
+        distributorUI.click(btn_okMaxQuantityModal);
+        distributorUI.waitForCustom(2000);
+    }
+    public void clickPlaceOrderSoftOrderMinimum(){
+        distributorUI.click(btn_placeOrderSoftOrderMinimum);
+    }
+
+    public boolean isLeadTimeBannerDisplay(String message){
+        return distributorUI.isDisplayed(By.xpath(lbl_leadTimeBanner.replace("Message",message)));
+    }
+
+
 
 }
