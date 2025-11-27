@@ -2709,7 +2709,7 @@ public class Customer {
     public static boolean isCatalogAccessDisplay(){
         return customersPage.isCatalogAccessDisplay();
     }
-    public static void clickSwitchToOfflineMode(){
+    public static void clickSwitchToOfflineMode() throws InterruptedException {
         customersPage.clickSwitchToOfflineMode();
     }
     public static boolean isOfflineModePopUpDisplay(){
