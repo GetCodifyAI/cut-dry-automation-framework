@@ -249,13 +249,13 @@ By input_selectItem = By.xpath("//div[contains(text(),'Search items by name or c
     By txt_allItems = By.xpath("//div[text()='All Items']");
     By txt_priceZero = By.xpath("//tbody//span[contains(text(), '$0.00')]");
     By minimumOrderOverlay = By.xpath("//h2[@id='swal2-title' and contains(text(),'Order Minimum Not Met')]");
-    By catalogAccessEnableTxt = By.xpath("//div[@class='list-group-item']//div[text()='Enabled']");
-    By catalogAccessDisableTxt = By.xpath("//div[@class='list-group-item']//div[text()='Disabled']");
+    By catalogAccessEnableTxt = By.xpath("//div[@class='list-group-item']//div[text()='Visible to All']");
+    By catalogAccessDisableTxt = By.xpath("//div[@class='list-group-item']//div[text()='Internal Only']");
     By catalogAccessEditBtn = By.xpath("//div[contains(text(), 'Catalog Access')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
-    By lbl_catalogAccessEnable = By.xpath("//div[contains(text(), 'Catalog Access')]//following-sibling::div//*[contains(text(),'Enabled')]");
+    By lbl_catalogAccessEnable = By.xpath("//div[contains(text(), 'Catalog Access')]//following-sibling::div//*[contains(text(),'Visible to All')]");
     By catalogSectionInOrderGuide = By.xpath("//span[contains(text(),'Catalog')]");
-    By catalogAccessDisableOption = By.xpath("//div[contains(text(),'Disabled')]");
-    By catalogAccessEnableOption = By.xpath("//div[contains(text(),'Enabled')]");
+    By catalogAccessDisableOption = By.xpath("//div[contains(text(),'Internal Only')]");
+    By catalogAccessEnableOption = By.xpath("//div[contains(text(),'Visible to All')]");
     By orderApprovalTxt = By.xpath("//div[contains(text(),'Order Approval')]");
 //    By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']");
 By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/following-sibling::div//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
