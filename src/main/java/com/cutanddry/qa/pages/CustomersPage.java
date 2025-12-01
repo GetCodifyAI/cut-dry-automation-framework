@@ -4690,7 +4690,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(catalogAccessEditBtn);
     }
 
-    public void clickSwitchToOfflineMode(){
+    public void clickSwitchToOfflineMode() throws InterruptedException {
+        distributorUI.waitForCustom(5000);
         distributorUI.waitForClickability(dropdown_option_SwitchToOfflineMode);
         distributorUI.click(dropdown_option_SwitchToOfflineMode);
     }
