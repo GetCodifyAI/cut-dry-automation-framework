@@ -248,7 +248,7 @@ By input_selectItem = By.xpath("//div[contains(text(),'Search items by name or c
     By lbl_orders = By.xpath("//li[contains(text(),'Orders')]");
     By txt_allItems = By.xpath("//div[text()='All Items']");
     By txt_priceZero = By.xpath("//tbody//span[contains(text(), '$0.00')]");
-    By minimumOrderOverlay = By.xpath("//h2[@id='swal2-title' and contains(text(),'Order Minimum Not Met')]");
+    By minimumOrderOverlay = By.xpath("//*[contains(text(),'Order Minimum Not Met')]");
     By catalogAccessEnableTxt = By.xpath("//div[@class='list-group-item']//div[text()='Visible to All']");
     By catalogAccessDisableTxt = By.xpath("//div[@class='list-group-item']//div[text()='Internal Only']");
     By catalogAccessEditBtn = By.xpath("//div[contains(text(), 'Catalog Access')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
