@@ -102,6 +102,9 @@ public class InternalTools {
     public static void enterOrderMinimum(String min){
         internalToolsPage.enterOrderMinimum(min);
     }
+    public static void enterOrderMinimumAmount(String min){
+        internalToolsPage.enterOrderMinimumAmount(min);
+    }
     public static void clickSave(){
         internalToolsPage.clickSave();
     }
