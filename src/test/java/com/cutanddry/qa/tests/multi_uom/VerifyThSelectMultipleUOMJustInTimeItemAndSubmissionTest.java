@@ -27,6 +27,7 @@ public class VerifyThSelectMultipleUOMJustInTimeItemAndSubmissionTest extends Te
     static String DP = CatalogData.DP_VICTO;
     String itemName = CatalogData.ITEM_NAME_JIT;
     String uomDropDownOption = CatalogData.UOM_DROPDOWN_OPTION;
+    static String orderGuide = CatalogData.VITCO_OG;
 
     @BeforeMethod
     public void setUp() {
@@ -42,13 +43,15 @@ public class VerifyThSelectMultipleUOMJustInTimeItemAndSubmissionTest extends Te
 
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-        Login.navigateToDistributorPortal(DP);
+        Login.navigateToLoginAs();
+        Login.logInToDP(DP);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Customer.ensureCarouselDisplayStatus(false);
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
+        Customer.selectOrderGuideIfOverlayDisplayed(orderGuide);
 
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(searchItemCode);

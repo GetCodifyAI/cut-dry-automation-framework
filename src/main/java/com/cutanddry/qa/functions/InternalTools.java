@@ -102,6 +102,9 @@ public class InternalTools {
     public static void enterOrderMinimum(String min){
         internalToolsPage.enterOrderMinimum(min);
     }
+    public static void enterOrderMinimumAmount(String min){
+        internalToolsPage.enterOrderMinimumAmount(min);
+    }
     public static void clickSave(){
         internalToolsPage.clickSave();
     }
@@ -325,6 +328,12 @@ public class InternalTools {
     }
     public static void clickRunLocallyOnParentChildRelationshipTask(){
         internalToolsPage.clickRunLocallyOnParentChildRelationshipTask();
+    }
+    public static void clickCatalogOnlyOrderFlowToggle(boolean status){
+        internalToolsPage.clickCatalogOnlyOrderFlowToggle(status);
+    }
+    public static void enterLeadTimeWaringMessage(String message) {
+        internalToolsPage.enterLeadTimeWaringMessage(message);
     }
 
 }

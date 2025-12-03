@@ -190,6 +190,10 @@ public class Track {
     public static void uploadRoute(String path)throws InterruptedException{
         if (trackPage.isUploadRouteTextDisplayed()){
         trackPage.giveFilePath(path);
+            if(trackPage.isChangeFieldMappingOverlayDisplayed()){
+                trackPage.continueAndUpdate();
+                trackPage.giveFilePath(path);
+            }
         }else {
             trackPage.clickDeleteRoute();
             trackPage.giveFilePath(path);
@@ -378,5 +382,8 @@ public class Track {
     }
     public static boolean isMonitorCustomerStopDisplayed(String stop)throws InterruptedException{
         return trackPage.isMonitorCustomerStopDisplayed(stop);
+    }
+    public static void displayFieldIfNotDisplayed(String fieldName) throws InterruptedException {
+        trackPage.DisplayedFieldIfNotDisplayed(fieldName);
     }
 }

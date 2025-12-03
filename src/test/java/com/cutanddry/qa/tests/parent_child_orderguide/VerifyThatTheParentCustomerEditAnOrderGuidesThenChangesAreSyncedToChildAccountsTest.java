@@ -25,6 +25,7 @@ public class VerifyThatTheParentCustomerEditAnOrderGuidesThenChangesAreSyncedToC
     static String status = "Parent Account";
     static String childSettingMessage = "Child account settings updated successfully";
     static String formID;
+    static String OrderGuideName2 = "default OG";
 
 
     @BeforeMethod
@@ -114,6 +115,7 @@ public class VerifyThatTheParentCustomerEditAnOrderGuidesThenChangesAreSyncedToC
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId2),"search error");
         Customer.clickOnOrderGuideParentChild(customerId2);
         Customer.clickOGDropdown();
+        Customer.createOrderGuideIfOnlyOneAvailableInChild(OrderGuideName2);
         Customer.selectNewlyCreatedOrderGuide(OrderGuideName);
         softAssert.assertTrue(Customer.isAddedItemDisplayed(itemName2), "The item edit in parent account not display");
 

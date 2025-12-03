@@ -2,6 +2,8 @@ package com.cutanddry.qa.tests.order_guide;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.CatalogData;
+import com.cutanddry.qa.data.testdata.CustomerData;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
@@ -17,6 +19,7 @@ public class VerifyTheSearchTest extends TestBase{
     static String itemName = "Artichoke -24ct";
     static String itemCode = "01700";
     static String customerId = "16579";
+    static String OrderGuideName = CustomerData.CUSTOMER_OG;
 
     @BeforeMethod
     public void setUp(){
@@ -33,6 +36,8 @@ public class VerifyTheSearchTest extends TestBase{
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
+        Customer.clickOGDropdown();
+        Customer.selectNewlyCreatedOrderGuide(OrderGuideName);
         Customer.searchItemOnOrderGuide(itemName);
         Customer.addItemFromCatalogIfNotAvailableInOG(itemName);
         softAssert.assertTrue(Customer.getItemNameFirstRow().toLowerCase().contains(itemName.toLowerCase()),"item mismatch");
