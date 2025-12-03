@@ -28,6 +28,7 @@ public class InternalToolsPage extends LoginPage {
     By orderMinimumDropDown = By.xpath("//div[text()='Order minimum type: ']/following-sibling::div/div");
     String orderMinimumDropDownOption = "(//div[text()='TYPE'])[last()]";
     By addOrderMinimum = By.xpath("//div[contains(text(),'Soft order Minimum Surcharge')]/following-sibling::div/input");
+    By addOrderMinimumAmount = By.xpath("//div[contains(text(),'Order Minimum Amount')]/following-sibling::div/input");
     By txt_success = By.xpath("//h2[contains(text(),'Success')]");
     By payDetailsTab = By.xpath("//a[contains(text(),'Pay Details')]");
     By payDetailsToggleStable = By.xpath("//label[contains(text(), 'Pay Enabled For All Users: ')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
@@ -314,6 +315,11 @@ public class InternalToolsPage extends LoginPage {
         distributorUI.click(addOrderMinimum);
         distributorUI.clear(addOrderMinimum);
         distributorUI.sendKeys(addOrderMinimum,minimum);
+    }
+    public void enterOrderMinimumAmount(String minimum){
+        distributorUI.click(addOrderMinimumAmount);
+        distributorUI.clear(addOrderMinimumAmount);
+        distributorUI.sendKeys(addOrderMinimumAmount,minimum);
     }
     public void clickSave() {
         distributorUI.clickWithScrollAndHover(SaveBtn);
