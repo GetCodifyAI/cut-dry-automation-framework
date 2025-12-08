@@ -335,5 +335,8 @@ public class InternalTools {
     public static void enterLeadTimeWaringMessage(String message) {
         internalToolsPage.enterLeadTimeWaringMessage(message);
     }
+    public static void TurnOnAllowSupplierToSetMinimumToggle(boolean status){
+        internalToolsPage.TurnOnAllowSupplierToSetMinimumToggle(status);
+    }
 
 }
