@@ -1840,7 +1840,7 @@ workflows:
 #            - daily-build-and-test-4
 #            - daily-build-and-test-5
 #            - daily-build-and-test-7
-#
+
 #  scheduled-test-2-sub1:
 #    triggers:
 #     - schedule:
@@ -1868,4 +1868,3 @@ workflows:
 #            - daily-build-and-test-12
 #            - daily-build-and-test-13
 #            - daily-build-and-test-14
-
