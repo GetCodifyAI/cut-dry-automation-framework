@@ -330,7 +330,7 @@ public class BoostPage extends LoginPage {
         return distributorUI.isDisplayed(txt_popupMoreFromThis);
     }
     public boolean checkInactive(String type) throws InterruptedException {
-        distributorUI.waitForCustom(1000);
+        distributorUI.waitForCustom(4000);
         return distributorUI.isDisplayed(By.xpath(txt_inactive_state.replace("Type", type)));
     }
     public void clickCatalogHome() {
