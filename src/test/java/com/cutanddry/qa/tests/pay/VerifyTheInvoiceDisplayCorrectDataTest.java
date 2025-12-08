@@ -16,13 +16,13 @@ public class VerifyTheInvoiceDisplayCorrectDataTest extends TestBase{
     static User user;
     SoftAssert softAssert;
     String startDay = "Sunday";
-    String startMonth = "December";
-    String startDate = "1";
-    String startYear = "2024";
+    String startMonth = "November";
+    String startDate = "9";
+    String startYear = "2025";
 
     String endDay = "Saturday";
-    String endMonth = "January";
-    String endDate = "4";
+    String endMonth = "December";
+    String endDate = "6";
     String endYear = "2025";
 
     String payoutStatus = "All";
