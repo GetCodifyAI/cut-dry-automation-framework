@@ -337,7 +337,7 @@ By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/fo
     By btn_orderConfirmation = By.xpath("//span[contains(text(), 'Print Order Confirmation')]");
 //    By btn_order = By.xpath("(//tr[contains(@class, '_du1frc _du1frc _qy4b979 py-3')])[1]");
     By btn_order = By.xpath("(//tr[contains(@class, '_du1frc _du1frc')])[1]");
-    By txt_order = By.xpath("//h2[contains(text(), 'Order')]");
+    By txt_order = By.xpath("//div[contains(text(), 'Order #')]");
     By tb_drafts = By.xpath("//a[text()='Drafts' and @role='tab']");
 //    By txt_draftStatus = By.xpath("//tr[2]//td[3][contains(text(), 'just now')]");
 By txt_draftStatus = By.xpath("//tr[2]//td[3][contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'), 'seconds ago')   or contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'), 'just now')]");
@@ -1022,7 +1022,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickOnCatalogButton(){
         distributorUI.waitForClickability(btn_catalog);
-        distributorUI.click(btn_catalog);
+        distributorUI.clickUsingJavaScript(btn_catalog);
     }
     public void typeToSearchOnCatalog(String item) throws InterruptedException {
         if(distributorUI.getValue(tbx_catalogSearch).isEmpty()){
