@@ -19,13 +19,13 @@ public class VerifyTheFilterInitiatedPaymentByStatusFunctionality extends TestBa
     static String paymentStatus = "Paid";
 
     String startDay = "Sunday";
-    String startMonth = "December";
-    String startDate = "1";
-    String startYear = "2024";
+    String startMonth = "November";
+    String startDate = "9";
+    String startYear = "2025";
 
     String endDay = "Saturday";
-    String endMonth = "January";
-    String endDate = "4";
+    String endMonth = "December";
+    String endDate = "6";
     String endYear = "2025";
 
 
