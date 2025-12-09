@@ -40,7 +40,13 @@ public class Customer {
     public static boolean isCustomerSearchResultByNameDisplayed(String code) throws InterruptedException {
         if (customersPage.isCustomerSearchResultByNameDisplayed(code)) {
             return true;
-        } else {
+        }else if(!customersPage.isCustomerSearchResultByNameDisplayed(code)) {
+            customersPage.clickOnMoreFiltersOption();
+            customersPage.clickOnMoreFilterStatusDropdown();
+            customersPage.clickOnMoreFiltersAllOption();
+            customersPage.clickApply();
+            return customersPage.isCustomerSearchResultByNameDisplayed(code);
+        }else {
             customersPage.refreshCustomersPage();
             customersPage.clickOnSearchCustomers();
             customersPage.typeOnSearchCustomers(code);
@@ -897,7 +903,7 @@ public class Customer {
     public static void submitOrderWithoutReachMinimum(){
         customersPage.submitOrder();
         if(customersPage.isOrderMinimumOverlayDisplayed()){
-            customersPage.clickOnYes();
+            customersPage.clickPlaceOrderSoftOrderMinimum();;
         }
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
@@ -2561,7 +2567,7 @@ public class Customer {
     public static void submitOrderDpSpecific() throws InterruptedException {
         customersPage.submitOrder();
         if (customersPage.isOrderMinPopupDisplayed()){
-            customersPage.clickOnYes();
+            customersPage.clickPlaceOrderSoftOrderMinimum();
         }
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
@@ -2709,7 +2715,7 @@ public class Customer {
     public static boolean isCatalogAccessDisplay(){
         return customersPage.isCatalogAccessDisplay();
     }
-    public static void clickSwitchToOfflineMode(){
+    public static void clickSwitchToOfflineMode() throws InterruptedException {
         customersPage.clickSwitchToOfflineMode();
     }
     public static boolean isOfflineModePopUpDisplay(){
@@ -2809,6 +2815,10 @@ public class Customer {
     }
     public static void clickOrderGuideItem(){
         customersPage.clickOrderGuideItem();
+    }
+
+    public static void clickOrderGuideSecondItem(){
+        customersPage.clickOrderGuideSecondItem();
     }
     public static void addAmountUsingDataPickerOG(String name,String quantity)throws InterruptedException{
         customersPage.addAmountUsingDataPickerOG(name,quantity);
@@ -3277,6 +3287,145 @@ public class Customer {
     public static boolean isEmptyStateMessageDisplay(String name){
         return customersPage.isEmptyStateMessageDisplay(name);
     }
+    public static void clickOnPlaceOrder(String code) throws InterruptedException {
+        customersPage.clickOnPlaceOrder(code);
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+    }
+    public static boolean isPlaceOrderButtonDisplay(String code){
+        return customersPage.isPlaceOrderButtonDisplay(code);
+    }
+    public static boolean isPlaceOrderButtonVisibleInCustomerProfile(){
+        return customersPage.isPlaceOrderButtonVisibleInCustomerProfile();
+    }
+    public static void clickPlaceOrderButtonInCustomerProfile() throws InterruptedException {
+        customersPage.clickPlaceOrderButtonInCustomerProfile();
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+    }
+    public static boolean isCatalogDisplayed(){
+        return customersPage.isCatalogDisplayed();
+    }
+
+    public static int getStandingOrdersCount(){
+        return customersPage.getStandingOrdersCount();
+    }
+    public static void clickOnSwitch(){customersPage.clickOnSwitch();}
+
+    // DOT-TC-2228: Maximum Quantity Validation Methods
+    public static void setQuantityByItemCode(String itemCode, String quantity) throws InterruptedException {
+        customersPage.setQuantityByItemCode(itemCode, quantity);
+    }
+
+    public static String getQuantityByItemCode(String itemCode) {
+        return customersPage.getQuantityByItemCode(itemCode);
+    }
+
+    public static boolean isPlusButtonDisabledByItemCode(String itemCode) {
+        return customersPage.isPlusButtonDisabledByItemCode(itemCode);
+    }
+
+    public static void clickPlusButtonByItemCode(String itemCode) throws InterruptedException {
+        customersPage.clickPlusButtonByItemCode(itemCode);
+    }
+
+    public static boolean isMaxQuantityExceededModalDisplayed() {
+        return customersPage.isMaxQuantityExceededModalDisplayed();
+    }
+
+    public static String getMaxQuantityModalMessage() {
+        return customersPage.getMaxQuantityModalMessage();
+    }
+
+    public static void closeMaxQuantityModal() throws InterruptedException {
+        customersPage.closeMaxQuantityModal();
+    }
+
+    public static boolean isItemDisplayedByItemCode(String itemCode) {
+        return customersPage.isItemDisplayedByItemCode(itemCode);
+    }
+
+    public static boolean isOrderGuideDisplayed() {
+        return customersPage.isOrderGuideDisplayed();
+    }
+
+    public static void setItemQuantityFirstRow(int quantity) throws InterruptedException {
+        customersPage.setItemQuantityFirstRow(quantity);
+    }
+
+    public static void increaseFirstRowQtyCustomWithoutWait(int count) throws InterruptedException {
+        for (int i=0; i<count;i++){
+            customersPage.clickPlusQryFirstRowWithoutWait();
+        }
+    }
+
+    public static void dismissMaximumQuantityExceededModal() throws InterruptedException {
+        customersPage.dismissMaximumQuantityExceededModal();
+    }
+
+    public static boolean isPlusButtonEnable(){
+        return customersPage.isPlusButtonEnable();
+    }
+
+    public static boolean isMaximumQuantityExceededModalDisplayed() {
+        return customersPage.isMaximumQuantityExceededModalDisplayed();
+    }
+
+    public static void clickPlusQryFirstRow() throws InterruptedException {
+        customersPage.clickPlusQryFirstRow();
+    }
+
+    public static String getItemNameByRow(int row) {
+        return customersPage.getItemNameByRow(row);
+    }
+
+    public static String getItemNameFromPDP() throws InterruptedException {
+        return customersPage.getItemNameFromPDP();
+    }
+
+    public static void clickOutsideQuantityField() throws InterruptedException {
+        customersPage.clickOutsideQuantityField();
+    }
+
+
+    public static void  clickOutsideQuantityFieldInCatelog() throws InterruptedException {
+        customersPage.clickOutsideQuantityFieldInCatelog();
+    }
+
+
+    public static void typeQuantityInFirstRow(String quantity) throws InterruptedException {
+        customersPage.typeQuantityInFirstRow(quantity);
+    }
+
+    public static void typeQuantityInSecondRow(String quantity) throws InterruptedException {
+        customersPage.typeQuantityInSecondRow(quantity);
+    }
+
+
+    public static void clickOutsideQuantityFieldUnderListView() throws InterruptedException {
+        customersPage.clickOutsideQuantityFieldUnderListView();
+    }
+
+    public static boolean isMaximumQuantityMessageBodyModalDisplayed() throws InterruptedException {
+        return customersPage.isMaximumQuantityMessageBodyModalDisplayed();
+    }
+
+    public static void clickOkOnMaxQuantityModal() throws InterruptedException {
+        customersPage.clickOkOnMaxQuantityModal();
+    }
+    public static void clickPlaceOrderSoftOrderMinimum(){
+        customersPage.clickPlaceOrderSoftOrderMinimum();
+        if (customersPage.isDuplicatePopupDisplayed()){
+            customersPage.clickYesDuplicatePopup();
+        }
+    }
+    public static boolean isLeadTimeBannerDisplay(String message){
+        return customersPage.isLeadTimeBannerDisplay(message);
+    }
+
+
 
 
 }

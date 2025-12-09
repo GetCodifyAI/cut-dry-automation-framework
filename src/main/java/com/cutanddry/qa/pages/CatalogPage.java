@@ -100,11 +100,11 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
 //    By btn_review = By.xpath("//a[text()='Review']");
 By btn_review = By.xpath("//a[text()='Review Products']");
 //    By txt_numRecentAdded = By.xpath("//div[p[text()='Recently Added']]//h6");
-By txt_numRecentAdded = By.xpath("//div[text()='New Products']/../../following-sibling::div//div");
+By txt_numRecentAdded = By.xpath("//div[text()='New Products']/following-sibling::div//div//div");
     By txt_resultsCount = By.xpath("//div[contains(text(), 'All Results')]/following-sibling::div");
     By btn_updateImages = By.xpath("//a[text()='Add Images']");
 //    By txt_numImageMissing= By.xpath("//div[p[text()='Products Images Missing']]//h6");
-By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../following-sibling::div//div");
+By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/following-sibling::div//div//div");
     By lbl_categoriesDropdown = By.xpath("//div[@class='themed_select__single-value css-1uccc91-singleValue' and text()='All Categories']");
     By lbl_snack = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Snack']");
     By lbl_nonSnack = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[4][not(normalize-space()='Snack')]");
@@ -182,7 +182,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     String btn_OGAddToCartMinusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='minus'])[UOM]";
     String submittedOrder = "//*[contains(text(),'#') and text()='ID']";
     By getTotalOrderPrice = By.xpath("//td[text()='Total']/following-sibling::td");
-    By getTotalOrderQuantity = By.xpath("//td[contains(text(),'Total Quantity')]/following-sibling::td");
+    By getTotalOrderQuantity = By.xpath("//div[contains(text(),'Total Qty')]/following-sibling::div");
     String multiUomDropDown = "//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg']/ancestor::div[3]/div[1]/div";
     String multiUomDropDownLast = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[last()]";
     String multiUomDropDownOption ="//div[text()='OPTION']";
@@ -219,7 +219,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     By txt_alreadyCustomer = By.xpath("//h3//b[text()='Already a Customer?']");
     String btn_alreadyCustomer = "//button[text()='BUTTON']";
     By multiUomOptionEach =By.xpath("//div[text()='Each']");
-    By getTotalLineItem = By.xpath("//td[contains(text(),'Total Line Items')]/following-sibling::td");
+    By getTotalLineItem = By.xpath("//div[contains(text(),'Total Line Items')]/following-sibling::div");
     String multiUOMOption ="(//div[text()='OPTION'])[last()]";
     By icon_deleteSearchItem = By.xpath("(//*[local-name()='svg' and @data-icon='circle-xmark'])[1]");
     String lastOrderMarginPDP = "//div[text()='MARGIN']";
@@ -1265,6 +1265,10 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
         distributorUI.waitForVisibility(lbl_secondRowItemName);
         distributorUI.waitForCustom(3000);
         return distributorUI.getText(lbl_secondRowItemName);
+    }
+    public void clickOnCloseProductConfig()throws InterruptedException{
+        distributorUI.waitForClickability(btn_deleteShowCasePopUp);
+        distributorUI.click(btn_deleteShowCasePopUp);
     }
 
 }

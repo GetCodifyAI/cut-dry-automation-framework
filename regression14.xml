@@ -46,6 +46,21 @@
 
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyThatCustomerNameDisplayInEmptyInvoiceListTest"/>
             <class name="com.cutanddry.qa.tests.customers.VerifyTheCustomersCanSubmitOrdersWhenTheAccountIsInHardHoldByEnteringTheCreditCardDetailsDPPortalTest"/>
+
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheFindMoreInCatalogButtonTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_data.VerifyThatTheOrderUponEditingWithInactiveItemsTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_data.VerifyThatTheStandingOrderUponEditingWithInactiveItemsTest"/>
+
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheOrderGuideWillNotDisplayedWhenTheCatalogOnlyOrderFlowIsActivatedFromTheSupplierConfigTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheAddToOrderGuideWillNotDisplayedWhenTheCatalogOnlyOrderFlowIsActivatedFromTheSupplierConfigTest"/>
+            <class name="com.cutanddry.qa.tests.standing_orders.VerifyStandingOrderFlowWhenSwitchingOrderGuidesTest"/>
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyQuickAddMaximumQuantityValidationTest"/>
+
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyLeadTimeBannerDisplayedWhenConfiguredFromTheInternalToolsTest"/>
+
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsConfiguredWithHardOrderMinimumTest"/>
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsConfiguredWithSoftOrderMinimumTest"/>
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyOrderMinimumIsNotAppliedWhenNoOrderMinimumIsConfiguredTest"/>
         </classes>
     </test>
 </suite>

@@ -51,7 +51,7 @@ public class VerifyThatSortItemsByItemCategoriesInTheParentOGShouldNotReflectInT
         Customer.clickOnOrderGuideParentChild(customerId2);
         softAssert.assertFalse(Customer.isSortOptionDisplayed(itemCategories),"Item Categories Sort display");
         Customer.clickSortOptionsDropdown();
-        Customer.selectItemCategoriesSort();
+        Customer.selectCustomOrderSort();
         softAssert.assertAll();
     }
 

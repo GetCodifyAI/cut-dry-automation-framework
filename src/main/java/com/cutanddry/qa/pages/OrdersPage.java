@@ -18,7 +18,7 @@ public class OrdersPage extends LoginPage{
     By ratingOverlayCloseBtn = By.xpath("//div[contains(text(),'✕')]");
     By lbl_firstOrderTickBox = By.xpath("//tbody/tr[2]/td[1]");
     By lbl_firstOrder = By.xpath("//tbody/tr[2]/td[2]");
-    By btn_editOrder = By.xpath("//button[contains(text(),'Edit Order')]");
+    By btn_editOrder = By.xpath("//*[contains(text(),'Edit Order')]");
     By lbl_editOrderTitle = By.xpath("//h2[contains(text(),'Order')]");
     By lbl_editOrderTitleReview = By.xpath("(//*[contains(@data-tip,'Edit Order')]/div)[1]");
     By txt_editOrderPopup = By.xpath("//h2[contains(text(),'Edit Order?')]");
@@ -58,7 +58,7 @@ public class OrdersPage extends LoginPage{
     By lbl_salesperson = By.xpath("//label[contains(text(), 'Salesperson')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     By txt_salesperson = By.xpath("//div[contains(text(),'Chamika IFC')]");
     By first_row_order_details = By.xpath("//tr[2]/td[4]");
-    By txt_order_section = By.xpath("//h2[@class='mb-0 _1vx3fhy' and starts-with(text(), 'Order #')]");
+    By txt_order_section = By.xpath("//div[starts-with(text(), 'Order #')]");
     By btn_checkin = By.xpath("//button[@class = 'mr-3 btn btn-outline-primary' and text() = 'Check-In Order']");
     By txt_checkin_order_section = By.xpath("//h2[@class='mb-0 _1vx3fhy' and starts-with(text(), 'Check-In Order #')]");
     By btn_threeDot = By.xpath("(//button[@id='dropdown-basic'])[1]");
@@ -75,9 +75,9 @@ public class OrdersPage extends LoginPage{
     By lbl_orderTableColumn = By.xpath("//table/thead/tr/th");
     String lbl_orderTableColumnName = "//table/thead/tr/th[COUNT]/span";
     String lbl_creditRequested = "//tr//td[COUNT]//div[contains(text(),'STATUS')]";
-    String lbl_orderStatus = "//div[contains(@class, 'themed_select__single-value css-1uccc91-singleValue') and contains(text(),'STATUSVALUE')]";
-    By btn_orderStatus = By.xpath("//div[contains(@class, 'themed_select__single-value css-1uccc91-singleValue') and contains(text(),'Order Status:')]");
-    String lbl_orderStatusOption = "//div[contains(@class, 'themed_select__option') and contains(text(),'STATUS')]";
+    String lbl_orderStatus = "//span[normalize-space()='Status:']/following-sibling::span[contains(text(),'STATUSVALUE')]";
+    By btn_orderStatus = By.xpath("//span[normalize-space()='Status:']/../..");
+    String lbl_orderStatusOption = "//a[contains(text(),'STATUS')]";
     By txt_description = By.xpath("(//textarea[@class='form-control'])[1]");
     By btn_timeline = By.xpath("//a[text()='Timeline' and @role='tab']");
     By timestampTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[1]");
@@ -101,6 +101,8 @@ public class OrdersPage extends LoginPage{
     String columnSettingUpdated= "//span[text()='COLUMN']";
     By selectLocation = By.xpath("//div[contains(text(),'Select Location')]");
     By btn_selectLocation = By.xpath("//div[contains(text(),'Select Location')]/following-sibling::div/div[1]");
+    By btn_FindMoreInCatalog = By.xpath("//button[text()='Find More in Catalog']");
+    By lbl_inactiveItemDetected = By.xpath("//h2[text()='Inactive Items Detected']");
 
     public void clickBtnSaveCheckIn(){
         distributorUI.click(btn_saveCheckIn);
@@ -613,6 +615,14 @@ public class OrdersPage extends LoginPage{
     }
     public boolean isSubmitForApprovalButtonDisplay(){
         return distributorUI.isDisplayed(submitForApproval);
+    }
+    public void  clickFindMoreInCatalog()throws InterruptedException{
+        distributorUI.scrollToElement(btn_FindMoreInCatalog);
+        distributorUI.click(btn_FindMoreInCatalog);
+    }
+    public boolean isInactiveItemDetectedPopUpDisplay()throws InterruptedException{
+        distributorUI.waitForVisibility(lbl_inactiveItemDetected);
+       return distributorUI.isDisplayed(lbl_inactiveItemDetected);
     }
 
 
