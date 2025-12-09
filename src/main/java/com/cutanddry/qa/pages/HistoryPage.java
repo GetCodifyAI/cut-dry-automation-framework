@@ -28,7 +28,7 @@ public class HistoryPage extends LoginPage{
     By btn_search = By.xpath("//input[@placeholder='Search' and contains(@class, 'form-control')]");
     String search_result = "//tr[contains(@href,'/orders-revised/view-one')][1]//following-sibling::td[contains(.,'ORDERID')]";
     By first_row_order_details = By.xpath("//tr[2]/td[4]");
-    By btn_edit_order = By.xpath("//button[text() = 'Edit Order']");
+    By btn_edit_order = By.xpath("//span[text() = 'Edit Order']");
     By txt_edit_order = By.xpath("//h2[text() = 'Edit Order?']");
     By btn_confirm_order = By.xpath("//button[text()='Confirm']");
     By btn_submit_edit_order = By.xpath("//button[@id='submit-order-button' and text()='Submit Order Edits']");
