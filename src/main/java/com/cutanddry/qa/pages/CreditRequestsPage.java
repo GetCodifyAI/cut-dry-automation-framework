@@ -48,9 +48,6 @@ String lbl_itemName = "(//table[@class='_1qvcx68 table']//tbody/tr[ROW]/td[2]//d
 
     By txt_Order = By.xpath("//div[contains(text(), 'Order #')]");
     By txt_CreditRequestTableItemNameValue = By.xpath("(//table[@class='table table-hover']//tbody/tr[1]/td[2])[last()]");
-    By txt_Order = By.xpath("//h2[contains(text(), 'Order')]");
-    By txt_Order = By.xpath("//div[contains(text(), 'Order #')]");
-    By txt_CreditRequestTableItemNameValue = By.xpath("(//table[@class='table table-hover']//tbody/tr[1]/td[2])[last()]");
     By txt_CreditRequestTableCrQty = By.xpath("//table[@class='table table-hover']//tbody/tr[1]/td[6]");
     By txt_CreditRequestTableCrValue = By.xpath("//table[@class='table table-hover']//tbody/tr[1]/td[7]");
     By btn_creditRequest = By.xpath("//a[@role='tab' and text()='Credit Request']");
