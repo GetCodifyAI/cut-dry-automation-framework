@@ -15,7 +15,7 @@ public class VerifyTheSoftOrderMinimumSelectingMultipleUOMTest extends TestBase 
     SoftAssert softAssert;
     static User user;
     static String customerId = "97071";
-    String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributorName ="46505655 - Kevin - Independent Foods Co";
     String searchItemCode = CatalogData.ITEM_CODE;
     String itemName = CatalogData.ITEM_NAME;
     String uomDropDownOption = CatalogData.UOM_DROPDOWN_OPTION;

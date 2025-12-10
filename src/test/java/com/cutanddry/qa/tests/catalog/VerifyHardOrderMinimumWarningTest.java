@@ -17,7 +17,7 @@ public class VerifyHardOrderMinimumWarningTest extends TestBase {
     static String orderMin = "2500000";
     static String defaultOrderMin = "0";
     static String orderMinimumType = "Hard Order Minimum";
-    static String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    static String DistributorName ="46505655 - Kevin - Independent Foods Co";
     static String orderMinimumSetting = "Use Global Settings";
 
     @BeforeMethod

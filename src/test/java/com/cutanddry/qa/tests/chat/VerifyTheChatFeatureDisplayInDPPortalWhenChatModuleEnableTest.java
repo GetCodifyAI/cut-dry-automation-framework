@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheChatFeatureDisplayInDPPortalWhenChatModuleEnableTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributorName ="46505655 - Kevin - Independent Foods Co";
     static String customerId = DistributorOrderData.RESTAURANT_TEST_HAYES_ID;
     static String customerName = "Hayes";
     static String distributorMessage = "Test Message Distributor";

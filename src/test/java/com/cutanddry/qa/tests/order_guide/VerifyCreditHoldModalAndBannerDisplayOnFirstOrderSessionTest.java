@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyCreditHoldModalAndBannerDisplayOnFirstOrderSessionTest extends TestBase {
     static User user;
-    String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributorName ="46505655 - Kevin - Independent Foods Co";
     static String customerId = "30275";
     static String OperatorName = "372460856";
     static String creditHoldMessage = "Your order has been successfully sent to your supplier.       However, it has been noted your account is on hold due to outstanding payments.       Please get in touch with your supplier to make necessary payments.";

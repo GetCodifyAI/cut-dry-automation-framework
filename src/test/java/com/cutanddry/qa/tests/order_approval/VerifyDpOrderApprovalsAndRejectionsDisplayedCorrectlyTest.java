@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class VerifyDpOrderApprovalsAndRejectionsDisplayedCorrectlyTest extends TestBase {
     static User user;
-    String DistributerName = "47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributerName = "46505655 - Kevin - Independent Foods Co";
     String CustomerCode = "23445";
     String OrderGuideName = "Independent Foods Co";
     String EmployeeUserCode1 = "280815154";

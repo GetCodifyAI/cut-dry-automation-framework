@@ -18,7 +18,7 @@ public class VerifyThatTheUserCanSendBroadcastMessagesToCustomerGroupsTest exten
     static String OperatorName = "235564457";
     static String broadcastMessage = "Test Broadcast Message";
     static String customerGroupName,salespersonName,deliveryDate;
-    String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributorName ="46505655 - Kevin - Independent Foods Co";
 
     @BeforeMethod
     public void setUp(){
