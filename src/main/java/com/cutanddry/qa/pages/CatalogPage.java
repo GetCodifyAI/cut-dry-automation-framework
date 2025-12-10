@@ -181,7 +181,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     String tbx_itemQuantityUOM = "(//td[text()='CODE']/following-sibling::*//div/input[@data-input ='quantityInput'])[UOM]";
     String btn_OGAddToCartMinusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='minus'])[UOM]";
     String submittedOrder = "//*[contains(text(),'#') and text()='ID']";
-    By getTotalOrderPrice = By.xpath("//td[text()='Total']/following-sibling::td");
+    By getTotalOrderPrice = By.xpath("//div[text()='Total']/following-sibling::div//span[last()]");
     By getTotalOrderQuantity = By.xpath("//div[contains(text(),'Total Qty')]/following-sibling::div");
     String multiUomDropDown = "//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg']/ancestor::div[3]/div[1]/div";
     String multiUomDropDownLast = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[last()]";

@@ -59,7 +59,7 @@ public class OrdersPage extends LoginPage{
     By txt_salesperson = By.xpath("//div[contains(text(),'Chamika IFC')]");
     By first_row_order_details = By.xpath("//tr[2]/td[4]");
     By txt_order_section = By.xpath("//div[starts-with(text(), 'Order #')]");
-    By btn_checkin = By.xpath("//button[@class = 'mr-3 btn btn-outline-primary' and text() = 'Check-In Order']");
+    By btn_checkin = By.xpath("//span[text() = 'Check-In Order']");
     By txt_checkin_order_section = By.xpath("//h2[@class='mb-0 _1vx3fhy' and starts-with(text(), 'Check-In Order #')]");
     By btn_threeDot = By.xpath("(//button[@id='dropdown-basic'])[1]");
     By txt_threeDotPrintOrderConfirmation = By.xpath("//span[contains(text(), 'Print Order Confirmation')]");
@@ -80,10 +80,10 @@ public class OrdersPage extends LoginPage{
     String lbl_orderStatusOption = "//a[contains(text(),'STATUS')]";
     By txt_description = By.xpath("(//textarea[@class='form-control'])[1]");
     By btn_timeline = By.xpath("//a[text()='Timeline' and @role='tab']");
-    By timestampTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[1]");
-    By statusTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[2]");
-    By organizationTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[3]");
-    By userTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[4]");
+    By timestampTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[1]");
+    By statusTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[2]");
+    By organizationTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[3]");
+    By userTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[4]");
     By btnReportIssue = By.xpath("//button[@type='button' and @class='mr-3 btn btn-outline-danger' and contains(., 'Report Issue')]");
     By firstCheckBox_tbleOrderIssues = By.xpath("//table[@class='mt-3 table table-hover']/tbody/tr[1]");
     By dropDown_whatIsWrong = By.xpath("//div[contains(@class, 'themed_select__control')]");
