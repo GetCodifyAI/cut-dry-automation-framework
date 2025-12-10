@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyRemovingSubstituteFromAnItemTest extends TestBase{
     static User user;
-    String DistributerName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributerName ="46505655 - Kevin - Independent Foods Co";
     String itemCode = "00475";
     String substituteItemCode = "20024";
     String substituteItemName = "Cauliflower - Large";

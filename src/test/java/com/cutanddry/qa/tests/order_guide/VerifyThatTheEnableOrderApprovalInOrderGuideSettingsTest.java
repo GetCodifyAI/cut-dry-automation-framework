@@ -15,7 +15,7 @@ public class VerifyThatTheEnableOrderApprovalInOrderGuideSettingsTest extends Te
     static String customerId = "653";
     String SupplierName = "Independent Foods Co";
     String RestaurantUserCode = "52068374";
-    String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributorName ="46505655 - Kevin - Independent Foods Co";
     static String orderMinimumSetting = "Exempt from Order Minimum";
 
 

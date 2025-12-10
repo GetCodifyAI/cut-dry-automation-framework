@@ -18,7 +18,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheCustomerAccountHardHoldTest extends TestBase {
     static User user;
     static String customerId = "15285";
-    String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributorName ="46505655 - Kevin - Independent Foods Co";
 
     @BeforeMethod
     public void setUp(){
