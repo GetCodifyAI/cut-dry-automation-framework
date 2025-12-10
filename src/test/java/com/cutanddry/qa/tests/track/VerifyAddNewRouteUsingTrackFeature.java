@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyAddNewRouteUsingTrackFeature extends TestBase {
     static User user;
-    static String distributorName = "Brandon IFC Cut+Dry Agent - In";
+    static String distributorName = "46505655 - Kevin - Independent Foods Co";
 
     @BeforeMethod
     public void setUp() {
