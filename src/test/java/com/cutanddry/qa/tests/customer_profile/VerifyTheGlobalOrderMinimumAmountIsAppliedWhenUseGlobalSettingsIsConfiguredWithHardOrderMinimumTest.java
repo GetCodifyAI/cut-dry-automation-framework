@@ -14,7 +14,7 @@ public class VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsCo
     SoftAssert softAssert;
     static User user;
     static String customerId = "97071";
-    String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributorName ="46505655 - Kevin - Independent Foods Co";
     static String defaultOrderMin = "0";
     static String orderMinimumType = "Hard Order Minimum";
     static String orderMinInternal = "5000000";

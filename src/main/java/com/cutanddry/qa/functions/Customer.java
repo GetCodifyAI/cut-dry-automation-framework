@@ -40,7 +40,13 @@ public class Customer {
     public static boolean isCustomerSearchResultByNameDisplayed(String code) throws InterruptedException {
         if (customersPage.isCustomerSearchResultByNameDisplayed(code)) {
             return true;
-        } else {
+        }else if(!customersPage.isCustomerSearchResultByNameDisplayed(code)) {
+            customersPage.clickOnMoreFiltersOption();
+            customersPage.clickOnMoreFilterStatusDropdown();
+            customersPage.clickOnMoreFiltersAllOption();
+            customersPage.clickApply();
+            return customersPage.isCustomerSearchResultByNameDisplayed(code);
+        }else {
             customersPage.refreshCustomersPage();
             customersPage.clickOnSearchCustomers();
             customersPage.typeOnSearchCustomers(code);

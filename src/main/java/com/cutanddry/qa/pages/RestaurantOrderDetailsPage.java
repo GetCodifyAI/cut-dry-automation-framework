@@ -5,9 +5,9 @@ import org.openqa.selenium.By;
 
 public class RestaurantOrderDetailsPage extends TestBase {
 
-    String orderTitle = "//h2[contains(text(),'Order #ORDER_ID')]";
-    By btn_checkIn = By.xpath("//button[contains(text(),'Check-In Order')]");
-    String lbl_orderStatus = "//div[contains(text(),'Order Status: STATUS')]";
+    String orderTitle = "//*[contains(text(),'Order #ORDER_ID')]";
+    By btn_checkIn = By.xpath("//button//span[contains(text(),'Check-In Order')]");
+    String lbl_orderStatus = "//span[normalize-space()='Status:']/following-sibling::span[contains(text(),'STATUS')]";
 
     public boolean isOrderIdDisplayed(String orderId) throws InterruptedException {
         distributorUI.waitForVisibility(By.xpath(orderTitle.replace("ORDER_ID", orderId)));

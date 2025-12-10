@@ -98,13 +98,13 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
     By btn_close = By.xpath("//button[text()='Close']");
     By txt_getItemCode = By.xpath("//div[contains(text(), 'A new item was successfully created with the item code')]");
 //    By btn_review = By.xpath("//a[text()='Review']");
-By btn_review = By.xpath("//a[text()='Review Products']");
+By btn_review = By.xpath("//div[text()='Review Products']");
 //    By txt_numRecentAdded = By.xpath("//div[p[text()='Recently Added']]//h6");
-By txt_numRecentAdded = By.xpath("//div[text()='New Products']/../../following-sibling::div//div");
+By txt_numRecentAdded = By.xpath("//div[text()='New Products']/following-sibling::div/div[1]");
     By txt_resultsCount = By.xpath("//div[contains(text(), 'All Results')]/following-sibling::div");
-    By btn_updateImages = By.xpath("//a[text()='Add Images']");
+    By btn_updateImages = By.xpath("//div[text()='Add Images']");
 //    By txt_numImageMissing= By.xpath("//div[p[text()='Products Images Missing']]//h6");
-By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../following-sibling::div//div");
+By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/following-sibling::div/div[1]");
     By lbl_categoriesDropdown = By.xpath("//div[@class='themed_select__single-value css-1uccc91-singleValue' and text()='All Categories']");
     By lbl_snack = By.xpath("//div[@class='themed_select__option css-yt9ioa-option' and text()='Snack']");
     By lbl_nonSnack = By.xpath("//table[contains(@class, 'table-hover')]//tbody//tr/td[4][not(normalize-space()='Snack')]");
@@ -181,8 +181,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     String tbx_itemQuantityUOM = "(//td[text()='CODE']/following-sibling::*//div/input[@data-input ='quantityInput'])[UOM]";
     String btn_OGAddToCartMinusQuantity ="(//td[text()='CODE']/following-sibling::*//div/*[local-name()='svg' and @data-icon='minus'])[UOM]";
     String submittedOrder = "//*[contains(text(),'#') and text()='ID']";
-    By getTotalOrderPrice = By.xpath("//td[text()='Total']/following-sibling::td");
-    By getTotalOrderQuantity = By.xpath("//td[contains(text(),'Total Quantity')]/following-sibling::td");
+    By getTotalOrderPrice = By.xpath("//div[text()='Total']/following-sibling::div//span[last()]");
+    By getTotalOrderQuantity = By.xpath("//div[contains(text(),'Total Qty')]/following-sibling::div");
     String multiUomDropDown = "//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg']/ancestor::div[3]/div[1]/div";
     String multiUomDropDownLast = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[last()]";
     String multiUomDropDownOption ="//div[text()='OPTION']";
@@ -206,7 +206,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     By getDeliveryFeesReviewOrder = By.xpath("//td[contains(text(),'Delivery Fee')]/following-sibling::td");
     By getTotalEndlessAislePriceReviewOrder = By.xpath("//td[contains(text(),'Endless Aisle Total')]/following-sibling::td");
     By getTotalEndlessAisleSubTotalPriceReviewOrder = By.xpath("//td[contains(text(),'Endless Aisle Subtotal')]/following-sibling::td");
-    By getSubTotalOrderPrice = By.xpath("//*[contains(text(),'Subtotal')]/following-sibling::td");
+    By getSubTotalOrderPrice = By.xpath("//*[contains(text(),'Subtotal')]/following-sibling::div");
     String catalogAddToCart = "(//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')]/following::div//button[contains(text(), 'Add to Cart')])[1]";
     By btn_deleteSubstitute = By.xpath("//div/*[local-name()='svg' and @data-icon='circle-xmark']");
     String multiUomDropDownCatalogStable = "(//div[text()='NAME']/../../following-sibling::*//div/*[local-name()='svg'])[last()]";
@@ -219,7 +219,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/../../
     By txt_alreadyCustomer = By.xpath("//h3//b[text()='Already a Customer?']");
     String btn_alreadyCustomer = "//button[text()='BUTTON']";
     By multiUomOptionEach =By.xpath("//div[text()='Each']");
-    By getTotalLineItem = By.xpath("//td[contains(text(),'Total Line Items')]/following-sibling::td");
+    By getTotalLineItem = By.xpath("//div[contains(text(),'Total Line Items')]/following-sibling::div");
     String multiUOMOption ="(//div[text()='OPTION'])[last()]";
     By icon_deleteSearchItem = By.xpath("(//*[local-name()='svg' and @data-icon='circle-xmark'])[1]");
     String lastOrderMarginPDP = "//div[text()='MARGIN']";
