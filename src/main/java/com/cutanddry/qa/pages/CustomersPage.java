@@ -814,8 +814,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_closeMenu = By.xpath("//*[local-name() = 'svg' and @data-icon='cdCancel']");
     String newItemTagCatalogstable = "(//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]/../../following-sibling::div//span[text()='TAG'])[last()]";
     String btn_catalogPlusStable = "((//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')])[2]/../../following::div//*[name()='svg' and contains(@data-icon, 'plus')])[1]";
-    By btn_sendERP = By.xpath("//button[text()='Send to ERP']");
-    String txt_notesToCustomer = "//th[text()='Notes to Customer']/../../following-sibling::tbody//*[text()='NOTE']";
+    By btn_sendERP = By.xpath("//span[text()='Send to ERP']");
+    String txt_notesToCustomer = "//div[text()='Notes to Customer']/following-sibling::div[contains(text(),'NOTE')]";
     By txt_submitERP = By.xpath("//h2[text()='Submit Order to ERP?']");
     By txt_OrderSentERP = By.xpath("//h2[text()='Order sent to ERP!']");
     String txt_OrderSubmissionStep = "//td[text()='STEP']";
