@@ -7,7 +7,7 @@ public class HistoryPage extends LoginPage{
     By lbl_firstItemInHistory = By.xpath("//tr[contains(@href,'/orders-revised/view-one')][1]");
     By table_Orders = By.xpath("//table[@class='_6rf0k0 mt-lg-4 table']");
     String statusColumnXPathTemplate = "//table[@class='_6rf0k0 mt-lg-4 table']//tr['ROW_NUMBER']/td[9]";
-    By txt_order = By.xpath("//h2[contains(text(),'Order')]");
+    By txt_order = By.xpath("//div[contains(text(),'Order #')]");
     By txt_checkIn = By.xpath("//h2[contains(text(),'Check-In')]");
     By btn_editCheckIn = By.xpath("//button[contains(@class, 'btn') and contains(., 'Edit Check-In')]");
     By btn_reportIssue = By.xpath("//button[contains(@class, 'btn') and contains(@class, 'btn-outline-danger') and contains(., 'Report Issue')]");
@@ -21,14 +21,14 @@ public class HistoryPage extends LoginPage{
     By btn_yes = By.xpath("//button[text()='Yes']");
     By btn_close = By.xpath("//button[text()='Close']");
     By txt_whichItemsHasError = By.xpath("//h2[contains(text(),'Which items had an issue')]");
-    By btn_checkInOrder = By.xpath("//button[contains(@class, 'btn') and contains(., 'Check-In Order')]");
+    By btn_checkInOrder = By.xpath("//button[contains(., 'Check-In Order')]");
     By lbl_orderDateColumn = By.xpath("//span[contains(text(),'Order Date')]");
     By lbl_orderDateArrowUp = By.xpath("//span[contains(text(),'Order Date')]/*[name()='svg' and contains(@data-icon, 'arrow-up')]");
     By btn_history = By.xpath("//a[contains(., 'History')]");
     By btn_search = By.xpath("//input[@placeholder='Search' and contains(@class, 'form-control')]");
     String search_result = "//tr[contains(@href,'/orders-revised/view-one')][1]//following-sibling::td[contains(.,'ORDERID')]";
     By first_row_order_details = By.xpath("//tr[2]/td[4]");
-    By btn_edit_order = By.xpath("//button[text() = 'Edit Order']");
+    By btn_edit_order = By.xpath("//span[text() = 'Edit Order']");
     By txt_edit_order = By.xpath("//h2[text() = 'Edit Order?']");
     By btn_confirm_order = By.xpath("//button[text()='Confirm']");
     By btn_submit_edit_order = By.xpath("//button[@id='submit-order-button' and text()='Submit Order Edits']");

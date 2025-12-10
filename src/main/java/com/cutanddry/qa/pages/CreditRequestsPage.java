@@ -40,14 +40,14 @@ public class CreditRequestsPage extends TestBase {
 //    By txt_priceColumnItems = By.xpath("//table[@class='mt-3 table table-hover']//tbody/tr[1]/td[4]");
 //    By txt_QtyColumnItems = By.xpath("//table[@class='mt-3 table table-hover']//tbody/tr[1]/td[5]");
 
-    String lbl_priceColumnItems = "//table[@class='mt-3 table table-hover']//tbody/tr[ROW]/td[4]";
-    String lbl_QtyColumnItems = "//table[@class='mt-3 table table-hover']//tbody/tr[ROW]/td[5]";
-    By lbl_itemRowCount = By.xpath("//table[@class='mt-3 table table-hover']//tbody/tr");
+    String lbl_priceColumnItems = "//table[@class='_1qvcx68 table']//tbody/tr[ROW]/td[4]";
+    String lbl_QtyColumnItems = "//table[@class='_1qvcx68 table']//tbody/tr[ROW]/td[5]";
+    By lbl_itemRowCount = By.xpath("//table[@class='_1qvcx68 table']//tbody/tr");
 //    String lbl_itemName = "//table[@class='mt-3 table table-hover']//tbody/tr[ROW]/td//div[contains(text(), 'NAME')]";
-String lbl_itemName = "(//table[@class='mt-3 table table-hover']//tbody/tr[ROW]/td[2]//div[1])[last()]";
+String lbl_itemName = "(//table[@class='_1qvcx68 table']//tbody/tr[ROW]/td[2]//div[1][last()])";
 
     By txt_Order = By.xpath("//h2[contains(text(), 'Order')]");
-    By txt_CreditRequestTableItemNameValue = By.xpath("//table[@class='table table-hover']//tbody/tr[1]/td[2]");
+    By txt_CreditRequestTableItemNameValue = By.xpath("(//table[@class='table table-hover']//tbody/tr[1]/td[2])[last()]");
     By txt_CreditRequestTableCrQty = By.xpath("//table[@class='table table-hover']//tbody/tr[1]/td[6]");
     By txt_CreditRequestTableCrValue = By.xpath("//table[@class='table table-hover']//tbody/tr[1]/td[7]");
     By btn_creditRequest = By.xpath("//a[@role='tab' and contains(@class, '_xh5xl28') and text()='Credit Request']");
