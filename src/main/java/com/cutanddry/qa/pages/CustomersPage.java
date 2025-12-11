@@ -757,6 +757,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String updateChildAccountSettings = "//div[contains(text(),'MESSAGE')]";
     String dropDownOrderGuide =  "(//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'NAME')])[last()]";
     By btn_deleteOrderGuide = By.xpath("//*[contains(text(), 'Delete Order Guide')]");
+    By txt_maximumQuantityExceeded = By.xpath("//h2[contains(text(),'Maximum Quantity')]");
+    By txt_maximumQuantityReached = By.xpath("//h2[text()='Maximum Quantity Reached!']");
+    By btn_okMaxQuantityModal = By.xpath("//h2[contains(text(),'Maximum Quantity')]/../..//button[text()='OK']");
     String deliveryDateCustomerOrder = "//*[contains(text(),'#') and text()='ID']/../../preceding-sibling::td[1][text()='DATE']";
     String customerOrder = "//*[contains(text(),'#') and text()='ID']";
     By btn_pickUpDateStable = By.xpath("//div[text()='Pickup Date:']/../following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
@@ -4903,6 +4906,36 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isPONumberErrorDisplay(String error){
         return distributorUI.isDisplayed(By.xpath(pONumberError.replace("ERROR", error)));
+    }
+    
+    public boolean isMaximumQuantityModalDisplayed() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        try {
+            return distributorUI.isDisplayed(txt_maximumQuantityExceeded) || distributorUI.isDisplayed(txt_maximumQuantityReached);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    public void clickOkOnMaxQuantityModal() throws InterruptedException {
+        if (isMaximumQuantityModalDisplayed()) {
+            distributorUI.waitForCustom(1000);
+            distributorUI.waitForClickability(btn_okMaxQuantityModal);
+            distributorUI.click(btn_okMaxQuantityModal);
+            distributorUI.waitForCustom(2000);
+        }
+    }
+    
+    public void typeQuantityInFirstRow(String quantity) throws InterruptedException {
+        distributorUI.waitForVisibility(tbx_itemQuantityinFirstRow);
+        distributorUI.clearUsingJavaScript(tbx_itemQuantityinFirstRow);
+        distributorUI.sendKeys(tbx_itemQuantityinFirstRow, quantity);
+        distributorUI.waitForCustom(1000);
+    }
+    
+    public void clickOutsideQuantityField() throws InterruptedException {
+        distributorUI.click(orderGuideText);
+        distributorUI.waitForCustom(2000);
     }
     public void selectDistributorCenter(String center)throws InterruptedException{
         distributorUI.click(By.xpath(distributorCenter.replace("CENTER",center)));

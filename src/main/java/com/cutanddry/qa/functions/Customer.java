@@ -271,6 +271,23 @@ public class Customer {
     public static boolean isThankingForOrderPopupDisplayed(){
         return customersPage.isThankingForOrderPopupDisplayed();
     }
+    
+    public static boolean isMaximumQuantityModalDisplayed() throws InterruptedException {
+        return customersPage.isMaximumQuantityModalDisplayed();
+    }
+    
+    public static void clickOkOnMaxQuantityModal() throws InterruptedException {
+        customersPage.clickOkOnMaxQuantityModal();
+    }
+    
+    public static void typeQuantityInFirstRow(String quantity) throws InterruptedException {
+        customersPage.typeQuantityInFirstRow(quantity);
+    }
+    
+    public static void clickOutsideQuantityField() throws InterruptedException {
+        customersPage.clickOutsideQuantityField();
+    }
+    
     public static boolean isBroadcastMessageDisplayed(String message) {
         try {
             if (customersPage.isPreviousDraftOrderNoDisplayed()){
