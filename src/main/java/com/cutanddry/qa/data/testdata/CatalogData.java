@@ -52,12 +52,12 @@ public class CatalogData {
     public static final String DP_VICTO = "308247072";
     public static final String DP_BIRITE = "120984267 - Cut+Dry Agent - BiRite Foodservice Distributors";
     public static final String DP_SOUTHWEST = "30227908 - Cut+Dry Agent - Southwest Traders";
-    public static final String DP_IFC = "47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    public static final String DP_IFC = "46505655 - Kevin - Independent Foods Co";
     public static final String DP_BIGOLI = "105718262 - Cut+Dry Agent - Bigoli Fresh Pasta";
     public static final String SALE_REP = "Steve O";
     public static final String SALE_PERSON_ROLL = "apptesters@test.com";
     public static final String AR_ROLL = "Isuru Test AR";
-    public static final String DISPATCHER_ROLL = "Hadley Dispatcher";
+    public static final String DISPATCHER_ROLL = "tessa+dispatcher@cutanddry.com";
     public static final String ITEM_TYPE_1 = "Special Order";
     public static final String ITEM_TYPE_2 = "Stocked (in-house)";
     public static final String PRIME_SOURCE_PUBLIC_CATALOG_URL = "https://primesourcefoods-uat.staging.cutanddry.com/catalog/Prime%20Source%20Foods/?categoryId=1&verifiedVendorId=430993089&page=1).";

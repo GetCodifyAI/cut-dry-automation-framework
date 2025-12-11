@@ -17,7 +17,7 @@ public class VerifyCustomerProfileVisibilityTest extends TestBase{
     String CustomerCode = "41922";
     static String nameCus = "52557616";
     static String businessName = "Nicks Pizza - San Francisco";
-    String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributorName ="46505655 - Kevin - Independent Foods Co";
     static String dpName = "Independent Foods Co";
 
     @BeforeMethod

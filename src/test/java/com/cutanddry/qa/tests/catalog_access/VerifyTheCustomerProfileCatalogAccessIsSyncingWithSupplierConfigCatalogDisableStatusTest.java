@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheCustomerProfileCatalogAccessIsSyncingWithSupplierConfigCatalogDisableStatusTest extends TestBase {
     static User user;
-    String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributorName ="46505655 - Kevin - Independent Foods Co";
     String ManualDisableCatalogOption = "Selected Operators (via Manual Selection)";
     static String restaurantName = "Kafe Layers #4 Test";
     static String customerId = "45897";

@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheAutoApplyCreditMemosOnAllCustomerDPPortalWhenFeatureDisabledTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributorName ="46505655 - Kevin - Independent Foods Co";
     static String status_past_due = PayInvoiceData.STATUS_PAST_DUE;
     static String customerName = "Acai Bowles - San Francisco";
     static String status_payment = PayInvoiceData.OPTION_PAYMENT;

@@ -12,7 +12,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyDispatcherRoleTest extends TestBase {
     static User user;
-    static String userAR = "Hadley Dispatcher";
+    static String userAR = "Tessa Dispatcher";
     static String customerId = "16579";
     static String itemName = "Artichoke";
 
