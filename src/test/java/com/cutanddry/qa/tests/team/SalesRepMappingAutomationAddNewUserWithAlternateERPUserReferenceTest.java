@@ -20,7 +20,7 @@ public class SalesRepMappingAutomationAddNewUserWithAlternateERPUserReferenceTes
     static int randomNumber = new Random().nextInt(1000);
     static String name = "Testuser02"+ randomNumber;
     static String email = "test"+randomNumber+"@email.com";
-    static String existingUserName = "Andria";
+    static String existingUserName = "Andy";
     static String ERPUserRef = "BBTest"+randomNumber;
     static String AlternateERPUserRef = "AATest"+randomNumber;
 

@@ -34,8 +34,9 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
     String itemInTheGrid = "//tr[contains(@class,'_du1frc')]//td[text()='ITEMCODE']";
     By itemNameColumnHeader = By.xpath("//div[contains(text(),'Item Name')]");
     By itemNameHeaderArrowUP = By.xpath("//div[normalize-space(.)='Item Name']/following-sibling::*[local-name()='svg' and contains(@data-icon,'arrow-up')]");
+    By criticalInfoExpander = By.xpath("//div[contains(text(),'Critical Information')]");
     By ItemCodeInCatalogData = By.xpath("//div[normalize-space(.)='Product Code (SKU)']/ancestor::div[2]/following-sibling::div//input");
-    By productConfigsEditBtn = By.xpath("//*[contains(text(),'Product Configuration')]/following-sibling::button");
+    By productConfigsEditBtn = By.xpath("//*[contains(text(),'Catalog Controls')]/following-sibling::button");
     By saveChangesBtn = By.xpath("//button[text()='Save']");
     By successOverlay = By.xpath("//div[contains(text(),'successfully saved!')]");
     By specificationsTab = By.xpath("//*[contains(text(),'Specifications')]");
@@ -333,7 +334,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         }
     }
     public String getItemCodeFromCatalogDataPage(){
-        distributorUI.waitForVisibility(ItemCodeInCatalogData);
+        distributorUI.waitForVisibility(criticalInfoExpander);
+        distributorUI.clickUsingJavaScript(criticalInfoExpander);
         return distributorUI.getText(ItemCodeInCatalogData,"value");
     }
     public void clickEditOnProductConfigs(){
