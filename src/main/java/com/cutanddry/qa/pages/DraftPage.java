@@ -36,7 +36,7 @@ public class DraftPage extends LoginPage{
     By clearFilter = By.xpath("//span[contains(text(),'Clear Filters')]");
     By referenceNum = By.xpath("(//tbody/tr[contains(@href, 'place-order') and contains(@href, 'draftId')]//td[3])[1]");
     String pendingApproval = "(//tbody/tr[contains(@href, '/customers/place_order/') and contains(@href, 'draftId')]/td[9]/span[contains(text(), 'STATUS')])[1]";
-    String txt_lastDraftDisplay = "(//tbody/tr[contains(@href, '/customers/place_order/') and contains(@href, 'draftId')]/td[8][contains(text(), 'TOTAL')])[1]/../td[1]/div[text()='DATE']";
+    String txt_lastDraftDisplay = "(//tbody/tr[contains(@href, '/customers/place_order/') and contains(@href, 'draftId')]/td[8][contains(text(), 'TOTAL')])[1]/../td[1]/div[contains(text(),'DATE')]";
     String draftItem = "//tbody//td[contains(normalize-space(.),'REFID')]";
 
 
