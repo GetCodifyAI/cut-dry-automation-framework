@@ -375,10 +375,10 @@ By lbl_margin = By.xpath("//div[contains(text(),'Margin') and contains(text(),'$
     By txt_assignSalesperson = By.xpath("//div[contains(text(),'Assign Salesperson')]");
 //    By dropdown_assignSalesperson = By.xpath("((//*[local-name() = 'svg' and @class='css-19bqh2r']))[2]");
 By dropdown_assignSalesperson = By.xpath("(//div[contains(@class,'themed_select__dropdown-indicator')])[last()]");
-    By sel_salesperson = By.xpath("//div[contains(@class, 'themed_select__option') and contains(text(), 'Ali Loynachan')]");
-    By txt_assignedSalesperson = By.xpath("//td[contains(text(),'Ali Loynachan')]");
+    By sel_salesperson = By.xpath("//div[contains(@class, 'themed_select__option') and contains(text(), 'Darlene')]");
+    By txt_assignedSalesperson = By.xpath("//td[contains(text(),'Darlene')]");
     By btn_saveChanges = By.xpath("//button[contains(text(),'Save changes')]");
-    By txt_cusProfSalesperson = By.xpath("//div[contains(@class,'_vjioml w-100 border') and contains(text(),'Ali Loynachan')]");
+    By txt_cusProfSalesperson = By.xpath("//div[contains(@class,'_vjioml w-100 border') and contains(text(),'Darlene')]");
     By btn_removeSalesperson = By.xpath("(//td/*[contains(@data-icon,'trash-can')])[last()]");
     By txt_totalOrderValue = By.xpath("//div[contains(text(),'Total Order Value')]/following-sibling::div");
     By btn_orderGuideCusProf = By.xpath("//button[contains(text(),'Order Guide')]");
@@ -757,7 +757,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String updateChildAccountSettings = "//div[contains(text(),'MESSAGE')]";
     String dropDownOrderGuide =  "(//div[contains(text(), 'Order Guide:')]//following::div[contains(text(), 'NAME')])[last()]";
     By btn_deleteOrderGuide = By.xpath("//*[contains(text(), 'Delete Order Guide')]");
-    String deliveryDateCustomerOrder = "//*[contains(text(),'#') and text()='ID']/../../preceding-sibling::td[1][text()='DATE']";
+    String deliveryDateCustomerOrder = "//*[contains(text(),'#') and text()='ID']/../../preceding-sibling::td[1][contains(text(),'DATE')]";
     String customerOrder = "//*[contains(text(),'#') and text()='ID']";
     By btn_pickUpDateStable = By.xpath("//div[text()='Pickup Date:']/../following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
     String dynamicToXPathStable = "//div[contains(@class,'react-datepicker__day')]/preceding::div[contains(@class, 'react-datepicker__day') and contains(@aria-disabled, 'false') and text()='DAY']";
@@ -2686,7 +2686,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         String assignedSalespersonName = distributorUI.getText(txt_assignedSalesperson);
         String cusProfileSalespersonName = distributorUI.getText(txt_cusProfSalesperson);
         try {
-            return assignedSalespersonName.equals(cusProfileSalespersonName) && assignedSalespersonName.equals("Ali Loynachan");
+            return assignedSalespersonName.equals(cusProfileSalespersonName) && assignedSalespersonName.equals("Darlene");
         } catch (Exception e){
             return false;
         }
