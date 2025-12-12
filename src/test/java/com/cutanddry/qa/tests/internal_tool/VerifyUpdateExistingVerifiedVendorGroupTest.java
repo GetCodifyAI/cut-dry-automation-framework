@@ -17,7 +17,7 @@ public class VerifyUpdateExistingVerifiedVendorGroupTest extends TestBase {
     static User user;
     String name = "Updated Test Group";
     String description = "Updated description for testing";
-    String dp1 = "406 Market";
+    String dp1 = "Cheese Importers";
     String dp2 = "A&B Distributors";
     String dp3 = "Ace Frozen Fruit Distribution";
     String status = "Enabled";

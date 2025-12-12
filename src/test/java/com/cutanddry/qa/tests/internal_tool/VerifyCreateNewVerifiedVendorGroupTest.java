@@ -19,7 +19,7 @@ public class VerifyCreateNewVerifiedVendorGroupTest extends TestBase {
     static User user;
     String name = "Test Group Alpha";
     String description = "Test group for company switching validation";
-    String dp1 = "406 Market";
+    String dp1 = "Cheese Importers";
     String dp2 = "A&B Distributors";
     String status = "Enabled";
 

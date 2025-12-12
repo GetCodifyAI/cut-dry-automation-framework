@@ -12,14 +12,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class VerifyThatTheParentCustomerEditAnOrderGuidesThenChangesAreSyncedToChildAccountsTest extends TestBase {
     static User user;
     static String DP = ParentChildOGData.DISTRIBUTOR_INDIANHEAD;
     static String customerId = ParentChildOGData.CUSTOMER_ID_INDIANHEAD;
     static String customerId2 = ParentChildOGData.CUSTOMER_ID_INDIANHEAD_2;
-    static String OrderGuideName = ParentChildOGData.ORDER_GUIDE_NAME_6 + "_" + UUID.randomUUID();
+    static String OrderGuideName = ParentChildOGData.ORDER_GUIDE_NAME_6 + "_" + ThreadLocalRandom.current().nextInt(100000, 1_000_000);
     static String itemName2 = "Mozzarella Sticks Crunchy Breaded WG BA";
     static String itemName = "Egg Roll Pork & Vegetable";
     static String status = "Parent Account";
@@ -61,8 +61,8 @@ public class VerifyThatTheParentCustomerEditAnOrderGuidesThenChangesAreSyncedToC
         Login.navigateToInternalToolsPage();
         InternalTools.navigateToTaskManagementTab();
         InternalTools.runParentChildTask(formID);
-        Customer.clickOK();
         softAssert.assertTrue(InternalTools.isPCTaskAttemptedDisplayed(),"Parent child task not run successfully");
+        Customer.clickOK();
         Login.closeCurrentTabAndSwitchBack();
 
         Dashboard.navigateToCustomers();
@@ -106,8 +106,8 @@ public class VerifyThatTheParentCustomerEditAnOrderGuidesThenChangesAreSyncedToC
         Login.navigateToInternalToolsPage();
         InternalTools.navigateToTaskManagementTab();
         InternalTools.clickRunLocallyOnParentChildRelationshipTask();
-        Customer.clickOK();
         softAssert.assertTrue(InternalTools.isPCTaskAttemptedDisplayed(),"Parent child task not run successfully");
+        Customer.clickOK();
         Login.closeCurrentTabAndSwitchBack();
 
         Dashboard.navigateToCustomers();
