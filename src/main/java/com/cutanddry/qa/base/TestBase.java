@@ -159,7 +159,7 @@ public class TestBase {
     }
 
     public static String generateUTCTomorrowDateFormatted() {
-        SimpleDateFormat formatter = new SimpleDateFormat("M/d/yy"); // This gives "3/24/25"
+        SimpleDateFormat formatter = new SimpleDateFormat("EEE, MM/dd/yyyy"); // This gives "3/24/25"
         formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
         /*Date today = new Date();
         return formatter.format(today);*/

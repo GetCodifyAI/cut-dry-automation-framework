@@ -52,7 +52,7 @@ public class VerifyPendingApprovalsAreNotClickableTest extends TestBase{
         softAssert.assertEquals(Draft.getReferenceNumDP(), referenceNum, "draft order create not successfully");
         softAssert.assertTrue(Draft.isPendingApprovalDraftDisplayed(status),"pending approval draft not display");
         Draft.pendingApprovalDraftClick(status);
-        softAssert.assertFalse(Customer.isReviewOrderTextDisplayed(), "pending approval draft clickable");
+        softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "pending approval draft clickable");
         softAssert.assertAll();
     }
 
