@@ -3424,6 +3424,9 @@ public class Customer {
     public static boolean isLeadTimeBannerDisplay(String message){
         return customersPage.isLeadTimeBannerDisplay(message);
     }
+    public static void clickClosePopUpWindow(){
+        customersPage.clickClosePopUpWindow();
+    }
 
 
 
