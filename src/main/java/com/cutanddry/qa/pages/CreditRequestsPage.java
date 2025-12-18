@@ -50,21 +50,21 @@ String lbl_itemName = "(//table[@class='_1qvcx68 table']//tbody/tr[ROW]/td[2]//d
     By txt_CreditRequestTableItemNameValue = By.xpath("(//table[@class='table table-hover']//tbody/tr[1]/td[2])[last()]");
     By txt_CreditRequestTableCrQty = By.xpath("//table[@class='table table-hover']//tbody/tr[1]/td[6]");
     By txt_CreditRequestTableCrValue = By.xpath("//table[@class='table table-hover']//tbody/tr[1]/td[7]");
-    By btn_creditRequest = By.xpath("//a[@role='tab' and text()='Credit Request']");
-    By btn_processCredit= By.xpath("//*[contains(text(), 'Process Credit')]");
+    By btn_creditRequest = By.xpath("//a[@role='tab' and contains(@class, '_xh5xl28') and text()='Credit Request']");
+    By btn_processCredit= By.xpath("//button[contains(text(), 'Process Credit')]");
     By checkbox_creditReqTable = By.xpath("//table[@class='table table-hover']/tbody/tr[1]/td[1]");
     By btn_declineDraft = By.xpath("//button[@type='button' and contains(@class, 'btn-outline-primary') and contains(text(), 'Decline Credit')]");
     By btn_submit = By.xpath("//button[contains(text(), 'Submit')]");
     By btn_confirm = By.xpath("//button[contains(text(), 'Confirm')]");
     By btn_close = By.xpath("//button[contains(text(), 'Close')]");
-    By txt_credictDeclined = By.xpath("(//*[local-name()='svg' and @data-icon='clipboard']/../../following-sibling::div//div[text()='Credit Declined'])[1]");
-    By btn_editCredit = By.xpath("//*[contains(text(), 'Edit Credit')]");
+    By txt_credictDeclined = By.xpath("(//div[text()='Credit Declined'])[last()]");
+    By btn_editCredit = By.xpath("//button[contains(text(), 'Edit Credit')]");
     By btn_approveCredit = By.xpath("//button[@type='button' and contains(text(), 'Approve Credit')]");
-    By txt_creditApproved = By.xpath("(//*[text()='Credit Approved'])[last()]");
-    By timestampTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[1]");
-    By statusTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[2]");
-    By organizationTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[3]");
-    By userTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[4]");
+    By txt_creditApproved = By.xpath("(//div[text()='Credit Approved'])[last()]");
+    By timestampTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[1]");
+    By statusTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[2]");
+    By organizationTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[3]");
+    By userTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[4]");
 
     public String[] getTimelineData(){
         String timeStamp = distributorUI.getText(timestampTimeline);
