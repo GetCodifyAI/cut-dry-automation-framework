@@ -98,7 +98,7 @@ public class VerifyThatTheStandingOrderUponEditingWithInactiveItemsTest extends 
         Customer.clickOnEditStandingOrder();
 
         softAssert.assertTrue(Orders.isInactiveItemDetectedPopUpDisplay(),"item not inactive");
-        Customer.clickOK();
+        Customer.clickClosePopUpWindow();
         softAssert.assertTrue(Customer.isReviewStandingOrdersDisplayed(),"navigate error review standing order");
         softAssert.assertEquals(Math.round(Catalog.getTotalPriceInReviewOrder() * 100.0) / 100.0,
                 0.00, "Total price in review order is not zero.");

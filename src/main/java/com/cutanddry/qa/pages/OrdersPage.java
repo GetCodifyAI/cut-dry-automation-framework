@@ -102,7 +102,7 @@ public class OrdersPage extends LoginPage{
     By selectLocation = By.xpath("//div[contains(text(),'Select Location')]");
     By btn_selectLocation = By.xpath("//div[contains(text(),'Select Location')]/following-sibling::div/div[1]");
     By btn_FindMoreInCatalog = By.xpath("//button[text()='Find More in Catalog']");
-    By lbl_inactiveItemDetected = By.xpath("//h2[text()='Inactive Items Detected']");
+    By lbl_inactiveItemDetected = By.xpath("//div[text()='Inactive Items Removed']");
 
     public void clickBtnSaveCheckIn(){
         distributorUI.click(btn_saveCheckIn);

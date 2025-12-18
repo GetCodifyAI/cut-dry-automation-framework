@@ -91,7 +91,7 @@ public class VerifyThatTheOrderUponEditingWithInactiveItemsTest extends TestBase
         Orders.clickOnConfirm();
 
         softAssert.assertTrue(Orders.isInactiveItemDetectedPopUpDisplay(),"item not inactive");
-        Customer.clickOK();
+        Customer.clickClosePopUpWindow();
 
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         softAssert.assertEquals(Math.round(Catalog.getTotalPriceInReviewOrder() * 100.0) / 100.0,
