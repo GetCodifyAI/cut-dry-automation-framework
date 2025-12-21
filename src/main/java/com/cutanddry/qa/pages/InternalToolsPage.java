@@ -184,6 +184,7 @@ public class InternalToolsPage extends LoginPage {
 
     public void clickOKOnSucessOverlay(){
         distributorUI.click(SuccessOkBtn);
+        distributorUI.waitForInvisibility(txt_success);
     }
 
     public void clickOnCatalogSettingsTab(){
