@@ -25,10 +25,12 @@ public class OrderDesk {
 
     public static void navigateToDraftOrderReviewPage(){
         orderDeskPage.clickOnDraftOrderPageReviewBtn();
-        /*if(orderDeskPage.isDateErrorDisplayedInDraftOrder()){
+        // If first draft order has invalid date or no line items, try the second draft order
+        if(orderDeskPage.isDateErrorDisplayedInDraftOrder() || !orderDeskPage.isLineItemEditIconDisplayed()){
             dashboardPage.clickOnOrderDesk();
+            orderDeskPage.clickOnDraftOrders();
             orderDeskPage.clickOnDraftOrderPageReviewBtn2();
-        }*/
+        }
     }
 
     public static void AddItemQuantityDraftOrderReviewPage(){
