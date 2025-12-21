@@ -189,9 +189,7 @@ String DeliveryDateSelect = "(//div[contains(@class,'themed_select__option')])[D
 
     public void ClickOnItemName() throws InterruptedException {
         distributorUI.waitForCustom(3000);
-        distributorUI.scrollToElement(ItemNameTxt);
-        distributorUI.waitForVisibility(ItemNameTxt);
-        distributorUI.clickUsingJavaScript(ItemNameTxt);
+        distributorUI.click(ItemNameTxt);
     }
 
     public void ClickOnProductSearchBtn(){
