@@ -14,7 +14,11 @@
             <class name="com.cutanddry.qa.tests.order_guide.VerifyGeneralHoldBannerDisplayInOrderSubmissionTest"/>
             <class name="com.cutanddry.qa.tests.order_guide.VerifyInactiveHoldBannerDisplayedInOrderSubmissionTest"/>
 
-
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpAdminUserCanNotApproveOrderWhenOperatorExclusiveApprovalTypeTest"/>
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPEmployeeSubmitsOrderForApprovalWhenDistributorExclusiveApprovalTypeTest"/>
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerSubmitsOrderForApprovalWhenDistributorExclusiveApprovalTypeTest"/>
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerCannotApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpAdminUserCanApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>
 
         </classes>
     </test>

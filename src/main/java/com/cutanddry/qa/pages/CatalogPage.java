@@ -235,6 +235,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     By txt_updateOGPopup = By.xpath("//*[contains(text(),'Update order guides?')]");
     By btn_updateOGPopup = By.xpath("//button[contains(text(),'Confirm')]");
     By specialItemYesBtn = By.xpath("(//div[normalize-space(text()) ='Special Item'])[2]/ancestor::div[3]/following-sibling::div//div[normalize-space(text()) ='Yes']/..");
+    String lbl_orderStatus = "//*[contains(text(),'#') and text()='ID']/../../following-sibling::td//span[text()='STATUS']";
 
 
     public boolean isCatalogTextDisplayed() {
@@ -1271,6 +1272,9 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     public void clickOnCloseProductConfig()throws InterruptedException{
         distributorUI.waitForClickability(btn_deleteShowCasePopUp);
         distributorUI.click(btn_deleteShowCasePopUp);
+    }
+    public boolean isOrderStatusDisplay(String id,String status)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(lbl_orderStatus.replace("ID",id).replace("STATUS",status)));
     }
 
 }

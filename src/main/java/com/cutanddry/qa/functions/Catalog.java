@@ -689,6 +689,9 @@ public class Catalog {
     public static void clickOnCloseProductConfig()throws InterruptedException{
         catalogPage.clickOnCloseProductConfig();
     }
+    public static boolean isOrderStatusDisplay(String id,String status)throws InterruptedException{
+        return catalogPage.isOrderStatusDisplay(id,status);
+    }
 
 
 }
