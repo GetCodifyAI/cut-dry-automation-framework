@@ -254,6 +254,22 @@ pipeline {
                         }
                     }
                 }
+
+                stage('Regression 15 - New Tests Case') {
+                     agent any
+                     steps {
+                         script {
+                             runTestSuiteWithCleanup('regression15.xml', 'Part_Fifteen', 15)
+                         }
+                     }
+                     post {
+                         always {
+                             script {
+                                 archiveAndCleanup('15', 'Regression 15 Test Report')
+                             }
+                         }
+                     }
+                }
             }
         }
         
@@ -262,7 +278,7 @@ pipeline {
             steps {
                 script {
                     // Unstash all test results
-                    for (int i = 1; i <= 14; i++) {
+                    for (int i = 1; i <= 15; i++) {
                         try {
                             unstash "test-results-${i}"
                         } catch (Exception e) {
