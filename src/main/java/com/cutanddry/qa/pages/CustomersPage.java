@@ -251,11 +251,14 @@ By input_selectItem = By.xpath("//div[contains(text(),'Search items by name or c
     By minimumOrderOverlay = By.xpath("//*[contains(text(),'Order Minimum Not Met')]");
     By catalogAccessEnableTxt = By.xpath("//div[@class='list-group-item']//div[text()='Visible to All']");
     By catalogAccessDisableTxt = By.xpath("//div[@class='list-group-item']//div[text()='Internal Only']");
+    By catalogAccessDisabledForAll = By.xpath("//div[@class='list-group-item']//div[text()='Disabled for All']");
     By catalogAccessEditBtn = By.xpath("//div[contains(text(), 'Catalog Access')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
     By lbl_catalogAccessEnable = By.xpath("//div[contains(text(), 'Catalog Access')]//following-sibling::div//*[contains(text(),'Visible to All')]");
     By catalogSectionInOrderGuide = By.xpath("//span[contains(text(),'Catalog')]");
     By catalogAccessDisableOption = By.xpath("//div[contains(text(),'Internal Only')]");
     By catalogAccessEnableOption = By.xpath("//div[contains(text(),'Visible to All')]");
+    By catalogAccessDisabledForAllOption = By.xpath("//div[contains(text(),'Disabled for All')]");
+    By catalogAccessDropdown = By.xpath("//div[contains(text(),'Catalog Access')]/following-sibling::div//input/../../../div[1]");
     By orderApprovalTxt = By.xpath("//div[contains(text(),'Order Approval')]");
 //    By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']");
 By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/following-sibling::div//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
@@ -900,7 +903,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_accHoldClose_ = By.xpath("(//button[contains(@class, 'close')]/span[text()='×'])[last()]");
     String accountOnHoldBanner = "//span[text()='MESSAGE']";
     By txt_inactiveHold = By.xpath("//div[text()='Inactive Hold']");
+    By txt_generalHold = By.xpath("//div[text()='General Hold']");
     By lbl_inactiveHold = By.xpath("//div[text()='Account Holds']/following-sibling::div//span[contains(@class, 'badge') and text()='Inactive Hold']");
+    By lbl_generalHold = By.xpath("//div[text()='Account Holds']/following-sibling::div//span[contains(@class, 'badge') and text()='General Hold']");
     String catalogFilterTag = "//div[contains(text(),'TAG')]";
     String catalogListViewSort = "//th//div[text()='SORT']";
     By catalogListViewItemCode = By.xpath("//tr[@class='_du1frc']/td[1]");
@@ -936,6 +941,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_okMaxQuantityModal = By.xpath("//h2[contains(text(),'Maximum Quantity')]/../..//button[text()='OK']");
     By btn_placeOrderSoftOrderMinimum = By.xpath("//button[text()='Place Order']");
     String lbl_leadTimeBanner = "//span[text()='Message']";
+    By orderApprovalTypeDropDown = By.xpath("//div[contains(text(),'Order Approval Type')]/following-sibling::div");
+    String orderApprovalTypeOption = "(//div[contains(text(),'OPTION')])[last()]";
 
 
 
@@ -2101,6 +2108,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(catalogAccessDisableTxt);
     }
 
+    public boolean isCatalogAccessDisabledForAll(){
+        distributorUI.refreshPage();
+        return distributorUI.isDisplayed(catalogAccessDisabledForAll);
+    }
+
     public void saveCatalogAccessChanges(){
         distributorUI.clickWithScrollAndHover(Savebtn);
         try {
@@ -2123,15 +2135,21 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
 
     public void clickOnDisableCatalogAccessOption(){
-        distributorUI.click(catalogAccessEnableOption);
+        distributorUI.click(catalogAccessDropdown);
         distributorUI.waitForVisibility(catalogAccessDisableOption);
         distributorUI.click(catalogAccessDisableOption);
     }
 
     public void clickOnEnableCatalogAccessOption(){
-        distributorUI.click(catalogAccessDisableOption);
+        distributorUI.click(catalogAccessDropdown);
         distributorUI.waitForVisibility(catalogAccessEnableOption);
         distributorUI.click(catalogAccessEnableOption);
+    }
+
+    public void clickOnDiableForAllCatalogAccessOption(){
+        //distributorUI.scrollToElementTillFound(catalogAccessDropdown);
+        distributorUI.click(catalogAccessDropdown);
+        distributorUI.click(catalogAccessDisabledForAllOption);
     }
 
     public boolean isOrderApprovalOptionDisplayed(){
@@ -5334,9 +5352,17 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(txt_inactiveHold);
         distributorUI.click(txt_inactiveHold);
     }
+    public void clickOnGeneralHold(){
+        distributorUI.waitForVisibility(txt_generalHold);
+        distributorUI.click(txt_generalHold);
+    }
     public boolean isInactiveHoldSelected(){
         distributorUI.refreshPage();
         return distributorUI.isDisplayed(lbl_inactiveHold);
+    }
+    public boolean isGeneralHoldSelected(){
+        distributorUI.refreshPage();
+        return distributorUI.isDisplayed(lbl_generalHold);
     }
     public boolean isCatalogFilterTagDisplayed(String tag){
         return distributorUI.isDisplayed(By.xpath(catalogFilterTag.replace("TAG", tag)));
@@ -5638,6 +5664,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(btn_close);
         distributorUI.click(btn_close);
         distributorUI.waitForInvisibility(btn_close);
+    }
+    public void selectOrderApprovalType(String option)throws InterruptedException{
+        distributorUI.click(orderApprovalTypeDropDown);
+        distributorUI.click(By.xpath(orderApprovalTypeOption.replace("OPTION",option)));
     }
 
 

@@ -914,6 +914,10 @@ public class Customer {
         return customersPage.isCatalogAccessEnabled();
     }
 
+    public static boolean CatalogAccessDisabledForAll(){
+        return customersPage.isCatalogAccessDisabledForAll();
+    }
+
     public static boolean catalogAccessDisabled(){
         return customersPage.isCatalogAccessDisabled();
     }
@@ -934,6 +938,12 @@ public class Customer {
             customersPage.clickOnEnableCatalogAccessOption();
             customersPage.saveCatalogAccessChanges();
         }
+    }
+
+    public static void disableCatalogAccessForAll(){
+        customersPage.clickEditCatalogAccess();
+        customersPage.clickOnDiableForAllCatalogAccessOption();
+        customersPage.saveCatalogAccessChanges();
     }
 
     public static boolean orderApprovalTxtDisplayed(){
@@ -3239,8 +3249,14 @@ public class Customer {
     public static void clickOnInactiveHold(){
         customersPage.clickOnInactiveHold();
     }
+    public static void clickOnGeneralHold(){
+        customersPage.clickOnGeneralHold();
+    }
     public static boolean isInactiveHoldSelected(){
         return customersPage.isInactiveHoldSelected();
+    }
+    public static boolean isGeneralHoldSelected(){
+        return customersPage.isGeneralHoldSelected();
     }
     public static boolean isCatalogFilterTagDisplayed(String tag){
         return customersPage.isCatalogFilterTagDisplayed(tag);
@@ -3426,6 +3442,9 @@ public class Customer {
     }
     public static void clickClosePopUpWindow(){
         customersPage.clickClosePopUpWindow();
+    }
+    public static void selectOrderApprovalType(String option)throws InterruptedException{
+        customersPage.selectOrderApprovalType(option);
     }
 
 
