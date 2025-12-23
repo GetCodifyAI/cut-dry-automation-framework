@@ -61,6 +61,12 @@
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsConfiguredWithHardOrderMinimumTest"/>
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsConfiguredWithSoftOrderMinimumTest"/>
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyOrderMinimumIsNotAppliedWhenNoOrderMinimumIsConfiguredTest"/>
+
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpAdminUserCanNotApproveOrderWhenOperatorExclusiveApprovalTypeTest"/>
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPEmployeeSubmitsOrderForApprovalWhenDistributorExclusiveApprovalTypeTest"/>
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerSubmitsOrderForApprovalWhenDistributorExclusiveApprovalTypeTest"/>
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerCannotApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpAdminUserCanApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>
         </classes>
     </test>
 </suite>

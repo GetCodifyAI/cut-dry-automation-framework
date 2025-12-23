@@ -3427,6 +3427,9 @@ public class Customer {
     public static void clickClosePopUpWindow(){
         customersPage.clickClosePopUpWindow();
     }
+    public static void selectOrderApprovalType(String option)throws InterruptedException{
+        customersPage.selectOrderApprovalType(option);
+    }
 
 
 

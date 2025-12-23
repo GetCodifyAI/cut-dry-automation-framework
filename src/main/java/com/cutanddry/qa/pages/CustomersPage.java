@@ -936,6 +936,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_okMaxQuantityModal = By.xpath("//h2[contains(text(),'Maximum Quantity')]/../..//button[text()='OK']");
     By btn_placeOrderSoftOrderMinimum = By.xpath("//button[text()='Place Order']");
     String lbl_leadTimeBanner = "//span[text()='Message']";
+    By orderApprovalTypeDropDown = By.xpath("//div[contains(text(),'Order Approval Type')]/following-sibling::div");
+    String orderApprovalTypeOption = "(//div[contains(text(),'OPTION')])[last()]";
 
 
 
@@ -5638,6 +5640,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(btn_close);
         distributorUI.click(btn_close);
         distributorUI.waitForInvisibility(btn_close);
+    }
+    public void selectOrderApprovalType(String option)throws InterruptedException{
+        distributorUI.click(orderApprovalTypeDropDown);
+        distributorUI.click(By.xpath(orderApprovalTypeOption.replace("OPTION",option)));
     }
 
 
