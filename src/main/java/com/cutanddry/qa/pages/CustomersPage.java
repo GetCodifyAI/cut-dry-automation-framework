@@ -714,6 +714,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By combinedOrderContinue = By.xpath("//button[contains(text(), 'Continue')]");
 
     By catalogFirstItemItemCode = By.xpath("//div[contains(@class,'card-deck')][1]/div[contains(@class,'card')][1]//button[contains(@data-tip,'View Brand Page')]/../following-sibling::div");
+    String catalogItemDisplayed = "(//div[contains(@class,'card-deck')][1]/div[contains(@class,'card')][1]//div[contains(normalize-space(.),'ITEMCODE')])[last()]";
     String unpaidInvoiceName = "//div[text()='NAME']";
     By caseMinimumNotMetText = By.xpath("//*[contains(text(),'Case Minimum Not Met')]");
     By btn_sortCustomOrder = By.xpath("//div[contains(@class, 'cd_themed_select__single-value') and text()='Custom Order']");
@@ -4445,6 +4446,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         String gotText = distributorUI.getText(catalogFirstItemItemCode);
         return gotText.split("#")[1];
     }
+
+    public boolean isItemDisplayInCatalog(String itemCode){
+        return distributorUI.isDisplayed(By.xpath(catalogItemDisplayed.replace("ITEMCODE",itemCode)));
+    }
+
     public boolean isUnpaidInvoiceNamDisplayed(String name)throws InterruptedException{
         return distributorUI.isDisplayed(By.xpath(unpaidInvoiceName.replace("NAME",name)));
 

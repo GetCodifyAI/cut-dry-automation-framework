@@ -2459,6 +2459,10 @@ public class Customer {
     public static String getCatalogFirstItemItemCode(){
         return customersPage.getFirstItemItemCodeFromCatalog();
     }
+
+    public static boolean isItemDisplayedInCatalog(String itemCode){
+        return customersPage.isItemDisplayInCatalog(itemCode);
+    }
     public static void submitOrderMinimum(){
         customersPage.submitOrder();
         if (customersPage.isDuplicatePopupDisplayed()){
