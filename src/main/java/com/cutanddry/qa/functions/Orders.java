@@ -301,4 +301,16 @@ public class Orders {
     public static boolean isInactiveItemDetectedPopUpDisplay()throws InterruptedException{
         return ordersPage.isInactiveItemDetectedPopUpDisplay();
     }
+    public static void SelectOneSupplierFromPlaceOrder(String supplierName,String location) throws InterruptedException {
+        ordersPage.clickOnSupplier(supplierName);
+        if (ordersPage.isSelectLocationPopUpDisplayed()){
+            ordersPage.selectLocationSupplier(location);
+        }
+        if (ordersPage.isSelectOrderGuidePopUpDisplayed()){
+            ordersPage.selectOrderGuide();
+        }
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+    }
 }

@@ -103,6 +103,7 @@ public class OrdersPage extends LoginPage{
     By btn_selectLocation = By.xpath("//div[contains(text(),'Select Location')]/following-sibling::div/div[1]");
     By btn_FindMoreInCatalog = By.xpath("//button[text()='Find More in Catalog']");
     By lbl_inactiveItemDetected = By.xpath("//div[text()='Inactive Items Removed']");
+    String selectLocationSupplier = "//div[contains(text(),'Select Location')]/following-sibling::div//div[text()='LOCATION']";
 
     public void clickBtnSaveCheckIn(){
         distributorUI.click(btn_saveCheckIn);
@@ -623,6 +624,9 @@ public class OrdersPage extends LoginPage{
     public boolean isInactiveItemDetectedPopUpDisplay()throws InterruptedException{
         distributorUI.waitForVisibility(lbl_inactiveItemDetected);
        return distributorUI.isDisplayed(lbl_inactiveItemDetected);
+    }
+    public void selectLocationSupplier(String location){
+        distributorUI.click(By.xpath(selectLocationSupplier.replace("LOCATION",location)));
     }
 
 

@@ -17,6 +17,7 @@ public class ApprovalsPage extends LoginPage{
     By rejectApprovalOverlay = By.xpath("//*[contains(text(),'Do you want to reject')]");
     By disableApproveAndSubmitBtn = By.xpath("//button[normalize-space()='Approve & Submit Order' and @disabled]");
     By disableSubmitForApproveBtn = By.xpath("//button[normalize-space()='Submit for Approval' and @disabled]");
+    By selectRejectionTab =By.xpath("//a[@aria-selected='true' and normalize-space()='Rejections']");
 
     static DashboardPage dashboardPage = new DashboardPage();
     static CustomersPage customersPage = new CustomersPage();
@@ -113,6 +114,9 @@ public class ApprovalsPage extends LoginPage{
     }
     public boolean isRejectApprovalsBtnDisplayed(){
         return distributorUI.isDisplayed(rejectApprovalsBtn);
+    }
+    public boolean isRejectionTabSelected()throws InterruptedException{
+        return distributorUI.isDisplayed(selectRejectionTab);
     }
 
 
