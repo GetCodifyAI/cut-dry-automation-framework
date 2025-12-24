@@ -26,6 +26,11 @@
             <class name="com.cutanddry.qa.tests.order_approval.VerifyDpSalespersonUserCanRejectOrderWhenDistributorExclusiveApprovalTypeTest"/>
             <class name="com.cutanddry.qa.tests.order_approval.VerifyDpAdminUserCanRejectOrderWhenDistributorExclusiveApprovalTypeTest"/>
 
+            <class name="com.cutanddry.qa.tests.customers.VerifyNoMinimumEnforcementOnPickupOrdersTest"/>
+            <class name="com.cutanddry.qa.tests.customers.VerifySoftOrderMinimumCustomerLevelOverrideTest"/>
+            <class name="com.cutanddry.qa.tests.customers.VerifyExemptFromOrderMinimumCustomerLevelOverrideTest"/>
+
+
         </classes>
     </test>
 </suite>

@@ -472,6 +472,9 @@ public class Customer {
     public static boolean isOrderMinPopupDisplayed() throws InterruptedException {
         return customersPage.isOrderMinPopupDisplayed();
     }
+    public static String getSoftOrderMinimumValueFromOverlay(){
+        return customersPage.getSoftOrderMinimumValueFromOverlay();
+    }
     public static void clickOnCustomerCode(String code){
         customersPage.clickOnCustomerCode(code);
     }
@@ -2458,6 +2461,12 @@ public class Customer {
     }
     public static void submitOrderMinimum(){
         customersPage.submitOrder();
+        if (customersPage.isDuplicatePopupDisplayed()){
+            customersPage.clickYesDuplicatePopup();
+        }
+        if (customersPage.isCombinedPopupDisplayed()){
+            customersPage.clickContinueCombined();
+        }
     }
     public static void clickYesOrderMinimum(){
         customersPage.clickOnYes();
@@ -3138,6 +3147,9 @@ public class Customer {
     }
     public static void SelectOrderMinimumFromProfile(String orderMinimum){
         customersPage.selectOrderMinimum(orderMinimum);
+    }
+    public static void setOperatorSpecificOrderMin(String amount){
+        customersPage.setSoftOrderMinimumValue(amount);
     }
     public static String getOrderGuideSearchValue(){
         return customersPage.getOrderGuideSearchValue();
