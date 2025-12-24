@@ -88,6 +88,9 @@ public class Approvals {
     public static boolean isRejectApprovalsBtnDisplayed(){
         return approvalsPage.isRejectApprovalsBtnDisplayed();
     }
+    public static boolean isRejectionTabSelected()throws InterruptedException{
+        return approvalsPage.isRejectionTabSelected();
+    }
 
 
 }

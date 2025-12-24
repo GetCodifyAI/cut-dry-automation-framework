@@ -20,6 +20,12 @@
             <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerCannotApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>
             <class name="com.cutanddry.qa.tests.order_approval.VerifyDpAdminUserCanApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>
 
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpSalespersonUserCanApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPAdminSubmitsOrderForApprovalWhenDistributorExclusiveApprovalTypeTest"/>
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPAdminCannotApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpSalespersonUserCanRejectOrderWhenDistributorExclusiveApprovalTypeTest"/>
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpAdminUserCanRejectOrderWhenDistributorExclusiveApprovalTypeTest"/>
+
         </classes>
     </test>
 </suite>
