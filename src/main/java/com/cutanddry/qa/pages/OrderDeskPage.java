@@ -84,6 +84,10 @@ String DeliveryDateSelect = "(//div[contains(@class,'themed_select__option')])[D
         return distributorUI.isDisplayed(isDateErrorDisplayed);
     }
 
+    public boolean isLineItemEditIconDisplayed(){
+        return distributorUI.isDisplayed(ItemNameTxt, 5);
+    }
+
     public void clickOnAddQuantityBtnOnDraftOrderReviewPage(){
         distributorUI.click(DraftOrderReviewPageQuantityIncrementBtn);
     }
