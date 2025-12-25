@@ -59,6 +59,11 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By lbl_cartTotalReview = By.xpath("//td[text()='Total:']/following-sibling::td");
     By btn_submitOrder = By.xpath("//button[contains(text(),'Submit Order')]");
     By btn_duplicateOrderYes = By.xpath("//h2[contains(text(),'Duplicate Order')]/../..//button[text()='Yes']");
+    By btn_duplicateOrderNo = By.xpath("//h2[contains(text(),'Duplicate Order')]/../..//button[text()='No']");
+    By txt_duplicateOrderWarningMessage = By.xpath("//div[contains(@class,'swal2-content')]//div[contains(text(),'already have an order') or contains(text(),'existing order')]");
+    By btn_editExistingOrderOption = By.xpath("//button[contains(text(),'Edit Existing') or contains(text(),'Edit Order')]");
+    By btn_createNewOrderOption = By.xpath("//button[contains(text(),'Create New') or contains(text(),'New Order')]");
+    By btn_mergeOrderOption = By.xpath("//button[contains(text(),'Merge') or contains(text(),'Add to Existing')]");
     By lbl_thankYouForOrder = By.xpath("//*[contains(text(),'Thank you for your order!')]");
     By btn_print = By.xpath("//*[contains(text(),'Print Order Guide') and .//*[local-name()='svg' and @data-icon='cdPrinter']]");
     By lbl_printFriendlyOrderGuide = By.xpath("//h5[contains(text(), 'Print-Friendly Order Guide')]");
@@ -1197,6 +1202,41 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForClickability(btn_duplicateOrderYes);
         distributorUI.click(btn_duplicateOrderYes);
         distributorUI.waitForInvisibility(btn_duplicateOrderYes);
+    }
+    public void clickNoDuplicatePopup(){
+        distributorUI.waitForClickability(btn_duplicateOrderNo);
+        distributorUI.click(btn_duplicateOrderNo);
+        distributorUI.waitForInvisibility(btn_duplicateOrderNo);
+    }
+    public boolean isDuplicateOrderWarningMessageDisplayed(){
+        return distributorUI.isDisplayed(txt_duplicateOrderWarningMessage);
+    }
+    public boolean isDuplicateOrderTitleDisplayed(){
+        return distributorUI.isDisplayed(txt_duplicateOrder);
+    }
+    public boolean isEditExistingOrderOptionDisplayed(){
+        return distributorUI.isDisplayed(btn_editExistingOrderOption);
+    }
+    public void clickEditExistingOrderOption(){
+        distributorUI.waitForClickability(btn_editExistingOrderOption);
+        distributorUI.click(btn_editExistingOrderOption);
+    }
+    public boolean isCreateNewOrderOptionDisplayed(){
+        return distributorUI.isDisplayed(btn_createNewOrderOption);
+    }
+    public void clickCreateNewOrderOption(){
+        distributorUI.waitForClickability(btn_createNewOrderOption);
+        distributorUI.click(btn_createNewOrderOption);
+    }
+    public boolean isMergeOrderOptionDisplayed(){
+        return distributorUI.isDisplayed(btn_mergeOrderOption);
+    }
+    public void clickMergeOrderOption(){
+        distributorUI.waitForClickability(btn_mergeOrderOption);
+        distributorUI.click(btn_mergeOrderOption);
+    }
+    public boolean isEditExistingOrderTextDisplayed(){
+        return distributorUI.isDisplayed(editExistingOrderTxt);
     }
     public boolean isThankingForOrderPopupDisplayed(){
         try {

@@ -2015,6 +2015,58 @@ public class Customer {
         customersPage.ifDuplicateOrderDisplayed();
     }
 
+    public static boolean isDuplicateOrderPopupDisplayed(){
+        return customersPage.isDuplicatePopupDisplayed();
+    }
+
+    public static boolean isDuplicateOrderTitleDisplayed(){
+        return customersPage.isDuplicateOrderTitleDisplayed();
+    }
+
+    public static boolean isDuplicateOrderWarningMessageDisplayed(){
+        return customersPage.isDuplicateOrderWarningMessageDisplayed();
+    }
+
+    public static void clickYesDuplicateOrder(){
+        customersPage.clickYesDuplicatePopup();
+    }
+
+    public static void clickNoDuplicateOrder(){
+        customersPage.clickNoDuplicatePopup();
+    }
+
+    public static boolean isEditExistingOrderOptionDisplayed(){
+        return customersPage.isEditExistingOrderOptionDisplayed();
+    }
+
+    public static void clickEditExistingOrderOption(){
+        customersPage.clickEditExistingOrderOption();
+    }
+
+    public static boolean isCreateNewOrderOptionDisplayed(){
+        return customersPage.isCreateNewOrderOptionDisplayed();
+    }
+
+    public static void clickCreateNewOrderOption(){
+        customersPage.clickCreateNewOrderOption();
+    }
+
+    public static boolean isMergeOrderOptionDisplayed(){
+        return customersPage.isMergeOrderOptionDisplayed();
+    }
+
+    public static void clickMergeOrderOption(){
+        customersPage.clickMergeOrderOption();
+    }
+
+    public static boolean isEditExistingOrderTextDisplayed(){
+        return customersPage.isEditExistingOrderTextDisplayed();
+    }
+
+    public static void submitOrderWithoutHandlingDuplicate(){
+        customersPage.submitOrder();
+    }
+
     public static boolean isLastOrderedPoundPriceDisplayed(){
         return customersPage.isLastOrderedPriceDisplayed();
     }
