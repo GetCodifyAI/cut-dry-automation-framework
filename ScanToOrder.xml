@@ -28,10 +28,7 @@
             <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderUsersCanRemoveItemsUsingBinIconTest"/>
             <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanToOrderUserCannotEditFullfillmentTypeAndPickupDateFromReviewScreenTest"/>
             <class name="com.cutanddry.qa.tests.scan_to_order.VerifyDraftCreationFromScanToOrderAndAccessInOperatorPortalTest"/>
-
-
-
-
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanItemsToOrderFunctionalityInMoreOptionsMenuTest"/>
         </classes>
     </test>
 </suite>
