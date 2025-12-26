@@ -422,6 +422,12 @@ public class Customer {
     public static void uploadToOrder(){
         customersPage.clickOnUploadToOrder();
     }
+    public static boolean isScanItemsToOrderDisplayedInMoreOptions(){
+        return customersPage.isScanItemsToOrderDisplayed();
+    }
+    public static void clickOnScanItemsToOrder(){
+        customersPage.clickOnScanItemsToOrder();
+    }
     public static boolean isReviewOrderTextDisplayed(){
         if (!customersPage.isReviewOrderTextDisplayed()) {
             try {

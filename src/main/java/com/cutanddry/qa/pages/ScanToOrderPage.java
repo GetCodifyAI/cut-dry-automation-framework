@@ -3,10 +3,10 @@ package com.cutanddry.qa.pages;
 import org.openqa.selenium.By;
 
 public class ScanToOrderPage extends LoginPage{
-    By ScanToOrderText = By.xpath("//*[contains(text(),'Scan to Order')]");
+    By ScanToOrderText = By.xpath("//*[contains(text(),'Scan Items to Order')]");
     By ScanToOrderItemInputField = By.xpath("//input[contains(@placeholder,'Scan barcode or search item by name or code')]");
     By ReviewAndConfirmBtn = By.xpath("//button[contains(text(),'Review & Confirm Order')]");
-    By AddToCartBtn = By.xpath("//button[contains(normalize-space(.),'Add to Cart')]");
+    By AddToCartBtn = By.xpath("//button[contains(@data-for,'cartCheckoutButton')]");
     String ItemInCart = "//div[contains(@class,'cartContainer')]//span[contains(text(),'ITEMCODE')]";
     By customerScreenScanToOrderCancelOrderBtn = By.xpath("//button[contains(text(),'Cancel Order')]");
     By ScanToOrderButton = By.xpath("//a[contains(text(), 'Scan to Order')]");
@@ -30,6 +30,10 @@ public class ScanToOrderPage extends LoginPage{
     String btn_trashIcon = "//div[contains(@class,'cartContainer')]//span[contains(text(),'ITEMCODE')]/../following-sibling::div//*//*[local-name() = 'svg' and @data-icon='cdTrash']";
     By pickUpAndWillCallOption = By.xpath("//span[text()='Pickup/Will Call']/preceding-sibling::div//*[name()='svg']");
     By deliveryDatePicker = By.xpath("//div[contains(@class, 'date-picker')]//input");
+
+    By scanOrEnterItem = By.xpath("//input[contains(@id,'order_flow_search')]");
+    By addItemsToOrder = By.xpath("//*[contains(text(),'Item(s) to Order')]");
+    By clearAllBtn = By.xpath("//*[contains(text(),'Clear All')]");
 
     public boolean isScanToOrderTextDisplayed(){
         try {
@@ -232,7 +236,17 @@ public class ScanToOrderPage extends LoginPage{
         return distributorUI.isElementEnabled(deliveryDatePicker);
     }
 
+    public void scanOrEnterItemCode(String itemCode){
+        distributorUI.sendKeysAndEnter(scanOrEnterItem,itemCode);
+    }
 
+    public void clickAddItemsToOrderButton(){
+        distributorUI.click(addItemsToOrder);
+    }
+
+    public void clickClearAllBtn(){
+        distributorUI.click(clearAllBtn);
+    }
 
 
 }

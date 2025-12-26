@@ -130,5 +130,16 @@ public class ScanToOrder {
        return scanToOrderPage.isDeliveryDatePickerEnabled();
     }
 
+    public static void scanOrEnterItemCode(String itemCode){
+       scanToOrderPage.scanOrEnterItemCode(itemCode);
+    }
+
+    public static void AddItemsToOrder(){
+       scanToOrderPage.clickAddItemsToOrderButton();
+    }
+
+    public static void ClearAll(){
+       scanToOrderPage.clickClearAllBtn();
+    }
 
 }

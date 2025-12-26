@@ -101,6 +101,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By btn_exportOrderGuide = By.xpath("//a[contains(text(), 'Export Order Guide (XLSX)')]");
     By btn_importOrderGuide = By.xpath("//a[contains(text(), 'Import Order Guide (XLSX)')]");
     By btn_uploadToOrder = By.xpath("//a[contains(text(), 'Upload to Order')]");
+    By btn_scanItemsToOrder = By.xpath("//*[contains(text(), 'Scan Items to Order')]");
     By txt_reviewOrder = By.xpath("//div[text()='Review Order']");
     By txt_orderGuideUpdated = By.xpath("//h2[text()='Order guide updated successfully']");
 //    By dropdown_SortOptions = By.xpath("//div[text()='Sort Items By:']/following::div[contains(@class, 'cd_themed_select__control')][1]");
@@ -1396,6 +1397,13 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickOnUploadToOrder(){
         distributorUI.waitForClickability(btn_uploadToOrder);
         distributorUI.click(btn_uploadToOrder);
+    }
+    public boolean isScanItemsToOrderDisplayed(){
+        return distributorUI.isDisplayed(btn_scanItemsToOrder);
+    }
+    public void clickOnScanItemsToOrder(){
+        distributorUI.waitForClickability(btn_scanItemsToOrder);
+        distributorUI.click(btn_scanItemsToOrder);
     }
     public boolean isReviewOrderTextDisplayed(){
         distributorUI.waitForVisibility(txt_reviewOrder);
