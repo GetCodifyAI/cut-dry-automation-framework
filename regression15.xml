@@ -31,6 +31,8 @@
             <class name="com.cutanddry.qa.tests.customers.VerifyExemptFromOrderMinimumCustomerLevelOverrideTest"/>
             <class name="com.cutanddry.qa.tests.customers.VerifyPropItemsAreOnlyDisplayedForPropCustomersTest"/>
 
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanItemsToOrderFunctionalityInMoreOptionsMenuTest"/>
+
         </classes>
     </test>
 </suite>
