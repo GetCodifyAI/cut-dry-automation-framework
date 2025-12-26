@@ -288,4 +288,8 @@ public class LoginPage extends TestBase {
     public void closeCurrentTabAndSwitchToNew(){
         distributorUI.openNewTabAndClosePreviousTabs();
     }
+
+    public void switchBetweenTabsUsingIndex(int index ){
+        distributorUI.switchTabUsingIndex(index);
+    }
 }

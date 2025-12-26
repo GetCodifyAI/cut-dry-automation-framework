@@ -145,4 +145,8 @@ public class Login {
     public static void closeCurrentTabAndSwitchToNew(){
        loginPage.closeCurrentTabAndSwitchToNew();
     }
+
+    public static void switchBetweenTabsUsingIndex(int index){
+        loginPage.switchBetweenTabsUsingIndex(index);
+    }
 }

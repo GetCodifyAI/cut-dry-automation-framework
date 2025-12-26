@@ -338,5 +338,8 @@ public class InternalTools {
     public static void TurnOnAllowSupplierToSetMinimumToggle(boolean status){
         internalToolsPage.TurnOnAllowSupplierToSetMinimumToggle(status);
     }
+    public static void refreshPage(){
+        internalToolsPage.refreshPage();
+    }
 
 }
