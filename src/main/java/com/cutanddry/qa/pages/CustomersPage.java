@@ -10,6 +10,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static com.cutanddry.qa.pages.ApprovalsPage.customersPage;
 
 public class CustomersPage extends LoginPage {
@@ -98,6 +101,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By btn_exportOrderGuide = By.xpath("//a[contains(text(), 'Export Order Guide (XLSX)')]");
     By btn_importOrderGuide = By.xpath("//a[contains(text(), 'Import Order Guide (XLSX)')]");
     By btn_uploadToOrder = By.xpath("//a[contains(text(), 'Upload to Order')]");
+    By btn_scanItemsToOrder = By.xpath("//*[contains(text(), 'Scan Items to Order')]");
     By txt_reviewOrder = By.xpath("//div[text()='Review Order']");
     By txt_orderGuideUpdated = By.xpath("//h2[text()='Order guide updated successfully']");
 //    By dropdown_SortOptions = By.xpath("//div[text()='Sort Items By:']/following::div[contains(@class, 'cd_themed_select__control')][1]");
@@ -111,6 +115,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By txt_firstItem = By.xpath("//div[translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'artichoke -24ct']");
     By txt_minOrderBanner = By.xpath("//div[contains(text(), 'Add a few more items worth') and contains(text(), 'to meet minimum order amount')]");
     By txt_popupAlertOrderMin = By.xpath("//div[text()='Order Minimum Not Met']");
+    By text_softMinMessage = By.xpath("//p[contains(text(),'the minimum is') or contains(text(),'minimum of')]");
     By btn_previousDraftOrderNo = By.xpath("//div[contains(text(),'previous draft order')]/..//div[text()='No']");
     String txt_customerCode = "//td[text()='CODE']";
     By tb_orders = By.xpath("//a[text()='Orders' and @role='tab']");
@@ -710,6 +715,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By combinedOrderContinue = By.xpath("//button[contains(text(), 'Continue')]");
 
     By catalogFirstItemItemCode = By.xpath("//div[contains(@class,'card-deck')][1]/div[contains(@class,'card')][1]//button[contains(@data-tip,'View Brand Page')]/../following-sibling::div");
+    String catalogItemDisplayed = "(//div[contains(@class,'card-deck')][1]/div[contains(@class,'card')][1]//div[contains(normalize-space(.),'ITEMCODE')])[last()]";
     String unpaidInvoiceName = "//div[text()='NAME']";
     By caseMinimumNotMetText = By.xpath("//*[contains(text(),'Case Minimum Not Met')]");
     By btn_sortCustomOrder = By.xpath("//div[contains(@class, 'cd_themed_select__single-value') and text()='Custom Order']");
@@ -876,6 +882,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String updateEligibilityDropDownOption = "//label[contains(text(), 'Eligibility')]/following-sibling::div//*[text()='OPTION']";
     By orderMinimumeditBtn = By.xpath("//*[contains(text(),'Order Minimum')]/following-sibling::div//*[local-name()='svg' and @data-icon='pen-to-square']");
     String orderMinimumSelectionRadioBtn = "//*[contains(text(),'ORDERMINIMUM')]/../input";
+    By operatorSpecificOrderMinimumValue = By.xpath("//*[contains(text(),'Order Minimum Value:')]/following-sibling::input");
     By orderMinimumOverlayCloseBtn = By.xpath("//*[contains(text(),'Edit Order Minimum')]/../following-sibling::button/span[normalize-space()='×']");
     By getOrderGuideSearch = By.xpath("//input[@id='order_flow_search' and @placeholder='Search order guide...']");
     By getCatalogSearch = By.xpath("//input[@id='order_flow_search' and @placeholder='Search catalog...']");
@@ -887,7 +894,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By priceVisibilityEditBtn = By.xpath("//div[contains(text(), 'Price Visibility')]//following-sibling::div//div//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
     By priceVisibilityDropDown = By.xpath("//div[contains(text(), 'Price Visibility')]//following-sibling::div/div/div/div");
     String priceVisibilityOption = "//div[contains(text(), 'Price Visibility')]//following-sibling::*//div[text()='STATUS']";
-    By btn_placeOrderWhiteLabel = By.xpath("//button[contains(text(), 'Place Order')]");
+    By btn_placeOrderWhiteLabel = By.xpath("//*[contains(text(), 'Place Order')]");
     By txt_catalogAllItems = By.xpath("(//div[text()='All Items'])[last()]");
     By orderGuideRefreshText = By.xpath("//*[contains(text(),'Refresh to view the latest updates in this order guide')]");
     By orderGuideOutOfstockItem = By.xpath("//span[contains(text(),'Out of stock')]/../preceding-sibling::div//*[contains(@data-tip,'View Product Details')]");
@@ -1391,6 +1398,13 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForClickability(btn_uploadToOrder);
         distributorUI.click(btn_uploadToOrder);
     }
+    public boolean isScanItemsToOrderDisplayed(){
+        return distributorUI.isDisplayed(btn_scanItemsToOrder);
+    }
+    public void clickOnScanItemsToOrder(){
+        distributorUI.waitForClickability(btn_scanItemsToOrder);
+        distributorUI.click(btn_scanItemsToOrder);
+    }
     public boolean isReviewOrderTextDisplayed(){
         distributorUI.waitForVisibility(txt_reviewOrder);
         return distributorUI.isDisplayed(txt_reviewOrder);
@@ -1463,7 +1477,19 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(txt_popupAlertOrderMin);
         return distributorUI.isDisplayed(txt_popupAlertOrderMin);
     }
+    public String getSoftOrderMinimumValueFromOverlay() {
+        String message = distributorUI.getText(text_softMinMessage);
 
+        // Regex to capture the minimum amount after "minimum is $"
+        Pattern pattern = Pattern.compile("minimum\\s+(?:is|of)\\s+\\$(\\d+(?:\\.\\d{2})?)", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(message);
+
+        if (matcher.find()) {
+            return matcher.group(1); // returns "400.00"
+        }
+
+        throw new RuntimeException("Minimum order value not found in overlay message: " + message);
+    }
     public boolean isCaseMinimumPopUpDisplayed(){
         distributorUI.waitForVisibility(caseMinimumNotMetText);
         return distributorUI.isDisplayed(caseMinimumNotMetText);
@@ -4428,6 +4454,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         String gotText = distributorUI.getText(catalogFirstItemItemCode);
         return gotText.split("#")[1];
     }
+
+    public boolean isItemDisplayInCatalog(String itemCode){
+        return distributorUI.isDisplayed(By.xpath(catalogItemDisplayed.replace("ITEMCODE",itemCode)));
+    }
+
     public boolean isUnpaidInvoiceNamDisplayed(String name)throws InterruptedException{
         return distributorUI.isDisplayed(By.xpath(unpaidInvoiceName.replace("NAME",name)));
 
@@ -5232,6 +5263,15 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
             distributorUI.click(By.xpath(orderMinimumSelectionRadioBtn.replace("ORDERMINIMUM",orderMinimum)));
             distributorUI.click(btn_saveEditShipAddress);
         }
+        distributorUI.click(orderMinimumOverlayCloseBtn);
+    }
+    public void setSoftOrderMinimumValue(String amount){
+        distributorUI.click(orderMinimumeditBtn);
+        if(!distributorUI.isCheckboxOrRadioBtnSelected(By.xpath(orderMinimumSelectionRadioBtn.replace("ORDERMINIMUM","Use Operator Specific Settings")))){
+            distributorUI.click(By.xpath(orderMinimumSelectionRadioBtn.replace("ORDERMINIMUM","Use Operator Specific Settings")));
+        }
+        distributorUI.sendKeys(operatorSpecificOrderMinimumValue,amount);
+        distributorUI.click(btn_saveEditShipAddress);
         distributorUI.click(orderMinimumOverlayCloseBtn);
     }
     public String getOrderGuideSearchValue(){

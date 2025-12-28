@@ -26,6 +26,19 @@
             <class name="com.cutanddry.qa.tests.order_approval.VerifyDpSalespersonUserCanRejectOrderWhenDistributorExclusiveApprovalTypeTest"/>
             <class name="com.cutanddry.qa.tests.order_approval.VerifyDpAdminUserCanRejectOrderWhenDistributorExclusiveApprovalTypeTest"/>
 
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPEmployeeSubmitsOrderForApprovalWhenOperatorExclusiveApprovalTypeTest"/>
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPAdminCanApproveOrderWhenOperatorExclusiveApprovalTypeTest"/>
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerCanApproveOrderWhenOperatorExclusiveApprovalTypeTest"/>
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPAdminCanRejectOrderWhenOperatorExclusiveApprovalTypeTest"/>
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerCanRejectOrderWhenOperatorExclusiveApprovalTypeTest"/>
+
+            <class name="com.cutanddry.qa.tests.customers.VerifyNoMinimumEnforcementOnPickupOrdersTest"/>
+            <class name="com.cutanddry.qa.tests.customers.VerifySoftOrderMinimumCustomerLevelOverrideTest"/>
+            <class name="com.cutanddry.qa.tests.customers.VerifyExemptFromOrderMinimumCustomerLevelOverrideTest"/>
+            <class name="com.cutanddry.qa.tests.customers.VerifyPropItemsAreOnlyDisplayedForPropCustomersTest"/>
+
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanItemsToOrderFunctionalityInMoreOptionsMenuTest"/>
+
         </classes>
     </test>
 </suite>
