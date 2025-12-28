@@ -147,4 +147,32 @@ public class OrderDesk {
     public static void navigateToSubmitOrdersReviewPage(){
         orderDeskPage.clickOnSubmittedOrderPageReviewBtn();
     }
+
+    public static boolean isOrdererFilterLabelDisplayed(){
+        return orderDeskPage.isOrdererFilterLabelDisplayed();
+    }
+
+    public static String getOrdererFilterDefaultValue(){
+        return orderDeskPage.getOrdererFilterDefaultValue();
+    }
+
+    public static void clickOrdererFilterDropdown(){
+        orderDeskPage.clickOrdererFilterDropdown();
+    }
+
+    public static boolean isOrdererFilterDropdownExpanded(){
+        return orderDeskPage.isOrdererFilterDropdownExpanded();
+    }
+
+    public static void selectOrdererFromDropdown(String ordererName){
+        orderDeskPage.selectOrdererFromDropdown(ordererName);
+    }
+
+    public static void selectFirstOrdererFromDropdown(){
+        orderDeskPage.selectFirstOrdererFromDropdown();
+    }
+
+    public static String getSelectedOrdererValue(){
+        return orderDeskPage.getSelectedOrdererValue();
+    }
 }
