@@ -49,6 +49,11 @@ String DeliveryDateSelect = "(//div[contains(@class,'themed_select__option')])[D
     By SubmittedOrderPageReViewBtn = By.xpath("(//div[contains(@class, '_10q9czs row')]//div//a[text()='View' and contains(@href,'/order-desk')])[last()]");
     By SubmitTxt = By.xpath("//*[contains(text(),'Submit Order')]");
     By changesSavedTxt = By.xpath("//*[contains(text(),'Saved changes')]");
+    By lbl_OrdererFilter = By.xpath("//div[contains(text(),'Orderer')]");
+    By drp_OrdererFilter = By.xpath("//div[contains(text(),'Orderer')]/..//div[contains(@class,'select__control')]");
+    By drp_OrdererFilterValue = By.xpath("//div[contains(text(),'Orderer')]/..//div[contains(@class,'select__single-value')]");
+    By drp_OrdererFilterOptions = By.cssSelector(".themed_select__option");
+    String drp_OrdererFilterOptionByText = "//div[contains(@class,'themed_select__option') and contains(text(),'TEXT')]";
 
     public boolean isOrderDeskTextDisplayed(){
         try{
@@ -242,5 +247,52 @@ String DeliveryDateSelect = "(//div[contains(@class,'themed_select__option')])[D
         distributorUI.click(SubmittedOrderPageReViewBtn);
     }
 
+    public boolean isOrdererFilterLabelDisplayed(){
+        try{
+            distributorUI.waitForVisibility(lbl_OrdererFilter);
+        } catch(Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_OrdererFilter);
+    }
+
+    public String getOrdererFilterDefaultValue(){
+        try{
+            distributorUI.waitForVisibility(drp_OrdererFilterValue);
+            return distributorUI.getText(drp_OrdererFilterValue);
+        } catch(Exception e){
+            return "";
+        }
+    }
+
+    public void clickOrdererFilterDropdown(){
+        distributorUI.click(drp_OrdererFilter);
+    }
+
+    public boolean isOrdererFilterDropdownExpanded(){
+        try{
+            distributorUI.waitForVisibility(drp_OrdererFilterOptions);
+        } catch(Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(drp_OrdererFilterOptions);
+    }
+
+    public void selectOrdererFromDropdown(String ordererName){
+        distributorUI.click(By.xpath(drp_OrdererFilterOptionByText.replace("TEXT", ordererName)));
+    }
+
+    public void selectFirstOrdererFromDropdown(){
+        distributorUI.selectRandomOptionFromDropDown(drp_OrdererFilterOptions);
+    }
+
+    public String getSelectedOrdererValue(){
+        try{
+            distributorUI.waitForVisibility(drp_OrdererFilterValue);
+            return distributorUI.getText(drp_OrdererFilterValue);
+        } catch(Exception e){
+            return "";
+        }
+    }
 
 }
