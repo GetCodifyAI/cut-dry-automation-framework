@@ -313,4 +313,28 @@ public class Orders {
             customersPage.clickPreviousDraftOrderNo();
         }
     }
+
+    public static boolean isOrderInfoCustomerDisplayed(){
+        return ordersPage.isOrderInfoCustomerDisplayed();
+    }
+
+    public static boolean isOrderInfoLocationCodeDisplayed(){
+        return ordersPage.isOrderInfoLocationCodeDisplayed();
+    }
+
+    public static boolean isOrderInfoDeliveryOnDisplayed(){
+        return ordersPage.isOrderInfoDeliveryOnDisplayed();
+    }
+
+    public static boolean isOrderInfoShipToDisplayed(){
+        return ordersPage.isOrderInfoShipToDisplayed();
+    }
+
+    public static boolean isOrderInfoFulfilmentMethodDisplayed(){
+        return ordersPage.isOrderInfoFulfilmentMethodDisplayed();
+    }
+
+    public static boolean isOrderInfoStatusDisplayed(){
+        return ordersPage.isOrderInfoStatusDisplayed();
+    }
 }

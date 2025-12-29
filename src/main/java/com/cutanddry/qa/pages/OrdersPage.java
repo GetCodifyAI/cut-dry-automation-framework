@@ -105,6 +105,13 @@ public class OrdersPage extends LoginPage{
     By lbl_inactiveItemDetected = By.xpath("//div[text()='Inactive Items Removed']");
     String selectLocationSupplier = "//div[contains(text(),'Select Location')]/following-sibling::div//div[text()='LOCATION']";
 
+    By lbl_orderInfoCustomer = By.xpath("//span[normalize-space()='Customer:']/following-sibling::span");
+    By lbl_orderInfoLocationCode = By.xpath("//span[normalize-space()='Location Code:']/following-sibling::span");
+    By lbl_orderInfoDeliveryOn = By.xpath("//span[normalize-space()='Delivery on:']/following-sibling::span");
+    By lbl_orderInfoShipTo = By.xpath("//span[normalize-space()='Ship To:']/following-sibling::span");
+    By lbl_orderInfoFulfilmentMethod = By.xpath("//span[normalize-space()='Fulfilment Method:']/following-sibling::span");
+    By lbl_orderInfoStatus = By.xpath("//span[normalize-space()='Status:']/following-sibling::span");
+
     public void clickBtnSaveCheckIn(){
         distributorUI.click(btn_saveCheckIn);
         try {
@@ -629,5 +636,58 @@ public class OrdersPage extends LoginPage{
         distributorUI.click(By.xpath(selectLocationSupplier.replace("LOCATION",location)));
     }
 
+    public boolean isOrderInfoCustomerDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_orderInfoCustomer);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_orderInfoCustomer);
+    }
+
+    public boolean isOrderInfoLocationCodeDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_orderInfoLocationCode);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_orderInfoLocationCode);
+    }
+
+    public boolean isOrderInfoDeliveryOnDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_orderInfoDeliveryOn);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_orderInfoDeliveryOn);
+    }
+
+    public boolean isOrderInfoShipToDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_orderInfoShipTo);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_orderInfoShipTo);
+    }
+
+    public boolean isOrderInfoFulfilmentMethodDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_orderInfoFulfilmentMethod);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_orderInfoFulfilmentMethod);
+    }
+
+    public boolean isOrderInfoStatusDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_orderInfoStatus);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_orderInfoStatus);
+    }
 
 }
