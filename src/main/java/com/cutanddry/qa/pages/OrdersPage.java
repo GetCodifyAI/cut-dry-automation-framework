@@ -80,6 +80,8 @@ public class OrdersPage extends LoginPage{
     String lbl_orderStatusOption = "//a[contains(text(),'STATUS')]";
     By txt_description = By.xpath("(//textarea[@class='form-control'])[1]");
     By btn_timeline = By.xpath("//a[text()='Timeline' and @role='tab']");
+    By btn_items = By.xpath("//a[text()='Items' and @role='tab']");
+    By txt_orderedItems = By.xpath("//div[contains(text(),'Ordered Items')]");
     By timestampTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[1]");
     By statusTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[2]");
     By organizationTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[3]");
@@ -151,7 +153,45 @@ public class OrdersPage extends LoginPage{
         distributorUI.click(btn_timeline);
     }
 
+    public void clickItems(){
+        distributorUI.click(btn_items);
+    }
 
+    public boolean isOrderedItemsSectionDisplayed(){
+        try {
+            distributorUI.waitForVisibility(txt_orderedItems);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_orderedItems);
+    }
+
+    public boolean isItemsTabActive(){
+        try {
+            distributorUI.waitForVisibility(btn_items);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(btn_items);
+    }
+
+    public boolean isTimelineTabDisplayed(){
+        try {
+            distributorUI.waitForVisibility(btn_timeline);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(btn_timeline);
+    }
+
+    public boolean isTimelineContentDisplayed(){
+        try {
+            distributorUI.waitForVisibility(timestampTimeline);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(timestampTimeline);
+    }
 
     public boolean isOrdersTextDisplayed(){
         try {
