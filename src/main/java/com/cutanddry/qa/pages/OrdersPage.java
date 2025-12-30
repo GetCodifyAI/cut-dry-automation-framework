@@ -336,6 +336,14 @@ public class OrdersPage extends LoginPage{
         String resultsText = distributorUI.getText(txt_resultsCount);
         return resultsText.split(" ")[0];
     }
+    public boolean isResultsCountDisplayed() {
+        try {
+            distributorUI.waitForVisibility(txt_resultsCount);
+        } catch (Exception e) {
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_resultsCount);
+    }
     public String getCountDates() {
         String d = distributorUI.getText(txt_date);
         return String.valueOf(distributorUI.countElements(By.xpath(date.replace("DATE", d))));
