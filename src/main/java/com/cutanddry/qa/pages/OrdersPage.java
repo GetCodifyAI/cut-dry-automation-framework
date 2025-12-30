@@ -104,6 +104,9 @@ public class OrdersPage extends LoginPage{
     By btn_FindMoreInCatalog = By.xpath("//button[text()='Find More in Catalog']");
     By lbl_inactiveItemDetected = By.xpath("//div[text()='Inactive Items Removed']");
     String selectLocationSupplier = "//div[contains(text(),'Select Location')]/following-sibling::div//div[text()='LOCATION']";
+    By lbl_totalColumnHeader = By.xpath("//table/thead/tr/th/span[text()='Total']");
+    String lbl_totalColumnValue = "//table/tbody/tr[ROW]/td[COUNT]";
+    String lbl_totalColumnHeaderByIndex = "//table/thead/tr/th[COUNT]/span";
 
     public void clickBtnSaveCheckIn(){
         distributorUI.click(btn_saveCheckIn);
@@ -627,6 +630,67 @@ public class OrdersPage extends LoginPage{
     }
     public void selectLocationSupplier(String location){
         distributorUI.click(By.xpath(selectLocationSupplier.replace("LOCATION",location)));
+    }
+
+    public boolean isTotalColumnHeaderDisplayed() {
+        try {
+            distributorUI.waitForVisibility(lbl_totalColumnHeader);
+        } catch (Exception e) {
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_totalColumnHeader);
+    }
+
+    public int getTotalColumnIndex() {
+        int totalColumnCount = distributorUI.countElements(lbl_orderTableColumn);
+        for (int i = 1; i <= totalColumnCount; i++) {
+            String columnName = distributorUI.getText(By.xpath(lbl_totalColumnHeaderByIndex.replace("COUNT", String.valueOf(i))));
+            if ("Total".equalsIgnoreCase(columnName)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public String getTotalValueFromRow(int rowIndex, int columnIndex) {
+        By totalValueLocator = By.xpath(lbl_totalColumnValue
+                .replace("ROW", String.valueOf(rowIndex))
+                .replace("COUNT", String.valueOf(columnIndex)));
+        try {
+            distributorUI.waitForVisibility(totalValueLocator);
+            return distributorUI.getText(totalValueLocator);
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public boolean isTotalAmountFormattedWithDollarSign(String totalValue) {
+        return totalValue != null && totalValue.startsWith("$");
+    }
+
+    public boolean isTotalAmountFormattedWithTwoDecimalPlaces(String totalValue) {
+        if (totalValue == null || !totalValue.startsWith("$")) {
+            return false;
+        }
+        String numericPart = totalValue.replace("$", "").replace(",", "");
+        return numericPart.matches("\\d+\\.\\d{2}");
+    }
+
+    public boolean isTotalAmountFormattedWithCommaForLargeAmounts(String totalValue) {
+        if (totalValue == null || !totalValue.startsWith("$")) {
+            return false;
+        }
+        String numericPart = totalValue.replace("$", "");
+        double amount;
+        try {
+            amount = Double.parseDouble(numericPart.replace(",", ""));
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        if (amount >= 1000) {
+            return numericPart.contains(",");
+        }
+        return true;
     }
 
 
