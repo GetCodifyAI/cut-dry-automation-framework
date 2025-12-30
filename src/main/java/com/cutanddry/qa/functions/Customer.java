@@ -3469,6 +3469,28 @@ public class Customer {
         customersPage.selectOrderApprovalType(option);
     }
 
+    public static boolean isDeleteOrderGuideOptionDisplayed(){
+        return customersPage.isDeleteOrderGuideOptionDisplayed();
+    }
+
+    public static boolean isRemoveUnavailableItemsMsgHeaderDisplayed(){
+        return customersPage.isRemovedUnavailableItemsTxtDisplayed();
+    }
+    public static boolean isRemoveUnavailableItemsMsgDisplayed(){
+        return customersPage.isRemovedUnavailableItemsMsgDisplayed();
+    }
+    public static boolean isRemovedBuyoutItemCorrectlyDisplayed(String itemName,String itemCode){
+        return customersPage.isRemovedItemCorrectlyDisplayed(itemName,itemCode);
+    }
+    public static boolean isRemovedBuyoutItemUOMCorrectlyDisplayed(String ItemName,String ItemCode,String ItemCount,String ItemUOM){
+        return customersPage.isRemovedItemUOMCorrectlyDisplayed(ItemName,ItemCode,ItemCount,ItemUOM);
+    }
+    public static boolean isBuyoutHardOrderMinCorrectlyDisplayed(String label, String expectedValue) {
+        return customersPage.isBuyoutHardOrderMinCorrectlyDisplayed(label,expectedValue);
+    }
+    public static double getCurrentOrdersValue() {
+        return customersPage.getCurrentValue();
+    }
 
 
 }

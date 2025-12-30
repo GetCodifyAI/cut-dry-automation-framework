@@ -5731,19 +5731,16 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
             expectedValue = "$" + expectedValue;
         }
 
-<<<<<<< HEAD
+        return distributorUI.isDisplayed(By.xpath(buyOutHardMinValues.replace("LABEL", label).replace("VALUE", expectedValue)));
+    }
+
+
     public boolean isDeleteOrderGuideOptionDisplayed(){
         return distributorUI.isDisplayed(btn_deleteOrderGuide);
     }
 
-
-
-=======
-        return distributorUI.isDisplayed(By.xpath(buyOutHardMinValues.replace("LABEL", label).replace("VALUE", expectedValue)));
-    }
     public double getCurrentValue() {
         String rawText = distributorUI.getText(currentValue);
         return Double.parseDouble(rawText.replace("$", "").replace(",", "").trim());
     }
->>>>>>> main
 }
