@@ -153,6 +153,9 @@ public class Orders {
     public static String getResultsCount() throws InterruptedException {
         return ordersPage.getResultsCount();
     }
+    public static boolean isResultsCountDisplayed() {
+        return ordersPage.isResultsCountDisplayed();
+    }
     public static void clickOnMoreFilters(){
         ordersPage.clickOnMoreFilters();
     }
