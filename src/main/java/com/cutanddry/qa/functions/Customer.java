@@ -2693,6 +2693,9 @@ public class Customer {
     public static void clickOnDeleteOrderGuide(){
         customersPage.clickOnDeleteOrderGuide();
     }
+    public static boolean isDeleteOrderGuideOptionDisplayed(){
+        return customersPage.isDeleteOrderGuideOptionDisplayed();
+    }
     public static boolean isChildAccountOGDisplayed(String account , String name){
         return customersPage.isChildAccountOGDisplayed(account,name);
     }
