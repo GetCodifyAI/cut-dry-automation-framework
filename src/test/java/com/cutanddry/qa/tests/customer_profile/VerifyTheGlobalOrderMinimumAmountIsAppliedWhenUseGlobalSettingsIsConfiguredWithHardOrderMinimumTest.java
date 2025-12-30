@@ -63,7 +63,7 @@ public class VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsCo
         Customer.clickOnOrderGuideInProfile();
 
         Customer.increaseFirstRowQtyCustom(1);
-        Customer.checkoutItems();
+        Customer.checkoutItemsDist();
 
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         Customer.submitOrderMinimum();
