@@ -104,6 +104,9 @@ public class OrdersPage extends LoginPage{
     By btn_FindMoreInCatalog = By.xpath("//button[text()='Find More in Catalog']");
     By lbl_inactiveItemDetected = By.xpath("//div[text()='Inactive Items Removed']");
     String selectLocationSupplier = "//div[contains(text(),'Select Location')]/following-sibling::div//div[text()='LOCATION']";
+    By lbl_orderDateColumnHeader = By.xpath("//table/thead/tr/th//span[contains(text(),'Order Date')]");
+    By lbl_firstOrderDate = By.xpath("//tbody/tr[2]/td[2]//div[1]");
+    By lbl_firstOrderFulfillmentBadge = By.xpath("//tbody/tr[2]/td[2]//span[contains(@class,'badge')]");
 
     public void clickBtnSaveCheckIn(){
         distributorUI.click(btn_saveCheckIn);
@@ -627,6 +630,39 @@ public class OrdersPage extends LoginPage{
     }
     public void selectLocationSupplier(String location){
         distributorUI.click(By.xpath(selectLocationSupplier.replace("LOCATION",location)));
+    }
+
+    public boolean isOrderDateColumnHeaderDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_orderDateColumnHeader);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_orderDateColumnHeader);
+    }
+
+    public String getFirstOrderDateText(){
+        distributorUI.waitForVisibility(lbl_firstOrderDate);
+        return distributorUI.getText(lbl_firstOrderDate);
+    }
+
+    public boolean isFirstOrderFulfillmentBadgeDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_firstOrderFulfillmentBadge);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_firstOrderFulfillmentBadge);
+    }
+
+    public String getFirstOrderFulfillmentBadgeText(){
+        distributorUI.waitForVisibility(lbl_firstOrderFulfillmentBadge);
+        return distributorUI.getText(lbl_firstOrderFulfillmentBadge);
+    }
+
+    public String getFirstOrderFulfillmentBadgeColor(){
+        distributorUI.waitForVisibility(lbl_firstOrderFulfillmentBadge);
+        return distributorUI.getCssValue(lbl_firstOrderFulfillmentBadge, "background-color");
     }
 
 
