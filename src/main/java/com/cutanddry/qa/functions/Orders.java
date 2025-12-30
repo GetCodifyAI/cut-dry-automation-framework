@@ -36,6 +36,9 @@ public class Orders {
 
     public static void submitForApproval(){
         ordersPage.clickOnSubmitForApproval();
+        if(customersPage.isOrderMinimumOverlayDisplayed()){
+            customersPage.clickPlaceOrderSoftOrderMinimum();;
+        }
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
         }
