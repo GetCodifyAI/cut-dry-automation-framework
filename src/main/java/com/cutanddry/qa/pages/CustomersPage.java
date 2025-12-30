@@ -5710,6 +5710,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(By.xpath(orderApprovalTypeOption.replace("OPTION",option)));
     }
 
+    public boolean isDeleteOrderGuideOptionDisplayed(){
+        return distributorUI.isDisplayed(btn_deleteOrderGuide);
+    }
+
 
 
 }

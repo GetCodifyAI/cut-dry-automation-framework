@@ -3469,6 +3469,10 @@ public class Customer {
         customersPage.selectOrderApprovalType(option);
     }
 
+    public static boolean isDeleteOrderGuideOptionDisplayed(){
+        return customersPage.isDeleteOrderGuideOptionDisplayed();
+    }
+
 
 
 

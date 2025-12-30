@@ -49,6 +49,8 @@ String DeliveryDateSelect = "(//div[contains(@class,'themed_select__option')])[D
     By SubmittedOrderPageReViewBtn = By.xpath("(//div[contains(@class, '_10q9czs row')]//div//a[text()='View' and contains(@href,'/order-desk')])[last()]");
     By SubmitTxt = By.xpath("//*[contains(text(),'Submit Order')]");
     By changesSavedTxt = By.xpath("//*[contains(text(),'Saved changes')]");
+    By btn_back = By.xpath("//button[normalize-space()='Back']");
+    By btn_backAlt = By.xpath("//button[.//*[local-name()='svg' and contains(@class, 'fa-arrow-left')]]");
 
     public boolean isOrderDeskTextDisplayed(){
         try{
@@ -240,6 +242,29 @@ String DeliveryDateSelect = "(//div[contains(@class,'themed_select__option')])[D
 
     public void clickOnSubmittedOrderPageReviewBtn(){
         distributorUI.click(SubmittedOrderPageReViewBtn);
+    }
+
+    public boolean isBackButtonDisplayed(){
+        try {
+            if (distributorUI.isDisplayed(btn_back, 5)) {
+                return true;
+            }
+            return distributorUI.isDisplayed(btn_backAlt, 5);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void clickOnBackButton(){
+        try {
+            if (distributorUI.isDisplayed(btn_back, 3)) {
+                distributorUI.click(btn_back);
+            } else {
+                distributorUI.click(btn_backAlt);
+            }
+        } catch (Exception e) {
+            distributorUI.click(btn_backAlt);
+        }
     }
 
 

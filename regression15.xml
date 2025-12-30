@@ -33,6 +33,17 @@
 
             <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanItemsToOrderFunctionalityInMoreOptionsMenuTest"/>
 
+            <class name="com.cutanddry.qa.tests.orders.VerifyOrderDateColumnDisplayWithFulfillmentTypeBadgeTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyOrdersListResultsCountDisplayTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyOrdersListTotalColumnWithCurrencyFormattingTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyOrderViewOrderInfoSectionFieldDisplayTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyDeleteOrderGuideHappyPathWithConfirmationTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderGuideDeleteCancelDeletionTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderGuideMoreOptionsCreateNewOrderGuideHappyPathTest"/>
+
+
+
+
         </classes>
     </test>
 </suite>
