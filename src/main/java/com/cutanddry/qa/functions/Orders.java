@@ -313,4 +313,24 @@ public class Orders {
             customersPage.clickPreviousDraftOrderNo();
         }
     }
+
+    public static boolean isOrderDateColumnHeaderDisplayed(){
+        return ordersPage.isOrderDateColumnHeaderDisplayed();
+    }
+
+    public static String getFirstOrderDateText(){
+        return ordersPage.getFirstOrderDateText();
+    }
+
+    public static boolean isFirstOrderFulfillmentBadgeDisplayed(){
+        return ordersPage.isFirstOrderFulfillmentBadgeDisplayed();
+    }
+
+    public static String getFirstOrderFulfillmentBadgeText(){
+        return ordersPage.getFirstOrderFulfillmentBadgeText();
+    }
+
+    public static String getFirstOrderFulfillmentBadgeColor(){
+        return ordersPage.getFirstOrderFulfillmentBadgeColor();
+    }
 }
