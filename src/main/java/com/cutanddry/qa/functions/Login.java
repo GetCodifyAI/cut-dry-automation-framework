@@ -126,7 +126,7 @@ public class Login {
     public static void navigateToLoginAs() {
         loginPage.navigateToLoginAs();
     }
-    public static boolean isUserExistInLoginAs(String name){
+    public static boolean isUserExistInLoginAs(String name) throws InterruptedException {
         return loginPage.navigateToLoginAsPortalForCustomerIndex(name);
     }
     public static void logInToOperatorAsWhiteLabel(String operator) throws InterruptedException {

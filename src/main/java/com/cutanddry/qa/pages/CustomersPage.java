@@ -950,8 +950,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String lbl_leadTimeBanner = "//span[text()='Message']";
     By orderApprovalTypeDropDown = By.xpath("//div[contains(text(),'Order Approval Type')]/following-sibling::div");
     String orderApprovalTypeOption = "(//div[contains(text(),'OPTION')])[last()]";
-
-
+    By removeUnavailableItemsHeader = By.xpath("//div[contains(text(),'Removed unavailable items')]");
+    By removeUnavailableItemsMessage = By.xpath("//div[contains(text(),'We’ve removed unavailable items from your cart. Contact your sales rep for help with alternatives')]");
+    String removedBuyoutItem = "//*[contains(normalize-space(.),'Unavailable Items')]/ancestor::div[1]//span[contains(@class,'text-truncate') and normalize-space(.)='ITEMNAME (ITEMCODE)']";
+    String removedBuyoutItemUOM = "//div[contains(@class,'d-flex') and .//span[@class='text-truncate' and normalize-space(.)='ITEMNAME (ITEMCODE)'] and .//s[normalize-space(.)='ITEMCOUNT ITEMUOM']]";
+    String buyOutHardMinValues = "//div[normalize-space()='LABEL'] /following-sibling::div[normalize-space()='VALUE']";
+    By currentValue = By.xpath("//div[normalize-space()='Current'] /following-sibling::div");
 
 
 
@@ -5709,7 +5713,28 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(orderApprovalTypeDropDown);
         distributorUI.click(By.xpath(orderApprovalTypeOption.replace("OPTION",option)));
     }
+    public boolean isRemovedUnavailableItemsTxtDisplayed() {
+        return distributorUI.isDisplayed(removeUnavailableItemsHeader);
+    }
+    public boolean isRemovedUnavailableItemsMsgDisplayed() {
+        return distributorUI.isDisplayed(removeUnavailableItemsMessage);
+    }
+    public boolean isRemovedItemCorrectlyDisplayed(String ItemName,String ItemCode){
+        return distributorUI.isDisplayed(By.xpath(removedBuyoutItem.replace("ITEMNAME",ItemName).replace("ITEMCODE",ItemCode)));
+    }
+    public boolean isRemovedItemUOMCorrectlyDisplayed(String ItemName,String ItemCode,String ItemCount,String ItemUOM){
+        return distributorUI.isDisplayed(By.xpath(removedBuyoutItemUOM.replace("ITEMNAME",ItemName).replace("ITEMCODE",ItemCode).replace("ITEMCOUNT",ItemCount).replace("ITEMUOM",ItemUOM)));
+    }
+    public boolean isBuyoutHardOrderMinCorrectlyDisplayed(String label, String expectedValue) {
+        // Ensure value starts with $
+        if (!expectedValue.startsWith("$")) {
+            expectedValue = "$" + expectedValue;
+        }
 
-
-
+        return distributorUI.isDisplayed(By.xpath(buyOutHardMinValues.replace("LABEL", label).replace("VALUE", expectedValue)));
+    }
+    public double getCurrentValue() {
+        String rawText = distributorUI.getText(currentValue);
+        return Double.parseDouble(rawText.replace("$", "").replace(",", "").trim());
+    }
 }

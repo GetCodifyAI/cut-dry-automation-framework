@@ -258,13 +258,15 @@ public class LoginPage extends TestBase {
     public void navigateToLoginAs() {
         distributorUI.navigateToURL(Constants.LOGIN_AS);
     }
-    public boolean navigateToLoginAsPortalForCustomerIndex(String name) {
+    public boolean navigateToLoginAsPortalForCustomerIndex(String name) throws InterruptedException {
         distributorUI.navigateToURL(Constants.LOGIN_AS);
 //        Orders.closeRatingOverlay();
+        distributorUI.waitForCustom(5000);
         distributorUI.sendKeys(lbl_loginAs,name);
         return distributorUI.isDisplayed(By.xpath(txt_whitelblCustomer.replace("NAME", name)));
     }
     public void typeToSearchOnOperator(String operator) throws InterruptedException {
+        distributorUI.waitForCustom(5000);
         distributorUI.sendKeys(tbx_operatorSearch, operator);
         distributorUI.waitForCustom(4000);
     }

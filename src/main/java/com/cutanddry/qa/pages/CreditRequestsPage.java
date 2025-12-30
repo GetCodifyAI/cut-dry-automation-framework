@@ -61,10 +61,10 @@ String lbl_itemName = "(//table[@class='_1qvcx68 table']//tbody/tr[ROW]/td[2]//d
     By btn_editCredit = By.xpath("//button[contains(text(), 'Edit Credit')]");
     By btn_approveCredit = By.xpath("//button[@type='button' and contains(text(), 'Approve Credit')]");
     By txt_creditApproved = By.xpath("(//div[text()='Credit Approved'])[last()]");
-    By timestampTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[1]");
-    By statusTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[2]");
-    By organizationTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[3]");
-    By userTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[4]");
+    By timestampTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[1]");
+    By statusTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[2]");
+    By organizationTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[3]");
+    By userTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[4]");
 
     public String[] getTimelineData(){
         String timeStamp = distributorUI.getText(timestampTimeline);
