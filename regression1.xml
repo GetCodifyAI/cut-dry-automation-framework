@@ -38,6 +38,7 @@
             <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrdersUploadingExcelFileTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrderImportingOrderGuideTest" />-->
             <class name="com.cutanddry.qa.tests.order_guide.VerifyExportingOrderGuideEditTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderGuideDeleteCancelDeletionTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest" />
 
 
