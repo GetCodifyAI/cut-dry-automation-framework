@@ -39,7 +39,7 @@
             <class name="com.cutanddry.qa.tests.order_guide.VerifyEditingOrderImportingOrderGuideTest" />-->
             <class name="com.cutanddry.qa.tests.order_guide.VerifyExportingOrderGuideEditTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheLastPurchasedUOMAsDefaultUOMonOGTest" />
-
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderGuideMoreOptionsCreateNewOrderGuideHappyPathTest" />
 
             <class name="com.cutanddry.qa.tests.reports.VerifyTheCustomerOrderGuideReportGenerationTest" />
             <class name="com.cutanddry.qa.tests.reports.VerifyThePickListDownloadReportTest" />
