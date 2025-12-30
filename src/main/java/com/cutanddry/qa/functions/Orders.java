@@ -313,4 +313,28 @@ public class Orders {
             customersPage.clickPreviousDraftOrderNo();
         }
     }
+
+    public static boolean isTotalColumnHeaderDisplayed() {
+        return ordersPage.isTotalColumnHeaderDisplayed();
+    }
+
+    public static int getTotalColumnIndex() {
+        return ordersPage.getTotalColumnIndex();
+    }
+
+    public static String getTotalValueFromRow(int rowIndex, int columnIndex) {
+        return ordersPage.getTotalValueFromRow(rowIndex, columnIndex);
+    }
+
+    public static boolean isTotalAmountFormattedWithDollarSign(String totalValue) {
+        return ordersPage.isTotalAmountFormattedWithDollarSign(totalValue);
+    }
+
+    public static boolean isTotalAmountFormattedWithTwoDecimalPlaces(String totalValue) {
+        return ordersPage.isTotalAmountFormattedWithTwoDecimalPlaces(totalValue);
+    }
+
+    public static boolean isTotalAmountFormattedWithCommaForLargeAmounts(String totalValue) {
+        return ordersPage.isTotalAmountFormattedWithCommaForLargeAmounts(totalValue);
+    }
 }
