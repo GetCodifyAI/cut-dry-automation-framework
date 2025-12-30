@@ -4683,6 +4683,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForClickability(btn_deleteOrderGuide);
         distributorUI.click(btn_deleteOrderGuide);
     }
+    public boolean isDeleteOrderGuideOptionDisplayed(){
+        return distributorUI.isDisplayed(btn_deleteOrderGuide);
+    }
     public boolean isChildAccountOGDisplayed(String account , String name){
         return distributorUI.isDisplayed(By.xpath(addedOrderGuide.replace("CHILDACC",account).replace("NAME",name)));
     }
