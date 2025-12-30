@@ -205,6 +205,9 @@ public class Orders {
     public static void clickYes(){
         ordersPage.clickYes();
     }
+    public static void clickCancel(){
+        ordersPage.clickCancel();
+    }
     public static boolean isOrderStatusUpdatedPopUpDisplayed(){
         return ordersPage.isOrderStatusUpdatedPopUpDisplayed();
     }

@@ -70,6 +70,7 @@ public class OrdersPage extends LoginPage{
     By bulkActionsUpdateStatus = By.xpath("//a[contains(text(), 'Update Status')]");
     By areYouSurePopUp = By.xpath("//h2[@class = 'swal2-title' and text() = 'Are you sure?']");
     By btn_yes = By.xpath("//button[contains(@class, 'swal2-confirm _1fmw5qi order-2 swal2-styled') and text() = 'Yes']");
+    By btn_cancel = By.xpath("//button[contains(@class, 'swal2-cancel') and text() = 'Cancel']");
     By orderStatusUpdatedPopUp = By.xpath("//h2[contains(text(),'Order Status Updated!')]");
     By btn_ok = By.xpath("//button[contains(@class, 'swal2-confirm swal2-styled') and text() = 'OK']");
     By lbl_orderTableColumn = By.xpath("//table/thead/tr/th");
@@ -512,6 +513,9 @@ public class OrdersPage extends LoginPage{
     }
     public void clickYes(){
         distributorUI.click(btn_yes);
+    }
+    public void clickCancel(){
+        distributorUI.click(btn_cancel);
     }
     public boolean isOrderStatusUpdatedPopUpDisplayed(){
         try {
