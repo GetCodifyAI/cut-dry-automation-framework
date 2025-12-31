@@ -957,8 +957,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String buyOutHardMinValues = "//div[normalize-space()='LABEL'] /following-sibling::div[normalize-space()='VALUE']";
     By currentValue = By.xpath("//div[normalize-space()='Current'] /following-sibling::div");
     String removeBuyoutItemInHardOrderMinOverlay = "//span[contains(@class,'text-truncate') and normalize-space(.)='#ITEMCODE | ITEMNAME']/following-sibling::span[contains(normalize-space(.),'ITEMCOUNT') and contains(normalize-space(.),'ITEMUOM')]";
-
-
+    By canNotSubmitEmptyOrderError = By.xpath("//*[normalize-space(.)='Error: Cannot submit empty order']");
 
 
 
@@ -5746,5 +5745,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isRemovedItemCorrectlyDisplayedInOrderMinimumOverlay(String ItemName,String ItemCode,String ItemCount,String ItemUOM){
         return distributorUI.isDisplayed(By.xpath(removeBuyoutItemInHardOrderMinOverlay.replace("ITEMNAME",ItemName).replace("ITEMCODE",ItemCode).replace("ITEMCOUNT",ItemCount).replace("ITEMUOM",ItemUOM)));
+    }
+    public boolean isCanNotSubmitEmptyOrdersErrorDisplayed(){
+        return distributorUI.isDisplayed(canNotSubmitEmptyOrderError);
+    }
+    public boolean isSubmitBtnEnabled(){
+        return distributorUI.isElementEnabled(btn_submitOrder);
     }
 }

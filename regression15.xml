@@ -38,9 +38,13 @@
             <class name="com.cutanddry.qa.tests.customers.VerifyPropItemsAreOnlyDisplayedForPropCustomersTest"/>
 
             <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanItemsToOrderFunctionalityInMoreOptionsMenuTest"/>
+
             <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyBuyoutItemsRemovedFromNonBuyoutCustomerOrderSubmissionTest"/>
             <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyHardOrderMinimumNotMetAfterBuyoutItemRemovalTest"/>
             <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifySoftOrderMinimumNotMetAfterBuyoutItemRemovalTest"/>
+            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyCartBecomesEmptyInBuyoutCustomersWhenAllItemsAreBuyOutItemsTest"/>
+            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyNoItemRemovalsFromBuyoutAllowedCustomersTest"/>
+
 
             <class name="com.cutanddry.qa.tests.orders.VerifyOrderDateColumnDisplayWithFulfillmentTypeBadgeTest"/>
             <class name="com.cutanddry.qa.tests.orders.VerifyOrdersListResultsCountDisplayTest"/>

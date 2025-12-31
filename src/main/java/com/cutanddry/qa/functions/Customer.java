@@ -3497,6 +3497,12 @@ public class Customer {
     public static boolean isRemovedBuyoutItemAndUOMsCorrectlyDisplayedInHarOrderMinOverlay(String ItemName,String ItemCode,String ItemCount,String ItemUOM){
         return customersPage.isRemovedItemCorrectlyDisplayedInOrderMinimumOverlay( ItemName, ItemCode, ItemCount, ItemUOM);
     }
+    public static boolean isCanNotSubmitEmptyOrdersErrorDisplayed(){
+        return customersPage.isCanNotSubmitEmptyOrdersErrorDisplayed();
+    }
+    public static boolean isSubmitOrderBtnEnabled(){
+        return customersPage.isSubmitBtnEnabled();
+    }
 
 
 }
