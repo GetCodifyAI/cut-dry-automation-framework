@@ -3468,6 +3468,11 @@ public class Customer {
     public static void selectOrderApprovalType(String option)throws InterruptedException{
         customersPage.selectOrderApprovalType(option);
     }
+
+    public static boolean isDeleteOrderGuideOptionDisplayed(){
+        return customersPage.isDeleteOrderGuideOptionDisplayed();
+    }
+
     public static boolean isRemoveUnavailableItemsMsgHeaderDisplayed(){
         return customersPage.isRemovedUnavailableItemsTxtDisplayed();
     }
@@ -3486,7 +3491,6 @@ public class Customer {
     public static double getCurrentOrdersValue() {
         return customersPage.getCurrentValue();
     }
-
 
 
 }
