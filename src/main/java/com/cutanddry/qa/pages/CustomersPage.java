@@ -5743,4 +5743,42 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         String rawText = distributorUI.getText(currentValue);
         return Double.parseDouble(rawText.replace("$", "").replace(",", "").trim());
     }
+
+    // Customer Orders Tab - Items Column locators and methods
+    By lbl_itemsColumnHeader = By.xpath("//span[text()='Items']");
+    By lbl_ordersTableRows = By.xpath("//tr[contains(@href,'/ordersView/')]");
+    String lbl_orderRowItemsCount = "(//tr[contains(@href,'/ordersView/')])[ROW]/td[5]";
+    By lbl_orderDetailsLineItems = By.xpath("//tbody/tr[contains(@class,'_du1frc')]");
+
+    public boolean isItemsColumnHeaderDisplayed() {
+        try {
+            distributorUI.waitForVisibility(lbl_itemsColumnHeader);
+            return distributorUI.isDisplayed(lbl_itemsColumnHeader);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isOrdersListDisplayed() {
+        try {
+            distributorUI.waitForVisibility(lbl_ordersTableRows);
+            return distributorUI.isDisplayed(lbl_ordersTableRows);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public String getFirstOrderItemsCount() {
+        distributorUI.waitForVisibility(By.xpath(lbl_orderRowItemsCount.replace("ROW", "1")));
+        return distributorUI.getText(By.xpath(lbl_orderRowItemsCount.replace("ROW", "1"))).trim();
+    }
+
+    public int getOrderDetailsLineItemsCount() {
+        try {
+            distributorUI.waitForVisibility(lbl_orderDetailsLineItems);
+            return distributorUI.countElements(lbl_orderDetailsLineItems);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
 }
