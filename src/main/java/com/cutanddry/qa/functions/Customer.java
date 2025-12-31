@@ -3492,6 +3492,30 @@ public class Customer {
         return customersPage.getCurrentValue();
     }
 
+    // DOT-TC-3617: Order Reference Column and ERP Order Badge Methods
+    public static boolean isOrderReferenceColumnHeaderDisplayed() {
+        return customersPage.isOrderReferenceColumnHeaderDisplayed();
+    }
+
+    public static boolean isOrderReferenceNumberDisplayed() {
+        return customersPage.isOrderReferenceNumberDisplayed();
+    }
+
+    public static boolean isFirstOrderReferenceNumberDisplayed() {
+        return customersPage.isFirstOrderReferenceNumberDisplayed();
+    }
+
+    public static String getFirstOrderReferenceNumber() {
+        return customersPage.getFirstOrderReferenceNumber();
+    }
+
+    public static boolean isErpOrderBadgeDisplayed() {
+        return customersPage.isErpOrderBadgeDisplayed();
+    }
+
+    public static boolean isFirstErpOrderBadgeDisplayed() {
+        return customersPage.isFirstErpOrderBadgeDisplayed();
+    }
 
 }
 
