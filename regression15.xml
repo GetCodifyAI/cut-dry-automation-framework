@@ -39,6 +39,8 @@
 
             <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanItemsToOrderFunctionalityInMoreOptionsMenuTest"/>
             <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyBuyoutItemsRemovedFromNonBuyoutCustomerOrderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyHardOrderMinimumNotMetAfterBuyoutItemRemovalTest"/>
+            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifySoftOrderMinimumNotMetAfterBuyoutItemRemovalTest"/>
 
         </classes>
     </test>

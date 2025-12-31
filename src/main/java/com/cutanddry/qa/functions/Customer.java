@@ -3458,6 +3458,9 @@ public class Customer {
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
         }
+        if (customersPage.isCombinedPopupDisplayed()){
+            customersPage.clickContinueCombined();
+        }
     }
     public static boolean isLeadTimeBannerDisplay(String message){
         return customersPage.isLeadTimeBannerDisplay(message);
@@ -3485,6 +3488,9 @@ public class Customer {
     }
     public static double getCurrentOrdersValue() {
         return customersPage.getCurrentValue();
+    }
+    public static boolean isRemovedBuyoutItemAndUOMsCorrectlyDisplayedInHarOrderMinOverlay(String ItemName,String ItemCode,String ItemCount,String ItemUOM){
+        return customersPage.isRemovedItemCorrectlyDisplayedInOrderMinimumOverlay( ItemName, ItemCode, ItemCount, ItemUOM);
     }
 
 
