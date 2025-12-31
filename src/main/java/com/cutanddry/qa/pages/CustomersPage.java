@@ -957,7 +957,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String buyOutHardMinValues = "//div[normalize-space()='LABEL'] /following-sibling::div[normalize-space()='VALUE']";
     By currentValue = By.xpath("//div[normalize-space()='Current'] /following-sibling::div");
 
-
+    // DOT-TC-3617: Order Reference Column and ERP Order Badge Locators
+    By lbl_orderReferenceColumnHeader = By.xpath("//span[contains(text(),'Order Reference')]");
+    By lbl_orderReferenceNumber = By.xpath("//tr[contains(@href,'/ordersView/')]//td//div[contains(text(),'#')]");
+    By lbl_erpOrderBadge = By.xpath("//tr[contains(@href,'/ordersView/')]//td//span[contains(text(),'ERP Order')]");
+    By lbl_firstOrderReferenceNumber = By.xpath("(//tr[contains(@href,'/ordersView/')]//td//div[contains(text(),'#')])[1]");
+    By lbl_firstErpOrderBadge = By.xpath("(//tr[contains(@href,'/ordersView/')]//td//span[contains(text(),'ERP Order')])[1]");
 
 
 
@@ -5742,5 +5747,33 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public double getCurrentValue() {
         String rawText = distributorUI.getText(currentValue);
         return Double.parseDouble(rawText.replace("$", "").replace(",", "").trim());
+    }
+
+    // DOT-TC-3617: Order Reference Column and ERP Order Badge Methods
+    public boolean isOrderReferenceColumnHeaderDisplayed() {
+        distributorUI.waitForVisibility(lbl_orderReferenceColumnHeader);
+        return distributorUI.isDisplayed(lbl_orderReferenceColumnHeader);
+    }
+
+    public boolean isOrderReferenceNumberDisplayed() {
+        return distributorUI.isDisplayed(lbl_orderReferenceNumber);
+    }
+
+    public boolean isFirstOrderReferenceNumberDisplayed() {
+        distributorUI.waitForVisibility(lbl_firstOrderReferenceNumber);
+        return distributorUI.isDisplayed(lbl_firstOrderReferenceNumber);
+    }
+
+    public String getFirstOrderReferenceNumber() {
+        distributorUI.waitForVisibility(lbl_firstOrderReferenceNumber);
+        return distributorUI.getText(lbl_firstOrderReferenceNumber);
+    }
+
+    public boolean isErpOrderBadgeDisplayed() {
+        return distributorUI.isDisplayed(lbl_erpOrderBadge);
+    }
+
+    public boolean isFirstErpOrderBadgeDisplayed() {
+        return distributorUI.isDisplayed(lbl_firstErpOrderBadge);
     }
 }
