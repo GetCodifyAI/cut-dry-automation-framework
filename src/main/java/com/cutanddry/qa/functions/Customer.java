@@ -3492,6 +3492,21 @@ public class Customer {
         return customersPage.getCurrentValue();
     }
 
+    public static boolean isItemsColumnHeaderDisplayed() {
+        return customersPage.isItemsColumnHeaderDisplayed();
+    }
+
+    public static boolean isOrdersListDisplayed() {
+        return customersPage.isOrdersListDisplayed();
+    }
+
+    public static String getFirstOrderItemsCount() {
+        return customersPage.getFirstOrderItemsCount();
+    }
+
+    public static int getOrderDetailsLineItemsCount() {
+        return customersPage.getOrderDetailsLineItemsCount();
+    }
 
 }
 
