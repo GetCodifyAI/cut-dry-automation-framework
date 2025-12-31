@@ -598,6 +598,9 @@ public class Customer {
     public static boolean isOrderIdTxtDisplayed(){
         return customersPage.isOrderIdTxtDisplayed();
     }
+    public static boolean isOrdersEmptyStateDisplayed(){
+        return customersPage.isOrdersEmptyStateDisplayed();
+    }
     public static void OrderDateSort(){
         customersPage.ClickOrderDateToSort();
     }
