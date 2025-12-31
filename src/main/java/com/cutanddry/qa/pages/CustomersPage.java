@@ -715,7 +715,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By combinedOrderContinue = By.xpath("//button[contains(text(), 'Continue')]");
 
     By catalogFirstItemItemCode = By.xpath("//div[contains(@class,'card-deck')][1]/div[contains(@class,'card')][1]//button[contains(@data-tip,'View Brand Page')]/../following-sibling::div");
-    String catalogItemDisplayed = "(//div[contains(@class,'card-deck')][1]/div[contains(@class,'card')][1]//div[contains(normalize-space(.),'ITEMCODE')])[last()]";
+    String catalogItemDisplayed = "(//div[contains(@class,'card-deck')][1]/div[contains(@class,'card')]//div[contains(normalize-space(.),'ITEMCODE')])[last()]";
     String unpaidInvoiceName = "//div[text()='NAME']";
     By caseMinimumNotMetText = By.xpath("//*[contains(text(),'Case Minimum Not Met')]");
     By btn_sortCustomOrder = By.xpath("//div[contains(@class, 'cd_themed_select__single-value') and text()='Custom Order']");
@@ -956,8 +956,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String removedBuyoutItemUOM = "//div[contains(@class,'d-flex') and .//span[@class='text-truncate' and normalize-space(.)='ITEMNAME (ITEMCODE)'] and .//s[normalize-space(.)='ITEMCOUNT ITEMUOM']]";
     String buyOutHardMinValues = "//div[normalize-space()='LABEL'] /following-sibling::div[normalize-space()='VALUE']";
     By currentValue = By.xpath("//div[normalize-space()='Current'] /following-sibling::div");
-
-
+    String removeBuyoutItemInHardOrderMinOverlay = "//span[contains(@class,'text-truncate') and normalize-space(.)='#ITEMCODE | ITEMNAME']/following-sibling::span[contains(normalize-space(.),'ITEMCOUNT') and contains(normalize-space(.),'ITEMUOM')]";
+    By canNotSubmitEmptyOrderError = By.xpath("//*[normalize-space(.)='Error: Cannot submit empty order']");
 
 
 
@@ -5742,5 +5742,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public double getCurrentValue() {
         String rawText = distributorUI.getText(currentValue);
         return Double.parseDouble(rawText.replace("$", "").replace(",", "").trim());
+    }
+    public boolean isRemovedItemCorrectlyDisplayedInOrderMinimumOverlay(String ItemName,String ItemCode,String ItemCount,String ItemUOM){
+        return distributorUI.isDisplayed(By.xpath(removeBuyoutItemInHardOrderMinOverlay.replace("ITEMNAME",ItemName).replace("ITEMCODE",ItemCode).replace("ITEMCOUNT",ItemCount).replace("ITEMUOM",ItemUOM)));
+    }
+    public boolean isCanNotSubmitEmptyOrdersErrorDisplayed(){
+        return distributorUI.isDisplayed(canNotSubmitEmptyOrderError);
+    }
+    public boolean isSubmitBtnEnabled(){
+        return distributorUI.isElementEnabled(btn_submitOrder);
     }
 }

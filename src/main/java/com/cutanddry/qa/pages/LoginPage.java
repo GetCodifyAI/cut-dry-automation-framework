@@ -120,10 +120,11 @@ public class LoginPage extends TestBase {
         distributorUI.sendKeys(txt_value, String.valueOf(true));
         distributorUI.click(btn_setData);
     }
-    public void setValueToNode(String keyName, String valueName){
+    public void setValueToNode(String keyName, String valueName) throws InterruptedException {
         distributorUI.sendKeys(txt_key,keyName);
         distributorUI.sendKeys(txt_value,valueName);
         distributorUI.click(btn_setData);
+        distributorUI.waitForCustom(2000);
     }
     public void navigateToDistributorPortal(String name) {
         distributorUI.navigateToURL(Constants.LOGIN_AS);

@@ -20,7 +20,7 @@ public class VerifyBuyoutItemsRemovedFromNonBuyoutCustomerOrderSubmissionTest ex
     static User user;
     static String DistributorName = "120984267 - Cut+Dry Agent - BiRite Foodservice Distributors";
     static String customerId = BuyoutsData.BUYOUT_NOT_ALLOWED_CUSTOMER;
-    static String canonicalNodeName = "125770706";
+    static String canonicalNodeName = BuyoutsData.BUYOUT_PRODUCT1_CANONICAL_NODE;
     static String featureKey = BuyoutsData.BUYOUT_PRODUCT_KEY;
     static String featureValue = BuyoutsData.BUYOUT_PRODUCT_VALUE;
     static String buyoutItemItemCode = BuyoutsData.BUYOUT_PRODUCT_ITEMCODE;
