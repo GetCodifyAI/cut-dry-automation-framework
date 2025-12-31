@@ -388,4 +388,40 @@ public class Orders {
         ordersPage.clickCancel();
     }
 
+    public static boolean isPaginationBarDisplayed() {
+        return ordersPage.isPaginationBarDisplayed();
+    }
+
+    public static boolean isPaginationNextButtonDisplayed() {
+        return ordersPage.isPaginationNextButtonDisplayed();
+    }
+
+    public static boolean isPaginationPreviousButtonDisplayed() {
+        return ordersPage.isPaginationPreviousButtonDisplayed();
+    }
+
+    public static void clickPaginationNextButton() {
+        ordersPage.clickPaginationNextButton();
+    }
+
+    public static void clickPaginationPreviousButton() {
+        ordersPage.clickPaginationPreviousButton();
+    }
+
+    public static void clickPaginationPageNumber(String pageNum) {
+        ordersPage.clickPaginationPageNumber(pageNum);
+    }
+
+    public static int getOrderTableRowCount() {
+        return ordersPage.getOrderTableRowCount();
+    }
+
+    public static String getFirstOrderReferenceNumber() {
+        return ordersPage.getFirstOrderReferenceNumber();
+    }
+
+    public static boolean isOrderListDisplayed() {
+        return ordersPage.isOrderListDisplayed();
+    }
+
 }

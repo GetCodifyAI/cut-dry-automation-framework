@@ -814,10 +814,94 @@ public class OrdersPage extends LoginPage{
         distributorUI.click(btn_cancel);
     }
 
+    // Pagination locators
+    By lbl_paginationBar = By.xpath("//div[contains(@class, 'pagination') or contains(@class, 'Pagination')]//ul | //nav[contains(@aria-label, 'pagination')]//ul | //div[contains(@class, '_du1frc')]//nav//ul");
+    By btn_paginationNext = By.xpath("//button[contains(@aria-label, 'Next') or contains(text(), '>') or contains(@class, 'next')] | //a[contains(@aria-label, 'Next') or contains(text(), '>')]");
+    By btn_paginationPrevious = By.xpath("//button[contains(@aria-label, 'Previous') or contains(text(), '<') or contains(@class, 'prev')] | //a[contains(@aria-label, 'Previous') or contains(text(), '<')]");
+    By lbl_paginationPageNumbers = By.xpath("//div[contains(@class, 'pagination')]//button[contains(@class, 'page')] | //nav//ul//li//button | //nav//ul//li//a[number(text()) = text()]");
+    String btn_paginationPageNumber = "//button[text()='PAGE_NUM'] | //a[text()='PAGE_NUM']";
+    By lbl_orderTableRows = By.xpath("//tbody/tr[position() > 1]");
 
+    public boolean isPaginationBarDisplayed() {
+        try {
+            distributorUI.waitForCustom(2000);
+            return distributorUI.isDisplayed(lbl_paginationBar);
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
+    public boolean isPaginationNextButtonDisplayed() {
+        try {
+            return distributorUI.isDisplayed(btn_paginationNext);
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
+    public boolean isPaginationPreviousButtonDisplayed() {
+        try {
+            return distributorUI.isDisplayed(btn_paginationPrevious);
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
+    public void clickPaginationNextButton() {
+        distributorUI.waitForClickability(btn_paginationNext);
+        distributorUI.click(btn_paginationNext);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void clickPaginationPreviousButton() {
+        distributorUI.waitForClickability(btn_paginationPrevious);
+        distributorUI.click(btn_paginationPrevious);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void clickPaginationPageNumber(String pageNum) {
+        By pageButton = By.xpath(btn_paginationPageNumber.replace("PAGE_NUM", pageNum));
+        distributorUI.waitForClickability(pageButton);
+        distributorUI.click(pageButton);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int getOrderTableRowCount() {
+        try {
+            distributorUI.waitForCustom(2000);
+            return distributorUI.countElements(lbl_orderTableRows);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    public String getFirstOrderReferenceNumber() {
+        try {
+            distributorUI.waitForVisibility(lbl_firstOrder);
+            return distributorUI.getText(lbl_firstOrder);
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public boolean isOrderListDisplayed() {
+        try {
+            distributorUI.waitForCustom(2000);
+            return distributorUI.countElements(lbl_orderTableRows) > 0;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
-
-
