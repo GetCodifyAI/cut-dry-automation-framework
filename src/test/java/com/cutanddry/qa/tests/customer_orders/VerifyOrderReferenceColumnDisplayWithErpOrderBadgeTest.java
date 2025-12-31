@@ -2,6 +2,7 @@ package com.cutanddry.qa.tests.customer_orders;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.PriceData;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
@@ -14,7 +15,8 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyOrderReferenceColumnDisplayWithErpOrderBadgeTest extends TestBase {
     static User user;
-    static String customerCode = "16579";
+    static String distributorWagner = PriceData.DISTRIBUTOR_WAGNER;
+    static String customerCode = "515";
 
     @BeforeMethod
     public void setUp() {
@@ -26,8 +28,11 @@ public class VerifyOrderReferenceColumnDisplayWithErpOrderBadgeTest extends Test
     public void verifyOrderReferenceColumnDisplayWithErpOrderBadge() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
 
-        Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "Login failed - Dashboard not displayed");
+        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
+        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "Login failed - Restaurant Dashboard not displayed");
+
+        Login.navigateToDistributorPortal(distributorWagner);
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "Navigation to distributor portal failed");
 
         Dashboard.navigateToCustomers();
         softAssert.assertTrue(Customer.isCustomersTextDisplayed(), "Customers section not displayed");
