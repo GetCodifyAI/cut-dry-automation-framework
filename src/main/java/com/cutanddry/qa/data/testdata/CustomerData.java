@@ -50,6 +50,7 @@ public class CustomerData {
     public static final String CUSTOMER_CODE7 = "58951";
     public static final String PRODUCT_ITEM_CODE = "02345";
     public static final String CUSTOMER_OG = "Test_Automation";
+    public static final String DISTRIBUTOR_TRADEWELL_DISTRIBUTORS = "Tradewell Distributors";
 
 
 }
