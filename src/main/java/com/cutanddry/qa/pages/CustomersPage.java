@@ -956,6 +956,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String removedBuyoutItemUOM = "//div[contains(@class,'d-flex') and .//span[@class='text-truncate' and normalize-space(.)='ITEMNAME (ITEMCODE)'] and .//s[normalize-space(.)='ITEMCOUNT ITEMUOM']]";
     String buyOutHardMinValues = "//div[normalize-space()='LABEL'] /following-sibling::div[normalize-space()='VALUE']";
     By currentValue = By.xpath("//div[normalize-space()='Current'] /following-sibling::div");
+    String onSaleItemCountResult = "//div[text()='FILTER']/following-sibling::div/div";
+    String onSaleItemTagCount = "//img[contains(@class,'card-img-top')]/following-sibling::div[normalize-space()='TAG']";
+    String catalogFilterAllItems = "//div[contains(@class,'_3ewg0b') and normalize-space()='FILTER']";
+    String catalogFilterSectionDropDown = "//div[contains(@class,'_abrv9k') and normalize-space()='FILTER']";
+    String catalogFilterBrandDropDownOption = "//div[text()='OPTION']";
 
 
 
@@ -5743,4 +5748,47 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         String rawText = distributorUI.getText(currentValue);
         return Double.parseDouble(rawText.replace("$", "").replace(",", "").trim());
     }
+    public String getOnSaleResultsCount(String filter) {
+        try {
+            distributorUI.waitForCustom(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        distributorUI.waitForVisibility(By.xpath(catalogFilter.replace("FILTER", filter)));
+        String resultsText = distributorUI.getText(By.xpath(catalogFilter.replace("FILTER", filter)));
+
+        return resultsText.replaceAll("\\D+", "");
+    }
+    public String getOnSaleItemCountResult(String filter) {
+        try {
+            distributorUI.waitForCustom(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        distributorUI.waitForVisibility(By.xpath(onSaleItemCountResult.replace("FILTER", filter)));
+        String resultsText = distributorUI.getText(By.xpath(onSaleItemCountResult.replace("FILTER", filter)));
+
+        return resultsText.replaceAll("\\D+", "");
+    }
+    public String getSaleTagCount(String tag) {
+        int count = driver.findElements(
+                By.xpath(onSaleItemTagCount.replace("TAG",tag))
+        ).size();
+        return String.valueOf(count);
+    }
+    public boolean isCatalogFilterOnSaleTagDisplayed(String tag){
+        return distributorUI.isDisplayed(By.xpath(onSaleItemTagCount.replace("TAG", tag)));
+    }
+    public void clickCatalogFilterAllItems(String filter){
+        distributorUI.click(By.xpath(catalogFilterAllItems.replace("FILTER", filter)));
+    }
+    public void clickCatalogFilterSectionDropDown(String filter){
+        distributorUI.click(By.xpath(catalogFilterSectionDropDown.replace("FILTER", filter)));
+    }
+    public void clickCatalogFilterBrandDropDownOption(String option){
+        distributorUI.click(By.xpath(catalogFilterBrandDropDownOption.replace("OPTION", option)));
+    }
+
 }
