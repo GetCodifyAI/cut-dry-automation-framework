@@ -56,6 +56,42 @@ public class Catalog {
     public static boolean isNavigatedToPreviewCatalog() throws InterruptedException {
         return catalogPage.isNavigatedToPreviewCatalog();
     }
+    public static void clickSwitchToListView() {
+        catalogPage.clickSwitchToListView();
+    }
+    public static boolean isSwitchToListViewButtonDisplayed() {
+        return catalogPage.isSwitchToListViewButtonDisplayed();
+    }
+    public static boolean isSwitchToGridViewButtonDisplayed() {
+        return catalogPage.isSwitchToGridViewButtonDisplayed();
+    }
+    public static boolean isCatalogListViewDisplayed() {
+        return catalogPage.isCatalogListViewDisplayed();
+    }
+    public static boolean isCatalogGridViewDisplayed() {
+        return catalogPage.isCatalogGridViewDisplayed();
+    }
+    public static boolean isListViewItemCodeColumnDisplayed() {
+        return catalogPage.isListViewItemCodeColumnDisplayed();
+    }
+    public static boolean isListViewItemNameColumnDisplayed() {
+        return catalogPage.isListViewItemNameColumnDisplayed();
+    }
+    public static boolean isListViewCategoryColumnDisplayed() {
+        return catalogPage.isListViewCategoryColumnDisplayed();
+    }
+    public static boolean isListViewUnitColumnDisplayed() {
+        return catalogPage.isListViewUnitColumnDisplayed();
+    }
+    public static boolean isListViewPriceColumnDisplayed() {
+        return catalogPage.isListViewPriceColumnDisplayed();
+    }
+    public static boolean isListViewStatusColumnDisplayed() {
+        return catalogPage.isListViewStatusColumnDisplayed();
+    }
+    public static boolean isListViewProductRowDisplayed() {
+        return catalogPage.isListViewProductRowDisplayed();
+    }
     public static String getItemDetailsFirstRow() throws InterruptedException {
         return catalogPage.getItemDetailsFirstRow();
     }
