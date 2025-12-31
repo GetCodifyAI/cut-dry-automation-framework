@@ -1672,6 +1672,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(OrderIdTxt);
         return distributorUI.isDisplayed(OrderIdTxt);
     }
+    public boolean isOrdersEmptyStateDisplayed(){
+        try {
+            distributorUI.waitForCustom(3000);
+            return !distributorUI.isDisplayed(OrderIdTxt, 5);
+        } catch (Exception e) {
+            return true;
+        }
+    }
     public void ClickOrderDateToSort(){
         distributorUI.click(OrderDateSort);
         try {
