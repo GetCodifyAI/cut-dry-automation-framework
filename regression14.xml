@@ -52,7 +52,6 @@
             <class name="com.cutanddry.qa.tests.catalog_data.VerifyThatTheStandingOrderUponEditingWithInactiveItemsTest"/>
 
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheOrderGuideWillNotDisplayedWhenTheCatalogOnlyOrderFlowIsActivatedFromTheSupplierConfigTest"/>
-            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyOnlyCatalogDisplayedWhenOrderGuideIsTurnedOffFromSupplierConfigTest"/>
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheAddToOrderGuideWillNotDisplayedWhenTheCatalogOnlyOrderFlowIsActivatedFromTheSupplierConfigTest"/>
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyStandingOrderFlowWhenSwitchingOrderGuidesTest"/>
             <class name="com.cutanddry.qa.tests.quick_add.VerifyQuickAddMaximumQuantityValidationTest"/>

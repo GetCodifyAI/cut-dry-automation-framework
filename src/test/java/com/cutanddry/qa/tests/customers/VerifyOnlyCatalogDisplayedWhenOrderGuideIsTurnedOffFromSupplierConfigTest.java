@@ -1,4 +1,4 @@
-package com.cutanddry.qa.tests.distributor_specific;
+package com.cutanddry.qa.tests.customers;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
@@ -14,11 +14,8 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyOnlyCatalogDisplayedWhenOrderGuideIsTurnedOffFromSupplierConfigTest extends TestBase {
     static User user;
-    static String distributorIFC = CustomerData.DISTRIBUTOR_NAME_IFC;
-    static String CustomerCode = CustomerData.CUSTOMER_CODE3;
-    static String DPName = "Independent Foods Co";
-    static String searchItemCode = "01762";
-    static String itemName = "Broccolini 18 CT";
+    static String distributorTRADEWELL = CustomerData.DISTRIBUTOR_TRADEWELL_DISTRIBUTORS;
+    static String CustomerCode = "1197";
 
     @BeforeMethod
     public void setUp() {
@@ -31,16 +28,17 @@ public class VerifyOnlyCatalogDisplayedWhenOrderGuideIsTurnedOffFromSupplierConf
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "login error");
+
         Login.navigateToInternalToolsPage();
         InternalTools.navigateToConfigureSupplier();
-        InternalTools.clickOnInternalToolCompanyEditDetails(DPName);
+        InternalTools.clickOnInternalToolCompanyEditDetails(distributorTRADEWELL);
         InternalTools.navigateToOrderingSettingsTab();
         InternalTools.clickCatalogOnlyOrderFlowToggle(true);
         InternalTools.clickSave();
         softAssert.assertTrue(InternalTools.isSuccessPopUpDisplayed(), "change not save");
         InternalTools.clickOKOnSucessOverlay();
 
-        Login.navigateToDistributorPortal(distributorIFC);
+        Login.navigateToDistributorPortal(distributorTRADEWELL);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
         Customer.clickMenu();
         Dashboard.navigateToCustomers();
