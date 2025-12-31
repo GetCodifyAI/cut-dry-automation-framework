@@ -3471,6 +3471,11 @@ public class Customer {
     public static void selectOrderApprovalType(String option)throws InterruptedException{
         customersPage.selectOrderApprovalType(option);
     }
+
+    public static boolean isDeleteOrderGuideOptionDisplayed(){
+        return customersPage.isDeleteOrderGuideOptionDisplayed();
+    }
+
     public static boolean isRemoveUnavailableItemsMsgHeaderDisplayed(){
         return customersPage.isRemovedUnavailableItemsTxtDisplayed();
     }
@@ -3492,7 +3497,6 @@ public class Customer {
     public static boolean isRemovedBuyoutItemAndUOMsCorrectlyDisplayedInHarOrderMinOverlay(String ItemName,String ItemCode,String ItemCount,String ItemUOM){
         return customersPage.isRemovedItemCorrectlyDisplayedInOrderMinimumOverlay( ItemName, ItemCode, ItemCount, ItemUOM);
     }
-
 
 
 }
