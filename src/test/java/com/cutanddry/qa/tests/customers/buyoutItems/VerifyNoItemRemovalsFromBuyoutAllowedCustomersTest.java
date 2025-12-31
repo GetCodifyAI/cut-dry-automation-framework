@@ -40,7 +40,7 @@ public class VerifyNoItemRemovalsFromBuyoutAllowedCustomersTest extends TestBase
     }
 
     @Test(groups = "DOT-TC-2820")
-    public void VerifyCartBecomesEmptyInBuyoutCustomersWhenAllItemsAreBuyOutItems() throws InterruptedException{
+    public void VerifyNoItemRemovalsFromBuyoutAllowedCustomers() throws InterruptedException{
         softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
