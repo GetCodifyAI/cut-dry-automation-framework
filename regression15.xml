@@ -48,6 +48,11 @@
             <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderGuideDeleteCancelDeletionTest"/>
             <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderGuideMoreOptionsCreateNewOrderGuideHappyPathTest"/>
 
+            <class name="com.cutanddry.qa.tests.customer_orders.VerifyCustomerProfileOrdersTabEmptyStateDisplayTest"/>
+            <class name="com.cutanddry.qa.tests.customer_orders.VerifyItemsCountColumnAccuracyInCustomerOrdersTabTest"/>
+            <class name="com.cutanddry.qa.tests.customer_orders.VerifyOrderReferenceColumnDisplayWithErpOrderBadgeTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyOrderViewItemsTabAndTimelineTabNavigationTest"/>
+
 
 
 
