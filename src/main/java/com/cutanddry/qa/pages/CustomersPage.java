@@ -715,7 +715,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By combinedOrderContinue = By.xpath("//button[contains(text(), 'Continue')]");
 
     By catalogFirstItemItemCode = By.xpath("//div[contains(@class,'card-deck')][1]/div[contains(@class,'card')][1]//button[contains(@data-tip,'View Brand Page')]/../following-sibling::div");
-    String catalogItemDisplayed = "(//div[contains(@class,'card-deck')][1]/div[contains(@class,'card')][1]//div[contains(normalize-space(.),'ITEMCODE')])[last()]";
+    String catalogItemDisplayed = "(//div[contains(@class,'card-deck')][1]/div[contains(@class,'card')]//div[contains(normalize-space(.),'ITEMCODE')])[last()]";
     String unpaidInvoiceName = "//div[text()='NAME']";
     By caseMinimumNotMetText = By.xpath("//*[contains(text(),'Case Minimum Not Met')]");
     By btn_sortCustomOrder = By.xpath("//div[contains(@class, 'cd_themed_select__single-value') and text()='Custom Order']");
@@ -966,6 +966,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By lbl_firstOrderReferenceNumber = By.xpath("(//tr[contains(@href,'/ordersView/')]//td//div[contains(text(),'#')])[1]");
     By lbl_firstErpOrderBadge = By.xpath("(//tr[contains(@href,'/ordersView/')]//td//span[contains(text(),'ERP Order')])[1]");
     By noRecordsAvailableInOrderSectionTxt = By.xpath("//div[text()='No Records Available']");
+    String removeBuyoutItemInHardOrderMinOverlay = "//span[contains(@class,'text-truncate') and normalize-space(.)='#ITEMCODE | ITEMNAME']/following-sibling::span[contains(normalize-space(.),'ITEMCOUNT') and contains(normalize-space(.),'ITEMUOM')]";
+    By canNotSubmitEmptyOrderError = By.xpath("//*[normalize-space(.)='Error: Cannot submit empty order']");
+    String onSaleItemCountResult = "//div[text()='FILTER']/following-sibling::div/div";
+    String onSaleItemTagCount = "//img[contains(@class,'card-img-top')]/following-sibling::div[normalize-space()='TAG']";
+    String catalogFilterAllItems = "//div[contains(@class,'_3ewg0b') and normalize-space()='FILTER']";
+    String catalogFilterSectionDropDown = "//div[contains(@class,'_abrv9k') and normalize-space()='FILTER']";
+    String catalogFilterBrandDropDownOption = "//div[text()='OPTION']";
+
 
 
 
@@ -5828,5 +5836,57 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(noRecordsAvailableInOrderSectionTxt,5);
     }
 
+
+    public boolean isRemovedItemCorrectlyDisplayedInOrderMinimumOverlay(String ItemName,String ItemCode,String ItemCount,String ItemUOM){
+        return distributorUI.isDisplayed(By.xpath(removeBuyoutItemInHardOrderMinOverlay.replace("ITEMNAME",ItemName).replace("ITEMCODE",ItemCode).replace("ITEMCOUNT",ItemCount).replace("ITEMUOM",ItemUOM)));
+    }
+    public boolean isCanNotSubmitEmptyOrdersErrorDisplayed(){
+        return distributorUI.isDisplayed(canNotSubmitEmptyOrderError);
+    }
+    public boolean isSubmitBtnEnabled(){
+        return distributorUI.isElementEnabled(btn_submitOrder);
+    }
+    public String getOnSaleResultsCount(String filter) {
+        try {
+            distributorUI.waitForCustom(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        distributorUI.waitForVisibility(By.xpath(catalogFilter.replace("FILTER", filter)));
+        String resultsText = distributorUI.getText(By.xpath(catalogFilter.replace("FILTER", filter)));
+
+        return resultsText.replaceAll("\\D+", "");
+    }
+    public String getOnSaleItemCountResult(String filter) {
+        try {
+            distributorUI.waitForCustom(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        distributorUI.waitForVisibility(By.xpath(onSaleItemCountResult.replace("FILTER", filter)));
+        String resultsText = distributorUI.getText(By.xpath(onSaleItemCountResult.replace("FILTER", filter)));
+
+        return resultsText.replaceAll("\\D+", "");
+    }
+    public String getSaleTagCount(String tag) {
+        int count = driver.findElements(
+                By.xpath(onSaleItemTagCount.replace("TAG",tag))
+        ).size();
+        return String.valueOf(count);
+    }
+    public boolean isCatalogFilterOnSaleTagDisplayed(String tag){
+        return distributorUI.isDisplayed(By.xpath(onSaleItemTagCount.replace("TAG", tag)));
+    }
+    public void clickCatalogFilterAllItems(String filter){
+        distributorUI.click(By.xpath(catalogFilterAllItems.replace("FILTER", filter)));
+    }
+    public void clickCatalogFilterSectionDropDown(String filter){
+        distributorUI.click(By.xpath(catalogFilterSectionDropDown.replace("FILTER", filter)));
+    }
+    public void clickCatalogFilterBrandDropDownOption(String option){
+        distributorUI.click(By.xpath(catalogFilterBrandDropDownOption.replace("OPTION", option)));
+    }
 
 }

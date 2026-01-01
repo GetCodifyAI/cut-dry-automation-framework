@@ -69,7 +69,7 @@ public class Login {
     public static void setNode(String DataName){
         loginPage.setNode(DataName);
     }
-    public static void setValueToNode(String keyName, String valueName){
+    public static void setValueToNode(String keyName, String valueName) throws InterruptedException {
         loginPage.setValueToNode(keyName,valueName);
     }
     public static void navigateToDistributorPortal(String name) {
