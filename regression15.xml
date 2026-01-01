@@ -56,8 +56,9 @@
 
             <class name="com.cutanddry.qa.tests.customers.VerifyOnlyCatalogDisplayedWhenOrderGuideIsTurnedOffFromSupplierConfigTest"/>
 
-
-
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyCatalogSectionsPanelFilterByOnSaleSectionTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyCatalogCategoryFilterFilterByProductCategoryTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyCatalogScreenBrandFilterProductsByBrandTest"/>
 
         </classes>
     </test>
