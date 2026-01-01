@@ -3458,6 +3458,9 @@ public class Customer {
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
         }
+        if (customersPage.isCombinedPopupDisplayed()){
+            customersPage.clickContinueCombined();
+        }
     }
     public static boolean isLeadTimeBannerDisplay(String message){
         return customersPage.isLeadTimeBannerDisplay(message);
@@ -3491,6 +3494,37 @@ public class Customer {
     public static double getCurrentOrdersValue() {
         return customersPage.getCurrentValue();
     }
+    public static boolean isRemovedBuyoutItemAndUOMsCorrectlyDisplayedInHarOrderMinOverlay(String ItemName,String ItemCode,String ItemCount,String ItemUOM){
+        return customersPage.isRemovedItemCorrectlyDisplayedInOrderMinimumOverlay( ItemName, ItemCode, ItemCount, ItemUOM);
+    }
+    public static boolean isCanNotSubmitEmptyOrdersErrorDisplayed(){
+        return customersPage.isCanNotSubmitEmptyOrdersErrorDisplayed();
+    }
+    public static boolean isSubmitOrderBtnEnabled(){
+        return customersPage.isSubmitBtnEnabled();
+    }
+    public static String getOnSaleResultsCount(String filter) throws InterruptedException {
+        return customersPage.getOnSaleResultsCount(filter);
+    }
+    public static String getOnSaleItemCountResult(String filter) throws InterruptedException {
+        return customersPage.getOnSaleItemCountResult(filter);
+    }
+    public static String getSaleTagCount(String tag) throws InterruptedException {
+        return customersPage.getSaleTagCount(tag);
+    }
+    public static boolean isCatalogFilterOnSaleTagDisplayed(String tag){
+        return customersPage.isCatalogFilterOnSaleTagDisplayed(tag);
+    }
+    public static void clickCatalogFilterAllItems(String filter){
+        customersPage.clickCatalogFilterAllItems(filter);
+    }
+    public static void clickCatalogFilterSectionDropDown(String filter){
+        customersPage.clickCatalogFilterSectionDropDown(filter);
+    }
+    public static void clickCatalogFilterBrandDropDownOption(String option){
+        customersPage.clickCatalogFilterBrandDropDownOption(option);
+    }
+
 
 
 }
