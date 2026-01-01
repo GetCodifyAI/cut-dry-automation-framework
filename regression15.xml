@@ -55,11 +55,11 @@
             <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderGuideMoreOptionsCreateNewOrderGuideHappyPathTest"/>
 
             <class name="com.cutanddry.qa.tests.customers.VerifyOnlyCatalogDisplayedWhenOrderGuideIsTurnedOffFromSupplierConfigTest"/>
+
             <class name="com.cutanddry.qa.tests.customer_orders.VerifyCustomerProfileOrdersTabEmptyStateDisplayTest"/>
             <class name="com.cutanddry.qa.tests.customer_orders.VerifyItemsCountColumnAccuracyInCustomerOrdersTabTest"/>
             <class name="com.cutanddry.qa.tests.customer_orders.VerifyOrderReferenceColumnDisplayWithErpOrderBadgeTest"/>
             <class name="com.cutanddry.qa.tests.orders.VerifyOrderViewItemsTabAndTimelineTabNavigationTest"/>
-
 
             <class name="com.cutanddry.qa.tests.customer_catalog.VerifyCatalogSectionsPanelFilterByOnSaleSectionTest"/>
             <class name="com.cutanddry.qa.tests.customer_catalog.VerifyCatalogCategoryFilterFilterByProductCategoryTest"/>
