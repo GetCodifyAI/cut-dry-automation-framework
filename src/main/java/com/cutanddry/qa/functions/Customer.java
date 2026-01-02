@@ -2443,6 +2443,9 @@ public class Customer {
     }
     public static void submitOrderRebate() throws InterruptedException {
         customersPage.submitOrder();
+        if (customersPage.isOrderMinPopupDisplayed()){
+            customersPage.clickPlaceOrderSoftOrderMinimum();
+        }
         if (customersPage.isOrderMiniumErrorBannerDisplayedSub()){
             dashboardPage.clickOnOrderSettings();
             settingsPage.selectOnOrderMinimums();
