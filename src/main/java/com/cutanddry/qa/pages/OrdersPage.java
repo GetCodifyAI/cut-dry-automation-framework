@@ -814,6 +814,51 @@ public class OrdersPage extends LoginPage{
         distributorUI.click(btn_cancel);
     }
 
+    By btn_items = By.xpath("//a[text()='Items' and @role='tab']");
+    By lbl_orderedItemsSection = By.xpath("//div[contains(text(),'Ordered Items')]");
+
+    public void clickItems(){
+        distributorUI.click(btn_items);
+    }
+
+    public boolean isItemsTabActive(){
+        try {
+            distributorUI.waitForVisibility(btn_items);
+            String classAttribute = distributorUI.getText(btn_items, "class");
+            return classAttribute != null && classAttribute.contains("active");
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean isTimelineTabActive(){
+        try {
+            distributorUI.waitForVisibility(btn_timeline);
+            String classAttribute = distributorUI.getText(btn_timeline, "class");
+            return classAttribute != null && classAttribute.contains("active");
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean isOrderedItemsSectionDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_orderedItemsSection);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_orderedItemsSection);
+    }
+
+    public boolean isTimelineContentDisplayed(){
+        try {
+            distributorUI.waitForVisibility(timestampTimeline);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(timestampTimeline);
+    }
+
 
 
 
