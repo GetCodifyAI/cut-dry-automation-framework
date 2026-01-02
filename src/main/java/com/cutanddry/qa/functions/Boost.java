@@ -351,5 +351,14 @@ public class Boost {
     public static boolean isBrandRemoved(String brandName){
         return boostPage.isBrandRemoved(brandName);
     }
+    public static void clickBoostFilters(){
+        boostPage.clickBoostFilters();
+    }
+    public static boolean isFiltersTestDisplay(){
+        return boostPage.isFiltersTestDisplay();
+    }
+    public static void TurnOnBoostFilterToggle(String filter,boolean status){
+        boostPage.TurnOnBoostFilterToggle(filter,status);
+    }
 
 }

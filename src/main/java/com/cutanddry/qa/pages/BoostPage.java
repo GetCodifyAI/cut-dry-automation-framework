@@ -119,6 +119,10 @@ public class BoostPage extends LoginPage {
     String txt_selectedBrand = "//div[contains(text(),'BRANDNAME')]";
     String btn_boostLevel = "//button[text()='LEVEL']";
     String btn_removeBrand = "//div[text()='NAME']/following-sibling::button[@aria-label='Remove brand']";
+    By tab_boostFilters = By.xpath("//a[text()='Filters']");
+    By txt_boostFilters = By.xpath("//h4[contains(text(),'Filters')]");
+    String boostFilterToggleStable = "(//td[contains(text(), 'FILTER')]/following-sibling::td//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle'])[1]";
+    String boostFilterToggleStable1 = "(//td[contains(text(), 'FILTER')]/following-sibling::td//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1])[1]";
 
 
 
@@ -610,6 +614,23 @@ public class BoostPage extends LoginPage {
             return !distributorUI.isDisplayed(By.xpath(txt_selectedBrand.replace("BRANDNAME", brandName)));
         } catch (Exception e) {
             return true;
+        }
+    }
+    public void clickBoostFilters() {
+        distributorUI.click(tab_boostFilters);
+    }
+    public boolean isFiltersTestDisplay() {
+        return distributorUI.isDisplayed(txt_boostFilters);
+    }
+    public void TurnOnBoostFilterToggle(String filter,boolean enable) {
+
+        String handlePosition = distributorUI.getElement(By.xpath(boostFilterToggleStable.replace("FILTER",filter))).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(16.5px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(By.xpath(boostFilterToggleStable1.replace("FILTER",filter)));
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(By.xpath(boostFilterToggleStable1.replace("FILTER",filter)));
         }
     }
 }
