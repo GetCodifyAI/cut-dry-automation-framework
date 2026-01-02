@@ -956,6 +956,16 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String removedBuyoutItemUOM = "//div[contains(@class,'d-flex') and .//span[@class='text-truncate' and normalize-space(.)='ITEMNAME (ITEMCODE)'] and .//s[normalize-space(.)='ITEMCOUNT ITEMUOM']]";
     String buyOutHardMinValues = "//div[normalize-space()='LABEL'] /following-sibling::div[normalize-space()='VALUE']";
     By currentValue = By.xpath("//div[normalize-space()='Current'] /following-sibling::div");
+    By lbl_itemsColumnHeader = By.xpath("//span[text()='Items']");
+    By lbl_ordersTableRows = By.xpath("//tr[contains(@href,'/ordersView/')]");
+    String lbl_orderRowItemsCount = "(//tr[contains(@href,'/ordersView/')])[ROW]/td[5]";
+    By lbl_orderDetailsLineItems = By.xpath("(//div[contains(@class,'_jws3mfs')]//span)[1]");
+    By lbl_orderReferenceColumnHeader = By.xpath("//span[contains(text(),'Order Reference')]");
+    By lbl_orderReferenceNumber = By.xpath("//tr[contains(@href,'/ordersView/')]//td//div[contains(text(),'#')]");
+    By lbl_erpOrderBadge = By.xpath("//tr[contains(@href,'/ordersView/')]//td//span[contains(text(),'ERP Order')]");
+    By lbl_firstOrderReferenceNumber = By.xpath("(//tr[contains(@href,'/ordersView/')]//td//div[contains(text(),'#')])[1]");
+    By lbl_firstErpOrderBadge = By.xpath("(//tr[contains(@href,'/ordersView/')]//td//span[contains(text(),'ERP Order')])[1]");
+    By noRecordsAvailableInOrderSectionTxt = By.xpath("//div[text()='No Records Available']");
     String removeBuyoutItemInHardOrderMinOverlay = "//span[contains(@class,'text-truncate') and normalize-space(.)='#ITEMCODE | ITEMNAME']/following-sibling::span[contains(normalize-space(.),'ITEMCOUNT') and contains(normalize-space(.),'ITEMUOM')]";
     By canNotSubmitEmptyOrderError = By.xpath("//*[normalize-space(.)='Error: Cannot submit empty order']");
     String onSaleItemCountResult = "//div[text()='FILTER']/following-sibling::div/div";
@@ -5750,6 +5760,83 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         String rawText = distributorUI.getText(currentValue);
         return Double.parseDouble(rawText.replace("$", "").replace(",", "").trim());
     }
+
+
+    public boolean isItemsColumnHeaderDisplayed() {
+        try {
+            distributorUI.waitForVisibility(lbl_itemsColumnHeader);
+            return distributorUI.isDisplayed(lbl_itemsColumnHeader);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isOrdersListDisplayed() {
+        try {
+            distributorUI.waitForVisibility(lbl_ordersTableRows);
+            return distributorUI.isDisplayed(lbl_ordersTableRows);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public String getFirstOrderItemsCount() {
+        distributorUI.waitForVisibility(By.xpath(lbl_orderRowItemsCount.replace("ROW", "1")));
+        return distributorUI.getText(By.xpath(lbl_orderRowItemsCount.replace("ROW", "1"))).trim();
+    }
+
+    public int getOrderDetailsLineItemsCount() {
+        try {
+            distributorUI.waitForVisibility(lbl_orderDetailsLineItems);
+            return distributorUI.countElements(lbl_orderDetailsLineItems);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+
+    // DOT-TC-3617: Order Reference Column and ERP Order Badge Methods
+    public boolean isOrderReferenceColumnHeaderDisplayed() {
+        distributorUI.waitForVisibility(lbl_orderReferenceColumnHeader);
+        return distributorUI.isDisplayed(lbl_orderReferenceColumnHeader);
+    }
+
+    public boolean isOrderReferenceNumberDisplayed() {
+        return distributorUI.isDisplayed(lbl_orderReferenceNumber);
+    }
+
+    public boolean isFirstOrderReferenceNumberDisplayed() {
+        distributorUI.waitForVisibility(lbl_firstOrderReferenceNumber);
+        return distributorUI.isDisplayed(lbl_firstOrderReferenceNumber);
+    }
+
+    public String getFirstOrderReferenceNumber() {
+        distributorUI.waitForVisibility(lbl_firstOrderReferenceNumber);
+        return distributorUI.getText(lbl_firstOrderReferenceNumber);
+    }
+
+    public boolean isErpOrderBadgeDisplayed() {
+        return distributorUI.isDisplayed(lbl_erpOrderBadge);
+    }
+
+    public boolean isFirstErpOrderBadgeDisplayed() {
+        return distributorUI.isDisplayed(lbl_firstErpOrderBadge);
+    }
+
+    public boolean isOrdersEmptyStateDisplayed(){
+        try {
+            distributorUI.waitForCustom(3000);
+            return !distributorUI.isDisplayed(OrderIdTxt, 5);
+        } catch (Exception e) {
+            return true;
+        }
+    }
+
+    public boolean isNoOrdersMessageDisplayed(){
+        return distributorUI.isDisplayed(noRecordsAvailableInOrderSectionTxt,5);
+    }
+
+
     public boolean isRemovedItemCorrectlyDisplayedInOrderMinimumOverlay(String ItemName,String ItemCode,String ItemCount,String ItemUOM){
         return distributorUI.isDisplayed(By.xpath(removeBuyoutItemInHardOrderMinOverlay.replace("ITEMNAME",ItemName).replace("ITEMCODE",ItemCode).replace("ITEMCOUNT",ItemCount).replace("ITEMUOM",ItemUOM)));
     }

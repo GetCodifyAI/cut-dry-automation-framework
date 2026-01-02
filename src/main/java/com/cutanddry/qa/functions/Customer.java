@@ -2443,6 +2443,9 @@ public class Customer {
     }
     public static void submitOrderRebate() throws InterruptedException {
         customersPage.submitOrder();
+        if (customersPage.isOrderMinPopupDisplayed()){
+            customersPage.clickPlaceOrderSoftOrderMinimum();
+        }
         if (customersPage.isOrderMiniumErrorBannerDisplayedSub()){
             dashboardPage.clickOnOrderSettings();
             settingsPage.selectOnOrderMinimums();
@@ -3525,6 +3528,54 @@ public class Customer {
         customersPage.clickCatalogFilterBrandDropDownOption(option);
     }
 
+
+    public static boolean isItemsColumnHeaderDisplayed() {
+        return customersPage.isItemsColumnHeaderDisplayed();
+    }
+
+    public static boolean isOrdersListDisplayed() {
+        return customersPage.isOrdersListDisplayed();
+    }
+
+    public static String getFirstOrderItemsCount() {
+        return customersPage.getFirstOrderItemsCount();
+    }
+
+    public static int getOrderDetailsLineItemsCount() {
+        return customersPage.getOrderDetailsLineItemsCount();
+    }
+
+    public static boolean isOrderReferenceColumnHeaderDisplayed() {
+        return customersPage.isOrderReferenceColumnHeaderDisplayed();
+    }
+
+    public static boolean isOrderReferenceNumberDisplayed() {
+        return customersPage.isOrderReferenceNumberDisplayed();
+    }
+
+    public static boolean isFirstOrderReferenceNumberDisplayed() {
+        return customersPage.isFirstOrderReferenceNumberDisplayed();
+    }
+
+    public static String getFirstOrderReferenceNumber() {
+        return customersPage.getFirstOrderReferenceNumber();
+    }
+
+    public static boolean isErpOrderBadgeDisplayed() {
+        return customersPage.isErpOrderBadgeDisplayed();
+    }
+
+    public static boolean isFirstErpOrderBadgeDisplayed() {
+        return customersPage.isFirstErpOrderBadgeDisplayed();
+    }
+
+    public static boolean isOrdersEmptyStateDisplayed(){
+        return customersPage.isOrdersEmptyStateDisplayed();
+    }
+
+    public  static boolean isNoOrdersMessageDisplayed(){
+        return customersPage.isNoOrdersMessageDisplayed();
+    }
 
 
 }
