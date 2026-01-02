@@ -59,6 +59,7 @@ public class VerifyTheSelectingMultiUOMFromCashAndCarryFlowTest extends TestBase
         CashAndCarry.enterState(user.getState());
         CashAndCarry.enterZip(user.getCode());
         CashAndCarry.submitOrder();
+        Thread.sleep(6000);
         softAssert.assertTrue(CashAndCarry.isPaymentSucessfullyScreenDisplayed(),"submit error");
         CashAndCarry.clickOK();
         softAssert.assertAll();

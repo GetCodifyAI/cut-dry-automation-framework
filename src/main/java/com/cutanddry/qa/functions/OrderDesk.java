@@ -147,4 +147,12 @@ public class OrderDesk {
     public static void navigateToSubmitOrdersReviewPage(){
         orderDeskPage.clickOnSubmittedOrderPageReviewBtn();
     }
+
+    public static boolean isBackButtonDisplayed(){
+        return orderDeskPage.isBackButtonDisplayed();
+    }
+
+    public static void clickOnBackButton(){
+        orderDeskPage.clickOnBackButton();
+    }
 }

@@ -15,6 +15,9 @@ public class ApprovalsPage extends LoginPage{
     By closeApprovalSummeryOverlay = By.xpath("//button//*[local-name()='svg' and @data-icon='xmark']");
     String approvalOrderElement = "//tbody//td[contains(normalize-space(.),'REFID')]";
     By rejectApprovalOverlay = By.xpath("//*[contains(text(),'Do you want to reject')]");
+    By disableApproveAndSubmitBtn = By.xpath("//button[normalize-space()='Approve & Submit Order' and @disabled]");
+    By disableSubmitForApproveBtn = By.xpath("//button[normalize-space()='Submit for Approval' and @disabled]");
+    By selectRejectionTab =By.xpath("//a[@aria-selected='true' and normalize-space()='Rejections']");
 
     static DashboardPage dashboardPage = new DashboardPage();
     static CustomersPage customersPage = new CustomersPage();
@@ -100,6 +103,22 @@ public class ApprovalsPage extends LoginPage{
     public boolean isRejectApprovalOverlayDisplayed(){
         return distributorUI.isDisplayed(rejectApprovalOverlay);
     }
+    public boolean isDisableApproveAndSubmitBtnDisplayed(){
+        return distributorUI.isDisplayed(disableApproveAndSubmitBtn);
+    }
+    public boolean isDisableSubmitForApprovalBtnDisplayed(){
+        return distributorUI.isDisplayed(disableSubmitForApproveBtn);
+    }
+    public boolean isApproveAndSubmitBtnDisplayed(){
+        return distributorUI.isDisplayed(approveAndSubmitBtn);
+    }
+    public boolean isRejectApprovalsBtnDisplayed(){
+        return distributorUI.isDisplayed(rejectApprovalsBtn);
+    }
+    public boolean isRejectionTabSelected()throws InterruptedException{
+        return distributorUI.isDisplayed(selectRejectionTab);
+    }
+
 
 
 }

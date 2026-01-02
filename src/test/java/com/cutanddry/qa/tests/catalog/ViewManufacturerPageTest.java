@@ -16,6 +16,7 @@ public class ViewManufacturerPageTest extends TestBase {
     static User user;
     String ItemCode = "10153581";
     String DistributorName = "185556964 - Brandon Cheney - Cheney Brothers";
+    String All = "All";
 
     @BeforeMethod
     public void setUp(){
@@ -30,6 +31,8 @@ public class ViewManufacturerPageTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DistributorName);
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
+        Thread.sleep(4000);
+        Catalog.selectItemStatus(All);
         Catalog.SearchItemInCatalogByItemCode(ItemCode);
         Catalog.SelectItemAfterSearch(ItemCode);
         Catalog.clickOnPreview();

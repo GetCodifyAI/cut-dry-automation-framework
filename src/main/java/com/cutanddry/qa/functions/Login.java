@@ -69,7 +69,7 @@ public class Login {
     public static void setNode(String DataName){
         loginPage.setNode(DataName);
     }
-    public static void setValueToNode(String keyName, String valueName){
+    public static void setValueToNode(String keyName, String valueName) throws InterruptedException {
         loginPage.setValueToNode(keyName,valueName);
     }
     public static void navigateToDistributorPortal(String name) {
@@ -126,7 +126,7 @@ public class Login {
     public static void navigateToLoginAs() {
         loginPage.navigateToLoginAs();
     }
-    public static boolean isUserExistInLoginAs(String name){
+    public static boolean isUserExistInLoginAs(String name) throws InterruptedException {
         return loginPage.navigateToLoginAsPortalForCustomerIndex(name);
     }
     public static void logInToOperatorAsWhiteLabel(String operator) throws InterruptedException {
@@ -144,5 +144,9 @@ public class Login {
     }
     public static void closeCurrentTabAndSwitchToNew(){
        loginPage.closeCurrentTabAndSwitchToNew();
+    }
+
+    public static void switchBetweenTabsUsingIndex(int index){
+        loginPage.switchBetweenTabsUsingIndex(index);
     }
 }
