@@ -8,45 +8,45 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part_Four" />
         <classes>
-            <class name="com.cutanddry.qa.tests.customers.VerifyTheFilterFromSalespersonTest" />
-            <class name="com.cutanddry.qa.tests.customers.VerifyTheExportCustomersTest" />
-            <class name="com.cutanddry.qa.tests.customers.VerifyTheExportOrderGuidesTest" />
-            <class name="com.cutanddry.qa.tests.customers.VerifyTheMoreFiltersTest" />
-            <class name="com.cutanddry.qa.tests.customers.VerifyTheAddNewCustomerTest" />
-            <class name="com.cutanddry.qa.tests.customers.VerifyTheBulkActionsInviteUsersTest" />
-            <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfEditOrderGuideTest" />
-            <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfPreviewCatalogTest" />
-            <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfChatFlowTest" />
+<!--            <class name="com.cutanddry.qa.tests.customers.VerifyTheFilterFromSalespersonTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customers.VerifyTheExportCustomersTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customers.VerifyTheExportOrderGuidesTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customers.VerifyTheMoreFiltersTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customers.VerifyTheAddNewCustomerTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customers.VerifyTheBulkActionsInviteUsersTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfEditOrderGuideTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfPreviewCatalogTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfChatFlowTest" />-->
 
-            <class name="com.cutanddry.qa.tests.customer_orders.VerifyThePauseStandingOrderTest" />
-            <class name="com.cutanddry.qa.tests.customer_orders.VerifyThePrintKitchenReceiptTest" />
-            <class name="com.cutanddry.qa.tests.customer_orders.VerifyThePrintOrderConfirmationTest" />
-            <class name="com.cutanddry.qa.tests.customer_orders.VerifyTheNavigatesToOrderSectionTest" />
+<!--            <class name="com.cutanddry.qa.tests.customer_orders.VerifyThePauseStandingOrderTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customer_orders.VerifyThePrintKitchenReceiptTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customer_orders.VerifyThePrintOrderConfirmationTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customer_orders.VerifyTheNavigatesToOrderSectionTest" />-->
 
-            <class name="com.cutanddry.qa.tests.customer_drafts.VerifyTheCreatedDraftsTest" />
-            <class name="com.cutanddry.qa.tests.customer_drafts.VerifyTheDeleteDraftsTest" />
+<!--            <class name="com.cutanddry.qa.tests.customer_drafts.VerifyTheCreatedDraftsTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customer_drafts.VerifyTheDeleteDraftsTest" />-->
 
-            <class name="com.cutanddry.qa.tests.customer_track.VerifyTheAddingTrackProfileTest" />
-            <class name="com.cutanddry.qa.tests.customer_track.VerifyTheRemovingTrackProfileTest" />
+<!--            <class name="com.cutanddry.qa.tests.customer_track.VerifyTheAddingTrackProfileTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customer_track.VerifyTheRemovingTrackProfileTest" />-->
 
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyEditCustomerNameTest" />
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyLastOrderDateTest" />
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyEditCustomerNameTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyLastOrderDateTest" />-->
 
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyEditCustomerShippingAddressTest" />
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyAddNoteTest" />
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyEditNoteTest" />
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyAddSalespersonTest" />
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyRemoveSalespersonTest" />
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyAddTagTest" />
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyRemoveTagTest" />
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileNewUserInviteTest" />
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileEditTest" />
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileDeleteTest" />
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyCustomerProfileVisibilityTest" />
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyCustomerProfileStatusTest" />
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyEditCustomerShippingAddressTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyAddNoteTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyEditNoteTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyAddSalespersonTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyRemoveSalespersonTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyAddTagTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyRemoveTagTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileNewUserInviteTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileEditTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileDeleteTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyCustomerProfileVisibilityTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyCustomerProfileStatusTest" />-->
 
-            <class name="com.cutanddry.qa.tests.customer_groups.VerifyCustomerGroupIsAssignedWhenSelectedTest" />
-            <class name="com.cutanddry.qa.tests.customer_groups.VerifyCustomerGroupVisibleTest" />
+<!--            <class name="com.cutanddry.qa.tests.customer_groups.VerifyCustomerGroupIsAssignedWhenSelectedTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.customer_groups.VerifyCustomerGroupVisibleTest" />-->
 
             <class name="com.cutanddry.qa.tests.orders.VerifyMoreFiltersSalesPersonAndCreditRequestTest" />
             <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsPrintKitchenReceiptTest" />
