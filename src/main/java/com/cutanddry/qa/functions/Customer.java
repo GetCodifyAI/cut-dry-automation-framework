@@ -527,6 +527,12 @@ public class Customer {
     }
     public static void setStandingOrder(){
         customersPage.setStandingOrder();
+        if(customersPage.isOrderMinimumOverlayDisplayed()){
+            customersPage.clickPlaceOrderSoftOrderMinimum();;
+        }
+        if (customersPage.isDuplicatePopupDisplayed()){
+            customersPage.clickYesDuplicatePopup();
+        }
     }
     public static void resetStandingOrder(){
         customersPage.resetStandingOrder();

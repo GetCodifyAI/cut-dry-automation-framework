@@ -2,6 +2,7 @@ package com.cutanddry.qa.tests.standing_orders;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.ParentChildOGData;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
@@ -15,8 +16,8 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheStandingOrderForChildOrderGuideAccountsTest extends TestBase {
     static User user;
-    static String DP = "189234630 - Cut+Dry Agent - Indianhead Foodservice Distributor Sandbox";
-    static String childCustomerId = "74927";
+    static String DP = ParentChildOGData.DISTRIBUTOR_INDIANHEAD;
+    static String childCustomerId = ParentChildOGData.CUSTOMER_ID_INDIANHEAD_2;
 
     @BeforeMethod
     public void setUp() {
@@ -66,11 +67,9 @@ public class VerifyTheStandingOrderForChildOrderGuideAccountsTest extends TestBa
         Customer.searchCustomerByCode(childCustomerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(childCustomerId), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(childCustomerId);
-
         Customer.expandMoreOptionsDropdown();
         Customer.clickOnManageStandingOrders();
         softAssert.assertTrue(Customer.isStandingOrdersDeletedIconDisplay(), "standing order not displayed in manage standing orders overlay");
-
         Customer.clickOnStandingOrderDeleteIcon();
         softAssert.assertFalse(Customer.isStandingOrdersDeletedIconDisplay(), "delete error");
 
