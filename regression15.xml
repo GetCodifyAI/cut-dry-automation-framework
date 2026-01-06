@@ -65,6 +65,8 @@
             <class name="com.cutanddry.qa.tests.customer_catalog.VerifyCatalogCategoryFilterFilterByProductCategoryTest"/>
             <class name="com.cutanddry.qa.tests.customer_catalog.VerifyCatalogScreenBrandFilterProductsByBrandTest"/>
 
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheInactiveBoostFilterDisplayStatusTest"/>
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheActiveBoostFilterDisplayStatusTest"/>
         </classes>
     </test>
 </suite>
