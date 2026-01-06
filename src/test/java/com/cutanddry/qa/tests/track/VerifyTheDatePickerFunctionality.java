@@ -18,10 +18,10 @@ public class VerifyTheDatePickerFunctionality extends TestBase {
     static User user;
 //    static String distributorName = "Brandon IFC Cut+Dry Agent";
 static String distributorName = "46505655";
-    String startDay = "Sunday";
-    String startMonth = "December";
+    String startDay = "Thursday";
+    String startMonth = "January";
     String startDate = "1";
-    String startYear = "2024";
+    String startYear = "2026";
 
     @BeforeMethod
     public void setUp() {

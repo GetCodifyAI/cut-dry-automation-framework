@@ -27,7 +27,7 @@ public class VerifyCorrectErrorMessagesAreDisplayedWhenAddingDifferentTypesOfIte
     static String outOfStockItemCode = "33925";
     static String outOfStockItemCodeError = "Product out of stock";
     static String discontinuedItemCode = "95337";
-    static String discontinuedItemCodeError = "Product discontinued";
+    static String discontinuedItemCodeError = "Product discontinued, Product out of stock";
 
     static String CompanyName = "What Chefs Want - Rockies";
     static String DistributorName = "138629491 - Eshan - What Chefs Want - Rockies";
