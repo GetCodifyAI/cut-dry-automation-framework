@@ -42,7 +42,7 @@ public class VerifySoftOrderMinimumNotMetAfterBuyoutItemRemovalTest extends Test
     String itemCount = "1";
     double currentOrdersValue;
     double Short;
-    static String customerLoginCode = "scott.koranda@1hotels.com";
+    static String customerLoginCode = "186162079";
     static String orderId,orderId2;
 
     @BeforeMethod

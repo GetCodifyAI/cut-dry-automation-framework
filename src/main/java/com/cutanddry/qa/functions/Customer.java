@@ -3576,6 +3576,12 @@ public class Customer {
     public  static boolean isNoOrdersMessageDisplayed(){
         return customersPage.isNoOrdersMessageDisplayed();
     }
+    public static void clickCatalogFilterDropDown(String filter)throws InterruptedException{
+        customersPage.clickCatalogFilterDropDown(filter);
+    }
+    public static boolean isCatalogFilterOptionDisplayed(String filter,String option)throws InterruptedException{
+        return customersPage.isCatalogFilterOptionDisplayed(filter,option);
+    }
 
 
 }
