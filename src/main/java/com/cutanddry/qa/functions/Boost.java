@@ -357,7 +357,7 @@ public class Boost {
     public static boolean isFiltersTestDisplay(){
         return boostPage.isFiltersTestDisplay();
     }
-    public static void TurnOnBoostFilterToggle(String filter,boolean status){
+    public static void TurnOnBoostFilterToggle(String filter,boolean status) throws InterruptedException {
         boostPage.TurnOnBoostFilterToggle(filter,status);
     }
 

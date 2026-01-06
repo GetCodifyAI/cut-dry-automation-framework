@@ -973,6 +973,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String catalogFilterAllItems = "//div[contains(@class,'_3ewg0b') and normalize-space()='FILTER']";
     String catalogFilterSectionDropDown = "//div[contains(@class,'_abrv9k') and normalize-space()='FILTER']";
     String catalogFilterBrandDropDownOption = "//div[text()='OPTION']";
+    String catalogFilterDropDown = "//div[contains(text(), 'FILTER')]";
+    String catalogFilterDropDownOption = "//div[contains(text(), 'FILTER')]/../../following-sibling::div//*[name()='svg' and @data-icon='square']/following-sibling::div[contains(text(), 'OPTION')]";
+
 
 
 
@@ -5887,6 +5890,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickCatalogFilterBrandDropDownOption(String option){
         distributorUI.click(By.xpath(catalogFilterBrandDropDownOption.replace("OPTION", option)));
+    }
+    public void clickCatalogFilterDropDown(String filter)throws InterruptedException{
+        distributorUI.click(By.xpath(catalogFilterDropDown.replace("FILTER",filter)));
+    }
+    public boolean isCatalogFilterOptionDisplayed(String filter, String option)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(catalogFilterDropDownOption.replace("FILTER", filter).replace("OPTION",option)));
     }
 
 }

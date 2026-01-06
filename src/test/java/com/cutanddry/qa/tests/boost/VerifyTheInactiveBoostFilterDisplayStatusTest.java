@@ -2,7 +2,6 @@ package com.cutanddry.qa.tests.boost;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
-import com.cutanddry.qa.data.testdata.DistributorOrderData;
 import com.cutanddry.qa.data.testdata.InfluenceData;
 import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
@@ -13,7 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheActiveBoostFilterDisplayStatusTest extends TestBase {
+public class VerifyTheInactiveBoostFilterDisplayStatusTest extends TestBase {
     static User user;
     String DP = InfluenceData.DISTRIBUTOR_BIRITE;
     static String StockedInHouse = "Stocked (in-house)";
@@ -33,8 +32,8 @@ public class VerifyTheActiveBoostFilterDisplayStatusTest extends TestBase {
         initialization();
         user = JsonUtil.readUserLogin();
     }
-    @Test(groups = "DOT-TC-3696")
-    public void VerifyTheActiveBoostFilterDisplayStatus() throws InterruptedException {
+    @Test(groups = "DOT-TC-3697")
+    public void VerifyTheInactiveBoostFilterDisplayStatus() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "login error");
@@ -46,9 +45,9 @@ public class VerifyTheActiveBoostFilterDisplayStatusTest extends TestBase {
         Boost.clickBoostFilters();
         softAssert.assertTrue(Boost.isFiltersTestDisplay(),"navigate to boost filters error");
         Thread.sleep(4000);
-        Boost.TurnOnBoostFilterToggle(StockedInHouse,true);
-        Boost.TurnOnBoostFilterToggle(outOfStock,true);
-        Boost.TurnOnBoostFilterToggle(BEPRebates,true);
+        Boost.TurnOnBoostFilterToggle(StockedInHouse,false);
+        Boost.TurnOnBoostFilterToggle(outOfStock,false);
+        Boost.TurnOnBoostFilterToggle(BEPRebates,false);
         Boost.saveBrandBoost();
         Thread.sleep(4000);
 
@@ -57,13 +56,13 @@ public class VerifyTheActiveBoostFilterDisplayStatusTest extends TestBase {
         Catalog.clickOnPreviewCatalog();
         Assert.assertTrue(Catalog.isNavigatedToPreviewCatalog(),"navigation to preview catalog error");
         Customer.clickCatalogFilterDropDown(itemType);
-        softAssert.assertTrue(Customer.isCatalogFilterOptionDisplayed(itemType,StockedInHouse),"filter display error StockedInHouse");
+        softAssert.assertFalse(Customer.isCatalogFilterOptionDisplayed(itemType,StockedInHouse),"filter display error StockedInHouse");
 
         Customer.clickCatalogFilterDropDown(availability);
-        softAssert.assertTrue(Customer.isCatalogFilterOptionDisplayed(availability,outOfStock),"filter display error outOfStock");
+        softAssert.assertFalse(Customer.isCatalogFilterOptionDisplayed(availability,outOfStock),"filter display error outOfStock");
 
         Customer.clickCatalogFilterDropDown(deals);
-        softAssert.assertTrue(Customer.isCatalogFilterOptionDisplayed(deals,BEPRebates),"filter display error BEPRebates");
+        softAssert.assertFalse(Customer.isCatalogFilterOptionDisplayed(deals,BEPRebates),"filter display error BEPRebates");
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
@@ -74,13 +73,13 @@ public class VerifyTheActiveBoostFilterDisplayStatusTest extends TestBase {
         Customer.clickCatalogFilterAllItems(allItemsSection);
         Thread.sleep(5000);
         Customer.clickCatalogFilterDropDown(itemType);
-        softAssert.assertTrue(Customer.isCatalogFilterOptionDisplayed(itemType,StockedInHouse),"filter display error StockedInHouse");
+        softAssert.assertFalse(Customer.isCatalogFilterOptionDisplayed(itemType,StockedInHouse),"filter display error StockedInHouse");
 
         Customer.clickCatalogFilterDropDown(availability);
-        softAssert.assertTrue(Customer.isCatalogFilterOptionDisplayed(availability,outOfStock),"filter display error outOfStock");
+        softAssert.assertFalse(Customer.isCatalogFilterOptionDisplayed(availability,outOfStock),"filter display error outOfStock");
 
         Customer.clickCatalogFilterDropDown(deals);
-        softAssert.assertTrue(Customer.isCatalogFilterOptionDisplayed(deals,BEPRebates),"filter display error BEPRebates");
+        softAssert.assertFalse(Customer.isCatalogFilterOptionDisplayed(deals,BEPRebates),"filter display error BEPRebates");
 
         // Restaurant Flows
         Login.closePreviousTab();
@@ -95,13 +94,13 @@ public class VerifyTheActiveBoostFilterDisplayStatusTest extends TestBase {
         Customer.clickCatalogFilterAllItems(allItemsSection);
         Thread.sleep(5000);
         Customer.clickCatalogFilterDropDown(itemType);
-        softAssert.assertTrue(Customer.isCatalogFilterOptionDisplayed(itemType,StockedInHouse),"filter display error StockedInHouse");
+        softAssert.assertFalse(Customer.isCatalogFilterOptionDisplayed(itemType,StockedInHouse),"filter display error StockedInHouse");
 
         Customer.clickCatalogFilterDropDown(availability);
-        softAssert.assertTrue(Customer.isCatalogFilterOptionDisplayed(availability,outOfStock),"filter display error outOfStock");
+        softAssert.assertFalse(Customer.isCatalogFilterOptionDisplayed(availability,outOfStock),"filter display error outOfStock");
 
         Customer.clickCatalogFilterDropDown(deals);
-        softAssert.assertTrue(Customer.isCatalogFilterOptionDisplayed(deals,BEPRebates),"filter display error BEPRebates");
+        softAssert.assertFalse(Customer.isCatalogFilterOptionDisplayed(deals,BEPRebates),"filter display error BEPRebates");
         softAssert.assertAll();
     }
     @AfterMethod

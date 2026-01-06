@@ -622,7 +622,7 @@ public class BoostPage extends LoginPage {
     public boolean isFiltersTestDisplay() {
         return distributorUI.isDisplayed(txt_boostFilters);
     }
-    public void TurnOnBoostFilterToggle(String filter,boolean enable) {
+    public void TurnOnBoostFilterToggle(String filter,boolean enable) throws InterruptedException {
 
         String handlePosition = distributorUI.getElement(By.xpath(boostFilterToggleStable.replace("FILTER",filter))).getAttribute("style");
         boolean isEnabled = handlePosition.contains("translateX(16.5px)");
@@ -632,5 +632,6 @@ public class BoostPage extends LoginPage {
         } else if (!enable && isEnabled) {
             distributorUI.clickWithScrollAndHover(By.xpath(boostFilterToggleStable1.replace("FILTER",filter)));
         }
+        distributorUI.waitForCustom(3000);
     }
 }
