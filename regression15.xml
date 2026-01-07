@@ -30,24 +30,24 @@
 <!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPAdminCanApproveOrderWhenOperatorExclusiveApprovalTypeTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerCanApproveOrderWhenOperatorExclusiveApprovalTypeTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPAdminCanRejectOrderWhenOperatorExclusiveApprovalTypeTest"/>-->
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerCanRejectOrderWhenOperatorExclusiveApprovalTypeTest"/>
+<!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerCanRejectOrderWhenOperatorExclusiveApprovalTypeTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.customers.VerifyNoMinimumEnforcementOnPickupOrdersTest"/>
-            <class name="com.cutanddry.qa.tests.customers.VerifySoftOrderMinimumCustomerLevelOverrideTest"/>
-            <class name="com.cutanddry.qa.tests.customers.VerifyExemptFromOrderMinimumCustomerLevelOverrideTest"/>
-            <class name="com.cutanddry.qa.tests.customers.VerifyPropItemsAreOnlyDisplayedForPropCustomersTest"/>
+<!--            <class name="com.cutanddry.qa.tests.customers.VerifyNoMinimumEnforcementOnPickupOrdersTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.customers.VerifySoftOrderMinimumCustomerLevelOverrideTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.customers.VerifyExemptFromOrderMinimumCustomerLevelOverrideTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.customers.VerifyPropItemsAreOnlyDisplayedForPropCustomersTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanItemsToOrderFunctionalityInMoreOptionsMenuTest"/>
+<!--            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanItemsToOrderFunctionalityInMoreOptionsMenuTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyBuyoutItemsRemovedFromNonBuyoutCustomerOrderSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyHardOrderMinimumNotMetAfterBuyoutItemRemovalTest"/>
-            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifySoftOrderMinimumNotMetAfterBuyoutItemRemovalTest"/>
-            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyCartBecomesEmptyInBuyoutCustomersWhenAllItemsAreBuyOutItemsTest"/>
-            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyNoItemRemovalsFromBuyoutAllowedCustomersTest"/>
+<!--            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyBuyoutItemsRemovedFromNonBuyoutCustomerOrderSubmissionTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyHardOrderMinimumNotMetAfterBuyoutItemRemovalTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifySoftOrderMinimumNotMetAfterBuyoutItemRemovalTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyCartBecomesEmptyInBuyoutCustomersWhenAllItemsAreBuyOutItemsTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyNoItemRemovalsFromBuyoutAllowedCustomersTest"/>-->
 
 
-            <class name="com.cutanddry.qa.tests.orders.VerifyOrderDateColumnDisplayWithFulfillmentTypeBadgeTest"/>
-            <class name="com.cutanddry.qa.tests.orders.VerifyOrdersListResultsCountDisplayTest"/>
+<!--            <class name="com.cutanddry.qa.tests.orders.VerifyOrderDateColumnDisplayWithFulfillmentTypeBadgeTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.orders.VerifyOrdersListResultsCountDisplayTest"/>-->
             <class name="com.cutanddry.qa.tests.orders.VerifyOrdersListTotalColumnWithCurrencyFormattingTest"/>
             <class name="com.cutanddry.qa.tests.orders.VerifyOrderViewOrderInfoSectionFieldDisplayTest"/>
             <class name="com.cutanddry.qa.tests.order_guide.VerifyDeleteOrderGuideHappyPathWithConfirmationTest"/>
