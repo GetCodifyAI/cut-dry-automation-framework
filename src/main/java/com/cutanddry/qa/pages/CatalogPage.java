@@ -289,7 +289,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         return distributorUI.isDisplayed(ConagaraBrandPage);
     }
     public boolean isNavigatedtoOtherBrandPage() throws InterruptedException {
-         distributorUI.SwitchToNewTab(OtherBrandBtn);
+         distributorUI.click(OtherBrandBtn);
          distributorUI.waitForCustom(6000);
          distributorUI.waitForVisibility(OtherBrandText);
          return distributorUI.isDisplayed(OtherBrandText);
