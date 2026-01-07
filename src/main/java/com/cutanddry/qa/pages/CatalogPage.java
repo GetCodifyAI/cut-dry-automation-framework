@@ -20,10 +20,10 @@ public class CatalogPage extends LoginPage{
     By PreviewBtn = By.xpath("//button[@class='_xrol5g mx-2 btn btn-primary']");
     String ItemPreviewTxt = "//div[@class='mt-1 _5h4pkd' and contains(text(),'ITEMCODE')]";
     By Manufacturer = By.xpath("//div[contains(text(),'Conagra Foodservice')]");
-    By OtherBrandBtn = By.xpath("//img[@class='_kfc3ia img-fluid' and contains(@src,\"2b4b2013cb03bd26957893f39d0783bd.jpg\")]");
+    By OtherBrandBtn = By.xpath("//img[@class='_kfc3ia img-fluid' and contains(@src,\"5da3a0712077a8f0b15bf0bed2e6718d95ac69a1ff5fc9a9cebeaa7e7bd3d6f2_angela-mia-logo.png\")]");
 //    By ConagaraBrandPage= By.xpath("//div[contains(text(),'Conagra Foodservice ') and @class='mt-5 mb-1 _mojmdw']");
 By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[1]");
-    By OtherBrandText = By.xpath("//h2[contains(text(),'Andy Capp’s®')]");
+    By OtherBrandText = By.xpath("//div[contains(text(),'Angela Mia')]");
     By ShowCaseBtn = By.xpath("//*[contains(text(),'Showcase')]");
     By ShowCasePopUp = By.xpath("//*[contains(text(),'Using the Product Showcase')]");
     By btn_deleteShowCasePopUp = By.xpath("//button/*[local-name()='svg' and @data-icon='xmark']");
@@ -289,7 +289,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         return distributorUI.isDisplayed(ConagaraBrandPage);
     }
     public boolean isNavigatedtoOtherBrandPage() throws InterruptedException {
-         distributorUI.SwitchToNewTab(OtherBrandBtn);
+         distributorUI.click(OtherBrandBtn);
          distributorUI.waitForCustom(6000);
          distributorUI.waitForVisibility(OtherBrandText);
          return distributorUI.isDisplayed(OtherBrandText);
