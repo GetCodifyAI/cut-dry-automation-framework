@@ -19,7 +19,7 @@ public class VerifyCreditHoldModalAndBannerDisplayOnFirstOrderSessionTest extend
     String DistributorName ="46505655 - Kevin - Independent Foods Co";
     static String customerId = "30275";
     static String OperatorName = "372460856";
-    static String creditHoldMessage = "Your order has been successfully sent to your supplier.       However, it has been noted your account is on hold due to outstanding payments.       Please get in touch with your supplier to make necessary payments.";
+    static String creditHoldMessage = "Your order has been successfully sent to your supplier. However, it has been noted your account is on hold due to outstanding payments. Please get in touch with the supplier for necessary payments.";
     String itemName,searchItemCode;
     static String accHoldMessage = "Your account is currently on hold. Order submission and processing may be impacted. Please review details.";
 
@@ -57,7 +57,7 @@ public class VerifyCreditHoldModalAndBannerDisplayOnFirstOrderSessionTest extend
         Login.logInToOperatorAsWhiteLabel(OperatorName);
         Dashboard.navigateToOrder();
         softAssert.assertTrue(Customer.isAccountHoldPopUpDisplay(),"account not hold");
-        softAssert.assertTrue(Customer.isAccountHoldMessageDisplay(creditHoldMessage),"account hold message not display");
+        softAssert.assertTrue(Customer.isAccountHoldMessageDisplay(creditHoldMessage),"account hold message not display OG");
         Customer.clickCloseHardHoldPopup();
         Assert.assertTrue(Dashboard.isUserNavigatedToOrderGuide(),"navigation error");
         softAssert.assertTrue(Customer.isAccountHoldBannerDisplay(accHoldMessage),"account hold banner not display og");
@@ -75,7 +75,7 @@ public class VerifyCreditHoldModalAndBannerDisplayOnFirstOrderSessionTest extend
 
         Customer.submitOrder();
         softAssert.assertTrue(Customer.isAccountHoldPopUpDisplay(),"account not hold");
-        softAssert.assertTrue(Customer.isAccountHoldMessageDisplay(creditHoldMessage),"account hold message not display");
+        softAssert.assertTrue(Customer.isAccountHoldMessageDisplay(creditHoldMessage),"account hold message not display submit order");
 
 
         softAssert.assertAll();
