@@ -46,7 +46,9 @@ public class VerifyTheFilteringInvoicesByStatusTest extends TestBase {
         softAssert.assertTrue(Pay.isInvoicesBtnSelected(), "The user is unable to land on the Invoice tab.");
 
         Pay.clickOnInvoiceCustomerClearViaFilter();
+        Thread.sleep(4000);
         softAssert.assertTrue(Pay.isEmptyInvoiceMsgDisplayed(), "Invoices are not cleared.");
+        Thread.sleep(4000);
 
         Pay.selectInvoiceStatusViaFilter(status_past_due);
         softAssert.assertTrue(Pay.getInvoiceRecordStatus(1).trim().contains(status_past_due.replace("- ","").trim()), "The past due status in the first invoice record does not match the expected value.");

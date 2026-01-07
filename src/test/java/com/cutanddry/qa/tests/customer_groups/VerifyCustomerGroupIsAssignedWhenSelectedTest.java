@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyCustomerGroupIsAssignedWhenSelectedTest extends TestBase {
     static User user;
-    String DistributerName = "47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributerName = "46505655 - Kevin - Independent Foods Co";
     String CustomerCode = "16579";
     String CustomerGroupName = "NEWGroup01";
 

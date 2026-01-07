@@ -41,6 +41,17 @@ public class VerifyThatTheStandingOrderUponEditingWithInactiveItemsTest extends 
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
 
+        Dashboard.navigateToCatalog();
+        softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
+        Catalog.selectItemStatus(All);
+        Catalog.searchItemInCatalog(searchItemCode);
+        Catalog.selectItemFromGrid(searchItemCode);
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),searchItemCode,"Error in getting Item Code");
+        Catalog.selectEditFromProductConfig();
+        Catalog.selectProductActiveInactiveStatus(Active);
+        Catalog.saveChanges();
+        Catalog.clickOnCloseProductConfig();
+
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
@@ -87,7 +98,7 @@ public class VerifyThatTheStandingOrderUponEditingWithInactiveItemsTest extends 
         Customer.clickOnEditStandingOrder();
 
         softAssert.assertTrue(Orders.isInactiveItemDetectedPopUpDisplay(),"item not inactive");
-        Customer.clickOK();
+        Customer.clickClosePopUpWindow();
         softAssert.assertTrue(Customer.isReviewStandingOrdersDisplayed(),"navigate error review standing order");
         softAssert.assertEquals(Math.round(Catalog.getTotalPriceInReviewOrder() * 100.0) / 100.0,
                 0.00, "Total price in review order is not zero.");

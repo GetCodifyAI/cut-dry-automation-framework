@@ -18,7 +18,7 @@ public class OrdersPage extends LoginPage{
     By ratingOverlayCloseBtn = By.xpath("//div[contains(text(),'✕')]");
     By lbl_firstOrderTickBox = By.xpath("//tbody/tr[2]/td[1]");
     By lbl_firstOrder = By.xpath("//tbody/tr[2]/td[2]");
-    By btn_editOrder = By.xpath("//button[contains(text(),'Edit Order')]");
+    By btn_editOrder = By.xpath("//*[contains(text(),'Edit Order')]");
     By lbl_editOrderTitle = By.xpath("//h2[contains(text(),'Order')]");
     By lbl_editOrderTitleReview = By.xpath("(//*[contains(@data-tip,'Edit Order')]/div)[1]");
     By txt_editOrderPopup = By.xpath("//h2[contains(text(),'Edit Order?')]");
@@ -58,8 +58,8 @@ public class OrdersPage extends LoginPage{
     By lbl_salesperson = By.xpath("//label[contains(text(), 'Salesperson')]/following-sibling::div//div[contains(@class, 'themed_select__control')]");
     By txt_salesperson = By.xpath("//div[contains(text(),'Chamika IFC')]");
     By first_row_order_details = By.xpath("//tr[2]/td[4]");
-    By txt_order_section = By.xpath("//h2[@class='mb-0 _1vx3fhy' and starts-with(text(), 'Order #')]");
-    By btn_checkin = By.xpath("//button[@class = 'mr-3 btn btn-outline-primary' and text() = 'Check-In Order']");
+    By txt_order_section = By.xpath("//div[starts-with(text(), 'Order #')]");
+    By btn_checkin = By.xpath("//span[text() = 'Check-In Order']");
     By txt_checkin_order_section = By.xpath("//h2[@class='mb-0 _1vx3fhy' and starts-with(text(), 'Check-In Order #')]");
     By btn_threeDot = By.xpath("(//button[@id='dropdown-basic'])[1]");
     By txt_threeDotPrintOrderConfirmation = By.xpath("//span[contains(text(), 'Print Order Confirmation')]");
@@ -75,15 +75,15 @@ public class OrdersPage extends LoginPage{
     By lbl_orderTableColumn = By.xpath("//table/thead/tr/th");
     String lbl_orderTableColumnName = "//table/thead/tr/th[COUNT]/span";
     String lbl_creditRequested = "//tr//td[COUNT]//div[contains(text(),'STATUS')]";
-    String lbl_orderStatus = "//div[contains(@class, 'themed_select__single-value css-1uccc91-singleValue') and contains(text(),'STATUSVALUE')]";
-    By btn_orderStatus = By.xpath("//div[contains(@class, 'themed_select__single-value css-1uccc91-singleValue') and contains(text(),'Order Status:')]");
-    String lbl_orderStatusOption = "//div[contains(@class, 'themed_select__option') and contains(text(),'STATUS')]";
+    String lbl_orderStatus = "//span[normalize-space()='Status:']/following-sibling::span[contains(text(),'STATUSVALUE')]";
+    By btn_orderStatus = By.xpath("//span[normalize-space()='Status:']/../..");
+    String lbl_orderStatusOption = "//a[contains(text(),'STATUS')]";
     By txt_description = By.xpath("(//textarea[@class='form-control'])[1]");
     By btn_timeline = By.xpath("//a[text()='Timeline' and @role='tab']");
-    By timestampTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[1]");
-    By statusTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[2]");
-    By organizationTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[3]");
-    By userTimeline = By.xpath("//table[@class='mt-5 table table-hover']/tbody/tr/td[4]");
+    By timestampTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[1]");
+    By statusTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[2]");
+    By organizationTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[3]");
+    By userTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[4]");
     By btnReportIssue = By.xpath("//button[@type='button' and @class='mr-3 btn btn-outline-danger' and contains(., 'Report Issue')]");
     By firstCheckBox_tbleOrderIssues = By.xpath("//table[@class='mt-3 table table-hover']/tbody/tr[1]");
     By dropDown_whatIsWrong = By.xpath("//div[contains(@class, 'themed_select__control')]");
@@ -102,7 +102,19 @@ public class OrdersPage extends LoginPage{
     By selectLocation = By.xpath("//div[contains(text(),'Select Location')]");
     By btn_selectLocation = By.xpath("//div[contains(text(),'Select Location')]/following-sibling::div/div[1]");
     By btn_FindMoreInCatalog = By.xpath("//button[text()='Find More in Catalog']");
-    By lbl_inactiveItemDetected = By.xpath("//h2[text()='Inactive Items Detected']");
+    By lbl_inactiveItemDetected = By.xpath("//div[text()='Inactive Items Removed']");
+    String selectLocationSupplier = "//div[contains(text(),'Select Location')]/following-sibling::div//div[text()='LOCATION']";
+    By lbl_orderInfoCustomer = By.xpath("//div[contains(text(),'Cut & Dry Test Account (21259)')]");
+    By lbl_orderInfoLocationCode = By.xpath("//div[contains(text(),'Hayes (94123)')]");
+    By lbl_orderInfoDeliveryOn = By.xpath("//div[contains(text(),'Wed, 12/31/2025')]");
+    By lbl_orderInfoShipTo = By.xpath("//div[contains(text(),'Juan Zengotita (Personal), 1046 Rock Creek St., Apopka, Florida 32712')]");
+    By lbl_orderInfoFulfilmentMethod = By.xpath("//span[@data-for='cd-label-tooltip' and contains(text(),'Delivery')]");
+    By lbl_orderInfoStatus = By.xpath("//span[@data-for='cd-label-tooltip' and contains(text(),'Submitted')]");
+    By lbl_orderDateColumnHeader = By.xpath("//table/thead/tr/th//span[contains(text(),'Order Date')]");
+    By lbl_firstOrderDate = By.xpath("(//tr[contains(@class,'_du1frc') and contains(@class,'py-3')]/td)[2]");
+    By lbl_firstOrderFulfillmentBadge = By.xpath("//span[@data-for='cd-label-tooltip' and normalize-space()='Delivery']");
+    By btn_cancel = By.xpath("//button[normalize-space()='Cancel']");
+
 
     public void clickBtnSaveCheckIn(){
         distributorUI.click(btn_saveCheckIn);
@@ -624,6 +636,233 @@ public class OrdersPage extends LoginPage{
         distributorUI.waitForVisibility(lbl_inactiveItemDetected);
        return distributorUI.isDisplayed(lbl_inactiveItemDetected);
     }
+    public void selectLocationSupplier(String location){
+        distributorUI.click(By.xpath(selectLocationSupplier.replace("LOCATION",location)));
+    }
+
+    public boolean isOrderInfoCustomerDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_orderInfoCustomer);
+            String customerName = distributorUI.getText(lbl_orderInfoCustomer);
+            return customerName.contains("Cut & Dry Test Account (21259)");
+
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean isOrderInfoLocationCodeDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_orderInfoLocationCode);
+            String LocationName = distributorUI.getText(lbl_orderInfoLocationCode);
+            return LocationName.contains("Hayes (94123)");
+        } catch (Exception e){
+            return false;
+        }
+
+    }
+
+    public boolean isOrderInfoDeliveryOnDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_orderInfoDeliveryOn);
+            String OrderInfoDelivery = distributorUI.getText(lbl_orderInfoDeliveryOn);
+            return OrderInfoDelivery.contains("Wed, 12/31/2025");
+        } catch (Exception e){
+            return false;
+        }
+
+    }
+
+    public boolean isOrderInfoShipToDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_orderInfoShipTo);
+            String OrderInfoShip = distributorUI.getText(lbl_orderInfoShipTo);
+            return OrderInfoShip.contains("Juan Zengotita (Personal), 1046 Rock Creek St., Apopka, Florida 32712");
+        } catch (Exception e){
+            return false;
+        }
+
+    }
+
+    public boolean isOrderInfoFulfilmentMethodDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_orderInfoFulfilmentMethod);
+            String fulfilmentMethod = distributorUI.getText(lbl_orderInfoFulfilmentMethod);
+            return fulfilmentMethod.contains("Delivery");
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean isOrderInfoStatusDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_orderInfoStatus);
+            String status = distributorUI.getText(lbl_orderInfoStatus);
+            return status.contains("Submitted");
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean isOrderDateColumnHeaderDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_orderDateColumnHeader);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_orderDateColumnHeader);
+    }
+
+    public String getFirstOrderDateText(){
+        distributorUI.waitForVisibility(lbl_firstOrderDate);
+        return distributorUI.getText(lbl_firstOrderDate);
+    }
+
+    public boolean isFirstOrderFulfillmentBadgeDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_firstOrderFulfillmentBadge);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_firstOrderFulfillmentBadge);
+    }
+
+    public String getFirstOrderFulfillmentBadgeText(){
+        distributorUI.waitForVisibility(lbl_firstOrderFulfillmentBadge);
+        return distributorUI.getText(lbl_firstOrderFulfillmentBadge);
+    }
+
+    By lbl_totalColumnHeader = By.xpath("//table/thead/tr/th/span[text()='Total']");
+    String lbl_totalColumnHeaderByIndex = "//table/thead/tr/th[COUNT]/span";
+    String lbl_totalColumnValue = "//table/tbody/tr[ROW]/td[COUNT]";
+
+    public boolean isTotalColumnHeaderDisplayed() {
+        try {
+            distributorUI.waitForVisibility(lbl_totalColumnHeader);
+        } catch (Exception e) {
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_totalColumnHeader);
+    }
+
+    public int getTotalColumnIndex() {
+        int totalColumnCount = distributorUI.countElements(lbl_orderTableColumn);
+        for (int i = 1; i <= totalColumnCount; i++) {
+            String columnName = distributorUI.getText(By.xpath(lbl_totalColumnHeaderByIndex.replace("COUNT", String.valueOf(i))));
+            if ("Total".equalsIgnoreCase(columnName)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public String getTotalValueFromRow(int rowIndex, int columnIndex) {
+        if (rowIndex!=2) {
+            rowIndex = rowIndex + 2;
+        }
+
+        By totalValueLocator = By.xpath(lbl_totalColumnValue
+                .replace("ROW", String.valueOf(rowIndex))
+                .replace("COUNT", String.valueOf(columnIndex)));
+        try {
+            distributorUI.waitForVisibility(totalValueLocator);
+            return distributorUI.getText(totalValueLocator);
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public boolean isTotalAmountFormattedWithDollarSign(String totalValue) {
+        return totalValue != null && totalValue.startsWith("$");
+    }
+
+    public boolean isTotalAmountFormattedWithTwoDecimalPlaces(String totalValue) {
+        if (totalValue == null || !totalValue.startsWith("$")) {
+            return false;
+        }
+        String numericPart = totalValue.replace("$", "").replace(",", "");
+        return numericPart.matches("\\d+\\.\\d{2}");
+    }
+
+    public boolean isTotalAmountFormattedWithCommaForLargeAmounts(String totalValue) {
+        if (totalValue == null || !totalValue.startsWith("$")) {
+            return false;
+        }
+        String numericPart = totalValue.replace("$", "");
+        double amount;
+        try {
+            amount = Double.parseDouble(numericPart.replace(",", ""));
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        if (amount >= 1000) {
+            return numericPart.contains(",");
+        }
+        return true;
+    }
+
+    public boolean isResultsCountDisplayed() {
+        try {
+            distributorUI.waitForVisibility(txt_resultsCount);
+        } catch (Exception e) {
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_resultsCount);
+    }
+
+    public void clickCancel(){
+        distributorUI.click(btn_cancel);
+    }
+
+    By btn_items = By.xpath("//a[text()='Items' and @role='tab']");
+    By lbl_orderedItemsSection = By.xpath("//div[contains(text(),'Ordered Items')]");
+
+    public void clickItems(){
+        distributorUI.click(btn_items);
+    }
+
+    public boolean isItemsTabActive(){
+        try {
+            distributorUI.waitForVisibility(btn_items);
+            String classAttribute = distributorUI.getText(btn_items, "class");
+            return classAttribute != null && classAttribute.contains("active");
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean isTimelineTabActive(){
+        try {
+            distributorUI.waitForVisibility(btn_timeline);
+            String classAttribute = distributorUI.getText(btn_timeline, "class");
+            return classAttribute != null && classAttribute.contains("active");
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean isOrderedItemsSectionDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_orderedItemsSection);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_orderedItemsSection);
+    }
+
+    public boolean isTimelineContentDisplayed(){
+        try {
+            distributorUI.waitForVisibility(timestampTimeline);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(timestampTimeline);
+    }
+
+
+
 
 
 }
+
+

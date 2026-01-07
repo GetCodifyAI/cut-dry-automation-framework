@@ -28,6 +28,7 @@ public class InternalToolsPage extends LoginPage {
     By orderMinimumDropDown = By.xpath("//div[text()='Order minimum type: ']/following-sibling::div/div");
     String orderMinimumDropDownOption = "(//div[text()='TYPE'])[last()]";
     By addOrderMinimum = By.xpath("//div[contains(text(),'Soft order Minimum Surcharge')]/following-sibling::div/input");
+    By addOrderMinimumAmount = By.xpath("//div[contains(text(),'Order Minimum Amount')]/following-sibling::div/input");
     By txt_success = By.xpath("//h2[contains(text(),'Success')]");
     By payDetailsTab = By.xpath("//a[contains(text(),'Pay Details')]");
     By payDetailsToggleStable = By.xpath("//label[contains(text(), 'Pay Enabled For All Users: ')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
@@ -111,6 +112,10 @@ public class InternalToolsPage extends LoginPage {
     By parentChildRelationshipTask = By.xpath("//div[normalize-space()='createParentChildOrderGuideRelationships']//ancestor::td/following::td//button[contains(text(),'Run Locally')]");
     By catalogOnlyOrderFlowToggleStable = By.xpath("//div[contains(text(), 'Catalog Only Order Flow')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By catalogOnlyOrderFlowToggleStable1 = By.xpath("//div[contains(text(), 'Catalog Only Order Flow')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By leadTimeWarningMessage= By.xpath("//div[contains(text(),'Lead Time Items Warning Message')]/following-sibling::div/input");
+    By AllowSupplierToSetMinimumToggleStable = By.xpath("//div[contains(text(), 'Allow supplier to set minimum order price per customer')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By AllowSupplierToSetMinimumToggleStable1 = By.xpath("//div[contains(text(), 'Allow supplier to set minimum order price per customer')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+
 
 
 
@@ -313,6 +318,11 @@ public class InternalToolsPage extends LoginPage {
         distributorUI.click(addOrderMinimum);
         distributorUI.clear(addOrderMinimum);
         distributorUI.sendKeys(addOrderMinimum,minimum);
+    }
+    public void enterOrderMinimumAmount(String minimum){
+        distributorUI.click(addOrderMinimumAmount);
+        distributorUI.clear(addOrderMinimumAmount);
+        distributorUI.sendKeys(addOrderMinimumAmount,minimum);
     }
     public void clickSave() {
         distributorUI.clickWithScrollAndHover(SaveBtn);
@@ -680,6 +690,22 @@ public class InternalToolsPage extends LoginPage {
             distributorUI.clickWithScrollAndHover(catalogOnlyOrderFlowToggleStable1);
         } else if (!enable && isEnabled) {
             distributorUI.clickWithScrollAndHover(catalogOnlyOrderFlowToggleStable1);
+        }
+    }
+    public void enterLeadTimeWaringMessage(String message){
+        distributorUI.click(leadTimeWarningMessage);
+        distributorUI.clear(leadTimeWarningMessage);
+        distributorUI.sendKeys(leadTimeWarningMessage,message);
+    }
+    public void TurnOnAllowSupplierToSetMinimumToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(AllowSupplierToSetMinimumToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(AllowSupplierToSetMinimumToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(AllowSupplierToSetMinimumToggleStable1);
         }
     }
 

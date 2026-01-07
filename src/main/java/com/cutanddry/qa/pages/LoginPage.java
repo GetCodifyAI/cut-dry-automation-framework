@@ -120,10 +120,11 @@ public class LoginPage extends TestBase {
         distributorUI.sendKeys(txt_value, String.valueOf(true));
         distributorUI.click(btn_setData);
     }
-    public void setValueToNode(String keyName, String valueName){
+    public void setValueToNode(String keyName, String valueName) throws InterruptedException {
         distributorUI.sendKeys(txt_key,keyName);
         distributorUI.sendKeys(txt_value,valueName);
         distributorUI.click(btn_setData);
+        distributorUI.waitForCustom(2000);
     }
     public void navigateToDistributorPortal(String name) {
         distributorUI.navigateToURL(Constants.LOGIN_AS);
@@ -258,13 +259,15 @@ public class LoginPage extends TestBase {
     public void navigateToLoginAs() {
         distributorUI.navigateToURL(Constants.LOGIN_AS);
     }
-    public boolean navigateToLoginAsPortalForCustomerIndex(String name) {
+    public boolean navigateToLoginAsPortalForCustomerIndex(String name) throws InterruptedException {
         distributorUI.navigateToURL(Constants.LOGIN_AS);
 //        Orders.closeRatingOverlay();
+        distributorUI.waitForCustom(5000);
         distributorUI.sendKeys(lbl_loginAs,name);
         return distributorUI.isDisplayed(By.xpath(txt_whitelblCustomer.replace("NAME", name)));
     }
     public void typeToSearchOnOperator(String operator) throws InterruptedException {
+        distributorUI.waitForCustom(5000);
         distributorUI.sendKeys(tbx_operatorSearch, operator);
         distributorUI.waitForCustom(4000);
     }
@@ -287,5 +290,9 @@ public class LoginPage extends TestBase {
     }
     public void closeCurrentTabAndSwitchToNew(){
         distributorUI.openNewTabAndClosePreviousTabs();
+    }
+
+    public void switchBetweenTabsUsingIndex(int index ){
+        distributorUI.switchTabUsingIndex(index);
     }
 }

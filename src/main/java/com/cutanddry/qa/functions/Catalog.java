@@ -686,6 +686,12 @@ public class Catalog {
     public static String getItemNameSecondRowInCatalog() throws InterruptedException {
         return catalogPage.getItemNameSecondRowInCatalog();
     }
+    public static void clickOnCloseProductConfig()throws InterruptedException{
+        catalogPage.clickOnCloseProductConfig();
+    }
+    public static boolean isOrderStatusDisplay(String id,String status)throws InterruptedException{
+        return catalogPage.isOrderStatusDisplay(id,status);
+    }
 
 
 }

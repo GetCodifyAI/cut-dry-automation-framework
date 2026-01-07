@@ -18,18 +18,18 @@ import java.util.LinkedHashMap;
 public class VerifyThatTheSortItemsByDropDownIsAvailableInTheSimpleListViewTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    static String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    static String DistributorName ="46505655 - Kevin - Independent Foods Co";
     static String CompanyName = "Independent Foods Co";
     static String customerId =PurchaseHistoryData.CUSTOMER_ID_IFC;
     static String simpleListView = "Enabled on DP Portal & Operator App";
 
 
     Map<String, String> sortOptionsMap = new LinkedHashMap<>() {{
-        put("Item Code", "00036");
-        put("UPC", "052100324050");
-        put("Brand", "Brakebush");
+        put("Item Code", "346244");
+        put("UPC", "00076800000694");
+        put("Brand", "Lender");
         put("Description", "Bagel Cinnamon Raisin Sliced 00069 Ou");
-        put("Pack Size", "1 Lb");
+        put("Pack Size", "72/2.3 OZ");
     }};
 
 

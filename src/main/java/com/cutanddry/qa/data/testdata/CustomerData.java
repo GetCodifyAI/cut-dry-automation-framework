@@ -16,7 +16,7 @@ public class CustomerData {
     public static final String MARGIN_COLUMN = "Margin";
     public static final String ORDER_SUMMERY = "Gross Profit";
     public static final String DP_HILLCREST = "96939129 - Cut+Dry Agent - Hillcrest Foodservice";
-    public static final String DISTRIBUTOR_NAME_IFC = "47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    public static final String DISTRIBUTOR_NAME_IFC = "46505655 - Kevin - Independent Foods Co";
     public static final String NODE_STATUS1 = "addedbysupplier";
     public static final String NODE_STATUS2 = "bank_account";
     public static final String CUSTOMER_CODE2 = "21259";
@@ -42,7 +42,7 @@ public class CustomerData {
     public static final String CUSTOMER_CHEF_KITCHEN = "C1235";
     public static final String CUSTOMER_CODE3 = "16579";
     public static final String CUSTOMER_CODE4 = "23445";
-    public static final String DISTRIBUTOR_NAME_IFC_SALESPERSON = "164465588";
+    public static final String DISTRIBUTOR_NAME_IFC_SALESPERSON = "102611801";
     public static final String DISTRIBUTOR_NAME_IFC_ACCOUNT_RECEIVABLE = "81058255";
     public static final String CUSTOMER_CODE5 = "45705";
     public static final String DISTRIBUTOR_BIRITE = "120984267 - Cut+Dry Agent - BiRite Foodservice Distributors";
@@ -50,6 +50,7 @@ public class CustomerData {
     public static final String CUSTOMER_CODE7 = "58951";
     public static final String PRODUCT_ITEM_CODE = "02345";
     public static final String CUSTOMER_OG = "Test_Automation";
+    public static final String DISTRIBUTOR_TRADEWELL_DISTRIBUTORS = "Tradewell Distributors";
 
 
 }

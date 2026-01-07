@@ -15,7 +15,7 @@ public class VerifyTheSoftOrderMinimumSelectingMultipleUOMTest extends TestBase 
     SoftAssert softAssert;
     static User user;
     static String customerId = "97071";
-    String DistributorName ="47837013 - Brandon IFC Cut+Dry Agent - Independent Foods Co";
+    String DistributorName ="46505655 - Kevin - Independent Foods Co";
     String searchItemCode = CatalogData.ITEM_CODE;
     String itemName = CatalogData.ITEM_NAME;
     String uomDropDownOption = CatalogData.UOM_DROPDOWN_OPTION;
@@ -91,7 +91,7 @@ public class VerifyTheSoftOrderMinimumSelectingMultipleUOMTest extends TestBase 
         totalItemQuantityReviewOrder = Catalog.getTotalQuantityInReviewOrder();
         Customer.submitOrderMinimum();
         softAssert.assertTrue(Customer.isOrderMinPopupDisplayed(),"popup display error");
-        Customer.clickYesOrderMinimum();
+        Customer.clickPlaceOrderSoftOrderMinimum();
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "The order was not completed successfully.");
         orderId = Customer.getSuccessOrderId();
         Customer.clickClose();
