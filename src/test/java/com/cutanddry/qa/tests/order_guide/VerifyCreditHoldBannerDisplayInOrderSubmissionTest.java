@@ -17,7 +17,7 @@ public class VerifyCreditHoldBannerDisplayInOrderSubmissionTest extends TestBase
     static User user;
     String DistributorName ="46505655 - Kevin - Independent Foods Co";
     static String customerId = "30275";
-    static String creditHoldMessage1 = "Your order has been successfully sent to your supplier.       However, it has been noted your account is on hold due to outstanding payments.       Please get in touch with your supplier to make necessary payments.";
+    static String creditHoldMessage1 = "Your order has been successfully sent to your supplier. However, it has been noted your account is on hold due to outstanding payments. Please get in touch with the supplier for necessary payments.";
 
     @BeforeMethod
     public void setUp(){
