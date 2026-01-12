@@ -17,7 +17,7 @@ public class VerifyGeneralHoldBannerDisplayInOrderSubmissionTest extends TestBas
     static User user;
     String DistributorName ="46505655 - Kevin - Independent Foods Co";
     static String customerId = "30275";
-    static String generalHoldMessage1 = "Your order has been successfully sent to your supplier.       However, it has been noted your account is on hold by your supplier.       Please get in touch with your supplier to resolve it.";
+    static String generalHoldMessage1 = "Your order has been successfully sent to your supplier. However, it has been noted your account is on hold by your supplier. Please get in touch with your supplier to resolve it.";
 
     @BeforeMethod
     public void setUp(){
