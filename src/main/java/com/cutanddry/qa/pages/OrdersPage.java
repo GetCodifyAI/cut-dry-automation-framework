@@ -185,14 +185,16 @@ public class OrdersPage extends LoginPage{
     }
 
     public void clickCloseRatingOverlay(){
-        if(distributorUI.isDisplayed(ratingOverlayIframe)){
-            distributorUI.switchToFrameByElement(ratingOverlayIframe);
-            distributorUI.click(ratingOverlayCloseBtn);
-            try {
-                distributorUI.waitForCustom(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+        try {
+            if(distributorUI.isDisplayed(ratingOverlayIframe, 3)){
+                distributorUI.switchToFrameByElement(ratingOverlayIframe);
+                distributorUI.click(ratingOverlayCloseBtn);
+                distributorUI.switchToDefaultContent();
+                distributorUI.waitForCustom(1000);
             }
+        } catch (Exception e) {
+            // Ensure we're back to default content even if closing fails
+            distributorUI.switchToDefaultContent();
         }
     }
 
