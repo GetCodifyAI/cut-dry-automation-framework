@@ -236,6 +236,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     By btn_updateOGPopup = By.xpath("//button[contains(text(),'Confirm')]");
     By specialItemYesBtn = By.xpath("(//div[normalize-space(text()) ='Special Item'])[2]/ancestor::div[3]/following-sibling::div//div[normalize-space(text()) ='Yes']/..");
     String lbl_orderStatus = "//*[contains(text(),'#') and text()='ID']/../../following-sibling::td//span[text()='STATUS']";
+    String getSaleItemPriceUOM = "((//button[contains(@data-for,'add-to-order-guide')]/ancestor::div[2]/following-sibling::div)[1]/following-sibling::*//div[2]//span[contains(text(),'$')])[UOM]";
 
 
     public boolean isCatalogTextDisplayed() {
@@ -1275,6 +1276,14 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     }
     public boolean isOrderStatusDisplay(String id,String status)throws InterruptedException{
         return distributorUI.isDisplayed(By.xpath(lbl_orderStatus.replace("ID",id).replace("STATUS",status)));
+    }
+    public double getSaleItemPDPPriceUOM(String uom) throws InterruptedException {
+        try {
+            return extractPrice(By.xpath(getSaleItemPriceUOM.replace("UOM", uom)));
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPrice(By.xpath(getSaleItemPriceUOM.replace("UOM", uom)));
+        }
     }
 
 }
