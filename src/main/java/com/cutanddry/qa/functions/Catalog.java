@@ -692,6 +692,10 @@ public class Catalog {
     public static boolean isOrderStatusDisplay(String id,String status)throws InterruptedException{
         return catalogPage.isOrderStatusDisplay(id,status);
     }
+    public static double getSaleItemPDPPriceUOM(String uom) throws InterruptedException {
+        return catalogPage.getSaleItemPDPPriceUOM(uom);
+    }
+
 
 
 }
