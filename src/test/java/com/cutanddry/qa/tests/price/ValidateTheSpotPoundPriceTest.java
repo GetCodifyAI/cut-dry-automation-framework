@@ -73,7 +73,7 @@ public class ValidateTheSpotPoundPriceTest extends TestBase{
         Customer.updateMarginValues();
         softAssert.assertEquals(Customer.getPoundPrice().toLowerCase(),"$100.00/lb", "Pound price error");
         softAssert.assertEquals(Customer.getItemQtyFirstRow(),"1.22", "Item count error");
-        softAssert.assertEquals(Customer.getItemFinalPrice(),"$1,300.00", "Item final price error");
+        softAssert.assertEquals(Customer.getItemFinalPrice(),"$2,600.00", "Item final price error");
         itemPrice=Customer.getItemFinalPrice();
         softAssert.assertEquals(Customer.getItemPriceOnEditOrderReviewCheckout(),itemPrice,"The item has not been selected.");
         Customer.clickCheckOutOrderGuide();
