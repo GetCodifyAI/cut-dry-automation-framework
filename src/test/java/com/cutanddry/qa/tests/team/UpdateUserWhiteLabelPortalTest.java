@@ -17,7 +17,7 @@ public class UpdateUserWhiteLabelPortalTest extends TestBase {
     static String name = "Test";
     static String email = "test@email.com";
     static String new_email = "test123@email.com";
-    static String customer = "13038005947";
+    static String customer = "201465141";
 
     @BeforeMethod
     public void setUp(){
