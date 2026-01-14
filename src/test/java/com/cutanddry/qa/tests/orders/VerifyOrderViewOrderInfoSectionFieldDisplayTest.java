@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyOrderViewOrderInfoSectionFieldDisplayTest extends TestBase {
     static User user;
     String date = "Last 90 Days";
-    String OrderID = "794428453";
+    String OrderID = "807615480";
 
     @BeforeMethod
     public void setUp() {
