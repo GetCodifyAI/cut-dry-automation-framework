@@ -32,41 +32,16 @@
             <class name="com.cutanddry.qa.tests.order_approval.VerifyOPAdminCanRejectOrderWhenOperatorExclusiveApprovalTypeTest"/>
             <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerCanRejectOrderWhenOperatorExclusiveApprovalTypeTest"/>
 
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderGuideOrderApprovalUIFeatureTest" />
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderApprovalSettingsReflectedWhileOrderingTest" />
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyMultiLocationSummeryWidgetWhenNoApprovalsTest" />
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpOrderApprovalsAndRejectionsDisplayedCorrectlyTest"/>
+
             <class name="com.cutanddry.qa.tests.customers.VerifyNoMinimumEnforcementOnPickupOrdersTest"/>
             <class name="com.cutanddry.qa.tests.customers.VerifySoftOrderMinimumCustomerLevelOverrideTest"/>
             <class name="com.cutanddry.qa.tests.customers.VerifyExemptFromOrderMinimumCustomerLevelOverrideTest"/>
             <class name="com.cutanddry.qa.tests.customers.VerifyPropItemsAreOnlyDisplayedForPropCustomersTest"/>
 
-            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanItemsToOrderFunctionalityInMoreOptionsMenuTest"/>
-
-            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyBuyoutItemsRemovedFromNonBuyoutCustomerOrderSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyHardOrderMinimumNotMetAfterBuyoutItemRemovalTest"/>
-            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifySoftOrderMinimumNotMetAfterBuyoutItemRemovalTest"/>
-            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyCartBecomesEmptyInBuyoutCustomersWhenAllItemsAreBuyOutItemsTest"/>
-            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyNoItemRemovalsFromBuyoutAllowedCustomersTest"/>
-
-
-            <class name="com.cutanddry.qa.tests.orders.VerifyOrderDateColumnDisplayWithFulfillmentTypeBadgeTest"/>
-            <class name="com.cutanddry.qa.tests.orders.VerifyOrdersListResultsCountDisplayTest"/>
-            <class name="com.cutanddry.qa.tests.orders.VerifyOrdersListTotalColumnWithCurrencyFormattingTest"/>
-            <class name="com.cutanddry.qa.tests.orders.VerifyOrderViewOrderInfoSectionFieldDisplayTest"/>
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyDeleteOrderGuideHappyPathWithConfirmationTest"/>
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderGuideDeleteCancelDeletionTest"/>
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderGuideMoreOptionsCreateNewOrderGuideHappyPathTest"/>
-
-            <class name="com.cutanddry.qa.tests.customers.VerifyOnlyCatalogDisplayedWhenOrderGuideIsTurnedOffFromSupplierConfigTest"/>
-
-            <class name="com.cutanddry.qa.tests.customer_orders.VerifyCustomerProfileOrdersTabEmptyStateDisplayTest"/>
-            <class name="com.cutanddry.qa.tests.customer_orders.VerifyItemsCountColumnAccuracyInCustomerOrdersTabTest"/>
-            <class name="com.cutanddry.qa.tests.customer_orders.VerifyOrderReferenceColumnDisplayWithErpOrderBadgeTest"/>
-            <class name="com.cutanddry.qa.tests.orders.VerifyOrderViewItemsTabAndTimelineTabNavigationTest"/>
-
-            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyCatalogSectionsPanelFilterByOnSaleSectionTest"/>
-            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyCatalogCategoryFilterFilterByProductCategoryTest"/>
-            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyCatalogScreenBrandFilterProductsByBrandTest"/>
-
-            <class name="com.cutanddry.qa.tests.boost.VerifyTheInactiveBoostFilterDisplayStatusTest"/>
-            <class name="com.cutanddry.qa.tests.boost.VerifyTheActiveBoostFilterDisplayStatusTest"/>
         </classes>
     </test>
 </suite>

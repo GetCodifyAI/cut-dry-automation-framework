@@ -16,7 +16,7 @@ public class VerifyProfileNewUserInviteTest extends TestBase {
     static User user;
     String CustomerCode = "16579";
     String UserName = "Test user";
-    String UserEmail = "Testuser@gmail.com";
+    static String UserEmail = "Testuser" + generateDynamicValue() + "@gmail.com";
 
     @BeforeMethod
     public void setUp(){
