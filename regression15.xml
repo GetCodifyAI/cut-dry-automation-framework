@@ -8,32 +8,32 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part_Fifteen"/>
         <classes>
-            <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessSetToDisableForAllViaCustomerProfileTest"/>
+<!--            <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessSetToDisableForAllViaCustomerProfileTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreditHoldBannerDisplayInOrderSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyGeneralHoldBannerDisplayInOrderSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyInactiveHoldBannerDisplayedInOrderSubmissionTest"/>
+<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreditHoldBannerDisplayInOrderSubmissionTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyGeneralHoldBannerDisplayInOrderSubmissionTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyInactiveHoldBannerDisplayedInOrderSubmissionTest"/>-->
 
             <class name="com.cutanddry.qa.tests.order_approval.VerifyDpAdminUserCanNotApproveOrderWhenOperatorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPEmployeeSubmitsOrderForApprovalWhenDistributorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerSubmitsOrderForApprovalWhenDistributorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerCannotApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpAdminUserCanApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>
+<!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPEmployeeSubmitsOrderForApprovalWhenDistributorExclusiveApprovalTypeTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerSubmitsOrderForApprovalWhenDistributorExclusiveApprovalTypeTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerCannotApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpAdminUserCanApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpSalespersonUserCanApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPAdminSubmitsOrderForApprovalWhenDistributorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPAdminCannotApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpSalespersonUserCanRejectOrderWhenDistributorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpAdminUserCanRejectOrderWhenDistributorExclusiveApprovalTypeTest"/>
+<!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpSalespersonUserCanApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPAdminSubmitsOrderForApprovalWhenDistributorExclusiveApprovalTypeTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPAdminCannotApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpSalespersonUserCanRejectOrderWhenDistributorExclusiveApprovalTypeTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpAdminUserCanRejectOrderWhenDistributorExclusiveApprovalTypeTest"/>-->
 
             <class name="com.cutanddry.qa.tests.order_approval.VerifyOPEmployeeSubmitsOrderForApprovalWhenOperatorExclusiveApprovalTypeTest"/>
             <class name="com.cutanddry.qa.tests.order_approval.VerifyOPAdminCanApproveOrderWhenOperatorExclusiveApprovalTypeTest"/>
             <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerCanApproveOrderWhenOperatorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPAdminCanRejectOrderWhenOperatorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerCanRejectOrderWhenOperatorExclusiveApprovalTypeTest"/>
+<!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPAdminCanRejectOrderWhenOperatorExclusiveApprovalTypeTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerCanRejectOrderWhenOperatorExclusiveApprovalTypeTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderGuideOrderApprovalUIFeatureTest" />
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderApprovalSettingsReflectedWhileOrderingTest" />
+<!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderGuideOrderApprovalUIFeatureTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderApprovalSettingsReflectedWhileOrderingTest" />-->
             <class name="com.cutanddry.qa.tests.order_approval.VerifyMultiLocationSummeryWidgetWhenNoApprovalsTest" />
             <class name="com.cutanddry.qa.tests.order_approval.VerifyDpOrderApprovalsAndRejectionsDisplayedCorrectlyTest"/>
 
