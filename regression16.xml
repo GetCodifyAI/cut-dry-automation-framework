@@ -38,6 +38,10 @@
 
             <class name="com.cutanddry.qa.tests.boost.VerifyTheInactiveBoostFilterDisplayStatusTest"/>
             <class name="com.cutanddry.qa.tests.boost.VerifyTheActiveBoostFilterDisplayStatusTest"/>
+
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyForceShowModalForMutualSubstituteProductsTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifySuggestSubstituteForDiscontinuedProductWhenForceShowDisabledTest"/>
+
         </classes>
     </test>
 </suite>
