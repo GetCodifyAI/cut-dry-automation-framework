@@ -3582,6 +3582,9 @@ public class Customer {
     public static boolean isCatalogFilterOptionDisplayed(String filter,String option)throws InterruptedException{
         return customersPage.isCatalogFilterOptionDisplayed(filter,option);
     }
+    public static boolean isAddedSubstitutesItemDisplayed(String item){
+        return customersPage.isAddedSubstitutesItemDisplayed(item);
+    }
 
 
 }

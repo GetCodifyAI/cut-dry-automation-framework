@@ -115,13 +115,12 @@ public class InternalToolsPage extends LoginPage {
     By leadTimeWarningMessage= By.xpath("//div[contains(text(),'Lead Time Items Warning Message')]/following-sibling::div/input");
     By AllowSupplierToSetMinimumToggleStable = By.xpath("//div[contains(text(), 'Allow supplier to set minimum order price per customer')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By AllowSupplierToSetMinimumToggleStable1 = By.xpath("//div[contains(text(), 'Allow supplier to set minimum order price per customer')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
-
-
-
-
-
-
-
+    By ForceShowSubstitutesEnabledToggleStable = By.xpath("//div[contains(text(), 'Force show substitutes Enabled:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By ForceShowSubstitutesEnabledToggleStable1 = By.xpath("//div[contains(text(), 'Force show substitutes Enabled:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By ShowSubstitutesModalInPortalToggleStable = By.xpath("//div[contains(text(), 'Show substitutions modal in portal:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By ShowSubstitutesModalInPortalToggleStable1 = By.xpath("//div[contains(text(), 'Show substitutions modal in portal:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By AllowOrderingDiscontinuedToggleStable = By.xpath("//div[contains(text(), 'Allow ordering discontinued items when substitutes are available:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By AllowOrderingDiscontinuedToggleStable1 = By.xpath("//div[contains(text(), 'Allow ordering discontinued items when substitutes are available:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
 
 
 
@@ -706,6 +705,39 @@ public class InternalToolsPage extends LoginPage {
             distributorUI.clickWithScrollAndHover(AllowSupplierToSetMinimumToggleStable1);
         } else if (!enable && isEnabled) {
             distributorUI.clickWithScrollAndHover(AllowSupplierToSetMinimumToggleStable1);
+        }
+    }
+    public void TurnOnForceShowSubstitutesEnabledToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(ForceShowSubstitutesEnabledToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(ForceShowSubstitutesEnabledToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(ForceShowSubstitutesEnabledToggleStable1);
+        }
+    }
+    public void TurnOnShowSubstitutesModalInPortalEnabledToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(ShowSubstitutesModalInPortalToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(ShowSubstitutesModalInPortalToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(ShowSubstitutesModalInPortalToggleStable1);
+        }
+    }
+    public void TurnOnAllowOrderingDiscontinuedToggle(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(AllowOrderingDiscontinuedToggleStable).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(AllowOrderingDiscontinuedToggleStable1);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(AllowOrderingDiscontinuedToggleStable1);
         }
     }
 
