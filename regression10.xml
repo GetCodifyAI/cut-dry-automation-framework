@@ -52,6 +52,7 @@
             <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentCustomerCreateAnOrderGuidesThenChangesAreSyncedToChildAccountsTest"/>
             <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentCustomerEditAnOrderGuidesThenChangesAreSyncedToChildAccountsTest"/>
             <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentCustomerDeleteAnOrderGuidesThenChangesAreSyncedToChildAccountsTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheImportOrderGuideWillReflectForTheChildAccountTest"/>
         </classes>
     </test>
 </suite>
