@@ -1286,5 +1286,76 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         }
     }
 
+    // Price formatting verification methods
+    By catalogPreviewCardPrices = By.xpath("//div[contains(@class, 'card')]//span[contains(text(),'$')]");
+    By catalogPreviewFirstCardPrice = By.xpath("(//div[contains(@class, 'card')]//span[contains(text(),'$')])[1]");
+    By catalogPreviewSecondCardPrice = By.xpath("(//div[contains(@class, 'card')]//span[contains(text(),'$')])[2]");
+    By catalogPreviewThirdCardPrice = By.xpath("(//div[contains(@class, 'card')]//span[contains(text(),'$')])[3]");
+    String catalogPreviewCardPriceByIndex = "(//div[contains(@class, 'card')]//span[contains(text(),'$')])[INDEX]";
+    By pdpPriceDisplay = By.xpath("//div[contains(@class,'_1evg3oy')]//span[contains(text(),'$')]");
+    By pdpUomDropdown = By.xpath("(//div[contains(@class,'themed_select__control')])[1]");
+    String pdpUomOption = "//div[contains(@class,'themed_select__option') and contains(text(),'OPTION')]";
+
+    public java.util.List<String> getCatalogPreviewCardPrices() throws InterruptedException {
+        distributorUI.waitForCustom(3000);
+        java.util.List<String> prices = new java.util.ArrayList<>();
+        int count = distributorUI.countElements(catalogPreviewCardPrices);
+        for (int i = 1; i <= Math.min(count, 5); i++) {
+            By priceLocator = By.xpath(catalogPreviewCardPriceByIndex.replace("INDEX", String.valueOf(i)));
+            if (distributorUI.isDisplayed(priceLocator, 5)) {
+                prices.add(distributorUI.getText(priceLocator));
+            }
+        }
+        return prices;
+    }
+
+    public String getCatalogPreviewCardPriceByIndex(int index) throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        By priceLocator = By.xpath(catalogPreviewCardPriceByIndex.replace("INDEX", String.valueOf(index)));
+        distributorUI.waitForVisibility(priceLocator);
+        return distributorUI.getText(priceLocator);
+    }
+
+    public boolean isPriceFormatValid(String price) {
+        if (price == null || price.isEmpty()) {
+            return false;
+        }
+        return price.matches("^\\$\\d{1,3}(,\\d{3})*\\.\\d{2}(/[a-zA-Z]+)?$");
+    }
+
+    public boolean hasDollarSign(String price) {
+        return price != null && price.startsWith("$");
+    }
+
+    public boolean hasTwoDecimalPlaces(String price) {
+        if (price == null || price.isEmpty()) {
+            return false;
+        }
+        String priceWithoutUom = price.split("/")[0];
+        return priceWithoutUom.matches(".*\\.\\d{2}$");
+    }
+
+    public String getPDPPrice() throws InterruptedException {
+        distributorUI.waitForVisibility(pdpPriceDisplay);
+        return distributorUI.getText(pdpPriceDisplay);
+    }
+
+    public void clickPDPUomDropdown() throws InterruptedException {
+        distributorUI.waitForClickability(pdpUomDropdown);
+        distributorUI.click(pdpUomDropdown);
+    }
+
+    public void selectPDPUomOption(String option) throws InterruptedException {
+        By optionLocator = By.xpath(pdpUomOption.replace("OPTION", option));
+        distributorUI.waitForVisibility(optionLocator);
+        distributorUI.click(optionLocator);
+        distributorUI.waitForCustom(2000);
+    }
+
+    public boolean arePricesDisplayedOnCatalogCards() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(catalogPreviewFirstCardPrice, 10);
+    }
+
 }
 
