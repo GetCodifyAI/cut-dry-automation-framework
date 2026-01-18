@@ -696,6 +696,20 @@ public class Catalog {
         return catalogPage.getSaleItemPDPPriceUOM(uom);
     }
 
+    public static boolean isCashBackTagDisplayed() {
+        return catalogPage.isCashBackTagDisplayed();
+    }
 
+    public static boolean isOnSaleTagDisplayed() {
+        return catalogPage.isOnSaleTagDisplayed();
+    }
+
+    public static boolean isNewTagDisplayed() {
+        return catalogPage.isNewTagDisplayed();
+    }
+
+    public static boolean areAllTagsDisplayedWithProperAlignment() {
+        return catalogPage.areAllTagsDisplayedWithProperAlignment();
+    }
 
 }

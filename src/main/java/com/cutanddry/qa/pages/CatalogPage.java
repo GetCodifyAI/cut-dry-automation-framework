@@ -238,6 +238,11 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     String lbl_orderStatus = "//*[contains(text(),'#') and text()='ID']/../../following-sibling::td//span[text()='STATUS']";
     String getSaleItemPriceUOM = "((//button[contains(@data-for,'add-to-order-guide')]/ancestor::div[2]/following-sibling::div)[1]/following-sibling::*//div[2]//span[contains(text(),'$')])[UOM]";
 
+    // Cashback tag locators
+    By cashBackTag = By.xpath("//*[contains(text(),'Cash Back') or contains(text(),'Cashback') or contains(text(),'cash back')]");
+    By onSaleTag = By.xpath("//div[contains(@class,'badge') and contains(text(),'On Sale')] | //span[contains(text(),'On Sale')]");
+    By newTag = By.xpath("//div[contains(@class,'badge') and contains(text(),'New')] | //span[contains(text(),'New')]");
+    By itemTagsContainer = By.xpath("//div[contains(@class,'tag') or contains(@class,'badge')]/..");
 
     public boolean isCatalogTextDisplayed() {
         distributorUI.waitForVisibility(txt_catalog);
@@ -1283,6 +1288,41 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         } catch (Exception e) {
             System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
             return extractPrice(By.xpath(getSaleItemPriceUOM.replace("UOM", uom)));
+        }
+    }
+
+    public boolean isCashBackTagDisplayed() {
+        try {
+            return distributorUI.isDisplayed(cashBackTag, 5);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isOnSaleTagDisplayed() {
+        try {
+            return distributorUI.isDisplayed(onSaleTag, 5);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isNewTagDisplayed() {
+        try {
+            return distributorUI.isDisplayed(newTag, 5);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean areAllTagsDisplayedWithProperAlignment() {
+        try {
+            boolean cashBackDisplayed = isCashBackTagDisplayed();
+            boolean onSaleDisplayed = isOnSaleTagDisplayed();
+            boolean newDisplayed = isNewTagDisplayed();
+            return cashBackDisplayed && onSaleDisplayed && newDisplayed;
+        } catch (Exception e) {
+            return false;
         }
     }
 
