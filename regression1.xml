@@ -66,6 +66,7 @@
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyManageStandingOrdersCTAFunctionalityInOrderGuideTest" />
 
             <class name="com.cutanddry.qa.tests.boost.VerifyBroadcastMessageTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyBroadcastMessageRedirectingSupplierTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyTopCategoryPicksTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyCompareSimilarItemsTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedForCustomerTest" />
