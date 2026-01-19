@@ -2723,6 +2723,9 @@ public class Customer {
     public static boolean isSortOptionDisplayed(String option){
         return customersPage.isSortOptionDisplayed(option);
     }
+    public static boolean isSortOptionDisplayedForSimpleListView(String option){
+        return customersPage.isSortOptionDisplayedForSimpleListView(option);
+    }
     public static void clickOnOrderGuideParentChild(String code) throws InterruptedException {
         customersPage.clickOnOrderGuide(code);
         if (ordersPage.isSelectOrderGuidePopUpDisplayed()){
