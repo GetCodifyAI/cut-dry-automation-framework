@@ -1771,6 +1771,9 @@ public class Customer {
     public static void clickOnAutoPayScheduleDropdown(){
         customersPage.clickOnDropdownSchedule();
     }
+    public static void clickOnAutoPayInvoiceToPayDropdown(){
+        customersPage.clickOnDropdownInvoiceToPay();
+    }
 
     public static void selectDropdownOption(String optionText){
         customersPage.selectDropdownOption(optionText);
