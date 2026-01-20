@@ -15,7 +15,7 @@ import com.cutanddry.qa.base.TestBase;
 
 public class VerifyTheEmailStatementInMoreActions extends TestBase {
     static User user;
-    String CustomerCode = CustomerInvoiceData.CUSTOMER_CODE;
+    String CustomerCode = CustomerInvoiceData.RESTAURANT_TEST_HAYES_ID;
     String NotificationEmail = CustomerInvoiceData.NOTIFICATION_EMAIL;
 
     @BeforeMethod
