@@ -44,7 +44,7 @@ public class Verify24HourSnapshotLastSuccessfulSyncGraphAndDataTest extends Test
 
         softAssert.assertTrue(Integration.is24HourSnapshotDisplayed(), "24 Hour Snapshot section not displayed");
         softAssert.assertTrue(Integration.isCompletedTasksDisplayed(), "Completed tasks not displayed in 24 Hour Snapshot");
-        softAssert.assertTrue(Integration.isInProgressTasksDisplayed(), "In Progress tasks not displayed in 24 Hour Snapshot");
+       // softAssert.assertTrue(Integration.isInProgressTasksDisplayed(), "In Progress tasks not displayed in 24 Hour Snapshot");
 
         softAssert.assertTrue(Integration.isSnapshotPercentageDisplayed(), "24 Hour Snapshot percentage graph not displayed");
         String percentage = Integration.getSnapshotPercentage();

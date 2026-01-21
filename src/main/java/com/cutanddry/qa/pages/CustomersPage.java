@@ -384,7 +384,7 @@ By lbl_margin = By.xpath("//div[contains(text(),'Margin') and contains(text(),'$
 //    By dropdown_assignSalesperson = By.xpath("((//*[local-name() = 'svg' and @class='css-19bqh2r']))[2]");
 By dropdown_assignSalesperson = By.xpath("(//div[contains(@class,'themed_select__dropdown-indicator')])[last()]");
     By sel_salesperson = By.xpath("//div[contains(@class, 'themed_select__option') and contains(text(), 'Darlene')]");
-    By txt_assignedSalesperson = By.xpath("//td[contains(text(),'Darlene')]");
+    By txt_assignedSalesperson = By.xpath("//div[contains(text(),'Darlene')]");
     By btn_saveChanges = By.xpath("//button[contains(text(),'Save changes')]");
     By txt_cusProfSalesperson = By.xpath("//div[contains(@class,'_vjioml w-100 border') and contains(text(),'Darlene')]");
     By btn_removeSalesperson = By.xpath("(//td/*[contains(@data-icon,'trash-can')])[last()]");
@@ -520,6 +520,8 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     By lbl_cartItemUnitPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//span)[1]");
     By icon_edit_auto_pay = By.xpath("//div[contains(@class, 'font-weight-bold') and normalize-space(text())='Auto Pay']/*[name()='svg']");
     By dropdown_schedule = By.xpath("//div[contains(@class, 'themed_select__single-value') and text()='On due date']");
+    By dropdownInvoiceToPay = By.xpath("//div[text()='Invoices to Pay']/following-sibling::div");
+    By dropdownOptionInvoiceToPay = By.xpath("(//div[text()='All invoices'])[last()]");
     String option_ScheduleType = "//div[contains(@class, 'themed_select__menu')]//div[contains(@class, 'themed_select__option') and text()='OPTION_TEXT']";
     By btn_update = By.xpath("//button[text()='Update']");
     String txt_auto_pay_details = "//div[contains(@class, '_jehyy2') and contains(text(), 'SCHEDULE_OPTION')]";
@@ -3567,6 +3569,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
 
     public void clickOnDropdownSchedule(){
         distributorUI.click(dropdown_schedule);
+    }
+    public void clickOnDropdownInvoiceToPay(){
+        distributorUI.click(dropdownInvoiceToPay);
+        distributorUI.click(dropdownOptionInvoiceToPay);
     }
 
     public boolean verifyLastInvoicePaid(){
