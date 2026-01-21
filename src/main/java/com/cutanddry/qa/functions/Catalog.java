@@ -696,6 +696,41 @@ public class Catalog {
         return catalogPage.getSaleItemPDPPriceUOM(uom);
     }
 
+    // Price formatting verification methods
+    public static java.util.List<String> getCatalogPreviewCardPrices() throws InterruptedException {
+        return catalogPage.getCatalogPreviewCardPrices();
+    }
 
+    public static String getCatalogPreviewCardPriceByIndex(int index) throws InterruptedException {
+        return catalogPage.getCatalogPreviewCardPriceByIndex(index);
+    }
+
+    public static boolean isPriceFormatValid(String price) {
+        return catalogPage.isPriceFormatValid(price);
+    }
+
+    public static boolean hasDollarSign(String price) {
+        return catalogPage.hasDollarSign(price);
+    }
+
+    public static boolean hasTwoDecimalPlaces(String price) {
+        return catalogPage.hasTwoDecimalPlaces(price);
+    }
+
+    public static String getPDPPrice() throws InterruptedException {
+        return catalogPage.getPDPPrice();
+    }
+
+    public static void clickPDPUomDropdown() throws InterruptedException {
+        catalogPage.clickPDPUomDropdown();
+    }
+
+    public static void selectPDPUomOption(String option) throws InterruptedException {
+        catalogPage.selectPDPUomOption(option);
+    }
+
+    public static boolean arePricesDisplayedOnCatalogCards() throws InterruptedException {
+        return catalogPage.arePricesDisplayedOnCatalogCards();
+    }
 
 }
