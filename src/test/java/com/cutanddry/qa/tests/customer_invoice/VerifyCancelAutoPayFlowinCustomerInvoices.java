@@ -40,6 +40,7 @@ public class VerifyCancelAutoPayFlowinCustomerInvoices extends TestBase {
         Customer.clickonInvoice();
         Customer.clickOnEnable();
         Customer.clickOnIAgree();
+        Customer.clickOnAutoPayInvoiceToPayDropdown();
         Customer.clickOnEnableAutoPay();
         softAssert.assertTrue(Customer.isAutoPayEnabled(), "Auto pay has not been enabled properly");
 

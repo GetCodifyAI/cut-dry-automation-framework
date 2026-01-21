@@ -1771,6 +1771,9 @@ public class Customer {
     public static void clickOnAutoPayScheduleDropdown(){
         customersPage.clickOnDropdownSchedule();
     }
+    public static void clickOnAutoPayInvoiceToPayDropdown(){
+        customersPage.clickOnDropdownInvoiceToPay();
+    }
 
     public static void selectDropdownOption(String optionText){
         customersPage.selectDropdownOption(optionText);
@@ -3584,6 +3587,9 @@ public class Customer {
     }
     public static boolean isCatalogFilterOptionDisplayed(String filter,String option)throws InterruptedException{
         return customersPage.isCatalogFilterOptionDisplayed(filter,option);
+    }
+    public static boolean isAddedSubstitutesItemDisplayed(String item){
+        return customersPage.isAddedSubstitutesItemDisplayed(item);
     }
 
 

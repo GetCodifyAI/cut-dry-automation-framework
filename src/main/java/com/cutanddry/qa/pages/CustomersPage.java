@@ -520,6 +520,8 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     By lbl_cartItemUnitPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//span)[1]");
     By icon_edit_auto_pay = By.xpath("//div[contains(@class, 'font-weight-bold') and normalize-space(text())='Auto Pay']/*[name()='svg']");
     By dropdown_schedule = By.xpath("//div[contains(@class, 'themed_select__single-value') and text()='On due date']");
+    By dropdownInvoiceToPay = By.xpath("//div[text()='Invoices to Pay']/following-sibling::div");
+    By dropdownOptionInvoiceToPay = By.xpath("(//div[text()='All invoices'])[last()]");
     String option_ScheduleType = "//div[contains(@class, 'themed_select__menu')]//div[contains(@class, 'themed_select__option') and text()='OPTION_TEXT']";
     By btn_update = By.xpath("//button[text()='Update']");
     String txt_auto_pay_details = "//div[contains(@class, '_jehyy2') and contains(text(), 'SCHEDULE_OPTION')]";
@@ -976,6 +978,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String catalogFilterDropDown = "//div[contains(text(), 'FILTER')]";
     String catalogFilterDropDownOption = "//div[contains(text(), 'FILTER')]/../../following-sibling::div//*[name()='svg' and @data-icon='square']/following-sibling::div[contains(text(), 'OPTION')]";
     String sortOptionDisplaySimpleListView = "//*[contains(text(),'OPTION')]";
+    String substitutionsItem = "//div[contains(text(), 'ITEM')]";
+
 
 
 
@@ -3567,6 +3571,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickOnDropdownSchedule(){
         distributorUI.click(dropdown_schedule);
     }
+    public void clickOnDropdownInvoiceToPay(){
+        distributorUI.click(dropdownInvoiceToPay);
+        distributorUI.click(dropdownOptionInvoiceToPay);
+    }
 
     public boolean verifyLastInvoicePaid(){
         return distributorUI.isDisplayed(txt_lastInvoicePaid);
@@ -5901,6 +5909,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isCatalogFilterOptionDisplayed(String filter, String option)throws InterruptedException{
         return distributorUI.isDisplayed(By.xpath(catalogFilterDropDownOption.replace("FILTER", filter).replace("OPTION",option)));
+    }
+    public boolean isAddedSubstitutesItemDisplayed(String item){
+        return distributorUI.isDisplayed(By.xpath(substitutionsItem.replace("ITEM",item)));
     }
 
 }
