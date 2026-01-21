@@ -12,9 +12,15 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.util.Random;
+
 public class RemoveUserTest extends TestBase {
     static User user;
-    static String name = "Test";
+    static int randomNumber = new Random().nextInt(1000);
+    static String testUser = "Testupdate " + randomNumber;
+    static String testEmail = "testupdate"+randomNumber+"@email.com";
+    static String testUserRef = "AZ"+randomNumber;
+    static String userRef = "ZZ"+randomNumber;
 
     @BeforeMethod
     public void setUp(){
@@ -30,12 +36,21 @@ public class RemoveUserTest extends TestBase {
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToTeamSettings();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");
-        Settings.clickOnEditUser(name);
+        Dashboard.navigateToTeamSettings();
+        softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");
+        Settings.clickOnAddUser();
+        Settings.enterName(testUser);
+        Settings.enterEmail(testEmail);
+        Settings.enterUserRef(testUserRef);
+        Settings.clickOnInviteUser();
+        softAssert.assertTrue(Settings.isUserDisplayed(testUser),"add test user error");
+
+        Settings.clickOnEditUser(testUser);
         Settings.clickOnRemoveUserLabel();
         softAssert.assertTrue(Settings.isRemoveUserPopupDisplayed(),"remove pop up error");
         Settings.clickOnRemoveUser();
         Settings.clickOK();
-        softAssert.assertFalse(Settings.isUserDisplayed(name),"user remove error");
+        softAssert.assertFalse(Settings.isUserDisplayed(testUser),"user remove error");
         softAssert.assertAll();
     }
 

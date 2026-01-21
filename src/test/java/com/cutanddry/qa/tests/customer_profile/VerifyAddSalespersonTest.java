@@ -39,8 +39,8 @@ public class VerifyAddSalespersonTest extends TestBase {
         Customer.selectOneAssignSalesperson();
         softAssert.assertTrue(Customer.isAssignedSalespersonNameDisplayed(), "selected salesperson not added");
         Customer.clickOnAssignSalespersonSave();
-        softAssert.assertTrue(Customer.isCustomerNameTxtDisplayed(), "text error");
-        softAssert.assertTrue(Customer.isAddedSalespersonNameDisplayed(), "text error");
+        softAssert.assertTrue(Customer.isCustomerNameTxtDisplayed(), " customer name text error");
+        softAssert.assertTrue(Customer.isAddedSalespersonNameDisplayed(), "sales person text error");
         softAssert.assertAll();
     }
 
