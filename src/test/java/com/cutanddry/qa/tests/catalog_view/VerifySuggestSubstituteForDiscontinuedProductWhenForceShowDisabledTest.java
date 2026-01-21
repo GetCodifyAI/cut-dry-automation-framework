@@ -24,6 +24,7 @@ public class VerifySuggestSubstituteForDiscontinuedProductWhenForceShowDisabledT
     static String featureKey = "unavailable";
     static String featureKey2 = "discontinued";
     static String featureValue = "true";
+    static String featureValue2 = "false";
     static String customerId = "962243";
 
 
@@ -129,6 +130,10 @@ public class VerifySuggestSubstituteForDiscontinuedProductWhenForceShowDisabledT
         Customer.goToCatalog();
 
         Customer.searchItemOnCatalog(substituteItemCode1);
+
+        // revert canonical node item 2
+        Login.navigateToNode(canonicalNodeName2);
+        Login.setValueToNode(featureKey2,featureValue2);
 
 
         softAssert.assertAll();

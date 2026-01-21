@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 public class VerifyCashAndCarryAppPassingInvalidAccountTest extends TestBase {
     static CashAndCarryAppUser user;
     static String appURL = "https://dicarlo-uat.staging.cutanddry.com/market/dicarlo";
-    static String itemName = "Alfalfa Sprouts Cups";
+    static String itemName = "Brussels Sprouts Fresh Approx 9 Cups";
 
     @BeforeMethod
     public void setUp() {

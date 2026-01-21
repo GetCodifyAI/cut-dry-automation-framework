@@ -30,9 +30,9 @@ public class VerifyTheBoostMessageFilteringFromTheStatusOptionTest extends TestB
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.selectDropDownStatus("Active");
-        softAssert.assertTrue(Boost.isStatusInTableCorrect("Active"), "There is an error with the status");
+        softAssert.assertTrue(Boost.isStatusInTableCorrect("Active"), "There is an error with the Active status");
         Boost.selectDropDownStatus("Inactive");
-        softAssert.assertTrue(Boost.isStatusInTableCorrect("Inactive"),"There is an error with the status");
+        softAssert.assertTrue(Boost.isStatusInTableCorrect("Inactive"),"There is an error with the Inactive status");
         softAssert.assertAll();
     }
 
