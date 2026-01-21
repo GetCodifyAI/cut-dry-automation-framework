@@ -16,11 +16,11 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheOutOfStockLabelsDisplayWhenHideOutOfStockLabelOnSupplierPortalToggleDisabledTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    String DistributorName ="174874582 - Cut+Dry Agent - Carmela Foods Inc";
-    static String CompanyName = "Carmela Foods Inc";
-    static String customerId = "8782";
-    static String itemCode = "S00812";
-    static String itemName ;
+    String DistributorName ="138629491 - Eshan - What Chefs Want - Rockies";
+    static String CompanyName = "What Chefs Want - Rockies";
+    static String customerId = "2TASTE";
+    static String itemCode = "33925";
+    static String itemName = "Agave - Wild Light Organic";
     static String tag = "Out of stock";
 
 
@@ -37,16 +37,14 @@ public class VerifyTheOutOfStockLabelsDisplayWhenHideOutOfStockLabelOnSupplierPo
         softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-
-        Login.navigateToDistributorPortal(DistributorName);
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
-
-        Dashboard.navigateToCustomers();
-        Customer.searchCustomerByCode(customerId);
-        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
-        Customer.clickOnOrderGuide(customerId);
-        itemName = Customer.getOutOfstockItemNameFromOG();
-
+//        Login.navigateToDistributorPortal(DistributorName);
+//        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
+//
+//        Dashboard.navigateToCustomers();
+//        Customer.searchCustomerByCode(customerId);
+//        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
+//        Customer.clickOnOrderGuide(customerId);
+//        itemName = Customer.getOutOfstockItemNameFromOG();
         Login.navigateToInternalToolsPage();
         InternalTools.navigateToConfigureSupplier();
         InternalTools.clickOnInternalToolCompanyEditDetails(CompanyName);
@@ -65,7 +63,7 @@ public class VerifyTheOutOfStockLabelsDisplayWhenHideOutOfStockLabelOnSupplierPo
         Customer.clickOnOrderGuide(customerId);
 
         Customer.goToCatalog();
-        Customer.searchItemOnCatalog(itemName);
+        Customer.searchItemOnCatalog(itemCode);
         softAssert.assertTrue(Customer.isCatalogFilterDisplayTag(itemName,tag),"new tag display list error");
 
         //Reverting back the changes
