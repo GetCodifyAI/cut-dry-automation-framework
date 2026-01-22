@@ -42,6 +42,11 @@
             <class name="com.cutanddry.qa.tests.catalog_view.VerifyForceShowModalForMutualSubstituteProductsTest"/>
             <class name="com.cutanddry.qa.tests.catalog_view.VerifySuggestSubstituteForDiscontinuedProductWhenForceShowDisabledTest"/>
 
+            <class name="com.cutanddry.qa.tests.boost.VerifyThatTheUserCanSendBroadcastMessagesToCustomerGroupsTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheCashBackValueTagIsDisplayedWithOtherItemTagsTest "/>
+            <class name=" com.cutanddry.qa.tests.order_guide.VerifyTheFunctionalityOfSortItemsByDropDownInSimpleListViewTest"/>
+
+
         </classes>
     </test>
 </suite>
