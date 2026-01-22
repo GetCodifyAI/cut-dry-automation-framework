@@ -14,8 +14,8 @@ import org.testng.asserts.SoftAssert;
 
 public class AddNewUserWithExistingUserReferenceTest extends TestBase {
     static User user;
-    static String name = "Test123";
-    static String email = "test123@email.com";
+    static String name = "Test123"+generateDynamicValue();
+    static String email = "test" + generateDynamicValue() + "@email.com";
     static String userRef = "KF";
 
     @BeforeMethod
