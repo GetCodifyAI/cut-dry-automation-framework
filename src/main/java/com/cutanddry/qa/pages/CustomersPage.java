@@ -977,6 +977,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String catalogFilterBrandDropDownOption = "//div[text()='OPTION']";
     String catalogFilterDropDown = "//div[contains(text(), 'FILTER')]";
     String catalogFilterDropDownOption = "//div[contains(text(), 'FILTER')]/../../following-sibling::div//*[name()='svg' and @data-icon='square']/following-sibling::div[contains(text(), 'OPTION')]";
+    String sortOptionDisplaySimpleListView = "//*[contains(text(),'OPTION')]";
     String substitutionsItem = "//div[contains(text(), 'ITEM')]";
 
 
@@ -4754,6 +4755,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isSortOptionDisplayed(String option){
         return distributorUI.isDisplayed(By.xpath(sortOptionDisplay.replace("OPTION",option)));
     }
+    public boolean  isSortOptionDisplayedForSimpleListView(String option){
+        return distributorUI.isDisplayed(By.xpath(sortOptionDisplaySimpleListView.replace("OPTION",option)));
+    }
+
+
     public boolean isAddedItemDisplayed(String name){
         return distributorUI.isDisplayed(By.xpath(addedItemName.replace("NAME",name)),30);
     }
