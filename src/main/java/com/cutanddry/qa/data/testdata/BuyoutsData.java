@@ -22,5 +22,4 @@ public class BuyoutsData {
     public static final String BUYOUT_ALLOWED_KEY = "buyoutallowed";
     public static final String BUYOUT_ALLOWED_VALUE_TRUE = "true";
 
-
 }
