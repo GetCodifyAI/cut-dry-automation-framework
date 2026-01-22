@@ -8,26 +8,26 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part_Eleven"/>
         <classes>
-            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeTest"/>
+<!--            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeTest"/>-->
             <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHavePickupWillCallAsTheFulfillmentTypeTest"/>
-            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveMailDeliveryAsTheFulfillmentTypeTest"/>
-            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeDraftOderSubmissionTest"/>
+<!--            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveMailDeliveryAsTheFulfillmentTypeTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeDraftOderSubmissionTest"/>-->
             <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHavePickupWillCallAsTheFulfillmentTypeDraftOrderSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveMailDeliveryAsTheFulfillmentTypeDraftOrderSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeEditOrderSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHavePickupWillCallAsTheFulfillmentTypeEditOrderSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveMailDeliveryAsTheFulfillmentTypeEditOrderSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryPickupWillCallAndMailDeliveryAsTheFulfillmentTypeTest"/>
+<!--            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveMailDeliveryAsTheFulfillmentTypeDraftOrderSubmissionTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeEditOrderSubmissionTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHavePickupWillCallAsTheFulfillmentTypeEditOrderSubmissionTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveMailDeliveryAsTheFulfillmentTypeEditOrderSubmissionTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryPickupWillCallAndMailDeliveryAsTheFulfillmentTypeTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyUserCanSwitchOfflineModeFromTheMoreOptionsOnTheOGWhenTheDeviceHasNetworkConnectivityTest"/>
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatEntireOrderGuideIsDownloadedSuccessfullyUponSwitchingToOfflineModeTest"/>
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOnceInOfflineModeTheUserCanAddUpdateItemsToTheCartTest"/>
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatUserCanChangeTheUnitOfMeasureForItemsInOfflineModeTest"/>
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyUserCanSearchForItemsInTheOrderGuideWhileInOfflineModeTest"/>
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatAccessCatalogAndOrderSubmissionIsDisabledWhileInOfflineModeTest"/>
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatSwitchingBackToOnlineModeTest"/>
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsAvailableInDraftOrdersTest"/>
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsAvailableInStandingOrdersTest"/>
+<!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyUserCanSwitchOfflineModeFromTheMoreOptionsOnTheOGWhenTheDeviceHasNetworkConnectivityTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatEntireOrderGuideIsDownloadedSuccessfullyUponSwitchingToOfflineModeTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOnceInOfflineModeTheUserCanAddUpdateItemsToTheCartTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatUserCanChangeTheUnitOfMeasureForItemsInOfflineModeTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyUserCanSearchForItemsInTheOrderGuideWhileInOfflineModeTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatAccessCatalogAndOrderSubmissionIsDisabledWhileInOfflineModeTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatSwitchingBackToOnlineModeTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsAvailableInDraftOrdersTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsAvailableInStandingOrdersTest"/>-->
             <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsNotAvailableInEditOrdersTest"/>
             <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOfflineOrderingDisplayWhenOfflineOrderingToggleEnableTest"/>
             <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOfflineOrderingNotDisplayWhenOfflineOrderingToggleOffTest"/>

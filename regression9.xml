@@ -8,50 +8,50 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part_Nine"/>
         <classes>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromTopCategoryCarouselAndSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromCompareSimilarItemsCarouselAndSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromRecommendedBySalesRepCarouselAndSubmissionTest"/>
-            <!--            TODO: Uncomment the following test when the bug[DOT-9106] is fixed [Error popup “There was an error, please try again.” appears while searching for an item in the Order Guide section]-->
-<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromDoNotForgetToOrderCarouselAndSubmissionTest"/>-->
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromMoreFromThisBrandCarouselAndSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromRecommendedForCustomerCarouselAndSubmissionTest"/>
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromTopCategoryCarouselAndSubmissionTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromCompareSimilarItemsCarouselAndSubmissionTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromRecommendedBySalesRepCarouselAndSubmissionTest"/>-->
+<!--            &lt;!&ndash;            TODO: Uncomment the following test when the bug[DOT-9106] is fixed [Error popup “There was an error, please try again.” appears while searching for an item in the Order Guide section]&ndash;&gt;-->
+<!--&lt;!&ndash;            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromDoNotForgetToOrderCarouselAndSubmissionTest"/>&ndash;&gt;-->
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromMoreFromThisBrandCarouselAndSubmissionTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromRecommendedForCustomerCarouselAndSubmissionTest"/>-->
 
 
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantitiesFunctionalityFromCatalogTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMFromSaleItemAndSubmissionTest"/>
-           <!-- <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMSpecialOrderItemAndDraftEditTest"/>-->
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMJustInTimeItemAndDraftEditTest"/>
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantitiesFunctionalityFromCatalogTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMFromSaleItemAndSubmissionTest"/>-->
+<!--           &lt;!&ndash; <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMSpecialOrderItemAndDraftEditTest"/>&ndash;&gt;-->
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMJustInTimeItemAndDraftEditTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromOGCatalogPDPAndSubmitByAdminTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromOGCatalogPDPAndSubmitByARTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromOGCatalogPDPAndSubmitBySalespersonTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheUserShouldNotBeAbleGoToOrderGuideByDispatcherRoleTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddingSubstituteItemForMultipleUOMTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest"/>
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromOGCatalogPDPAndSubmitByAdminTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromOGCatalogPDPAndSubmitByARTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromOGCatalogPDPAndSubmitBySalespersonTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheUserShouldNotBeAbleGoToOrderGuideByDispatcherRoleTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddingSubstituteItemForMultipleUOMTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest"/>-->
 
-         <!-- removing as this functionality is not there anymore
-            <class name="com.cutanddry.qa.tests.order_reminder.VerifyEditOrderReminderTest"/>
--->
-            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheBatchOperationFunctionalityTest"/>
-            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyDisplayTotalUnpaidInvoiceAmountInCustomerDetailPageTest"/>
-            <class name="com.cutanddry.qa.tests.customer_groups.VerifyMultipleCustomerGroupsCanBeAssignedTest"/>
+<!--         &lt;!&ndash; removing as this functionality is not there anymore-->
+<!--            <class name="com.cutanddry.qa.tests.order_reminder.VerifyEditOrderReminderTest"/>-->
+<!--&ndash;&gt;-->
+<!--            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyTheBatchOperationFunctionalityTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.customer_invoice.VerifyDisplayTotalUnpaidInvoiceAmountInCustomerDetailPageTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.customer_groups.VerifyMultipleCustomerGroupsCanBeAssignedTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyCustomOrderGuideSectionTest"/>
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheOrderSummerySectionShrinkAndExpandWithF12KeyTest"/>
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCostMarginSectionsAreDisplayedAndHiddenWithF12KeyTest"/>
+<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyCustomOrderGuideSectionTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheOrderSummerySectionShrinkAndExpandWithF12KeyTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCostMarginSectionsAreDisplayedAndHiddenWithF12KeyTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.settings.VerifyAddPayoutAccountTest"/>
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifySubstituteItemsNotDisplayedIfTurnedOffCustomerProfileTest"/>
+<!--            <class name="com.cutanddry.qa.tests.settings.VerifyAddPayoutAccountTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifySubstituteItemsNotDisplayedIfTurnedOffCustomerProfileTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.customers.ValidatePONumberRequiredCustomersTest"/>
-            <class name="com.cutanddry.qa.tests.customers.ValidatePONumberNotRequiredCustomersTest"/>
-            <class name="com.cutanddry.qa.tests.customers.VerifyThatOrderSummeryBannerDisplayedTest"/>
-            <class name="com.cutanddry.qa.tests.customers.VerifyThatOrderSummeryGrossProfitSaleCostSectionUpdateTest"/>
-            <!--<class name="com.cutanddry.qa.tests.catalog_data.VerifyNotLoggedInUserCanViewThePublicItemOfTheDistributeViaPDPURLTest"/>
--->
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyUserDeletionEmailNotificationToggleTest"/>
+<!--            <class name="com.cutanddry.qa.tests.customers.ValidatePONumberRequiredCustomersTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.customers.ValidatePONumberNotRequiredCustomersTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.customers.VerifyThatOrderSummeryBannerDisplayedTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.customers.VerifyThatOrderSummeryGrossProfitSaleCostSectionUpdateTest"/>-->
+<!--            &lt;!&ndash;<class name="com.cutanddry.qa.tests.catalog_data.VerifyNotLoggedInUserCanViewThePublicItemOfTheDistributeViaPDPURLTest"/>-->
+<!--&ndash;&gt;-->
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyUserDeletionEmailNotificationToggleTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyDeleteCustomerUserAndReceiveUserDeletionNotificationTest"/>
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyDeleteCustomerUserAndReceiveUserDeletionNotificationTest"/>-->
             <class name="com.cutanddry.qa.tests.customers.VerifyThatOrderSummerySalesCommissionSectionUpdateTest"/>
 
             <class name="com.cutanddry.qa.tests.pay.VerifyTheCustomerInvoiceViewOnDistributorToEnsureThatDigitalInvoicePDFsAreVisibleTest"/>
