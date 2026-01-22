@@ -26,8 +26,9 @@ public class ValidateThePoundSpotPricingWhenSelectingMultipleUOMTest extends Tes
     static String featureName = GatekeeperData.FEATURE_NAME_FROM_ELASTIC_SEARCH;
     static String companyId = GatekeeperData.COMPONY_ID_KK_INT;
     static String orderId;
-    static String singleItemName, singleSearchItemCode, multiItemName, multiSearchItemCode, itemCode,spotPrice1,marginValue1, marginPercentage1,spotPrice2,marginValue2, marginPercentage2;
+    static String singleItemName, singleSearchItemCode, multiItemName,spotPrice1,marginValue1, marginPercentage1,spotPrice2,marginValue2, marginPercentage2;
     static double itemOGPriceUOM1, itemOGPriceUOM2, totalOGItemPrice, multiItemPrice, totalCartAmount,unitWeight1,unitWeight2;
+    static String multiSearchItemCode = "2110";
 
 
     @BeforeMethod
@@ -52,11 +53,11 @@ public class ValidateThePoundSpotPricingWhenSelectingMultipleUOMTest extends Tes
         Customer.clickOnOrderGuide(customerId);
         Customer.selectSortItemByOption(sortOption);
 
-        multiItemName = Customer.getItemNameFirstMultiOUMLB();
-        multiSearchItemCode = Customer.getItemCodeFirstMultiOUMLB();
-        itemCode = multiSearchItemCode.replaceAll("^[A-Za-z]+", "");
+//        multiItemName = Customer.getItemNameFirstMultiOUMLB();
+//        multiSearchItemCode = Customer.getItemCodeFirstMultiOUMLB();
+//        itemCode = multiSearchItemCode.replaceAll("^[A-Za-z]+", "");
 
-        Customer.searchItemOnOrderGuide(itemCode);
+        Customer.searchItemOnOrderGuide(multiSearchItemCode);
         Customer.ClickOnMultiUomDropDownOG(multiSearchItemCode);
         Customer.clickPoundPriceMultiUOM();
         softAssert.assertTrue(Customer.isPoundPricePopUpDisplay(),"pound price pop up not display");

@@ -106,10 +106,10 @@ public class OrdersPage extends LoginPage{
     String selectLocationSupplier = "//div[contains(text(),'Select Location')]/following-sibling::div//div[text()='LOCATION']";
     By lbl_orderInfoCustomer = By.xpath("//div[contains(text(),'Cut & Dry Test Account (21259)')]");
     By lbl_orderInfoLocationCode = By.xpath("//div[contains(text(),'Hayes (94123)')]");
-    By lbl_orderInfoDeliveryOn = By.xpath("//div[contains(text(),'Wed, 12/31/2025')]");
+    By lbl_orderInfoDeliveryOn = By.xpath("//div[contains(text(),'Fri, 01/09/2026')]");
     By lbl_orderInfoShipTo = By.xpath("//div[contains(text(),'Juan Zengotita (Personal), 1046 Rock Creek St., Apopka, Florida 32712')]");
     By lbl_orderInfoFulfilmentMethod = By.xpath("//span[@data-for='cd-label-tooltip' and contains(text(),'Delivery')]");
-    By lbl_orderInfoStatus = By.xpath("//span[@data-for='cd-label-tooltip' and contains(text(),'Submitted')]");
+    By lbl_orderInfoStatus = By.xpath("//span[@data-for='cd-label-tooltip' and contains(text(),'Confirmed')]");
     By lbl_orderDateColumnHeader = By.xpath("//table/thead/tr/th//span[contains(text(),'Order Date')]");
     By lbl_firstOrderDate = By.xpath("(//tr[contains(@class,'_du1frc') and contains(@class,'py-3')]/td)[2]");
     By lbl_firstOrderFulfillmentBadge = By.xpath("//span[@data-for='cd-label-tooltip' and normalize-space()='Delivery']");
@@ -641,67 +641,26 @@ public class OrdersPage extends LoginPage{
     }
 
     public boolean isOrderInfoCustomerDisplayed(){
-        try {
-            distributorUI.waitForVisibility(lbl_orderInfoCustomer);
-            String customerName = distributorUI.getText(lbl_orderInfoCustomer);
-            return customerName.contains("Cut & Dry Test Account (21259)");
-
-        } catch (Exception e){
-            return false;
-        }
+           return distributorUI.isDisplayed(lbl_orderInfoCustomer);
     }
 
     public boolean isOrderInfoLocationCodeDisplayed(){
-        try {
-            distributorUI.waitForVisibility(lbl_orderInfoLocationCode);
-            String LocationName = distributorUI.getText(lbl_orderInfoLocationCode);
-            return LocationName.contains("Hayes (94123)");
-        } catch (Exception e){
-            return false;
-        }
-
+           return distributorUI.isDisplayed(lbl_orderInfoLocationCode);
     }
 
     public boolean isOrderInfoDeliveryOnDisplayed(){
-        try {
-            distributorUI.waitForVisibility(lbl_orderInfoDeliveryOn);
-            String OrderInfoDelivery = distributorUI.getText(lbl_orderInfoDeliveryOn);
-            return OrderInfoDelivery.contains("Wed, 12/31/2025");
-        } catch (Exception e){
-            return false;
-        }
-
-    }
+           return distributorUI.isDisplayed(lbl_orderInfoDeliveryOn);}
 
     public boolean isOrderInfoShipToDisplayed(){
-        try {
-            distributorUI.waitForVisibility(lbl_orderInfoShipTo);
-            String OrderInfoShip = distributorUI.getText(lbl_orderInfoShipTo);
-            return OrderInfoShip.contains("Juan Zengotita (Personal), 1046 Rock Creek St., Apopka, Florida 32712");
-        } catch (Exception e){
-            return false;
-        }
-
+            return distributorUI.isDisplayed(lbl_orderInfoShipTo);
     }
 
     public boolean isOrderInfoFulfilmentMethodDisplayed(){
-        try {
-            distributorUI.waitForVisibility(lbl_orderInfoFulfilmentMethod);
-            String fulfilmentMethod = distributorUI.getText(lbl_orderInfoFulfilmentMethod);
-            return fulfilmentMethod.contains("Delivery");
-        } catch (Exception e){
-            return false;
-        }
+           return distributorUI.isDisplayed(lbl_orderInfoFulfilmentMethod);
     }
 
     public boolean isOrderInfoStatusDisplayed(){
-        try {
-            distributorUI.waitForVisibility(lbl_orderInfoStatus);
-            String status = distributorUI.getText(lbl_orderInfoStatus);
-            return status.contains("Submitted");
-        } catch (Exception e){
-            return false;
-        }
+            return distributorUI.isDisplayed(lbl_orderInfoStatus);
     }
 
     public boolean isOrderDateColumnHeaderDisplayed(){

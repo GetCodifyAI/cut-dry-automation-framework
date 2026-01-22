@@ -1,5 +1,4 @@
 package com.cutanddry.qa.tests.order_guide;
-
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.PurchaseHistoryData;
@@ -11,29 +10,30 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import java.util.Map;
-import java.util.LinkedHashMap;
 
+import java.util.Arrays;
+import java.util.List;
 
-public class VerifyThatTheSortItemsByDropDownIsAvailableInTheSimpleListViewTest extends TestBase {
+public class VerifyTheFunctionalityOfSortItemsByDropDownInSimpleListViewTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    static String DistributorName ="46505655 - Kevin - Independent Foods Co";
+    static String DistributorName = "46505655 - Kevin - Independent Foods Co";
     static String CompanyName = "Independent Foods Co";
-    static String customerId =PurchaseHistoryData.CUSTOMER_ID_IFC;
+    static String customerId = "21259";
     static String simpleListView = "Enabled on DP Portal & Operator App";
 
-
-    Map<String, String> sortOptionsMap = new LinkedHashMap<>() {{
-        put("Item Code", "00036");
-        put("UPC", "052100324050");
-        put("Brand", "Brakebush");
-        put("Description", "Allspice Ground*");
-        put("Pack Size", "1");
-    }};
-
-
-
+    List<String> expectedSortOptions = Arrays.asList(
+            "Item Code",
+            "UPC",
+            "Description",
+            "Category",
+            "Unit",
+            "Pack Size",
+            "Quantity",
+            "Price",
+            "Last Ordered",
+            "Brand"
+    );
 
     @BeforeMethod
     public void setUp() {
@@ -41,13 +41,12 @@ public class VerifyThatTheSortItemsByDropDownIsAvailableInTheSimpleListViewTest 
         user = JsonUtil.readUserLogin();
     }
 
-
-    @Test(groups = "DOT-TC-1524")
-    public void VerifyThatTheSortItemsByDropDownIsAvailableInTheSimpleListView() throws InterruptedException {
-
+    @Test(groups = "DOT-TC-1525")
+    public void VerifyTheFunctionalityOfSortItemsByDropDownInSimpleListView() throws InterruptedException {
         softAssert = new SoftAssert();
+
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
-        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "login error");
 
         Login.navigateToInternalToolsPage();
         InternalTools.navigateToConfigureSupplier();
@@ -57,7 +56,7 @@ public class VerifyThatTheSortItemsByDropDownIsAvailableInTheSimpleListViewTest 
         InternalTools.clickOnSimpleListViewDropdown(simpleListView);
 
         InternalTools.clickSave();
-        softAssert.assertTrue(InternalTools.isSuccessPopUpDisplayed(),"change not save");
+        softAssert.assertTrue(InternalTools.isSuccessPopUpDisplayed(), "change not save");
         InternalTools.clickOKOnSucessOverlay();
 
         Login.navigateToDistributorPortal(DistributorName);
@@ -69,20 +68,16 @@ public class VerifyThatTheSortItemsByDropDownIsAvailableInTheSimpleListViewTest 
 
         Customer.expandMoreOptionsDropdown();
         Customer.clickSimpleListView();
-        softAssert.assertTrue(Customer.isSimpleListViewTextDisplay(),"simple list view section not display");
-        Customer.clickSortOptionsDropdown();
-        for (Map.Entry<String, String> entry : sortOptionsMap.entrySet()) {
-            String sortOption = entry.getKey();
-            String expectedSortResult = entry.getValue();
+        softAssert.assertTrue(Customer.isSimpleListViewTextDisplay(), "simple list view section not display");
 
-            Customer.clickSortOptionsOG(sortOption);
-            softAssert.assertTrue(Customer.isSortOptionDisplay(expectedSortResult),
-                    "Sort option: " + sortOption + " - Expected result: " + expectedSortResult + " is displayed");
+        for (String sortOption : expectedSortOptions) {
+            softAssert.assertTrue(Customer.isSortOptionDisplayedForSimpleListView(sortOption),
+                    "Sort option '" + sortOption + "' is not displayed in the dropdown");
         }
-
 
         softAssert.assertAll();
     }
+
     @AfterMethod
     public void tearDown(ITestResult result) {
         takeScreenshotOnFailure(result);

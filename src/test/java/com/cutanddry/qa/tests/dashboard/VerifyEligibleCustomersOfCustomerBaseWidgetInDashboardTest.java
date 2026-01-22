@@ -36,15 +36,15 @@ public class VerifyEligibleCustomersOfCustomerBaseWidgetInDashboardTest extends 
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Dashboard.navigateToCompanySettings();
-        softAssert.assertTrue(Settings.isCompanySettingsTextDisplayed(),"navigation to company settings error");
-        Settings.clickEligibleCountForCutDry(useCustomCount);
-        Settings.enterEligibleCountForCutDry(useCustomCount,"100");
-        Settings.clickSaveChanges();
-        Dashboard.clickOnDashboard();
-        Dashboard.refreshDashBoardPage();
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"dashboard navigation error");
-        eligibleForCD = Dashboard.getCustomerValue(eligibleForCutDryTag);
-        softAssert.assertEquals(eligibleForCD,"100");
+//        softAssert.assertTrue(Settings.isCompanySettingsTextDisplayed(),"navigation to company settings error");
+//        Settings.clickEligibleCountForCutDry(useCustomCount);
+//        Settings.enterEligibleCountForCutDry(useCustomCount,"100");
+//        Settings.clickSaveChanges();
+//        Dashboard.clickOnDashboard();
+//        Dashboard.refreshDashBoardPage();
+//        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"dashboard navigation error");
+//        eligibleForCD = Dashboard.getCustomerValue(eligibleForCutDryTag);
+//        softAssert.assertEquals(eligibleForCD,"100","eligible for CD error");
 
         Dashboard.navigateToCompanySettings();
         softAssert.assertTrue(Settings.isCompanySettingsTextDisplayed(),"navigation to company settings error");

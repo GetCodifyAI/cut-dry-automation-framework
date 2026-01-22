@@ -692,6 +692,25 @@ public class Catalog {
     public static boolean isOrderStatusDisplay(String id,String status)throws InterruptedException{
         return catalogPage.isOrderStatusDisplay(id,status);
     }
+    public static double getSaleItemPDPPriceUOM(String uom) throws InterruptedException {
+        return catalogPage.getSaleItemPDPPriceUOM(uom);
+    }
+    public static boolean isCashBackTagDisplayed() {
+        return catalogPage.isCashBackTagDisplayed();
+    }
+
+    public static boolean isOnSaleTagDisplayed() {
+        return catalogPage.isOnSaleTagDisplayed();
+    }
+
+    public static boolean isNewTagDisplayed() {
+        return catalogPage.isNewTagDisplayed();
+    }
+
+    public static boolean areAllTagsDisplayedWithProperAlignment() {
+        return catalogPage.areAllTagsDisplayedWithProperAlignment();
+    }
+
 
 
 }

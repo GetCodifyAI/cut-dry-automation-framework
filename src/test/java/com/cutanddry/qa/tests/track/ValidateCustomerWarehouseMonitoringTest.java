@@ -22,11 +22,11 @@ public class ValidateCustomerWarehouseMonitoringTest extends TestBase {
     static String distributorName = TrackData.DISTRIBUTOR_NAME;
     static String routeName = TrackData.ROUTE_NAME;
     static String customerName = TrackData.CUSTOMER_NAME;
-    String startDay = "Sunday";
-    String startMonth = "December";
+    String startDay = "Thursday";
+    String startMonth = "January";
     String startDate = "1";
-    String startYear = "2024";
-    String monitorDate = "12/01/2024";
+    String startYear = "2026";
+    String monitorDate = "01/01/2026";
 
     @BeforeMethod
     public void setUp() {

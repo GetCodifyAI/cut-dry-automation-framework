@@ -1771,6 +1771,9 @@ public class Customer {
     public static void clickOnAutoPayScheduleDropdown(){
         customersPage.clickOnDropdownSchedule();
     }
+    public static void clickOnAutoPayInvoiceToPayDropdown(){
+        customersPage.clickOnDropdownInvoiceToPay();
+    }
 
     public static void selectDropdownOption(String optionText){
         customersPage.selectDropdownOption(optionText);
@@ -2723,6 +2726,9 @@ public class Customer {
     public static boolean isSortOptionDisplayed(String option){
         return customersPage.isSortOptionDisplayed(option);
     }
+    public static boolean isSortOptionDisplayedForSimpleListView(String option){
+        return customersPage.isSortOptionDisplayedForSimpleListView(option);
+    }
     public static void clickOnOrderGuideParentChild(String code) throws InterruptedException {
         customersPage.clickOnOrderGuide(code);
         if (ordersPage.isSelectOrderGuidePopUpDisplayed()){
@@ -3581,6 +3587,9 @@ public class Customer {
     }
     public static boolean isCatalogFilterOptionDisplayed(String filter,String option)throws InterruptedException{
         return customersPage.isCatalogFilterOptionDisplayed(filter,option);
+    }
+    public static boolean isAddedSubstitutesItemDisplayed(String item){
+        return customersPage.isAddedSubstitutesItemDisplayed(item);
     }
 
 
