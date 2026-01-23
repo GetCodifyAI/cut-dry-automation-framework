@@ -22,7 +22,7 @@ public class VerifyHideWhiteLabelHomePageForEmployeesWithNoCatalogAccessTest ext
     static String AddItemRestrictionDropDownOption = "Don’t allow employees to add new items";
     static String orderGuide1 = "Standard Guide";
     static String orderGuide2 = "Order History";
-    static String OperatorName = "229366152";
+    static String OperatorName = "274973452";
 
     @BeforeMethod
     public void setUp(){
