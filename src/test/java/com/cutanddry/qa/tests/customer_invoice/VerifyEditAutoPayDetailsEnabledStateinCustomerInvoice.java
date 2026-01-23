@@ -47,6 +47,7 @@ public class VerifyEditAutoPayDetailsEnabledStateinCustomerInvoice extends TestB
         Customer.editAutoPay();
         Customer.clickOnAutoPayScheduleDropdown();
         Customer.selectDropdownOption(ScheduleOption);
+        Customer.clickOnAutoPayInvoiceToPayDropdown();
         Customer.clickOnUpdate();
         softAssert.assertTrue(Customer.isAutoPayUpdated(ScheduleOption),"There has been an error updated auto Pay" );
         softAssert.assertAll();
