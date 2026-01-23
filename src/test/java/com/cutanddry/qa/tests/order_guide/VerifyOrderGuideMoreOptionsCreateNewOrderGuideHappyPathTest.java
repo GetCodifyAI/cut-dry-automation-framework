@@ -18,7 +18,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class VerifyOrderGuideMoreOptionsCreateNewOrderGuideHappyPathTest extends TestBase {
     static User user;
     static String customerId = "16579";
-    static String orderGuideName = "Test_OG_Delete_" + ThreadLocalRandom.current().nextInt(100000, 1_000_000);
+    static String orderGuideName = "Test_OG_Delete" + generateDynamicValue();
     static String itemName = "Fuji Apples 125 CT";
 
     @BeforeMethod
