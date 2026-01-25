@@ -3298,6 +3298,9 @@ public class Customer {
     public static boolean areFirstThreeItemCodesSortedAscending() {
         return customersPage.areFirstThreeItemCodesSortedAscending();
     }
+    public static boolean areFirstThreeItemCodesSortedDescending() {
+        return customersPage.areFirstThreeItemCodesSortedDescending();
+    }
     public static boolean areFirstFiveItemNamesSortedAscending(String column) {
         return customersPage.areFirstFiveItemNamesSortedAscending(column);
     }
