@@ -3,10 +3,7 @@ package com.cutanddry.qa.tests.customer_profile;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.CustomerProfileData;
-import com.cutanddry.qa.functions.Catalog;
-import com.cutanddry.qa.functions.Customer;
-import com.cutanddry.qa.functions.Dashboard;
-import com.cutanddry.qa.functions.Login;
+import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -53,36 +50,68 @@ public class VerifyTheHidePriceFunctionalityTest extends TestBase{
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerID), "Unable to find the customer Id");
         Customer.clickOnOrderGuide(customerID);
 
-        // Add the product via Order Guide
         Customer.searchItemOnOrderGuide(searchItemCode);
         itemName = Customer.getItemNameFirstRow();
         itemPrice = Customer.getActiveItemPriceFirstRow();
         itemPriceStr = String.valueOf(Customer.getActiveItemPriceFirstRow());
         Customer.clickOnPlusIconInCatalogPDP(1, itemName);
-        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice,"The item has not been selected.");
+        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice,"DP side: The item price should be visible on checkout button.");
 
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(searchItemCode);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found");
-        softAssert.assertTrue(Customer.getItemPriceOnCatalog(itemName,itemPriceStr),"price display catalog error");
+        softAssert.assertTrue(Customer.getItemPriceOnCatalog(itemName,itemPriceStr),"DP side: price should be visible in catalog grid view");
         Customer.clickCatalogListView();
-        softAssert.assertTrue(Customer.getItemPriceOnCatalogListView(itemName,itemPriceStr),"price display catalog list view error");
+        softAssert.assertTrue(Customer.getItemPriceOnCatalogListView(itemName,itemPriceStr),"DP side: price should be visible in catalog list view");
         Customer.clickCatalogGridView();
         Customer.clickOnProduct(itemName);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
         itemPricePDP = Catalog.getPDPPriceUOM("1");
-        softAssert.assertEquals(itemPricePDP,itemPrice,"The price display in PDP");
+        softAssert.assertEquals(itemPricePDP,itemPrice,"DP side: The price should be visible in PDP");
 
         Login.navigateToLoginAs();
         Login.logInToOperatorAsWhiteLabel(OperatorName);
         Customer.clickOnPlaceOrderWhiteLabel();
 
+        Customer.searchItemOnOrderGuide(searchItemCode);
+        Customer.increaseFirstRowQtyByOneInDist();
+        Customer.clickOnCheckoutButtonOperator();
+        softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "OP side: The user should be navigated to Review Order page.");
 
+        Dashboard.navigateToDrafts();
+        softAssert.assertTrue(Draft.isUserNavigatedToDrafts(), "OP side: navigation error to drafts");
+        String referenceNum = Draft.getReferenceNumOP().replace("#", "");
+        softAssert.assertFalse(Draft.isRestaurantLastDraftDisplayed(itemPriceStr), "OP side: draft should NOT display item price when price visibility is hidden");
+
+        Draft.clickDraft(referenceNum);
+        softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "OP side: The user should be navigated to Review Order page from draft.");
+
+        Customer.submitOrder();
+        softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "OP side: Thank you popup should be displayed after order submission");
+
+        History.goToHistory();
+        softAssert.assertTrue(History.isUserNavigatedToHistory(), "OP side: navigation error to history");
+        History.clickOnFirstItemOfOrderHistory();
+        softAssert.assertTrue(History.isUserNavigatedOrder(), "OP side: The user should be navigated to order details");
+
+        Login.navigateToDistributorPortal(DistributorName);
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "DP side: navigation error to dashboard");
+
+        Dashboard.navigateToCustomers();
+        Customer.searchCustomerByCode(customerID);
+        softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerID), "DP side: search error");
+        Customer.SelectCustomer(customerID);
+        softAssert.assertTrue(Customer.isCustomerNameTxtDisplayed(), "DP side: customer profile text error");
+
+        Customer.clickOnOrdersTab();
+        softAssert.assertTrue(Customer.isOrdersTabDisplayed(), "DP side: Orders tab should be displayed in customer profile");
+
+        Customer.editStatusPriceVisibility(statusVisible);
 
         softAssert.assertAll();
     }
 
-  @AfterMethod
+    @AfterMethod
     public void tearDown(ITestResult result) {
         takeScreenshotOnFailure(result);
         closeAllBrowsers();
