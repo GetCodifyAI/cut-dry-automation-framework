@@ -4528,7 +4528,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public String getEditItemNameInputValue() throws InterruptedException {
         distributorUI.waitForVisibility(lbl_editItemNameInput);
-        return distributorUI.getAttribute(lbl_editItemNameInput, "value");
+        return distributorUI.getText(lbl_editItemNameInput, "value");
     }
     public void enterEditItemName(String name) throws InterruptedException {
         distributorUI.waitForVisibility(lbl_editItemNameInput);
