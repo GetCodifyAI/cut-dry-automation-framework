@@ -980,6 +980,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String sortOptionDisplaySimpleListView = "//*[contains(text(),'OPTION')]";
     String substitutionsItem = "//div[contains(text(), 'ITEM')]";
 
+    // DOT-TC-2034: White-Label Order History Price Visibility
+    By section_wlOrderHistory = By.xpath("//div[contains(text(),'Order History')] | //h4[contains(text(),'Order History')]");
+    By lbl_wlOrderHistoryFirstOrderPrice = By.xpath("(//div[contains(text(),'Order History')]/following::*[contains(text(),'$')])[1] | (//h4[contains(text(),'Order History')]/following::*[contains(text(),'$')])[1]");
+    String wlOrderHistoryOrderPrice = "//div[contains(text(),'Order History')]/following::*[contains(text(),'$')] | //h4[contains(text(),'Order History')]/following::*[contains(text(),'$')]";
+    By btn_wlHomeTab = By.xpath("//div[text()='Home'] | //a[text()='Home'] | //li[text()='Home']");
+    By lbl_checkoutTextOnly = By.xpath("//button[@data-for='cartCheckoutButton' and text()='Checkout']");
+    By lbl_thankYouPopupWithoutTotal = By.xpath("//*[contains(text(),'Thank you for your order!')]");
+
 
 
 
@@ -5912,6 +5920,52 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isAddedSubstitutesItemDisplayed(String item){
         return distributorUI.isDisplayed(By.xpath(substitutionsItem.replace("ITEM",item)));
+    }
+
+    // DOT-TC-2034: White-Label Order History Price Visibility Methods
+    public boolean isWLOrderHistorySectionDisplayed() {
+        try {
+            distributorUI.waitForVisibility(section_wlOrderHistory);
+            return distributorUI.isDisplayed(section_wlOrderHistory);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void scrollToWLOrderHistorySection() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        distributorUI.scrollToElementStable(section_wlOrderHistory, 5);
+    }
+
+    public boolean isPriceVisibleInWLOrderHistory() {
+        try {
+            return distributorUI.isDisplayed(lbl_wlOrderHistoryFirstOrderPrice);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void clickOnWLHomeTab() throws InterruptedException {
+        distributorUI.waitForCustom(1000);
+        distributorUI.click(btn_wlHomeTab);
+        distributorUI.waitForCustom(2000);
+    }
+
+    public boolean isCheckoutTextOnlyDisplayed() {
+        try {
+            return distributorUI.isDisplayed(lbl_checkoutTextOnly);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isThankYouPopupDisplayedWithoutTotal() {
+        try {
+            distributorUI.waitForVisibility(lbl_thankYouPopupWithoutTotal);
+            return distributorUI.isDisplayed(lbl_thankYouPopupWithoutTotal);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }

@@ -14,6 +14,7 @@
             <class name="com.cutanddry.qa.tests.catalog.VerifyHideAvailabilityFilterInPublicCatalogTest"/>
             <!--            TODO: Commenting the since the change was reverted-->
             <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheItemPricesAreNotVisibleInTheEditOrderGuideItemsSectionWhenPriceVisibilityIsHiddenTest"/>
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheHidePriceFunctionalityInTheWhiteLabelHomeScreenOrderHistorySectionTest"/>
 <!--            <class name="com.cutanddry.qa.tests.catalog_data.VerifyTheItemCannotBeOrderedFromTheOrderGuideWhenStatusIsSetToInactiveTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.catalog_data.VerifyTheItemCannotBeOrderedFromTheOrderGuideWhenStatusIsSetToInactiveOnTheOPSideTest"/>-->
 
