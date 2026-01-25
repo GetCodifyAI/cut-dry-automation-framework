@@ -116,6 +116,26 @@ public class Catalog {
         return catalogPage.isProductImageDisplayed();
     }
 
+    public static void deleteMedia(){
+        catalogPage.clickDeleteMedia();
+    }
+
+    public static void confirmDelete(){
+        catalogPage.clickDeleteConfirm();
+    }
+
+    public static void uploadImage(String imagePath){
+        catalogPage.uploadImage(imagePath);
+    }
+
+    public static boolean isCatalogItemThumbnailDisplayed(){
+        return catalogPage.isCatalogItemThumbnailDisplayed();
+    }
+
+    public static boolean isPlaceholderImageDisplayed(){
+        return catalogPage.isPlaceholderImageDisplayed();
+    }
+
     public static void navigateToPricingAndPromotions(){
         catalogPage.clickOnPricingAndPromotionsTab();
     }
