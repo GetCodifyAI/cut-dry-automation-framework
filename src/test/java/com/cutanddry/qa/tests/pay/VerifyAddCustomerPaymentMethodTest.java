@@ -58,7 +58,7 @@ public class VerifyAddCustomerPaymentMethodTest extends TestBase {
         Customer.clickOK();
 
         Customer.loginNodeExplorerPortal();
-        softAssert.assertTrue(Customer.isAddedPaymentMethodDisplayed(NodeStatus),"nit displayed added payment method");
+        softAssert.assertTrue(Customer.isAddedPaymentMethodDisplayed(NodeStatus),"not displayed added payment method");
 
         // Delete the payment method in customer invoice test flow
         Login.navigateToDistributorPortal(DistributorName);
