@@ -726,6 +726,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By orderSummeryShrinked = By.xpath("//*[local-name()='svg' and @data-icon='shopping-cart-03']/../../following-sibling::div/*[local-name()='svg' and @data-icon='chevron-down']");
     By caseUnit = By.xpath("//label[text()='Unit']/../following-sibling::div[text()='Case']");
     By saveItem = By.xpath("//button[text()='Save Item']");
+    By lbl_editItemNameInput = By.xpath("//label[text()='Item Name']/following-sibling::input");
     By btn_stock = By.xpath("(//span[contains(text(),'Stock')])[1]");
     String stockAvailability = "//div[contains(text(),'STOCK')]";
     By substitutionsAccessEditBtn = By.xpath("//div[contains(text(), 'Substitutions')]//following-sibling::div//div//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
@@ -4524,6 +4525,16 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void saveItem()throws InterruptedException{
         distributorUI.click(saveItem);
         distributorUI.waitForCustom(15000);
+    }
+    public String getEditItemNameInputValue() throws InterruptedException {
+        distributorUI.waitForVisibility(lbl_editItemNameInput);
+        return distributorUI.getAttribute(lbl_editItemNameInput, "value");
+    }
+    public void enterEditItemName(String name) throws InterruptedException {
+        distributorUI.waitForVisibility(lbl_editItemNameInput);
+        distributorUI.clear(lbl_editItemNameInput);
+        distributorUI.sendKeys(lbl_editItemNameInput, name);
+        distributorUI.waitForCustom(1000);
     }
     public boolean isMultiUomDropDownExistDisplayed(String code)throws InterruptedException{
        return distributorUI.isDisplayed(By.xpath(multiUomDropDownOGExist.replace("CODE", code)));
