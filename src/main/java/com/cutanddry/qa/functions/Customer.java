@@ -362,6 +362,16 @@ public class Customer {
         }
 
     }
+    public static void removeItemFromCatalogStable(String name) {
+        if (customersPage.isRemoveToOrderGuideDisplayed(name)) {
+            customersPage.clickOnRemoveToOrderGuideStable(name);
+        }
+
+        if (customersPage.isErrorTextDisplayed()) {
+            customersPage.clickOK();
+        }
+
+    }
     public static void closeEditorCatalog(){
         customersPage.clickOnCloseEditorCatalog();
     }
@@ -3590,6 +3600,12 @@ public class Customer {
     }
     public static boolean isAddedSubstitutesItemDisplayed(String item){
         return customersPage.isAddedSubstitutesItemDisplayed(item);
+    }
+    public static boolean isOrderMinimumCustomerProfileDisplayed(String setting) throws InterruptedException {
+        return customersPage.isOrderMinimumCustomerProfileDisplayed(setting);
+    }
+    public static boolean isOrderMinimumExemptCustomerProfileDisplayed(String setting) throws InterruptedException {
+        return customersPage.isOrderMinimumExemptCustomerProfileDisplayed(setting);
     }
 
     public static boolean areFirstThreeItemCodesSortedDescending() {
