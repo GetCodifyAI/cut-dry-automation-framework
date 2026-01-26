@@ -3608,6 +3608,31 @@ public class Customer {
         return customersPage.isOrderMinimumExemptCustomerProfileDisplayed(setting);
     }
 
+    // DOT-TC-2034: White-Label Order History Price Visibility Methods
+    public static boolean isWLOrderHistorySectionDisplayed() {
+        return customersPage.isWLOrderHistorySectionDisplayed();
+    }
+
+    public static void scrollToWLOrderHistorySection() throws InterruptedException {
+        customersPage.scrollToWLOrderHistorySection();
+    }
+
+    public static boolean isPriceVisibleInWLOrderHistory() {
+        return customersPage.isPriceVisibleInWLOrderHistory();
+    }
+
+    public static void clickOnWLHomeTab() throws InterruptedException {
+        customersPage.clickOnWLHomeTab();
+    }
+
+    public static boolean isCheckoutTextOnlyDisplayed() {
+        return customersPage.isCheckoutTextOnlyDisplayed();
+    }
+
+    public static boolean isThankYouPopupDisplayedWithoutTotal() {
+        return customersPage.isThankYouPopupDisplayedWithoutTotal();
+    }
+
 
 }
 
