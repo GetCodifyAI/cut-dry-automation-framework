@@ -36,6 +36,7 @@ public class CustomersPage extends LoginPage {
 //    String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[contains(text(),'NAME')])[last()]";
 String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]";
     String lbl_catalogAddToCart = "((//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]/ancestor::div[contains(@class,'card')])[last()]//button[@data-tip='Add to Order Guide']";
+    String lbl_catalogRemoveToCart = "((//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]/ancestor::div[contains(@class,'card')])[last()]//button[@data-tip='Remove from Order Guide']";
     By txt_thereWasAnError = By.xpath("//*[text()='There was an error, please try again.']");
 //    String btn_addToCart = "//div[contains(@class, '_13kb1gk')]//div[text()= 'ITEMNAME']//ancestor::div[contains(@class, '_13kb1gk')]//div[@class='_btf6h0']//button[contains(@class, 'btn-outline-primary')]";
 //    String btn_addToCart = "//*[contains(text(), 'ITEMNAME')]/ancestor::div[contains(@class, 'card')]//button[contains(text(), 'Add to Cart')]";
@@ -979,6 +980,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String catalogFilterDropDownOption = "//div[contains(text(), 'FILTER')]/../../following-sibling::div//*[name()='svg' and @data-icon='square']/following-sibling::div[contains(text(), 'OPTION')]";
     String sortOptionDisplaySimpleListView = "//*[contains(text(),'OPTION')]";
     String substitutionsItem = "//div[contains(text(), 'ITEM')]";
+    String orderMinimumCustomerProfile = "//div[text()='Order Minimum']/following-sibling::div//span[text()='SETTING']/../following-sibling::div[text()='$50,000.00']";
+    String orderMinimumExemptCustomerProfile = "//div[text()='Order Minimum']/following-sibling::div//span[text()='SETTING']/../following-sibling::div[text()='n/a']";
 
 
 
@@ -1299,6 +1302,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isAddToOrderGuideDisplayed(String name){
         return distributorUI.isDisplayed(By.xpath(lbl_catalogAddToCart.replace("NAME", name)),10);
+    }
+    public void clickOnRemoveToOrderGuideStable(String name){
+        distributorUI.click(By.xpath(lbl_catalogRemoveToCart.replace("NAME", name)));
+    }
+    public boolean isRemoveToOrderGuideDisplayed(String name){
+        return distributorUI.isDisplayed(By.xpath(lbl_catalogRemoveToCart.replace("NAME", name)),10);
     }
     public void giveFilePath(String path){
         distributorUI.sendKeysToHiddenElements(upload_file, path);
@@ -5912,6 +5921,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isAddedSubstitutesItemDisplayed(String item){
         return distributorUI.isDisplayed(By.xpath(substitutionsItem.replace("ITEM",item)));
+    }
+    public boolean isOrderMinimumCustomerProfileDisplayed(String setting) throws InterruptedException {
+        distributorUI.waitForCustom(5000);
+        return distributorUI.isDisplayed(By.xpath(orderMinimumCustomerProfile.replace("SETTING",setting)));
+    }
+    public boolean isOrderMinimumExemptCustomerProfileDisplayed(String setting) throws InterruptedException {
+        distributorUI.waitForCustom(5000);
+        return distributorUI.isDisplayed(By.xpath(orderMinimumExemptCustomerProfile.replace("SETTING",setting)));
     }
 
 }
