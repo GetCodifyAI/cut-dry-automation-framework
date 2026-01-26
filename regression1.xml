@@ -15,6 +15,7 @@
             <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />
 
             <class name="com.cutanddry.qa.tests.order_guide.VerifyTheSearchTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifySearchFeatureAfterEditingItemNameTest" />
             <class name="com.cutanddry.qa.tests.order_guide.DeleteItemsFomTheReviewCartTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyItemPriceTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyCompanyDropdownTest" />

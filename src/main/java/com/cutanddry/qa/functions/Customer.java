@@ -2534,6 +2534,12 @@ public class Customer {
     public static void saveItem() throws InterruptedException {
         customersPage.saveItem();
     }
+    public static String getEditItemNameInputValue() throws InterruptedException {
+        return customersPage.getEditItemNameInputValue();
+    }
+    public static void enterEditItemName(String name) throws InterruptedException {
+        customersPage.enterEditItemName(name);
+    }
     public static boolean isMultiUomDropDownExistDisplayed(String code)throws InterruptedException{
         return customersPage.isMultiUomDropDownExistDisplayed(code);
     }
