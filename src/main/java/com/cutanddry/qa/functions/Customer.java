@@ -3592,6 +3592,17 @@ public class Customer {
         return customersPage.isAddedSubstitutesItemDisplayed(item);
     }
 
+    public static boolean areFirstThreeItemCodesSortedDescending() {
+        return customersPage.areFirstThreeItemCodesSortedDescending();
+    }
+
+    public static String getEditItemNameInputValue() throws InterruptedException {
+        return customersPage.getEditItemNameInputValue();
+    }
+    public static void enterEditItemName(String name) throws InterruptedException {
+        customersPage.enterEditItemName(name);
+    }
+
 
 }
 
