@@ -43,6 +43,11 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
     By imagesTab = By.xpath("//*[contains(text(),'Images')]");
     By certificationAttribute = By.xpath("//div[contains(text(), 'Certifications - ')]");
     By productItemImage = By.xpath("//div[contains(@class,'justify-content-center')]/img[contains(@class,'img-fluid') and (contains(@src,'.jpg') or contains(@src,'.png'))]");
+    By btn_deleteMedia = By.xpath("//button[contains(text(),'Delete Media')]");
+    By btn_deleteConfirm = By.xpath("//button[contains(text(),'Delete')]");
+    By upload_imageFile = By.xpath("//input[@type='file']");
+    By catalogItemThumbnail = By.xpath("(//tr[contains(@class,'_du1frc')]//td//img[contains(@class,'img-fluid')])[1]");
+    By placeholderImage = By.xpath("//img[contains(@src,'placeholder')]");
     By priceAndPromotions = By.xpath("//*[contains(text(),'Pricing & Promotions')]");
     By unitOfMeasure = By.xpath("//button[contains(text(),'+ Unit of measure')]");
     By uomCount = By.xpath("//table[@class='pt-4 w-auto table table-borderless']//td[contains(@class, 'pl-0')]//label");
@@ -409,6 +414,33 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     }
     public boolean isProductImageDisplayed(){
         return distributorUI.isDisplayed(productItemImage);
+    }
+    public void clickDeleteMedia(){
+        distributorUI.waitForVisibility(btn_deleteMedia);
+        distributorUI.click(btn_deleteMedia);
+    }
+    public void clickDeleteConfirm(){
+        distributorUI.waitForVisibility(btn_deleteConfirm);
+        distributorUI.click(btn_deleteConfirm);
+    }
+    public void uploadImage(String imagePath){
+        distributorUI.sendKeysToHiddenElements(upload_imageFile, imagePath);
+    }
+    public boolean isCatalogItemThumbnailDisplayed(){
+        try {
+            distributorUI.waitForCustom(3000);
+            return distributorUI.isDisplayed(catalogItemThumbnail);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public boolean isPlaceholderImageDisplayed(){
+        try {
+            distributorUI.waitForCustom(3000);
+            return distributorUI.isDisplayed(placeholderImage);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void clickOnPricingAndPromotionsTab(){
         distributorUI.click(priceAndPromotions);
