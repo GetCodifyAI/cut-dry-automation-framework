@@ -982,7 +982,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String substitutionsItem = "//div[contains(text(), 'ITEM')]";
     String orderMinimumCustomerProfile = "//div[text()='Order Minimum']/following-sibling::div//span[text()='SETTING']/../following-sibling::div[text()='$50,000.00']";
     String orderMinimumExemptCustomerProfile = "//div[text()='Order Minimum']/following-sibling::div//span[text()='SETTING']/../following-sibling::div[text()='n/a']";
-
+    By lbl_editItemNameInput = By.xpath("//label[text()='Item Name']/following-sibling::input");
 
 
 
@@ -5922,6 +5922,36 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isAddedSubstitutesItemDisplayed(String item){
         return distributorUI.isDisplayed(By.xpath(substitutionsItem.replace("ITEM",item)));
     }
+
+    public boolean areFirstThreeItemCodesSortedDescending() {
+        List<WebElement> itemCodeElements = driver.findElements(catalogListViewItemCode);
+        List<Integer> itemCodes = new ArrayList<>();
+        int limit = Math.min(3, itemCodeElements.size());
+        for (int i = 0; i < limit; i++) {
+            String codeText = itemCodeElements.get(i).getText().trim();
+            if (!codeText.isEmpty()) {
+                itemCodes.add(Integer.parseInt(codeText));
+            }
+        }
+        for (int i = 0; i < itemCodes.size() - 1; i++) {
+            if (itemCodes.get(i) < itemCodes.get(i + 1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public String getEditItemNameInputValue() throws InterruptedException {
+        distributorUI.waitForVisibility(lbl_editItemNameInput);
+        return distributorUI.getText(lbl_editItemNameInput, "value");
+    }
+    public void enterEditItemName(String name) throws InterruptedException {
+        distributorUI.waitForVisibility(lbl_editItemNameInput);
+        distributorUI.clear(lbl_editItemNameInput);
+        distributorUI.sendKeys(lbl_editItemNameInput, name);
+        distributorUI.waitForCustom(1000);
+    }
+
     public boolean isOrderMinimumCustomerProfileDisplayed(String setting) throws InterruptedException {
         distributorUI.waitForCustom(5000);
         return distributorUI.isDisplayed(By.xpath(orderMinimumCustomerProfile.replace("SETTING",setting)));
@@ -5930,5 +5960,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForCustom(5000);
         return distributorUI.isDisplayed(By.xpath(orderMinimumExemptCustomerProfile.replace("SETTING",setting)));
     }
+
+
 
 }
