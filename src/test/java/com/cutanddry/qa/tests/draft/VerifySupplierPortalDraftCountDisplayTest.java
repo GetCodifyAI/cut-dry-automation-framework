@@ -10,7 +10,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifySupplierPortalDraftCountDisplayTest extends TestBase {
     static User user;
-    String DistributorName ="46505655 - Kevin - Independent Foods Co";
+    String DistributorName ="Independent Foods Co";
 
     @BeforeMethod
     public void setUp(){

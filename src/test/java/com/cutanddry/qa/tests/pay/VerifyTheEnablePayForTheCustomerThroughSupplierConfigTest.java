@@ -15,7 +15,7 @@ public class VerifyTheEnablePayForTheCustomerThroughSupplierConfigTest extends T
     SoftAssert softAssert;
     static User user;
     static String customerId = "44939";
-    String DistributorName ="46505655 - Kevin - Independent Foods Co";
+    String DistributorName ="Independent Foods Co";
     static String restaurantName = "Kafe Layers #1 Test";
 
 

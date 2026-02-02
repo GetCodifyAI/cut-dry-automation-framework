@@ -16,7 +16,7 @@ public class SplitWeightUOMData {
     public static final String DP_NAME_DF = "150184574 - Cut+Dry Agent - Driscoll Foods";
     public static final String CUSTOMER_ID_DF = "682653";
 
-    public static final String DISTRIBUTOR_NAME_IFC = "46505655 - Kevin - Independent Foods Co";
+    public static final String DISTRIBUTOR_NAME_IFC = "Independent Foods Co";
     public static final String CUSTOMER_ID_IFC = "16579";
 
     public static final String DISTRIBUTOR_NAME_VICTO = "Vitco";

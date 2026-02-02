@@ -16,7 +16,7 @@ import static com.cutanddry.qa.base.TestBase.*;
 
 public class VerifyCreatingUnitOfMeasureOfItemTest {
     static User user;
-    String DistributerName ="46505655 - Kevin - Independent Foods Co";
+    String DistributerName ="Independent Foods Co";
     String UOM = "Bag";
     String itemCode = "00475";
     String itemPrice = "20.00";
