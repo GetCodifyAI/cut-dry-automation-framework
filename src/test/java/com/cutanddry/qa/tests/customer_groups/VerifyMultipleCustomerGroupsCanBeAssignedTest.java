@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyMultipleCustomerGroupsCanBeAssignedTest extends TestBase {
     static User user;
-    String DistributorName = "46505655 - Kevin - Independent Foods Co";
+    String DistributorName = "Independent Foods Co";
     String CustomerCode = "16579";
     String CustomerGroupName = "NEWGroup01";
     String CustomerGroupName2 = "NEWGroup02";

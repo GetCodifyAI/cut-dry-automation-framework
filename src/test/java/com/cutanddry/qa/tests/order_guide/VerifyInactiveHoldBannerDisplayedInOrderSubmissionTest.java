@@ -16,7 +16,7 @@ import static com.cutanddry.qa.base.TestBase.*;
 
 public class VerifyInactiveHoldBannerDisplayedInOrderSubmissionTest {
     static User user;
-    String DistributorName ="46505655 - Kevin - Independent Foods Co";
+    String DistributorName ="Independent Foods Co";
     static String customerId = "30275";
     static String inactiveHoldMessage1 = "There is an issue with your account. Please reach out to your supplier sales rep.";
 

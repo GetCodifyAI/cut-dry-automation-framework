@@ -12,7 +12,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyCustomerGroupVisibleTest extends TestBase {
     static User user;
-    String DistributerName = "46505655 - Kevin - Independent Foods Co";
+    String DistributerName = "Independent Foods Co";
     String CustomerCode = "16579";
 
     @BeforeMethod

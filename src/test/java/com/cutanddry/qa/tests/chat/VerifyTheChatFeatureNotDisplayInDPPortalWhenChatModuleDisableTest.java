@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheChatFeatureNotDisplayInDPPortalWhenChatModuleDisableTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    String DistributorName ="46505655 - Kevin - Independent Foods Co";
+    String DistributorName ="Independent Foods Co";
     static String customerId = DistributorOrderData.RESTAURANT_TEST_HAYES_ID;
 
 
