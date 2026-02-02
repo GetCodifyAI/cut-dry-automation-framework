@@ -18,7 +18,7 @@ import java.util.LinkedHashMap;
 public class VerifyThatTheSortItemsByDropDownIsAvailableInTheSimpleListViewTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    static String DistributorName ="46505655 - Kevin - Independent Foods Co";
+    static String DistributorName ="Independent Foods Co";
     static String CompanyName = "Independent Foods Co";
     static String customerId =PurchaseHistoryData.CUSTOMER_ID_IFC;
     static String simpleListView = "Enabled on DP Portal & Operator App";

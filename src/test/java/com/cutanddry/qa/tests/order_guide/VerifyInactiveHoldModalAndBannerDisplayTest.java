@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyInactiveHoldModalAndBannerDisplayTest extends TestBase {
     static User user;
-    String DistributorName ="46505655 - Kevin - Independent Foods Co";
+    String DistributorName ="Independent Foods Co";
     static String customerId = "30275";
     static String OperatorName = "372460856";
     static String inactiveHoldMessage1 = "Your account is on hold by your supplier.";

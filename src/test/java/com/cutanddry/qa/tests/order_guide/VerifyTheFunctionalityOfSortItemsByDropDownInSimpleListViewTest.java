@@ -17,7 +17,7 @@ import java.util.List;
 public class VerifyTheFunctionalityOfSortItemsByDropDownInSimpleListViewTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    static String DistributorName = "46505655 - Kevin - Independent Foods Co";
+    static String DistributorName = "Independent Foods Co";
     static String CompanyName = "Independent Foods Co";
     static String customerId = "21259";
     static String simpleListView = "Enabled on DP Portal & Operator App";

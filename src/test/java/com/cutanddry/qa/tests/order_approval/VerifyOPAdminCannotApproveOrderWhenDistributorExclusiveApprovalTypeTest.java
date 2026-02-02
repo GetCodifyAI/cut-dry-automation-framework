@@ -14,7 +14,7 @@ import static com.cutanddry.qa.base.TestBase.*;
 
 public class VerifyOPAdminCannotApproveOrderWhenDistributorExclusiveApprovalTypeTest {
     static User user;
-    String DistributorName ="46505655 - Kevin - Independent Foods Co";
+    String DistributorName ="Independent Foods Co";
     String CustomerCode = "23445";
     String approvalType = "Distributor Exclusive Approval";
     String SupplierName = "Independent Foods Co";

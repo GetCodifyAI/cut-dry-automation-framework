@@ -85,7 +85,7 @@ public class CustomerIndexingVerificationTest extends TestBase {
                 {"236140414"},
                 {"384083841"},
                 {"177850933"},
-                {"46505655"},
+                {"46017669"},
                 {"61233053"},
                 {"189993560"},
                 {"314254109"},
@@ -122,8 +122,6 @@ public class CustomerIndexingVerificationTest extends TestBase {
                 {"229366152"},
                 {"201465141"},
                 {"186162079"}
-
-
 
         };
     }

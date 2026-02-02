@@ -1,7 +1,7 @@
 package com.cutanddry.qa.data.testdata;
 
 public class TrackData {
-    public static final String DISTRIBUTOR_NAME = "46505655 - Kevin - Independent Foods Co";
+    public static final String DISTRIBUTOR_NAME = "Independent Foods Co";
     public static final String EDIT_ROUTE = "pencil";
     public static final String ADD_STOP_TO_ROUTE = "location-dot";
     public static final String ROUTE_NAME = "South 1";

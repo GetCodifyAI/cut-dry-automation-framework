@@ -38,17 +38,13 @@ public class VerifyOrderDateColumnDisplayWithFulfillmentTypeBadgeTest extends Te
 
         String orderDateText = Orders.getFirstOrderDateText();
         Pattern datePattern = Pattern.compile("^\\d{1,2}/\\d{1,2}/\\d{4}$");
-        softAssert.assertTrue(datePattern.matcher(orderDateText).matches(),
-                "Order date format is not MM/DD/YYYY. Actual: " + orderDateText);
+        softAssert.assertTrue(datePattern.matcher(orderDateText).matches(), "Order date format is not MM/DD/YYYY. Actual: " + orderDateText);
 
-        softAssert.assertTrue(Orders.isFirstOrderFulfillmentBadgeDisplayed(),
-                "Fulfillment type badge is not displayed below the order date");
+        softAssert.assertTrue(Orders.isFirstOrderFulfillmentBadgeDisplayed(), "Fulfillment type badge is not displayed below the order date");
 
         String fulfillmentBadgeText = Orders.getFirstOrderFulfillmentBadgeText();
         System.out.println("Fulfillment Badge Text: " + fulfillmentBadgeText);
-        softAssert.assertTrue(fulfillmentBadgeText != null && !fulfillmentBadgeText.isEmpty(),
-                "Fulfillment type badge text is empty");
-
+        softAssert.assertTrue(fulfillmentBadgeText != null && !fulfillmentBadgeText.isEmpty(), "Fulfillment type badge text is empty");
         softAssert.assertAll();
     }
 

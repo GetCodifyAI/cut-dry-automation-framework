@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyDpsHaveSpecialItemsOnCatalogDataWhenSupplierPortalEnabledTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    String DistributorName ="46505655 - Kevin - Independent Foods Co";
+    String DistributorName ="Independent Foods Co";
     static String SpecialItemsDropdownOption1 = "Enabled (via Manual Selection)";
     String itemCode = "00563";
     String All = "All";
