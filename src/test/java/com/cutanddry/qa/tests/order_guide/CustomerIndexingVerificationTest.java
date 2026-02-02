@@ -123,8 +123,6 @@ public class CustomerIndexingVerificationTest extends TestBase {
                 {"201465141"},
                 {"186162079"}
 
-
-
         };
     }
 }
