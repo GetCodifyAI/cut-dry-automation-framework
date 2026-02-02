@@ -33,7 +33,8 @@ public class ValidateTheProductStatusInCatalogDataTest extends TestBase {
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.selectItemStatus(All);
         Catalog.selectItemFromGrid(itemCode);
-        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        Thread.sleep(5000);
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code 1");
         Catalog.selectEditFromProductConfig();
         Catalog.selectProductActiveInactiveStatus(InActive);
         Catalog.saveChanges();
@@ -45,7 +46,8 @@ public class ValidateTheProductStatusInCatalogDataTest extends TestBase {
         Catalog.searchItemInCatalog(itemCode);
         softAssert.assertEquals(Catalog.getProductStatusFromCatalogProductGrid(itemCode),InActive,"Error displaying product status");
         Catalog.selectItemFromGrid(itemCode);
-        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        Thread.sleep(5000);
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code 2");
         Catalog.selectEditFromProductConfig();
         Catalog.selectProductActiveInactiveStatus(Active);
         Catalog.saveChanges();
