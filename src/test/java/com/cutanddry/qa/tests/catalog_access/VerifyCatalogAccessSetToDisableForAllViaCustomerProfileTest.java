@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyCatalogAccessSetToDisableForAllViaCustomerProfileTest extends TestBase {
     static User user;
-    String DistributorName ="46505655 - Kevin - Independent Foods Co";
+    String DistributorName ="Independent Foods Co";
     static String customerId = "15285";
     static String salespersonCode = "102460677";
     static String opSideAdminCode = "55743537";

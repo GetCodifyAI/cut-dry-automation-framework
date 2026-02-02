@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyAdditionalAttributeOfItemTest extends TestBase {
     static User user;
-    String DistributerName ="46505655 - Kevin - Independent Foods Co";
+    String DistributerName ="Independent Foods Co";
     String itemCode = "00475";
     String CertificationType = "Provenance Certifications";
     String CertificationOption = "Eco-Friendly";

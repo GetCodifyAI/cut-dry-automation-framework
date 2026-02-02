@@ -12,7 +12,7 @@ public class PurchaseHistoryData {
     public static final String ITEM_CODE_WAGNER = "610600";
     public static final String ITEM_NAME_WAGNER = "Lemons Choice 165CT";
     public static final String SUPPLIER_IFC = "Independent Foods Co";
-    public static final String DISTRIBUTOR_NAME_IFC = "46505655 - Kevin - Independent Foods Co";
+    public static final String DISTRIBUTOR_NAME_IFC = "Independent Foods Co";
     public static final String CUSTOMER_ID_IFC = "16579";
     public static final String ITEM_CODE_IFC = "01762";
     public static final String ITEM_NAME_IFC = "Broccolini 18 CT";

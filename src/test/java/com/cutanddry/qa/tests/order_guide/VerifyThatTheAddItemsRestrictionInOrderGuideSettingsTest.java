@@ -17,7 +17,7 @@ public class VerifyThatTheAddItemsRestrictionInOrderGuideSettingsTest extends Te
     String RestaurantUserCode = "52068374";
     static String AddItemRestrictionDropDownOption1 = "Don’t allow employees to add new items";
     static String AddItemRestrictionDropDownOption2 = "Allow employees to add items";
-    String DistributorName ="46505655 - Kevin - Independent Foods Co";
+    String DistributorName ="Independent Foods Co";
 
 
 
