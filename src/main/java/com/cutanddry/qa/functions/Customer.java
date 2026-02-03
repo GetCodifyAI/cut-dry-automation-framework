@@ -3618,6 +3618,10 @@ public class Customer {
     public static void enterEditItemName(String name) throws InterruptedException {
         customersPage.enterEditItemName(name);
     }
+    public static void selectDeliveryDateLineStablePickOrderDesk(String day, boolean isNextMonth)throws InterruptedException{
+        customersPage.clickOnDeliveryDateOrderDeskStable();
+        customersPage.selectDeliveryDateLineStablePick(day, isNextMonth);
+    }
 
 
 }
