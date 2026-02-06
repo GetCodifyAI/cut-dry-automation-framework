@@ -2,6 +2,7 @@ package com.cutanddry.qa.tests.order_desk;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.functions.OrderDesk;
@@ -26,7 +27,7 @@ public class verifyOrderDeskDeliveryDateTest extends TestBase {
     }
 
     @Test(groups="DOT-TC-171")
-    public void verifyOrderDeskDeliveryDate(){
+    public void verifyOrderDeskDeliveryDate() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(),user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -36,24 +37,33 @@ public class verifyOrderDeskDeliveryDateTest extends TestBase {
         OrderDesk.navigateToDraftOrders();
         OrderDesk.navigateToDraftOrderReviewPage();
 
-        //Tomorrow Delivery Date
+        // For Tomorrow Delivery Date
         LocalDate today = LocalDate.now();
-        LocalDate OneDaysLater = today.plusDays(2);
-        DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("EEE, MMM d");
-        String OneDaysLaterDate = customFormatter.format(OneDaysLater);
-        OrderDesk.SelectDeliveryDate("1");
+        LocalDate deliveryDate = today.plusDays(1);
+        DateTimeFormatter fullFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("d");
+
+        String formattedDeliveryDate = fullFormatter.format(deliveryDate);
+        String deliveryDay = dayFormatter.format(deliveryDate);
+
+        boolean isNextMonth = deliveryDate.getMonthValue() != today.getMonthValue();
+        Customer.selectDeliveryDateLineStablePickOrderDesk(deliveryDay, isNextMonth);
+        OrderDesk.AddItemQuantityDraftOrderReviewPage();
         OrderDesk.SaveDraftOrder();
-        softAssert.assertTrue(OrderDesk.isSaveDraftSucessful(),"Error in Saving Delivery Date Draft");
+        softAssert.assertTrue(OrderDesk.isSaveDraftSucessful(), "Error in Saving Delivery Date Draft");
         OrderDesk.CloseTheSucessfulOverlayByOK();
 
-        //Date after DayAfter Tomorrow Delivery Date
-        LocalDate ThreeDaysLater = today.plusDays(3);
-        String DayAfterTodayDate = customFormatter.format(ThreeDaysLater);
-        OrderDesk.SelectDeliveryDate("2");
-        OrderDesk.SaveDraftOrder();
-        softAssert.assertTrue(OrderDesk.isSaveDraftSucessful(),"Error in Saving Delivery Date Draft");
-        OrderDesk.CloseTheSucessfulOverlayByOK();
+       // For Day After Tomorrow Delivery Date
+        deliveryDate = today.plusDays(2);
+        formattedDeliveryDate = fullFormatter.format(deliveryDate);
+        deliveryDay = dayFormatter.format(deliveryDate);
 
+        isNextMonth = deliveryDate.getMonthValue() != today.getMonthValue();
+        Customer.selectDeliveryDateLineStablePickOrderDesk(deliveryDay, isNextMonth);
+        OrderDesk.AddItemQuantityDraftOrderReviewPage();
+        OrderDesk.SaveDraftOrder();
+        softAssert.assertTrue(OrderDesk.isSaveDraftSucessful(), "Error in Saving Delivery Date Draft");
+        OrderDesk.CloseTheSucessfulOverlayByOK();
         softAssert.assertAll();
     }
 

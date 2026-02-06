@@ -153,7 +153,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     String txt_orders = "(//div[contains(text(), 'Order Number #')])[NUM]";
     By btn_back = By.xpath("//button[contains(text(), 'Back')]");
     String SelectCustomerByCode = "//td[contains(text(),'CODE')]";
-    By OrdersTabTxt = By.xpath("//a[contains(text(),'Orders') and @class='_1n4k2vi text-center nav-item nav-link']");
+    By OrdersTabTxt = By.xpath("//a[@role='tab' and @data-rb-event-key='Orders']");
     By OrderIdTxt = By.xpath("//tr[contains(@href,'/ordersView/')][1]");
     By OrderDateSort = By.xpath("//span[contains(text(),'Order Date')]");
     By DeliveryDate = By.xpath("//span[contains(text(),'Fulfilled By')]");
@@ -861,8 +861,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By txt_manageStandingOrders = By.xpath("//*[contains(text(), 'Manage Standing Orders')]");
     By btn_addNew = By.xpath("//button[contains(text(),'Add New')]");
     By btn_createStandingOrder = By.xpath("//button[contains(text(),'Create a Standing Order')]");
-    By btn_editStandingOrderIcon = By.xpath("//button[@title='Edit']");
-    By btn_deleteStandingOrderIcon = By.xpath("//button[@title='Delete']");
+    By btn_editStandingOrderIcon = By.xpath("//span[text()='Edit']");
+    By btn_deleteStandingOrderIcon = By.xpath("//button//*[local-name()='svg' and @data-icon='cdTrash']");
     By btn_calculateOrderQty = By.xpath("(//td//span//div[@data-tip='View Product Details']/../../../../../following-sibling::td[3]/div/div/div)[1]");
     By lbl_calculateOrderQty = By.xpath("//div[contains(text(),'Calculate Order Quantity')]");
     By lbl_parValue = By.xpath("//div[contains(text(),'Par')]/../following-sibling::div//input");
@@ -983,6 +983,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String orderMinimumCustomerProfile = "//div[text()='Order Minimum']/following-sibling::div//span[text()='SETTING']/../following-sibling::div[text()='$50,000.00']";
     String orderMinimumExemptCustomerProfile = "//div[text()='Order Minimum']/following-sibling::div//span[text()='SETTING']/../following-sibling::div[text()='n/a']";
     By lbl_editItemNameInput = By.xpath("//label[text()='Item Name']/following-sibling::input");
+    By btn_deliveryDateOrderDeskStable = By.xpath("//div[text()='Delivery Date']/following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
+
 
 
 
@@ -5959,6 +5961,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isOrderMinimumExemptCustomerProfileDisplayed(String setting) throws InterruptedException {
         distributorUI.waitForCustom(5000);
         return distributorUI.isDisplayed(By.xpath(orderMinimumExemptCustomerProfile.replace("SETTING",setting)));
+    }
+    public void clickOnDeliveryDateOrderDeskStable() throws InterruptedException{
+        distributorUI.waitForCustom(4000);
+        distributorUI.click(btn_deliveryDateOrderDeskStable);
     }
 
 

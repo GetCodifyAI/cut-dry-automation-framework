@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 public class ValidateFilterCreditRequestFromSalespersonTest extends TestBase {
     static User user;
     String date = "All";
-    String salesperson = "Kevin";
+    String salesperson = "Darlene";
 
     @BeforeMethod
     public void setUp(){
