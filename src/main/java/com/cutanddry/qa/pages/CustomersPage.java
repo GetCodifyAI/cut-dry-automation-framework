@@ -153,7 +153,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     String txt_orders = "(//div[contains(text(), 'Order Number #')])[NUM]";
     By btn_back = By.xpath("//button[contains(text(), 'Back')]");
     String SelectCustomerByCode = "//td[contains(text(),'CODE')]";
-    By OrdersTabTxt = By.xpath("//a[contains(text(),'Orders') and @class='_1n4k2vi text-center nav-item nav-link']");
+    By OrdersTabTxt = By.xpath("//a[@role='tab' and @data-rb-event-key='Orders']");
     By OrderIdTxt = By.xpath("//tr[contains(@href,'/ordersView/')][1]");
     By OrderDateSort = By.xpath("//span[contains(text(),'Order Date')]");
     By DeliveryDate = By.xpath("//span[contains(text(),'Fulfilled By')]");
