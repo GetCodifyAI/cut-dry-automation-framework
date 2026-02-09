@@ -17,6 +17,7 @@ public class VerifyManageStandingOrdersCTAFunctionalityInOrderGuideTest extends 
     static User user;
     static String customerId = "16579";
     static String deliveryDay = "Wednesday";
+    static String title = "Test Order 3";
 
     @BeforeMethod
     public void setUp() {
@@ -42,10 +43,11 @@ public class VerifyManageStandingOrdersCTAFunctionalityInOrderGuideTest extends 
         Customer.clickOnManageCreateStandingOrder();
 
 //        Customer.selectDeliveryDate(deliveryDay);
-        Customer.selectDeliveryDateAsLastBefore();
         itemName = Customer.getItemNameFirstRow();
         Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItems();
+        Customer.typeOnStandingOrderTitle(title);
+        Customer.selectDeliveryDateAsLastBefore();
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
         Customer.setStandingOrder();
         Customer.selectEmail();
@@ -66,11 +68,11 @@ public class VerifyManageStandingOrdersCTAFunctionalityInOrderGuideTest extends 
         Customer.clickOnStandingOrderEditIcon();
 
         Customer.editOrderFromReviewScreen();
+        Customer.increaseFirstRowQtyByOne();
+        Customer.checkoutItems();
 //        Customer.selectDeliveryDate(deliveryDay);
         Customer.selectDeliveryDateAsLast();
         itemName = Customer.getItemNameFirstRow();
-        Customer.increaseFirstRowQtyByOne();
-        Customer.checkoutItems();
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
         Customer.resetStandingOrder();
         softAssert.assertTrue(Customer.isStandingOrderEmailPopupDisplayed(),"pop up display error");
