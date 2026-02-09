@@ -920,7 +920,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String catalogListViewSort = "//th//div[text()='SORT']";
     By catalogListViewItemCode = By.xpath("//tr[@class='_du1frc']/td[1]");
     String catalogListViewItemName= "//tr[@class='_du1frc']/td[COLUMN]";
-    String catalogFirstItemPrice = "//div[normalize-space(.)='ITEMNAME']/../following::div//span[contains(normalize-space(.),'$')]";
+    String catalogFirstItemPrice = "(//div[normalize-space(.)='ITEMNAME']/../following::div//span[contains(normalize-space(.),'$')])[1]";
     By tooManyOrdersText = By.xpath("//*[contains(text(),'You are trying to create too many orders too fast!')]");
     String catalogSearchItemName = "((//div[contains(@class,'card-deck')]//div[   contains(., 'NAME')   and   contains(., 'BRAND') ])[last()])[1]";
     String orderItems = "//div[normalize-space(text())=\'ITEMNAME\']";
@@ -984,6 +984,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String orderMinimumExemptCustomerProfile = "//div[text()='Order Minimum']/following-sibling::div//span[text()='SETTING']/../following-sibling::div[text()='n/a']";
     By lbl_editItemNameInput = By.xpath("//label[text()='Item Name']/following-sibling::input");
     By btn_deliveryDateOrderDeskStable = By.xpath("//div[text()='Delivery Date']/following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
+    By btn_ThreeDotVertical = By.xpath("//button[text()='Order Guide']/following-sibling::div//*[contains(@data-icon,'ellipsis-vertical')]");
 
 
 
@@ -5498,25 +5499,31 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return true;
     }
     public boolean areFirstFiveItemNamesSortedDescending(String column) {
-        List<WebElement> itemNameElements = driver.findElements(By.xpath(catalogListViewItemName.replace("COLUMN", column)));
+        List<WebElement> itemNameElements = driver.findElements(
+                By.xpath(catalogListViewItemName.replace("COLUMN", column))
+        );
         List<String> itemNames = new ArrayList<>();
         int limit = Math.min(5, itemNameElements.size());
 
         for (int i = 0; i < limit; i++) {
-            String nameText = itemNameElements.get(i).getText().trim();
-            if (!nameText.isEmpty()) {
+            String nameText = itemNameElements.get(i).getText()
+                    .replace("\u00A0", "")
+                    .trim();
+            if (!nameText.isEmpty() && !nameText.equals("-") && !nameText.equals("—")) {
                 itemNames.add(nameText);
             }
         }
-
+        if (itemNames.size() < 2) {
+            return true;
+        }
         for (int i = 0; i < itemNames.size() - 1; i++) {
             if (itemNames.get(i).compareToIgnoreCase(itemNames.get(i + 1)) < 0) {
                 return false;
             }
         }
-
         return true;
     }
+
 
     public double getCatalogFirstItemPrice(String ItemName){
         String text = distributorUI.getText(By.xpath(catalogFirstItemPrice.replace("ITEMNAME",ItemName)));
@@ -5965,6 +5972,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickOnDeliveryDateOrderDeskStable() throws InterruptedException{
         distributorUI.waitForCustom(4000);
         distributorUI.click(btn_deliveryDateOrderDeskStable);
+    }
+    public void clickThreeDotVertical(){
+        distributorUI.click(btn_ThreeDotVertical);
     }
 
 

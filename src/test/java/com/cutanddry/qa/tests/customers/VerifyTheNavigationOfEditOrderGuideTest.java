@@ -35,7 +35,7 @@ public class VerifyTheNavigationOfEditOrderGuideTest extends TestBase {
         String BusinessName = Customer.getBusinessNameFromCustomers(CustomerCode);
         Customer.SelectCustomer(CustomerCode);
         softAssert.assertTrue(Customer.isCustomerProfileDisplayed(BusinessName),"customer profile not display ");
-        Customer.clickMoreOption();
+        Customer.clickThreeDotVertical();
         Customer.clickEditOrderGuide();
 //        Customer.clickNo();
         softAssert.assertTrue(Customer.isCustomerOrderGuideDisplayed(),"customer order guide not display");
