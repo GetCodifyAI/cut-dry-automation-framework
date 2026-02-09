@@ -3622,6 +3622,7 @@ public class Customer {
         customersPage.clickOnDeliveryDateOrderDeskStable();
         customersPage.selectDeliveryDateLineStablePick(day, isNextMonth);
     }
+    public static void clickThreeDotVertical(){customersPage.clickThreeDotVertical();}
 
 
 }

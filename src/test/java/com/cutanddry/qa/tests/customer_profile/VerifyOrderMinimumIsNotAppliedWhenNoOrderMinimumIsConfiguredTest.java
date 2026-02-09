@@ -13,7 +13,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyOrderMinimumIsNotAppliedWhenNoOrderMinimumIsConfiguredTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    static String customerId = "97071";
+    static String customerId = "APP100";
     String DistributorName ="Independent Foods Co";
     static String defaultOrderMin = "0";
     static String orderMinimumType = "Hard Order Minimum";

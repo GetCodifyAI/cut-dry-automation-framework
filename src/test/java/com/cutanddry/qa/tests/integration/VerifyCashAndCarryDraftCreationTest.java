@@ -46,12 +46,12 @@ public class VerifyCashAndCarryDraftCreationTest extends TestBase {
         softAssert.assertTrue(CashAndCarry.isProductDetailsDisplayedDicarlo(),"The user is unable to land on the Product Details page.");
         item2PriceUOM1 = CashAndCarry.getDicarloPDPPriceUOM(uom1);
         item2PriceUOM2 = CashAndCarry.getDicarloPDPPriceUOM(uom2);
-        CashAndCarry.clickDicarloAddToCartPlusIcon(randomNum, uom1);
+        CashAndCarry.clickDicarloAddToCartPlusIcon(2, uom1);
         CashAndCarry.clickDicarloAddToCartPlusIcon(1, uom2);
         Thread.sleep(3000);
         totalPDPItemPrice = Customer.getItemPriceOnCheckoutButtonViaPDP();
         softAssert.assertEquals(Math.round(totalPDPItemPrice*100.0)/100.0,
-                (Math.round(itemPrice1*100.0)/100.0)+(Math.round(item2PriceUOM1*randomNum*100.0)/100.0)+(Math.round(item2PriceUOM2*100.0)/100.0),
+                (Math.round(itemPrice1*100.0)/100.0)+(Math.round(item2PriceUOM1*2*100.0)/100.0)+(Math.round(item2PriceUOM2*100.0)/100.0),
                 0.001, "The item has not been selected.");
         Customer.clickCheckOutPDP();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
