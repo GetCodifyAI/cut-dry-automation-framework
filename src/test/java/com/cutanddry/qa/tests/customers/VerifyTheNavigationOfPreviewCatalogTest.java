@@ -35,7 +35,7 @@ public class VerifyTheNavigationOfPreviewCatalogTest extends TestBase {
         String BusinessName = Customer.getBusinessNameFromCustomers(CustomerCode);
         Customer.SelectCustomer(CustomerCode);
         softAssert.assertTrue(Customer.isCustomerProfileDisplayed(BusinessName),"customer profile not display ");
-        Customer.clickMoreOption();
+        Customer.clickThreeDotVertical();
         Customer.clickPreviewCatalog();
         softAssert.assertTrue(Customer.isCatalogPreviewSectionDisplayed(),"catalog preview section not display");
         softAssert.assertAll();

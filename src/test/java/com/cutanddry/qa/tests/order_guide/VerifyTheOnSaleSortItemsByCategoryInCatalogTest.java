@@ -17,7 +17,7 @@ public class VerifyTheOnSaleSortItemsByCategoryInCatalogTest extends TestBase {
     static String customerId = "16579";
     static String onSaleFilter = "On Sale";
     static String onSaleFilterTag = "Sale";
-    static String sortItemCategory = "Category";
+    static String sortItemBrand = "Brand";
 
 
     @BeforeMethod
@@ -43,9 +43,9 @@ public class VerifyTheOnSaleSortItemsByCategoryInCatalogTest extends TestBase {
         Customer.clickCatalogFilter(onSaleFilter);
         softAssert.assertTrue(Customer.isCatalogFilterTagDisplayed(onSaleFilterTag),"catalog filter tag not display");
         Customer.clickCatalogListView();
-        Customer.clickCatalogListViewSort(sortItemCategory);
+        Customer.clickCatalogListViewSort(sortItemBrand);
         softAssert.assertTrue(Customer.areFirstFiveItemNamesSortedAscending("3"),"error in item code sort");
-        Customer.clickCatalogListViewSort(sortItemCategory);
+        Customer.clickCatalogListViewSort(sortItemBrand);
         Thread.sleep(4000);
         softAssert.assertTrue(Customer.areFirstFiveItemNamesSortedDescending("3"),"error in item name sort z->A");
         softAssert.assertAll();
