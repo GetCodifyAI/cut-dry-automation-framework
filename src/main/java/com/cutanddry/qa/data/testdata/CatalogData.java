@@ -45,7 +45,7 @@ public class CatalogData {
     public static final String MULTI_UOM_3 = "3";
     public static final String UOM_DROPDOWN_OPTION = "Multiple Units";
     public static final String APP_URL = "https://dicarlo-uat.staging.cutanddry.com/market/dicarlo";
-    public static final String CC_ITEM_NAME_1 = "*Banana Ice Cream Tub";
+    public static final String CC_ITEM_NAME_1 = "*Chocolate Ice Cream Tub";
     public static final String CC_ITEM_NAME_2 = "chocolate Chips Mini";
     public static final String AllSTAR_APP_URL = "https://allstarspecialties-uat.staging.cutanddry.com/market/AllStar";
     public static final String DP_BUTTERFIELD = "Butterfield & Vallis";
