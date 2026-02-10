@@ -26,6 +26,7 @@ public class VerifyTheEditStandingOrderWithMultipleUOMTest extends TestBase {
     static String deliveryDay = CatalogData.DELIVERY_DAY;
     String itemName = CatalogData.ITEM_NAME;
     static String StandingPrice ,totalItemQuantityReviewOrder,EditStandingPrice,totalQuantity ,totalQuantity2;
+    static String title = "Test Order UOM";
 
     @BeforeMethod
     public void setUp() {
@@ -52,7 +53,6 @@ public class VerifyTheEditStandingOrderWithMultipleUOMTest extends TestBase {
         Assert.assertTrue(Customer.isStandingOrdersDisplayed(),"navigation error");
         Customer.removeStandingOrdersIfAvailable();
         Customer.clickOnCreateStandingOrder();
-        Customer.selectDeliveryDate(deliveryDay);
 
         Customer.searchItemOnOrderGuide(searchItemCode);
         Catalog.ClickOnMultiUomDropDownOG(searchItemCode);
@@ -68,6 +68,8 @@ public class VerifyTheEditStandingOrderWithMultipleUOMTest extends TestBase {
 
 
         Customer.checkoutItems();
+        Customer.typeOnStandingOrderTitle(title);
+        Customer.selectDeliveryDate(deliveryDay);
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
         totalQuantity = Catalog.getTotalQuantityInReviewOrder();
 

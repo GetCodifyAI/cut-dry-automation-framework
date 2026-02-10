@@ -29,7 +29,7 @@ public class ValidateTheNewArrivalFilterInCatalogPricingAndPromotionsTest extend
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.selectItemFromGrid(itemCode);
-        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code 1");
         Catalog.navigateToPricingAndPromotions();
         Catalog.clickNewArrival();
         Catalog.saveChanges();
@@ -39,7 +39,7 @@ public class ValidateTheNewArrivalFilterInCatalogPricingAndPromotionsTest extend
         softAssert.assertTrue(Catalog.isFilterCatalogPopupDisplayed(),"popup error");
         Catalog.selectNewArrivalYes();
         Catalog.selectItemFromGrid(itemCode);
-        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code 2");
         Catalog.navigateToPricingAndPromotions();
         Catalog.clickNewArrival();
         Catalog.saveChanges();

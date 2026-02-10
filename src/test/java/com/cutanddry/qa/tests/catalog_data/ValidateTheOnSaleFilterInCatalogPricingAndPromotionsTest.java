@@ -29,7 +29,7 @@ public class ValidateTheOnSaleFilterInCatalogPricingAndPromotionsTest extends Te
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.selectItemFromGrid(itemCode);
-        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code 1");
         Catalog.navigateToPricingAndPromotions();
         Catalog.clickOnSale();
         Catalog.saveChanges();
@@ -39,7 +39,7 @@ public class ValidateTheOnSaleFilterInCatalogPricingAndPromotionsTest extends Te
         softAssert.assertTrue(Catalog.isFilterCatalogPopupDisplayed(),"popup error");
         Catalog.selectOnSaleYes();
         Catalog.selectItemFromGrid(itemCode);
-        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code 2");
         Catalog.navigateToPricingAndPromotions();
         Catalog.clickOnSale();
         Catalog.saveChanges();
