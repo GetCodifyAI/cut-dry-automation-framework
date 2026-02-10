@@ -3623,6 +3623,9 @@ public class Customer {
         customersPage.selectDeliveryDateLineStablePick(day, isNextMonth);
     }
     public static void clickThreeDotVertical(){customersPage.clickThreeDotVertical();}
+    public static void typeOnStandingOrderTitle(String title) throws InterruptedException {
+        customersPage.typeOnStandingOrderTitle(title);
+    }
 
 
 }
