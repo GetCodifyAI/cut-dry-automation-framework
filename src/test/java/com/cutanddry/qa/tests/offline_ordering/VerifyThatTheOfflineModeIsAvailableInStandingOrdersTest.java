@@ -16,6 +16,7 @@ public class VerifyThatTheOfflineModeIsAvailableInStandingOrdersTest extends Tes
     static User user;
     static String customerId = "16579";
     static String deliveryDay = "Monday";
+    static String title = "Test Order New";
 
     @BeforeMethod
     public void setUp() {
@@ -44,14 +45,15 @@ public class VerifyThatTheOfflineModeIsAvailableInStandingOrdersTest extends Tes
         Customer.clickActiveOfflineMode();
         softAssert.assertTrue(Customer.isHangTightPopUpDisplay(),"hang tight pop up not display");
         Thread.sleep(3000);
-
-        Customer.selectDeliveryDate(deliveryDay);
+        
         itemName = Customer.getItemNameFirstRow();
         Customer.increaseFirstRowQtyByOne();
 
         Customer.clickGoOnline();
 
         Customer.checkoutItems();
+        Customer.typeOnStandingOrderTitle(title);
+        Customer.selectDeliveryDate(deliveryDay);
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
         Customer.setStandingOrder();
         softAssert.assertTrue(Customer.isStandingOrderEmailPopupDisplayed(),"pop up display error");

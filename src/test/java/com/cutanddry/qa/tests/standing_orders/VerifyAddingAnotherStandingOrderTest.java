@@ -16,6 +16,7 @@ public class VerifyAddingAnotherStandingOrderTest extends TestBase {
     static User user;
     static String customerId = "16579";
     static String deliveryDay = "Wednesday";
+    static String title = "Test Order 2";
 
     @BeforeMethod
     public void setUp() {
@@ -37,10 +38,11 @@ public class VerifyAddingAnotherStandingOrderTest extends TestBase {
         softAssert.assertTrue(Customer.isStandingOrdersDisplayed(),"navigation error");
         Customer.clickOnAddAnotherStandingOrder();
 //        Customer.selectDeliveryDate(deliveryDay);
-        Customer.selectDeliveryDateAsLastBefore();
         itemName = Customer.getItemNameFirstRow();
         Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItems();
+        Customer.typeOnStandingOrderTitle(title);
+        Customer.selectDeliveryDateAsLastBefore();
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
         Customer.setStandingOrder();
         Customer.selectEmail();

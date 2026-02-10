@@ -123,7 +123,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By txt_standingOrders = By.xpath("//div[text()='Standing Orders: ']");
     By created_StandingOrders = By.xpath("//div[contains(text(),'Set for ')]");
     By btn_createStandingOrders = By.xpath("//div[text()='Create']");
-    By dropdown_delivery = By.xpath("//div[text()='Delivery:']/following-sibling::div//div[text()='Select Days...']");
+    By dropdown_delivery = By.xpath("//div[text()='Delivery Days']/following-sibling::div//div[text()='Select days']");
     By dropdown_pickUp = By.xpath("//div[text()='Pickup Date:']/../following-sibling::div/div");
     String txt_deliveryDay = "//div[text()='DAY']/preceding-sibling::input[@type='checkbox']";
     String txt_deliveryLastDay = "(//div[contains(@class, 'cd_themed_select__option')]//input[@type='checkbox'])[last()]";
@@ -985,6 +985,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By lbl_editItemNameInput = By.xpath("//label[text()='Item Name']/following-sibling::input");
     By btn_deliveryDateOrderDeskStable = By.xpath("//div[text()='Delivery Date']/following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
     By btn_ThreeDotVertical = By.xpath("//button[text()='Order Guide']/following-sibling::div//*[contains(@data-icon,'ellipsis-vertical')]");
+    By tbx_titleStandingOrder = By.xpath("//input[@placeholder='Enter title']");
 
 
 
@@ -5975,6 +5976,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void clickThreeDotVertical(){
         distributorUI.click(btn_ThreeDotVertical);
+    }
+    public void typeOnStandingOrderTitle(String title) throws InterruptedException {
+        distributorUI.clear(tbx_titleStandingOrder);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_titleStandingOrder, title);
     }
 
 
