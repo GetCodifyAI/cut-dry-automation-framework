@@ -8,66 +8,66 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part_Twelve"/>
         <classes>
-<!--            <class name="com.cutanddry.qa.tests.catalog.VerifyCashAndCarryAllowedOptionIsDisplayedInsidePricingAndPromotionsForCashAndCarryEnabledDPTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.catalog.VerifyCashAndCarryAllowedOptionIsNotDisplayedInsidePricingAndPromotionsForCashAndCarryNotEnabledDPTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.catalog.VerifyThatTheDistributorShouldHaveTheNewProductBannerInTheSupplierCatalogTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheSpecialOrderItemsOrderReviewNoteTest"/>-->
-<!--            &lt;!&ndash;TODO: Lipari no longer available on UAT&ndash;&gt;-->
-<!--            &lt;!&ndash;<class name="com.cutanddry.qa.tests.distributor_specific.VerifyThatTheUserCanSetUpCCEmailFromTheDistributorPortalTest"/>&ndash;&gt;-->
+            <class name="com.cutanddry.qa.tests.catalog.VerifyCashAndCarryAllowedOptionIsDisplayedInsidePricingAndPromotionsForCashAndCarryEnabledDPTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyCashAndCarryAllowedOptionIsNotDisplayedInsidePricingAndPromotionsForCashAndCarryNotEnabledDPTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyThatTheDistributorShouldHaveTheNewProductBannerInTheSupplierCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheSpecialOrderItemsOrderReviewNoteTest"/>
+            <!--TODO: Lipari no longer available on UAT-->
+            <!--<class name="com.cutanddry.qa.tests.distributor_specific.VerifyThatTheUserCanSetUpCCEmailFromTheDistributorPortalTest"/>-->
 
-<!--            <class name="com.cutanddry.qa.tests.orders.VerifyThatEditColumnsOptionIsAvailableInOrdersScreenTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.orders.VerifyThatLockedColumnsCannotBeEditedInTheCustomizeColumnScreenTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.orders.VerifyThatNotLockedColumnsCanBeEditedInTheCustomizeColumnScreenTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.orders.VerifyThatOrderGuideEditDisableFeatureTest"/>-->
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatEditColumnsOptionIsAvailableInOrdersScreenTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatLockedColumnsCannotBeEditedInTheCustomizeColumnScreenTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatNotLockedColumnsCanBeEditedInTheCustomizeColumnScreenTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatOrderGuideEditDisableFeatureTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.orders.VerifyTheClickOnQuantityPickerAndIncrementTheItemCountFromQuantityPickerAndIncrementItemCountFromPlusIconTest"/>-->
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheClickOnQuantityPickerAndIncrementTheItemCountFromQuantityPickerAndIncrementItemCountFromPlusIconTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureLoginByAdminUserRolesTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureLoginBySalespersonUserRolesTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureLoginByAccountReceivableUserRolesTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureHillcrestDPTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureBiRiteDPTest"/>-->
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureLoginByAdminUserRolesTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureLoginBySalespersonUserRolesTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureLoginByAccountReceivableUserRolesTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureHillcrestDPTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureBiRiteDPTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheItemTypeFilterIsVisibleInCustomerCatalogTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheItemTypeFilterIsVisibleInCustomerCatalogEditOGFlowTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheItemTypeFilterIsVisibleInSupplierCatalogTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheAvailabilityFilterIsVisibleInCustomerCatalogTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheAvailabilityFilterIsVisibleInCustomerCatalogEditOGFlowTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheAvailabilityFilterIsVisibleInSupplierCatalogTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheNewArrivalsSectionIsAvailableInCustomerCatalogTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatOtherDPsHaveTheCustomerTypeFilterToFilterCustomerTypesTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatDPsDisplayTheirOwnProductsAlongWithProductsFromOtherManufacturersTest"/>-->
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheItemTypeFilterIsVisibleInCustomerCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheItemTypeFilterIsVisibleInCustomerCatalogEditOGFlowTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheItemTypeFilterIsVisibleInSupplierCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheAvailabilityFilterIsVisibleInCustomerCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheAvailabilityFilterIsVisibleInCustomerCatalogEditOGFlowTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheAvailabilityFilterIsVisibleInSupplierCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheNewArrivalsSectionIsAvailableInCustomerCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatOtherDPsHaveTheCustomerTypeFilterToFilterCustomerTypesTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatDPsDisplayTheirOwnProductsAlongWithProductsFromOtherManufacturersTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.order_guide.ValidatePONumberLengthForDistributorTest"/>-->
+            <class name="com.cutanddry.qa.tests.order_guide.ValidatePONumberLengthForDistributorTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheDistributionCentreFilterIsFilteringRelevantDistributorCentresTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheDistributionCentreFilterIsFilteringRelevantDistributorCentresSupplierCatalogTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheDistributionCentreFilterIsFilteringRelevantDistributorCentresCustomerCatalogOGEditFlowTest"/>-->
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheDistributionCentreFilterIsFilteringRelevantDistributorCentresTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheDistributionCentreFilterIsFilteringRelevantDistributorCentresSupplierCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheDistributionCentreFilterIsFilteringRelevantDistributorCentresCustomerCatalogOGEditFlowTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.catalog.VerifyDpsHaveSpecialItemsOnCatalogDataWhenSupplierPortalEnabledTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.catalog.VerifyDpsHaveNotSpecialItemsOnCatalogDataWhenSupplierPortalDisableTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.catalog.VerifyDpsHaveSpecialItemsOrderSubmissionTest"/>-->
+            <class name="com.cutanddry.qa.tests.catalog.VerifyDpsHaveSpecialItemsOnCatalogDataWhenSupplierPortalEnabledTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyDpsHaveNotSpecialItemsOnCatalogDataWhenSupplierPortalDisableTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyDpsHaveSpecialItemsOrderSubmissionTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheGPOFilterOptionInTheCustomerCatalogTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheGPOFilterOptionInTheEditOGFlowTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheGPOFilterOptionInSupplierCatalogTest"/>-->
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheGPOFilterOptionInTheCustomerCatalogTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheGPOFilterOptionInTheEditOGFlowTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheGPOFilterOptionInSupplierCatalogTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.catalog.VerifyTheOutOfStockLabelsNotDisplayWhenHideOutOfStockLabelOnSupplierPortalToggleEnabledTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.catalog.VerifyTheOutOfStockLabelsDisplayWhenHideOutOfStockLabelOnSupplierPortalToggleDisabledTest"/>-->
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheOutOfStockLabelsNotDisplayWhenHideOutOfStockLabelOnSupplierPortalToggleEnabledTest"/>
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheOutOfStockLabelsDisplayWhenHideOutOfStockLabelOnSupplierPortalToggleDisabledTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.customers.VerifyTheOrderSummeryDisplayedOnDPPortalTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheAlternateCollapsedMenuOnDesktopTest"/>-->
+            <class name="com.cutanddry.qa.tests.customers.VerifyTheOrderSummeryDisplayedOnDPPortalTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheAlternateCollapsedMenuOnDesktopTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.orders.VerifyThatTheSendToERPButtonIsAvailableForScheduledJITOrdersTest"/>-->
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatTheSendToERPButtonIsAvailableForScheduledJITOrdersTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.quick_add.VerifyTheUserCanAddItemsToTheQuickAddFlowByEnteringAValidProductIDTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.quick_add.VerifyTheRowDataIsClearedWhenClickingTheTrashIconInQuickAddFlowTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.quick_add.VerifyTheQuickAddFlowForItemsWithoutEachAsTheUOMTest"/>-->
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyTheUserCanAddItemsToTheQuickAddFlowByEnteringAValidProductIDTest"/>
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyTheRowDataIsClearedWhenClickingTheTrashIconInQuickAddFlowTest"/>
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyTheQuickAddFlowForItemsWithoutEachAsTheUOMTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheSortItemsByDropDownIsAvailableInTheSimpleListViewTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.catalog_access.VerifyHideWhiteLabelHomePageForEmployeesWithNoCatalogAccessTest"/>-->
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheSortItemsByDropDownIsAvailableInTheSimpleListViewTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyHideWhiteLabelHomePageForEmployeesWithNoCatalogAccessTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingNormalOrderAndEditItFromPortalWhenDisableFetchPricesTest"/>-->
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingNormalOrderAndEditItFromPortalWhenDisableFetchPricesTest"/>
             <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingNormalOrderAndEditItFromPortalWhenEnableFetchPricesTest"/>
 
             <class name="com.cutanddry.qa.tests.quick_add.VerifyQuickAddViewAndSimpleListViewFeaturesWhenEnabledFromSupplierConfigTest"/>

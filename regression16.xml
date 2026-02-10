@@ -8,49 +8,49 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part_Sixteen"/>
         <classes>
-<!--            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanItemsToOrderFunctionalityInMoreOptionsMenuTest"/>-->
+            <class name="com.cutanddry.qa.tests.scan_to_order.VerifyScanItemsToOrderFunctionalityInMoreOptionsMenuTest"/>
 
             <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyBuyoutItemsRemovedFromNonBuyoutCustomerOrderSubmissionTest"/>
             <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyHardOrderMinimumNotMetAfterBuyoutItemRemovalTest"/>
             <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifySoftOrderMinimumNotMetAfterBuyoutItemRemovalTest"/>
-<!--            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyCartBecomesEmptyInBuyoutCustomersWhenAllItemsAreBuyOutItemsTest"/>-->
+            <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyCartBecomesEmptyInBuyoutCustomersWhenAllItemsAreBuyOutItemsTest"/>
             <class name="com.cutanddry.qa.tests.customers.buyoutItems.VerifyNoItemRemovalsFromBuyoutAllowedCustomersTest"/>
 
 
-<!--            <class name="com.cutanddry.qa.tests.orders.VerifyOrderDateColumnDisplayWithFulfillmentTypeBadgeTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.orders.VerifyOrdersListResultsCountDisplayTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.orders.VerifyOrdersListTotalColumnWithCurrencyFormattingTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.orders.VerifyOrderViewOrderInfoSectionFieldDisplayTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyDeleteOrderGuideHappyPathWithConfirmationTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderGuideDeleteCancelDeletionTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderGuideMoreOptionsCreateNewOrderGuideHappyPathTest"/>-->
+            <class name="com.cutanddry.qa.tests.orders.VerifyOrderDateColumnDisplayWithFulfillmentTypeBadgeTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyOrdersListResultsCountDisplayTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyOrdersListTotalColumnWithCurrencyFormattingTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyOrderViewOrderInfoSectionFieldDisplayTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyDeleteOrderGuideHappyPathWithConfirmationTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderGuideDeleteCancelDeletionTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderGuideMoreOptionsCreateNewOrderGuideHappyPathTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.customers.VerifyOnlyCatalogDisplayedWhenOrderGuideIsTurnedOffFromSupplierConfigTest"/>-->
+            <class name="com.cutanddry.qa.tests.customers.VerifyOnlyCatalogDisplayedWhenOrderGuideIsTurnedOffFromSupplierConfigTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.customer_orders.VerifyCustomerProfileOrdersTabEmptyStateDisplayTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.customer_orders.VerifyItemsCountColumnAccuracyInCustomerOrdersTabTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.customer_orders.VerifyOrderReferenceColumnDisplayWithErpOrderBadgeTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.orders.VerifyOrderViewItemsTabAndTimelineTabNavigationTest"/>-->
+            <class name="com.cutanddry.qa.tests.customer_orders.VerifyCustomerProfileOrdersTabEmptyStateDisplayTest"/>
+            <class name="com.cutanddry.qa.tests.customer_orders.VerifyItemsCountColumnAccuracyInCustomerOrdersTabTest"/>
+            <class name="com.cutanddry.qa.tests.customer_orders.VerifyOrderReferenceColumnDisplayWithErpOrderBadgeTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyOrderViewItemsTabAndTimelineTabNavigationTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyCatalogSectionsPanelFilterByOnSaleSectionTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyCatalogCategoryFilterFilterByProductCategoryTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyCatalogScreenBrandFilterProductsByBrandTest"/>-->
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyCatalogSectionsPanelFilterByOnSaleSectionTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyCatalogCategoryFilterFilterByProductCategoryTest"/>
+            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyCatalogScreenBrandFilterProductsByBrandTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyOrderGuideRefreshAfterCatalogItemAddRemoveTest"/>-->
+            <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyOrderGuideRefreshAfterCatalogItemAddRemoveTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.boost.VerifyTheInactiveBoostFilterDisplayStatusTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.boost.VerifyTheActiveBoostFilterDisplayStatusTest"/>-->
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheInactiveBoostFilterDisplayStatusTest"/>
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheActiveBoostFilterDisplayStatusTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.catalog_view.VerifyForceShowModalForMutualSubstituteProductsTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.catalog_view.VerifySuggestSubstituteForDiscontinuedProductWhenForceShowDisabledTest"/>-->
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifyForceShowModalForMutualSubstituteProductsTest"/>
+            <class name="com.cutanddry.qa.tests.catalog_view.VerifySuggestSubstituteForDiscontinuedProductWhenForceShowDisabledTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.boost.VerifyThatTheUserCanSendBroadcastMessagesToCustomerGroupsTest"/>-->
+            <class name="com.cutanddry.qa.tests.boost.VerifyThatTheUserCanSendBroadcastMessagesToCustomerGroupsTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.catalog.VerifyTheCashBackValueTagIsDisplayedWithOtherItemTagsTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheFunctionalityOfSortItemsByDropDownInSimpleListViewTest"/>-->
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheCashBackValueTagIsDisplayedWithOtherItemTagsTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheFunctionalityOfSortItemsByDropDownInSimpleListViewTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.catalog.VerifyTheSortingFunctionalityOfCatalogListViewTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifySearchFeatureAfterEditingItemNameTest"/>-->
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheSortingFunctionalityOfCatalogListViewTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifySearchFeatureAfterEditingItemNameTest"/>
 
         </classes>
     </test>

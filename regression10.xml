@@ -8,34 +8,34 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part_Ten"/>
         <classes>
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1RegularItemSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1SpecialItemSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2RegularItemsSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2SpecialItemsSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1RegularItemAnd1SpecialOrderItemSubmittedAsTwoSeparateOrdersForTheSelectedDeliveryDateTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2RegularItemsAnd2SpecialOrderItemsSubmittedAsTwoSeparateOrdersForTheSelectedDeliveryDateTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyCustomerGroupsShouldNotBeEditableTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyCustomAccountHoldMessageIsDisplayedForCarmelaOnOrderSubmissionTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyGenericAccountHardHoldMessageTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyShowingLastOrderedPricesInPortalOrderGuidesTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyOrdersBelowMinimumOrderAmountPopsSoftOrderMinimumPopUpTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifySubmittingAnOrderMinimumSatisfiedOrderForAFutureDateGreaterThanItemLeadTimeItemDateInOrderTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyVerifyImportantShipmentNoticeMessageTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyLeadTimeItemOrderIsSplitInToTwoOrdersTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyInternalToolsRestrictSpotPricesBelowMinimumProductPriceToggleTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyDisplayPriceWithAvgSuffixTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyPriceIsNotAllowedToChangeBelowTheMinimumPriceTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheItemStatusFilterTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheOrderCutOffsCanBeOverriddenTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheUnitAggregationAfterPlacingTheOrderTest"/>-->
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1RegularItemSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1SpecialItemSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2RegularItemsSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2SpecialItemsSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1RegularItemAnd1SpecialOrderItemSubmittedAsTwoSeparateOrdersForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2RegularItemsAnd2SpecialOrderItemsSubmittedAsTwoSeparateOrdersForTheSelectedDeliveryDateTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyCustomerGroupsShouldNotBeEditableTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyCustomAccountHoldMessageIsDisplayedForCarmelaOnOrderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyGenericAccountHardHoldMessageTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyShowingLastOrderedPricesInPortalOrderGuidesTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyOrdersBelowMinimumOrderAmountPopsSoftOrderMinimumPopUpTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifySubmittingAnOrderMinimumSatisfiedOrderForAFutureDateGreaterThanItemLeadTimeItemDateInOrderTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyVerifyImportantShipmentNoticeMessageTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyLeadTimeItemOrderIsSplitInToTwoOrdersTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyInternalToolsRestrictSpotPricesBelowMinimumProductPriceToggleTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyDisplayPriceWithAvgSuffixTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyPriceIsNotAllowedToChangeBelowTheMinimumPriceTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheItemStatusFilterTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheOrderCutOffsCanBeOverriddenTest"/>
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheUnitAggregationAfterPlacingTheOrderTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentSectionWillBeNAWhenViewedFromAParentCustomerTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentSectionWillBePopulatedWhenViewedFromAChildCustomerTest"/>-->
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentSectionWillBeNAWhenViewedFromAParentCustomerTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentSectionWillBePopulatedWhenViewedFromAChildCustomerTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByCustomerOrderInTheParentOGShouldNotReflectInTheChildOGTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByAlphabeticalOrderInTheParentOGShouldNotReflectInTheChildOGTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByItemCategoriesInTheParentOGShouldNotReflectInTheChildOGTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByItemCodeInTheParentOGShouldNotReflectInTheChildOGTest"/>-->
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByCustomerOrderInTheParentOGShouldNotReflectInTheChildOGTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByAlphabeticalOrderInTheParentOGShouldNotReflectInTheChildOGTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByItemCategoriesInTheParentOGShouldNotReflectInTheChildOGTest"/>
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByItemCodeInTheParentOGShouldNotReflectInTheChildOGTest"/>
 
             <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheChildCustomerCanCreateAnyNumberOfOrderGuidesManuallyTest"/>
             <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheChildCustomerCanCreateAnyOrderGuidesAndOrderSubmissionTest"/>
