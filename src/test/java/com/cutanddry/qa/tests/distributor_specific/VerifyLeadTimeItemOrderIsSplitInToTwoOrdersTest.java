@@ -20,7 +20,7 @@ import java.time.format.DateTimeFormatter;
 public class VerifyLeadTimeItemOrderIsSplitInToTwoOrdersTest extends TestBase {
     static User user;
     static String distributorWCWRockies = PriceData.DISTRIBUTOR_WCW_ROCKIES;
-    static String customerId3 = PriceData.CUSTOMER_ID_9;
+    static String customerId3 = "2TASTE";
     static String searchItemCode = PriceData.ITEM_CODE4;
     static String searchItemCode2 = PriceData.ITEM_CODE5;
     static String itemName2 = PriceData.ITEM_NAME4;

@@ -6,14 +6,14 @@ import org.openqa.selenium.WebElement;
 public class DashboardPage extends LoginPage{
     By txt_dashboard = By.xpath("//li[contains(text(),'Dashboard')]");
     By btn_customers = By.xpath("//a[@data-tip='Customers']");
-    By btn_boost = By.xpath("//a[@data-tip='Boost']");
-    By btn_chat = By.xpath("//a[@data-tip='Chat']");
+    By btn_boost = By.xpath("(//a[@data-tip='Boost'])[last()]");
+    By btn_chat = By.xpath("(//a[@data-tip='Chat'])[last()]");
     By txt_dashboard_restaurant = By.xpath("//div[text()='Place Order']");
     By btn_restaurant_chat = By.xpath("//div[contains(text(),'Chat')]");
     By btn_catalog = By.xpath("//a[@data-tip='View Catalog']");
-    By btn_settings = By.xpath("//a[@role='button' and contains(text(), 'Settings')]");
-    By btn_orderSettings = By.xpath("//div[@arrowprops]//a[text()='Orders']");
-    By btn_teamSettings = By.xpath("//div[@arrowprops]//a[text()='Team']");
+    By btn_settings = By.xpath("(//a[@role='button' and contains(text(), 'Settings')])[last()]");
+    By btn_orderSettings = By.xpath("//div[contains(@class,'fade')]/a[text()='Orders']");
+    By btn_teamSettings = By.xpath("//div[contains(@class,'fade')]/a[text()='Team']");
     By btn_users = By.xpath("//a[@data-tip='Team']");
     By txt_home = By.xpath("//li[contains(text(),'Home')]");
     By btn_orderDesk = By.xpath("//a[contains(text(),'Order Desk')]");
@@ -31,24 +31,24 @@ public class DashboardPage extends LoginPage{
     By btn_history = By.xpath("//a[@data-tip='Order History']");
     By btn_drafts  =By.xpath("//a[@data-tip='View Drafts']");
     By drafts_badge = By.xpath("//*[@href='/draft-orders']//span");
-    By btn_track = By.xpath("//a[@role='button' and contains(text(), 'Track')]");
-    By btn_trackResources = By.xpath("//div[@arrowprops]//a[text()='Resources']");
-    By btn_trackRoutes = By.xpath("//div[@arrowprops]//a[text()='Routes']");
-    By btn_trackMonitoring = By.xpath("//div[@arrowprops]//a[text()='Monitoring']");
-    By btn_trackNotifications = By.xpath("//div[@arrowprops]//a[text()='Notifications']");
-    By btn_pay  =By.xpath("//a[@data-tip='Payments']");
-    By btn_reports  =By.xpath("//a[@data-tip='Reports']");
-    By btn_trackSettings = By.xpath("//div[@arrowprops]//a[text()='Track']");
-    By btn_profSettings = By.xpath("//div[@arrowprops]//a[text()='Profile']");
-    By btn_companySettings = By.xpath("//div[@arrowprops]//a[text()='Company']");
-    By btn_billingSettings = By.xpath("//div[@arrowprops]//a[text()='Billing']");
+    By btn_track = By.xpath("(//a[@role='button' and contains(text(), 'Track')])[last()]");
+    By btn_trackResources = By.xpath("//div[contains(@class,'fade')]/a[text()='Resources']");
+    By btn_trackRoutes = By.xpath("//div[contains(@class,'fade')]/a[text()='Routes']");
+    By btn_trackMonitoring = By.xpath("//div[contains(@class,'fade')]/a[text()='Monitoring']");
+    By btn_trackNotifications = By.xpath("//div[contains(@class,'fade')]/a[text()='Notifications']");
+    By btn_pay  =By.xpath("(//a[@data-tip='Payments'])[last()]");
+    By btn_reports  =By.xpath("(//a[@data-tip='Reports'])[last()]");
+    By btn_trackSettings = By.xpath("//div[contains(@class,'fade')]/a[text()='Track']");
+    By btn_profSettings = By.xpath("//div[contains(@class,'fade')]/a[text()='Profile']");
+    By btn_companySettings = By.xpath("//div[contains(@class,'fade')]/a[text()='Company']");
+    By btn_billingSettings = By.xpath("//div[contains(@class,'fade')]/a[text()='Billing']");
     By btn_support = By.xpath("//a[@data-tip='Support']");
     By btn_tracker  =By.xpath("//a[@data-tip='Tracker']");
     By btn_endlAisle  =By.xpath("//a[@data-tip='Endless Aisle']");
     By btn_creditReq  =By.xpath("//a[@data-tip='Credit Requests']");
     By btn_showcase = By.xpath("//a[contains(@data-tip,'Cut+Dry Product Showcase')]");
-    By btn_adsSettings = By.xpath("//div[@arrowprops]//a[text()='Influence']");
-    By btn_paySettings = By.xpath("//div[@arrowprops]//a[text()='Pay']");
+    By btn_adsSettings = By.xpath("//div[contains(@class,'fade')]/a[text()='Influence']");
+    By btn_paySettings = By.xpath("//div[contains(@class,'fade')]/a[text()='Pay']");
     By btn_credit_requests = By.xpath("//a[@data-for='sideNavSupplierMenuOptions' and @href='/credit-requests']");
     By btn_placeOrder = By.xpath("//div[contains(text(), 'Independent Foods Co')]");
     By btn_hayes = By.xpath("//div[contains(text(), 'Hayes')]");
@@ -72,6 +72,7 @@ public class DashboardPage extends LoginPage{
     By btn_dashboard = By.xpath("//a[@data-tip='Dashboard']");
     String getCustomerBaseValue = "(//*[name()='tspan' and contains(., 'CUSTOMER')]/following-sibling::*[name()='tspan'])[1]";
     By influenceTab = By.xpath("//a[@data-tip='Influence']");
+    By btn_viewMore = By.xpath("//*[local-name() = 'svg' and @data-icon='cdDotsGrid']");
 
 
     public boolean isDashboardTextDisplayed(){
@@ -86,9 +87,13 @@ public class DashboardPage extends LoginPage{
         distributorUI.click(btn_customers);
     }
     public void clickOnBoost(){
+        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.scrollToElement(btn_boost);
         distributorUI.click(btn_boost);
     }
     public void clickOnChat(){
+        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.scrollToElement(btn_chat);
         distributorUI.click(btn_chat);
     }
     public boolean isRestaurantDashboardTextDisplayed(){
@@ -106,12 +111,14 @@ public class DashboardPage extends LoginPage{
         distributorUI.click(btn_catalog);
     }
     public void clickOnOrderSettings(){
+        distributorUI.clickWithFallback(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_orderSettings);
         distributorUI.clickWithFallback(btn_orderSettings);
     }
     public void clickOnTeamSettings(){
+        distributorUI.clickWithFallback(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_teamSettings);
@@ -196,72 +203,87 @@ public class DashboardPage extends LoginPage{
     }
 
     public void clickOnTrackResources(){
+        distributorUI.clickWithFallback(btn_viewMore);
         distributorUI.scrollToElement(btn_track);
         distributorUI.clickUsingJavaScript(btn_track);
         distributorUI.hoverOverElement(btn_trackResources);
         distributorUI.clickWithFallback(btn_trackResources);
     }
     public void clickOnTrackRoutes(){
+        distributorUI.clickWithFallback(btn_viewMore);
         distributorUI.scrollToElement(btn_track);
         distributorUI.clickUsingJavaScript(btn_track);
         distributorUI.hoverOverElement(btn_trackRoutes);
         distributorUI.clickWithFallback(btn_trackRoutes);
     }
     public void clickOnTrackMonitoring(){
+        distributorUI.clickWithFallback(btn_viewMore);
         distributorUI.scrollToElement(btn_track);
         distributorUI.clickUsingJavaScript(btn_track);
         distributorUI.hoverOverElement(btn_trackMonitoring);
         distributorUI.clickWithFallback(btn_trackMonitoring);
     }
     public void clickOnTrackNotifications(){
+        distributorUI.clickWithFallback(btn_viewMore);
         distributorUI.scrollToElement(btn_track);
         distributorUI.clickUsingJavaScript(btn_track);
         distributorUI.hoverOverElement(btn_trackNotifications);
         distributorUI.clickWithFallback(btn_trackNotifications);
     }
     public void clickOnPay(){
+        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.scrollToElement(btn_pay);
         distributorUI.clickWithFallback(btn_pay);
     }
     public void clickOnReports(){
+        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.scrollToElement(btn_reports);
         distributorUI.clickWithFallback(btn_reports);
     }
     public void clickOnBillingSettings(){
+        distributorUI.clickWithFallback(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_billingSettings);
         distributorUI.clickWithFallback(btn_billingSettings);
     }
     public void clickOnCompanySettings(){
+        distributorUI.clickWithFallback(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_companySettings);
         distributorUI.clickWithFallback(btn_companySettings);
     }
     public void clickOnTrackSettings(){
+        distributorUI.clickWithFallback(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_trackSettings);
         distributorUI.clickWithFallback(btn_trackSettings);
     }
     public void clickOnProfileSettings(){
+        distributorUI.clickWithFallback(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_profSettings);
         distributorUI.clickWithFallback(btn_profSettings);
     }
     public boolean isInfluenceTabDisplayed(){
+        distributorUI.clickWithFallback(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_adsSettings);
         return distributorUI.isDisplayed(btn_adsSettings);
     }
     public void clickOnAdsSettings(){
+        distributorUI.clickWithFallback(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_adsSettings);
         distributorUI.clickWithFallback(btn_adsSettings);
     }
     public void clickOnPaySettings(){
+        distributorUI.clickWithFallback(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_paySettings);
@@ -411,6 +433,9 @@ public class DashboardPage extends LoginPage{
     }
     public void clickInfluenceMenuOption(){
         distributorUI.click(influenceTab);
+    }
+    public void clickOnViewMore(){
+        distributorUI.clickWithFallback(btn_viewMore);
     }
 
 }
