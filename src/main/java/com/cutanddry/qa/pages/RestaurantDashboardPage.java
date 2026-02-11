@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 public class RestaurantDashboardPage extends TestBase {
 
     By pgTitle_history = By.xpath("//h2[contains(text(),'Order History')]");
-    By btn_history = By.xpath("//a[@data-tip='Order History']");
+    By btn_history = By.xpath("(//a[@data-tip='Order History'])[1]");
 
     public boolean isHistoryTitleDisplayed() {
         try {
@@ -19,7 +19,7 @@ public class RestaurantDashboardPage extends TestBase {
 
     public void clickOnHistory() throws InterruptedException {
         distributorUI.waitForCustom(3000);
-        distributorUI.click(btn_history);
+        distributorUI.clickWithFallback(btn_history);
     }
 
 }

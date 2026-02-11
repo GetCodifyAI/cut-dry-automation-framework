@@ -18,7 +18,7 @@ public class IntegrationPage extends LoginPage {
     By txt_termsSync = By.xpath("//div[normalize-space()='Last Successful Sync'] /following-sibling::div[1] //div[.//text()[contains(., 'Terms')]]");
     
     By table_integration = By.xpath("//table");
-    By txt_integrationStatus = By.xpath("//*[contains(text(), 'Integration Status')]");
+    By txt_integrationStatus = By.xpath("//div[contains(@class,'mont') and normalize-space()='Integration Status']");
     String syncEndTimeFromTable = "(//tr/td[contains(text(),'SYNCNAME')]/following::td/span[contains(text(),'Completed')])[1]/../../td[5]";
     By dateFilter = By.xpath("//*[contains(text(),'Date:')]/following::div[4]");
     By syncType = By.xpath("//*[contains(text(),'Sync Type:')]/following::div[4]");
