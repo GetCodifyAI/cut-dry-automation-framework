@@ -63,7 +63,7 @@ public class DashboardPage extends LoginPage{
     static By dropdownToggle = By.xpath("//span[text()='Company:']/ancestor::button[contains(@class, 'dropdown-toggle')]");
     static By independentFoodOption = By.xpath("//a[text()='Independent Foods Co']");
     By btn_PlaceOrder = By.xpath("(//button[text()='Place Order'])[1]");
-    By approvalsBtn = By.xpath("//a[contains(@data-tip,'Approvals')]");
+    By approvalsBtn = By.xpath("(//a[contains(@data-tip,'Approvals')])[1]");
     By locationFilter = By.xpath("(//div[text()='Place Order']/following-sibling::div//div)[1]");
     By locationOption = By.xpath("//div[text()='Place Order']/following-sibling::*//div[contains(@id,'react-select') and contains(text(), 'All Locations')]");
     By btn_order = By.xpath("//a[@data-tip='Place Order']");
@@ -354,7 +354,7 @@ public class DashboardPage extends LoginPage{
     }
 
     public void clickOnApproval(){
-        distributorUI.click(approvalsBtn);
+        distributorUI.clickWithFallback(approvalsBtn);
     }
     public void clickLocationFilter(){
         distributorUI.click(locationFilter);
