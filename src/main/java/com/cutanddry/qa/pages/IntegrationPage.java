@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 public class IntegrationPage extends LoginPage {
     
-    By btn_integration = By.xpath("//a[@href='/integration']");
+    By btn_integration = By.xpath("(//a[@href='/integration'])[1]");
     
     By txt_24HourSnapshot = By.xpath("//*[contains(text(), '24 Hour Snapshot')]");
     By txt_completedTasks = By.xpath("//*[normalize-space()='24 Hour Snapshot']/following-sibling::div//span[contains(text(),'Completed')]");
@@ -27,7 +27,7 @@ public class IntegrationPage extends LoginPage {
     
 
     public void clickOnIntegration() {
-        distributorUI.click(btn_integration);
+        distributorUI.clickWithFallback(btn_integration);
     }
 
     public boolean isIntegrationStatusDisplayed() {
