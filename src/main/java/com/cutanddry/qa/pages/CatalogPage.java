@@ -30,6 +30,16 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
 //    By ShowCaseBtn = By.xpath("//a[contains(@data-tip,'Cut+Dry Product Showcase')]");
     By btn_previewCat = By.xpath("//button[contains(text(), 'Switch to Grid View')]");
     By txt_previewCat = By.xpath("//div[text()='Catalog Preview']");
+    By btn_switchToListView = By.xpath("//button[contains(text(), 'Switch to List View')]");
+    By tbl_catalogListView = By.xpath("//table[.//th[contains(text(),'Item Code')]]");
+    By th_itemCode = By.xpath("//th[contains(text(),'Item Code')]");
+    By th_itemName = By.xpath("//th[contains(text(),'Item Name')]");
+    By th_category = By.xpath("//th[contains(text(),'Category')]");
+    By th_unit = By.xpath("//th[contains(text(),'Unit')]");
+    By th_price = By.xpath("//th[contains(text(),'Price')]");
+    By th_status = By.xpath("//th[contains(text(),'Status')]");
+    By txt_catalogListViewFirstRow = By.xpath("//table[.//th[contains(text(),'Item Code')]]//tbody/tr[1]");
+    By txt_catalogGridViewCard = By.xpath("//a[contains(text(),'Edit Item')]");
     By txt_firstItemDetails = By.xpath("//tbody/tr[1]");
     String itemInTheGrid = "//tr[contains(@class,'_du1frc')]//td[text()='ITEMCODE']";
     By itemNameColumnHeader = By.xpath("//div[contains(text(),'Item Name')]");
@@ -320,6 +330,63 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     public boolean isNavigatedToPreviewCatalog() throws InterruptedException {
         distributorUI.waitForCustom(3000);
         return distributorUI.isDisplayed(txt_previewCat);
+    }
+    public void clickSwitchToListView() {
+        distributorUI.waitForVisibility(btn_switchToListView);
+        distributorUI.click(btn_switchToListView);
+        try {
+            distributorUI.waitForCustom(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public boolean isSwitchToListViewButtonDisplayed() {
+        return distributorUI.isDisplayed(btn_switchToListView);
+    }
+    public boolean isSwitchToGridViewButtonDisplayed() {
+        return distributorUI.isDisplayed(btn_previewCat);
+    }
+    public boolean isCatalogListViewDisplayed() {
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return distributorUI.isDisplayed(tbl_catalogListView);
+    }
+    public boolean isCatalogGridViewDisplayed() {
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return distributorUI.isDisplayed(txt_catalogGridViewCard);
+    }
+    public boolean isListViewItemCodeColumnDisplayed() {
+        return distributorUI.isDisplayed(th_itemCode);
+    }
+    public boolean isListViewItemNameColumnDisplayed() {
+        return distributorUI.isDisplayed(th_itemName);
+    }
+    public boolean isListViewCategoryColumnDisplayed() {
+        return distributorUI.isDisplayed(th_category);
+    }
+    public boolean isListViewUnitColumnDisplayed() {
+        return distributorUI.isDisplayed(th_unit);
+    }
+    public boolean isListViewPriceColumnDisplayed() {
+        return distributorUI.isDisplayed(th_price);
+    }
+    public boolean isListViewStatusColumnDisplayed() {
+        return distributorUI.isDisplayed(th_status);
+    }
+    public boolean isListViewProductRowDisplayed() {
+        try {
+            distributorUI.waitForCustom(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return distributorUI.isDisplayed(txt_catalogListViewFirstRow);
     }
     public String getItemDetailsFirstRow() throws InterruptedException {
         distributorUI.waitForElementEnabledState(txt_firstItemDetails,true);
