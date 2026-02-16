@@ -9,7 +9,7 @@ public class DashboardPage extends LoginPage{
     By btn_boost = By.xpath("(//a[@data-tip='Boost'])[last()]");
     By btn_chat = By.xpath("(//a[@data-tip='Chat'])[last()]");
     By txt_dashboard_restaurant = By.xpath("//div[text()='Place Order']");
-    By btn_restaurant_chat = By.xpath("//div[contains(text(),'Chat')]");
+    By btn_restaurant_chat = By.xpath("(//div[contains(text(),'Chat')])[1]");
     By btn_catalog = By.xpath("(//a[@data-tip='View Catalog'])[1]");
     By btn_settings = By.xpath("(//a[@role='button' and contains(text(), 'Settings')])[last()]");
     By btn_orderSettings = By.xpath("//div[contains(@class,'fade')]/a[text()='Orders']");
@@ -56,7 +56,7 @@ public class DashboardPage extends LoginPage{
     By btn_TestAutomation = By.xpath("//div[contains(text(), 'Test_Automation') and contains(@class, 'w-100')]");
     By txt_draftOrder = By.xpath("//div[contains(@class, 'text-center') and contains(text(), 'continue your previous draft order')]");
     By btn_noDraftOrder = By.xpath("//span[text()='×']");
-    By ordersTab = By.xpath("//div[text()='Order']");
+    By ordersTab = By.xpath("(//div[text()='Order'])[1]");
     By btn_company = By.xpath("//span[@class='_5h4pkd' and text()='Company:']");
     By txt_independant_food_co = By.xpath("//a[contains(text(), 'Independent Foods Co')]");
     static By wordAfterCompanyLocator = By.xpath("//span[text()='Company:']/following-sibling::span");
@@ -66,12 +66,12 @@ public class DashboardPage extends LoginPage{
     By approvalsBtn = By.xpath("(//a[contains(@data-tip,'Approvals')])[1]");
     By locationFilter = By.xpath("(//div[text()='Place Order']/following-sibling::div//div)[1]");
     By locationOption = By.xpath("//div[text()='Place Order']/following-sibling::*//div[contains(@id,'react-select') and contains(text(), 'All Locations')]");
-    By btn_order = By.xpath("//a[@data-tip='Place Order']");
+    By btn_order = By.xpath("(//a[@data-tip='Place Order'])[1]");
     By orderIndicator = By.xpath("//a[contains(text(),'Order Desk')]/div/span");
     By txt_endlessAisle  =By.xpath("//div[text()='Endless Aisle Catalog']");
-    By btn_dashboard = By.xpath("//a[@data-tip='Dashboard']");
+    By btn_dashboard = By.xpath("(//a[@data-tip='Dashboard'])[1]");
     String getCustomerBaseValue = "(//*[name()='tspan' and contains(., 'CUSTOMER')]/following-sibling::*[name()='tspan'])[1]";
-    By influenceTab = By.xpath("//a[@data-tip='Influence']");
+    By influenceTab = By.xpath("(//a[@data-tip='Influence'])[last()]");
     By btn_viewMore = By.xpath("//*[local-name() = 'svg' and @data-icon='cdDotsGrid']");
 
 
@@ -105,7 +105,7 @@ public class DashboardPage extends LoginPage{
         return distributorUI.isDisplayed(txt_dashboard_restaurant);
     }
     public void clickOnRestaurantChat(){
-        distributorUI.click(btn_restaurant_chat);
+        distributorUI.clickWithFallback(btn_restaurant_chat);
     }
     public void clickOnCatalog(){
         distributorUI.clickWithFallback(btn_catalog);
@@ -329,7 +329,7 @@ public class DashboardPage extends LoginPage{
     }
 
     public void navigateToWhiteLabelOrdersPage(){
-        distributorUI.click(ordersTab);
+        distributorUI.clickWithFallback(ordersTab);
     }
 
     public static String getTextAfterCompany() {
@@ -365,7 +365,7 @@ public class DashboardPage extends LoginPage{
         distributorUI.click(locationOption);
     }
     public void clickOnOrder() throws InterruptedException {
-        distributorUI.click(btn_order);
+        distributorUI.clickWithFallback(btn_order);
         distributorUI.waitForCustom(2000);
     }
     public boolean isCustomerDisplayed(){
@@ -381,7 +381,7 @@ public class DashboardPage extends LoginPage{
         return distributorUI.isDisplayed(txt_endlessAisle);
     }
     public void clickOnDashboard(){
-        distributorUI.click(btn_dashboard);
+        distributorUI.clickWithFallback(btn_dashboard);
     }
     public String getCustomerValue(String customer) throws InterruptedException {
         distributorUI.waitForCustom(3000);
@@ -432,6 +432,8 @@ public class DashboardPage extends LoginPage{
         return distributorUI.isDisplayed(influenceTab);
     }
     public void clickInfluenceMenuOption(){
+        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.scrollToElement(influenceTab);
         distributorUI.click(influenceTab);
     }
     public void clickOnViewMore(){

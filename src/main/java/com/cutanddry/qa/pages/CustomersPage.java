@@ -903,7 +903,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By orderGuideOutOfstockItem = By.xpath("//span[contains(text(),'Out of stock')]/../preceding-sibling::div//*[contains(@data-tip,'View Product Details')]");
     By btn_orderGuideCustomerProfile = By.xpath("//button[text()='Order Guide']");
     String itemPriceEditOG = "//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')]/../following::div[contains(text(),'PRICE')]";
-    By btn_orderSection = By.xpath("//div[normalize-space(text()) = 'Order']");
+    By btn_orderSection = By.xpath("(//div[normalize-space(text()) = 'Order'])[1]");
     String itemTagOG = "//div[contains(text(),'NAME')]/../../following-sibling::div//span[text()='TAG']";
     String listViewCatalogItemName = "//td[contains(text(),'NAME')]";
     By txt_creditHold = By.xpath("//div[text()='Credit Hold']");
@@ -5392,7 +5392,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(By.xpath(itemPriceEditOG.replace("NAME",name).replace("PRICE",price)));
     }
     public void clickOnOrderSection(){
-        distributorUI.click(btn_orderSection);
+        distributorUI.clickWithFallback(btn_orderSection);
     }
     public boolean isOrderGuideItemTagDisplayTag(String name,String tag){
         return distributorUI.isDisplayed(By.xpath(itemTagOG.replace("NAME", name).replace("TAG",tag)));
