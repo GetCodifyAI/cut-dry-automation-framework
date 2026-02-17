@@ -375,6 +375,7 @@ public class DashboardPage extends LoginPage{
         return distributorUI.isDisplayed(orderIndicator);
     }
     public boolean isChatSectionDisplay()throws InterruptedException{
+        distributorUI.clickWithFallback(btn_viewMore);
         return distributorUI.isDisplayed(btn_chat);
     }
     public boolean isEndlessAisleCatalogDisplay()throws InterruptedException{

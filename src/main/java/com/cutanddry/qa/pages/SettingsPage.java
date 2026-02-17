@@ -328,10 +328,10 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForVisibility(btn_addUser);
         distributorUI.waitForCustom(3000);
         try {
-            distributorUI.click(btn_addUser);
+            distributorUI.clickWithFallback(btn_addUser);
         } catch (Exception e){
             distributorUI.refreshPage();
-            distributorUI.click(btn_addUser);
+            distributorUI.clickWithFallback(btn_addUser);
         }
     }
     public void enterName(String name){
