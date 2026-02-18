@@ -111,7 +111,7 @@ public class DashboardPage extends LoginPage{
         distributorUI.clickWithFallback(btn_catalog);
     }
     public void clickOnOrderSettings(){
-        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_orderSettings);
