@@ -39,6 +39,7 @@ public class ValidateTheNewArrivalFilterInCatalogPricingAndPromotionsTest extend
         softAssert.assertTrue(Catalog.isFilterCatalogPopupDisplayed(),"popup error");
         Catalog.selectNewArrivalYes();
         Catalog.selectItemFromGrid(itemCode);
+        Thread.sleep(5000);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code 2");
         Catalog.navigateToPricingAndPromotions();
         Catalog.clickNewArrival();

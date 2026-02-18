@@ -38,6 +38,7 @@ public class VerifyCreatingUnitOfMeasureOfItemTest {
         Dashboard.navigateToCatalog();
         Assert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.selectItemFromGrid(itemCode);
+        Thread.sleep(5000);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
         Catalog.navigateToPricingAndPromotions();
         int UOMCount = Catalog.getUnitOfMeasureCount();

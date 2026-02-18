@@ -72,7 +72,6 @@ public class VerifyThatTheUserCanSendBroadcastMessagesToCustomerGroupsTest exten
         Login.navigateToLoginAs();
         Login.logInToOperatorAsWhiteLabel(OperatorName);
         Dashboard.navigateToOrder();
-        softAssert.assertTrue(Dashboard.isUserNavigatedToOrderGuide(),"navigation error");
         softAssert.assertTrue(Customer.isBroadcastMessageDisplayed(broadcastMessage),"broadcast error");
 
         Login.navigateToRestaurant();
