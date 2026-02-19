@@ -41,6 +41,7 @@ public class ValidateTheCategorySelectionInCatalogDataTest extends TestBase {
         Dashboard.navigateToCatalog();
         Catalog.selectCategory();
         Catalog.selectItemFromGrid(itemCode);
+        Thread.sleep(5000);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code 2");
         Catalog.selectEditFromProductConfig();
         Catalog.removeCategory(newCategory);
