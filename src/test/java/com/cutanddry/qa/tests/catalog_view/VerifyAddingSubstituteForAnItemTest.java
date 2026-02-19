@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyAddingSubstituteForAnItemTest extends TestBase {
     static User user;
-    String DistributerName ="46505655 - Kevin - Independent Foods Co";
+    String DistributerName ="Independent Foods Co";
     String itemCode = "00475";
     String substituteItemCode = "20024";
     String substituteItemName = "Cauliflower - Large";

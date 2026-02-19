@@ -43,7 +43,8 @@ public class VerifyInfluenceNavigationForRebateEnabledDPTest extends TestBase {
         Dashboard.navigateToAdsSettings();
         softAssert.assertTrue(Settings.isCustomerRestrictionTextDisplayed(),"enabling the 'Sponsored Ads' toggle button from the Internal tools is error");
         Settings.AllowRewardAndRebateTags(true);
-        Settings.clickGeneralSettingSaveChanges();      softAssert.assertTrue(Settings.isAdsSettingsTextDisplayed(),"navigation to ads settings error");
+        Settings.clickGeneralSettingSaveChanges();
+        softAssert.assertTrue(Settings.isAdsSettingsTextDisplayed(),"navigation to ads settings error");
         softAssert.assertTrue(Dashboard.isInfluenceTabDisplayedInMenuOptions(),"Influence Tab not displayed in menu options");
         Dashboard.navigateToInfluenceTab();
         softAssert.assertTrue(Influence.isInfluenceTxtDisplayed(),"Influence text not displayed");

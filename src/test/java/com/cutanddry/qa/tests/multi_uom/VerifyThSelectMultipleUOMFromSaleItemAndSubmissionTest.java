@@ -54,8 +54,8 @@ public class VerifyThSelectMultipleUOMFromSaleItemAndSubmissionTest extends Test
         Catalog.ClickOnCatalogMultiUomDropDown(itemName);
         Catalog.ClickOnMultiUomDropDownOption(uomDropDownOption);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(),"The user is unable to land on the Product Details page.");
-        itemPriceUOM1 = Catalog.getPDPPriceUOM(uom1);
-        itemPriceUOM2 = Catalog.getPDPPriceUOM(uom3);
+        itemPriceUOM1 = Catalog.getSaleItemPDPPriceUOM(uom1);
+        itemPriceUOM2 = Catalog.getSaleItemPDPPriceUOM(uom3);
         Catalog.clickAddToCartPlusIcon(1, uom1);
         Catalog.clickAddToCartPlusIcon(1, uom2);
         totalPDPItemPrice = Customer.getItemPriceOnCheckoutButtonViaPDP();

@@ -5,19 +5,19 @@ import org.openqa.selenium.WebElement;
 
 public class DashboardPage extends LoginPage{
     By txt_dashboard = By.xpath("//li[contains(text(),'Dashboard')]");
-    By btn_customers = By.xpath("//a[@data-tip='Customers']");
-    By btn_boost = By.xpath("//a[@data-tip='Boost']");
-    By btn_chat = By.xpath("//a[@data-tip='Chat']");
+    By btn_customers = By.xpath("(//a[@data-tip='Customers'])[1]");
+    By btn_boost = By.xpath("(//a[@data-tip='Boost'])[last()]");
+    By btn_chat = By.xpath("(//a[@data-tip='Chat'])[last()]");
     By txt_dashboard_restaurant = By.xpath("//div[text()='Place Order']");
-    By btn_restaurant_chat = By.xpath("//div[contains(text(),'Chat')]");
-    By btn_catalog = By.xpath("//a[@data-tip='View Catalog']");
-    By btn_settings = By.xpath("//a[@role='button' and contains(text(), 'Settings')]");
-    By btn_orderSettings = By.xpath("//div[@arrowprops]//a[text()='Orders']");
-    By btn_teamSettings = By.xpath("//div[@arrowprops]//a[text()='Team']");
+    By btn_restaurant_chat = By.xpath("(//div[contains(text(),'Chat')])[1]");
+    By btn_catalog = By.xpath("(//a[@data-tip='View Catalog'])[1]");
+    By btn_settings = By.xpath("(//a[@role='button' and contains(text(), 'Settings')])[last()]");
+    By btn_orderSettings = By.xpath("//div[contains(@class,'fade')]/a[text()='Orders']");
+    By btn_teamSettings = By.xpath("//div[contains(@class,'fade')]/a[text()='Team']");
     By btn_users = By.xpath("//a[@data-tip='Team']");
     By txt_home = By.xpath("//li[contains(text(),'Home')]");
-    By btn_orderDesk = By.xpath("//a[contains(text(),'Order Desk')]");
-    By btn_viewOrders = By.xpath("//a[contains(text(),'Orders')]");
+    By btn_orderDesk = By.xpath("(//a[contains(text(),'Order Desk')])[1]");
+    By btn_viewOrders = By.xpath("(//a[contains(text(),'Orders')])[1]");
     By txt_all = By.xpath("//div[text()='All Salespersons']");
     By txt_lastDays = By.xpath("(//div[text()='Last 30 Days'])[1]");
     By lbl_salespersonDropdown = By.xpath("(//div[contains(@class, 'css-1uccc91-singleValue')])[1]");
@@ -28,50 +28,51 @@ public class DashboardPage extends LoginPage{
     By txt_totalOnlineOrders = By.xpath("//tr[td[contains(text(), 'Total')]]/td[3]");
     By txt_totalOnlineRev = By.xpath("//tr[td[contains(text(), 'Total')]]/td[4]");
     By txt_totalTimeSaved = By.xpath("//tr[td[contains(text(), 'Total')]]/td[5]");
-    By btn_history = By.xpath("//a[@data-tip='Order History']");
-    By btn_drafts  =By.xpath("//a[@data-tip='View Drafts']");
+    By btn_history = By.xpath("(//a[@data-tip='Order History'])[1]");
+    By btn_drafts  =By.xpath("(//a[@data-tip='View Drafts'])[1]");
     By drafts_badge = By.xpath("//*[@href='/draft-orders']//span");
-    By btn_track = By.xpath("//a[@role='button' and contains(text(), 'Track')]");
-    By btn_trackResources = By.xpath("//div[@arrowprops]//a[text()='Resources']");
-    By btn_trackRoutes = By.xpath("//div[@arrowprops]//a[text()='Routes']");
-    By btn_trackMonitoring = By.xpath("//div[@arrowprops]//a[text()='Monitoring']");
-    By btn_trackNotifications = By.xpath("//div[@arrowprops]//a[text()='Notifications']");
-    By btn_pay  =By.xpath("//a[@data-tip='Payments']");
-    By btn_reports  =By.xpath("//a[@data-tip='Reports']");
-    By btn_trackSettings = By.xpath("//div[@arrowprops]//a[text()='Track']");
-    By btn_profSettings = By.xpath("//div[@arrowprops]//a[text()='Profile']");
-    By btn_companySettings = By.xpath("//div[@arrowprops]//a[text()='Company']");
-    By btn_billingSettings = By.xpath("//div[@arrowprops]//a[text()='Billing']");
+    By btn_track = By.xpath("(//a[@role='button' and contains(text(), 'Track')])[last()]");
+    By btn_trackResources = By.xpath("//div[contains(@class,'fade')]/a[text()='Resources']");
+    By btn_trackRoutes = By.xpath("//div[contains(@class,'fade')]/a[text()='Routes']");
+    By btn_trackMonitoring = By.xpath("//div[contains(@class,'fade')]/a[text()='Monitoring']");
+    By btn_trackNotifications = By.xpath("//div[contains(@class,'fade')]/a[text()='Notifications']");
+    By btn_pay  =By.xpath("(//a[@data-tip='Payments'])[last()]");
+    By btn_reports  =By.xpath("(//a[@data-tip='Reports'])[last()]");
+    By btn_trackSettings = By.xpath("//div[contains(@class,'fade')]/a[text()='Track']");
+    By btn_profSettings = By.xpath("//div[contains(@class,'fade')]/a[text()='Profile']");
+    By btn_companySettings = By.xpath("//div[contains(@class,'fade')]/a[text()='Company']");
+    By btn_billingSettings = By.xpath("//div[contains(@class,'fade')]/a[text()='Billing']");
     By btn_support = By.xpath("//a[@data-tip='Support']");
-    By btn_tracker  =By.xpath("//a[@data-tip='Tracker']");
-    By btn_endlAisle  =By.xpath("//a[@data-tip='Endless Aisle']");
+    By btn_tracker  =By.xpath("(//a[@data-tip='Tracker'])[1]");
+    By btn_endlAisle  =By.xpath("(//a[@data-tip='Endless Aisle'])[1]");
     By btn_creditReq  =By.xpath("//a[@data-tip='Credit Requests']");
     By btn_showcase = By.xpath("//a[contains(@data-tip,'Cut+Dry Product Showcase')]");
-    By btn_adsSettings = By.xpath("//div[@arrowprops]//a[text()='Influence']");
-    By btn_paySettings = By.xpath("//div[@arrowprops]//a[text()='Pay']");
-    By btn_credit_requests = By.xpath("//a[@data-for='sideNavSupplierMenuOptions' and @href='/credit-requests']");
+    By btn_adsSettings = By.xpath("//div[contains(@class,'fade')]/a[text()='Influence']");
+    By btn_paySettings = By.xpath("//div[contains(@class,'fade')]/a[text()='Pay']");
+    By btn_credit_requests = By.xpath("(//a[@data-for='sideNavSupplierMenuOptions' and @href='/credit-requests'])[1]");
     By btn_placeOrder = By.xpath("//div[contains(text(), 'Independent Foods Co')]");
     By btn_hayes = By.xpath("//div[contains(text(), 'Hayes')]");
     By txt_OrderGuide = By.xpath("//span[contains(text(), 'Order Guide')]");
     By btn_TestAutomation = By.xpath("//div[contains(text(), 'Test_Automation') and contains(@class, 'w-100')]");
     By txt_draftOrder = By.xpath("//div[contains(@class, 'text-center') and contains(text(), 'continue your previous draft order')]");
     By btn_noDraftOrder = By.xpath("//span[text()='×']");
-    By ordersTab = By.xpath("//div[text()='Order']");
+    By ordersTab = By.xpath("(//div[text()='Order'])[1]");
     By btn_company = By.xpath("//span[@class='_5h4pkd' and text()='Company:']");
     By txt_independant_food_co = By.xpath("//a[contains(text(), 'Independent Foods Co')]");
     static By wordAfterCompanyLocator = By.xpath("//span[text()='Company:']/following-sibling::span");
     static By dropdownToggle = By.xpath("//span[text()='Company:']/ancestor::button[contains(@class, 'dropdown-toggle')]");
     static By independentFoodOption = By.xpath("//a[text()='Independent Foods Co']");
     By btn_PlaceOrder = By.xpath("(//button[text()='Place Order'])[1]");
-    By approvalsBtn = By.xpath("//a[contains(@data-tip,'Approvals')]");
+    By approvalsBtn = By.xpath("(//a[contains(@data-tip,'Approvals')])[1]");
     By locationFilter = By.xpath("(//div[text()='Place Order']/following-sibling::div//div)[1]");
     By locationOption = By.xpath("//div[text()='Place Order']/following-sibling::*//div[contains(@id,'react-select') and contains(text(), 'All Locations')]");
-    By btn_order = By.xpath("//a[@data-tip='Place Order']");
+    By btn_order = By.xpath("(//a[@data-tip='Place Order'])[1]");
     By orderIndicator = By.xpath("//a[contains(text(),'Order Desk')]/div/span");
     By txt_endlessAisle  =By.xpath("//div[text()='Endless Aisle Catalog']");
-    By btn_dashboard = By.xpath("//a[@data-tip='Dashboard']");
+    By btn_dashboard = By.xpath("(//a[@data-tip='Dashboard'])[1]");
     String getCustomerBaseValue = "(//*[name()='tspan' and contains(., 'CUSTOMER')]/following-sibling::*[name()='tspan'])[1]";
-    By influenceTab = By.xpath("//a[@data-tip='Influence']");
+    By influenceTab = By.xpath("(//a[@data-tip='Influence'])[last()]");
+    By btn_viewMore = By.xpath("//*[local-name() = 'svg' and @data-icon='cdDotsGrid']");
 
 
     public boolean isDashboardTextDisplayed(){
@@ -83,12 +84,16 @@ public class DashboardPage extends LoginPage{
         return distributorUI.isDisplayed(txt_dashboard);
     }
     public void clickOnCustomers(){
-        distributorUI.click(btn_customers);
+        distributorUI.clickWithFallback(btn_customers);
     }
     public void clickOnBoost(){
+        distributorUI.hoverOverElement(btn_viewMore);
+        distributorUI.scrollToElement(btn_boost);
         distributorUI.click(btn_boost);
     }
     public void clickOnChat(){
+        distributorUI.hoverOverElement(btn_viewMore);
+        distributorUI.scrollToElement(btn_chat);
         distributorUI.click(btn_chat);
     }
     public boolean isRestaurantDashboardTextDisplayed(){
@@ -100,18 +105,20 @@ public class DashboardPage extends LoginPage{
         return distributorUI.isDisplayed(txt_dashboard_restaurant);
     }
     public void clickOnRestaurantChat(){
-        distributorUI.click(btn_restaurant_chat);
+        distributorUI.clickWithFallback(btn_restaurant_chat);
     }
     public void clickOnCatalog(){
-        distributorUI.click(btn_catalog);
+        distributorUI.clickWithFallback(btn_catalog);
     }
     public void clickOnOrderSettings(){
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_orderSettings);
         distributorUI.clickWithFallback(btn_orderSettings);
     }
     public void clickOnTeamSettings(){
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_teamSettings);
@@ -196,72 +203,87 @@ public class DashboardPage extends LoginPage{
     }
 
     public void clickOnTrackResources(){
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_track);
         distributorUI.clickUsingJavaScript(btn_track);
         distributorUI.hoverOverElement(btn_trackResources);
         distributorUI.clickWithFallback(btn_trackResources);
     }
     public void clickOnTrackRoutes(){
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_track);
         distributorUI.clickUsingJavaScript(btn_track);
         distributorUI.hoverOverElement(btn_trackRoutes);
         distributorUI.clickWithFallback(btn_trackRoutes);
     }
     public void clickOnTrackMonitoring(){
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_track);
         distributorUI.clickUsingJavaScript(btn_track);
         distributorUI.hoverOverElement(btn_trackMonitoring);
         distributorUI.clickWithFallback(btn_trackMonitoring);
     }
     public void clickOnTrackNotifications(){
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_track);
         distributorUI.clickUsingJavaScript(btn_track);
         distributorUI.hoverOverElement(btn_trackNotifications);
         distributorUI.clickWithFallback(btn_trackNotifications);
     }
     public void clickOnPay(){
+        distributorUI.hoverOverElement(btn_viewMore);
+        distributorUI.scrollToElement(btn_pay);
         distributorUI.clickWithFallback(btn_pay);
     }
     public void clickOnReports(){
+        distributorUI.hoverOverElement(btn_viewMore);
+        distributorUI.scrollToElement(btn_reports);
         distributorUI.clickWithFallback(btn_reports);
     }
     public void clickOnBillingSettings(){
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_billingSettings);
         distributorUI.clickWithFallback(btn_billingSettings);
     }
     public void clickOnCompanySettings(){
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_companySettings);
         distributorUI.clickWithFallback(btn_companySettings);
     }
     public void clickOnTrackSettings(){
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_trackSettings);
         distributorUI.clickWithFallback(btn_trackSettings);
     }
     public void clickOnProfileSettings(){
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_profSettings);
         distributorUI.clickWithFallback(btn_profSettings);
     }
     public boolean isInfluenceTabDisplayed(){
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_adsSettings);
         return distributorUI.isDisplayed(btn_adsSettings);
     }
     public void clickOnAdsSettings(){
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_adsSettings);
         distributorUI.clickWithFallback(btn_adsSettings);
     }
     public void clickOnPaySettings(){
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_paySettings);
@@ -272,10 +294,10 @@ public class DashboardPage extends LoginPage{
         distributorUI.navigateToURL(url);
     }
     public void clickOnTracker(){
-        distributorUI.click(btn_tracker);
+        distributorUI.clickWithFallback(btn_tracker);
     }
     public void clickOnEndlessAisle(){
-        distributorUI.click(btn_endlAisle);
+        distributorUI.clickWithFallback(btn_endlAisle);
     }
     public void clickOnCreditRequest(){
         distributorUI.click(btn_creditReq);
@@ -307,7 +329,7 @@ public class DashboardPage extends LoginPage{
     }
 
     public void navigateToWhiteLabelOrdersPage(){
-        distributorUI.click(ordersTab);
+        distributorUI.clickWithFallback(ordersTab);
     }
 
     public static String getTextAfterCompany() {
@@ -332,7 +354,7 @@ public class DashboardPage extends LoginPage{
     }
 
     public void clickOnApproval(){
-        distributorUI.click(approvalsBtn);
+        distributorUI.clickWithFallback(approvalsBtn);
     }
     public void clickLocationFilter(){
         distributorUI.click(locationFilter);
@@ -343,7 +365,7 @@ public class DashboardPage extends LoginPage{
         distributorUI.click(locationOption);
     }
     public void clickOnOrder() throws InterruptedException {
-        distributorUI.click(btn_order);
+        distributorUI.clickWithFallback(btn_order);
         distributorUI.waitForCustom(2000);
     }
     public boolean isCustomerDisplayed(){
@@ -353,13 +375,14 @@ public class DashboardPage extends LoginPage{
         return distributorUI.isDisplayed(orderIndicator);
     }
     public boolean isChatSectionDisplay()throws InterruptedException{
+        distributorUI.hoverOverElement(btn_viewMore);
         return distributorUI.isDisplayed(btn_chat);
     }
     public boolean isEndlessAisleCatalogDisplay()throws InterruptedException{
         return distributorUI.isDisplayed(txt_endlessAisle);
     }
     public void clickOnDashboard(){
-        distributorUI.click(btn_dashboard);
+        distributorUI.clickWithFallback(btn_dashboard);
     }
     public String getCustomerValue(String customer) throws InterruptedException {
         distributorUI.waitForCustom(3000);
@@ -410,7 +433,12 @@ public class DashboardPage extends LoginPage{
         return distributorUI.isDisplayed(influenceTab);
     }
     public void clickInfluenceMenuOption(){
+        distributorUI.hoverOverElement(btn_viewMore);
+        distributorUI.scrollToElement(influenceTab);
         distributorUI.click(influenceTab);
+    }
+    public void clickOnViewMore(){
+        distributorUI.clickWithFallback(btn_viewMore);
     }
 
 }

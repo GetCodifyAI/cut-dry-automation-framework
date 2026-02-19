@@ -14,7 +14,7 @@ import static com.cutanddry.qa.base.TestBase.*;
 
 public class VerifyMultiLocationSummeryWidgetWhenNoApprovalsTest {
     static User user;
-    String DistributerName = "46505655 - Kevin - Independent Foods Co";
+    String DistributerName = "Independent Foods Co";
     String ManagerUserCode = "226431917";
     String RestuarentName = "Bellota Restaurant — Sacramento ";
     String CustomerCode = "23445";

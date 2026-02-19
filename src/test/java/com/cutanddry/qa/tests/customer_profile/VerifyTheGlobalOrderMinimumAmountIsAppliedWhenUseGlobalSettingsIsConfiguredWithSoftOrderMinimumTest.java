@@ -14,8 +14,8 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsConfiguredWithSoftOrderMinimumTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    static String customerId = "97071";
-    String DistributorName ="46505655 - Kevin - Independent Foods Co";
+    static String customerId = "APP100";
+    String DistributorName ="Independent Foods Co";
     static String defaultOrderMin = "0";
     static String orderMinimumType = "Soft Order Minimum";
     static String orderMinInternal = "50000";
@@ -61,7 +61,7 @@ public class VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsCo
         Customer.clickOnOrderGuideInProfile();
 
         Customer.increaseFirstRowQtyCustom(1);
-        Customer.checkoutItems();
+        Customer.checkoutItemsDist();
 
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         Customer.submitOrderMinimum();

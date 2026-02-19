@@ -18,13 +18,11 @@ public class VerifyStandingOrderFlowWhenSwitchingOrderGuidesTest extends TestBas
     static User user;
     static String customerId = "16579";
     static String deliveryDay = "Monday";
-    static String firstOrderGuideName = "Independent Foods Co";
     static String secondOrderGuideName = "Independent Foods Co";
     String itemName;
     String secondItemName;
-    int draftCountBefore;
-    int draftCountAfter;
     int orderCount;
+    static String title = "Test Order New";
 
     @BeforeMethod
     public void setUp() {
@@ -40,10 +38,6 @@ public class VerifyStandingOrderFlowWhenSwitchingOrderGuidesTest extends TestBas
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "Login error - user not navigated to dashboard");
 
-
-        Dashboard.navigateToDrafts();
-       // draftCountBefore = Draft.getActiveDraftCount();
-
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Customer search error");
@@ -55,8 +49,6 @@ public class VerifyStandingOrderFlowWhenSwitchingOrderGuidesTest extends TestBas
         Customer.removeStandingOrdersIfAvailable();
         Customer.clickOnCreateStandingOrder();
 
-        Customer.selectDeliveryDate(deliveryDay);
-
         itemName = Customer.getItemNameFirstRow();
         Customer.increaseFirstRowQtyByOne();
         softAssert.assertTrue(Integer.parseInt(Customer.getItemQtyFirstRow()) > 0,
@@ -66,26 +58,14 @@ public class VerifyStandingOrderFlowWhenSwitchingOrderGuidesTest extends TestBas
         Customer.isAreYouSurePopupDisplayed();
         Customer.clickOnSwitch();
 
-//        Dashboard.navigateToDrafts();
-//        softAssert.assertTrue(Draft.isUserNavigatedToDrafts(),
-//                "Draft section not displayed");
-//        draftCountAfter = Draft.getActiveDraftCount();
-//        softAssert.assertEquals(draftCountAfter, draftCountBefore,
-//                "Draft not created when switching to new order guide - expected count: " + (draftCountBefore) + ", actual: " + draftCountAfter);
-
-//        Dashboard.navigateToCustomers();
-//        Customer.searchCustomerByCode(customerId);
-//        Customer.clickOnCustomerCode(customerId);
-//        Customer.clickOnOrdersTab();
-//        Customer.clickOnCreateStandingOrder();
-        Customer.selectDeliveryDate(deliveryDay);
-
         secondItemName = Customer.getItemNameFirstRow();
         Customer.increaseFirstRowQtyByOne();
         softAssert.assertTrue(Integer.parseInt(Customer.getItemQtyFirstRow()) > 0,
                 "Item quantity not increased in second order guide");
 
         Customer.checkoutItems();
+        Customer.typeOnStandingOrderTitle(title);
+        Customer.selectDeliveryDate(deliveryDay);
 
         softAssert.assertTrue(Customer.isReviewStandingOrdersDisplayed(),
                 "Review Order screen not displayed");

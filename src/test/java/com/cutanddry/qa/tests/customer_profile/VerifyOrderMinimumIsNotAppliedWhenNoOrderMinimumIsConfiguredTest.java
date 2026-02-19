@@ -13,12 +13,13 @@ import org.testng.asserts.SoftAssert;
 public class VerifyOrderMinimumIsNotAppliedWhenNoOrderMinimumIsConfiguredTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    static String customerId = "97071";
-    String DistributorName ="46505655 - Kevin - Independent Foods Co";
+    static String customerId = "APP100";
+    String DistributorName ="Independent Foods Co";
     static String defaultOrderMin = "0";
     static String orderMinimumType = "Hard Order Minimum";
     static String orderMinInternal = "5000000";
     static String orderMinimumSetting = "Exempt from Order Minimum";
+    static String orderMinimumSettingUpdate = "Exempt from order minimum";
 
     @BeforeMethod
     public void setUp() {
@@ -60,6 +61,7 @@ public class VerifyOrderMinimumIsNotAppliedWhenNoOrderMinimumIsConfiguredTest ex
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.SelectOrderMinimumFromProfile(orderMinimumSetting);
+        softAssert.assertTrue(Customer.isOrderMinimumExemptCustomerProfileDisplayed(orderMinimumSettingUpdate),"order setting not selected");
         Customer.ifHasHoldsRemoveHoldsFromCustomer();
         Customer.clickOnOrderGuideInProfile();
 

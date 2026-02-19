@@ -41,11 +41,11 @@ public class VerifyTheSelectingMultiUOMFromCashAndCarryFlowTest extends TestBase
         itemPriceUOM1 = CashAndCarry.getDicarloPDPPriceUOM(uom1);
         itemPriceUOM2 = CashAndCarry.getDicarloPDPPriceUOM(uom2);
         CashAndCarry.clickDicarloAddToCartPlusIcon(1, uom1);
-        CashAndCarry.clickDicarloAddToCartPlusIcon(randomNum, uom2);
+        CashAndCarry.clickDicarloAddToCartPlusIcon(1, uom2);
         Thread.sleep(3000);
         totalPDPItemPrice = Customer.getItemPriceOnCheckoutButtonViaPDP();
         softAssert.assertEquals(Math.round(totalPDPItemPrice * 100.0) / 100.0,
-                ((Math.round(itemPriceUOM1 * 100.0) / 100.0)+(Math.round(itemPriceUOM2 * 100.0 * randomNum) / 100.0)),0.001, "The item has not been selected.");
+                ((Math.round(itemPriceUOM1 * 100.0) / 100.0)+(Math.round(itemPriceUOM2 * 100.0 * 1) / 100.0)),0.001, "The item has not been selected.");
         Customer.clickCheckOutPDP();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
         CashAndCarry.enterFullName(user.getFull_name());

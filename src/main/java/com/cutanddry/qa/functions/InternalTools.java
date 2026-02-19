@@ -338,5 +338,17 @@ public class InternalTools {
     public static void TurnOnAllowSupplierToSetMinimumToggle(boolean status){
         internalToolsPage.TurnOnAllowSupplierToSetMinimumToggle(status);
     }
+    public static void refreshPage(){
+        internalToolsPage.refreshPage();
+    }
+    public static void TurnOnForceShowSubstitutesEnabledToggle(boolean status){
+        internalToolsPage.TurnOnForceShowSubstitutesEnabledToggle(status);
+    }
+    public static void TurnOnShowSubstitutesModalInPortalEnabledToggle(boolean status){
+        internalToolsPage.TurnOnShowSubstitutesModalInPortalEnabledToggle(status);
+    }
+    public static void TurnOnAllowOrderingDiscontinuedToggle(boolean status){
+        internalToolsPage.TurnOnAllowOrderingDiscontinuedToggle(status);
+    }
 
 }

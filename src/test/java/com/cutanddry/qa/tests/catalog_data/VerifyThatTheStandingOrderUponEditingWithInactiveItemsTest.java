@@ -23,6 +23,7 @@ public class VerifyThatTheStandingOrderUponEditingWithInactiveItemsTest extends 
     String InActive = "Inactive";
     String All = "All";
     static String deliveryDay = CatalogData.DELIVERY_DAY;
+    static String title = "Test Order New";
 
 
 
@@ -46,7 +47,8 @@ public class VerifyThatTheStandingOrderUponEditingWithInactiveItemsTest extends 
         Catalog.selectItemStatus(All);
         Catalog.searchItemInCatalog(searchItemCode);
         Catalog.selectItemFromGrid(searchItemCode);
-        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),searchItemCode,"Error in getting Item Code");
+        Thread.sleep(4000);
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),searchItemCode,"Error in getting Item Code 1");
         Catalog.selectEditFromProductConfig();
         Catalog.selectProductActiveInactiveStatus(Active);
         Catalog.saveChanges();
@@ -61,7 +63,6 @@ public class VerifyThatTheStandingOrderUponEditingWithInactiveItemsTest extends 
         Assert.assertTrue(Customer.isStandingOrdersDisplayed(),"navigation error");
         Customer.removeStandingOrdersIfAvailable();
         Customer.clickOnCreateStandingOrder();
-        Customer.selectDeliveryDate(deliveryDay);
 
         Customer.searchItemOnOrderGuide(searchItemCode);
         itemName = Customer.getItemNameFirstRow();
@@ -70,7 +71,8 @@ public class VerifyThatTheStandingOrderUponEditingWithInactiveItemsTest extends 
         softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(),itemPrice,"The item has not been selected.");
         Customer.checkoutItems();
 
-        Customer.checkoutItems();
+        Customer.typeOnStandingOrderTitle(title);
+        Customer.selectDeliveryDate(deliveryDay);
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
 
         Customer.setStandingOrder();
@@ -85,7 +87,8 @@ public class VerifyThatTheStandingOrderUponEditingWithInactiveItemsTest extends 
         Catalog.selectItemStatus(All);
         Catalog.searchItemInCatalog(searchItemCode);
         Catalog.selectItemFromGrid(searchItemCode);
-        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),searchItemCode,"Error in getting Item Code");
+        Thread.sleep(4000);
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),searchItemCode,"Error in getting Item Code 2");
         Catalog.selectEditFromProductConfig();
         Catalog.selectProductActiveInactiveStatus(InActive);
         Catalog.saveChanges();
@@ -108,7 +111,8 @@ public class VerifyThatTheStandingOrderUponEditingWithInactiveItemsTest extends 
         Catalog.selectItemStatus(All);
         Catalog.searchItemInCatalog(searchItemCode);
         Catalog.selectItemFromGrid(searchItemCode);
-        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),searchItemCode,"Error in getting Item Code");
+        Thread.sleep(4000);
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),searchItemCode,"Error in getting Item Code 3");
         Catalog.selectEditFromProductConfig();
         Catalog.selectProductActiveInactiveStatus(Active);
         Catalog.saveChanges();

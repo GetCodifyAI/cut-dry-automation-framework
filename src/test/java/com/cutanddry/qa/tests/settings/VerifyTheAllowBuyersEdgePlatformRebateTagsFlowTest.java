@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheAllowBuyersEdgePlatformRebateTagsFlowTest extends TestBase {
     static User user;
-    String distributorName ="46505655 - Kevin - Independent Foods Co";
+    String distributorName ="Independent Foods Co";
     String dp = "Independent Foods Co";
 
 

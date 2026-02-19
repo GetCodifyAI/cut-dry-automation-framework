@@ -103,6 +103,18 @@ public class OrdersPage extends LoginPage{
     By btn_selectLocation = By.xpath("//div[contains(text(),'Select Location')]/following-sibling::div/div[1]");
     By btn_FindMoreInCatalog = By.xpath("//button[text()='Find More in Catalog']");
     By lbl_inactiveItemDetected = By.xpath("//div[text()='Inactive Items Removed']");
+    String selectLocationSupplier = "//div[contains(text(),'Select Location')]/following-sibling::div//div[text()='LOCATION']";
+    By lbl_orderInfoCustomer = By.xpath("//div[contains(text(),'Cut & Dry Test Account (21259)')]");
+    By lbl_orderInfoLocationCode = By.xpath("//div[contains(text(),'Hayes (94123)')]");
+    By lbl_orderInfoDeliveryOn = By.xpath("//div[contains(text(),'Fri, 01/09/2026')]");
+    By lbl_orderInfoShipTo = By.xpath("//div[contains(text(),'Juan Zengotita (Personal), 1046 Rock Creek St., Apopka, Florida 32712')]");
+    By lbl_orderInfoFulfilmentMethod = By.xpath("//span[@data-for='cd-label-tooltip' and contains(text(),'Delivery')]");
+    By lbl_orderInfoStatus = By.xpath("//span[@data-for='cd-label-tooltip' and contains(text(),'Confirmed')]");
+    By lbl_orderDateColumnHeader = By.xpath("//table/thead/tr/th//span[contains(text(),'Order Date')]");
+    By lbl_firstOrderDate = By.xpath("(//tr[contains(@class,'_du1frc') and contains(@class,'py-3')]/td)[2]");
+    By lbl_firstOrderFulfillmentBadge = By.xpath("//span[@data-for='cd-label-tooltip' and normalize-space()='Delivery']");
+    By btn_cancel = By.xpath("//button[normalize-space()='Cancel']");
+
 
     public void clickBtnSaveCheckIn(){
         distributorUI.click(btn_saveCheckIn);
@@ -624,6 +636,192 @@ public class OrdersPage extends LoginPage{
         distributorUI.waitForVisibility(lbl_inactiveItemDetected);
        return distributorUI.isDisplayed(lbl_inactiveItemDetected);
     }
+    public void selectLocationSupplier(String location){
+        distributorUI.click(By.xpath(selectLocationSupplier.replace("LOCATION",location)));
+    }
+
+    public boolean isOrderInfoCustomerDisplayed(){
+           return distributorUI.isDisplayed(lbl_orderInfoCustomer);
+    }
+
+    public boolean isOrderInfoLocationCodeDisplayed(){
+           return distributorUI.isDisplayed(lbl_orderInfoLocationCode);
+    }
+
+    public boolean isOrderInfoDeliveryOnDisplayed(){
+           return distributorUI.isDisplayed(lbl_orderInfoDeliveryOn);}
+
+    public boolean isOrderInfoShipToDisplayed(){
+            return distributorUI.isDisplayed(lbl_orderInfoShipTo);
+    }
+
+    public boolean isOrderInfoFulfilmentMethodDisplayed(){
+           return distributorUI.isDisplayed(lbl_orderInfoFulfilmentMethod);
+    }
+
+    public boolean isOrderInfoStatusDisplayed(){
+            return distributorUI.isDisplayed(lbl_orderInfoStatus);
+    }
+
+    public boolean isOrderDateColumnHeaderDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_orderDateColumnHeader);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_orderDateColumnHeader);
+    }
+
+    public String getFirstOrderDateText(){
+        distributorUI.waitForVisibility(lbl_firstOrderDate);
+        return distributorUI.getText(lbl_firstOrderDate);
+    }
+
+    public boolean isFirstOrderFulfillmentBadgeDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_firstOrderFulfillmentBadge);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_firstOrderFulfillmentBadge);
+    }
+
+    public String getFirstOrderFulfillmentBadgeText(){
+        distributorUI.waitForVisibility(lbl_firstOrderFulfillmentBadge);
+        return distributorUI.getText(lbl_firstOrderFulfillmentBadge);
+    }
+
+    By lbl_totalColumnHeader = By.xpath("//table/thead/tr/th/span[text()='Total']");
+    String lbl_totalColumnHeaderByIndex = "//table/thead/tr/th[COUNT]/span";
+    String lbl_totalColumnValue = "//table/tbody/tr[ROW]/td[COUNT]";
+
+    public boolean isTotalColumnHeaderDisplayed() {
+        try {
+            distributorUI.waitForVisibility(lbl_totalColumnHeader);
+        } catch (Exception e) {
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_totalColumnHeader);
+    }
+
+    public int getTotalColumnIndex() {
+        int totalColumnCount = distributorUI.countElements(lbl_orderTableColumn);
+        for (int i = 1; i <= totalColumnCount; i++) {
+            String columnName = distributorUI.getText(By.xpath(lbl_totalColumnHeaderByIndex.replace("COUNT", String.valueOf(i))));
+            if ("Total".equalsIgnoreCase(columnName)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public String getTotalValueFromRow(int rowIndex, int columnIndex) {
+        if (rowIndex!=2) {
+            rowIndex = rowIndex + 2;
+        }
+
+        By totalValueLocator = By.xpath(lbl_totalColumnValue
+                .replace("ROW", String.valueOf(rowIndex))
+                .replace("COUNT", String.valueOf(columnIndex)));
+        try {
+            distributorUI.waitForVisibility(totalValueLocator);
+            return distributorUI.getText(totalValueLocator);
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public boolean isTotalAmountFormattedWithDollarSign(String totalValue) {
+        return totalValue != null && totalValue.startsWith("$");
+    }
+
+    public boolean isTotalAmountFormattedWithTwoDecimalPlaces(String totalValue) {
+        if (totalValue == null || !totalValue.startsWith("$")) {
+            return false;
+        }
+        String numericPart = totalValue.replace("$", "").replace(",", "");
+        return numericPart.matches("\\d+\\.\\d{2}");
+    }
+
+    public boolean isTotalAmountFormattedWithCommaForLargeAmounts(String totalValue) {
+        if (totalValue == null || !totalValue.startsWith("$")) {
+            return false;
+        }
+        String numericPart = totalValue.replace("$", "");
+        double amount;
+        try {
+            amount = Double.parseDouble(numericPart.replace(",", ""));
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        if (amount >= 1000) {
+            return numericPart.contains(",");
+        }
+        return true;
+    }
+
+    public boolean isResultsCountDisplayed() {
+        try {
+            distributorUI.waitForVisibility(txt_resultsCount);
+        } catch (Exception e) {
+            return false;
+        }
+        return distributorUI.isDisplayed(txt_resultsCount);
+    }
+
+    public void clickCancel(){
+        distributorUI.click(btn_cancel);
+    }
+
+    By btn_items = By.xpath("//a[text()='Items' and @role='tab']");
+    By lbl_orderedItemsSection = By.xpath("//div[contains(text(),'Ordered Items')]");
+
+    public void clickItems(){
+        distributorUI.click(btn_items);
+    }
+
+    public boolean isItemsTabActive(){
+        try {
+            distributorUI.waitForVisibility(btn_items);
+            String classAttribute = distributorUI.getText(btn_items, "class");
+            return classAttribute != null && classAttribute.contains("active");
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean isTimelineTabActive(){
+        try {
+            distributorUI.waitForVisibility(btn_timeline);
+            String classAttribute = distributorUI.getText(btn_timeline, "class");
+            return classAttribute != null && classAttribute.contains("active");
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean isOrderedItemsSectionDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_orderedItemsSection);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_orderedItemsSection);
+    }
+
+    public boolean isTimelineContentDisplayed(){
+        try {
+            distributorUI.waitForVisibility(timestampTimeline);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(timestampTimeline);
+    }
+
+
+
 
 
 }
+
+

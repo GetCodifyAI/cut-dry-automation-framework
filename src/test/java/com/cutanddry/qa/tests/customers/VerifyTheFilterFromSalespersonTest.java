@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTheFilterFromSalespersonTest extends TestBase {
     static User user;
-    String SalespersonName = "Amir IFC";
+    String SalespersonName = "Amir Ifc";
 
     @BeforeMethod
     public void setUp(){

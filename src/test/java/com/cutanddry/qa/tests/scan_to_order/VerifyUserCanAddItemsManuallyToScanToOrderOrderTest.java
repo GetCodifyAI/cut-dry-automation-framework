@@ -28,6 +28,7 @@ public class VerifyUserCanAddItemsManuallyToScanToOrderOrderTest extends TestBas
         user = JsonUtil.readUserLogin();
     }
 
+
     @Test(groups = "DOT-TC-1113")
     public static void VerifyUserCanAddItemsManuallyToScanToOrderOrder() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();

@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTrackSettingsUnderRoutes extends TestBase{
     static User user;
-    static String distributorName = "46505655 - Kevin - Independent Foods Co";
+    static String distributorName = "Independent Foods Co";
 
     @BeforeMethod
     public void setUp() {

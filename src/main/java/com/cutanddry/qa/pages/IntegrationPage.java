@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 public class IntegrationPage extends LoginPage {
     
-    By btn_integration = By.xpath("//a[@href='/integration']");
+    By btn_integration = By.xpath("(//a[@href='/integration'])[1]");
     
     By txt_24HourSnapshot = By.xpath("//*[contains(text(), '24 Hour Snapshot')]");
     By txt_completedTasks = By.xpath("//*[normalize-space()='24 Hour Snapshot']/following-sibling::div//span[contains(text(),'Completed')]");
@@ -18,7 +18,7 @@ public class IntegrationPage extends LoginPage {
     By txt_termsSync = By.xpath("//div[normalize-space()='Last Successful Sync'] /following-sibling::div[1] //div[.//text()[contains(., 'Terms')]]");
     
     By table_integration = By.xpath("//table");
-    By txt_integrationStatus = By.xpath("//*[contains(text(), 'Integration Status')]");
+    By txt_integrationStatus = By.xpath("//div[contains(@class,'mont') and normalize-space()='Integration Status']");
     String syncEndTimeFromTable = "(//tr/td[contains(text(),'SYNCNAME')]/following::td/span[contains(text(),'Completed')])[1]/../../td[5]";
     By dateFilter = By.xpath("//*[contains(text(),'Date:')]/following::div[4]");
     By syncType = By.xpath("//*[contains(text(),'Sync Type:')]/following::div[4]");
@@ -27,7 +27,7 @@ public class IntegrationPage extends LoginPage {
     
 
     public void clickOnIntegration() {
-        distributorUI.click(btn_integration);
+        distributorUI.clickWithFallback(btn_integration);
     }
 
     public boolean isIntegrationStatusDisplayed() {

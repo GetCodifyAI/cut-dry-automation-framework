@@ -14,11 +14,12 @@ public class VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsCo
     SoftAssert softAssert;
     static User user;
     static String customerId = "97071";
-    String DistributorName ="46505655 - Kevin - Independent Foods Co";
+    String DistributorName ="Independent Foods Co";
     static String defaultOrderMin = "0";
     static String orderMinimumType = "Hard Order Minimum";
     static String orderMinInternal = "5000000";
     static String orderMinimumSetting = "Use Global Settings";
+    static String orderMinimumSettingUpdate = "Use global settings";
 
     @BeforeMethod
     public void setUp() {
@@ -59,11 +60,12 @@ public class VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsCo
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.SelectOrderMinimumFromProfile(orderMinimumSetting);
+        softAssert.assertTrue(Customer.isOrderMinimumCustomerProfileDisplayed(orderMinimumSettingUpdate),"setting update error");
         Customer.ifHasHoldsRemoveHoldsFromCustomer();
         Customer.clickOnOrderGuideInProfile();
 
         Customer.increaseFirstRowQtyCustom(1);
-        Customer.checkoutItems();
+        Customer.checkoutItemsDist();
 
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");
         Customer.submitOrderMinimum();

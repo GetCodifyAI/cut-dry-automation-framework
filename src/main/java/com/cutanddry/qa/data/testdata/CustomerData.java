@@ -11,12 +11,12 @@ public class CustomerData {
     public static final String NEXT_PO_QTY = "Next PO Qty:";
     public static final String NEXT_PO_DATE = "Next PO Date:";
     public static final String DISTRIBUTOR_AFFILIATED = "247955542 - Cut+Dry Agent - Affiliated Foods";
-    public static final String CUSTOMER_ID = "07094";
+    public static final String CUSTOMER_ID = "07494";
     public static final String COST_COLUMN = "Cost";
     public static final String MARGIN_COLUMN = "Margin";
     public static final String ORDER_SUMMERY = "Gross Profit";
     public static final String DP_HILLCREST = "96939129 - Cut+Dry Agent - Hillcrest Foodservice";
-    public static final String DISTRIBUTOR_NAME_IFC = "46505655 - Kevin - Independent Foods Co";
+    public static final String DISTRIBUTOR_NAME_IFC = "Independent Foods Co";
     public static final String NODE_STATUS1 = "addedbysupplier";
     public static final String NODE_STATUS2 = "bank_account";
     public static final String CUSTOMER_CODE2 = "21259";
@@ -50,6 +50,7 @@ public class CustomerData {
     public static final String CUSTOMER_CODE7 = "58951";
     public static final String PRODUCT_ITEM_CODE = "02345";
     public static final String CUSTOMER_OG = "Test_Automation";
+    public static final String DISTRIBUTOR_TRADEWELL_DISTRIBUTORS = "Tradewell Distributors";
 
 
 }

@@ -10,6 +10,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static com.cutanddry.qa.pages.ApprovalsPage.customersPage;
 
 public class CustomersPage extends LoginPage {
@@ -33,6 +36,7 @@ public class CustomersPage extends LoginPage {
 //    String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[contains(text(),'NAME')])[last()]";
 String lbl_catalogSearchItemList = "(//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]";
     String lbl_catalogAddToCart = "((//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]/ancestor::div[contains(@class,'card')])[last()]//button[@data-tip='Add to Order Guide']";
+    String lbl_catalogRemoveToCart = "((//div[contains(@class,'card-deck')]//div[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate(\"NAME\", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))])[last()]/ancestor::div[contains(@class,'card')])[last()]//button[@data-tip='Remove from Order Guide']";
     By txt_thereWasAnError = By.xpath("//*[text()='There was an error, please try again.']");
 //    String btn_addToCart = "//div[contains(@class, '_13kb1gk')]//div[text()= 'ITEMNAME']//ancestor::div[contains(@class, '_13kb1gk')]//div[@class='_btf6h0']//button[contains(@class, 'btn-outline-primary')]";
 //    String btn_addToCart = "//*[contains(text(), 'ITEMNAME')]/ancestor::div[contains(@class, 'card')]//button[contains(text(), 'Add to Cart')]";
@@ -98,6 +102,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By btn_exportOrderGuide = By.xpath("//a[contains(text(), 'Export Order Guide (XLSX)')]");
     By btn_importOrderGuide = By.xpath("//a[contains(text(), 'Import Order Guide (XLSX)')]");
     By btn_uploadToOrder = By.xpath("//a[contains(text(), 'Upload to Order')]");
+    By btn_scanItemsToOrder = By.xpath("//*[contains(text(), 'Scan Items to Order')]");
     By txt_reviewOrder = By.xpath("//div[text()='Review Order']");
     By txt_orderGuideUpdated = By.xpath("//h2[text()='Order guide updated successfully']");
 //    By dropdown_SortOptions = By.xpath("//div[text()='Sort Items By:']/following::div[contains(@class, 'cd_themed_select__control')][1]");
@@ -111,13 +116,14 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By txt_firstItem = By.xpath("//div[translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'artichoke -24ct']");
     By txt_minOrderBanner = By.xpath("//div[contains(text(), 'Add a few more items worth') and contains(text(), 'to meet minimum order amount')]");
     By txt_popupAlertOrderMin = By.xpath("//div[text()='Order Minimum Not Met']");
+    By text_softMinMessage = By.xpath("//p[contains(text(),'the minimum is') or contains(text(),'minimum of')]");
     By btn_previousDraftOrderNo = By.xpath("//div[contains(text(),'previous draft order')]/..//div[text()='No']");
     String txt_customerCode = "//td[text()='CODE']";
     By tb_orders = By.xpath("//a[text()='Orders' and @role='tab']");
     By txt_standingOrders = By.xpath("//div[text()='Standing Orders: ']");
     By created_StandingOrders = By.xpath("//div[contains(text(),'Set for ')]");
     By btn_createStandingOrders = By.xpath("//div[text()='Create']");
-    By dropdown_delivery = By.xpath("//div[text()='Delivery:']/following-sibling::div//div[text()='Select Days...']");
+    By dropdown_delivery = By.xpath("//div[text()='Delivery Days']/following-sibling::div//div[text()='Select days']");
     By dropdown_pickUp = By.xpath("//div[text()='Pickup Date:']/../following-sibling::div/div");
     String txt_deliveryDay = "//div[text()='DAY']/preceding-sibling::input[@type='checkbox']";
     String txt_deliveryLastDay = "(//div[contains(@class, 'cd_themed_select__option')]//input[@type='checkbox'])[last()]";
@@ -147,7 +153,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     String txt_orders = "(//div[contains(text(), 'Order Number #')])[NUM]";
     By btn_back = By.xpath("//button[contains(text(), 'Back')]");
     String SelectCustomerByCode = "//td[contains(text(),'CODE')]";
-    By OrdersTabTxt = By.xpath("//a[contains(text(),'Orders') and @class='_1n4k2vi text-center nav-item nav-link']");
+    By OrdersTabTxt = By.xpath("//a[@role='tab' and @data-rb-event-key='Orders']");
     By OrderIdTxt = By.xpath("//tr[contains(@href,'/ordersView/')][1]");
     By OrderDateSort = By.xpath("//span[contains(text(),'Order Date')]");
     By DeliveryDate = By.xpath("//span[contains(text(),'Fulfilled By')]");
@@ -251,11 +257,14 @@ By input_selectItem = By.xpath("//div[contains(text(),'Search items by name or c
     By minimumOrderOverlay = By.xpath("//*[contains(text(),'Order Minimum Not Met')]");
     By catalogAccessEnableTxt = By.xpath("//div[@class='list-group-item']//div[text()='Visible to All']");
     By catalogAccessDisableTxt = By.xpath("//div[@class='list-group-item']//div[text()='Internal Only']");
+    By catalogAccessDisabledForAll = By.xpath("//div[@class='list-group-item']//div[text()='Disabled for All']");
     By catalogAccessEditBtn = By.xpath("//div[contains(text(), 'Catalog Access')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
     By lbl_catalogAccessEnable = By.xpath("//div[contains(text(), 'Catalog Access')]//following-sibling::div//*[contains(text(),'Visible to All')]");
     By catalogSectionInOrderGuide = By.xpath("//span[contains(text(),'Catalog')]");
     By catalogAccessDisableOption = By.xpath("//div[contains(text(),'Internal Only')]");
     By catalogAccessEnableOption = By.xpath("//div[contains(text(),'Visible to All')]");
+    By catalogAccessDisabledForAllOption = By.xpath("//div[contains(text(),'Disabled for All')]");
+    By catalogAccessDropdown = By.xpath("//div[contains(text(),'Catalog Access')]/following-sibling::div//input/../../../div[1]");
     By orderApprovalTxt = By.xpath("//div[contains(text(),'Order Approval')]");
 //    By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]//following-sibling::div//div[@class='pl-0 col-sm-auto col-auto']");
 By orderApprovalEditBtn = By.xpath("//div[contains(text(), 'Order Approval')]/following-sibling::div//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
@@ -376,7 +385,7 @@ By lbl_margin = By.xpath("//div[contains(text(),'Margin') and contains(text(),'$
 //    By dropdown_assignSalesperson = By.xpath("((//*[local-name() = 'svg' and @class='css-19bqh2r']))[2]");
 By dropdown_assignSalesperson = By.xpath("(//div[contains(@class,'themed_select__dropdown-indicator')])[last()]");
     By sel_salesperson = By.xpath("//div[contains(@class, 'themed_select__option') and contains(text(), 'Darlene')]");
-    By txt_assignedSalesperson = By.xpath("//td[contains(text(),'Darlene')]");
+    By txt_assignedSalesperson = By.xpath("//div[contains(text(),'Darlene')]");
     By btn_saveChanges = By.xpath("//button[contains(text(),'Save changes')]");
     By txt_cusProfSalesperson = By.xpath("//div[contains(@class,'_vjioml w-100 border') and contains(text(),'Darlene')]");
     By btn_removeSalesperson = By.xpath("(//td/*[contains(@data-icon,'trash-can')])[last()]");
@@ -512,6 +521,8 @@ By btn_removeFromOrderGuideHeart = By.xpath("//button[@class='d-flex align-items
     By lbl_cartItemUnitPrice = By.xpath("(//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//input)[1] | (//td//span//div[@data-tip='View Product Details']/ancestor::tr/td[5]//span)[1]");
     By icon_edit_auto_pay = By.xpath("//div[contains(@class, 'font-weight-bold') and normalize-space(text())='Auto Pay']/*[name()='svg']");
     By dropdown_schedule = By.xpath("//div[contains(@class, 'themed_select__single-value') and text()='On due date']");
+    By dropdownInvoiceToPay = By.xpath("//div[text()='Invoices to Pay']/following-sibling::div");
+    By dropdownOptionInvoiceToPay = By.xpath("(//div[text()='All invoices'])[last()]");
     String option_ScheduleType = "//div[contains(@class, 'themed_select__menu')]//div[contains(@class, 'themed_select__option') and text()='OPTION_TEXT']";
     By btn_update = By.xpath("//button[text()='Update']");
     String txt_auto_pay_details = "//div[contains(@class, '_jehyy2') and contains(text(), 'SCHEDULE_OPTION')]";
@@ -707,6 +718,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By combinedOrderContinue = By.xpath("//button[contains(text(), 'Continue')]");
 
     By catalogFirstItemItemCode = By.xpath("//div[contains(@class,'card-deck')][1]/div[contains(@class,'card')][1]//button[contains(@data-tip,'View Brand Page')]/../following-sibling::div");
+    String catalogItemDisplayed = "(//div[contains(@class,'card-deck')][1]/div[contains(@class,'card')]//div[contains(normalize-space(.),'ITEMCODE')])[last()]";
     String unpaidInvoiceName = "//div[text()='NAME']";
     By caseMinimumNotMetText = By.xpath("//*[contains(text(),'Case Minimum Not Met')]");
     By btn_sortCustomOrder = By.xpath("//div[contains(@class, 'cd_themed_select__single-value') and text()='Custom Order']");
@@ -760,7 +772,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String deliveryDateCustomerOrder = "//*[contains(text(),'#') and text()='ID']/../../preceding-sibling::td[1][contains(text(),'DATE')]";
     String customerOrder = "//*[contains(text(),'#') and text()='ID']";
     By btn_pickUpDateStable = By.xpath("//div[text()='Pickup Date:']/../following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
-    String dynamicToXPathStable = "//div[contains(@class,'react-datepicker__day')]/preceding::div[contains(@class, 'react-datepicker__day') and contains(@aria-disabled, 'false') and text()='DAY']";
+    String dynamicToXPathStable = "//div[contains(@class,'react-datepicker')]//div[contains(@class,'react-datepicker__day') and text()='DAY' and @aria-disabled='false']";
     String fulfilmentTag = "//*[contains(text(),'#') and text()='ID']/../../preceding-sibling::td[1]//*[text()='TAG']";
     String reviewOrderFulfilment = "//span[contains(text(),'TYPE')]";
     String sortOptionDisplay = "//div[text()='Sort Items By:']/following-sibling::div//div[contains(text(),'OPTION')]";
@@ -849,8 +861,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By txt_manageStandingOrders = By.xpath("//*[contains(text(), 'Manage Standing Orders')]");
     By btn_addNew = By.xpath("//button[contains(text(),'Add New')]");
     By btn_createStandingOrder = By.xpath("//button[contains(text(),'Create a Standing Order')]");
-    By btn_editStandingOrderIcon = By.xpath("//button[@title='Edit']");
-    By btn_deleteStandingOrderIcon = By.xpath("//button[@title='Delete']");
+    By btn_editStandingOrderIcon = By.xpath("//span[text()='Edit']");
+    By btn_deleteStandingOrderIcon = By.xpath("//button//*[local-name()='svg' and @data-icon='cdTrash']");
     By btn_calculateOrderQty = By.xpath("(//td//span//div[@data-tip='View Product Details']/../../../../../following-sibling::td[3]/div/div/div)[1]");
     By lbl_calculateOrderQty = By.xpath("//div[contains(text(),'Calculate Order Quantity')]");
     By lbl_parValue = By.xpath("//div[contains(text(),'Par')]/../following-sibling::div//input");
@@ -873,6 +885,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String updateEligibilityDropDownOption = "//label[contains(text(), 'Eligibility')]/following-sibling::div//*[text()='OPTION']";
     By orderMinimumeditBtn = By.xpath("//*[contains(text(),'Order Minimum')]/following-sibling::div//*[local-name()='svg' and @data-icon='pen-to-square']");
     String orderMinimumSelectionRadioBtn = "//*[contains(text(),'ORDERMINIMUM')]/../input";
+    By operatorSpecificOrderMinimumValue = By.xpath("//*[contains(text(),'Order Minimum Value:')]/following-sibling::input");
     By orderMinimumOverlayCloseBtn = By.xpath("//*[contains(text(),'Edit Order Minimum')]/../following-sibling::button/span[normalize-space()='×']");
     By getOrderGuideSearch = By.xpath("//input[@id='order_flow_search' and @placeholder='Search order guide...']");
     By getCatalogSearch = By.xpath("//input[@id='order_flow_search' and @placeholder='Search catalog...']");
@@ -884,13 +897,13 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By priceVisibilityEditBtn = By.xpath("//div[contains(text(), 'Price Visibility')]//following-sibling::div//div//*[name()='svg' and contains(@data-icon, 'pen-to-square')]");
     By priceVisibilityDropDown = By.xpath("//div[contains(text(), 'Price Visibility')]//following-sibling::div/div/div/div");
     String priceVisibilityOption = "//div[contains(text(), 'Price Visibility')]//following-sibling::*//div[text()='STATUS']";
-    By btn_placeOrderWhiteLabel = By.xpath("//button[contains(text(), 'Place Order')]");
+    By btn_placeOrderWhiteLabel = By.xpath("//*[contains(text(), 'Place Order')]");
     By txt_catalogAllItems = By.xpath("(//div[text()='All Items'])[last()]");
     By orderGuideRefreshText = By.xpath("//*[contains(text(),'Refresh to view the latest updates in this order guide')]");
     By orderGuideOutOfstockItem = By.xpath("//span[contains(text(),'Out of stock')]/../preceding-sibling::div//*[contains(@data-tip,'View Product Details')]");
     By btn_orderGuideCustomerProfile = By.xpath("//button[text()='Order Guide']");
     String itemPriceEditOG = "//div[translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')]/../following::div[contains(text(),'PRICE')]";
-    By btn_orderSection = By.xpath("//div[normalize-space(text()) = 'Order']");
+    By btn_orderSection = By.xpath("(//div[normalize-space(text()) = 'Order'])[1]");
     String itemTagOG = "//div[contains(text(),'NAME')]/../../following-sibling::div//span[text()='TAG']";
     String listViewCatalogItemName = "//td[contains(text(),'NAME')]";
     By txt_creditHold = By.xpath("//div[text()='Credit Hold']");
@@ -900,12 +913,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_accHoldClose_ = By.xpath("(//button[contains(@class, 'close')]/span[text()='×'])[last()]");
     String accountOnHoldBanner = "//span[text()='MESSAGE']";
     By txt_inactiveHold = By.xpath("//div[text()='Inactive Hold']");
+    By txt_generalHold = By.xpath("//div[text()='General Hold']");
     By lbl_inactiveHold = By.xpath("//div[text()='Account Holds']/following-sibling::div//span[contains(@class, 'badge') and text()='Inactive Hold']");
+    By lbl_generalHold = By.xpath("//div[text()='Account Holds']/following-sibling::div//span[contains(@class, 'badge') and text()='General Hold']");
     String catalogFilterTag = "//div[contains(text(),'TAG')]";
     String catalogListViewSort = "//th//div[text()='SORT']";
     By catalogListViewItemCode = By.xpath("//tr[@class='_du1frc']/td[1]");
     String catalogListViewItemName= "//tr[@class='_du1frc']/td[COLUMN]";
-    String catalogFirstItemPrice = "//div[normalize-space(.)='ITEMNAME']/../following::div//span[contains(normalize-space(.),'$')]";
+    String catalogFirstItemPrice = "(//div[normalize-space(.)='ITEMNAME']/../following::div//span[contains(normalize-space(.),'$')])[1]";
     By tooManyOrdersText = By.xpath("//*[contains(text(),'You are trying to create too many orders too fast!')]");
     String catalogSearchItemName = "((//div[contains(@class,'card-deck')]//div[   contains(., 'NAME')   and   contains(., 'BRAND') ])[last()])[1]";
     String orderItems = "//div[normalize-space(text())=\'ITEMNAME\']";
@@ -936,7 +951,41 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_okMaxQuantityModal = By.xpath("//h2[contains(text(),'Maximum Quantity')]/../..//button[text()='OK']");
     By btn_placeOrderSoftOrderMinimum = By.xpath("//button[text()='Place Order']");
     String lbl_leadTimeBanner = "//span[text()='Message']";
-
+    By orderApprovalTypeDropDown = By.xpath("//div[contains(text(),'Order Approval Type')]/following-sibling::div");
+    String orderApprovalTypeOption = "(//div[contains(text(),'OPTION')])[last()]";
+    By removeUnavailableItemsHeader = By.xpath("//div[contains(text(),'Removed unavailable items')]");
+    By removeUnavailableItemsMessage = By.xpath("//div[contains(text(),'We’ve removed unavailable items from your cart. Contact your sales rep for help with alternatives')]");
+    String removedBuyoutItem = "//*[contains(normalize-space(.),'Unavailable Items')]/ancestor::div[1]//span[contains(@class,'text-truncate') and normalize-space(.)='ITEMNAME (ITEMCODE)']";
+    String removedBuyoutItemUOM = "//div[contains(@class,'d-flex') and .//span[@class='text-truncate' and normalize-space(.)='ITEMNAME (ITEMCODE)'] and .//s[normalize-space(.)='ITEMCOUNT ITEMUOM']]";
+    String buyOutHardMinValues = "//div[normalize-space()='LABEL'] /following-sibling::div[normalize-space()='VALUE']";
+    By currentValue = By.xpath("//div[normalize-space()='Current'] /following-sibling::div");
+    By lbl_itemsColumnHeader = By.xpath("//span[text()='Items']");
+    By lbl_ordersTableRows = By.xpath("//tr[contains(@href,'/ordersView/')]");
+    String lbl_orderRowItemsCount = "(//tr[contains(@href,'/ordersView/')])[ROW]/td[5]";
+    By lbl_orderDetailsLineItems = By.xpath("(//div[contains(@class,'_jws3mfs')]//span)[1]");
+    By lbl_orderReferenceColumnHeader = By.xpath("//span[contains(text(),'Order Reference')]");
+    By lbl_orderReferenceNumber = By.xpath("//tr[contains(@href,'/ordersView/')]//td//div[contains(text(),'#')]");
+    By lbl_erpOrderBadge = By.xpath("//tr[contains(@href,'/ordersView/')]//td//span[contains(text(),'ERP Order')]");
+    By lbl_firstOrderReferenceNumber = By.xpath("(//tr[contains(@href,'/ordersView/')]//td//div[contains(text(),'#')])[1]");
+    By lbl_firstErpOrderBadge = By.xpath("(//tr[contains(@href,'/ordersView/')]//td//span[contains(text(),'ERP Order')])[1]");
+    By noRecordsAvailableInOrderSectionTxt = By.xpath("//div[text()='No Records Available']");
+    String removeBuyoutItemInHardOrderMinOverlay = "//span[contains(@class,'text-truncate') and normalize-space(.)='#ITEMCODE | ITEMNAME']/following-sibling::span[contains(normalize-space(.),'ITEMCOUNT') and contains(normalize-space(.),'ITEMUOM')]";
+    By canNotSubmitEmptyOrderError = By.xpath("//*[normalize-space(.)='Error: Cannot submit empty order']");
+    String onSaleItemCountResult = "//div[text()='FILTER']/following-sibling::div/div";
+    String onSaleItemTagCount = "//img[contains(@class,'card-img-top')]/following-sibling::div[normalize-space()='TAG']";
+    String catalogFilterAllItems = "//div[contains(@class,'_3ewg0b') and normalize-space()='FILTER']";
+    String catalogFilterSectionDropDown = "//div[contains(@class,'_abrv9k') and normalize-space()='FILTER']";
+    String catalogFilterBrandDropDownOption = "//div[text()='OPTION']";
+    String catalogFilterDropDown = "//div[contains(text(), 'FILTER')]";
+    String catalogFilterDropDownOption = "//div[contains(text(), 'FILTER')]/../../following-sibling::div//*[name()='svg' and @data-icon='square']/following-sibling::div[contains(text(), 'OPTION')]";
+    String sortOptionDisplaySimpleListView = "//*[contains(text(),'OPTION')]";
+    String substitutionsItem = "//div[contains(text(), 'ITEM')]";
+    String orderMinimumCustomerProfile = "//div[text()='Order Minimum']/following-sibling::div//span[text()='SETTING']/../following-sibling::div[text()='$50,000.00']";
+    String orderMinimumExemptCustomerProfile = "//div[text()='Order Minimum']/following-sibling::div//span[text()='SETTING']/../following-sibling::div[text()='n/a']";
+    By lbl_editItemNameInput = By.xpath("//label[text()='Item Name']/following-sibling::input");
+    By btn_deliveryDateOrderDeskStable = By.xpath("//div[text()='Delivery Date']/following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
+    By btn_ThreeDotVertical = By.xpath("//button[text()='Order Guide']/following-sibling::div//*[contains(@data-icon,'ellipsis-vertical')]");
+    By tbx_titleStandingOrder = By.xpath("//input[@placeholder='Enter title']");
 
 
 
@@ -1258,6 +1307,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isAddToOrderGuideDisplayed(String name){
         return distributorUI.isDisplayed(By.xpath(lbl_catalogAddToCart.replace("NAME", name)),10);
     }
+    public void clickOnRemoveToOrderGuideStable(String name){
+        distributorUI.click(By.xpath(lbl_catalogRemoveToCart.replace("NAME", name)));
+    }
+    public boolean isRemoveToOrderGuideDisplayed(String name){
+        return distributorUI.isDisplayed(By.xpath(lbl_catalogRemoveToCart.replace("NAME", name)),10);
+    }
     public void giveFilePath(String path){
         distributorUI.sendKeysToHiddenElements(upload_file, path);
     }
@@ -1384,6 +1439,13 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForClickability(btn_uploadToOrder);
         distributorUI.click(btn_uploadToOrder);
     }
+    public boolean isScanItemsToOrderDisplayed(){
+        return distributorUI.isDisplayed(btn_scanItemsToOrder);
+    }
+    public void clickOnScanItemsToOrder(){
+        distributorUI.waitForClickability(btn_scanItemsToOrder);
+        distributorUI.click(btn_scanItemsToOrder);
+    }
     public boolean isReviewOrderTextDisplayed(){
         distributorUI.waitForVisibility(txt_reviewOrder);
         return distributorUI.isDisplayed(txt_reviewOrder);
@@ -1456,7 +1518,19 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(txt_popupAlertOrderMin);
         return distributorUI.isDisplayed(txt_popupAlertOrderMin);
     }
+    public String getSoftOrderMinimumValueFromOverlay() {
+        String message = distributorUI.getText(text_softMinMessage);
 
+        // Regex to capture the minimum amount after "minimum is $"
+        Pattern pattern = Pattern.compile("minimum\\s+(?:is|of)\\s+\\$(\\d+(?:\\.\\d{2})?)", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(message);
+
+        if (matcher.find()) {
+            return matcher.group(1); // returns "400.00"
+        }
+
+        throw new RuntimeException("Minimum order value not found in overlay message: " + message);
+    }
     public boolean isCaseMinimumPopUpDisplayed(){
         distributorUI.waitForVisibility(caseMinimumNotMetText);
         return distributorUI.isDisplayed(caseMinimumNotMetText);
@@ -2101,6 +2175,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(catalogAccessDisableTxt);
     }
 
+    public boolean isCatalogAccessDisabledForAll(){
+        distributorUI.refreshPage();
+        return distributorUI.isDisplayed(catalogAccessDisabledForAll);
+    }
+
     public void saveCatalogAccessChanges(){
         distributorUI.clickWithScrollAndHover(Savebtn);
         try {
@@ -2123,15 +2202,21 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
 
     public void clickOnDisableCatalogAccessOption(){
-        distributorUI.click(catalogAccessEnableOption);
+        distributorUI.click(catalogAccessDropdown);
         distributorUI.waitForVisibility(catalogAccessDisableOption);
         distributorUI.click(catalogAccessDisableOption);
     }
 
     public void clickOnEnableCatalogAccessOption(){
-        distributorUI.click(catalogAccessDisableOption);
+        distributorUI.click(catalogAccessDropdown);
         distributorUI.waitForVisibility(catalogAccessEnableOption);
         distributorUI.click(catalogAccessEnableOption);
+    }
+
+    public void clickOnDiableForAllCatalogAccessOption(){
+        //distributorUI.scrollToElementTillFound(catalogAccessDropdown);
+        distributorUI.click(catalogAccessDropdown);
+        distributorUI.click(catalogAccessDisabledForAllOption);
     }
 
     public boolean isOrderApprovalOptionDisplayed(){
@@ -3499,6 +3584,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickOnDropdownSchedule(){
         distributorUI.click(dropdown_schedule);
     }
+    public void clickOnDropdownInvoiceToPay(){
+        distributorUI.click(dropdownInvoiceToPay);
+        distributorUI.click(dropdownOptionInvoiceToPay);
+    }
 
     public boolean verifyLastInvoicePaid(){
         return distributorUI.isDisplayed(txt_lastInvoicePaid);
@@ -4410,6 +4499,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         String gotText = distributorUI.getText(catalogFirstItemItemCode);
         return gotText.split("#")[1];
     }
+
+    public boolean isItemDisplayInCatalog(String itemCode){
+        return distributorUI.isDisplayed(By.xpath(catalogItemDisplayed.replace("ITEMCODE",itemCode)));
+    }
+
     public boolean isUnpaidInvoiceNamDisplayed(String name)throws InterruptedException{
         return distributorUI.isDisplayed(By.xpath(unpaidInvoiceName.replace("NAME",name)));
 
@@ -4674,6 +4768,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isSortOptionDisplayed(String option){
         return distributorUI.isDisplayed(By.xpath(sortOptionDisplay.replace("OPTION",option)));
     }
+    public boolean  isSortOptionDisplayedForSimpleListView(String option){
+        return distributorUI.isDisplayed(By.xpath(sortOptionDisplaySimpleListView.replace("OPTION",option)));
+    }
+
+
     public boolean isAddedItemDisplayed(String name){
         return distributorUI.isDisplayed(By.xpath(addedItemName.replace("NAME",name)),30);
     }
@@ -5216,6 +5315,15 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         }
         distributorUI.click(orderMinimumOverlayCloseBtn);
     }
+    public void setSoftOrderMinimumValue(String amount){
+        distributorUI.click(orderMinimumeditBtn);
+        if(!distributorUI.isCheckboxOrRadioBtnSelected(By.xpath(orderMinimumSelectionRadioBtn.replace("ORDERMINIMUM","Use Operator Specific Settings")))){
+            distributorUI.click(By.xpath(orderMinimumSelectionRadioBtn.replace("ORDERMINIMUM","Use Operator Specific Settings")));
+        }
+        distributorUI.sendKeys(operatorSpecificOrderMinimumValue,amount);
+        distributorUI.click(btn_saveEditShipAddress);
+        distributorUI.click(orderMinimumOverlayCloseBtn);
+    }
     public String getOrderGuideSearchValue(){
         return distributorUI.getText(getOrderGuideSearch, "value");
     }
@@ -5284,7 +5392,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(By.xpath(itemPriceEditOG.replace("NAME",name).replace("PRICE",price)));
     }
     public void clickOnOrderSection(){
-        distributorUI.click(btn_orderSection);
+        distributorUI.clickWithFallback(btn_orderSection);
     }
     public boolean isOrderGuideItemTagDisplayTag(String name,String tag){
         return distributorUI.isDisplayed(By.xpath(itemTagOG.replace("NAME", name).replace("TAG",tag)));
@@ -5334,9 +5442,17 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(txt_inactiveHold);
         distributorUI.click(txt_inactiveHold);
     }
+    public void clickOnGeneralHold(){
+        distributorUI.waitForVisibility(txt_generalHold);
+        distributorUI.click(txt_generalHold);
+    }
     public boolean isInactiveHoldSelected(){
         distributorUI.refreshPage();
         return distributorUI.isDisplayed(lbl_inactiveHold);
+    }
+    public boolean isGeneralHoldSelected(){
+        distributorUI.refreshPage();
+        return distributorUI.isDisplayed(lbl_generalHold);
     }
     public boolean isCatalogFilterTagDisplayed(String tag){
         return distributorUI.isDisplayed(By.xpath(catalogFilterTag.replace("TAG", tag)));
@@ -5384,25 +5500,31 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return true;
     }
     public boolean areFirstFiveItemNamesSortedDescending(String column) {
-        List<WebElement> itemNameElements = driver.findElements(By.xpath(catalogListViewItemName.replace("COLUMN", column)));
+        List<WebElement> itemNameElements = driver.findElements(
+                By.xpath(catalogListViewItemName.replace("COLUMN", column))
+        );
         List<String> itemNames = new ArrayList<>();
         int limit = Math.min(5, itemNameElements.size());
 
         for (int i = 0; i < limit; i++) {
-            String nameText = itemNameElements.get(i).getText().trim();
-            if (!nameText.isEmpty()) {
+            String nameText = itemNameElements.get(i).getText()
+                    .replace("\u00A0", "")
+                    .trim();
+            if (!nameText.isEmpty() && !nameText.equals("-") && !nameText.equals("—")) {
                 itemNames.add(nameText);
             }
         }
-
+        if (itemNames.size() < 2) {
+            return true;
+        }
         for (int i = 0; i < itemNames.size() - 1; i++) {
             if (itemNames.get(i).compareToIgnoreCase(itemNames.get(i + 1)) < 0) {
                 return false;
             }
         }
-
         return true;
     }
+
 
     public double getCatalogFirstItemPrice(String ItemName){
         String text = distributorUI.getText(By.xpath(catalogFirstItemPrice.replace("ITEMNAME",ItemName)));
@@ -5638,6 +5760,227 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.waitForVisibility(btn_close);
         distributorUI.click(btn_close);
         distributorUI.waitForInvisibility(btn_close);
+    }
+    public void selectOrderApprovalType(String option)throws InterruptedException{
+        distributorUI.click(orderApprovalTypeDropDown);
+        distributorUI.click(By.xpath(orderApprovalTypeOption.replace("OPTION",option)));
+    }
+    public boolean isRemovedUnavailableItemsTxtDisplayed() {
+        return distributorUI.isDisplayed(removeUnavailableItemsHeader);
+    }
+    public boolean isRemovedUnavailableItemsMsgDisplayed() {
+        return distributorUI.isDisplayed(removeUnavailableItemsMessage);
+    }
+    public boolean isRemovedItemCorrectlyDisplayed(String ItemName,String ItemCode){
+        return distributorUI.isDisplayed(By.xpath(removedBuyoutItem.replace("ITEMNAME",ItemName).replace("ITEMCODE",ItemCode)));
+    }
+    public boolean isRemovedItemUOMCorrectlyDisplayed(String ItemName,String ItemCode,String ItemCount,String ItemUOM){
+        return distributorUI.isDisplayed(By.xpath(removedBuyoutItemUOM.replace("ITEMNAME",ItemName).replace("ITEMCODE",ItemCode).replace("ITEMCOUNT",ItemCount).replace("ITEMUOM",ItemUOM)));
+    }
+    public boolean isBuyoutHardOrderMinCorrectlyDisplayed(String label, String expectedValue) {
+        // Ensure value starts with $
+        if (!expectedValue.startsWith("$")) {
+            expectedValue = "$" + expectedValue;
+        }
+
+        return distributorUI.isDisplayed(By.xpath(buyOutHardMinValues.replace("LABEL", label).replace("VALUE", expectedValue)));
+    }
+
+
+    public boolean isDeleteOrderGuideOptionDisplayed(){
+        return distributorUI.isDisplayed(btn_deleteOrderGuide);
+    }
+
+    public double getCurrentValue() {
+        String rawText = distributorUI.getText(currentValue);
+        return Double.parseDouble(rawText.replace("$", "").replace(",", "").trim());
+    }
+
+
+    public boolean isItemsColumnHeaderDisplayed() {
+        try {
+            distributorUI.waitForVisibility(lbl_itemsColumnHeader);
+            return distributorUI.isDisplayed(lbl_itemsColumnHeader);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isOrdersListDisplayed() {
+        try {
+            distributorUI.waitForVisibility(lbl_ordersTableRows);
+            return distributorUI.isDisplayed(lbl_ordersTableRows);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public String getFirstOrderItemsCount() {
+        distributorUI.waitForVisibility(By.xpath(lbl_orderRowItemsCount.replace("ROW", "1")));
+        return distributorUI.getText(By.xpath(lbl_orderRowItemsCount.replace("ROW", "1"))).trim();
+    }
+
+    public int getOrderDetailsLineItemsCount() {
+        try {
+            distributorUI.waitForVisibility(lbl_orderDetailsLineItems);
+            return distributorUI.countElements(lbl_orderDetailsLineItems);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+
+    // DOT-TC-3617: Order Reference Column and ERP Order Badge Methods
+    public boolean isOrderReferenceColumnHeaderDisplayed() {
+        distributorUI.waitForVisibility(lbl_orderReferenceColumnHeader);
+        return distributorUI.isDisplayed(lbl_orderReferenceColumnHeader);
+    }
+
+    public boolean isOrderReferenceNumberDisplayed() {
+        return distributorUI.isDisplayed(lbl_orderReferenceNumber);
+    }
+
+    public boolean isFirstOrderReferenceNumberDisplayed() {
+        distributorUI.waitForVisibility(lbl_firstOrderReferenceNumber);
+        return distributorUI.isDisplayed(lbl_firstOrderReferenceNumber);
+    }
+
+    public String getFirstOrderReferenceNumber() {
+        distributorUI.waitForVisibility(lbl_firstOrderReferenceNumber);
+        return distributorUI.getText(lbl_firstOrderReferenceNumber);
+    }
+
+    public boolean isErpOrderBadgeDisplayed() {
+        return distributorUI.isDisplayed(lbl_erpOrderBadge);
+    }
+
+    public boolean isFirstErpOrderBadgeDisplayed() {
+        return distributorUI.isDisplayed(lbl_firstErpOrderBadge);
+    }
+
+    public boolean isOrdersEmptyStateDisplayed(){
+        try {
+            distributorUI.waitForCustom(3000);
+            return !distributorUI.isDisplayed(OrderIdTxt, 5);
+        } catch (Exception e) {
+            return true;
+        }
+    }
+
+    public boolean isNoOrdersMessageDisplayed(){
+        return distributorUI.isDisplayed(noRecordsAvailableInOrderSectionTxt,5);
+    }
+
+
+    public boolean isRemovedItemCorrectlyDisplayedInOrderMinimumOverlay(String ItemName,String ItemCode,String ItemCount,String ItemUOM){
+        return distributorUI.isDisplayed(By.xpath(removeBuyoutItemInHardOrderMinOverlay.replace("ITEMNAME",ItemName).replace("ITEMCODE",ItemCode).replace("ITEMCOUNT",ItemCount).replace("ITEMUOM",ItemUOM)));
+    }
+    public boolean isCanNotSubmitEmptyOrdersErrorDisplayed(){
+        return distributorUI.isDisplayed(canNotSubmitEmptyOrderError);
+    }
+    public boolean isSubmitBtnEnabled(){
+        return distributorUI.isElementEnabled(btn_submitOrder);
+    }
+    public String getOnSaleResultsCount(String filter) {
+        try {
+            distributorUI.waitForCustom(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        distributorUI.waitForVisibility(By.xpath(catalogFilter.replace("FILTER", filter)));
+        String resultsText = distributorUI.getText(By.xpath(catalogFilter.replace("FILTER", filter)));
+
+        return resultsText.replaceAll("\\D+", "");
+    }
+    public String getOnSaleItemCountResult(String filter) {
+        try {
+            distributorUI.waitForCustom(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        distributorUI.waitForVisibility(By.xpath(onSaleItemCountResult.replace("FILTER", filter)));
+        String resultsText = distributorUI.getText(By.xpath(onSaleItemCountResult.replace("FILTER", filter)));
+
+        return resultsText.replaceAll("\\D+", "");
+    }
+    public String getSaleTagCount(String tag) {
+        int count = driver.findElements(
+                By.xpath(onSaleItemTagCount.replace("TAG",tag))
+        ).size();
+        return String.valueOf(count);
+    }
+    public boolean isCatalogFilterOnSaleTagDisplayed(String tag){
+        return distributorUI.isDisplayed(By.xpath(onSaleItemTagCount.replace("TAG", tag)));
+    }
+    public void clickCatalogFilterAllItems(String filter){
+        distributorUI.click(By.xpath(catalogFilterAllItems.replace("FILTER", filter)));
+    }
+    public void clickCatalogFilterSectionDropDown(String filter){
+        distributorUI.click(By.xpath(catalogFilterSectionDropDown.replace("FILTER", filter)));
+    }
+    public void clickCatalogFilterBrandDropDownOption(String option){
+        distributorUI.click(By.xpath(catalogFilterBrandDropDownOption.replace("OPTION", option)));
+    }
+    public void clickCatalogFilterDropDown(String filter)throws InterruptedException{
+        distributorUI.click(By.xpath(catalogFilterDropDown.replace("FILTER",filter)));
+    }
+    public boolean isCatalogFilterOptionDisplayed(String filter, String option)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(catalogFilterDropDownOption.replace("FILTER", filter).replace("OPTION",option)));
+    }
+    public boolean isAddedSubstitutesItemDisplayed(String item){
+        return distributorUI.isDisplayed(By.xpath(substitutionsItem.replace("ITEM",item)));
+    }
+
+    public boolean areFirstThreeItemCodesSortedDescending() {
+        List<WebElement> itemCodeElements = driver.findElements(catalogListViewItemCode);
+        List<Integer> itemCodes = new ArrayList<>();
+        int limit = Math.min(3, itemCodeElements.size());
+        for (int i = 0; i < limit; i++) {
+            String codeText = itemCodeElements.get(i).getText().trim();
+            if (!codeText.isEmpty()) {
+                itemCodes.add(Integer.parseInt(codeText));
+            }
+        }
+        for (int i = 0; i < itemCodes.size() - 1; i++) {
+            if (itemCodes.get(i) < itemCodes.get(i + 1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public String getEditItemNameInputValue() throws InterruptedException {
+        distributorUI.waitForVisibility(lbl_editItemNameInput);
+        return distributorUI.getText(lbl_editItemNameInput, "value");
+    }
+    public void enterEditItemName(String name) throws InterruptedException {
+        distributorUI.waitForVisibility(lbl_editItemNameInput);
+        distributorUI.clear(lbl_editItemNameInput);
+        distributorUI.sendKeys(lbl_editItemNameInput, name);
+        distributorUI.waitForCustom(1000);
+    }
+
+    public boolean isOrderMinimumCustomerProfileDisplayed(String setting) throws InterruptedException {
+        distributorUI.waitForCustom(5000);
+        return distributorUI.isDisplayed(By.xpath(orderMinimumCustomerProfile.replace("SETTING",setting)));
+    }
+    public boolean isOrderMinimumExemptCustomerProfileDisplayed(String setting) throws InterruptedException {
+        distributorUI.waitForCustom(5000);
+        return distributorUI.isDisplayed(By.xpath(orderMinimumExemptCustomerProfile.replace("SETTING",setting)));
+    }
+    public void clickOnDeliveryDateOrderDeskStable() throws InterruptedException{
+        distributorUI.waitForCustom(4000);
+        distributorUI.click(btn_deliveryDateOrderDeskStable);
+    }
+    public void clickThreeDotVertical(){
+        distributorUI.click(btn_ThreeDotVertical);
+    }
+    public void typeOnStandingOrderTitle(String title) throws InterruptedException {
+        distributorUI.clear(tbx_titleStandingOrder);
+        distributorUI.waitForCustom(1000);
+        distributorUI.sendKeys(tbx_titleStandingOrder, title);
     }
 
 

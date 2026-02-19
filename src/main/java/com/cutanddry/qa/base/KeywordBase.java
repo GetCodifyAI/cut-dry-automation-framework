@@ -522,6 +522,23 @@ public class KeywordBase {
         }
         return this;
     }
+    public KeywordBase scrollToElementCenter(By by) {
+        try {
+            WebElement element = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(by)
+            );
+
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({ block: 'center', inline: 'nearest' });",
+                    element
+            );
+
+            logger.info("Scrolled to element (centered): {}", by);
+        } catch (Exception e) {
+            logger.error("Failed to scroll to element: {}", by, e);
+        }
+        return this;
+    }
 
     public KeywordBase scrollToElementTillFound(By by) {
         try {
@@ -1451,6 +1468,30 @@ public KeywordBase clickF12Mac() {
         driver.switchTo().window(secondTab);
 
         return this;
+    }
+
+    public void switchTabUsingIndex(int tabIndex) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        logger.info("Attempting to switch to tab at index: {}", tabIndex);
+
+        wait.until(d -> d.getWindowHandles().size() > tabIndex);
+
+        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        logger.debug("Total open tabs: {}", tabs.size());
+
+        if (tabIndex < 0 || tabIndex >= tabs.size()) {
+            logger.error("Invalid tab index: {}. Available tab indices: 0 to {}", tabIndex, tabs.size() - 1);
+            throw new IllegalArgumentException("Invalid tab index: " + tabIndex);
+        }
+
+        String targetHandle = tabs.get(tabIndex);
+        logger.debug("Switching to window handle: {}", targetHandle);
+
+        driver.switchTo().window(targetHandle);
+
+        logger.info("Successfully switched to tab index: {} with title: [{}]",
+                tabIndex, driver.getTitle());
     }
 
 

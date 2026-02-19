@@ -38,11 +38,11 @@ public class VerifyEditingStandingOrdersTest extends TestBase {
         Customer.clickOnEditStandingOrder();
         Customer.editOrderFromReviewScreen();
 //        Customer.selectDeliveryDate(deliveryDay);
-        Customer.selectDeliveryDateAsLast();
         itemName = Customer.getItemNameFirstRow();
         Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItems();
         softAssert.assertEquals(Customer.getItemNameFirstRow(),itemName,"item mismatch");
+        Customer.selectDeliveryDateAsLast();
         Customer.resetStandingOrder();
         softAssert.assertTrue(Customer.isStandingOrderEmailPopupDisplayed(),"pop up display error");
         Customer.scheduleStandingOrder();

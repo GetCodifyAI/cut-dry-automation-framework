@@ -76,6 +76,21 @@ public class Approvals {
     public static boolean isRejectApprovalOverlayDisplayed(){
         return approvalsPage.isRejectApprovalOverlayDisplayed();
     }
+    public static boolean isDisableApproveAndSubmitBtnDisplayed(){
+        return approvalsPage.isDisableApproveAndSubmitBtnDisplayed();
+    }
+    public static boolean isDisableSubmitForApprovalBtnDisplayed(){
+        return approvalsPage.isDisableSubmitForApprovalBtnDisplayed();
+    }
+    public static boolean isApproveAndSubmitBtnDisplayed(){
+        return approvalsPage.isApproveAndSubmitBtnDisplayed();
+    }
+    public static boolean isRejectApprovalsBtnDisplayed(){
+        return approvalsPage.isRejectApprovalsBtnDisplayed();
+    }
+    public static boolean isRejectionTabSelected()throws InterruptedException{
+        return approvalsPage.isRejectionTabSelected();
+    }
 
 
 }

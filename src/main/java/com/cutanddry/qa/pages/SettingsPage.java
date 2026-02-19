@@ -328,10 +328,10 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForVisibility(btn_addUser);
         distributorUI.waitForCustom(3000);
         try {
-            distributorUI.click(btn_addUser);
+            distributorUI.clickWithFallback(btn_addUser);
         } catch (Exception e){
             distributorUI.refreshPage();
-            distributorUI.click(btn_addUser);
+            distributorUI.clickWithFallback(btn_addUser);
         }
     }
     public void enterName(String name){
@@ -376,7 +376,7 @@ public class SettingsPage extends LoginPage{
         distributorUI.click(lbl_removeUser);
     }
     public void clickOnEditUser(String user) throws InterruptedException {
-        distributorUI.scrollToElement(By.xpath(btn_editUser.replace("USER", user)));
+        distributorUI.scrollToElementCenter(By.xpath(btn_editUser.replace("USER", user)));
         distributorUI.waitForCustom(3000);
         try {
             distributorUI.click(By.xpath(btn_editUser.replace("USER", user)));

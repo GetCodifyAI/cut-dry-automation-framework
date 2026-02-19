@@ -362,6 +362,16 @@ public class Customer {
         }
 
     }
+    public static void removeItemFromCatalogStable(String name) {
+        if (customersPage.isRemoveToOrderGuideDisplayed(name)) {
+            customersPage.clickOnRemoveToOrderGuideStable(name);
+        }
+
+        if (customersPage.isErrorTextDisplayed()) {
+            customersPage.clickOK();
+        }
+
+    }
     public static void closeEditorCatalog(){
         customersPage.clickOnCloseEditorCatalog();
     }
@@ -422,6 +432,12 @@ public class Customer {
     public static void uploadToOrder(){
         customersPage.clickOnUploadToOrder();
     }
+    public static boolean isScanItemsToOrderDisplayedInMoreOptions(){
+        return customersPage.isScanItemsToOrderDisplayed();
+    }
+    public static void clickOnScanItemsToOrder(){
+        customersPage.clickOnScanItemsToOrder();
+    }
     public static boolean isReviewOrderTextDisplayed(){
         if (!customersPage.isReviewOrderTextDisplayed()) {
             try {
@@ -471,6 +487,9 @@ public class Customer {
     }
     public static boolean isOrderMinPopupDisplayed() throws InterruptedException {
         return customersPage.isOrderMinPopupDisplayed();
+    }
+    public static String getSoftOrderMinimumValueFromOverlay(){
+        return customersPage.getSoftOrderMinimumValueFromOverlay();
     }
     public static void clickOnCustomerCode(String code){
         customersPage.clickOnCustomerCode(code);
@@ -914,6 +933,10 @@ public class Customer {
         return customersPage.isCatalogAccessEnabled();
     }
 
+    public static boolean CatalogAccessDisabledForAll(){
+        return customersPage.isCatalogAccessDisabledForAll();
+    }
+
     public static boolean catalogAccessDisabled(){
         return customersPage.isCatalogAccessDisabled();
     }
@@ -934,6 +957,12 @@ public class Customer {
             customersPage.clickOnEnableCatalogAccessOption();
             customersPage.saveCatalogAccessChanges();
         }
+    }
+
+    public static void disableCatalogAccessForAll(){
+        customersPage.clickEditCatalogAccess();
+        customersPage.clickOnDiableForAllCatalogAccessOption();
+        customersPage.saveCatalogAccessChanges();
     }
 
     public static boolean orderApprovalTxtDisplayed(){
@@ -1752,6 +1781,9 @@ public class Customer {
     public static void clickOnAutoPayScheduleDropdown(){
         customersPage.clickOnDropdownSchedule();
     }
+    public static void clickOnAutoPayInvoiceToPayDropdown(){
+        customersPage.clickOnDropdownInvoiceToPay();
+    }
 
     public static void selectDropdownOption(String optionText){
         customersPage.selectDropdownOption(optionText);
@@ -2424,6 +2456,9 @@ public class Customer {
     }
     public static void submitOrderRebate() throws InterruptedException {
         customersPage.submitOrder();
+        if (customersPage.isOrderMinPopupDisplayed()){
+            customersPage.clickPlaceOrderSoftOrderMinimum();
+        }
         if (customersPage.isOrderMiniumErrorBannerDisplayedSub()){
             dashboardPage.clickOnOrderSettings();
             settingsPage.selectOnOrderMinimums();
@@ -2446,8 +2481,18 @@ public class Customer {
     public static String getCatalogFirstItemItemCode(){
         return customersPage.getFirstItemItemCodeFromCatalog();
     }
+
+    public static boolean isItemDisplayedInCatalog(String itemCode){
+        return customersPage.isItemDisplayInCatalog(itemCode);
+    }
     public static void submitOrderMinimum(){
         customersPage.submitOrder();
+        if (customersPage.isDuplicatePopupDisplayed()){
+            customersPage.clickYesDuplicatePopup();
+        }
+        if (customersPage.isCombinedPopupDisplayed()){
+            customersPage.clickContinueCombined();
+        }
     }
     public static void clickYesOrderMinimum(){
         customersPage.clickOnYes();
@@ -2690,6 +2735,9 @@ public class Customer {
     }
     public static boolean isSortOptionDisplayed(String option){
         return customersPage.isSortOptionDisplayed(option);
+    }
+    public static boolean isSortOptionDisplayedForSimpleListView(String option){
+        return customersPage.isSortOptionDisplayedForSimpleListView(option);
     }
     public static void clickOnOrderGuideParentChild(String code) throws InterruptedException {
         customersPage.clickOnOrderGuide(code);
@@ -3129,6 +3177,9 @@ public class Customer {
     public static void SelectOrderMinimumFromProfile(String orderMinimum){
         customersPage.selectOrderMinimum(orderMinimum);
     }
+    public static void setOperatorSpecificOrderMin(String amount){
+        customersPage.setSoftOrderMinimumValue(amount);
+    }
     public static String getOrderGuideSearchValue(){
         return customersPage.getOrderGuideSearchValue();
     }
@@ -3239,8 +3290,14 @@ public class Customer {
     public static void clickOnInactiveHold(){
         customersPage.clickOnInactiveHold();
     }
+    public static void clickOnGeneralHold(){
+        customersPage.clickOnGeneralHold();
+    }
     public static boolean isInactiveHoldSelected(){
         return customersPage.isInactiveHoldSelected();
+    }
+    public static boolean isGeneralHoldSelected(){
+        return customersPage.isGeneralHoldSelected();
     }
     public static boolean isCatalogFilterTagDisplayed(String tag){
         return customersPage.isCatalogFilterTagDisplayed(tag);
@@ -3420,6 +3477,9 @@ public class Customer {
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
         }
+        if (customersPage.isCombinedPopupDisplayed()){
+            customersPage.clickContinueCombined();
+        }
     }
     public static boolean isLeadTimeBannerDisplay(String message){
         return customersPage.isLeadTimeBannerDisplay(message);
@@ -3427,8 +3487,145 @@ public class Customer {
     public static void clickClosePopUpWindow(){
         customersPage.clickClosePopUpWindow();
     }
+    public static void selectOrderApprovalType(String option)throws InterruptedException{
+        customersPage.selectOrderApprovalType(option);
+    }
+
+    public static boolean isDeleteOrderGuideOptionDisplayed(){
+        return customersPage.isDeleteOrderGuideOptionDisplayed();
+    }
+
+    public static boolean isRemoveUnavailableItemsMsgHeaderDisplayed(){
+        return customersPage.isRemovedUnavailableItemsTxtDisplayed();
+    }
+    public static boolean isRemoveUnavailableItemsMsgDisplayed(){
+        return customersPage.isRemovedUnavailableItemsMsgDisplayed();
+    }
+    public static boolean isRemovedBuyoutItemCorrectlyDisplayed(String itemName,String itemCode){
+        return customersPage.isRemovedItemCorrectlyDisplayed(itemName,itemCode);
+    }
+    public static boolean isRemovedBuyoutItemUOMCorrectlyDisplayed(String ItemName,String ItemCode,String ItemCount,String ItemUOM){
+        return customersPage.isRemovedItemUOMCorrectlyDisplayed(ItemName,ItemCode,ItemCount,ItemUOM);
+    }
+    public static boolean isBuyoutHardOrderMinCorrectlyDisplayed(String label, String expectedValue) {
+        return customersPage.isBuyoutHardOrderMinCorrectlyDisplayed(label,expectedValue);
+    }
+    public static double getCurrentOrdersValue() {
+        return customersPage.getCurrentValue();
+    }
+    public static boolean isRemovedBuyoutItemAndUOMsCorrectlyDisplayedInHarOrderMinOverlay(String ItemName,String ItemCode,String ItemCount,String ItemUOM){
+        return customersPage.isRemovedItemCorrectlyDisplayedInOrderMinimumOverlay( ItemName, ItemCode, ItemCount, ItemUOM);
+    }
+    public static boolean isCanNotSubmitEmptyOrdersErrorDisplayed(){
+        return customersPage.isCanNotSubmitEmptyOrdersErrorDisplayed();
+    }
+    public static boolean isSubmitOrderBtnEnabled(){
+        return customersPage.isSubmitBtnEnabled();
+    }
+    public static String getOnSaleResultsCount(String filter) throws InterruptedException {
+        return customersPage.getOnSaleResultsCount(filter);
+    }
+    public static String getOnSaleItemCountResult(String filter) throws InterruptedException {
+        return customersPage.getOnSaleItemCountResult(filter);
+    }
+    public static String getSaleTagCount(String tag) throws InterruptedException {
+        return customersPage.getSaleTagCount(tag);
+    }
+    public static boolean isCatalogFilterOnSaleTagDisplayed(String tag){
+        return customersPage.isCatalogFilterOnSaleTagDisplayed(tag);
+    }
+    public static void clickCatalogFilterAllItems(String filter){
+        customersPage.clickCatalogFilterAllItems(filter);
+    }
+    public static void clickCatalogFilterSectionDropDown(String filter){
+        customersPage.clickCatalogFilterSectionDropDown(filter);
+    }
+    public static void clickCatalogFilterBrandDropDownOption(String option){
+        customersPage.clickCatalogFilterBrandDropDownOption(option);
+    }
 
 
+    public static boolean isItemsColumnHeaderDisplayed() {
+        return customersPage.isItemsColumnHeaderDisplayed();
+    }
+
+    public static boolean isOrdersListDisplayed() {
+        return customersPage.isOrdersListDisplayed();
+    }
+
+    public static String getFirstOrderItemsCount() {
+        return customersPage.getFirstOrderItemsCount();
+    }
+
+    public static int getOrderDetailsLineItemsCount() {
+        return customersPage.getOrderDetailsLineItemsCount();
+    }
+
+    public static boolean isOrderReferenceColumnHeaderDisplayed() {
+        return customersPage.isOrderReferenceColumnHeaderDisplayed();
+    }
+
+    public static boolean isOrderReferenceNumberDisplayed() {
+        return customersPage.isOrderReferenceNumberDisplayed();
+    }
+
+    public static boolean isFirstOrderReferenceNumberDisplayed() {
+        return customersPage.isFirstOrderReferenceNumberDisplayed();
+    }
+
+    public static String getFirstOrderReferenceNumber() {
+        return customersPage.getFirstOrderReferenceNumber();
+    }
+
+    public static boolean isErpOrderBadgeDisplayed() {
+        return customersPage.isErpOrderBadgeDisplayed();
+    }
+
+    public static boolean isFirstErpOrderBadgeDisplayed() {
+        return customersPage.isFirstErpOrderBadgeDisplayed();
+    }
+
+    public static boolean isOrdersEmptyStateDisplayed(){
+        return customersPage.isOrdersEmptyStateDisplayed();
+    }
+
+    public  static boolean isNoOrdersMessageDisplayed(){
+        return customersPage.isNoOrdersMessageDisplayed();
+    }
+    public static void clickCatalogFilterDropDown(String filter)throws InterruptedException{
+        customersPage.clickCatalogFilterDropDown(filter);
+    }
+    public static boolean isCatalogFilterOptionDisplayed(String filter,String option)throws InterruptedException{
+        return customersPage.isCatalogFilterOptionDisplayed(filter,option);
+    }
+    public static boolean isAddedSubstitutesItemDisplayed(String item){
+        return customersPage.isAddedSubstitutesItemDisplayed(item);
+    }
+    public static boolean isOrderMinimumCustomerProfileDisplayed(String setting) throws InterruptedException {
+        return customersPage.isOrderMinimumCustomerProfileDisplayed(setting);
+    }
+    public static boolean isOrderMinimumExemptCustomerProfileDisplayed(String setting) throws InterruptedException {
+        return customersPage.isOrderMinimumExemptCustomerProfileDisplayed(setting);
+    }
+
+    public static boolean areFirstThreeItemCodesSortedDescending() {
+        return customersPage.areFirstThreeItemCodesSortedDescending();
+    }
+
+    public static String getEditItemNameInputValue() throws InterruptedException {
+        return customersPage.getEditItemNameInputValue();
+    }
+    public static void enterEditItemName(String name) throws InterruptedException {
+        customersPage.enterEditItemName(name);
+    }
+    public static void selectDeliveryDateLineStablePickOrderDesk(String day, boolean isNextMonth)throws InterruptedException{
+        customersPage.clickOnDeliveryDateOrderDeskStable();
+        customersPage.selectDeliveryDateLineStablePick(day, isNextMonth);
+    }
+    public static void clickThreeDotVertical(){customersPage.clickThreeDotVertical();}
+    public static void typeOnStandingOrderTitle(String title) throws InterruptedException {
+        customersPage.typeOnStandingOrderTitle(title);
+    }
 
 
 }

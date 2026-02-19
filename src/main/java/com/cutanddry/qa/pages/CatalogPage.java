@@ -20,10 +20,10 @@ public class CatalogPage extends LoginPage{
     By PreviewBtn = By.xpath("//button[@class='_xrol5g mx-2 btn btn-primary']");
     String ItemPreviewTxt = "//div[@class='mt-1 _5h4pkd' and contains(text(),'ITEMCODE')]";
     By Manufacturer = By.xpath("//div[contains(text(),'Conagra Foodservice')]");
-    By OtherBrandBtn = By.xpath("//img[@class='_kfc3ia img-fluid' and contains(@src,\"2b4b2013cb03bd26957893f39d0783bd.jpg\")]");
+    By OtherBrandBtn = By.xpath("//img[@class='_kfc3ia img-fluid' and contains(@src,\"5da3a0712077a8f0b15bf0bed2e6718d95ac69a1ff5fc9a9cebeaa7e7bd3d6f2_angela-mia-logo.png\")]");
 //    By ConagaraBrandPage= By.xpath("//div[contains(text(),'Conagra Foodservice ') and @class='mt-5 mb-1 _mojmdw']");
 By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[1]");
-    By OtherBrandText = By.xpath("//h2[contains(text(),'Andy Capp’s®')]");
+    By OtherBrandText = By.xpath("//div[contains(text(),'Angela Mia')]");
     By ShowCaseBtn = By.xpath("//*[contains(text(),'Showcase')]");
     By ShowCasePopUp = By.xpath("//*[contains(text(),'Using the Product Showcase')]");
     By btn_deleteShowCasePopUp = By.xpath("//button/*[local-name()='svg' and @data-icon='xmark']");
@@ -235,6 +235,15 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     By txt_updateOGPopup = By.xpath("//*[contains(text(),'Update order guides?')]");
     By btn_updateOGPopup = By.xpath("//button[contains(text(),'Confirm')]");
     By specialItemYesBtn = By.xpath("(//div[normalize-space(text()) ='Special Item'])[2]/ancestor::div[3]/following-sibling::div//div[normalize-space(text()) ='Yes']/..");
+    String lbl_orderStatus = "//*[contains(text(),'#') and text()='ID']/../../following-sibling::td//span[text()='STATUS']";
+    String getSaleItemPriceUOM = "((//button[contains(@data-for,'add-to-order-guide')]/ancestor::div[2]/following-sibling::div)[1]/following-sibling::*//div[2]//span[contains(text(),'$')])[UOM]";
+
+    By cashBackTag = By.xpath("//*[contains(text(),'Cash Back') or contains(text(),'Cashback') or contains(text(),'cash back')]");
+    By onSaleTag = By.xpath("//span[text()='Sale']");
+    By newTag = By.xpath("//span[contains(text(),'New')]");
+    By itemTagsContainer = By.xpath("//div[contains(@class,'tag') or contains(@class,'badge')]/..");
+
+
 
 
     public boolean isCatalogTextDisplayed() {
@@ -288,7 +297,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         return distributorUI.isDisplayed(ConagaraBrandPage);
     }
     public boolean isNavigatedtoOtherBrandPage() throws InterruptedException {
-         distributorUI.SwitchToNewTab(OtherBrandBtn);
+         distributorUI.click(OtherBrandBtn);
          distributorUI.waitForCustom(6000);
          distributorUI.waitForVisibility(OtherBrandText);
          return distributorUI.isDisplayed(OtherBrandText);
@@ -830,6 +839,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     }
     public void clickOnStorageMethod(String storageMethod) throws InterruptedException {
         distributorUI.waitForCustom(3000);
+        distributorUI.waitForVisibility(criticalInfoExpander);
+        distributorUI.clickUsingJavaScript(criticalInfoExpander);
         distributorUI.click(storageMethodDropDown);
         distributorUI.waitForVisibility(By.xpath(storageMethodOption.replace("STORAGEMETHOD",storageMethod)));
         distributorUI.click(By.xpath(storageMethodOption.replace("STORAGEMETHOD",storageMethod)));
@@ -838,6 +849,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         return distributorUI.isDisplayed(By.xpath(txt_storageMethod.replace("STORAGEMETHOD",storageMethod)));
     }
     public void typeNewDescription(String description) throws InterruptedException {
+        distributorUI.waitForVisibility(criticalInfoExpander);
+        distributorUI.clickUsingJavaScript(criticalInfoExpander);
         distributorUI.scrollToElement(textdescriptionTab);
         distributorUI.click(textdescriptionTab);
         distributorUI.click(txt_description);
@@ -944,7 +957,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         }
 
         System.out.println("Extracted Price: " + priceText);
-        return Double.valueOf(priceText.replace("$", "").replace("/cs", "").replace("/pkg", "").replace("/CS", "").replace("/HCS", "").replace(",", "").replace("/lb", "").trim());
+        return Double.valueOf(priceText.replace("$", "").replace("/cs", "").replace("/pkg", "").replace("/CS", "").replace("/HCS", "").replace(",", "").replace("/ea", "").replace("/lb", "").trim());
     }
     public void clickOGAddToCartPlusIcon(String code,String uom)throws InterruptedException{
         distributorUI.waitForVisibility(By.xpath(btn_OGAddToCartPlusQuantity.replace("CODE", code).replace("UOM", uom)));
@@ -1272,6 +1285,49 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         distributorUI.waitForClickability(btn_deleteShowCasePopUp);
         distributorUI.click(btn_deleteShowCasePopUp);
     }
+    public boolean isOrderStatusDisplay(String id,String status)throws InterruptedException{
+        return distributorUI.isDisplayed(By.xpath(lbl_orderStatus.replace("ID",id).replace("STATUS",status)));
+    }
+    public double getSaleItemPDPPriceUOM(String uom) throws InterruptedException {
+        try {
+            return extractPrice(By.xpath(getSaleItemPriceUOM.replace("UOM", uom)));
+        } catch (Exception e) {
+            System.out.println("Fallback to alternative price locator due to: " + e.getMessage());
+            return extractPrice(By.xpath(getSaleItemPriceUOM.replace("UOM", uom)));
+        }
+    }
+    public boolean isCashBackTagDisplayed() {
+        try {
+            return distributorUI.isDisplayed(cashBackTag, 5);
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
+    public boolean isOnSaleTagDisplayed() {
+        try {
+            return distributorUI.isDisplayed(onSaleTag, 5);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isNewTagDisplayed() {
+        try {
+            return distributorUI.isDisplayed(newTag, 5);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean areAllTagsDisplayedWithProperAlignment() {
+        try {
+            boolean onSaleDisplayed = isOnSaleTagDisplayed();
+            boolean newDisplayed = isNewTagDisplayed();
+            return  onSaleDisplayed && newDisplayed;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
 

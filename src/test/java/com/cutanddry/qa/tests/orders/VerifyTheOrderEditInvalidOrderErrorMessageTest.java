@@ -22,8 +22,8 @@ public class VerifyTheOrderEditInvalidOrderErrorMessageTest extends TestBase {
     static User user;
     static String DP = "222826632 - Eshan - Mar Pacific";
     static String customerId = "DAVIEN01";
-    static String searchItemCode = "205626941";
-    static String itemName = "Angel City Cold Brew Concentrate Bib";
+    static String searchItemCode = "206330680";
+    static String itemName = "12 oz Clear PP Cups Ribbed";
     static String orderId;
     static String customerCode = "487310251";
     int maxAttempts = 7;

@@ -14,9 +14,9 @@ import org.testng.asserts.SoftAssert;
 
 public class AddUserWhiteLabelPortalTest extends TestBase {
     static User user;
-    static String name = "Test";
-    static String email = "test@email.com";
-    static String customer = "13038005947";
+    static String name = "Test"+generateDynamicValue();
+    static String email = "test" + generateDynamicValue() + "@email.com";
+    static String customer = "201465141";
 
     @BeforeMethod
     public void setUp(){

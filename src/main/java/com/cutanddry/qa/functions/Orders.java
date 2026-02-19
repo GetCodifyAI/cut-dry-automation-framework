@@ -36,6 +36,9 @@ public class Orders {
 
     public static void submitForApproval(){
         ordersPage.clickOnSubmitForApproval();
+        if(customersPage.isOrderMinimumOverlayDisplayed()){
+            customersPage.clickPlaceOrderSoftOrderMinimum();;
+        }
         if (customersPage.isDuplicatePopupDisplayed()){
             customersPage.clickYesDuplicatePopup();
         }
@@ -301,4 +304,108 @@ public class Orders {
     public static boolean isInactiveItemDetectedPopUpDisplay()throws InterruptedException{
         return ordersPage.isInactiveItemDetectedPopUpDisplay();
     }
+    public static void SelectOneSupplierFromPlaceOrder(String supplierName,String location) throws InterruptedException {
+        ordersPage.clickOnSupplier(supplierName);
+        if (ordersPage.isSelectLocationPopUpDisplayed()){
+            ordersPage.selectLocationSupplier(location);
+        }
+        if (ordersPage.isSelectOrderGuidePopUpDisplayed()){
+            ordersPage.selectOrderGuide();
+        }
+        if (customersPage.isPreviousDraftOrderNoDisplayed()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
+    }
+
+    public static boolean isOrderInfoCustomerDisplayed(){
+        return ordersPage.isOrderInfoCustomerDisplayed();
+    }
+
+    public static boolean isOrderInfoLocationCodeDisplayed(){
+        return ordersPage.isOrderInfoLocationCodeDisplayed();
+    }
+
+    public static boolean isOrderInfoDeliveryOnDisplayed(){
+        return ordersPage.isOrderInfoDeliveryOnDisplayed();
+    }
+
+    public static boolean isOrderInfoShipToDisplayed(){
+        return ordersPage.isOrderInfoShipToDisplayed();
+    }
+
+    public static boolean isOrderInfoFulfilmentMethodDisplayed(){
+        return ordersPage.isOrderInfoFulfilmentMethodDisplayed();
+    }
+
+    public static boolean isOrderInfoStatusDisplayed(){
+        return ordersPage.isOrderInfoStatusDisplayed();
+    }
+
+    public static boolean isOrderDateColumnHeaderDisplayed(){
+        return ordersPage.isOrderDateColumnHeaderDisplayed();
+    }
+    public static String getFirstOrderDateText(){
+        return ordersPage.getFirstOrderDateText();
+    }
+
+    public static boolean isFirstOrderFulfillmentBadgeDisplayed(){
+        return ordersPage.isFirstOrderFulfillmentBadgeDisplayed();
+    }
+
+    public static String getFirstOrderFulfillmentBadgeText(){
+        return ordersPage.getFirstOrderFulfillmentBadgeText();
+    }
+
+    public static boolean isTotalColumnHeaderDisplayed() {
+        return ordersPage.isTotalColumnHeaderDisplayed();
+    }
+
+    public static int getTotalColumnIndex() {
+        return ordersPage.getTotalColumnIndex();
+    }
+
+    public static String getTotalValueFromRow(int rowIndex, int columnIndex) {
+        return ordersPage.getTotalValueFromRow(rowIndex, columnIndex);
+    }
+
+    public static boolean isTotalAmountFormattedWithDollarSign(String totalValue) {
+        return ordersPage.isTotalAmountFormattedWithDollarSign(totalValue);
+    }
+
+    public static boolean isTotalAmountFormattedWithTwoDecimalPlaces(String totalValue) {
+        return ordersPage.isTotalAmountFormattedWithTwoDecimalPlaces(totalValue);
+    }
+
+    public static boolean isTotalAmountFormattedWithCommaForLargeAmounts(String totalValue) {
+        return ordersPage.isTotalAmountFormattedWithCommaForLargeAmounts(totalValue);
+    }
+
+    public static boolean isResultsCountDisplayed() {
+        return ordersPage.isResultsCountDisplayed();
+    }
+
+    public static void clickCancel(){
+        ordersPage.clickCancel();
+    }
+
+    public static void clickItems(){
+        ordersPage.clickItems();
+    }
+
+    public static boolean isItemsTabActive(){
+        return ordersPage.isItemsTabActive();
+    }
+
+    public static boolean isTimelineTabActive(){
+        return ordersPage.isTimelineTabActive();
+    }
+
+    public static boolean isOrderedItemsSectionDisplayed(){
+        return ordersPage.isOrderedItemsSectionDisplayed();
+    }
+
+    public static boolean isTimelineContentDisplayed(){
+        return ordersPage.isTimelineContentDisplayed();
+    }
+
 }
