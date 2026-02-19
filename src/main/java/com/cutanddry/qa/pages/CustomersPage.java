@@ -384,8 +384,8 @@ By lbl_margin = By.xpath("//div[contains(text(),'Margin') and contains(text(),'$
     By txt_assignSalesperson = By.xpath("//div[contains(text(),'Assign Salesperson')]");
 //    By dropdown_assignSalesperson = By.xpath("((//*[local-name() = 'svg' and @class='css-19bqh2r']))[2]");
 By dropdown_assignSalesperson = By.xpath("(//div[contains(@class,'themed_select__dropdown-indicator')])[last()]");
-    By sel_salesperson = By.xpath("//div[contains(@class, 'themed_select__option') and contains(text(), 'Darlene')]");
-    By txt_assignedSalesperson = By.xpath("//div[contains(text(),'Darlene')]");
+    By sel_salesperson = By.xpath("//div[contains(@class, 'themed_select__option') and contains(text(), 'Amir Ifc')]");
+    By txt_assignedSalesperson = By.xpath("//div[contains(text(),'Amir Ifc')]");
     By btn_saveChanges = By.xpath("//button[contains(text(),'Save changes')]");
     By txt_cusProfSalesperson = By.xpath("//div[contains(@class,'_vjioml w-100 border') and contains(text(),'Darlene')]");
     By btn_removeSalesperson = By.xpath("(//td/*[contains(@data-icon,'trash-can')])[last()]");
@@ -973,7 +973,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By canNotSubmitEmptyOrderError = By.xpath("//*[normalize-space(.)='Error: Cannot submit empty order']");
     String onSaleItemCountResult = "//div[text()='FILTER']/following-sibling::div/div";
     String onSaleItemTagCount = "//img[contains(@class,'card-img-top')]/following-sibling::div[normalize-space()='TAG']";
-    String catalogFilterAllItems = "//div[contains(@class,'_3ewg0b') and normalize-space()='FILTER']";
+    String catalogFilterAllItems = "(//div[contains(@class,'_3ewg0b') and normalize-space()='FILTER'])[last()]";
     String catalogFilterSectionDropDown = "//div[contains(@class,'_abrv9k') and normalize-space()='FILTER']";
     String catalogFilterBrandDropDownOption = "//div[text()='OPTION']";
     String catalogFilterDropDown = "//div[contains(text(), 'FILTER')]";
