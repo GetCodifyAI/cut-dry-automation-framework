@@ -87,12 +87,12 @@ public class DashboardPage extends LoginPage{
         distributorUI.clickWithFallback(btn_customers);
     }
     public void clickOnBoost(){
-        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_boost);
         distributorUI.click(btn_boost);
     }
     public void clickOnChat(){
-        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_chat);
         distributorUI.click(btn_chat);
     }
@@ -118,7 +118,7 @@ public class DashboardPage extends LoginPage{
         distributorUI.clickWithFallback(btn_orderSettings);
     }
     public void clickOnTeamSettings(){
-        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_teamSettings);
@@ -203,87 +203,87 @@ public class DashboardPage extends LoginPage{
     }
 
     public void clickOnTrackResources(){
-        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_track);
         distributorUI.clickUsingJavaScript(btn_track);
         distributorUI.hoverOverElement(btn_trackResources);
         distributorUI.clickWithFallback(btn_trackResources);
     }
     public void clickOnTrackRoutes(){
-        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_track);
         distributorUI.clickUsingJavaScript(btn_track);
         distributorUI.hoverOverElement(btn_trackRoutes);
         distributorUI.clickWithFallback(btn_trackRoutes);
     }
     public void clickOnTrackMonitoring(){
-        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_track);
         distributorUI.clickUsingJavaScript(btn_track);
         distributorUI.hoverOverElement(btn_trackMonitoring);
         distributorUI.clickWithFallback(btn_trackMonitoring);
     }
     public void clickOnTrackNotifications(){
-        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_track);
         distributorUI.clickUsingJavaScript(btn_track);
         distributorUI.hoverOverElement(btn_trackNotifications);
         distributorUI.clickWithFallback(btn_trackNotifications);
     }
     public void clickOnPay(){
-        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_pay);
         distributorUI.clickWithFallback(btn_pay);
     }
     public void clickOnReports(){
-        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_reports);
         distributorUI.clickWithFallback(btn_reports);
     }
     public void clickOnBillingSettings(){
-        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_billingSettings);
         distributorUI.clickWithFallback(btn_billingSettings);
     }
     public void clickOnCompanySettings(){
-        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_companySettings);
         distributorUI.clickWithFallback(btn_companySettings);
     }
     public void clickOnTrackSettings(){
-        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_trackSettings);
         distributorUI.clickWithFallback(btn_trackSettings);
     }
     public void clickOnProfileSettings(){
-        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_profSettings);
         distributorUI.clickWithFallback(btn_profSettings);
     }
     public boolean isInfluenceTabDisplayed(){
-        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_adsSettings);
         return distributorUI.isDisplayed(btn_adsSettings);
     }
     public void clickOnAdsSettings(){
-        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_adsSettings);
         distributorUI.clickWithFallback(btn_adsSettings);
     }
     public void clickOnPaySettings(){
-        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(btn_settings);
         distributorUI.clickUsingJavaScript(btn_settings);
         distributorUI.hoverOverElement(btn_paySettings);
@@ -375,7 +375,7 @@ public class DashboardPage extends LoginPage{
         return distributorUI.isDisplayed(orderIndicator);
     }
     public boolean isChatSectionDisplay()throws InterruptedException{
-        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.hoverOverElement(btn_viewMore);
         return distributorUI.isDisplayed(btn_chat);
     }
     public boolean isEndlessAisleCatalogDisplay()throws InterruptedException{
@@ -433,7 +433,7 @@ public class DashboardPage extends LoginPage{
         return distributorUI.isDisplayed(influenceTab);
     }
     public void clickInfluenceMenuOption(){
-        distributorUI.clickWithFallback(btn_viewMore);
+        distributorUI.hoverOverElement(btn_viewMore);
         distributorUI.scrollToElement(influenceTab);
         distributorUI.click(influenceTab);
     }
