@@ -18,6 +18,7 @@ public class VerifyGeneralHoldBannerDisplayInOrderSubmissionTest extends TestBas
     String DistributorName ="Independent Foods Co";
     static String customerId = "30275";
     static String generalHoldMessage1 = "Your order has been successfully sent to your supplier. However, it has been noted your account is on hold by your supplier. Please get in touch with your supplier to resolve it.";
+    static String orderGuide = "Main Order Guide";
 
     @BeforeMethod
     public void setUp(){
@@ -45,6 +46,7 @@ public class VerifyGeneralHoldBannerDisplayInOrderSubmissionTest extends TestBas
         softAssert.assertTrue(Customer.isGeneralHoldSelected(), "acc select error");
 
         Customer.clickOnOrderGuideInCustomerProfile();
+        Customer.selectOrderGuideIfOverlayDisplayed(orderGuide);
         Customer.increaseFirstRowQtyCustom(1);
         Customer.checkoutItems();
 

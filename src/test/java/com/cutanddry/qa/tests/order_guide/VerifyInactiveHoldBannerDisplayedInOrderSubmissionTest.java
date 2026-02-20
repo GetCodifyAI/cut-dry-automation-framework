@@ -19,6 +19,7 @@ public class VerifyInactiveHoldBannerDisplayedInOrderSubmissionTest {
     String DistributorName ="Independent Foods Co";
     static String customerId = "30275";
     static String inactiveHoldMessage1 = "There is an issue with your account. Please reach out to your supplier sales rep.";
+    static String orderGuide = "Main Order Guide";
 
     @BeforeMethod
     public void setUp(){
@@ -46,6 +47,7 @@ public class VerifyInactiveHoldBannerDisplayedInOrderSubmissionTest {
         softAssert.assertTrue(Customer.isInactiveHoldSelected(), "acc select error");
 
         Customer.clickOnOrderGuideInCustomerProfile();
+        Customer.selectOrderGuideIfOverlayDisplayed(orderGuide);
         Customer.increaseFirstRowQtyCustom(1);
         Customer.checkoutItems();
 
