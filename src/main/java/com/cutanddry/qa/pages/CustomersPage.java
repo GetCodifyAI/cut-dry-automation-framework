@@ -973,7 +973,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By canNotSubmitEmptyOrderError = By.xpath("//*[normalize-space(.)='Error: Cannot submit empty order']");
     String onSaleItemCountResult = "//div[text()='FILTER']/following-sibling::div/div";
     String onSaleItemTagCount = "//img[contains(@class,'card-img-top')]/following-sibling::div[normalize-space()='TAG']";
-    String catalogFilterAllItems = "//div[contains(@class,'_3ewg0b') and normalize-space()='FILTER']";
+    String catalogFilterAllItems = "(//div[contains(@class,'_3ewg0b') and normalize-space()='FILTER'])[last()]";
     String catalogFilterSectionDropDown = "//div[contains(@class,'_abrv9k') and normalize-space()='FILTER']";
     String catalogFilterBrandDropDownOption = "//div[text()='OPTION']";
     String catalogFilterDropDown = "//div[contains(text(), 'FILTER')]";
