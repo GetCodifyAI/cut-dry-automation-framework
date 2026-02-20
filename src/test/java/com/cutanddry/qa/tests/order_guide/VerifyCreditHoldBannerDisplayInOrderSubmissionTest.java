@@ -18,6 +18,7 @@ public class VerifyCreditHoldBannerDisplayInOrderSubmissionTest extends TestBase
     String DistributorName ="Independent Foods Co";
     static String customerId = "30275";
     static String creditHoldMessage1 = "Your order has been successfully sent to your supplier. However, it has been noted your account is on hold due to outstanding payments. Please get in touch with the supplier for necessary payments.";
+    static String orderGuide = "Main Order Guide";
 
     @BeforeMethod
     public void setUp(){
@@ -45,6 +46,7 @@ public class VerifyCreditHoldBannerDisplayInOrderSubmissionTest extends TestBase
         softAssert.assertTrue(Customer.isCreditHoldSelected(), "acc select error");
 
         Customer.clickOnOrderGuideInCustomerProfile();
+        Customer.selectOrderGuideIfOverlayDisplayed(orderGuide);
         Customer.increaseFirstRowQtyCustom(1);
         Customer.checkoutItems();
 

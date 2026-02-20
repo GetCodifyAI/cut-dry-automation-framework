@@ -25,7 +25,9 @@ public class VerifyForceShowModalForMutualSubstituteProductsTest extends TestBas
     static String canonicalNodeName1 = "70504455";
     static String canonicalNodeName2 = "70505428";
     static String featureKey = "unavailable";
+    static String featureKey2 = "discontinued";
     static String featureValue = "true";
+    static String featureValue2 = "false";
     static String customerId = "962243";
 
 
@@ -63,7 +65,6 @@ public class VerifyForceShowModalForMutualSubstituteProductsTest extends TestBas
         Catalog.removeExistingItem(substituteItemName1);
         Catalog.navigateToSubstituteTab();
         Catalog.addSubstitutions();
-        Catalog.addSubstitutions();
         Catalog.searchAndAddSubstituteItem(substituteItemCode1);
         Catalog.showSubstituteBtnIfNotSelected();
         Catalog.saveChanges();
@@ -71,6 +72,7 @@ public class VerifyForceShowModalForMutualSubstituteProductsTest extends TestBas
 
         // set canonical node item 1
         Login.navigateToNode(canonicalNodeName1);
+        Login.setValueToNode(featureKey2,featureValue2);
         Login.setValueToNode(featureKey,featureValue);
 
         Login.navigateToDistributorPortal(distributorDiCarlo);
@@ -98,7 +100,6 @@ public class VerifyForceShowModalForMutualSubstituteProductsTest extends TestBas
         Catalog.navigateToSubstituteTab();
         Catalog.removeExistingItem(searchItemCodeName1);
         Catalog.navigateToSubstituteTab();
-        Catalog.addSubstitutions();
         Catalog.addSubstitutions();
         Catalog.searchAndAddSubstituteItem(searchItemCode1);
         Catalog.showSubstituteBtnIfNotSelected();
