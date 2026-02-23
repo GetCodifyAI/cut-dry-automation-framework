@@ -912,7 +912,7 @@ public class KeywordBase {
             actions.moveToElement(inputField).click().sendKeys(text).perform();
 
             //Wait for 2 seconds to allow the dropdown to load
-            Thread.sleep(2000);
+            Thread.sleep(10000);
 
             //Press Enter to select the option
             actions.sendKeys(Keys.ENTER).perform();
