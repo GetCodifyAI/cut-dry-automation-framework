@@ -19,6 +19,7 @@ public class VerifyHardOrderMinimumWarningTest extends TestBase {
     static String orderMinimumType = "Hard Order Minimum";
     static String DistributorName ="Independent Foods Co";
     static String orderMinimumSetting = "Use Global Settings";
+    static String orderGuideName = "Test_Automation";
 
     @BeforeMethod
     public void setUp(){
@@ -57,6 +58,7 @@ public class VerifyHardOrderMinimumWarningTest extends TestBase {
         Customer.SelectOrderMinimumFromProfile(orderMinimumSetting);
 
         Customer.clickOnOrderGuideInProfile();
+        Customer.selectOrderGuideIfOverlayDisplayed(orderGuideName);
         itemName = Customer.getItemNameFirstRow();
         Customer.increaseFirstRowQtyByOne();
         Customer.checkoutItemsDist();
@@ -65,7 +67,7 @@ public class VerifyHardOrderMinimumWarningTest extends TestBase {
         Customer.submitOrderMinimum();
 
         softAssert.assertTrue(Customer.isOrderMinPopupDisplayed(),"popup display error");
-        Customer.clickOK();
+        Login.clickOk();
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation error");
         Settings.enterOrderMinimum(defaultOrderMin);
