@@ -3,10 +3,7 @@ package com.cutanddry.qa.tests.orders;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.ParentChildOGData;
-import com.cutanddry.qa.functions.Customer;
-import com.cutanddry.qa.functions.Dashboard;
-import com.cutanddry.qa.functions.History;
-import com.cutanddry.qa.functions.Login;
+import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -42,6 +39,9 @@ public class VerifyTheOrderEditInvalidOrderErrorMessageTest extends TestBase {
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToDistributorPortal(DP);
         //Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
+
+        Dashboard.navigateToOrderSettings();
+        Settings.orderMinimumCheckBox(true);
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
