@@ -12,11 +12,13 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyThatTheEnableOrderApprovalInOrderGuideSettingsTest extends TestBase {
     static User user;
-    static String customerId = "653";
+    static String customerId = "26816";
     String SupplierName = "Independent Foods Co";
     String RestaurantUserCode = "52068374";
     String DistributorName ="Independent Foods Co";
     static String orderMinimumSetting = "Exempt from Order Minimum";
+    String approvalType = "General Approval (Operator or Distributor)";
+    String location = "Main St - Oakland";
 
 
 
@@ -41,6 +43,11 @@ public class VerifyThatTheEnableOrderApprovalInOrderGuideSettingsTest extends Te
         Customer.SelectCustomer(customerId);
         Customer.SelectOrderMinimumFromProfile(orderMinimumSetting);
         Customer.ifHasHoldsRemoveHoldsFromCustomer();
+
+        Customer.orderApprovalEdit();
+        softAssert.assertTrue(Customer.orderApprovalSettingsOverlayDisplayed(),"Order approval overlay is not displayed");
+        Customer.selectOrderApprovalType(approvalType);
+        Customer.saveOrderApprovalSettings();
         Customer.clickOnOrderGuideInCustomerProfile();
 
         Customer.expandMoreOptionsDropdown();
@@ -53,7 +60,7 @@ public class VerifyThatTheEnableOrderApprovalInOrderGuideSettingsTest extends Te
 
         Login.navigateToLoginAs();
         Login.logInToOperator(RestaurantUserCode);
-        Orders.SelectSupplierFromPlaceOrder(SupplierName);
+        Orders.SelectOneSupplierFromPlaceOrder(SupplierName,location);
         Customer.increaseFirstRowQtyCustom(1);
         Customer.checkoutItems();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "The user is unable to land on the Review Order page.");

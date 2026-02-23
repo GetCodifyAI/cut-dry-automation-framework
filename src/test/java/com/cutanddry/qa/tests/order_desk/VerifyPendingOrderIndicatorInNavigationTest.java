@@ -14,6 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyPendingOrderIndicatorInNavigationTest extends TestBase {
     User user;
+    String DistributorName = "Cut+Dry Agent - Cooks Company Produce";
 
 
     @BeforeMethod
@@ -25,7 +26,9 @@ public class VerifyPendingOrderIndicatorInNavigationTest extends TestBase {
     @Test(groups = "DOT-TC-388")
     public void VerifyPendingOrderIndicatorInNavigation() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
-        Login.loginAsDistributor(user.getEmailOrMobile(),user.getPassword());
+        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
+        softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Login.navigateToDistributorPortal(DistributorName);
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"Login Error");
         softAssert.assertTrue(Dashboard.isOrderIndicatorDisplay(),"order indicator not display");
