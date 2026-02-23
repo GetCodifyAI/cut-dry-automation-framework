@@ -602,6 +602,7 @@ public class BoostPage extends LoginPage {
     }
     
     public void clickSaveBrandBoost() {
+        distributorUI.uiScrollTop();
         distributorUI.click(btn_saveBrandBoost);
     }
 

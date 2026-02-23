@@ -29,8 +29,8 @@ public class DashboardPage extends LoginPage{
     By txt_totalOnlineRev = By.xpath("//tr[td[contains(text(), 'Total')]]/td[4]");
     By txt_totalTimeSaved = By.xpath("//tr[td[contains(text(), 'Total')]]/td[5]");
     By btn_history = By.xpath("(//a[@data-tip='Order History'])[1]");
-    By btn_drafts  =By.xpath("(//a[@data-tip='View Drafts'])[1]");
-    By drafts_badge = By.xpath("//*[@href='/draft-orders']//span");
+    By btn_drafts  =By.xpath("(//a[@data-tip='View Drafts'])[last()]");
+    By drafts_badge = By.xpath("(//*[@href='/draft-orders'])[last()]//span");
     By btn_track = By.xpath("(//a[@role='button' and contains(text(), 'Track')])[last()]");
     By btn_trackResources = By.xpath("//div[contains(@class,'fade')]/a[text()='Resources']");
     By btn_trackRoutes = By.xpath("//div[contains(@class,'fade')]/a[text()='Routes']");
@@ -67,7 +67,7 @@ public class DashboardPage extends LoginPage{
     By locationFilter = By.xpath("(//div[text()='Place Order']/following-sibling::div//div)[1]");
     By locationOption = By.xpath("//div[text()='Place Order']/following-sibling::*//div[contains(@id,'react-select') and contains(text(), 'All Locations')]");
     By btn_order = By.xpath("(//a[@data-tip='Place Order'])[1]");
-    By orderIndicator = By.xpath("//a[contains(text(),'Order Desk')]/div/span");
+    By orderIndicator = By.xpath("(//a[contains(text(),'Order Desk')]/div/span)[last()]");
     By txt_endlessAisle  =By.xpath("//div[text()='Endless Aisle Catalog']");
     By btn_dashboard = By.xpath("(//a[@data-tip='Dashboard'])[1]");
     String getCustomerBaseValue = "(//*[name()='tspan' and contains(., 'CUSTOMER')]/following-sibling::*[name()='tspan'])[1]";
@@ -430,6 +430,7 @@ public class DashboardPage extends LoginPage{
     }
 
     public boolean isInfluenceMenuOptionDisplayed(){
+        distributorUI.hoverOverElement(btn_viewMore);
         return distributorUI.isDisplayed(influenceTab);
     }
     public void clickInfluenceMenuOption(){
