@@ -82,7 +82,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By btn_next = By.xpath("//button[text()='Next']");
     By btn_confirm = By.xpath("//button[text()='Confirm']");
     By txt_orderGuideCreateSuccess = By.xpath("//h2[contains(text(), 'Order guide updated successfully')]");
-    By btn_OK = By.xpath("//button[text()='Ok']");
+    By btn_OK = By.xpath("//button[translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='ok']");
     String msg_banner = "//span[text()='TESTMESSAGE']";
     By lbl_productDetails = By.xpath("//span[text()='Product Details']");
     By lbl_topCategoryPicks = By.xpath("//div[text()='Top Category Picks']");
