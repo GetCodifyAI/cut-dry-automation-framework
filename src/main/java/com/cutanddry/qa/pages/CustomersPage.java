@@ -9,7 +9,9 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -986,7 +988,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_deliveryDateOrderDeskStable = By.xpath("//div[text()='Delivery Date']/following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
     By btn_ThreeDotVertical = By.xpath("//button[text()='Order Guide']/following-sibling::div//*[contains(@data-icon,'ellipsis-vertical')]");
     By tbx_titleStandingOrder = By.xpath("//input[@placeholder='Enter title']");
-
+    String simpleListViewColumnHeaderClick = "//div[text()='Simple List View']/following::table[1]//th[INDEX]";
+    String simpleListViewColumnByHeader = "//div[text()='Simple List View']/following::table[1]//tr/td[INDEX]";
 
 
 
@@ -5981,6 +5984,27 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.clear(tbx_titleStandingOrder);
         distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(tbx_titleStandingOrder, title);
+    }
+    public boolean isSimpleListSortingProperlyWorking(String columnHeader) throws InterruptedException {
+        Map<String, Integer> columnIndexMap = new LinkedHashMap<>();
+        columnIndexMap.put("Item Code", 1);
+        columnIndexMap.put("UPC", 2);
+        columnIndexMap.put("Brand", 3);
+        columnIndexMap.put("Description", 4);
+        columnIndexMap.put("Category", 5);
+        columnIndexMap.put("Pack Size", 6);
+        columnIndexMap.put("Last Ordered", 10);
+
+        Integer columnIndex = columnIndexMap.get(columnHeader);
+        if (columnIndex == null) {
+            return false;
+        }
+
+        By headerLocator = By.xpath(simpleListViewColumnHeaderClick.replace("INDEX", String.valueOf(columnIndex)));
+        String cellXpath = simpleListViewColumnByHeader.replace("INDEX", String.valueOf(columnIndex));
+
+        return distributorUI.isSimpleListSortingProperlyWorking(headerLocator, cellXpath, columnHeader);
+
     }
 
 
