@@ -104,12 +104,12 @@ public class OrdersPage extends LoginPage{
     By btn_FindMoreInCatalog = By.xpath("//button[text()='Find More in Catalog']");
     By lbl_inactiveItemDetected = By.xpath("//div[text()='Inactive Items Removed']");
     String selectLocationSupplier = "//div[contains(text(),'Select Location')]/following-sibling::div//div[text()='LOCATION']";
-    By lbl_orderInfoCustomer = By.xpath("//div[contains(text(),'Cut & Dry Test Account (21259)')]");
-    By lbl_orderInfoLocationCode = By.xpath("//div[contains(text(),'Hayes (94123)')]");
-    By lbl_orderInfoDeliveryOn = By.xpath("//div[contains(text(),'Fri, 01/09/2026')]");
-    By lbl_orderInfoShipTo = By.xpath("//div[contains(text(),'Juan Zengotita (Personal), 1046 Rock Creek St., Apopka, Florida 32712')]");
-    By lbl_orderInfoFulfilmentMethod = By.xpath("//span[@data-for='cd-label-tooltip' and contains(text(),'Delivery')]");
-    By lbl_orderInfoStatus = By.xpath("//span[@data-for='cd-label-tooltip' and contains(text(),'Confirmed')]");
+    String lbl_orderInfoCustomer = "//div[contains(text(),'CUSTOMERNAME')]";
+    String lbl_orderInfoLocationCode = "//div[contains(text(),'LOCATION')]";
+    String lbl_orderInfoDeliveryOn = "//div[contains(text(),'DELIVERYDATE')]";
+    String lbl_orderInfoShipTo = "//div[contains(text(),'SHIPTO')]";
+    String lbl_orderInfoFulfilmentMethod = "//span[@data-for='cd-label-tooltip' and contains(text(),'FULLFILLMENTMETHOD')]";
+    String lbl_orderInfoStatus = "//span[@data-for='cd-label-tooltip' and contains(text(),'ORDERSTATUS')]";
     By lbl_orderDateColumnHeader = By.xpath("//table/thead/tr/th//span[contains(text(),'Order Date')]");
     By lbl_firstOrderDate = By.xpath("(//tr[contains(@class,'_du1frc') and contains(@class,'py-3')]/td)[2]");
     By lbl_firstOrderFulfillmentBadge = By.xpath("//span[@data-for='cd-label-tooltip' and normalize-space()='Delivery']");
@@ -640,27 +640,28 @@ public class OrdersPage extends LoginPage{
         distributorUI.click(By.xpath(selectLocationSupplier.replace("LOCATION",location)));
     }
 
-    public boolean isOrderInfoCustomerDisplayed(){
-           return distributorUI.isDisplayed(lbl_orderInfoCustomer);
+    public boolean isOrderInfoCustomerDisplayed(String customerName){
+           return distributorUI.isDisplayed(By.xpath(lbl_orderInfoCustomer.replace("CUSTOMERNAME",customerName)));
     }
 
-    public boolean isOrderInfoLocationCodeDisplayed(){
-           return distributorUI.isDisplayed(lbl_orderInfoLocationCode);
+    public boolean isOrderInfoLocationCodeDisplayed(String location){
+           return distributorUI.isDisplayed(By.xpath(lbl_orderInfoLocationCode.replace("LOCATION",location)));
     }
 
-    public boolean isOrderInfoDeliveryOnDisplayed(){
-           return distributorUI.isDisplayed(lbl_orderInfoDeliveryOn);}
-
-    public boolean isOrderInfoShipToDisplayed(){
-            return distributorUI.isDisplayed(lbl_orderInfoShipTo);
+    public boolean isOrderInfoDeliveryOnDisplayed(String deliveryDate){
+           return distributorUI.isDisplayed(By.xpath(lbl_orderInfoDeliveryOn.replace("DELIVERYDATE",deliveryDate)));
     }
 
-    public boolean isOrderInfoFulfilmentMethodDisplayed(){
-           return distributorUI.isDisplayed(lbl_orderInfoFulfilmentMethod);
+    public boolean isOrderInfoShipToDisplayed(String shipAddress){
+            return distributorUI.isDisplayed(By.xpath(lbl_orderInfoShipTo.replace("SHIPTO",shipAddress)));
     }
 
-    public boolean isOrderInfoStatusDisplayed(){
-            return distributorUI.isDisplayed(lbl_orderInfoStatus);
+    public boolean isOrderInfoFulfilmentMethodDisplayed(String fulfilmentMethod){
+           return distributorUI.isDisplayed(By.xpath(lbl_orderInfoFulfilmentMethod.replace("FULLFILLMENTMETHOD",fulfilmentMethod)));
+    }
+
+    public boolean isOrderInfoStatusDisplayed(String orderStatus){
+            return distributorUI.isDisplayed(By.xpath(lbl_orderInfoStatus.replace("ORDERSTATUS",orderStatus)));
     }
 
     public boolean isOrderDateColumnHeaderDisplayed(){

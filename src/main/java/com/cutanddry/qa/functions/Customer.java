@@ -3626,6 +3626,9 @@ public class Customer {
     public static void typeOnStandingOrderTitle(String title) throws InterruptedException {
         customersPage.typeOnStandingOrderTitle(title);
     }
+    public static boolean isSimpleListSorted(String title) throws InterruptedException {
+        return customersPage.isSimpleListSortingProperlyWorking(title);
+    }
 
 
 }

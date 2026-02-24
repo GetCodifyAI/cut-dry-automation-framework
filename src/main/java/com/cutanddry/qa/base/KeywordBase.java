@@ -1494,5 +1494,98 @@ public KeywordBase clickF12Mac() {
                 tabIndex, driver.getTitle());
     }
 
+    public boolean isSimpleListSortingProperlyWorking(By headerLocator, String cellXpath, String columnHeader) throws InterruptedException {
+        logger.info("Verifying simple list sorting for column: {}", columnHeader);
+
+        // Capture values before sorting
+        List<WebElement> beforeElements = driver.findElements(By.xpath(cellXpath));
+        List<String> beforeValues = new ArrayList<>();
+        for (int i = 0; i < Math.min(15, beforeElements.size()); i++) {
+            String text = beforeElements.get(i).getText().trim();
+            if (!text.isEmpty()) beforeValues.add(text);
+        }
+        logger.info("Values BEFORE sorting for '{}': {}", columnHeader, beforeValues);
+
+        // Click for ascending sort
+        logger.info("Clicking column header '{}' for ascending sort", columnHeader);
+        click(headerLocator);
+        waitForCustom(5000);
+
+        List<WebElement> ascElements = driver.findElements(By.xpath(cellXpath));
+        List<String> ascValues = new ArrayList<>();
+        for (int i = 0; i < Math.min(15, ascElements.size()); i++) {
+            String text = ascElements.get(i).getText().trim();
+            if (!text.isEmpty()) ascValues.add(text);
+        }
+        logger.info("Values AFTER ascending sort for '{}': {}", columnHeader, ascValues);
+
+        for (int i = 0; i < ascValues.size() - 1; i++) {
+            if (getSortCompare(ascValues.get(i), ascValues.get(i + 1), columnHeader) > 0) {
+                logger.error("Ascending sort failed for '{}': '{}' should come before '{}'", columnHeader, ascValues.get(i), ascValues.get(i + 1));
+                return false;
+            }
+        }
+        logger.info("Ascending sort verified successfully for column: {}", columnHeader);
+
+        // Click for descending sort
+        logger.info("Clicking column header '{}' for descending sort", columnHeader);
+        click(headerLocator);
+        waitForCustom(5000);
+
+        List<WebElement> descElements = driver.findElements(By.xpath(cellXpath));
+        List<String> descValues = new ArrayList<>();
+        for (int i = 0; i < Math.min(15, descElements.size()); i++) {
+            String text = descElements.get(i).getText().trim();
+            if (!text.isEmpty()) descValues.add(text);
+        }
+        logger.info("Values AFTER descending sort for '{}': {}", columnHeader, descValues);
+
+        for (int i = 0; i < descValues.size() - 1; i++) {
+            if (getSortCompare(descValues.get(i), descValues.get(i + 1), columnHeader) < 0) {
+                logger.error("Descending sort failed for '{}': '{}' should come before '{}'", columnHeader, descValues.get(i), descValues.get(i + 1));
+                return false;
+            }
+        }
+        logger.info("Descending sort verified successfully for column: {}", columnHeader);
+
+        return true;
+    }
+
+    private int getSortCompare(String a, String b, String columnHeader) {
+        switch (columnHeader) {
+            case "Pack Size":
+            case "UPC": {
+                double numA = getLeadingNumber(a);
+                double numB = getLeadingNumber(b);
+                return numA != numB ? Double.compare(numA, numB) : a.compareToIgnoreCase(b);
+            }
+            case "Item Code": {
+                boolean aNum = a.matches("^\\d+$");
+                boolean bNum = b.matches("^\\d+$");
+                if (aNum && bNum) return Long.compare(Long.parseLong(a), Long.parseLong(b));
+                if (aNum != bNum) return aNum ? -1 : 1;
+                return a.compareToIgnoreCase(b);
+            }
+            case "Last Ordered": {
+                try {
+                    // Extract date from parentheses, e.g. "(2/19/26)" from "1 CS\n$39.66\n(2/19/26)"
+                    String dateA = a.replaceAll("(?s).*\\(([^)]+)\\).*", "$1");
+                    String dateB = b.replaceAll("(?s).*\\(([^)]+)\\).*", "$1");
+                    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("M/d/yy");
+                    return sdf.parse(dateA).compareTo(sdf.parse(dateB));
+                } catch (Exception e) {
+                    return a.compareToIgnoreCase(b);
+                }
+            }
+            default:
+                return a.compareToIgnoreCase(b);
+        }
+    }
+
+    private double getLeadingNumber(String value) {
+        java.util.regex.Matcher m = java.util.regex.Pattern.compile("^\\d+(\\.\\d+)?").matcher(value);
+        return m.find() ? Double.parseDouble(m.group()) : Double.MAX_VALUE;
+    }
+
 
 }
