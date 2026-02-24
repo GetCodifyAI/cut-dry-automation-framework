@@ -790,7 +790,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String btnChat = "//td[text()='CODE']/../td[7]//*[name()='svg' and @data-icon='comments']";
     By btn_ChatCustomerProfile = By.xpath("//button[contains(text(),'Chat')]");
     By btn_nextMonth = By.xpath("//button[contains(@aria-label,'Next Month')]");
-    By txt_sameDeliveryDate = By.xpath("//h2[contains(text(),'same delivery date are not allowed')]");
+    By txt_sameDeliveryDate = By.xpath("//h2[contains(text(),'Maximum of 2 orders per delivery date are allowed')]");
     By icon_deleteSearchItem = By.xpath("(//*[local-name()='svg' and @data-icon='circle-xmark'])[1]");
     By icon_deleteSubstitutionItem = By.xpath("(//*[local-name()='svg' and @data-icon='xmark'])[1]");
     By SearchResultsIcon = By.xpath("(//div//*[local-name()='svg' and contains(@data-icon, 'cdSearch')])[1]");

@@ -186,7 +186,7 @@ public class HistoryPage extends LoginPage{
 
     }
     public void clickHistory(){
-        distributorUI.click(btn_history);
+        distributorUI.clickWithFallback(btn_history);
         try {
             distributorUI.waitForCustom(3000);
         } catch (InterruptedException e) {

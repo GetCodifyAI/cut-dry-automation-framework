@@ -317,28 +317,28 @@ public class Orders {
         }
     }
 
-    public static boolean isOrderInfoCustomerDisplayed(){
-        return ordersPage.isOrderInfoCustomerDisplayed();
+    public static boolean isOrderInfoCustomerDisplayed(String customerName){
+        return ordersPage.isOrderInfoCustomerDisplayed(customerName);
     }
 
-    public static boolean isOrderInfoLocationCodeDisplayed(){
-        return ordersPage.isOrderInfoLocationCodeDisplayed();
+    public static boolean isOrderInfoLocationCodeDisplayed(String customerLocation){
+        return ordersPage.isOrderInfoLocationCodeDisplayed(customerLocation);
     }
 
-    public static boolean isOrderInfoDeliveryOnDisplayed(){
-        return ordersPage.isOrderInfoDeliveryOnDisplayed();
+    public static boolean isOrderInfoDeliveryOnDisplayed(String deliveryDate){
+        return ordersPage.isOrderInfoDeliveryOnDisplayed(deliveryDate);
     }
 
-    public static boolean isOrderInfoShipToDisplayed(){
-        return ordersPage.isOrderInfoShipToDisplayed();
+    public static boolean isOrderInfoShipToDisplayed(String shipTo){
+        return ordersPage.isOrderInfoShipToDisplayed(shipTo);
     }
 
-    public static boolean isOrderInfoFulfilmentMethodDisplayed(){
-        return ordersPage.isOrderInfoFulfilmentMethodDisplayed();
+    public static boolean isOrderInfoFulfilmentMethodDisplayed(String fulfillmentMethod){
+         return ordersPage.isOrderInfoFulfilmentMethodDisplayed(fulfillmentMethod);
     }
 
-    public static boolean isOrderInfoStatusDisplayed(){
-        return ordersPage.isOrderInfoStatusDisplayed();
+    public static boolean isOrderInfoStatusDisplayed(String orderStatus){
+        return ordersPage.isOrderInfoStatusDisplayed(orderStatus);
     }
 
     public static boolean isOrderDateColumnHeaderDisplayed(){
