@@ -3557,8 +3557,8 @@ public class Customer {
         return customersPage.getFirstOrderItemsCount();
     }
 
-    public static int getOrderDetailsLineItemsCount() {
-        return customersPage.getOrderDetailsLineItemsCount();
+    public static int getOrderDetailsItemsCount() {
+        return customersPage.getOrderDetailsItemsCount();
     }
 
     public static boolean isOrderReferenceColumnHeaderDisplayed() {
@@ -3625,6 +3625,9 @@ public class Customer {
     public static void clickThreeDotVertical(){customersPage.clickThreeDotVertical();}
     public static void typeOnStandingOrderTitle(String title) throws InterruptedException {
         customersPage.typeOnStandingOrderTitle(title);
+    }
+    public static boolean isSimpleListSorted(String title) throws InterruptedException {
+        return customersPage.isSimpleListSortingProperlyWorking(title);
     }
 
 

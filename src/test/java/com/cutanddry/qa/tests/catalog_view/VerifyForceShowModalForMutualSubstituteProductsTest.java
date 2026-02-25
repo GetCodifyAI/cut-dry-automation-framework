@@ -52,6 +52,13 @@ public class VerifyForceShowModalForMutualSubstituteProductsTest extends TestBas
         softAssert.assertTrue(InternalTools.isSuccessPopUpDisplayed(),"change not save");
         InternalTools.clickOKOnSucessOverlay();
 
+        //Making both items not discontinued
+        Login.navigateToNode(canonicalNodeName2);
+        Login.setValueToNode(featureKey2,featureValue2);
+
+        Login.navigateToNode(canonicalNodeName1);
+        Login.setValueToNode(featureKey2,featureValue2);
+
         Login.navigateToDistributorPortal(distributorDiCarlo);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
 
@@ -72,7 +79,6 @@ public class VerifyForceShowModalForMutualSubstituteProductsTest extends TestBas
 
         // set canonical node item 1
         Login.navigateToNode(canonicalNodeName1);
-        Login.setValueToNode(featureKey2,featureValue2);
         Login.setValueToNode(featureKey,featureValue);
 
         Login.navigateToDistributorPortal(distributorDiCarlo);

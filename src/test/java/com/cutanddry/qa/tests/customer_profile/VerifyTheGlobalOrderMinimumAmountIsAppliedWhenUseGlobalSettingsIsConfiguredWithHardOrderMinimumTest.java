@@ -13,8 +13,8 @@ import org.testng.asserts.SoftAssert;
 public class VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsConfiguredWithHardOrderMinimumTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    static String customerId = "97071";
-    String DistributorName ="Independent Foods Co";
+    static String customerId = "3092";
+    String DistributorName ="Genere Food Corp";
     static String defaultOrderMin = "0";
     static String orderMinimumType = "Hard Order Minimum";
     static String orderMinInternal = "5000000";
@@ -36,7 +36,7 @@ public class VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsCo
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToInternalToolsPage();
         InternalTools.navigateToConfigureSupplier();
-        InternalTools.navigateToIndependentCompEditDetails();
+        InternalTools.clickOnInternalToolCompanyEditDetails(DistributorName);
         InternalTools.navigateToOrderingSettingsTab();
         InternalTools.TurnOnOrderMinimumGloballyToggle(true);
         InternalTools.clickOnOrderMinimumDropdown(orderMinimumType);

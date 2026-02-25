@@ -9,7 +9,9 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -788,7 +790,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String btnChat = "//td[text()='CODE']/../td[7]//*[name()='svg' and @data-icon='comments']";
     By btn_ChatCustomerProfile = By.xpath("//button[contains(text(),'Chat')]");
     By btn_nextMonth = By.xpath("//button[contains(@aria-label,'Next Month')]");
-    By txt_sameDeliveryDate = By.xpath("//h2[contains(text(),'same delivery date are not allowed')]");
+    By txt_sameDeliveryDate = By.xpath("//h2[contains(text(),'Maximum of 2 orders per delivery date are allowed')]");
     By icon_deleteSearchItem = By.xpath("(//*[local-name()='svg' and @data-icon='circle-xmark'])[1]");
     By icon_deleteSubstitutionItem = By.xpath("(//*[local-name()='svg' and @data-icon='xmark'])[1]");
     By SearchResultsIcon = By.xpath("(//div//*[local-name()='svg' and contains(@data-icon, 'cdSearch')])[1]");
@@ -962,7 +964,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By lbl_itemsColumnHeader = By.xpath("//span[text()='Items']");
     By lbl_ordersTableRows = By.xpath("//tr[contains(@href,'/ordersView/')]");
     String lbl_orderRowItemsCount = "(//tr[contains(@href,'/ordersView/')])[ROW]/td[5]";
-    By lbl_orderDetailsLineItems = By.xpath("(//div[contains(@class,'_jws3mfs')]//span)[1]");
+    By lbl_orderDetailsLineItems = By.xpath("//div[contains(text(),'Total Qty')]/following-sibling::div");
     By lbl_orderReferenceColumnHeader = By.xpath("//span[contains(text(),'Order Reference')]");
     By lbl_orderReferenceNumber = By.xpath("//tr[contains(@href,'/ordersView/')]//td//div[contains(text(),'#')]");
     By lbl_erpOrderBadge = By.xpath("//tr[contains(@href,'/ordersView/')]//td//span[contains(text(),'ERP Order')]");
@@ -986,7 +988,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_deliveryDateOrderDeskStable = By.xpath("//div[text()='Delivery Date']/following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
     By btn_ThreeDotVertical = By.xpath("//button[text()='Order Guide']/following-sibling::div//*[contains(@data-icon,'ellipsis-vertical')]");
     By tbx_titleStandingOrder = By.xpath("//input[@placeholder='Enter title']");
-
+    String simpleListViewColumnHeaderClick = "//div[text()='Simple List View']/following::table[1]//th[INDEX]";
+    String simpleListViewColumnByHeader = "//div[text()='Simple List View']/following::table[1]//tr/td[INDEX]";
 
 
 
@@ -5820,10 +5823,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.getText(By.xpath(lbl_orderRowItemsCount.replace("ROW", "1"))).trim();
     }
 
-    public int getOrderDetailsLineItemsCount() {
+    public int getOrderDetailsItemsCount() {
         try {
-            distributorUI.waitForVisibility(lbl_orderDetailsLineItems);
-            return distributorUI.countElements(lbl_orderDetailsLineItems);
+            distributorUI.uiScrollBottomOfPage();
+            return Integer.parseInt(distributorUI.getText(lbl_orderDetailsLineItems));
         } catch (Exception e) {
             return 0;
         }
@@ -5981,6 +5984,27 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.clear(tbx_titleStandingOrder);
         distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(tbx_titleStandingOrder, title);
+    }
+    public boolean isSimpleListSortingProperlyWorking(String columnHeader) throws InterruptedException {
+        Map<String, Integer> columnIndexMap = new LinkedHashMap<>();
+        columnIndexMap.put("Item Code", 1);
+        columnIndexMap.put("UPC", 2);
+        columnIndexMap.put("Brand", 3);
+        columnIndexMap.put("Description", 4);
+        columnIndexMap.put("Category", 5);
+        columnIndexMap.put("Pack Size", 6);
+        columnIndexMap.put("Last Ordered", 10);
+
+        Integer columnIndex = columnIndexMap.get(columnHeader);
+        if (columnIndex == null) {
+            return false;
+        }
+
+        By headerLocator = By.xpath(simpleListViewColumnHeaderClick.replace("INDEX", String.valueOf(columnIndex)));
+        String cellXpath = simpleListViewColumnByHeader.replace("INDEX", String.valueOf(columnIndex));
+
+        return distributorUI.isSimpleListSortingProperlyWorking(headerLocator, cellXpath, columnHeader);
+
     }
 
 

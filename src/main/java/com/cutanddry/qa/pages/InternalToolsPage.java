@@ -93,7 +93,7 @@ public class InternalToolsPage extends LoginPage {
     By txt_createNewDPGroup = By.xpath("//div[contains(text(),'Create New DP Group')]");
     By lbl_groupName = By.xpath("//label[text()='Group Name']/following-sibling::input");
     By lbl_description = By.xpath("//label[text()='Description']/following-sibling::textarea");
-    By lbl_attached_DPs = By.xpath("//label[text()='Attached DPs']/following-sibling::div");
+    By lbl_attached_DPs = By.xpath("//label[text()='Attached DPs']/following-sibling::div//input");
     String attachedDps = "//label[text()='Attached DPs']/following-sibling::*//div[text()='DISTRIBUTOR']";
     By allowCompanySwitching = By.xpath("//label[text()='Allow Company Switching']/preceding-sibling::input[@type='checkbox']");
     By createGroup = By.xpath("(//button[contains(text(),'Create Group')])[2]");
