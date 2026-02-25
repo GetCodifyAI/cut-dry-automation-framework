@@ -76,6 +76,7 @@ public class SettingsPage extends LoginPage{
     By dropdown_items = By.xpath("//div[@class='cd_themed_select__menu css-26l3qy-menu']");
     By dropdown_deliveryDate = By.xpath("//div[@class='text-truncate']");
     By btn_minus = By.xpath("(//button[*[local-name()='svg' and @data-icon='minus']])[last()]");
+    By btn_minus_count = By.xpath("//button[*[local-name()='svg' and @data-icon='minus']]");
     By txt_addCustomerCode =    By.xpath("//div[text()='Add Customer Codes']/following::input[@type='text']");
    /* By lbl_customerSpecDisabled = By.xpath("//label[text()='Customer Specific Delivery Days']/preceding-sibling::input[@type='checkbox' and @disabled]");
     By lbl_deliveryDays = By.xpath("//label[text()='Delivery Days']/preceding-sibling::input[@type='checkbox']");
@@ -681,6 +682,16 @@ public class SettingsPage extends LoginPage{
         distributorUI.waitForClickability(btn_minus);
         distributorUI.click(btn_minus);
     }
+
+    public void removeAllHolidayDates() throws InterruptedException {
+        int count = distributorUI.countElements(btn_minus_count);
+        for (int i = 0; i < count; i++) {
+            distributorUI.click(btn_minus);
+            distributorUI.waitForCustom(300);
+        }
+        distributorUI.click(btn_saveChange);
+    }
+
     public void uncheckDeliveryDays() {
 //        if (distributorUI.isDisplayed(lbl_customerSpecDisabled)){
 //            distributorUI.click(lbl_deliveryDays);
