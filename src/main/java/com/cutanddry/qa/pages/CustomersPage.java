@@ -387,7 +387,7 @@ By lbl_margin = By.xpath("//div[contains(text(),'Margin') and contains(text(),'$
 //    By dropdown_assignSalesperson = By.xpath("((//*[local-name() = 'svg' and @class='css-19bqh2r']))[2]");
 By dropdown_assignSalesperson = By.xpath("(//div[contains(@class,'themed_select__dropdown-indicator')])[last()]");
     By sel_salesperson = By.xpath("//div[contains(@class, 'themed_select__option') and contains(text(), 'Darlene')]");
-    By txt_assignedSalesperson = By.xpath("//div[contains(text(),'Darlene')]");
+    By txt_assignedSalesperson = By.xpath("//td[normalize-space()='Darlene']");
     By btn_saveChanges = By.xpath("//button[contains(text(),'Save changes')]");
     By txt_cusProfSalesperson = By.xpath("//div[contains(@class,'_vjioml w-100 border') and contains(text(),'Darlene')]");
     By btn_removeSalesperson = By.xpath("(//td/*[contains(@data-icon,'trash-can')])[last()]");

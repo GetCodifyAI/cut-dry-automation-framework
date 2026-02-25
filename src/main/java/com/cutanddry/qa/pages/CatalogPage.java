@@ -76,7 +76,7 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
     String certificateOption = "(//div[contains(text(),'CERTIFICATEOPTION')])[last()]";
     By productStatusDropdown = By.xpath("//div[normalize-space()='Product Status']/following::div[@id='config-active']");
     String productStatus = "(//div[contains(text(),'PRODSTATUS')])[last()]";
-    String productStatusInGrid = "//tr/td[contains(text(),'PRODID')]/following-sibling::td[8]";
+    String productStatusInGrid = "//tr[td[normalize-space()='PRODID']]/td[7]";
     By searchInCatalogPreview = By.xpath("//div//input[contains(@placeholder,'Search catalog')]");
     String clickOnItemInPreviewCatalog = "//div[contains(@class, ' _du1frc')]//div[contains(@class, '_1evg3oy') and contains(., 'ITEMCODE')]";
     String itemCodeDetails = "//div[contains(text(),'ITEMCODE')]";
