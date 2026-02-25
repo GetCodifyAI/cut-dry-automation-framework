@@ -21,8 +21,8 @@ import java.time.format.DateTimeFormatter;
 public class VerifyThatCustomerNameDisplayInEmptyInvoiceListTest extends TestBase {
     static User user;
     static String DP = "106701125 - Cut+dry Agent - Cream Co. Meats";
-    static String customerId = "CU11177 Azasu Kitchen";
-    static String emptyStateMessage ="Could not find invoices for Azasu Kitchen (CU11177 Azasu Kitchen) - Pacifica.";
+    static String customerId = "7478";
+    static String emptyStateMessage ="Could not find invoices for Cu11177 Azasu Kitchen (7478) - Pacifica.";
     String CustomerFilterOption = "- Past due";
 
 
