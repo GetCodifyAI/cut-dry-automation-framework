@@ -2706,8 +2706,11 @@ public class Customer {
     public static boolean isChildSettingUpdated(String message) throws InterruptedException {
         return customersPage.isChildSettingUpdated(message);
     }
-    public static void selectNewlyCreatedOrderGuide(String name){
+    public static void selectNewlyCreatedOrderGuide(String name) throws InterruptedException {
         customersPage.selectNewlyCreatedOrderGuide(name);
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
     }
     public static void clickOnDeleteOrderGuide(){
         customersPage.clickOnDeleteOrderGuide();
