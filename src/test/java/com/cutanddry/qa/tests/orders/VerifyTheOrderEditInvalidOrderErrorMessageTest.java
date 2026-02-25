@@ -25,6 +25,9 @@ public class VerifyTheOrderEditInvalidOrderErrorMessageTest extends TestBase {
     static String customerCode = "487310251";
     int maxAttempts = 7;
     static String orderGuide = "Dv - Westminister";
+    static String IntegrationData = "481988741";
+    static String featureKey = "minimum";
+    static String featureValue = "1";
 
     @BeforeMethod
     public void setUp(){
@@ -37,11 +40,12 @@ public class VerifyTheOrderEditInvalidOrderErrorMessageTest extends TestBase {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+
+        Login.navigateToNode(IntegrationData);
+        Login.setValueToNode(featureKey,featureValue);
+
         Login.navigateToDistributorPortal(DP);
         //Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
-
-        Dashboard.navigateToOrderSettings();
-        Settings.orderMinimumCheckBox(true);
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
