@@ -964,7 +964,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By lbl_itemsColumnHeader = By.xpath("//span[text()='Items']");
     By lbl_ordersTableRows = By.xpath("//tr[contains(@href,'/ordersView/')]");
     String lbl_orderRowItemsCount = "(//tr[contains(@href,'/ordersView/')])[ROW]/td[5]";
-    By lbl_orderDetailsLineItems = By.xpath("(//div[contains(@class,'_jws3mfs')]//span)[1]");
+    By lbl_orderDetailsLineItems = By.xpath("//div[contains(text(),'Total Qty')]/following-sibling::div");
     By lbl_orderReferenceColumnHeader = By.xpath("//span[contains(text(),'Order Reference')]");
     By lbl_orderReferenceNumber = By.xpath("//tr[contains(@href,'/ordersView/')]//td//div[contains(text(),'#')]");
     By lbl_erpOrderBadge = By.xpath("//tr[contains(@href,'/ordersView/')]//td//span[contains(text(),'ERP Order')]");
@@ -5823,10 +5823,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.getText(By.xpath(lbl_orderRowItemsCount.replace("ROW", "1"))).trim();
     }
 
-    public int getOrderDetailsLineItemsCount() {
+    public int getOrderDetailsItemsCount() {
         try {
-            distributorUI.waitForVisibility(lbl_orderDetailsLineItems);
-            return distributorUI.countElements(lbl_orderDetailsLineItems);
+            distributorUI.uiScrollBottomOfPage();
+            return Integer.parseInt(distributorUI.getText(lbl_orderDetailsLineItems));
         } catch (Exception e) {
             return 0;
         }

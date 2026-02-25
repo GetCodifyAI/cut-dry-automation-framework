@@ -3557,8 +3557,8 @@ public class Customer {
         return customersPage.getFirstOrderItemsCount();
     }
 
-    public static int getOrderDetailsLineItemsCount() {
-        return customersPage.getOrderDetailsLineItemsCount();
+    public static int getOrderDetailsItemsCount() {
+        return customersPage.getOrderDetailsItemsCount();
     }
 
     public static boolean isOrderReferenceColumnHeaderDisplayed() {
