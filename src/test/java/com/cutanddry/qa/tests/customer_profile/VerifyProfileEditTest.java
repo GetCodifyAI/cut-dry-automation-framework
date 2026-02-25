@@ -1,5 +1,5 @@
 package com.cutanddry.qa.tests.customer_profile;
-
+import java.util.Random;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.functions.Customer;
@@ -17,7 +17,9 @@ public class VerifyProfileEditTest extends TestBase {
     String CustomerCode = "16579";
     String UserName = "Test user";
     String EditedUserName = "Test user Edit";
-    String EditedEmail = "TestuserEdit@gmail.com";
+    Random random = new Random();
+    int randomNumber = 1000 + random.nextInt(9000);
+    String EditedEmail = "TestuserEdit" + randomNumber + "@cutanddry.com";
     String UserEmail = "Testuser@gmail.com";
 
     @BeforeMethod

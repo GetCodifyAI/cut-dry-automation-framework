@@ -36,7 +36,7 @@ public class VerifyTheDisablePayForTheCustomerThroughSupplierConfigTest extends 
         InternalTools.navigateToConfigureSupplier();
         InternalTools.navigateToIndependentCompEditDetails();
         InternalTools.navigateToPayDetailsTab();
-        InternalTools.clickPayEnabledToggle(true);
+        InternalTools.clickPayEnabledToggle(false);
         InternalTools.addCustomerToPayDisable(restaurantName);
         InternalTools.clickSave();
       //  softAssert.assertTrue(InternalTools.isSuccessPopUpDisplayed(),"change not save");
