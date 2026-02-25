@@ -1,5 +1,6 @@
 package com.cutanddry.qa.pages;
 
+import com.cutanddry.qa.common.Constants;
 import org.openqa.selenium.By;
 
 public class InternalToolsPage extends LoginPage {
@@ -93,7 +94,7 @@ public class InternalToolsPage extends LoginPage {
     By txt_createNewDPGroup = By.xpath("//div[contains(text(),'Create New DP Group')]");
     By lbl_groupName = By.xpath("//label[text()='Group Name']/following-sibling::input");
     By lbl_description = By.xpath("//label[text()='Description']/following-sibling::textarea");
-    By lbl_attached_DPs = By.xpath("//label[text()='Attached DPs']/following-sibling::div//input");
+    By lbl_attached_DPs = By.xpath("//label[text()='Attached DPs']/following-sibling::div//input/ancestor::div[3]/div[1]");
     String attachedDps = "//label[text()='Attached DPs']/following-sibling::*//div[text()='DISTRIBUTOR']";
     By allowCompanySwitching = By.xpath("//label[text()='Allow Company Switching']/preceding-sibling::input[@type='checkbox']");
     By createGroup = By.xpath("(//button[contains(text(),'Create Group')])[2]");
@@ -121,7 +122,7 @@ public class InternalToolsPage extends LoginPage {
     By ShowSubstitutesModalInPortalToggleStable1 = By.xpath("//div[contains(text(), 'Show substitutions modal in portal:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     By AllowOrderingDiscontinuedToggleStable = By.xpath("//div[contains(text(), 'Allow ordering discontinued items when substitutes are available:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By AllowOrderingDiscontinuedToggleStable1 = By.xpath("//div[contains(text(), 'Allow ordering discontinued items when substitutes are available:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
-
+    By TaskManagementTxt = By.xpath("//h2[contains(text(),'Task Management')]");
 
 
 
@@ -660,6 +661,10 @@ public class InternalToolsPage extends LoginPage {
     }
     public void clickOnTaskManagement(){
         distributorUI.click(task_management);
+    }
+    public void navigateToTaskManagement(){
+        distributorUI.navigateToURL(Constants.TASK_MANAGEMENT);
+        distributorUI.waitForVisibility(TaskManagementTxt);
     }
     public boolean isParentChildTaskDisplayed(String formID){
         return distributorUI.isDisplayed(By.xpath(taskManagerParentChildTask.replace("FORMID","Form " + formID)));

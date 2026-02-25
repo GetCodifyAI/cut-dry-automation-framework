@@ -315,6 +315,9 @@ public class InternalTools {
     public static void navigateToTaskManagementTab(){
         internalToolsPage.clickOnTaskManagement();
     }
+    public static void navigateToTaskManagement(){
+        internalToolsPage.navigateToTaskManagement();
+    }
     public static void runParentChildTask(String formID){
         if(internalToolsPage.isParentChildTaskDisplayed(formID)){
             internalToolsPage.clickRunLocallyOnParentChildTask(formID);
