@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyProfileDeleteTest extends TestBase {
     static User user;
     String CustomerCode = "16579";
-    String UserName = "Test user";
+    String UserName = "Test user Edit";
 
 
     @BeforeMethod
