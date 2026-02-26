@@ -3636,6 +3636,69 @@ public class Customer {
         return customersPage.isSimpleListSortingProperlyWorking(title);
     }
 
+    public static void setItemQuantityFirstRow(int quantity) throws InterruptedException {
+        customersPage.setItemQuantityFirstRow(quantity);
+    }
+
+    public static boolean isMaximumQuantityExceededModalDisplayed() {
+        return customersPage.isMaximumQuantityExceededModalDisplayed();
+    }
+
+    public static String getMaximumQuantityExceededModalMessage() {
+        return customersPage.getMaximumQuantityExceededModalMessage();
+    }
+
+    public static void dismissMaximumQuantityExceededModal() throws InterruptedException {
+        customersPage.dismissMaximumQuantityExceededModal();
+    }
+
+    public static boolean isOrderGuideDisplayed() {
+        return customersPage.isOrderGuideDisplayed();
+    }
+
+    public static void clickPlusQryFirstRow() throws InterruptedException {
+        customersPage.clickPlusQryFirstRow();
+    }
+
+    public static void setItemQuantityPDP(int quantity) throws InterruptedException {
+        customersPage.setItemQuantityPDP(quantity);
+    }
+
+    public static String getItemQtyPDP() {
+        return customersPage.getItemQtyPDP();
+    }
+
+    public static void clickPlusQtyPDP() throws InterruptedException {
+        customersPage.clickPlusQtyPDP();
+    }
+
+    public static void setItemQuantityCatalogFirstRow(int quantity) throws InterruptedException {
+        customersPage.setItemQuantityCatalogFirstRow(quantity);
+    }
+
+    public static String getItemQtyCatalogFirstRow() {
+        return customersPage.getItemQtyCatalogFirstRow();
+    }
+
+    public static void clickPlusQtyCatalogFirstRow() throws InterruptedException {
+        customersPage.clickPlusQtyCatalogFirstRow();
+    }
+
+    public static void setItemQuantityReviewFirstRow(int quantity) throws InterruptedException {
+        customersPage.setItemQuantityReviewFirstRow(quantity);
+    }
+
+    public static String getItemQtyReviewFirstRow() {
+        return customersPage.getItemQtyReviewFirstRow();
+    }
+
+    public static void clickPlusQtyReviewFirstRow() throws InterruptedException {
+        customersPage.clickPlusQtyReviewFirstRow();
+    }
+
+    public static boolean isCatalogTextDisplayed() {
+        return customersPage.isCatalogTextDisplayed();
+    }
 
 }
 

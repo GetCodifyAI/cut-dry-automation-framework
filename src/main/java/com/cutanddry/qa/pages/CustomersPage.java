@@ -6009,4 +6009,106 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
 
 
 
+    By lbl_maximumQuantityExceededModal = By.xpath("//h2[contains(text(),'Maximum Quantity Exceeded')]");
+    By lbl_maximumQuantityExceededMessage = By.xpath("//div[contains(text(),'maximum quantity') or contains(text(),'1,999')]");
+    By btn_dismissMaxQuantityModal = By.xpath("//button[contains(text(),'OK') or contains(text(),'Close')]");
+    By lbl_orderGuideText = By.xpath("//span[text()='Order Guide'] | //h2[text()='Order Guide']");
+
+    public void setItemQuantityFirstRow(int quantity) throws InterruptedException {
+        distributorUI.waitForVisibility(tbx_itemQuantityinFirstRow);
+        distributorUI.clear(tbx_itemQuantityinFirstRow);
+        distributorUI.sendKeys(tbx_itemQuantityinFirstRow, String.valueOf(quantity));
+        distributorUI.waitForCustom(2000);
+    }
+
+    public boolean isMaximumQuantityExceededModalDisplayed() {
+        try {
+            distributorUI.waitForVisibility(lbl_maximumQuantityExceededModal, 5);
+            return distributorUI.isDisplayed(lbl_maximumQuantityExceededModal);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public String getMaximumQuantityExceededModalMessage() {
+        try {
+            distributorUI.waitForVisibility(lbl_maximumQuantityExceededMessage, 5);
+            return distributorUI.getText(lbl_maximumQuantityExceededMessage);
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public void dismissMaximumQuantityExceededModal() throws InterruptedException {
+        distributorUI.waitForClickability(btn_dismissMaxQuantityModal);
+        distributorUI.click(btn_dismissMaxQuantityModal);
+        distributorUI.waitForCustom(2000);
+    }
+
+    public boolean isOrderGuideDisplayed() {
+        try {
+            return distributorUI.isDisplayed(lbl_orderGuideText);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    By tbx_itemQuantityPDP = By.xpath("(//input[@data-input='quantityInput'])[1]");
+    By btn_plusQtyPDP = By.xpath("(//input[@data-input='quantityInput']/parent::div/following-sibling::div[1]//*[name()='svg' and @data-icon='plus'])[1]");
+    By tbx_itemQuantityCatalogFirstRow = By.xpath("(//input[@data-input='quantityInput'])[1]");
+    By btn_plusQtyCatalogFirstRow = By.xpath("(//input[@data-input='quantityInput']/parent::div/following-sibling::div[1]//*[name()='svg' and @data-icon='plus'])[1]");
+    By tbx_itemQuantityReviewFirstRow = By.xpath("(//input[@data-input='quantityInput'])[1]");
+    By btn_plusQtyReviewFirstRow = By.xpath("(//input[@data-input='quantityInput']/parent::div/following-sibling::div[1]//*[name()='svg' and @data-icon='plus'])[1]");
+
+    public void setItemQuantityPDP(int quantity) throws InterruptedException {
+        distributorUI.waitForVisibility(tbx_itemQuantityPDP);
+        distributorUI.clear(tbx_itemQuantityPDP);
+        distributorUI.sendKeys(tbx_itemQuantityPDP, String.valueOf(quantity));
+        distributorUI.waitForCustom(2000);
+    }
+
+    public String getItemQtyPDP() {
+        return distributorUI.getText(tbx_itemQuantityPDP, "value");
+    }
+
+    public void clickPlusQtyPDP() throws InterruptedException {
+        distributorUI.waitForClickability(btn_plusQtyPDP);
+        distributorUI.click(btn_plusQtyPDP);
+        distributorUI.waitForCustom(2000);
+    }
+
+    public void setItemQuantityCatalogFirstRow(int quantity) throws InterruptedException {
+        distributorUI.waitForVisibility(tbx_itemQuantityCatalogFirstRow);
+        distributorUI.clear(tbx_itemQuantityCatalogFirstRow);
+        distributorUI.sendKeys(tbx_itemQuantityCatalogFirstRow, String.valueOf(quantity));
+        distributorUI.waitForCustom(2000);
+    }
+
+    public String getItemQtyCatalogFirstRow() {
+        return distributorUI.getText(tbx_itemQuantityCatalogFirstRow, "value");
+    }
+
+    public void clickPlusQtyCatalogFirstRow() throws InterruptedException {
+        distributorUI.waitForClickability(btn_plusQtyCatalogFirstRow);
+        distributorUI.click(btn_plusQtyCatalogFirstRow);
+        distributorUI.waitForCustom(2000);
+    }
+
+    public void setItemQuantityReviewFirstRow(int quantity) throws InterruptedException {
+        distributorUI.waitForVisibility(tbx_itemQuantityReviewFirstRow);
+        distributorUI.clear(tbx_itemQuantityReviewFirstRow);
+        distributorUI.sendKeys(tbx_itemQuantityReviewFirstRow, String.valueOf(quantity));
+        distributorUI.waitForCustom(2000);
+    }
+
+    public String getItemQtyReviewFirstRow() {
+        return distributorUI.getText(tbx_itemQuantityReviewFirstRow, "value");
+    }
+
+    public void clickPlusQtyReviewFirstRow() throws InterruptedException {
+        distributorUI.waitForClickability(btn_plusQtyReviewFirstRow);
+        distributorUI.click(btn_plusQtyReviewFirstRow);
+        distributorUI.waitForCustom(2000);
+    }
+
 }
