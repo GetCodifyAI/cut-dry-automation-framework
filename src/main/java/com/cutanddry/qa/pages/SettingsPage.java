@@ -1,6 +1,7 @@
 package com.cutanddry.qa.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,6 +9,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
@@ -73,8 +75,8 @@ public class SettingsPage extends LoginPage{
     By txt_customerSpecific = By.xpath("//div[text()='Customer Specific']");
     By btn_save_= By.xpath("//button[text()= 'Save']");
     By txt_lastDate = By.xpath("((//button[*[local-name()='svg' and @data-icon='minus']])[last()]/parent::div/following-sibling::div)[1]");
-    By dropdown_items = By.xpath("//div[@class='cd_themed_select__menu css-26l3qy-menu']");
-    By dropdown_deliveryDate = By.xpath("//div[@class='text-truncate']");
+    By dropdown_items = By.xpath("//div[contains(@class,'react-datepicker__day') and @aria-disabled='false' and not(contains(@class,'outside-month'))]");
+    By dropdown_deliveryDate = By.xpath("//input[@placeholder='Select date...']");
     By btn_minus = By.xpath("(//button[*[local-name()='svg' and @data-icon='minus']])[last()]");
     By txt_addCustomerCode =    By.xpath("//div[text()='Add Customer Codes']/following::input[@type='text']");
    /* By lbl_customerSpecDisabled = By.xpath("//label[text()='Customer Specific Delivery Days']/preceding-sibling::input[@type='checkbox' and @disabled]");
@@ -659,22 +661,51 @@ public class SettingsPage extends LoginPage{
         return dates.contains(formattedDate);
     }
 
+//    public boolean isHolidayInDelivery(String date) throws ParseException {
+//        distributorUI.refreshPage();
+//        distributorUI.waitForClickability(dropdown_deliveryDate);
+//
+//        // Parse the input date (e.g., "Friday 12/20/2024")
+//        SimpleDateFormat inputFormatter = new SimpleDateFormat("EEEE MM/dd/yyyy");
+//        Date parsedDate = inputFormatter.parse(date);
+//
+//        // Format the parsed date to match the dropdown format (e.g., "Fri, Dec 20")
+//        SimpleDateFormat dropdownFormatter = new SimpleDateFormat("EEE, MMM dd");
+//        String formattedDate = dropdownFormatter.format(parsedDate);
+//
+//        distributorUI.click(dropdown_deliveryDate);
+//        String dates = distributorUI.getText(dropdown_items);
+//        return dates.contains(formattedDate);
+//
+//    }
+
     public boolean isHolidayInDelivery(String date) throws ParseException {
+
         distributorUI.refreshPage();
         distributorUI.waitForClickability(dropdown_deliveryDate);
 
-        // Parse the input date (e.g., "Friday 12/20/2024")
-        SimpleDateFormat inputFormatter = new SimpleDateFormat("EEEE MM/dd/yyyy");
+        SimpleDateFormat inputFormatter =
+                new SimpleDateFormat("EEEE MM/dd/yyyy", Locale.ENGLISH);
+
         Date parsedDate = inputFormatter.parse(date);
 
-        // Format the parsed date to match the dropdown format (e.g., "Fri, Dec 20")
-        SimpleDateFormat dropdownFormatter = new SimpleDateFormat("EEE, MMM dd");
-        String formattedDate = dropdownFormatter.format(parsedDate);
+        // Extract day number
+        SimpleDateFormat dayFormatter = new SimpleDateFormat("d");
+        String dayNumber = dayFormatter.format(parsedDate);
 
         distributorUI.click(dropdown_deliveryDate);
-        String dates = distributorUI.getText(dropdown_items);
-        return dates.contains(formattedDate);
 
+        List<WebElement> activeDates = driver.findElements(
+                By.xpath("//div[contains(@class,'react-datepicker__day') and @aria-disabled='false' and not(contains(@class,'outside-month'))]")
+        );
+
+        for (WebElement day : activeDates) {
+            if (day.getText().equals(dayNumber)) {
+                return true;  // Date is active (NOT holiday)
+            }
+        }
+
+        return false;  // Date not found in active dates (holiday/disabled)
     }
 
     public void clickOnMinusBtn() {
