@@ -1509,7 +1509,7 @@ public KeywordBase clickF12Mac() {
         // Click for ascending sort
         logger.info("Clicking column header '{}' for ascending sort", columnHeader);
         click(headerLocator);
-        waitForCustom(5000);
+        waitForCustom(10000);
 
         List<WebElement> ascElements = driver.findElements(By.xpath(cellXpath));
         List<String> ascValues = new ArrayList<>();
@@ -1530,7 +1530,7 @@ public KeywordBase clickF12Mac() {
         // Click for descending sort
         logger.info("Clicking column header '{}' for descending sort", columnHeader);
         click(headerLocator);
-        waitForCustom(5000);
+        waitForCustom(10000);
 
         List<WebElement> descElements = driver.findElements(By.xpath(cellXpath));
         List<String> descValues = new ArrayList<>();
