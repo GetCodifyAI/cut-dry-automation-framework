@@ -27,6 +27,7 @@ public class VerifyOrderSettingGlobalHolidayTest extends TestBase {
     static String customerPhoneNo = HolidayData.Agave_Big_Sky_PHONE_NO;
     SoftAssert softAssert;
 
+
     @BeforeMethod
     public void setUp() {
         initialization();
@@ -38,7 +39,6 @@ public class VerifyOrderSettingGlobalHolidayTest extends TestBase {
          softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
-
         Login.switchIntoNewTab();
         Login.navigateToDistributorPortal(DP);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
@@ -64,6 +64,8 @@ public class VerifyOrderSettingGlobalHolidayTest extends TestBase {
 
         Customer.increaseFirstRowQtyByOne();
         Customer.stableCheckoutItems();
+        boolean status = Settings.isHolidayInDelivery(holidayDate);
+        System.out.println("Holiday in delivery dates: " + status);
 
 //        softAssert.assertFalse(Settings.isHolidayInDeliveryOrPuckUpOrMailDates(),"distributor setting error");
         softAssert.assertFalse(Settings.isHolidayInDelivery(holidayDate),"distributor setting error");
