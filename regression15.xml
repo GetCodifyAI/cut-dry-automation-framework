@@ -33,11 +33,11 @@
 <!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerCanRejectOrderWhenOperatorExclusiveApprovalTypeTest"/>-->
 
 <!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderGuideOrderApprovalUIFeatureTest" />-->
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderApprovalSettingsReflectedWhileOrderingTest" />
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyMultiLocationSummeryWidgetWhenNoApprovalsTest" />
-<!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpOrderApprovalsAndRejectionsDisplayedCorrectlyTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderApprovalSettingsReflectedWhileOrderingTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyMultiLocationSummeryWidgetWhenNoApprovalsTest" />-->
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpOrderApprovalsAndRejectionsDisplayedCorrectlyTest"/>
 
-<!--            <class name="com.cutanddry.qa.tests.customers.VerifyNoMinimumEnforcementOnPickupOrdersTest"/>-->
+            <class name="com.cutanddry.qa.tests.customers.VerifyNoMinimumEnforcementOnPickupOrdersTest"/>
 <!--            <class name="com.cutanddry.qa.tests.customers.VerifySoftOrderMinimumCustomerLevelOverrideTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.customers.VerifyExemptFromOrderMinimumCustomerLevelOverrideTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.customers.VerifyPropItemsAreOnlyDisplayedForPropCustomersTest"/>-->
