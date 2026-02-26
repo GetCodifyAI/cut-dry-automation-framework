@@ -76,7 +76,7 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
     String certificateOption = "(//div[contains(text(),'CERTIFICATEOPTION')])[last()]";
     By productStatusDropdown = By.xpath("//div[normalize-space()='Product Status']/following::div[@id='config-active']");
     String productStatus = "(//div[contains(text(),'PRODSTATUS')])[last()]";
-    String productStatusInGrid = "//tr/td[contains(text(),'PRODID')]/following-sibling::td[8]";
+    String productStatusInGrid = "//tr[td[normalize-space()='PRODID']]/td[7]";
     By searchInCatalogPreview = By.xpath("//div//input[contains(@placeholder,'Search catalog')]");
     String clickOnItemInPreviewCatalog = "//div[contains(@class, ' _du1frc')]//div[contains(@class, '_1evg3oy') and contains(., 'ITEMCODE')]";
     String itemCodeDetails = "//div[contains(text(),'ITEMCODE')]";
@@ -344,7 +344,8 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     }
     public String getItemCodeFromCatalogDataPage(){
         distributorUI.waitForVisibility(criticalInfoExpander);
-        distributorUI.clickUsingJavaScript(criticalInfoExpander);
+        //distributorUI.clickUsingJavaScript(criticalInfoExpander);
+        distributorUI.waitForVisibility(ItemCodeInCatalogData);
         return distributorUI.getText(ItemCodeInCatalogData,"value");
     }
     public void clickEditOnProductConfigs(){
@@ -840,7 +841,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     public void clickOnStorageMethod(String storageMethod) throws InterruptedException {
         distributorUI.waitForCustom(3000);
         distributorUI.waitForVisibility(criticalInfoExpander);
-        distributorUI.clickUsingJavaScript(criticalInfoExpander);
+        //distributorUI.clickUsingJavaScript(criticalInfoExpander);
         distributorUI.click(storageMethodDropDown);
         distributorUI.waitForVisibility(By.xpath(storageMethodOption.replace("STORAGEMETHOD",storageMethod)));
         distributorUI.click(By.xpath(storageMethodOption.replace("STORAGEMETHOD",storageMethod)));
@@ -850,7 +851,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     }
     public void typeNewDescription(String description) throws InterruptedException {
         distributorUI.waitForVisibility(criticalInfoExpander);
-        distributorUI.clickUsingJavaScript(criticalInfoExpander);
+        //distributorUI.clickUsingJavaScript(criticalInfoExpander);
         distributorUI.scrollToElement(textdescriptionTab);
         distributorUI.click(textdescriptionTab);
         distributorUI.click(txt_description);

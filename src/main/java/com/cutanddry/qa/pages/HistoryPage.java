@@ -24,7 +24,7 @@ public class HistoryPage extends LoginPage{
     By btn_checkInOrder = By.xpath("//button[contains(., 'Check-In Order')]");
     By lbl_orderDateColumn = By.xpath("//span[contains(text(),'Order Date')]");
     By lbl_orderDateArrowUp = By.xpath("//span[contains(text(),'Order Date')]/*[name()='svg' and contains(@data-icon, 'arrow-up')]");
-    By btn_history = By.xpath("//a[contains(., 'History')]");
+    By btn_history = By.xpath("(//a[contains(., 'History')])[1]");
     By btn_search = By.xpath("//input[@placeholder='Search' and contains(@class, 'form-control')]");
     String search_result = "//tr[contains(@href,'/orders-revised/view-one')][1]//following-sibling::td[contains(.,'ORDERID')]";
     By first_row_order_details = By.xpath("//tr[2]/td[4]");
@@ -186,7 +186,7 @@ public class HistoryPage extends LoginPage{
 
     }
     public void clickHistory(){
-        distributorUI.click(btn_history);
+        distributorUI.clickWithFallback(btn_history);
         try {
             distributorUI.waitForCustom(3000);
         } catch (InterruptedException e) {

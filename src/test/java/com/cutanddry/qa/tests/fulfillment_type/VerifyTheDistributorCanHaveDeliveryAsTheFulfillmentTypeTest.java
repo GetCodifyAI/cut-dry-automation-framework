@@ -42,6 +42,7 @@ public class VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeTest extends
         Dashboard.navigateToOrderSettings();
         softAssert.assertTrue(Settings.isOrderSettingsTextDisplayed(),"navigation error");
         Settings.deliveryDateCheckBox(true);
+        Settings.removeAllHolidaysIfAvailable();
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);

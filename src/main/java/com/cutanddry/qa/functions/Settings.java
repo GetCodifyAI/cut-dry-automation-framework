@@ -234,6 +234,9 @@ public class Settings {
     public static void clickOnRemoveHoliday() {
         settingsPage.clickOnMinusBtn();
     }
+    public static void removeAllHolidaysIfAvailable() throws InterruptedException {
+        settingsPage.removeAllHolidayDates();
+    }
     public static void uncheckDeliveryDays() {
         settingsPage.uncheckDeliveryDays();
     }

@@ -3,10 +3,7 @@ package com.cutanddry.qa.tests.orders;
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.ParentChildOGData;
-import com.cutanddry.qa.functions.Customer;
-import com.cutanddry.qa.functions.Dashboard;
-import com.cutanddry.qa.functions.History;
-import com.cutanddry.qa.functions.Login;
+import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -28,6 +25,9 @@ public class VerifyTheOrderEditInvalidOrderErrorMessageTest extends TestBase {
     static String customerCode = "487310251";
     int maxAttempts = 7;
     static String orderGuide = "Dv - Westminister";
+    static String IntegrationData = "481988741";
+    static String featureKey = "minimum";
+    static String featureValue = "1";
 
     @BeforeMethod
     public void setUp(){
@@ -40,6 +40,10 @@ public class VerifyTheOrderEditInvalidOrderErrorMessageTest extends TestBase {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+
+        Login.navigateToNode(IntegrationData);
+        Login.setValueToNode(featureKey,featureValue);
+
         Login.navigateToDistributorPortal(DP);
         //Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
 

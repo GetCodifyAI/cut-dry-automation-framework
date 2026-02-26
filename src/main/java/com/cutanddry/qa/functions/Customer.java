@@ -253,6 +253,9 @@ public class Customer {
             }
             customersPage.clickOnBack();
         }
+        if (customersPage.isDuplicatePopupDisplayed()){
+            customersPage.clickYesDuplicatePopup();
+        }
         if(customersPage.isTooManyOrdersErrorDisplayed()){
             customersPage.clickOK();
             if(customersPage.isSubstitutesPopupDisplayedSub()){
@@ -263,9 +266,9 @@ public class Customer {
                 customersPage.clickCloseSub();
             }
             customersPage.submitOrder();
-        }
-        if (customersPage.isDuplicatePopupDisplayed()){
-            customersPage.clickYesDuplicatePopup();
+            if (customersPage.isDuplicatePopupDisplayed()){
+                customersPage.clickYesDuplicatePopup();
+            }
         }
     }
     public static boolean isThankingForOrderPopupDisplayed(){
@@ -2703,8 +2706,11 @@ public class Customer {
     public static boolean isChildSettingUpdated(String message) throws InterruptedException {
         return customersPage.isChildSettingUpdated(message);
     }
-    public static void selectNewlyCreatedOrderGuide(String name){
+    public static void selectNewlyCreatedOrderGuide(String name) throws InterruptedException {
         customersPage.selectNewlyCreatedOrderGuide(name);
+        if (customersPage.isPreviousDraftOrderNoDisplayedSub()){
+            customersPage.clickPreviousDraftOrderNo();
+        }
     }
     public static void clickOnDeleteOrderGuide(){
         customersPage.clickOnDeleteOrderGuide();
@@ -3557,8 +3563,8 @@ public class Customer {
         return customersPage.getFirstOrderItemsCount();
     }
 
-    public static int getOrderDetailsLineItemsCount() {
-        return customersPage.getOrderDetailsLineItemsCount();
+    public static int getOrderDetailsItemsCount() {
+        return customersPage.getOrderDetailsItemsCount();
     }
 
     public static boolean isOrderReferenceColumnHeaderDisplayed() {
@@ -3625,6 +3631,9 @@ public class Customer {
     public static void clickThreeDotVertical(){customersPage.clickThreeDotVertical();}
     public static void typeOnStandingOrderTitle(String title) throws InterruptedException {
         customersPage.typeOnStandingOrderTitle(title);
+    }
+    public static boolean isSimpleListSorted(String title) throws InterruptedException {
+        return customersPage.isSimpleListSortingProperlyWorking(title);
     }
 
 
