@@ -80,6 +80,8 @@ public class OrdersPage extends LoginPage{
     String lbl_orderStatusOption = "//a[contains(text(),'STATUS')]";
     By txt_description = By.xpath("(//textarea[@class='form-control'])[1]");
     By btn_timeline = By.xpath("//a[text()='Timeline' and @role='tab']");
+    By btn_items = By.xpath("//a[text()='Items' and @role='tab']");
+    By lbl_orderedItemsSection = By.xpath("//div[contains(text(),'Ordered Items')]");
     By timestampTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[1]");
     By statusTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[2]");
     By organizationTimeline = By.xpath("//table[@class='table table-hover']/tbody/tr/td[3]");
@@ -160,6 +162,48 @@ public class OrdersPage extends LoginPage{
 
     public void clickTimeline(){
         distributorUI.click(btn_timeline);
+    }
+
+    public void clickItems(){
+        distributorUI.click(btn_items);
+    }
+
+    public boolean isItemsTabActive(){
+        try {
+            distributorUI.waitForVisibility(btn_items);
+            String classAttribute = distributorUI.getText(btn_items, "class");
+            return classAttribute != null && classAttribute.contains("active");
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean isTimelineTabActive(){
+        try {
+            distributorUI.waitForVisibility(btn_timeline);
+            String classAttribute = distributorUI.getText(btn_timeline, "class");
+            return classAttribute != null && classAttribute.contains("active");
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean isOrderedItemsSectionDisplayed(){
+        try {
+            distributorUI.waitForVisibility(lbl_orderedItemsSection);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(lbl_orderedItemsSection);
+    }
+
+    public boolean isTimelineContentDisplayed(){
+        try {
+            distributorUI.waitForVisibility(timestampTimeline);
+        } catch (Exception e){
+            return false;
+        }
+        return distributorUI.isDisplayed(timestampTimeline);
     }
 
 

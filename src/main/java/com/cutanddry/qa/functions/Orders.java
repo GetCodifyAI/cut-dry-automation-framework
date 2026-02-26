@@ -229,6 +229,26 @@ public class Orders {
         ordersPage.clickTimeline();
     }
 
+    public static void clickItems(){
+        ordersPage.clickItems();
+    }
+
+    public static boolean isItemsTabActive(){
+        return ordersPage.isItemsTabActive();
+    }
+
+    public static boolean isTimelineTabActive(){
+        return ordersPage.isTimelineTabActive();
+    }
+
+    public static boolean isOrderedItemsSectionDisplayed(){
+        return ordersPage.isOrderedItemsSectionDisplayed();
+    }
+
+    public static boolean isTimelineContentDisplayed(){
+        return ordersPage.isTimelineContentDisplayed();
+    }
+
     public static String[] getTimelineData(){
         return ordersPage.getTimelineData();
     }
