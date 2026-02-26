@@ -17,11 +17,11 @@ import org.testng.asserts.SoftAssert;
 public class VerifyNewUserCanNotHaveExistingEmailMobileNumberTest extends TestBase {
     static User user;
     static String distributor = CustomerData.DISTRIBUTOR_NAME_MAPLEVALE;
-    static String CustomerCode = "37218";
+    static String CustomerCode = "37215";
     static String UserName = "TestUserOne";
-    static String UserEmail = "skriley17@gmail.com";
-    static String UserMobileNum = "17162391258";
-    static String ExistingUserName = "Marion Jordan";
+    static String UserEmail = "sarahmallare319@gmail.com";
+    static String UserMobileNum = "17167253873";
+    static String ExistingUserName = "Mike Carr";
 
     @BeforeMethod
     public void setUp(){

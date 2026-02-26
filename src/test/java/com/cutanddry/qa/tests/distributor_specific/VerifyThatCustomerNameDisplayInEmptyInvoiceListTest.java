@@ -22,7 +22,7 @@ public class VerifyThatCustomerNameDisplayInEmptyInvoiceListTest extends TestBas
     static User user;
     static String DP = "106701125 - Cut+dry Agent - Cream Co. Meats";
     static String customerId = "7478";
-    static String emptyStateMessage ="Could not find invoices for Cu11177 Azasu Kitchen (7478) - Pacifica.";
+    static String emptyStateMessage ="Could not find invoices for Azasu Kitchen (CU11177 Azasu Kitchen) - Pacifica.";
     String CustomerFilterOption = "- Past due";
 
 
