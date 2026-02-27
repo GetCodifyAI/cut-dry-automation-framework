@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyPendingOrderIndicatorInNavigationTest extends TestBase {
     User user;
-    String DistributorName = "Cut+Dry Agent - Cooks Company Produce";
+    String DistributorName = "46017669 - Nathan Morales - Independent Foods Co";
 
 
     @BeforeMethod
