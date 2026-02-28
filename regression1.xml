@@ -64,6 +64,8 @@
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyAddingAnotherStandingOrderTest" />
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyDeletingStandingOrdersTest" />
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyManageStandingOrdersCTAFunctionalityInOrderGuideTest" />
+            <class name="com.cutanddry.qa.tests.standing_orders.VerifyTheStandingOrderForChildOrderGuideAccountsTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyEditOrderButtonFunctionalityInDistributorMainStandingEditOrderFlowsTest" />
 
             <class name="com.cutanddry.qa.tests.boost.VerifyBroadcastMessageTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyTopCategoryPicksTest" />
