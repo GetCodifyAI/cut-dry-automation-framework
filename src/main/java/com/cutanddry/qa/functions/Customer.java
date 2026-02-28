@@ -870,6 +870,9 @@ public class Customer {
     public static void EditUserDetails(String username){
         customersPage.clickOnUserDetailsEditBtn(username);
     }
+    public static void selectOperatorUserRole(String role){
+        customersPage.selectUserRole(role);
+    }
     public static void RemoveUser(){
         customersPage.clickOnRemoveUser();
     }

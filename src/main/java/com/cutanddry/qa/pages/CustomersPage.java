@@ -238,6 +238,8 @@ By input_selectItem = By.xpath("//div[contains(text(),'Search items by name or c
     By SuccessfulRemovedMsg = By.xpath("//div[contains(text(),'Successfully removed the user')]");
     String UserName = "//span[text()='USERNAME']";
     String UserDetailsEditBtn = "//div[@class='_du1frc list-group-item']//span[text()='USERNAME']/../following-sibling::div[@class='col-2']";
+    By roleSelectionDropdown = By.xpath("(//*[contains(text(),'Role')]/../following-sibling::div//div)[2]");
+    String selectRole = "(//*[contains(text(),'Role')]/../following-sibling::div//div)//div[contains(text(),'ROLE')]";
     By RemoveUserTxt = By.xpath("//span[contains(text(),'Remove user')]");
     By DeleteCnfrmOverlay = By.xpath("//h2[contains(text(),'Are you sure you want to remove this user')]");
     By DeleteCnfrmYesBtn = By.xpath("//button[contains(text(),'Yes')]");
@@ -2091,6 +2093,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickOnUserDetailsEditBtn(String Username){
         distributorUI.isDisplayed(By.xpath(UserDetailsEditBtn.replace("USERNAME",Username)));
         distributorUI.click(By.xpath(UserDetailsEditBtn.replace("USERNAME",Username)));
+    }
+    public void selectUserRole(String role){
+        distributorUI.waitForVisibility(roleSelectionDropdown);
+        distributorUI.click(roleSelectionDropdown);
+        distributorUI.click(By.xpath(selectRole.replace("ROLE",role)));
+        if(distributorUI.isElementEnabled(SaveChangeswithoutSendingInviteBtn)){
+            distributorUI.click(SaveChangeswithoutSendingInviteBtn);
+        };
     }
     public void clickOnRemoveUser(){
         distributorUI.waitForVisibility(RemoveUserTxt);
