@@ -23,15 +23,12 @@ pipeline {
 //         parallelsAlwaysFailFast()
     }
     
-    triggers {
-        // Nightly and daily tests - matches CircleCI schedule (22:00 and 04:00 UTC weekdays)
-        cron('H 22 * * 1-5')
-    }
+    // triggers removed - pipeline runs manually for endurance testing
     
     stages {
         stage('Parallel Test Execution') {
             parallel {
-                stage('Regression 1 - Order Guide & Reports') {
+                stage('Regression 1 - Catalog') {
                     agent any
                     steps {
                         script {
@@ -47,7 +44,7 @@ pipeline {
                     }
                 }
                 
-                stage('Regression 2 - Track & Order Desk') {
+                stage('Regression 2 - Track') {
                     agent any
                     steps {
                         script {
@@ -63,7 +60,7 @@ pipeline {
                     }
                 }
                 
-                stage('Regression 3 - Catalog & Pay') {
+                stage('Regression 3 - Order Guide') {
                     agent any
                     steps {
                         script {
@@ -79,7 +76,7 @@ pipeline {
                     }
                 }
                 
-                stage('Regression 4 - Customers') {
+                stage('Regression 4 - Multi UOM & Catalog Access') {
                     agent any
                     steps {
                         script {
@@ -95,7 +92,7 @@ pipeline {
                     }
                 }
                 
-                stage('Regression 5 - Orders') {
+                stage('Regression 5 - Distributor Specific') {
                     agent any
                     steps {
                         script {
@@ -111,7 +108,7 @@ pipeline {
                     }
                 }
                 
-                stage('Regression 6 - Multi UOM') {
+                stage('Regression 6 - Order Approval & Orders') {
                     agent any
                     steps {
                         script {
@@ -127,7 +124,7 @@ pipeline {
                     }
                 }
                 
-                stage('Regression 7 - Restaurant Portal') {
+                stage('Regression 7 - Customer Invoice & Customers') {
                     agent any
                     steps {
                         script {
@@ -143,7 +140,7 @@ pipeline {
                     }
                 }
                 
-                stage('Regression 8 - White Label') {
+                stage('Regression 8 - Parent Child OG & Settings') {
                     agent any
                     steps {
                         script {
@@ -159,7 +156,7 @@ pipeline {
                     }
                 }
                 
-                stage('Regression 9 - Operator Portal') {
+                stage('Regression 9 - Settings & Order Desk') {
                     agent any
                     steps {
                         script {
@@ -175,7 +172,7 @@ pipeline {
                     }
                 }
                 
-                stage('Regression 10 - Internal Tools') {
+                stage('Regression 10 - Pay & Standing Orders') {
                     agent any
                     steps {
                         script {
@@ -191,7 +188,7 @@ pipeline {
                     }
                 }
                 
-                stage('Regression 11 - Credit Requests') {
+                stage('Regression 11 - Customer Profile & Catalog Access') {
                     agent any
                     steps {
                         script {
@@ -207,7 +204,7 @@ pipeline {
                     }
                 }
                 
-                stage('Regression 12 - Scan to Order') {
+                stage('Regression 12 - Customer Catalog & Team') {
                     agent any
                     steps {
                         script {
@@ -223,7 +220,7 @@ pipeline {
                     }
                 }
                 
-                stage('Regression 13 - Purchase History') {
+                stage('Regression 13 - Boost & Orders') {
                     agent any
                     steps {
                         script {
@@ -239,7 +236,7 @@ pipeline {
                     }
                 }
 
-                stage('Regression 14 - New Tests') {
+                stage('Regression 14 - Team & Price') {
                     agent any
                     steps {
                         script {
@@ -255,51 +252,164 @@ pipeline {
                     }
                 }
 
-                stage('Regression 15 - New Tests Case') {
-                     agent any
-                     steps {
-                         script {
-                             runTestSuiteWithCleanup('regression15.xml', 'Part_Fifteen', 15)
-                         }
-                     }
-                     post {
-                         always {
-                             script {
-                                 archiveAndCleanup('15', 'Regression 15 Test Report')
-                             }
-                         }
-                     }
-                }
-                stage('Regression 16 - New Tests') {
-                     agent any
-                     steps {
-                         script {
-                             runTestSuiteWithCleanup('regression16.xml', 'Part_Sixteen', 16)
-                         }
-                     }
-                     post {
-                         always {
-                             script {
-                                 archiveAndCleanup('16', 'Regression 16 Test Report')
-                             }
-                         }
-                     }
+                stage('Regression 15 - Multi UOM & Draft') {
+                    agent any
+                    steps {
+                        script {
+                            runTestSuiteWithCleanup('regression15.xml', 'Part_Fifteen', 15)
+                        }
+                    }
+                    post {
+                        always {
+                            script {
+                                archiveAndCleanup('15', 'Regression 15 Test Report')
+                            }
+                        }
+                    }
                 }
 
-                stage('Regression 17 - New Tests') {
-                      agent any
-                      steps {
-                          script {
-                              runTestSuiteWithCleanup('regression17.xml', 'Part_Seventeen', 17)
-                          }
-                      }
-                      post {
-                          always {
-                              script {
-                                  archiveAndCleanup('17', 'Regression 17 Test Report')
-                              }
-                          }
-                      }
+                stage('Regression 16 - Pay & Catalog') {
+                    agent any
+                    steps {
+                        script {
+                            runTestSuiteWithCleanup('regression16.xml', 'Part_Sixteen', 16)
+                        }
+                    }
+                    post {
+                        always {
+                            script {
+                                archiveAndCleanup('16', 'Regression 16 Test Report')
+                            }
+                        }
+                    }
+                }
+
+                stage('Regression 17 - Reports & Customers') {
+                    agent any
+                    steps {
+                        script {
+                            runTestSuiteWithCleanup('regression17.xml', 'Part_Seventeen', 17)
+                        }
+                    }
+                    post {
+                        always {
+                            script {
+                                archiveAndCleanup('17', 'Regression 17 Test Report')
+                            }
+                        }
+                    }
+                }
+
+                stage('Regression 18 - Orders & E2E') {
+                    agent any
+                    steps {
+                        script {
+                            runTestSuiteWithCleanup('regression18.xml', 'Part_Eighteen', 18)
+                        }
+                    }
+                    post {
+                        always {
+                            script {
+                                archiveAndCleanup('18', 'Regression 18 Test Report')
+                            }
+                        }
+                    }
+                }
+
+                stage('Regression 19 - E2E & Catalog View') {
+                    agent any
+                    steps {
+                        script {
+                            runTestSuiteWithCleanup('regression19.xml', 'Part_Nineteen', 19)
+                        }
+                    }
+                    post {
+                        always {
+                            script {
+                                archiveAndCleanup('19', 'Regression 19 Test Report')
+                            }
+                        }
+                    }
+                }
+
+                stage('Regression 20 - Offline Ordering & Draft') {
+                    agent any
+                    steps {
+                        script {
+                            runTestSuiteWithCleanup('regression20.xml', 'Part_Twenty', 20)
+                        }
+                    }
+                    post {
+                        always {
+                            script {
+                                archiveAndCleanup('20', 'Regression 20 Test Report')
+                            }
+                        }
+                    }
+                }
+
+                stage('Regression 21 - Purchase History & Catalog Data') {
+                    agent any
+                    steps {
+                        script {
+                            runTestSuiteWithCleanup('regression21.xml', 'Part_TwentyOne', 21)
+                        }
+                    }
+                    post {
+                        always {
+                            script {
+                                archiveAndCleanup('21', 'Regression 21 Test Report')
+                            }
+                        }
+                    }
+                }
+
+                stage('Regression 22 - Order Desk & Customer Catalog') {
+                    agent any
+                    steps {
+                        script {
+                            runTestSuiteWithCleanup('regression22.xml', 'Part_TwentyTwo', 22)
+                        }
+                    }
+                    post {
+                        always {
+                            script {
+                                archiveAndCleanup('22', 'Regression 22 Test Report')
+                            }
+                        }
+                    }
+                }
+
+                stage('Regression 23 - Pay & Multi UOM') {
+                    agent any
+                    steps {
+                        script {
+                            runTestSuiteWithCleanup('regression23.xml', 'Part_TwentyThree', 23)
+                        }
+                    }
+                    post {
+                        always {
+                            script {
+                                archiveAndCleanup('23', 'Regression 23 Test Report')
+                            }
+                        }
+                    }
+                }
+
+                stage('Regression 24 - Credit Request & Fulfillment') {
+                    agent any
+                    steps {
+                        script {
+                            runTestSuiteWithCleanup('regression24.xml', 'Part_TwentyFour', 24)
+                        }
+                    }
+                    post {
+                        always {
+                            script {
+                                archiveAndCleanup('24', 'Regression 24 Test Report')
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -309,7 +419,7 @@ pipeline {
             steps {
                 script {
                     // Unstash all test results
-                    for (int i = 1; i <= 17; i++) {
+                    for (int i = 1; i <= 24; i++) {
                         try {
                             unstash "test-results-${i}"
                         } catch (Exception e) {
