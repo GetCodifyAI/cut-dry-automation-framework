@@ -3543,7 +3543,7 @@ public class Customer {
     public static boolean isCatalogFilterOnSaleTagDisplayed(String tag){
         return customersPage.isCatalogFilterOnSaleTagDisplayed(tag);
     }
-    public static void clickCatalogFilterAllItems(String filter){
+    public static void clickCatalogFilterAllItems(String filter) throws InterruptedException {
         customersPage.clickCatalogFilterAllItems(filter);
     }
     public static void clickCatalogFilterSectionDropDown(String filter){

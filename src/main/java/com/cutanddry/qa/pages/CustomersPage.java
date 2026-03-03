@@ -5927,8 +5927,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isCatalogFilterOnSaleTagDisplayed(String tag){
         return distributorUI.isDisplayed(By.xpath(onSaleItemTagCount.replace("TAG", tag)));
     }
-    public void clickCatalogFilterAllItems(String filter){
+    public void clickCatalogFilterAllItems(String filter) throws InterruptedException {
         distributorUI.click(By.xpath(catalogFilterAllItems.replace("FILTER", filter)));
+        distributorUI.waitForCustom(2000);
     }
     public void clickCatalogFilterSectionDropDown(String filter){
         distributorUI.click(By.xpath(catalogFilterSectionDropDown.replace("FILTER", filter)));
