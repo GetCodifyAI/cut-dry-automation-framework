@@ -860,6 +860,9 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         distributorUI.sendKeys(txt_description, description);
     }
     public String getDescriptionText() {
+        distributorUI.waitForVisibility(criticalInfoExpander);
+        distributorUI.scrollToElement(textdescriptionTab);
+        distributorUI.click(textdescriptionTab);
         distributorUI.waitForVisibility(txt_description);
         return distributorUI.getValue(txt_description);
     }
