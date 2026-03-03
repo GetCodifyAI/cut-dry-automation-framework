@@ -1,0 +1,41 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="Part_Eighteen" />
+        <classes>
+            <class name="com.cutanddry.qa.tests.orders.VerifyMoreFiltersSalesPersonAndCreditRequestTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsPrintKitchenReceiptTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsPrintOrderConfirmationTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsUpdateStatusTest" />
+            <class name="com.cutanddry.qa.tests.orders.ValidateOrderStatusChangesTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderSearchTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewOrderEditTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewDateDropdownTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewStatusDropdownTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewPrintOrderConfirmationTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewPrintKitchenReceiptTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewMoreFiltersTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreditHoldModalAndBannerDisplayOnFirstOrderSessionTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyInactiveHoldModalAndBannerDisplayTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheOnSaleSortItemsByItemCodeInCatalogTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheOnSaleSortItemsByItemNameInCatalogTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheOnSaleSortItemsByCategoryInCatalogTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheOrderGuideNameAndDescriptionInOrderGuideSettingsTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheAddItemsRestrictionInOrderGuideSettingsTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheEnableOrderApprovalInOrderGuideSettingsTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyLeadTimeBannerDisplayedWhenConfiguredFromTheInternalToolsTest" />
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordValidTest" />
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordInvalidTest" />
+            <class name="com.cutanddry.qa.tests.sign_in.VerifyForgotPasswordUnauthorizedTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingNormalOrderAndEditItFromPortalWhenDisableFetchPricesTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingNormalOrderAndEditItFromPortalWhenEnableFetchPricesTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheOnSiteInventoryColumnAppearsWhenTheToggleIsEnabledForTheDPSideTest" />
+            <class name="com.cutanddry.qa.tests.order_desk.VerifyPendingOrderIndicatorInNavigationTest" />
+        </classes>
+    </test>
+</suite>

@@ -6,42 +6,36 @@
         <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
     </listeners>
     <test name="distributor tests">
-        <parameter name="PART" value="Part_Fifteen"/>
+        <parameter name="PART" value="Part_Fifteen" />
         <classes>
-            <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessSetToDisableForAllViaCustomerProfileTest"/>
-
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreditHoldBannerDisplayInOrderSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyGeneralHoldBannerDisplayInOrderSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyInactiveHoldBannerDisplayedInOrderSubmissionTest"/>
-
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpAdminUserCanNotApproveOrderWhenOperatorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPEmployeeSubmitsOrderForApprovalWhenDistributorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerSubmitsOrderForApprovalWhenDistributorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerCannotApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpAdminUserCanApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>
-
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpSalespersonUserCanApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPAdminSubmitsOrderForApprovalWhenDistributorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPAdminCannotApproveOrderWhenDistributorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpSalespersonUserCanRejectOrderWhenDistributorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpAdminUserCanRejectOrderWhenDistributorExclusiveApprovalTypeTest"/>
-
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPEmployeeSubmitsOrderForApprovalWhenOperatorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPAdminCanApproveOrderWhenOperatorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerCanApproveOrderWhenOperatorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPAdminCanRejectOrderWhenOperatorExclusiveApprovalTypeTest"/>
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerCanRejectOrderWhenOperatorExclusiveApprovalTypeTest"/>
-
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderGuideOrderApprovalUIFeatureTest" />
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyOrderApprovalSettingsReflectedWhileOrderingTest" />
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyMultiLocationSummeryWidgetWhenNoApprovalsTest" />
-            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpOrderApprovalsAndRejectionsDisplayedCorrectlyTest"/>
-
-            <class name="com.cutanddry.qa.tests.customers.VerifyNoMinimumEnforcementOnPickupOrdersTest"/>
-            <class name="com.cutanddry.qa.tests.customers.VerifySoftOrderMinimumCustomerLevelOverrideTest"/>
-            <class name="com.cutanddry.qa.tests.customers.VerifyExemptFromOrderMinimumCustomerLevelOverrideTest"/>
-            <class name="com.cutanddry.qa.tests.customers.VerifyPropItemsAreOnlyDisplayedForPropCustomersTest"/>
-
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromTopCategoryCarouselAndSubmissionTest" />
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromCompareSimilarItemsCarouselAndSubmissionTest" />
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromRecommendedBySalesRepCarouselAndSubmissionTest" />
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromMoreFromThisBrandCarouselAndSubmissionTest" />
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromRecommendedForCustomerCarouselAndSubmissionTest" />
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantitiesFunctionalityFromCatalogTest" />
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMFromSaleItemAndSubmissionTest" />
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMJustInTimeItemAndDraftEditTest" />
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromOGCatalogPDPAndSubmitByAdminTest" />
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromOGCatalogPDPAndSubmitByARTest" />
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromOGCatalogPDPAndSubmitBySalespersonTest" />
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheUserShouldNotBeAbleGoToOrderGuideByDispatcherRoleTest" />
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddingSubstituteItemForMultipleUOMTest" />
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatEditColumnsOptionIsAvailableInOrdersScreenTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatLockedColumnsCannotBeEditedInTheCustomizeColumnScreenTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatNotLockedColumnsCanBeEditedInTheCustomizeColumnScreenTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatOrderGuideEditDisableFeatureTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheClickOnQuantityPickerAndIncrementTheItemCountFromQuantityPickerAndIncrementItemCountFromPlusIconTest" />
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatTheSendToERPButtonIsAvailableForScheduledJITOrdersTest" />
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderWithoutAddingAnyItemsTest" />
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByRemovingExistingItemsAndChangingQuantitiesTest" />
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromOrderGuideTest" />
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromCatalogTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheInactiveBoostFilterDisplayStatusTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheActiveBoostFilterDisplayStatusTest" />
+            <class name="com.cutanddry.qa.tests.catalog.VerifyHardOrderMinimumWarningTest" />
+            <class name="com.cutanddry.qa.tests.customers.VerifyTheOrderSummeryIsDisplayedCorrectlyOnTheEditOrderFlowTest" />
         </classes>
     </test>
 </suite>
