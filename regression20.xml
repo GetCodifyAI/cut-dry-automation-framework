@@ -1,0 +1,41 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="Part_Twenty" />
+        <classes>
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyUserCanSwitchOfflineModeFromTheMoreOptionsOnTheOGWhenTheDeviceHasNetworkConnectivityTest" />
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatEntireOrderGuideIsDownloadedSuccessfullyUponSwitchingToOfflineModeTest" />
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOnceInOfflineModeTheUserCanAddUpdateItemsToTheCartTest" />
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatUserCanChangeTheUnitOfMeasureForItemsInOfflineModeTest" />
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyUserCanSearchForItemsInTheOrderGuideWhileInOfflineModeTest" />
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatAccessCatalogAndOrderSubmissionIsDisabledWhileInOfflineModeTest" />
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatSwitchingBackToOnlineModeTest" />
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsAvailableInDraftOrdersTest" />
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsAvailableInStandingOrdersTest" />
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsNotAvailableInEditOrdersTest" />
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOfflineOrderingDisplayWhenOfflineOrderingToggleEnableTest" />
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOfflineOrderingNotDisplayWhenOfflineOrderingToggleOffTest" />
+            <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsTest" />
+            <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsDeleteTest" />
+            <class name="com.cutanddry.qa.tests.draft.VerifyDraftOrderSubmittedByOperatorTest" />
+            <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsSearchFunctionTest" />
+            <class name="com.cutanddry.qa.tests.draft.VerifyTheDraftDeleteConfirmationModalTest" />
+            <class name="com.cutanddry.qa.tests.draft.VerifyDeleteDraftOrderByOperatorTest" />
+            <class name="com.cutanddry.qa.tests.draft.VerifyOrderDraftsSearchAndFilterFunctionTest" />
+            <class name="com.cutanddry.qa.tests.draft.VerifyErrorMessageDisplayTest" />
+            <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerOnboardingDocsTest" />
+            <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerIssuesTest" />
+            <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerFeatureRequestsTest" />
+            <class name="com.cutanddry.qa.tests.tracker.VerifyTheTrackerEditFeatureRequestsTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderSummaryBannerDisplaysOnSimpleListViewTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.PlaceOrdersFromMultipleOrderGuidesTest" />
+            <class name="com.cutanddry.qa.tests.draft.VerifySupplierPortalDraftCountDisplayTest" />
+            <class name="com.cutanddry.qa.tests.draft.VerifyZeroDraftCountBadgeHiddenTest" />
+        </classes>
+    </test>
+</suite>

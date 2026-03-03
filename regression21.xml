@@ -1,0 +1,41 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="Part_TwentyOne" />
+        <classes>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryMultiUOMInPDPSectionSpotPriceEnableDPTest" />
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryMultiUOMInPDPSectionSpotPriceDisableDPTest" />
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryInPDPSectionInDPTest" />
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryInCatalogueTest" />
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryInOrderGuideTest" />
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryWithMarginInOrderGuideTest" />
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryWithMarginInOrderGuideAndPDPWhenDisplayMarginToggleEnableTest" />
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryMarginNotDisplayInOrderGuideAndPDPWhenDisplayMarginToggleDisableTest" />
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryDisplayInOrderGuideAndPDPWhenDisplayPurchaseHistoryToggleEnableTest" />
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryNotDisplayInOrderGuideAndPDPWhenDisplayPurchaseHistoryToggleDisableTest" />
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryWithPriceInOrderGuideAndPDPWhenDisplayPurchasePriceToggleEnableTest" />
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryWithPriceNotDisplayInOrderGuideAndPDPWhenDisplayPurchasePriceToggleDisableTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheProductStatusInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheProprietaryItemInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheCategorySelectionInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheSubCategorySelectionInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheStorageMethodInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheDescriptionInCatalogDataTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheOnSaleFilterInCatalogPricingAndPromotionsTest" />
+            <class name="com.cutanddry.qa.tests.catalog_data.ValidateTheNewArrivalFilterInCatalogPricingAndPromotionsTest" />
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromPDPTest" />
+            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsViaOrderGuideCatalogPDPTest" />
+            <class name="com.cutanddry.qa.tests.draft.ValidateDraftOrdersAreOnlyAppearing30DaysTest" />
+            <class name="com.cutanddry.qa.tests.draft.VerifyPendingApprovalsAreNotClickableTest" />
+            <class name="com.cutanddry.qa.tests.multi_cart.VerifyGroupingProductsIntoTwoCartsTest" />
+            <class name="com.cutanddry.qa.tests.multi_cart.VerifyCreatedOrdersFromMultipleCartsTest" />
+            <class name="com.cutanddry.qa.tests.settings.ValidateAddPaymentMethodForAddBankAccountTest" />
+            <class name="com.cutanddry.qa.tests.settings.ValidateRemoveAccountFunctionalityTest" />
+        </classes>
+    </test>
+</suite>
