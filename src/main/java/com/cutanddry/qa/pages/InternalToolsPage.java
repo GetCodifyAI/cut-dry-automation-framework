@@ -72,6 +72,8 @@ public class InternalToolsPage extends LoginPage {
     String specialItemsDropDownOption = "(//div[text()='OPTION'])[last()]";
     By hideOutOfStockToggleStable = By.xpath("//div[contains(text(), 'Hide out of stock label on Supplier Portal:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By hideOutOfStockToggleStable1 = By.xpath("//div[contains(text(), 'Hide out of stock label on Supplier Portal:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By hideOutOfStockToggleLabelOnPublicCatalogAttribute = By.xpath("//div[contains(text(), 'Hide out of stock label on Public Catalogs:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By hideOutOfStockToggleLabelOnPublicCatalog = By.xpath("//div[contains(text(), 'Hide out of stock label on Public Catalogs:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     By simpleListViewDropDown = By.xpath("//div[text()='Simple List View:']/following-sibling::div/div");
     String simpleListViewDropDownOption = "(//div[text()='TYPE'])[last()]";
     By fetchPricesFromOrderForEditOrderFlowToggleStable = By.xpath("//div[contains(text(), 'Fetch prices from order for edit order flow:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
@@ -338,6 +340,17 @@ public class InternalToolsPage extends LoginPage {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+    public void clickHideOutOfStockLabelOnPublicCatalog(boolean enable){
+        String handlePosition = distributorUI.getElement(hideOutOfStockToggleLabelOnPublicCatalogAttribute).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(hideOutOfStockToggleLabelOnPublicCatalog);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(hideOutOfStockToggleLabelOnPublicCatalog);
+        }
+
     }
     public void clickPayEnabledToggle(boolean enable) {
 

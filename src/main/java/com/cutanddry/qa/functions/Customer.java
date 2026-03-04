@@ -1545,6 +1545,9 @@ public class Customer {
     public static boolean isNavigatedToBrandPage(String brandPage){
         return customersPage.isNavigatedToBrandPage(brandPage);
     }
+    public static void clickOnItemBrandOnCatalog(String itemName,String BrandName){
+        customersPage.clickOnItemBrandOnCatalog(itemName,BrandName);
+    }
     public static void clickAddToCartPDP(){customersPage.clickAddToCart();}
     public static void clickCheckOutPDP() throws InterruptedException {
         customersPage.clickCheckOutPDP();
