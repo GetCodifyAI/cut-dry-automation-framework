@@ -55,6 +55,7 @@ public class VerifyTheItemPricesAreNotVisibleInTheEditOrderGuideItemsSectionWhen
 
         // Add the product via Order Guide
         Customer.searchItemOnOrderGuide(searchItemCode);
+        Customer.addItemFromCatalogIfNotAvailableInOG(searchItemCode);
         itemName = Customer.getItemNameFirstRow();
         itemPrice = Customer.getActiveItemPriceFirstRow();
         itemPriceStr = String.valueOf(Customer.getActiveItemPriceFirstRow());

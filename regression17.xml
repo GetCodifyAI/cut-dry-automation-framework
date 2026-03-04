@@ -25,6 +25,7 @@
             <class name="com.cutanddry.qa.tests.team.SalesRepMappingAutomationAddNewUserWithERPUserReferenceTest"/>
             <class name="com.cutanddry.qa.tests.team.SalesRepMappingAutomationAddNewUserWithAlternateERPUserReferenceTest"/>
 
+            <class name="com.cutanddry.qa.tests.catalog.VerifyOutOfStockLabelForPublicCatalogTest"/>
         </classes>
     </test>
 </suite>
