@@ -154,10 +154,9 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     By storageMethodDropDown = By.xpath("(//div[contains(text(),'Storage Method')]/../../../following-sibling::div//input)[1]");
     String storageMethodOption = "//div[text()='STORAGEMETHOD']";
     String txt_storageMethod = "//tr//td//div[contains(text(),'STORAGEMETHOD')]";
-    By brandNameDropDown = By.xpath("//div[contains(text(),'Brand Name')]/../../../following-sibling::div//div[contains(@class,'themed_select__control')]//input");
-    String brandNameOption = "(//div[contains(text(),'BRANDNAME') and contains(@class,'option')])[last()]";
-    String txt_brandNamePreview = "//button[contains(text(),'BRANDNAME')]";
-    By brandNameDropDownControl = By.xpath("//div[contains(text(),'Brand Name')]/../../../following-sibling::div//div[contains(@class,'themed_select')]//div[contains(@class,'value-container')]");
+    String brandNameOption = "(//div[contains(text(),'BRANDNAME')])[last()]";
+    String txt_brandNamePreview = "//div[contains(text(),'BRANDNAME')]";
+    By brandNameDropDownControl = By.xpath("//div[contains(text(),'Brand Name')]/../../../following-sibling::div");
     By textdescriptionTab = By.xpath("//div[normalize-space(.)='Description']");
     By txt_description = By.xpath("//textarea[starts-with(normalize-space(@placeholder),'Type the Product Description')]");
     String newDescription = " //div[contains(text(),'DESCRIPTION')]";
@@ -855,7 +854,6 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     }
     public void clickOnBrandName(String brandName) throws InterruptedException {
         distributorUI.waitForCustom(3000);
-        distributorUI.waitForVisibility(criticalInfoExpander);
         distributorUI.click(brandNameDropDownControl);
         distributorUI.waitForVisibility(By.xpath(brandNameOption.replace("BRANDNAME",brandName)));
         distributorUI.click(By.xpath(brandNameOption.replace("BRANDNAME",brandName)));
