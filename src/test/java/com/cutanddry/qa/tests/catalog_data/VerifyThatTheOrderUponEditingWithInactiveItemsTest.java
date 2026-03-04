@@ -57,6 +57,7 @@ public class VerifyThatTheOrderUponEditingWithInactiveItemsTest extends TestBase
         Customer.clickOnOrderGuide(customerId);
 
         Customer.searchItemOnOrderGuide(searchItemCode);
+        Customer.addItemFromCatalogIfNotAvailableInOG(searchItemCode);
         itemName = Customer.getItemNameFirstRow();
         itemPrice = Customer.getActiveItemPriceFirstRow();
         Customer.increaseFirstRowQtyCustom(1);

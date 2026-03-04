@@ -47,6 +47,7 @@ public class VerifyTheCashBackValueTagIsDisplayedWithOtherItemTagsTest extends T
         Customer.searchCustomerByCode(CUSTOMER_CODE);
         Customer.clickOnOrderGuide(CUSTOMER_CODE);
         Customer.searchItemOnOrderGuide(searchItemCode);
+        Customer.addItemFromCatalogIfNotAvailableInOG(searchItemCode);
         softAssert.assertTrue(Catalog.isOnSaleTagDisplayed(),"On sale tag not displayed");
         softAssert.assertTrue(Catalog.isNewTagDisplayed(),"New tag not displayed");
         softAssert.assertTrue(Catalog.areAllTagsDisplayedWithProperAlignment(),"Tags are not aligned properly");

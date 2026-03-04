@@ -602,6 +602,9 @@ public class Customer {
     public static void SelectCustomer(String code){
         customersPage.ClickOnCustomer(code);
     }
+    public static String getCustomerNameFromProfile(){
+        return customersPage.getCustomerNameUnderProfile();
+    }
     public static boolean isOrdersTabDisplayed(){
         return customersPage.isOrdersTabDisplayed();
     }
@@ -1544,6 +1547,9 @@ public class Customer {
     }
     public static boolean isNavigatedToBrandPage(String brandPage){
         return customersPage.isNavigatedToBrandPage(brandPage);
+    }
+    public static void clickOnItemBrandOnCatalog(String itemName,String BrandName){
+        customersPage.clickOnItemBrandOnCatalog(itemName,BrandName);
     }
     public static void clickAddToCartPDP(){customersPage.clickAddToCart();}
     public static void clickCheckOutPDP() throws InterruptedException {
@@ -3543,7 +3549,7 @@ public class Customer {
     public static boolean isCatalogFilterOnSaleTagDisplayed(String tag){
         return customersPage.isCatalogFilterOnSaleTagDisplayed(tag);
     }
-    public static void clickCatalogFilterAllItems(String filter){
+    public static void clickCatalogFilterAllItems(String filter) throws InterruptedException {
         customersPage.clickCatalogFilterAllItems(filter);
     }
     public static void clickCatalogFilterSectionDropDown(String filter){
