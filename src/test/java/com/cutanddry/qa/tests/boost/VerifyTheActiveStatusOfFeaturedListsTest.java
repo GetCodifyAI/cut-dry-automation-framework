@@ -37,6 +37,8 @@ public class VerifyTheActiveStatusOfFeaturedListsTest extends TestBase {
         Boost.clickCopyPromoUrl();
         softAssert.assertTrue(Boost.isCopiedToClipboardDisplayed(),"Copied to Clipboard popup not displayed");
         Boost.clickOkCopied();
+        Boost.goToPromoUrl();
+        softAssert.assertTrue(Boost.isFeaturedListPromoPageDisplayed(),"Featured List promo page not displayed with items");
         softAssert.assertAll();
     }
 

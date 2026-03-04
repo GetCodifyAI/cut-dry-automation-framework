@@ -129,6 +129,7 @@ public class BoostPage extends LoginPage {
     By txt_copiedToClipboard = By.xpath("//h2[contains(text(),'Copied to Clipboard')]");
     String featuredListStatusInTable = "//tr[td[contains(text(),'FEATUREDLISTNAME')]]//div[contains(@class,'themed_select__single-value')]";
     By btn_okCopied = By.xpath("//h2[contains(text(),'Copied to Clipboard')]/following-sibling::button");
+    By txt_addToCart = By.xpath("//button[contains(text(),'Add to Cart')]");
 
     public void changeOrderDragAndDrop(){
         distributorUI.dragAndDrop(sourceRowDragHandle,targetRowDragHandle);
@@ -662,5 +663,17 @@ public class BoostPage extends LoginPage {
     }
     public String getFeaturedListStatusInTable(String featuredListName) {
         return distributorUI.getText(By.xpath(featuredListStatusInTable.replace("FEATUREDLISTNAME", featuredListName)));
+    }
+    public void goToPromoUrl() {
+        distributorUI.OpenNewTabAndSwitchToIt();
+        distributorUI.pasteUrlFromClipboard();
+    }
+    public boolean isFeaturedListPromoPageDisplayed() {
+        try {
+            distributorUI.waitForCustom(5000);
+            return distributorUI.isDisplayed(txt_addToCart);
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

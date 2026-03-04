@@ -375,5 +375,11 @@ public class Boost {
     public static String getFeaturedListStatusInTable(String featuredListName) {
         return boostPage.getFeaturedListStatusInTable(featuredListName);
     }
+    public static void goToPromoUrl() {
+        boostPage.goToPromoUrl();
+    }
+    public static boolean isFeaturedListPromoPageDisplayed() {
+        return boostPage.isFeaturedListPromoPageDisplayed();
+    }
 
 }
