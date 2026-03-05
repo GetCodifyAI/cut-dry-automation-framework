@@ -16,5 +16,10 @@ public class ParentChildOGData {
     public static final String PARENT_ORDER_GUIDE_NAME_2 = "New Parent OG";
     public static final String EDIT_PARENT_ORDER_GUIDE_NAME_2 = "Edit Parent OG";
     public static final String PARENT_ORDER_GUIDE_NAME_3 = "Nova Parent OG";
+    public static final String OG_ITEM_NAME1 = "Egg Roll Pork & Vegetable";
+    public static final String OG_ITEM_NAME2 = "Air Freshener Refill For In-Stall Fresheners Coastal Breeze";
+    public static final String OG_ITEM_NAME3 = "Appetizer Macaroni & Cheese Bitesb2";
+
+
 
 }
