@@ -125,7 +125,8 @@ public class InternalToolsPage extends LoginPage {
     By AllowOrderingDiscontinuedToggleStable = By.xpath("//div[contains(text(), 'Allow ordering discontinued items when substitutes are available:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By AllowOrderingDiscontinuedToggleStable1 = By.xpath("//div[contains(text(), 'Allow ordering discontinued items when substitutes are available:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     By TaskManagementTxt = By.xpath("//h2[contains(text(),'Task Management')]");
-
+    By ScanToOrderToggleStatus = By.xpath("//div[contains(text(), 'Scan to Order Enabled')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By ScanToOrderToggle = By.xpath("//div[contains(text(), 'Scan to Order Enabled')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
 
 
     public void clickConfigureSupplier(){
@@ -756,6 +757,17 @@ public class InternalToolsPage extends LoginPage {
             distributorUI.clickWithScrollAndHover(AllowOrderingDiscontinuedToggleStable1);
         } else if (!enable && isEnabled) {
             distributorUI.clickWithScrollAndHover(AllowOrderingDiscontinuedToggleStable1);
+        }
+    }
+    public void TurnOnScanToOrder(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(ScanToOrderToggleStatus).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(ScanToOrderToggle);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(ScanToOrderToggle);
         }
     }
 
