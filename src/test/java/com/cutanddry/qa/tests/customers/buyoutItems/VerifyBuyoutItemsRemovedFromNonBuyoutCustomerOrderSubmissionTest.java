@@ -22,7 +22,8 @@ public class VerifyBuyoutItemsRemovedFromNonBuyoutCustomerOrderSubmissionTest ex
     static String customerId = BuyoutsData.BUYOUT_NOT_ALLOWED_CUSTOMER;
     static String canonicalNodeName = BuyoutsData.BUYOUT_PRODUCT1_CANONICAL_NODE;
     static String featureKey = BuyoutsData.BUYOUT_PRODUCT_KEY;
-    static String featureValue = BuyoutsData.BUYOUT_PRODUCT_VALUE;
+    static String featureValueTrue = BuyoutsData.BUYOUT_PRODUCT_VALUE_TRUE;
+    static String featureValueFalse = BuyoutsData.BUYOUT_PRODUCT_VALUE_FALSE;
     static String buyoutItemItemCode = BuyoutsData.BUYOUT_PRODUCT_ITEMCODE;
     static String buyoutItemItemName = BuyoutsData.BUYOUT_PRODUCT_ITEMNAME;
     static String nonBuyoutItemItemCode = BuyoutsData.NON_BUYOUT_PRODUCT_ITEMCODE;
@@ -47,7 +48,7 @@ public class VerifyBuyoutItemsRemovedFromNonBuyoutCustomerOrderSubmissionTest ex
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
 
         Login.navigateToNode(canonicalNodeName);
-        Login.setValueToNode(featureKey,featureValue);
+        Login.setValueToNode(featureKey,featureValueTrue);
 
         Login.navigateToDistributorPortal(DistributorName);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
@@ -79,6 +80,9 @@ public class VerifyBuyoutItemsRemovedFromNonBuyoutCustomerOrderSubmissionTest ex
         softAssert.assertTrue(Customer.isRemovedBuyoutItemCorrectlyDisplayed(buyoutItemItemName,buyoutItemItemCode),"Buyout item removed is not correctly displayed");
         softAssert.assertTrue(Customer.isRemovedBuyoutItemUOMCorrectlyDisplayed(buyoutItemItemName,buyoutItemItemCode,itemCount,itemUOM1),"Buyout item removed is not correctly displayed");
         softAssert.assertTrue(Customer.isRemovedBuyoutItemUOMCorrectlyDisplayed(buyoutItemItemName,buyoutItemItemCode,itemCount,itemUOM2),"Buyout item removed is not correctly displayed");
+
+        Login.navigateToNode(canonicalNodeName);
+        Login.setValueToNode(featureKey,featureValueFalse);
 
         softAssert.assertAll();
     }

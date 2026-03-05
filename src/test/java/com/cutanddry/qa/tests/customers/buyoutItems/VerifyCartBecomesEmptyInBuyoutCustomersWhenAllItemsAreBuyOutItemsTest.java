@@ -18,7 +18,8 @@ public class VerifyCartBecomesEmptyInBuyoutCustomersWhenAllItemsAreBuyOutItemsTe
     static String canonicalProduct1_Node = BuyoutsData.BUYOUT_PRODUCT1_CANONICAL_NODE;
     static String canonicalProduct2_Node = BuyoutsData.BUYOUT_PRODUCT2_CANONICAL_NODE;
     static String featureKey = BuyoutsData.BUYOUT_PRODUCT_KEY;
-    static String featureValue = BuyoutsData.BUYOUT_PRODUCT_VALUE;
+    static String featureValueTrue = BuyoutsData.BUYOUT_PRODUCT_VALUE_TRUE;
+    static String featureValueFalse = BuyoutsData.BUYOUT_PRODUCT_VALUE_FALSE;
     static String DistributorName = "BiRite Foodservice Distributors";
     static String customerId = BuyoutsData.BUYOUT_NOT_ALLOWED_CUSTOMER;
     static String buyoutItemItemCode = BuyoutsData.BUYOUT_PRODUCT_ITEMCODE;
@@ -44,10 +45,10 @@ public class VerifyCartBecomesEmptyInBuyoutCustomersWhenAllItemsAreBuyOutItemsTe
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
 
         Login.navigateToNode(canonicalProduct1_Node);
-        Login.setValueToNode(featureKey,featureValue);
+        Login.setValueToNode(featureKey,featureValueTrue);
 
         Login.navigateToNode(canonicalProduct2_Node);
-        Login.setValueToNode(featureKey,featureValue);
+        Login.setValueToNode(featureKey,featureValueTrue);
 
         Login.navigateToDistributorPortal(DistributorName);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
@@ -101,6 +102,12 @@ public class VerifyCartBecomesEmptyInBuyoutCustomersWhenAllItemsAreBuyOutItemsTe
         softAssert.assertTrue(Customer.isCanNotSubmitEmptyOrdersErrorDisplayed(),"Empty order submission error message is not displayed");
         Customer.clickOK();
         softAssert.assertFalse(Customer.isSubmitOrderBtnEnabled(),"Submit btn not disabled");
+
+        Login.navigateToNode(canonicalProduct1_Node);
+        Login.setValueToNode(featureKey,featureValueFalse);
+
+        Login.navigateToNode(canonicalProduct2_Node);
+        Login.setValueToNode(featureKey,featureValueFalse);
 
         softAssert.assertAll();
     }
