@@ -29,7 +29,7 @@ pipeline {
     }
     
     stages {
-        stage('Parallel Test Execution') {
+        stage('Batch 1 - Parallel Test Execution (Regression 1-8)') {
             parallel {
                 stage('Regression 1 - Order Guide & Reports') {
                     agent any
@@ -158,7 +158,19 @@ pipeline {
                         }
                     }
                 }
-                
+            }
+        }
+        
+        stage('Wait 30 Minutes Between Batches') {
+            steps {
+                echo 'Batch 1 (Regression 1-8) completed. Waiting 30 minutes before starting Batch 2...'
+                sleep(time: 30, unit: 'MINUTES')
+                echo '30-minute wait completed. Starting Batch 2 (Regression 9-17)...'
+            }
+        }
+        
+        stage('Batch 2 - Parallel Test Execution (Regression 9-17)') {
+            parallel {
                 stage('Regression 9 - Operator Portal') {
                     agent any
                     steps {
