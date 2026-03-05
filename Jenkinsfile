@@ -29,50 +29,6 @@ pipeline {
     }
     
     stages {
-        stage('Pre-warm Selenium Manager & ChromeDriver') {
-            agent any
-            steps {
-                script {
-                    checkout scm
-                    sh '''
-                        echo "Pre-warming Selenium Manager and ChromeDriver cache..."
-                        
-                        # Set JAVA_HOME
-                        export JAVA_HOME='/usr/lib/jvm/java-21-openjdk-amd64'
-                        
-                        # Run a minimal Maven compile to download dependencies and trigger Selenium Manager
-                        mvn dependency:resolve -q || true
-                        
-                        # Trigger Selenium Manager to download and cache ChromeDriver
-                        # This ensures the binary is fully written before parallel suites try to use it
-                        if command -v google-chrome &> /dev/null; then
-                            echo "Chrome detected: $(google-chrome --version)"
-                        fi
-                        
-                        # Pre-cache the Selenium Manager binary by running it once
-                        SELENIUM_MANAGER=$(find ~/.cache/selenium -name "selenium-manager" -type f 2>/dev/null | head -1)
-                        if [ -n "$SELENIUM_MANAGER" ] && [ -x "$SELENIUM_MANAGER" ]; then
-                            echo "Selenium Manager found at: $SELENIUM_MANAGER"
-                            $SELENIUM_MANAGER --browser chrome --output json || true
-                            echo "Selenium Manager pre-warm complete - ChromeDriver cached"
-                        else
-                            echo "Selenium Manager not yet cached, will be downloaded during first test suite"
-                            # Force download by running a quick mvn test compilation
-                            mvn test-compile -q || true
-                            # Try again after compilation
-                            SELENIUM_MANAGER=$(find ~/.cache/selenium -name "selenium-manager" -type f 2>/dev/null | head -1)
-                            if [ -n "$SELENIUM_MANAGER" ] && [ -x "$SELENIUM_MANAGER" ]; then
-                                $SELENIUM_MANAGER --browser chrome --output json || true
-                                echo "Selenium Manager pre-warm complete after compilation"
-                            fi
-                        fi
-                        
-                        echo "Pre-warm stage complete"
-                    '''
-                }
-            }
-        }
-        
         stage('Batch 1 - Parallel Test Execution (Regression 1-8)') {
             parallel {
                 stage('Regression 1 - Order Guide & Reports') {
@@ -428,16 +384,6 @@ pipeline {
 
 def runTestSuiteWithCleanup(xmlFile, partName, jobNumber) {
     echo "Running test suite: ${xmlFile} (${partName}) with cleanup optimization"
-    
-    // Staggered startup delay to avoid all suites hitting ChromeDriver initialization simultaneously
-    // Each suite within a batch waits (batchPosition * 30) seconds
-    def batchPosition = (jobNumber - 1) % 8  // Position within the current batch (0-7)
-    if (batchPosition > 0) {
-        def delaySeconds = batchPosition * 30
-        echo "Staggered startup: waiting ${delaySeconds} seconds before starting suite ${jobNumber} (batch position ${batchPosition})..."
-        sleep(time: delaySeconds, unit: 'SECONDS')
-        echo "Staggered startup delay complete for suite ${jobNumber}"
-    }
     
     // Pre-execution cleanup
     sh '''
