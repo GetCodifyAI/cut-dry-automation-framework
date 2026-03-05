@@ -711,6 +711,12 @@ public class Catalog {
         return catalogPage.areAllTagsDisplayedWithProperAlignment();
     }
 
+    public static void clickOnBrandName(String brandName) throws InterruptedException {
+        catalogPage.clickOnBrandName(brandName);
+    }
 
+    public static boolean isBrandNameDisplayedInPreview(String brandName) {
+        return catalogPage.isBrandNameDisplayedInPreview(brandName);
+    }
 
 }
