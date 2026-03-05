@@ -5726,7 +5726,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
 
     public void clickOutsideQuantityField() throws InterruptedException {
-        distributorUI.click(orderGuideText);
+        distributorUI.click(lbl_orderGuideText);
         distributorUI.waitForCustom(2000);
     }
 

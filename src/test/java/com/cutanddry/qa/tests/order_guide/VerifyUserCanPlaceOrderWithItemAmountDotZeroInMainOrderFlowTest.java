@@ -13,7 +13,8 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyUserCanPlaceOrderWithItemAmountDotZeroInMainOrderFlowTest extends TestBase {
     static User user;
-    static String customerId = "16579";
+    static String customerId = "61569";
+    static String DP = "427797192 - Cut+Dry Agent - Cheese Importers";
 
     @BeforeMethod
     public void setUp() {
@@ -25,8 +26,10 @@ public class VerifyUserCanPlaceOrderWithItemAmountDotZeroInMainOrderFlowTest ext
     public void verifyUserCanPlaceOrderWithItemAmountDotZeroInMainOrderFlow() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
 
-        Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "login error");
+        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+        Login.navigateToDistributorPortal(DP);
+        Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
