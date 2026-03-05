@@ -41,6 +41,7 @@ public class VerifyTheFindMoreInCatalogButtonTest extends TestBase {
         Customer.clickOnOrderGuide(customerId);
 
         Customer.searchItemOnOrderGuide(searchItemCode);
+        Customer.addItemFromCatalogIfNotAvailableInOG(searchItemCode);
         Thread.sleep(4000);
         softAssert.assertTrue(Customer.getItemNameFirstRow().toLowerCase().contains(itemName.toLowerCase()),"item mismatch");
         Orders.clickFindMoreInCatalog();

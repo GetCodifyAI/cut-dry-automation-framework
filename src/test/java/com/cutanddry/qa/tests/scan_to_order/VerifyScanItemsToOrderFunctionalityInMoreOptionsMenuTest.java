@@ -2,10 +2,7 @@ package com.cutanddry.qa.tests.scan_to_order;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
-import com.cutanddry.qa.functions.Customer;
-import com.cutanddry.qa.functions.Dashboard;
-import com.cutanddry.qa.functions.Login;
-import com.cutanddry.qa.functions.ScanToOrder;
+import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -15,8 +12,6 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyScanItemsToOrderFunctionalityInMoreOptionsMenuTest extends TestBase {
     static User user;
-    static String featureName = "scan_to_order";
-    static String companyID = "46017666";
     static String DP = "Independent Foods Co";
     static String featureDisabledDp = "138629491 - Eshan - What Chefs Want - Rockies";
     static String CustomerCode = "21259";
@@ -36,8 +31,15 @@ public class VerifyScanItemsToOrderFunctionalityInMoreOptionsMenuTest extends Te
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "Login error - user not navigated to dashboard");
 
-        Login.navigateToGateKeeperAdmin();
-        Login.updateCompanyIDs(featureName, companyID);
+        Login.navigateToInternalToolsPage();
+        InternalTools.navigateToConfigureSupplier();
+        InternalTools.clickOnInternalToolCompanyEditDetails(DP);
+        InternalTools.navigateToOrderingSettingsTab();
+        InternalTools.TurnOnScanToOrder(true);
+        InternalTools.clickSave();
+        softAssert.assertTrue(InternalTools.isSuccessPopUpDisplayed(),"change not save");
+        InternalTools.clickOKOnSucessOverlay();
+
 
         Login.navigateToDistributorPortal(DP);
         Dashboard.navigateToCustomers();
