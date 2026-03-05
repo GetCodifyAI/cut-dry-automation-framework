@@ -17,12 +17,14 @@ public class VerifyNoItemRemovalsFromBuyoutAllowedCustomersTest extends TestBase
     static User user;
     static String canonicalProduct1_Node = BuyoutsData.BUYOUT_PRODUCT1_CANONICAL_NODE;
     static String featureKey = BuyoutsData.BUYOUT_PRODUCT_KEY;
-    static String featureValue = BuyoutsData.BUYOUT_PRODUCT_VALUE;
+    static String featureValueTrue = BuyoutsData.BUYOUT_PRODUCT_VALUE_TRUE;
+    static String featureValueFalse = BuyoutsData.BUYOUT_PRODUCT_VALUE_FALSE;
     static String DistributorName = "BiRite Foodservice Distributors";
     static String customerId = BuyoutsData.BUYOUT_ALLOWED_CUSTOMER;
     static String integrationDataNode = BuyoutsData.INTEGRATION_NODE_BUYOUT_ALLOWED_CUSTOMER;
     static String buyOutAllowed = BuyoutsData.BUYOUT_ALLOWED_KEY;
     static String buyOutAllowedTrue = BuyoutsData.BUYOUT_ALLOWED_VALUE_TRUE;
+    static String buyOutAllowedFalse = BuyoutsData.BUYOUT_ALLOWED_VALUE_FALSE;
     static String orderMinimumSetting = "Exempt from Order Minimum";
     static String customerLoginCode = "373999623";
     static String buyoutItemItemCode = BuyoutsData.BUYOUT_PRODUCT_ITEMCODE;
@@ -49,7 +51,7 @@ public class VerifyNoItemRemovalsFromBuyoutAllowedCustomersTest extends TestBase
         Login.setValueToNode(buyOutAllowed,buyOutAllowedTrue);
 
         Login.navigateToNode(canonicalProduct1_Node);
-        Login.setValueToNode(featureKey,featureValue);
+        Login.setValueToNode(featureKey,featureValueTrue);
 
         Login.navigateToDistributorPortal(DistributorName);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
@@ -108,6 +110,12 @@ public class VerifyNoItemRemovalsFromBuyoutAllowedCustomersTest extends TestBase
         softAssert.assertFalse(Customer.isRemoveUnavailableItemsMsgHeaderDisplayed(), "unavailable Item removed msg header not displayed");
         softAssert.assertFalse(Customer.isRemoveUnavailableItemsMsgDisplayed(), "unavailable Item removed msg not displayed");
         softAssert.assertFalse(Customer.isRemovedBuyoutItemCorrectlyDisplayed(buyoutItemItemName,buyoutItemItemCode),"Buyout item removed is not correctly displayed");
+
+        Login.navigateToNode(canonicalProduct1_Node);
+        Login.setValueToNode(featureKey,featureValueFalse);
+
+        Login.navigateToNode(integrationDataNode);
+        Login.setValueToNode(buyOutAllowed,buyOutAllowedFalse);
 
         softAssert.assertAll();
     }

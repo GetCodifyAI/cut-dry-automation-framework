@@ -5,7 +5,8 @@ public class BuyoutsData {
     public static final String BUYOUT_ALLOWED_CUSTOMER = "20200537";
     public static final String INTEGRATION_NODE_BUYOUT_ALLOWED_CUSTOMER ="148707554";
     public static final String BUYOUT_PRODUCT_KEY = "buyoutproduct";
-    public static final String BUYOUT_PRODUCT_VALUE = "true";
+    public static final String BUYOUT_PRODUCT_VALUE_TRUE = "true";
+    public static final String BUYOUT_PRODUCT_VALUE_FALSE = "false";
     public static final String BUYOUT_PRODUCT_ITEMCODE = "200510";
     public static final String BUYOUT_PRODUCT_ITEMCODE2 = "3700";
     public static final String BUYOUT_PRODUCT1_CANONICAL_NODE = "125769940";
@@ -21,5 +22,6 @@ public class BuyoutsData {
     public static final String ORDER_SHORT = "short";
     public static final String BUYOUT_ALLOWED_KEY = "buyoutallowed";
     public static final String BUYOUT_ALLOWED_VALUE_TRUE = "true";
+    public static final String BUYOUT_ALLOWED_VALUE_FALSE = "false";
 
 }

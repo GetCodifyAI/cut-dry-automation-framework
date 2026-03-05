@@ -993,6 +993,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By tbx_titleStandingOrder = By.xpath("//input[@placeholder='Enter title']");
     String simpleListViewColumnHeaderClick = "//div[text()='Simple List View']/following::table[1]//th[INDEX]";
     String simpleListViewColumnByHeader = "//div[text()='Simple List View']/following::table[1]//tr/td[INDEX]";
+    By customerNameUnderProfile = By.xpath("//button[contains(text(),'Order Guide')]/ancestor::div[2]/div[1]");
 
 
 
@@ -1706,6 +1707,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void ClickOnCustomer(String code){
         distributorUI.click(By.xpath(SelectCustomerByCode.replace("CODE", code)));
+    }
+    public String getCustomerNameUnderProfile(){
+        distributorUI.waitForVisibility(customerNameUnderProfile);
+        return distributorUI.getText(customerNameUnderProfile);
     }
     public boolean isOrdersTabDisplayed(){
         distributorUI.waitForVisibility(OrdersTabTxt);

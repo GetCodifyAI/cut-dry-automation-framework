@@ -602,6 +602,9 @@ public class Customer {
     public static void SelectCustomer(String code){
         customersPage.ClickOnCustomer(code);
     }
+    public static String getCustomerNameFromProfile(){
+        return customersPage.getCustomerNameUnderProfile();
+    }
     public static boolean isOrdersTabDisplayed(){
         return customersPage.isOrdersTabDisplayed();
     }
