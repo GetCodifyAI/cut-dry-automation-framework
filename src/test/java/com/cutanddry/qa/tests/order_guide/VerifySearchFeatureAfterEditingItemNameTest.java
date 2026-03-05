@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifySearchFeatureAfterEditingItemNameTest extends TestBase {
     static User user;
-    static String customerId = CustomerData.CUSTOMER_CODE2;
+    static String customerId = "15285" ;
     static String itemCode = "01700";
     static String editedNameSuffix = " Edited";
     static String originalItemName;
