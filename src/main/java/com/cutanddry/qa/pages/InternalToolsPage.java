@@ -186,6 +186,7 @@ public class InternalToolsPage extends LoginPage {
 
     public void clickOKOnSucessOverlay(){
         distributorUI.click(SuccessOkBtn);
+        distributorUI.waitForInvisibility(txt_success);
     }
 
     public void clickOnCatalogSettingsTab(){
@@ -327,7 +328,9 @@ public class InternalToolsPage extends LoginPage {
         distributorUI.sendKeys(addOrderMinimumAmount,minimum);
     }
     public void clickSave() {
-        distributorUI.clickWithScrollAndHover(SaveBtn);
+        distributorUI.scrollToElement(SaveBtn);
+        distributorUI.waitForVisibility(SaveBtn);
+        distributorUI.clickUsingJavaScript(SaveBtn);
     }
     public boolean isSuccessPopUpDisplayed(){
         return distributorUI.isDisplayed(txt_success);
