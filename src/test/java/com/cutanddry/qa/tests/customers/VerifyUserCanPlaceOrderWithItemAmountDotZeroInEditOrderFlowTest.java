@@ -55,31 +55,35 @@ public class VerifyUserCanPlaceOrderWithItemAmountDotZeroInEditOrderFlowTest ext
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "Review order page not displayed after edit");
 
         Draft.clickEditOrder();
+        double itemPrice = Customer.getActiveItemPriceFirstRow();
 
         Customer.typeQuantityInFirstRow("1");
         Customer.clickOutsideQuantityField();
-        softAssert.assertTrue(Customer.getActiveItemPriceFirstRow() > 0, "Price not updated for quantity 1");
+        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(), itemPrice, "Price mismatch for quantity 1 on edit order");
 
         Customer.typeQuantityInFirstRow(".0");
         Customer.clickOutsideQuantityField();
+        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(), itemPrice * 0, "Price mismatch for quantity .0 on edit order");
 
         Customer.typeQuantityInFirstRow("1.0");
         Customer.clickOutsideQuantityField();
-        softAssert.assertTrue(Customer.getActiveItemPriceFirstRow() > 0, "Price not updated for quantity 1.0");
+        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(), itemPrice, "Price mismatch for quantity 1.0 on edit order");
 
         Customer.typeQuantityInFirstRow("1.00");
         Customer.clickOutsideQuantityField();
-        softAssert.assertTrue(Customer.getActiveItemPriceFirstRow() > 0, "Price not updated for quantity 1.00");
+        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(), itemPrice, "Price mismatch for quantity 1.00 on edit order");
 
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(itemName);
         softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(itemName).contains(itemName.toLowerCase()), "item not found in catalog");
         Customer.clickOnPlusIconInCatalogPDP(1, itemName);
-        softAssert.assertTrue(Customer.getItemPriceOnCheckoutButton() > 0, "Price not updated in catalog");
+        softAssert.assertEquals(Customer.getItemPriceOnCheckoutButton(), itemPrice * 2, "Price mismatch after adding item from catalog in edit order");
 
         Customer.clickOnProduct(itemName);
         softAssert.assertTrue(Customer.isProductDetailsDisplayed(), "PDP not displayed");
         Customer.clickOnPlusIconInCatalogPDP(1, itemName);
+        softAssert.assertEquals(Math.round(Customer.getItemPriceOnCheckoutButtonViaPDP() * 100.0) / 100.0,
+                Math.round(itemPrice * 3 * 100.0) / 100.0, "Price mismatch after adding item from PDP in edit order");
 
         Customer.clickCheckOutPDP();
         softAssert.assertTrue(Customer.isReviewOrderTextDisplayed(), "Review order page not displayed after checkout");
