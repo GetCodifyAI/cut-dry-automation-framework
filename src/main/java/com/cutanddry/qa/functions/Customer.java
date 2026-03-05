@@ -3046,6 +3046,9 @@ public class Customer {
     public static boolean isUnitNotValidTextDisplay()throws InterruptedException{
         return customersPage.isUnitNotValidTextDisplay();
     }
+    public static boolean isMaximumQuantityExceededErrorDisplay()throws InterruptedException{
+        return customersPage.isMaximumQuantityExceededErrorDisplay();
+    }
     public static void clickSimpleListView(){
         customersPage.clickSimpleListView();
     }
