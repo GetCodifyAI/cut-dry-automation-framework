@@ -4,10 +4,7 @@ import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.BuyoutsData;
 import com.cutanddry.qa.data.testdata.CatalogData;
-import com.cutanddry.qa.functions.Catalog;
-import com.cutanddry.qa.functions.Customer;
-import com.cutanddry.qa.functions.Dashboard;
-import com.cutanddry.qa.functions.Login;
+import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -34,6 +31,7 @@ public class VerifyBuyoutItemsRemovedFromNonBuyoutCustomerOrderSubmissionTest ex
     String itemUOM1 = BuyoutsData.ITEM_UOM1;
     String itemUOM2 = BuyoutsData.ITEM_UOM2;
     String itemCount = "1";
+    static String orderMinimumSetting = "Exempt from Order Minimum";
 
     @BeforeMethod
     public void setUp() {
@@ -55,7 +53,13 @@ public class VerifyBuyoutItemsRemovedFromNonBuyoutCustomerOrderSubmissionTest ex
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
-        Customer.clickOnOrderGuide(customerId);
+
+        Customer.SelectCustomer(customerId);
+        Customer.SelectOrderMinimumFromProfile(orderMinimumSetting);
+        Customer.ifHasHoldsRemoveHoldsFromCustomer();
+        InternalTools.refreshPage();
+
+        Customer.clickOnOrderGuideInCustomerProfile();
 
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(buyoutItemItemCode);

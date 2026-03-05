@@ -23,6 +23,7 @@ public class VerifyTheCatalogAccessFeatureLoginByAdminUserRolesTest extends Test
     static double itemPrice;
     static String catalogToolTip = "Operator doesn't have catalog access, only you have catalog access";
     String ManualDisableCatalogOption = "Selected Operators (via Manual Selection)";
+    static String orderMinimumSetting = "Exempt from Order Minimum";
 
     @BeforeMethod
     public void setUp(){
@@ -52,6 +53,11 @@ public class VerifyTheCatalogAccessFeatureLoginByAdminUserRolesTest extends Test
         Customer.SelectCustomer(customerId);
         Customer.disableCatalogAccess();
         softAssert.assertTrue(Customer.catalogAccessDisabled(),"Error in catalog access disable displaying");
+
+        Customer.SelectOrderMinimumFromProfile(orderMinimumSetting);
+        Customer.ifHasHoldsRemoveHoldsFromCustomer();
+        Customer.refreshCustomersPage();
+        Customer.clickOnOrderGuideInCustomerProfile();
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
