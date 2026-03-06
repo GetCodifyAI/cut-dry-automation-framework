@@ -360,5 +360,26 @@ public class Boost {
     public static void TurnOnBoostFilterToggle(String filter,boolean status) throws InterruptedException {
         boostPage.TurnOnBoostFilterToggle(filter,status);
     }
+    public static void selectConfigureStatus(String status) throws InterruptedException {
+        boostPage.selectConfigureStatus(status);
+    }
+    public static void clickCopyPromoUrl() {
+        boostPage.clickCopyPromoUrl();
+    }
+    public static boolean isCopiedToClipboardDisplayed() {
+        return boostPage.isCopiedToClipboardDisplayed();
+    }
+    public static void clickOkCopied() throws InterruptedException {
+        boostPage.clickOkCopied();
+    }
+    public static String getFeaturedListStatusInTable(String featuredListName) {
+        return boostPage.getFeaturedListStatusInTable(featuredListName);
+    }
+    public static void goToPromoUrl() {
+        boostPage.goToPromoUrl();
+    }
+    public static boolean isFeaturedListPromoPageDisplayed() {
+        return boostPage.isFeaturedListPromoPageDisplayed();
+    }
 
 }
