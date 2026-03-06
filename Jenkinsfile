@@ -159,10 +159,12 @@ pipeline {
                     }
                 }
                 
-                stage('Regression 9 - Operator Portal') {
+                stage('Regression 9 - Operator Portal (Delayed 30 min)') {
                     agent any
                     steps {
                         script {
+                            echo 'Waiting 30 minutes before starting Regression 9...'
+                            sleep(time: 30, unit: 'MINUTES')
                             runTestSuiteWithCleanup('regression9.xml', 'Part_Nine', 9)
                         }
                     }
@@ -175,10 +177,12 @@ pipeline {
                     }
                 }
                 
-                stage('Regression 10 - Internal Tools') {
+                stage('Regression 10 - Internal Tools (Delayed 30 min)') {
                     agent any
                     steps {
                         script {
+                            echo 'Waiting 30 minutes before starting Regression 10...'
+                            sleep(time: 30, unit: 'MINUTES')
                             runTestSuiteWithCleanup('regression10.xml', 'Part_Ten', 10)
                         }
                     }
@@ -191,10 +195,12 @@ pipeline {
                     }
                 }
                 
-                stage('Regression 11 - Credit Requests') {
+                stage('Regression 11 - Credit Requests (Delayed 30 min)') {
                     agent any
                     steps {
                         script {
+                            echo 'Waiting 30 minutes before starting Regression 11...'
+                            sleep(time: 30, unit: 'MINUTES')
                             runTestSuiteWithCleanup('regression11.xml', 'Part_Eleven', 11)
                         }
                     }
@@ -207,10 +213,12 @@ pipeline {
                     }
                 }
                 
-                stage('Regression 12 - Scan to Order') {
+                stage('Regression 12 - Scan to Order (Delayed 30 min)') {
                     agent any
                     steps {
                         script {
+                            echo 'Waiting 30 minutes before starting Regression 12...'
+                            sleep(time: 30, unit: 'MINUTES')
                             runTestSuiteWithCleanup('regression12.xml', 'Part_Twelve', 12)
                         }
                     }
@@ -223,10 +231,12 @@ pipeline {
                     }
                 }
                 
-                stage('Regression 13 - Purchase History') {
+                stage('Regression 13 - Purchase History (Delayed 30 min)') {
                     agent any
                     steps {
                         script {
+                            echo 'Waiting 30 minutes before starting Regression 13...'
+                            sleep(time: 30, unit: 'MINUTES')
                             runTestSuiteWithCleanup('regression13.xml', 'Part_Thirteen', 13)
                         }
                     }
@@ -239,10 +249,12 @@ pipeline {
                     }
                 }
 
-                stage('Regression 14 - New Tests') {
+                stage('Regression 14 - New Tests (Delayed 30 min)') {
                     agent any
                     steps {
                         script {
+                            echo 'Waiting 30 minutes before starting Regression 14...'
+                            sleep(time: 30, unit: 'MINUTES')
                             runTestSuiteWithCleanup('regression14.xml', 'Part_Fourteen', 14)
                         }
                     }
@@ -255,10 +267,12 @@ pipeline {
                     }
                 }
 
-                stage('Regression 15 - New Tests Case') {
+                stage('Regression 15 - New Tests Case (Delayed 30 min)') {
                      agent any
                      steps {
                          script {
+                             echo 'Waiting 30 minutes before starting Regression 15...'
+                             sleep(time: 30, unit: 'MINUTES')
                              runTestSuiteWithCleanup('regression15.xml', 'Part_Fifteen', 15)
                          }
                      }
@@ -270,10 +284,12 @@ pipeline {
                          }
                      }
                 }
-                stage('Regression 16 - New Tests') {
+                stage('Regression 16 - New Tests (Delayed 30 min)') {
                      agent any
                      steps {
                          script {
+                             echo 'Waiting 30 minutes before starting Regression 16...'
+                             sleep(time: 30, unit: 'MINUTES')
                              runTestSuiteWithCleanup('regression16.xml', 'Part_Sixteen', 16)
                          }
                      }
@@ -286,10 +302,12 @@ pipeline {
                      }
                 }
 
-                stage('Regression 17 - New Tests') {
+                stage('Regression 17 - New Tests (Delayed 30 min)') {
                       agent any
                       steps {
                           script {
+                              echo 'Waiting 30 minutes before starting Regression 17...'
+                              sleep(time: 30, unit: 'MINUTES')
                               runTestSuiteWithCleanup('regression17.xml', 'Part_Seventeen', 17)
                           }
                       }
