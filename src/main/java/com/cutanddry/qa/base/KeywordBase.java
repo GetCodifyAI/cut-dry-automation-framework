@@ -153,10 +153,7 @@ public class KeywordBase {
         try {
             WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
             element.clear(); // Clear the field before typing
-            for (char ch : data.toCharArray()) {
-                element.sendKeys(String.valueOf(ch)); // Send each character one by one
-                Thread.sleep(100);
-            }
+            element.sendKeys(data);
             logger.info("Sent keys to element character by character: {} with data: {}", by, data);
         } catch (Exception e) {
             logger.error("Failed to send keys character by character to element: {} with data: {}", by, data, e);
@@ -912,7 +909,7 @@ public class KeywordBase {
             actions.moveToElement(inputField).click().sendKeys(text).perform();
 
             //Wait for 2 seconds to allow the dropdown to load
-            Thread.sleep(10000);
+            Thread.sleep(5000);
 
             //Press Enter to select the option
             actions.sendKeys(Keys.ENTER).perform();
