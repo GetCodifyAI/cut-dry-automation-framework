@@ -453,6 +453,9 @@ public class Catalog {
     public static void typeNewDescription(String description)throws InterruptedException{
         catalogPage.typeNewDescription(description);
     }
+    public static String getDescriptionText(){
+        return catalogPage.getDescriptionText();
+    }
     public static boolean isNewDescriptionDisplayed(String description){
         return catalogPage.isNewDescriptionDisplayed(description);
     }
