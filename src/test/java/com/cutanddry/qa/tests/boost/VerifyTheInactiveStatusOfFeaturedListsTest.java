@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheActiveStatusOfFeaturedListsTest extends TestBase {
+public class VerifyTheInactiveStatusOfFeaturedListsTest extends TestBase {
     static User user;
     static String featuredListName = "Jordan Banana Promo List!";
 
@@ -23,8 +23,8 @@ public class VerifyTheActiveStatusOfFeaturedListsTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-4509")
-    public void VerifyTheActiveStatusOfFeaturedLists() throws InterruptedException {
+    @Test(groups = "DOT-TC-836")
+    public void VerifyTheInactiveStatusOfFeaturedLists() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -35,13 +35,13 @@ public class VerifyTheActiveStatusOfFeaturedListsTest extends TestBase {
         Boost.navigateToFeaturedListTab();
         Boost.viewAndConfigure(featuredListName);
         softAssert.assertTrue(Boost.itemConfigureOverlayDisplayed(),"Configure items overlay not displayed");
-        Boost.selectConfigureStatus("Active");
+        Boost.selectConfigureStatus("Inactive");
         Boost.clickCopyPromoUrl();
         softAssert.assertTrue(Boost.isCopiedToClipboardDisplayed(),"Copied to Clipboard popup not displayed");
         Boost.clickOkCopied();
         Boost.goToPromoUrl();
-        softAssert.assertTrue(Customer.isCatalogFilterSectionDisplayed(featuredListName),"catalog filter not display");
-        softAssert.assertTrue(Boost.isCatalogFilterSectionResultDisplayed(featuredListName),"Featured List promo page not displayed with items");
+        softAssert.assertFalse(Customer.isCatalogFilterSectionDisplayed(featuredListName),"catalog filter not display");
+        softAssert.assertFalse(Boost.isCatalogFilterSectionResultDisplayed(featuredListName),"Featured List promo page not displayed with items");
         softAssert.assertAll();
     }
 

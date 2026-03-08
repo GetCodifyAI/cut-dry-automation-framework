@@ -123,13 +123,13 @@ public class BoostPage extends LoginPage {
     By txt_boostFilters = By.xpath("//h4[contains(text(),'Filters')]");
     String boostFilterToggleStable = "(//td[contains(text(), 'FILTER')]/following-sibling::td//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle'])[1]";
     String boostFilterToggleStable1 = "(//td[contains(text(), 'FILTER')]/following-sibling::td//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1])[1]";
-    By configureStatusDropdown = By.xpath("//div[contains(@class,'modal-body')]//span[text()='Status:']/parent::div/parent::div/parent::div");
+    By configureStatusDropdown = By.xpath("//div[span[normalize-space()='Status:']]/../following-sibling::div");
     String configureStatusOption = "//div[contains(@class,'themed_select__option') and contains(text(),'STATUS')]";
     By btn_copyPromoUrl = By.xpath("//button[contains(text(),'Copy Promo URL')]");
-    By txt_copiedToClipboard = By.xpath("//h2[contains(text(),'Copied to Clipboard')]");
+    By txt_copiedToClipboard = By.xpath("//h2[contains(.,'Copied to Clipboard')]");
     String featuredListStatusInTable = "//tr[td[contains(text(),'FEATUREDLISTNAME')]]//div[contains(@class,'themed_select__single-value')]";
-    By btn_okCopied = By.xpath("//h2[contains(text(),'Copied to Clipboard')]/following-sibling::button");
-    By txt_addToCart = By.xpath("//button[contains(text(),'Add to Cart')]");
+    By btn_okCopied = By.xpath("//button[contains(text(),'OK')]");
+    String catalogFilterResult = "//div[contains(@class,'mb-2') and contains(text(),'RESULT')]";
 
     public void changeOrderDragAndDrop(){
         distributorUI.dragAndDrop(sourceRowDragHandle,targetRowDragHandle);
@@ -639,9 +639,7 @@ public class BoostPage extends LoginPage {
         distributorUI.waitForCustom(3000);
     }
     public void selectConfigureStatus(String status) throws InterruptedException {
-        distributorUI.waitForCustom(2000);
         distributorUI.click(configureStatusDropdown);
-        distributorUI.waitForVisibility(By.xpath(configureStatusOption.replace("STATUS", status)));
         distributorUI.click(By.xpath(configureStatusOption.replace("STATUS", status)));
         distributorUI.waitForCustom(2000);
     }
@@ -649,17 +647,10 @@ public class BoostPage extends LoginPage {
         distributorUI.click(btn_copyPromoUrl);
     }
     public boolean isCopiedToClipboardDisplayed() {
-        try {
-            distributorUI.waitForVisibility(txt_copiedToClipboard);
-            return distributorUI.isDisplayed(txt_copiedToClipboard);
-        } catch (Exception e) {
-            return false;
-        }
+        return distributorUI.isDisplayed(txt_copiedToClipboard);
     }
     public void clickOkCopied() throws InterruptedException {
-        distributorUI.waitForClickability(btn_okCopied);
         distributorUI.click(btn_okCopied);
-        distributorUI.waitForCustom(2000);
     }
     public String getFeaturedListStatusInTable(String featuredListName) {
         return distributorUI.getText(By.xpath(featuredListStatusInTable.replace("FEATUREDLISTNAME", featuredListName)));
@@ -668,12 +659,7 @@ public class BoostPage extends LoginPage {
         distributorUI.OpenNewTabAndSwitchToIt();
         distributorUI.pasteUrlFromClipboard();
     }
-    public boolean isFeaturedListPromoPageDisplayed() {
-        try {
-            distributorUI.waitForCustom(5000);
-            return distributorUI.isDisplayed(txt_addToCart);
-        } catch (Exception e) {
-            return false;
-        }
+    public boolean isCatalogFilterSectionResultDisplayed(String result) throws InterruptedException {
+        return distributorUI.isDisplayed(By.xpath(catalogFilterResult.replace("RESULT", result)));
     }
 }

@@ -2,20 +2,23 @@ package com.cutanddry.qa.tests.boost;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
+import com.cutanddry.qa.data.testdata.DistributorOrderData;
 import com.cutanddry.qa.functions.Boost;
 import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheActiveStatusOfFeaturedListsTest extends TestBase {
+public class VerifyTheHiddenStatusOfFeaturedListsTest extends TestBase {
     static User user;
     static String featuredListName = "Jordan Banana Promo List!";
+    static String customerId = DistributorOrderData.RESTAURANT_TEST_HAYES_ID;
 
     @BeforeMethod
     public void setUp(){
@@ -23,8 +26,8 @@ public class VerifyTheActiveStatusOfFeaturedListsTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-4509")
-    public void VerifyTheActiveStatusOfFeaturedLists() throws InterruptedException {
+    @Test(groups = "DOT-TC-4511")
+    public void VerifyTheHiddenStatusOfFeaturedLists() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -35,12 +38,23 @@ public class VerifyTheActiveStatusOfFeaturedListsTest extends TestBase {
         Boost.navigateToFeaturedListTab();
         Boost.viewAndConfigure(featuredListName);
         softAssert.assertTrue(Boost.itemConfigureOverlayDisplayed(),"Configure items overlay not displayed");
-        Boost.selectConfigureStatus("Active");
+        Boost.selectConfigureStatus("Hidden");
         Boost.clickCopyPromoUrl();
         softAssert.assertTrue(Boost.isCopiedToClipboardDisplayed(),"Copied to Clipboard popup not displayed");
         Boost.clickOkCopied();
+
+        Dashboard.navigateToCustomers();
+        Customer.searchCustomerByCode(customerId);
+        Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
+        Customer.clickOnOrderGuide(customerId);
+        Customer.goToCatalog();
+
+        softAssert.assertFalse(Customer.isCatalogFilterSectionDisplayed(featuredListName),"catalog filter not display");
+        softAssert.assertFalse(Boost.isCatalogFilterSectionResultDisplayed(featuredListName),"Featured List promo page not displayed with items");
+
         Boost.goToPromoUrl();
-        softAssert.assertTrue(Customer.isCatalogFilterSectionDisplayed(featuredListName),"catalog filter not display");
+        softAssert.assertTrue(Customer.isCatalogBrowseDisplayed(),"promo link navigate error");
+        softAssert.assertFalse(Customer.isCatalogFilterSectionDisplayed(featuredListName),"catalog filter not display");
         softAssert.assertTrue(Boost.isCatalogFilterSectionResultDisplayed(featuredListName),"Featured List promo page not displayed with items");
         softAssert.assertAll();
     }

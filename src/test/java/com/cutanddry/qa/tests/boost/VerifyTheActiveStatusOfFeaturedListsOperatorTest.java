@@ -7,13 +7,14 @@ import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class VerifyTheActiveStatusOfFeaturedListsTest extends TestBase {
+public class VerifyTheActiveStatusOfFeaturedListsOperatorTest extends TestBase {
     static User user;
     static String featuredListName = "Jordan Banana Promo List!";
 
@@ -23,8 +24,8 @@ public class VerifyTheActiveStatusOfFeaturedListsTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-4509")
-    public void VerifyTheActiveStatusOfFeaturedLists() throws InterruptedException {
+    @Test(groups = "DOT-TC-4510")
+    public void VerifyTheActiveStatusOfFeaturedListsOperator() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
@@ -39,7 +40,22 @@ public class VerifyTheActiveStatusOfFeaturedListsTest extends TestBase {
         Boost.clickCopyPromoUrl();
         softAssert.assertTrue(Boost.isCopiedToClipboardDisplayed(),"Copied to Clipboard popup not displayed");
         Boost.clickOkCopied();
+        Thread.sleep(3000);
+
+        // Restaurant Flows
+        Login.switchIntoNewTab();
+        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(), "The user is unable to land on the Dashboard page.");
+
+        Dashboard.navigateToIndependentFoodsCo();
+        Dashboard.navigateToOrderGuide();
+        Assert.assertTrue(Dashboard.isUserNavigatedToOrderGuide(),"navigation error");
+
+        Customer.goToCatalog();
+        softAssert.assertTrue(Customer.isCatalogFilterSectionDisplayed(featuredListName),"catalog filter not display");
+
         Boost.goToPromoUrl();
+        softAssert.assertTrue(Customer.isCatalogBrowseDisplayed(),"promo link navigate error");
         softAssert.assertTrue(Customer.isCatalogFilterSectionDisplayed(featuredListName),"catalog filter not display");
         softAssert.assertTrue(Boost.isCatalogFilterSectionResultDisplayed(featuredListName),"Featured List promo page not displayed with items");
         softAssert.assertAll();

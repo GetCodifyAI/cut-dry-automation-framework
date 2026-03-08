@@ -378,8 +378,8 @@ public class Boost {
     public static void goToPromoUrl() {
         boostPage.goToPromoUrl();
     }
-    public static boolean isFeaturedListPromoPageDisplayed() {
-        return boostPage.isFeaturedListPromoPageDisplayed();
+    public static boolean isCatalogFilterSectionResultDisplayed(String result) throws InterruptedException {
+        return boostPage.isCatalogFilterSectionResultDisplayed(result);
     }
 
 }
