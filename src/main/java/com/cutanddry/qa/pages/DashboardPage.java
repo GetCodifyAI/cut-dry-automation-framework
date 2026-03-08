@@ -471,6 +471,11 @@ public class DashboardPage extends LoginPage{
         distributorUI.waitForCustom(3000);
     }
 
+    public void navigateToOrderGuideChangesPage() throws InterruptedException {
+        distributorUI.navigateToURL(com.cutanddry.qa.common.Constants.MAIN_URL + "dashboard/order-guide-changes");
+        distributorUI.waitForCustom(5000);
+    }
+
     public boolean isOrderGuideChangesDetailPageDisplayed() {
         try {
             distributorUI.waitForVisibility(txt_orderGuideChangesTitle);
@@ -520,6 +525,24 @@ public class DashboardPage extends LoginPage{
         By pageBtn = By.xpath(paginationPageNumber.replace("PAGE", page));
         distributorUI.click(pageBtn);
         distributorUI.waitForCustom(3000);
+    }
+
+    public boolean isNextPageEnabled() {
+        try {
+            String cls = distributorUI.getElement(paginationNextBtn).getAttribute("class");
+            return !cls.contains("disabled");
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isPreviousPageEnabled() {
+        try {
+            String cls = distributorUI.getElement(paginationPrevBtn).getAttribute("class");
+            return !cls.contains("disabled");
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public int getTableRowCount() {

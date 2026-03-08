@@ -223,8 +223,7 @@ public class Dashboard {
     }
 
     public static void navigateToOrderGuideChangesDetailPage() throws InterruptedException {
-        dashboardPage.scrollToOrderGuideChanges();
-        dashboardPage.clickOrderGuideChangesViewAll();
+        dashboardPage.navigateToOrderGuideChangesPage();
     }
 
     public static boolean isOrderGuideChangesDetailPageDisplayed() {
@@ -253,6 +252,14 @@ public class Dashboard {
 
     public static void clickPageNumber(String page) throws InterruptedException {
         dashboardPage.clickPageNumber(page);
+    }
+
+    public static boolean isNextPageEnabled() {
+        return dashboardPage.isNextPageEnabled();
+    }
+
+    public static boolean isPreviousPageEnabled() {
+        return dashboardPage.isPreviousPageEnabled();
     }
 
     public static int getTableRowCount() {
