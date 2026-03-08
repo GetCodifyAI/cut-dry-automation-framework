@@ -356,5 +356,8 @@ public class InternalTools {
     public static void TurnOnAllowOrderingDiscontinuedToggle(boolean status){
         internalToolsPage.TurnOnAllowOrderingDiscontinuedToggle(status);
     }
+    public static void TurnOnScanToOrder(boolean status){
+        internalToolsPage.TurnOnScanToOrder(status);
+    }
 
 }

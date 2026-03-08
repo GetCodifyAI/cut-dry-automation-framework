@@ -24,34 +24,43 @@ public class Customer {
 //        return customersPage.isCustomerSearchResultByCodeDisplayed(code);
         if (customersPage.isCustomerSearchResultByCodeDisplayed(code)) {
             return true;
-        }else if(!customersPage.isCustomerSearchResultByCodeDisplayed(code)){
-            customersPage.clickOnMoreFiltersOption();
-            customersPage.clickOnMoreFilterStatusDropdown();
-            customersPage.clickOnMoreFiltersAllOption();
-            customersPage.clickApply();
-            return customersPage.isCustomerSearchResultByCodeDisplayed(code);
-        }else {
-            customersPage.refreshCustomersPage();
-            customersPage.clickOnSearchCustomers();
-            customersPage.typeOnSearchCustomers(code);
-            return customersPage.isCustomerSearchResultByCodeDisplayed(code);
         }
-    }
-    public static boolean isCustomerSearchResultByNameDisplayed(String code) throws InterruptedException {
-        if (customersPage.isCustomerSearchResultByNameDisplayed(code)) {
+
+        customersPage.clickOnMoreFiltersOption();
+        customersPage.clickOnMoreFilterStatusDropdown();
+        customersPage.clickOnMoreFiltersAllOption();
+        customersPage.clickApply();
+
+        if (customersPage.isCustomerSearchResultByCodeDisplayed(code)) {
             return true;
-        }else if(!customersPage.isCustomerSearchResultByNameDisplayed(code)) {
-            customersPage.clickOnMoreFiltersOption();
-            customersPage.clickOnMoreFilterStatusDropdown();
-            customersPage.clickOnMoreFiltersAllOption();
-            customersPage.clickApply();
-            return customersPage.isCustomerSearchResultByNameDisplayed(code);
-        }else {
-            customersPage.refreshCustomersPage();
-            customersPage.clickOnSearchCustomers();
-            customersPage.typeOnSearchCustomers(code);
-            return customersPage.isCustomerSearchResultByNameDisplayed(code);
         }
+
+        customersPage.refreshCustomersPage();
+        customersPage.clickOnSearchCustomers();
+        customersPage.typeOnSearchCustomers(code);
+
+        return customersPage.isCustomerSearchResultByCodeDisplayed(code);
+    }
+    public static boolean isCustomerSearchResultByNameDisplayed(String name) throws InterruptedException {
+
+        if (customersPage.isCustomerSearchResultByNameDisplayed(name)) {
+            return true;
+        }
+
+        customersPage.clickOnMoreFiltersOption();
+        customersPage.clickOnMoreFilterStatusDropdown();
+        customersPage.clickOnMoreFiltersAllOption();
+        customersPage.clickApply();
+
+        if (customersPage.isCustomerSearchResultByNameDisplayed(name)) {
+            return true;
+        }
+
+        customersPage.refreshCustomersPage();
+        customersPage.clickOnSearchCustomers();
+        customersPage.typeOnSearchCustomers(name);
+
+        return customersPage.isCustomerSearchResultByNameDisplayed(name);
     }
     public static void clickOnOrderGuide(String code) throws InterruptedException {
         customersPage.clickOnOrderGuide(code);

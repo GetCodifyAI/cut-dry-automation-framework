@@ -15,6 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifySortOptionsTest extends TestBase {
     static User user;
     static String customerId = "16579";
+    static String orderGuideName = "Test_Automation";
 
     @BeforeMethod
     public void setUp(){
@@ -31,6 +32,8 @@ public class VerifySortOptionsTest extends TestBase {
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnOrderGuide(customerId);
+        Customer.clickOGDropdown();
+        Customer.selectNewlyCreatedOrderGuide(orderGuideName);
         Customer.clickSortOptionsDropdown();
         Customer.selectItemCategoriesSort();
         softAssert.assertTrue(Customer.isProduceTextDisplayed(),"item category sort error");
