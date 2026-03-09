@@ -35,6 +35,7 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
     By itemNameColumnHeader = By.xpath("//div[contains(text(),'Item Name')]");
     By itemNameHeaderArrowUP = By.xpath("//div[normalize-space(.)='Item Name']/following-sibling::*[local-name()='svg' and contains(@data-icon,'arrow-up')]");
     By criticalInfoExpander = By.xpath("//div[contains(text(),'Critical Information')]");
+    By DescriptionExpander = By.xpath("(//div[contains(text(),'Description')])[1]");
     By ItemCodeInCatalogData = By.xpath("//div[normalize-space(.)='Product Code (SKU)']/ancestor::div[2]/following-sibling::div//input");
     By productConfigsEditBtn = By.xpath("//*[contains(text(),'Catalog Controls')]/following-sibling::button");
     By saveChangesBtn = By.xpath("//button[text()='Save']");
@@ -245,6 +246,9 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     By onSaleTag = By.xpath("//span[text()='Sale']");
     By newTag = By.xpath("//span[contains(text(),'New')]");
     By itemTagsContainer = By.xpath("//div[contains(@class,'tag') or contains(@class,'badge')]/..");
+    By supplierCatalogSearchField = By.xpath("//input[contains(@placeholder,'Search product by name, sku, gtin')]" );
+    By supplierCatalogSearchButton = By.xpath("//input[contains(@placeholder,'Search product by name, sku, gtin')]/following-sibling::button");
+    By firstSearchResultRow = By.xpath("(//tr[contains(@class,'_du1frc')])[1]");
 
 
 
@@ -871,6 +875,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
         distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(txt_description, description);
     }
+
     public boolean isNewDescriptionDisplayed(String description){
         return distributorUI.isDisplayed(By.xpath(newDescription.replace("DESCRIPTION",description)));
     }
@@ -1342,5 +1347,43 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
             return false;
         }
     }
+
+    public String getDescriptionText() {
+        distributorUI.waitForVisibility(criticalInfoExpander);
+        distributorUI.scrollToElement(textdescriptionTab);
+        distributorUI.click(textdescriptionTab);
+        distributorUI.waitForVisibility(txt_description);
+        return distributorUI.getValue(txt_description);
+    }
+
+    public void searchOnSupplierCatalog(String searchText) throws InterruptedException {
+        distributorUI.waitForVisibility(supplierCatalogSearchField);
+        distributorUI.sendKeys(supplierCatalogSearchField, searchText);
+        distributorUI.click(supplierCatalogSearchButton);
+        distributorUI.waitForCustom(5000);
+    }
+
+    public void clickFirstSearchResultInSupplierCatalog() throws InterruptedException {
+        distributorUI.waitForVisibility(firstSearchResultRow);
+        distributorUI.click(firstSearchResultRow);
+        distributorUI.waitForCustom(3000);
+    }
+
+    public void clearTheDescription() throws InterruptedException {
+        distributorUI.waitForVisibility(DescriptionExpander);
+        distributorUI.scrollToElement(textdescriptionTab);
+        distributorUI.click(textdescriptionTab);
+        distributorUI.click(txt_description);
+        distributorUI.clearUsingJS(txt_description);
+        distributorUI.waitForCustom(1000);
+    }
+
+
+
+
+
+
+
+
 }
 

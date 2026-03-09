@@ -3660,6 +3660,10 @@ public class Customer {
         return customersPage.isCatalogBrowseDisplayed();
     }
 
+    public static boolean isCatalogSelectedFilterOptionDisplayed(String option)throws InterruptedException{
+        return customersPage.isCatalogSelectedFilterOptionDisplayed(option);
+    }
+
 
 }
 

@@ -711,6 +711,21 @@ public class Catalog {
         return catalogPage.areAllTagsDisplayedWithProperAlignment();
     }
 
+    public static String getDescriptionText(){
+        return catalogPage.getDescriptionText();
+    }
+
+
+    public static void searchOnSupplierCatalog(String searchText) throws InterruptedException {
+        catalogPage.searchOnSupplierCatalog(searchText);
+    }
+
+    public static void clickFirstSearchResultInSupplierCatalog() throws InterruptedException {
+        catalogPage.clickFirstSearchResultInSupplierCatalog();
+    }
+
+    public static void  clearTheDescription() throws InterruptedException {
+        catalogPage. clearTheDescription();
     public static void clickOnBrandName(String brandName) throws InterruptedException {
         catalogPage.clickOnBrandName(brandName);
     }

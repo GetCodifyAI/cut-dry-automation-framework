@@ -56,7 +56,7 @@ public class VerifyTheAllowSponsoredProductAdvertisementsFlowTest extends TestBa
         InternalTools.ensureBuyerEdgePlatformRebateStatus(false,dp);
         Login.navigateToDistributorPortal(distributorName);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
-        softAssert.assertFalse(Dashboard.isInfluenceTabDisplayed(),"Influence tab not hidden");
+        softAssert.assertFalse(Dashboard.isInfluenceTabDisplayed(),"Influence tab not hidden"); // this is not need
 
         //turning on the Influence options
         Login.navigateToInternalToolsPage();
