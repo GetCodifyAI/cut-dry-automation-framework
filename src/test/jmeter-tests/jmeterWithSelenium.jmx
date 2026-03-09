@@ -1771,7 +1771,7 @@ import java.io.FileWriter
 import java.io.BufferedWriter
 
 
-String customerID = &quot;CU10509:5 Kevin Cimino Samples&quot;
+String customerID = &quot;4650&quot;
 def wait = new WebDriverWait(WDS.browser, Duration.ofSeconds(30))
 
 
