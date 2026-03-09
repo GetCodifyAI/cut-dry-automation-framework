@@ -1731,8 +1731,8 @@ def loginURL = textElement.getAttribute(&quot;href&quot;)
 WDS.browser.get(loginURL)
 wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(&quot;//li[contains(text(),&apos;Dashboard&apos;)]&quot;)))
 
-def customersLink = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(&quot;//a[@data-tip=&apos;Customers&apos;]&quot;)))
-customersLink.click()
+def customersLink = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(&quot;(//a[@data-tip=&apos;Customers&apos;])[1]&quot;)))
+((JavascriptExecutor) WDS.browser).executeScript(&quot;arguments[0].click();&quot;, customersLink)
 Thread.sleep(3000)
 
 def customerField = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(&quot;//input[@placeholder=&apos;Search Customers&apos;]&quot;)))
