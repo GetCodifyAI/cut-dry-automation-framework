@@ -228,6 +228,30 @@ public class KeywordBase {
         return this;
     }
 
+    public KeywordBase clearUsingJS(By by) {
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+
+        try {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+
+            js.executeScript(
+                    "var element = arguments[0];" +
+                            "var valueSetter = Object.getOwnPropertyDescriptor(element.__proto__, 'value').set;" +
+                            "valueSetter.call(element, '');" +
+                            "element.dispatchEvent(new Event('input', { bubbles: true }));",
+                    element
+            );
+
+            logger.info("Cleared element using React-compatible JS: {}", by);
+
+        } catch (Exception e) {
+            logger.error("Failed to clear element: {}", by, e);
+            throw new RuntimeException("Unable to clear element: " + by, e);
+        }
+
+        return this;
+    }
+
     // Get text from an element
     public String getText(By by) {
         try {

@@ -123,7 +123,8 @@ public class BoostPage extends LoginPage {
     By txt_boostFilters = By.xpath("//h4[contains(text(),'Filters')]");
     String boostFilterToggleStable = "(//td[contains(text(), 'FILTER')]/following-sibling::td//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle'])[1]";
     String boostFilterToggleStable1 = "(//td[contains(text(), 'FILTER')]/following-sibling::td//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1])[1]";
-
+    String boostFilterSearchToggleStable = "(//td[contains(text(), 'FILTER')]/following-sibling::td//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle'])[2]";
+    String boostFilterSearchToggleStable1 = "(//td[contains(text(), 'FILTER')]/following-sibling::td//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[2])[2]";
 
 
 
@@ -623,6 +624,7 @@ public class BoostPage extends LoginPage {
     public boolean isFiltersTestDisplay() {
         return distributorUI.isDisplayed(txt_boostFilters);
     }
+
     public void TurnOnBoostFilterToggle(String filter,boolean enable) throws InterruptedException {
 
         String handlePosition = distributorUI.getElement(By.xpath(boostFilterToggleStable.replace("FILTER",filter))).getAttribute("style");
@@ -635,4 +637,18 @@ public class BoostPage extends LoginPage {
         }
         distributorUI.waitForCustom(3000);
     }
+
+    public void TurnOnBoostFilterSearchToggle(String filter,boolean enable) throws InterruptedException {
+
+        String handlePosition = distributorUI.getElement(By.xpath(boostFilterSearchToggleStable.replace("FILTER",filter))).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(16.5px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(By.xpath(boostFilterSearchToggleStable1.replace("FILTER",filter)));
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(By.xpath(boostFilterSearchToggleStable1.replace("FILTER",filter)));
+        }
+        distributorUI.waitForCustom(3000);
+    }
+
 }
