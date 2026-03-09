@@ -3653,6 +3653,12 @@ public class Customer {
     public static boolean isSimpleListSorted(String title) throws InterruptedException {
         return customersPage.isSimpleListSortingProperlyWorking(title);
     }
+    public static boolean isCatalogFilterSectionDisplayed(String filter){
+        return customersPage.isCatalogFilterSectionDisplayed(filter);
+    }
+    public static boolean isCatalogBrowseDisplayed(){
+        return customersPage.isCatalogBrowseDisplayed();
+    }
     public static void clickOnActivityLogTab() throws InterruptedException {
         customersPage.clickOnActivityLogTab();
     }

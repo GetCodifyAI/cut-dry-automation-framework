@@ -994,6 +994,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String simpleListViewColumnHeaderClick = "//div[text()='Simple List View']/following::table[1]//th[INDEX]";
     String simpleListViewColumnByHeader = "//div[text()='Simple List View']/following::table[1]//tr/td[INDEX]";
     By customerNameUnderProfile = By.xpath("//button[contains(text(),'Order Guide')]/ancestor::div[2]/div[1]");
+    String catalogFilterSection = "//div[text()='Sections']/../following-sibling::div//div[contains(text(),'FILTER')]";
+    By browseCatalog = By.xpath("//div[contains(text(),'Browse Catalog')]");
+
 
 
 
@@ -6025,6 +6028,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
 
         return distributorUI.isSimpleListSortingProperlyWorking(headerLocator, cellXpath, columnHeader);
 
+    }
+    public boolean isCatalogFilterSectionDisplayed(String filter){
+        distributorUI.waitForVisibility(By.xpath(catalogFilterSection.replace("FILTER", filter)));
+        return distributorUI.isDisplayed(By.xpath(catalogFilterSection.replace("FILTER", filter)));
+    }
+    public boolean isCatalogBrowseDisplayed(){
+        distributorUI.waitForVisibility(browseCatalog);
+        return distributorUI.isDisplayed(browseCatalog);
     }
 
     By tb_activityLog = By.xpath("//a[text()='Activity Log' and @role='tab']");
