@@ -112,6 +112,8 @@ public class BoostPage extends LoginPage {
     By DisplayStatusToggleStable1 = By.xpath("//div[contains(text(), 'Display Status')]/div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     By tab_brandBoost = By.xpath("//a[text()='Brand Boost']");
     By txt_brandBoost = By.xpath("//h3[text()='Brand Boost']");
+    By tab_customTags = By.xpath("//a[text()='Custom Tags']");
+    By txt_customTags = By.xpath("//h3[text()='Manage Custom Tags']");
     By input_selectBrand = By.xpath("//div[text()='Select brand']/following-sibling::div//input");
     String option_brand = "(//div[text()='BRANDNAME'])[last()]";
     By btn_addBrand = By.xpath("//button[text()='Add']");
@@ -123,8 +125,8 @@ public class BoostPage extends LoginPage {
     By txt_boostFilters = By.xpath("//h4[contains(text(),'Filters')]");
     String boostFilterToggleStable = "(//td[contains(text(), 'FILTER')]/following-sibling::td//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle'])[1]";
     String boostFilterToggleStable1 = "(//td[contains(text(), 'FILTER')]/following-sibling::td//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1])[1]";
-
-
+    String customTag = "//*[contains(text(),'CUSTOMTAG')]/../following-sibling::div//input[@placeholder='Enter tag name']";
+    By SaveBtn = By.xpath("//button[normalize-space(text())='Save']");
 
 
 
@@ -634,5 +636,17 @@ public class BoostPage extends LoginPage {
             distributorUI.clickWithScrollAndHover(By.xpath(boostFilterToggleStable1.replace("FILTER",filter)));
         }
         distributorUI.waitForCustom(3000);
+    }
+    public void clickOnCustomTags(){
+        distributorUI.click(tab_customTags);
+    }
+    public boolean isManageCustomTagsTxtDisplay(){
+        return distributorUI.isDisplayed(txt_customTags);
+    }
+    public void EnterCustomTags(String customTag1, String tagName){
+        distributorUI.sendKeys(By.xpath(customTag.replace("CUSTOMTAG",customTag1)),tagName);
+    }
+    public void clickOnSave(){
+        distributorUI.click(SaveBtn);
     }
 }

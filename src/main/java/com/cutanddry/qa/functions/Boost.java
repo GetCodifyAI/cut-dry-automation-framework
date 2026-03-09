@@ -360,5 +360,16 @@ public class Boost {
     public static void TurnOnBoostFilterToggle(String filter,boolean status) throws InterruptedException {
         boostPage.TurnOnBoostFilterToggle(filter,status);
     }
-
+    public static void navigateToCustomTags(){
+        boostPage.clickOnCustomTags();
+    }
+    public static boolean isManageCustomTagsTxtDisplayed(){
+       return  boostPage.isManageCustomTagsTxtDisplay();
+    }
+    public static void EnterCustomTagsFromBoost(String customTag1, String tagName){
+        boostPage.EnterCustomTags(customTag1,tagName);
+    }
+    public static void save(){
+        boostPage.clickOnSave();
+    }
 }

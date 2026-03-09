@@ -2,9 +2,7 @@ package com.cutanddry.qa.tests.catalog;
 
 import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
-import com.cutanddry.qa.functions.Customer;
-import com.cutanddry.qa.functions.Dashboard;
-import com.cutanddry.qa.functions.Login;
+import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -21,6 +19,14 @@ public class CustomTagFilterWithOtherFiltersTest extends TestBase {
     static String brandItem = "Milk Almond Barista Unsweetened";
     static String tagFilter = "Item Type";
     static String tagOption = "Stocked";
+    static String Tag1 = "Custom Tag 1";
+    static String Tag2 = "Custom Tag 2";
+    static String Tag3 = "Custom Tag 3";
+    static String TagName1 = "Exclusive";
+    static String TagName2 = "Local";
+    static String TagName3 = "Premium";
+    static String itemCode = "00036";
+
 
     @BeforeMethod
     public void setUp() {
@@ -33,6 +39,23 @@ public class CustomTagFilterWithOtherFiltersTest extends TestBase {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "login error");
+
+        Dashboard.navigateToBoost();
+        softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
+        Boost.navigateToCustomTags();
+        softAssert.assertTrue(Boost.isManageCustomTagsTxtDisplayed(),"navigate to boost error");
+        Boost.EnterCustomTagsFromBoost(Tag1,TagName1);
+        Boost.save();
+        Boost.EnterCustomTagsFromBoost(Tag2,TagName2);
+        Boost.save();
+        Boost.EnterCustomTagsFromBoost(Tag3,TagName3);
+        Boost.save();
+
+        Dashboard.navigateToCatalog();
+        softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
+        Catalog.searchItemInCatalog(itemCode);
+        Catalog.selectItemFromGrid(itemCode);
+
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "customer search error");
