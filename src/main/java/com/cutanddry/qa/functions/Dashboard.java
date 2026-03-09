@@ -165,8 +165,18 @@ public class Dashboard {
         return "Independent Foods Co".equals(companyName);
     }
 
+    public static boolean isCompanyCutAndDryTest() {
+        String companyName = DashboardPage.getTextAfterCompany();
+        System.out.println("The current company name is "+ companyName);
+        return "Cut & Dry Test Account".equals(companyName);
+    }
+
     public static void selectIndependentFoodCo(){
         DashboardPage.selectIndependentFoodCo();
+    }
+
+    public static void selectCutAndDryTest(){
+        DashboardPage.selectCutAndDryTest();
     }
 
     public static void clickOnPlaceOrderBtn(){

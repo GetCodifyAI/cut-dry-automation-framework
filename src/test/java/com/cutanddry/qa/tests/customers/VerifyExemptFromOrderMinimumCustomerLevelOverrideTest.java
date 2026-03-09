@@ -28,7 +28,7 @@ public class VerifyExemptFromOrderMinimumCustomerLevelOverrideTest extends TestB
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-3458")
+    @Test(groups = "DOT-TC-4502")
     public void VerifyExemptFromOrderMinimumCustomerLevelOverride() throws InterruptedException{
         softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());

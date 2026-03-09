@@ -30,7 +30,7 @@ public class VerifyDeleteVerifiedVendorGroupTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-1871")
+    @Test(groups = "DOT-TC-4498")
     public void VerifyDeleteVerifiedVendorGroup() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());

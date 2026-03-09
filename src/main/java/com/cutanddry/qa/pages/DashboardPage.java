@@ -62,6 +62,7 @@ public class DashboardPage extends LoginPage{
     static By wordAfterCompanyLocator = By.xpath("//span[text()='Company:']/following-sibling::span");
     static By dropdownToggle = By.xpath("//span[text()='Company:']/ancestor::button[contains(@class, 'dropdown-toggle')]");
     static By independentFoodOption = By.xpath("//a[text()='Independent Foods Co']");
+    static By cutAndDryTestOption = By.xpath("//a[text()='Cut & Dry Test Account']");
     By btn_PlaceOrder = By.xpath("(//button[text()='Place Order'])[1]");
     By approvalsBtn = By.xpath("(//a[contains(@data-tip,'Approvals')])[1]");
     By locationFilter = By.xpath("(//div[text()='Place Order']/following-sibling::div//div)[1]");
@@ -347,6 +348,18 @@ public class DashboardPage extends LoginPage{
         driver.findElement(independentFoodOption).click();
 
         System.out.println("Company name changed to 'Independent Foods Co'.");
+    }
+
+    public static void selectCutAndDryTest() {
+        // Click the dropdown
+        driver.findElement(dropdownToggle).click();
+        System.out.println("Dropdown clicked.");
+
+        // Wait for the 'Cut & Dry Test Account' option to be visible and click it
+        distributorUI.waitForVisibility(cutAndDryTestOption);
+        driver.findElement(cutAndDryTestOption).click();
+
+        System.out.println("Company name changed to 'Cut & Dry Test Account'.");
     }
 
     public void clickOnPlaceOrderBtn(){

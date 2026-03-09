@@ -4,10 +4,7 @@ import com.cutanddry.qa.base.TestBase;
 import com.cutanddry.qa.data.models.User;
 import com.cutanddry.qa.data.testdata.BuyoutsData;
 import com.cutanddry.qa.data.testdata.CatalogData;
-import com.cutanddry.qa.functions.Catalog;
-import com.cutanddry.qa.functions.Customer;
-import com.cutanddry.qa.functions.Dashboard;
-import com.cutanddry.qa.functions.Login;
+import com.cutanddry.qa.functions.*;
 import com.cutanddry.qa.utils.JsonUtil;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -22,7 +19,8 @@ public class VerifyBuyoutItemsRemovedFromNonBuyoutCustomerOrderSubmissionTest ex
     static String customerId = BuyoutsData.BUYOUT_NOT_ALLOWED_CUSTOMER;
     static String canonicalNodeName = BuyoutsData.BUYOUT_PRODUCT1_CANONICAL_NODE;
     static String featureKey = BuyoutsData.BUYOUT_PRODUCT_KEY;
-    static String featureValue = BuyoutsData.BUYOUT_PRODUCT_VALUE;
+    static String featureValueTrue = BuyoutsData.BUYOUT_PRODUCT_VALUE_TRUE;
+    static String featureValueFalse = BuyoutsData.BUYOUT_PRODUCT_VALUE_FALSE;
     static String buyoutItemItemCode = BuyoutsData.BUYOUT_PRODUCT_ITEMCODE;
     static String buyoutItemItemName = BuyoutsData.BUYOUT_PRODUCT_ITEMNAME;
     static String nonBuyoutItemItemCode = BuyoutsData.NON_BUYOUT_PRODUCT_ITEMCODE;
@@ -33,6 +31,7 @@ public class VerifyBuyoutItemsRemovedFromNonBuyoutCustomerOrderSubmissionTest ex
     String itemUOM1 = BuyoutsData.ITEM_UOM1;
     String itemUOM2 = BuyoutsData.ITEM_UOM2;
     String itemCount = "1";
+    static String orderMinimumSetting = "Exempt from Order Minimum";
 
     @BeforeMethod
     public void setUp() {
@@ -47,14 +46,20 @@ public class VerifyBuyoutItemsRemovedFromNonBuyoutCustomerOrderSubmissionTest ex
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
 
         Login.navigateToNode(canonicalNodeName);
-        Login.setValueToNode(featureKey,featureValue);
+        Login.setValueToNode(featureKey,featureValueTrue);
 
         Login.navigateToDistributorPortal(DistributorName);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
-        Customer.clickOnOrderGuide(customerId);
+
+        Customer.SelectCustomer(customerId);
+        Customer.SelectOrderMinimumFromProfile(orderMinimumSetting);
+        Customer.ifHasHoldsRemoveHoldsFromCustomer();
+        InternalTools.refreshPage();
+
+        Customer.clickOnOrderGuideInCustomerProfile();
 
         Customer.goToCatalog();
         Customer.searchItemOnCatalog(buyoutItemItemCode);
@@ -79,6 +84,9 @@ public class VerifyBuyoutItemsRemovedFromNonBuyoutCustomerOrderSubmissionTest ex
         softAssert.assertTrue(Customer.isRemovedBuyoutItemCorrectlyDisplayed(buyoutItemItemName,buyoutItemItemCode),"Buyout item removed is not correctly displayed");
         softAssert.assertTrue(Customer.isRemovedBuyoutItemUOMCorrectlyDisplayed(buyoutItemItemName,buyoutItemItemCode,itemCount,itemUOM1),"Buyout item removed is not correctly displayed");
         softAssert.assertTrue(Customer.isRemovedBuyoutItemUOMCorrectlyDisplayed(buyoutItemItemName,buyoutItemItemCode,itemCount,itemUOM2),"Buyout item removed is not correctly displayed");
+
+        Login.navigateToNode(canonicalNodeName);
+        Login.setValueToNode(featureKey,featureValueFalse);
 
         softAssert.assertAll();
     }

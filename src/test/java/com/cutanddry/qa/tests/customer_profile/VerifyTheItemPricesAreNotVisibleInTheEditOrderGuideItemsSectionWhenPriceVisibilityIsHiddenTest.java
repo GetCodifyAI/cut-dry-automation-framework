@@ -25,6 +25,7 @@ public class VerifyTheItemPricesAreNotVisibleInTheEditOrderGuideItemsSectionWhen
     static String statusHidden = "Hidden";
     static String OperatorName = "496044202";
     String DistributorName = CustomerProfileData.DISTRIBUTOR_NAME_IFC;
+    static String OrderGuideName = "Independent Foods Co";
 
 
     @BeforeMethod
@@ -52,9 +53,12 @@ public class VerifyTheItemPricesAreNotVisibleInTheEditOrderGuideItemsSectionWhen
         Customer.editStatusPriceVisibility(statusHidden);
 
         Customer.clickOnOrderGuideInCustomerProfile();
+        Customer.clickOGDropdown();
+        Customer.selectNewlyCreatedOrderGuide(OrderGuideName);
 
         // Add the product via Order Guide
         Customer.searchItemOnOrderGuide(searchItemCode);
+        Customer.addItemFromCatalogIfNotAvailableInOG(searchItemCode);
         itemName = Customer.getItemNameFirstRow();
         itemPrice = Customer.getActiveItemPriceFirstRow();
         itemPriceStr = String.valueOf(Customer.getActiveItemPriceFirstRow());
@@ -68,6 +72,8 @@ public class VerifyTheItemPricesAreNotVisibleInTheEditOrderGuideItemsSectionWhen
         Login.navigateToLoginAs();
         Login.logInToOperatorAsWhiteLabel(OperatorName);
         Customer.clickOnOrderSection();
+        Customer.clickOGDropdown();
+        Customer.selectNewlyCreatedOrderGuide(OrderGuideName);
         Customer.goToEdit();
         Thread.sleep(3000);
         softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"navigation error for edit");

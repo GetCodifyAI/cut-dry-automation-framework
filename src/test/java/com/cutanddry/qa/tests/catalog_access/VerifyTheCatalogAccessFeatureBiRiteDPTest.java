@@ -21,6 +21,7 @@ public class VerifyTheCatalogAccessFeatureBiRiteDPTest extends TestBase {
     static String itemName, orderId, searchItemCode;
     static double itemPrice;
     static String catalogToolTip = "Operator doesn't have catalog access, only you have catalog access";
+    static String orderMinimumSetting = "Exempt from Order Minimum";
 
     @BeforeMethod
     public void setUp(){
@@ -41,6 +42,7 @@ public class VerifyTheCatalogAccessFeatureBiRiteDPTest extends TestBase {
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
+        Customer.SelectOrderMinimumFromProfile(orderMinimumSetting);
         Customer.disableCatalogAccess();
         softAssert.assertTrue(Customer.catalogAccessDisabled(),"Error in catalog access disable displaying");
 

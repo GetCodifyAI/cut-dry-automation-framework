@@ -53,6 +53,13 @@ public class Login {
         loginPage.typeEmailOrMobile(emailOrMobile);
         loginPage.typePassword(password);
         loginPage.clickSubmit();
+
+        if (!Dashboard.isCompanyCutAndDryTest()) {
+            System.out.println("Company name is incorrect. Changing to 'Cut & Dry Test Account'...");
+            Dashboard.selectCutAndDryTest();
+        } else {
+            System.out.println("Company name is already 'Cut & Dry Test Account'. No changes needed.");
+        }
     }
     public static void navigateToDistributor() {
         loginPage.navigateToDistributor();

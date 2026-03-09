@@ -1,5 +1,6 @@
 package com.cutanddry.qa.pages;
 
+import com.cutanddry.qa.common.Constants;
 import org.openqa.selenium.By;
 
 public class InternalToolsPage extends LoginPage {
@@ -37,7 +38,7 @@ public class InternalToolsPage extends LoginPage {
     String payDisableRestaurant = "//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div[text()='NAME']";
     String payEnableRestaurantDelete = "//label[contains(text(), 'Pay Enabled Restaurants')]/following-sibling::div//div[text()='NAME']/following-sibling::div";
     String payDisableRestaurantDelete = "//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div[text()='NAME']/following-sibling::div";
-    By addCustomerToPayDisable = By.xpath("//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div/div");
+    By addCustomerToPayDisable = By.xpath("(//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div)[3]/following::div[1]");
     String selectDisableCustomer = "//div[contains(text(), 'NAME')]";
     By addCustomerToPayEnable = By.xpath("//label[contains(text(), 'Pay Enabled Restaurants')]/following-sibling::div/div");
     By checkboxLocatorCreditMemo = By.xpath("//label[contains(text(),'Enable Auto Apply Credit Memos')]/..//input");
@@ -71,6 +72,8 @@ public class InternalToolsPage extends LoginPage {
     String specialItemsDropDownOption = "(//div[text()='OPTION'])[last()]";
     By hideOutOfStockToggleStable = By.xpath("//div[contains(text(), 'Hide out of stock label on Supplier Portal:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By hideOutOfStockToggleStable1 = By.xpath("//div[contains(text(), 'Hide out of stock label on Supplier Portal:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By hideOutOfStockToggleLabelOnPublicCatalogAttribute = By.xpath("//div[contains(text(), 'Hide out of stock label on Public Catalogs:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By hideOutOfStockToggleLabelOnPublicCatalog = By.xpath("//div[contains(text(), 'Hide out of stock label on Public Catalogs:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     By simpleListViewDropDown = By.xpath("//div[text()='Simple List View:']/following-sibling::div/div");
     String simpleListViewDropDownOption = "(//div[text()='TYPE'])[last()]";
     By fetchPricesFromOrderForEditOrderFlowToggleStable = By.xpath("//div[contains(text(), 'Fetch prices from order for edit order flow:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
@@ -93,7 +96,7 @@ public class InternalToolsPage extends LoginPage {
     By txt_createNewDPGroup = By.xpath("//div[contains(text(),'Create New DP Group')]");
     By lbl_groupName = By.xpath("//label[text()='Group Name']/following-sibling::input");
     By lbl_description = By.xpath("//label[text()='Description']/following-sibling::textarea");
-    By lbl_attached_DPs = By.xpath("//label[text()='Attached DPs']/following-sibling::div");
+    By lbl_attached_DPs = By.xpath("//label[text()='Attached DPs']/following-sibling::div//input/ancestor::div[3]/div[1]");
     String attachedDps = "//label[text()='Attached DPs']/following-sibling::*//div[text()='DISTRIBUTOR']";
     By allowCompanySwitching = By.xpath("//label[text()='Allow Company Switching']/preceding-sibling::input[@type='checkbox']");
     By createGroup = By.xpath("(//button[contains(text(),'Create Group')])[2]");
@@ -121,8 +124,9 @@ public class InternalToolsPage extends LoginPage {
     By ShowSubstitutesModalInPortalToggleStable1 = By.xpath("//div[contains(text(), 'Show substitutions modal in portal:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     By AllowOrderingDiscontinuedToggleStable = By.xpath("//div[contains(text(), 'Allow ordering discontinued items when substitutes are available:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By AllowOrderingDiscontinuedToggleStable1 = By.xpath("//div[contains(text(), 'Allow ordering discontinued items when substitutes are available:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
-
-
+    By TaskManagementTxt = By.xpath("//h2[contains(text(),'Task Management')]");
+    By ScanToOrderToggleStatus = By.xpath("//div[contains(text(), 'Scan to Order Enabled')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By ScanToOrderToggle = By.xpath("//div[contains(text(), 'Scan to Order Enabled')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
 
 
     public void clickConfigureSupplier(){
@@ -337,6 +341,17 @@ public class InternalToolsPage extends LoginPage {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+    public void clickHideOutOfStockLabelOnPublicCatalog(boolean enable){
+        String handlePosition = distributorUI.getElement(hideOutOfStockToggleLabelOnPublicCatalogAttribute).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(hideOutOfStockToggleLabelOnPublicCatalog);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(hideOutOfStockToggleLabelOnPublicCatalog);
+        }
+
     }
     public void clickPayEnabledToggle(boolean enable) {
 
@@ -661,6 +676,10 @@ public class InternalToolsPage extends LoginPage {
     public void clickOnTaskManagement(){
         distributorUI.click(task_management);
     }
+    public void navigateToTaskManagement(){
+        distributorUI.navigateToURL(Constants.TASK_MANAGEMENT);
+        distributorUI.waitForVisibility(TaskManagementTxt);
+    }
     public boolean isParentChildTaskDisplayed(String formID){
         return distributorUI.isDisplayed(By.xpath(taskManagerParentChildTask.replace("FORMID","Form " + formID)));
     }
@@ -738,6 +757,17 @@ public class InternalToolsPage extends LoginPage {
             distributorUI.clickWithScrollAndHover(AllowOrderingDiscontinuedToggleStable1);
         } else if (!enable && isEnabled) {
             distributorUI.clickWithScrollAndHover(AllowOrderingDiscontinuedToggleStable1);
+        }
+    }
+    public void TurnOnScanToOrder(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(ScanToOrderToggleStatus).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(ScanToOrderToggle);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(ScanToOrderToggle);
         }
     }
 
