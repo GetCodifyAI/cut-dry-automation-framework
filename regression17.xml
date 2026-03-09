@@ -26,6 +26,13 @@
             <class name="com.cutanddry.qa.tests.team.SalesRepMappingAutomationAddNewUserWithAlternateERPUserReferenceTest"/>
 
             <class name="com.cutanddry.qa.tests.catalog.VerifyOutOfStockLabelForPublicCatalogTest"/>
+
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheActiveStatusOfFeaturedListsTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheActiveStatusOfFeaturedListsOperatorTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheInactiveStatusOfFeaturedListsTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheInactiveStatusOfFeaturedListsOperatorTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheHiddenStatusOfFeaturedListsTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheHiddenStatusOfFeaturedListsOperatorTest" />
         </classes>
     </test>
 </suite>
