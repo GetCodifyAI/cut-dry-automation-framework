@@ -3653,7 +3653,93 @@ public class Customer {
     public static boolean isSimpleListSorted(String title) throws InterruptedException {
         return customersPage.isSimpleListSortingProperlyWorking(title);
     }
-
+    public static void clickOnActivityLogTab() throws InterruptedException {
+        customersPage.clickOnActivityLogTab();
+    }
+    public static boolean isActivityLogTabSelected() {
+        return customersPage.isActivityLogTabSelected();
+    }
+    public static void clickOnActivityButtonInline() {
+        customersPage.clickOnActivityButtonInline();
+    }
+    public static void clickOnActivityButtonTopBar() {
+        customersPage.clickOnActivityButtonTopBar();
+    }
+    public static boolean isAddActivityModalDisplayed() {
+        return customersPage.isAddActivityModalDisplayed();
+    }
+    public static boolean isEditActivityModalDisplayed() {
+        return customersPage.isEditActivityModalDisplayed();
+    }
+    public static void selectActivityType(String type) throws InterruptedException {
+        customersPage.selectActivityType(type);
+    }
+    public static void enterActivityDate(String date) {
+        customersPage.enterActivityDate(date);
+    }
+    public static void enterActivitySummary(String summary) {
+        customersPage.enterActivitySummary(summary);
+    }
+    public static void enterActivityDescription(String description) {
+        customersPage.enterActivityDescription(description);
+    }
+    public static void uploadActivityFile(String filePath) {
+        customersPage.uploadActivityFile(filePath);
+    }
+    public static void clickAddActivitySubmit() throws InterruptedException {
+        customersPage.clickAddActivitySubmit();
+    }
+    public static void clickEditActivitySubmit() throws InterruptedException {
+        customersPage.clickEditActivitySubmit();
+    }
+    public static void clickActivityCancel() {
+        customersPage.clickActivityCancel();
+    }
+    public static boolean isNoActivityYetDisplayed() {
+        return customersPage.isNoActivityYetDisplayed();
+    }
+    public static void selectActivityTypeFilterOption(String type) throws InterruptedException {
+        customersPage.selectActivityTypeFilterOption(type);
+    }
+    public static void selectDateRangeFilterOption(String range) throws InterruptedException {
+        customersPage.selectDateRangeFilterOption(range);
+    }
+    public static boolean isActivityCardDisplayed() {
+        return customersPage.isActivityCardDisplayed();
+    }
+    public static String getFirstActivitySummary() {
+        return customersPage.getFirstActivitySummary();
+    }
+    public static void clickEditFirstActivity() {
+        customersPage.clickEditFirstActivity();
+    }
+    public static void clickDeleteFirstActivity() {
+        customersPage.clickDeleteFirstActivity();
+    }
+    public static void confirmDeleteActivity() throws InterruptedException {
+        customersPage.confirmDeleteActivity();
+    }
+    public static boolean isUploadedFileDisplayed() {
+        return customersPage.isUploadedFileDisplayed();
+    }
+    public static void clickRemoveUploadedFile() {
+        customersPage.clickRemoveUploadedFile();
+    }
+    public static void clickViewAllActivityLog() {
+        customersPage.clickViewAllActivityLog();
+    }
+    public static void clickActivityTypeFilter() {
+        customersPage.clickActivityTypeFilter();
+    }
+    public static void clickDateRangeFilter() {
+        customersPage.clickDateRangeFilter();
+    }
+    public static boolean isActivityTypeFilterOptionDisplayed(String type) {
+        return customersPage.isActivityTypeFilterOptionDisplayed(type);
+    }
+    public static boolean isDateRangeFilterOptionDisplayed(String range) {
+        return customersPage.isDateRangeFilterOptionDisplayed(range);
+    }
 
 }
 

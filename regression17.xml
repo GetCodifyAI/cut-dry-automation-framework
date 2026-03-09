@@ -26,6 +26,12 @@
             <class name="com.cutanddry.qa.tests.team.SalesRepMappingAutomationAddNewUserWithAlternateERPUserReferenceTest"/>
 
             <class name="com.cutanddry.qa.tests.catalog.VerifyOutOfStockLabelForPublicCatalogTest"/>
+
+            <class name="com.cutanddry.qa.tests.customer_activity_log.VerifyCreateNewActivityInActivityLogTest"/>
+            <class name="com.cutanddry.qa.tests.customer_activity_log.VerifyActivityTypeDropdownAndDateRangeFilterTest"/>
+            <class name="com.cutanddry.qa.tests.customer_activity_log.VerifyUpdateExistingActivityTest"/>
+            <class name="com.cutanddry.qa.tests.customer_activity_log.VerifyAddNewActivityFromTopBarTest"/>
+            <class name="com.cutanddry.qa.tests.customer_activity_log.VerifyDeleteActivityAndRemoveUploadedFileTest"/>
         </classes>
     </test>
 </suite>
