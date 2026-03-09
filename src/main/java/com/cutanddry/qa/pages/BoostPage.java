@@ -128,6 +128,13 @@ public class BoostPage extends LoginPage {
 
 
 
+    By configureStatusDropdown = By.xpath("//div[span[normalize-space()='Status:']]/../following-sibling::div");
+    String configureStatusOption = "//div[contains(@class,'themed_select__option') and contains(text(),'STATUS')]";
+    By btn_copyPromoUrl = By.xpath("//button[contains(text(),'Copy Promo URL')]");
+    By txt_copiedToClipboard = By.xpath("//h2[contains(.,'Copied to Clipboard')]");
+    String featuredListStatusInTable = "//tr[td[contains(text(),'FEATUREDLISTNAME')]]//div[contains(@class,'themed_select__single-value')]";
+    By btn_okCopied = By.xpath("//button[contains(text(),'OK')]");
+    String catalogFilterResult = "//div[contains(@class,'mb-2') and contains(text(),'RESULT')]";
 
     public void changeOrderDragAndDrop(){
         distributorUI.dragAndDrop(sourceRowDragHandle,targetRowDragHandle);
@@ -651,4 +658,28 @@ public class BoostPage extends LoginPage {
         distributorUI.waitForCustom(3000);
     }
 
+    public void selectConfigureStatus(String status) throws InterruptedException {
+        distributorUI.click(configureStatusDropdown);
+        distributorUI.click(By.xpath(configureStatusOption.replace("STATUS", status)));
+        distributorUI.waitForCustom(2000);
+    }
+    public void clickCopyPromoUrl() {
+        distributorUI.click(btn_copyPromoUrl);
+    }
+    public boolean isCopiedToClipboardDisplayed() {
+        return distributorUI.isDisplayed(txt_copiedToClipboard);
+    }
+    public void clickOkCopied() throws InterruptedException {
+        distributorUI.click(btn_okCopied);
+    }
+    public String getFeaturedListStatusInTable(String featuredListName) {
+        return distributorUI.getText(By.xpath(featuredListStatusInTable.replace("FEATUREDLISTNAME", featuredListName)));
+    }
+    public void goToPromoUrl() {
+        distributorUI.OpenNewTabAndSwitchToIt();
+        distributorUI.pasteUrlFromClipboard();
+    }
+    public boolean isCatalogFilterSectionResultDisplayed(String result) throws InterruptedException {
+        return distributorUI.isDisplayed(By.xpath(catalogFilterResult.replace("RESULT", result)));
+    }
 }

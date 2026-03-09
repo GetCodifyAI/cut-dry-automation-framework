@@ -1,0 +1,38 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression suit" parallel="tests" thread-count="1">
+    <listeners>
+        <listener class-name="com.cutanddry.qa.utils.RetryTransformer"/>
+        <listener class-name="com.cutanddry.qa.utils.TestNGListener"/>
+        <listener class-name="com.cutanddry.qa.utils.AIOSampleUIMethodListener"/>
+    </listeners>
+    <test name="distributor tests">
+        <parameter name="PART" value="Part_Seventeen"/>
+        <classes>
+
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingNormalOrderAndEditItFromPortalWhenDisableFetchPricesTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreatingNormalOrderAndEditItFromPortalWhenEnableFetchPricesTest"/>
+
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyQuickAddViewAndSimpleListViewFeaturesWhenEnabledFromSupplierConfigTest"/>
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyQuickAddViewAndSimpleListViewFeaturesWhenEnabledFromSupplierConfigDpAndOpTest"/>
+
+            <class name="com.cutanddry.qa.tests.settings.VerifyTheGlobalDeliveryDatesOverrideFeatureTest"/>
+            <class name="com.cutanddry.qa.tests.boost.VerifyThatTheUserCanSendBroadcastMessagesToCustomerGroupsTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheOnSiteInventoryColumnAppearsWhenTheToggleIsEnabledForTheDPSideTest"/>
+
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyCorrectErrorMessagesAreDisplayedWhenAddingDifferentTypesOfItemsToTheQuickAddFlowTest"/>
+            <class name="com.cutanddry.qa.tests.customers.VerifyTheOrderSummeryIsDisplayedCorrectlyOnTheEditOrderFlowTest"/>
+
+            <class name="com.cutanddry.qa.tests.team.SalesRepMappingAutomationAddNewUserWithERPUserReferenceTest"/>
+            <class name="com.cutanddry.qa.tests.team.SalesRepMappingAutomationAddNewUserWithAlternateERPUserReferenceTest"/>
+
+            <class name="com.cutanddry.qa.tests.catalog.VerifyOutOfStockLabelForPublicCatalogTest"/>
+
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheActiveStatusOfFeaturedListsTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheActiveStatusOfFeaturedListsOperatorTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheInactiveStatusOfFeaturedListsTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheInactiveStatusOfFeaturedListsOperatorTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheHiddenStatusOfFeaturedListsTest" />
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheHiddenStatusOfFeaturedListsOperatorTest" />
+        </classes>
+    </test>
+</suite>

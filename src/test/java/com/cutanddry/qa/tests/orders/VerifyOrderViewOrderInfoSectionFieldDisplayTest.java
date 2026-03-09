@@ -16,11 +16,11 @@ import org.testng.asserts.SoftAssert;
 public class VerifyOrderViewOrderInfoSectionFieldDisplayTest extends TestBase {
     static User user;
     String date = "Last 90 Days";
-    String OrderID = "807615480";
-    String customerName = "Restaurant(Test) (21259)";
-    String customerLocation = "Hayes (94123)";
-    String deliveryOn = "Fri, 01/09/2026";
-    String shipTo = "Juan Zengotita (Personal), 1046 Rock Creek St., Apopka, Florida 32712";
+    String OrderID = "867523366";
+    String customerName = "Kafe Layers #3 Test (16579)";
+    String customerLocation = "San Francisco (28070)";
+    String deliveryOn = "Tue, 03/24/2026";
+    String shipTo = "Kafe Layers #3 Test, Test street, Test city, Test state 28070";
     String fulfilmentMethod = "Delivery";
     String orderStatus = "Confirmed";
 

@@ -726,7 +726,12 @@ public class Catalog {
 
     public static void  clearTheDescription() throws InterruptedException {
         catalogPage. clearTheDescription();
+    public static void clickOnBrandName(String brandName) throws InterruptedException {
+        catalogPage.clickOnBrandName(brandName);
     }
 
+    public static boolean isBrandNameDisplayedInPreview(String brandName) {
+        return catalogPage.isBrandNameDisplayedInPreview(brandName);
+    }
 
 }
