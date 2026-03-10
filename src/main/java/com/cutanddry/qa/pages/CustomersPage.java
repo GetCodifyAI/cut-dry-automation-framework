@@ -996,7 +996,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By customerNameUnderProfile = By.xpath("//button[contains(text(),'Order Guide')]/ancestor::div[2]/div[1]");
     String catalogFilterSection = "//div[text()='Sections']/../following-sibling::div//div[contains(text(),'FILTER')]";
     By browseCatalog = By.xpath("//div[contains(text(),'Browse Catalog')]");
-
+    String removeSelectedCatalogFilter = "//div[text()='FILTER']/*[local-name()='svg' and @data-icon='xmark']";
 
 
 
@@ -6036,6 +6036,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isCatalogBrowseDisplayed(){
         distributorUI.waitForVisibility(browseCatalog);
         return distributorUI.isDisplayed(browseCatalog);
+    }
+    public void clearSelectedFilter(String filter){
+        distributorUI.uiScrollTop();
+        distributorUI.click(By.xpath(removeSelectedCatalogFilter.replace("FILTER", filter)));
     }
 
     By tb_activityLog = By.xpath("//a[text()='Activity Log' and @role='tab']");
