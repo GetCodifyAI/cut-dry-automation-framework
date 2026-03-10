@@ -1998,8 +1998,8 @@ for (int i = 1; i &lt;= 1; i++) {
           <stringProp name="SMTPSampler.serverPort">465</stringProp>
           <stringProp name="SMTPSampler.mailFrom">qereports@cutanddry.com</stringProp>
           <stringProp name="SMTPSampler.replyTo"></stringProp>
-          <stringProp name="SMTPSampler.receiverTo">umesh@cutanddry.com</stringProp>
-          <stringProp name="SMTPSampler.receiverCC">mashan@cutanddry.com</stringProp>
+          <stringProp name="SMTPSampler.receiverTo">eng@cutanddry.com</stringProp>
+          <stringProp name="SMTPSampler.receiverCC">qa@cutanddry.com</stringProp>
           <stringProp name="SMTPSampler.receiverBCC"></stringProp>
           <stringProp name="SMTPSampler.subject">Automated Daily Performance Load Time Report - ${__time(MM/dd/yyyy,)}</stringProp>
           <stringProp name="SMTPSampler.suppressSubject">false</stringProp>
