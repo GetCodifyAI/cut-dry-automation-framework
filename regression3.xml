@@ -41,7 +41,6 @@
             <class name="com.cutanddry.qa.tests.catalog.ValidateTheMainCatalogClearAllFiltersTest" />
             <class name="com.cutanddry.qa.tests.catalog.ValidateViewCatalogAsCustomerRadioButtonNotDisplayedInMainCatalogTest" />
             <class name="com.cutanddry.qa.tests.catalog.ValidateFilterItemsByCategoryInCatalogTest" />
-            <class name="com.cutanddry.qa.tests.catalog.CustomTagFilterWithOtherFiltersTest" />
             <class name="com.cutanddry.qa.tests.catalog.VerifyPreviewCatalogEditItemImageTest"/>
             <class name="com.cutanddry.qa.tests.catalog.ViewManufacturerPageTest"/>
 

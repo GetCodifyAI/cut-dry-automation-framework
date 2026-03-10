@@ -384,7 +384,7 @@ public class Boost {
     public static boolean isManageCustomTagsTxtDisplayed(){
        return  boostPage.isManageCustomTagsTxtDisplay();
     }
-    public static void EnterCustomTagsFromBoost(String customTag1, String tagName){
+    public static void EnterCustomTagsFromBoost(String customTag1, String tagName) throws InterruptedException {
         boostPage.EnterCustomTags(customTag1,tagName);
     }
     public static void save(){

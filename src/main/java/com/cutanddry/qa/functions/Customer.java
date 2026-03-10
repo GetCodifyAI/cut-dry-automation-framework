@@ -3659,6 +3659,9 @@ public class Customer {
     public static boolean isCatalogBrowseDisplayed(){
         return customersPage.isCatalogBrowseDisplayed();
     }
+    public static void clearSelectedCatalogFilter(String filter){
+        customersPage.clearSelectedFilter(filter);
+    }
 
 
 }

@@ -15,17 +15,17 @@ public class CustomTagFilterWithOtherFiltersTest extends TestBase {
     static User user;
     static String customerId = "16579";
     static String brand = "Brand";
-    static String brandOption = "Almond Breeze";
-    static String brandItem = "Milk Almond Barista Unsweetened";
-    static String tagFilter = "Item Type";
-    static String tagOption = "Stocked";
+    static String brandOption = "Fresh Origins";
+    static String TagItemName = "Flowers - Cilantro";
     static String Tag1 = "Custom Tag 1";
     static String Tag2 = "Custom Tag 2";
     static String Tag3 = "Custom Tag 3";
     static String TagName1 = "Exclusive";
     static String TagName2 = "Local";
     static String TagName3 = "Premium";
-    static String itemCode = "00036";
+    static String TagItemCode = "02836";
+    static String NonTagItemCode = "02353";
+    static String customTag = "Custom Tags";
 
 
     @BeforeMethod
@@ -53,8 +53,16 @@ public class CustomTagFilterWithOtherFiltersTest extends TestBase {
 
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
-        Catalog.searchItemInCatalog(itemCode);
-        Catalog.selectItemFromGrid(itemCode);
+        Catalog.searchItemInCatalog(TagItemCode);
+        Catalog.selectItemFromGrid(TagItemCode);
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),TagItemCode,"Error in getting Item Code");
+        Catalog.clearAllCustomTags();
+        Catalog.selectCustomTagsFromCatalog(TagName1);
+        Catalog.selectCustomTagsFromCatalog(TagName2);
+        Catalog.saveChanges();
+        softAssert.assertTrue(Catalog.isAddedCustomTagsDisplayed(TagName1),"Error in getting Item Code");
+        softAssert.assertTrue(Catalog.isAddedCustomTagsDisplayed(TagName2),"Error in getting Item Code");
+
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
@@ -63,13 +71,20 @@ public class CustomTagFilterWithOtherFiltersTest extends TestBase {
         Customer.goToCatalog();
         Customer.clickCatalogFilterSectionDropDown(brand);
         Customer.clickCatalogFilterBrandDropDownOption(brandOption);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(brandItem).contains(brandItem.toLowerCase()), "brand filter not applied");
-        Customer.clickCatalogFilterSectionDropDown(tagFilter);
-        Customer.clickCatalogFilterBrandDropDownOption(tagOption);
-        softAssert.assertTrue(Customer.isCatalogFilterTagDisplayed(tagOption), "custom tag filter not applied with brand filter");
-        Customer.clickCatalogFilterBrandDropDownOption(tagOption);
-        Thread.sleep(5000);
-        softAssert.assertTrue(Customer.getFirstElementFrmSearchResults(brandItem).contains(brandItem.toLowerCase()), "brand products not displayed after removing tag filter");
+        softAssert.assertTrue(Customer.isItemDisplayedInCatalog(NonTagItemCode),"Item not displayed in catalog");
+        softAssert.assertTrue(Customer.isItemDisplayedInCatalog(TagItemCode),"Item not displayed in catalog");
+        softAssert.assertTrue(Customer.isCatalogFilterDisplayTag(TagItemName,TagName1),"Out of stock tag not displayed in public catalog");
+
+        Customer.clickCatalogFilterSectionDropDown(customTag);
+        Customer.clickCatalogFilterBrandDropDownOption(TagName1);
+        softAssert.assertTrue(Customer.isItemDisplayedInCatalog(TagItemCode),"Item not displayed in catalog");
+        softAssert.assertTrue(Customer.isCatalogFilterDisplayTag(TagItemName,TagName1),"Out of stock tag not displayed in public catalog");
+        softAssert.assertFalse(Customer.isItemDisplayedInCatalog(NonTagItemCode),"Item not displayed in catalog");
+
+        Customer.clearSelectedCatalogFilter(TagName1);
+        softAssert.assertTrue(Customer.isItemDisplayedInCatalog(NonTagItemCode),"Item not displayed in catalog");
+        softAssert.assertTrue(Customer.isItemDisplayedInCatalog(TagItemCode),"Item not displayed in catalog");
+
         softAssert.assertAll();
     }
 

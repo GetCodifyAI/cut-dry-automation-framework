@@ -673,7 +673,8 @@ public class BoostPage extends LoginPage {
     public boolean isManageCustomTagsTxtDisplay(){
         return distributorUI.isDisplayed(txt_customTags);
     }
-    public void EnterCustomTags(String customTag1, String tagName){
+    public void EnterCustomTags(String customTag1, String tagName) throws InterruptedException {
+        distributorUI.waitForCustom(2000);
         distributorUI.sendKeys(By.xpath(customTag.replace("CUSTOMTAG",customTag1)),tagName);
     }
     public void clickOnSave(){
