@@ -9,8 +9,11 @@ import org.openqa.selenium.By;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import org.openqa.selenium.JavascriptExecutor;
+import com.cutanddry.qa.base.TestBase;
 
 public class BoostPage extends LoginPage {
+    private String copiedPromoUrl;
     By txt_boost = By.xpath("//li[contains(text(),'Boost')]");
     By btn_addMessage = By.xpath("//button[text()='Add Message']");
     By txt_step1 = By.xpath("//div[text()='Step 1 - Select your message recepients']");
@@ -649,8 +652,39 @@ public class BoostPage extends LoginPage {
         distributorUI.waitForCustom(2000);
     }
     public void clickCopyPromoUrl() {
+        // Intercept ALL clipboard write mechanisms before clicking
+        ((JavascriptExecutor) TestBase.driver).executeScript(
+                "window.__capturedClipboardText = null;" +
+                        // Intercept navigator.clipboard.writeText (modern API)
+                        "if (navigator.clipboard && navigator.clipboard.writeText) {" +
+                        "  var origWriteText = navigator.clipboard.writeText.bind(navigator.clipboard);" +
+                        "  navigator.clipboard.writeText = function(text) {" +
+                        "    window.__capturedClipboardText = text;" +
+                        "    return origWriteText(text);" +
+                        "  };" +
+                        "}" +
+                        // Intercept document.execCommand('copy') (legacy API)
+                        "var origExecCommand = document.execCommand.bind(document);" +
+                        "document.execCommand = function(cmd) {" +
+                        "  if (cmd === 'copy') {" +
+                        "    var sel = window.getSelection();" +
+                        "    if (sel) window.__capturedClipboardText = sel.toString();" +
+                        "  }" +
+                        "  return origExecCommand.apply(document, arguments);" +
+                        "};"
+        );
         distributorUI.click(btn_copyPromoUrl);
+        try {
+            distributorUI.waitForCustom(1000);
+            copiedPromoUrl = (String) ((JavascriptExecutor) TestBase.driver).executeScript(
+                    "return window.__capturedClipboardText;"
+            );
+            // URL captured via JS intercept
+        } catch (Exception e) {
+            // Fallback: copiedPromoUrl stays null, goToPromoUrl will try pasteUrlFromClipboard
+        }
     }
+
     public boolean isCopiedToClipboardDisplayed() {
         return distributorUI.isDisplayed(txt_copiedToClipboard);
     }
@@ -662,7 +696,12 @@ public class BoostPage extends LoginPage {
     }
     public void goToPromoUrl() {
         distributorUI.OpenNewTabAndSwitchToIt();
-        distributorUI.pasteUrlFromClipboard();
+        if (copiedPromoUrl != null && !copiedPromoUrl.isEmpty()) {
+            TestBase.driver.get(copiedPromoUrl);
+//            logger.info("Navigated to stored promo URL: {}", copiedPromoUrl);
+        } else {
+            distributorUI.pasteUrlFromClipboard();
+        }
     }
     public boolean isCatalogFilterSectionResultDisplayed(String result) throws InterruptedException {
         return distributorUI.isDisplayed(By.xpath(catalogFilterResult.replace("RESULT", result)));

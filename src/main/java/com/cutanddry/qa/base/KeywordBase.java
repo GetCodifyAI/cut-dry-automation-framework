@@ -956,12 +956,23 @@ public class KeywordBase {
 
     public KeywordBase pasteUrlFromClipboard() {
         try {
-            // Get the URL from the clipboard
-            String url = Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor).toString();
+            String url = null;
+            try {
+                // Try reading clipboard via JavaScript (works in headless)
+                url = (String) ((JavascriptExecutor) driver).executeAsyncScript(
+                        "var callback = arguments[arguments.length - 1];" +
+                                "navigator.clipboard.readText().then(text => callback(text)).catch(() => callback(null));"
+                );
+            } catch (Exception jsEx) {
+                logger.warn("JS clipboard read failed, falling back to AWT", jsEx);
+            }
 
-            // Navigate directly to the URL in the clipboard
+            // Fallback to AWT clipboard if JS approach didn't work
+            if (url == null || url.isEmpty()) {
+                url = Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor).toString();
+            }
+
             driver.get(url);
-
             logger.info("Navigated to the URL from clipboard: {}", url);
         } catch (Exception e) {
             logger.error("Failed to retrieve URL from clipboard or navigate", e);
