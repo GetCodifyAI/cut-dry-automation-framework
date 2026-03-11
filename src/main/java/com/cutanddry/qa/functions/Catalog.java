@@ -719,4 +719,19 @@ public class Catalog {
         return catalogPage.isBrandNameDisplayedInPreview(brandName);
     }
 
+    public static void selectCustomTagsFromCatalog(String tagName){
+        catalogPage.addCustomTags(tagName);
+    }
+
+    public static void clearAllCustomTags(){
+        catalogPage.clearAllCustomTags();
+    }
+
+    public static boolean isAddedCustomTagsDisplayed(String customTag){
+        return catalogPage.isCustomTagDisplayed(customTag);
+    }
+
+
+
+
 }
