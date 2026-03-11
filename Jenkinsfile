@@ -286,6 +286,22 @@ pipeline {
                         }
                     }
                 }
+
+                stage('Regression 17 - New Tests') {
+                    agent any
+                    steps {
+                        script {
+                            runTestSuiteWithCleanup('regression17.xml', 'Part_Seventeen', 17)
+                        }
+                    }
+                    post {
+                        always {
+                            script {
+                               archiveAndCleanup('17', 'Regression 17 Test Report')
+                            }
+                        }
+                    }
+                }
             }
         }
         
@@ -294,7 +310,7 @@ pipeline {
             steps {
                 script {
                     // Unstash all test results
-                    for (int i = 1; i <= 16; i++) {
+                    for (int i = 1; i <= 17; i++) {
                         try {
                             unstash "test-results-${i}"
                         } catch (Exception e) {
