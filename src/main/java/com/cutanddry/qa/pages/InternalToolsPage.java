@@ -38,7 +38,7 @@ public class InternalToolsPage extends LoginPage {
     String payDisableRestaurant = "//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div[text()='NAME']";
     String payEnableRestaurantDelete = "//label[contains(text(), 'Pay Enabled Restaurants')]/following-sibling::div//div[text()='NAME']/following-sibling::div";
     String payDisableRestaurantDelete = "//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div[text()='NAME']/following-sibling::div";
-    By addCustomerToPayDisable = By.xpath("(//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div)[3]/following::div[1]");
+    By addCustomerToPayDisable = By.xpath("(//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div)[3]/following::div[1]//div[last()]");
     String selectDisableCustomer = "//div[contains(text(), 'NAME')]";
     By addCustomerToPayEnable = By.xpath("//label[contains(text(), 'Pay Enabled Restaurants')]/following-sibling::div/div");
     By checkboxLocatorCreditMemo = By.xpath("//label[contains(text(),'Enable Auto Apply Credit Memos')]/..//input");
@@ -374,8 +374,9 @@ public class InternalToolsPage extends LoginPage {
         distributorUI.click(By.xpath(payEnableRestaurantDelete.replace("NAME", name)));
     }
     public void addCustomerToPayDisable(String name)throws InterruptedException{
+        distributorUI.scrollToElementTillFound(addCustomerToPayDisable);
         distributorUI.click(addCustomerToPayDisable);
-        distributorUI.scrollToElement(By.xpath(selectDisableCustomer.replace("NAME", name)));
+        //distributorUI.scrollToElement(By.xpath(selectDisableCustomer.replace("NAME", name)));
         distributorUI.click(By.xpath(selectDisableCustomer.replace("NAME", name)));
         distributorUI.waitForCustom(3000);
     }
