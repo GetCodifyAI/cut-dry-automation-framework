@@ -996,11 +996,15 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By customerNameUnderProfile = By.xpath("//button[contains(text(),'Order Guide')]/ancestor::div[2]/div[1]");
     String catalogFilterSection = "//div[text()='Sections']/../following-sibling::div//div[contains(text(),'FILTER')]";
     By browseCatalog = By.xpath("//div[contains(text(),'Browse Catalog')]");
-
-
-
-
-
+    By tb_activityLog = By.xpath("//a[text()='Activity Log' and @role='tab']");
+    By dropdown_activityTypeFilter = By.xpath("//div[contains(text(),'Activity Type:')]/parent::div");
+    By btn_activityInActivityTab = By.xpath("(//div[contains(text(),'Log your first activity')]/following-sibling::button[contains(text(),'Activity')])[last()]");
+    By lbl_addActivityModalTitle = By.xpath("//div[text()='Add Activity']");
+    By dropdown_activityType = By.xpath("//div[text()='Activity Type']/../following-sibling::div//input/..");
+    String dropdown_activityTypeOption = "//div[text()='TYPE']";
+    By tbx_activitySummary = By.xpath("//input[@placeholder='Enter a brief summary...']");
+    By txa_activityDescription = By.xpath("//textarea[@placeholder='Enter detailed description...']");
+    By tbx_activityDate = By.xpath("//div[text()='Activity Date']/..//following-sibling::div//input/..");
 
 
     public void ifDuplicateOrderDisplayed(){
@@ -6038,23 +6042,17 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.isDisplayed(browseCatalog);
     }
 
-    By tb_activityLog = By.xpath("//a[text()='Activity Log' and @role='tab']");
-    By btn_activityInline = By.xpath("//button[contains(text(),'Activity') and *[local-name()='svg']]");
+
+
     By btn_activityTopBar = By.xpath("//button[contains(text(),'Activity') and *[local-name()='svg'] and ancestor::div[contains(@class,'header') or preceding-sibling::*[contains(text(),'Chat')]]]");
-    By lbl_addActivityModalTitle = By.xpath("//div[text()='Add Activity']");
     By lbl_editActivityModalTitle = By.xpath("//div[text()='Edit Activity']");
-    By dropdown_activityType = By.xpath("//div[text()='Activity Type']/following-sibling::div");
-    String dropdown_activityTypeOption = "//div[text()='TYPE']";
-    By tbx_activityDate = By.xpath("//div[text()='Activity Date']/following-sibling::div//input");
-    By tbx_activitySummary = By.xpath("//input[@placeholder='Enter a brief summary...']");
-    By txa_activityDescription = By.xpath("//textarea[@placeholder='Enter detailed description...']");
+
     By btn_activityFileUpload = By.xpath("//div[text()='Upload Files']/following-sibling::div//input[@type='file']");
     By btn_addActivitySubmit = By.xpath("//button[text()='Add Activity']");
     By btn_editActivitySubmit = By.xpath("//button[text()='Save Changes']");
     By btn_activityCancel = By.xpath("//button[text()='Cancel']");
     By btn_activityModalClose = By.xpath("//div[text()='Add Activity']/following-sibling::button | //div[text()='Edit Activity']/following-sibling::button");
     By lbl_noActivityYet = By.xpath("//*[contains(text(),'No activity yet')]");
-    By dropdown_activityTypeFilter = By.xpath("//div[contains(text(),'Activity Type:')]/parent::div");
     By dropdown_dateRangeFilter = By.xpath("//div[contains(text(),'Date Range:')]/parent::div");
     String dropdown_activityTypeFilterOption = "//div[contains(@class,'option') and contains(text(),'TYPE')]";
     String dropdown_dateRangeFilterOption = "//div[contains(@class,'option') and contains(text(),'RANGE')]";
@@ -6068,7 +6066,8 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By lbl_uploadedFileName = By.xpath("//div[contains(@class,'file') or contains(@class,'attachment')]//span | //div[contains(@class,'file') or contains(@class,'attachment')]//a");
     By btn_removeUploadedFile = By.xpath("//div[contains(@class,'file') or contains(@class,'attachment')]//*[local-name()='svg' and (@data-icon='times' or @data-icon='xmark' or @data-icon='close')]");
     By btn_viewAllActivityLog = By.xpath("//button[text()='View All']");
-    By lbl_activityLogTabContent = By.xpath("//a[text()='Activity Log' and @aria-selected='true']");
+
+
 
     public void clickOnActivityLogTab() throws InterruptedException {
         distributorUI.waitForVisibility(tb_activityLog);
@@ -6076,11 +6075,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         Thread.sleep(1000);
     }
     public boolean isActivityLogTabSelected() {
-        return distributorUI.isDisplayed(lbl_activityLogTabContent);
+        return distributorUI.isDisplayed(dropdown_activityTypeFilter);
     }
-    public void clickOnActivityButtonInline() {
-        distributorUI.waitForVisibility(btn_activityInline);
-        distributorUI.click(btn_activityInline);
+    public void clickOnActivityButtonInActivityTab() {
+        distributorUI.waitForVisibility(btn_activityInActivityTab);
+        distributorUI.click(btn_activityInActivityTab);
     }
     public void clickOnActivityButtonTopBar() {
         By topBarBtn = By.xpath("(//button[contains(text(),'Activity')])[1]");
@@ -6097,13 +6096,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public void selectActivityType(String type) throws InterruptedException {
         distributorUI.click(dropdown_activityType);
-        Thread.sleep(500);
         distributorUI.waitForVisibility(By.xpath(dropdown_activityTypeOption.replace("TYPE", type)));
         distributorUI.click(By.xpath(dropdown_activityTypeOption.replace("TYPE", type)));
     }
-    public void enterActivityDate(String date) {
-        distributorUI.clear(tbx_activityDate);
-        distributorUI.sendKeys(tbx_activityDate, date);
+    public void enterActivityDate() {
+        distributorUI.click(tbx_activityDate);
     }
     public void enterActivitySummary(String summary) {
         distributorUI.clear(tbx_activitySummary);

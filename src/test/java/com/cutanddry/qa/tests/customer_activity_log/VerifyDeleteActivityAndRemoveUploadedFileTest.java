@@ -34,7 +34,7 @@ public class VerifyDeleteActivityAndRemoveUploadedFileTest extends TestBase {
         Customer.clickOnCustomerCode(customerId);
         Customer.clickOnActivityLogTab();
         softAssert.assertTrue(Customer.isActivityLogTabSelected(), "Activity Log tab not selected");
-        Customer.clickOnActivityButtonInline();
+        Customer.clickOnActivityButtonInActivityTab();
         softAssert.assertTrue(Customer.isAddActivityModalDisplayed(), "Add Activity modal not displayed");
         Customer.selectActivityType("Note");
         Customer.enterActivitySummary("Activity to be deleted");

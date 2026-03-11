@@ -3665,8 +3665,8 @@ public class Customer {
     public static boolean isActivityLogTabSelected() {
         return customersPage.isActivityLogTabSelected();
     }
-    public static void clickOnActivityButtonInline() {
-        customersPage.clickOnActivityButtonInline();
+    public static void clickOnActivityButtonInActivityTab() {
+        customersPage.clickOnActivityButtonInActivityTab();
     }
     public static void clickOnActivityButtonTopBar() {
         customersPage.clickOnActivityButtonTopBar();
@@ -3680,8 +3680,9 @@ public class Customer {
     public static void selectActivityType(String type) throws InterruptedException {
         customersPage.selectActivityType(type);
     }
-    public static void enterActivityDate(String date) {
-        customersPage.enterActivityDate(date);
+    public static void selectActivityDate(String date)throws InterruptedException{
+        customersPage.enterActivityDate();
+        customersPage.selectDeliveryDateLineStable(date);
     }
     public static void enterActivitySummary(String summary) {
         customersPage.enterActivitySummary(summary);
