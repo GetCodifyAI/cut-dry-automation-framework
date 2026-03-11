@@ -15,10 +15,13 @@ import static com.cutanddry.qa.base.TestBase.*;
 public class VerifyMultiLocationSummeryWidgetWhenNoApprovalsTest {
     static User user;
     String DistributerName = "Independent Foods Co";
-    String ManagerUserCode = "226431917";
-    String RestuarentName = "Bellota Restaurant — Sacramento ";
-    String CustomerCode = "23445";
+    String ManagerUserCode = "103281339";
+    String RestuarentName = "Kafe Layers #1 Test";
+    String CustomerCode = "44939";
     String OrderGuideName = "Independent Foods Co";
+    String approvalType = "General Approval (Operator or Distributor)";
+    String existingUserName = "Steve K";
+    String ManagerRole = "Manager";
 
     @BeforeMethod
     public void setUp() {
@@ -43,8 +46,14 @@ public class VerifyMultiLocationSummeryWidgetWhenNoApprovalsTest {
         Customer.orderApprovalEdit();
         softAssert.assertTrue(Customer.orderApprovalSettingsOverlayDisplayed(),"Order approval overlay is not displayed");
         softAssert.assertTrue(Customer.existingOrderGuideDisplayed(OrderGuideName),"Error in displaying the existing order guids");
+        Customer.selectOrderApprovalType(approvalType);
         Customer.orderApprovalTurnOnForTheOrderGuide(OrderGuideName);
         Customer.saveOrderApprovalSettings();
+
+        Customer.EditUserDetails(existingUserName);
+        softAssert.assertTrue(Customer.EditUserOverlayDisplayed(),"ERROR in Displaying add user overlay");
+        Customer.selectOperatorUserRole(ManagerRole);
+        Customer.refreshCustomersPage();
 
         Login.navigateToLoginAsPortal(ManagerUserCode);
         Dashboard.navigateToApprovalsTab();

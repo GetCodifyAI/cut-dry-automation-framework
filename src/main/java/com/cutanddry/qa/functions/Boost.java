@@ -360,5 +360,34 @@ public class Boost {
     public static void TurnOnBoostFilterToggle(String filter,boolean status) throws InterruptedException {
         boostPage.TurnOnBoostFilterToggle(filter,status);
     }
-
+    public static void selectConfigureStatus(String status) throws InterruptedException {
+        boostPage.selectConfigureStatus(status);
+    }
+    public static void clickCopyPromoUrl() {
+        boostPage.clickCopyPromoUrl();
+    }
+    public static boolean isCopiedToClipboardDisplayed() {
+        return boostPage.isCopiedToClipboardDisplayed();
+    }
+    public static void clickOkCopied() throws InterruptedException {
+        boostPage.clickOkCopied();
+    }
+    public static void goToPromoUrl() {
+        boostPage.goToPromoUrl();
+    }
+    public static boolean isCatalogFilterSectionResultDisplayed(String result) throws InterruptedException {
+        return boostPage.isCatalogFilterSectionResultDisplayed(result);
+    }
+    public static void navigateToCustomTags(){
+        boostPage.clickOnCustomTags();
+    }
+    public static boolean isManageCustomTagsTxtDisplayed(){
+       return  boostPage.isManageCustomTagsTxtDisplay();
+    }
+    public static void EnterCustomTagsFromBoost(String customTag1, String tagName) throws InterruptedException {
+        boostPage.EnterCustomTags(customTag1,tagName);
+    }
+    public static void save(){
+        boostPage.clickOnSave();
+    }
 }

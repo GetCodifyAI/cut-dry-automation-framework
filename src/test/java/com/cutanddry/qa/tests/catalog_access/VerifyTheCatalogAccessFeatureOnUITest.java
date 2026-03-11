@@ -17,6 +17,7 @@ public class VerifyTheCatalogAccessFeatureOnUITest extends TestBase {
     SoftAssert softAssert;
     String DistributorName = CustomerData.DISTRIBUTOR_NAME_IFC;
     String CustomerCode = CustomerData.CUSTOMER_CODE3;
+    String ManualDisableCatalogOption = "Selected Operators (via Manual Selection)";
 
     @BeforeMethod
     public void setUp(){
@@ -29,12 +30,21 @@ public class VerifyTheCatalogAccessFeatureOnUITest extends TestBase {
         softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+
+        Login.navigateToInternalToolsPage();
+        InternalTools.navigateToConfigureSupplier();
+        InternalTools.navigateToIndependentCompEditDetails();
+        InternalTools.navigateToCatalogSettingsTab();
+        InternalTools.selectManualSelectionFromDropdown(ManualDisableCatalogOption);
+        InternalTools.catalogSettingsSave();
+
         Login.navigateToDistributorPortal(DistributorName);
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(CustomerCode);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"customer not found");
         Customer.SelectCustomer(CustomerCode);
+        Customer.refreshCustomersPage();
         softAssert.assertTrue(Customer.isCatalogAccessDisplay(),"catalog access not display");
         softAssert.assertAll();
     }

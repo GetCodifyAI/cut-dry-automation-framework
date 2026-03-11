@@ -38,7 +38,7 @@ public class InternalToolsPage extends LoginPage {
     String payDisableRestaurant = "//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div[text()='NAME']";
     String payEnableRestaurantDelete = "//label[contains(text(), 'Pay Enabled Restaurants')]/following-sibling::div//div[text()='NAME']/following-sibling::div";
     String payDisableRestaurantDelete = "//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div[text()='NAME']/following-sibling::div";
-    By addCustomerToPayDisable = By.xpath("//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div/div");
+    By addCustomerToPayDisable = By.xpath("(//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div)[3]/following::div[1]//div[last()]");
     String selectDisableCustomer = "//div[contains(text(), 'NAME')]";
     By addCustomerToPayEnable = By.xpath("//label[contains(text(), 'Pay Enabled Restaurants')]/following-sibling::div/div");
     By checkboxLocatorCreditMemo = By.xpath("//label[contains(text(),'Enable Auto Apply Credit Memos')]/..//input");
@@ -72,6 +72,8 @@ public class InternalToolsPage extends LoginPage {
     String specialItemsDropDownOption = "(//div[text()='OPTION'])[last()]";
     By hideOutOfStockToggleStable = By.xpath("//div[contains(text(), 'Hide out of stock label on Supplier Portal:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By hideOutOfStockToggleStable1 = By.xpath("//div[contains(text(), 'Hide out of stock label on Supplier Portal:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By hideOutOfStockToggleLabelOnPublicCatalogAttribute = By.xpath("//div[contains(text(), 'Hide out of stock label on Public Catalogs:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By hideOutOfStockToggleLabelOnPublicCatalog = By.xpath("//div[contains(text(), 'Hide out of stock label on Public Catalogs:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     By simpleListViewDropDown = By.xpath("//div[text()='Simple List View:']/following-sibling::div/div");
     String simpleListViewDropDownOption = "(//div[text()='TYPE'])[last()]";
     By fetchPricesFromOrderForEditOrderFlowToggleStable = By.xpath("//div[contains(text(), 'Fetch prices from order for edit order flow:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
@@ -123,7 +125,8 @@ public class InternalToolsPage extends LoginPage {
     By AllowOrderingDiscontinuedToggleStable = By.xpath("//div[contains(text(), 'Allow ordering discontinued items when substitutes are available:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By AllowOrderingDiscontinuedToggleStable1 = By.xpath("//div[contains(text(), 'Allow ordering discontinued items when substitutes are available:')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     By TaskManagementTxt = By.xpath("//h2[contains(text(),'Task Management')]");
-
+    By ScanToOrderToggleStatus = By.xpath("//div[contains(text(), 'Scan to Order Enabled')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By ScanToOrderToggle = By.xpath("//div[contains(text(), 'Scan to Order Enabled')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
 
 
     public void clickConfigureSupplier(){
@@ -339,6 +342,17 @@ public class InternalToolsPage extends LoginPage {
             throw new RuntimeException(e);
         }
     }
+    public void clickHideOutOfStockLabelOnPublicCatalog(boolean enable){
+        String handlePosition = distributorUI.getElement(hideOutOfStockToggleLabelOnPublicCatalogAttribute).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(hideOutOfStockToggleLabelOnPublicCatalog);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(hideOutOfStockToggleLabelOnPublicCatalog);
+        }
+
+    }
     public void clickPayEnabledToggle(boolean enable) {
 
         String handlePosition = distributorUI.getElement(payDetailsToggleStable).getAttribute("style");
@@ -360,8 +374,9 @@ public class InternalToolsPage extends LoginPage {
         distributorUI.click(By.xpath(payEnableRestaurantDelete.replace("NAME", name)));
     }
     public void addCustomerToPayDisable(String name)throws InterruptedException{
+        distributorUI.scrollToElementTillFound(addCustomerToPayDisable);
         distributorUI.click(addCustomerToPayDisable);
-        distributorUI.scrollToElement(By.xpath(selectDisableCustomer.replace("NAME", name)));
+        //distributorUI.scrollToElement(By.xpath(selectDisableCustomer.replace("NAME", name)));
         distributorUI.click(By.xpath(selectDisableCustomer.replace("NAME", name)));
         distributorUI.waitForCustom(3000);
     }
@@ -743,6 +758,17 @@ public class InternalToolsPage extends LoginPage {
             distributorUI.clickWithScrollAndHover(AllowOrderingDiscontinuedToggleStable1);
         } else if (!enable && isEnabled) {
             distributorUI.clickWithScrollAndHover(AllowOrderingDiscontinuedToggleStable1);
+        }
+    }
+    public void TurnOnScanToOrder(boolean enable) {
+
+        String handlePosition = distributorUI.getElement(ScanToOrderToggleStatus).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(ScanToOrderToggle);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(ScanToOrderToggle);
         }
     }
 

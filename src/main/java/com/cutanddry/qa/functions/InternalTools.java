@@ -120,6 +120,9 @@ public class InternalTools {
     public static void clickPayEnabledToggle(boolean status){
         internalToolsPage.clickPayEnabledToggle(status);
     }
+    public static void hideOutOfStockToggleOnPublicCatalog(boolean status){
+        internalToolsPage.clickHideOutOfStockLabelOnPublicCatalog(status);
+    }
     public static boolean isPayEnableRestaurantDisplayed(String name){
         return internalToolsPage.isPayEnableRestaurantDisplayed(name);
     }
@@ -352,6 +355,9 @@ public class InternalTools {
     }
     public static void TurnOnAllowOrderingDiscontinuedToggle(boolean status){
         internalToolsPage.TurnOnAllowOrderingDiscontinuedToggle(status);
+    }
+    public static void TurnOnScanToOrder(boolean status){
+        internalToolsPage.TurnOnScanToOrder(status);
     }
 
 }
