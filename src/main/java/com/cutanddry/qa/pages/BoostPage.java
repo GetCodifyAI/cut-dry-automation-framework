@@ -652,18 +652,23 @@ public class BoostPage extends LoginPage {
         distributorUI.waitForCustom(2000);
     }
     public void clickCopyPromoUrl() {
+        // Intercept clipboard write to capture the URL before clicking
+        ((JavascriptExecutor) TestBase.driver).executeScript(
+                "window.__capturedClipboardText = null;" +
+                        "const origWriteText = navigator.clipboard.writeText.bind(navigator.clipboard);" +
+                        "navigator.clipboard.writeText = function(text) {" +
+                        "  window.__capturedClipboardText = text;" +
+                        "  return origWriteText(text);" +
+                        "};"
+        );
         distributorUI.click(btn_copyPromoUrl);
         try {
-            // Capture the URL via JS after the copy action
-            copiedPromoUrl = (String) ((JavascriptExecutor) TestBase.driver).executeAsyncScript(
-                    "var callback = arguments[arguments.length - 1];" +
-                            "navigator.clipboard.readText().then(text => callback(text)).catch(() => callback(null));"
+            distributorUI.waitForCustom(1000);
+            copiedPromoUrl = (String) ((JavascriptExecutor) TestBase.driver).executeScript(
+                    "return window.__capturedClipboardText;"
             );
-            if (copiedPromoUrl != null) {
-//                logger.info("Captured promo URL: {}", copiedPromoUrl);
-            }
         } catch (Exception e) {
-//            logger.warn("Could not capture promo URL from clipboard via JS", e);
+            // Fallback: copiedPromoUrl stays null, goToPromoUrl will try pasteUrlFromClipboard
         }
     }
 
