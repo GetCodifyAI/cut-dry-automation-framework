@@ -21,7 +21,8 @@ public class VerifyHardOrderMinimumNotMetAfterBuyoutItemRemovalTest extends Test
     static String DistributorName = "BiRite Foodservice Distributors";
     static String canonicalNodeName = BuyoutsData.BUYOUT_PRODUCT1_CANONICAL_NODE;
     static String featureKey = BuyoutsData.BUYOUT_PRODUCT_KEY;
-    static String featureValue = BuyoutsData.BUYOUT_PRODUCT_VALUE;
+    static String featureValueTrue = BuyoutsData.BUYOUT_PRODUCT_VALUE_TRUE;
+    static String featureValueFalse = BuyoutsData.BUYOUT_PRODUCT_VALUE_FALSE;
     static String HardOrderMinimumType = "Hard Order Minimum";
     static String orderMinInternal = "5000000";
     static String orderMinIn$ = "50,000.00";
@@ -56,7 +57,7 @@ public class VerifyHardOrderMinimumNotMetAfterBuyoutItemRemovalTest extends Test
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
 
         Login.navigateToNode(canonicalNodeName);
-        Login.setValueToNode(featureKey,featureValue);
+        Login.setValueToNode(featureKey,featureValueTrue);
 
         Login.navigateToInternalToolsPage();
         InternalTools.navigateToConfigureSupplier();
@@ -114,6 +115,9 @@ public class VerifyHardOrderMinimumNotMetAfterBuyoutItemRemovalTest extends Test
         softAssert.assertTrue(Customer.isRemovedBuyoutItemAndUOMsCorrectlyDisplayedInHarOrderMinOverlay(buyoutItemItemName,buyoutItemItemCode,itemCount,itemUOM2),"Buyout item removed is not correctly displayed in order Min Overlay");
         Login.clickOk();
         softAssert.assertFalse(Customer.isAddedItemDisplayed(buyoutItemItemName), "The buyout item not display");
+
+        Login.navigateToNode(canonicalNodeName);
+        Login.setValueToNode(featureKey,featureValueFalse);
 
         softAssert.assertAll();
 
