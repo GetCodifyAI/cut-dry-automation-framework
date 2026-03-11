@@ -652,13 +652,25 @@ public class BoostPage extends LoginPage {
         distributorUI.waitForCustom(2000);
     }
     public void clickCopyPromoUrl() {
-        // Intercept clipboard write to capture the URL before clicking
+        // Intercept ALL clipboard write mechanisms before clicking
         ((JavascriptExecutor) TestBase.driver).executeScript(
                 "window.__capturedClipboardText = null;" +
-                        "const origWriteText = navigator.clipboard.writeText.bind(navigator.clipboard);" +
-                        "navigator.clipboard.writeText = function(text) {" +
-                        "  window.__capturedClipboardText = text;" +
-                        "  return origWriteText(text);" +
+                        // Intercept navigator.clipboard.writeText (modern API)
+                        "if (navigator.clipboard && navigator.clipboard.writeText) {" +
+                        "  var origWriteText = navigator.clipboard.writeText.bind(navigator.clipboard);" +
+                        "  navigator.clipboard.writeText = function(text) {" +
+                        "    window.__capturedClipboardText = text;" +
+                        "    return origWriteText(text);" +
+                        "  };" +
+                        "}" +
+                        // Intercept document.execCommand('copy') (legacy API)
+                        "var origExecCommand = document.execCommand.bind(document);" +
+                        "document.execCommand = function(cmd) {" +
+                        "  if (cmd === 'copy') {" +
+                        "    var sel = window.getSelection();" +
+                        "    if (sel) window.__capturedClipboardText = sel.toString();" +
+                        "  }" +
+                        "  return origExecCommand.apply(document, arguments);" +
                         "};"
         );
         distributorUI.click(btn_copyPromoUrl);
@@ -667,6 +679,7 @@ public class BoostPage extends LoginPage {
             copiedPromoUrl = (String) ((JavascriptExecutor) TestBase.driver).executeScript(
                     "return window.__capturedClipboardText;"
             );
+            // URL captured via JS intercept
         } catch (Exception e) {
             // Fallback: copiedPromoUrl stays null, goToPromoUrl will try pasteUrlFromClipboard
         }
