@@ -1005,6 +1005,11 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By tbx_activitySummary = By.xpath("//input[@placeholder='Enter a brief summary...']");
     By txa_activityDescription = By.xpath("//textarea[@placeholder='Enter detailed description...']");
     By tbx_activityDate = By.xpath("//div[text()='Activity Date']/..//following-sibling::div//input/..");
+    String removeSelectedCatalogFilter = "//div[text()='FILTER']/*[local-name()='svg' and @data-icon='xmark']";
+
+
+
+
 
 
     public void ifDuplicateOrderDisplayed(){
@@ -6040,6 +6045,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isCatalogBrowseDisplayed(){
         distributorUI.waitForVisibility(browseCatalog);
         return distributorUI.isDisplayed(browseCatalog);
+    }
+    public void clearSelectedFilter(String filter){
+        distributorUI.uiScrollTop();
+        distributorUI.click(By.xpath(removeSelectedCatalogFilter.replace("FILTER", filter)));
     }
 
 

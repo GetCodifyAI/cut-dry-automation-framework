@@ -2,6 +2,7 @@ package com.cutanddry.qa.base;
 
 import com.cutanddry.qa.common.Constants;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -32,10 +33,13 @@ public class TestBase {
                     chromeOptions.addArguments("--start-maximized");
                     if (Constants.RUN_HEADLESS) {
                         chromeOptions.addArguments("--headless", "--window-size=1920,1080");
-                        /*chromeOptions.addArguments("--disable-dev-shm-usage"); // Prevents shared memory crashes
-                        chromeOptions.addArguments("--disable-gpu"); // Disables GPU rendering
-                        chromeOptions.addArguments("--disable-renderer-backgrounding"); // Prevents execution speed-up in background
-                        chromeOptions.addArguments("--disable-background-timer-throttling"); // Keeps timers active*/
+                        chromeOptions.addArguments("--disable-dev-shm-usage");
+                        chromeOptions.addArguments("--disable-gpu");
+                        chromeOptions.addArguments("--disable-renderer-backgrounding");
+                        chromeOptions.addArguments("--disable-background-timer-throttling");
+                        chromeOptions.addArguments("--no-sandbox");
+                        chromeOptions.addArguments("--disable-extensions");
+                        chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
                     }
 
                     // Set custom download directory
