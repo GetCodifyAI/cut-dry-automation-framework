@@ -9,8 +9,11 @@ import org.openqa.selenium.By;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import org.openqa.selenium.JavascriptExecutor;
+import com.cutanddry.qa.base.TestBase;
 
 public class BoostPage extends LoginPage {
+    private String copiedPromoUrl;
     By txt_boost = By.xpath("//li[contains(text(),'Boost')]");
     By btn_addMessage = By.xpath("//button[text()='Add Message']");
     By txt_step1 = By.xpath("//div[text()='Step 1 - Select your message recepients']");
@@ -650,7 +653,20 @@ public class BoostPage extends LoginPage {
     }
     public void clickCopyPromoUrl() {
         distributorUI.click(btn_copyPromoUrl);
+        try {
+            // Capture the URL via JS after the copy action
+            copiedPromoUrl = (String) ((JavascriptExecutor) TestBase.driver).executeAsyncScript(
+                    "var callback = arguments[arguments.length - 1];" +
+                            "navigator.clipboard.readText().then(text => callback(text)).catch(() => callback(null));"
+            );
+            if (copiedPromoUrl != null) {
+//                logger.info("Captured promo URL: {}", copiedPromoUrl);
+            }
+        } catch (Exception e) {
+//            logger.warn("Could not capture promo URL from clipboard via JS", e);
+        }
     }
+
     public boolean isCopiedToClipboardDisplayed() {
         return distributorUI.isDisplayed(txt_copiedToClipboard);
     }
@@ -662,7 +678,12 @@ public class BoostPage extends LoginPage {
     }
     public void goToPromoUrl() {
         distributorUI.OpenNewTabAndSwitchToIt();
-        distributorUI.pasteUrlFromClipboard();
+        if (copiedPromoUrl != null && !copiedPromoUrl.isEmpty()) {
+            TestBase.driver.get(copiedPromoUrl);
+//            logger.info("Navigated to stored promo URL: {}", copiedPromoUrl);
+        } else {
+            distributorUI.pasteUrlFromClipboard();
+        }
     }
     public boolean isCatalogFilterSectionResultDisplayed(String result) throws InterruptedException {
         return distributorUI.isDisplayed(By.xpath(catalogFilterResult.replace("RESULT", result)));
