@@ -9,8 +9,11 @@ import org.openqa.selenium.By;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import org.openqa.selenium.JavascriptExecutor;
+import com.cutanddry.qa.base.TestBase;
 
 public class BoostPage extends LoginPage {
+    private String copiedPromoUrl;
     By txt_boost = By.xpath("//li[contains(text(),'Boost')]");
     By btn_addMessage = By.xpath("//button[text()='Add Message']");
     By txt_step1 = By.xpath("//div[text()='Step 1 - Select your message recepients']");
@@ -112,6 +115,8 @@ public class BoostPage extends LoginPage {
     By DisplayStatusToggleStable1 = By.xpath("//div[contains(text(), 'Display Status')]/div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     By tab_brandBoost = By.xpath("//a[text()='Brand Boost']");
     By txt_brandBoost = By.xpath("//h3[text()='Brand Boost']");
+    By tab_customTags = By.xpath("//a[text()='Custom Tags']");
+    By txt_customTags = By.xpath("//h3[text()='Manage Custom Tags']");
     By input_selectBrand = By.xpath("//div[text()='Select brand']/following-sibling::div//input");
     String option_brand = "(//div[text()='BRANDNAME'])[last()]";
     By btn_addBrand = By.xpath("//button[text()='Add']");
@@ -123,9 +128,15 @@ public class BoostPage extends LoginPage {
     By txt_boostFilters = By.xpath("//h4[contains(text(),'Filters')]");
     String boostFilterToggleStable = "(//td[contains(text(), 'FILTER')]/following-sibling::td//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle'])[1]";
     String boostFilterToggleStable1 = "(//td[contains(text(), 'FILTER')]/following-sibling::td//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1])[1]";
-
-
-
+    By configureStatusDropdown = By.xpath("//div[span[normalize-space()='Status:']]/../following-sibling::div");
+    String configureStatusOption = "//div[contains(@class,'themed_select__option') and contains(text(),'STATUS')]";
+    By btn_copyPromoUrl = By.xpath("//button[contains(text(),'Copy Promo URL')]");
+    By txt_copiedToClipboard = By.xpath("//h2[contains(.,'Copied to Clipboard')]");
+    String featuredListStatusInTable = "//tr[td[contains(text(),'FEATUREDLISTNAME')]]//div[contains(@class,'themed_select__single-value')]";
+    By btn_okCopied = By.xpath("//button[contains(text(),'OK')]");
+    String catalogFilterResult = "//div[contains(@class,'mb-2') and contains(text(),'RESULT')]";
+    String customTag = "//*[contains(text(),'CUSTOMTAG')]/../following-sibling::div//input[@placeholder='Enter tag name']";
+    By SaveBtn = By.xpath("//button[normalize-space(text())='Save']");
 
 
     public void changeOrderDragAndDrop(){
@@ -602,6 +613,7 @@ public class BoostPage extends LoginPage {
     }
     
     public void clickSaveBrandBoost() {
+        distributorUI.uiScrollTop();
         distributorUI.click(btn_saveBrandBoost);
     }
 
@@ -633,5 +645,78 @@ public class BoostPage extends LoginPage {
             distributorUI.clickWithScrollAndHover(By.xpath(boostFilterToggleStable1.replace("FILTER",filter)));
         }
         distributorUI.waitForCustom(3000);
+    }
+    public void selectConfigureStatus(String status) throws InterruptedException {
+        distributorUI.click(configureStatusDropdown);
+        distributorUI.click(By.xpath(configureStatusOption.replace("STATUS", status)));
+        distributorUI.waitForCustom(2000);
+    }
+    public void clickCopyPromoUrl() {
+        // Intercept ALL clipboard write mechanisms before clicking
+        ((JavascriptExecutor) TestBase.driver).executeScript(
+                "window.__capturedClipboardText = null;" +
+                        // Intercept navigator.clipboard.writeText (modern API)
+                        "if (navigator.clipboard && navigator.clipboard.writeText) {" +
+                        "  var origWriteText = navigator.clipboard.writeText.bind(navigator.clipboard);" +
+                        "  navigator.clipboard.writeText = function(text) {" +
+                        "    window.__capturedClipboardText = text;" +
+                        "    return origWriteText(text);" +
+                        "  };" +
+                        "}" +
+                        // Intercept document.execCommand('copy') (legacy API)
+                        "var origExecCommand = document.execCommand.bind(document);" +
+                        "document.execCommand = function(cmd) {" +
+                        "  if (cmd === 'copy') {" +
+                        "    var sel = window.getSelection();" +
+                        "    if (sel) window.__capturedClipboardText = sel.toString();" +
+                        "  }" +
+                        "  return origExecCommand.apply(document, arguments);" +
+                        "};"
+        );
+        distributorUI.click(btn_copyPromoUrl);
+        try {
+            distributorUI.waitForCustom(1000);
+            copiedPromoUrl = (String) ((JavascriptExecutor) TestBase.driver).executeScript(
+                    "return window.__capturedClipboardText;"
+            );
+            // URL captured via JS intercept
+        } catch (Exception e) {
+            // Fallback: copiedPromoUrl stays null, goToPromoUrl will try pasteUrlFromClipboard
+        }
+    }
+
+    public boolean isCopiedToClipboardDisplayed() {
+        return distributorUI.isDisplayed(txt_copiedToClipboard);
+    }
+    public void clickOkCopied() throws InterruptedException {
+        distributorUI.click(btn_okCopied);
+    }
+    public String getFeaturedListStatusInTable(String featuredListName) {
+        return distributorUI.getText(By.xpath(featuredListStatusInTable.replace("FEATUREDLISTNAME", featuredListName)));
+    }
+    public void goToPromoUrl() {
+        distributorUI.OpenNewTabAndSwitchToIt();
+        if (copiedPromoUrl != null && !copiedPromoUrl.isEmpty()) {
+            TestBase.driver.get(copiedPromoUrl);
+//            logger.info("Navigated to stored promo URL: {}", copiedPromoUrl);
+        } else {
+            distributorUI.pasteUrlFromClipboard();
+        }
+    }
+    public boolean isCatalogFilterSectionResultDisplayed(String result) throws InterruptedException {
+        return distributorUI.isDisplayed(By.xpath(catalogFilterResult.replace("RESULT", result)));
+    }
+    public void clickOnCustomTags(){
+        distributorUI.click(tab_customTags);
+    }
+    public boolean isManageCustomTagsTxtDisplay(){
+        return distributorUI.isDisplayed(txt_customTags);
+    }
+    public void EnterCustomTags(String customTag1, String tagName) throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        distributorUI.sendKeys(By.xpath(customTag.replace("CUSTOMTAG",customTag1)),tagName);
+    }
+    public void clickOnSave(){
+        distributorUI.click(SaveBtn);
     }
 }

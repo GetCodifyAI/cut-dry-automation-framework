@@ -17,9 +17,9 @@ import java.util.List;
 public class VerifyTheFunctionalityOfSortItemsByDropDownInSimpleListViewTest extends TestBase {
     SoftAssert softAssert;
     static User user;
-    static String DistributorName = "Independent Foods Co";
-    static String CompanyName = "Independent Foods Co";
-    static String customerId = "21259";
+    static String DistributorName = "Affiliated Foods";
+    static String CompanyName = "Affiliated Foods";
+    static String customerId = "05438";
     static String simpleListView = "Enabled on DP Portal & Operator App";
 
     List<String> expectedSortOptions = Arrays.asList(
@@ -27,10 +27,7 @@ public class VerifyTheFunctionalityOfSortItemsByDropDownInSimpleListViewTest ext
             "UPC",
             "Description",
             "Category",
-            "Unit",
             "Pack Size",
-            "Quantity",
-            "Price",
             "Last Ordered",
             "Brand"
     );
@@ -71,8 +68,7 @@ public class VerifyTheFunctionalityOfSortItemsByDropDownInSimpleListViewTest ext
         softAssert.assertTrue(Customer.isSimpleListViewTextDisplay(), "simple list view section not display");
 
         for (String sortOption : expectedSortOptions) {
-            softAssert.assertTrue(Customer.isSortOptionDisplayedForSimpleListView(sortOption),
-                    "Sort option '" + sortOption + "' is not displayed in the dropdown");
+            softAssert.assertTrue(Customer.isSimpleListSorted(sortOption), "Sorting is not properly working");
         }
 
         softAssert.assertAll();

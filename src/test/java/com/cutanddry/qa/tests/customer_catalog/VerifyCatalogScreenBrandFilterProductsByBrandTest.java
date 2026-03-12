@@ -17,7 +17,7 @@ public class VerifyCatalogScreenBrandFilterProductsByBrandTest extends TestBase 
     static User user;
     static String customerId = "16579";
     static String brand = "Brand";
-    static String option1 = " Almond Breeze";
+    static String option1 = "Almond Breeze";
     static String option2 = "Aesops Bagels";
     static String OptionItem1 = "Milk Almond Barista Unsweetened";
     static String OptionItem2 = "Bagel Plain Sliced 99129";

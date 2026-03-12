@@ -58,8 +58,7 @@ public class VerifyThatTheParentCustomerEditAnOrderGuidesThenChangesAreSyncedToC
         System.out.println(formID);
 
         Login.switchIntoNewTab();
-        Login.navigateToInternalToolsPage();
-        InternalTools.navigateToTaskManagementTab();
+        InternalTools.navigateToTaskManagement();
         InternalTools.runParentChildTask(formID);
         softAssert.assertTrue(InternalTools.isPCTaskAttemptedDisplayed(),"Parent child task not run successfully");
         Customer.clickOK();
@@ -82,8 +81,7 @@ public class VerifyThatTheParentCustomerEditAnOrderGuidesThenChangesAreSyncedToC
         System.out.println(formID);
 
         Login.switchIntoNewTab();
-        Login.navigateToInternalToolsPage();
-        InternalTools.navigateToTaskManagementTab();
+        InternalTools.navigateToTaskManagement();
         InternalTools.runParentChildTask(formID);
         Customer.clickOK();
         softAssert.assertTrue(InternalTools.isPCTaskAttemptedDisplayed(),"Parent child task not run successfully");
@@ -103,8 +101,7 @@ public class VerifyThatTheParentCustomerEditAnOrderGuidesThenChangesAreSyncedToC
         Customer.clickOK();
 
         Login.switchIntoNewTab();
-        Login.navigateToInternalToolsPage();
-        InternalTools.navigateToTaskManagementTab();
+        InternalTools.navigateToTaskManagement();
         InternalTools.clickRunLocallyOnParentChildRelationshipTask();
         softAssert.assertTrue(InternalTools.isPCTaskAttemptedDisplayed(),"Parent child task not run successfully");
         Customer.clickOK();

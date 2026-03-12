@@ -62,7 +62,6 @@ public class VerifySuggestSubstituteForDiscontinuedProductWhenForceShowDisabledT
         Catalog.removeExistingItem(substituteItemName1);
         Catalog.navigateToSubstituteTab();
         Catalog.addSubstitutions();
-        Catalog.addSubstitutions();
         Catalog.searchAndAddSubstituteItem(substituteItemCode1);
         Catalog.showSubstituteBtnIfNotSelected();
         Catalog.saveChanges();
@@ -84,7 +83,6 @@ public class VerifySuggestSubstituteForDiscontinuedProductWhenForceShowDisabledT
         Catalog.navigateToSubstituteTab();
         Catalog.removeExistingItem(searchItemCodeName1);
         Catalog.navigateToSubstituteTab();
-        Catalog.addSubstitutions();
         Catalog.addSubstitutions();
         Catalog.searchAndAddSubstituteItem(searchItemCode1);
         Catalog.showSubstituteBtnIfNotSelected();

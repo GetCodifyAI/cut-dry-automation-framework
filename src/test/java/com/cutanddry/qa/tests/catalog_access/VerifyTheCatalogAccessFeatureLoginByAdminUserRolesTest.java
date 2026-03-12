@@ -22,6 +22,8 @@ public class VerifyTheCatalogAccessFeatureLoginByAdminUserRolesTest extends Test
     static String itemName, orderId, searchItemCode;
     static double itemPrice;
     static String catalogToolTip = "Operator doesn't have catalog access, only you have catalog access";
+    String ManualDisableCatalogOption = "Selected Operators (via Manual Selection)";
+    static String orderMinimumSetting = "Exempt from Order Minimum";
 
     @BeforeMethod
     public void setUp(){
@@ -36,6 +38,13 @@ public class VerifyTheCatalogAccessFeatureLoginByAdminUserRolesTest extends Test
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
 
+        Login.navigateToInternalToolsPage();
+        InternalTools.navigateToConfigureSupplier();
+        InternalTools.navigateToIndependentCompEditDetails();
+        InternalTools.navigateToCatalogSettingsTab();
+        InternalTools.selectManualSelectionFromDropdown(ManualDisableCatalogOption);
+        InternalTools.catalogSettingsSave();
+
         Login.navigateToDistributorPortal(DistributorName);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "The user is unable to land on the Dashboard page.");
         Dashboard.navigateToCustomers();
@@ -44,6 +53,11 @@ public class VerifyTheCatalogAccessFeatureLoginByAdminUserRolesTest extends Test
         Customer.SelectCustomer(customerId);
         Customer.disableCatalogAccess();
         softAssert.assertTrue(Customer.catalogAccessDisabled(),"Error in catalog access disable displaying");
+
+        Customer.SelectOrderMinimumFromProfile(orderMinimumSetting);
+        Customer.ifHasHoldsRemoveHoldsFromCustomer();
+        Customer.refreshCustomersPage();
+        Customer.clickOnOrderGuideInCustomerProfile();
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);

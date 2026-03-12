@@ -29,7 +29,7 @@ public class VerifyNoMinimumEnforcementOnPickupOrdersTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-2823")
+    @Test(groups = "DOT-TC-4499")
     public void VerifyNoMinimumEnforcementOnPickupOrders() throws InterruptedException {
         softAssert = new SoftAssert();
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());

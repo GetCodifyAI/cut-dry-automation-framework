@@ -12,11 +12,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class ValidateTheDescriptionInCatalogDataTest extends TestBase {
+public class ValidateTheBrandNameInCategoryDataTest extends TestBase {
     static User user;
-    String itemCode = "00475";
-    String newDescription = "Test Description";
-    String previousDescription = "The navel orange is a large, seedless, thick-skinned orange that is easily peeled and segmented.";
+    String itemCode = "00036";
+    String newBrandName = "Sysco";
+    String previousBrandName = "Big Train";
 
     @BeforeMethod
     public void setUp(){
@@ -24,25 +24,24 @@ public class ValidateTheDescriptionInCatalogDataTest extends TestBase {
         user = JsonUtil.readUserLogin();
     }
 
-    @Test(groups = "DOT-TC-750")
-    public void ValidateTheDescriptionInCatalogData() throws InterruptedException {
+    @Test(groups = "DOT-TC-4507")
+    public void ValidateTheBrandNameInCategoryData() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.selectItemFromGrid(itemCode);
-        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code 1");
-        Catalog.typeNewDescription(newDescription);
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        Catalog.clickOnBrandName(newBrandName);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");
         Catalog.clickOnPreview();
-        softAssert.assertTrue(Catalog.isNewDescriptionDisplayed(newDescription),"storage method not updated");
+        softAssert.assertTrue(Catalog.isBrandNameDisplayedInPreview(newBrandName),"brand name not updated");
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.selectItemFromGrid(itemCode);
-        Thread.sleep(5000);
-        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code 2");
-        Catalog.typeNewDescription(previousDescription);
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        Catalog.clickOnBrandName(previousBrandName);
         Catalog.saveChanges();
         softAssert.assertAll();
     }

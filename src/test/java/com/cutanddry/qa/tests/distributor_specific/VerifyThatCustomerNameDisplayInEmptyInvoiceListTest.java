@@ -21,8 +21,9 @@ import java.time.format.DateTimeFormatter;
 public class VerifyThatCustomerNameDisplayInEmptyInvoiceListTest extends TestBase {
     static User user;
     static String DP = "106701125 - Cut+dry Agent - Cream Co. Meats";
-    static String customerId = "CU11177 Azasu Kitchen";
-    static String emptyStateMessage ="Could not find invoices for Azasu Kitchen (CU11177 Azasu Kitchen) - Pacifica.";
+    static String customerId = "7478";
+    static String customerName;
+    static String emptyStateMessage ="Could not find invoices for ";
     String CustomerFilterOption = "- Past due";
 
 
@@ -45,14 +46,15 @@ public class VerifyThatCustomerNameDisplayInEmptyInvoiceListTest extends TestBas
         Customer.searchCustomerByCode(customerId);
         Assert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.SelectCustomer(customerId);
+        customerName = Customer.getCustomerNameFromProfile();
         Customer.clickonInvoice();
 
-        softAssert.assertTrue(Customer.isEmptyStateMessageDisplay(emptyStateMessage),"message not display");
+        softAssert.assertTrue(Customer.isEmptyStateMessageDisplay(emptyStateMessage + customerName),"message not display");
 
         Customer.clickOnDropDownFilter();
         Customer.selectFilterDropDown(CustomerFilterOption);
         Thread.sleep(4000);
-        softAssert.assertTrue(Customer.isEmptyStateMessageDisplay(emptyStateMessage),"message not display");
+        softAssert.assertTrue(Customer.isEmptyStateMessageDisplay(emptyStateMessage + customerName),"message not display");
         softAssert.assertAll();
     }
 

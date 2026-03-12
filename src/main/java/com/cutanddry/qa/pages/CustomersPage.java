@@ -9,7 +9,9 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -82,7 +84,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By btn_next = By.xpath("//button[text()='Next']");
     By btn_confirm = By.xpath("//button[text()='Confirm']");
     By txt_orderGuideCreateSuccess = By.xpath("//h2[contains(text(), 'Order guide updated successfully')]");
-    By btn_OK = By.xpath("//button[text()='OK']");
+    By btn_OK = By.xpath("//button[translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='ok']");
     String msg_banner = "//span[text()='TESTMESSAGE']";
     By lbl_productDetails = By.xpath("//span[text()='Product Details']");
     By lbl_topCategoryPicks = By.xpath("//div[text()='Top Category Picks']");
@@ -112,7 +114,7 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By dropdown_alphabetical = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Alphabetical (A-Z)')]");
     By dropdown_itemCategories = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Item Categories')]");
     By dropdown_itemCode = By.xpath("//div[contains(text(), 'Sort Items By:')]//following::div[contains(text(), 'Item Code')]");
-    By txt_produce = By.xpath("(//div[starts-with(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'bakery')])[last()]");  // bakery or produce
+    By txt_produce = By.xpath("(//div[starts-with(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'prepared')])[last()]");  // bakery or produce
     By txt_firstItem = By.xpath("//div[translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'artichoke -24ct']");
     By txt_minOrderBanner = By.xpath("//div[contains(text(), 'Add a few more items worth') and contains(text(), 'to meet minimum order amount')]");
     By txt_popupAlertOrderMin = By.xpath("//div[text()='Order Minimum Not Met']");
@@ -236,6 +238,8 @@ By input_selectItem = By.xpath("//div[contains(text(),'Search items by name or c
     By SuccessfulRemovedMsg = By.xpath("//div[contains(text(),'Successfully removed the user')]");
     String UserName = "//span[text()='USERNAME']";
     String UserDetailsEditBtn = "//div[@class='_du1frc list-group-item']//span[text()='USERNAME']/../following-sibling::div[@class='col-2']";
+    By roleSelectionDropdown = By.xpath("(//*[contains(text(),'Role')]/../following-sibling::div//div)[2]");
+    String selectRole = "(//*[contains(text(),'Role')]/../following-sibling::div//div)//div[contains(text(),'ROLE')]";
     By RemoveUserTxt = By.xpath("//span[contains(text(),'Remove user')]");
     By DeleteCnfrmOverlay = By.xpath("//h2[contains(text(),'Are you sure you want to remove this user')]");
     By DeleteCnfrmYesBtn = By.xpath("//button[contains(text(),'Yes')]");
@@ -385,7 +389,7 @@ By lbl_margin = By.xpath("//div[contains(text(),'Margin') and contains(text(),'$
 //    By dropdown_assignSalesperson = By.xpath("((//*[local-name() = 'svg' and @class='css-19bqh2r']))[2]");
 By dropdown_assignSalesperson = By.xpath("(//div[contains(@class,'themed_select__dropdown-indicator')])[last()]");
     By sel_salesperson = By.xpath("//div[contains(@class, 'themed_select__option') and contains(text(), 'Darlene')]");
-    By txt_assignedSalesperson = By.xpath("//div[contains(text(),'Darlene')]");
+    By txt_assignedSalesperson = By.xpath("//td[normalize-space()='Darlene']");
     By btn_saveChanges = By.xpath("//button[contains(text(),'Save changes')]");
     By txt_cusProfSalesperson = By.xpath("//div[contains(@class,'_vjioml w-100 border') and contains(text(),'Darlene')]");
     By btn_removeSalesperson = By.xpath("(//td/*[contains(@data-icon,'trash-can')])[last()]");
@@ -455,6 +459,7 @@ By enabledStatusLocator = By.xpath("//div[contains(text(),'Cut+Dry Pay')]/follow
 String txt_product = "//div[contains(@class,'_3quvq7 _1vlidrf' ) and contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), translate('NAME', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'))]";
     String brandpageLink = "//div[normalize-space(.)='BRANDPAGE']";
     String brandpageText = "//img//following-sibling::div//div[normalize-space(.)='BRANDPAGE']";
+    String catalogBrandPage = "//div[contains(text(), 'ITEMNAME')]/../following::div[contains(text(),'BRANDNAME')]";
     By btn_addToCartPDP = By.xpath("//button[contains(text(), 'Add to Cart')]");
     static By btn_checkOutPDP = By.xpath("//button[@data-for='cartCheckoutButton' and contains(text(),'$')]");
     By txt_orderConfirmationPopUp = By.xpath("//*[contains(text(), 'Thank you for your order!')]");
@@ -788,7 +793,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     String btnChat = "//td[text()='CODE']/../td[7]//*[name()='svg' and @data-icon='comments']";
     By btn_ChatCustomerProfile = By.xpath("//button[contains(text(),'Chat')]");
     By btn_nextMonth = By.xpath("//button[contains(@aria-label,'Next Month')]");
-    By txt_sameDeliveryDate = By.xpath("//h2[contains(text(),'same delivery date are not allowed')]");
+    By txt_sameDeliveryDate = By.xpath("//h2[contains(text(),'Maximum of 2 orders per delivery date are allowed')]");
     By icon_deleteSearchItem = By.xpath("(//*[local-name()='svg' and @data-icon='circle-xmark'])[1]");
     By icon_deleteSubstitutionItem = By.xpath("(//*[local-name()='svg' and @data-icon='xmark'])[1]");
     By SearchResultsIcon = By.xpath("(//div//*[local-name()='svg' and contains(@data-icon, 'cdSearch')])[1]");
@@ -962,7 +967,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By lbl_itemsColumnHeader = By.xpath("//span[text()='Items']");
     By lbl_ordersTableRows = By.xpath("//tr[contains(@href,'/ordersView/')]");
     String lbl_orderRowItemsCount = "(//tr[contains(@href,'/ordersView/')])[ROW]/td[5]";
-    By lbl_orderDetailsLineItems = By.xpath("(//div[contains(@class,'_jws3mfs')]//span)[1]");
+    By lbl_orderDetailsLineItems = By.xpath("//div[contains(text(),'Total Qty')]/following-sibling::div");
     By lbl_orderReferenceColumnHeader = By.xpath("//span[contains(text(),'Order Reference')]");
     By lbl_orderReferenceNumber = By.xpath("//tr[contains(@href,'/ordersView/')]//td//div[contains(text(),'#')]");
     By lbl_erpOrderBadge = By.xpath("//tr[contains(@href,'/ordersView/')]//td//span[contains(text(),'ERP Order')]");
@@ -973,7 +978,7 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By canNotSubmitEmptyOrderError = By.xpath("//*[normalize-space(.)='Error: Cannot submit empty order']");
     String onSaleItemCountResult = "//div[text()='FILTER']/following-sibling::div/div";
     String onSaleItemTagCount = "//img[contains(@class,'card-img-top')]/following-sibling::div[normalize-space()='TAG']";
-    String catalogFilterAllItems = "//div[contains(@class,'_3ewg0b') and normalize-space()='FILTER']";
+    String catalogFilterAllItems = "(//div[contains(@class,'_3ewg0b') and normalize-space()='FILTER'])[last()]";
     String catalogFilterSectionDropDown = "//div[contains(@class,'_abrv9k') and normalize-space()='FILTER']";
     String catalogFilterBrandDropDownOption = "//div[text()='OPTION']";
     String catalogFilterDropDown = "//div[contains(text(), 'FILTER')]";
@@ -986,7 +991,12 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By btn_deliveryDateOrderDeskStable = By.xpath("//div[text()='Delivery Date']/following-sibling::div//*[name()='svg' and @data-icon='calendar-date-vect']");
     By btn_ThreeDotVertical = By.xpath("//button[text()='Order Guide']/following-sibling::div//*[contains(@data-icon,'ellipsis-vertical')]");
     By tbx_titleStandingOrder = By.xpath("//input[@placeholder='Enter title']");
-
+    String simpleListViewColumnHeaderClick = "//div[text()='Simple List View']/following::table[1]//th[INDEX]";
+    String simpleListViewColumnByHeader = "//div[text()='Simple List View']/following::table[1]//tr/td[INDEX]";
+    By customerNameUnderProfile = By.xpath("//button[contains(text(),'Order Guide')]/ancestor::div[2]/div[1]");
+    String catalogFilterSection = "//div[text()='Sections']/../following-sibling::div//div[contains(text(),'FILTER')]";
+    By browseCatalog = By.xpath("//div[contains(text(),'Browse Catalog')]");
+    String removeSelectedCatalogFilter = "//div[text()='FILTER']/*[local-name()='svg' and @data-icon='xmark']";
 
 
 
@@ -1701,6 +1711,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void ClickOnCustomer(String code){
         distributorUI.click(By.xpath(SelectCustomerByCode.replace("CODE", code)));
     }
+    public String getCustomerNameUnderProfile(){
+        distributorUI.waitForVisibility(customerNameUnderProfile);
+        return distributorUI.getText(customerNameUnderProfile);
+    }
     public boolean isOrdersTabDisplayed(){
         distributorUI.waitForVisibility(OrdersTabTxt);
         return distributorUI.isDisplayed(OrdersTabTxt);
@@ -2088,6 +2102,14 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickOnUserDetailsEditBtn(String Username){
         distributorUI.isDisplayed(By.xpath(UserDetailsEditBtn.replace("USERNAME",Username)));
         distributorUI.click(By.xpath(UserDetailsEditBtn.replace("USERNAME",Username)));
+    }
+    public void selectUserRole(String role){
+        distributorUI.waitForVisibility(roleSelectionDropdown);
+        distributorUI.click(roleSelectionDropdown);
+        distributorUI.click(By.xpath(selectRole.replace("ROLE",role)));
+        if(distributorUI.isElementEnabled(SaveChangeswithoutSendingInviteBtn)){
+            distributorUI.click(SaveChangeswithoutSendingInviteBtn);
+        };
     }
     public void clickOnRemoveUser(){
         distributorUI.waitForVisibility(RemoveUserTxt);
@@ -2856,6 +2878,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
     public boolean isNavigatedToBrandPage(String brandName){
         return distributorUI.isDisplayed(By.xpath(brandpageText.replace("BRANDPAGE",brandName)));
+    }
+    public void clickOnItemBrandOnCatalog(String itemName,String brandName){
+        distributorUI.click(By.xpath(catalogBrandPage.replace("ITEMNAME",itemName).replace("BRANDNAME",brandName)));
     }
     public void clickAddToCart(){
         distributorUI.click(btn_addToCartPDP);
@@ -5820,10 +5845,10 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         return distributorUI.getText(By.xpath(lbl_orderRowItemsCount.replace("ROW", "1"))).trim();
     }
 
-    public int getOrderDetailsLineItemsCount() {
+    public int getOrderDetailsItemsCount() {
         try {
-            distributorUI.waitForVisibility(lbl_orderDetailsLineItems);
-            return distributorUI.countElements(lbl_orderDetailsLineItems);
+            distributorUI.uiScrollBottomOfPage();
+            return Integer.parseInt(distributorUI.getText(lbl_orderDetailsLineItems));
         } catch (Exception e) {
             return 0;
         }
@@ -5914,8 +5939,9 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public boolean isCatalogFilterOnSaleTagDisplayed(String tag){
         return distributorUI.isDisplayed(By.xpath(onSaleItemTagCount.replace("TAG", tag)));
     }
-    public void clickCatalogFilterAllItems(String filter){
+    public void clickCatalogFilterAllItems(String filter) throws InterruptedException {
         distributorUI.click(By.xpath(catalogFilterAllItems.replace("FILTER", filter)));
+        distributorUI.waitForCustom(2000);
     }
     public void clickCatalogFilterSectionDropDown(String filter){
         distributorUI.click(By.xpath(catalogFilterSectionDropDown.replace("FILTER", filter)));
@@ -5981,6 +6007,39 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.clear(tbx_titleStandingOrder);
         distributorUI.waitForCustom(1000);
         distributorUI.sendKeys(tbx_titleStandingOrder, title);
+    }
+    public boolean isSimpleListSortingProperlyWorking(String columnHeader) throws InterruptedException {
+        Map<String, Integer> columnIndexMap = new LinkedHashMap<>();
+        columnIndexMap.put("Item Code", 1);
+        columnIndexMap.put("UPC", 2);
+        columnIndexMap.put("Brand", 3);
+        columnIndexMap.put("Description", 4);
+        columnIndexMap.put("Category", 5);
+        columnIndexMap.put("Pack Size", 6);
+        columnIndexMap.put("Last Ordered", 10);
+
+        Integer columnIndex = columnIndexMap.get(columnHeader);
+        if (columnIndex == null) {
+            return false;
+        }
+
+        By headerLocator = By.xpath(simpleListViewColumnHeaderClick.replace("INDEX", String.valueOf(columnIndex)));
+        String cellXpath = simpleListViewColumnByHeader.replace("INDEX", String.valueOf(columnIndex));
+
+        return distributorUI.isSimpleListSortingProperlyWorking(headerLocator, cellXpath, columnHeader);
+
+    }
+    public boolean isCatalogFilterSectionDisplayed(String filter){
+        distributorUI.waitForVisibility(By.xpath(catalogFilterSection.replace("FILTER", filter)));
+        return distributorUI.isDisplayed(By.xpath(catalogFilterSection.replace("FILTER", filter)));
+    }
+    public boolean isCatalogBrowseDisplayed(){
+        distributorUI.waitForVisibility(browseCatalog);
+        return distributorUI.isDisplayed(browseCatalog);
+    }
+    public void clearSelectedFilter(String filter){
+        distributorUI.uiScrollTop();
+        distributorUI.click(By.xpath(removeSelectedCatalogFilter.replace("FILTER", filter)));
     }
 
 

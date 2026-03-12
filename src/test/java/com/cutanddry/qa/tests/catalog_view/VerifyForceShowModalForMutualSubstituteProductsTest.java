@@ -25,7 +25,9 @@ public class VerifyForceShowModalForMutualSubstituteProductsTest extends TestBas
     static String canonicalNodeName1 = "70504455";
     static String canonicalNodeName2 = "70505428";
     static String featureKey = "unavailable";
+    static String featureKey2 = "discontinued";
     static String featureValue = "true";
+    static String featureValue2 = "false";
     static String customerId = "962243";
 
 
@@ -50,6 +52,13 @@ public class VerifyForceShowModalForMutualSubstituteProductsTest extends TestBas
         softAssert.assertTrue(InternalTools.isSuccessPopUpDisplayed(),"change not save");
         InternalTools.clickOKOnSucessOverlay();
 
+        //Making both items not discontinued
+        Login.navigateToNode(canonicalNodeName2);
+        Login.setValueToNode(featureKey2,featureValue2);
+
+        Login.navigateToNode(canonicalNodeName1);
+        Login.setValueToNode(featureKey2,featureValue2);
+
         Login.navigateToDistributorPortal(distributorDiCarlo);
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
 
@@ -62,7 +71,6 @@ public class VerifyForceShowModalForMutualSubstituteProductsTest extends TestBas
         Catalog.navigateToSubstituteTab();
         Catalog.removeExistingItem(substituteItemName1);
         Catalog.navigateToSubstituteTab();
-        Catalog.addSubstitutions();
         Catalog.addSubstitutions();
         Catalog.searchAndAddSubstituteItem(substituteItemCode1);
         Catalog.showSubstituteBtnIfNotSelected();
@@ -98,7 +106,6 @@ public class VerifyForceShowModalForMutualSubstituteProductsTest extends TestBas
         Catalog.navigateToSubstituteTab();
         Catalog.removeExistingItem(searchItemCodeName1);
         Catalog.navigateToSubstituteTab();
-        Catalog.addSubstitutions();
         Catalog.addSubstitutions();
         Catalog.searchAndAddSubstituteItem(searchItemCode1);
         Catalog.showSubstituteBtnIfNotSelected();

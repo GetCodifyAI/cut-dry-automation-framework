@@ -38,14 +38,14 @@ public class VerifyChatFeatureTest extends TestBase {
         softAssert.assertTrue(Chat.isCustomerSearchResultDisplayed(customerName),"search error");
         Chat.clickOnCustomerChat(customerName);
         Chat.sendDistributorMessage(distributorMessage);
-        softAssert.assertEquals(Chat.getLastMessageDisplayed(), distributorMessage,"messaging sending error");
+        softAssert.assertEquals(Chat.getLastMessageDisplayed(), distributorMessage,"messaging sending error 1");
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Dashboard.navigateToRestaurantChat();
         Chat.clickOnRestaurantChat();
-        softAssert.assertEquals(Chat.getLastMessageDisplayed(), distributorMessage,"messaging receiving error");
+        softAssert.assertEquals(Chat.getLastMessageDisplayed(), distributorMessage,"messaging receiving error 1");
         Chat.sendRestaurantMessage(restaurantMessage);
-        softAssert.assertEquals(Chat.getLastMessageDisplayed(), restaurantMessage,"messaging sending error");
+        softAssert.assertEquals(Chat.getLastMessageDisplayed(), restaurantMessage,"messaging sending error 2");
         Login.navigateToDistributor();
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
@@ -54,7 +54,7 @@ public class VerifyChatFeatureTest extends TestBase {
         Chat.searchCustomerByName(customerName);
         softAssert.assertTrue(Chat.isCustomerSearchResultDisplayed(customerName),"search error");
         Chat.clickOnCustomerChat(customerName);
-        softAssert.assertEquals(Chat.getLastMessageDisplayed(), restaurantMessage,"messaging receiving error");
+        softAssert.assertEquals(Chat.getLastMessageDisplayed(), restaurantMessage,"messaging receiving error 2");
         softAssert.assertAll();
     }
 

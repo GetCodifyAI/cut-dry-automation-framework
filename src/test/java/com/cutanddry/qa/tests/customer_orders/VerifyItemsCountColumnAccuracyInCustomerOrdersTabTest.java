@@ -6,6 +6,7 @@ import com.cutanddry.qa.functions.Customer;
 import com.cutanddry.qa.functions.Dashboard;
 import com.cutanddry.qa.functions.Login;
 import com.cutanddry.qa.utils.JsonUtil;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -14,9 +15,10 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyItemsCountColumnAccuracyInCustomerOrdersTabTest extends TestBase {
     static User user;
-    String customerCode = "16579";
+    String customerCode = "20200537";
     int actualLineItemsCount;
     int expectedItemsCount;
+    String DistributorName = "BiRite Foodservice Distributors";
 
     @BeforeMethod
     public void setUp() {
@@ -28,8 +30,11 @@ public class VerifyItemsCountColumnAccuracyInCustomerOrdersTabTest extends TestB
     public void verifyItemsCountColumnAccuracyInCustomerOrdersTab() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
 
-        Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
-        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(), "Login failed - Dashboard not displayed");
+        Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
+        Assert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
+
+        Login.navigateToDistributorPortal(DistributorName);
+        softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
 
         Dashboard.navigateToCustomers();
         softAssert.assertTrue(Customer.isCustomersTextDisplayed(), "Customers section not displayed");
@@ -52,7 +57,7 @@ public class VerifyItemsCountColumnAccuracyInCustomerOrdersTabTest extends TestB
         Customer.clickFirstOrderFrmOrderTab();
         softAssert.assertTrue(Customer.isOrderSectionDisplayed(), "Order details section not displayed");
 
-        actualLineItemsCount = Customer.getOrderDetailsLineItemsCount();
+        actualLineItemsCount = Customer.getOrderDetailsItemsCount();
         expectedItemsCount = Integer.parseInt(itemsCountFromList);
         softAssert.assertEquals(actualLineItemsCount, expectedItemsCount,
                 "Items count mismatch - List shows: " + expectedItemsCount + ", Order details has: " + actualLineItemsCount);

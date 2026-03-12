@@ -18,11 +18,11 @@ import org.testng.asserts.SoftAssert;
 public class VerifyHideWhiteLabelHomePageForEmployeesWithNoCatalogAccessTest extends TestBase {
     static User user;
     String DistributorName = CustomerData.DISTRIBUTOR_HILL_CREST;;
-    static String customerId = "71227";;
+    static String customerId = "35000";;
     static String AddItemRestrictionDropDownOption = "Don’t allow employees to add new items";
     static String orderGuide1 = "Standard Guide";
     static String orderGuide2 = "Order History";
-    static String OperatorName = "274973452";
+    static String OperatorName = "496132500";
 
     @BeforeMethod
     public void setUp(){

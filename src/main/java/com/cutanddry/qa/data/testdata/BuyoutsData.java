@@ -5,13 +5,14 @@ public class BuyoutsData {
     public static final String BUYOUT_ALLOWED_CUSTOMER = "20200537";
     public static final String INTEGRATION_NODE_BUYOUT_ALLOWED_CUSTOMER ="148707554";
     public static final String BUYOUT_PRODUCT_KEY = "buyoutproduct";
-    public static final String BUYOUT_PRODUCT_VALUE = "true";
-    public static final String BUYOUT_PRODUCT_ITEMCODE = "296016";
-    public static final String BUYOUT_PRODUCT_ITEMCODE2 = "343841";
-    public static final String BUYOUT_PRODUCT1_CANONICAL_NODE = "125770710";
-    public static final String BUYOUT_PRODUCT2_CANONICAL_NODE = "551181223";
-    public static final String BUYOUT_PRODUCT_ITEMNAME = "Peanut Butter Creamy";
-    public static final String BUYOUT_PRODUCT_ITEMNAME2 = "App Quiche Mini Assorted";
+    public static final String BUYOUT_PRODUCT_VALUE_TRUE = "true";
+    public static final String BUYOUT_PRODUCT_VALUE_FALSE = "false";
+    public static final String BUYOUT_PRODUCT_ITEMCODE = "200510";
+    public static final String BUYOUT_PRODUCT_ITEMCODE2 = "3700";
+    public static final String BUYOUT_PRODUCT1_CANONICAL_NODE = "125769940";
+    public static final String BUYOUT_PRODUCT2_CANONICAL_NODE = "135043864";
+    public static final String BUYOUT_PRODUCT_ITEMNAME = "Anchovy Paste";
+    public static final String BUYOUT_PRODUCT_ITEMNAME2 = "Acid Malic";
     public static final String NON_BUYOUT_PRODUCT_ITEMCODE = "965000";
     public static final String NON_BUYOUT_PRODUCT_ITEMNAME = "Air Freshener Aerosol Refresh Energize";
     public static final String ITEM_UOM1 = "Case";
@@ -21,5 +22,6 @@ public class BuyoutsData {
     public static final String ORDER_SHORT = "short";
     public static final String BUYOUT_ALLOWED_KEY = "buyoutallowed";
     public static final String BUYOUT_ALLOWED_VALUE_TRUE = "true";
+    public static final String BUYOUT_ALLOWED_VALUE_FALSE = "false";
 
 }

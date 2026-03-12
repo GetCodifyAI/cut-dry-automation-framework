@@ -29,8 +29,8 @@ public class DashboardPage extends LoginPage{
     By txt_totalOnlineRev = By.xpath("//tr[td[contains(text(), 'Total')]]/td[4]");
     By txt_totalTimeSaved = By.xpath("//tr[td[contains(text(), 'Total')]]/td[5]");
     By btn_history = By.xpath("(//a[@data-tip='Order History'])[1]");
-    By btn_drafts  =By.xpath("(//a[@data-tip='View Drafts'])[1]");
-    By drafts_badge = By.xpath("//*[@href='/draft-orders']//span");
+    By btn_drafts  =By.xpath("(//a[@data-tip='View Drafts'])[last()]");
+    By drafts_badge = By.xpath("(//*[@href='/draft-orders'])[last()]//span");
     By btn_track = By.xpath("(//a[@role='button' and contains(text(), 'Track')])[last()]");
     By btn_trackResources = By.xpath("//div[contains(@class,'fade')]/a[text()='Resources']");
     By btn_trackRoutes = By.xpath("//div[contains(@class,'fade')]/a[text()='Routes']");
@@ -62,12 +62,13 @@ public class DashboardPage extends LoginPage{
     static By wordAfterCompanyLocator = By.xpath("//span[text()='Company:']/following-sibling::span");
     static By dropdownToggle = By.xpath("//span[text()='Company:']/ancestor::button[contains(@class, 'dropdown-toggle')]");
     static By independentFoodOption = By.xpath("//a[text()='Independent Foods Co']");
+    static By cutAndDryTestOption = By.xpath("//a[text()='Cut & Dry Test Account']");
     By btn_PlaceOrder = By.xpath("(//button[text()='Place Order'])[1]");
     By approvalsBtn = By.xpath("(//a[contains(@data-tip,'Approvals')])[1]");
     By locationFilter = By.xpath("(//div[text()='Place Order']/following-sibling::div//div)[1]");
     By locationOption = By.xpath("//div[text()='Place Order']/following-sibling::*//div[contains(@id,'react-select') and contains(text(), 'All Locations')]");
     By btn_order = By.xpath("(//a[@data-tip='Place Order'])[1]");
-    By orderIndicator = By.xpath("//a[contains(text(),'Order Desk')]/div/span");
+    By orderIndicator = By.xpath("(//a[contains(text(),'Order Desk')]/div/span)[last()]");
     By txt_endlessAisle  =By.xpath("//div[text()='Endless Aisle Catalog']");
     By btn_dashboard = By.xpath("(//a[@data-tip='Dashboard'])[1]");
     String getCustomerBaseValue = "(//*[name()='tspan' and contains(., 'CUSTOMER')]/following-sibling::*[name()='tspan'])[1]";
@@ -349,6 +350,18 @@ public class DashboardPage extends LoginPage{
         System.out.println("Company name changed to 'Independent Foods Co'.");
     }
 
+    public static void selectCutAndDryTest() {
+        // Click the dropdown
+        driver.findElement(dropdownToggle).click();
+        System.out.println("Dropdown clicked.");
+
+        // Wait for the 'Cut & Dry Test Account' option to be visible and click it
+        distributorUI.waitForVisibility(cutAndDryTestOption);
+        driver.findElement(cutAndDryTestOption).click();
+
+        System.out.println("Company name changed to 'Cut & Dry Test Account'.");
+    }
+
     public void clickOnPlaceOrderBtn(){
         distributorUI.click(btn_PlaceOrder);
     }
@@ -430,6 +443,7 @@ public class DashboardPage extends LoginPage{
     }
 
     public boolean isInfluenceMenuOptionDisplayed(){
+        distributorUI.hoverOverElement(btn_viewMore);
         return distributorUI.isDisplayed(influenceTab);
     }
     public void clickInfluenceMenuOption(){
