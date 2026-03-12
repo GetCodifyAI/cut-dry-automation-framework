@@ -39,6 +39,7 @@ public class ValidateTheOnSaleFilterInCatalogPricingAndPromotionsTest extends Te
         softAssert.assertTrue(Catalog.isFilterCatalogPopupDisplayed(),"popup error");
         Catalog.selectOnSaleYes();
         Catalog.selectItemFromGrid(itemCode);
+        Thread.sleep(5000);
         softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code 2");
         Catalog.navigateToPricingAndPromotions();
         Catalog.clickOnSale();

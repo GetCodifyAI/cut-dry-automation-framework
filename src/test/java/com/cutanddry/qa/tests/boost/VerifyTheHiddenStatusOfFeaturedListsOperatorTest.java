@@ -57,7 +57,7 @@ public class VerifyTheHiddenStatusOfFeaturedListsOperatorTest extends TestBase {
         Boost.goToPromoUrl();
         softAssert.assertTrue(Customer.isCatalogBrowseDisplayed(),"promo link navigate error");
         softAssert.assertFalse(Customer.isCatalogFilterSectionDisplayed(featuredListName),"catalog filter not display");
-        softAssert.assertFalse(Boost.isCatalogFilterSectionResultDisplayed(featuredListName),"Featured List promo page not displayed with items");
+        softAssert.assertTrue(Boost.isCatalogFilterSectionResultDisplayed(featuredListName),"Featured List promo page not displayed with items");
         softAssert.assertAll();
     }
 
