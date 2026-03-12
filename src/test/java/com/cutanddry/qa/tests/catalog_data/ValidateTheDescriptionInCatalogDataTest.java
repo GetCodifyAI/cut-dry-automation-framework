@@ -31,7 +31,7 @@ public class ValidateTheDescriptionInCatalogDataTest extends TestBase {
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.selectItemFromGrid(itemCode);
-        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code 1");
         Catalog.typeNewDescription(newDescription);
         Catalog.saveChanges();
         softAssert.assertTrue(Catalog.successOverlayDisplayed(),"Error in saving item data in catalog");
@@ -40,7 +40,8 @@ public class ValidateTheDescriptionInCatalogDataTest extends TestBase {
         Dashboard.navigateToCatalog();
         softAssert.assertTrue(Catalog.isUserNavigatedToCatalog(),"navigation error");
         Catalog.selectItemFromGrid(itemCode);
-        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code");
+        Thread.sleep(5000);
+        softAssert.assertEquals(Catalog.getItemcodeInCatalogData(),itemCode,"Error in getting Item Code 2");
         Catalog.typeNewDescription(previousDescription);
         Catalog.saveChanges();
         softAssert.assertAll();

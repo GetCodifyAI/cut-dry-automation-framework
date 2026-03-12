@@ -30,6 +30,7 @@ public class VerifyTheInactiveStatusOfFeaturedListsTest extends TestBase {
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
         Thread.sleep(3000);
+
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.navigateToFeaturedListTab();
