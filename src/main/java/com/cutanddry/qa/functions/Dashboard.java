@@ -232,4 +232,56 @@ public class Dashboard {
         dashboardPage.clickInfluenceMenuOption();
     }
 
+    public static void navigateToOrderGuideChangesDetailPage() throws InterruptedException {
+        dashboardPage.navigateToOrderGuideChangesPage();
+    }
+
+    public static boolean isOrderGuideChangesDetailPageDisplayed() {
+        return dashboardPage.isOrderGuideChangesDetailPageDisplayed();
+    }
+
+    public static boolean isOrderGuideChangesTableDisplayed() {
+        return dashboardPage.isOrderGuideChangesTableDisplayed();
+    }
+
+    public static boolean isPaginationDisplayed() {
+        return dashboardPage.isPaginationDisplayed();
+    }
+
+    public static String getCurrentPageNumber() {
+        return dashboardPage.getCurrentPageNumber();
+    }
+
+    public static void clickNextPage() throws InterruptedException {
+        dashboardPage.clickNextPage();
+    }
+
+    public static void clickPreviousPage() throws InterruptedException {
+        dashboardPage.clickPreviousPage();
+    }
+
+    public static void clickPageNumber(String page) throws InterruptedException {
+        dashboardPage.clickPageNumber(page);
+    }
+
+    public static boolean isNextPageEnabled() {
+        return dashboardPage.isNextPageEnabled();
+    }
+
+    public static boolean isPreviousPageEnabled() {
+        return dashboardPage.isPreviousPageEnabled();
+    }
+
+    public static int getTableRowCount() {
+        return dashboardPage.getTableRowCount();
+    }
+
+    public static void selectDateRange(String option) throws InterruptedException {
+        dashboardPage.selectDateRange(option);
+    }
+
+    public static boolean isTableDataLoaded() {
+        return dashboardPage.isTableDataLoaded();
+    }
+
 }
