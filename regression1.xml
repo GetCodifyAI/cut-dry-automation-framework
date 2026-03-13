@@ -24,6 +24,7 @@
             <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmCatalogTest" />
             <class name="com.cutanddry.qa.tests.order_guide.EditProductQtyFrmReviewCartTest" />
             <class name="com.cutanddry.qa.tests.order_guide.DistributorOrderSubmissionTest" />
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyUserCanPlaceOrderWithItemAmountDotZeroInMainOrderFlowTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifyThePrintFeatureTest" />
             <class name="com.cutanddry.qa.tests.order_guide.VerifySortOptionsTest" />
             <class name="com.cutanddry.qa.tests.order_guide.DisplayCustomerOrdersTest" />
@@ -63,6 +64,7 @@
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyEditingStandingOrdersTest" />
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyAddingAnotherStandingOrderTest" />
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyDeletingStandingOrdersTest" />
+            <class name="com.cutanddry.qa.tests.standing_orders.VerifyUserCanPlaceOrderWithItemAmountDotZeroInStandingOrderFlowTest" />
             <class name="com.cutanddry.qa.tests.standing_orders.VerifyManageStandingOrdersCTAFunctionalityInOrderGuideTest" />
 
             <class name="com.cutanddry.qa.tests.boost.VerifyBroadcastMessageTest" />
@@ -81,6 +83,8 @@
             <class name="com.cutanddry.qa.tests.boost.VerifyTheDisplayStatusOfFeaturedListsTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyAddingBoostedBrandTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRemovingBoostedBrandTest" />
+
+            <class name="com.cutanddry.qa.tests.customers.VerifyUserCanPlaceOrderWithItemAmountDotZeroInEditOrderFlowTest" />
 
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderWithoutAddingAnyItemsTest"/>
             <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByRemovingExistingItemsAndChangingQuantitiesTest"/>
