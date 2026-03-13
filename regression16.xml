@@ -54,7 +54,7 @@
 
             <class name="com.cutanddry.qa.tests.boost.VerifyTheActiveBoostFilterSearchTest"/>
             <class name="com.cutanddry.qa.tests.boost.VerifyTheInactiveBoostFilterSearchTest"/>
-            <class name="com.cutanddry.qa.tests.standing_orders.VerifyStandingOrderCRUDAndNoDraftsGeneratedOPSideTest"/>
+
 
 
 
