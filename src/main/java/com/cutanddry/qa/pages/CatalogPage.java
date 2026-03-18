@@ -251,6 +251,10 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     By firstSearchResultRow = By.xpath("(//tr[contains(@class,'_du1frc')])[1]");
 
 
+    By customTagDropdown = By.xpath("//div[contains(text(),'Custom Tags')]/ancestor::div[3]/following-sibling::div//*[local-name()='svg' and @data-icon='chevron-down']");
+    By customTagAllClear = By.xpath("(//div[contains(text(),'Custom Tags')]/ancestor::div[3]/following-sibling::div//*[local-name()='svg' and @focusable='false'])[last()-1]");
+    String customTagOption = "//div[contains(text(),'OPTION')]";
+    String customTagDisplay = "//div[contains(text(),'Custom Tags')]/ancestor::div[3]/following-sibling::div//div[contains(text(),'TAGNAME')]";
 
 
     public boolean isCatalogTextDisplayed() {
@@ -1384,6 +1388,19 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
 
 
 
+
+    public void clearAllCustomTags(){
+        distributorUI.click(customTagAllClear);
+    }
+
+    public void addCustomTags(String Option){
+        distributorUI.click(customTagDropdown);
+        distributorUI.click(By.xpath(customTagOption.replace("OPTION",Option)));
+    }
+
+    public boolean isCustomTagDisplayed(String Option){
+        return distributorUI.isDisplayed(By.xpath(customTagDisplay.replace("TAGNAME",Option)));
+    }
 
 }
 

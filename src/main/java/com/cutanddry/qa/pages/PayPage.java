@@ -37,7 +37,7 @@ public class PayPage extends LoginPage{
     By toDayXPath = By.xpath("//div[contains(@class,'react-datepicker__day--today')]");
     By dd_invoiceAuthStatusFilter = By.xpath("(//div[text()='Auth Status']/following-sibling::div//*[name()='svg'])[1]");
     String sel_invoiceAuthStatusFilter = "//div[contains(@class, 'themed_select__option') and text()='STATUS']";
-    By txt_invoiceIDFilter = By.xpath("//div[text()='Invoice ID']/following-sibling::div//*[@placeholder='Search']");
+    By txt_invoiceIDFilter = By.xpath("//div[text()='Invoice ID']/following-sibling::div//*[contains(@placeholder,'Search')]");
     By btn_invoiceBulkAction = By.xpath("//button/*[text()='Bulk Actions']");
     String lbl_bulkOption = "//button/*[text()='Bulk Actions']/parent::button/following-sibling::div/a[contains(text(),'OPTION')]";
     By lbl_pastDuePopupTitle = By.xpath("//h4[contains(text(),'Past Due Invoice Details')]");

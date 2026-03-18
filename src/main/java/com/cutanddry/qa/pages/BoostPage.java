@@ -9,10 +9,13 @@ import org.openqa.selenium.By;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import org.openqa.selenium.JavascriptExecutor;
+import com.cutanddry.qa.base.TestBase;
 
 public class BoostPage extends LoginPage {
+    private String copiedPromoUrl;
     By txt_boost = By.xpath("//li[contains(text(),'Boost')]");
-    By btn_addMessage = By.xpath("//button[text()='Add Message']");
+    By btn_addMessage = By.xpath("//button[text()='Create Broadcast']");
     By txt_step1 = By.xpath("//div[text()='Step 1 - Select your message recepients']");
     By dropdown_customers = By.xpath("//div[contains(@class, 'themed_select__single-value') and text()='All Customers']");
     By option_customList = By.xpath("//div[text()='Custom List']");
@@ -60,8 +63,8 @@ public class BoostPage extends LoginPage {
     By txt_primaryBanner = By.xpath("//div[text()='Primary Banners']");
     By togglePrimaryBanner = By.xpath("(//div[@class='react-switch-handle'])[1]");
     By btn_saveChange = By.xpath("//button[text()='Save Changes']");
-    By txt_active = By.xpath("//div[text()='Active']");
-    By txt_hidden = By.xpath("//div[text()='Hidden']");
+    By txt_active = By.xpath("//div[normalize-space()='Primary Banners']/following-sibling::div[normalize-space()='Active']");
+    By txt_hidden = By.xpath("//div[normalize-space()='Primary Banners']/following-sibling::div[normalize-space()='Hidden']");
     By img_banner = By.xpath("//div[contains(@class, 'carousel-item')]//img");
     By featuredListTab = By.xpath("//a[contains(@class,'_ngcfan text-center nav-item nav-link') and text()='Featured Lists']");
     By createNewFeaturedListBtn = By.xpath("//button[contains(text(),'Create New Featured List')]");
@@ -112,6 +115,8 @@ public class BoostPage extends LoginPage {
     By DisplayStatusToggleStable1 = By.xpath("//div[contains(text(), 'Display Status')]/div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
     By tab_brandBoost = By.xpath("//a[text()='Brand Boost']");
     By txt_brandBoost = By.xpath("//h3[text()='Brand Boost']");
+    By tab_customTags = By.xpath("//a[text()='Custom Tags']");
+    By txt_customTags = By.xpath("//h3[text()='Manage Custom Tags']");
     By input_selectBrand = By.xpath("//div[text()='Select brand']/following-sibling::div//input");
     String option_brand = "(//div[text()='BRANDNAME'])[last()]";
     By btn_addBrand = By.xpath("//button[text()='Add']");
@@ -135,6 +140,9 @@ public class BoostPage extends LoginPage {
     String featuredListStatusInTable = "//tr[td[contains(text(),'FEATUREDLISTNAME')]]//div[contains(@class,'themed_select__single-value')]";
     By btn_okCopied = By.xpath("//button[contains(text(),'OK')]");
     String catalogFilterResult = "//div[contains(@class,'mb-2') and contains(text(),'RESULT')]";
+    String customTag = "//*[contains(text(),'CUSTOMTAG')]/../following-sibling::div//input[@placeholder='Enter tag name']";
+    By SaveBtn = By.xpath("//button[normalize-space(text())='Save']");
+
 
     public void changeOrderDragAndDrop(){
         distributorUI.dragAndDrop(sourceRowDragHandle,targetRowDragHandle);
@@ -664,8 +672,39 @@ public class BoostPage extends LoginPage {
         distributorUI.waitForCustom(2000);
     }
     public void clickCopyPromoUrl() {
+        // Intercept ALL clipboard write mechanisms before clicking
+        ((JavascriptExecutor) TestBase.driver).executeScript(
+                "window.__capturedClipboardText = null;" +
+                        // Intercept navigator.clipboard.writeText (modern API)
+                        "if (navigator.clipboard && navigator.clipboard.writeText) {" +
+                        "  var origWriteText = navigator.clipboard.writeText.bind(navigator.clipboard);" +
+                        "  navigator.clipboard.writeText = function(text) {" +
+                        "    window.__capturedClipboardText = text;" +
+                        "    return origWriteText(text);" +
+                        "  };" +
+                        "}" +
+                        // Intercept document.execCommand('copy') (legacy API)
+                        "var origExecCommand = document.execCommand.bind(document);" +
+                        "document.execCommand = function(cmd) {" +
+                        "  if (cmd === 'copy') {" +
+                        "    var sel = window.getSelection();" +
+                        "    if (sel) window.__capturedClipboardText = sel.toString();" +
+                        "  }" +
+                        "  return origExecCommand.apply(document, arguments);" +
+                        "};"
+        );
         distributorUI.click(btn_copyPromoUrl);
+        try {
+            distributorUI.waitForCustom(1000);
+            copiedPromoUrl = (String) ((JavascriptExecutor) TestBase.driver).executeScript(
+                    "return window.__capturedClipboardText;"
+            );
+            // URL captured via JS intercept
+        } catch (Exception e) {
+            // Fallback: copiedPromoUrl stays null, goToPromoUrl will try pasteUrlFromClipboard
+        }
     }
+
     public boolean isCopiedToClipboardDisplayed() {
         return distributorUI.isDisplayed(txt_copiedToClipboard);
     }
@@ -677,9 +716,27 @@ public class BoostPage extends LoginPage {
     }
     public void goToPromoUrl() {
         distributorUI.OpenNewTabAndSwitchToIt();
-        distributorUI.pasteUrlFromClipboard();
+        if (copiedPromoUrl != null && !copiedPromoUrl.isEmpty()) {
+            TestBase.driver.get(copiedPromoUrl);
+//            logger.info("Navigated to stored promo URL: {}", copiedPromoUrl);
+        } else {
+            distributorUI.pasteUrlFromClipboard();
+        }
     }
     public boolean isCatalogFilterSectionResultDisplayed(String result) throws InterruptedException {
         return distributorUI.isDisplayed(By.xpath(catalogFilterResult.replace("RESULT", result)));
+    }
+    public void clickOnCustomTags(){
+        distributorUI.click(tab_customTags);
+    }
+    public boolean isManageCustomTagsTxtDisplay(){
+        return distributorUI.isDisplayed(txt_customTags);
+    }
+    public void EnterCustomTags(String customTag1, String tagName) throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        distributorUI.sendKeys(By.xpath(customTag.replace("CUSTOMTAG",customTag1)),tagName);
+    }
+    public void clickOnSave(){
+        distributorUI.click(SaveBtn);
     }
 }

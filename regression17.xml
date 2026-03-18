@@ -33,6 +33,8 @@
             <class name="com.cutanddry.qa.tests.boost.VerifyTheInactiveStatusOfFeaturedListsOperatorTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyTheHiddenStatusOfFeaturedListsTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyTheHiddenStatusOfFeaturedListsOperatorTest" />
+
+            <class name="com.cutanddry.qa.tests.catalog.CustomTagFilterWithOtherFiltersTest" />
         </classes>
     </test>
 </suite>

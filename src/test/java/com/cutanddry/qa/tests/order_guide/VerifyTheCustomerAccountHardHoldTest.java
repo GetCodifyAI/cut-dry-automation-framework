@@ -19,6 +19,7 @@ public class VerifyTheCustomerAccountHardHoldTest extends TestBase {
     static User user;
     static String customerId = "15285";
     String DistributorName ="Independent Foods Co";
+    static String orderMinimumSetting = "Exempt from Order Minimum";
 
     @BeforeMethod
     public void setUp(){
@@ -50,6 +51,7 @@ public class VerifyTheCustomerAccountHardHoldTest extends TestBase {
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnCustomerCode(customerId);
+        Customer.SelectOrderMinimumFromProfile(orderMinimumSetting);
         Customer.clickOnEditAccHolds();
         Customer.clickOnAccDropdown();
         Customer.clickOnHardHold();

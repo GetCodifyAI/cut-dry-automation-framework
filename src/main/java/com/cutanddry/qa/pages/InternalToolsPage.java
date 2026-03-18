@@ -21,6 +21,8 @@ public class InternalToolsPage extends LoginPage {
     By btn_saveProductAds = By.xpath("//div[contains(h4, 'Sponsored Ads')]/button[contains(@class, 'btn') and text()='Save']");
     By buyerEdgePlatformRebateToggle =By.xpath("//div[contains(text(), 'Buyers Edge Platform Rebates')]/../following-sibling::div//div[@class='react-switch-bg']");
     By buyerEdgePlatformRebateHandle = By.xpath("//div[contains(text(), 'Buyers Edge Platform Rebates')]/../following-sibling::div//div[@class='react-switch-handle']");
+    By ManufacturerCashbackToggle =By.xpath("//div[contains(text(), 'Cut+Dry (Manufacturer) Cashback')]/../following-sibling::div//div[@class='react-switch-bg']");
+    By ManufacturerCashbackHandle = By.xpath("//div[contains(text(), 'Cut+Dry (Manufacturer) Cashback')]/../following-sibling::div//div[@class='react-switch-handle']");
     By btn_saveRebate = By.xpath("//div[contains(h4, 'Rebates')]/button[contains(@class, 'btn') and text()='Save']");
     By lastOrderedPoundPriceToggleStable = By.xpath("//div[contains(text(), 'Show Last Ordered Pound Price in Order Guide')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By lastOrderedPoundPriceToggleStable1 = By.xpath("//div[contains(text(), 'Show Last Ordered Pound Price in Order Guide')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
@@ -38,7 +40,7 @@ public class InternalToolsPage extends LoginPage {
     String payDisableRestaurant = "//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div[text()='NAME']";
     String payEnableRestaurantDelete = "//label[contains(text(), 'Pay Enabled Restaurants')]/following-sibling::div//div[text()='NAME']/following-sibling::div";
     String payDisableRestaurantDelete = "//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div[text()='NAME']/following-sibling::div";
-    By addCustomerToPayDisable = By.xpath("(//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div)[3]/following::div[1]");
+    By addCustomerToPayDisable = By.xpath("(//label[contains(text(), 'Pay Disabled Restaurants')]/following-sibling::div//div)[3]/following::div[1]//div[last()]");
     String selectDisableCustomer = "//div[contains(text(), 'NAME')]";
     By addCustomerToPayEnable = By.xpath("//label[contains(text(), 'Pay Enabled Restaurants')]/following-sibling::div/div");
     By checkboxLocatorCreditMemo = By.xpath("//label[contains(text(),'Enable Auto Apply Credit Memos')]/..//input");
@@ -298,6 +300,17 @@ public class InternalToolsPage extends LoginPage {
         }
     }
 
+    public void clickManufacturerCashbackToggle(boolean enable) {
+        String handlePosition = distributorUI.getElement(ManufacturerCashbackHandle).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(ManufacturerCashbackToggle);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(ManufacturerCashbackToggle);
+        }
+    }
+
     public void clickRebateSave() throws InterruptedException {
         distributorUI.clickWithScrollAndHover(btn_saveRebate);
         distributorUI.waitForCustom(5000);
@@ -374,8 +387,9 @@ public class InternalToolsPage extends LoginPage {
         distributorUI.click(By.xpath(payEnableRestaurantDelete.replace("NAME", name)));
     }
     public void addCustomerToPayDisable(String name)throws InterruptedException{
+        distributorUI.scrollToElementTillFound(addCustomerToPayDisable);
         distributorUI.click(addCustomerToPayDisable);
-        distributorUI.scrollToElement(By.xpath(selectDisableCustomer.replace("NAME", name)));
+        //distributorUI.scrollToElement(By.xpath(selectDisableCustomer.replace("NAME", name)));
         distributorUI.click(By.xpath(selectDisableCustomer.replace("NAME", name)));
         distributorUI.waitForCustom(3000);
     }
