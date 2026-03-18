@@ -6042,6 +6042,13 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
         distributorUI.click(By.xpath(removeSelectedCatalogFilter.replace("FILTER", filter)));
     }
 
+    String selectedCatalogFilterOption = "//div[contains(text(),'%s')]";
+
+    public boolean isCatalogSelectedFilterOptionDisplayed(String option) throws InterruptedException {
+        By locator = By.xpath(String.format(selectedCatalogFilterOption, option));
+        return distributorUI.isDisplayed(locator);
+    }
+
 
 
 }

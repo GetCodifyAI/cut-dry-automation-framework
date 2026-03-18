@@ -3663,6 +3663,10 @@ public class Customer {
         customersPage.clearSelectedFilter(filter);
     }
 
+    public static boolean isCatalogSelectedFilterOptionDisplayed(String option)throws InterruptedException{
+        return customersPage.isCatalogSelectedFilterOptionDisplayed(option);
+    }
+
 
 }
 

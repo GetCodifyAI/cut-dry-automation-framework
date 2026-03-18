@@ -52,6 +52,12 @@
             <class name="com.cutanddry.qa.tests.catalog.VerifyTheSortingFunctionalityOfCatalogListViewTest"/>
             <class name="com.cutanddry.qa.tests.order_guide.VerifySearchFeatureAfterEditingItemNameTest"/>
 
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheActiveBoostFilterSearchTest"/>
+            <class name="com.cutanddry.qa.tests.boost.VerifyTheInactiveBoostFilterSearchTest"/>
+
+
+
+
         </classes>
     </test>
 </suite>
