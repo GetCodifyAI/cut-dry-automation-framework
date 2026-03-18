@@ -48,7 +48,7 @@ public class VerifyOutOfStockItemsShowingAndNotOnSuggestiveSalesTest extends Tes
         Customer.searchItemOnOrderGuide(itemCode);
         itemName = Customer.getItemNameFirstRow();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
-        softAssert.assertTrue(Customer.areOutOfStockItemsDisplayed(),"toggle error");
+        softAssert.assertTrue(Customer.areOutOfStockItemsDisplayed(),"toggle error 1");
         //
         Login.navigateToConfigSupplier();
         softAssert.assertTrue(ConfigSupplier.isUserNavigatedToConfigSupplier(),"navigation error");
@@ -65,7 +65,7 @@ public class VerifyOutOfStockItemsShowingAndNotOnSuggestiveSalesTest extends Tes
         Customer.searchItemOnOrderGuide(itemCode);
         itemName = Customer.getItemNameFirstRow();
         softAssert.assertTrue(Customer.getItemNameFirstRow().contains(itemName),"item mismatch");
-        softAssert.assertFalse(Customer.areOutOfStockItemsDisplayed(),"toggle error");
+        softAssert.assertFalse(Customer.areOutOfStockItemsDisplayed(),"toggle error 2");
         softAssert.assertAll();
     }
 

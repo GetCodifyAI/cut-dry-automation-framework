@@ -76,7 +76,7 @@ By ConagaraBrandPage= By.xpath("(//div[contains(text(),'Conagra Foodservice')])[
     String certificateOption = "(//div[contains(text(),'CERTIFICATEOPTION')])[last()]";
     By productStatusDropdown = By.xpath("//div[normalize-space()='Product Status']/following::div[@id='config-active']");
     String productStatus = "(//div[contains(text(),'PRODSTATUS')])[last()]";
-    String productStatusInGrid = "//tr[td[normalize-space()='PRODID']]/td[7]";
+    String productStatusInGrid = "//tr[td[normalize-space()='PRODID']]/td[9]";
     By searchInCatalogPreview = By.xpath("//div//input[contains(@placeholder,'Search catalog')]");
     String clickOnItemInPreviewCatalog = "//div[contains(@class, ' _du1frc')]//div[contains(@class, '_1evg3oy') and contains(., 'ITEMCODE')]";
     String itemCodeDetails = "//div[contains(text(),'ITEMCODE')]";
@@ -219,7 +219,7 @@ By txt_numImageMissing= By.xpath("//div[text()='Products Missing Images']/follow
     String itemStatusOption = "(//div[contains(text(),'ITEMSTATUS') and contains(@class,'themed_select__option')])[last()]";
     String lastOrderedDate = "//div[contains(text(),'CS ordered on DATEPLACEHOLDER')]";
     By purchaseHistory = By.xpath("//div[text()='Purchase History']");
-    String lastOrderDatePDP = "(//div[text()='DATEPLACEHOLDER']/../following-sibling::td//div[.//div[text()='1 Pkg'] and .//div[text()='1 CS']])[1]";
+    String lastOrderDatePDP = "(//div[text()='DATEPLACEHOLDER']/../following-sibling::td//div[.//div[text()='1 PKG'] and .//div[text()='1 CS']])[1]";
     By txt_alreadyCustomer = By.xpath("//h3//b[text()='Already a Customer?']");
     String btn_alreadyCustomer = "//button[text()='BUTTON']";
     By multiUomOptionEach =By.xpath("//div[text()='Each']");
