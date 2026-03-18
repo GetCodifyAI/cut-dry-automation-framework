@@ -38,6 +38,7 @@ public class VerifyTheAllowBuyersEdgePlatformRebateTagsFlowTest extends TestBase
 
         Login.navigateToInternalToolsPage();
         InternalTools.ensureBuyerEdgePlatformRebateStatus(true,dp);
+        InternalTools.clickManufacturerCashbackToggle(true);
         Login.navigateToDistributorPortal(distributorName);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToAdsSettings();
@@ -48,6 +49,7 @@ public class VerifyTheAllowBuyersEdgePlatformRebateTagsFlowTest extends TestBase
 
         Login.navigateToInternalToolsPage();
         InternalTools.ensureBuyerEdgePlatformRebateStatus(false,dp);
+        InternalTools.clickManufacturerCashbackToggle(false);
         Login.navigateToDistributorPortal(distributorName);
         Assert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"navigation error");
         Dashboard.navigateToAdsSettings();

@@ -168,6 +168,10 @@ public class InternalTools {
         internalToolsPage.clickBuyerEdgePlatformRebateToggle(enable);
         internalToolsPage.clickRebateSave();
     }
+    public static void clickManufacturerCashbackToggle(boolean enable) throws InterruptedException {
+        internalToolsPage.clickManufacturerCashbackToggle(enable);
+        internalToolsPage.clickRebateSave();
+    }
     public static void ensurePayEnabledStatus(boolean enable) throws InterruptedException {
         internalToolsPage.clickConfigureSupplier();
         internalToolsPage.clickOnIndependentCompEditDetails();
