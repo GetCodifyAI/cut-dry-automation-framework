@@ -21,6 +21,8 @@ public class InternalToolsPage extends LoginPage {
     By btn_saveProductAds = By.xpath("//div[contains(h4, 'Sponsored Ads')]/button[contains(@class, 'btn') and text()='Save']");
     By buyerEdgePlatformRebateToggle =By.xpath("//div[contains(text(), 'Buyers Edge Platform Rebates')]/../following-sibling::div//div[@class='react-switch-bg']");
     By buyerEdgePlatformRebateHandle = By.xpath("//div[contains(text(), 'Buyers Edge Platform Rebates')]/../following-sibling::div//div[@class='react-switch-handle']");
+    By ManufacturerCashbackToggle =By.xpath("//div[contains(text(), 'Cut+Dry (Manufacturer) Cashback')]/../following-sibling::div//div[@class='react-switch-bg']");
+    By ManufacturerCashbackHandle = By.xpath("//div[contains(text(), 'Cut+Dry (Manufacturer) Cashback')]/../following-sibling::div//div[@class='react-switch-handle']");
     By btn_saveRebate = By.xpath("//div[contains(h4, 'Rebates')]/button[contains(@class, 'btn') and text()='Save']");
     By lastOrderedPoundPriceToggleStable = By.xpath("//div[contains(text(), 'Show Last Ordered Pound Price in Order Guide')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By lastOrderedPoundPriceToggleStable1 = By.xpath("//div[contains(text(), 'Show Last Ordered Pound Price in Order Guide')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
@@ -295,6 +297,17 @@ public class InternalToolsPage extends LoginPage {
             distributorUI.clickWithScrollAndHover(buyerEdgePlatformRebateToggle);
         } else if (!enable && isEnabled) {
             distributorUI.clickWithScrollAndHover(buyerEdgePlatformRebateToggle);
+        }
+    }
+
+    public void clickManufacturerCashbackToggle(boolean enable) {
+        String handlePosition = distributorUI.getElement(ManufacturerCashbackHandle).getAttribute("style");
+        boolean isEnabled = handlePosition.contains("translateX(29px)");
+
+        if (enable && !isEnabled) {
+            distributorUI.clickWithScrollAndHover(ManufacturerCashbackToggle);
+        } else if (!enable && isEnabled) {
+            distributorUI.clickWithScrollAndHover(ManufacturerCashbackToggle);
         }
     }
 
