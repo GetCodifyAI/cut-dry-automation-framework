@@ -725,27 +725,28 @@ public class Catalog {
     }
 
     public static void  clearTheDescription() throws InterruptedException {
-        catalogPage. clearTheDescription();
-    public static void clickOnBrandName(String brandName) throws InterruptedException {
-        catalogPage.clickOnBrandName(brandName);
+        catalogPage.clearTheDescription();
     }
+        public static void clickOnBrandName (String brandName) throws InterruptedException {
+            catalogPage.clickOnBrandName(brandName);
+        }
 
-    public static boolean isBrandNameDisplayedInPreview(String brandName) {
-        return catalogPage.isBrandNameDisplayedInPreview(brandName);
-    }
 
-    public static void selectCustomTagsFromCatalog(String tagName){
-        catalogPage.addCustomTags(tagName);
-    }
+        public static boolean isBrandNameDisplayedInPreview (String brandName){
+            return catalogPage.isBrandNameDisplayedInPreview(brandName);
+        }
 
-    public static void clearAllCustomTags(){
-        catalogPage.clearAllCustomTags();
-    }
+        public static void selectCustomTagsFromCatalog (String tagName){
+            catalogPage.addCustomTags(tagName);
+        }
 
-    public static boolean isAddedCustomTagsDisplayed(String customTag){
-        return catalogPage.isCustomTagDisplayed(customTag);
-    }
+        public static void clearAllCustomTags () {
+            catalogPage.clearAllCustomTags();
+        }
 
+        public static boolean isAddedCustomTagsDisplayed (String customTag){
+            return catalogPage.isCustomTagDisplayed(customTag);
+        }
 
 
 

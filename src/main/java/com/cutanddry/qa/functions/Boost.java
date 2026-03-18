@@ -361,7 +361,8 @@ public class Boost {
         boostPage.TurnOnBoostFilterToggle(filter,status);
     }
     public static void TurnOnBoostFilterSearchToggle(String filter,boolean status) throws InterruptedException {
-        boostPage.TurnOnBoostFilterSearchToggle(filter,status);
+        boostPage.TurnOnBoostFilterSearchToggle(filter, status);
+    }
     public static void selectConfigureStatus(String status) throws InterruptedException {
         boostPage.selectConfigureStatus(status);
     }
