@@ -26,6 +26,7 @@ public class VerifyTheCustomersCanSubmitOrdersWhenTheAccountIsInHardHoldByEnteri
     static String cvv = SettingData.CVV;
     static String zipCode = SettingData.ZIPCODE;
     static double totalItemPriceReviewOrder;
+    static String orderMinimumSetting = "Exempt from Order Minimum";
 
     @BeforeMethod
     public void setUp(){
@@ -55,6 +56,7 @@ public class VerifyTheCustomersCanSubmitOrdersWhenTheAccountIsInHardHoldByEnteri
         Customer.searchCustomerByCode(customerId);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId),"search error");
         Customer.clickOnCustomerCode(customerId);
+        Customer.SelectOrderMinimumFromProfile(orderMinimumSetting);
         Customer.clickOnEditAccHolds();
         Customer.clickOnAccDropdown();
         Customer.clickOnHardHold();
