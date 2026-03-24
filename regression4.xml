@@ -16,7 +16,7 @@
 <!--            <class name="com.cutanddry.qa.tests.customers.VerifyTheBulkActionsInviteUsersTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfEditOrderGuideTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfPreviewCatalogTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfChatFlowTest" />-->
+            <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfChatFlowTest" />
 
 <!--            <class name="com.cutanddry.qa.tests.customer_orders.VerifyThePauseStandingOrderTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.customer_orders.VerifyThePrintKitchenReceiptTest" />-->
@@ -24,7 +24,7 @@
 <!--            <class name="com.cutanddry.qa.tests.customer_orders.VerifyTheNavigatesToOrderSectionTest" />-->
 
 <!--            <class name="com.cutanddry.qa.tests.customer_drafts.VerifyTheCreatedDraftsTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.customer_drafts.VerifyTheDeleteDraftsTest" />-->
+            <class name="com.cutanddry.qa.tests.customer_drafts.VerifyTheDeleteDraftsTest" />
 
 <!--            <class name="com.cutanddry.qa.tests.customer_track.VerifyTheAddingTrackProfileTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.customer_track.VerifyTheRemovingTrackProfileTest" />-->
@@ -37,13 +37,13 @@
 <!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyEditNoteTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyAddSalespersonTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyRemoveSalespersonTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyAddTagTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyRemoveTagTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileNewUserInviteTest" />-->
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyAddTagTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyRemoveTagTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileNewUserInviteTest" />
 <!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileEditTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileDeleteTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyCustomerProfileVisibilityTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyCustomerProfileStatusTest" />-->
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileDeleteTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyCustomerProfileVisibilityTest" />
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyCustomerProfileStatusTest" />
 
 <!--            <class name="com.cutanddry.qa.tests.customer_groups.VerifyCustomerGroupIsAssignedWhenSelectedTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.customer_groups.VerifyCustomerGroupVisibleTest" />-->
@@ -51,11 +51,11 @@
 <!--            <class name="com.cutanddry.qa.tests.orders.VerifyMoreFiltersSalesPersonAndCreditRequestTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsPrintKitchenReceiptTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsPrintOrderConfirmationTest" />-->
-            <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsUpdateStatusTest" />
+<!--            <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsUpdateStatusTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.orders.ValidateOrderStatusChangesTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderSearchTest" />-->
-            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewOrderEditTest" />
-            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewDateDropdownTest" />
+<!--            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewOrderEditTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewDateDropdownTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewStatusDropdownTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewPrintOrderConfirmationTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewPrintKitchenReceiptTest" />-->
@@ -89,9 +89,9 @@
 <!--            <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfShowLastOrderedPriceOnTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfShowLastOrderedPriceOffTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfShowLastOrderedPriceOnForCustomerPortalTest"/>-->
-            <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfShowLastOrderedPriceOffForCustomerPortalTest"/>
+<!--            <class name="com.cutanddry.qa.tests.customer_orderguide.VerifyTheFunctionalityOfShowLastOrderedPriceOffForCustomerPortalTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromPDPTest"/>
+<!--            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromPDPTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsViaOrderGuideCatalogPDPTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.draft.ValidateDraftOrdersAreOnlyAppearing30DaysTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.draft.VerifyPendingApprovalsAreNotClickableTest"/>-->
