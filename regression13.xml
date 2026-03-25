@@ -33,25 +33,33 @@
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheHardOrderMinimumSelectingMultipleUOMTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSoftOrderMinimumSelectingMultipleUOMTest"/>-->
 
-<!--            <class name="com.cutanddry.qa.tests.settings.VerifyTheOrderReminderConfigurationsInTheDPTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.settings.VerifyThatSMSFunctionalityIsWorkingAsExpectedForOrderReminderAlertsTest"/>-->
+<!--&lt;!&ndash;            <class name="com.cutanddry.qa.tests.settings.VerifyTheOrderReminderConfigurationsInTheDPTest"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <class name="com.cutanddry.qa.tests.settings.VerifyThatSMSFunctionalityIsWorkingAsExpectedForOrderReminderAlertsTest"/>&ndash;&gt;-->
 
 <!--            <class name="com.cutanddry.qa.tests.customers.VerifyTheCustomersCanSubmitOrdersWhenTheAccountIsInHardHoldByEnteringTheCreditCardDetailsTest"/>-->
 
 <!--            <class name="com.cutanddry.qa.tests.order_reminder.VerifyTheOrderReminderAlertOptionIsRemovedFromOrderGuideSettingsTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureOnUITest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.order_desk.VerifyPendingOrderIndicatorInNavigationTest"/>-->
+<!--&lt;!&ndash;            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureOnUITest"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <class name="com.cutanddry.qa.tests.order_desk.VerifyPendingOrderIndicatorInNavigationTest"/>&ndash;&gt;-->
 
-<!--            <class name="com.cutanddry.qa.tests.dashboard.VerifyEligibleCustomersOfCustomerBaseWidgetInDashboardTest"/>-->
+<!--&lt;!&ndash;            <class name="com.cutanddry.qa.tests.dashboard.VerifyEligibleCustomersOfCustomerBaseWidgetInDashboardTest"/>&ndash;&gt;-->
 
-<!--            <class name="com.cutanddry.qa.tests.order_guide.SearchClearAndReturnToOrderGuideTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyMultipleSearchTermsAndNavigationTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyEmptySearchAndStatePersistenceTest"/>-->
+<!--&lt;!&ndash;            <class name="com.cutanddry.qa.tests.order_guide.SearchClearAndReturnToOrderGuideTest"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <class name="com.cutanddry.qa.tests.order_guide.VerifyMultipleSearchTermsAndNavigationTest"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <class name="com.cutanddry.qa.tests.order_guide.VerifyEmptySearchAndStatePersistenceTest"/>&ndash;&gt;-->
 
-            <class name="com.cutanddry.qa.tests.internal_tool.VerifyCreateNewVerifiedVendorGroupTest"/>
-            <class name="com.cutanddry.qa.tests.internal_tool.VerifyUpdateExistingVerifiedVendorGroupTest"/>
-            <class name="com.cutanddry.qa.tests.internal_tool.VerifyDeleteVerifiedVendorGroupTest"/>
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderMinimumOrderCaseMinimumAndDeliveryDaysNotAvailableForIntegratedDPsTest"/>
+<!--            <class name="com.cutanddry.qa.tests.internal_tool.VerifyCreateNewVerifiedVendorGroupTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.internal_tool.VerifyUpdateExistingVerifiedVendorGroupTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.internal_tool.VerifyDeleteVerifiedVendorGroupTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderMinimumOrderCaseMinimumAndDeliveryDaysNotAvailableForIntegratedDPsTest"/>-->
+
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryMultiUOMInPDPSectionSpotPriceDisableDPTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryInOrderGuideTest"/>
+            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryNotDisplayInOrderGuideAndPDPWhenDisplayPurchaseHistoryToggleDisableTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyOutOfStockItemsShowingAndNotOnSuggestiveSalesTest" />
+            <class name="com.cutanddry.qa.tests.default_view.VerifyTheDefaultViewIsCorrectlyDisplayingWhenSetUpFromConfigSupplierForDistributorTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheHardOrderMinimumSelectingMultipleUOMTest"/>
+            <class name="com.cutanddry.qa.tests.customers.VerifyTheCustomersCanSubmitOrdersWhenTheAccountIsInHardHoldByEnteringTheCreditCardDetailsTest"/>
 
         </classes>
     </test>
