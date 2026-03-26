@@ -15,7 +15,8 @@ import org.testng.asserts.SoftAssert;
 public class VerifyProfileDeleteTest extends TestBase {
     static User user;
     String CustomerCode = "16579";
-    String UserName = "Test user Edit";
+    String UserName = "Test user"+ generateDynamicValue();
+    static String UserEmail = "Testuser" + generateDynamicValue() + "@gmail.com";
 
 
     @BeforeMethod
@@ -33,6 +34,16 @@ public class VerifyProfileDeleteTest extends TestBase {
         Customer.searchCustomerByCode(CustomerCode);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"customer not found");
         Customer.SelectCustomer(CustomerCode);
+
+        Customer.InviteNewUsers();
+        softAssert.assertTrue(Customer.AddUserOverlayDisplayed(),"ERROR in Displaying add user overlay");
+        Customer.FillNameInAddUserOverlay(UserName);
+        Customer.FillEmailInAddUserOverlay(UserEmail);
+        Customer.SaveChangesWithoutSendingInvite();
+        softAssert.assertTrue(Customer.UserDetailsSuccessfullyUpdatedMsgDisplayed(),"ERROR in Saving User Details");
+        Customer.CloseSuccessOverlayByOkBtn();
+        softAssert.assertTrue(Customer.IsAddedUserSuccessfullyDisplayed(UserName),"Username not Found");
+
         Customer.EditUserDetails(UserName);
         Customer.RemoveUser();
         softAssert.assertTrue(Customer.RemovalConfirmationOverlayDisplayed(),"ERROR in Displaying Removal confirmation overlay");

@@ -27,16 +27,17 @@ public class VerifyTheFunctionalityOfFilteringUsersByUserRoles extends TestBase 
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+        Thread.sleep(5000);
         Dashboard.navigateToTeamSettings();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");
         Settings.selectRoleDropDown("Admin");
-        softAssert.assertTrue(Settings.isDisplayedRoleCorrect("Admin"),"The displayed role is incorrect");
+        softAssert.assertTrue(Settings.isDisplayedRoleCorrect("Admin"),"The displayed Admin role is incorrect");
         Settings.selectRoleDropDown("Salesperson");
-        softAssert.assertTrue(Settings.isDisplayedRoleCorrect("Salesperson"),"The displayed role is incorrect");
+        softAssert.assertTrue(Settings.isDisplayedRoleCorrect("Salesperson"),"The displayed Salesperson role is incorrect");
         Settings.selectRoleDropDown("Accounts Receivable");
-        softAssert.assertTrue(Settings.isDisplayedRoleCorrect("Accounts Receivable"),"The displayed role is incorrect");
+        softAssert.assertTrue(Settings.isDisplayedRoleCorrect("Accounts Receivable"),"The displayed Accounts Receivable role is incorrect");
         Settings.selectRoleDropDown("Dispatcher");
-        softAssert.assertTrue(Settings.isDisplayedRoleCorrect("Dispatcher"),"The displayed role is incorrect");
+        softAssert.assertTrue(Settings.isDisplayedRoleCorrect("Dispatcher"),"The displayed Dispatcher role is incorrect");
         softAssert.assertAll();
     }
 

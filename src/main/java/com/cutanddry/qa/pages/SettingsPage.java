@@ -114,7 +114,7 @@ public class SettingsPage extends LoginPage{
     By cityName = By.xpath("//input[@placeHolder='City']");
     By dropdown_selectRole = By.xpath("//div[contains(@class, 'themed_select__control')]");
     String dropdown_RoleOption = "//div[contains(@class, 'themed_select__menu')]//div[text()='ROLE']";
-    By txt_role = By.xpath("//table[contains(@class, 'table-hover')]/tbody/tr[1]/td[4]");
+    String txt_role = "//table[contains(@class, 'table-hover')]/tbody/tr[1]/td[4][contains(text(),'ROLE')]";
     By txt_name = By.xpath("//table[contains(@class, 'table-hover')]/tbody/tr[1]/td[1]");
     By txt_email = By.xpath("//table[contains(@class, 'table-hover')]/tbody/tr[1]/td[2]");
     By tbx_searchUsers = By.xpath("//input[@placeholder='Search Users']");
@@ -992,9 +992,7 @@ public class SettingsPage extends LoginPage{
     }
 
     public boolean isDisplayedRoleCorrect(String expectedRole){
-        distributorUI.waitForVisibility(txt_role);
-        String givenRole = distributorUI.getText(txt_role);
-        return givenRole.equals(expectedRole);
+        return distributorUI.isDisplayed(By.xpath(txt_role.replace("ROLE", expectedRole)));
     }
 
     public boolean isDisplayedNameCorrect(String expectedName){
