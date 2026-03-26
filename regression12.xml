@@ -16,11 +16,11 @@
 <!--            &lt;!&ndash;<class name="com.cutanddry.qa.tests.distributor_specific.VerifyThatTheUserCanSetUpCCEmailFromTheDistributorPortalTest"/>&ndash;&gt;-->
 
 <!--            <class name="com.cutanddry.qa.tests.orders.VerifyThatEditColumnsOptionIsAvailableInOrdersScreenTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.orders.VerifyThatLockedColumnsCannotBeEditedInTheCustomizeColumnScreenTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.orders.VerifyThatNotLockedColumnsCanBeEditedInTheCustomizeColumnScreenTest"/>-->
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatLockedColumnsCannotBeEditedInTheCustomizeColumnScreenTest"/>
+            <class name="com.cutanddry.qa.tests.orders.VerifyThatNotLockedColumnsCanBeEditedInTheCustomizeColumnScreenTest"/>
 <!--            <class name="com.cutanddry.qa.tests.orders.VerifyThatOrderGuideEditDisableFeatureTest"/>-->
 
-<!--            <class name="com.cutanddry.qa.tests.orders.VerifyTheClickOnQuantityPickerAndIncrementTheItemCountFromQuantityPickerAndIncrementItemCountFromPlusIconTest"/>-->
+            <class name="com.cutanddry.qa.tests.orders.VerifyTheClickOnQuantityPickerAndIncrementTheItemCountFromQuantityPickerAndIncrementItemCountFromPlusIconTest"/>
 
 <!--            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureLoginByAdminUserRolesTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCatalogAccessFeatureLoginBySalespersonUserRolesTest"/>-->
@@ -60,16 +60,16 @@
 
 <!--            <class name="com.cutanddry.qa.tests.orders.VerifyThatTheSendToERPButtonIsAvailableForScheduledJITOrdersTest"/>-->
 
-<!--            <class name="com.cutanddry.qa.tests.quick_add.VerifyTheUserCanAddItemsToTheQuickAddFlowByEnteringAValidProductIDTest"/>-->
+            <class name="com.cutanddry.qa.tests.quick_add.VerifyTheUserCanAddItemsToTheQuickAddFlowByEnteringAValidProductIDTest"/>
 <!--            <class name="com.cutanddry.qa.tests.quick_add.VerifyTheRowDataIsClearedWhenClickingTheTrashIconInQuickAddFlowTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.quick_add.VerifyTheQuickAddFlowForItemsWithoutEachAsTheUOMTest"/>-->
 
 <!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheSortItemsByDropDownIsAvailableInTheSimpleListViewTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.catalog_access.VerifyHideWhiteLabelHomePageForEmployeesWithNoCatalogAccessTest"/>-->
+            <class name="com.cutanddry.qa.tests.catalog_access.VerifyHideWhiteLabelHomePageForEmployeesWithNoCatalogAccessTest"/>
 
-            <class name="com.cutanddry.qa.tests.orders.VerifyTheClickOnQuantityPickerAndIncrementTheItemCountFromQuantityPickerAndIncrementItemCountFromPlusIconTest"/>
-            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheAvailabilityFilterIsVisibleInCustomerCatalogEditOGFlowTest"/>
-            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheDistributionCentreFilterIsFilteringRelevantDistributorCentresCustomerCatalogOGEditFlowTest"/>
+<!--            <class name="com.cutanddry.qa.tests.orders.VerifyTheClickOnQuantityPickerAndIncrementTheItemCountFromQuantityPickerAndIncrementItemCountFromPlusIconTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyTheAvailabilityFilterIsVisibleInCustomerCatalogEditOGFlowTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.customer_catalog.VerifyThatTheDistributionCentreFilterIsFilteringRelevantDistributorCentresCustomerCatalogOGEditFlowTest"/>-->
 
         </classes>
     </test>
