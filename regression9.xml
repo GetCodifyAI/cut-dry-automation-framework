@@ -43,7 +43,7 @@
 <!--            <class name="com.cutanddry.qa.tests.settings.VerifyAddPayoutAccountTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifySubstituteItemsNotDisplayedIfTurnedOffCustomerProfileTest"/>-->
 
-<!--            <class name="com.cutanddry.qa.tests.customers.ValidatePONumberRequiredCustomersTest"/>-->
+            <class name="com.cutanddry.qa.tests.customers.ValidatePONumberRequiredCustomersTest"/>
 <!--            <class name="com.cutanddry.qa.tests.customers.ValidatePONumberNotRequiredCustomersTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.customers.VerifyThatOrderSummeryBannerDisplayedTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.customers.VerifyThatOrderSummeryGrossProfitSaleCostSectionUpdateTest"/>-->
@@ -65,15 +65,15 @@
 <!--            <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromRequestDateTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromCreditStatusTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromSalespersonTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowApproveCreditThenChangeItToDeclineCreditTest"/>-->
+            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowApproveCreditThenChangeItToDeclineCreditTest"/>
 <!--            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowToDeclineCreditThenChangeItToApproveCreditTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheTimelineInCreditRequestUsingTimestampStatusOrganizationAndUser"/>-->
 
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest"/>
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCostMarginSectionsAreDisplayedAndHiddenWithF12KeyTest"/>
-            <class name="com.cutanddry.qa.tests.settings.VerifyAddPayoutAccountTest"/>
-            <class name="com.cutanddry.qa.tests.customers.ValidatePONumberRequiredCustomersTest"/>
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyUserDeletionEmailNotificationToggleTest"/>
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheAddingSubstituteItemForMultipleUOMDraftAndEditOrderTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCostMarginSectionsAreDisplayedAndHiddenWithF12KeyTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.settings.VerifyAddPayoutAccountTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.customers.ValidatePONumberRequiredCustomersTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyUserDeletionEmailNotificationToggleTest"/>-->
         </classes>
     </test>
 </suite>
