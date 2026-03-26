@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyTotalOrderValueTest extends TestBase{
     static User user;
-    String customerID = "16579";
+    String customerID = "APP100";
 
     @BeforeMethod
     public void setUp() {
@@ -45,7 +45,7 @@ public class VerifyTotalOrderValueTest extends TestBase{
         Customer.searchCustomerByCode(customerID);
         Customer.clickOnCustomerCode(customerID);
         double valueAfterOrder = Customer.getLastOrderedValue();
-        softAssert.assertEquals(valueAfterOrder,valueBeforeOrder+totalPrice,"last ordered total price");
+        softAssert.assertEquals(valueAfterOrder,valueBeforeOrder+totalPrice,0.001,"last ordered total price");
         softAssert.assertAll();
     }
 

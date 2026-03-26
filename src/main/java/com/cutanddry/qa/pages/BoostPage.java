@@ -86,10 +86,10 @@ public class BoostPage extends LoginPage {
     By disableSwitch = By.xpath("//td[text()='All Items']/parent::tr//div[contains(@class, 'react-switch-handle') and contains(@style, 'transform: translateX(1px);')]");
     By toggleSwitch = By.xpath(" //td[text()='All Items']/parent::tr//div[contains(@class, 'react-switch-handle')]");
     By dropdown_status = By.xpath("//div[contains(text(),'Status')]");
-    String dropdown_statusOption = "//div[contains(text(), 'option')]";
+    String dropdown_statusOption = "(//div[contains(text(), 'option')])[last()]";
     By table_boost = By.xpath("//table[@class='mt-4 table table-hover']");
     By firstRow_tableBost = By.xpath("//table[contains(@class, 'table-hover')]/tbody/tr[1]");
-    By status_firstRow = By.xpath("//table[@class='mt-4 table table-hover']/tbody/tr[1]/td[5]");
+    By status_firstRow = By.xpath("//table[@class='mt-4 _1q5g89e table table-hover']/tbody/tr[1]/td[7]");
     By displayStatusToggle = By.xpath("//div[contains(@class, 'ml-4')]");
     By btn_addNewMessage = By.xpath("//a[normalize-space(text()) = 'Add a new message']");
     By tbx_newMessage = By.xpath("//textarea[@placeholder='Type your message here...']");

@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 public class VerifyProfileNewUserInviteTest extends TestBase {
     static User user;
     String CustomerCode = "16579";
-    String UserName = "Test user";
+    String UserName = "Test user"+ generateDynamicValue();
     static String UserEmail = "Testuser" + generateDynamicValue() + "@gmail.com";
 
     @BeforeMethod
