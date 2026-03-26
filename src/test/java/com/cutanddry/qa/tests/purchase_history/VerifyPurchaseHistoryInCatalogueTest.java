@@ -26,7 +26,7 @@ public class VerifyPurchaseHistoryInCatalogueTest extends TestBase {
     String uom2 = CatalogData.MULTI_UOM_2;
     static String orderId;
     static String multiUOMType1 = "1 EA";
-    static String multiUOMType2 = "1 PKG";
+    static String multiUOMType2 = "1 Pkg";
 
 
 

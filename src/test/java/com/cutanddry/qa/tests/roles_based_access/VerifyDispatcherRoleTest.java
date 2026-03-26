@@ -28,7 +28,7 @@ public class VerifyDispatcherRoleTest extends TestBase {
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());
         softAssert.assertTrue(Dashboard.isUserNavigatedToRestaurantDashboard(),"login error");
         Login.navigateToLoginAsPortal(userAR);
-        softAssert.assertTrue(Track.isMonitoringTextDisplayed(),"navigation to track monitor error");
+        softAssert.assertTrue(Track.isRoutesTextDisplayed(),"navigation to track routes error");
         //settings
         Dashboard.navigateToProfileSettings();
         softAssert.assertTrue(Settings.isProfileSettingsTextDisplayed(),"navigation to profile settings error");

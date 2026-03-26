@@ -15,12 +15,12 @@ import org.testng.asserts.SoftAssert;
 public class VerifyProfileEditTest extends TestBase {
     static User user;
     String CustomerCode = "16579";
-    String UserName = "Test user";
+    String UserName = "Test user"+ generateDynamicValue();
+    static String UserEmail = "Testuser" + generateDynamicValue() + "@gmail.com";
     String EditedUserName = "Test user Edit";
     Random random = new Random();
     int randomNumber = 1000 + random.nextInt(9000);
     String EditedEmail = "TestuserEdit" + randomNumber + "@cutanddry.com";
-    String UserEmail = "Testuser@gmail.com";
 
     @BeforeMethod
     public void setUp(){
@@ -37,6 +37,16 @@ public class VerifyProfileEditTest extends TestBase {
         Customer.searchCustomerByCode(CustomerCode);
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(CustomerCode),"customer not found");
         Customer.SelectCustomer(CustomerCode);
+
+        Customer.InviteNewUsers();
+        softAssert.assertTrue(Customer.AddUserOverlayDisplayed(),"ERROR in Displaying add user overlay");
+        Customer.FillNameInAddUserOverlay(UserName);
+        Customer.FillEmailInAddUserOverlay(UserEmail);
+        Customer.SaveChangesWithoutSendingInvite();
+        softAssert.assertTrue(Customer.UserDetailsSuccessfullyUpdatedMsgDisplayed(),"ERROR in Saving User Details");
+        Customer.CloseSuccessOverlayByOkBtn();
+        softAssert.assertTrue(Customer.IsAddedUserSuccessfullyDisplayed(UserName),"Username not Found");
+
         Customer.EditUserDetails(UserName);
         Customer.FillNameInAddUserOverlay(EditedUserName);
         Customer.FillEmailInAddUserOverlay(EditedEmail);

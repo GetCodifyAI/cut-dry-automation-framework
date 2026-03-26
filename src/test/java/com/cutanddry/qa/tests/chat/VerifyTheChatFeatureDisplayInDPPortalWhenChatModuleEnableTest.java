@@ -50,7 +50,7 @@ public class VerifyTheChatFeatureDisplayInDPPortalWhenChatModuleEnableTest exten
         softAssert.assertTrue(Chat.isCustomerSearchResultDisplayed(customerName),"search error");
         Chat.clickOnCustomerChat(customerName);
         Chat.sendDistributorMessage(distributorMessage);
-        softAssert.assertEquals(Chat.getLastMessageDisplayed(), distributorMessage,"messaging sending error");
+        softAssert.assertEquals(Chat.getLastMessageDisplayed(), distributorMessage,"messaging sending error 1");
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
@@ -58,7 +58,7 @@ public class VerifyTheChatFeatureDisplayInDPPortalWhenChatModuleEnableTest exten
         softAssert.assertTrue(Customer.isChatIconDisplay(customerId),"Chat icon display error");
         Customer.clickChatIcon(customerId);
         Chat.sendDistributorMessage(distributorMessage);
-        softAssert.assertEquals(Chat.getLastMessageDisplayed(), distributorMessage,"messaging sending error");
+        softAssert.assertEquals(Chat.getLastMessageDisplayed(), distributorMessage,"messaging sending error 2");
 
         Dashboard.navigateToCustomers();
         Customer.searchCustomerByCode(customerId);
@@ -67,7 +67,7 @@ public class VerifyTheChatFeatureDisplayInDPPortalWhenChatModuleEnableTest exten
         softAssert.assertTrue(Customer.isChatButtonDisplayed(),"chat button display in customer profile error");
         Customer.clickChatButtonInCustomerProfile();
         Chat.sendDistributorMessage(distributorMessage);
-        softAssert.assertEquals(Chat.getLastMessageDisplayed(), distributorMessage,"messaging sending error");
+        softAssert.assertEquals(Chat.getLastMessageDisplayed(), distributorMessage,"messaging sending error 3");
         softAssert.assertAll();
     }
     @AfterMethod
