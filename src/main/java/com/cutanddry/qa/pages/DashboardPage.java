@@ -455,4 +455,133 @@ public class DashboardPage extends LoginPage{
         distributorUI.clickWithFallback(btn_viewMore);
     }
 
+    By txt_orderGuideChanges = By.xpath("//h4[text()='Order Guide Changes']");
+    By btn_orderGuideChangesViewAll = By.xpath("//h4[text()='Order Guide Changes']/ancestor::div[contains(@class,'card')]//button[contains(text(),'View All')]");
+    By txt_orderGuideChangesHeader = By.xpath("//*[contains(text(),'Order Guide Changes') and contains(text(),'Items added or removed')]/..");
+    By txt_orderGuideChangesTitle = By.xpath("//li[text()='Order Guide Changes']");
+    By tbl_orderGuideChanges = By.xpath("//table//thead//th[text()='Item']");
+    By paginationContainer = By.xpath("//ul[contains(@class,'pagination')]");
+    By paginationCurrentPage = By.xpath("//ul[contains(@class,'pagination')]//li[contains(@class,'active')]");
+    By paginationNextBtn = By.xpath("//ul[contains(@class,'pagination')]//li[last()]");
+    By paginationPrevBtn = By.xpath("//ul[contains(@class,'pagination')]//li[1]");
+    String paginationPageNumber = "//ul[contains(@class,'pagination')]//li//a[text()='PAGE']";
+    By paginationPageItems = By.xpath("//ul[contains(@class,'pagination')]//li[not(contains(@class,'disabled'))]");
+    By tbl_orderGuideChangesRows = By.xpath("//table/tbody/tr");
+    By dd_dateRange = By.xpath("(//div[contains(@class,'css-1uccc91-singleValue') or contains(@class,'singleValue')])[1]");
+    String dd_dateRangeOption = "//div[text()='OPTION']";
+    By dd_customerFilter = By.xpath("(//div[contains(@class,'css-1uccc91-singleValue') or contains(@class,'singleValue')])[2]");
+    String dd_customerFilterOption = "//div[text()='OPTION']";
+
+    public void scrollToOrderGuideChanges() throws InterruptedException {
+        distributorUI.scrollToElement(txt_orderGuideChanges);
+        distributorUI.waitForCustom(1000);
+    }
+
+    public void clickOrderGuideChangesViewAll() throws InterruptedException {
+        distributorUI.scrollToElement(btn_orderGuideChangesViewAll);
+        distributorUI.waitForCustom(1000);
+        distributorUI.click(btn_orderGuideChangesViewAll);
+        distributorUI.waitForCustom(3000);
+    }
+
+    public void navigateToOrderGuideChangesPage() throws InterruptedException {
+        distributorUI.navigateToURL(com.cutanddry.qa.common.Constants.MAIN_URL + "dashboard/order-guide-changes");
+        distributorUI.waitForCustom(5000);
+    }
+
+    public boolean isOrderGuideChangesDetailPageDisplayed() {
+        try {
+            distributorUI.waitForVisibility(txt_orderGuideChangesTitle);
+            return distributorUI.isDisplayed(txt_orderGuideChangesTitle);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isOrderGuideChangesTableDisplayed() {
+        try {
+            distributorUI.waitForVisibility(tbl_orderGuideChanges);
+            return distributorUI.isDisplayed(tbl_orderGuideChanges);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isPaginationDisplayed() {
+        try {
+            return distributorUI.isDisplayed(paginationContainer);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public String getCurrentPageNumber() {
+        try {
+            String text = distributorUI.getText(paginationCurrentPage);
+            return text.replaceAll("[^0-9]", "");
+        } catch (Exception e) {
+            return "0";
+        }
+    }
+
+    public void clickNextPage() throws InterruptedException {
+        distributorUI.click(paginationNextBtn);
+        distributorUI.waitForCustom(3000);
+    }
+
+    public void clickPreviousPage() throws InterruptedException {
+        distributorUI.click(paginationPrevBtn);
+        distributorUI.waitForCustom(3000);
+    }
+
+    public void clickPageNumber(String page) throws InterruptedException {
+        By pageBtn = By.xpath(paginationPageNumber.replace("PAGE", page));
+        distributorUI.click(pageBtn);
+        distributorUI.waitForCustom(3000);
+    }
+
+    public boolean isNextPageEnabled() {
+        try {
+            String cls = distributorUI.getElement(paginationNextBtn).getAttribute("class");
+            return !cls.contains("disabled");
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isPreviousPageEnabled() {
+        try {
+            String cls = distributorUI.getElement(paginationPrevBtn).getAttribute("class");
+            return !cls.contains("disabled");
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public int getTableRowCount() {
+        try {
+            return distributorUI.countElements(tbl_orderGuideChangesRows);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    public void selectDateRange(String option) throws InterruptedException {
+        distributorUI.click(dd_dateRange);
+        distributorUI.waitForCustom(1000);
+        By optionLocator = By.xpath(dd_dateRangeOption.replace("OPTION", option));
+        distributorUI.waitForVisibility(optionLocator);
+        distributorUI.click(optionLocator);
+        distributorUI.waitForCustom(3000);
+    }
+
+    public boolean isTableDataLoaded() {
+        try {
+            distributorUI.waitForVisibility(tbl_orderGuideChangesRows);
+            return distributorUI.isDisplayed(tbl_orderGuideChangesRows);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }
