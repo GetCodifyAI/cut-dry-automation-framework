@@ -105,7 +105,7 @@ jobs:
       - run:
           name: Download and Install WebDriver Plugin
           command: |
-            wget https://jmeter-plugins.org/files/packages/jpgc-webdriver-4.13.0.2.zip -O jpgc-webdriver.zip
+            wget --no-check-certificate https://jmeter-plugins.org/files/packages/jpgc-webdriver-4.13.0.2.zip -O jpgc-webdriver.zip
             unzip jpgc-webdriver.zip -d apache-jmeter-5.6.3
             mv -n apache-jmeter-5.6.3/lib/*.jar apache-jmeter-5.6.3/lib/
             mv -n apache-jmeter-5.6.3/lib/ext/*.jar apache-jmeter-5.6.3/lib/ext/
@@ -136,7 +136,7 @@ workflows:
   daily_manual_trigger:
     triggers:
       - schedule:
-          cron: "00 12 * * 1-5"  # runs every day at 12:00 UTC/ 5.30 PM Local // 03 12 * * 1-5
+          cron: "18 14 * * 1-5"  # runs every day at 12:00 UTC/ 5.30 PM Local // 03 12 * * 1-5
           filters:
             branches:
               only:
