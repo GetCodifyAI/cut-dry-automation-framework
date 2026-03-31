@@ -9,10 +9,10 @@
         <parameter name="PART" value="Part_Ten"/>
         <classes>
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1RegularItemSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>-->
-            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1SpecialItemSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+<!--            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1SpecialItemSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2RegularItemsSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2SpecialItemsSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>-->
-            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1RegularItemAnd1SpecialOrderItemSubmittedAsTwoSeparateOrdersForTheSelectedDeliveryDateTest"/>
+<!--            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1RegularItemAnd1SpecialOrderItemSubmittedAsTwoSeparateOrdersForTheSelectedDeliveryDateTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2RegularItemsAnd2SpecialOrderItemsSubmittedAsTwoSeparateOrdersForTheSelectedDeliveryDateTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyCustomerGroupsShouldNotBeEditableTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyCustomAccountHoldMessageIsDisplayedForCarmelaOnOrderSubmissionTest"/>-->
@@ -35,7 +35,7 @@
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByCustomerOrderInTheParentOGShouldNotReflectInTheChildOGTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByAlphabeticalOrderInTheParentOGShouldNotReflectInTheChildOGTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByItemCategoriesInTheParentOGShouldNotReflectInTheChildOGTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByItemCodeInTheParentOGShouldNotReflectInTheChildOGTest"/>-->
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatSortItemsByItemCodeInTheParentOGShouldNotReflectInTheChildOGTest"/>
 
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheChildCustomerCanCreateAnyNumberOfOrderGuidesManuallyTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheChildCustomerCanCreateAnyOrderGuidesAndOrderSubmissionTest"/>-->
@@ -43,17 +43,17 @@
 
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentTagDisplayTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheChildTagDisplayTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheChildAccountCanAccessThePDPViaTheOrderGuideTest"/>-->
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheChildAccountCanAccessThePDPViaTheOrderGuideTest"/>
 
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatNewlyAddedOGInParentAccountListedInChildListPopUpTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatIfNewOGRemovedFromParentAccountThatRemovedInDropDownOfTheChildListTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatRenamedNewlyAddedOGInParentAccountListedInChildListPopUpTest"/>-->
 
-<!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentCustomerCreateAnOrderGuidesThenChangesAreSyncedToChildAccountsTest"/>-->
+            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentCustomerCreateAnOrderGuidesThenChangesAreSyncedToChildAccountsTest"/>
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentCustomerEditAnOrderGuidesThenChangesAreSyncedToChildAccountsTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentCustomerDeleteAnOrderGuidesThenChangesAreSyncedToChildAccountsTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromTopCategoryCarouselAndSubmissionTest"/>
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromTopCategoryCarouselAndSubmissionTest"/>-->
         </classes>
     </test>
 </suite>
