@@ -18,7 +18,7 @@
 <!--&lt;!&ndash;            <class name="com.cutanddry.qa.tests.catalog_data.VerifyTheItemCannotBeOrderedFromTheOrderGuideWhenStatusIsSetToInactiveOnTheOPSideTest"/>&ndash;&gt;-->
 
 <!--            <class name="com.cutanddry.qa.tests.customers.VerifyNewUserCanNotHaveExistingEmailMobileNumberTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.customers.VerifyNewUserCanNotHaveExistingMobileNumberTest"/>-->
+            <class name="com.cutanddry.qa.tests.customers.VerifyNewUserCanNotHaveExistingMobileNumberTest"/>
 
 <!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreditHoldModalAndBannerDisplayOnFirstOrderSessionTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyInactiveHoldModalAndBannerDisplayTest"/>-->
@@ -38,8 +38,8 @@
 <!--            <class name="com.cutanddry.qa.tests.integration.VerifyCashAndCarryDraftCreationTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.integration.Verify24HourSnapshotLastSuccessfulSyncGraphAndDataTest"/>-->
 
-<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheOrderGuideNameAndDescriptionInOrderGuideSettingsTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheAddItemsRestrictionInOrderGuideSettingsTest"/>-->
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheOrderGuideNameAndDescriptionInOrderGuideSettingsTest"/>
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheAddItemsRestrictionInOrderGuideSettingsTest"/>
 <!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheEnableOrderApprovalInOrderGuideSettingsTest"/>-->
 
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyThatCustomerNameDisplayInEmptyInvoiceListTest"/>-->
@@ -51,13 +51,13 @@
 
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheOrderGuideWillNotDisplayedWhenTheCatalogOnlyOrderFlowIsActivatedFromTheSupplierConfigTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyTheAddToOrderGuideWillNotDisplayedWhenTheCatalogOnlyOrderFlowIsActivatedFromTheSupplierConfigTest"/>-->
-            <class name="com.cutanddry.qa.tests.standing_orders.VerifyStandingOrderFlowWhenSwitchingOrderGuidesTest"/>
+<!--            <class name="com.cutanddry.qa.tests.standing_orders.VerifyStandingOrderFlowWhenSwitchingOrderGuidesTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.quick_add.VerifyQuickAddMaximumQuantityValidationTest"/>-->
 
 <!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyLeadTimeBannerDisplayedWhenConfiguredFromTheInternalToolsTest"/>-->
 
 <!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsConfiguredWithHardOrderMinimumTest"/>-->
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsConfiguredWithSoftOrderMinimumTest"/>
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsConfiguredWithSoftOrderMinimumTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyOrderMinimumIsNotAppliedWhenNoOrderMinimumIsConfiguredTest"/>-->
         </classes>
     </test>
