@@ -8,7 +8,7 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part_Nine"/>
         <classes>
-<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromTopCategoryCarouselAndSubmissionTest"/>-->
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromTopCategoryCarouselAndSubmissionTest"/>
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromCompareSimilarItemsCarouselAndSubmissionTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromRecommendedBySalesRepCarouselAndSubmissionTest"/>-->
 <!--            &lt;!&ndash;            TODO: Uncomment the following test when the bug[DOT-9106] is fixed [Error popup “There was an error, please try again.” appears while searching for an item in the Order Guide section]&ndash;&gt;-->
