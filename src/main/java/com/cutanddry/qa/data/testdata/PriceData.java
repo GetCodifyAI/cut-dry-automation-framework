@@ -13,7 +13,7 @@ public class PriceData {
     public static final String CUSTOMER_ID_10 = "680";
     public static final String DISTRIBUTOR_CHEESE_IMP = "Cheese Importers";
     public static final String DISTRIBUTOR_WCW_ROCKIES = "What Chefs Want - Rockies";
-    public static final String ITEM_NAME_POUND_SPOT_PRICE = "Blue Cheese Colorado C";
+    public static final String ITEM_NAME_POUND_SPOT_PRICE = "53229";
     public static final String ITEM_NAME_SPOT_PRICE = "Bacon Applewood Smoked Retail";
     public static final String ITEM_NAME_SPOT_PRICE2 = " Beans Black Sun Merit";
     public static final String DISTRIBUTOR_TARANTINO = "62455935 - Cut+Dry Agent - A. Tarantino & Sons, Inc";
