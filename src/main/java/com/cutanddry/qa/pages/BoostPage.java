@@ -14,7 +14,7 @@ import com.cutanddry.qa.base.TestBase;
 
 public class BoostPage extends LoginPage {
     private String copiedPromoUrl;
-    By txt_boost = By.xpath("//li[contains(text(),'Boost')]");
+    By txt_boost = By.xpath("//h2[contains(text(),'Boost')]");
     By btn_addMessage = By.xpath("//button[text()='Create Broadcast']");
     By txt_step1 = By.xpath("//div[text()='Step 1 - Select your message recepients']");
     By dropdown_customers = By.xpath("//div[contains(@class, 'themed_select__single-value') and text()='All Customers']");
