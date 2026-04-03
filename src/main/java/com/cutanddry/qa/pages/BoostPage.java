@@ -34,7 +34,7 @@ public class BoostPage extends LoginPage {
     By btn_X = By.xpath("//tr[td[contains(text(),'Test Broadcast Message')]]//td[contains(@class,'text-right')]//button//*[name()='svg' and @data-icon='circle-xmark']");
     By btn_yes = By.xpath("//button[text()='Yes']");
     By tab_broadcast = By.xpath("//a[text()='Broadcasts']");
-    By tab_suggestiveSales = By.xpath("//a[text()='Suggestive Sales']");
+    By tab_suggestiveSales = By.xpath("//a[text()='Suggested Items']");
     By txt_topCategoryPicks = By.xpath("//td[text()='Top Category Picks']");
     By btn_topPicks_config = By.xpath("//tr[td[contains(text(), 'Top Category Picks')]]//button[contains(text(), 'View & Configure')]");
     By txt_popupTopCategoryPick = By.xpath("//div[text()='Select a category to configure']");

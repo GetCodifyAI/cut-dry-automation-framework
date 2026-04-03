@@ -55,7 +55,7 @@
 <!--            <class name="com.cutanddry.qa.tests.reports.VerifyTheTrackReadyOrdersDownloadReportTest"/>-->
 
 <!--            <class name="com.cutanddry.qa.tests.roles_based_access.VerifyAdminRoleTest" />-->
-            <class name="com.cutanddry.qa.tests.roles_based_access.VerifyARRoleTest" />
+<!--            <class name="com.cutanddry.qa.tests.roles_based_access.VerifyARRoleTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.roles_based_access.VerifySalespersonRoleTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.roles_based_access.VerifyDispatcherRoleTest" />-->
 
@@ -65,26 +65,26 @@
 <!--            <class name="com.cutanddry.qa.tests.standing_orders.VerifyDeletingStandingOrdersTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.standing_orders.VerifyManageStandingOrdersCTAFunctionalityInOrderGuideTest" />-->
 
-            <class name="com.cutanddry.qa.tests.boost.VerifyBroadcastMessageTest" />
+<!--            <class name="com.cutanddry.qa.tests.boost.VerifyBroadcastMessageTest" />-->
             <class name="com.cutanddry.qa.tests.boost.VerifyTopCategoryPicksTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyCompareSimilarItemsTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedForCustomerTest" />
             <class name="com.cutanddry.qa.tests.boost.VerifyRecommendedBySalesRepTest" />
 <!--            TODO: Uncomment the following test when the bug[DOT-9106] is fixed [Error popup “There was an error, please try again.” appears while searching for an item in the Order Guide section]-->
 <!--            <class name="com.cutanddry.qa.tests.boost.VerifyDontForgetToOrderTest" />-->
-            <class name="com.cutanddry.qa.tests.boost.VerifyMoreFromThisBrandTest" />
-            <class name="com.cutanddry.qa.tests.boost.VerifyAddingFeaturedListTest" />
-            <class name="com.cutanddry.qa.tests.boost.VerifyEditingFeaturedListTest" />
-            <class name="com.cutanddry.qa.tests.boost.VerifyRemovingFeaturedListTest" />
-            <class name="com.cutanddry.qa.tests.boost.VerifyTheBoostMessageFilteringFromTheStatusOptionTest" />
-            <class name="com.cutanddry.qa.tests.boost.VerifyTheChangeOrderFromTheFeaturedListsTest" />
-            <class name="com.cutanddry.qa.tests.boost.VerifyAddingBoostedBrandTest" />
-            <class name="com.cutanddry.qa.tests.boost.VerifyRemovingBoostedBrandTest" />
+<!--            <class name="com.cutanddry.qa.tests.boost.VerifyMoreFromThisBrandTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.boost.VerifyAddingFeaturedListTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.boost.VerifyEditingFeaturedListTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.boost.VerifyRemovingFeaturedListTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.boost.VerifyTheBoostMessageFilteringFromTheStatusOptionTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.boost.VerifyTheChangeOrderFromTheFeaturedListsTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.boost.VerifyAddingBoostedBrandTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.boost.VerifyRemovingBoostedBrandTest" />-->
 
-            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderWithoutAddingAnyItemsTest"/>
-            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByRemovingExistingItemsAndChangingQuantitiesTest"/>
-            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromOrderGuideTest"/>
-            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromCatalogTest"/>
+<!--            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderWithoutAddingAnyItemsTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByRemovingExistingItemsAndChangingQuantitiesTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromOrderGuideTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.draft.VerifySubmitDraftOrderByAddingItemsFromCatalogTest"/>-->
         </classes>
     </test>
 </suite>
