@@ -14,7 +14,7 @@ import com.cutanddry.qa.base.TestBase;
 
 public class BoostPage extends LoginPage {
     private String copiedPromoUrl;
-    By txt_boost = By.xpath("//li[contains(text(),'Boost')]");
+    By txt_boost = By.xpath("//h2[contains(text(),'Boost')]");
     By btn_addMessage = By.xpath("//button[text()='Create Broadcast']");
     By txt_step1 = By.xpath("//div[text()='Step 1 - Select your message recepients']");
     By dropdown_customers = By.xpath("//div[contains(@class, 'themed_select__single-value') and text()='All Customers']");
@@ -34,7 +34,7 @@ public class BoostPage extends LoginPage {
     By btn_X = By.xpath("//tr[td[contains(text(),'Test Broadcast Message')]]//td[contains(@class,'text-right')]//button//*[name()='svg' and @data-icon='circle-xmark']");
     By btn_yes = By.xpath("//button[text()='Yes']");
     By tab_broadcast = By.xpath("//a[text()='Broadcasts']");
-    By tab_suggestiveSales = By.xpath("//a[text()='Suggestive Sales']");
+    By tab_suggestiveSales = By.xpath("//a[text()='Suggested Items']");
     By txt_topCategoryPicks = By.xpath("//td[text()='Top Category Picks']");
     By btn_topPicks_config = By.xpath("//tr[td[contains(text(), 'Top Category Picks')]]//button[contains(text(), 'View & Configure')]");
     By txt_popupTopCategoryPick = By.xpath("//div[text()='Select a category to configure']");
