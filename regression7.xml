@@ -9,11 +9,11 @@
         <parameter name="PART" value="Part_Seven"/>
         <classes>
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyEditedQuantitiesAfterEditingMultipleUOMInPDPTest"/>-->
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyNavigationPDPWhenSelectingMultipleUnitsOptionTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheDeleteItemFromMultipleUOMInReviewOrderTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantityOfMultipleUOMInOGAndSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantityOfMultipleUOMInOrderGuideTest"/>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantityOfMultipleUOMInPDPAndSubmissionTest"/>
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyNavigationPDPWhenSelectingMultipleUnitsOptionTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheDeleteItemFromMultipleUOMInReviewOrderTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantityOfMultipleUOMInOGAndSubmissionTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantityOfMultipleUOMInOrderGuideTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantityOfMultipleUOMInPDPAndSubmissionTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantityOfMultipleUOMInPDPTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantityOfMultipleUOMInReviewOrderTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromCatalogOnlyTest"/>-->
@@ -37,10 +37,10 @@
 <!--            <class name="com.cutanddry.qa.tests.pay.VerifyTheEnablePayForTheCustomerThroughToggleButtonTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.pay.VerifyTheDisablePayForTheCustomerThroughToggleButtonTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.pay.VerifyTheEnablePayForTheCustomerThroughSupplierConfigTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.pay.VerifyTheDisablePayForTheCustomerWhenPayEnabledForAllUsersEnabledTest"/>-->
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheDisablePayForTheCustomerWhenPayEnabledForAllUsersEnabledTest"/>
 <!--            <class name="com.cutanddry.qa.tests.pay.VerifyTheDisablePayForTheCustomerThroughSupplierConfigTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.pay.VerifyTheEnablePayForTheCustomerThroughSupplierConfigWhenDisableTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.pay.VerifyTheDisablePayForTheCustomerThroughSupplierConfigWhenDisableTest"/>-->
+            <class name="com.cutanddry.qa.tests.pay.VerifyTheDisablePayForTheCustomerThroughSupplierConfigWhenDisableTest"/>
 <!--            <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnAllCustomerDPPortalWhenFeatureEnabledTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureEnabledTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureDisableTest"/>-->
