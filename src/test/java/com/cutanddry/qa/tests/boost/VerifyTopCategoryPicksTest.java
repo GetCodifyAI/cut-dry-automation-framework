@@ -32,9 +32,9 @@ public class VerifyTopCategoryPicksTest extends TestBase{
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickSuggestiveSales();
-        softAssert.assertTrue(Boost.isSuggestiveTabDisplayed(),"navigate to suggestive sales error");
+        softAssert.assertTrue(Boost.isSuggestiveTabDisplayed(),"navigate to suggestive sales error 1");
         Boost.clickTopCategoryPicksConfig();
-        softAssert.assertTrue(Boost.isTopCategoryPopupDisplayed(),"top category popup error");
+        softAssert.assertTrue(Boost.isTopCategoryPopupDisplayed(),"top category popup error 1");
         Boost.ensureTopCategoryPicksDisplayStatus(true);
         Boost.clickAllItemsConfig();
         Boost.clickAddItems();
@@ -51,9 +51,9 @@ public class VerifyTopCategoryPicksTest extends TestBase{
         Dashboard.navigateToBoost();
         softAssert.assertTrue(Boost.isUserNavigatedToBoost(),"navigate to boost error");
         Boost.clickSuggestiveSales();
-        softAssert.assertTrue(Boost.isSuggestiveTabDisplayed(),"navigate to suggestive sales error");
+        softAssert.assertTrue(Boost.isSuggestiveTabDisplayed(),"navigate to suggestive sales error 2");
         Boost.clickTopCategoryPicksConfig();
-        softAssert.assertTrue(Boost.isTopCategoryPopupDisplayed(),"top category popup error");
+        softAssert.assertTrue(Boost.isTopCategoryPopupDisplayed(),"top category popup error 2");
         Boost.clickAllItemsConfig();
         Boost.removeItem(itemCode);
         softAssert.assertFalse(Boost.isItemInCarouselPreview(itemCode),"item remove error");
