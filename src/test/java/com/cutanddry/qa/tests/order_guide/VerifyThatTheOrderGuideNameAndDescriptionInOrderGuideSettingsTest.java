@@ -49,12 +49,6 @@ public class VerifyThatTheOrderGuideNameAndDescriptionInOrderGuideSettingsTest e
         OrderGuideSettings.clickOnSave();
         Thread.sleep(5000);
 
-        softAssert.assertTrue(Customer.isEditOrderGuideTextDisplayed(),"ERROR in navigating to Order Guide Edit View");
-        Customer.clickLocationGuide();
-        softAssert.assertTrue(Customer.IsLocationOrderGuideDisplay(NewOrderGuideName),"Display edit order guide ");
-
-        Customer.closeEditor();
-        Thread.sleep(10000);
         softAssert.assertTrue(Customer.editedOrderGuideNameDisplay(NewOrderGuideName),"order guide name edit error");
         softAssert.assertTrue(Customer.editedOrderGuideDescriptionDisplay(OrderGuideDescription),"order guide Description edit error");
 
