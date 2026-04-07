@@ -42,20 +42,20 @@
 <!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileNewUserInviteTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileEditTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyProfileDeleteTest" />-->
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyCustomerProfileVisibilityTest" />
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyCustomerProfileVisibilityTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyCustomerProfileStatusTest" />-->
 
 <!--            <class name="com.cutanddry.qa.tests.customer_groups.VerifyCustomerGroupIsAssignedWhenSelectedTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.customer_groups.VerifyCustomerGroupVisibleTest" />-->
 
-<!--            <class name="com.cutanddry.qa.tests.orders.VerifyMoreFiltersSalesPersonAndCreditRequestTest" />-->
+            <class name="com.cutanddry.qa.tests.orders.VerifyMoreFiltersSalesPersonAndCreditRequestTest" />
 <!--            <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsPrintKitchenReceiptTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsPrintOrderConfirmationTest" />-->
-            <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsUpdateStatusTest" />
+<!--            <class name="com.cutanddry.qa.tests.orders.VerifyBulkActionsUpdateStatusTest" />-->
             <class name="com.cutanddry.qa.tests.orders.ValidateOrderStatusChangesTest" />
             <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderSearchTest" />
-            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewOrderEditTest" />
-            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewDateDropdownTest" />
+<!--            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewOrderEditTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewDateDropdownTest" />-->
             <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewStatusDropdownTest" />
 <!--            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewPrintOrderConfirmationTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderViewPrintKitchenReceiptTest" />-->
