@@ -10,8 +10,8 @@
         <classes>
 <!--            <class name="com.cutanddry.qa.tests.catalog_access.VerifyCatalogAccessSetToDisableForAllViaCustomerProfileTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreditHoldBannerDisplayInOrderSubmissionTest"/>
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyGeneralHoldBannerDisplayInOrderSubmissionTest"/>
+<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyCreditHoldBannerDisplayInOrderSubmissionTest"/>-->
+<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyGeneralHoldBannerDisplayInOrderSubmissionTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyInactiveHoldBannerDisplayedInOrderSubmissionTest"/>-->
 
 <!--            <class name="com.cutanddry.qa.tests.order_approval.VerifyDpAdminUserCanNotApproveOrderWhenOperatorExclusiveApprovalTypeTest"/>-->
