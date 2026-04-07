@@ -16,28 +16,28 @@
 <!--            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveMailDeliveryAsTheFulfillmentTypeDraftOrderSubmissionTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryAsTheFulfillmentTypeEditOrderSubmissionTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHavePickupWillCallAsTheFulfillmentTypeEditOrderSubmissionTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveMailDeliveryAsTheFulfillmentTypeEditOrderSubmissionTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryPickupWillCallAndMailDeliveryAsTheFulfillmentTypeTest"/>-->
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveMailDeliveryAsTheFulfillmentTypeEditOrderSubmissionTest"/>
+            <class name="com.cutanddry.qa.tests.fulfillment_type.VerifyTheDistributorCanHaveDeliveryPickupWillCallAndMailDeliveryAsTheFulfillmentTypeTest"/>
 
 <!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyUserCanSwitchOfflineModeFromTheMoreOptionsOnTheOGWhenTheDeviceHasNetworkConnectivityTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatEntireOrderGuideIsDownloadedSuccessfullyUponSwitchingToOfflineModeTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOnceInOfflineModeTheUserCanAddUpdateItemsToTheCartTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatUserCanChangeTheUnitOfMeasureForItemsInOfflineModeTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyUserCanSearchForItemsInTheOrderGuideWhileInOfflineModeTest"/>-->
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatAccessCatalogAndOrderSubmissionIsDisabledWhileInOfflineModeTest"/>
+<!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatAccessCatalogAndOrderSubmissionIsDisabledWhileInOfflineModeTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatSwitchingBackToOnlineModeTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsAvailableInDraftOrdersTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsAvailableInStandingOrdersTest"/>-->
+            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsAvailableInStandingOrdersTest"/>
 <!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatTheOfflineModeIsNotAvailableInEditOrdersTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOfflineOrderingDisplayWhenOfflineOrderingToggleEnableTest"/>-->
-            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOfflineOrderingNotDisplayWhenOfflineOrderingToggleOffTest"/>
+<!--            <class name="com.cutanddry.qa.tests.offline_ordering.VerifyThatOfflineOrderingNotDisplayWhenOfflineOrderingToggleOffTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.chat.VerifyTheChatFeatureDisplayInDPPortalWhenChatModuleEnableTest"/>
+<!--            <class name="com.cutanddry.qa.tests.chat.VerifyTheChatFeatureDisplayInDPPortalWhenChatModuleEnableTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.chat.VerifyTheChatFeatureNotDisplayInDPPortalWhenChatModuleDisableTest"/>-->
 
 <!--            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheSupplierConfigCatalogDisableStatusSyncingWithCustomerProfileCatalogTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCustomerProfileCatalogAccessIsSyncingWithSupplierConfigCatalogDisableStatusTest"/>-->
-            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCustomerProfileCatalogAccessRestrictionAllOperatorsTest"/>
+<!--            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCustomerProfileCatalogAccessRestrictionAllOperatorsTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.catalog_access.VerifyTheCustomerProfileCatalogAccessRestrictionSelectedOperatorsViaIntegrationTest"/>-->
 
 <!--            <class name="com.cutanddry.qa.tests.orders.VerifyTheOrderEditInvalidOrderErrorMessageTest"/>-->
