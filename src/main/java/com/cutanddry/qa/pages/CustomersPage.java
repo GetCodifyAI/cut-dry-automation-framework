@@ -56,6 +56,8 @@ String btn_addToCart = "(//div[contains(@class,'card-deck')]//div[contains(trans
     By catalogMinusBtn = By.xpath("//input[@data-input='quantityInput']/parent::div/preceding-sibling::div[1]");
     By catalogPlusBtn = By.xpath("//input[@data-input='quantityInput']/parent::div/following-sibling::div[1]");
     By tbx_itemQuantityCatalogSearch = By.xpath("//input[@type='number']");
+    By tbx_catalogCardQuantityInput = By.xpath("(//div[contains(@class,'card-deck')]//input[@type='number'])[1]");
+    By lbl_catalogCardContainer = By.xpath("(//div[contains(@class,'card-deck')]//div[contains(@class,'card')])[1]");
     By lbl_itemPriceSearchCatalogList = By.xpath("(//div[contains(., 'Artichoke') and not(contains(., '-24ct')) and not(contains(., 'Bottoms'))]//span[contains(text(),'$') and not(contains(text(),' ')) and not(@class='text-muted')])[last()]");
     By btn_decreaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../preceding-sibling::div//*[@data-icon='minus']");
     By btn_increaseQtyCartRowOne = By.xpath("//tr[2]/td//input/../following-sibling::div");
@@ -5375,6 +5377,27 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     public void clickCatalogGridView()throws InterruptedException{
         distributorUI.click(btn_gridView);
         distributorUI.waitForCustom(2000);
+    }
+    public void clickCatalogCardPlusBtn() throws InterruptedException {
+        distributorUI.click(catalogPlusBtn);
+        distributorUI.waitForCustom(2000);
+    }
+    public void clickCatalogCardMinusBtn() throws InterruptedException {
+        distributorUI.click(catalogMinusBtn);
+        distributorUI.waitForCustom(2000);
+    }
+    public String getCatalogCardQuantityInputValue() throws InterruptedException {
+        distributorUI.waitForCustom(1000);
+        return distributorUI.getText(tbx_catalogCardQuantityInput, "value");
+    }
+    public void typeCatalogCardQuantityInput(String quantity) throws InterruptedException {
+        distributorUI.clear(tbx_catalogCardQuantityInput);
+        distributorUI.sendKeys(tbx_catalogCardQuantityInput, quantity);
+        distributorUI.waitForCustom(2000);
+    }
+    public boolean isCatalogCardContainerDisplayed() throws InterruptedException {
+        distributorUI.waitForCustom(2000);
+        return distributorUI.isDisplayed(lbl_catalogCardContainer);
     }
     public void clickEditPriceVisibility(){
         distributorUI.isDisplayed(priceVisibilityEditBtn);

@@ -3228,6 +3228,21 @@ public class Customer {
     public static void clickCatalogGridView() throws InterruptedException {
         customersPage.clickCatalogGridView();
     }
+    public static void clickCatalogCardPlusBtn() throws InterruptedException {
+        customersPage.clickCatalogCardPlusBtn();
+    }
+    public static void clickCatalogCardMinusBtn() throws InterruptedException {
+        customersPage.clickCatalogCardMinusBtn();
+    }
+    public static String getCatalogCardQuantityInputValue() throws InterruptedException {
+        return customersPage.getCatalogCardQuantityInputValue();
+    }
+    public static void typeCatalogCardQuantityInput(String quantity) throws InterruptedException {
+        customersPage.typeCatalogCardQuantityInput(quantity);
+    }
+    public static boolean isCatalogCardContainerDisplayed() throws InterruptedException {
+        return customersPage.isCatalogCardContainerDisplayed();
+    }
     public static void editStatusPriceVisibility(String status){
         customersPage.clickEditPriceVisibility();
         customersPage.editPriceVisibilityStatus(status);
