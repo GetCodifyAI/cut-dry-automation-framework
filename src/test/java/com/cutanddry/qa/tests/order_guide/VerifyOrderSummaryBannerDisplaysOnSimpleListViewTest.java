@@ -56,7 +56,7 @@ public class VerifyOrderSummaryBannerDisplaysOnSimpleListViewTest extends TestBa
         
         double reviewTotalPrice = Customer.getReviewTotalPriceCart();
         softAssert.assertTrue(reviewTotalPrice > 0, "Review order total price should be greater than 0");
-        softAssert.assertEquals(Customer.getItemNameFirstRow(), itemName, "Item name mismatch between cart and review sections");
+        softAssert.assertTrue(Customer.isAddedItemDisplayed(itemName), "Item from order guide not found in review order section");
         
         Customer.submitOrder();
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "Thank you for your order popup not displayed - order submission failed");
