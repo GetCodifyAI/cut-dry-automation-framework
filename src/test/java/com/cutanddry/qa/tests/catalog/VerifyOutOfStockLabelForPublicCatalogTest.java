@@ -17,8 +17,8 @@ public class VerifyOutOfStockLabelForPublicCatalogTest {
     SoftAssert softAssert;
     static String Prime_Source_Public_Catalog = CatalogData.PRIME_SOURCE_PUBLIC_CATALOG_URL;
     static String DistributorName = "Prime Source Foods";
-    static String ItemCode = "1010";
-    static String ItemName = "CHICKEN WHOLE WOG 3.5 LB BONE-IN SKIN-ON *SPECIAL ORDER";
+    static String ItemCode = "1012";
+    static String ItemName = "CHICKEN WHOLE WOG 4 LB BONE-IN SKIN-ON CRYOVAC";
     static String ItemBrand = "Allen Harim";
     static String tag = "Out of stock";
 
@@ -29,7 +29,7 @@ public class VerifyOutOfStockLabelForPublicCatalogTest {
     }
 
     @Test(groups = "DOT-TC-1605")
-    public void VerifyHideAvailabilityFilterInPublicCatalog() throws InterruptedException {
+    public void VerifyOutOfStockLabelForPublicCatalog() throws InterruptedException {
         softAssert = new SoftAssert();
 
         Login.logIntoRestaurant(user.getEmailOrMobile(), user.getPassword());

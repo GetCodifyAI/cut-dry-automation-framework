@@ -19,7 +19,7 @@ public class UpdateUserWithExistingUserReferenceTest extends TestBase {
     static int randomNumber = new Random().nextInt(1000);
     static String name_1 = "Test" + randomNumber;
     static String name_2 = "Test3" + randomNumber;
-    static String name_3 = "Tessa Ifc";
+    static String name_3 = "Tessa IFC";
     static String email_2 = "test"+randomNumber+"@email.com";
     static String userRef = "KF"+randomNumber;
 
@@ -35,6 +35,7 @@ public class UpdateUserWithExistingUserReferenceTest extends TestBase {
         Login.loginAsDistributor(user.getEmailOrMobile(), user.getPassword());
         Dashboard.isUserNavigatedToDashboard();
         softAssert.assertTrue(Dashboard.isUserNavigatedToDashboard(),"login error");
+        Thread.sleep(5000);
         Dashboard.navigateToTeamSettings();
         softAssert.assertTrue(Settings.isTeamSettingsTextDisplayed(),"navigation error");
 
