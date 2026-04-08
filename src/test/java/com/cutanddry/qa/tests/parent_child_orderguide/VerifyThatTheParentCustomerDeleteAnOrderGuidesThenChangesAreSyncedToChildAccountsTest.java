@@ -49,7 +49,9 @@ public class VerifyThatTheParentCustomerDeleteAnOrderGuidesThenChangesAreSyncedT
         Customer.createOrderGuide(OrderGuideName);
         Customer.createOrderFromCatalog();
         Customer.searchItemOnCatalog(itemName);
+        Thread.sleep(4000);
         Customer.addItemFromCatalog();
+        Thread.sleep(4000);
         Customer.closeEditorCatalog();
         Customer.refreshCustomersPage();
         formID = Customer.getOrderGuideFormID();
