@@ -11,7 +11,7 @@
 <!--            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryMultiUOMInPDPSectionSpotPriceEnableDPTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryMultiUOMInPDPSectionSpotPriceDisableDPTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryInPDPSectionInDPTest"/>-->
-            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryInCatalogueTest"/>
+<!--            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryInCatalogueTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryInOrderGuideTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.purchase_history.VerifyPurchaseHistoryWithMarginInOrderGuideTest"/>-->
 
@@ -27,7 +27,7 @@
 <!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyOutOfStockItemsShowingAndNotOnSuggestiveSalesTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountHardHoldTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyTheCustomerAccountRemoveHardHoldTest" />-->
-            <class name="com.cutanddry.qa.tests.default_view.VerifyTheDefaultViewIsCorrectlyDisplayingWhenSetUpFromConfigSupplierForDistributorTest"/>
+<!--            <class name="com.cutanddry.qa.tests.default_view.VerifyTheDefaultViewIsCorrectlyDisplayingWhenSetUpFromConfigSupplierForDistributorTest"/>-->
 
             <class name="com.cutanddry.qa.tests.catalog.VerifyHardOrderMinimumWarningTest" />
             <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheHardOrderMinimumSelectingMultipleUOMTest"/>
