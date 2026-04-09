@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 
 public class VerifyOrdersListTotalColumnWithCurrencyFormattingTest extends TestBase {
     static User user;
-    String orderId = "794438940";
+    String orderId = "921801135";
     SoftAssert softAssert;
     String totalValue1;
     String totalValue2;
