@@ -996,6 +996,15 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     By customerNameUnderProfile = By.xpath("//button[contains(text(),'Order Guide')]/ancestor::div[2]/div[1]");
     String catalogFilterSection = "//div[text()='Sections']/../following-sibling::div//div[contains(text(),'FILTER')]";
     By browseCatalog = By.xpath("//div[contains(text(),'Browse Catalog')]");
+    By tb_activityLog = By.xpath("//a[text()='Activity Log' and @role='tab']");
+    By dropdown_activityTypeFilter = By.xpath("//div[contains(text(),'Activity Type:')]/parent::div");
+    By btn_activityInActivityTab = By.xpath("(//div[contains(text(),'Log your first activity')]/following-sibling::button[contains(text(),'Activity')])[last()]");
+    By lbl_addActivityModalTitle = By.xpath("//div[text()='Add Activity']");
+    By dropdown_activityType = By.xpath("//div[text()='Activity Type']/../following-sibling::div//input/..");
+    String dropdown_activityTypeOption = "//div[text()='TYPE']";
+    By tbx_activitySummary = By.xpath("//input[@placeholder='Enter a brief summary...']");
+    By txa_activityDescription = By.xpath("//textarea[@placeholder='Enter detailed description...']");
+    By tbx_activityDate = By.xpath("//div[text()='Activity Date']/..//following-sibling::div//input/..");
     String removeSelectedCatalogFilter = "//div[text()='FILTER']/*[local-name()='svg' and @data-icon='xmark']";
 
 
@@ -6043,5 +6052,147 @@ String lbl_itemPriceMultiOUM = "((//button/*[local-name()='svg' and @data-icon='
     }
 
 
+
+    By btn_activityTopBar = By.xpath("//button[contains(text(),'Activity') and *[local-name()='svg'] and ancestor::div[contains(@class,'header') or preceding-sibling::*[contains(text(),'Chat')]]]");
+    By lbl_editActivityModalTitle = By.xpath("//div[text()='Edit Activity']");
+
+    By btn_activityFileUpload = By.xpath("//div[text()='Upload Files']/following-sibling::div//input[@type='file']");
+    By btn_addActivitySubmit = By.xpath("//button[text()='Add Activity']");
+    By btn_editActivitySubmit = By.xpath("//button[text()='Save Changes']");
+    By btn_activityCancel = By.xpath("//button[text()='Cancel']");
+    By btn_activityModalClose = By.xpath("//div[text()='Add Activity']/following-sibling::button | //div[text()='Edit Activity']/following-sibling::button");
+    By lbl_noActivityYet = By.xpath("//*[contains(text(),'No activity yet')]");
+    By dropdown_dateRangeFilter = By.xpath("//div[contains(text(),'Date Range:')]/parent::div");
+    String dropdown_activityTypeFilterOption = "//div[contains(@class,'option') and contains(text(),'TYPE')]";
+    String dropdown_dateRangeFilterOption = "//div[contains(@class,'option') and contains(text(),'RANGE')]";
+    By lbl_activityCardFirst = By.xpath("(//div[contains(@class,'activity') or contains(@class,'card')]//div[contains(text(),'Summary') or @class])[1]");
+    By lbl_activitySummaryFirst = By.xpath("(//div[contains(@class,'activity-card') or contains(@class,'activityCard')]//div | //div[contains(@class,'activity')]//h6 | //div[contains(@class,'activity')]//strong)[1]");
+    By btn_editActivityFirst = By.xpath("(//*[local-name()='svg' and (@data-icon='cdEdit' or @data-icon='pen' or @data-icon='edit')])[1] | (//button[contains(@aria-label,'edit') or contains(@data-tip,'Edit')])[1]");
+    By btn_deleteActivityFirst = By.xpath("(//*[local-name()='svg' and (@data-icon='trash' or @data-icon='cdTrash')])[1] | (//button[contains(@aria-label,'delete') or contains(@data-tip,'Delete')])[1]");
+    By btn_deleteConfirmYes = By.xpath("//button[text()='Yes' or text()='Delete' or text()='Confirm']");
+    By lbl_activityTypeOnCard = By.xpath("(//div[contains(@class,'activity')]//span[contains(@class,'badge') or contains(@class,'type')] | //div[contains(@class,'activity')]//div[contains(@class,'type')])[1]");
+    By lbl_activityDateOnCard = By.xpath("(//div[contains(@class,'activity')]//span[contains(@class,'date')] | //div[contains(@class,'activity')]//div[contains(@class,'date')])[1]");
+    By lbl_uploadedFileName = By.xpath("//div[contains(@class,'file') or contains(@class,'attachment')]//span | //div[contains(@class,'file') or contains(@class,'attachment')]//a");
+    By btn_removeUploadedFile = By.xpath("//div[contains(@class,'file') or contains(@class,'attachment')]//*[local-name()='svg' and (@data-icon='times' or @data-icon='xmark' or @data-icon='close')]");
+    By btn_viewAllActivityLog = By.xpath("//button[text()='View All']");
+
+
+
+    public void clickOnActivityLogTab() throws InterruptedException {
+        distributorUI.waitForVisibility(tb_activityLog);
+        distributorUI.click(tb_activityLog);
+        Thread.sleep(1000);
+    }
+    public boolean isActivityLogTabSelected() {
+        return distributorUI.isDisplayed(dropdown_activityTypeFilter);
+    }
+    public void clickOnActivityButtonInActivityTab() {
+        distributorUI.waitForVisibility(btn_activityInActivityTab);
+        distributorUI.click(btn_activityInActivityTab);
+    }
+    public void clickOnActivityButtonTopBar() {
+        By topBarBtn = By.xpath("(//button[contains(text(),'Activity')])[1]");
+        distributorUI.waitForVisibility(topBarBtn);
+        distributorUI.click(topBarBtn);
+    }
+    public boolean isAddActivityModalDisplayed() {
+        distributorUI.waitForVisibility(lbl_addActivityModalTitle);
+        return distributorUI.isDisplayed(lbl_addActivityModalTitle);
+    }
+    public boolean isEditActivityModalDisplayed() {
+        distributorUI.waitForVisibility(lbl_editActivityModalTitle);
+        return distributorUI.isDisplayed(lbl_editActivityModalTitle);
+    }
+    public void selectActivityType(String type) throws InterruptedException {
+        distributorUI.click(dropdown_activityType);
+        distributorUI.waitForVisibility(By.xpath(dropdown_activityTypeOption.replace("TYPE", type)));
+        distributorUI.click(By.xpath(dropdown_activityTypeOption.replace("TYPE", type)));
+    }
+    public void enterActivityDate() {
+        distributorUI.click(tbx_activityDate);
+    }
+    public void enterActivitySummary(String summary) {
+        distributorUI.clear(tbx_activitySummary);
+        distributorUI.sendKeys(tbx_activitySummary, summary);
+    }
+    public void enterActivityDescription(String description) {
+        distributorUI.clear(txa_activityDescription);
+        distributorUI.sendKeys(txa_activityDescription, description);
+    }
+    public void uploadActivityFile(String filePath) {
+        distributorUI.sendKeys(btn_activityFileUpload, filePath);
+    }
+    public void clickAddActivitySubmit() throws InterruptedException {
+        distributorUI.click(btn_addActivitySubmit);
+        Thread.sleep(2000);
+    }
+    public void clickEditActivitySubmit() throws InterruptedException {
+        distributorUI.click(btn_editActivitySubmit);
+        Thread.sleep(2000);
+    }
+    public void clickActivityCancel() {
+        distributorUI.click(btn_activityCancel);
+    }
+    public boolean isNoActivityYetDisplayed() {
+        return distributorUI.isDisplayed(lbl_noActivityYet);
+    }
+    public void clickActivityTypeFilter() {
+        distributorUI.click(dropdown_activityTypeFilter);
+    }
+    public void selectActivityTypeFilterOption(String type) throws InterruptedException {
+        distributorUI.click(dropdown_activityTypeFilter);
+        Thread.sleep(500);
+        distributorUI.waitForVisibility(By.xpath(dropdown_activityTypeFilterOption.replace("TYPE", type)));
+        distributorUI.click(By.xpath(dropdown_activityTypeFilterOption.replace("TYPE", type)));
+    }
+    public void clickDateRangeFilter() {
+        distributorUI.click(dropdown_dateRangeFilter);
+    }
+    public void selectDateRangeFilterOption(String range) throws InterruptedException {
+        distributorUI.click(dropdown_dateRangeFilter);
+        Thread.sleep(500);
+        distributorUI.waitForVisibility(By.xpath(dropdown_dateRangeFilterOption.replace("RANGE", range)));
+        distributorUI.click(By.xpath(dropdown_dateRangeFilterOption.replace("RANGE", range)));
+    }
+    public boolean isActivityCardDisplayed() {
+        return distributorUI.isDisplayed(lbl_activityCardFirst);
+    }
+    public String getFirstActivitySummary() {
+        return distributorUI.getText(lbl_activitySummaryFirst);
+    }
+    public void clickEditFirstActivity() {
+        distributorUI.waitForVisibility(btn_editActivityFirst);
+        distributorUI.click(btn_editActivityFirst);
+    }
+    public void clickDeleteFirstActivity() {
+        distributorUI.waitForVisibility(btn_deleteActivityFirst);
+        distributorUI.click(btn_deleteActivityFirst);
+    }
+    public void confirmDeleteActivity() throws InterruptedException {
+        distributorUI.waitForVisibility(btn_deleteConfirmYes);
+        distributorUI.click(btn_deleteConfirmYes);
+        Thread.sleep(2000);
+    }
+    public boolean isUploadedFileDisplayed() {
+        return distributorUI.isDisplayed(lbl_uploadedFileName);
+    }
+    public void clickRemoveUploadedFile() {
+        distributorUI.click(btn_removeUploadedFile);
+    }
+    public void clickViewAllActivityLog() {
+        distributorUI.click(btn_viewAllActivityLog);
+    }
+    public String getActivityTypeFromFilter() {
+        return distributorUI.getText(dropdown_activityTypeFilter);
+    }
+    public String getDateRangeFromFilter() {
+        return distributorUI.getText(dropdown_dateRangeFilter);
+    }
+    public boolean isActivityTypeFilterOptionDisplayed(String type) {
+        return distributorUI.isDisplayed(By.xpath(dropdown_activityTypeFilterOption.replace("TYPE", type)));
+    }
+    public boolean isDateRangeFilterOptionDisplayed(String range) {
+        return distributorUI.isDisplayed(By.xpath(dropdown_dateRangeFilterOption.replace("RANGE", range)));
+    }
 
 }
