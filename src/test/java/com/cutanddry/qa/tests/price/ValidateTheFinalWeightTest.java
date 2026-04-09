@@ -18,7 +18,7 @@ public class ValidateTheFinalWeightTest extends TestBase{
     static String distributorKAndK = PriceData.DISTRIBUTOR_KAndK;
     static String customerId = PriceData.CUSTOMER_ID;
     static String itemPrice ;
-    static String itemName, searchItemCode;
+    static String itemName, searchItemCode,orderId;
     static double stableFinalPrice;
 
     @BeforeMethod
@@ -50,12 +50,13 @@ public class ValidateTheFinalWeightTest extends TestBase{
         softAssert.assertEquals(Customer.getItemNameFirstRow(), itemName, "The item selected by the user is different from what is shown on the order review page.");
         Customer.submitOrder();
         softAssert.assertTrue(Customer.isThankingForOrderPopupDisplayed(), "The order was not completed successfully.");
+        orderId = Customer.getSuccessOrderId();
         Customer.clickClose();
         Customer.searchCustomerByCode(customerId);
         Customer.clickOnCustomerCode(customerId);
         //test
         Customer.clickOnOrdersTab();
-        Customer.clickOrder();
+        Catalog.clickSubmittedOrder(orderId);
         softAssert.assertTrue(Customer.isOrderSectionDisplayed(),"order section not navigate");
         Orders.clickOnEditOrder();
         softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(),"edit popup error");
