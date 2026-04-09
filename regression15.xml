@@ -26,6 +26,7 @@
             <class name="com.cutanddry.qa.tests.order_approval.VerifyDpSalespersonUserCanRejectOrderWhenDistributorExclusiveApprovalTypeTest"/>
             <class name="com.cutanddry.qa.tests.order_approval.VerifyDpAdminUserCanRejectOrderWhenDistributorExclusiveApprovalTypeTest"/>
 
+            <class name="com.cutanddry.qa.tests.order_approval.VerifyScrapperIntegratedEmployeeSubmitsOrderForGeneralApprovalTest"/>
             <class name="com.cutanddry.qa.tests.order_approval.VerifyOPEmployeeSubmitsOrderForApprovalWhenOperatorExclusiveApprovalTypeTest"/>
             <class name="com.cutanddry.qa.tests.order_approval.VerifyOPAdminCanApproveOrderWhenOperatorExclusiveApprovalTypeTest"/>
             <class name="com.cutanddry.qa.tests.order_approval.VerifyOPManagerCanApproveOrderWhenOperatorExclusiveApprovalTypeTest"/>
