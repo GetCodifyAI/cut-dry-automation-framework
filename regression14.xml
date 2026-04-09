@@ -8,12 +8,12 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part_Fourteen"/>
         <classes>
-            <class name="com.cutanddry.qa.tests.draft.VerifySupplierPortalDraftCountDisplayTest"/>
+<!--            <class name="com.cutanddry.qa.tests.draft.VerifySupplierPortalDraftCountDisplayTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.draft.VerifyZeroDraftCountBadgeHiddenTest"/>-->
 
 <!--            <class name="com.cutanddry.qa.tests.catalog.VerifyHideAvailabilityFilterInPublicCatalogTest"/>-->
 <!--            &lt;!&ndash;            TODO: Commenting the since the change was reverted&ndash;&gt;-->
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheItemPricesAreNotVisibleInTheEditOrderGuideItemsSectionWhenPriceVisibilityIsHiddenTest"/>
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheItemPricesAreNotVisibleInTheEditOrderGuideItemsSectionWhenPriceVisibilityIsHiddenTest"/>-->
 <!--&lt;!&ndash;            <class name="com.cutanddry.qa.tests.catalog_data.VerifyTheItemCannotBeOrderedFromTheOrderGuideWhenStatusIsSetToInactiveTest"/>&ndash;&gt;-->
 <!--&lt;!&ndash;            <class name="com.cutanddry.qa.tests.catalog_data.VerifyTheItemCannotBeOrderedFromTheOrderGuideWhenStatusIsSetToInactiveOnTheOPSideTest"/>&ndash;&gt;-->
 
@@ -40,7 +40,7 @@
 
 <!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheOrderGuideNameAndDescriptionInOrderGuideSettingsTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheAddItemsRestrictionInOrderGuideSettingsTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheEnableOrderApprovalInOrderGuideSettingsTest"/>-->
+            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheEnableOrderApprovalInOrderGuideSettingsTest"/>
 
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyThatCustomerNameDisplayInEmptyInvoiceListTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.customers.VerifyTheCustomersCanSubmitOrdersWhenTheAccountIsInHardHoldByEnteringTheCreditCardDetailsDPPortalTest"/>-->
@@ -54,9 +54,9 @@
 <!--            <class name="com.cutanddry.qa.tests.standing_orders.VerifyStandingOrderFlowWhenSwitchingOrderGuidesTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.quick_add.VerifyQuickAddMaximumQuantityValidationTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyLeadTimeBannerDisplayedWhenConfiguredFromTheInternalToolsTest"/>
+<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyLeadTimeBannerDisplayedWhenConfiguredFromTheInternalToolsTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsConfiguredWithHardOrderMinimumTest"/>
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsConfiguredWithHardOrderMinimumTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsConfiguredWithSoftOrderMinimumTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyOrderMinimumIsNotAppliedWhenNoOrderMinimumIsConfiguredTest"/>-->
         </classes>
