@@ -11,7 +11,7 @@
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1RegularItemSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1SpecialItemSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2RegularItemsSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>-->
-            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2SpecialItemsSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>
+<!--            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2SpecialItemsSubmittedAsASingleOrderForTheSelectedDeliveryDateTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.Verify1RegularItemAnd1SpecialOrderItemSubmittedAsTwoSeparateOrdersForTheSelectedDeliveryDateTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.Verify2RegularItemsAnd2SpecialOrderItemsSubmittedAsTwoSeparateOrdersForTheSelectedDeliveryDateTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyCustomerGroupsShouldNotBeEditableTest"/>-->
@@ -20,7 +20,7 @@
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyShowingLastOrderedPricesInPortalOrderGuidesTest"/>-->
             <class name="com.cutanddry.qa.tests.distributor_specific.VerifyOrdersBelowMinimumOrderAmountPopsSoftOrderMinimumPopUpTest"/>
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifySubmittingAnOrderMinimumSatisfiedOrderForAFutureDateGreaterThanItemLeadTimeItemDateInOrderTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyVerifyImportantShipmentNoticeMessageTest"/>-->
+            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyVerifyImportantShipmentNoticeMessageTest"/>
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyLeadTimeItemOrderIsSplitInToTwoOrdersTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyInternalToolsRestrictSpotPricesBelowMinimumProductPriceToggleTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyDisplayPriceWithAvgSuffixTest"/>-->
@@ -43,13 +43,13 @@
 
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentTagDisplayTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheChildTagDisplayTest"/>-->
-            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheChildAccountCanAccessThePDPViaTheOrderGuideTest"/>
+<!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheChildAccountCanAccessThePDPViaTheOrderGuideTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatNewlyAddedOGInParentAccountListedInChildListPopUpTest"/>
+<!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatNewlyAddedOGInParentAccountListedInChildListPopUpTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatIfNewOGRemovedFromParentAccountThatRemovedInDropDownOfTheChildListTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatRenamedNewlyAddedOGInParentAccountListedInChildListPopUpTest"/>-->
 
-            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentCustomerCreateAnOrderGuidesThenChangesAreSyncedToChildAccountsTest"/>
+<!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentCustomerCreateAnOrderGuidesThenChangesAreSyncedToChildAccountsTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentCustomerEditAnOrderGuidesThenChangesAreSyncedToChildAccountsTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.parent_child_orderguide.VerifyThatTheParentCustomerDeleteAnOrderGuidesThenChangesAreSyncedToChildAccountsTest"/>-->
 
