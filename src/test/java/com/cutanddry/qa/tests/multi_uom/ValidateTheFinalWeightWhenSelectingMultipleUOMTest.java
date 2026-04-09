@@ -85,7 +85,7 @@ public class ValidateTheFinalWeightWhenSelectingMultipleUOMTest extends TestBase
         softAssert.assertTrue(Customer.isCustomerSearchResultByCodeDisplayed(customerId), "Unable to find the customer Id");
         Customer.SelectCustomer(customerId);
         Customer.clickOnOrdersTab();
-        Customer.clickOrder();
+        Catalog.clickSubmittedOrder(orderId);
         softAssert.assertTrue(Customer.isOrderSectionDisplayed(), "order section not navigate");
         Orders.clickOnEditOrder();
         softAssert.assertTrue(Orders.isEditOrderPopupDisplayed(), "edit popup error");
