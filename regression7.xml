@@ -8,7 +8,7 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part_Seven"/>
         <classes>
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyEditedQuantitiesAfterEditingMultipleUOMInPDPTest"/>
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyEditedQuantitiesAfterEditingMultipleUOMInPDPTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyNavigationPDPWhenSelectingMultipleUnitsOptionTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheDeleteItemFromMultipleUOMInReviewOrderTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantityOfMultipleUOMInOGAndSubmissionTest"/>-->
@@ -19,15 +19,15 @@
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromCatalogOnlyTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMUsingAddFromCatalogTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMUsingEditOrderTest"/>-->
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyFinalWeightFunctionalityForMultiUOMItemsTest"/>
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyFinalWeightFunctionalityForMultiUOMItemsTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyAddMultipleUOMInOGAndSubmissionThenEditOrderFlowTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyAddMultipleUOMInOGAndSubmissionThenDraftOrderFlowTest"/>-->
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectingMultiUOMFromCashAndCarryFlowTest"/>
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyAddMultipleUOMInOGAndSubmissionThenDraftOrderFlowTest"/>
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectingMultiUOMFromCashAndCarryFlowTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheCreateStandingOrderWithMultipleUOMTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditStandingOrderWithMultipleUOMTest"/>-->
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheDeleteStandingOrderWithMultipleUOMTest"/>
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheDeleteStandingOrderWithMultipleUOMTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyMultiCartItemsSelectMultipleUOMItemFromPDPTest"/>-->
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMAvailableRebateItemAndSubmissionTest"/>
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMAvailableRebateItemAndSubmissionTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMJustInTimeItemAndSubmissionTest"/>-->
 <!--&lt;!&ndash;            TODO: Need to fix the Special Item&ndash;&gt;-->
 <!--&lt;!&ndash;            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMSpecialOrderItemAndSubmissionTest"/>&ndash;&gt;-->
@@ -43,7 +43,7 @@
 <!--            <class name="com.cutanddry.qa.tests.pay.VerifyTheDisablePayForTheCustomerThroughSupplierConfigWhenDisableTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnAllCustomerDPPortalWhenFeatureEnabledTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureEnabledTest"/>-->
-            <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureDisableTest"/>
+<!--            <class name="com.cutanddry.qa.tests.pay.VerifyTheAutoApplyCreditMemosOnSingleCustomerDPPortalWhenFeatureDisableTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.pay.VerifyAddCustomerPaymentMethodTest"/>-->
         </classes>
     </test>
