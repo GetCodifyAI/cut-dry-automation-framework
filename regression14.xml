@@ -40,7 +40,7 @@
 
 <!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheOrderGuideNameAndDescriptionInOrderGuideSettingsTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheAddItemsRestrictionInOrderGuideSettingsTest"/>-->
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheEnableOrderApprovalInOrderGuideSettingsTest"/>
+<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyThatTheEnableOrderApprovalInOrderGuideSettingsTest"/>-->
 
 <!--            <class name="com.cutanddry.qa.tests.distributor_specific.VerifyThatCustomerNameDisplayInEmptyInvoiceListTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.customers.VerifyTheCustomersCanSubmitOrdersWhenTheAccountIsInHardHoldByEnteringTheCreditCardDetailsDPPortalTest"/>-->
@@ -57,8 +57,8 @@
 <!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyLeadTimeBannerDisplayedWhenConfiguredFromTheInternalToolsTest"/>-->
 
 <!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsConfiguredWithHardOrderMinimumTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsConfiguredWithSoftOrderMinimumTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyOrderMinimumIsNotAppliedWhenNoOrderMinimumIsConfiguredTest"/>-->
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyTheGlobalOrderMinimumAmountIsAppliedWhenUseGlobalSettingsIsConfiguredWithSoftOrderMinimumTest"/>
+            <class name="com.cutanddry.qa.tests.customer_profile.VerifyOrderMinimumIsNotAppliedWhenNoOrderMinimumIsConfiguredTest"/>
         </classes>
     </test>
 </suite>
