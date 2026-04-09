@@ -26,12 +26,12 @@ public class InternalToolsPage extends LoginPage {
     By btn_saveRebate = By.xpath("//div[contains(h4, 'Rebates')]/button[contains(@class, 'btn') and text()='Save']");
     By lastOrderedPoundPriceToggleStable = By.xpath("//div[contains(text(), 'Show Last Ordered Pound Price in Order Guide')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
     By lastOrderedPoundPriceToggleStable1 = By.xpath("//div[contains(text(), 'Show Last Ordered Pound Price in Order Guide')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
-    By orderMinimumGloballyToggleStable = By.xpath("//div[contains(text(), 'Enable Soft/Hard order minimum globally')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
-    By orderMinimumGloballyToggleStable1 = By.xpath("//div[contains(text(), 'Enable Soft/Hard order minimum globally')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
-    By orderMinimumDropDown = By.xpath("//div[text()='Order minimum type: ']/following-sibling::div/div");
+    By orderMinimumGloballyToggleStable = By.xpath("//div[text()= 'Global Order Minimums']/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
+    By orderMinimumGloballyToggleStable1 = By.xpath("//div[text()= 'Global Order Minimums']/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']/parent::div/div[1]");
+    By orderMinimumDropDown = By.xpath("//div[text()='Order Minimums Warning Type']/following-sibling::div/div");
     String orderMinimumDropDownOption = "(//div[text()='TYPE'])[last()]";
-    By addOrderMinimum = By.xpath("//div[contains(text(),'Soft order Minimum Surcharge')]/following-sibling::div/input");
-    By addOrderMinimumAmount = By.xpath("//div[contains(text(),'Order Minimum Amount')]/following-sibling::div/input");
+    By addOrderMinimum = By.xpath("//div[contains(text(),'Soft Order Minimum Surcharge (cents):')]/following-sibling::div/input");
+    By addOrderMinimumAmount = By.xpath("//div[contains(text(),'Global Order Minimum Value (cents):')]/following-sibling::div/input");
     By txt_success = By.xpath("//h2[contains(text(),'Success')]");
     By payDetailsTab = By.xpath("//a[contains(text(),'Pay Details')]");
     By payDetailsToggleStable = By.xpath("//label[contains(text(), 'Pay Enabled For All Users: ')]/following-sibling::div//div[@class='react-switch-bg']/following-sibling::div[@class='react-switch-handle']");
