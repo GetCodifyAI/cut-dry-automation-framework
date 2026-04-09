@@ -10,20 +10,11 @@
         <classes>
             <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogCopyPDPTest" />
 <!--            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogExportPDPTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.catalog.VerifyTheSearchTest" />-->
+            <class name="com.cutanddry.qa.tests.catalog.VerifyTheSearchTest" />
 <!--            <class name="com.cutanddry.qa.tests.catalog.VerifyManageCatalogExportCatalogTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.catalog.VerifyManageCatalogExportPromotionFileTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.catalog.VerifyCatalogItemImagesTest"/>-->
-            <class name="com.cutanddry.qa.tests.catalog.VerifyItemDescriptionsTest"/>
-
-            <class name="com.cutanddry.qa.tests.customers.VerifyTheBulkActionsInviteUsersTest" />
-            <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfEditOrderGuideTest" />
-            <class name="com.cutanddry.qa.tests.customers.VerifyTheNavigationOfChatFlowTest" />
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyRemoveTagTest" />
-
-            <class name="com.cutanddry.qa.tests.customer_catalog.ValidateTheCatalogClearAllFiltersTest" />
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyEditedQuantitiesAfterEditingMultipleUOMInPDPTest"/>
-
+<!--            <class name="com.cutanddry.qa.tests.catalog.VerifyItemDescriptionsTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogGetLinkTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.catalog.VerifyThePreviewCatalogSearchTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.catalog.VerifyRecentlyAddedTest"/>-->
