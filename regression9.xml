@@ -8,19 +8,19 @@
     <test name="distributor tests">
         <parameter name="PART" value="Part_Nine"/>
         <classes>
-<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromTopCategoryCarouselAndSubmissionTest"/>-->
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromTopCategoryCarouselAndSubmissionTest"/>
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromCompareSimilarItemsCarouselAndSubmissionTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromRecommendedBySalesRepCarouselAndSubmissionTest"/>-->
             <!--            TODO: Uncomment the following test when the bug[DOT-9106] is fixed [Error popup “There was an error, please try again.” appears while searching for an item in the Order Guide section]-->
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromDoNotForgetToOrderCarouselAndSubmissionTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromMoreFromThisBrandCarouselAndSubmissionTest"/>-->
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromMoreFromThisBrandCarouselAndSubmissionTest"/>
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromRecommendedForCustomerCarouselAndSubmissionTest"/>-->
 
 
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheEditQuantitiesFunctionalityFromCatalogTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMFromSaleItemAndSubmissionTest"/>-->
+            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMFromSaleItemAndSubmissionTest"/>
            <!-- <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMSpecialOrderItemAndDraftEditTest"/>-->
-            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMJustInTimeItemAndDraftEditTest"/>
+<!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyThSelectMultipleUOMJustInTimeItemAndDraftEditTest"/>-->
 
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromOGCatalogPDPAndSubmitByAdminTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.multi_uom.VerifyTheSelectMultipleUOMFromOGCatalogPDPAndSubmitByARTest"/>-->
@@ -49,7 +49,7 @@
 <!--            <class name="com.cutanddry.qa.tests.customers.VerifyThatOrderSummeryGrossProfitSaleCostSectionUpdateTest"/>-->
             <!--<class name="com.cutanddry.qa.tests.catalog_data.VerifyNotLoggedInUserCanViewThePublicItemOfTheDistributeViaPDPURLTest"/>
 -->
-            <class name="com.cutanddry.qa.tests.customer_profile.VerifyUserDeletionEmailNotificationToggleTest"/>
+<!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyUserDeletionEmailNotificationToggleTest"/>-->
 
 <!--            <class name="com.cutanddry.qa.tests.customer_profile.VerifyDeleteCustomerUserAndReceiveUserDeletionNotificationTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.customers.VerifyThatOrderSummerySalesCommissionSectionUpdateTest"/>-->
@@ -65,7 +65,7 @@
 <!--            <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromRequestDateTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromCreditStatusTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.credit_request.ValidateFilterCreditRequestFromSalespersonTest"/>-->
-            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowApproveCreditThenChangeItToDeclineCreditTest"/>
+<!--            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowApproveCreditThenChangeItToDeclineCreditTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheEditCreditRequestFlowToDeclineCreditThenChangeItToApproveCreditTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.credit_request.ValidateTheTimelineInCreditRequestUsingTimestampStatusOrganizationAndUser"/>-->
         </classes>
