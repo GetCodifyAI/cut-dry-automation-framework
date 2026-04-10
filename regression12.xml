@@ -17,7 +17,7 @@
 
 <!--            <class name="com.cutanddry.qa.tests.orders.VerifyThatEditColumnsOptionIsAvailableInOrdersScreenTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.orders.VerifyThatLockedColumnsCannotBeEditedInTheCustomizeColumnScreenTest"/>-->
-            <class name="com.cutanddry.qa.tests.orders.VerifyThatNotLockedColumnsCanBeEditedInTheCustomizeColumnScreenTest"/>
+<!--            <class name="com.cutanddry.qa.tests.orders.VerifyThatNotLockedColumnsCanBeEditedInTheCustomizeColumnScreenTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.orders.VerifyThatOrderGuideEditDisableFeatureTest"/>-->
 
 <!--            <class name="com.cutanddry.qa.tests.orders.VerifyTheClickOnQuantityPickerAndIncrementTheItemCountFromQuantityPickerAndIncrementItemCountFromPlusIconTest"/>-->
