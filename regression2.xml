@@ -10,7 +10,7 @@
         <classes>
 <!--            <class name="com.cutanddry.qa.tests.track.VerifyAddNewRouteUsingTrackFeature"/>-->
 <!--            <class name="com.cutanddry.qa.tests.track.VerifyDownloadExampleRouteUsingTrackFeature"/>-->
-<!--            <class name="com.cutanddry.qa.tests.track.VerifyTrackSettingsUnderRoutes"/>-->
+            <class name="com.cutanddry.qa.tests.track.VerifyTrackSettingsUnderRoutes"/>
 <!--            <class name="com.cutanddry.qa.tests.track.VerifyTheDatePickerFunctionality"/>-->
 <!--            <class name="com.cutanddry.qa.tests.track.VerifyDateChangeFunctionalityUnderMonitoring"/>-->
 <!--            <class name="com.cutanddry.qa.tests.track.VerifyTheDispatchButtonFunctionalityForMultipleRoutes"/>-->
@@ -28,11 +28,11 @@
 <!--            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsSMSTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsEmailTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.track.VerifyTheTrackNotificationsPushTest" />-->
-<!--            <class name="com.cutanddry.qa.tests.track.ValidateDetailsOnRouteRecordTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.track.ValidateGettingRouteCodeFlowTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.track.ValidateGettingEditRouteFlowTest"/>-->
+            <class name="com.cutanddry.qa.tests.track.ValidateDetailsOnRouteRecordTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateGettingRouteCodeFlowTest"/>
+            <class name="com.cutanddry.qa.tests.track.ValidateGettingEditRouteFlowTest"/>
 <!--            <class name="com.cutanddry.qa.tests.track.ValidateAddBreakToRouteFlowTest"/>-->
-<!--            <class name="com.cutanddry.qa.tests.track.ValidateVisibilityStatusOfRouteTest"/>-->
+            <class name="com.cutanddry.qa.tests.track.ValidateVisibilityStatusOfRouteTest"/>
 <!--            <class name="com.cutanddry.qa.tests.track.ValidateAddStopToRouteFlowTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.track.ValidateTheRouteRecordListTest"/>-->
 <!--            <class name="com.cutanddry.qa.tests.track.ValidateAddUnassignedStopsTest"/>-->
@@ -73,12 +73,12 @@
 <!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderSummaryBannerDisplaysOnSimpleListViewTest" />-->
 <!--            <class name="com.cutanddry.qa.tests.order_guide.PlaceOrdersFromMultipleOrderGuidesTest" />-->
 
-            <class name="com.cutanddry.qa.tests.team.UpdateUserWithExistingUserReferenceTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderSummaryBannerDisplaysOnSimpleListViewTest" />
-            <class name="com.cutanddry.qa.tests.order_guide.PlaceOrdersFromMultipleOrderGuidesTest" />
-            <class name="com.cutanddry.qa.tests.order_desk.VerifyDeletingVoiceOrderDraftLineItemTest" />
-            <class name="com.cutanddry.qa.tests.order_desk.UpdateCustomerAndLocationTest" />
-            <class name="com.cutanddry.qa.tests.team.VerifyTheFunctionalityOfFilteringUsersByUserRoles"/>
+<!--            <class name="com.cutanddry.qa.tests.team.UpdateUserWithExistingUserReferenceTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.order_guide.VerifyOrderSummaryBannerDisplaysOnSimpleListViewTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.order_guide.PlaceOrdersFromMultipleOrderGuidesTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.order_desk.VerifyDeletingVoiceOrderDraftLineItemTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.order_desk.UpdateCustomerAndLocationTest" />-->
+<!--            <class name="com.cutanddry.qa.tests.team.VerifyTheFunctionalityOfFilteringUsersByUserRoles"/>-->
         </classes>
     </test>
 </suite>
